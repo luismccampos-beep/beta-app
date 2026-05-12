@@ -1,0 +1,42 @@
+{
+  "santorini": {
+    "main": "https://images.unsplash.com/photo-1570077188670-e3a8d69ac5ff?w=800&h=600&fit=crop&crop=center",
+    "hero": "https://images.unsplash.com/photo-1613395877344-13d4a8e0d49e?w=1200&h=800&fit=crop&crop=center",
+    "thumbnail": "https://images.unsplash.com/photo-1570077188670-e3a8d69ac5ff?w=400&h=300&fit=crop&crop=center"
+  },
+  "bali": {
+    "main": "https://images.unsplash.com/photo-1537953773345-d172ccf13cf1?w=800&h=600&fit=crop&crop=center",
+    "hero": "https://images.unsplash.com/photo-1518548419970-b58f98397f61?w=1200&h=800&fit=crop&crop=center",
+    "thumbnail": "https://images.unsplash.com/photo-1537953773345-d172ccf13cf1?w=400&h=300&fit=crop&crop=center"
+  },
+  "paris": {
+    "main": "https://images.unsplash.com/photo-1502602898536-47ad22581b52?w=800&h=600&fit=crop&crop=center",
+    "hero": "https://images.unsplash.com/photo-1550340499-a6c60fc8287c?w=1200&h=800&fit=crop&crop=center",
+    "thumbnail": "https://images.unsplash.com/photo-1502602898536-47ad22581b52?w=400&h=300&fit=crop&crop=center"
+  },
+  "tokyo": {
+    "main": "https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?w=800&h=600&fit=crop&crop=center",
+    "hero": "https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?w=1200&h=800&fit=crop&crop=center",
+    "thumbnail": "https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?w=400&h=300&fit=crop&crop=center"
+  },
+  "caribbean": {
+    "main": "https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=800&h=600&fit=crop&crop=center",
+    "hero": "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1200&h=800&fit=crop&crop=center",
+    "thumbnail": "https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=400&h=300&fit=crop&crop=center"
+  },
+  "mediterranean": {
+    "main": "https://images.unsplash.com/photo-1571115764595-644a1f56a55c?w=800&h=600&fit=crop&crop=center",
+    "hero": "https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=1200&h=800&fit=crop&crop=center",
+    "thumbnail": "https://images.unsplash.com/photo-1571115764595-644a1f56a55c?w=400&h=300&fit=crop&crop=center"
+  },
+  "alaska": {
+    "main": "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&h=600&fit=crop&crop=center",
+    "hero": "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=1200&h=800&fit=crop&crop=center",
+    "thumbnail": "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&h=300&fit=crop&crop=center"
+  },
+  "norway": {
+    "main": "https://images.unsplash.com/photo-1518684079-3c830dcef090?w=800&h=600&fit=crop&crop=center",
+    "hero": "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1200&h=800&fit=crop&crop=center",
+    "thumbnail": "https://images.unsplash.com/photo-1518684079-3c830dcef090?w=400&h=300&fit=crop&crop=center"
+  }
+}

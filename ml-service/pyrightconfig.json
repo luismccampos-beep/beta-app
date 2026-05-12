@@ -1,0 +1,9 @@
+{
+  "venvPath": ".",
+  "venv": "ml-service/.venv",
+  "pythonVersion": "3.11",
+  "pythonPlatform": "Linux",
+  "reportMissingImports": "error",
+  "reportMissingModuleSource": "error",
+  "extraPaths": ["./src", "./ml-service"]
+}

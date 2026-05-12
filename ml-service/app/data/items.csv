@@ -1,0 +1,15 @@
+item_id,type,tags
+svc-hotel-1,accommodation,luxury|central
+svc-hotel-2,accommodation,beach|family
+svc-hotel-3,accommodation,boutique|historic
+svc-activity-1,activity,food|culture
+svc-activity-2,activity,adventure|outdoor
+svc-activity-3,activity,art|museum
+svc-package-1,package,citybreak|couple
+svc-package-2,package,family|summer
+svc-package-3,package,wellness|retreat
+svc-transfer-1,transportation,premium|airport
+svc-transfer-2,transportation,standard|city
+svc-cruise-1,cruise,sea|luxury|family
+svc-cruise-2,cruise,river|culture|romantic
+svc-cruise-3,cruise,expedition|adventure

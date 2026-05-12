@@ -1,0 +1,102 @@
+{
+  "name": "@akmleva/ml-service",
+  "version": "1.0.0",
+  "description": "AKMLEVA ML Service - Machine Learning microservice for travel recommendations and AI features",
+  "main": "app/main.py",
+  "scripts": {
+    "start": "python app/main.py",
+    "dev": "uvicorn app.main:app --host 0.0.0.0 --port 3002 --reload",
+    "test": "pytest tests/ -v",
+    "test:unit": "pytest tests/ -v -m unit",
+    "test:integration": "pytest tests/ -v -m integration",
+    "lint": "flake8 app/ tests/",
+    "format": "black app/ tests/",
+    "type-check": "mypy app/",
+    "build": "python -m build",
+    "install": "pip install -e .",
+    "install:dev": "pip install -e .[dev]",
+    "install:all": "pip install -e .[all]",
+    "docker:build": "docker build -t akmleva/ml-service .",
+    "docker:run": "docker run -p 3002:3002 akmleva/ml-service"
+  },
+  "keywords": [
+    "travel",
+    "ai",
+    "machine-learning",
+    "fastapi",
+    "recommendation",
+    "python"
+  ],
+  "author": "AKMLEVA Team",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/akmleva/akmleva.git",
+    "directory": "ml-service"
+  },
+  "bugs": {
+    "url": "https://github.com/akmleva/akmleva/issues"
+  },
+  "homepage": "https://docs.akmleva.com",
+  "engines": {
+    "python": ">=3.10"
+  },
+  "dependencies": {
+    "fastapi": "0.104.1",
+    "uvicorn": "0.24.0",
+    "pydantic": "2.5.0",
+    "numpy": "2.4.0",
+    "scikit-learn": "1.8.0",
+    "scipy": "1.17.0",
+    "pandas": "3.0.0",
+    "python-dotenv": "1.0.0",
+    "requests": "2.31.0"
+  },
+  "devDependencies": {
+    "pytest": "7.4.0",
+    "pytest-asyncio": "0.21.1",
+    "black": "23.7.0",
+    "flake8": "6.0.0",
+    "mypy": "1.5.1",
+    "pre-commit": "3.3.0"
+  },
+  "optionalDependencies": {
+    "psycopg2-binary": "2.9.7",
+    "sqlalchemy": "2.0.20",
+    "redis": "4.6.0",
+    "prometheus-client": "0.17.1"
+  },
+  "python": {
+    "dependencies": [
+      "fastapi>=0.104.1",
+      "uvicorn[standard]>=0.24.0",
+      "pydantic>=2.5.0",
+      "numpy>=2.4.0",
+      "scikit-learn>=1.8.0",
+      "scipy>=1.17.0",
+      "pandas>=3.0.0",
+      "python-dotenv>=1.0.0",
+      "requests>=2.31.0"
+    ],
+    "devDependencies": [
+      "pytest>=7.4.0",
+      "pytest-asyncio>=0.21.1",
+      "black>=23.7.0",
+      "flake8>=6.0.0",
+      "mypy>=1.5.1",
+      "pre-commit>=3.3.0"
+    ],
+    "optionalDependencies": {
+      "db": [
+        "psycopg2-binary>=2.9.7",
+        "sqlalchemy>=2.0.20"
+      ],
+      "cache": [
+        "redis>=4.6.0"
+      ],
+      "monitoring": [
+        "prometheus-client>=0.17.1"
+      ]
+    }
+  }
+}

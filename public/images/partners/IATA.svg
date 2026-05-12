@@ -1,0 +1,71 @@
+<svg width="100%" height="100%" viewBox="0 0 800 600" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="800" height="600" fill="white" />
+
+  <defs>
+    <clipPath id="globeClip">
+      <circle cx="400" cy="220" r="70" />
+    </clipPath>
+    
+    <!-- Wing Shape Definition -->
+    <path id="wingBase" d="
+      M 480,220 
+      L 730,220 
+      L 680,310 
+      C 600,310 520,330 480,310 
+      C 460,300 450,250 480,220 
+      Z" />
+      
+    <!-- Mask for Wing Cuts -->
+    <mask id="wingCuts">
+      <rect x="0" y="0" width="800" height="600" fill="white" />
+      <g stroke="black" stroke-width="5" stroke-linecap="round" fill="none">
+        <!-- Three horizontal cut lines -->
+        <path d="M 478,245 L 715,245" />
+        <path d="M 488,270 L 695,270" />
+        <path d="M 505,295 L 660,295" />
+      </g>
+    </mask>
+  </defs>
+
+  <!-- Color Palette -->
+  <g fill="#004E7C">
+    
+    <!-- Text -->
+    <text x="400" y="480" font-family="Arial, Helvetica, sans-serif" font-weight="900" font-style="italic" font-size="140" text-anchor="middle">IATA</text>
+
+    <!-- Globe -->
+    <g>
+      <circle cx="400" cy="220" r="70" />
+      
+      <!-- Grid Lines (White Strokes overlaid) -->
+      <g stroke="white" stroke-width="4" fill="none" clip-path="url(#globeClip)">
+        <!-- Vertical Straight -->
+        <path d="M 400,150 L 400,290" />
+        <!-- Horizontal Straight -->
+        <path d="M 330,220 L 470,220" />
+        
+        <!-- Vertical Curves (Longitudes) -->
+        <path d="M 400,150 Q 435,220 400,290" />
+        <path d="M 400,150 Q 365,220 400,290" />
+        
+        <!-- Horizontal Curves (Latitudes) -->
+        <!-- Top Parallel -->
+        <path d="M 330,185 Q 400,205 470,185" />
+        <!-- Bottom Parallel -->
+        <path d="M 330,255 Q 400,235 470,255" />
+      </g>
+    </g>
+
+    <!-- Right Wing -->
+    <g mask="url(#wingCuts)">
+      <use href="#wingBase" />
+    </g>
+
+    <!-- Left Wing (Mirrored) -->
+    <g transform="translate(800, 0) scale(-1, 1)" mask="url(#wingCuts)">
+       <use href="#wingBase" />
+    </g>
+
+  </g>
+</svg>

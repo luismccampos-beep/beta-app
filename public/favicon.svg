@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32">
+  <!-- Background -->
+  <rect width="32" height="32" rx="5" fill="#0d4a5a"/>
+
+  <!-- Orange sun -->
+  <circle cx="16" cy="9" r="6.5" fill="#f05a1a"/>
+
+  <!-- Wave 1 - cuts across sun -->
+  <path d="M0 11 C4 8 8 13 12 10 C16 7 20 13 24 10 C28 7 30 11 32 10 L32 32 L0 32 Z" fill="#0d4a5a"/>
+
+  <!-- Wave 2 - deeper -->
+  <path d="M0 20 C5 17 10 22 16 19 C22 16 27 21 32 19 L32 32 L0 32 Z" fill="#0a3d4d"/>
+
+  <!-- Sandy beach -->
+  <path d="M18 32 Q25 27 32 26 L32 32 Z" fill="#f2e0b0"/>
+
+  <!-- Letter A — exact glyph path from DejaVu Sans Bold, transformed to fit -->
+  <g transform="translate(5.7873,31.0000) scale(0.012726,-0.012726)">
+    <path d="M1094 272H492L397 0H10L563 1493H1022L1575 0H1188ZM588 549H997L793 1143Z" fill="#f2e0b0"/>
+  </g>
+</svg>

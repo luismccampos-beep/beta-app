@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="480" viewBox="0 0 640 480">
+  <!-- Blue stripe (left third) -->
+  <rect x="0" y="0" width="213.333" height="480" fill="#002395"/>
+  <!-- White stripe (middle third) -->
+  <rect x="213.333" y="0" width="213.333" height="480" fill="#FFFFFF"/>
+  <!-- Red stripe (right third) -->
+  <rect x="426.666" y="0" width="213.334" height="480" fill="#ED2939"/>
+</svg>

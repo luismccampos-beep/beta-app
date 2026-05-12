@@ -1,0 +1,4332 @@
+// ============================================
+// AUTH & USER MANAGEMENT (Ajustado para PTisp)
+// ============================================
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider      = "prisma-client-js"
+  binaryTargets = ["native", "debian-openssl-1.1.x", "debian-openssl-3.0.x"]
+}
+
+// ============================================
+// ENUMS - Supplier & Marketing
+// ============================================
+
+enum SupplierType {
+  HOTEL
+  GUIDE
+  TRANSFER
+  ACTIVITY
+  CRUISE
+  INSURANCE
+  FLIGHT
+  CAR_RENTAL
+  OTHER
+}
+
+enum SupplierStatus {
+  PENDING
+  ACTIVE
+  INACTIVE
+  SUSPENDED
+  ARCHIVED
+}
+
+enum PartnershipLevel {
+  BASIC
+  PREFERRED
+  PREMIUM
+  EXCLUSIVE
+}
+
+enum CampaignStatus {
+  DRAFT
+  SCHEDULED
+  SENDING
+  SENT
+  CANCELLED
+  FAILED
+}
+
+enum FollowUpStatus {
+  PENDING
+  SENT
+  OPENED
+  RESPONDED
+  FAILED
+  CANCELLED
+}
+
+enum FollowUpType {
+  FEEDBACK_REQUEST
+  WELCOME_HOME
+  REVIEW_REMINDER
+  LOYALTY_OFFER
+  UPSELL
+}
+
+enum BirthdayAlertStatus {
+  PENDING
+  NOTIFIED
+  VOUCHER_SENT
+  VOUCHER_USED
+  EXPIRED
+}
+
+enum CommissionStatus {
+  PENDING
+  PAID
+  CANCELLED
+  DISPUTED
+}
+
+/// Core user account with comprehensive profile
+model User {
+  id        String  @id @default(uuid()) 
+  email     String  @unique @db.VarChar(255)
+  password  String? @map("password_hash") @db.VarChar(255) // nullable for OAuth users
+  name      String? @db.VarChar(255)
+  username  String? @unique @db.VarChar(50)
+  
+  // Multi-tenancy
+  agencyId  String? @map("agency_id") 
+
+  // Profile
+  avatar          String?   @db.Text
+  avatarThumbnail String?   @map("avatar_thumbnail") @db.Text
+  avatarUrl       String?   @map("avatar_url") @db.Text
+  bio             String?   @db.Text
+  location        String?   @db.VarChar(255)
+  phone           String?   @unique @db.VarChar(20)
+  birthDate       DateTime? @map("birth_date") @db.Date
+  gender          String?   @db.VarChar(20) // "M", "F", "Other"
+
+  // Address
+  address    String? @db.VarChar(255)
+  city       String? @db.VarChar(100)
+  state      String? @db.VarChar(100)
+  country    String? @db.VarChar(100)
+  postalCode String? @map("postal_code") @db.VarChar(20)
+
+  // Account Status
+  status                 UserStatus @default(ACTIVE)
+  role                   UserRole   @default(USER)
+  joinDate               DateTime   @default(now()) @map("join_date")
+  lastActive             DateTime   @updatedAt @map("last_active") @db.DateTime
+  lastLogin              DateTime?  @map("last_login") @db.DateTime
+  isVerified             Boolean    @default(false) @map("is_verified")
+  emailVerified          Boolean    @default(false) @map("email_verified")
+  phoneVerified          Boolean    @default(false) @map("phone_verified")
+  emailVerifiedAt        DateTime?  @map("email_verified_at") @db.DateTime
+  emailVerificationToken String?    @map("email_verification_token") @db.VarChar(255)
+  passwordChangedAt      DateTime?  @map("password_changed_at") @db.DateTime
+
+  // Security & 2FA
+  twoFactorSecret           String?   @map("two_factor_secret") @db.VarChar(255)
+  twoFactorEnabled          Boolean   @default(false) @map("two_factor_enabled")
+  twoFactorBackupCode       Json  @default("[]") @map("two_factor_backup_code")
+  forgotPasswordToken       String?   @map("forgot_password_token") @db.VarChar(255)
+  forgotPasswordTokenExpiry DateTime? @map("forgot_password_token_expiry") @db.DateTime
+
+  // User Preferences
+  preferredCurrency Currency?       @default(BRL) @map("preferred_currency")
+  preferredLanguage String?         @default("pt-BR") @map("preferred_language") @db.VarChar(10)
+  travelFrequency   TravelFrequency @default(OCCASIONAL) @map("travel_frequency")
+  timezone          String?         @db.VarChar(50)
+  theme             String?         @db.VarChar(20) // "light", "dark", "system"
+
+  // Legal Compliance (LGPD/GDPR)
+  termsAccepted        Boolean   @default(false) @map("terms_accepted")
+  privacyAccepted      Boolean   @default(false) @map("privacy_accepted")
+  acceptedTermsDate    DateTime? @map("accepted_terms_date") @db.DateTime
+  acceptedPrivacyDate  DateTime? @map("accepted_privacy_date") @db.DateTime
+  marketingOptIn       Boolean   @default(false) @map("marketing_opt_in")
+  dataProcessingOptIn  Boolean   @default(false) @map("data_processing_opt_in")
+  dataRetentionConsent Boolean   @default(false) @map("data_retention_consent")
+  gdprConsent          Boolean   @default(false) @map("gdpr_consent")
+
+  // Profile Completion
+  profileCompletion Int @default(0) @map("profile_completion") @db.SmallInt // 0-100
+  experiencePoints  Int @default(0) @map("experience_points")
+  streakCount       Int @default(0) @map("streak_count")
+
+  // Social
+  favoriteDestinations Json? @map("favorite_destinations") @db.Json
+  friends              Json? @db.Json
+  blockedUsers         Json? @map("blocked_users") @db.Json
+
+  // Account Status
+  deletedAt     DateTime? @map("deleted_at") @db.DateTime
+  deactivatedAt DateTime? @map("deactivated_at") @db.DateTime
+  blockedAt     DateTime? @map("blocked_at") @db.DateTime
+  blockedReason String?   @map("blocked_reason") @db.Text
+
+  // Auth & Permissions (added for unified auth)
+  isActive    Boolean  @default(true) @map("is_active")
+  permissions Json @default("[]")
+
+  // Relationships
+  sessions                Session[]
+  accounts                Account[] // OAuth accounts
+  emailVerificationTokens EmailVerificationToken[]
+  passwordResetTokens     PasswordResetToken[]
+  twoFactorDevices        TwoFactorDevice[]
+  notificationTokens      NotificationToken[]
+
+  userPreferences      UserPreference?
+  notificationSettings NotificationSetting?
+  consentRecords       ConsentRecord[]
+
+  trips                Trip[]
+  bookings             Booking[]
+  payments             PaymentTransaction[]
+  paymentRecords       Payment[]
+  reviews              Review[]
+  favorites            Favorite[]
+  destinationFavorites UserFavorite[]       @relation("UserDestinationFavorites")
+  cartItems            CartItem[]
+  vouchers             Voucher[]
+  voucherUsages        VoucherUsage[]
+
+  // Chat & Social
+  aiConversations  AiConversation[]
+  chatParticipants ChatParticipant[]
+  aiChatMessages   ChatMessage[]
+  friendsSent      UserFriend[]      @relation("UserFriendsInitiated")
+  friendsReceived  UserFriend[]      @relation("UserFriendsReceived")
+
+  notifications     Notification[]
+  auditLogs         AuditLog[]
+  articles          Article[]        @relation("UserArticles")
+  moderatedArticles Article[]        @relation("ModeratedArticles")
+  comments          ArticleComment[] @relation("UserComments")
+  moderatedComments ArticleComment[] @relation("ModeratedComments")
+
+  // Community
+  communityPosts     CommunityPost[]
+  communityComments  CommunityComment[]
+  communityReactions CommunityReaction[]
+
+  // Opposite relations added for diagnostics
+  savedItineraries SavedItinerary[]
+  chatMessages     RoomMessage[]
+  quizAttempts     QuizAttempt[]
+  loyaltyProgram   LoyaltyProgram?
+
+  // AI Preferences Tracking
+  preferenceEvents    PreferenceEvent[]
+  responsePredictions ResponsePrediction[]
+
+  // Multi-tenancy relationship
+  agency Agency? @relation(fields: [agencyId], references: [id], onDelete: Cascade)
+
+  @@map("users")
+}
+
+// ============================================
+// COMMUNITY (Authenticated-only)
+// ============================================
+
+enum CommunityReactionType {
+  LIKE
+}
+
+model CommunityPost {
+  id       String @id @default(uuid())
+  authorId String @map("author_id")
+
+  title String @db.VarChar(255)
+  body  String @db.Text
+  tags  Json   @default("[]")
+
+  createdAt DateTime  @default(now()) @map("created_at") @db.Timestamp(0)
+  updatedAt DateTime  @updatedAt @map("updated_at") @db.Timestamp(0)
+  deletedAt DateTime? @map("deleted_at") @db.DateTime
+
+  author    User               @relation(fields: [authorId], references: [id], onDelete: Cascade)
+  comments  CommunityComment[]
+  reactions CommunityReaction[]
+
+  @@index([authorId])
+  @@index([createdAt])
+  @@map("community_posts")
+}
+
+model CommunityComment {
+  id       String @id @default(uuid())
+  postId   String @map("post_id")
+  authorId String @map("author_id")
+  parentId String? @map("parent_id")
+
+  body String @db.Text
+
+  createdAt DateTime  @default(now()) @map("created_at") @db.Timestamp(0)
+  updatedAt DateTime  @updatedAt @map("updated_at") @db.Timestamp(0)
+  deletedAt DateTime? @map("deleted_at") @db.DateTime
+
+  post   CommunityPost     @relation(fields: [postId], references: [id], onDelete: Cascade)
+  author User              @relation(fields: [authorId], references: [id], onDelete: Cascade)
+  parent CommunityComment? @relation("CommunityCommentThread", fields: [parentId], references: [id], onDelete: SetNull)
+  replies CommunityComment[] @relation("CommunityCommentThread")
+
+  @@index([postId])
+  @@index([authorId])
+  @@index([createdAt])
+  @@map("community_comments")
+}
+
+model CommunityReaction {
+  id     String @id @default(uuid())
+  postId String                @map("post_id")
+  userId String                @map("user_id")
+  type   CommunityReactionType @default(LIKE)
+
+  createdAt DateTime @default(now()) @map("created_at") @db.Timestamp(0)
+
+  post CommunityPost @relation(fields: [postId], references: [id], onDelete: Cascade)
+  user User          @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([postId, userId, type])
+  @@index([postId])
+  @@index([userId])
+  @@map("community_reactions")
+}
+
+// ============================================
+// MULTI-TENANCY MODELS
+// ============================================
+
+/// Agency for multi-tenant SaaS architecture
+model Agency {
+  id              String  @id @default(uuid()) 
+  name            String  @db.VarChar(255)
+  slug            String  @unique @db.VarChar(100) // For subdomains
+  domain          String? @unique @db.VarChar(255) // For custom domains
+  logoUrl         String? @map("logo_url") @db.Text
+  primaryColor    String  @default("#3B82F6") @map("primary_color") @db.VarChar(7)
+  secondaryColor  String  @default("#10B981") @map("secondary_color") @db.VarChar(7)
+  accentColor     String  @default("#F59E0B") @map("accent_color") @db.VarChar(7)
+  plan            AgencyPlan @default(STARTER)
+  status          AgencyStatus @default(ACTIVE)
+  settings        Json     @default("{}") @db.Json
+  createdAt       DateTime @default(now()) @map("created_at") @db.Timestamp(0)
+  updatedAt       DateTime @updatedAt @map("updated_at") @db.Timestamp(0)
+  trialEndsAt     DateTime? @map("trial_ends_at") @db.DateTime
+  subscriptionId  String?  @map("subscription_id") @db.VarChar(255) // Stripe subscription ID
+  maxUsers        Int      @default(5) @map("max_users")
+  maxClients      Int      @default(100) @map("max_clients")
+  features        Json     @default("[]") @db.Json // Feature flags
+
+  // Relationships
+  users    User[]
+  clients  Client[]
+  bookings Booking[]
+  leads    Lead[]
+  flights  Flight[]
+  hotels   Hotel[]
+  cruises  Cruise[]
+  packages Package[]
+
+  @@index([slug])
+  @@index([domain])
+  @@map("agencies")
+}
+
+enum AgencyPlan {
+  STARTER
+  PROFESSIONAL
+  ENTERPRISE
+}
+
+enum AgencyStatus {
+  ACTIVE
+  INACTIVE
+  SUSPENDED
+}
+
+// ============================================
+// CRM MODELS (Multi-tenant)
+// ============================================
+
+/// Client model for agency customer management
+model Client {
+  id        String   @id @default(uuid()) 
+  agencyId  String   @map("agency_id") 
+  name      String   @db.VarChar(255)
+  email     String?  @db.VarChar(255)
+  phone     String?  @db.VarChar(20)
+  document  String?  @db.VarChar(50) // CPF, Passport, etc.
+  birthDate DateTime? @map("birth_date") @db.Date
+  address   String?  @db.Text
+  city      String?  @db.VarChar(100)
+  country   String?  @db.VarChar(100)
+  notes     String?  @db.Text
+  tags      Json @default("[]")
+  metadata  Json?    @db.Json
+  createdAt DateTime @default(now()) @map("created_at") @db.Timestamp(0)
+  updatedAt DateTime @updatedAt @map("updated_at") @db.Timestamp(0)
+
+  // Relationships
+  bookings Booking[] @relation("ClientBookings")
+  agency   Agency @relation(fields: [agencyId], references: [id], onDelete: Cascade)
+
+  @@index([agencyId])
+  @@index([email])
+  @@map("clients")
+}
+
+/// Lead model for sales pipeline management
+model Lead {
+  id         String     @id @default(uuid()) 
+  agencyId   String     @map("agency_id") 
+  name       String     @db.VarChar(255)
+  email      String?    @db.VarChar(255)
+  phone      String?    @db.VarChar(20)
+  source     String?    @db.VarChar(100) // Website, Referral, Social Media
+  status     LeadStatus @default(NEW)
+  priority   LeadPriority @default(MEDIUM)
+  value      Decimal?   @db.Decimal(10, 2)
+  notes      String?    @db.Text
+  tags       Json   @default("[]")
+  metadata   Json?      @db.Json
+  createdAt  DateTime   @default(now()) @map("created_at") @db.Timestamp(0)
+  updatedAt  DateTime   @updatedAt @map("updated_at") @db.Timestamp(0)
+
+  // Relationships
+  agency Agency @relation(fields: [agencyId], references: [id], onDelete: Cascade)
+
+  @@index([agencyId])
+  @@index([status])
+  @@index([email])
+  @@map("leads")
+}
+
+enum LeadStatus {
+  NEW
+  CONTACTED
+  QUALIFIED
+  PROPOSAL_SENT
+  NEGOTIATION
+  WON
+  LOST
+  ARCHIVED
+}
+
+enum LeadPriority {
+  LOW
+  MEDIUM
+  HIGH
+  URGENT
+}
+
+// (duplicate corrupted User fragment removed)
+
+/// OAuth accounts for Auth.js v5 compatibility
+model Account {
+  id                String  @id @default(uuid()) 
+  userId            String  
+  type              String  @db.VarChar(50) // "oauth", "email", "credentials"
+  provider          String  @db.VarChar(50) // "google", "github", "credentials"
+  providerAccountId String  @db.VarChar(255)
+  refresh_token     String? @db.Text
+  access_token      String? @db.Text
+  expires_at        Int?
+  token_type        String? @db.VarChar(50)
+  scope             String? @db.Text
+  id_token          String? @db.Text
+  session_state     String? @db.Text
+
+  createdAt DateTime @default(now()) @db.Timestamp(0)
+  updatedAt DateTime @updatedAt @db.Timestamp(0)
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+  @@index([userId])
+  @@map("accounts")
+}
+
+/// Email verification tokens
+model EmailVerificationToken {
+  tokenId   String   @id @default(uuid()) 
+  userId    String   
+  token     String   @unique @db.VarChar(255)
+  email     String   @db.VarChar(255)
+  expiresAt DateTime @db.DateTime
+  createdAt DateTime @default(now()) @db.Timestamp(0)
+  updatedAt DateTime @updatedAt @db.Timestamp(0)
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([token])
+  @@index([expiresAt])
+  @@map("email_verification_tokens")
+}
+
+/// Password reset tokens
+model PasswordResetToken {
+  id        String    @id @default(uuid()) 
+  userId    String    
+  token     String    @unique @db.VarChar(255)
+  expiresAt DateTime  @db.DateTime
+  usedAt    DateTime? @db.DateTime
+  createdAt DateTime  @default(now()) @db.Timestamp(0)
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([token])
+  @@index([expiresAt])
+  @@map("password_reset_tokens")
+}
+
+/// Session management for multi-device support with enhanced security
+model Session {
+  id           String  @id @default(uuid()) 
+  userId       String  
+  token        String  @unique @db.VarChar(500)
+  refreshToken String? @unique @db.VarChar(500)
+  deviceInfo   Json?   @db.Json // { userAgent, ip, deviceType, browser, os }
+
+  // SECURITY: Device fingerprinting for token binding
+  deviceFingerprint String? @map("device_fingerprint") @db.VarChar(255) // Hash of device characteristics
+  ipAddress         String? @map("ip_address") @db.VarChar(45) // IPv6 compatible
+  ipHash            String? @map("ip_hash") @db.VarChar(64) // SHA-256 hash of IP
+
+  // SECURITY: Token rotation tracking
+  refreshTokenFamily String? @map("refresh_token_family") @db.VarChar(255) // UUID for token family
+  tokenSequence      Int     @default(0) @map("token_sequence") // Incremental counter for rotation
+
+  // SECURITY: Session lifecycle management
+  expiresAt      DateTime  @db.DateTime
+  createdAt      DateTime  @default(now()) @db.Timestamp(0)
+  lastUsedAt     DateTime  @updatedAt @db.Timestamp(0)
+  lastActivityAt DateTime  @default(now()) @map("last_activity_at") @db.Timestamp(0) // For idle timeout
+  revokedAt      DateTime? @db.DateTime
+  isRevoked      Boolean   @default(false) @map("is_revoked")
+
+  // Security events tracking
+  securityFlags Json @default("[]") @map("security_flags") // ["ip_changed", "suspicious_activity"]
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([token])
+  @@index([refreshToken])
+  @@index([refreshTokenFamily])
+  @@index([expiresAt])
+  @@index([deviceFingerprint])
+  @@map("sessions")
+}
+
+/// API Keys for service-to-service authentication
+model ApiKey {
+  id        String @id @default(uuid()) 
+  name      String @db.VarChar(255) // Human-readable name for the key
+  keyHash   String @unique @map("key_hash") @db.VarChar(255) // bcrypt hash of the API key
+  keyPrefix String @map("key_prefix") @db.VarChar(8) // First 8 chars for identification
+
+  // Ownership and scope
+  userId      String?  // Optional: linked to user for audit
+  serviceName String  @db.VarChar(100) // e.g., "ml-service", "payment-gateway"
+
+  // Permissions
+  permissions Json @default("[]") // ["read:bookings", "write:payments"]
+  scopes      Json @default("[]") // ["service", "admin", "webhook"]
+
+  // Security settings
+  allowedIps Json @default("[]") @map("allowed_ips") // IP whitelist
+  rateLimit  Int      @default(1000) @map("rate_limit") // Requests per hour
+
+  // Lifecycle
+  expiresAt  DateTime? @db.DateTime
+  lastUsedAt DateTime? @db.DateTime
+  createdAt  DateTime  @default(now()) @db.Timestamp(0)
+  revokedAt  DateTime? @db.DateTime
+  isActive   Boolean   @default(true) @map("is_active")
+
+  // Audit
+  createdBy    String? @map("created_by") 
+  revokedBy    String? @map("revoked_by") 
+  revokeReason String? @map("revoke_reason") @db.Text
+
+  @@index([keyHash])
+  @@index([serviceName])
+  @@index([userId])
+  @@index([isActive, expiresAt])
+  @@map("api_keys")
+}
+
+/// Two-factor authentication devices
+model TwoFactorDevice {
+  id        String   @id @default(uuid()) 
+  userId    String   
+  deviceId  String   @db.VarChar(100)
+  name      String   @db.VarChar(255) // "My Phone", "Laptop", etc.
+  verified  Boolean  @default(false)
+  createdAt DateTime @default(now()) @db.Timestamp(0)
+  updatedAt DateTime @updatedAt @db.Timestamp(0)
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId, deviceId])
+  @@map("two_factor_devices")
+}
+
+/// Push notification tokens for mobile/web
+model NotificationToken {
+  id         String   @id @default(uuid()) 
+  userId     String   
+  token      String   @unique @db.VarChar(500)
+  type       String   @db.VarChar(20) // "web", "ios", "android"
+  isActive   Boolean  @default(true)
+  createdAt  DateTime @default(now()) @db.Timestamp(0)
+  lastUsedAt DateTime @updatedAt @db.Timestamp(0)
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([token])
+  @@map("notification_tokens")
+}
+
+/// User friends and social relations
+model UserFriend {
+  id        String   @id @default(uuid()) 
+  userId    String   @map("user_id") 
+  friendId  String   @map("friend_id") 
+  status    String   @default("PENDING") @db.VarChar(50)
+  createdAt DateTime @default(now()) @map("created_at") @db.Timestamp(0)
+
+  user   User @relation("UserFriendsInitiated", fields: [userId], references: [id], onDelete: Cascade)
+  friend User @relation("UserFriendsReceived", fields: [friendId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, friendId])
+  @@map("user_friends")
+}
+
+/// User travel and app preferences
+model UserPreference {
+  id     String @id @default(uuid()) 
+  userId String @unique @map("user_id") 
+
+  // Notification preferences
+  emailNotifications Boolean @default(true) @map("email_notifications")
+  smsNotifications   Boolean @default(false) @map("sms_notifications")
+  pushNotifications  Boolean @default(true) @map("push_notifications")
+  promotionalEmails  Boolean @default(true) @map("promotional_emails")
+
+  // Travel preferences
+  preferredAccommodationType Json?    @map("preferred_accommodation_type") @db.Json // ["hotel", "hostel", "airbnb"]
+  budgetRangeMin             Decimal? @map("budget_range_min") @db.Decimal(10, 2)
+  budgetRangeMax             Decimal? @map("budget_range_max") @db.Decimal(10, 2)
+
+  // Quiz-based preferences (for travel recommendations)
+  favoriteDestinationTypes Json @default("[]") @map("favorite_destination_types")
+  favoriteActivities       Json @default("[]") @map("favorite_activities")
+  travelStyle              String?  @map("travel_style") @db.VarChar(50)
+  budgetRange              String?  @map("budget_range") @db.VarChar(50)
+  accommodationPreference  String?  @map("accommodation_preference") @db.VarChar(100)
+  tripDuration             String?  @map("trip_duration") @db.VarChar(50)
+  groupSize                String?  @map("group_size") @db.VarChar(50)
+  pacePreference           String?  @map("pace_preference") @db.VarChar(50)
+  cuisinePreferences       Json @default("[]") @map("cuisine_preferences")
+  dietaryRestrictions      Json @default("[]") @map("dietary_restrictions")
+
+  // Booking preferences
+  autoAcceptBestPrice Boolean  @default(false) @map("auto_accept_best_price")
+  receivePriceAlerts  Boolean  @default(true) @map("receive_price_alerts")
+  priceAlertThreshold Decimal? @map("price_alert_threshold") @db.Decimal(3, 2)
+
+  // Display preferences
+  darkMode        Boolean @default(false) @map("dark_mode")
+  temperatureUnit String? @map("temperature_unit") @db.VarChar(1) // 'C' or 'F'
+  distanceUnit    String? @map("distance_unit") @db.VarChar(2) // 'km' or 'mi'
+
+  // AI Assistant Preferences
+  aiSettings Json? @map("ai_settings") @db.Json
+
+  createdAt DateTime @default(now()) @map("created_at") @db.Timestamp(0)
+  updatedAt DateTime @updatedAt @map("updated_at") @db.Timestamp(0)
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("user_preferences")
+}
+
+// (Redundant settings models removed to match SQL schema)
+
+/// Consent records for LGPD/GDPR compliance
+model ConsentRecord {
+  id          String   @id @default(uuid()) 
+  userId      String   
+  consentType String   @db.VarChar(100) // "terms", "privacy", "marketing", "analytics"
+  version     String   @db.VarChar(20)
+  granted     Boolean
+  grantedAt   DateTime @db.DateTime
+  ipAddress   String?  @db.VarChar(45)
+  userAgent   String?  @db.Text
+
+  createdAt DateTime @default(now()) @db.Timestamp(0)
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId, consentType])
+  @@map("consent_records")
+}
+
+/// Audit trail for security & compliance
+model AuditLog {
+  id        String  @id @default(uuid()) 
+  userId    String? 
+  action    String  @db.VarChar(100) // "user.login", "booking.created", etc.
+  entity    String  @db.VarChar(50) // "User", "Booking"
+  entityId  String? 
+  changes   Json?   @db.Json
+  metadata  Json?   @db.Json
+  ipAddress String? @db.VarChar(45)
+  userAgent String? @db.Text
+
+  createdAt DateTime @default(now()) @db.Timestamp(0)
+
+  user User? @relation(fields: [userId], references: [id], onDelete: SetNull)
+
+  @@index([userId, createdAt])
+  @@index([action])
+  @@map("audit_logs")
+}
+
+/// Logs de pesquisas de lugares (monitorização de performance das chamadas externas)
+model PlaceSearchLog {
+  id         String   @id @default(uuid()) 
+  lat        Float
+  lon        Float
+  radius     Int
+  types      Json
+  durationMs Int
+  cached     Boolean  @default(false)
+  createdAt  DateTime @default(now()) @db.Timestamp(0)
+
+  @@index([createdAt])
+}
+
+// ============================================
+// ENUMS
+// ============================================
+
+enum UserRole {
+  USER
+  ADMIN
+  MODERATOR
+  PARTNER
+  SUPPORT
+  PREMIUM
+  SUPER_ADMIN
+  PREMIUM_USER
+  TRAVEL_AGENT
+}
+
+enum UserStatus {
+  ACTIVE
+  INACTIVE
+  SUSPENDED
+  DELETED
+}
+
+enum TravelFrequency {
+  OCCASIONAL
+  FREQUENT
+  SEASONAL
+  BUSINESS
+  OCCASIONAL_BUSINESS
+}
+
+enum Currency {
+  BRL
+  USD
+  EUR
+  GBP
+  CHF
+  JPY
+  CAD
+  AUD
+  SGD
+  THB
+  AED
+  MAD
+  NZD
+  DKK
+  CNY
+  INR
+  MXN
+  ARS
+  CLP
+  COP
+  PEN
+  UYU
+}
+
+// ============================================
+//  TRAVEL PRODUCTS & SERVICES
+// ============================================
+
+// ============================================
+// DESTINATIONS & ATTRACTIONS
+// ============================================
+
+/// Destination catalog
+model Destination {
+  id          String  @id @default(uuid()) 
+  name        String  @db.VarChar(255)
+  slug        String  @unique @db.VarChar(255)
+  country     String  @db.VarChar(100)
+  countryCode String? @map("country_code") @db.VarChar(2)
+  city        String  @db.VarChar(100)
+  region      String? @db.VarChar(100)
+  postalCode  String? @map("postal_code") @db.VarChar(20)
+
+  // Description
+  description      String? @db.Text
+  shortDescription String? @map("short_description") @db.VarChar(500)
+  longDescription  String? @map("long_description") @db.Text
+  imageUrl         String? @map("image_url") @db.VarChar(500)
+  images           Json?   @db.Json
+
+  // Location (GIS)
+  locationLatLon Json?    @map("location_latlon") @db.Json
+  latitude       Decimal? @db.Decimal(10, 8)
+  longitude      Decimal? @db.Decimal(11, 8)
+  timezone       String?  @db.VarChar(50)
+  altitudeMeters Int?     @map("altitude_meters") 
+
+  // Pricing
+  pricePerDay      Float?   @map("price_per_day") @db.Float
+  pricePerNight    Float?   @map("price_per_night") @db.Float
+  currency         Currency @default(BRL)
+  priceReliability Float?   @map("price_reliability") @db.Float
+
+  // Ratings & Reviews
+  rating                   Decimal? @default(0) @db.Decimal(3, 2)
+  reviewsCount             Int      @default(0) @map("reviews_count")
+  recommendationPercentage Int      @default(0) @map("recommendation_percentage")
+
+  // Travel information
+  climateInfo             String?            @map("climate_info") @db.Text
+  seasonality             Seasonality        @default(TEMPERATE)
+  bestTimeToVisit         String?            @map("best_time_to_visit") @db.VarChar(100)
+  worstTimeToVisit        String?            @map("worst_time_to_visit") @db.VarChar(100)
+  averageTemperatureMin   Decimal?           @map("average_temperature_min") @db.Decimal(5, 2)
+  averageTemperatureMax   Decimal?           @map("average_temperature_max") @db.Decimal(5, 2)
+  visaRequirements        String?            @map("visa_requirements") @db.Text
+  visaRequirementsForNats Json?              @map("visa_requirements_for_nationalities") @db.Json
+  primaryLanguage         String?            @map("primary_language") @db.VarChar(100)
+  languagesSpoken         Json?              @map("languages_spoken") @db.Json
+  safetyRating            Int                @default(5) @map("safety_rating") 
+  crimeRatePercentage     Decimal?           @map("crime_rate_percentage") @db.Decimal(5, 2)
+  accessibilityLevel      AccessibilityLevel @default(PARTIAL) @map("accessibility_level")
+
+  // Categories & Tags
+  category     DestinationCategory @default(CITY)
+  tags         Json            @default("[]")
+  travelStyles Json?               @map("travel_styles") @db.Json
+
+  // AI-enhanced data
+  aiDescription     String?  @map("ai_description") @db.Text
+  aiRecommendations Json?    @map("ai_recommendations") @db.Json
+  aiLocalTips       Json?    @map("ai_local_tips") @db.Json
+  popularityScore   Decimal? @default(0) @map("popularity_score") @db.Decimal(5, 2)
+  trendingScore     Decimal? @default(0) @map("trending_score") @db.Decimal(5, 2)
+  seasonalityData   Json?    @map("seasonality_data") @db.Json
+
+  // Structured data for itineraries and other dynamic content
+  structuredData Json? @map("structured_data") @db.Json
+
+  // SEO
+  metaTitle       String? @map("meta_title") @db.VarChar(255)
+  metaDescription String? @map("meta_description") @db.VarChar(500)
+  metaKeywords    String? @map("meta_keywords") @db.VarChar(500)
+
+  // Moderation & Status
+  isVerified       Boolean @default(false) @map("is_verified")
+  isPublished      Boolean @default(true) @map("is_published")
+  isActive         Boolean @default(true) @map("is_active")
+  isFeatured       Boolean @default(false) @map("is_featured")
+  isPopular        Boolean @default(false) @map("is_popular")
+  isTrending       Boolean @default(false) @map("is_trending")
+  moderationStatus String? @map("moderation_status") @db.VarChar(50)
+
+  // Timestamps
+  createdAt   DateTime  @default(now()) @map("created_at") @db.Timestamp(0)
+  updatedAt   DateTime  @updatedAt @map("updated_at") @db.Timestamp(0)
+  publishedAt DateTime? @map("published_at") @db.DateTime
+  indexedAt   DateTime? @map("indexed_at") @db.DateTime
+  deletedAt   DateTime? @map("deleted_at") @db.DateTime
+
+  // Relationships
+  attractions Attraction[]
+  bookings    Booking[]
+  reviews     Review[]     @relation("DestinationReviews")
+
+  activities      Activity[]
+  accommodations  Accommodation[]
+  transportations Transportation[]
+
+  articles         Article[]
+  blogPosts        ArticleDestination[]
+  savedItineraries SavedItinerary[]
+  services         Service[]
+  userFavorites    UserFavorite[]
+  tripDestinations TripDestination[]
+
+  @@index([country, city])
+  @@index([rating])
+  @@index([slug])
+  @@map("destinations")
+}
+
+/// Points of interest
+model Attraction {
+  id            String @id @default(uuid()) 
+  destinationId String @map("destination_id") 
+
+  // Basic info
+  name        String  @db.VarChar(255)
+  slug        String? @unique @db.VarChar(255)
+  description String? @db.Text
+  category    String  @db.VarChar(100)
+  subCategory String? @map("sub_category") @db.VarChar(100)
+
+  // Location
+  address        String   @db.Text
+  postalCode     String?  @map("postal_code") @db.VarChar(20)
+  locationLatLon Json?    @map("location_latlon") @db.Json
+  latitude       Decimal? @db.Decimal(10, 8)
+  longitude      Decimal? @db.Decimal(11, 8)
+
+  // Details
+  priceCurrency Currency? @default(BRL) @map("price_currency")
+  priceAmount   Decimal?  @map("price_amount") @db.Decimal(10, 2)
+  priceRange    String?   @map("price_range") @db.VarChar(10)
+  freeEntry     Boolean?  @default(false) @map("free_entry")
+
+  // Hours
+  openingHours Json?    @map("opening_hours") @db.Json
+  isOpen24h    Boolean? @default(false) @map("is_open_24h")
+
+  // Contact & External
+  contactInfo Json?   @map("contact_info") @db.Json
+  websiteUrl  String? @map("website_url") @db.VarChar(500)
+  bookingUrl  String? @map("booking_url") @db.VarChar(500)
+
+  // Media
+  imageUrl String? @map("image_url") @db.VarChar(500)
+  images   Json?   @db.Json
+
+  // Ratings & Reviews
+  rating       Decimal? @default(0) @db.Decimal(3, 2)
+  reviewsCount Int      @default(0) @map("reviews_count")
+
+  // Features
+  accessibilityFeatures  Json? @map("accessibility_features") @db.Json
+  amenities              Json? @db.Json
+  acceptedPaymentMethods Json? @map("accepted_payment_methods") @db.Json
+
+  // Information
+  averageVisitDurationMinutes Int?    @map("average_visit_duration_minutes")
+  bestTimeToVisit             String? @map("best_time_to_visit") @db.VarChar(100)
+  languagesGuideAvailable     Json?   @map("languages_guide_available") @db.Json
+
+  // Moderation
+  isVerified  Boolean @default(false) @map("is_verified")
+  isPublished Boolean @default(true) @map("is_published")
+
+  // Timestamps
+  createdAt DateTime @default(now()) @map("created_at") @db.Timestamp(0)
+  updatedAt DateTime @updatedAt @map("updated_at") @db.Timestamp(0)
+
+  // Relationships
+  destination Destination         @relation(fields: [destinationId], references: [id], onDelete: Cascade)
+  reviews     Review[]
+  blogPosts   ArticleAttraction[]
+
+  @@index([destinationId])
+  @@map("attractions")
+}
+
+// ============================================
+// PACKAGES
+// ============================================
+
+enum PackageType {
+  adventure
+  beach
+  city_break
+  cultural
+  luxury
+  family
+  eco
+  romantic
+  wellness
+  ski
+  cruise
+}
+
+model Package {
+  id           String      @id @default(uuid()) 
+  slug         String      @unique @db.VarChar(255)
+  title        String      @db.VarChar(255)
+  description  String?     @db.Text
+  type         PackageType
+  destination  String      @db.VarChar(255)
+  durationDays Int         @default(7) @map("durationdays")
+  agencyId     String?     @map("agency_id") 
+
+  // Pricing
+  priceOriginal Decimal? @map("priceoriginal") @db.Decimal(10, 2)
+  priceCurrent  Decimal? @map("pricecurrent") @db.Decimal(10, 2)
+  currency      Currency @default(EUR)
+
+  // Media & Meta
+  imageUrl  String?  @map("imageurl") @db.Text
+  images    Json?    @db.Json
+  itinerary Json?    @db.Json
+  tags      Json
+
+  // Ratings
+  rating       Float? @default(0) @db.Float
+  reviewsCount Int    @default(0) @map("reviewscount")
+
+  // Status
+  published Boolean @default(true)
+  featured  Boolean @default(false)
+  metadata  Json?   @db.Json
+
+  // Provider & SEO
+  provider        String? @db.VarChar(255)
+  metaTitle       String? @map("metatitle") @db.VarChar(60)
+  metaDescription String? @map("metadescription") @db.VarChar(160)
+
+  createdAt DateTime  @default(now()) @map("createdat") @db.Timestamp(0)
+  updatedAt DateTime  @updatedAt @map("updatedat") @db.Timestamp(0)
+  deletedAt DateTime? @map("deletedat") @db.DateTime
+
+  // Relationships
+  agency Agency? @relation(fields: [agencyId], references: [id], onDelete: Cascade)
+
+  @@index([type])
+  @@index([destination])
+  @@index([rating])
+  @@index([slug])
+  @@index([agencyId])
+  @@map("packages")
+}
+
+// ============================================
+// ARLINE PRODUCTS 
+// =============== ============================
+
+/// Airlines
+model Airline {
+  id        String  @id @default(uuid()) 
+  name      String  @db.VarChar(255)
+  code      String  @unique @db.VarChar(3) // "AA", "UA", etc.
+  logo      String? @db.Text
+  website   String? @db.VarChar(500)
+  rating    Float?  @default(0) @db.Float
+  published Boolean @default(true)
+
+  createdAt DateTime @default(now()) @map("createdat") @db.Timestamp(0)
+
+  flights Flight[]
+
+  @@map("airlines")
+}
+
+/// Airport 
+model Airport {
+  id               String   @id @default(uuid()) 
+  name             String   @db.VarChar(255)
+  code             String   @unique @db.VarChar(3) // "JFK", "LAX", etc.
+  city             String   @db.VarChar(100)
+  country          String   @db.VarChar(100)
+  latitude         Float?   @db.Float
+  longitude        Float?   @db.Float
+  createdAt        DateTime @default(now()) @map("createdat") @db.Timestamp(0)
+  loungeAvailable  Boolean  @default(false) @map("lounge_available")
+  loungeDetails    Json?    @map("lounge_details") @db.Json
+  priorityServices Json?    @map("priority_services") @db.Json
+
+  departureFlights Flight[] @relation("DepartureAirport")
+  arrivalFlights   Flight[] @relation("ArrivalAirport")
+
+  @@index([code])
+  @@map("airports")
+}
+
+/// Flights 
+model Flight {
+  id                 String @id @default(uuid()) 
+  airlineId          String @map("airline_id") 
+  departureAirportId String @map("departure_airport_id") 
+  arrivalAirportId   String @map("arrival_airport_id") 
+  flightNumber       String @map("flight_number") @db.VarChar(20)
+  agencyId           String? @map("agency_id") 
+
+  // Schedule
+  departureTime DateTime @map("departure_time") @db.DateTime
+  arrivalTime   DateTime @map("arrival_time") @db.DateTime
+  duration      Int       // seconds
+
+  // Capacity & Availability
+  totalSeats     Int @map("total_seats") @db.SmallInt
+  availableSeats Int @map("available_seats") @db.SmallInt
+
+  // Pricing
+  basePrice Decimal  @map("base_price") @db.Decimal(10, 2)
+  currency  Currency @default(BRL)
+  // Status 
+  status    String   @default("scheduled") @db.VarChar(20)
+  published Boolean  @default(true)
+  metadata  Json?    @db.Json
+
+  createdAt DateTime @default(now()) @map("createdat") @db.Timestamp(0)
+  updatedAt DateTime @updatedAt @map("updatedat") @db.Timestamp(0)
+
+  // Relationships
+  agency          Agency?          @relation(fields: [agencyId], references: [id], onDelete: Cascade)
+  airline         Airline          @relation(fields: [airlineId], references: [id])
+  departureAirport Airport         @relation("DepartureAirport", fields: [departureAirportId], references: [id])
+  arrivalAirport   Airport         @relation("ArrivalAirport", fields: [arrivalAirportId], references: [id])
+  bookings         FlightBooking[]
+  detail           FlightDetail?
+
+  @@index([airlineId])
+  @@index([agencyId])
+  @@map("flights")
+}
+
+model FlightDetail {
+  id        String   @id @default(uuid()) 
+  flightId  String   @unique @map("flight_id") 
+  overview  Json?    @db.Json
+  pricing   Json?    @db.Json
+  fareTiers Json?    @map("fare_tiers") @db.Json
+  baggage   Json?    @db.Json
+  createdAt DateTime @default(now()) @map("createdat") @db.Timestamp(0)
+  updatedAt DateTime @updatedAt @map("updatedat") @db.Timestamp(0)
+
+  flight Flight @relation(fields: [flightId], references: [id], onDelete: Cascade)
+
+  @@map("flight_details")
+}
+
+model ServiceDetail {
+  id           String   @id @default(uuid()) 
+  serviceId    String   @unique @map("service_id") 
+  overview     Json?    @db.Json
+  itineraries  Json?    @db.Json
+  pricing      Json?    @db.Json
+  availability Json?    @db.Json
+  policies     Json?    @db.Json
+  providerInfo Json?    @map("provider_info") @db.Json
+  highlights   Json?    @db.Json
+  included     Json?    @db.Json
+  excluded     Json?    @db.Json
+  images       Json?    @db.Json
+  ratings      Float?   @db.Float
+  createdAt    DateTime @default(now()) @map("createdat") @db.Timestamp(0)
+  updatedAt    DateTime @updatedAt @map("updatedat") @db.Timestamp(0)
+
+  service Service @relation(fields: [serviceId], references: [id], onDelete: Cascade)
+
+  @@map("service_details")
+}
+
+/// Cruise packages
+model Cruise {
+  id          String  @id @default(uuid()) 
+  name        String  @unique @db.VarChar(255)
+  operator    String  @db.VarChar(255)
+  description String? @db.Text
+  image       String? @db.Text
+  agencyId    String?  @map("agency_id") 
+
+  // Route
+  startPort String   @db.VarChar(255)
+  endPort   String   @db.VarChar(255)
+  ports     Json // stops along the way
+
+  // Sche         dule
+  departureDate DateTime @db.Date
+  returnDate    DateTime @db.Date
+  duration      Int      @db.SmallInt // days
+
+  // Capacity & Availability
+  totalCapacity     Int    @db.SmallInt
+  availableCapacity Int    @db.SmallInt
+  occupancy         Float? @db.Float // 0-100%
+
+  // Pricing (tiered by cabin)
+  pricePerPerson Decimal  @db.Decimal(10, 2)
+  currency       Currency @default(BRL)
+  priceIncludes  Json // "meals", "drinks", "entertainment"
+
+  // Details
+  shipName   String?  @db.VarChar(255)
+  cabinTypes Json // "inside", "ocean_view", "suite"
+  amenities  Json // "gym", "spa", "pool", "casino"
+
+  //   Ratings
+  rating       Float?  @default(0) @db.Float
+  reviewsCount Int     @default(0)
+  // St  atus
+  published    Boolean @default(true)
+  featured     Boolean @default(false)
+
+  createdAt DateTime @default(now()) @map("createdat") @db.Timestamp(0)
+  updatedAt DateTime @updatedAt @map("updatedat") @db.Timestamp(0)
+
+  // Relationships
+  agency   Agency?        @relation(fields: [agencyId], references: [id], onDelete: Cascade)
+  bookings CruiseBooking[]
+  detail   CruiseDetail?
+
+  @@index([agencyId])
+  @@map("cruises")
+}
+
+// Cruise service steps (how it works)
+model CruiseStep {
+  id        String   @id @default(cuid())
+  iconName  String // 'map-pin', 'car', 'shield-check'
+  iconColor String // 'blue', 'green', 'purple'
+  titleKey  String // Translation key
+  descKey   String // Translation key for description
+  sortOrder Int      @default(0)
+  isActive  Boolean  @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("cruise_steps")
+}
+
+// Cruise fleet
+model CruiseFleet {
+  id         String   @id @default(cuid())
+  nameKey    String // Translation key
+  descKey    String // Translation key for description
+  imageUrl   String?
+  passengers Int
+  cabins     Int
+  sortOrder  Int      @default(0)
+  isActive   Boolean  @default(true)
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+  @@map("cruise_fleet")
+}
+
+// Cruise providers
+model CruiseProvider {
+  id        String   @id @default(cuid())
+  name      String
+  slug      String   @unique
+  logoUrl   String?
+  rating    Float    @default(0)
+  isActive  Boolean  @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  ships CruiseShip[]
+
+  @@map("cruise_providers")
+}
+
+// Cruise ships
+model CruiseShip {
+  id         String   @id @default(cuid())
+  providerId String
+  shipName   String
+  capacity   Int
+  cabins     Int
+  basePrice  Float
+  imageUrl   String?
+  features   Json // Array of feature strings
+  isActive   Boolean  @default(true)
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+  provider CruiseProvider @relation(fields: [providerId], references: [id], onDelete: Cascade)
+
+  @@map("cruise_ships")
+}
+
+// ============================================
+// ACCOMMODATIONS & HOTELS
+// ============================================
+
+/// Generic accommodation model from schema_extra.sql
+model Accommodation {
+  id                  String   @id @default(uuid()) 
+  destinationId       String?  @map("destination_id") 
+  name                String   @db.Text
+  slug                String   @unique @db.VarChar(500)
+  type                String?  @db.Text
+  description         String?  @db.Text
+  address             String?  @db.Text
+  pricePerNight       Decimal? @map("price_per_night") @db.Decimal(10, 2)
+  currency            String?  @db.Text
+  image               String?  @db.Text
+  images              Json?    @db.Json
+  rating              Decimal? @db.Decimal(3, 1)
+  amenities           Json?    @db.Json
+  latitude            Decimal? @db.Decimal(10, 6)
+  longitude           Decimal? @db.Decimal(10, 6)
+  sustainabilityScore Decimal? @map("sustainability_score") @db.Decimal(4, 1)
+  bookingUrl          String?  @map("booking_url") @db.Text
+  published           Boolean  @default(true)
+  createdAt           DateTime @default(now()) @map("createdat") @db.Timestamp(0)
+  updatedAt           DateTime @updatedAt @map("updatedat") @db.Timestamp(0)
+
+  destination Destination? @relation(fields: [destinationId], references: [id])
+
+  @@map("accommodations")
+}
+
+/// Hotels and accommodations
+model Hotel {
+  id            String   @id @default(uuid()) 
+  name          String   @db.Text
+  slug          String   @unique @db.VarChar(500)
+  description   String?  @db.Text
+  image         String?  @db.Text
+  city          String? @db.VarChar(100)
+  country       String? @db.VarChar(100)
+  starRating    Int?     @map("star_rating") 
+  amenities     Json
+  pricePerNight Decimal? @map("price_per_night") @db.Decimal(10, 2)
+  currency      String?  @db.Text
+  rating        Decimal? @db.Decimal(3, 1)
+  reviewsCount  Int?     @map("reviews_count") 
+  published     Boolean? @default(true)
+  featured      Boolean? @default(false)
+  metadata      Json?    @db.Json
+  agencyId      String?  @map("agency_id") 
+  createdAt     DateTime @default(now()) @map("createdat") @db.Timestamp(0)
+  updatedAt     DateTime @updatedAt @map("updatedat") @db.Timestamp(0)
+
+  // Relationships
+  agency      Agency?       @relation(fields: [agencyId], references: [id], onDelete: Cascade)
+  hotelImages HotelImage[]
+  bookings    HotelBooking[]
+  rooms       HotelRoom[]
+  detail      HotelDetail?
+
+  @@index([slug])
+  @@index([city, country])
+  @@index([agencyId])
+  @@map("hotels")
+}
+
+model HotelDetail {
+  id           String   @id @default(uuid()) 
+  hotelId      String   @unique @map("hotel_id") 
+  overview     Json?    @db.Json
+  itineraries  Json?    @db.Json
+  pricing      Json?    @db.Json
+  availability Json?    @db.Json
+  policies     Json?    @db.Json
+  createdAt    DateTime @default(now()) @map("createdat") @db.Timestamp(0)
+  updatedAt    DateTime @updatedAt @map("updatedat") @db.Timestamp(0)
+
+  hotel Hotel @relation(fields: [hotelId], references: [id], onDelete: Cascade)
+
+  @@map("hotel_details")
+}
+
+// Hotel service steps (how it works)
+model HotelStep {
+  id        String   @id @default(cuid())
+  iconName  String // 'map-pin', 'car', 'shield-check'
+  iconColor String // 'blue', 'green', 'purple'
+  titleKey  String // Translation key
+  descKey   String // Translation key for description
+  sortOrder Int      @default(0)
+  isActive  Boolean  @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("hotel_steps")
+}
+
+// Hotel fleet (room types)
+model HotelFleet {
+  id           String   @id @default(cuid())
+  nameKey      String // Translation key
+  descKey      String // Translation key for description
+  imageUrl     String?
+  maxOccupancy Int
+  beds         String // e.g., '1 king bed'
+  sortOrder    Int      @default(0)
+  isActive     Boolean  @default(true)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  @@map("hotel_fleet")
+}
+
+// Hotel providers
+model HotelProvider {
+  id        String   @id @default(cuid())
+  name      String
+  slug      String   @unique
+  logoUrl   String?
+  rating    Float    @default(0)
+  isActive  Boolean  @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  hotels HotelProperty[]
+
+  @@map("hotel_providers")
+}
+
+// Hotel properties
+model HotelProperty {
+  id           String   @id @default(cuid())
+  providerId   String
+  propertyName String
+  location     String
+  starRating   Int
+  basePrice    Float
+  imageUrl     String?
+  features     Json // Array of feature strings
+  isActive     Boolean  @default(true)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  provider HotelProvider @relation(fields: [providerId], references: [id], onDelete: Cascade)
+
+  @@map("hotel_properties")
+}
+
+/// Hotel rooms
+model HotelRoom {
+  id          String  @id @default(uuid()) 
+  hotelId     String  
+  name        String  @db.VarChar(255) // "Deluxe", "Suite", etc.
+  description String? @db.Text
+  roomType    String  @db.VarChar(50) // "single", "double", "family"
+
+  // Capacity
+  maxOccupancy Int   @db.SmallInt
+  beds         Json? @db.Json // {type: "king", quantity: 1}
+
+  // Amenities
+  amenities Json
+
+  // Pricing
+  pricePerNight Decimal  @db.Decimal(10, 2)
+  currency      Currency @default(BRL)
+
+  // Inventory
+  totalRooms Int @db.SmallInt
+
+  createdAt DateTime @default(now()) @map("createdat") @db.Timestamp(0)
+  updatedAt DateTime @updatedAt @map("updatedat") @db.Timestamp(0)
+
+  hotel    Hotel          @relation(fields: [hotelId], references: [id], onDelete: Cascade)
+  bookings HotelBooking[]
+
+  @@index([hotelId])
+  @@map("hotel_rooms")
+}
+
+// ============================================
+// ACTIVITIES & SERVICES
+// ============================================
+
+/// Generic activity model from schema_extra.sql
+model Activity {
+  id                  String   @id @default(uuid()) 
+  destinationId       String?  @map("destination_id") 
+  name                String   @db.Text
+  slug                String   @unique @db.VarChar(500)
+  description         String?  @db.Text
+  price               Decimal? @db.Decimal(10, 2)
+  currency            String?  @db.Text
+  durationText        String?  @map("duration_text") @db.Text
+  image               String?  @db.Text
+  rating              Decimal? @db.Decimal(3, 1)
+  categories          Json?    @db.Json
+  location            String?  @db.Text
+  bookingUrl          String?  @map("booking_url") @db.Text
+  sustainabilityScore Decimal? @map("sustainability_score") @db.Decimal(4, 1)
+  published           Boolean  @default(true)
+  createdAt           DateTime @default(now()) @map("createdat") @db.Timestamp(0)
+
+  destination Destination? @relation(fields: [destinationId], references: [id])
+
+  @@map("activities")
+}
+
+/// Servic providers
+model Provider {
+  id          String  @id @default(uuid()) 
+  name        String  @db.VarChar(255)
+  slug        String  @unique @db.VarChar(255)
+  description String? @db.Text
+  logo        String? @db.Text
+  website     String? @db.VarChar(500)
+  email       String? @db.VarChar(255)
+  phone       String? @db.VarChar(20)
+
+  rating       Float? @default(0) @db.Float
+  reviewsCount Int    @default(0)
+
+  verified    Boolean @default(false)
+  partnership String? @db.VarChar(50)
+  active      Boolean @default(true)
+
+  createdAt DateTime   @default(now()) @map("createdat") @db.Timestamp(0)
+  updatedAt DateTime   @updatedAt @map("updatedat") @db.Timestamp(0)
+  deletedAt DateTime?  @db.DateTime
+  services  Service[]
+  transfers Transfer[]
+
+  @@map("providers")
+}
+
+/// Generic se rvices (tours, activities, experiences)
+model Service {
+  id            String  @id @default(uuid()) 
+  providerId    String? 
+  destinationId String? 
+  name          String  @db.VarChar(255)
+  slug          String  @unique @db.VarChar(255)
+  description   String  @db.Text
+  shortDesc     String? @db.VarChar(500)
+  category      String  @db.VarChar(50) // "tour", "activity", "experience"
+  subcategory   String? @db.VarChar(50)
+
+  // Media
+  coverImage   String? @db.Text
+  imageGallery Json?   @db.Json
+
+  // Detail s
+  features     Json
+  amenities    Json
+  tags         Json
+  included     Json
+  excluded     Json
+  requirements Json
+
+  // Capacity
+  capacity       Int?    @db.SmallInt
+  minBooking     Int?    @db.SmallInt
+  maxBooking     Int?    @db.SmallInt
+  instantConfirm Boolean @default(false)
+
+  // Prici  ng
+  price        Json     @db.Json // flexible pricing structure
+  priceDisplay String   @db.VarChar(100)
+  priceAmount  Decimal? @db.Decimal(10, 2) // for filtering purposes
+
+  // Ratings
+  rating       Float? @default(0) @db.Float
+  reviewCount  Int    @default(0)
+  bookingCount Int    @default(0)
+  viewCount    Int    @default(0)
+
+  // Status
+  status      String    @default("active") @db.VarChar(20)
+  published   Boolean   @default(false)
+  publishedAt DateTime? @db.DateTime
+
+  createdAt DateTime  @default(now()) @map("createdat") @db.Timestamp(0)
+  updatedAt DateTime  @updatedAt @map("updatedat") @db.Timestamp(0)
+  deletedAt DateTime? @db.DateTime
+
+  provider    Provider?        @relation(fields: [providerId], references: [id])
+  destination Destination?     @relation(fields: [destinationId], references: [id])
+  images      ServiceImage[]
+  bookings    ServiceBooking[]
+  detail      ServiceDetail?
+
+  @@index([providerId])
+  @@index([destinationId])
+  @@map("services")
+}
+
+// Activity service steps (how it works)
+model ActivityStep {
+  id        String   @id @default(cuid())
+  iconName  String // 'map-pin', 'car', 'shield-check'
+  iconColor String // 'blue', 'green', 'purple'
+  titleKey  String // Translation key
+  descKey   String // Translation key for description
+  sortOrder Int      @default(0)
+  isActive  Boolean  @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("activity_steps")
+}
+
+// Activity fleet (equipment/types)
+model ActivityFleet {
+  id           String   @id @default(cuid())
+  nameKey      String // Translation key
+  descKey      String // Translation key for description
+  imageUrl     String?
+  participants Int
+  duration     String // e.g., '2 hours'
+  sortOrder    Int      @default(0)
+  isActive     Boolean  @default(true)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  @@map("activity_fleet")
+}
+
+// Activity providers
+model ActivityProvider {
+  id        String   @id @default(cuid())
+  name      String
+  slug      String   @unique
+  logoUrl   String?
+  rating    Float    @default(0)
+  isActive  Boolean  @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  activities ActivityOffering[]
+
+  @@map("activity_providers")
+}
+
+// Activity offerings
+model ActivityOffering {
+  id           String   @id @default(cuid())
+  providerId   String
+  activityName String
+  category     String // 'tour', 'adventure', 'cultural'
+  basePrice    Float
+  participants Int
+  duration     String // e.g., '3 hours'
+  imageUrl     String?
+  features     Json // Array of feature strings
+  isActive     Boolean  @default(true)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  provider ActivityProvider @relation(fields: [providerId], references: [id], onDelete: Cascade)
+
+  @@map("activity_offerings")
+}
+
+// Gastronomy service steps (how it works)
+model GastronomyStep {
+  id        String   @id @default(cuid())
+  iconName  String // 'map-pin', 'car', 'shield-check'
+  iconColor String // 'blue', 'green', 'purple'
+  titleKey  String // Translation key
+  descKey   String // Translation key for description
+  sortOrder Int      @default(0)
+  isActive  Boolean  @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("gastronomy_steps")
+}
+
+// Gastronomy fleet (restaurant types)
+model GastronomyFleet {
+  id        String   @id @default(cuid())
+  nameKey   String // Translation key
+  descKey   String // Translation key for description
+  imageUrl  String?
+  capacity  Int
+  cuisine   String // e.g., 'Italian'
+  sortOrder Int      @default(0)
+  isActive  Boolean  @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("gastronomy_fleet")
+}
+
+// Gastronomy providers
+model GastronomyProvider {
+  id        String   @id @default(cuid())
+  name      String
+  slug      String   @unique
+  logoUrl   String?
+  rating    Float    @default(0)
+  isActive  Boolean  @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  restaurants GastronomyRestaurant[]
+
+  @@map("gastronomy_providers")
+}
+
+// Gastronomy restaurants
+model GastronomyRestaurant {
+  id             String   @id @default(cuid())
+  providerId     String
+  restaurantName String
+  location       String
+  cuisine        String
+  basePrice      Float
+  capacity       Int
+  imageUrl       String?
+  features       Json // Array of feature strings
+  isActive       Boolean  @default(true)
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+
+  provider GastronomyProvider @relation(fields: [providerId], references: [id], onDelete: Cascade)
+
+  @@map("gastronomy_restaurants")
+}
+
+// Event service steps (how it works)
+model EventStep {
+  id        String   @id @default(cuid())
+  iconName  String // 'map-pin', 'car', 'shield-check'
+  iconColor String // 'blue', 'green', 'purple'
+  titleKey  String // Translation key
+  descKey   String // Translation key for description
+  sortOrder Int      @default(0)
+  isActive  Boolean  @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("event_steps")
+}
+
+// Event fleet (event types)
+model EventFleet {
+  id        String   @id @default(cuid())
+  nameKey   String // Translation key
+  descKey   String // Translation key for description
+  imageUrl  String?
+  capacity  Int
+  eventType String // e.g., 'concert', 'festival'
+  sortOrder Int      @default(0)
+  isActive  Boolean  @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("event_fleet")
+}
+
+// Event providers
+model EventProvider {
+  id        String   @id @default(cuid())
+  name      String
+  slug      String   @unique
+  logoUrl   String?
+  rating    Float    @default(0)
+  isActive  Boolean  @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  events EventOffering[]
+
+  @@map("event_providers")
+}
+
+// Event offerings
+model EventOffering {
+  id         String   @id @default(cuid())
+  providerId String
+  eventName  String
+  eventType  String // 'concert', 'festival', 'show'
+  basePrice  Float
+  capacity   Int
+  date       DateTime
+  imageUrl   String?
+  features   Json // Array of feature strings
+  isActive   Boolean  @default(true)
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+  provider EventProvider @relation(fields: [providerId], references: [id], onDelete: Cascade)
+
+  @@map("event_offerings")
+}
+
+// Guide service steps (how it works)
+model GuideStep {
+  id        String   @id @default(cuid())
+  iconName  String // 'map-pin', 'car', 'shield-check'
+  iconColor String // 'blue', 'green', 'purple'
+  titleKey  String // Translation key
+  descKey   String // Translation key for description
+  sortOrder Int      @default(0)
+  isActive  Boolean  @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("guide_steps")
+}
+
+// Guide fleet (guide types)
+model GuideFleet {
+  id          String   @id @default(cuid())
+  nameKey     String // Translation key
+  descKey     String // Translation key for description
+  imageUrl    String?
+  languages   Json // e.g., ['Portuguese', 'English']
+  specialties Json // e.g., ['History', 'Nature']
+  sortOrder   Int      @default(0)
+  isActive    Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@map("guide_fleet")
+}
+
+// Guide providers
+model GuideProvider {
+  id        String   @id @default(cuid())
+  name      String
+  slug      String   @unique
+  logoUrl   String?
+  rating    Float    @default(0)
+  isActive  Boolean  @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  guides GuideOffering[]
+
+  @@map("guide_providers")
+}
+
+// Guide offerings
+model GuideOffering {
+  id          String   @id @default(cuid())
+  providerId  String
+  guideName   String
+  languages   Json
+  specialties Json
+  basePrice   Float
+  experience  Int // years of experience
+  imageUrl    String?
+  features    Json // Array of feature strings
+  isActive    Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  provider GuideProvider @relation(fields: [providerId], references: [id], onDelete: Cascade)
+
+  @@map("guide_offerings")
+}
+
+/// Service imags
+model ServiceImage {
+  id        String  @id @default(uuid()) 
+  serviceId String  
+  url       String  @db.Text
+  alt       String? @db.VarChar(255)
+  title     String? @db.VarChar(255)
+  order     Int     @default(0) @db.SmallInt
+
+  createdAt DateTime @default(now()) @map("createdat") @db.Timestamp(0)
+  service   Service  @relation(fields: [serviceId], references: [id], onDelete: Cascade)
+
+  @@index([serviceId])
+  @@map("service_images")
+}
+
+/// Transfers (airport, hotel, attractions)
+model Transfer {
+  id              String  @id @default(uuid()) 
+  providerId      String? 
+  name            String  @db.VarChar(255)
+  pickupLocation  String  @db.VarChar(255)
+  dropoffLocation String  @db.VarChar(255)
+
+  // Vehicle
+  vehicleType String @db.VarChar(50) // "economy", "comfort", "luxury"
+  capacity    Int    @db.SmallInt
+
+  // Pricing
+  basePrice Decimal  @db.Decimal(10, 2)
+  currency  Currency @default(BRL)
+
+  available Boolean @default(true)
+
+  createdAt DateTime @default(now()) @map("createdat") @db.Timestamp(0)
+
+  provider Provider?         @relation(fields: [providerId], references: [id])
+  bookings TransferBooking[]
+
+  @@unique([pickupLocation, dropoffLocation, vehicleType, providerId])
+  @@map("transfers")
+}
+
+// Transfer service steps (how it works)
+model TransferStep {
+  id        String   @id @default(cuid())
+  iconName  String // 'map-pin', 'car', 'shield-check'
+  iconColor String // 'blue', 'green', 'purple'
+  titleKey  String // Translation key
+  descKey   String // Translation key for description
+  sortOrder Int      @default(0)
+  isActive  Boolean  @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("transfer_steps")
+}
+
+// Transfer vehicle fleet
+model VehicleFleet {
+  id         String   @id @default(cuid())
+  nameKey    String // Translation key
+  descKey    String // Translation key for description
+  imageUrl   String?
+  passengers Int
+  luggage    Int
+  sortOrder  Int      @default(0)
+  isActive   Boolean  @default(true)
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+  @@map("vehicle_fleet")
+}
+
+// Transfer providers
+model TransferProvider {
+  id        String   @id @default(cuid())
+  name      String
+  slug      String   @unique
+  logoUrl   String?
+  rating    Float    @default(0)
+  isActive  Boolean  @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  vehicles TransferVehicle[]
+
+  @@map("transfer_providers")
+}
+
+// Transfer vehicles
+model TransferVehicle {
+  id          String   @id @default(cuid())
+  providerId  String
+  vehicleType String // 'sedan', 'executive', 'van'
+  basePrice   Float
+  pricePerKm  Float    @default(0)
+  passengers  Int
+  luggage     Int
+  duration    String? // e.g., '30 min'
+  imageUrl    String?
+  features    Json // Array of feature strings
+  isActive    Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  provider TransferProvider @relation(fields: [providerId], references: [id], onDelete: Cascade)
+
+  @@map("transfer_vehicles")
+}
+
+// = ============== =============================
+// ENUMS  
+// ======= ======== =============================
+
+enum Seasonality {
+  TROPICAL
+  TEMPERATE
+  CONTINENTAL
+  ARCTIC
+  DESERT
+  MEDITERRANEAN
+  SUBTROPICAL
+}
+
+enum DestinationCategory {
+  CITY
+  BEACH
+  MOUNTAIN
+  COUNTRYSIDE
+  ISLAND
+  HERITAGE
+  SAFARI
+  DESERT
+  SKI
+  CRUISE
+  NATURE
+  ADVENTURE
+  CULTURAL
+  RELAXATION
+  NIGHTLIFE
+  FAMILY
+  ROMANTIC
+  LUXURY
+  BACKPACKING
+  WELLNESS
+}
+
+enum AccessibilityLevel {
+  FULL
+  PARTIAL
+  LIMITED
+  NONE
+}
+
+// ============================================
+// SHOPPIN G CART  
+// ============================================
+
+/// Shopping cart items
+model CartItem {
+  id       String @id @default(uuid()) 
+  userId   String 
+  itemType String @db.VarChar(50) // "flight", "hotel", "service", "cruise"
+  itemId   String  // reference to the actual product
+
+  // Details
+  quantity   Int       @default(1) @db.SmallInt
+  checkIn    DateTime? @db.Date
+  checkOut   DateTime? @db.Date
+  passengers Json?     @db.Json // passenger details
+
+  // Pricing
+  price    Decimal  @db.Decimal(10, 2)
+  currency Currency @default(BRL)
+
+  // Metadata
+  metadata Json? @db.Json
+
+  createdAt DateTime @default(now()) @map("createdat") @db.Timestamp(0)
+  expiresAt DateTime @db.DateTime // cart items expire
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId, itemType])
+  @@map("cart_items")
+}
+
+// ============================================
+// BOOKI        NGS (ALL    TYPES)
+// =======        =====   ================================
+
+/// Generic booking model (all types: flight, hotel, service, cruise, etc.)
+model Booking {
+  id                       String  @id @default(uuid()) 
+  userId                   String  @map("user_id") 
+  agencyId                 String? @map("agency_id") 
+  clientId                 String? @map("client_id") 
+  destinationId            String  @map("destination_id") 
+  tripId                   String? @map("trip_id") 
+  tripDestinationId        String? @map("trip_destination_id") 
+  bookingReference         String  @unique @map("booking_reference") @db.VarChar(50)
+  supplierBookingReference String? @map("supplier_booking_reference") @db.VarChar(100)
+
+  // Dates
+  startDate    DateTime @map("start_date") @db.Date
+  endDate      DateTime @map("end_date") @db.Date
+  checkInTime  String?  @map("check_in_time") @db.VarChar(10)
+  checkOutTime String?  @map("check_out_time") @db.VarChar(10)
+
+  // Guests
+  adults   Int @default(1) @db.SmallInt
+  children Int @default(0) @db.SmallInt
+  infants  Int @default(0) @db.SmallInt
+
+  // Pricing
+  pricePerNight  Float?   @map("price_per_night") @db.Float
+  subtotal       Float    @map("subtotal") @db.Float
+  taxAmount      Float?   @default(0) @map("tax_amount") @db.Float
+  discountAmount Float?   @default(0) @map("discount_amount") @db.Float
+  totalPrice     Float    @map("total_price") @db.Float
+  currency       Currency @default(BRL)
+
+  // Status
+  bookingStatus BookingStatus @default(PENDING) @map("booking_status")
+  paymentStatus PaymentStatus @default(PENDING) @map("payment_status")
+
+  // Payment
+  paymentMethod        PaymentMethod @map("payment_method")
+  paymentIntentId      String?       @map("payment_intent_id") @db.VarChar(255)
+  paymentTransactionId String?       @map("payment_transaction_id") @db.VarChar(255)
+  lastPaymentAttempt   DateTime?     @map("last_payment_attempt") @db.DateTime
+
+  // Cancellation
+  cancellationReason String?   @map("cancellation_reason") @db.VarChar(255)
+  cancellationDate   DateTime? @map("cancellation_date") @db.DateTime
+  refundAmount       Float?    @map("refund_amount") @db.Float
+  refundDate         DateTime? @map("refund_date") @db.DateTime
+
+  // Contact
+  guestEmail            String  @map("guest_email") @db.VarChar(255)
+  guestPhone            String? @map("guest_phone") @db.VarChar(20)
+  emergencyContactName  String? @map("emergency_contact_name") @db.VarChar(255)
+  emergencyContactPhone String? @map("emergency_contact_phone") @db.VarChar(20)
+  emergencyContactEmail String? @map("emergency_contact_email") @db.VarChar(255)
+
+  // Special requests
+  specialRequests           String? @map("special_requests") @db.Text
+  dietaryPreferences        String? @map("dietary_preferences") @db.VarChar(255)
+  accessibilityRequirements String? @map("accessibility_requirements") @db.Text
+
+  // Correspondence
+  confirmationSent   Boolean   @default(false) @map("confirmation_sent")
+  confirmationSentAt DateTime? @map("confirmation_sent_at") @db.DateTime
+  reminderSent       Boolean   @default(false) @map("reminder_sent")
+  reminderSentAt     DateTime? @map("reminder_sent_at") @db.DateTime
+
+  // Timestamps
+  createdAt    DateTime  @default(now()) @map("createdat") @db.Timestamp(0)
+  updatedAt    DateTime  @updatedAt @map("updatedat") @db.Timestamp(0)
+  checkedInAt  DateTime? @map("checked_in_at") @db.DateTime
+  checkedOutAt DateTime? @map("checked_out_at") @db.Timestamp
+
+  // Relationships
+  user            User              @relation(fields: [userId], references: [id], onDelete: Cascade)
+  agency          Agency?           @relation(fields: [agencyId], references: [id], onDelete: Cascade)
+  client          Client?           @relation("ClientBookings", fields: [clientId], references: [id], onDelete: SetNull)
+  destination     Destination       @relation(fields: [destinationId], references: [id])
+  trip            Trip?             @relation(fields: [tripId], references: [id])
+  tripDestination TripDestination?  @relation("TripDestinationBookings", fields: [tripDestinationId], references: [id])
+  payments        PaymentTransaction[]
+  paymentRecords  Payment[]
+  reviews         Review[]           @relation("ReviewBooking")
+  flightBookings  FlightBooking[]
+  hotelBookings   HotelBooking[]
+  cruiseBookings  CruiseBooking[]
+  transferBookings TransferBooking[]
+  bookingHistory  BookingHistory[]
+  serviceBookings ServiceBooking[]
+
+  @@index([userId])
+  @@index([agencyId])
+  @@index([clientId])
+  @@index([destinationId])
+  @@index([tripId])
+  @@index([bookingStatus, paymentStatus])
+  @@map("bookings")
+}
+
+/// Flight-specific bookings
+model FlightBooking {
+  id        String   @id @default(uuid()) 
+  bookingId String   
+  flightId  String   
+  seats     Json // seat numbers: ["12A", "12B"]
+  price     Decimal  @db.Decimal(10, 2)
+
+  createdAt DateTime @default(now()) @map("createdat") @db.Timestamp(0)
+
+  booking Booking @relation(fields: [bookingId], references: [id], onDelete: Cascade)
+  flight  Flight? @relation(fields: [flightId], references: [id])
+
+  @@map("flight_bookings")
+}
+
+/// Hotel-specific bookings
+model HotelBooking {
+  id        String  @id @default(uuid()) 
+  bookingId String  
+  hotelId   String  
+  roomId    String  
+  nights    Int     @db.SmallInt
+  price     Decimal @db.Decimal(10, 2)
+
+  createdAt DateTime @default(now()) @map("createdat") @db.Timestamp(0)
+
+  booking Booking    @relation(fields: [bookingId], references: [id], onDelete: Cascade)
+  hotel   Hotel      @relation(fields: [hotelId], references: [id], onDelete: Cascade)
+  room    HotelRoom? @relation(fields: [roomId], references: [id])
+
+  @@index([hotelId])
+  @@map("hotel_bookings")
+}
+
+/// Generic service bookings
+model ServiceBooking {
+  id        String  @id @default(uuid()) 
+  bookingId String  
+  serviceId String  
+  quantity  Int     @default(1) @db.SmallInt
+  price     Decimal @db.Decimal(10, 2)
+  subtotal  Decimal @db.Decimal(10, 2)
+
+  date     DateTime? @db.DateTime
+  timeSlot String?   @db.VarChar(50)
+  options  Json?     @db.Json
+
+  createdAt DateTime @default(now()) @map("createdat") @db.Timestamp(0)
+
+  booking Booking @relation(fields: [bookingId], references: [id], onDelete: Cascade)
+  service Service @relation(fields: [serviceId], references: [id])
+
+  @@map("service_bookings")
+}
+
+/// Cruise bookings
+model CruiseBooking {
+  id          String  @id @default(uuid()) 
+  bookingId   String  
+  cruiseId    String  
+  cabinType   String  @db.VarChar(50)
+  cabinNumber String? @db.VarChar(50)
+  price       Decimal @db.Decimal(10, 2)
+
+  createdAt DateTime @default(now()) @map("createdat") @db.Timestamp(0)
+
+  booking Booking @relation(fields: [bookingId], references: [id], onDelete: Cascade)
+  cruise  Cruise  @relation(fields: [cruiseId], references: [id])
+
+  @@map("cruise_bookings")
+}
+
+/// Transfer bookin gs
+model TransferBooking {
+  id         String   @id @default(uuid()) 
+  bookingId  String   
+  transferId String   
+  pickupTime DateTime @db.DateTime
+  price      Decimal  @db.Decimal(10, 2)
+
+  createdAt DateTime @default(now()) @map("createdat") @db.Timestamp(0)
+
+  booking  Booking  @relation(fields: [bookingId], references: [id], onDelete: Cascade)
+  transfer Transfer @relation(fields: [transferId], references: [id])
+
+  @@map("transfer_bookings")
+}
+
+/// Booking history for auditing
+model BookingHistory {
+  id        String   @id @default(uuid()) 
+  bookingId String   
+  status    String   @db.VarChar(50)
+  reason    String?  @db.Text
+  changes   Json?    @db.Json // what changed
+  createdAt DateTime @default(now()) @map("createdat") @db.Timestamp(0)
+
+  booking Booking @relation(fields: [bookingId], references: [id], onDelete: Cascade)
+
+  @@index([bookingId, createdAt])
+  @@map("booking_history")
+}
+
+// =========== ================================
+// PAYMENTS &  TRANSACTONS
+// ============================================
+
+/// Payment  transactio ns
+/// Payment transactions for bookings
+model PaymentTransaction {
+  id        String @id @default(uuid()) 
+  bookingId String @map("booking_id") 
+  userId    String @map("user_id") 
+
+  // Transaction info
+  transactionId        String        @unique @map("transaction_id") @db.VarChar(100)
+  gatewayTransactionId String?       @map("gateway_transaction_id") @db.VarChar(255)
+  amount               Decimal       @db.Decimal(12, 2)
+  currency             Currency      @default(BRL)
+  paymentMethod        PaymentMethod @map("payment_method")
+
+  // Status
+  status        PaymentStatus @map("status")
+  failureReason String?       @map("failure_reason") @db.VarChar(255)
+  errorCode     String?       @map("error_code") @db.VarChar(100)
+  errorMessage  String?       @map("error_message") @db.Text
+
+  // Card info (if applicable)
+  cardLastFour String? @map("card_last_four") @db.VarChar(4)
+  cardBrand    String? @map("card_brand") @db.VarChar(50)
+
+  // Refund info
+  refundable   Boolean @default(false) 
+  refundAmount String? @map("refund_amount") @db.VarChar(20)
+  refundReason String? @map("refund_reason") @db.VarChar(255)
+
+  // Provider data
+  providerData Json? @map("provider_data") @db.Json
+
+  // Timestamps
+  createdAt   DateTime  @default(now()) @map("createdat") @db.Timestamp(0)
+  processedAt DateTime? @map("processed_at") @db.DateTime
+  refundedAt  DateTime? @map("refunded_at") @db.DateTime
+  updatedAt   DateTime  @updatedAt @map("updatedat") @db.Timestamp(0)
+
+  booking Booking @relation(fields: [bookingId], references: [id], onDelete: Cascade)
+  user    User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([bookingId])
+  @@index([userId])
+  @@index([status])
+  @@index([transactionId])
+  @@map("payment_transactions")
+}
+
+/// Payment model (alias for PaymentTransaction to support legacy code)
+model Payment {
+  id        String @id @default(uuid()) 
+  bookingId String @map("booking_id") 
+  userId    String @map("user_id") 
+
+  // Transaction info
+  transactionId        String        @unique @map("transaction_id") @db.VarChar(100)
+  gatewayTransactionId String?       @map("gateway_transaction_id") @db.VarChar(255)
+  amount               Decimal       @db.Decimal(12, 2)
+  currency             Currency      @default(BRL)
+  paymentMethod        PaymentMethod @map("payment_method")
+
+  // Status
+  status        PaymentStatus @map("status")
+  failureReason String?       @map("failure_reason") @db.VarChar(255)
+  errorCode     String?       @map("error_code") @db.VarChar(100)
+  errorMessage  String?       @map("error_message") @db.Text
+
+  // Card info (if applicable)
+  cardLastFour String? @map("card_last_four") @db.VarChar(4)
+  cardBrand    String? @map("card_brand") @db.VarChar(50)
+
+  // Refund info
+  refundable   Boolean @default(false) 
+  refundAmount String? @map("refund_amount") @db.VarChar(20)
+  refundReason String? @map("refund_reason") @db.VarChar(255)
+
+  // Provider data
+  providerData Json? @map("provider_data") @db.Json
+
+  // Timestamps
+  createdAt   DateTime  @default(now()) @map("createdat") @db.Timestamp(0)
+  processedAt DateTime? @map("processed_at") @db.DateTime
+  refundedAt  DateTime? @map("refunded_at") @db.DateTime
+  updatedAt   DateTime  @updatedAt @map("updatedat") @db.Timestamp(0)
+
+  booking Booking @relation(fields: [bookingId], references: [id], onDelete: Cascade)
+  user    User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([bookingId])
+  @@index([userId])
+  @@index([status])
+  @@index([transactionId])
+  @@map("payments")
+}
+
+/// Vouchers and promotional codes
+model Voucher {
+  id          String  @id @default(uuid()) 
+  userId      String?  // null = public voucher
+  code        String  @unique @db.VarChar(50)
+  description String? @db.Text
+
+  // Discount
+  discountType String   @db.VarChar(20) // "percentage" or "fixed"
+  discount     Decimal  @db.Decimal(10, 2)
+  maxDiscount  Decimal? @db.Decimal(10, 2) // max discount for percentage
+
+  // Validity
+  validFrom   DateTime @db.Date
+  validUntil  DateTime @db.Date
+  maxUses     Int?     @db.SmallInt
+  currentUses Int      @default(0) @db.SmallInt
+  usesPerUser Int?     @default(1) @db.SmallInt
+
+  // Restrictions 
+  minPurchaseAmount      Decimal? @db.Decimal(10, 2)
+  applicableDestinations Json
+  applicableCategories   Json
+
+  // Status
+  active Boolean @default(true)
+
+  createdAt DateTime @default(now()) @map("createdat") @db.Timestamp(0)
+
+  user User? @relation(fields: [userId], references: [id], onDelete: SetNull)
+
+  // Opposite relation for VoucherUsage.voucher
+  usages VoucherUsage[]
+
+  @@index([userId])
+  @@map("vouchers")
+}
+
+/// Marketing promotions
+model Promotion {
+  id          String    @id @default(uuid()) 
+  title       String    @db.VarChar(255)
+  description String?   @db.Text
+  code        String    @unique @db.VarChar(50)
+  type        String    @db.VarChar(50) // 'percentage' | 'fixed' | 'free_shipping'
+  value       Float     @db.Float // Discount value (percentage or fixed amount)
+  active      Boolean   @default(true)
+  startDate   DateTime  @default(now()) @db.Timestamp(0)
+  expiresAt   DateTime  @db.DateTime
+  maxUses     Int?      
+  usedCount   Int       @default(0) 
+  minPurchase Float?    @db.Float
+  packageIds  Json  @default("[]") // Array of package IDs this applies to
+  createdAt   DateTime  @default(now()) @map("createdat") @db.Timestamp(0)
+  updatedAt   DateTime  @updatedAt @map("updatedat") @db.Timestamp(0)
+  deletedAt   DateTime? @db.DateTime
+
+  @@index([active, expiresAt])
+  @@index([code])
+  @@map("promotions")
+}
+
+model SystemPaymentMethod {
+  id                   String   @id @default(uuid()) 
+  name                 String   @db.VarChar(255)
+  nameLocalized        Json?    @db.Json
+  description          String?  @db.Text
+  descriptionLocalized Json?    @db.Json
+  type                 String   @db.VarChar(50)
+  provider             String   @db.VarChar(100)
+  iconName             String?  @db.VarChar(100)
+  logoUrl              String?  @db.VarChar(500)
+  status               String   @default("ativo") @db.VarChar(20)
+  fees                 Json?    @db.Json
+  countriesAvailable   Json
+  currenciesAccepted   Json
+  isOnline             Boolean  @default(true)
+  isInstant            Boolean  @default(true)
+  requiresSetup        Boolean  @default(false)
+  setupUrl             String?  @db.VarChar(500)
+  documentationUrl     String?  @db.VarChar(500)
+  config               Json?    @db.Json
+  limits               Json?    @db.Json
+  processingTime       Json?    @db.Json
+  metadata             Json?    @db.Json
+  priority             Int      @default(0)
+  isDefault            Boolean  @default(false)
+  isTestMode           Boolean  @default(false)
+  createdAt            DateTime @default(now()) @map("createdat") @db.Timestamp(0)
+  updatedAt            DateTime @updatedAt @map("updatedat") @db.Timestamp(0)
+
+  @@map("system_payment_methods")
+}
+
+/// Voucher usage tracking
+model VoucherUsage {
+  id        String   @id @default(uuid()) 
+  voucherId String   
+  userId    String   
+  usedAt    DateTime @default(now()) @map("usedat") @db.Timestamp(0)
+
+  voucher Voucher @relation(fields: [voucherId], references: [id], onDelete: Cascade)
+  user    User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([voucherId, userId])
+  @@map("voucher_usage")
+}
+
+// ============================================
+// ENUMS
+// ============================================
+
+enum BookingStatus {
+  DRAFT
+  PENDING
+  CONFIRMED
+  CHECKED_IN
+  IN_PROGRESS
+  COMPLETED
+  CANCELLED
+  REFUNDED
+  NO_SHOW
+}
+
+enum PaymentStatus {
+  PENDING
+  PAID
+  PROCESSING
+  COMPLETED
+  FAILED
+  REFUNDED
+  CANCELLED
+  PARTIALLY_REFUNDED
+  SUCCEEDED
+  CANCELED
+  REQUIRES_ACTION
+}
+
+enum PaymentMethod {
+  CREDIT_CARD
+  DEBIT_CARD
+  BANK_TRANSFER
+  PIX
+  PAYPAL
+  STRIPE
+  CASH
+  CRYPTO
+  GIFT_CARD
+}
+
+// ============================================
+//  SOCIAL, CONTENT, AI & SYSTEM
+// ============================================
+
+// ============================================
+// TRIPS & ITINERARIES
+// ============================================
+
+/// Trip planning
+model Trip {
+  id            String  @id @default(uuid()) 
+  userId        String  @map("user_id") 
+  name          String  @db.VarChar(255)
+  slug          String? @db.VarChar(255)
+  description   String? @db.Text
+  coverImageUrl String? @map("cover_image_url") @db.VarChar(500)
+
+  // Dates
+  startDate    DateTime @map("start_date") @db.Date
+  endDate      DateTime @map("end_date") @db.Date
+  durationDays Int?     @map("duration_days")  // Generated in SQL
+
+  // Status & Visibility
+  status             TripStatus @default(DRAFT) @map("status")
+  isPrivate          Boolean    @default(true) @map("is_private")
+  isDraft            Boolean    @default(true) @map("is_draft")
+  progressPercentage Int        @default(0) @map("progress_percentage") @db.SmallInt
+
+  // Budget
+  totalBudget    Decimal? @map("total_budget") @db.Decimal(12, 2)
+  totalSpent     Decimal? @default(0) @map("total_spent") @db.Decimal(12, 2)
+  budgetCurrency Currency @default(BRL) @map("budget_currency")
+
+  // Budget breakdown
+  accommodationBudget  Decimal? @map("accommodation_budget") @db.Decimal(10, 2)
+  accommodationSpent   Decimal? @default(0) @map("accommodation_spent") @db.Decimal(10, 2)
+  transportationBudget Decimal? @map("transportation_budget") @db.Decimal(10, 2)
+  transportationSpent  Decimal? @default(0) @map("transportation_spent") @db.Decimal(10, 2)
+  foodBudget           Decimal? @map("food_budget") @db.Decimal(10, 2)
+  foodSpent            Decimal? @default(0) @map("food_spent") @db.Decimal(10, 2)
+  activitiesBudget     Decimal? @map("activities_budget") @db.Decimal(10, 2)
+  activitiesSpent      Decimal? @default(0) @map("activities_spent") @db.Decimal(10, 2)
+  entertainmentBudget  Decimal? @map("entertainment_budget") @db.Decimal(10, 2)
+  entertainmentSpent   Decimal? @default(0) @map("entertainment_spent") @db.Decimal(10, 2)
+  otherBudget          Decimal? @map("other_budget") @db.Decimal(10, 2)
+  otherSpent           Decimal? @default(0) @map("other_spent") @db.Decimal(10, 2)
+
+  // Trip details
+  originLocation  String?  @map("origin_location") @db.VarChar(255)
+  originLatitude  Decimal? @map("origin_latitude") @db.Decimal(10, 8)
+  originLongitude Decimal? @map("origin_longitude") @db.Decimal(11, 8)
+  tripType        String?  @map("trip_type") @db.VarChar(50) // "solo", "couple", "family", "group"
+  travelMode      String?  @map("travel_mode") @db.VarChar(50) // "car", "flight"
+
+  // Companions
+  companionsCount Int   @default(0) @map("companions_count")
+  companions      Json? @db.Json // Array of user IDs and names
+
+  // Statistics
+  destinationsCount Int @default(0) @map("destinations_count")
+  bookingsCount     Int @default(0) @map("bookings_count")
+  photosCount       Int @default(0) @map("photos_count")
+
+  // AI insights
+  aiItinerarySuggestions Json?    @map("ai_itinerary_suggestions") @db.Json
+  estimatedTotalCost     Decimal? @map("estimated_total_cost") @db.Decimal(12, 2)
+
+  // Timestamps
+  createdAt  DateTime  @default(now()) @map("created_at") @db.Timestamp(0)
+  updatedAt  DateTime  @updatedAt @map("updated_at") @db.Timestamp(0)
+  startedAt  DateTime? @map("started_at") @db.DateTime
+  endedAt    DateTime? @map("ended_at") @db.DateTime
+  archivedAt DateTime? @map("archived_at") @db.DateTime
+  deletedAt  DateTime? @map("deleted_at") @db.DateTime
+
+  user         User              @relation(fields: [userId], references: [id], onDelete: Cascade)
+  bookings     Booking[]
+  itinerary    Itinerary?
+  destinations TripDestination[]
+
+  @@index([userId])
+  @@index([status])
+  @@map("trips")
+}
+
+/// AI-gener itiner User ary
+
+model Itinerary {
+  id     String @id @default(uuid()) 
+  tripId String @unique 
+
+  overview        String? @db.Text
+  recommendations Json?   @db.Json
+  optimizedRoute  Json?   @db.Json
+  metadata        Json?   @db.Json
+
+  createdAt  DateTime       @default(now()) @db.Timestamp(0)
+  updatedAt  DateTime       @updatedAt @db.Timestamp(0)
+  trip       Trip           @relation(fields: [tripId], references: [id], onDelete: Cascade)
+  activities ItineraryDay[]
+
+  @@map("itineraries")
+}
+
+/// Daily itinerary
+model ItineraryDay {
+  id          String   @id @default(uuid()) 
+  itineraryId String   
+  dayNumber   Int      @db.SmallInt
+  date        DateTime @db.Date
+  title       String?  @db.VarChar(255)
+  description String?  @db.Text
+  activities  Json     @db.Json
+  weather     Json?    @db.Json
+  budget      Decimal? @db.Decimal(10, 2)
+
+  itinerary Itinerary @relation(fields: [itineraryId], references: [id], onDelete: Cascade)
+
+  @@index([itineraryId])
+  @@map("itinerary_days")
+}
+
+/// Link between trips and destinations
+model TripDestination {
+  id            String @id @default(uuid()) 
+  tripId        String @map("trip_id") 
+  destinationId String @map("destination_id") 
+
+  sequenceOrder Int       @map("sequence_order") 
+  arrivalDate   DateTime? @map("arrival_date") @db.Date
+  departureDate DateTime? @map("departure_date") @db.Date
+  durationDays  Int?      @map("duration_days") 
+
+  budget Decimal? @db.Decimal(10, 2)
+  spent  Decimal? @default(0) @db.Decimal(10, 2)
+
+  notes            String? @db.Text
+  itineraryDetails Json?   @map("itinerary_details") @db.Json
+
+  createdAt DateTime @default(now()) @map("created_at") @db.Timestamp(0)
+  updatedAt DateTime @updatedAt @map("updated_at") @db.Timestamp(0)
+
+  trip        Trip        @relation(fields: [tripId], references: [id], onDelete: Cascade)
+  destination Destination @relation(fields: [destinationId], references: [id])
+  bookings    Booking[]   @relation("TripDestinationBookings")
+
+  @@unique([tripId, destinationId, sequenceOrder])
+  @@map("trip_destinations")
+}
+
+/// Saved       itineraris
+
+model SavedItinerary {
+  id            String   @id @default(uuid()) 
+  userId        String   
+  destinationId String?  
+  name          String   @db.VarChar(255)
+  description   String?  @db.Text
+  slug          String?  @unique @db.VarChar(255)
+  itineraryData Json     @db.Json
+  duration      Int      @db.SmallInt
+  budget        Decimal? @db.Decimal(10, 2)
+  currency      Currency @default(BRL)
+  preferences   Json?    @db.Json
+  aiModel       String?  @db.VarChar(50)
+  version       Int      @default(1) @db.SmallInt
+
+  // Sharing
+  isPublic  Boolean @default(false)
+  shareCode String? @unique @db.VarChar(50)
+  views     Int     @default(0)
+  likes     Int     @default(0)
+
+  createdAt DateTime  @default(now()) @db.Timestamp(0)
+  updatedAt DateTime  @updatedAt @db.Timestamp(0)
+  deletedAt DateTime? @db.DateTime
+
+  user        User         @relation(fields: [userId], references: [id], onDelete: Cascade)
+  destination Destination? @relation(fields: [destinationId], references: [id])
+
+  @@index([userId])
+  @@map("saved_itineraries")
+}
+
+// ============================================
+// REVIEWS & RATINGS
+// =================User=====================
+
+/// Reviews for bookings/destinations/services
+model Review {
+  id            String  @id @default(uuid()) 
+  userId        String  @map("user_id") 
+  bookingId     String? @map("booking_id") 
+  destinationId String? @map("destination_id") 
+  attractionId  String? @map("attraction_id") 
+
+  // Review content
+  title   String @db.VarChar(255)
+  comment String @db.Text
+  rating  Int    @db.SmallInt // 1-5
+
+  // Breakdown ratings
+  cleanlinessRating Int? @map("cleanliness_rating") @db.SmallInt
+  comfortRating     Int? @map("comfort_rating") @db.SmallInt
+  locationRating    Int? @map("location_rating") @db.SmallInt
+  valueRating       Int? @map("value_rating") @db.SmallInt
+  serviceRating     Int? @map("service_rating") @db.SmallInt
+
+  // Metadata
+  reviewerName      String?      @map("reviewer_name") @db.VarChar(255)
+  reviewType        ReviewType   @default(POST_TRIP) @map("review_type")
+  reviewStatus      ReviewStatus @default(PENDING) @map("review_status")
+  isVerifiedBooking Boolean      @default(false) @map("is_verified_booking")
+  travelType        String?      @map("travel_type") @db.VarChar(50) // "solo", "couple", "family", "business"
+
+  // Engagement
+  helpfulCount   Int @default(0) @map("helpful_count")
+  unhelpfulCount Int @default(0) @map("unhelpful_count")
+  flagCount      Int @default(0) @map("flag_count")
+
+  // Media
+  photos Json? @db.Json // Array of image URLs with captions
+  videos Json? @db.Json // Array of video URLs
+
+  // Moderation
+  moderationNotes String? @map("moderation_notes") @db.Text
+  isFeatured      Boolean @default(false) @map("is_featured")
+
+  // Timestamps
+  createdAt   DateTime  @default(now()) @map("created_at") @db.Timestamp(0)
+  updatedAt   DateTime  @updatedAt @map("updated_at") @db.Timestamp(0)
+  publishedAt DateTime? @map("published_at") @db.DateTime
+  moderatedAt DateTime? @map("moderated_at") @db.DateTime
+  deletedAt   DateTime? @map("deleted_at") @db.DateTime
+
+  user        User         @relation(fields: [userId], references: [id], onDelete: Cascade)
+  booking     Booking?     @relation("ReviewBooking", fields: [bookingId], references: [id])
+  destination Destination? @relation("DestinationReviews", fields: [destinationId], references: [id])
+  attraction  Attraction?  @relation(fields: [attractionId], references: [id])
+
+  @@index([bookingId])
+  @@index([userId])
+  @@index([destinationId])
+  @@map("reviews")
+}
+
+// (enum Seasonality already defined earlier in the file – removed duplicate)
+
+// FAVORITES       & WISHLISTS
+// ============================================
+
+/// Favorite items (generic)
+model Favorite {
+  id       String @id @default(uuid()) 
+  userId   String 
+  itemType String @db.VarChar(50) // "destination", "service", "article"
+  itemId   String 
+
+  createdAt DateTime @default(now()) @db.Timestamp(0)
+  updatedAt DateTime @updatedAt @db.Timestamp(0)
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, itemType, itemId])
+  @@map("favorites")
+}
+
+/// Destination-specific favorites
+model UserFavorite {
+  id            String  @id @default(uuid()) 
+  userId        String  
+  destinationId String  
+  priority      Int     @default(0) @db.SmallInt // sorting order
+  notes         String? @db.Text
+
+  createdAt DateTime @default(now()) @db.Timestamp(0)
+  updatedAt DateTime @updatedAt @db.Timestamp(0)
+
+  user        User        @relation("UserDestinationFavorites", fields: [userId], references: [id], onDelete: Cascade)
+  destination Destination @relation(fields: [destinationId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, destinationId])
+  @@map("user_favorites")
+}
+
+// ============================================
+// AI FEATURES
+// ============================================
+
+/// AI conversation threads
+model AiConversation {
+  id                 String    @id @default(uuid()) 
+  userId             String?   
+  title              String?   @db.VarChar(255)
+  conversationStatus String    @default("active") @db.VarChar(20) // 'active' | 'resolved' | 'escalated' | 'closed'
+  escalatedToEmail   Boolean   @default(false)
+  escalatedAt        DateTime? @db.DateTime
+  context            Json?     @db.Json
+  createdAt          DateTime  @default(now()) @db.Timestamp(0)
+  updatedAt          DateTime  @updatedAt @db.Timestamp(0)
+
+  messages   ChatMessage[]
+  aiMessages AiMessage[]
+  user       User?         @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([conversationStatus])
+  @@index([updatedAt])
+  @@map("ai_conversations")
+}
+
+/// Chat messages within AI conversations
+model ChatMessage {
+  id               String   @id @default(uuid()) 
+  aiConversationId String   
+  userId           String?  
+  role             String   @db.VarChar(20) // 'user' | 'assistant' | 'system'
+  content          String   @db.Text
+  metadata         Json?    @db.Json
+  createdAt        DateTime @default(now()) @db.Timestamp(0)
+  updatedAt        DateTime @updatedAt @db.Timestamp(0)
+
+  conversation AiConversation @relation(fields: [aiConversationId], references: [id], onDelete: Cascade)
+  user         User?          @relation(fields: [userId], references: [id], onDelete: SetNull)
+
+  @@index([aiConversationId])
+  @@index([userId])
+  @@index([createdAt])
+  @@map("ai_chat_messages")
+}
+
+// AI messages (legacy - keeping for backward compatibility)
+model AiMessage {
+  id             String @id @default(uuid()) 
+  conversationId String 
+  role           String @db.VarChar(20) // "user", "assistant", "system"
+  content        String @db.Text
+
+  tokens           Int?     
+  model            String?  @db.VarChar(50)
+  metadata         Json?    @db.Json
+  promptTokens     Int?     
+  completionTokens Int?     
+  helpful          Boolean?
+  rating           Int?     @db.SmallInt
+
+  createdAt        DateTime       @default(now()) @db.Timestamp(0)
+  updatedAt        DateTime       @updatedAt @db.Timestamp(0)
+  aiConversationId String         
+  aiConversation   AiConversation @relation(fields: [aiConversationId], references: [id], onDelete: Cascade)
+
+  @@unique([conversationId, id])
+  @@index([aiConversationId])
+  @@map("ai_messages")
+}
+
+// ============================================
+// CHAT & MESSAGING
+// ============================================
+
+/// Chat rooms (1-on-1 or group)
+model ChatRoom {
+  id   String  @id @default(uuid()) 
+  type String  @db.VarChar(20) // "direct" or "group"
+  name String? @db.VarChar(255) // for groups
+
+  createdAt DateTime @default(now()) @db.Timestamp(0)
+  updatedAt DateTime @updatedAt @db.Timestamp(0)
+
+  participants ChatParticipant[]
+  messages     RoomMessage[]
+
+  @@map("chat_rooms")
+}
+
+/// Chat participants
+model ChatParticipant {
+  id       String    @id @default(uuid()) 
+  roomId   String    
+  userId   String    
+  role     String    @db.VarChar(20) // "member" or "admin"
+  joinedAt DateTime  @default(now()) @db.Timestamp(0)
+  leftAt   DateTime? @db.DateTime
+
+  room     ChatRoom      @relation(fields: [roomId], references: [id], onDelete: Cascade)
+  user     User          @relation(fields: [userId], references: [id], onDelete: Cascade)
+  // Opposite relation for ChatMessage.chatParticipant
+  messages RoomMessage[]
+
+  @@unique([roomId, userId])
+  @@map("chat_participants")
+}
+
+/// Room messages (for chat rooms)
+model RoomMessage {
+  id      String @id @default(uuid()) 
+  roomId  String 
+  userId  String 
+  content String @db.Text
+  type    String @db.VarChar(20) // "text", "image", "file"
+
+  // Reactions
+  reactions Json? @db.Json // { "👍": ["userId1", "userId2"] }
+
+  //   Status 
+  edited    Boolean   @default(false)
+  editedAt  DateTime? @db.DateTime
+  deleted   Boolean   @default(false)
+  deletedAt DateTime? @db.DateTime
+
+  createdAt DateTime @default(now()) @db.Timestamp(0)
+  updatedAt DateTime @updatedAt @db.Timestamp(0)
+
+  room            ChatRoom        @relation(fields: [roomId], references: [id], onDelete: Cascade)
+  user            User            @relation(fields: [userId], references: [id], onDelete: Cascade)
+  chatParticipant ChatParticipant @relation(fields: [roomId, userId], references: [roomId, userId], onDelete: Cascade)
+
+  @@index([roomId, createdAt])
+  @@map("chat_messages")
+}
+
+// ============================================
+// GAMIFICATION & LOYALTY
+// ============================================
+
+/// Loyalty program
+model LoyaltyProgram {
+  id     String @id @default(uuid()) 
+  userId String @unique 
+
+  points         Int         @default(0)
+  tier           LoyaltyTier @default(BRONZE)
+  lifetimePoints Int         @default(0)
+  tierExpiresAt  DateTime?   @db.DateTime
+
+  discountPercentage Float @default(0) @db.Float
+  perks              Json? @db.Json
+  nextTierPoints     Int?
+  pointsToExpire     Json? @db.Json
+
+  createdAt    DateTime             @default(now()) @db.Timestamp(0)
+  updatedAt    DateTime             @updatedAt @db.Timestamp(0)
+  user         User                 @relation(fields: [userId], references: [id], onDelete: Cascade)
+  transactions LoyaltyTransaction[]
+
+  @@map("loyalty_programs")
+}
+
+/// Loyalty transactions
+model LoyaltyTransaction {
+  id               String  @id @default(uuid()) 
+  loyaltyProgramId String  
+  points           Int
+  type             String  @db.VarChar(20) // "earned", "redeemed", "expired"
+  description      String? @db.VarChar(500)
+
+  referenceType String? @db.VarChar(50) // "booking", "review", "referral"
+  referenceId   String? 
+
+  expiresAt DateTime? @db.DateTime
+  expired   Boolean   @default(false)
+
+  balanceAfter Int
+  createdAt    DateTime @default(now()) @db.Timestamp(0)
+
+  loyaltyProgram LoyaltyProgram @relation(fields: [loyaltyProgramId], references: [id], onDelete: Cascade)
+
+  @@index([loyaltyProgramId, createdAt])
+  @@map("loyalty_transactions")
+}
+
+// ============================================
+// CONTENT & BLOG
+// ============================================
+
+/// Articles and blog posts
+enum ArticleStatus {
+  draft
+  scheduled
+  published
+  archived
+  deleted
+}
+
+enum CommentStatus {
+  pending
+  approved
+  rejected
+  spam
+  flagged
+}
+
+enum SecurityLevel {
+  high
+  medium
+  low
+}
+
+enum SustainabilityCategory {
+  carbon_neutral
+  eco_friendly
+  sustainable
+  responsible
+  standard
+}
+
+enum ArticleCategory {
+  travel_guide
+  destination_tip
+  culture
+  adventure
+  food
+  accommodation
+  transport
+  budget_travel
+  luxury_travel
+  solo_travel
+  family_travel
+  sustainability
+  digital_nomad
+  photography
+  wellness
+  business_travel
+  news
+  interview
+  review
+  how_to
+  Roteiros
+  Dicas
+  Guias
+  Gastronomia
+  Notícias
+}
+
+enum ContentType {
+  article
+  guide
+  review
+  interview
+  opinion
+  tutorial
+  case_study
+  roundup
+}
+
+model Article {
+  id            String  @id @default(uuid()) 
+  authorId      String  @map("author_id") 
+  author        User    @relation("UserArticles", fields: [authorId], references: [id])
+  destinationId String? @map("destination_id") 
+  title         String  @db.VarChar(500)
+  slug          String  @unique @db.VarChar(500)
+  content       String  @db.Text
+  excerpt       String? @db.VarChar(1000)
+
+  // Media
+  coverImage       String? @map("featured_image_url") @db.VarChar(500)
+  featuredImageAlt String? @map("featured_image_alt") @db.Text
+  images           Json?   @db.Json
+  videoUrl         String? @map("video_url") @db.VarChar(500)
+
+  // Metadata
+  contentType        ContentType      @default(article) @map("content_type")
+  category           ArticleCategory? @default(travel_guide)
+  tags               Json?            @db.Json
+  readingTimeMinutes Int?             @map("reading_time_minutes") 
+  word_count         Int?             
+
+  // Status & Publishing
+  status      ArticleStatus @default(draft)
+  publishedAt DateTime?     @map("published_at") @db.DateTime
+  scheduledAt DateTime?     @map("scheduled_at") @db.DateTime
+  updatedAt   DateTime      @updatedAt @map("updated_at") @db.Timestamp(0)
+  createdAt   DateTime      @default(now()) @map("created_at") @db.Timestamp(0)
+
+  // Featured & Visibility
+  isFeatured Boolean   @default(false) @map("is_featured")
+  isPinned   Boolean   @default(false) @map("is_pinned")
+  pinUntil   DateTime? @map("pin_until") @db.DateTime
+  visibility String    @default("public") @db.VarChar(50)
+
+  // Sustainability Features
+  sustainabilityRating    Int?                    @default(0) @map("sustainability_rating") @db.SmallInt
+  sustainabilityCategory  SustainabilityCategory? @map("sustainability_category")
+  carbonFootprintEstimate Int?                    @map("carbon_footprint_estimate") 
+  ecoCertifications       Json?                   @map("eco_certifications") @db.Json
+
+  // Security Features
+  securityLevel          SecurityLevel @default(medium) @map("security_level")
+  requiresAuthentication Boolean       @default(false) @map("requires_authentication")
+  contentWarning         String?       @map("content_warning") @db.Text
+
+  // Analytics & Engagement
+  viewsCount       Int @default(0) @map("views_count")
+  uniqueViewsCount Int @default(0) @map("unique_views_count")
+  likesCount       Int @default(0) @map("likes_count")
+  sharesCount      Int @default(0) @map("shares_count")
+  commentsCount    Int @default(0) @map("comments_count")
+  bookmarkCount    Int @default(0) @map("bookmark_count")
+
+  // AI & Trending
+  trendScore   Int     @default(0) @map("trend_score") @db.SmallInt
+  trendingRank Int?    @map("trending_rank")
+  aiGenerated  Boolean @default(false) @map("ai_generated")
+  aiSummary    String? @map("ai_summary") @db.Text
+  aiKeywords   Json?   @map("ai_keywords") @db.Json
+
+  // SEO
+  metaTitle       String? @map("meta_title") @db.VarChar(160)
+  metaDescription String? @map("meta_description") @db.VarChar(160)
+  metaKeywords    String? @map("meta_keywords") @db.VarChar(500)
+  canonicalUrl    String? @map("canonical_url") @db.VarChar(500)
+  structuredData  Json?   @map("structured_data") @db.Json
+
+  // Internal Linking
+  relatedArticles Json? @map("related_articles") @db.Json
+
+  // Moderation
+  isApproved      Boolean   @default(true) @map("is_approved")
+  moderationNotes String?   @map("moderation_notes") @db.Text
+  moderatedBy     String?   @map("moderated_by") 
+  moderatedAt     DateTime? @map("moderated_at") @db.DateTime
+
+  moderator User? @relation("ModeratedArticles", fields: [moderatedBy], references: [id])
+
+  destination  Destination?         @relation(fields: [destinationId], references: [id])
+  destinations ArticleDestination[]
+  attractions  ArticleAttraction[]
+  comments     ArticleComment[]
+
+  @@index([slug])
+  @@index([isFeatured])
+  @@map("articles")
+}
+
+model ArticleComment {
+  id              String  @id @default(uuid()) 
+  articleId       String  @map("article_id") 
+  userId          String? @map("user_id") 
+  parentCommentId String? @map("parent_comment_id") 
+
+  // Guest commenting
+  guestName     String? @map("guest_name") @db.VarChar(255)
+  guestEmail    String? @map("guest_email") @db.VarChar(255)
+  guestVerified Boolean @default(false) @map("guest_verified")
+
+  // Content
+  title       String? @db.VarChar(500)
+  content     String  @db.Text
+  ratingGiven Int?    @map("rating_given") @db.SmallInt
+
+  // Status
+  status             CommentStatus @default(pending)
+  isVerifiedPurchase Boolean       @default(false) @map("is_verified_purchase")
+  isPinned           Boolean       @default(false) @map("is_pinned")
+
+  // Content warnings
+  contentWarning String? @map("content_warning") @db.Text
+
+  // Analytics
+  likesCount     Int @default(0) @map("likes_count")
+  dislikesCount  Int @default(0) @map("dislikes_count")
+  helpfulCount   Int @default(0) @map("helpful_count")
+  unhelpfulCount Int @default(0) @map("unhelpful_count")
+
+  // Moderation
+  moderationNotes String?   @map("moderation_notes") @db.Text
+  moderatedBy     String?   @map("moderated_by") 
+  moderatedAt     DateTime? @map("moderated_at") @db.DateTime
+
+  // Timestamps
+  createdAt DateTime  @default(now()) @map("created_at") @db.Timestamp(0)
+  updatedAt DateTime  @updatedAt @map("updated_at") @db.Timestamp(0)
+  deletedAt DateTime? @map("deleted_at") @db.DateTime
+
+  // Depth tracking
+  depth Int @default(0) 
+
+  article       Article          @relation(fields: [articleId], references: [id], onDelete: Cascade)
+  user          User?            @relation("UserComments", fields: [userId], references: [id], onDelete: SetNull)
+  parentComment ArticleComment?  @relation("CommentReplies", fields: [parentCommentId], references: [id], onDelete: Cascade)
+  replies       ArticleComment[] @relation("CommentReplies")
+  moderator     User?            @relation("ModeratedComments", fields: [moderatedBy], references: [id], onDelete: SetNull)
+
+  @@map("article_comments")
+}
+
+// ============================================
+// QUIZ & INTERACTIVE CONTENT
+// ============================================
+
+/// Travel quizzes
+model Quiz {
+  id          String  @id @default(uuid()) 
+  title       String  @db.VarChar(255)
+  description String? @db.Text
+  type        String  @db.VarChar(50) // "travel_style", "destination_match"
+  questions   Json    @db.Json // array of question objects
+
+  published Boolean @default(false)
+  featured  Boolean @default(false)
+
+  createdAt DateTime @default(now()) @db.Timestamp(0)
+  updatedAt DateTime @updatedAt @db.Timestamp(0)
+
+  attempts QuizAttempt[]
+
+  @@map("quizzes")
+}
+
+/// Quiz a  ttempts
+model QuizAttempt {
+  id      String  @id @default(uuid()) 
+  quizId  String  
+  userId  String  
+  answers Json    @db.Json
+  score   Float?  @db.Float
+  result  String? @db.Text // quiz result/recommendation
+
+  createdAt DateTime @default(now()) @db.Timestamp(0)
+  updatedAt DateTime @updatedAt @db.Timestamp(0)
+
+  quiz Quiz @relation(fields: [quizId], references: [id], onDelete: Cascade)
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([quizId, userId])
+  @@map("quiz_attempts")
+}
+
+// ============================================
+// NOTIFICATIONS
+// ============================================
+
+/// User notifications
+model Notification {
+  id      String           @id @default(uuid()) 
+  userId  String           
+  type    NotificationType
+  title   String           @db.VarChar(255)
+  message String           @db.Text
+  icon    String?          @db.VarChar(50)
+
+  actionUrl  String? @db.Text
+  actionText String? @db.VarChar(50)
+
+  metadata  Json?     @db.Json
+  channels  Json  @default("[\"in_app\"]")
+  read      Boolean   @default(false)
+  readAt    DateTime? @db.DateTime
+  dismissed Boolean   @default(false)
+
+  priority  String    @default("normal") @db.VarChar(20)
+  expiresAt DateTime? @db.DateTime
+
+  createdAt DateTime @default(now()) @db.Timestamp(0)
+  updatedAt DateTime @updatedAt @db.Timestamp(0)
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@map("notifications")
+}
+
+/// Email notifications (sent/delivery tracking)
+model EmailNotification {
+  id       String @id @default(uuid()) 
+  userId   String 
+  subject  String @db.VarChar(255)
+  template String @db.VarChar(100) // "booking_confirmation", etc.
+
+  sentAt    DateTime? @db.DateTime
+  openedAt  DateTime? @db.DateTime
+  clickedAt DateTime? @db.DateTime
+  bounced   Boolean   @default(false)
+
+  createdAt DateTime @default(now()) @db.Timestamp(0)
+  updatedAt DateTime @updatedAt @db.Timestamp(0)
+
+  @@index([userId])
+  @@map("email_notifications")
+}
+
+/// User notification settings and preferences
+model NotificationSetting {
+  id     String @id @default(uuid()) 
+  userId String @unique @map("user_id") 
+
+  // Channel preferences
+  emailEnabled Boolean @default(true) @map("email_enabled")
+  pushEnabled  Boolean @default(true) @map("push_enabled")
+  smsEnabled   Boolean @default(false) @map("sms_enabled")
+  inAppEnabled Boolean @default(true) @map("in_app_enabled")
+
+  // Content preferences
+  bookingNotifications   Boolean @default(true) @map("booking_notifications")
+  promotionNotifications Boolean @default(true) @map("promotion_notifications")
+  socialNotifications    Boolean @default(true) @map("social_notifications")
+  reviewNotifications    Boolean @default(true) @map("review_notifications")
+
+  createdAt DateTime @default(now()) @map("created_at") @db.Timestamp(0)
+  updatedAt DateTime @updatedAt @map("updated_at") @db.Timestamp(0)
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("notification_settings")
+}
+
+// ========    ====================================
+// ENUMS    
+// ============================================
+
+enum TripStatus {
+  DRAFT
+  PLANNING
+  BOOKING
+  TRAVELING
+  COMPLETED
+  CANCELLED
+  ARCHIVED
+}
+
+enum ReviewType {
+  POST_TRIP
+  DURING_TRIP
+  PRE_TRIP
+  FOLLOW_UP
+}
+
+enum ReviewStatus {
+  PENDING
+  APPROVED
+  REJECTED
+  FLAGGED
+}
+
+enum LoyaltyTier {
+  BRONZE
+  SILVER
+  GOLD
+  PLATINUM
+  DIAMOND
+}
+
+enum NotificationType {
+  BOOKING_CONFIRMATION
+  REVIEW_REQUEST
+  PRICE_ALERT
+  DESTINATION_UPDATE
+  PROMOTIONAL
+  SYSTEM
+}
+
+enum NotificationStatus {
+  UNREAD
+  READ
+  ARCHIVED
+}
+
+// Removed duplicate Currency enum
+/// Removed AI messages
+
+// ============================================
+// CHAT & MESSAGING
+// ============================================
+
+// ============================================
+// CRM SYSTEM
+// ============================================
+
+/// CRM Event Analytics for tracking customer interactions
+model CrmEvent {
+  id         String   @id @default(uuid()) 
+  type       String   @db.VarChar(50)
+  customerId String?  
+  payload    Json?    @db.Json
+  timestamp  DateTime @db.DateTime
+  receivedAt DateTime @default(now()) @db.Timestamp(0)
+  ipAddress  String?  @db.VarChar(45)
+  userAgent  String?  @db.Text
+  sessionId  String?  @db.VarChar(255)
+
+  createdAt DateTime @default(now()) @db.Timestamp(0)
+
+  @@index([customerId])
+  @@index([type])
+  @@index([timestamp])
+  @@map("crm_events")
+}
+
+/// CRM Customer management
+model CrmCustomer {
+  id        String   @id @default(uuid()) 
+  name      String   @db.VarChar(100)
+  email     String   @unique @db.VarChar(100)
+  phone     String?  @db.VarChar(20)
+  cpfCnpj   String   @db.VarChar(20) // CPF or CNPJ
+  birthDate DateTime @db.DateTime
+
+  // Address
+  street       String  @db.VarChar(255)
+  number       String  @db.VarChar(10)
+  complement   String? @db.VarChar(50)
+  neighborhood String? @db.VarChar(50)
+  city         String  @db.VarChar(100)
+  state        String  @db.VarChar(2)
+  zipCode      String  @db.VarChar(10)
+  country      String  @db.VarChar(3)
+
+  // Additional info
+  documents        Json?   @db.Json // Array of document objects
+  notes            String? @db.Text
+  marketingConsent Boolean @default(false)
+
+  // Status
+  createdAt DateTime  @default(now()) @db.Timestamp(0)
+  updatedAt DateTime  @updatedAt @db.Timestamp(0)
+  deletedAt DateTime? @db.DateTime
+
+  // Relationships
+  bookings CrmBooking[]
+
+  @@index([email])
+  @@index([cpfCnpj])
+  @@index([city, state])
+  @@map("crm_customers")
+}
+
+/// CRM Booking management
+model CrmBooking {
+  id            String @id @default(uuid()) 
+  reference     String @unique @db.VarChar(20) // BK-XXXXX-XXXXX format
+  customerId    String 
+  destinationId String 
+
+  // Booking details
+  type          String   @db.VarChar(20) // 'flight', 'hotel', 'package', 'car'
+  startDate     DateTime @db.DateTime
+  endDate       DateTime @db.DateTime
+  totalPrice    Decimal  @db.Decimal(10, 2)
+  status        String   @default("pending") @db.VarChar(20) // 'confirmed', 'pending', 'cancelled'
+  paymentMethod String?  @db.VarChar(20)
+  paymentProof  String?  @db.Text
+
+  // Additional info
+  notes String? @db.Text
+
+  // Status
+  createdAt DateTime  @default(now()) @db.Timestamp(0)
+  updatedAt DateTime  @updatedAt @db.Timestamp(0)
+  deletedAt DateTime? @db.DateTime
+
+  // Relationships
+  customer CrmCustomer @relation(fields: [customerId], references: [id], onDelete: Cascade)
+
+  @@index([customerId])
+  @@index([reference])
+  @@index([status])
+  @@index([startDate, endDate])
+  @@map("crm_bookings")
+}
+
+/// CRM Product Category
+model CrmCategory {
+  id          String  @id @default(uuid()) 
+  name        String  @db.VarChar(100)
+  slug        String  @unique @db.VarChar(100)
+  description String? @db.Text
+
+  // Status
+  isActive  Boolean   @default(true)
+  createdAt DateTime  @default(now()) @db.Timestamp(0)
+  updatedAt DateTime  @updatedAt @db.Timestamp(0)
+  deletedAt DateTime? @db.DateTime
+
+  // Relationships
+  products CrmProduct[]
+
+  @@index([slug])
+  @@map("crm_categories")
+}
+
+/// CRM Product catalog
+model CrmProduct {
+  id          String   @id @default(uuid()) 
+  sku         String   @unique @db.VarChar(50)
+  name        String   @db.VarChar(200)
+  description String?  @db.Text
+  price       Decimal  @db.Decimal(10, 2)
+  costPrice   Decimal? @db.Decimal(10, 2)
+  currency    Currency @default(BRL)
+
+  // Category
+  categoryId String? 
+
+  // Inventory
+  status String @default("active") @db.VarChar(20)
+  stock  Int    @default(0)
+
+  // Media
+  images Json? @db.Json
+
+  // Additional
+  tags           Json
+  specifications Json?    @db.Json
+  isFeatured     Boolean  @default(false)
+
+  // Status
+  createdAt DateTime  @default(now()) @db.Timestamp(0)
+  updatedAt DateTime  @updatedAt @db.Timestamp(0)
+  deletedAt DateTime? @db.DateTime
+
+  // Relationships
+  category CrmCategory? @relation(fields: [categoryId], references: [id])
+
+  @@index([sku])
+  @@index([categoryId])
+  @@index([status])
+  @@map("crm_products")
+}
+
+// ============================================
+// GAMIFICATION & LOYALTY
+// ============================================
+
+// ============================================
+// CACHE & OPTIMIZATION
+// ============================================
+
+/// Cache for AI embeddings to avoid redundant API calls
+model EmbeddingCache {
+  id        String   @id @default(uuid()) 
+  cacheKey  String   @unique @db.VarChar(255)
+  model     String   @db.VarChar(100)
+  text      String   @db.VarChar(500) // Preview of original text
+  embedding Json // Stored as array of floats
+  tokens    Int
+  expiresAt DateTime @db.DateTime
+  createdAt DateTime @default(now()) @db.Timestamp(0)
+
+  @@index([cacheKey])
+  @@index([model])
+  @@index([expiresAt])
+  @@map("embedding_cache")
+}
+
+/// Cache for LLM responses to avoid redundant API calls
+model LlmCache {
+  id           String   @id @default(uuid()) 
+  cacheKey     String   @unique @db.VarChar(255)
+  model        String   @db.VarChar(100)
+  content      String   @db.Text
+  role         String   @db.VarChar(20)
+  finishReason String   @db.VarChar(50)
+  usage        Json     @db.Json
+  expiresAt    DateTime @db.DateTime
+  createdAt    DateTime @default(now()) @db.Timestamp(0)
+
+  @@index([cacheKey])
+  @@index([expiresAt])
+  @@map("llm_cache")
+}
+
+/// Execution records of background jobs
+model JobRun {
+  id         String   @id @default(uuid()) 
+  queue      String   @db.VarChar(50)
+  type       String   @db.VarChar(100)
+  status     String   @db.VarChar(20)
+  durationMs Int      @default(0) 
+  error      String?  @db.Text
+  createdAt  DateTime @default(now()) @db.Timestamp(0)
+  metadata   Json?    @db.Json
+
+  @@index([queue, type, status, createdAt])
+  @@map("job_runs")
+}
+
+/// Email interaction events (opens/clicks)
+model EmailEvent {
+  id        String   @id @default(uuid()) 
+  campaign  String   @db.VarChar(100)
+  type      String   @db.VarChar(20) // 'open' | 'click'
+  messageId String?  @db.VarChar(200)
+  extra     Json?    @db.Json
+  createdAt DateTime @default(now()) @db.Timestamp(0)
+
+  @@index([campaign, type, createdAt])
+  @@map("email_events")
+}
+
+model EmissionFactor {
+  id          String    @id @default(uuid()) 
+  mode        String    @db.VarChar(20)
+  subcategory String?   @db.VarChar(50)
+  country     String?   @db.VarChar(3)
+  factor      Decimal   @db.Decimal(10, 6)
+  unit        String    @db.VarChar(50)
+  source      String?   @db.Text
+  validFrom   DateTime? @db.DateTime
+  validTo     DateTime? @db.DateTime
+  createdAt   DateTime  @default(now()) @db.Timestamp(0)
+
+  @@unique([mode, subcategory, country], map: "mode_subcategory_country")
+  @@index([mode, subcategory, country])
+  @@map("emission_factors")
+}
+
+model AirportGeo {
+  id        String   @id @default(uuid()) 
+  code      String   @unique @db.VarChar(10)
+  name      String?  @db.VarChar(255)
+  city      String?  @db.VarChar(100)
+  country   String?  @db.VarChar(3)
+  lat       Float    @db.Float
+  lon       Float    @db.Float
+  createdAt DateTime @default(now()) @db.Timestamp(0)
+
+  @@index([city, country])
+  @@map("airport_geo")
+}
+
+model ModelVersion {
+  id            String   @id @default(uuid()) 
+  modelName     String   @db.VarChar(100)
+  version       String   @db.VarChar(50)
+  weightPercent Int      @default(0) 
+  active        Boolean  @default(true)
+  createdAt     DateTime @default(now()) @db.Timestamp(0)
+
+  @@unique([modelName, version])
+  @@map("model_versions")
+}
+
+// ============================================
+// CORE TRAVEL TABLES
+// ============================================
+
+// ============================================
+// MISSING MODELS FROM SQL SCHEMA
+// ============================================
+
+/// User testimonials and reviews
+model Testimonial {
+  id        String   @id @default(uuid()) 
+  name      String   @db.Text
+  location  String?  @db.Text
+  rating    Int      
+  comment   String?  @db.Text
+  avatar    String?  @db.Text
+  featured  Boolean  @default(false)
+  createdAt DateTime @default(now()) @map("created_at") @db.Timestamp(0)
+  updatedAt DateTime @updatedAt @map("updated_at") @db.Timestamp(0)
+
+  @@map("testimonials")
+}
+
+/// Local guides for destinations
+model LocalGuide {
+  id               BigInt       @id
+  name             String       @db.Text
+  photo            String?      @db.Text
+  photoAlt         String?      @map("photo_alt") @db.Text
+  description      String?      @db.Text
+  specialties      Json?        @db.Json
+  languages        Json?        @db.Json
+  rating           Decimal?     @db.Decimal(3, 1)
+  reviews          Int          @default(0)
+  availability     Json?        @db.Json
+  price            Json?        @db.Json
+  location         Json?        @db.Json
+  expertise        String?      @db.Text
+  bio              String?      @db.Text
+  yearsExperience  Int?         @map("years_experience")
+  verified         Boolean      @default(false)
+  certifications   Json?        @db.Json
+  tagLine          String?      @map("tag_line") @db.Text
+  toursHighlighted Json?        @map("tours_highlighted") @db.Json
+  contact          Json?        @db.Json
+  detail           GuideDetail?
+  createdAt        DateTime     @default(now()) @map("created_at") @db.Timestamp(0)
+  updatedAt        DateTime     @updatedAt @map("updated_at") @db.Timestamp(0)
+
+  @@map("local_guides")
+}
+
+/// Insurance products for travelers
+model InsuranceProduct {
+  id             String  @id
+  provider       String? @db.Text
+  planCode       String  @unique @map("plan_code") @db.VarChar(500)
+  nameKey        String? @map("name_key") @db.Text
+  descriptionKey String? @map("description_key") @db.Text
+  summaryKey     String? @map("summary_key") @db.Text
+  priceRangeKey  String? @map("price_range_key") @db.Text
+  icon           String? @db.Text
+  badgeKey       String? @map("badge_key") @db.Text
+  coverages      Json?   @db.Json
+  benefits       Json?   @db.Json
+  finePrintKey   String? @map("fine_print_key") @db.Text
+  published      Boolean @default(true)
+  details        Json?   @db.Json
+
+  @@map("insurance_products")
+}
+
+/// Billing invoices
+model Invoice {
+  id               String    @id @default(uuid()) 
+  number           String    @unique @db.VarChar(100)
+  bookingId        String?   @map("booking_id")
+  status           String?   @db.VarChar(50)
+  issueDate        DateTime? @map("issue_date") @db.Date
+  dueDate          DateTime? @map("due_date") @db.Date
+  paidDate         DateTime? @map("paid_date") @db.Date
+  customer         Json?     @db.Json
+  company          Json?     @db.Json
+  items            Json?     @db.Json
+  subtotal         Decimal?  @db.Decimal(10, 2)
+  taxes            Decimal?  @db.Decimal(10, 2)
+  discounts        Decimal?  @db.Decimal(10, 2)
+  total            Decimal?  @db.Decimal(10, 2)
+  currency         String?   @db.VarChar(10)
+  paymentMethod    String?   @map("payment_method") @db.VarChar(50)
+  paymentReference String?   @map("payment_reference") @db.VarChar(255)
+  notes            String?   @db.Text
+  terms            String?   @db.Text
+  createdAt        DateTime  @default(now()) @db.Timestamp(0)
+  updatedAt        DateTime  @updatedAt @db.Timestamp(0)
+
+  @@map("invoices")
+}
+
+/// Refund requests
+model RefundRequest {
+  id              String    @id @default(uuid()) 
+  bookingId       String?   @map("booking_id")
+  invoiceId       String?   @map("invoice_id")
+  status          String?   @db.VarChar(50)
+  type            String?   @db.VarChar(50)
+  reason          String?   @db.Text
+  requestDate     DateTime? @map("request_date") @db.DateTime
+  processedDate   DateTime? @map("processed_date") @db.DateTime
+  completedDate   DateTime? @map("completed_date") @db.DateTime
+  customer        Json?     @db.Json
+  booking         Json?     @db.Json
+  refund          Json?     @db.Json
+  originalPayment Json?     @map("original_payment") @db.Json
+  notes           String?   @db.Text
+  internalNotes   String?   @map("internal_notes") @db.Text
+  customerMessage String?   @map("customer_message") @db.Text
+  attachments     Json?     @db.Json
+  processedBy     String?   @map("processed_by")
+  approvedBy      String?   @map("approved_by")
+  createdAt       DateTime  @default(now()) @db.Timestamp(0)
+  updatedAt       DateTime  @updatedAt @db.Timestamp(0)
+
+  @@map("refund_requests")
+}
+
+/// Administrative transactions
+model AdminTransaction {
+  id            String    @id @default(uuid()) 
+  date          DateTime? @db.DateTime
+  name          String?   @db.VarChar(255)
+  email         String?   @db.VarChar(255)
+  amount        Decimal?  @db.Decimal(10, 2)
+  type          String?   @db.VarChar(50)
+  status        String?   @db.VarChar(50)
+  description   String?   @db.Text
+  paymentMethod String?   @map("payment_method") @db.VarChar(50)
+  invoiceId     String?   @map("invoice_id")
+  customer      Json?     @db.Json
+  createdAt     DateTime  @default(now()) @db.Timestamp(0)
+
+  @@map("admin_transactions")
+}
+
+/// Newsletter subscribers
+model NewsletterSubscriber {
+  id           String    @id @default(uuid()) 
+  email        String    @unique @db.VarChar(255)
+  name         String?   @db.VarChar(255)
+  status       String?   @db.VarChar(50)
+  subscribedAt DateTime? @map("subscribed_at") @db.DateTime
+  language     String?   @db.VarChar(10)
+  createdAt    DateTime  @default(now()) @db.Timestamp(0)
+
+  @@map("newsletter_subscribers")
+}
+
+/// Newsletter campaigns
+model NewsletterCampaign {
+  id              String    @id @default(uuid()) 
+  subject         String?   @db.VarChar(255)
+  title           String?   @db.VarChar(255)
+  content         String?   @db.Text
+  status          String?   @db.VarChar(50)
+  createdAt       DateTime  @default(now()) @db.Timestamp(0)
+  scheduledAt     DateTime? @map("scheduled_at") @db.DateTime
+  sentAt          DateTime? @map("sent_at") @db.DateTime
+  language        String?   @db.VarChar(10)
+  previewText     String?   @map("preview_text") @db.VarChar(255)
+  recipientsCount Int?      @map("recipients_count")
+  stats           Json?     @db.Json
+
+  @@map("newsletter_campaigns")
+}
+
+/// Transportations from schema_extra.sql
+model Transportation {
+  id                  String   @id @default(uuid()) 
+  destinationId       String?  @map("destination_id") 
+  type                String?  @db.Text
+  provider            String?  @db.Text
+  origin              String?  @db.Text
+  destinationName     String?  @map("destination") @db.Text
+  departureTime       String?  @map("departure_time") @db.Text
+  arrivalTime         String?  @map("arrival_time") @db.Text
+  durationText        String?  @map("duration_text") @db.Text
+  price               Decimal? @db.Decimal(10, 2)
+  currency            String?  @db.Text
+  co2Emissions        Decimal? @map("co2_emissions") @db.Decimal(10, 2)
+  sustainabilityScore Decimal? @map("sustainability_score") @db.Decimal(4, 1)
+  bookingUrl          String?  @map("booking_url") @db.Text
+  published           Boolean  @default(true)
+  createdAt           DateTime @default(now()) @db.Timestamp(0)
+
+  destination Destination? @relation(fields: [destinationId], references: [id])
+
+  @@map("transportations")
+}
+
+model HotelImage {
+  id        String   @id @default(uuid()) 
+  hotelId   String   @map("hotel_id") 
+  url       String   @db.Text
+  title     String?  @db.Text
+  createdAt DateTime @default(now()) @db.Timestamp(0)
+
+  hotel Hotel @relation(fields: [hotelId], references: [id], onDelete: Cascade)
+
+  @@map("hotel_images")
+}
+
+model CruiseDetail {
+  id                     String   @id @default(uuid()) 
+  cruiseId               String   @unique @map("cruise_id") 
+  overview               Json?    @db.Json
+  itineraries            Json?    @db.Json
+  routeWeather           Json?    @map("route_weather") @db.Json
+  monthlyRecommendations Json?    @map("monthly_recommendations") @db.Json
+  seaState               Json?    @map("sea_state") @db.Json
+  excursions             Json?    @db.Json
+  cabins                 Json?    @db.Json
+  images                 Json?    @db.Json
+  ratings                Float?   @db.Float
+  createdAt              DateTime @default(now()) @db.Timestamp(0)
+  updatedAt              DateTime @updatedAt @db.Timestamp(0)
+
+  cruise Cruise @relation(fields: [cruiseId], references: [id], onDelete: Cascade)
+
+  @@map("cruise_details")
+}
+
+model GuideDetail {
+  id             String   @id @default(uuid()) 
+  guideId        BigInt   @unique @map("guide_id")
+  bio            Json?    @db.Json
+  specialties    Json?    @db.Json
+  certifications Json?    @db.Json
+  availability   Json?    @db.Json
+  pricing        Json?    @db.Json
+  languages      Json?    @db.Json
+  images         Json?    @db.Json
+  ratings        Float?   @db.Float
+  createdAt      DateTime @default(now()) @map("created_at") @db.Timestamp(0)
+  updatedAt      DateTime @updatedAt @map("updated_at") @db.Timestamp(0)
+
+  guide LocalGuide @relation(fields: [guideId], references: [id], onDelete: Cascade)
+
+  @@map("guide_details")
+}
+
+model ArticleDestination {
+  id            String   @id @default(uuid()) 
+  articleId     String   @map("article_id") 
+  destinationId String   @map("destination_id") 
+  mentionType   String?  @map("mention_type") @db.VarChar(100)
+  orderPosition Int?     @map("order_position") 
+  createdAt     DateTime @default(now()) @db.Timestamp(0)
+
+  article     Article     @relation(fields: [articleId], references: [id], onDelete: Cascade)
+  destination Destination @relation(fields: [destinationId], references: [id], onDelete: Cascade)
+
+  @@unique([articleId, destinationId, mentionType])
+  @@map("article_destinations")
+}
+
+model ArticleAttraction {
+  id            String   @id @default(uuid()) 
+  articleId     String   @map("article_id") 
+  attractionId  String   @map("attraction_id") 
+  mentionType   String?  @map("mention_type") @db.VarChar(100)
+  description   String?  @db.Text
+  orderPosition Int?     @map("order_position") 
+  createdAt     DateTime @default(now()) @db.Timestamp(0)
+
+  article    Article    @relation(fields: [articleId], references: [id], onDelete: Cascade)
+  attraction Attraction @relation(fields: [attractionId], references: [id], onDelete: Cascade)
+
+  @@unique([articleId, attractionId, mentionType])
+  @@map("article_attractions")
+}
+
+/// System Integrations (SaaS, APIs, Partners)
+model Integration {
+  id          String @id @default(uuid()) 
+  name        String @db.VarChar(255)
+  description String @db.Text
+  category    String @db.VarChar(100)
+  icon        String @db.VarChar(100) // Lucide icon name
+  color       String @db.VarChar(50) // Tailwind color class
+  bgColor     String @map("bg_color") @db.VarChar(50) // Tailwind bg class
+
+  logo       String?  @db.Text
+  isPremium  Boolean  @default(false) @map("is_premium")
+  rating     Decimal? @db.Decimal(3, 1)
+  users      String?  @db.VarChar(50) // e.g., "10,000+"
+  popular    Boolean  @default(false)
+  comingSoon Boolean  @default(false) @map("coming_soon")
+
+  features Json // Array of strings
+  website  String?  @db.VarChar(500)
+  pricing  String?  @db.VarChar(50) // free, paid, freemium, custom
+  status   String?  @default("active") @db.VarChar(50)
+
+  createdAt DateTime @default(now()) @map("created_at") @db.Timestamp(0)
+  updatedAt DateTime @updatedAt @map("updated_at") @db.Timestamp(0)
+
+  @@map("integrations")
+}
+
+// ============================================
+// SEARCH & DISCOVERY MODELS (Phase 2)
+// ============================================
+
+/// Search suggestions for autocomplete
+model SearchSuggestion {
+  id          String   @id @default(uuid()) 
+  title       String   @db.VarChar(255)
+  description String?  @db.Text
+  category    String   @db.VarChar(50)
+  tags        Json @default("[]")
+  popularity  Int      @default(0) 
+
+  createdAt DateTime @default(now()) @map("created_at") @db.Timestamp(0)
+  updatedAt DateTime @updatedAt @map("updated_at") @db.Timestamp(0)
+
+  @@index([popularity])
+  @@index([category])
+  @@map("search_suggestions")
+}
+
+/// Popular destinations for homepage
+model PopularDestination {
+  id          String  @id @default(uuid()) 
+  name        String  @db.VarChar(255)
+  country     String  @db.VarChar(100)
+  description String? @db.Text
+  imageUrl    String? @map("image_url") @db.VarChar(500)
+  rating      Decimal @db.Decimal(3, 2)
+  reviewCount Int     @default(0) @map("review_count") 
+  trending    Boolean @default(false)
+
+  createdAt DateTime @default(now()) @map("created_at") @db.Timestamp(0)
+  updatedAt DateTime @updatedAt @map("updated_at") @db.Timestamp(0)
+
+  @@index([rating])
+  @@index([trending])
+  @@map("popular_destinations")
+}
+
+/// Trending search queries
+model TrendingSearch {
+  id           String   @id @default(uuid()) 
+  query        String   @db.VarChar(255)
+  count        Int      @default(0) 
+  category     String   @db.VarChar(50)
+  lastSearched DateTime @map("last_searched") @db.DateTime
+
+  createdAt DateTime @default(now()) @map("created_at") @db.Timestamp(0)
+  updatedAt DateTime @updatedAt @map("updated_at") @db.Timestamp(0)
+
+  @@index([count])
+  @@index([lastSearched])
+  @@map("trending_searches")
+}
+
+/// AI prompts for LLM interactions
+model AiPrompt {
+  id          Int       @id @default(autoincrement())
+  key         String    @unique
+  title       String
+  description String?
+  template    String
+  variables   Json?     @default("{}")
+  service     String
+  model       String?
+  tags        Json
+  enabled     Boolean?  @default(true)
+  createdAt   DateTime? @default(now()) @map("created_at") @db.Timestamp(6)
+  updatedAt   DateTime? @default(now()) @updatedAt @map("updated_at") @db.Timestamp(6)
+
+  @@map("ai_prompts")
+}
+
+/// AI recommendations for various contexts
+model AiRecommendation {
+  id             Int       @id @default(autoincrement())
+  contextType    String    @map("context_type")
+  contextId      String    @map("context_id")
+  recommendation Json
+  service        String?
+  model          String?
+  confidence     Decimal?  @db.Decimal
+  createdAt      DateTime? @default(now()) @map("created_at") @db.Timestamp(6)
+  updatedAt      DateTime? @default(now()) @updatedAt @map("updated_at") @db.Timestamp(6)
+
+  @@unique([contextType, contextId])
+  @@map("ai_recommendations")
+}
+
+/// AI workflows for automation
+model AiWorkflow {
+  id          Int       @id @default(autoincrement())
+  key         String    @unique
+  name        String
+  description String?
+  steps       Json
+  enabled     Boolean?  @default(true)
+  createdAt   DateTime? @default(now()) @map("created_at") @db.Timestamp(6)
+  updatedAt   DateTime? @default(now()) @updatedAt @map("updated_at") @db.Timestamp(6)
+
+  @@map("ai_workflows")
+}
+
+// ============================================
+// SUPPLIERS - Partner/Supplier Management
+// ============================================
+
+/// Supplier/Partner entity - hotels, guides, transfers, activities
+model Supplier {
+  id          String       @id @db.VarChar(50)
+  type        SupplierType @default(HOTEL)
+  name        String       @db.VarChar(255)
+  slug        String       @unique @db.VarChar(255)
+  description String?      @db.Text
+  email       String?      @db.VarChar(255)
+  phone       String?      @db.VarChar(50)
+  website     String?      @db.VarChar(500)
+
+  // Address
+  address    String? @db.VarChar(255)
+  city       String? @db.VarChar(100)
+  country    String? @db.VarChar(100)
+  postalCode String? @map("postal_code") @db.VarChar(20)
+
+  // Business Info
+  taxId String? @map("tax_id") @db.VarChar(50)
+  logo  String? @db.VarChar(500)
+
+  // Status
+  status           SupplierStatus @default(PENDING)
+  verified         Boolean        @default(false)
+  verificationDate DateTime?      @map("verification_date") @db.DateTime
+
+  // Partnership
+  partnershipLevel      PartnershipLevel @default(BASIC) @map("partnership_level")
+  defaultCommissionRate Decimal          @default(15) @map("default_commission_rate") @db.Decimal(5, 2)
+
+  // Ratings
+  rating       Decimal @default(0) @db.Decimal(3, 2)
+  totalReviews Int     @default(0) @map("total_reviews")
+
+  // Performance (JSON for monthly trend data)
+  performance Json? @db.Json
+
+  // Categories & Tags
+  categories     Json? @db.Json // ["luxury", "business"]
+  tags           Json? @db.Json
+  serviceRegions Json? @db.Json // ["Lisboa", "Porto"]
+
+  // Timestamps
+  createdAt     DateTime  @default(now()) @map("created_at") @db.Timestamp(0)
+  updatedAt     DateTime  @updatedAt @map("updated_at") @db.Timestamp(0)
+  lastBookingAt DateTime? @map("last_booking_at") @db.DateTime
+
+  // Relations
+  contacts    SupplierContact[]
+  commissions CommissionRecord[]
+
+  @@index([type])
+  @@index([status])
+  @@index([city])
+  @@index([country])
+  @@map("suppliers")
+}
+
+/// Supplier contact persons
+model SupplierContact {
+  id         String  @id @db.VarChar(50)
+  supplierId String  @map("supplier_id") @db.VarChar(50)
+  name       String  @db.VarChar(255)
+  role       String? @db.VarChar(100)
+  email      String? @db.VarChar(255)
+  phone      String? @db.VarChar(50)
+  isPrimary  Boolean @default(false) @map("is_primary")
+
+  supplier Supplier @relation(fields: [supplierId], references: [id], onDelete: Cascade)
+
+  @@index([supplierId])
+  @@map("supplier_contacts")
+}
+
+/// Commission records for suppliers
+model CommissionRecord {
+  id               String    @id @db.VarChar(50)
+  supplierId       String    @map("supplier_id") @db.VarChar(50)
+  bookingId        String?   @map("booking_id") @db.VarChar(50)
+  bookingReference String?   @map("booking_reference") @db.VarChar(50)
+  bookingDate      DateTime? @map("booking_date") @db.DateTime
+
+  grossAmount      Decimal @map("gross_amount") @db.Decimal(10, 2)
+  commissionAmount Decimal @map("commission_amount") @db.Decimal(10, 2)
+  commissionRate   Decimal @map("commission_rate") @db.Decimal(5, 2)
+  currency         String  @default("EUR") @db.VarChar(3)
+
+  status CommissionStatus @default(PENDING)
+  paidAt DateTime?        @map("paid_at") @db.DateTime
+
+  // Additional fields from seed
+  customerName String?   @map("customer_name") @db.VarChar(255)
+  destination  String?   @db.VarChar(255)
+
+  createdAt DateTime @default(now()) @map("created_at") @db.Timestamp(0)
+  updatedAt DateTime @updatedAt @map("updated_at") @db.Timestamp(0)
+
+  supplier Supplier @relation(fields: [supplierId], references: [id], onDelete: Cascade)
+
+  @@index([supplierId])
+  @@index([status])
+  @@map("commission_records")
+}
+
+// ============================================
+// MARKETING AUTOMATION
+// ============================================
+
+/// Destination preferences for segmented newsletters
+model DestinationPreference {
+  id                 String @id @default(uuid()) 
+  destinationId      String @map("destination_id") @db.VarChar(50) // External destination ID
+  destinationName    String @map("destination_name") @db.VarChar(255)
+  destinationCountry String @map("destination_country") @db.VarChar(100)
+
+  subscriberCount  Int       @default(0) @map("subscriber_count")
+  lastCampaignSent DateTime? @map("last_campaign_sent") @db.DateTime
+
+  openRate  Decimal @default(0) @map("open_rate") @db.Decimal(5, 2)
+  clickRate Decimal @default(0) @map("click_rate") @db.Decimal(5, 2)
+
+  createdAt DateTime @default(now()) @map("created_at") @db.Timestamp(0)
+  updatedAt DateTime @updatedAt @map("updated_at") @db.Timestamp(0)
+
+  @@unique([destinationId])
+  @@map("destination_preferences")
+}
+
+/// Segmented marketing campaigns by destination
+model SegmentedCampaign {
+  id      String  @id @default(uuid()) 
+  name    String  @db.VarChar(255)
+  subject String  @db.VarChar(500)
+  content String? @db.Text
+
+  destinationId   String @map("destination_id") @db.VarChar(50)
+  destinationName String @map("destination_name") @db.VarChar(255)
+
+  status CampaignStatus @default(DRAFT)
+
+  // Sending info
+  scheduledDate  DateTime? @map("scheduled_date") @db.DateTime
+  sentAt         DateTime? @map("sent_at") @db.DateTime
+  recipientCount Int       @default(0) @map("recipient_count")
+
+  // Analytics
+  openRate  Decimal @default(0) @map("open_rate") @db.Decimal(5, 2)
+  clickRate Decimal @default(0) @map("click_rate") @db.Decimal(5, 2)
+
+  createdAt DateTime @default(now()) @map("created_at") @db.Timestamp(0)
+  updatedAt DateTime @updatedAt @map("updated_at") @db.Timestamp(0)
+
+  @@index([destinationId])
+  @@index([status])
+  @@index([scheduledDate])
+  @@map("segmented_campaigns")
+}
+
+/// Post-trip follow-ups
+model PostTripFollowUp {
+  id        String @id @default(uuid()) 
+  bookingId String @map("booking_id") @db.VarChar(50)
+  userId    String @map("user_id") @db.VarChar(50)
+  userName  String @map("user_name") @db.VarChar(255)
+  userEmail String @map("user_email") @db.VarChar(255)
+
+  destinationName String   @map("destination_name") @db.VarChar(255)
+  checkOutDate    DateTime @map("check_out_date") @db.DateTime
+
+  followUpType FollowUpType   @default(FEEDBACK_REQUEST) @map("follow_up_type")
+  status       FollowUpStatus @default(PENDING)
+
+  scheduledDate DateTime? @map("scheduled_date") @db.DateTime
+  sentAt        DateTime? @map("sent_at") @db.DateTime
+  openedAt      DateTime? @map("opened_at") @db.DateTime
+  respondedAt   DateTime? @map("responded_at") @db.DateTime
+
+  feedbackRating  Int?    @map("feedback_rating") // 1-5
+  feedbackComment String? @map("feedback_comment") @db.Text
+
+  createdAt DateTime @default(now()) @map("created_at") @db.Timestamp(0)
+  updatedAt DateTime @updatedAt @map("updated_at") @db.Timestamp(0)
+
+  @@index([bookingId])
+  @@index([userId])
+  @@index([status])
+  @@index([followUpType])
+  @@map("post_trip_follow_ups")
+}
+
+/// Birthday alerts for marketing
+model BirthdayAlert {
+  id        String   @id @default(uuid()) 
+  userId    String   @map("user_id") @db.VarChar(50)
+  userName  String   @map("user_name") @db.VarChar(255)
+  userEmail String   @map("user_email") @db.VarChar(255)
+  birthDate DateTime @map("birth_date") @db.Date
+
+  upcomingBirthday  DateTime @map("upcoming_birthday") @db.Date
+  daysUntilBirthday Int      @default(0) @map("days_until_birthday")
+  age               Int      @default(0)
+
+  alertStatus BirthdayAlertStatus @default(PENDING) @map("alert_status")
+
+  voucherCode     String?   @map("voucher_code") @db.VarChar(50)
+  voucherDiscount Int?      @map("voucher_discount") // percentage
+  voucherExpiry   DateTime? @map("voucher_expiry") @db.DateTime
+  voucherUsedAt   DateTime? @map("voucher_used_at") @db.DateTime
+
+  lastNotifiedAt DateTime? @map("last_notified_at") @db.DateTime
+
+  createdAt DateTime @default(now()) @map("created_at") @db.Timestamp(0)
+  updatedAt DateTime @updatedAt @map("updated_at") @db.Timestamp(0)
+
+  @@index([userId])
+  @@index([alertStatus])
+  @@index([daysUntilBirthday])
+  @@map("birthday_alerts")
+}
+
+/// Follow-up email templates
+model FollowUpTemplate {
+  id        String       @id @default(uuid()) 
+  name      String       @db.VarChar(255)
+  type      FollowUpType @unique
+  subject   String       @db.VarChar(500)
+  content   String       @db.Text
+  delayDays Int          @default(2) @map("delay_days")
+  active    Boolean      @default(true)
+
+  createdAt DateTime @default(now()) @map("created_at") @db.Timestamp(0)
+  updatedAt DateTime @updatedAt @map("updated_at") @db.Timestamp(0)
+
+  @@map("follow_up_templates")
+}
+
+/// Birthday voucher configuration
+model BirthdayVoucherConfig {
+  id                 String  @id @default(uuid()) 
+  name               String  @db.VarChar(255)
+  discountPercentage Int     @default(15) @map("discount_percentage")
+  minBookingValue    Decimal @default(100) @map("min_booking_value") @db.Decimal(10, 2)
+  validForDays       Int     @default(30) @map("valid_for_days")
+  maxUses            Int     @default(1000) @map("max_uses")
+  currentUses        Int     @default(0) @map("current_uses")
+  active             Boolean @default(true)
+
+  createdAt DateTime @default(now()) @map("created_at") @db.Timestamp(0)
+  updatedAt DateTime @updatedAt @map("updated_at") @db.Timestamp(0)
+
+  @@map("birthday_voucher_configs")
+}
+
+// ============================================
+// AI PREFERENCES TRACKING
+// ============================================
+
+model PreferenceEvent {
+  id             String   @id @default(cuid())
+  userId         String?  @map("user_id")
+  sessionId      String   @map("session_id")
+  preferenceType String   @map("preference_type")
+  action         String
+  oldValue       Json?
+  newValue       Json
+  timestamp      DateTime @map("timestamp") @db.DateTime
+  context        Json
+
+  createdAt DateTime @default(now()) @map("created_at") @db.Timestamp(0)
+
+  user User? @relation(fields: [userId], references: [id])
+
+  @@index([userId])
+  @@index([sessionId])
+  @@index([preferenceType])
+  @@index([timestamp])
+  @@map("preference_events")
+}
+
+model PreferenceAnalytics {
+  id            String    @id @default(uuid())
+  analyticsType String    @map("analytics_type")
+  data          Json
+  computedAt    DateTime  @default(now()) @map("computed_at") @db.Timestamp(0)
+  expiresAt     DateTime  @map("expires_at") @db.DateTime
+  createdAt     DateTime  @default(now()) @map("created_at") @db.Timestamp(0)
+  
+  @@map("preference_analytics")
+}
+
+model ResponsePrediction {
+  id              String    @id @default(uuid())
+  userId          String?   @map("user_id")
+  preferenceHash  String    @map("preference_hash")
+  predictedResponse Json    @map("predicted_response")
+  confidenceScore Decimal  @map("confidence_score") @db.Decimal(3, 2)
+  modelVersion    String    @map("model_version")
+  createdAt       DateTime  @default(now()) @map("created_at") @db.Timestamp(0)
+  expiresAt       DateTime  @map("expires_at") @db.DateTime
+  
+  user            User?     @relation(fields: [userId], references: [id])
+  
+  @@map("response_predictions")
+}
+
+// ============================================
+// END OF SCHEMA
+// ============================================
