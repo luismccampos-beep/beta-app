@@ -1,0 +1,120 @@
+{
+  "account": {
+    "title": "Cuenta",
+    "delete_account": "Eliminar cuenta",
+    "delete_confirm": "¿Está seguro de que desea eliminar su cuenta? Esta acción es irreversible.",
+    "account_deleted": "Cuenta eliminada con éxito."
+  },
+  "address": {
+    "title": "Dirección",
+    "description": "Tu dirección residencial completa.",
+    "street": "Calle",
+    "number": "Número",
+    "complement": "Complemento",
+    "neighborhood": "Barrio",
+    "city": "Ciudad",
+    "state": "Provincia",
+    "postal_code": "Código postal",
+    "country": "País"
+  },
+  "admin": {
+    "dashboard": "Panel de Admin",
+    "users": "Usuarios",
+    "settings": {
+      "title": "Configuración de Admin"
+    },
+    "blog": "Blog",
+    "sustainable_travel": "Viaje Sostenible"
+  },
+  "complete": "Completo",
+  "completeness": "Completitud del Perfil",
+  "contact": "Contacto",
+  "data_sharing": {
+    "title": "Compartir datos",
+    "share_with_partners": "Compartir datos con socios",
+    "share_with_partners_description": "Permitir compartir datos con socios."
+  },
+  "description": "Gestiona la información, seguridad y preferencias de tu perfil.",
+  "edit": "Editar",
+  "info_updated": "¡Información actualizada con éxito!",
+  "logout": "Cerrar Sesión",
+  "notifications": {
+    "title": "Notificaciones",
+    "marketing_emails": "Recibir correos de marketing",
+    "marketing_emails_description": "Permitir el envío de ofertas y novedades.",
+    "sms_notifications": "Notificaciones por SMS",
+    "sms_notifications_description": "Recibir notificaciones por SMS.",
+    "push_notifications": "Notificaciones push",
+    "push_notifications_description": "Recibir notificaciones push."
+  },
+  "payment": "Pago",
+  "payment_methods": {
+    "title": "Métodos de Pago",
+    "description": "Administra tus métodos de pago.",
+    "no_payment_methods": "No hay métodos de pago registrados.",
+    "add_payment_method": "Agregar método de pago",
+    "add_payment_method_button": "Agregar"
+  },
+  "personal": "Personal",
+  "personal_data": {
+    "title": "Datos Personales",
+    "description": "Administra tus datos personales abajo.",
+    "first_name": "Nombre",
+    "last_name": "Apellido",
+    "email": "Correo electrónico",
+    "phone": "Teléfono",
+    "date_of_birth": "Fecha de nacimiento",
+    "nationality": "Nacionalidad",
+    "tax_id": "NIF",
+    "gender": "Género",
+    "gender_female": "Femenino",
+    "gender_male": "Masculino",
+    "marital_status": "Estado civil",
+    "marital_status_married": "Casado(a)",
+    "marital_status_single": "Soltero(a)"
+  },
+  "preferences": "Preferencias",
+  "privacy": "Privacidad",
+  "privacy_settings": {
+    "title": "Configuración de Privacidad",
+    "description": "Administra tus preferencias de privacidad.",
+    "profile_visibility": "Visibilidad del perfil",
+    "show_email": "Mostrar correo",
+    "show_email_description": "Permitir que otros vean tu correo.",
+    "show_phone": "Mostrar teléfono",
+    "show_phone_description": "Permitir que otros vean tu teléfono.",
+    "show_address": "Mostrar dirección",
+    "show_address_description": "Permitir que otros vean tu dirección."
+  },
+  "save_changes": "Guardar Cambios",
+  "security": {
+    "title": "Seguridad",
+    "current_password": "Contraseña actual",
+    "new_password": "Nueva contraseña",
+    "confirm_new_password": "Confirmar nueva contraseña",
+    "change_password": "Cambiar contraseña",
+    "passwords_dont_match": "Las contraseñas no coinciden",
+    "password_updated": "¡Contraseña actualizada con éxito!",
+    "invalid_password": "La contraseña actual no es válida."
+  },
+  "title": "Mi Perfil",
+  "travel_preferences": {
+    "title": "Preferencias de Viaje",
+    "description": "Personaliza tus preferencias de viaje para obtener mejores recomendaciones.",
+    "preferred_currency": "Moneda preferida",
+    "euro": "Euro",
+    "us_dollar": "Dólar estadounidense",
+    "british_pound": "Libra esterlina",
+    "brazilian_real": "Real brasileño",
+    "preferred_language": "Idioma preferido",
+    "portuguese": "Portugués",
+    "english": "Inglés",
+    "spanish": "Español",
+    "french": "Francés"
+  },
+  "unexpected_error": "Ocurrió un error inesperado. Por favor, inténtalo de nuevo.",
+  "verification": {
+    "email_verified": "Correo verificado",
+    "phone_not_verified": "Teléfono no verificado"
+  }
+}

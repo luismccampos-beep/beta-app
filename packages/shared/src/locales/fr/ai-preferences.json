@@ -1,0 +1,1190 @@
+{
+  "common": {
+    "notSet": "Non défini",
+    "unknown": "Inconnu",
+    "cancel": "Annuler",
+    "clear": "Effacer",
+    "minutesShort": "min",
+    "ai": "IA"
+  },
+  "localModel": {
+    "specs": {
+      "model": "Modèle",
+      "size": "Taille",
+      "context": "Contexte",
+      "memory": "Mémoire"
+    },
+    "benefits": {
+      "zeroApiCosts": "Aucun coût API — sans frais de services externes",
+      "completePrivacy": "Confidentialité complète — les données ne quittent jamais votre appareil",
+      "offlineCapability": "Capacité hors ligne — fonctionne sans internet"
+    }
+  },
+  "privacyTrust": {
+    "features": {
+      "localProcessing": {
+        "title": "Traitement Local",
+        "description": "Tout le traitement IA se fait localement sur votre appareil"
+      },
+      "dataPrivacy": {
+        "title": "Confidentialité des Données",
+        "description": "Vos données personnelles ne quittent jamais votre système"
+      },
+      "noDataCollection": {
+        "title": "Aucune Collecte de Données",
+        "description": "Nous ne collectons ni ne stockons vos données de conversation"
+      },
+      "offlineCapability": {
+        "title": "Capacité Hors Ligne",
+        "description": "Fonctionne sans internet une fois le modèle chargé"
+      }
+    },
+    "trustIndicators": {
+      "zeroApiCosts": "Aucun coût API",
+      "noRateLimits": "Pas de limites de taux",
+      "completeDataOwnership": "Propriété complète des données",
+      "gdprCompliant": "Conforme RGPD",
+      "noThirdPartyDependencies": "Aucune dépendance tierce",
+      "openSourceModel": "Modèle open source"
+    }
+  },
+  "advancedSettings": {
+    "performance": {
+      "title": "Paramètres de Performance",
+      "description": "Optimisez la vitesse et l'efficacité des réponses IA",
+      "cache": {
+        "title": "Cache de Réponses",
+        "description": "Stocke des réponses similaires pour accélérer les requêtes futures",
+        "active": "Actif",
+        "hitRate": "taux de réussite"
+      }
+    },
+    "dataIntegration": {
+      "title": "Intégration de Données",
+      "description": "Configurez les sources de données en temps réel à utiliser"
+    },
+    "integrations": {
+      "title": "Intégrations",
+      "description": "Configurer les intégrations avec des services externes",
+      "enableRealTimeData": "Activer les données en temps réel",
+      "enableWeatherIntegration": "Intégration météo",
+      "enableCurrencyConversion": "Conversion de devise automatique"
+    },
+    "experimental": {
+      "title": "Fonctionnalités Expérimentales",
+      "description": "Fonctionnalités en développement - utiliser avec prudence",
+      "beta": "Bêta",
+      "warning": "Les fonctionnalités expérimentales peuvent présenter une instabilité ou un comportement inattendu. Nous vous recommandons de les utiliser uniquement dans des environnements de test.",
+      "notAvailable": "Aucune fonctionnalité expérimentale disponible pour le moment."
+    },
+    "metrics": {
+      "title": "Métriques de Performance",
+      "averageResponseTime": "Temps de Réponse Moyen",
+      "cacheHitRate": "Taux de Réussite du Cache",
+      "successRate": "Taux de Réussite",
+      "totalRequests": "Total des Requêtes"
+    },
+    "apiStatus": {
+      "title": "Statut des APIs",
+      "openai": "API OpenAI",
+      "weather": "API Météo",
+      "currency": "API Devise",
+      "connected": "Connecté",
+      "active": "Actif",
+      "inactive": "Inactif",
+      "error": "Erreur",
+      "disconnected": "Déconnecté"
+    }
+  },
+  "aiPoweredFeatures": {
+    "profileAnalysis": {
+      "title": "Analyse de Profil",
+      "empty": "Remplissez vos préférences pour générer votre analyse de profil de voyageur avec l'IA."
+    },
+    "travelerProfile": {
+      "title": "Votre Profil de Voyage",
+      "travelerType": "Type de Voyageur",
+      "primaryInterests": "Intérêts Principaux"
+    }
+  },
+  "modelTab": {
+    "hero": {
+      "title": "Configuration du Modèle IA",
+      "subtitle": "Choisissez et affinez votre assistant IA"
+    },
+    "localModelDisplay": {
+      "title": "Modèle IA Local",
+      "subtitlePrefix": "Traitement local axé sur la confidentialité avec",
+      "specificationsTitle": "Spécifications du modèle",
+      "serverStatus": {
+        "title": "Statut du serveur",
+        "checked": "Vérifié",
+        "states": {
+          "checking": "Vérification…",
+          "online": "En ligne",
+          "offline": "Hors ligne"
+        },
+        "connecting": "Connexion au serveur local…",
+        "onlineTitle": "Le serveur IA local est actif et prêt",
+        "onlineSubtitle": "Tout le traitement se fait localement sur votre appareil",
+        "offlineTitle": "Le serveur IA local n'est pas en cours d'exécution",
+        "offlineSubtitle": "Démarrez le serveur llama.cpp pour activer les fonctionnalités IA locales"
+      },
+      "benefits": {
+        "title": "Avantages du traitement local",
+        "noRateLimits": "Aucune limite de taux — requêtes illimitées"
+      },
+      "footer": {
+        "note": "Les données du modèle sont traitées entièrement sur votre machine",
+        "badge": "Local de bout en bout"
+      }
+    },
+    "sections": {
+      "modelSelection": {
+        "title": "Modèle et Serveur",
+        "subtitle": "Détails du modèle IA local, état du serveur et avantages de confidentialité"
+      },
+      "modelServer": {
+        "title": "Modèle et Serveur",
+        "subtitle": "Détails d’exécution et de connexion"
+      },
+      "parameters": {
+        "title": "Paramètres",
+        "subtitle": "Température, limites de tokens et contrôles de génération"
+      },
+      "apiStatus": {
+        "title": "État de l’API",
+        "subtitle": "Santé et état du service"
+      },
+      "chat": {
+        "title": "Chat",
+        "subtitle": "Essayez une invite rapide"
+      },
+      "recommendations": {
+        "title": "Recommandations",
+        "subtitle": "Améliorations suggérées",
+        "badge": "Bêta"
+      },
+      "aiFeatures": {
+        "title": "Fonctionnalités IA",
+        "subtitle": "Suggestions intelligentes, auto-complétion et assistance intelligente",
+        "badge": "Bêta"
+      },
+      "performance": {
+        "title": "Performance et Surveillance",
+        "subtitle": "Paramètres de cache, métriques de réponse et contrôles d'optimisation"
+      },
+      "dataIntegration": {
+        "title": "Données et Intégrations",
+        "subtitle": "Sources de données en temps réel, fonctionnalités expérimentales et connectivité"
+      }
+    },
+    "labels": {
+      "model": "Modèle",
+      "temperature": "Température",
+      "maxTokens": "Max Tokens",
+      "status": "Statut",
+      "configured": "Configuré",
+      "incomplete": "Incomplet",
+      "setupInProgress": "Configuration en cours"
+    },
+    "groups": {
+      "coreSettings": "Paramètres Principaux",
+      "advanced": "Avancé"
+    }
+  },
+  "welcome": {
+    "title": "Bienvenue aux Préférences d'IA",
+    "subtitle": "Personnalisez votre assistant de voyage en quelques étapes seulement. Nous pouvons commencer par configurer vos intérêts de voyage.",
+    "button": "Commencer la Configuration"
+  },
+  "status": {
+    "synced": "Tout est enregistré",
+    "loading": "Chargement...",
+    "syncing": "Synchronisation...",
+    "hasChanges": "Modifications non enregistrées",
+    "unsaved": "Modifications non enregistrées"
+  },
+  "import": {
+    "tooltip": "Importer les préférences depuis un fichier",
+    "success": "Importation réussie",
+    "successDescription": "Vos préférences ont été importées."
+  },
+  "reset": {
+    "tooltip": "Réinitialiser toutes les préférences",
+    "success": "Réinitialisation réussie",
+    "successDescription": "Vos préférences ont été réinitialisées.",
+    "dialog": {
+      "title": "Réinitialiser les préférences ?",
+      "description": "Cela réinitialisera vos préférences d'IA à leurs valeurs par défaut.",
+      "confirm": "Réinitialiser",
+      "cancel": "Annuler"
+    }
+  },
+  "description": "Personnalisez vos préférences de voyage et les paramètres IA",
+  "activities": {
+    "museums": "Musées et Galeries",
+    "gastronomy": "Gastronomie Locale",
+    "nightlife": "Vie Nocturne",
+    "shopping": "Shopping",
+    "watersports": "Sports Nautiques",
+    "hiking": "Randonnée",
+    "photography": "Photographie",
+    "architecture": "Architecture",
+    "festivals": "Festivals et Événements",
+    "nature": "Nature et Vie Sauvage",
+    "beaches": "Plages",
+    "mountains": "Montagnes",
+    "spa": "Spa et Bien-être",
+    "adventure": "Sports d'Aventure",
+    "heritage": "Histoire et Patrimoine",
+    "hiking_extra": "Randonnée",
+    "nightlife_extra": "Vie Nocturne",
+    "shopping_extra": "Shopping",
+    "culinary": "Culinaire"
+  },
+  "currencies": {
+    "EUR": "Euro (€)",
+    "USD": "Dollar Américain ($)",
+    "GBP": "Livre Sterling (£)",
+    "BRL": "Réal Brésilien (R$)"
+  },
+  "errorResetting": "Erreur lors de la réinitialisation des préférences",
+  "errorSaving": "Erreur lors de l'enregistrement des préférences",
+  "advanced": {
+    "title": "Configurations Avancées",
+    "description": "Gérez les paramètres d'IA, la confidentialité et les notifications",
+    "comingSoon": "Bientôt disponible",
+    "recommendations": {
+      "title": "Recommandations d'IA",
+      "subtitle": "Recevez des suggestions personnalisées en temps réel",
+      "enabledLabel": "Activer les Recommandations d'IA",
+      "featuresTitle": "Fonctionnalités activées :"
+    },
+    "dataSharing": {
+      "title": "Partage de Données",
+      "subtitle": "Gérez votre confidentialité et l'utilisation de vos données",
+      "generalLabel": "Activer le partage général",
+      "personalizedLabel": "Recommandations personnalisées",
+      "analyticsLabel": "Autoriser l'utilisation dans Analytics",
+      "marketingLabel": "Recevoir des communications marketing"
+    },
+    "notifications": {
+      "title": "Préférences de Notifications",
+      "subtitle": "Comment souhaitez-vous être contacté",
+      "enabledLabel": "Activer les notifications",
+      "channelsLabel": "Canaux de Contact",
+      "typesLabel": "Que souhaitez-vous recevoir ?",
+      "channelSelected": "sélectionné",
+      "channelNotSelected": "non sélectionné"
+    },
+    "loyalty": {
+      "title": "Programmes de Fidélité",
+      "subtitle": "Ajoutez vos miles et cartes",
+      "noPrograms": "Aucun programme ajouté.",
+      "addButton": "Ajouter un Programme"
+    },
+    "performanceTitle": "Profil de Performance",
+    "performanceDesc": "Suivi en temps réel de l'efficacité des réponses de l'IA et de la mise en cache.",
+    "metrics": {
+      "caching": {
+        "label": "Statut du Cache",
+        "value": "Optimisé"
+      },
+      "latency": {
+        "label": "Latence Moyenne",
+        "value": "240ms"
+      }
+    },
+    "footerNote": "Les mesures de performance sont mises à jour toutes les 5 minutes en fonction de votre utilisation."
+  },
+  "languages": {
+    "pt": "Portugais",
+    "en": "Anglais",
+    "es": "Espagnol",
+    "fr": "Français",
+    "de": "Allemand",
+    "it": "Italien"
+  },
+  "loading": {
+    "title": "Chargement...",
+    "subtitle": "Nous préparons votre expérience IA personnalisée."
+  },
+  "completing": {
+    "title": "Finalisation de la Recherche",
+    "subtitle": "Organisation de vos résultats..."
+  },
+  "save": {
+    "success": "Enregistré avec succès",
+    "successDescription": "Vos modifications ont été enregistrées.",
+    "error": "Erreur lors de l'enregistrement",
+    "errorDescription": "Une erreur s'est produite lors de la tentative d'enregistrement de vos modifications."
+  },
+  "complete": {
+    "success": "Configuration Terminée",
+    "successDescription": "Votre configuration IA a été finalisée avec succès.",
+    "error": "Erreur lors de la finalisation",
+    "errorDescription": "Impossible de terminer la configuration de l'IA."
+  },
+  "loadingStats": "Erreur lors du chargement des statistiques",
+  "page": {
+    "title": "Préférences d'IA",
+    "subtitle": "Personnalisez vos préférences de voyage et les paramètres IA"
+  },
+  "modelSettings": {
+    "title": "Modèle d'IA",
+    "description": "Choisissez le modèle d'intelligence artificielle qui correspond le mieux à vos besoins",
+    "selectedModel": "Modèle Sélectionné",
+    "modelInfo": "Informations sur le Modèle",
+    "maxTokens": "Jetons Maximum",
+    "costPerToken": "Coût par Jeton",
+    "capabilities": "Capacités",
+    "parameters": {
+      "title": "Paramètres du modèle",
+      "description": "Ajustez les paramètres pour contrôler le comportement du modèle",
+      "temperature": {
+        "label": "Température",
+        "description": "Contrôle la créativité : valeurs basses = plus concentré et cohérent. Valeurs élevées = plus créatif et varié.",
+        "levels": {
+          "focused": " Concentré",
+          "balanced": " Équilibré",
+          "creative": " Créatif"
+        }
+      },
+      "maxTokensParam": {
+        "label": "Jetons Maximum",
+        "description": "Nombre maximum de jetons dans la réponse. Plus de jetons = réponses plus longues"
+      },
+      "topP": {
+        "label": "Top P",
+        "description": "Contrôle la diversité des mots choisis. Valeurs basses = plus concentré"
+      },
+      "frequencyPenalty": {
+        "label": "Pénalité de Fréquence",
+        "description": "Réduit la répétition des mots. Valeurs positives = moins de répétition"
+      },
+      "presencePenalty": {
+        "label": "Pénalité de Présence",
+        "description": "Encourage le modèle à parler de nouveaux sujets. Valeurs positives = plus de diversité"
+      }
+    }
+  },
+  "personalization": {
+    "personality": {
+      "title": "Personnalité de l'IA",
+      "description": "Choisissez comment l'IA doit communiquer avec vous",
+      "personalityType": "Type de Personnalité",
+      "professional": {
+        "label": "Professionnel",
+        "description": "Formel, direct et axé sur les affaires",
+        "example": "Sur la base de l'analyse des données, je recommande..."
+      },
+      "friendly": {
+        "label": "Amical",
+        "description": "Chaleureux, accessible et conversationnel",
+        "example": "Salut ! J'adorerais t'aider à planifier ce voyage incroyable..."
+      },
+      "enthusiastic": {
+        "label": "Enthousiaste",
+        "description": "Énergique, animé et inspirant",
+        "example": "Comme c'est excitant ! Créons une aventure inoubliable..."
+      },
+      "detailed": {
+        "label": "Détaillé",
+        "description": "Minutieux, analytique et exhaustif",
+        "example": "Je vais expliquer chaque aspect en détail..."
+      },
+      "concise": {
+        "label": "Concis",
+        "description": "Bref, direct et efficace",
+        "example": "Résumé : 3 destinations, 7 jours, 1 500 € au total."
+      }
+    },
+    "responseLength": {
+      "title": "Longueur des Réponses",
+      "description": "À quel point les réponses doivent-elles être détaillées ?",
+      "short": {
+        "label": "Courte",
+        "description": "Réponses brèves et directes (50-150 mots)"
+      },
+      "medium": {
+        "label": "Moyenne",
+        "description": "Réponses équilibrées (150-400 mots)"
+      },
+      "detailed": {
+        "label": "Détaillée",
+        "description": "Réponses complètes et approfondies (400+ mots)"
+      }
+    },
+    "features": {
+      "title": "Fonctionnalités Incluses",
+      "description": "Quelles informations supplémentaires aimeriez-vous recevoir ?",
+      "includeLocalTips": "Inclure des conseils locaux",
+      "includeBudgetBreakdown": "Inclure le détail du budget",
+      "includeAlternatives": "Inclure des alternatives"
+    },
+    "settings": {
+      "title": "Paramètres de Personnalisation",
+      "description": "Adaptez vos préférences de voyage individuelles.",
+      "selected": "Sélectionné",
+      "selectedType": "Type sélectionné",
+      "stars": "étoiles",
+      "travelStyle": {
+        "label": "Style de voyage",
+        "options": {
+          "moderate": "Modéré"
+        }
+      },
+      "dietary": {
+        "label": "Restrictions Alimentaires",
+        "none_selected": "Aucune exigence alimentaire spécifique.",
+        "removeAriaLabel": "Supprimer {item}",
+        "options": {
+          "vegetarian": "Végétarien",
+          "vegan": "Végétalien",
+          "glutenfree": "Sans Gluten",
+          "dairyfree": "Sans Produits Laitiers",
+          "nutfree": "Sans Noix",
+          "lowcarb": "Faible en Glucides",
+          "cholesterolfree": "Sans Cholestérol"
+        }
+      },
+      "accessibility": {
+        "label": "Besoins d'Accessibilité",
+        "none_selected": "Aucun besoin d'accessibilité sélectionné",
+        "removeAriaLabel": "Supprimer {item}",
+        "options": {
+          "screenreader": "Lecteur d'Écran",
+          "closedcaptions": "Sous-titres",
+          "wheelchair": "Accès en Fauteuil Roulant"
+        }
+      },
+      "accommodation": {
+        "label": "Type d'Hébergement",
+        "primaryTitle": "Hébergement principal",
+        "propertyTypeTitle": "Type de propriété",
+        "filtersTitle": "Équipements et filtres",
+        "amenitiesTitle": "Équipements",
+        "roomAmenitiesTitle": "Équipements de la chambre",
+        "placeholder": "Choisir le type",
+        "hotelStars": "Étoiles de l'hôtel",
+        "starRating": "Classement",
+        "starRatingLabel": "Classement minimum d'étoiles",
+        "selectedStars": "{count} étoiles sélectionnées",
+        "stars": "étoiles",
+        "options": {
+          "hotel": "Hôtel",
+          "resort": "Resort",
+          "villa": "Villa",
+          "guesthouse": "Maison d'hôtes",
+          "private_room": "Chambre privée",
+          "bed_and_breakfast": "Chambre d'hôtes",
+          "airbnb": "Airbnb / Location de vacances",
+          "hostel": "Auberge",
+          "aparthotel": "Appart'hôtel",
+          "holiday_home": "Maison de vacances",
+          "apartment": "Appartement",
+          "chalet": "Chalet",
+          "farm_stay": "Séjour à la ferme",
+          "camping": "Camping",
+          "glamping": "Glamping",
+          "boat": "Bateau",
+          "riad": "Riad",
+          "accessible": "Hébergement Accessible"
+        },
+        "descriptions": {
+          "accommodation": {
+            "hotel": "Hôtel traditionnel avec divers services et équipements",
+            "resort": "Resort tout compris avec installations sur place",
+            "villa": "Villa privée avec plus d'espace et d'équipements",
+            "guesthouse": "Séjour convivial en maison d'hôtes",
+            "private_room": "Chambre privée dans une maison ou un logement partagé",
+            "bed_and_breakfast": "Hébergement avec petit-déjeuner inclus",
+            "airbnb": "Location d'une maison ou d'un appartement privé",
+            "hostel": "Hébergement partagé économique",
+            "aparthotel": "Appart'hôtel avec services et kitchenette",
+            "holiday_home": "Maison de vacances pour des séjours autonomes",
+            "apartment": "Location d'appartement avec cuisine",
+            "chalet": "Hébergement de type chalet, souvent en nature/montagne",
+            "farm_stay": "Expérience de séjour rural à la ferme",
+            "camping": "Séjour en camping",
+            "glamping": "Camping avec plus de confort et de style",
+            "boat": "Séjour sur un bateau",
+            "riad": "Maison traditionnelle (riad), courante dans les médinas",
+            "accessible": "Spécialement adapté aux besoins d'accessibilité"
+          }
+        }
+      },
+      "cruise": {
+        "toggle": {
+          "label": "Inclure une expérience de croisière"
+        },
+        "hint": "Choisissez votre type de croisière puis personnalisez régions, durée et cabine.",
+        "collapsedHint": "Activez pour ajouter une croisière fluviale ou maritime à votre itinéraire.",
+        "types": {
+          "river": {
+            "title": "Croisière fluviale",
+            "subtitle": "Voies navigables et escales culturelles"
+          },
+          "sea": {
+            "title": "Croisière en mer",
+            "subtitle": "Océan ouvert et multi-destinations"
+          }
+        },
+        "regions": {
+          "riverTitle": "Régions fluviales",
+          "seaTitle": "Destinations",
+          "options": {
+            "european": "Rivières européennes",
+            "asian": "Rivières asiatiques",
+            "african": "Rivières africaines",
+            "american": "Rivières américaines",
+            "caribbean": "Caraïbes",
+            "mediterranean": "Méditerranée",
+            "alaska": "Alaska",
+            "nordic": "Nordique & Arctique",
+            "transatlantic": "Transatlantique"
+          }
+        },
+        "duration": {
+          "title": "Durée",
+          "options": {
+            "short": {
+              "label": "Court",
+              "days": "3–5 jours"
+            },
+            "medium": {
+              "label": "Moyen",
+              "days": "6–9 jours"
+            },
+            "long": {
+              "label": "Long",
+              "days": "10+ jours"
+            }
+          }
+        },
+        "cabin": {
+          "title": "Type de cabine",
+          "options": {
+            "interior": {
+              "label": "Intérieure",
+              "description": "Option la plus abordable"
+            },
+            "oceanview": {
+              "label": "Vue mer",
+              "description": "Fenêtre avec vue"
+            },
+            "balcony": {
+              "label": "Balcon",
+              "description": "Espace extérieur privé"
+            },
+            "suite": {
+              "label": "Suite",
+              "description": "Expérience premium"
+            }
+          }
+        }
+      }
+    }
+  },
+  "review": {
+    "tabs": {
+      "overview": "Aperçu",
+      "analytics": "Métriques",
+      "summary": "Résumé",
+      "actions": "Actions"
+    },
+    "pageTitle": "Revue",
+    "pageSubtitle": "Vérifiez et confirmez vos préférences IA",
+    "ready": "Vos préférences sont prêtes",
+    "hint": "Vous pouvez les modifier à tout moment",
+    "completeSetup": "Terminer la Configuration",
+    "modifyLater": "Vous pouvez modifier ces paramètres plus tard",
+    "enabled": "Activé",
+    "disabled": "Désactivé",
+    "missing": "Non défini",
+    "complete": "Complet",
+    "applied": "Appliqué",
+    "sections": {
+      "basics": {
+        "title": "Premiers pas"
+      },
+      "personalization": {
+        "title": "Personnalisation"
+      },
+      "travel": {
+        "title": "Préférences de Voyage"
+      },
+      "model": {
+        "title": "Modèle d'IA"
+      },
+      "privacy": {
+        "title": "Paramètres de Confidentialité"
+      }
+    },
+    "fields": {
+      "activities": "Activités",
+      "budget": "Budget",
+      "destination": "Destination",
+      "dates": "Dates",
+      "travelers": "Voyageurs",
+      "model": "Modèle",
+      "creativity": "Créativité",
+      "responseLength": "Longueur de Réponse",
+      "dataSharing": "Partage de Données",
+      "analytics": "Analytique",
+      "notifications": "Notifications"
+    }
+  },
+  "preferencesReset": "Préférences réinitialisées aux valeurs par défaut",
+  "preferencesSaved": "Préférences enregistrées avec succès !",
+  "preferencesUpdated": "Préférences mises à jour !",
+  "changesAreSavedAutomatically": "Les modifications sont enregistrées automatiquement.",
+  "helpFooter": {
+    "sectionLabel": "Aide et Support",
+    "title": "Aide et Support",
+    "subtitle": "Réponses rapides et ressources utiles",
+    "frequentQuestions": "Questions Fréquemment Posées",
+    "actions": {
+      "contactSupport": "Contacter le Support",
+      "readDocs": "Lire la Documentation"
+    },
+    "tips": {
+      "budget": {
+        "title": "Conseils de budget",
+        "description": "Définissez une plage de budget pour obtenir des recommandations plus précises."
+      },
+      "settings": {
+        "title": "Personnalisation",
+        "description": "Ajustez les préférences pour correspondre à votre style de voyage et vos priorités."
+      },
+      "support": {
+        "title": "Besoin d'aide ?",
+        "description": "Contactez-nous si vous avez des questions ou si quelque chose semble incorrect."
+      }
+    }
+  },
+  "preferences": {
+    "help": {
+      "sectionLabel": "Aide et support",
+      "title": "Aide et support",
+      "subtitle": "Réponses rapides et ressources utiles",
+      "frequentQuestions": "Questions fréquentes",
+      "contactSupport": "Contacter le support",
+      "readDocs": "Lire la documentation",
+      "budget": {
+        "title": "Conseils de budget",
+        "description": "Définissez une fourchette de budget pour obtenir des recommandations plus précises."
+      },
+      "settings": {
+        "title": "Personnalisation",
+        "description": "Ajustez vos préférences pour correspondre à votre style de voyage et à vos priorités."
+      },
+      "support": {
+        "title": "Besoin d’aide ?",
+        "description": "Contactez-nous si vous avez des questions ou si quelque chose ne semble pas correct."
+      }
+    }
+  },
+  "privacySettings": {
+    "title": "Paramètres de Confidentialité",
+    "description": "Contrôlez la façon dont vos données sont utilisées",
+    "saveSearchHistory": "Enregistrer l'historique des recherches",
+    "shareDataFor Improvement": "Partager les données pour des améliorations",
+    "allowPersonalization": "Autoriser la personnalisation"
+  },
+  "restoreDefaults": "Restaurer par Défaut",
+  "saveChanges": "Enregistrer les Modifications",
+  "saving": "Enregistrement...",
+  "autoSaveEnabled": "Sauvegarde automatique activée",
+  "unsavedChanges": "Modifications non enregistrées",
+  "modelTabV2": {
+    "stats": {
+      "backend": "Backend",
+      "backendValue": "Service ML"
+    },
+    "panels": {
+      "status": {
+        "title": "État du Service ML",
+        "subtitle": "Santé et capacités du service IA"
+      },
+      "chat": {
+        "title": "Interface de Chat IA",
+        "subtitle": "Testez l'assistant IA"
+      },
+      "recommendations": {
+        "title": "Recommandations IA",
+        "subtitle": "Recommandations personnalisées propulsées par ML"
+      }
+    },
+    "chat": {
+      "placeholder": "Posez une question sur les modèles IA ou les voyages...",
+      "send": "Envoyer"
+    },
+    "recommendations": {
+      "loading": "Chargement...",
+      "refresh": "Actualiser les recommandations",
+      "score": "Score",
+      "confidence": "Confiance",
+      "insights": "Insights IA"
+    }
+  },
+  "model": {
+    "title": "Modèle IA",
+    "description": "Choisissez le modèle d'intelligence artificielle qui correspond le mieux à vos besoins",
+    "selectedModel": "Modèle sélectionné",
+    "modelInfo": {
+      "title": "Informations du modèle"
+    },
+    "maxTokens": "Tokens maximum",
+    "costPerToken": "Coût par token",
+    "costWarning": {
+      "title": "Avertissement de coût",
+      "message": "Le coût mensuel estimé est {cost}. Envisagez un modèle moins cher ou réduisez les paramètres."
+    },
+    "resetToDefaults": "Réinitialiser par défaut",
+    "status": {
+      "available": "Disponible",
+      "unavailable": "Indisponible",
+      "comingSoon": "Bientôt"
+    },
+    "estimatedMonthlyCost": "Coût mensuel estimé",
+    "performance": {
+      "title": "Performance",
+      "speed": "Vitesse",
+      "accuracy": "Précision",
+      "creativity": "Créativité"
+    },
+    "capabilities": {
+      "title": "Capacités"
+    }
+  },
+  "parameters": {
+    "title": "Paramètres du modèle",
+    "description": "Ajustez les paramètres pour contrôler le comportement du modèle",
+    "temperature": {
+      "label": "Température",
+      "description": "Contrôle la créativité : valeurs basses = plus concentré et cohérent. Valeurs élevées = plus créatif et varié.",
+      "levels": {
+        "focused": "🎯 Concentré",
+        "balanced": "⚖️ Équilibré",
+        "creative": "🎨 Créatif"
+      }
+    },
+    "maxTokens": {
+      "label": "Tokens maximum",
+      "description": "Longueur de la réponse : plus de tokens = réponses plus longues et détaillées. Moins de tokens = réponses plus concises.",
+      "words": "mots",
+      "levels": {
+        "short": "Court",
+        "standard": "Standard",
+        "extended": "Étendu"
+      }
+    },
+    "topP": {
+      "label": "Top P",
+      "description": "Diversité du vocabulaire : valeurs basses = plus prévisible. Valeurs élevées = plus de variété.",
+      "levels": {
+        "narrow": "Restreint",
+        "standard": "Standard",
+        "diverse": "Divers"
+      }
+    },
+    "frequencyPenalty": {
+      "label": "Pénalité de fréquence",
+      "description": "Contrôle la répétition : valeurs positives réduisent les mots répétés. Valeurs négatives augmentent la cohérence terminologique."
+    },
+    "presencePenalty": {
+      "label": "Pénalité de présence",
+      "description": "Diversité des sujets : valeurs positives encouragent de nouveaux sujets. Valeurs négatives gardent le focus sur les sujets existants."
+    },
+    "penalties": {
+      "levels": {
+        "repetitive": "Répétitif",
+        "neutral": "Neutre",
+        "varied": "Varié"
+      }
+    },
+    "advanced": {
+      "title": "Avancé"
+    }
+  },
+  "form": {
+    "title": "Préférences d'IA",
+    "saveDraft": "Enregistrer le brouillon",
+    "next": "Suivant",
+    "previous": "Précédent",
+    "complete": "Terminer",
+    "completedSuccess": "Préférences enregistrées avec succès !",
+    "completedError": "Erreur lors de l'enregistrement des préférences",
+    "tabs": {
+      "basics": "Premiers pas",
+      "dates": "Dates",
+      "budget": "Budget",
+      "personalization": "Personnalisation",
+      "sustainable": "Durable",
+      "model": "Modèle",
+      "privacy": "Confidentialité",
+      "review": "Revue"
+    }
+  },
+  "travelPreferences": {
+    "budget": {
+      "title": "Préférences de budget",
+      "description": "Définissez votre plage de budget de voyage de {symbol}0 à {symbol}{max}",
+      "badge": "BUDGET INTELLIGENT",
+      "currencyLabel": "Devise préférée",
+      "currencyPlaceholder": "Sélectionner une devise",
+      "rangeLabel": "Plage de budget par voyage",
+      "maxBudgetPercent": "{percent}% du budget maximum",
+      "info": "Votre budget nous aide à recommander des destinations et des expériences qui correspondent à vos préférences financières.",
+      "defaultTitle": "Budget par Défaut",
+      "rangeTitle": "Définissez votre budget",
+      "rangeSubtitle": "Configurez la plage de budget pour recevoir des recommandations personnalisées",
+      "amplitude": "Amplitude",
+      "presetAriaLabel": "Définir le budget sur la plage {preset}",
+      "minLabel": "Budget minimum",
+      "maxLabel": "Budget maximum",
+      "minTooltip": "Valeur minimale que vous comptez dépenser pendant votre voyage",
+      "maxTooltip": "Valeur maximale que vous comptez dépenser pendant votre voyage",
+      "visualizationTitle": "Visualisation de l'Amplitude",
+      "minShort": "Budget Min.",
+      "available": "Disponible",
+      "errors": {
+        "multipleIssues": "VEUILLEZ RÉSOUDRE LES PROBLÈMES SUIVANTS :"
+      },
+      "presets": {
+        "economic": "Économique",
+        "balanced": "Équilibré",
+        "premium": "Premium"
+      }
+    },
+    "travelStyle": {
+      "title": "Style de Voyage",
+      "description": "Comment préférez-vous voyager ?",
+      "travelersLabel": "Nombre de Voyageurs par Défaut",
+      "selector": {
+        "title": "Quel type de voyageur êtes-vous ?",
+        "subtitle": "Sélectionnez votre style de voyage pour personnaliser les recommandations",
+        "selected": "Sélectionné",
+        "recommendedActivities": "Activités recommandées"
+      },
+      "types": {
+        "luxury": {
+          "label": "Voyage de luxe",
+          "description": "Expériences premium avec hébergements et services exclusifs"
+        },
+        "Luxury": {
+          "label": "Voyage de luxe",
+          "description": "Expériences premium avec hébergements et services exclusifs"
+        },
+        "comfort": {
+          "label": "Voyage confort",
+          "description": "Hébergements de qualité avec un bon équilibre confort/prix"
+        },
+        "Comfort": {
+          "label": "Voyage confort",
+          "description": "Hébergements de qualité avec un bon équilibre confort/prix"
+        },
+        "budget": {
+          "label": "Voyage économique",
+          "description": "Options abordables axées sur le rapport qualité-prix"
+        },
+        "Budget": {
+          "label": "Voyage économique",
+          "description": "Options abordables axées sur le rapport qualité-prix"
+        },
+        "adventure": {
+          "label": "Voyage aventure",
+          "description": "Activités excitantes et expériences en plein air"
+        },
+        "Adventure": {
+          "label": "Voyage aventure",
+          "description": "Activités excitantes et expériences en plein air"
+        },
+        "cultural": {
+          "label": "Voyage culturel",
+          "description": "Immersion dans la culture locale, l'histoire et les traditions"
+        },
+        "Cultural": {
+          "label": "Voyage culturel",
+          "description": "Immersion dans la culture locale, l'histoire et les traditions"
+        },
+        "relaxation": {
+          "label": "Voyage détente",
+          "description": "Expériences paisibles axées sur le repos et le bien-être"
+        },
+        "Relaxation": {
+          "label": "Voyage détente",
+          "description": "Expériences paisibles axées sur le repos et le bien-être"
+        }
+      },
+      "luxury": {
+        "label": "Luxe",
+        "description": "Expériences premium et exclusives"
+      },
+      "comfort": {
+        "label": "Confort",
+        "description": "Équilibre entre confort et coût"
+      },
+      "budget": {
+        "label": "Économique",
+        "description": "Options plus abordables"
+      },
+      "adventure": {
+        "label": "Aventure",
+        "description": "Expériences passionnantes et actives"
+      },
+      "cultural": {
+        "label": "Culturel",
+        "description": "Focus sur l'histoire et la culture locale"
+      },
+      "relaxation": {
+        "label": "Relaxation",
+        "description": "Repos et bien-être"
+      }
+    },
+    "sustainability": {
+      "title": "Durabilité",
+      "description": "Quelle importance accordez-vous à la durabilité ?",
+      "levelLabel": "Niveau de Durabilité",
+      "levelDescription": "Définissez votre priorité de base pour les options écologiques",
+      "ecoLabel": "Préférences Éco",
+      "ecoDescription": "Sélectionnez les pratiques que vous souhaitez adopter",
+      "infoTooltip": "Ces préférences aident notre IA à filtrer les hébergements et les activités en fonction de vos valeurs environnementales.",
+      "certificationsLabel": "Certifications Requises",
+      "certificationsDescription": "Filtrer uniquement les prestataires ayant des labels officiels",
+      "summaryTitle": "Résumé de vos Choix",
+      "summaryBody": "Avec ces choix, votre voyage aura un impact environnemental {impact}. Notre IA donnera la priorité à ces directives lors de la création de votre itinéraire.",
+      "impactLevels": {
+        "excellent": "excellent",
+        "good": "bon",
+        "moderate": "modéré",
+        "tobetter": "à améliorer"
+      },
+      "indicators": {
+        "low": "Faible Impact",
+        "high": "Fort Impact",
+        "score": "Score d'Impact Environnemental"
+      },
+      "low": {
+        "label": "Faible",
+        "description": "Pas de focus spécifique sur la durabilité",
+        "impact": "Impact standard sur l'environnement"
+      },
+      "medium": {
+        "label": "Moyen",
+        "description": "Quelques options durables quand c'est possible",
+        "impact": "Réduction modérée de l'impact environnemental"
+      },
+      "high": {
+        "label": "Élevé",
+        "description": "Donner la priorité aux options éco-responsables",
+        "impact": "Réduction maximale de l'impact environnemental"
+      },
+      "ecoPreferencesOptions": {
+        "carbon_offsetting": {
+          "label": "Compensation Carbone",
+          "description": "Contribuer à des projets de compensation de CO2"
+        },
+        "eco_hotels": {
+          "label": "Hôtels Éco-Responsables",
+          "description": "Hébergements avec certification environnementale"
+        },
+        "public_transport": {
+          "label": "Transports en Commun",
+          "description": "Préférer les transports durables"
+        },
+        "local_food": {
+          "label": "Gastronomie Locale",
+          "description": "Restaurants avec des produits locaux"
+        },
+        "wildlife_protection": {
+          "label": "Protection de la Vie Sauvage",
+          "description": "Activités qui protègent les animaux"
+        },
+        "water_conservation": {
+          "label": "Conservation de l'Eau",
+          "description": "Pratiques d'utilisation consciente de l'eau"
+        },
+        "renewable_energy": {
+          "label": "Énergie Renouvelable",
+          "description": "Hébergements utilisant de l'énergie propre"
+        },
+        "zero_waste": {
+          "label": "Zéro Déchet",
+          "description": "Minimiser les déchets pendant le voyage"
+        }
+      },
+      "certificationsOptions": {
+        "leed": {
+          "label": "LEED",
+          "description": "Leadership in Energy and Environmental Design"
+        },
+        "green_key": {
+          "label": "Clef Verte",
+          "description": "Certification internationale pour le tourisme"
+        },
+        "blue_flag": {
+          "label": "Pavillon Bleu",
+          "description": "Certification pour les plages et marinas"
+        },
+        "earth_check": {
+          "label": "EarthCheck",
+          "description": "Certification scientifique environnementale"
+        },
+        "green_globe": {
+          "label": "Green Globe",
+          "description": "Certification mondiale de durabilité"
+        },
+        "eco_label": {
+          "label": "Écolabel",
+          "description": "Étiquetage écologique européen"
+        },
+        "none": {
+          "label": "Sans Préférence",
+          "description": "Je n'ai pas de préférence pour les certifications"
+        }
+      }
+    },
+    "travelers": {
+      "title": "Nombre de Voyageurs par Défaut",
+      "description": "Combien de personnes voyagent généralement avec vous ?"
+    },
+    "activities": {
+      "title": "Activités Préférées",
+      "description": "Quel type d'activités aimez-vous le plus ?",
+      "addActivity": "Ajouter une Activité",
+      "popularActivities": "Activités Populaires",
+      "selectedLabel": "Activités Sélectionnées",
+      "clearAll": "Tout effacer",
+      "availableLabel": "Activités Disponibles",
+      "limitReached": "Limite atteinte",
+      "searchPlaceholder": "Rechercher des activités...",
+      "limitAlert": "Vous ne pouvez sélectionner que jusqu'à {max} activités",
+      "alreadySelected": "{activity} déjà sélectionnée",
+      "selectActivity": "Sélectionner {activity}",
+      "removeActivity": "Supprimer {activity}"
+    },
+    "suggestions": {
+      "title": "Suggestions Intelligentes de l'IA",
+      "available": "disponibles",
+      "match": "correspondance",
+      "potentialSavings": "Économies potentielles",
+      "category": "Catégorie",
+      "moreAvailable": "plus de suggestions disponibles",
+      "footer": "Les suggestions sont basées sur vos préférences et votre contexte",
+      "dismiss": "Ignorer la suggestion",
+      "sugestion": "Suggestion"
+    }
+  },
+  "usageAnalytics": {
+    "title": "Analyse d'Utilisation",
+    "totalRequests": "Total des Requêtes",
+    "tokensUsed": "Jetons Utilisés",
+    "averageResponseTime": "Temps de Réponse Moyen",
+    "successRate": "Taux de Réussite",
+    "favoriteFeatures": "Fonctionnalités Favorites",
+    "monthlyUsage": "Utilisation Mensuelle",
+    "performanceInsights": "Insights de Performance",
+    "performanceInsightsDescription": "Analyse de vos habitudes d'utilisation et recommandations",
+    "usagePatterns": "Habitudes d'Utilisation",
+    "mostActiveTime": "Moment le plus actif",
+    "preferredDay": "Jour de la semaine préféré",
+    "avgSessionDuration": "Durée moyenne de session",
+    "recommendations": "Recommandations",
+    "optimization": "Optimisation",
+    "optimizationDesc": "Considérez d'activer le cache pour réduire le temps de réponse",
+    "personalization": "Personnalisation",
+    "personalizationDesc": "Vos préférences sont bien configurées pour votre mode d'utilisation",
+    "achievement": "Succès",
+    "achievementDesc": "Félicitations ! Vous êtes un utilisateur actif de la plateforme",
+    "monthlyUsageDescription": "Évolution de votre utilisation de l'IA au cours des derniers mois",
+    "monthlyGrowth": "Croissance Mensuelle",
+    "favoriteFeaturesDescription": "Vos fonctionnalités favorites sur la plateforme"
+  },
+  "dashboard": {
+    "intelligenceScore": "Score d'Intelligence d'IA",
+    "configurationSteps": "Étapes de Configuration",
+    "overallProgress": "Progresso Global",
+    "scoreCards": {
+      "intelligence": {
+        "title": "Score d'Intelligence d'IA",
+        "subtitle": "Achèvement du Profil"
+      },
+      "traveler": {
+        "title": "Profil du Voyageur",
+        "subtitle": "Classification Générée par l'IA"
+      },
+      "sustainability": {
+        "title": "Score de Durabilité",
+        "subtitle": "Évaluation de l'Éco-Impact"
+      }
+    },
+    "navigation": {
+      "previous": "Précédent",
+      "continue": "Continuer",
+      "completeSetup": "Terminer la Configuration"
+    },
+    "auth": {
+      "saveTitle": "Enregistrez vos Préférences",
+      "saveDescription": "Connectez-vous pour conserver vos paramètres en permanence et les synchroniser entre vos appareils.",
+      "loginButton": "Se Connecter ou S'Inscrire"
+    }
+  },
+  "steps": {
+    "profile": {
+      "label": "Profil",
+      "description": "Informations de base"
+    },
+    "style": {
+      "label": "Style de Voyage",
+      "description": "Votre style de voyage"
+    },
+    "budget": {
+      "label": "Budget",
+      "description": "Préférences de budget"
+    },
+    "preferences": {
+      "label": "Personnalisation",
+      "description": "Paramètres personnalisés"
+    },
+    "activities": {
+      "label": "Activités",
+      "description": "Préférences d'activités"
+    },
+    "accessibility": {
+      "label": "Accessibilité",
+      "description": "Options d'accessibilité"
+    },
+    "settings": {
+      "label": "Paramètres",
+      "description": "Paramètres avancés"
+    }
+  },
+  "languageSelection": {
+    "title": "Sélection des Langues",
+    "selectedTitle": "Langues Sélectionnées",
+    "addLanguage": "Ajouter une Langue",
+    "chooseLanguage": "Choisir une Langue",
+    "noneSelected": "Aucune langue sélectionnée",
+    "searchPlaceholder": "Rechercher des langues...",
+    "noResults": "Aucune langue trouvée",
+    "recommendationsTitle": "Recommandations de l'IA",
+    "clickToAdd": "Cliquez pour ajouter à vos langues",
+    "proficiency": "Maîtrise",
+    "basic": "Débutant",
+    "intermediate": "Intermédiaire",
+    "fluent": "Courant",
+    "chooseProficiency": "Sélectionner le niveau de maîtrise"
+  },
+  "days": {
+    "monday": "Lundi",
+    "tuesday": "Mardi",
+    "wednesday": "Mercredi",
+    "thursday": "Jeudi",
+    "friday": "Vendredi",
+    "saturday": "Samedi",
+    "sunday": "Dimanche"
+  }
+}

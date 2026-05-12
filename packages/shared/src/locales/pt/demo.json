@@ -1,0 +1,197 @@
+{
+  "meta": {
+    "title": "Demo — Planeamento de Viagem com IA Local",
+    "description": "Descubra como a nossa IA local planeia a viagem perfeita com total privacidade."
+  },
+  "hero": {
+    "badge": "IA 100% Local • Privacidade Total",
+    "title": "Planeie a viagem perfeita com",
+    "titleHighlight": "IA que respeita a sua privacidade",
+    "subtitle": "O nosso motor de IA corre localmente no seu dispositivo. As suas preferências nunca saem do seu browser. Zero rastreamento. Zero dados na cloud.",
+    "cta": "Experimentar Agora",
+    "ctaSecondary": "Ver Como Funciona",
+    "privacyNote": "Nenhum dado é enviado para servidores externos"
+  },
+  "flow": {
+    "title": "Como Funciona",
+    "subtitle": "Um processo intuitivo em 4 fases — das suas preferências ao destino ideal",
+    "phases": {
+      "landing": "Início",
+      "preferences": "5 Preferências",
+      "searching": "Análise IA",
+      "results": "Resultados"
+    },
+    "phaseDescriptions": {
+      "landing": "Comece a sua jornada de planeamento",
+      "preferences": "Preencha 5 separadores de preferências",
+      "searching": "A IA local analisa e encontra correspondências",
+      "results": "Destinos personalizados e itinerários"
+    }
+  },
+  "tabs": {
+    "model": {
+      "title": "Modelo de IA",
+      "description": "Escolha e configure o modelo LLM local",
+      "details": [
+        "Seleção do modelo (tamanho vs qualidade)",
+        "Parâmetros de inferência",
+        "Modo offline disponível"
+      ]
+    },
+    "personalization": {
+      "title": "Personalização",
+      "description": "Interesses, estilo de viagem e preferências",
+      "details": [
+        "Atividades favoritas",
+        "Estilo de alojamento",
+        "Ritmo de viagem (relaxado vs aventureiro)"
+      ]
+    },
+    "budget": {
+      "title": "Orçamento",
+      "description": "Defina o seu orçamento e prioridades financeiras",
+      "details": [
+        "Intervalo de orçamento por pessoa",
+        "Prioridades de gasto (alojamento, comida, atividades)",
+        "Moeda preferida"
+      ]
+    },
+    "dates": {
+      "title": "Datas",
+      "description": "Escolha as datas e a duração da viagem",
+      "details": [
+        "Escolha a data de início e fim",
+        "Intervalos flexíveis",
+        "Consciência de sazonalidade e clima"
+      ]
+    },
+    "review": {
+      "title": "Revisão",
+      "description": "Reveja todas as preferências antes da pesquisa",
+      "details": [
+        "Resumo visual de todas as escolhas",
+        "Edição rápida de qualquer campo",
+        "Confirmação antes da análise IA"
+      ]
+    }
+  },
+  "search": {
+    "title": "Motor de Pesquisa Inteligente",
+    "subtitle": "Alimentado por LLM local para máxima privacidade",
+    "processing": "A processar preferências...",
+    "analyzing": "A analisar destinos compatíveis...",
+    "matching": "A criar itinerários personalizados...",
+    "complete": "Análise completa!",
+    "localBadge": "Processamento Local",
+    "noDataLeaves": "Os seus dados nunca saem do dispositivo"
+  },
+  "privacy": {
+    "sectionTitle": "Privacidade por Design",
+    "sectionSubtitle": "Cada decisão técnica foi tomada a pensar na sua privacidade",
+    "localLlm": {
+      "title": "LLM Local",
+      "description": "O modelo de IA corre inteiramente no seu browser via WebAssembly/WebGPU"
+    },
+    "noCloud": {
+      "title": "Zero Cloud",
+      "description": "Nenhum dado de preferência é enviado para servidores externos"
+    },
+    "encrypted": {
+      "title": "Encriptação Local",
+      "description": "Dados armazenados localmente são encriptados com chaves do dispositivo"
+    },
+    "openSource": {
+      "title": "Código Aberto",
+      "description": "Todo o código é auditável — transparência total no processamento"
+    },
+    "yourData": {
+      "title": "Os Seus Dados",
+      "description": "Elimine todos os dados com um clique — sem retenção, sem backups"
+    },
+    "gdpr": {
+      "title": "Conformidade RGPD",
+      "description": "Em plena conformidade com regulamentos europeus de proteção de dados"
+    }
+  },
+  "features": {
+    "sectionTitle": "Funcionalidades",
+    "sectionSubtitle": "Tudo o que precisa para planear a viagem perfeita",
+    "aiPowered": {
+      "title": "IA Inteligente",
+      "description": "Recomendações personalizadas baseadas nas suas preferências únicas"
+    },
+    "multiTab": {
+      "title": "5 Dimensões",
+      "description": "Captura de preferências em 5 categorias chave"
+    },
+    "ecoConscious": {
+      "title": "Eco-Consciente",
+      "description": "Opções sustentáveis integradas em cada recomendação"
+    },
+    "modelChoice": {
+      "title": "Escolha do Modelo",
+      "description": "Selecione o LLM local ideal entre qualidade e performance"
+    },
+    "privacyFirst": {
+      "title": "Privacidade Primeiro",
+      "description": "Processamento local — os seus dados nunca saem do dispositivo"
+    },
+    "smartSearch": {
+      "title": "Pesquisa Inteligente",
+      "description": "Motor que cruza todas as suas preferências com destinos reais"
+    }
+  },
+  "cta": {
+    "title": "Pronto para planear a sua viagem?",
+    "subtitle": "Sem registo. Sem dados na cloud. Apenas a sua viagem ideal.",
+    "button": "Começar Agora — É Grátis",
+    "footnote": "Funciona inteiramente no seu browser. Nenhum dado é recolhido."
+  },
+  "faq": {
+    "badge": "FAQ",
+    "title": "Perguntas Frequentes",
+    "subtitle": "Tudo o que precisa de saber sobre segurança, dados e precisão da IA",
+    "items": {
+      "safety": {
+        "q": "É seguro de utilizar?",
+        "a": "Absolutamente. Todo o motor de IA funciona localmente no seu browser através de WebAssembly. Nenhum dado é transmitido para servidores externos e nenhum pedido de rede é feito durante o processamento. As suas preferências ficam sempre no seu dispositivo."
+      },
+      "dataSecurity": {
+        "q": "Como são protegidos os meus dados?",
+        "a": "Todos os dados são armazenados exclusivamente no armazenamento local do seu browser e encriptados com chaves ao nível do dispositivo. Nunca recolhemos, armazenamos ou transmitimos informações pessoais. Tem controlo total e pode apagar tudo com um clique."
+      },
+      "dataRetention": {
+        "q": "Durante quanto tempo os meus dados são guardados?",
+        "a": "As suas preferências são mantidas apenas no armazenamento local do browser para sua conveniência. São automaticamente eliminadas após 7 dias de inatividade, ou pode eliminá-las manualmente a qualquer momento no painel de Definições."
+      },
+      "dataSharing": {
+        "q": "Os meus dados são partilhados com terceiros?",
+        "a": "Nunca. Como todo o processamento acontece localmente no seu dispositivo, não existe nenhum componente do lado do servidor que possa partilhar dados. Não usamos rastreadores de analytics, pixels publicitários ou ferramentas de recolha de dados de terceiros."
+      },
+      "precision": {
+        "q": "Quão precisas são as recomendações da IA?",
+        "a": "O nosso LLM local cruza as suas 5 dimensões de preferência (modelo, personalização, orçamento, datas e critérios de revisão) para gerar correspondências altamente relevantes. A precisão melhora à medida que fornece preferências mais detalhadas."
+      },
+      "aiReliability": {
+        "q": "Posso confiar nas sugestões da IA?",
+        "a": "A IA fornece sugestões baseadas em dados com base nas suas entradas. Todas as recomendações são transparentes — pode rever o raciocínio por trás de cada sugestão no separador de Revisão antes de tomar qualquer ação."
+      },
+      "functionality": {
+        "q": "Que funcionalidades estão incluídas?",
+        "a": "A plataforma inclui 5 separadores de preferências (Modelo IA, Personalização, Orçamento, Datas, Revisão), pesquisa em tempo real com processamento local de IA, importação/exportação de preferências, opções eco-conscientes e uma experiência móvel totalmente responsiva."
+      },
+      "offline": {
+        "q": "Funciona offline?",
+        "a": "Sim. Depois de a página ser carregada, o modelo de IA funciona inteiramente no seu browser. Pode configurar preferências e executar pesquisas sem ligação à internet. Os resultados são guardados localmente para acesso posterior."
+      }
+    }
+  },
+  "common": {
+    "step": "Passo",
+    "of": "de",
+    "next": "Seguinte",
+    "back": "Voltar",
+    "startOver": "Recomeçar",
+    "learnMore": "Saber Mais"
+  }
+}

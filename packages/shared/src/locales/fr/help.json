@@ -1,0 +1,154 @@
+{
+  "documentation": "Documentation",
+  "hero": {
+    "badge": "Support 24/7",
+    "title": "Centre d'Aide",
+    "subtitle": "Trouvez des réponses rapides à vos questions ou contactez notre support."
+  },
+  "search": {
+    "placeholder": "Chercher de l'aide...",
+    "label": "Chercher",
+    "suggestions": "Suggestions",
+    "clearFilters": "Effacer Filtres"
+  },
+  "categories": {
+    "all": "Tous",
+    "badge": "Catégories",
+    "title": "Catégories d'Aide",
+    "subtitle": "Explorez des sujets organisés pour trouver rapidement ce dont vous avez besoin.",
+    "articleLabel": "Articles",
+    "viewMore": "Explorer base"
+  },
+  "support": {
+    "badge": "Support Rapide",
+    "title": "Besoin d'aide ?",
+    "subtitle": "Notre équipe de support est disponible pour vous aider pour toute question.",
+    "status": "Statut",
+    "latency": "Latence"
+  },
+  "contact": {
+    "badge": "Conciergerie 24/7",
+    "title": "Contactez-nous",
+    "subtitle": "Envoyez-nous un message et nous vous répondrons dès que possible.",
+    "methods": {
+      "email": {
+        "title": "Email",
+        "value": "suporte@akmleva.com"
+      },
+      "phone": {
+        "title": "Téléphone",
+        "value": "+351 211 234 567"
+      },
+      "chat": {
+        "title": "Chat en Direct",
+        "value": "Disponible 24/7"
+      }
+    },
+    "notFound": "Vous n'avez pas trouvé ce que vous cherchiez ?",
+    "cta": "Contacter le Support"
+  },
+  "faq": {
+    "badge": "FAQ",
+    "title": "Foire Aux Questions",
+    "subtitle": "Réponses rapides aux questions les plus courantes.",
+    "helpful_count": "{count, plural, =0 {Personne n'a trouvé cela utile} =1 {Une personne a trouvé cela utile} other {# personnes ont trouvé cela utile}}",
+    "was_helpful": "Était-ce utile ?",
+    "yes": "Oui",
+    "no": "Non",
+    "empty_title": "Aucune question trouvée.",
+    "empty_subtitle": "Essayez une autre recherche ou contactez le support.",
+    "view_all": "Voir toutes les questions",
+    "filter_aria_label": "Filtrer la FAQ par catégorie"
+  },
+  "stats": {
+    "items": {
+      "questions": "Questions Fréquentes",
+      "categories": "Catégories",
+      "responseTime": "Temps de Réponse",
+      "responseTimeValue": "24h"
+    }
+  },
+  "content": {
+    "categories": {
+      "bookings": {
+        "title": "Réservations et Voyages",
+        "description": "Tout sur la création, la modification et la gestion des réservations"
+      },
+      "payments": {
+        "title": "Paiements et Factures",
+        "description": "Modes de paiement, remboursements et factures"
+      },
+      "account": {
+        "title": "Compte et Profil",
+        "description": "Gérer votre compte et vos informations personnelles"
+      },
+      "mobile": {
+        "title": "App Mobile",
+        "description": "Utilisation de l'application mobile"
+      },
+      "security": {
+        "title": "Sécurité et Confidentialité",
+        "description": "Protection des données et sécurité du compte"
+      },
+      "technical": {
+        "title": "Problèmes Techniques",
+        "description": "Résolution des problèmes techniques"
+      }
+    },
+    "channels": {
+      "chat": {
+        "title": "Chat en Direct",
+        "description": "Parlez-nous en temps réel avec des réponses instantanées",
+        "availability": "24/7",
+        "responseTime": "Immédiat",
+        "action": "Démarrer le Chat"
+      },
+      "email": {
+        "title": "Email",
+        "description": "Envoyez-nous un email pour des questions détaillées",
+        "availability": "24/7",
+        "responseTime": "2-4 heures",
+        "action": "Envoyer un Email"
+      },
+      "phone": {
+        "title": "Téléphone",
+        "description": "Appeler notre support spécialisé",
+        "availability": "9h-18h",
+        "responseTime": "Immédiat",
+        "action": "Appeler Maintenant"
+      }
+    },
+    "faqs": {
+      "faq-001": {
+        "question": "Comment puis-je annuler ma réservation ?",
+        "answer": "Vous pouvez annuler votre réservation via l'espace \"Mes Voyages\" ou en contactant notre support."
+      },
+      "faq-002": {
+        "question": "Quels sont les modes de paiement acceptés ?",
+        "answer": "Nous acceptons les cartes de crédit/débit (Visa, Mastercard, American Express), PayPal et les virements."
+      },
+      "faq-003": {
+        "question": "Comment modifier les détails de ma réservation ?",
+        "answer": "Les modifications peuvent être effectuées via l'espace \"Mes Voyages\" jusqu'à 24 heures avant le départ."
+      },
+      "faq-004": {
+        "question": "Que faire se je perds mon voucher ?",
+        "answer": "Vous pouvez re-télécharger votre voucher via l'espace \"Mes Voyages\" ou contacter le support."
+      },
+      "faq-005": {
+        "question": "Comment fonctionne le programme de fidélité ?",
+        "answer": "Notre programme de fidélité offre des points pour chaque réservation. Ceux-ci peuvent être échangés contre des réductions."
+      },
+      "faq-006": {
+        "question": "Puis-je effectuer des réservations de groupe ?",
+        "answer": "Oui ! Pour les réservations de groupe (10 personnes ou plus), nous offrons des conditions spéciales."
+      }
+    },
+    "quickLinks": {
+      "my-trips": "Mes Voyages",
+      "payments": "Paiements",
+      "profile": "Mon Profil",
+      "settings": "Paramètres"
+    }
+  }
+}

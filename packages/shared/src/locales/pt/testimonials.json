@@ -1,0 +1,28 @@
+{
+  "listTitle": "Lista de Depoimentos",
+  "quotePrefix": "\"",
+  "quoteSuffix": "\"",
+  "rating": "{rating} de 5",
+  "subtitle": "Depoimentos reais de viajantes satisfeitos",
+  "title": "O que nossos clientes dizem",
+  "feedbackLabel": "Viajante Verificado",
+  "noReviews": "Ainda não há avaliações para este destino. Seja o primeiro a partilhar a sua experiência!",
+  "totalReviews": "Total de Avaliações",
+  "averageRating": "Classificação Média",
+  "featuredReviews": "Depoimentos em destaque",
+  "noTestimonials": "Ainda não há depoimentos disponíveis.",
+  "verified": "Taxa de Verificação",
+  "featured": "Destaque",
+  "fallback": {
+    "comments": [
+      "Uma experiência absolutamente incrível! A equipa da AKMLEVA tornou a nossa viagem inesquecível. Cada detalhe foi perfeitamente organizado.",
+      "Serviço profissional do início ao fim. Os transfers foram integrados e as acomodações excederam as nossas expectativas.",
+      "Serviço ao cliente maravilhoso e destinos bonitos. Recomendo vivamente a qualquer pessoa que visite Portugal!"
+    ],
+    "trips": [
+      "Aventura de 7 dias em Portugal",
+      "Descoberta da Madeira de 5 dias",
+      "Tour pela Natureza dos Açores"
+    ]
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "listTitle": "Liste des témoignages",
+  "quotePrefix": "\"",
+  "quoteSuffix": "\"",
+  "rating": "{rating} sur 5",
+  "subtitle": "Témoignages réels de voyageurs satisfaits",
+  "title": "Ce que disent nos clients",
+  "feedbackLabel": "Voyageur Vérifié",
+  "noReviews": "Aucun avis n'est encore disponible pour cette destination. Soyez le premier à partager votre expérience !",
+  "totalReviews": "Total des Avis",
+  "averageRating": "Note Moyenne",
+  "featuredReviews": "Avis mis en avant",
+  "noTestimonials": "Aucun témoignage disponible pour le moment.",
+  "verified": "Taux de Vérification",
+  "featured": "Mis en Avant",
+  "fallback": {
+    "comments": [
+      "Une expérience absolument incroyable ! L'équipe d'AKMLEVA a rendu notre voyage inoubliable. Chaque détail a été parfaitement organisé.",
+      "Service professionnel du début à la fin. Les transferts étaient parfaits et les hébergements ont dépassé nos attentes.",
+      "Merveilleux service client et destinations magnifiques. Je recommande vivement à tous ceux qui visitent le Portugal !"
+    ],
+    "trips": [
+      "Aventure de 7 jours au Portugal",
+      "Découverte de Madère en 5 jours",
+      "Tour Nature aux Açores"
+    ]
+  }
+}

@@ -1,0 +1,114 @@
+{
+  "responsibility": {
+    "title": "Conditions de Responsabilité",
+    "subtitle": "Informations importantes sur nos responsabilités et engagements",
+    "lastUpdated": "Dernière mise à jour : {date}",
+    "effectiveDate": "Date d'entrée en vigueur : {date}",
+    "introduction": "AKMLEVA agit en tant qu'intermédiaire entre le client et les prestataires de services touristiques. Ces conditions définissent nos responsabilités et limitations.",
+    "sections": {
+      "liability": {
+        "title": "Responsabilité et Limitations",
+        "intro": "Notre responsabilité est limitée par notre rôle d'intermédiaire.",
+        "scope": "Nous agissons dans la réservation et l'organisation de services fournis par des tiers.",
+        "exclusions": [
+          "Retards ou annulations par les compagnies aériennes ou transporteurs",
+          "Dommages, pertes ou égarements de bagages sous la responsabilité de tiers",
+          "Événements de force majeure (catastrophes naturelles, instabilité politique, pandémies)",
+          "Refus d'entrée dans les pays en raison d'un manque de documentation appropriée du voyageur"
+        ]
+      },
+      "client": {
+        "title": "Responsabilités du Client",
+        "intro": "Le client est responsable de s'assurer du respect de toutes les exigences de voyage.",
+        "items": [
+          "Posséder des documents de voyage valides (Passeport, Visas, Carte d'Identité)",
+          "Respecter les exigences de santé et de vaccination des destinations",
+          "Fournir des informations correctes et complètes au moment de la réservation",
+          "Vérifier tous les documents de voyage émis et signaler les erreurs immédiatement"
+        ]
+      },
+      "company": {
+        "title": "Responsabilités de l'Entreprise",
+        "intro": "Nous nous engageons à fournir un service d'excellence et de transparence.",
+        "items": [
+          "Sélectionner des fournisseurs et partenaires de confiance",
+          "Fournir des informations claires et précises sur les services contractés",
+          "Fournir une assistance au client avant, pendant et après le voyage",
+          "Gérer les réservations et les paiements de manière sécurisée et efficace"
+        ]
+      },
+      "insurance": {
+        "title": "Assurances et Garanties",
+        "intro": "La sécurité de nos clients est une priorité.",
+        "coverage": [
+          "Assurance Responsabilité Civile Professionnelle",
+          "Fonds de Garantie Voyages et Tourisme",
+          "Options d'assurance voyage personnelle (recommandé)"
+        ],
+        "company": "Nos assurances sont négociées par des assureurs certifiés et réglementés par l'ASF."
+      },
+      "disputes": {
+        "title": "Résolution des Litiges",
+        "intro": "Nous privilégions la résolution amiable de tout différend.",
+        "procedure": [
+          "Contact initial avec notre service client",
+          "Livre de Réclamations Électronique",
+          "Recours aux Entités de Résolution Alternative des Litiges de Consommation"
+        ],
+        "jurisdiction": "Pour les questions juridiques, le droit portugais et le tribunal du siège de l'entreprise s'appliquent."
+      }
+    }
+  },
+  "error": {
+    "title": "Erreur lors du chargement des conditions",
+    "message": "Impossible de charger les conditions générales. Veuillez réessayer.",
+    "retry": "Réessayer"
+  },
+  "terms": {
+    "lastUpdated": "Dernière mise à jour",
+    "effective": "En vigueur",
+    "version": "Version",
+    "download": "Télécharger PDF",
+    "print": "Imprimer"
+  },
+  "toc": {
+    "title": "Sommaire",
+    "readingProgress": "Progression de lecture",
+    "estimatedTime": "Temps estimé : {minutes} minutes",
+    "backToTop": "Retour en haut",
+    "completed": "Document terminé !"
+  },
+  "tableOfContents": {
+    "title": "Sommaire"
+  },
+  "footer": {
+    "links": {
+      "privacy": "Politique de Confidentialité",
+      "cookies": "Politique de Cookies",
+      "terms": "Conditions d'Utilisation",
+      "dataProtection": "Protection des données"
+    },
+    "newsletter": {
+      "title": "Restez Informé",
+      "description": "Recevez des mises à jour juridiques et des notifications importantes",
+      "placeholder": "Entrez votre email",
+      "success": "Inscrit avec succès !",
+      "error": "Une erreur est survenue. Veuillez réessayer."
+    },
+    "contact": {
+      "title": "Contacter l'Équipe Juridique"
+    },
+    "legal": {
+      "title": "Information Juridique"
+    },
+    "compliance": {
+      "title": "Conformité"
+    },
+    "governed": "Ces conditions générales sont régies par la loi portugaise.",
+    "questions": "Si vous avez des questions, veuillez contacter notre équipe juridique.",
+    "rights": "Tous droits réservés.",
+    "secure": "Sécurisé et Crypté",
+    "verified": "Entreprise Vérifiée",
+    "transparent": "Conditions Transparentes"
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "bookingForm": {
+    "title": "Réservez Votre Transfert",
+    "description": "Remplissez les détails et obtenez un devis instantané pour votre voyage.",
+    "from": "Origine",
+    "from_placeholder": "Ex: Aéroport de Lisbonne",
+    "to": "Destination",
+    "to_placeholder": "Ex: Hôtel Mundial, Lisbonne",
+    "button": "Rechercher"
+  },
+  "cta": {
+    "title": "Prêt à Voyager l'Esprit Tranquille ?",
+    "description": "Sécurisez votre transport dès maintenant et commencez votre voyage de la meilleure façon possible. Ponctualité et professionnalisme garantis.",
+    "button": "Contactez-Nous"
+  },
+  "fleet": {
+    "title": "Notre Flotte",
+    "subtitle": "Nous disposons d'une large gamme de véhicules modernes et confortables pour garantir votre satisfaction.",
+    "vehicle": {
+      "sedan": "Berline Standard",
+      "sedan_desc": "Idéale pour les couples ou les voyageurs seuls, avec confort et efficacité.",
+      "executive": "Berline Exécutive",
+      "executive_desc": "Voyagez avec style et luxe. Parfait pour les voyages d'affaires.",
+      "van": "Minivan / Fourgonnette",
+      "van_desc": "Beaucoup d'espace pour les familles ou les petits groupes avec plus de bagages."
+    }
+  },
+  "hero": {
+    "title": "Votre Transfert, Notre Priorité",
+    "subtitle": "Arrivez à destination dans le confort, la sécurité et la ponctualité. De l'aéroport à l'hôtel, nous nous occupons de tout."
+  },
+  "howItWorks": {
+    "title": "Comment Ça Marche ?",
+    "subtitle": "Réserver votre transfert est simple et rapide. Suivez ces 3 étapes faciles.",
+    "step1_title": "1. Recherchez",
+    "step1_desc": "Indiquez votre origine, destination et date. Nous vous montrerons les meilleures options.",
+    "step2_title": "2. Réservez",
+    "step2_desc": "Choisissez le véhicule qui correspond le mieux à vos besoins et confirmez la réservation.",
+    "step3_title": "3. Voyagez",
+    "step3_desc": "Votre chauffeur vous attendra au point de rendez-vous. Détendez-vous et profitez du trajet."
+  }
+}

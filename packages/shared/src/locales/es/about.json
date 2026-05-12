@@ -1,0 +1,166 @@
+{
+  "certifications": {
+    "title": "Certificaciones y Cumplimiento",
+    "subtitle": "Comprometidos con la excelencia y el cumplimiento en todos los aspectos de nuestro servicio",
+    "verified": "Verificado",
+    "active": "Activo",
+    "items": {
+      "turismoPortugal": {
+        "name": "Turismo de Portugal",
+        "description": "Registro Nacional de Agencias de Viajes y Turismo (RNAVT).",
+        "type": "Licenciamiento"
+      },
+      "iata": {
+        "name": "Acreditación IATA",
+        "description": "Certificación internacional para la emisión de tráfico aéreo.",
+        "type": "Certificación Internacional"
+      },
+      "lre": {
+        "name": "Libro de Reclamaciones Electrónico",
+        "description": "Cumplimiento legal y protección al consumidor.",
+        "type": "Legal"
+      }
+    }
+  },
+  "company": {
+    "name": "AKMLEVA",
+    "slogan": "Tu socio de confianza para viajes inolvidables."
+  },
+  "coreValues": {
+    "mainTitle1": "Nuestros",
+    "mainTitle2": "Valores Esenciales",
+    "mainSubtitle": "Nos guiamos por principios que garantizan experiencias auténticas y memorables.",
+    "personalization": {
+      "title": "Personalización",
+      "desc": "Creamos itinerarios únicos, adaptados a sus deseos y necesidades."
+    },
+    "sustainability": {
+      "title": "Sostenibilidad",
+      "desc": "Promovemos viajes responsables que respetan el medio ambiente y las comunidades locales."
+    },
+    "ethicsIntegrity": {
+      "title": "Ética e Integridad",
+      "desc": "Operamos con total transparencia y honestidad en todas las interacciones."
+    },
+    "innovation": {
+      "title": "Innovación",
+      "desc": "Utilizamos tecnología y creatividad para ofrecer soluciones de viaje de vanguardia."
+    },
+    "clientFocus": {
+      "title": "Enfoque en el Cliente",
+      "desc": "Ponemos sus necesidades en el centro de todo lo que hacemos, garantizando su satisfacción."
+    },
+    "community": {
+      "title": "Comunidad",
+      "desc": "Apoyamos e involucramos a las comunidades locales en los destinos que exploramos."
+    }
+  },
+  "footer": {
+    "callNow": "Llamar ahora",
+    "backToTop": "Volver arriba",
+    "cta": {
+      "title": "¿Listo para diseñar tu viaje?",
+      "subtitle": "Tu próxima gran aventura comienza con una simple conversación. Deja la logística en nuestras manos y concéntrate en los recuerdos.",
+      "contact": "Contáctanos",
+      "explore": "Explorar Destinos"
+    }
+  },
+  "founder": {
+    "bio1": "Con una pasión inquebrantable por los viajes y una visión para crear experiencias únicas, Luís Campos fundó AKMLEVA. Su liderazgo y dedicación han moldeado la empresa, transformándola en un faro de excelencia en el sector turístico. Cree que cada viaje es una oportunidad para descubrir algo nuevo, tanto en el mundo exterior como en nosotros mismos.",
+    "quote": "Viajar es lo único que compras que te hace más rico.",
+    "badge1": "Visionario",
+    "badge2": "Emprendedor",
+    "badge3": "Aventurero",
+    "title1": "Nuestro",
+    "title2": "Fundador"
+  },
+  "hero": {
+    "title1": "Tu Aventura Comienza",
+    "title2": "Aquí",
+    "subtitle": "Descubre destinos únicos con experiencias personalizadas y memorables.",
+    "cta": "Explorar Destinos",
+    "learnMore": "Saber más"
+  },
+  "mapContact": {
+    "title": "Nuestra oficina",
+    "address": "Rua São Nicolau, 9\n4520-248 Santa Maria da Feira",
+    "phone": "+351 256 372 092",
+    "email": "info@akmleva.com"
+  },
+  "partnerships": {
+    "title1": "Nuestras",
+    "title2": "Alianzas Estratégicas",
+    "subtitle": "Colaboramos con los mejores para ofrecerle lo mejor.",
+    "gea": {
+      "desc": "Asociación con el Grupo GEA, la red más grande de agencias de viajes independientes en Portugal, asegurando el acceso a una amplia gama de servicios y condiciones exclusivas."
+    },
+    "sanjotec": {
+      "desc": "Colaboración con el Parque de Ciencia y Tecnología de São João da Madeira, impulsando la innovación y el desarrollo tecnológico en el sector turístico."
+    },
+    "dgconsulting": {
+      "desc": "Consultoría especializada en gestión y estrategia, asegurando la optimización de nuestros procesos y la excelencia de nuestros servicios."
+    },
+    "turismodeportugal": {
+      "desc": "Asociación oficial con Turismo de Portugal, garantizando acceso a destinos nacionales y certificación de calidad de nuestros servicios turísticos."
+    },
+    "officialPartner": "Socio Oficial"
+  },
+  "stats": {
+    "satisfiedClients": "Clientes Satisfechos",
+    "exclusiveDestinations": "Destinos Exclusivos",
+    "satisfactionRate": "Tasa de Satisfacción",
+    "supportAvailable": "Soporte Disponible"
+  },
+  "story": {
+    "title1": "Nuestra",
+    "title2": "Historia",
+    "subtitle": "Desde nuestra fundación, nos hemos dedicado a convertir los sueños en realidad.",
+    "visionTitle": "Visión y Misión",
+    "paragraph1": "AKMLEVA nació de la pasión por explorar el mundo y la creencia de que cada viaje debe ser una experiencia transformadora. Fundada con el objetivo de ir más allá del turismo convencional, buscamos crear itinerarios que no solo muestren los destinos, sino que también conecten a los viajeros con la cultura local y la esencia de cada lugar.",
+    "paragraph2": "Creemos que la verdadera riqueza de un viaje reside en los recuerdos creados, las personas conocidas y las perspectivas ampliadas. Por ello, cada detalle se planifica cuidadosamente para superar las expectativas, desde la elección de los alojamientos hasta las actividades más auténticas.",
+    "ourMission": "Nuestra Misión",
+    "missionStatement": "Inspirar y facilitar viajes que enriquezcan vidas, promoviendo el descubrimiento y el respeto por las diversas culturas del mundo.",
+    "imageAlt": "Equipo planificando un viaje",
+    "location": "Sede en Portugal"
+  },
+  "team": {
+    "title": "El Liderazgo de AKMLEVA",
+    "subtitle": "Conoce a quienes transforman la visión en realidad y garantizan la excelencia en cada servicio prestado.",
+    "luis": {
+      "name": "Luís Campos",
+      "status": "Disponible",
+      "bioTitle": "Biografía Profesional",
+      "role": "CEO y Fundador",
+      "bio": "Con una vasta experiencia en el sector turístico, lidera AKMLEVA con la visión de transformar cada viaje en una experiencia única y personalizada.",
+      "fullBio": "Luís Campos es el corazón y la mente detrás de AKMLEVA. Con más de 15 años de dedicación a la industria del turismo e inmobiliaria, ha construido una reputación sólida basada en la confianza y la excelencia. Su visión emprendedora permitió crear una agencia que no solo vende destinos, sino que diseña recuerdos. Como CEO, Luís está directamente involucrado en la planificación estratégica y en la garantía de la calidad del servicio, manteniendo siempre la cercanía con los clientes que define a la marca AKMLEVA.",
+      "curriculum": [],
+      "contact": "luis.campos@akmleva.com",
+      "knowMore": "Saber más sobre Luís",
+      "experience": "Experiencia y Especializaciones",
+      "contactMe": "Contactar"
+    }
+  },
+  "trust": {
+    "title1": "Confianza y",
+    "title2": "Credenciales",
+    "subtitle": "Transparencia, seguridad y calidad certificada."
+  },
+  "newsletter": {
+    "title": "Mantente Informado"
+  },
+  "mobile": {
+    "app": {
+      "app": "Aplicación Móvil"
+    }
+  },
+  "help": {
+    "documentation": "Documentación"
+  },
+  "legal": {
+    "terms": "Términos de Uso",
+    "privacy": "Política de Privacidad",
+    "cookies": "Política de Cookies",
+    "gdpr": "GDPR",
+    "cancellation": "Política de Cancelación"
+  }
+}

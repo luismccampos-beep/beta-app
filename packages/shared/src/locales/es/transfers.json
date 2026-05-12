@@ -1,0 +1,80 @@
+{
+  "bookingForm": {
+    "title": "Reserve Su Traslado",
+    "description": "Complete los detalles y obtenga una cotización instantánea para su viaje.",
+    "from": "Desde",
+    "from_placeholder": "Ej: Aeropuerto de Lisboa",
+    "to": "Hasta",
+    "to_placeholder": "Ej: Hotel Mundial, Lisboa",
+    "date": "Fecha",
+    "pickADate": "Elija una fecha",
+    "time": "Hora",
+    "button": "Buscar"
+  },
+  "cta": {
+    "title": "¿Listo para Viajar con Tranquilidad?",
+    "description": "Asegure su transporte ahora y comience su viaje de la mejor manera posible. Puntualidad y profesionalismo garantizados.",
+    "badge": "Servicio Certificado",
+    "button": "Contáctenos",
+    "additionalInfo": "Información Adicional"
+  },
+  "fleet": {
+    "title": "Nuestra Flota",
+    "subtitle": "Tenemos una amplia gama de vehículos modernos y cómodos para garantizar su satisfacción.",
+    "badge": "Nuestra Flota",
+    "vehicle": {
+      "sedan": "Sedán Estándar",
+      "sedan_desc": "Ideal para parejas o viajeros individuales con comodidad y eficiencia.",
+      "executive": "Sedán Ejecutivo",
+      "executive_desc": "Viaje con estilo y lujo. Perfecto para viajes de negocios.",
+      "van": "Minivan / Furgoneta",
+      "van_desc": "Mucho espacio para familias o grupos pequeños con más equipaje."
+    }
+  },
+  "hero": {
+    "title": "Su Traslado, Nuestra Prioridad",
+    "subtitle": "Llegue a su destino con comodidad, seguridad y puntualidad. Del aeropuerto al hotel, nos encargamos de todo.",
+    "badge": "Servicio Premium",
+    "primaryAction": "Reserve Ahora",
+    "secondaryAction": "Saber Más"
+  },
+  "howItWorks": {
+    "title": "¿Cómo Funciona?",
+    "subtitle": "Reservar su traslado es rápido y fácil. Siga estos 3 pasos simples.",
+    "badge": "Simple & Rápido",
+    "step1": {
+      "title": "1. Buscar",
+      "description": "Indique su origen, destino y fecha. Le mostraremos las mejores opciones."
+    },
+    "step2": {
+      "title": "2. Reservar",
+      "description": "Elija el vehículo que mejor se adapte a sus necesidades y confirme la reserva."
+    },
+    "step3": {
+      "title": "3. Viajar",
+      "description": "Su conductor le estará esperando en el punto de encuentro. Relájese y disfrute del viaje."
+    }
+  },
+  "insuranceIncluded": "Seguro incluido",
+  "noResults": "No se encontraron traslados",
+  "tryDifferentSearch": "Pruebe con otras opciones o fechas de búsqueda.",
+  "results": {
+    "title": "Traslados disponibles",
+    "subtitle": "{count} opciones encontradas"
+  },
+  "toast": {
+    "fillAllFields": "Por favor, complete todos los campos antes de buscar.",
+    "noResultsTitle": "Sin Resultados",
+    "noResultsDescription": "No hemos encontrado traslados que coincidan con sus criterios. Pruebe con otros parámetros de búsqueda.",
+    "resultsFoundTitle": "Pesquisa concluída",
+    "resultsFoundDescription": "{count} traslados encontrados"
+  },
+  "vehicle": {
+    "sedan": "Sedán",
+    "executive": "Ejecutivo",
+    "van": "Minivan",
+    "sedan_desc": "Ideal para parejas o viajeros individuales con comodidad y eficiencia.",
+    "executive_desc": "Viaje con estilo y lujo. Perfecto para viajes de negocios.",
+    "van_desc": "Mucho espacio para familias o grupos pequeños con más equipaje."
+  }
+}

@@ -1,0 +1,1 @@
+{"version":3,"file":"useAIContext.js","sourceRoot":"","sources":["../../../../../src/components/common/UnifiedAI/hooks/useAIContext.ts"],"names":[],"mappings":"AACA,OAAO,EAAE,YAAY,EAAE,MAAM,gBAAgB,CAAC;AAC9C,OAAO,EAAE,UAAU,EAAE,MAAM,cAAc,CAAC;AAE1C,MAAM,UAAU,YAAY;IAC1B,OAAO;QACL,KAAK,EAAE,UAAU,EAAE;QACnB,OAAO,EAAE,YAAY,EAAE;KACxB,CAAC;AACJ,CAAC"}

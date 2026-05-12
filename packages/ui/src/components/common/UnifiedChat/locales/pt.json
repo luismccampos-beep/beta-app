@@ -1,0 +1,21 @@
+{
+  "welcome": "Olá! 👋 Bem-vindo(a) ao suporte da AKMLEVA. Como posso ajudar você hoje?",
+  "openChat": "Abrir chat de suporte",
+  "talkToUs": "Fale Conosco!",
+  "selectTopic": "Selecione um tópico",
+  "expandTopics": "Expandir tópicos",
+  "collapseTopics": "Minimizar tópicos",
+  "conversationClosed": "Conversa encerrada",
+  "notificationsDisabled": "Notificações desativadas para esta sessão",
+  "supportTitle": "Suporte AKMLEVA",
+  "online": "Online",
+  "maximizeChat": "Maximizar Chat",
+  "minimizeChat": "Minimizar Chat",
+  "confirmClose": "Confirmar fechamento",
+  "cancelClose": "Cancelar fechamento",
+  "closeChat": "Fechar Chat",
+  "inputPlaceholder": "Digite sua mensagem...",
+  "messageInput": "Caixa de mensagem do chat",
+  "attachFile": "Anexar arquivo",
+  "sendMessage": "Enviar mensagem"
+}

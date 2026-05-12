@@ -1,0 +1,67 @@
+{
+  "filters": {
+    "title": "Filtres",
+    "clear": "Effacer les Filtres",
+    "type": {
+      "title": "Type",
+      "destinations": "Destinations",
+      "hotels": "Hôtels",
+      "packages": "Forfaits",
+      "attractions": "Attractions",
+      "restaurants": "Restaurants"
+    },
+    "price": {
+      "title": "Prix"
+    },
+    "rating": {
+      "title": "Note",
+      "any": "Tout"
+    }
+  },
+  "header": {
+    "exploreOffers": "Explorer les Offres"
+  },
+  "results": {
+    "count": "{{count}} résultats trouvés",
+    "featured": "En Vedette",
+    "types": {
+      "destination": "Destination",
+      "transfer": "Transfert",
+      "restaurant": "Restaurant",
+      "cruise": "Croisière",
+      "attraction": "Attraction",
+      "package": "Forfait",
+      "hotel": "Hôtel",
+      "flight": "Vol"
+    },
+    "reviews": "Avis",
+    "noReviews": "Aucun avis",
+    "perWhat": {
+      "vehicle": "par véhicule",
+      "experience": "par expérience",
+      "guest": "par invité",
+      "person": "par personne",
+      "night": "par nuit"
+    },
+    "viewDetails": "Voir les Détails"
+  },
+  "sort": {
+    "placeholder": "Trier par",
+    "relevance": "Pertinence",
+    "priceLow": "Prix: Bas à Élevé",
+    "priceHigh": "Prix: Élevé à Bas",
+    "ratingHigh": "Mieux Notés",
+    "nameAZ": "Nom: A-Z"
+  },
+  "view": {
+    "list": "Liste",
+    "map": "Carte"
+  },
+  "search": "Rechercher",
+  "searching": "Recherche en cours...",
+  "searchComplete": "Recherche terminée",
+  "searchFailed": "Échec de la recherche",
+  "noResults": "Aucun résultat trouvé. Essayez d'ajuster vos préférences.",
+  "unexpectedError": "Une erreur inattendue s'est produite.",
+  "resultsFound": "Résultats trouvés ! Consultez les options ci-dessous."
+}

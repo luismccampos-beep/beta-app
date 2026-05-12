@@ -1,0 +1,40 @@
+{
+  "hero": {
+    "title": "Documentação para Programadores AKMLEVA",
+    "subtitle": "Guias completos, referência de API e SDKs para integrar os serviços de viagem AKMLEVA nas suas aplicações",
+    "searchPlaceholder": "Pesquisar documentação...",
+    "getStarted": "Começar",
+    "apiReference": "Referência da API"
+  },
+  "levels": {
+    "beginner": "Iniciante",
+    "intermediate": "Intermédio",
+    "advanced": "Avançado"
+  },
+  "sections": {
+    "title": "Secções de Documentação",
+    "articles": "artigos",
+    "readMore": "Ler mais"
+  },
+  "apiReference": {
+    "title": "Referência da API",
+    "parameters": "Parâmetros",
+    "example": "Exemplo"
+  },
+  "sdk": {
+    "title": "SDKs e Bibliotecas",
+    "download": "Download",
+    "docs": "Docs"
+  },
+  "support": {
+    "title": "Precisa de Ajuda?",
+    "contact": "Contactar Suporte",
+    "contactDescription": "A nossa equipa de suporte está disponível para ajudar com quaisquer questões ou problemas.",
+    "liveChat": "Chat ao vivo",
+    "community": "Comunidade e Recursos",
+    "communityDescription": "Conecte-se com outros programadores e aceda a recursos adicionais.",
+    "apiStatus": "Estado da API",
+    "operational": "Todos os sistemas operacionais",
+    "lastUpdated": "Última atualização: {date}"
+  }
+}

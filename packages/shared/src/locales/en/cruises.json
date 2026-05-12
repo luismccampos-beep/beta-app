@@ -1,0 +1,38 @@
+{
+  "destinations": {
+    "caribbean": "Caribbean",
+    "caribbean_desc": "Crystal-clear waters and white sandy beaches await you.",
+    "mediterranean": "Mediterranean",
+    "mediterranean_desc": "Dive into the history and culture of stunning coastal cities.",
+    "alaska": "Alaska",
+    "alaska_desc": "Witness the grandeur of glaciers and unique wildlife.",
+    "norway": "Norwegian Fjords",
+    "norway_desc": "Sail through spectacular landscapes and picturesque villages."
+  },
+  "hero": {
+    "title": "Oceans of Dreams Await You",
+    "subtitle": "Discover the world from the luxurious comfort of our partner cruises."
+  },
+  "popularDestinations": {
+    "title": "Popular Cruise Destinations",
+    "subtitle": "Explore some of the most sought-after itineraries and embark on an unforgettable adventure."
+  },
+  "search": {
+    "destination": "Destination",
+    "destination_placeholder": "Where do you want to sail?",
+    "date": "Departure Date",
+    "cruise_line": "Cruise Line",
+    "cruise_line_placeholder": "Choose a cruise line",
+    "button": "Search Cruises"
+  },
+  "whyChooseUs": {
+    "title": "Why Travel With Us?",
+    "subtitle": "We offer more than a trip. We offer a complete and worry-free experience.",
+    "exclusive": "Exclusive Itineraries",
+    "exclusive_desc": "Access unique itineraries and experiences you won't find anywhere else.",
+    "luxury": "Luxury and Comfort",
+    "luxury_desc": "The most modern ships and excellent service for maximum comfort.",
+    "support": "Specialized Support",
+    "support_desc": "Our team is available 24/7 to ensure your trip is perfect."
+  }
+}

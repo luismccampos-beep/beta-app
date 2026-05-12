@@ -1,0 +1,160 @@
+{
+  "loading": {
+    "initializing": "Initializing AI Engine..."
+  },
+  "header": {
+    "title": "AI Control Center",
+    "description": "Personalize how our Artificial Intelligence plans and suggests your next experiences."
+  },
+  "tabs": {
+    "travelProfile": "Travel Profile",
+    "aiBehavior": "AI Behavior",
+    "aiEngine": "AI Engine (Models)",
+    "privacy": "Privacy & Data",
+    "analytics": "Usage Analytics"
+  },
+  "activities": {
+    "beaches": "Beaches",
+    "adventure": "Adventure",
+    "culture": "Culture",
+    "gastronomy": "Gastronomy",
+    "nightlife": "Nightlife",
+    "nature": "Nature",
+    "photography": "Photography",
+    "shopping": "Shopping",
+    "wellness": "Wellness"
+  },
+  "budget": "Budget per Person (in $)",
+  "budgetOptions": {
+    "select": "Select budget",
+    "500-1000": "$500 - $1000",
+    "1000-3000": "$1000 - $3000",
+    "3000-5000": "$3000 - $5000",
+    "5000+": "More than $5000"
+  },
+  "comments": "Comments (Optional)",
+  "departureDate": "Departure Date",
+  "destination": "Desired Destination (Optional)",
+  "destinations": {
+    "europe": "Europe",
+    "asia": "Asia",
+    "northAmerica": "North America",
+    "southAmerica": "South America",
+    "africa": "Africa",
+    "oceania": "Oceania",
+    "caribbean": "Caribbean",
+    "middleEast": "Middle East"
+  },
+  "duration": "Trip Duration (in days)",
+  "durationOptions": {
+    "select": "Select duration",
+    "weekend": "Weekend",
+    "week": "1 week",
+    "2weeks": "2 weeks",
+    "month": "1 month"
+  },
+  "email": "Your Email",
+  "errorGeneratingTrip": "An error occurred while generating your trip. Please try again.",
+  "errorSavingFeedback": "Could not save your feedback. Please try again later.",
+  "feedbackSaved": "Thank you for your feedback!",
+  "generateTrip": "Generate Trip Proposal",
+  "generating": "Generating...",
+  "interests": "Main Interest",
+  "interestsEnum": {
+    "ADVENTURE": "Adventure",
+    "CULTURE": "Culture",
+    "RELAXATION": "Relaxation",
+    "NATURE": "Nature",
+    "GASTRONOMY": "Gastronomy"
+  },
+  "itinerary": "Suggested Itinerary",
+  "name": "Your Name",
+  "nextMonth": "Next Month",
+  "nextQuarter": "Next Quarter",
+  "nextWeek": "Next Week",
+  "placeholders": {
+    "groupSize": "Number of travelers",
+    "dietary": "Dietary restrictions",
+    "specialRequests": "Special requests"
+  },
+  "planningSection": "Trip Planning",
+  "provideFeedback": "Help us improve! What did you think of this suggestion?",
+  "quickSelection": "Quick Selection",
+  "rating": "Your Rating (1-5)",
+  "returnDate": "Return Date",
+  "selectDepartureDate": "Select departure date",
+  "selectInterest": "Select an interest...",
+  "selectReturnDate": "Select return date",
+  "selectSustainability": "Select a level...",
+  "submit": "Submit",
+  "submitFeedback": "Submit Feedback",
+  "submitting": "Submitting...",
+  "subtitle": "Customize your travel experience",
+  "success": "Preferences sent successfully!",
+  "successDescription": "We will contact you soon to create your dream trip.",
+  "sustainability": "Sustainability Focus Level",
+  "sustainabilityEnum": {
+    "LOW": "Low",
+    "MEDIUM": "Medium",
+    "HIGH": "High"
+  },
+  "title": "Travel Preferences",
+  "travelDates": "Travel Dates",
+  "travelStyles": {
+    "luxury": "Luxury",
+    "adventure": "Adventure",
+    "budget": "Budget"
+  },
+  "travelers": "Number of Travelers",
+  "tripGenerated": "Your trip proposal was successfully generated!",
+  "validation": {
+    "nameRequired": "Name is required",
+    "emailInvalid": "Invalid email address",
+    "budgetPositive": "Budget must be a positive number",
+    "durationPositive": "Duration must be a positive number",
+    "travelersMin": "There must be at least 1 traveler"
+  },
+  "yourTripProposal": "Your Personalized Trip Proposal",
+  "autoSave": {
+    "saving": "Saving…",
+    "saved": "Saved!",
+    "unsavedChanges": "Unsaved changes",
+    "upToDate": "Up to date",
+    "saveNow": "Save now",
+    "autoSave": "Auto-save"
+  },
+  "changeDetection": {
+    "unsavedBanner": "There are unsaved changes",
+    "noChanges": "No changes detected",
+    "changesCount": "{count} change(s) detected",
+    "resetSelected": "Reset selected ({count})",
+    "newValue": "New",
+    "changeType": {
+      "added": "Added",
+      "modified": "Modified",
+      "removed": "Removed"
+    }
+  },
+  "reset": {
+    "title": "Reset options",
+    "sectionHint": "Reset specific sections:",
+    "reset": "Reset",
+    "resetAllTitle": "Reset all preferences",
+    "resetAllDescription": "This will restore all settings to their default values.",
+    "resetAll": "Reset all",
+    "confirmTitle": "Confirm reset",
+    "confirmBody": "Are you sure you want to reset all preferences? This action can’t be undone.",
+    "confirmReset": "Confirm",
+    "cancel": "Cancel"
+  },
+  "importExport": {
+    "export": "Export",
+    "import": "Import",
+    "importing": "Importing…",
+    "fileInputLabel": "Import preferences file",
+    "hint": "Export your preferences for backup, or import from a previous file.",
+    "invalidFormat": "Invalid file format",
+    "invalidJson": "Invalid JSON file",
+    "importFailed": "Import failed"
+  }
+}

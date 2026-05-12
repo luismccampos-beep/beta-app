@@ -1,0 +1,769 @@
+{
+  "terms": "Termos de Uso",
+  "privacy": "Política de Privacidade",
+  "cookies": "Política de Cookies",
+  "gdpr": "GDPR",
+  "cancellation": "Política de Cancelamento",
+  "cancellationPage": {
+    "hero": {
+      "title": "Política de Cancelamento",
+      "subtitle": "Informações claras para a sua segurança e planeamento."
+    },
+    "sectionPolicy": {
+      "title": "A Nossa Política em Detalhe",
+      "intro": "Para garantir transparência, detalhamos as condições aplicáveis. Recomendamos uma leitura atenta.",
+      "sections": [
+        {
+          "title": "Condições Gerais",
+          "points": [
+            "Todos os pedidos devem ser feitos por escrito via email.",
+            "O cálculo é baseado na data de receção do pedido.",
+            "Taxas de serviço e administrativas são não reembolsáveis."
+          ]
+        },
+        {
+          "title": "Prazos e Taxas (Pacotes Terrestres)",
+          "points": [
+            "Cancelamento com mais de 30 dias de antecedência: Taxa de retenção de 20%.",
+            "Cancelamento entre 29 e 15 dias: Taxa de retenção de 50%.",
+            "Cancelamento com menos de 14 dias: Sem reembolso."
+          ],
+          "periods": [
+            {
+              "period": "Mais de 30 dias antes",
+              "fee": "Taxa de retenção de 20%"
+            },
+            {
+              "period": "Entre 29 e 15 dias antes",
+              "fee": "Taxa de retenção de 50%"
+            },
+            {
+              "period": "Menos de 14 dias antes",
+              "fee": "Sem reembolso"
+            }
+          ]
+        },
+        {
+          "title": "Voos",
+          "points": [
+            "As políticas de cancelamento de voos são ditadas pelas companhias aéreas e podem ser 100% não reembolsáveis."
+          ]
+        }
+      ],
+      "important": {
+        "title": "Importante",
+        "description": "Em caso de cancelamento por motivos de força maior (pandemia, catástrofes naturais, etc.), aplicam-se condições especiais. Contacte-nos para mais informações."
+      }
+    },
+    "sectionHowTo": {
+      "title": "Como Solicitar um Cancelamento",
+      "steps": [
+        {
+          "title": "1. Contacte o Suporte",
+          "description": "A forma mais rápida e segura é através do email oficial de suporte.",
+          "icon": "mail"
+        },
+        {
+          "title": "2. Forneça os Detalhes",
+          "description": "Por favor, indique o seu número de reserva, nome completo e o motivo do cancelamento.",
+          "icon": "info"
+        },
+        {
+          "title": "3. Aguarde Confirmação",
+          "description": "Receberá uma confirmação por email com os detalhes do processamento.",
+          "icon": "check"
+        }
+      ]
+    },
+    "sectionFaq": {
+      "title": "Perguntas Frequentes",
+      "questions": [
+        {
+          "q": "Posso cancelar a minha reserva online?",
+          "a": "Atualmente, todos os cancelamentos devem ser processados através do nosso suporte por email para garantir a segurança e precisão."
+        },
+        {
+          "q": "Quanto tempo demora o reembolso?",
+          "a": "Os reembolsos são processados entre 5 a 10 dias úteis após a confirmação do cancelamento, dependendo do método de pagamento original."
+        },
+        {
+          "q": "Posso alterar em vez de cancelar?",
+          "a": "Sim! Muitas vezes é possível alterar datas ou destinos. Contacte-nos para verificar as opções disponíveis para a sua reserva."
+        }
+      ]
+    },
+    "needHelp": {
+      "title": "Precisa de Ajuda?",
+      "description": "A nossa equipa está aqui para o ajudar com qualquer questão sobre cancelamentos."
+    },
+    "contactSupport": {
+      "title": "Contactar Suporte",
+      "description": "Para cancelamentos ou dúvidas, contacte-nos diretamente.",
+      "button": "Enviar Email"
+    },
+    "myBookings": {
+      "title": "As Minhas Reservas",
+      "description": "Aceda à sua área pessoal para ver todas as suas reservas.",
+      "button": "Ver Reservas"
+    },
+    "ui": {
+      "loading": "A carregar política de cancelamento...",
+      "refundTimeline": {
+        "title": "Timeline de Reembolso",
+        "description": "Consulte a tabela acima para entender as taxas aplicáveis de acordo com o período de cancelamento."
+      },
+      "howToHint": "O processo é simples e automático através da sua área de cliente."
+    }
+  },
+  "cookiesPage": {
+    "title": "Política de Cookies",
+    "lastUpdated": "Última atualização: {{date}}",
+    "introduction": "Esta Política de Cookies explica como a AKMLEVA utiliza cookies e tecnologias similares no nosso website para melhorar a sua experiência de navegação.",
+    "ui": {
+      "readingProgressAria": "Progresso de leitura",
+      "privacyCenterBadge": "Centro de Privacidade",
+      "aboutThisPolicy": "Sobre esta política",
+      "preferences": {
+        "title": "Preferências de Cookies",
+        "description": "Respeitamos a sua privacidade. Pode ajustar as suas definições a qualquer momento para controlar o que partilha connosco.",
+        "ariaManageSettings": "Gerir definições de cookies",
+        "manageSettings": "Gerir Definições",
+        "cardTitle": "Preferências",
+        "cardDescription": "Controle como os seus dados são utilizados.",
+        "ariaManageCookies": "Gerir cookies",
+        "manageCookies": "Gerir Cookies",
+        "necessary": "Necessários",
+        "necessaryDesc": "Estes cookies são essenciais para o funcionamento do website e não podem ser desativados.",
+        "functional": "Funcionais",
+        "functionalDesc": "Permitem funcionalidades melhoradas e personalização (ex.: lembrar preferências).",
+        "analytics": "Analíticos",
+        "analyticsDesc": "Ajudam-nos a medir e melhorar o desempenho do website através de estatísticas agregadas.",
+        "marketing": "Marketing",
+        "marketingDesc": "Utilizados para apresentar conteúdos e anúncios mais relevantes para si.",
+        "reset": "Repor",
+        "save": "Guardar"
+      }
+    },
+    "sections": {
+      "whatAreCookies": {
+        "title": "O que são Cookies?",
+        "content": [
+          {
+            "type": "paragraph",
+            "text": "Cookies são pequenos ficheiros de texto que são armazenados no seu dispositivo quando visita um website. Estes ficheiros permitem que o website reconheça o seu dispositivo e armazene algumas informações sobre as suas preferências ou ações passadas."
+          }
+        ]
+      },
+      "typesOfCookies": {
+        "title": "Tipos de Cookies que Utilizamos",
+        "content": [
+          {
+            "type": "list",
+            "items": [
+              "<strong>Cookies Essenciais:</strong> Necessários para o funcionamento básico do website.",
+              "<strong>Cookies de Performance:</strong> Ajudam-nos a entender como os visitantes interagem com o nosso website.",
+              "<strong>Cookies de Funcionalidade:</strong> Permitem que o website se lembre das suas escolhas e forneça funcionalidades melhoradas.",
+              "<strong>Cookies de Marketing:</strong> Utilizados para fornecer anúncios mais relevantes para si e para os seus interesses."
+            ]
+          }
+        ]
+      },
+      "manageCookies": {
+        "title": "Como Gerir os Cookies",
+        "content": [
+          {
+            "type": "paragraph",
+            "text": "Pode controlar e/ou eliminar cookies conforme desejar. Pode eliminar todos os cookies que já estão no seu computador e pode configurar a maioria dos navegadores para impedir que sejam colocados."
+          }
+        ]
+      }
+    }
+  },
+  "gdprComponents": {
+    "header": {
+      "title": "Política de Privacidade e Proteção de Dados",
+      "subtitle": "Transparência total sobre como a AKMLEVA trata os seus dados pessoais em conformidade com o RGPD",
+      "backToHome": "Voltar à página inicial",
+      "compliantBadge": "RGPD 100% conforme",
+      "lastUpdatedLabel": "Última atualização:",
+      "defaultLastUpdated": "15 de Janeiro de 2025"
+    },
+    "introduction": {
+      "title": "A nossa política de privacidade",
+      "intro": "A AKMLEVA está plenamente comprometida com a proteção da sua privacidade e dos seus dados pessoais, em estrita conformidade com o Regulamento Geral sobre a Proteção de Dados (RGPD/UE 2016/679) e demais legislação aplicável.",
+      "trust": {
+        "transparency": "Transparência total",
+        "compliance": "Conformidade RGPD"
+      }
+    },
+    "footer": {
+      "effectiveSinceLabel": "Em vigor desde:",
+      "defaultEffectiveDate": "25 de Maio de 2018",
+      "statementPrefix": "Este documento está plenamente em conformidade com o",
+      "regulationName": "Regulamento (UE) 2016/679",
+      "statementSuffix": "(RGPD/GDPR) e legislação nacional aplicável.",
+      "lastUpdatedLabel": "Última atualização: {date}",
+      "trustLine": "Compromisso com transparência e proteção dos seus direitos",
+      "branding": "Política de Privacidade & Proteção de Dados • AKMLEVA"
+    },
+    "dataProcessing": {
+      "title": "Finalidades do Tratamento de Dados Pessoais",
+      "intro": "Tratamos os seus dados pessoais apenas para finalidades específicas, explícitas e legítimas, em conformidade com o Regulamento Geral de Proteção de Dados (RGPD).",
+      "legalBasisLabel": "Base Legal",
+      "purposes": [
+        {
+          "title": "Prestação de Serviços e Gestão de Reservas",
+          "description": "Processar reservas de viagens, alojamento, transportes e atividades turísticas, gerir pagamentos, emitir documentos de viagem e prestar suporte ao cliente durante e após a viagem.",
+          "legalBasis": "Execução de contrato (Art. 6(1)(b) RGPD)",
+          "basisColor": "blue"
+        },
+        {
+          "title": "Cumprimento de Obrigações Legais",
+          "description": "Cumprir obrigações fiscais, contabilísticas, de reporte às autoridades (ex: SEF/IEF para alojamento local), conservação de faturas e registos de viagem por motivos legais.",
+          "legalBasis": "Obrigação legal (Art. 6(1)(c) RGPD)",
+          "basisColor": "purple"
+        },
+        {
+          "title": "Marketing e Comunicação Personalizada",
+          "description": "Enviar newsletters, promoções, ofertas personalizadas, inquéritos de satisfação e informações sobre destinos semelhantes aos previamente reservados.",
+          "legalBasis": "Consentimento do titular (Art. 6(1)(a) RGPD)",
+          "basisColor": "green"
+        },
+        {
+          "title": "Prevenção de Fraude e Segurança",
+          "description": "Verificar identidade em reservas, prevenir fraudes em pagamentos, detetar atividades suspeitas e proteger os sistemas e os dados dos clientes.",
+          "legalBasis": "Interesses legítimos (Art. 6(1)(f) RGPD)",
+          "basisColor": "amber"
+        },
+        {
+          "title": "Melhoria de Serviços e Análise Estatística",
+          "description": "Analisar padrões de utilização, preferências de viagem e feedback para melhorar os serviços, personalizar ofertas e realizar estudos de mercado agregados.",
+          "legalBasis": "Interesses legítimos (Art. 6(1)(f) RGPD)",
+          "basisColor": "amber"
+        }
+      ],
+      "note": "Não tratamos os seus dados para finalidades incompatíveis com as aqui descritas sem uma nova base legal ou o seu consentimento explícito."
+    },
+    "dataSecurity": {
+      "title": "Medidas de Segurança dos Dados",
+      "intro": "Adotamos medidas técnicas e organizacionais adequadas e atualizadas para garantir um nível de segurança proporcional ao risco, em conformidade com o artigo 32.º do RGPD.",
+      "measures": [
+        { "text": "Encriptação TLS 1.3 em trânsito e AES-256 em repouso (dados em bases de dados e backups)", "important": true },
+        { "text": "Autenticação multifator (MFA) para todos os acessos administrativos e sistemas críticos", "important": true },
+        { "text": "Controlo de acesso baseado em papéis (RBAC) e princípio do mínimo privilégio" },
+        { "text": "Monitorização em tempo real, deteção de intrusões (IDS/IPS) e registos de auditoria" },
+        { "text": "Formação anual obrigatória em proteção de dados e cibersegurança para todos os colaboradores" },
+        { "text": "Auditorias de segurança independentes e testes de penetração periódicos" },
+        { "text": "Planos de resposta a incidentes e recuperação de desastres testados regularmente" }
+      ],
+      "note": "Apesar das medidas implementadas, nenhum sistema é 100% imune a riscos. Em caso de violação de dados, notificaremos a autoridade de controlo e os titulares afetados dentro dos prazos legais."
+    },
+    "dataTypes": {
+      "title": "Tipos de Dados Pessoais Recolhidos",
+      "intro": "Recolhemos apenas os dados estritamente necessários para a prestação dos serviços contratados e para cumprir obrigações legais.",
+      "headers": {
+        "category": "Categoria",
+        "examples": "Exemplos",
+        "retention": "Período de Retenção"
+      },
+      "categories": [
+        { "category": "Dados de Identificação", "examples": ["Nome completo", "Data de nascimento", "Número de identificação (BI/CC/Passaporte)", "Nacionalidade"], "retention": "5 anos após última interação", "retentionColor": "amber" },
+        { "category": "Dados de Contacto", "examples": ["Endereço de email", "Número de telefone", "Morada postal", "Preferências de contacto"], "retention": "3 anos após última interação ou revogação de consentimento", "retentionColor": "green" },
+        { "category": "Dados de Reserva e Pagamento", "examples": ["Detalhes da reserva (datas, destinos, serviços contratados)", "Informações de pagamento (últimos 4 dígitos do cartão, IBAN em caso de transferência)", "Histórico de viagens"], "retention": "7 anos (obrigação legal fiscal)", "retentionColor": "red" },
+        { "category": "Dados Técnicos e de Navegação", "examples": ["Endereço IP", "Tipo de dispositivo e navegador", "Dados de cookies e tecnologias similares", "Geolocalização aproximada (com consentimento)"], "retention": "até 26 meses (ou menos se revogado)", "retentionColor": "green" },
+        { "category": "Dados de Preferências e Perfil", "examples": ["Preferências de viagem (destinos, tipo de alojamento, atividades)", "Feedback e avaliações", "Dados de programas de fidelização (se aplicável)"], "retention": "até revogação do consentimento ou 3 anos após inatividade", "retentionColor": "amber" }
+      ],
+      "note": "Os prazos de retenção podem ser superiores quando exigido por lei ou inferiores em caso de exercício de direitos do titular.",
+      "mobileHint": "Deslize para a direita para ver os exemplos completos"
+    },
+    "dataCategories": {
+      "title": "Categorias de Dados Pessoais Tratados",
+      "headers": {
+        "category": "Categoria",
+        "examples": "Exemplos",
+        "retention": "Período de Retenção"
+      },
+      "categories": [
+        { "category": "Dados de Identificação", "examples": ["Nome completo", "Email", "Número de telefone", "Documento de identificação", "Data de nascimento"], "retention": "5 anos após última interação", "retentionSeverity": "medium" },
+        { "category": "Dados de Contacto", "examples": ["Endereço postal", "Número de telefone", "Email", "Preferências de comunicação"], "retention": "3 anos após última interação", "retentionSeverity": "low" },
+        { "category": "Dados de Reserva", "examples": ["Detalhes da viagem", "Preferências de alojamento", "Informações de pagamento", "Histórico de reservas"], "retention": "7 anos para fins fiscais", "retentionSeverity": "high" },
+        { "category": "Dados Técnicos", "examples": ["Endereço IP", "Cookies", "Dados de navegação", "Dispositivo utilizado", "Dados de geolocalização aproximada"], "retention": "2 anos ou até revogação do consentimento", "retentionSeverity": "low" }
+      ],
+      "mobileHint": "Deslize horizontalmente para ver todos os exemplos"
+    },
+    "userRights": {
+      "title": "Os Seus Direitos enquanto Titular de Dados",
+      "intro": "O RGPD garante-lhe vários direitos poderosos sobre os seus dados pessoais. Pode exercê-los a qualquer momento contactando-nos através dos contactos indicados na secção “Responsável pelo Tratamento”.",
+      "items": [
+        { "right": "Direito de Acesso", "description": "Pode solicitar confirmação de que tratamos os seus dados pessoais e obter uma cópia dos mesmos, incluindo as finalidades, categorias, destinatários e prazos de conservação.", "important": true },
+        { "right": "Direito de Retificação", "description": "Pode solicitar a correção imediata de dados pessoais inexatos ou incompletos que tenhamos sobre si." },
+        { "right": "Direito ao Apagamento (“Direito ao Esquecimento”)", "description": "Pode pedir a eliminação dos seus dados pessoais quando já não sejam necessários para a finalidade original, quando retire o consentimento, ou em outras situações previstas no RGPD.", "important": true },
+        { "right": "Direito à Limitação do Tratamento", "description": "Pode solicitar a suspensão temporária do tratamento em certas circunstâncias (ex.: enquanto verifica a exatidão dos dados ou quando se opõe ao tratamento)." },
+        { "right": "Direito à Portabilidade dos Dados", "description": "Pode receber os seus dados pessoais num formato estruturado, de uso corrente e leitura automática, e transmiti-los a outro responsável, quando o tratamento se baseie no consentimento ou em contrato." },
+        { "right": "Direito de Oposição", "description": "Pode opor-se ao tratamento dos seus dados para marketing direto (a qualquer momento) ou por motivos relacionados com a sua situação particular em casos de interesse legítimo.", "important": true },
+        { "right": "Direito de Não Ser Sujeito a Decisões Automatizadas", "description": "Tem o direito de não ser sujeito a decisões baseadas exclusivamente em tratamento automatizado, incluindo definição de perfis, que produzam efeitos jurídicos ou o afetem significativamente." }
+      ],
+      "footer": {
+        "prefix": "Para exercer qualquer um destes direitos, basta contactar-nos através do email",
+        "email": "privacy@akmleva.pt",
+        "suffix": ". Responderemos no prazo máximo de um mês (prorrogável em casos complexos)."
+      }
+    },
+    "contact": {
+      "title": "Contacto e Exercício de Direitos GDPR",
+      "intro": "Para exercer os seus direitos (acesso, retificação, apagamento, oposição, portabilidade, limitação) ou esclarecer qualquer dúvida sobre o tratamento dos seus dados pessoais, contacte-nos através dos meios abaixo:",
+      "defaults": {
+        "email": "privacy@akmleva.pt",
+        "phone": "+351 256 123 456",
+        "dpoEmail": "dpo@akmleva.pt"
+      },
+      "labels": {
+        "generalEmail": "Email geral",
+        "phone": "Telefone",
+        "dpo": "Encarregado de Proteção de Dados (DPO)"
+      },
+      "note": "Responderemos com a maior brevidade possível e sempre dentro dos prazos legais previstos no RGPD."
+    },
+    "dataController": {
+      "title": "Responsável pelo Tratamento de Dados",
+      "intro": "A AKMLEVA - Agência de Viagens e Turismo, Lda. é a entidade responsável pelo tratamento dos seus dados pessoais, em conformidade com o Regulamento Geral de Proteção de Dados (RGPD).",
+      "detailsTitle": "Dados do Responsável pelo Tratamento",
+      "defaults": {
+        "name": "AKMLEVA - Agência de Viagens e Turismo, Lda.",
+        "email": "privacy@akmleva.pt",
+        "phone": "+351 256 123 456",
+        "address": "Rua São Nicolau 9, 4520-248 Santa Maria da Feira, Portugal"
+      },
+      "labels": {
+        "entity": "Entidade",
+        "email": "Email",
+        "phone": "Telefone",
+        "address": "Morada"
+      },
+      "note": "Estes contactos destinam-se exclusivamente a questões relacionadas com proteção de dados pessoais."
+    }
+  },
+  "gdprPage": {
+    "hero": {
+      "title": "Regulamento Geral sobre a Proteção de Dados (RGPD)",
+      "subtitle": "Informações sobre como tratamos os seus dados pessoais em conformidade com o RGPD"
+    },
+    "lastUpdated": "15 de Janeiro de 2025",
+    "ui": {
+      "compliantBadge": "RGPD em conformidade",
+      "lastUpdated": "Última atualização: {date}",
+      "navigationTitle": "Navegação",
+      "quickActionsTitle": "Ações rápidas",
+      "contactDpo": "Contactar DPO",
+      "exerciseRights": "Exercer direitos",
+      "nav": {
+        "introduction": "Introdução",
+        "dataCategories": "Categorias de Dados",
+        "dataController": "Responsável",
+        "dataProcessing": "Finalidades",
+        "dataTypes": "Tipos de Dados",
+        "userRights": "Seus Direitos",
+        "dataSecurity": "Segurança",
+        "contact": "Contacto"
+      }
+    },
+    "intro": "A AKMLEVA está comprometida com a proteção da sua privacidade e dos seus dados pessoais, em conformidade com o Regulamento Geral sobre a Proteção de Dados (RGPD). Este documento explica como recolhemos, utilizamos, armazenamos e protegemos as suas informações pessoais.",
+    "sections": {
+      "dataController": {
+        "title": "Responsável pelo Tratamento de Dados",
+        "content": "A AKMLEVA - Agência de Viagens e Turismo, Lda. é a entidade responsável pelo tratamento dos seus dados pessoais, nos termos do RGPD.",
+        "contact": {
+          "name": "AKMLEVA - Agência de Viagens e Turismo, Lda.",
+          "email": "privacy@akmleva.pt",
+          "phone": "+351 256 123 456",
+          "address": "Rua São Nicolau 9, 4520-248 Santa Maria da Feira, Portugal"
+        }
+      },
+      "dataProcessing": {
+        "title": "Finalidades do Tratamento de Dados",
+        "purposes": [
+          {
+            "title": "Prestação de Serviços Turísticos",
+            "description": "Processamento de reservas, comunicação com clientes, prestação de serviços de viagem e turismo.",
+            "legalBasis": "Execução de contrato"
+          },
+          {
+            "title": "Marketing e Comunicação",
+            "description": "Envio de newsletters, ofertas especiais, comunicações promocionais e pesquisas de satisfação.",
+            "legalBasis": "Consentimento"
+          },
+          {
+            "title": "Cumprimento de Obrigações Legais",
+            "description": "Cumprimento de obrigações fiscais, contabilísticas e regulamentares do setor turístico.",
+            "legalBasis": "Obrigação legal"
+          },
+          {
+            "title": "Interesses Legítimos",
+            "description": "Melhoria dos nossos serviços, análise de dados para otimização da experiência do cliente.",
+            "legalBasis": "Interesse legítimo"
+          }
+        ]
+      },
+      "dataTypes": {
+        "title": "Tipos de Dados Recolhidos",
+        "categories": [
+          {
+            "category": "Dados de Identificação",
+            "examples": [
+              "Nome completo",
+              "Email",
+              "Número de telefone",
+              "Documento de identificação",
+              "Data de nascimento"
+            ],
+            "retention": "5 anos após última interação"
+          },
+          {
+            "category": "Dados de Contacto",
+            "examples": [
+              "Endereço postal",
+              "Número de telefone",
+              "Email",
+              "Preferências de comunicação"
+            ],
+            "retention": "3 anos após última interação"
+          },
+          {
+            "category": "Dados de Reserva",
+            "examples": [
+              "Detalhes da viagem",
+              "Preferências de alojamento",
+              "Informações de pagamento",
+              "Histórico de reservas"
+            ],
+            "retention": "7 anos para fins fiscais"
+          },
+          {
+            "category": "Dados Técnicos",
+            "examples": [
+              "Endereço IP",
+              "Cookies",
+              "Dados de navegação",
+              "Dispositivo utilizado"
+            ],
+            "retention": "2 anos"
+          }
+        ]
+      },
+      "rights": {
+        "title": "Os Seus Direitos ao Abrigo do RGPD",
+        "userRights": [
+          {
+            "right": "Direito de Acesso",
+            "description": "Pode solicitar informações sobre os dados pessoais que processamos sobre si."
+          },
+          {
+            "right": "Direito de Retificação",
+            "description": "Pode solicitar a correção de dados pessoais incorretos ou incompletos."
+          },
+          {
+            "right": "Direito ao Apagamento",
+            "description": "Pode solicitar a eliminação dos seus dados pessoais em certas circunstâncias."
+          },
+          {
+            "right": "Direito à Limitação do Tratamento",
+            "description": "Pode solicitar a limitação do processamento dos seus dados pessoais."
+          },
+          {
+            "right": "Direito à Portabilidade",
+            "description": "Pode solicitar a transferência dos seus dados para outro prestador de serviços."
+          },
+          {
+            "right": "Direito de Oposição",
+            "description": "Pode opor-se ao tratamento dos seus dados pessoais em determinadas situações."
+          },
+          {
+            "right": "Direito de Retirar o Consentimento",
+            "description": "Pode retirar o seu consentimento a qualquer momento, quando aplicável."
+          },
+          {
+            "right": "Direito de Apresentar Reclamação",
+            "description": "Pode apresentar uma reclamação à Comissão Nacional de Proteção de Dados (CNPD)."
+          }
+        ]
+      },
+      "dataSecurity": {
+        "title": "Segurança dos Dados",
+        "measures": [
+          "Encriptação de dados em trânsito e em repouso (SSL/TLS)",
+          "Controlo de acesso baseado em funções e autenticação multi-fator",
+          "Monitorização contínua de segurança e deteção de intrusões",
+          "Formação regular dos colaboradores em proteção de dados",
+          "Auditorias de segurança e avaliações de impacto periódicas",
+          "Backup seguro e planos de recuperação de desastres",
+          "Pseudonimização e minimização de dados sempre que possível"
+        ]
+      },
+      "dataTransfers": {
+        "title": "Transferências Internacionais de Dados",
+        "content": "Quando necessário para a prestação dos nossos serviços, podemos transferir os seus dados para países fora do Espaço Económico Europeu (EEE).",
+        "safeguards": [
+          "Cláusulas contratuais-tipo aprovadas pela Comissão Europeia",
+          "Certificações de adequação de proteção de dados",
+          "Códigos de conduta aprovados e mecanismos de certificação",
+          "Avaliação contínua dos níveis de proteção nos países de destino"
+        ]
+      },
+      "cookies": {
+        "title": "Cookies e Tecnologias Similares",
+        "content": "Utilizamos cookies e tecnologias similares para melhorar a sua experiência no nosso website. Para mais informações detalhadas sobre o uso de cookies, consulte a nossa Política de Cookies.",
+        "linkText": "Ver Política de Cookies"
+      },
+      "contact": {
+        "title": "Contacto e Exercício de Direitos",
+        "content": "Para exercer qualquer dos seus direitos ao abrigo do RGPD ou esclarecer dúvidas sobre o tratamento dos seus dados pessoais, pode contactar-nos através dos seguintes meios:",
+        "dpoContact": "dpo@akmleva.pt"
+      }
+    },
+    "effectiveDate": "25 de Maio de 2018"
+  },
+  "hero": {
+    "title": "Documentos Legais",
+    "lastUpdated": "Última atualização: {{date}}",
+    "terms": "Termos e Condições",
+    "privacy": "Política de Privacidade",
+    "cookies": "Política de Cookies",
+    "cancellation": "Política de Cancelamento",
+    "responsibility": "Termos de Responsabilidade",
+    "gdpr": "RGPD - Proteção de Dados"
+  },
+  "privacyPage": {
+    "title": "Política de Privacidade",
+    "lastUpdated": "Última atualização: {{date}}",
+    "ui": {
+      "badge": "Transparência & Confiança",
+      "tocTitle": "Índice",
+      "updatedLabel": "Atualizado:",
+      "applicableLabel": "Aplicável: Portugal / UE",
+      "share": {
+        "title": "Partilhar",
+        "description": "Partilhe esta política para que mais pessoas possam consultar estas informações.",
+        "button": "Partilhar"
+      },
+      "printVersion": {
+        "title": "Versão Impressa",
+        "description": "Faça download da política completa em formato PDF para os seus registos.",
+        "download": "Download PDF"
+      },
+      "intro": "Esta Política de Privacidade descreve como recolhemos, utilizamos e protegemos as suas informações pessoais quando utiliza o nosso website e serviços. Ao utilizar a AKMLEVA, concorda com a recolha e uso de informações de acordo com esta política.",
+      "contactDpo": "Fale com o nosso DPO",
+      "backToTopAria": "Voltar ao topo"
+    },
+    "sections": {
+      "introduction": {
+        "title": "1. Introdução e Quem Somos",
+        "content": [
+          {
+            "type": "paragraph",
+            "text": "Bem-vindo(a) à AKMLEVA. A sua privacidade é da máxima importância para nós. Esta Política de Privacidade explica como a <strong>AKMLEVA Viagens (NIPC XXXXXXXXX)</strong>, com sede em [A sua Morada Completa, Portugal], enquanto responsável pelo tratamento de dados, recolhe, utiliza, partilha e protege os seus dados pessoais quando utiliza os nossos serviços, website e aplicação."
+          },
+          {
+            "type": "paragraph",
+            "text": "Este documento foi elaborado em conformidade com o Regulamento (UE) 2016/679 do Parlamento Europeu e do Conselho, de 27 de abril de 2016 (Regulamento Geral sobre a Proteção de Dados - RGPD)."
+          }
+        ]
+      },
+      "dataWeCollect": {
+        "title": "2. Que Dados Pessoais Recolhemos?",
+        "content": [
+          {
+            "type": "paragraph",
+            "text": "Para fornecer os nossos serviços de agência de viagens, necessitamos de recolher vários tipos de dados pessoais:"
+          },
+          {
+            "type": "list",
+            "items": [
+              "<strong>Dados de Identificação:</strong> Nome completo, data de nascimento, nacionalidade, e dados de documentos de identificação (Cartão de Cidadão, Passaporte).",
+              "<strong>Dados de Contacto:</strong> Endereço de e-mail, número de telefone, morada.",
+              "<strong>Dados de Viagem e Reserva:</strong> Itinerários de voo, reservas de hotel, aluguer de viaturas, preferências de viagem (ex: tipo de assento, refeições), e histórico de viagens.",
+              "<strong>Dados de Pagamento:</strong> Informações de cartão de crédito/débito (processadas de forma segura pelos nossos parceiros de pagamento em conformidade com o PCI-DSS) e histórico de transações.",
+              "<strong>Dados Técnicos:</strong> Endereço IP, tipo de navegador, sistema operativo, e dados de cookies (consulte a nossa <a href='/cookies' class='text-primary hover:underline'>Política de Cookies</a>).",
+              "<strong>Dados de Interação com IA:</strong> Pesquisas efetuadas, preferências indicadas e interações com o nosso assistente de viagens para personalizar as suas sugestões."
+            ]
+          }
+        ]
+      },
+      "howWeUseAI": {
+        "title": "3. Como Utilizamos a Inteligência Artificial (IA)",
+        "content": [
+          {
+            "type": "paragraph",
+            "text": "A AKMLEVA utiliza tecnologias de Inteligência Artificial para melhorar e personalizar a sua experiência de viagem. A nossa utilização de IA é pautada pela transparência e pelo seu controlo."
+          },
+          {
+            "type": "list",
+            "items": [
+              "<strong>Personalização de Recomendações:</strong> A nossa IA analisa o seu histórico de pesquisas, viagens anteriores e preferências explícitas (que pode configurar no seu perfil) para lhe sugerir destinos, pacotes e experiências que correspondam ao seu gosto.",
+              "<strong>Otimização de Itinerários:</strong> A IA ajuda a criar os itinerários mais eficientes, combinando voos, hotéis e atividades para poupar tempo e dinheiro.",
+              "<strong>Assistente de Suporte (Chatbot):</strong> Utilizamos um chatbot para fornecer respostas rápidas a questões comuns, disponível 24/7.",
+              "<strong>Análise de Tendências:</strong> Analisamos dados de forma agregada e anónima para prever tendências de viagem e melhorar a nossa oferta de serviços."
+            ]
+          },
+          {
+            "type": "paragraph",
+            "text": "<strong>Importante:</strong> As decisões finais de reserva são sempre suas. A IA serve como uma ferramenta de sugestão. Para decisões significativas ou em caso de litígio, garantimos sempre a possibilidade de intervenção humana. Pode gerir as suas preferências de personalização na sua área de cliente a qualquer momento."
+          }
+        ]
+      },
+      "dataSharing": {
+        "title": "4. Com Quem Partilhamos os Seus Dados?",
+        "content": [
+          {
+            "type": "paragraph",
+            "text": "Para efetivar as suas reservas de viagem, é essencial partilhar os seus dados com terceiros:"
+          },
+          {
+            "type": "list",
+            "items": [
+              "<strong>Fornecedores de Viagens:</strong> Companhias aéreas, hotéis, empresas de aluguer de viaturas, operadores turísticos e outros fornecedores necessários para a sua viagem.",
+              "<strong>Sistemas de Distribuição Global (GDS):</strong> Plataformas como Amadeus ou Sabre que processam reservas a nível mundial.",
+              "<strong>Processadores de Pagamento:</strong> Entidades como Stripe ou PayPal para processar transações de forma segura.",
+              "<strong>Autoridades Governamentais:</strong> Autoridades de fronteira, imigração e outras entidades públicas, quando exigido por lei (ex: informações antecipadas de passageiros - API).",
+              "<strong>Parceiros Tecnológicos:</strong> Fornecedores de serviços de alojamento web (hosting), análise de dados e marketing, que atuam sob as nossas instruções e com contratos de proteção de dados adequados."
+            ]
+          },
+          {
+            "type": "paragraph",
+            "text": "As transferências de dados para fora do Espaço Económico Europeu são realizadas apenas para países com um nível de proteção de dados adequado ou com base em garantias apropriadas, como as Cláusulas Contratuais-Tipo da Comissão Europeia."
+          }
+        ]
+      },
+      "yourRights": {
+        "title": "5. Os Seus Direitos",
+        "content": [
+          {
+            "type": "paragraph",
+            "text": "Ao abrigo do RGPD, tem os seguintes direitos sobre os seus dados pessoais:"
+          },
+          {
+            "type": "list",
+            "items": [
+              "<strong>Direito de Acesso:</strong> Pode solicitar uma cópia dos dados pessoais que temos sobre si.",
+              "<strong>Direito de Retificação:</strong> Pode solicitar a correção de dados incorretos ou incompletos.",
+              "<strong>Direito ao Apagamento ('Direito ao Esquecimento'):</strong> Pode solicitar a eliminação dos seus dados em certas circunstâncias.",
+              "<strong>Direito à Limitação do Tratamento:</strong> Pode solicitar que limitemos o processamento dos seus dados.",
+              "<strong>Direito à Portabilidade:</strong> Pode solicitar que os seus dados sejam transferidos para outro responsável pelo tratamento.",
+              "<strong>Direito de Oposição:</strong> Pode opor-se ao tratamento dos seus dados para fins de marketing direto.",
+              "<strong>Direito de Retirar o Consentimento:</strong> Quando o tratamento se baseia no consentimento, pode retirá-lo a qualquer momento."
+            ]
+          },
+          {
+            "type": "paragraph",
+            "text": "Para exercer qualquer destes direitos, contacte-nos através de <strong>geral@akmleva.pt</strong> ou +351 941 876 721. Responderemos no prazo de 30 dias."
+          }
+        ]
+      }
+    }
+  },
+  "sections": "Seções",
+  "termsPage": {
+    "title": "Termos e Condições Gerais",
+    "lastUpdated": "Última atualização: {{date}}",
+    "introduction": "Bem-vindo(a) à AKMLEVA. Ao aceder e utilizar o nosso website e serviços, o Utilizador concorda em cumprir e ficar vinculado aos seguintes termos e condições. Estes termos regem a relação entre a <strong>AKMLEVA Viagens (NIPC XXXXXXXXX, RNAVT Nº YYYYY)</strong> e o Utilizador. Por favor, leia-os atentamente. A utilização dos nossos serviços implica a aceitação plena e sem reservas de todas as disposições aqui contidas.",
+    "sections": {
+      "object": {
+        "title": "1. Objeto",
+        "content": [
+          {
+            "type": "paragraph",
+            "text": "Estes Termos e Condições regulam a reserva e a compra de serviços de viagem (voos, alojamento, pacotes turísticos, aluguer de viaturas, e outros serviços relacionados) disponibilizados através da plataforma AKMLEVA."
+          }
+        ]
+      },
+      "bookingProcess": {
+        "title": "2. Processo de Reserva e Pagamento",
+        "content": [
+          {
+            "type": "paragraph",
+            "text": "As reservas são efetuadas online através do preenchimento dos formulários disponíveis no nosso website. O Utilizador é responsável pela exatidão de todos os dados fornecidos (nomes, datas, documentos)."
+          },
+          {
+            "type": "list",
+            "items": [
+              "<strong>Confirmação:</strong> A reserva só é considerada confirmada após o pagamento integral e o envio da documentação de viagem correspondente por parte da AKMLEVA.",
+              "<strong>Preços:</strong> Os preços são apresentados em Euros (€) e incluem IVA à taxa legal em vigor, salvo indicação em contrário. As taxas de aeroporto e de combustível estão sujeitas a alterações legais até à emissão dos bilhetes.",
+              "<strong>Pagamento:</strong> O pagamento deve ser efetuado no ato da reserva através dos métodos disponibilizados (Cartão de Crédito, MB Way, etc.). A AKMLEVA reserva-se o direito de cancelar reservas não pagas dentro do prazo estipulado."
+            ]
+          }
+        ]
+      },
+      "aiUsage": {
+        "title": "3. Utilização de Inteligência Artificial (IA)",
+        "content": [
+          {
+            "type": "paragraph",
+            "text": "A nossa plataforma utiliza sistemas de Inteligência Artificial para fornecer recomendações personalizadas e otimizar a sua experiência de pesquisa. Ao utilizar os nossos serviços, o Utilizador reconhece e concorda que:"
+          },
+          {
+            "type": "list",
+            "items": [
+              "A IA funciona como uma <strong>ferramenta de sugestão e assistência</strong>. As informações fornecidas (preços, disponibilidade, itinerários) devem ser sempre confirmadas pelo Utilizador antes de finalizar a reserva.",
+              "A AKMLEVA não se responsabiliza por imprecisões, erros ou omissões gerados automaticamente pela IA, embora envidemos todos os esforços para garantir a sua fiabilidade.",
+              "As decisões de compra são da <strong>exclusiva responsabilidade do Utilizador</strong>. A nossa equipa de agentes humanos está sempre disponível para validar informações e fornecer assistência personalizada."
+            ]
+          }
+        ]
+      },
+      "cancellations": {
+        "title": "4. Cancelamentos, Alterações e Reembolsos",
+        "content": [
+          {
+            "type": "subheading",
+            "text": "Cancelamento ou Alteração pelo Utilizador"
+          },
+          {
+            "type": "paragraph",
+            "text": "O pedido de cancelamento ou alteração de uma reserva está sujeito às condições específicas de cada fornecedor (companhia aérea, hotel, etc.) e pode implicar custos. A AKMLEVA cobrará uma taxa de serviço administrativa por qualquer alteração ou cancelamento, para além das penalizações aplicadas pelos fornecedores."
+          },
+          {
+            "type": "paragraph",
+            "text": "O não comparecimento (no-show) na data de partida implica a perda total do valor pago, sem direito a reembolso."
+          },
+          {
+            "type": "subheading",
+            "text": "Cancelamento pela AKMLEVA"
+          },
+          {
+            "type": "paragraph",
+            "text": "A AKMLEVA reserva-se o direito de cancelar a viagem se o número de participantes for inferior ao mínimo exigido ou por motivos de força maior. Nesses casos, o Utilizador será reembolsado integralmente das quantias pagas, sem direito a qualquer outra indemnização."
+          }
+        ]
+      },
+      "responsibilities": {
+        "title": "5. Responsabilidade da Agência e do Utilizador",
+        "content": [
+          {
+            "type": "subheading",
+            "text": "Responsabilidade da AKMLEVA"
+          },
+          {
+            "type": "paragraph",
+            "text": "A AKMLEVA atua como intermediária entre o Utilizador e os fornecedores de serviços de viagem. A nossa responsabilidade está limitada à organização da viagem e à correta emissão da documentação, nos termos do Decreto-Lei n.º 17/2018. Não nos responsabilizamos por incumprimentos, atrasos ou cancelamentos por parte dos fornecedores diretos, greves, condições climatéricas ou outras circunstâncias imprevisíveis."
+          },
+          {
+            "type": "subheading",
+            "text": "Responsabilidade do Utilizador"
+          },
+          {
+            "type": "paragraph",
+            "text": "É da inteira responsabilidade do Utilizador garantir que possui toda a documentação pessoal e familiar necessária para a viagem (passaporte, vistos, autorizações de saída para menores, certificados de vacinação). A AKMLEVA não se responsabiliza pela recusa de concessão de vistos ou pela não permissão de entrada em país estrangeiro."
+          }
+        ]
+      },
+      "dataProtection": {
+        "title": "6. Proteção de Dados Pessoais",
+        "content": [
+          {
+            "type": "paragraph",
+            "text": "Os dados pessoais são tratados em conformidade com o RGPD (Regulamento Geral de Proteção de Dados) e a legislação portuguesa aplicável. Para mais informações, consulte a nossa Política de Privacidade."
+          }
+        ]
+      }
+    }
+  }
+}

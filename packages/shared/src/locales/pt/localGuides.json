@@ -1,0 +1,132 @@
+{
+  "becomeAGuide": "Torne-se um Guia",
+  "becomeGuide": {
+    "title": "Torne-se um Guia Local na AKMLEVA",
+    "description": "Partilhe a paixão pela sua cidade, mostre o que ela tem de melhor e ganhe um rendimento extra a fazer o que adora.",
+    "applyNow": "Candidatar-se Agora",
+    "feature1": {
+      "title": "Flexibilidade Total",
+      "desc": "Defina os seus horários e disponibilidade. Trabalhe quando e como quiser."
+    },
+    "feature2": {
+      "title": "Rendimento Extra",
+      "desc": "Transforme o seu conhecimento local numa fonte de rendimento fiável e gratificante."
+    },
+    "feature3": {
+      "title": "Comunidade Global",
+      "desc": "Junte-se a uma rede de guias apaixonados e conecte-se com viajantes do mundo inteiro."
+    }
+  },
+  "clearFilters": "Limpar Filtros",
+  "contactUs": "Fale Connosco",
+  "ctaSubtitle": "Entre em contacto e descubra como os nossos guias podem enriquecer a sua viagem",
+  "detailsPanel": {
+    "about": "Sobre",
+    "tours": "Passeios",
+    "moreInfo": "Mais Info",
+    "memberSince": "Membro desde",
+    "bookTour": "Reservar Passeio",
+    "noTours": "Este guia ainda não adicionou passeios.",
+    "languages": "Idiomas",
+    "specialties": "Especialidades",
+    "experienceYears": "Anos de Experiência",
+    "certifications": "Certificações",
+    "basePrice": "Preço Base",
+    "hour": "hora",
+    "contactGuideCta": "Contactar {{name}}"
+  },
+  "discoverOur": "Descubra os Nossos",
+  "expertise": {
+    "todos": "Todos",
+    "trilhas": "Trilhas",
+    "culturalocal": "Cultura Local",
+    "gastronomia": "Gastronomia",
+    "vidanoturna": "Vida Noturna",
+    "arteurbana": "Arte Urbana",
+    "mercadoslocais": "Mercados Locais"
+  },
+  "experts": "Especialistas",
+  "faqLink": "Perguntas Frequentes",
+  "filterPlaceholder": "Filtrar por especialidade",
+  "filters": {
+    "title": "Filtrar Guias",
+    "clear": "Limpar Filtros",
+    "searchLabel": "Pesquisar por nome ou palavra-chave",
+    "searchPlaceholder": "Ex: 'Carlos' ou 'gastronomia'",
+    "locationLabel": "Localização",
+    "allLocations": "Todas as Localizações",
+    "specialtyLabel": "Especialidade",
+    "allSpecialties": "Todas as Especialidades",
+    "languageLabel": "Idioma",
+    "allLanguages": "Todos os Idiomas"
+  },
+  "guideListSubtitle": "Conheça os especialistas que o irão guiar na sua próxima aventura",
+  "guides": {
+    "guide_1": {
+      "bio": "Carlos é um historiador de arte que transforma cada rua de Lisboa numa galeria a céu aberto. As suas tours são uma viagem no tempo.",
+      "tagline": "A desvendar a história em cada esquina de Lisboa.",
+      "tour_title": "Lisboa Histórica: Do Castelo a Belém",
+      "tour_desc": "Uma caminhada de 4 horas pelos momentos mais marcantes da história de Portugal, visitando monumentos icónicos."
+    },
+    "guide_2": {
+      "bio": "...",
+      "tagline": "...",
+      "tour_title": "...",
+      "tour_desc": "..."
+    }
+  },
+  "guidesList": {
+    "title": "Guias Disponíveis",
+    "sortBy": "Ordenar por",
+    "sortOptions": {
+      "rating": "Melhor Classificação",
+      "name": "Nome (A-Z)",
+      "experience": "Mais Experiente",
+      "price": "Menor Preço"
+    },
+    "verified": "Guia Verificado",
+    "reviews": "avaliação",
+    "reviews_plural": "avaliações",
+    "experience": "{{count}} ano de experiência",
+    "experience_plural": "{{count}} anos de experiência",
+    "viewProfile": "Ver Perfil",
+    "noResultsTitle": "Nenhum Guia Encontrado",
+    "noResultsDesc": "Tente ajustar os seus filtros ou limpar a pesquisa para ver todos os nossos guias fantásticos."
+  },
+  "hero": {
+    "badge": "Nossa Comunidade",
+    "title": "Conheça os Nossos Guias Locais",
+    "subtitle": "Viajantes apaixonados que transformam o seu destino numa experiência autêntica."
+  },
+  "heroSubtitle": "Especialistas apaixonados que tornam a sua viagem inesquecível",
+  "localGuides": "Guias Locais",
+  "meetOur": "Conheça os Nossos",
+  "noGuidesFound": "Nenhum guia encontrado com os critérios selecionados.",
+  "ourGuidesBadge": "Os Nossos Guias",
+  "readyToExplore": "Quer explorar com um guia local?",
+  "searchLabel": "Campo de pesquisa de guias",
+  "searchPlaceholder": "Pesquisar por nome, local ou descrição...",
+  "specialties": {
+    "história": "História",
+    "gastronomia": "Gastronomia",
+    "natureza": "Natureza",
+    "arquitetura": "Arquitetura"
+  },
+  "page": {
+    "titlePrefix": "Encontre o seu",
+    "titleHighlight": "Parceiro de Aventura",
+    "loadingExperts": "A carregar especialistas...",
+    "guidesAvailable": "{count} guias disponíveis para si",
+    "emptyState": {
+      "title": "Nenhum guia corresponde aos critérios",
+      "description": "Tente remover filtros ou pesquisar por outro termo.",
+      "clearAll": "Limpar todos os filtros"
+    },
+    "cta": {
+      "title": "Pronto para a sua próxima história?",
+      "subtitle": "Junte-se a milhares de viajantes que descobriram o lado oculto dos seus destinos favoritos.",
+      "primary": "Começar Agora",
+      "secondary": "Falar com Suporte"
+    }
+  }
+}

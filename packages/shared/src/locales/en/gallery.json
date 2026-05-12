@@ -1,0 +1,11 @@
+{
+  "cta_button": "Explore Packages",
+  "cta_description": "Discover personalized packages for each of these incredible destinations",
+  "cta_title": "Ready to Live These Experiences?",
+  "error_loading": "Error loading the gallery. Please try again.",
+  "items_shown": "{count} items",
+  "no_images_found": "No images found.",
+  "subtitle": "Explore incredible destinations through a unique visual experience",
+  "title": "Immersive Gallery",
+  "viewItemAria": "View {title}"
+}

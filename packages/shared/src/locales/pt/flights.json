@@ -1,0 +1,95 @@
+{
+  "booking": {
+    "title": "Confirmar Reserva",
+    "description": "Revise os detalhes da sua reserva antes de confirmar.",
+    "flightDetails": "Detalhes do Voo",
+    "passengerInfo": "Informações do Passageiro",
+    "name": "Nome Completo",
+    "email": "Email",
+    "phone": "Telefone",
+    "totalPrice": "Preço Total",
+    "confirm": "Confirmar Reserva",
+    "cancel": "Cancelar",
+    "bookingSuccess": "Reserva confirmada com sucesso!",
+    "bookingError": "Erro ao confirmar reserva. Tente novamente."
+  },
+  "contactCta": {
+    "title": "Precisa de Ajuda?",
+    "description": "Nossos especialistas podem ajudá-lo a encontrar os melhores voos",
+    "cta": "Falar com Especialista"
+  },
+  "flightTypes": {
+    "title": "Tipos de Voo",
+    "subtitle": "Oferecemos diferentes opções de voo para atender às suas necessidades",
+    "learnMore": "Ver Opções",
+    "international": {
+      "title": "Voos Internacionais",
+      "description": "Destinos em todo o mundo"
+    },
+    "domestic": {
+      "title": "Voos Domésticos",
+      "description": "Voos dentro do país"
+    },
+    "group": {
+      "title": "Grupos",
+      "description": "Tarifas especiais para grupos"
+    }
+  },
+  "flights": {
+    "popular": {
+      "newYork": "Nova Iorque",
+      "london": "Londres",
+      "paris": "Paris",
+      "tokyo": "Tóquio"
+    }
+  },
+  "hero": {
+    "title": "Voos e Passagens Aéreas",
+    "subtitle": "As melhores tarifas e rotas para o seu destino dos sonhos",
+    "cta": "Pesquisar Voos"
+  },
+  "popularFlights": {
+    "title": "Voos Populares",
+    "subtitle": "Descubra os destinos mais procurados e reserve o seu próximo voo com as melhores ofertas."
+  },
+  "results": {
+    "title": "Voos Disponíveis",
+    "noResults": "Nenhum voo encontrado",
+    "tryDifferentSearch": "Tente refinar a sua pesquisa com critérios diferentes.",
+    "loadingFlights": "Carregando voos...",
+    "flightsFound": "{{count}} voos encontrados para a sua pesquisa.",
+    "airline": "Companhia Aérea",
+    "departure": "Partida",
+    "arrival": "Chegada",
+    "duration": "Duração",
+    "stops": "Escalas",
+    "price": "Preço",
+    "action": "Ação",
+    "bookNow": "Reservar Agora",
+    "direct": "Direto",
+    "oneStop": "1 Escala",
+    "multipleStops": "Múltiplas Escalas"
+  },
+  "search": {
+    "title": "Procurar Voos",
+    "origin": "Origem",
+    "originPlaceholder": "Selecione a origem",
+    "destination": "Destino",
+    "destinationPlaceholder": "Selecione o destino",
+    "selectDate": "Selecione a data",
+    "passenger": "passageiro",
+    "passengersPlural": "passageiros",
+    "clear": "Limpar",
+    "departure": "Origem",
+    "departurePlaceholder": "De onde parte?",
+    "arrival": "Destino",
+    "arrivalPlaceholder": "Para onde vai?",
+    "departureDate": "Data de Partida",
+    "returnDate": "Data de Regresso",
+    "passengers": "Passageiros",
+    "button": "Pesquisar Voos",
+    "searching": "Pesquisando...",
+    "roundTrip": "Ida e Volta",
+    "oneWay": "Só Ida"
+  }
+}

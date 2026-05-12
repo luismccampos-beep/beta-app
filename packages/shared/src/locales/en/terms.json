@@ -1,0 +1,114 @@
+{
+  "responsibility": {
+    "title": "Responsibility Terms",
+    "subtitle": "Important information about our responsibilities and commitments",
+    "lastUpdated": "Last updated: {date}",
+    "effectiveDate": "Effective date: {date}",
+    "introduction": "AKMLEVA acts as an intermediary between the client and tourism service providers. These terms define our responsibilities and limitations.",
+    "sections": {
+      "liability": {
+        "title": "Liability and Limitations",
+        "intro": "Our liability is limited by our role as intermediaries.",
+        "scope": "We act in the booking and organization of services provided by third parties.",
+        "exclusions": [
+          "Delays or cancellations by airlines or carriers",
+          "Damage, loss, or misplacement of luggage under third-party responsibility",
+          "Force majeure events (natural disasters, political instability, pandemics)",
+          "Refusal of entry into countries due to lack of proper traveler documentation"
+        ]
+      },
+      "client": {
+        "title": "Client Responsibilities",
+        "intro": "The client is responsible for ensuring compliance with all travel requirements.",
+        "items": [
+          "Possess valid travel documentation (Passport, Visas, ID Card)",
+          "Comply with health and vaccination requirements of destinations",
+          "Provide correct and complete information at the time of booking",
+          "Verify all issued travel documents and report errors immediately"
+        ]
+      },
+      "company": {
+        "title": "Company Responsibilities",
+        "intro": "We are committed to providing excellent and transparent service.",
+        "items": [
+          "Select trusted suppliers and partners",
+          "Provide clear and accurate information about contracted services",
+          "Provide customer assistance before, during, and after the trip",
+          "Manage bookings and payments securely and efficiently"
+        ]
+      },
+      "insurance": {
+        "title": "Insurance and Guarantees",
+        "intro": "Our clients' safety is a priority.",
+        "coverage": [
+          "Professional Civil Liability Insurance",
+          "Travel and Tourism Guarantee Fund",
+          "Personal travel insurance options (recommended)"
+        ],
+        "company": "Our insurances are mediated by certified insurers regulated by ASF."
+      },
+      "disputes": {
+        "title": "Dispute Resolution",
+        "intro": "We prioritize amicable resolution of any disputes.",
+        "procedure": [
+          "Initial contact with our customer support service",
+          "Electronic Complaints Book",
+          "Recourse to Alternative Consumer Dispute Resolution Entities"
+        ],
+        "jurisdiction": "For legal matters, Portuguese law and the court of the company's headquarters apply."
+      }
+    }
+  },
+  "error": {
+    "title": "Error loading terms",
+    "message": "Unable to load terms and conditions. Please try again.",
+    "retry": "Try Again"
+  },
+  "terms": {
+    "lastUpdated": "Last updated",
+    "effective": "Effective",
+    "version": "Version",
+    "download": "Download PDF",
+    "print": "Print"
+  },
+  "toc": {
+    "title": "Table of Contents",
+    "readingProgress": "Reading progress",
+    "estimatedTime": "Estimated time: {minutes} minutes",
+    "backToTop": "Back to top",
+    "completed": "Document completed!"
+  },
+  "tableOfContents": {
+    "title": "Table of Contents"
+  },
+  "footer": {
+    "links": {
+      "privacy": "Privacy Policy",
+      "cookies": "Cookie Policy",
+      "terms": "Terms of Service",
+      "dataProtection": "Data Protection"
+    },
+    "newsletter": {
+      "title": "Stay Updated",
+      "description": "Get legal updates and important notifications",
+      "placeholder": "Enter your email",
+      "success": "Successfully subscribed!",
+      "error": "Something went wrong. Please try again."
+    },
+    "contact": {
+      "title": "Contact Legal Team"
+    },
+    "legal": {
+      "title": "Legal Information"
+    },
+    "compliance": {
+      "title": "Compliance"
+    },
+    "governed": "These terms and conditions are governed by the laws of Portugal.",
+    "questions": "If you have any questions, please contact our legal team.",
+    "rights": "All rights reserved.",
+    "secure": "Secure & Encrypted",
+    "verified": "Verified Company",
+    "transparent": "Transparent Terms"
+  }
+}

@@ -1,0 +1,157 @@
+{
+  "benefits": {
+    "title": "Les Avantages de <span class='text-primary'>Voyager Avec Nous</span>",
+    "subtitle": "Plus qu'une agence, nous sommes votre partenaire de voyage.",
+    "items": [
+      "Service personnalisé et dévoué",
+      "Experts de destination avec une connaissance approfondie",
+      "Prix compétitifs et transparents",
+      "Support continu avant, pendant et après le voyage",
+      "Partenaires et fournisseurs de confiance",
+      "Flexibilité pour ajuster vos plans"
+    ]
+  },
+  "cta": {
+    "title": "Prêt à Commencer Votre Aventure ?",
+    "subtitle": "Parlez à l'un de nos experts ou explorez nos destinations et découvrez votre prochain grand itinéraire.",
+    "buttons": {
+      "quote": "Demander un Devis",
+      "destinations": "Voir les Destinations"
+    }
+  },
+  "hero": {
+    "badge": "Services d'Excellence",
+    "title": "Solutions de Voyage <span class='text-secondary'>Sur Mesure</span>",
+    "subtitle": "Des forfaits complets aux expériences uniques, nous concevons chaque détail pour créer votre voyage parfait. Votre aventure commence ici."
+  },
+  "mainServices": {
+    "title": "Nos <span class='text-primary'>Services Principaux</span>",
+    "subtitle": "Tout ce dont vous avez besoin pour un voyage serein et inoubliable, organisé par des experts.",
+    "popularBadge": "Populaire",
+    "ctaButton": "En Savoir Plus",
+    "items": {
+      "packages": {
+        "title": "Forfaits de Voyage",
+        "price": "À partir de 499€",
+        "description": "Forfaits complets avec vols, hôtels et activités. L'option idéale pour ceux qui recherchent la commodité et le meilleur prix.",
+        "features": [
+          "Vols et Hébergement Inclus",
+          "Itinéraires Optimisés",
+          "Support 24/7"
+        ],
+        "popular": "true"
+      },
+      "flights": {
+        "title": "Vols",
+        "price": "Meilleurs Tarifs",
+        "description": "Trouvez et réservez des vols vers n'importe quelle destination avec les meilleurs tarifs et horaires.",
+        "features": [
+          "Comparaison de Prix",
+          "Réservation Instantanée",
+          "Support Spécialisé"
+        ],
+        "popular": "false"
+      },
+      "hotels": {
+        "title": "Réservations d'Hôtels",
+        "price": "Meilleur Prix Garanti",
+        "description": "Accédez à une vaste sélection d'hôtels dans le monde entier, des plus luxueux aux plus économiques.",
+        "features": [
+          "Milliers d'Options",
+          "Confirmation Immédiate",
+          "Annulation Flexible"
+        ],
+        "popular": "false"
+      },
+      "transfers": {
+        "title": "Transferts et Transports",
+        "price": "Confort et Sécurité",
+        "description": "Assurez votre transport de l'aéroport à l'hôtel et entre les villes en tout confort et sécurité.",
+        "features": [
+          "Chauffeurs Professionnels",
+          "Véhicules Modernes",
+          "Prix Fixes"
+        ],
+        "popular": "false"
+      },
+      "cruises": {
+        "title": "Croisières",
+        "price": "Mers d'Aventure",
+        "description": "Explorez plusieurs destinations en un seul voyage à bord des meilleurs navires de croisière du monde.",
+        "features": [
+          "Itinéraires Exclusifs",
+          "Tout Inclus à Bord",
+          "Divertissement Garanti"
+        ],
+        "popular": "false"
+      },
+      "localGuides": {
+        "title": "Guides Locaux",
+        "price": "Expériences Authentiques",
+        "description": "Découvrez les secrets de chaque destination avec des guides locaux expérimentés qui parlent votre langue.",
+        "features": [
+          "Tours Privés et en Groupe",
+          "Connaissance Locale",
+          "Immersion Culturelle"
+        ],
+        "popular": "true"
+      },
+      "insurance": {
+        "title": "Assurance Voyage",
+        "price": "Voyagez Sans Soucis",
+        "description": "Protégez votre voyage contre les imprévus avec notre assurance voyage complète et fiable.",
+        "features": [
+          "Couverture Médicale Internationale",
+          "Annulation de Voyage",
+          "Assistance 24h"
+        ],
+        "popular": "false"
+      }
+    }
+  },
+  "process": {
+    "title": "Comment Ça <span class='text-primary'>Marche</span> ?",
+    "subtitle": "Notre processus est simple, transparent et centré sur vous.",
+    "items": {
+      "step1": {
+        "title": "Inspirez-vous",
+        "description": "Explorez nos destinations et forfaits ou faites-nous part de votre idée."
+      },
+      "step2": {
+        "title": "Planification",
+        "description": "Un de nos spécialistes vous contactera pour concevoir un itinéraire sur mesure."
+      },
+      "step3": {
+        "title": "Réservation",
+        "description": "Après votre approbation, nous nous occupons de toutes les réservations et détails."
+      },
+      "step4": {
+        "title": "Voyagez !",
+        "description": "Profitez de votre voyage en sachant que nous avons tout sous contrôle."
+      }
+    }
+  },
+  "specializedServices": {
+    "title": "Voyages <span class='text-primary'>Spécialisés</span>",
+    "subtitle": "Nous créons des expériences thématiques pour les voyageurs aux passions spécifiques.",
+    "ctaButton": "Explorer les Options",
+    "items": {
+      "honeymoon": {
+        "title": "Lunes de Miel",
+        "description": "Destinations romantiques et expériences inoubliables pour célébrer l'amour."
+      },
+      "groupTravel": {
+        "title": "Voyages de Groupe",
+        "description": "Nous organisons des voyages pour des groupes d'amis, des familles ou des entreprises."
+      },
+      "culturalExchange": {
+        "title": "Échange Culturel",
+        "description": "Vivez comme un local et plongez dans de nouvelles cultures avec nos voyages d'immersion."
+      },
+      "photoTourism": {
+        "title": "Tourisme Photographique",
+        "description": "Capturez des paysages époustouflants avec nos itinéraires axés sur la photographie."
+      }
+    }
+  }
+}

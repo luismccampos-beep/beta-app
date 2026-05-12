@@ -1,0 +1,42 @@
+{
+  "bookingForm": {
+    "title": "Reserve o Seu Transfer",
+    "description": "Preencha os detalhes e obtenha um orçamento instantâneo para a sua viagem.",
+    "from": "De",
+    "from_placeholder": "Ex: Aeroporto de Lisboa",
+    "to": "Para",
+    "to_placeholder": "Ex: Hotel Mundial, Lisboa",
+    "button": "Pesquisar"
+  },
+  "cta": {
+    "title": "Pronto para Viajar com Tranquilidade?",
+    "description": "Garanta já o seu transporte e comece a sua viagem da melhor forma possível. Pontualidade e profissionalismo garantidos.",
+    "button": "Contacte-nos"
+  },
+  "fleet": {
+    "title": "A Nossa Frota",
+    "subtitle": "Temos uma vasta gama de veículos modernos e confortáveis para garantir a sua satisfação.",
+    "vehicle": {
+      "sedan": "Sedan Standard",
+      "sedan_desc": "Ideal para casais ou viajantes individuais com conforto e eficiência.",
+      "executive": "Sedan Executivo",
+      "executive_desc": "Viaje com estilo e luxo. Perfeito para viagens de negócios.",
+      "van": "Minivan / Carrinha",
+      "van_desc": "Muito espaço para famílias ou pequenos grupos com mais bagagem."
+    }
+  },
+  "hero": {
+    "title": "O Seu Transfer, A Nossa Prioridade",
+    "subtitle": "Chegue ao seu destino com conforto, segurança e pontualidade. Do aeroporto ao hotel, tratamos de tudo."
+  },
+  "howItWorks": {
+    "title": "Como Funciona?",
+    "subtitle": "Reservar o seu transfer é rápido e fácil. Siga estes 3 passos simples.",
+    "step1_title": "1. Pesquisar",
+    "step1_desc": "Introduza a origem, destino e data. Mostramos-lhe as melhores opções.",
+    "step2_title": "2. Reservar",
+    "step2_desc": "Escolha o veículo que melhor se adequa às suas necessidades e confirme a reserva.",
+    "step3_title": "3. Viajar",
+    "step3_desc": "O seu motorista estará à sua espera no ponto de encontro. Relaxe e desfrute da viagem."
+  }
+}

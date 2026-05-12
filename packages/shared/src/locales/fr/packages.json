@@ -1,0 +1,121 @@
+{
+  "customCta": {
+    "title": "Voulez-vous un Itinéraire Personnalisé?",
+    "description": "Parlez-nous de vos rêves de voyage et nous créerons un forfait exclusif pour vous",
+    "cta": "Contacter un Spécialiste"
+  },
+  "hero": {
+    "title": "Forfaits de Voyage Personnalisés",
+    "subtitle": "Nous créons des expériences uniques adaptées à vos rêves et préférences",
+    "cta": "Demander un Devis",
+    "viewDeals": "Voir les Offres"
+  },
+  "packageTypes": {
+    "title": "Types de Forfaits",
+    "description": "Nous proposons différents types de forfaits pour répondre à tous les profils de voyageurs",
+    "explore": "Explorer",
+    "romantic": {
+      "title": "Lune de Miel",
+      "description": "Forfaits romantiques pour couples",
+      "feature1": "Hôtels romantiques",
+      "feature2": "Dîners spéciaux"
+    },
+    "family": {
+      "title": "Famille",
+      "description": "Voyages pour toute la famille",
+      "feature1": "Activités pour enfants",
+      "feature2": "Hôtels familiaux"
+    },
+    "adventure": {
+      "title": "Aventure",
+      "description": "Forfaits pour aventuriers",
+      "feature1": "Activités extrêmes",
+      "feature2": "Guides spécialisés"
+    },
+    "gastronomic": {
+      "title": "Gastronomie",
+      "description": "Forfaits pour gastronomes",
+      "feature1": "Restaurants exclusifs",
+      "feature2": "Dégustations spéciales"
+    },
+    "luxury": {
+      "title": "Luxe",
+      "description": "Expériences de luxe exclusives avec les meilleurs hôtels et services premium"
+    },
+    "wellness": {
+      "title": "Bien-être",
+      "description": "Forfaits axés sur la relaxation, le spa et les activités de bien-être"
+    },
+    "group-travel": {
+      "title": "Voyages de Groupe",
+      "description": "Expériences spéciales pour groupes d'amis, familles ou collègues"
+    },
+    "cultural-exchange": {
+      "title": "Échange Culturel",
+      "description": "Plongez dans de nouvelles cultures et vivez comme un local"
+    },
+    "photography-tourism": {
+      "title": "Tourisme Photographique",
+      "description": "Capturez des paysages époustouflants avec des itinéraires axés sur la photographie"
+    },
+    "snow-sports": {
+      "title": "Sports de Neige",
+      "description": "Aventures dans la neige avec ski, snowboard et autres activités hivernales"
+    },
+    "corporate-travel": {
+      "title": "Voyages d'Affaires",
+      "description": "Solutions professionnelles pour événements, réunions et incentives d'entreprise"
+    },
+    "coastal-tourism": {
+      "title": "Tourisme Côtier",
+      "description": "Détendez-vous sur des plages paradisiaques et explorez des destinations côtières uniques"
+    }
+  },
+  "personalized": {
+    "title": "Types de Forfaits",
+    "description": "Nous proposons différents types de forfaits pour répondre à tous les profils de voyageurs",
+    "learnMore": "En Savoir Plus"
+  },
+  "featuredPackages": {
+    "title": "Forfaits en Vedette"
+  },
+  "page": {
+    "hero": {
+      "title": "Forfaits de Voyage",
+      "subtitle": "Planifiez en toute confiance : forfaits vérifiés, prix clairs et assistance 24/7."
+    },
+    "error": {
+      "title": "Oups ! Une erreur s'est produite",
+      "message": "Nous n'avons pas pu charger les forfaits. Veuillez réessayer plus tard.",
+      "retry": "Réessayer"
+    },
+    "empty": {
+      "title": "Aucun forfait disponible",
+      "message": "Nous préparons de nouvelles destinations incroyables pour vous. Revenez bientôt !"
+    },
+    "unknown": "Destination Inconnue",
+    "onRequest": "Sur Demande",
+    "brand": "AKMLEVA",
+    "featured": "En Vedette",
+    "categoryBanner": {
+      "title": "Explorer les catégories de voyage",
+      "subtitle": "{count} catégories disponibles",
+      "cta": "Voir tous les forfaits"
+    },
+    "stats": {
+      "packages": "Forfaits",
+      "destinations": "Destinations",
+      "categories": "Catégories",
+      "averageRating": "Note moyenne",
+      "na": "N/A"
+    },
+    "schema": {
+      "collectionName": "Forfaits de voyage",
+      "collectionDescription": "Forfaits avec durée, prix et avis.",
+      "breadcrumbHome": "Accueil",
+      "breadcrumbPackages": "Forfaits",
+      "organizationName": "Voyages",
+      "organizationDescription": "Agence de voyage spécialisée dans des forfaits complets et personnalisés"
+    }
+  }
+}

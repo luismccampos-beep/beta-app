@@ -1,0 +1,173 @@
+{
+  "profile": {
+    "title": "Traveler Profile",
+    "completeness": {
+      "title": "Traveler Profile",
+      "complete": "Your profile is complete!",
+      "incomplete": "Complete your profile for a better experience",
+      "progress": "Progress",
+      "completeItem": "Complete",
+      "items": {
+        "profile_photo": "Profile photo",
+        "phone": "Phone",
+        "documents": "Documents",
+        "emergency_contact": "Emergency contact",
+        "ai_preferences": "AI preferences",
+        "travel_preferences": "Travel preferences",
+        "payment_methods": "Payment methods",
+        "address": "Address"
+      }
+    }
+  },
+  "documents": {
+    "title": "Travel Documents",
+    "subtitle": "Keep your documents updated for faster bookings",
+    "add": "Add",
+    "addTitle": "Add Document",
+    "addDescription": "Add your travel documents for a faster experience.",
+    "noDocuments": "No documents registered. Add your travel documents to speed up your bookings.",
+    "fields": {
+      "type": "Document Type",
+      "number": "Document Number",
+      "issueDate": "Issue Date",
+      "expiryDate": "Expiry Date",
+      "issuer": "Issuing Country"
+    },
+    "types": {
+      "passport": "Passport",
+      "national_id": "National ID",
+      "visa": "Visa",
+      "drivers_license": "Driver's License",
+      "travel_pass": "Travel Pass"
+    },
+    "status": {
+      "valid": "Valid",
+      "expiring_soon": "Expiring Soon",
+      "expired": "Expired",
+      "needs_verification": "Pending"
+    },
+    "verified": "Verified",
+    "issued": "Issued",
+    "expires": "Expires",
+    "expiresIn": "Expires in {{days}} days - Consider renewing",
+    "upload": "Upload document",
+    "delete": "Remove"
+  },
+  "emergencyContact": {
+    "title": "Emergency Contact",
+    "subtitle": "Contact information for emergency situations during trips",
+    "add": "Add",
+    "addTitle": "Add Emergency Contact",
+    "addDescription": "This contact will be used in case of emergency during your trips.",
+    "noContacts": "No emergency contact registered. Add someone you trust for emergency situations.",
+    "fields": {
+      "name": "Full Name",
+      "relationship": "Relationship",
+      "phone": "Phone",
+      "email": "Email (optional)"
+    },
+    "relationships": {
+      "spouse": "Spouse",
+      "parent": "Parent",
+      "sibling": "Sibling",
+      "child": "Child",
+      "friend": "Friend",
+      "other": "Other"
+    },
+    "primary": "Primary",
+    "delete": "Remove"
+  },
+  "stats": {
+    "title": "Your Trips",
+    "subtitle": "Track your travel history and achievements",
+    "totalTrips": "Trips",
+    "countries": "Countries",
+    "cities": "Cities",
+    "daysTraveled": "Days traveling",
+    "milesTraveled": "Miles traveled",
+    "reviews": "Reviews",
+    "averageRating": "Average rating",
+    "upcomingTrips_one": "You have {{count}} upcoming trip!",
+    "upcomingTrips_other": "You have {{count}} upcoming trips!",
+    "favoriteDestination": "Favorite destination"
+  },
+  "badges": {
+    "title": "Achievements",
+    "earned": "Earned",
+    "nextBadges": "Next achievements",
+    "types": {
+      "first_trip": {
+        "name": "First Trip",
+        "description": "Completed your first trip"
+      },
+      "explorer": {
+        "name": "Explorer",
+        "description": "Visited 5 different countries"
+      },
+      "world_traveler": {
+        "name": "World Traveler",
+        "description": "Visited 10 different countries"
+      },
+      "early_booker": {
+        "name": "Early Booker",
+        "description": "Booked 3 trips more than 60 days in advance"
+      },
+      "sustainable_traveler": {
+        "name": "Sustainable Traveler",
+        "description": "Chose eco-friendly options 5 times"
+      },
+      "reviewer": {
+        "name": "Reviewer",
+        "description": "Left 5 reviews for your trips"
+      },
+      "loyal_customer": {
+        "name": "Loyal Customer",
+        "description": "Completed 10 trips with us"
+      },
+      "adventure_seeker": {
+        "name": "Adventure Seeker",
+        "description": "Booked 3 adventure activities"
+      },
+      "culture_enthusiast": {
+        "name": "Culture Enthusiast",
+        "description": "Visited 5 museums or historical sites"
+      },
+      "beach_lover": {
+        "name": "Beach Lover",
+        "description": "Booked 3 beach destinations"
+      },
+      "mountain_explorer": {
+        "name": "Mountain Explorer",
+        "description": "Completed 3 mountain trips"
+      },
+      "city_hopper": {
+        "name": "City Hopper",
+        "description": "Visited 5 different cities"
+      },
+      "foodie_traveler": {
+        "name": "Foodie Traveler",
+        "description": "Booked 3 culinary experiences"
+      },
+      "budget_savvy": {
+        "name": "Budget Savvy",
+        "description": "Saved money using our deals 5 times"
+      },
+      "luxury_traveler": {
+        "name": "Luxury Traveler",
+        "description": "Booked 3 premium packages"
+      }
+    }
+  },
+  "tabs": {
+    "personal": "Personal Data",
+    "travel": "Travel",
+    "preferences": "Preferences"
+  },
+  "actions": {
+    "save": "Save",
+    "cancel": "Cancel",
+    "edit": "Edit",
+    "delete": "Remove",
+    "add": "Add"
+  }
+}

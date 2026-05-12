@@ -1,0 +1,182 @@
+{
+  "buttons": {
+    "next": "Próximo",
+    "previous": "Anterior",
+    "book": "Reservar Agora",
+    "cancel": "Cancelar"
+  },
+  "confirmation": {
+    "success": "Reserva Confirmada!",
+    "thankYou": "Obrigado por escolher a AKMLEVA",
+    "bookingNumber": "Número da Reserva",
+    "email": "Um email de confirmação foi enviado"
+  },
+  "form": {
+    "firstName": "Nome",
+    "lastName": "Sobrenome",
+    "email": "Email",
+    "phone": "Telefone",
+    "address": "Endereço",
+    "city": "Cidade",
+    "country": "País",
+    "postalCode": "Código Postal"
+  },
+  "payment": {
+    "method": "Método de Pagamento",
+    "cardNumber": "Número do Cartão",
+    "expiryDate": "Data de Validade",
+    "cvv": "CVV",
+    "cardHolder": "Nome no Cartão"
+  },
+  "steps": {
+    "personal": "Informações Pessoais",
+    "payment": "Pagamento",
+    "confirmation": "Confirmação"
+  },
+  "subtitle": "Complete sua reserva em apenas alguns passos simples",
+  "title": "Reserve Sua Viagem dos Sonhos",
+  "validation": {
+    "required": "Este campo é obrigatório",
+    "email": "Email inválido",
+    "phone": "Telefone inválido",
+    "card": "Número do cartão inválido"
+  },
+  "destinations": {
+    "santorini": {
+      "name": "Santorini, Grécia",
+      "duration": "7 dias",
+      "includes": [
+        "Voos",
+        "Hotel 4★",
+        "Pequeno-almoço",
+        "Transferências"
+      ]
+    },
+    "tokyo": {
+      "name": "Tóquio, Japão",
+      "duration": "10 dias",
+      "includes": [
+        "Voos",
+        "Hotel 5★",
+        "Meia pensão",
+        "JR Pass"
+      ]
+    },
+    "bali": {
+      "name": "Bali, Indonésia",
+      "duration": "8 dias",
+      "includes": [
+        "Voos",
+        "Resort 4★",
+        "Tudo incluído",
+        "Spa"
+      ]
+    }
+  },
+  "pageTitle": "Reservar uma Viagem",
+  "perPersonSuffix": "/ pessoa",
+  "step1": {
+    "title": "Escolha o seu Destino",
+    "departureDate": "Data de Partida",
+    "returnDate": "Data de Retorno",
+    "travelers": "Número de Viajantes",
+    "travelerCount_one": "{{count}} pessoa",
+    "travelerCount_other": "{{count}} pessoas",
+    "accommodation": {
+      "title": "Nível de Alojamento",
+      "options": {
+        "standard": "Standard (Hotel 3-4★)",
+        "premium": "Premium (Hotel 4-5★)",
+        "luxury": "Luxo (Resort 5★)"
+      },
+      "pricePrefix": "+€",
+      "included": "Incluído"
+    },
+    "specialRequests": {
+      "label": "Pedidos Especiais (Opcional)",
+      "placeholder": "Aniversário, lua de mel, necessidades especiais, preferências dietéticas..."
+    }
+  },
+  "step2": {
+    "title": "Informações Pessoais",
+    "fullName": "Nome Completo *",
+    "fullNamePlaceholder": "O seu nome completo",
+    "email": "Email *",
+    "emailPlaceholder": "oseu@email.com",
+    "phone": "Telefone *",
+    "phonePlaceholder": "+351 912 345 678",
+    "document": "BI/Passaporte *",
+    "documentPlaceholder": "Número do documento",
+    "security": {
+      "title": "Os seus dados estão seguros",
+      "description": "Utilizamos encriptação de ponta e cumprimos normas de segurança rigorosas para proteger as suas informações pessoais."
+    }
+  },
+  "step3": {
+    "title": "Resumo da Reserva",
+    "travelerCount_one": "{{count}} viajante",
+    "travelerCount_other": "{{count}} viajantes",
+    "rating": "Classificação {{rating}}",
+    "priceDetails": {
+      "title": "Detalhe de Preços",
+      "basePackage": "Pacote base ({{count}}x)",
+      "accommodationUpgrade": "Upgrade de alojamento ({{count}}x)",
+      "taxes": "Taxas e impostos"
+    },
+    "included": {
+      "title": "O que está incluído",
+      "travelInsurance": "Seguro de viagem",
+      "support": "Apoio 24/7"
+    },
+    "policies": {
+      "title": "Políticas importantes",
+      "cancellation": "• Cancelamento gratuito até 48h de antecedência",
+      "changes": "• Alterações permitidas sem custo adicional",
+      "documentation": "• Documentação necessária: passaporte válido",
+      "vaccines": "• Vacinas: verifique os requisitos do destino"
+    },
+    "total": "Total"
+  },
+  "step4": {
+    "title": "Pagamento",
+    "paymentMethod": {
+      "title": "Método de Pagamento",
+      "credit": {
+        "name": "Cartão de Crédito",
+        "description": "Até 12 prestações"
+      },
+      "pix": {
+        "name": "Transferência Bancária",
+        "description": "5% de desconto"
+      }
+    },
+    "creditCard": {
+      "number": "Número do Cartão",
+      "numberPlaceholder": "0000 0000 0000 0000",
+      "expiry": "Data de Validade",
+      "expiryPlaceholder": "MM/AA",
+      "cvv": "CVV",
+      "cvvPlaceholder": "000",
+      "name": "Nome no Cartão",
+      "namePlaceholder": "Nome como aparece no cartão"
+    },
+    "pix": {
+      "title": "Pagamento por Transferência Bancária",
+      "description": "Após confirmar a reserva, receberá os dados de pagamento por email.",
+      "totalWithDiscount": "Total com desconto:"
+    },
+    "terms": {
+      "agree": "Eu aceito os ",
+      "service": "termos de serviço",
+      "privacy": "política de privacidade"
+    },
+    "orderSummary": {
+      "title": "Resumo da Encomenda",
+      "subtotal": "Subtotal",
+      "taxes": "Taxas",
+      "pixDiscount": "Desconto de transferência (5%)",
+      "securePayment": "Pagamento 100% seguro",
+      "instantConfirmation": "Confirmação instantânea"
+    }
+  }
+}

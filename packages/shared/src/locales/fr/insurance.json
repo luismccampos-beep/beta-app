@@ -1,0 +1,118 @@
+{
+  "benefits": {
+    "badge": "Avantages",
+    "title": "Principaux Avantages",
+    "subtitle": "Découvrez les avantages de voyager avec notre protection complète",
+    "learnMore": "En Savoir Plus",
+    "medical": {
+      "title": "Couverture Médicale",
+      "description": "Assistance médicale 24h partout dans le monde, incluant hospitalisation et médicaments"
+    },
+    "cancellation": {
+      "title": "Annulation de Voyage",
+      "description": "Remboursement total en cas d'annulation pour motifs couverts, incluant maladie et urgences"
+    },
+    "baggage": {
+      "title": "Bagages Perdus",
+      "description": "Compensation pour perte, vol ou dommage de bagages, avec couverture jusqu'à 24h après arrivée"
+    },
+    "247support": "Support 24/7 partout dans le monde",
+    "simpleProcess": "Processus de réclamation simple et rapide",
+    "priorityAssistance": "Assistance prioritaire",
+    "specializedAssistance": "Assistance spécialisée pour les aventures"
+  },
+  "benefitsTitle": "Avantages Supplémentaires",
+  "contact": {
+    "badge": "Contact",
+    "title": "Besoin d'Aide Personnalisée ?",
+    "subtitle": "Notre équipe de spécialistes est disponible pour vous aider à choisir l'assurance idéale pour votre voyage"
+  },
+  "contactCta": {
+    "title": "Besoin d'une Couverture Spécifique?",
+    "description": "Nos spécialistes peuvent vous aider à choisir l'assurance idéale pour votre type de voyage",
+    "cta": "Parler à un Spécialiste"
+  },
+  "coverage": {
+    "badge": "Couverture",
+    "title": "Types de Couverture",
+    "subtitle": "Choisissez le plan qui s'adapte le mieux à vos besoins de voyage",
+    "selectPlan": "Sélectionner le Plan"
+  },
+  "coveragesTitle": "Principales Couvertures",
+  "detailedCoverages": "Couvertures Détaillées",
+  "faq": {
+    "title": "Questions Fréquentes",
+    "subtitle": "Trouvez des réponses aux questions les plus courantes sur l'assurance voyage.",
+    "q1": "Qu'est-ce qu'une assurance voyage et pourquoi en ai-je besoin?",
+    "a1": "Une assurance voyage est une protection financière contre les imprévus pendant votre voyage. Elle couvre tout, des urgences médicales à la perte de bagages, garantissant que vous n'aurez pas de coûts inattendus et aurez du soutien dans les moments difficiles.",
+    "q2": "Quels sont les types de couverture les plus courants?",
+    "a2": "Les couvertures les plus courantes incluent les frais médicaux et hospitaliers, l'assistance 24h, l'assurance bagages, l'annulation et l'interruption de voyage, et la responsabilité civile.",
+    "q3": "Comment demander un devis?",
+    "a3": "Il suffit de remplir le formulaire de devis sur notre page, en indiquant le plan souhaité et vos données. Nous vous contacterons bientôt avec une proposition personnalisée."
+  },
+  "features": {
+    "medicalExpenses": "Frais Médicaux et Hospitaliers",
+    "personalAccidents": "Accidents Personnels",
+    "luggageLoss": "Perte ou Vol de Bagages",
+    "flightCancellation": "Annulation de Vol",
+    "tripInterruption": "Interruption de Voyage",
+    "personalLiability": "Responsabilité Civile Personnelle",
+    "extremeSports": "Sports d'Aventure et Extrêmes",
+    "searchAndRescue": "Recherche et Sauvetage",
+    "childCareAssistance": "Assistance aux Enfants",
+    "familyPackageDiscounts": "Remises pour Forfaits Familiaux"
+  },
+  "finePrint": "Termes et Conditions",
+  "generalBenefits": "Avantages Généraux",
+  "getQuoteButton": "Demander un Devis",
+  "hero": {
+    "title": "Protégez Votre Aventure",
+    "subtitle": "Trouvez l'assurance idéale pour chaque voyage, garantissant tranquillité et sécurité à tout moment.",
+    "cta": "Demander un Devis"
+  },
+  "products": {
+    "title": "Nos Plans d'Assurance Voyage",
+    "subtitle": "Découvrez la couverture parfaite pour votre prochaine aventure, avec des options flexibles pour tous les besoins et budgets.",
+    "basic": {
+      "name": "Essentiel",
+      "description": "Idéal pour les voyageurs qui cherchent une couverture de base et essentielle pour les urgences.",
+      "summary": "Couverture de base pour les urgences médicales et les bagages.",
+      "price": "À partir de €9.99/jour",
+      "finePrint": "Couverture limitée aux urgences médicales de base et perte de bagages jusqu'à €500."
+    },
+    "premium": {
+      "name": "Premium",
+      "description": "Couverture complète pour un voyage sans soucis, incluant annulation et interruption.",
+      "summary": "Protection complète avec couverture pour annulation et responsabilité civile.",
+      "price": "À partir de €19.99/jour",
+      "badge": "Plus Populaire",
+      "finePrint": "Couverture complète incluant annulation, interruption et responsabilité civile jusqu'à €1.000.000."
+    },
+    "adventure": {
+      "name": "Aventure",
+      "description": "Spécialement conçu pour les passionnés d'activités et de sports extrêmes.",
+      "summary": "Couverture pour sports extrêmes, recherche et sauvetage.",
+      "price": "À partir de €24.99/jour",
+      "finePrint": "Couverture spéciale pour sports extrêmes, recherche et sauvetage dans des endroits reculés."
+    },
+    "family": {
+      "name": "Famille",
+      "description": "Plans flexibles pour les familles, avec assistance spécialisée pour les enfants.",
+      "summary": "Assurance pour toute la famille, avec assistance pour les enfants.",
+      "price": "À partir de €39.99/jour",
+      "finePrint": "Couverture familiale avec assistance spécialisée pour les enfants et remises pour les groupes."
+    }
+  },
+  "viewDetails": "Voir les Détails Complets",
+  "whyChooseUs": {
+    "title": "Pourquoi Choisir Notre Agence?",
+    "subtitle": "Expérience, confiance et le meilleur support pour votre tranquillité.",
+    "badge": "Pourquoi Nous",
+    "feature1_title": "Couverture Complète",
+    "feature1_desc": "Plans flexibles qui s'adaptent à tout type de voyage et voyageur.",
+    "feature2_title": "Processus Simplifié",
+    "feature2_desc": "Du devis à l'activation, tout en ligne et sans bureaucratie.",
+    "feature3_title": "Support Dédié",
+    "feature3_desc": "Notre équipe est toujours disponible pour vous aider dans toute situation."
+  }
+}

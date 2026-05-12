@@ -1,0 +1,11 @@
+{
+  "cta_button": "Explorer les Forfaits",
+  "cta_description": "Découvrez des forfaits personnalisés pour chacune de ces destinations incroyables",
+  "cta_title": "Prêt à Vivre Ces Expériences?",
+  "error_loading": "Erreur lors du chargement de la galerie. Veuillez réessayer.",
+  "items_shown": "{count} éléments",
+  "no_images_found": "Aucune image trouvée.",
+  "subtitle": "Explorez des destinations incroyables à travers une expérience visuelle unique",
+  "title": "Galerie Immersive",
+  "viewItemAria": "Voir {title}"
+}

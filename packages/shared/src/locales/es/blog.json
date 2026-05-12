@@ -1,0 +1,166 @@
+{
+  "back": "Volver al Blog",
+  "categories": {
+    "destinos": "Destinos",
+    "consejos-de-viaje": "Consejos de Viaje",
+    "aventura": "Aventura",
+    "gastronomia": "Gastronomía",
+    "ecoturismo": "Ecoturismo",
+    "cultura": "Cultura",
+    "itinerarios": "Itinerarios",
+    "Destinos": "Destinos",
+    "Dicas de Viagem": "Consejos de Viaje",
+    "Aventura": "Aventura",
+    "Gastronomia": "Gastronomía",
+    "Ecoturismo": "Ecoturismo",
+    "Cultura": "Cultura",
+    "Roteiros": "Itinerarios"
+  },
+  "featured": {
+    "title": "Artículo Destacado",
+    "subtitle": "Lo que está en tendencia ahora",
+    "readArticle": "Leer Artículo"
+  },
+  "footer": {
+    "copyright": "Blog de Viajes. Todos los derechos reservados.",
+    "terms": "Términos de Uso",
+    "privacy": "Política de Privacidad"
+  },
+  "hero": {
+    "badge": "Blog de Viajes",
+    "title": "Inspírate y Descubre el Mundo",
+    "subtitle": "Consejos exclusivos, guías detalladas e historias inspiradoras para hacer tus viajes aún más especiales"
+  },
+  "loadMore": "Cargar Más Artículos",
+  "meta": {
+    "title": "Blog de Viajes - AKMLEVA",
+    "description": "Descubre consejos exclusivos, guías detalladas e historias inspiradoras para tus próximas aventuras. Blog oficial de AKMLEVA.",
+    "keywords": "blog viajes, consejos viaje, guías turismo, destinos, aventura, ecoturismo"
+  },
+  "posts": {
+    "title": "Últimos Artículos",
+    "readMore": "Leer Más",
+    "readTime": "{{time}} min de lectura",
+    "backToBlog": "Volver al Blog",
+    "resultsFound": "{{count}} artículo(s) encontrado(s)",
+    "noResults": {
+      "title": "No se encontraron artículos",
+      "description": "Intenta ajustar los filtros o términos de búsqueda"
+    }
+  },
+  "relatedDestinations": "Destinos Relacionados",
+  "relatedPosts": "Posts Relacionados",
+  "relatedServices": "Servicios Relacionados",
+  "search": {
+    "placeholder": "Buscar artículos...",
+    "allCategories": "Todas las Categorías"
+  },
+  "sidebar": {
+    "recentPosts": "Posts Recientes",
+    "newsletter": {
+      "title": "Newsletter",
+      "description": "Recibe los mejores consejos de viaje directamente en tu email",
+      "placeholder": "Tu email",
+      "subscribe": "Suscribirse",
+      "success": "¡Gracias por suscribirte!",
+      "error": "Error al suscribirse. Inténtalo de nuevo."
+    }
+  },
+  "filtersPanel": {
+    "title": "Filtrar Artículos",
+    "clear": "Limpiar Filtros",
+    "search": {
+      "label": "Buscar",
+      "placeholder": "Ej: React, Diseño..."
+    },
+    "category": {
+      "label": "Categoría",
+      "placeholder": "Todas las categorías"
+    },
+    "tag": {
+      "label": "Etiqueta",
+      "placeholder": "Todas las etiquetas"
+    },
+    "sort": {
+      "label": "Ordenar por",
+      "options": {
+        "recent": "Más recientes",
+        "popular": "Más populares",
+        "az": "A-Z",
+        "za": "Z-A"
+      }
+    },
+    "updating": "Actualizando artículos..."
+  },
+  "searchAndFilter": {
+    "search": {
+      "placeholder": "Buscar artículos...",
+      "submit": "Buscar"
+    }
+  },
+  "newsletterInline": {
+    "title": "Recibe los mejores consejos de viaje",
+    "description": "Suscríbete a nuestro newsletter y recibe contenido exclusivo sobre destinos, promociones y consejos de viaje.",
+    "emailPlaceholder": "Tu email",
+    "subscribe": "Suscribirse"
+  },
+  "popularCategories": {
+    "title": "Categorías Populares",
+    "items": {
+      "beaches": "Playas",
+      "ecotourism": "Ecoturismo",
+      "gastronomy": "Gastronomía",
+      "culture": "Cultura",
+      "adventure": "Aventura"
+    }
+  },
+  "grid": {
+    "range": {
+      "empty": "No se encontraron artículos",
+      "showing": "Mostrando {{start}} - {{end}} de {{total}} artículos"
+    },
+    "noResults": {
+      "title": "No hay artículos disponibles",
+      "titleWithQuery": "No se encontraron resultados para \"{{query}}\"",
+      "description": "Estamos trabajando para añadir más contenido pronto.",
+      "descriptionWithQuery": "Intenta usar términos más generales o quitar filtros.",
+      "viewAll": "Ver todos los artículos"
+    },
+    "activeFilters": {
+      "category": "Categoría: {{value}}",
+      "tag": "Etiqueta: {{value}}",
+      "search": "Búsqueda: \"{{query}}\"",
+      "clearAll": "Limpiar todo"
+    },
+    "pagination": {
+      "previous": "Anteriores",
+      "next": "Siguientes",
+      "page": "Página {{page}}"
+    }
+  },
+  "article": {
+    "actions": {
+      "viewAll": "Ver todos los artículos"
+    },
+    "loadError": {
+      "title": "No pudimos cargar este artículo",
+      "description": "Ocurrió un error al intentar cargar el artículo \"{{slug}}\"."
+    },
+    "content": {
+      "unavailable": "Contenido no disponible.",
+      "loading": "Cargando contenido..."
+    },
+    "footer": {
+      "lastUpdated": "Última actualización el"
+    },
+    "meta": {
+      "readingTimeMinutes": "{{time}} min de lectura",
+      "siteNameFallback": "Guías de Viaje",
+      "fallbackDescription": "Lee {{title}} en {{siteName}}",
+      "fallbackOpenGraphTitle": "Artículo de viaje",
+      "fallbackOpenGraphDescription": "Lee este artículo en {{siteName}}",
+      "twitterHandleFallback": "@guiasdeviaje",
+      "notFoundTitle": "Artículo no encontrado"
+    }
+  }
+}

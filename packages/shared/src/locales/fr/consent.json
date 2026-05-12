@@ -1,0 +1,69 @@
+{
+  "banner": {
+    "title": "Gestion des Cookies",
+    "description": "Nous utilisons des cookies pour améliorer votre expérience sur notre site. Vous pouvez choisir quels types de cookies accepter.",
+    "acceptAll": "Accepter Tout",
+    "rejectAll": "Rejeter Tout",
+    "customize": "Personnaliser",
+    "necessary": "Nécessaires Seulement"
+  },
+  "categories": {
+    "necessary": {
+      "name": "Cookies Nécessaires",
+      "description": "Essentiels pour le fonctionnement de base du site",
+      "examples": {
+        "session": "Gestion de session",
+        "security": "Sécurité",
+        "cart": "Panier d'achat"
+      }
+    },
+    "functional": {
+      "name": "Cookies Fonctionnels",
+      "description": "Améliorent l'expérience utilisateur",
+      "examples": {
+        "language": "Préférences de langue",
+        "theme": "Thème de l'interface",
+        "preferences": "Paramètres sauvegardés"
+      }
+    },
+    "analytics": {
+      "name": "Cookies d'Analyse",
+      "description": "Nous aident à améliorer nos services",
+      "examples": {
+        "usage": "Google Analytics",
+        "performance": "Métriques de performance",
+        "errors": "Rapports d'erreur"
+      }
+    },
+    "marketing": {
+      "name": "Cookies Marketing",
+      "description": "Personnalisent les publicités et le contenu",
+      "examples": {
+        "ads": "Google Ads",
+        "social": "Pixels des réseaux sociaux",
+        "retargeting": "Remarketing"
+      }
+    }
+  },
+  "legal": {
+    "learnMore": "En savoir plus",
+    "privacyPolicy": "Politique de Confidentialité",
+    "cookiePolicy": "Politique des Cookies",
+    "dataRetention": "Les données sont conservées pendant 3 ans après la dernière mise à jour."
+  },
+  "modal": {
+    "title": "Paramètres des Cookies",
+    "description": "Choisissez quels types de cookies vous souhaitez accepter. Vos préférences seront sauvegardées et appliquées sur toutes les pages du site.",
+    "save": "Sauvegarder les Préférences",
+    "cancel": "Annuler",
+    "acceptAll": "Accepter Tout",
+    "rejectAll": "Rejeter Tout"
+  },
+  "preferences": {
+    "title": "Vos Préférences de Cookies",
+    "lastUpdated": "Dernière mise à jour",
+    "change": "Modifier les Préférences",
+    "export": "Exporter les Données",
+    "delete": "Supprimer les Données"
+  }
+}

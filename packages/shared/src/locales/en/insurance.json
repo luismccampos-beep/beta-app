@@ -1,0 +1,52 @@
+{
+  "benefits": {
+    "badge": "Benefits",
+    "title": "Main Coverages",
+    "subtitle": "We offer comprehensive protection for all your travel needs",
+    "learnMore": "Learn More",
+    "medical": {
+      "title": "Medical Coverage",
+      "description": "24h medical assistance anywhere in the world, including hospitalization and medications"
+    },
+    "cancellation": {
+      "title": "Trip Cancellation",
+      "description": "Full refund in case of cancellation for covered reasons, including illness and emergencies"
+    },
+    "baggage": {
+      "title": "Lost Baggage",
+      "description": "Compensation for loss, theft or damage to baggage, with coverage up to 24h after arrival"
+    }
+  },
+  "contact": {
+    "badge": "Contact",
+    "title": "Need Personalized Help?",
+    "subtitle": "Our team of specialists is available to help you choose the ideal insurance for your trip"
+  },
+  "contactCta": {
+    "title": "Need Specific Coverage?",
+    "description": "Our specialists can help you choose the ideal insurance for your type of trip",
+    "cta": "Talk to Specialist"
+  },
+  "coverage": {
+    "badge": "Coverage",
+    "title": "Coverage Types",
+    "subtitle": "Choose the plan that best fits your travel needs",
+    "selectPlan": "Select Plan"
+  },
+  "hero": {
+    "title": "Travel Insurance",
+    "subtitle": "Complete protection for you to travel with total peace of mind and security",
+    "cta": "Request Quote"
+  },
+  "whyChooseUs": {
+    "badge": "Why Us",
+    "title": "Why Choose Our Agency?",
+    "subtitle": "Experience, trust and the best support for your peace of mind",
+    "feature1_title": "Comprehensive Coverage",
+    "feature1_desc": "Flexible plans that adapt to any type of trip and traveler",
+    "feature2_title": "Simplified Process",
+    "feature2_desc": "From quote to activation, everything online and without bureaucracy",
+    "feature3_title": "Dedicated Support",
+    "feature3_desc": "Our team is always available to help you in any situation"
+  }
+}

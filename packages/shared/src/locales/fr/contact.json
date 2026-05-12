@@ -1,0 +1,165 @@
+{
+  "contactInfo": {
+    "items": [
+      {
+        "icon": "MapPin",
+        "title": "Adresse",
+        "details": [
+          "Rua São Nicolau 9, 4520-248 Santa Maria da Feira, Portugal"
+        ]
+      },
+      {
+        "icon": "Phone",
+        "title": "Téléphone",
+        "details": [
+          "+351 123 456 789",
+          "WhatsApp disponible"
+        ]
+      },
+      {
+        "icon": "Mail",
+        "title": "E-mail",
+        "details": [
+          "geral@akmleva.pt",
+          "reservations@akmleva.pt"
+        ]
+      },
+      {
+        "icon": "Clock",
+        "title": "Horaires",
+        "details": [
+          "Lundi au Vendredi : 9h - 18h",
+          "Samedi : 9h - 14h"
+        ]
+      }
+    ]
+  },
+  "faq": {
+    "title": "Questions Fréquentes",
+    "subtitle": "Réponses aux questions les plus courantes.",
+    "items": [
+      {
+        "question": "Combien de temps faut-il pour recevoir un devis ?",
+        "answer": "Nous sommes rapides ! Vous recevrez votre devis personnalisé dans les 24 heures ouvrables."
+      },
+      {
+        "question": "Proposez-vous une assurance voyage ?",
+        "answer": "Oui ! Nous proposons une assurance voyage complète pour garantir votre tranquillité d'esprit."
+      },
+      {
+        "question": "Est-il possible de payer en plusieurs fois ?",
+        "answer": "Oui, nous offrons plusieurs options de paiement flexibles, y compris le paiement échelonné. Parlez-en avec nous !"
+      },
+      {
+        "question": "Créez-vous des itinéraires 100% personnalisés ?",
+        "answer": "Absolument ! Notre spécialité est de créer des itinéraires uniques et sur mesure."
+      }
+    ]
+  },
+  "form": {
+    "title": "Demandez Votre Devis",
+    "subtitle": "Remplissez le formulaire ci-dessous et nous vous contacterons dans les 24 heures.",
+    "fields": {
+      "name": {
+        "label": "Nom Complet",
+        "placeholder": "Votre nom complet"
+      },
+      "email": {
+        "label": "E-mail",
+        "placeholder": "vous@email.com"
+      },
+      "phone": {
+        "label": "Téléphone",
+        "placeholder": "+33 6 12 34 56 78"
+      },
+      "travelType": {
+        "label": "Type de Voyage",
+        "placeholder": "Sélectionnez un type"
+      },
+      "subject": {
+        "label": "Sujet",
+        "placeholder": "De quoi aimeriez-vous discuter ?"
+      },
+      "message": {
+        "label": "Message",
+        "placeholder": "Parlez-nous de vos rêves, destinations souhaitées, dates..."
+      }
+    },
+    "travelTypes": [
+      {
+        "value": "couple",
+        "label": "Voyage en Couple / Lune de Miel"
+      },
+      {
+        "value": "famille",
+        "label": "Voyage en Famille"
+      },
+      {
+        "value": "groupe",
+        "label": "Voyage en Groupe"
+      },
+      {
+        "value": "affaires",
+        "label": "Voyage d'Affaires"
+      },
+      {
+        "value": "aventure",
+        "label": "Tourisme d'Aventure"
+      },
+      {
+        "value": "culturel",
+        "label": "Tourisme Culturel"
+      },
+      {
+        "value": "autre",
+        "label": "Autre"
+      }
+    ],
+    "submitButton": "Envoyer le Message",
+    "submittingText": "Envoi en cours...",
+    "privacyNotice": "* Champs obligatoires. Vos données sont protégées par notre politique de confidentialité.",
+    "success": {
+      "title": "Message Envoyé avec Succès !",
+      "message": "Merci pour votre message. Notre équipe vous contactera sous peu."
+    }
+  },
+  "hero": {
+    "badge": "Prenez Contact",
+    "title": "Planifions Votre <span class='block text-blue-200'>Prochaine Aventure</span>",
+    "subtitle": "Notre équipe d'experts est prête à transformer vos rêves de voyage en réalité."
+  },
+  "map": {
+    "title": "Notre Emplacement",
+    "subtitle": "Visitez notre bureau à Santa Maria da Feira."
+  },
+  "quickActions": {
+    "title": "Assistance Rapide",
+    "chat": "Chat en Direct",
+    "call": "Appelez-nous",
+    "schedule": "Planifier une Réunion"
+  },
+  "testimonials": {
+    "title": "Ce que Disent Nos Clients",
+    "subtitle": "Témoignages réels de clients satisfaits.",
+    "items": [
+      {
+        "name": "Chloé Dubois",
+        "location": "Paris, France",
+        "rating": 5,
+        "comment": "Service exceptionnel ! L'équipe a rendu notre lune de miel inoubliable."
+      },
+      {
+        "name": "Lucas Martin",
+        "location": "Lyon, France",
+        "rating": 5,
+        "comment": "Professionnels très compétents. Notre voyage en Europe a été parfait dans les moindres détails."
+      },
+      {
+        "name": "Léa Bernard",
+        "location": "Marseille, France",
+        "rating": 5,
+        "comment": "Je recommande les yeux fermés ! Chaque fois que j'ai besoin de voyager, je choisis AKMLEVA."
+      }
+    ]
+  }
+}

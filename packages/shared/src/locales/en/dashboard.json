@@ -1,0 +1,12 @@
+{
+  "dashboard": {
+    "title": "Dashboard",
+    "subtitle": "Welcome to your personal dashboard",
+    "upcomingTrips": "Upcoming Trips",
+    "noUpcomingTrips": "You have no scheduled trips",
+    "recentBookings": "Recent Bookings",
+    "noRecentBookings": "No recent bookings",
+    "recommendations": "Recommendations",
+    "noRecommendations": "No recommendations available"
+  }
+}

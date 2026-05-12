@@ -1,0 +1,95 @@
+{
+  "actions": {
+    "menu": "Menu",
+    "options": "Options",
+    "configure": "Configurer",
+    "viewProvider": "Voir chez le Fournisseur",
+    "activate": "Activer",
+    "deactivate": "Désactiver",
+    "delete": "Supprimer",
+    "clickToActivate": "Cliquer pour Activer",
+    "clickToDeactivate": "Cliquer pour Désactiver"
+  },
+  "addMethod": "Ajouter une Méthode",
+  "currency": {
+    "free": "Gratuit (des frais bancaires peuvent s'appliquer)"
+  },
+  "description": "Configurez et gérez les méthodes de paiement de votre plateforme.",
+  "dialog": {
+    "addTitle": "Ajouter une Nouvelle Méthode de Paiement",
+    "editTitle": "Modifier la Méthode de Paiement",
+    "addDescription": "Configurez une nouvelle méthode pour vos clients.",
+    "editDescription": "Modifiez les détails de",
+    "fields": {
+      "methodName": "Nom de la Méthode",
+      "methodNamePlaceholder": "Ex: Carte de Crédit Internationale",
+      "provider": "Fournisseur",
+      "providerPlaceholder": "Sélectionner le fournisseur",
+      "feesDescription": "Description des Frais",
+      "feesPlaceholder": "Ex: 2,9% + 0,30€ par transaction",
+      "activeMethod": "Méthode Active"
+    },
+    "buttons": {
+      "cancel": "Annuler",
+      "saving": "Enregistrement...",
+      "saveChanges": "Enregistrer les Modifications",
+      "addMethod": "Ajouter la Méthode"
+    }
+  },
+  "messages": {
+    "methodsLoaded": "Méthodes de Paiement Chargées",
+    "loadError": "Erreur de Chargement des Données",
+    "loadErrorDescription": "Impossible de récupérer les méthodes de paiement.",
+    "validationError": "Erreur de Validation",
+    "nameRequired": "Le nom de la méthode de paiement est requis.",
+    "updateSuccess": "Succès",
+    "methodUpdated": "mis à jour.",
+    "methodAdded": "ajouté.",
+    "saveError": "Erreur d'Enregistrement",
+    "saveErrorDescription": "Impossible d'enregistrer la méthode de paiement.",
+    "statusUpdated": "Statut Mis à Jour",
+    "statusUpdateError": "Erreur de Mise à Jour du Statut",
+    "deleteConfirm": "Êtes-vous sûr de vouloir supprimer cette méthode de paiement ?",
+    "methodDeleted": "Méthode Supprimée",
+    "deleteError": "Erreur de Suppression"
+  },
+  "stats": {
+    "activeMethods": "Méthodes Actives",
+    "activeMethodsDescription": "méthodes configurées au total",
+    "averageFee": "Frais Moyens Estimés",
+    "averageFeeDescription": "Basé sur les frais en pourcentage",
+    "mostPopular": "Plus Populaire",
+    "mostPopularValue": "Carte (Simulé)",
+    "mostPopularDescription": "Basé sur les transactions (simulé)",
+    "nextReview": "Prochaine Révision",
+    "nextReviewValue": "Stripe (30 jours)",
+    "nextReviewDescription": "Contrats et frais (simulé)"
+  },
+  "status": {
+    "ativo": "actif",
+    "inativo": "inactif",
+    "em_configuracao": "en configuration"
+  },
+  "table": {
+    "title": "Toutes les Méthodes de Paiement",
+    "description": "Visualisez et gérez les paramètres de chaque méthode.",
+    "searchPlaceholder": "Rechercher par nom ou fournisseur...",
+    "tabs": {
+      "all": "Toutes",
+      "active": "Actives",
+      "inactive": "Inactives/Config."
+    },
+    "headers": {
+      "name": "Nom",
+      "provider": "Fournisseur",
+      "status": "Statut",
+      "fees": "Frais",
+      "availableIn": "Disponible Dans",
+      "lastUpdated": "Dernière Mise à Jour",
+      "actions": "Actions"
+    },
+    "noMethods": "Aucune méthode trouvée pour",
+    "global": "Global"
+  },
+  "title": "Système de Paiement"
+}

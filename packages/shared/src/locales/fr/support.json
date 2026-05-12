@@ -1,0 +1,125 @@
+{
+  "agents": {
+    "title": "Agents de Support",
+    "subtitle": "Parlez directement avec nos experts",
+    "rating": "Évaluation",
+    "responseTime": "Réponse",
+    "specialties": "Spécialités",
+    "languages": "Langues",
+    "startChat": "Démarrer le Chat",
+    "offline": "Hors ligne",
+    "online": "En ligne"
+  },
+  "articles": {
+    "title": "Base de Connaissances",
+    "subtitle": "Guides détaillés et tutoriels pour utiliser la plateforme AKMLEVA",
+    "readTime": "min",
+    "views": "vues",
+    "updated": "Mis à jour",
+    "readArticle": "Lire l'Article",
+    "difficulty": {
+      "beginner": "Débutant",
+      "intermediate": "Intermédiaire",
+      "advanced": "Avancé"
+    }
+  },
+  "channels": {
+    "title": "Canaux de Support",
+    "subtitle": "Choisissez le canal qui correspond le mieux à vos besoins",
+    "liveChat": "Chat en Direct",
+    "email": "E-mail",
+    "phone": "Téléphone",
+    "videoCall": "Appel Vidéo",
+    "contact": "Contacter",
+    "unavailable": "Indisponible",
+    "availability": "Disponibilité",
+    "responseTime": "Temps de réponse",
+    "languages": "Langues"
+  },
+  "common": {
+    "loading": "Chargement...",
+    "error": "Erreur",
+    "success": "Succès",
+    "cancel": "Annuler",
+    "save": "Enregistrer",
+    "close": "Fermer",
+    "back": "Retour",
+    "next": "Suivant",
+    "previous": "Précédent"
+  },
+  "emergency": {
+    "title": "Support d'Urgence",
+    "subtitle": "Pour les problèmes critiques affectant les réservations actives ou les paiements, contactez notre support d'urgence",
+    "phone": "+351 800 123 456",
+    "emergencyChat": "Chat d'Urgence"
+  },
+  "faq": {
+    "title": "Foire Aux Questions",
+    "subtitle": "Trouvez des réponses rapides aux questions les plus courantes",
+    "helpful": "utile",
+    "views": "vues",
+    "viewMore": "Voir Plus",
+    "categories": {
+      "all": "Toutes",
+      "bookings": "Réservations",
+      "api": "API",
+      "payments": "Paiements",
+      "account": "Compte",
+      "mobile": "App Mobile",
+      "security": "Sécurité"
+    }
+  },
+  "hero": {
+    "title": "Support Technique",
+    "subtitle": "Nous sommes là pour vous aider. Trouvez des réponses rapides ou contactez notre équipe de support."
+  },
+  "search": {
+    "placeholder": "Rechercher dans la base de connaissances...",
+    "noResults": "Aucun résultat trouvé",
+    "resultsFound": "résultats trouvés"
+  },
+  "stats": {
+    "avgResponseTime": "Temps de réponse moyen",
+    "satisfactionRate": "Taux de satisfaction",
+    "articlesAvailable": "Articles disponibles",
+    "supportAgents": "Agents de support"
+  },
+  "tabs": {
+    "faq": "FAQ",
+    "articles": "Articles",
+    "ticket": "Ouvrir un Ticket",
+    "agents": "Agents"
+  },
+  "ticket": {
+    "title": "Ouvrir un Ticket de Support",
+    "subtitle": "Décrivez votre problème et notre équipe vous contactera",
+    "form": {
+      "name": "Nom complet",
+      "email": "E-mail",
+      "subject": "Sujet",
+      "category": "Catégorie",
+      "priority": "Priorité",
+      "description": "Description du problème",
+      "attachments": "Pièces jointes",
+      "submit": "Envoyer le Ticket",
+      "submitting": "Envoi en cours...",
+      "selectCategory": "Sélectionner une catégorie",
+      "selectPriority": "Sélectionner une priorité",
+      "dragFiles": "Glissez des fichiers ici ou cliquez pour sélectionner",
+      "maxFiles": "Maximum 5 fichiers, 10 Mo chacun"
+    },
+    "categories": {
+      "technical": "Problème Technique",
+      "billing": "Facturation",
+      "account": "Compte",
+      "feature": "Demande de Fonctionnalité",
+      "other": "Autre"
+    },
+    "priorities": {
+      "low": "Basse",
+      "medium": "Moyenne",
+      "high": "Haute",
+      "urgent": "Urgente"
+    }
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "filters": {
+    "title": "Filtros",
+    "locationType": {
+      "all": "Todos os Locais",
+      "hotel": "Hotéis",
+      "restaurant": "Restaurantes",
+      "attraction": "Atrações",
+      "destination": "Destinos"
+    }
+  },
+  "locationsList": "Locais",
+  "marker": {
+    "ariaLabel": "Ver {name}"
+  },
+  "featured": "Destaque",
+  "hero": {
+    "badge": "Explora Portugal",
+    "titlePrefix": "Mapa",
+    "titleHighlight": "Interativo",
+    "subtitle": "Descobre os melhores refúgios, sabores e monumentos históricos com o nosso guia visual em tempo real."
+  },
+  "stats": {
+    "item": "{count} {type}"
+  }
+}

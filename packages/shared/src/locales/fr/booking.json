@@ -1,0 +1,145 @@
+{
+  "buttons": {
+    "back": "Retour",
+    "continue": "Continuer",
+    "confirm": "Confirmer la Réservation"
+  },
+  "destinations": {
+    "santorini": {
+      "name": "Santorin, Grèce",
+      "duration": "7 jours",
+      "includes": [
+        "Vols",
+        "Hôtel 4★",
+        "Petit-déjeuner",
+        "Transferts"
+      ]
+    },
+    "tokyo": {
+      "name": "Tokyo, Japon",
+      "duration": "10 jours",
+      "includes": [
+        "Vols",
+        "Hôtel 5★",
+        "Demi-pension",
+        "JR Pass"
+      ]
+    },
+    "bali": {
+      "name": "Bali, Indonésie",
+      "duration": "8 jours",
+      "includes": [
+        "Vols",
+        "Resort 4★",
+        "Tout Inclus",
+        "Spa"
+      ]
+    }
+  },
+  "pageTitle": "Réserver un Voyage",
+  "perPersonSuffix": "/ personne",
+  "step1": {
+    "title": "Choisissez votre Destination",
+    "departureDate": "Date de Départ",
+    "returnDate": "Date de Retour",
+    "travelers": "Nombre de Voyageurs",
+    "travelerCount_one": "{{count}} personne",
+    "travelerCount_other": "{{count}} personnes",
+    "accommodation": {
+      "title": "Niveau d'Hébergement",
+      "options": {
+        "standard": "Standard (Hôtel 3-4★)",
+        "premium": "Premium (Hôtel 4-5★)",
+        "luxury": "Luxe (Resort 5★)"
+      },
+      "pricePrefix": "+€",
+      "included": "Inclus"
+    },
+    "specialRequests": {
+      "label": "Demandes Spéciales (Optionnel)",
+      "placeholder": "Anniversaire, lune de miel, besoins spéciaux, préférences alimentaires..."
+    }
+  },
+  "step2": {
+    "title": "Informations Personnelles",
+    "fullName": "Nom Complet *",
+    "fullNamePlaceholder": "Votre nom complet",
+    "email": "E-mail *",
+    "emailPlaceholder": "votre@email.com",
+    "phone": "Téléphone *",
+    "phonePlaceholder": "06 00 00 00 00",
+    "document": "Carte d'Identité/Passeport *",
+    "documentPlaceholder": "Votre numéro de document",
+    "security": {
+      "title": "Vos données sont en sécurité",
+      "description": "Nous utilisons un cryptage de pointe et suivons des normes de sécurité strictes pour protéger vos informations personnelles."
+    }
+  },
+  "step3": {
+    "title": "Résumé de la Réservation",
+    "travelerCount_one": "{{count}} voyageur",
+    "travelerCount_other": "{{count}} voyageurs",
+    "rating": "Évaluation {{rating}}",
+    "priceDetails": {
+      "title": "Détail des Prix",
+      "basePackage": "Forfait de base ({{count}}x)",
+      "accommodationUpgrade": "Surclassement d'hébergement ({{count}}x)",
+      "taxes": "Taxes et frais"
+    },
+    "included": {
+      "title": "Ce qui est inclus",
+      "travelInsurance": "Assurance voyage",
+      "support": "Support 24/7"
+    },
+    "policies": {
+      "title": "Politiques importantes",
+      "cancellation": "• Annulation gratuite jusqu'à 48h avant",
+      "changes": "• Modifications autorisées sans frais supplémentaires",
+      "documentation": "• Document requis : passeport valide",
+      "vaccines": "• Vaccins : consultez les exigences de la destination"
+    },
+    "total": "Total"
+  },
+  "step4": {
+    "title": "Paiement",
+    "paymentMethod": {
+      "title": "Méthode de Paiement",
+      "credit": {
+        "name": "Carte de Crédit",
+        "description": "Jusqu'à 12 mensualités"
+      },
+      "pix": {
+        "name": "Virement Bancaire",
+        "description": "5% de réduction"
+      }
+    },
+    "creditCard": {
+      "number": "Numéro de Carte",
+      "numberPlaceholder": "0000 0000 0000 0000",
+      "expiry": "Date d'Expiration",
+      "expiryPlaceholder": "MM/AA",
+      "cvv": "CVV",
+      "cvvPlaceholder": "000",
+      "name": "Nom sur la Carte",
+      "namePlaceholder": "Nom tel qu'imprimé sur la carte"
+    },
+    "pix": {
+      "title": "Paiement par Virement Bancaire",
+      "description": "Après avoir confirmé la réservation, vous recevrez les détails de paiement par e-mail.",
+      "totalWithDiscount": "Total avec réduction :"
+    },
+    "terms": {
+      "agree": "J'accepte les ",
+      "service": "conditions de service",
+      "privacy": "politique de confidentialité"
+    },
+    "orderSummary": {
+      "title": "Résumé de la Commande",
+      "subtotal": "Sous-total",
+      "taxes": "Taxes",
+      "pixDiscount": "Réduction virement (5%)",
+      "securePayment": "Paiement 100% sécurisé",
+      "instantConfirmation": "Confirmation immédiate"
+    }
+  }
+}

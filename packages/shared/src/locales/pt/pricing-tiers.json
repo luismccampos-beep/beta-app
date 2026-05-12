@@ -1,0 +1,41 @@
+{
+  "badge": "Planos",
+  "subtitle": "Compare Explorer e Voyager e escolha o plano ideal para o teu estilo de viagem.",
+  "yes": "Sim",
+  "no": "Não",
+  "table": {
+    "title": "Comparação de funcionalidades",
+    "badge": "Visão rápida",
+    "description": "Uma comparação lado a lado do que está incluído em cada plano.",
+    "headerFeature": "Funcionalidade",
+    "headerExplorer": "Explorer",
+    "headerVoyager": "Voyager"
+  },
+  "explorer": {
+    "title": "Explorer",
+    "description": "O essencial para começar a planear com IA.",
+    "cta": "Experimentar Explorer"
+  },
+  "voyager": {
+    "title": "Voyager",
+    "badge": "Melhor escolha",
+    "description": "Mais poder, limites maiores e funcionalidades prioritárias.",
+    "cta": "Ver preços do Voyager"
+  },
+  "rows": {
+    "aiGenerations": {
+      "feature": "Gerações de itinerários com IA",
+      "explorer": "50 / mês",
+      "voyager": "200 / mês"
+    },
+    "aiPreferences": {
+      "feature": "Preferências de IA e perfis guardados"
+    },
+    "advancedOptim": {
+      "feature": "Otimização avançada de rotas"
+    },
+    "priority": {
+      "feature": "Suporte prioritário"
+    }
+  }
+}

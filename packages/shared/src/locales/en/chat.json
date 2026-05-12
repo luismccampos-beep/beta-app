@@ -1,0 +1,15 @@
+{
+  "cancelClose": "Cancel close",
+  "collapseTopics": "Collapse topics",
+  "confirmClose": "Confirm close",
+  "conversationClosed": "Conversation ended",
+  "expandTopics": "Expand topics",
+  "inputPlaceholder": "Write your message...",
+  "notificationsDisabled": "Notifications disabled for this session",
+  "openChat": "Open support chat",
+  "selectTopic": "Select a topic",
+  "talkToUs": "Talk to Us!",
+  "title": "Support Chat",
+  "welcome": "Hello! 👋 Welcome to AKMLEVA support. How can I help you today?",
+  "welcomeMessage": "Hello! How can we help you?"
+}

@@ -1,0 +1,13 @@
+{
+  "empty": "Aucune notification",
+  "error": "Erreur",
+  "info": "Info",
+  "markAll": "Tout marquer comme lu",
+  "success": "Succès",
+  "title": "Notifications",
+  "toggle": "Basculer les notifications",
+  "unread": "{{count}} non lues",
+  "urgent": "Urgent",
+  "viewAll": "Voir toutes les notifications",
+  "warning": "Avertissement"
+}

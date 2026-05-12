@@ -1,0 +1,229 @@
+{
+  "aiFeaturesItems": {
+    "recommendations": {
+      "title": "Recommandations Intelligentes",
+      "desc": "Notre IA analyse des milliers d'options pour suggérer les meilleures destinations, hôtels et expériences en fonction de vos goûts et de votre budget."
+    },
+    "planning": {
+      "title": "Planification Rapide",
+      "desc": "Créez un itinéraire complet en quelques minutes, pas en heures. Notre IA accélère le processus de planification pour que vous puissiez passer moins de temps à planifier et plus de temps à rêver."
+    },
+    "personalization": {
+      "title": "Personnalisation Totale",
+      "desc": "Des voyageurs aventureux aux familles en quête de divertissement, notre IA s'adapte à vos besoins spécifiques pour créer le voyage parfait pour vous."
+    }
+  },
+  "cta": {
+    "badge": "Commencez Gratuitement Aujourd'hui",
+    "titlePart1": "Prêt pour votre prochaine",
+    "titlePart2": "Grande Aventure ?",
+    "subtitle": "Laissez notre Intelligence Artificielle concevoir l'itinéraire parfait pour vous en quelques secondes. Personnalisé, intelligent et sans stress.",
+    "button": "Créer Mon Voyage avec l'IA",
+    "title": "Ne Manquez Pas Nos Offres",
+    "desc": "Abonnez-vous à notre newsletter et recevez des offres exclusives, des conseils de voyage et de l'inspiration.",
+    "aiBtn": "Démarrez Votre Voyage IA",
+    "aiSub": "Laissez notre IA créer votre itinéraire parfait",
+    "placeholder": "votre@email.com",
+    "btn": "S'abonner",
+    "privacy": "Nous respectons votre vie privée. Désabonnez-vous à tout moment.",
+    "stats": {
+      "subscribers": "Abonnés",
+      "offers": "Offres",
+      "countries": "Pays",
+      "satisfaction": "Satisfaction"
+    }
+  },
+  "destinations": {
+    "badge": "Destinations Populaires",
+    "titlePart1": "Destinations",
+    "titlePart2": "Vedettes",
+    "subtitle": "Explorez des lieux incroyables sélectionnés par notre intelligence artificielle, garantissant des expériences inoubliables et personnalisées.",
+    "title": "Les Meilleures Destinations pour Vous",
+    "cta": {
+      "title": "Prêt à Choisir ?",
+      "description": "Trouvez la destination parfaite pour votre prochaine aventure avec notre aide experte.",
+      "exploreAll": "Explorer Tout",
+      "specialOffers": "Offres Spéciales",
+      "destinationsCount": "Plus de {count} destinations",
+      "averageRating": "{rating} Note Moyenne"
+    },
+    "noDestinations": "Aucune destination trouvée",
+    "updatingCatalog": "Nous mettons à jour notre catalogue de destinations pour vous.",
+    "retry": "Réessayer",
+    "loadError": "Une erreur s'est produite lors du chargement des destinations",
+    "tryAgain": "Réessayer"
+  },
+  "featuredDestinations": {
+    "title": "Destinations <span class='text-primary'>Vedettes</span>",
+    "subtitle": "Explorez quelques-unes de nos destinations les plus recherchées et laissez-vous inspirer pour votre prochain voyage.",
+    "viewAllDestinations": "Voir Toutes les Destinations",
+    "destinations": {
+      "santorini": {
+        "name": "Santorin, Grèce",
+        "description": "Îles paradisiaques avec des couchers de soleil inoubliables",
+        "badge": "Plus Populaire",
+        "price": "À partir de 3 500 €"
+      },
+      "tokyo": {
+        "name": "Tokyo, Japon",
+        "description": "Tradition et modernité en parfaite harmonie",
+        "badge": "Culture",
+        "price": "À partir de 4 200 €"
+      },
+      "bali": {
+        "name": "Bali, Indonésie",
+        "description": "Plages tropicales et spiritualité",
+        "badge": "Détente",
+        "price": "À partir de 2 800 €"
+      }
+    },
+    "reviews": "avis"
+  },
+  "features": {
+    "titlePart1": "Explorez Nos Services",
+    "titlePart2": "",
+    "subtitle": "Nous offrons une variété d'options de voyage pour rendre votre expérience unique.",
+    "ctaLabel": "Voir Tous les Services",
+    "guaranteedSecurity": {
+      "title": "Sécurité Garantie",
+      "description": "Voyagez en toute tranquillité avec notre assurance complète et notre support 24h/24 et 7j/7"
+    },
+    "specializedGuides": {
+      "title": "Guides Spécialisés",
+      "description": "Professionnels locaux qui connaissent chaque détail de votre destination"
+    },
+    "support247": {
+      "title": "Support 24h/24 et 7j/7",
+      "description": "Nous sommes toujours disponibles pour vous aider à tout moment"
+    },
+    "bestPrices": {
+      "title": "Meilleurs Prix",
+      "description": "Nous garantissons des prix compétitifs et des offres exclusives pour nos clients"
+    },
+    "easyBooking": {
+      "title": "Réservation Facile",
+      "description": "Processus de réservation simple et rapide pour que vous puissiez commencer votre aventure plus tôt"
+    },
+    "curatedExperiences": {
+      "title": "Expériences Curatées",
+      "description": "Nous sélectionnons uniquement les meilleures expériences pour garantir des moments inoubliables"
+    },
+    "cruises": {
+      "title": "Forfaits Croisières",
+      "desc": "Explorez le monde sur des navires de croisière de luxe avec des équipements tout inclus.",
+      "badge": "Populaire"
+    },
+    "bus": {
+      "title": "Visites en Bus",
+      "desc": "Visites en bus confortables et guidées pour découvrir des destinations incroyables.",
+      "badge": null
+    },
+    "beach": {
+      "title": "Résorts de Plage",
+      "desc": "Détendez-vous dans de belles destinations de plage avec des expériences premium en resorts.",
+      "badge": null
+    },
+    "badge": {
+      "popular": "Populaire"
+    }
+  },
+  "featuresAI": {
+    "badge": "AKMLEVA Intelligence",
+    "titlePart1": "Voyages Propulsés par",
+    "titlePart2": "l'IA",
+    "subtitle": "Notre technologie neuronale analyse des millions de combinaisons pour créer des itinéraires parfaits, adaptés à votre budget et à votre style personnel.",
+    "items": {
+      "recommendations": {
+        "title": "Recommandations Intelligentes",
+        "desc": "Notre IA analyse des milliers d'options pour suggérer les meilleures destinations, hôtels et expériences en fonction de vos goûts et de votre budget."
+      },
+      "quickPlanning": {
+        "title": "Planification Rapide",
+        "desc": "Créez un itinéraire complet en quelques minutes, pas en quelques heures. Notre IA accélère le processus de planification pour que vous puissiez passer moins de temps à planifier et plus de temps à rêver."
+      },
+      "personalization": {
+        "title": "Personnalisation Totale",
+        "desc": "Des voyageurs aventureux aux familles en quête de divertissement, notre IA s'adapte à vos besoins spécifiques pour créer le voyage parfait pour vous."
+      }
+    }
+  },
+  "hero": {
+    "badge": "#1 Plateforme de Voyage Alimentée par l'IA",
+    "titlePart1": "Découvrez Votre",
+    "titlePart2": "Destination de Rêve",
+    "subtitle": "Planifiez votre voyage parfait avec l'IA. Obtenez des recommandations personnalisées, des réservations instantanées et des offres exclusives.",
+    "ctaMain": "Commencer la Planification",
+    "ctaSecondary": "Regarder la Vidéo",
+    "exploreDestinations": "Explorer les Destinations",
+    "learnMore": "En Savoir Plus"
+  },
+  "heroAI": {
+    "badge": "Équipé de la Technologie IA Avancée",
+    "titlePart1": "Voyagez Au-delà de l'",
+    "titlePart2": "Imagination",
+    "subtitle": "Laissez notre IA concevoir votre voyage parfait. Des treasures cachées à la logistique sans faille, vivez un voyage sur mesure pour votre âme.",
+    "ctaStart": "Démarrer le Voyage IA",
+    "ctaDemo": "Voir la Démo",
+    "loading": "Chargement...",
+    "preparingDemo": "Préparation de la Démo...",
+    "stats": [
+      "Destinations",
+      "Voyageurs",
+      "Note Moyenne",
+      "Support"
+    ]
+  },
+  "home": "Accueil",
+  "recommendations": {
+    "title": "Recommandations Personnalisées",
+    "subtitle": "Basé sur vos préférences et votre historique de voyage"
+  },
+  "stats": {
+    "satisfiedClients": "Clients Satisfaits",
+    "exclusiveDestinations": "Destinations Exclusives",
+    "satisfactionRate": "Taux de Satisfaction",
+    "supportAvailable": "Support Disponible",
+    "destinations": "Destinations",
+    "partners": "Partenaires",
+    "experience": "Années",
+    "customers": "Clients"
+  },
+  "statsLabels": {
+    "destinations": "Destinations",
+    "travelers": "Voyageurs",
+    "rating": "Note Moyenne",
+    "support": "Support"
+  },
+  "testimonials": {
+    "badge": "Témoignages Réels",
+    "titlePart1": "Histoires de ceux qui ont",
+    "titlePart2": "Voyagé avec Nous",
+    "subtitle": "Découvrez comment notre technologie d'IA a transformé la façon dont les gens planifient et vivent leurs aventures.",
+    "ratingLabel": "Moyenne",
+    "featuredReviews": "Avis en Vedette",
+    "totalReviews": "Total des Avis",
+    "averageRating": "Note Moyenne"
+  },
+  "testimonialsItems": [
+    {
+      "name": "Sarah Johnson",
+      "location": "New York, États-Unis",
+      "text": "L'IA a parfaitement planifié notre lune de miel à Bali. Nous avons gagné des heures de recherche et découvert des endroits incroyables que nous n'aurions jamais trouvés seuls."
+    },
+    {
+      "name": "Miguel Silva",
+      "location": "Lisbonne, Portugal",
+      "text": "J'ai utilisé la plateforme pour un voyage d'affaires à Tokyo. L'efficacité et les recommandations d'hôtels à proximité de mes réunions étaient impeccables."
+    },
+    {
+      "name": "Elena Rodriguez",
+      "location": "Madrid, Espagne",
+      "text": "La fonction budget a été une bouée de sauvetage. Nous avons réussi à faire un voyage en famille à travers l'Europe en respectant notre budget sans sacrifier la qualité."
+    }
+  ],
+  "business": {
+    "bannerText": "Êtes-vous une agence de voyages ?",
+    "bannerSubtext": "Accédez au CRM multi‑tenant et boostez votre activité.",
+    "bannerLink": "Voir AKMLEVA Business"
+  }
+}

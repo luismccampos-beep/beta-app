@@ -1,0 +1,20 @@
+import { jsx as _jsx } from "react/jsx-runtime";
+import * as React from "react";
+import { cn } from "../utils/cn";
+const Chart = () => null;
+const Bar = () => null;
+const BarChart = () => null;
+const Line = () => null;
+const LineChart = () => null;
+const ResponsiveContainer = () => null;
+const XAxis = () => null;
+const YAxis = () => null;
+const _ChartTooltipInternal = () => null;
+const Legend = () => null;
+const ChartContainer = ({ children, className, config: _config, ...props }) => (_jsx("div", { className: cn("chart-container", className), ...props, children: children }));
+const ChartLegend = ({ content, className }) => (_jsx("div", { className: cn("chart-legend", className), children: content }));
+const ChartLegendContent = () => null;
+const ChartTooltip = ({ content, cursor: _cursor, className }) => (_jsx("div", { className: cn("chart-tooltip", className), children: content }));
+const ChartTooltipContent = ({ indicator: _indicator, labelKey: _labelKey, nameKey: _nameKey, }) => null;
+export { Chart, Bar, BarChart, Line, LineChart, ResponsiveContainer, XAxis, YAxis, Legend, ChartContainer, ChartLegend, ChartLegendContent, ChartTooltip, ChartTooltipContent, };
+//# sourceMappingURL=Chart.js.map

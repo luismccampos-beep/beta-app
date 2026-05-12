@@ -1,0 +1,113 @@
+{
+  "allRightsReserved": "Tous droits réservés.",
+  "byTravelers": "par des voyageurs, pour des voyageurs",
+  "categories": {
+    "empresa": "Entreprise",
+    "legal": {
+      "security": "Sécurité",
+      "terms": "Conditions d'Utilisation",
+      "privacy": "Politique de Confidentialité",
+      "cookies": "Politique de Cookies",
+      "gdpr": "RGPD",
+      "cancellation-policy": "Politique d'Annulation"
+    },
+    "mentionsLegales": "Mentions légales",
+    "ajuda": "Aide",
+    "suporte": "Support",
+    "integrações": "Intégrations"
+  },
+  "company": {
+    "title": "Entreprise",
+    "careers": "Carrières",
+    "press": "Presse",
+    "admin": "Administration",
+    "sustainableTravel": "Voyage Durable"
+  },
+  "complaints": {
+    "title": "Réclamations et Organisme de Régulation",
+    "tooltip": "Accéder au Livre des Réclamations en Ligne",
+    "alt": "Logo du Livre des Réclamations Électronique",
+    "entity": "Organisme de Régulation : Turismo de Portugal, I.P."
+  },
+  "cookies": "Cookies",
+  "description": "Des solutions innovantes pour simplifier votre expérience numérique.",
+  "followOn": "Suivez-nous sur {{platform}}",
+  "guest": {
+    "title": "Commencer",
+    "smartForm": "Formulaire Intelligent",
+    "howItWorks": "Comment ça Marche"
+  },
+  "ia": {
+    "preferences": "Préférences d'IA",
+    "toggle": "Activer les préférences d'IA"
+  },
+  "legalTitle": "Informations Légales",
+  "madeWith": "Fait avec",
+  "newsletter": {
+    "title": "Abonnez-vous à notre newsletter",
+    "description": "Recevez des nouveautés, des mises à jour et du contenu exclusif."
+  },
+  "newsletterDescription": "Abonnez-vous pour recevoir des offres exclusives et des remises spéciales",
+  "newsletterPlaceholder": "Votre meilleur e-mail",
+  "newsletterPrivacy": "Confidentialité totale. Annulez en un clic.",
+  "newsletterSuccess": "Abonnement confirmé ! Vérifiez votre e-mail.",
+  "newsletterTitle": "Recevez les meilleures offres",
+  "partnersDisclaimer": "Systèmes audités et conformes aux normes ISO 2026.",
+  "partnersTitle": "Partenaires",
+  "partnerships": {
+    "title": "Nos Partenaires",
+    "gea": "Groupe d'Agences de Voyages Indépendantes",
+    "sanjotec": "Sanjotec - Parc Scientifique et Technologique",
+    "dg": "DG Consulting",
+    "turismodeportugal": "Turismo de Portugal"
+  },
+  "paymentMethods": "Méthodes de Paiement",
+  "paymentMethodsData": {
+    "transfer": "Virement Bancaire"
+  },
+  "paymentMethodsTitle": "Paiements Sécurisés",
+  "privacy": "Confidentialité",
+  "product": {
+    "title": "Produit",
+    "features": "Fonctionnalités",
+    "pricing": "Tarifs",
+    "integrations": "Intégrations",
+    "api": "API",
+    "mobile": "Application Mobile"
+  },
+  "quickLinksTitle": "Liens Rapides",
+  "rightsReserved": "Tous droits réservés",
+  "securePayments": "Paiements Sécurisés",
+  "resources": {
+    "title": "Ressources"
+  },
+  "services": {
+    "packages": "Forfaits",
+    "hotels": "Hôtels",
+    "flights": "Vols",
+    "transfers": "Transferts",
+    "insurance": "Assurance"
+  },
+  "servicesTitle": "Nos Services",
+  "support": {
+    "title": "Support",
+    "help": "Centre d'Aide",
+    "documentation": "Documentation",
+    "status": "État du Système",
+    "community": "Communauté",
+    "technical": "Support Technique",
+    "partnerships": "Partenariats",
+    "howItWorks": "Comment ça Marche",
+    "integrations": "Intégrations",
+    "app": "Application Mobile"
+  },
+  "terms": "Conditions",
+  "user": {
+    "title": "Mon Compte",
+    "preferences": "Préférences d'IA",
+    "accountSettings": "Paramètres du Compte",
+    "bookingHistory": "Historique des Réservations"
+  },
+  "verifiedProvider": "Fournisseur Vérifié",
+  "blogTitle": "Blog"
+}

@@ -1,0 +1,12 @@
+{
+  "dashboard": {
+    "title": "Painel",
+    "subtitle": "Bem-vindo ao seu painel pessoal",
+    "upcomingTrips": "Próximas Viagens",
+    "noUpcomingTrips": "Você não tem viagens agendadas",
+    "recentBookings": "Reservas Recentes",
+    "noRecentBookings": "Nenhuma reserva recente",
+    "recommendations": "Recomendações",
+    "noRecommendations": "Nenhuma recomendação disponível"
+  }
+}

@@ -1,0 +1,30 @@
+import { type ReactNode } from "react";
+import type { SharedUser } from "./navigation/types";
+interface SharedMobileHeaderProps {
+    title?: string;
+    subtitle?: string;
+    showBackButton?: boolean;
+    onBackClick?: () => void;
+    showSearch?: boolean;
+    onSearchClick?: () => void;
+    showSettings?: boolean;
+    onSettingsClick?: () => void;
+    showTheme?: boolean;
+    theme?: 'light' | 'dark' | 'system';
+    isDark?: boolean;
+    onThemeToggle?: () => void;
+    user?: SharedUser;
+    showUser?: boolean;
+    onLogin?: () => void;
+    onLogout?: () => void;
+    onUserClick?: () => void;
+    onNavigate?: (path: string) => void;
+    showMenu?: boolean;
+    onMenuClick?: () => void;
+    className?: string;
+    t?: (key: string, defaultValue?: string) => string;
+    leading?: ReactNode;
+    trailing?: ReactNode;
+}
+export default function SharedMobileHeader({ title, subtitle, showBackButton, onBackClick, showSearch, onSearchClick, showSettings, onSettingsClick, showTheme, theme, isDark, onThemeToggle, user, showUser, onLogin, onLogout, onUserClick: _onUserClick, onNavigate, showMenu, onMenuClick, className, t, leading: customLeading, trailing: customTrailing, }: SharedMobileHeaderProps): import("react/jsx-runtime").JSX.Element;
+export {};

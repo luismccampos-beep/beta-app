@@ -1,0 +1,95 @@
+{
+  "booking": {
+    "title": "Confirmar Reserva",
+    "description": "Revisa los detalles de tu reserva antes de confirmar.",
+    "flightDetails": "Detalles del Vuelo",
+    "passengerInfo": "Información del Pasajero",
+    "name": "Nombre Completo",
+    "email": "Email",
+    "phone": "Teléfono",
+    "totalPrice": "Precio Total",
+    "confirm": "Confirmar Reserva",
+    "cancel": "Cancelar",
+    "bookingSuccess": "¡Reserva confirmada con éxito!",
+    "bookingError": "Error al confirmar la reserva. Inténtalo de nuevo."
+  },
+  "contactCta": {
+    "title": "¿Necesitas Ayuda con tu Reserva?",
+    "description": "Nuestro equipo de expertos está disponible 24/7 para ayudarte a encontrar el vuelo perfecto.",
+    "cta": "Contactar Ahora"
+  },
+  "flightTypes": {
+    "title": "Tipos de Vuelo",
+    "subtitle": "Elige la opción que mejor se adapte a tus necesidades de viaje.",
+    "international": {
+      "title": "Vuelos Internacionales",
+      "description": "Explora el mundo con nuestros vuelos internacionales a más de 200 destinos."
+    },
+    "domestic": {
+      "title": "Vuelos Domésticos",
+      "description": "Viaja dentro del país con comodidad y confort en nuestros vuelos domésticos."
+    },
+    "group": {
+      "title": "Vuelos de Grupo",
+      "description": "Descuentos especiales para grupos de 10 o más pasajeros."
+    },
+    "learnMore": "Saber Más"
+  },
+  "flights": {
+    "popular": {
+      "newYork": "Nueva York",
+      "london": "Londres",
+      "paris": "París",
+      "tokyo": "Tokio"
+    }
+  },
+  "hero": {
+    "title": "Servicios de Vuelos",
+    "subtitle": "Tu viaje comienza aquí",
+    "description": "Encuentra las mejores ofertas en vuelos a tus destinos soñados. Ofrecemos una amplia selección de aerolíneas y rutas para satisfacer tus necesidades de viaje."
+  },
+  "popularFlights": {
+    "title": "Vuelos Populares",
+    "subtitle": "Descubre los destinos más buscados y reserva tu próximo vuelo con las mejores ofertas."
+  },
+  "results": {
+    "title": "Vuelos Disponibles",
+    "noResults": "No se encontraron vuelos",
+    "tryDifferentSearch": "Intenta refinar tu búsqueda con criterios diferentes.",
+    "loadingFlights": "Cargando vuelos...",
+    "flightsFound": "{{count}} vuelos encontrados para tu búsqueda.",
+    "airline": "Aerolínea",
+    "departure": "Salida",
+    "arrival": "Llegada",
+    "duration": "Duración",
+    "stops": "Escalas",
+    "price": "Precio",
+    "action": "Acción",
+    "bookNow": "Reservar Ahora",
+    "direct": "Directo",
+    "oneStop": "1 Escala",
+    "multipleStops": "Múltiples Escalas"
+  },
+  "search": {
+    "title": "Buscar Vuelos",
+    "origin": "Origen",
+    "originPlaceholder": "Seleccionar origen",
+    "destination": "Destino",
+    "destinationPlaceholder": "Seleccionar destino",
+    "selectDate": "Seleccionar fecha",
+    "passenger": "pasajero",
+    "passengersPlural": "pasajeros",
+    "clear": "Limpiar",
+    "departure": "Salida",
+    "departurePlaceholder": "¿Desde dónde?",
+    "arrival": "Llegada",
+    "arrivalPlaceholder": "¿Hacia dónde?",
+    "departureDate": "Fecha de Salida",
+    "returnDate": "Fecha de Regreso",
+    "passengers": "Pasajeros",
+    "button": "Buscar Vuelos",
+    "searching": "Buscando...",
+    "roundTrip": "Ida y Vuelta",
+    "oneWay": "Solo Ida"
+  }
+}

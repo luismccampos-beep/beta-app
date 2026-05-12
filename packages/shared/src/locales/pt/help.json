@@ -1,0 +1,154 @@
+{
+  "documentation": "Documentação",
+  "hero": {
+    "badge": "Suporte 24/7",
+    "title": "Centro de Ajuda",
+    "subtitle": "Encontre respostas rápidas para as suas questões ou contacte o nosso suporte."
+  },
+  "search": {
+    "placeholder": "Pesquisar ajuda...",
+    "label": "Pesquisar",
+    "suggestions": "Sugestões",
+    "clearFilters": "Limpar Filtros"
+  },
+  "categories": {
+    "all": "Todos",
+    "badge": "Categorias",
+    "title": "Categorias de Ajuda",
+    "subtitle": "Explore tópicos organizados para encontrar rapidamente o que precisa.",
+    "articleLabel": "Artigos",
+    "viewMore": "Explorar base"
+  },
+  "support": {
+    "badge": "Suporte Rápido",
+    "title": "Precisa de ajuda?",
+    "subtitle": "A nossa equipa de suporte está disponível para ajudar com qualquer questão.",
+    "status": "Estado",
+    "latency": "Latência"
+  },
+  "contact": {
+    "badge": "Concierge 24/7",
+    "title": "Contacte-nos",
+    "subtitle": "Envie-nos uma mensagem e entraremos em contacto o mais breve possível.",
+    "methods": {
+      "email": {
+        "title": "Email",
+        "value": "suporte@akmleva.com"
+      },
+      "phone": {
+        "title": "Telefone",
+        "value": "+351 211 234 567"
+      },
+      "chat": {
+        "title": "Chat ao Vivo",
+        "value": "Disponível 24/7"
+      }
+    },
+    "notFound": "Não encontrou o que procurava?",
+    "cta": "Contactar Suporte"
+  },
+  "faq": {
+    "badge": "FAQ",
+    "title": "Perguntas Frequentes",
+    "subtitle": "Respostas rápidas às questões mais comuns.",
+    "helpful_count": "{count, plural, =0 {Ninguém achou útil} =1 {Uma pessoa achou útil} other {# pessoas acharam útil}}",
+    "was_helpful": "Foi útil?",
+    "yes": "Sim",
+    "no": "Não",
+    "empty_title": "Nenhuma pergunta encontrada.",
+    "empty_subtitle": "Tente uma pesquisa diferente ou contacte o suporte.",
+    "view_all": "Ver todas as perguntas",
+    "filter_aria_label": "Filtrar FAQ por categoria"
+  },
+  "stats": {
+    "items": {
+      "questions": "Perguntas Frequentes",
+      "categories": "Categorias",
+      "responseTime": "Tempo de Resposta",
+      "responseTimeValue": "24h"
+    }
+  },
+  "content": {
+    "categories": {
+      "bookings": {
+        "title": "Reservas e Viagens",
+        "description": "Tudo sobre fazer, alterar e gerir reservas"
+      },
+      "payments": {
+        "title": "Pagamentos e Faturas",
+        "description": "Métodos de pagamento, reembolsos e faturas"
+      },
+      "account": {
+        "title": "Conta e Perfil",
+        "description": "Gerir a sua conta e informações pessoais"
+      },
+      "mobile": {
+        "title": "App Mobile",
+        "description": "Utilização da aplicação móvel"
+      },
+      "security": {
+        "title": "Segurança e Privacidade",
+        "description": "Proteção de dados e segurança da conta"
+      },
+      "technical": {
+        "title": "Problemas Técnicos",
+        "description": "Resolução de problemas técnicos"
+      }
+    },
+    "channels": {
+      "chat": {
+        "title": "Chat ao Vivo",
+        "description": "Fale connosco em tempo real com respostas instantâneas",
+        "availability": "24/7",
+        "responseTime": "Imediato",
+        "action": "Iniciar Chat"
+      },
+      "email": {
+        "title": "Email",
+        "description": "Envie-nos um email para questões detalhadas",
+        "availability": "24/7",
+        "responseTime": "2-4 horas",
+        "action": "Enviar Email"
+      },
+      "phone": {
+        "title": "Telefone",
+        "description": "Ligue para o nosso suporte especializado",
+        "availability": "9h-18h",
+        "responseTime": "Imediato",
+        "action": "Ligar Agora"
+      }
+    },
+    "faqs": {
+      "faq-001": {
+        "question": "Como posso cancelar a minha reserva?",
+        "answer": "Pode cancelar a sua reserva através da área \"Minhas Viagens\" no seu perfil ou contactando o nosso suporte. As condições de cancelamento variam conforme o tipo de serviço reservado."
+      },
+      "faq-002": {
+        "question": "Quais são os métodos de pagamento aceites?",
+        "answer": "Aceitamos cartões de crédito/débito (Visa, Mastercard, American Express), PayPal, transferência bancária e MB Way. Todos os pagamentos são processados de forma segura."
+      },
+      "faq-003": {
+        "question": "Como posso alterar os dados da minha reserva?",
+        "answer": "Alterações podem ser feitas através da área \"Minhas Viagens\" até 24 horas antes da data de partida. Algumas alterações podem estar sujeitas a taxas adicionais."
+      },
+      "faq-004": {
+        "question": "O que fazer se perder o meu voucher?",
+        "answer": "Pode descarregar novamente o seu voucher através da área \"Minhas Viagens\" ou contactar o nosso suporte para reenvio por email."
+      },
+      "faq-005": {
+        "question": "Como funciona o programa de fidelidade?",
+        "answer": "O nosso programa de fidelidade oferece pontos por cada reserva. Estes pontos podem ser trocados por descontos em futuras viagens."
+      },
+      "faq-006": {
+        "question": "Posso fazer reservas para grupos?",
+        "answer": "Sim! Para reservas de grupos (10 ou mais pessoas), oferecemos condições especiais e um gestor de conta dedicado."
+      }
+    },
+    "quickLinks": {
+      "my-trips": "Minhas Viagens",
+      "payments": "Pagamentos",
+      "profile": "Meu Perfil",
+      "settings": "Definições"
+    }
+  }
+}

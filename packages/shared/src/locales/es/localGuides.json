@@ -1,0 +1,106 @@
+{
+  "becomeGuide": {
+    "title": "Conviértete en un Guía Local en AKMLEVA",
+    "description": "Comparte la pasión por tu ciudad, muestra lo mejor que tiene y obtén un ingreso extra haciendo lo que amas.",
+    "applyNow": "Postula Ahora",
+    "feature1": {
+      "title": "Flexibilidad Total",
+      "desc": "Define tus propios horarios y disponibilidad. Trabaja cuándo y cómo quieras."
+    },
+    "feature2": {
+      "title": "Ingresos Adicionales",
+      "desc": "Convierte tu conocimiento local en una fuente de ingresos fiable y gratificante."
+    },
+    "feature3": {
+      "title": "Comunidad Global",
+      "desc": "Únete a una red de guías apasionados y conecta con viajeros de todo el mundo."
+    }
+  },
+  "detailsPanel": {
+    "about": "Sobre mí",
+    "tours": "Tours",
+    "moreInfo": "Más Info",
+    "memberSince": "Miembro desde",
+    "bookTour": "Reservar Tour",
+    "noTours": "Este guía aún no ha añadido ningún tour.",
+    "languages": "Idiomas",
+    "specialties": "Especialidades",
+    "experienceYears": "Años de Experiencia",
+    "certifications": "Certificaciones",
+    "basePrice": "Precio Base",
+    "hour": "hora",
+    "contactGuideCta": "Contactar a {{name}}"
+  },
+  "filters": {
+    "title": "Filtrar Guías",
+    "clear": "Limpiar Filtros",
+    "searchLabel": "Buscar por nombre o palabra clave",
+    "searchPlaceholder": "Ej: 'Carlos' o 'gastronomía'",
+    "locationLabel": "Ubicación",
+    "allLocations": "Todas las Ubicaciones",
+    "specialtyLabel": "Especialidad",
+    "allSpecialties": "Todas las Especialidades",
+    "languageLabel": "Idioma",
+    "allLanguages": "Todos los Idiomas"
+  },
+  "guides": {
+    "guide_1": {
+      "bio": "Carlos es un historiador del arte que convierte cada calle de Lisboa en una galería al aire libre. Sus tours son un viaje en el tiempo.",
+      "tagline": "Descubriendo la historia en cada rincón de Lisboa.",
+      "tour_title": "Lisboa Histórica: Del Castillo a Belém",
+      "tour_desc": "Un paseo de 4 horas por los momentos más significativos de la historia de Portugal, visitando monumentos icónicos."
+    },
+    "guide_2": {
+      "bio": "...",
+      "tagline": "...",
+      "tour_title": "...",
+      "tour_desc": "..."
+    }
+  },
+  "guidesList": {
+    "title": "Guías Disponibles",
+    "sortBy": "Ordenar por",
+    "sortOptions": {
+      "rating": "Mejor Valorados",
+      "name": "Nombre (A-Z)",
+      "experience": "Más Experimentado",
+      "price": "Precio Más Bajo"
+    },
+    "verified": "Guía Verificado",
+    "reviews_one": "reseña",
+    "reviews_other": "reseñas",
+    "experience_one": "{{count}} año de experiencia",
+    "experience_other": "{{count}} años de experiencia",
+    "viewProfile": "Ver Perfil",
+    "noResultsTitle": "No se Encontraron Guías",
+    "noResultsDesc": "Intenta ajustar tus filtros o borrar la búsqueda para ver a todos nuestros fantásticos guías."
+  },
+  "hero": {
+    "badge": "Nuestra Comunidad",
+    "title": "Conoce a Nuestros Guías Locales",
+    "subtitle": "Viajeros apasionados que convierten tu destino en una experiencia auténtica."
+  },
+  "specialties": {
+    "historia": "Historia",
+    "gastronomia": "Gastronomía",
+    "naturaleza": "Naturaleza",
+    "arquitectura": "Arquitectura"
+  },
+  "page": {
+    "titlePrefix": "Encuentra tu",
+    "titleHighlight": "Compañero de Aventura",
+    "loadingExperts": "Cargando especialistas...",
+    "guidesAvailable": "{count} guías disponibles para ti",
+    "emptyState": {
+      "title": "Ningún guía coincide con los criterios",
+      "description": "Intenta quitar filtros o buscar otro término.",
+      "clearAll": "Limpiar todos los filtros"
+    },
+    "cta": {
+      "title": "¿Listo para tu próxima historia?",
+      "subtitle": "Únete a miles de viajeros que descubrieron el lado oculto de sus destinos favoritos.",
+      "primary": "Empezar ahora",
+      "secondary": "Hablar con soporte"
+    }
+  }
+}

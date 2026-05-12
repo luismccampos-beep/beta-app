@@ -1,0 +1,235 @@
+{
+  "basics": {
+    "header": {
+      "title": "Bases",
+      "subtitle": "Donnez-nous l'essentiel pour personnaliser votre voyage"
+    },
+    "completion": {
+      "allDone": "Tout est prêt",
+      "progress": "{completed}/{total} terminé"
+    },
+    "aria": {
+      "progressBar": "Progression",
+      "done": "terminé",
+      "pending": "en attente",
+      "stepStatus": "{label} : {status}"
+    },
+    "groups": {
+      "whereWhen": {
+        "label": "Où et quand",
+        "description": "Destination et dates de voyage"
+      },
+      "whoHow": {
+        "label": "Qui et comment",
+        "description": "Voyageurs et langues"
+      },
+      "travelType": {
+        "label": "Type de voyage",
+        "description": "Choisissez le type de voyage que vous souhaitez"
+      }
+    },
+    "sections": {
+      "destination": {
+        "title": "Destination",
+        "subtitle": "Où voulez-vous aller ?"
+      },
+      "dates": {
+        "title": "Dates",
+        "subtitle": "Choisissez vos dates de voyage"
+      },
+      "travelers": {
+        "title": "Voyageurs",
+        "subtitle": "Combien de personnes partent ?"
+      },
+      "language": {
+        "title": "Langues",
+        "subtitle": "Vos langues préférées"
+      }
+    }
+  },
+  "dates": {
+    "header": {
+      "title": "Dates",
+      "subtitle": "Donnez-nous l'essentiel pour personnaliser votre voyage"
+    },
+    "completion": {
+      "allDone": "Tout est prêt",
+      "progress": "{completed}/{total} terminé"
+    },
+    "aria": {
+      "progressBar": "Progression",
+      "done": "terminé",
+      "pending": "en attente",
+      "stepStatus": "{label} : {status}"
+    },
+    "groups": {
+      "whereWhen": {
+        "label": "Où et quand",
+        "description": "Destination et dates de voyage"
+      },
+      "whoHow": {
+        "label": "Qui et comment",
+        "description": "Voyageurs et langues"
+      },
+      "travelType": {
+        "label": "Type de voyage",
+        "description": "Choisissez le type de voyage que vous souhaitez"
+      }
+    },
+    "sections": {
+      "destination": {
+        "title": "Destination",
+        "subtitle": "Où voulez-vous aller ?"
+      },
+      "dates": {
+        "title": "Dates",
+        "subtitle": "Choisissez vos dates de voyage"
+      },
+      "travelers": {
+        "title": "Voyageurs",
+        "subtitle": "Combien de personnes partent ?"
+      },
+      "language": {
+        "title": "Langues",
+        "subtitle": "Vos langues préférées"
+      }
+    }
+  },
+  "budget": {
+    "header": {
+      "title": "Planification du budget",
+      "subtitle": "Établissez un budget complet pour votre voyage"
+    },
+    "categories": {
+      "accommodation": "Hébergement",
+      "food": "Repas et restaurants",
+      "activities": "Activités",
+      "transport": "Transport",
+      "shopping": "Shopping",
+      "emergency": "Fonds d'urgence",
+      "travelInsurance": "Assurance voyage"
+    },
+    "settings": {
+      "title": "Plage de budget",
+      "subtitle": "Définissez votre budget total et la durée du voyage",
+      "currency": "Devise",
+      "durationDays": "Durée (jours)"
+    },
+    "savings": {
+      "title": "Épargne",
+      "subtitle": "Réservez des fonds pour les dépenses imprévues",
+      "amount": "Montant de l'épargne",
+      "progress": "Progression de l'épargne",
+      "savedOf": "épargné sur",
+      "total": "au total"
+    },
+    "tips": {
+      "title": "Conseils intelligents",
+      "subtitle": "Recommandations selon votre plan",
+      "emergencyBuffer": {
+        "title": "Marge d'urgence",
+        "body": "Allouez ~20 % de votre budget total à un fonds d'urgence pour éviter les mauvaises surprises."
+      },
+      "dailySpending": {
+        "title": "Dépense quotidienne",
+        "body": "Votre moyenne quotidienne est de {amount}.",
+        "bodyWithSuggestion": "Votre moyenne quotidienne est de {amount}. Révisez les catégories les plus coûteuses pour réduire les dépenses."
+      },
+      "savingsStrategy": {
+        "title": "Stratégie d'épargne",
+        "good": "Excellent objectif d'épargne — vous êtes bien préparé aux imprévus.",
+        "improve": "Visez ≥ 15 % d'épargne pour une meilleure sécurité financière."
+      }
+    },
+    "overview": {
+      "totalBudget": {
+        "label": "Budget total",
+        "perDay": "{amount} / jour"
+      },
+      "savingsGoal": {
+        "label": "Objectif d'épargne",
+        "percentOfTotal": "{percent}% du total"
+      },
+      "tripDuration": {
+        "label": "Durée du voyage",
+        "value": "{days} jours",
+        "extended": "Voyage long",
+        "short": "Voyage court"
+      }
+    },
+    "categoriesEditor": {
+      "title": "Budgets par catégorie",
+      "subtitle": "Répartissez votre budget par catégorie (facultatif)",
+      "expand": "Développer",
+      "collapse": "Réduire"
+    },
+    "aria": {
+      "sidebar": "Barre latérale du résumé du budget"
+    },
+    "summary": {
+      "ariaLabel": "Résumé du budget",
+      "health": {
+        "over": "Dépassement de budget",
+        "healthy": "Le budget est sain",
+        "needsAttention": "Ajustez la répartition"
+      },
+      "metrics": {
+        "totalAllocated": "Total alloué",
+        "dailyAverage": "Moyenne quotidienne",
+        "savingsGoal": "Objectif d'épargne",
+        "of": "sur {amount}",
+        "acrossOne": "sur {days} jour",
+        "acrossMany": "sur {days} jours",
+        "targetAmount": "Montant cible"
+      },
+      "allocation": {
+        "title": "Répartition du budget",
+        "exceededBy": "⚠ Budget dépassé de {percent}%"
+      }
+    }
+  },
+  "personalization": {
+    "title": "Personnalisation",
+    "description": "Personnalisez vos préférences de voyage pour améliorer les recommandations.",
+    "banner": {
+      "noPreferences": "Configurez vos préférences de voyage pour commencer.",
+      "noActivities": "Ajoutez au moins une activité pour améliorer les recommandations.",
+      "ready": "Parfait ! Votre profil de personnalisation est prêt.",
+      "count": "{selected}/{max} activités • {remaining} restantes"
+    },
+    "sections": {
+      "travelPreferences": {
+        "title": "Préférences de voyage",
+        "subtitle": "Configurez l'hébergement, les besoins alimentaires et les options d'accessibilité."
+      },
+      "activities": {
+        "title": "Intensité et thèmes",
+        "subtitle": "Affinez le style du voyage selon le rythme et les centres d'intérêt.",
+        "summary": "Sélectionnées",
+        "open": "Modifier les activités"
+      },
+      "travelType": {
+        "title": "Type de voyage",
+        "subtitle": "Donnez-nous le contexte"
+      },
+      "language": {
+        "title": "Langue",
+        "subtitle": "Préférences linguistiques"
+      },
+      "sustainability": {
+        "title": "Durabilité",
+        "subtitle": "Préférences éco",
+        "ecoTitle": "Préférences éco",
+        "ecoSubtitle": "Choisissez vos priorités de durabilité",
+        "openEco": "Modifier les préférences éco",
+        "ecoSummary": "Sélectionnées",
+        "certTitle": "Certifications écologiques",
+        "certSubtitle": "Préférez des hébergements avec des certifications reconnues",
+        "openCert": "Modifier les préférences de certification",
+        "certSummary": "Sélectionnées",
+        "scoreTitle": "Score de durabilité",
+        "scoreSubtitle": "Définissez un score minimum souhaité"
+      }
+    }
+  }
+}

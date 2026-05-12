@@ -1,0 +1,11 @@
+{
+  "activities": {
+    "title": "Activities",
+    "subtitle": "Explore a variety of activities for your trip.",
+    "searchPlaceholder": "Filter by destination (e.g., Lisbon, Porto)",
+    "searchButton": "Search",
+    "noActivitiesFound": "No activities found.",
+    "errorFetching": "Error fetching activities.",
+    "viewOnTripAdvisor": "View on TripAdvisor"
+  }
+}

@@ -1,0 +1,183 @@
+{
+  "metadata": {
+    "title": "Precios — Explorer vs Voyager | AKMLEVA",
+    "description": "Elige el plan ideal para tu nivel de uso de IA. Compara Explorer y Voyager y actualiza cuando quieras."
+  },
+  "badge": "Planes y precios",
+  "title": "Explorer vs Voyager",
+  "subtitle": "Elige el plan ideal para tu nivel de uso de IA.",
+  "monthly": "Mensual",
+  "yearly": "Anual",
+  "toggleBilling": "Alternar facturación",
+  "save20": "Ahorra 20%",
+  "month": "mes",
+  "currentPlan": "Plan actual",
+  "limitReached": {
+    "title": "Límite del plan Explorer alcanzado",
+    "description": "Has usado los 3 créditos de IA de este período. Actualiza a Voyager para uso ilimitado."
+  },
+  "explorer": {
+    "name": "Explorer",
+    "badge": "Gratis",
+    "price": "€0",
+    "description": "Para probar la planificación con IA con límites mensuales.",
+    "features": [
+      "3 generaciones con IA por 30 días",
+      "Acceso al flujo de AI Preferences",
+      "Sugerencias personalizadas básicas",
+      "Historial limitado",
+      "Soporte por email"
+    ],
+    "cta": "Continuar con Explorer",
+    "shareBonus": "Ganar +2 créditos por compartir"
+  },
+  "voyager": {
+    "popular": "Recomendado",
+    "name": "Voyager",
+    "badge": "Ilimitado",
+    "priceMonthly": "€9",
+    "priceYearly": "€7",
+    "description": "Para quien usa IA con frecuencia y quiere generaciones ilimitadas.",
+    "features": [
+      "Generaciones ilimitadas con IA",
+      "Prioridad en optimizaciones y personalización",
+      "Asistente de viaje IA avanzado",
+      "Acceso anticipado a mejoras y funciones",
+      "Recomendaciones más precisas",
+      "Soporte prioritario",
+      "Cancelación flexible"
+    ],
+    "cta": "Actualizar a Voyager",
+    "guarantee": "Cancela cuando quieras"
+  },
+  "trust": {
+    "secure": "Pago seguro",
+    "instant": "Acceso inmediato",
+    "rated": "Mejor valorado",
+    "cancel": "Cancela cuando quieras"
+  },
+  "bottomCta": {
+    "badge": "Empieza ahora",
+    "title": "¿Listo para planear con IA?",
+    "subtitle": "Elige un plan y vuelve a preferencias para crear tu próximo viaje.",
+    "button": "Elegir Voyager",
+    "secondaryButton": "Continuar con Explorer"
+  },
+  "billing": {
+    "monthly": "Mensual",
+    "annually": "Anual",
+    "toggleAriaLabel": "Alternar entre facturación mensual y anual",
+    "defaultSave": "Ahorra 16%",
+    "perYearShort": "año",
+    "perMonthShort": "mes"
+  },
+  "choosePlan": {
+    "title": "Elige Tu Plan",
+    "description": "Planes flexibles que crecen con tus necesidades de viaje"
+  },
+  "faq": {
+    "badge": "FAQ",
+    "title": "Preguntas Frecuentes",
+    "subtitle": "Encuentra respuestas a las preguntas más comunes sobre nuestros planes",
+    "description": "Encuentra respuestas a las preguntas más comunes sobre nuestros planes",
+    "items": [
+      {
+        "question": "¿Puedo cambiar de plan en cualquier momento?",
+        "answer": "Sí, puedes subir o bajar de plan en cualquier momento. Los cambios se aplican inmediatamente."
+      },
+      {
+        "question": "¿Hay una prueba gratuita?",
+        "answer": "Ofrecemos una prueba para Voyager. No se requiere tarjeta para comenzar."
+      },
+      {
+        "question": "¿Qué métodos de pago aceptan?",
+        "answer": "Aceptamos tarjetas principales, PayPal y otros métodos locales según tu región."
+      },
+      {
+        "question": "¿Puedo cancelar en cualquier momento?",
+        "answer": "Sí. Puedes cancelar cuando quieras y mantener acceso hasta el final del período de facturación."
+      },
+      {
+        "question": "¿Cómo protegen mis datos?",
+        "answer": "Usamos cifrado y seguimos buenas prácticas para proteger tus datos."
+      },
+      {
+        "question": "¿Cómo funciona el bono por compartir?",
+        "answer": "Al compartir puedes recibir créditos extra en Explorer."
+      },
+      {
+        "question": "¿Qué significa ilimitado?",
+        "answer": "Con Voyager no tienes límite mensual de generaciones con IA para la planificación."
+      }
+    ],
+    "q1": {
+      "title": "¿Puedo cambiar de plan en cualquier momento?",
+      "description": "Sí, puedes actualizar o degradar tu plan en cualquier momento. Los cambios surten efecto inmediatamente y se te cobrará proporcionalmente."
+    },
+    "q2": {
+      "title": "¿Hay un período de prueba gratuita?",
+      "description": "Ofrecemos una prueba gratuita de 14 días para el plan Premium. No se requiere tarjeta de crédito para comenzar."
+    },
+    "q3": {
+      "title": "¿Qué métodos de pago aceptan?",
+      "description": "Aceptamos todas las principales tarjetas de crédito, PayPal, transferencias bancarias y otros métodos de pago locales según tu región."
+    },
+    "q4": {
+      "title": "¿Puedo cancelar en cualquier momento?",
+      "description": "Sí, puedes cancelar tu suscripción en cualquier momento. No hay tarifas de cancelación y mantendrás acceso a las funciones premium hasta el final de tu período de facturación."
+    },
+    "q5": {
+      "title": "¿Cómo protegen mis datos?",
+      "description": "Nos tomamos la seguridad de los datos muy en serio. Utilizamos encriptación de nivel bancario y seguimos las mejores prácticas de seguridad de la industria.",
+      "linkText": "Aprende más sobre nuestra política de privacidad"
+    }
+  },
+  "free": "Gratis",
+  "hero": {
+    "title": "Precios Transparentes",
+    "subtitle": "Elige el plan perfecto para tu viaje"
+  },
+  "plans": {
+    "mostPopular": "Más Popular",
+    "popularBadge": "Recomendado",
+    "bonusFeature": "Bonus",
+    "basic": {
+      "name": "Básico",
+      "description": "Perfecto para viajeros ocasionales",
+      "cta": "Comenzar Gratis",
+      "feature1": "Búsqueda básica de destinos",
+      "feature2": "Comparación de precios",
+      "feature3": "Soporte por email",
+      "feature4": "Reservas prioritarias",
+      "feature4Tooltip": "Disponible solo en planes de pago"
+    },
+    "premium": {
+      "name": "Premium",
+      "description": "Ideal para viajeros frecuentes",
+      "cta": "Comenzar Prueba Gratuita",
+      "annualSave": "Ahorra ~16% / 2 meses gratis",
+      "feature1": "Todo del plan Básico",
+      "feature2": "Reservas prioritarias",
+      "feature3": "Soporte 24/7",
+      "feature3Tooltip": "Chat en vivo y soporte telefónico",
+      "feature4": "Cancelación flexible",
+      "feature5": "Acceso a ofertas exclusivas",
+      "feature6": "Asistente de viaje IA"
+    },
+    "business": {
+      "name": "Empresarial",
+      "description": "Para empresas y agencias de viaje",
+      "cta": "Contactar Ventas",
+      "priceSuffix": "/usuario",
+      "annualSave": "Ahorra ~16% / 2 meses gratis",
+      "feature1": "Todo del plan Premium",
+      "feature2": "Gestión de equipo",
+      "feature3": "Informes avanzados",
+      "feature4": "API personalizada",
+      "feature5": "Gerente de cuenta dedicado",
+      "feature5Tooltip": "Soporte personalizado para tu empresa",
+      "feature6": "Integración con sistemas corporativos",
+      "feature7": "Facturación centralizada"
+    }
+  }
+}

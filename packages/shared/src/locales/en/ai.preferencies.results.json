@@ -1,0 +1,118 @@
+{
+  "loading": {
+    "title": "Loading results"
+  },
+  "empty": {
+    "title": "No results available",
+    "description": "Go back to the preferences page and run the search to see personalized recommendations.",
+    "backToPreferences": "Back to Preferences",
+    "goToSearch": "Go to Search"
+  },
+  "hero": {
+    "breadcrumb": {
+      "preferences": "Preferences",
+      "results": "Results"
+    },
+    "defaultTripTitle": "Your trip",
+    "editPreferences": "✏️ Edit Preferences",
+    "tripDetailsLabel": "Trip details",
+    "pills": {
+      "resultsCount": "{count, plural, one {1 result found} other {{count} results found}}",
+      "travelers": "{count, plural, one {1 traveler} other {{count} travelers}}"
+    }
+  },
+  "filters": {
+    "categories": {
+      "all": "All",
+      "flight": "Flights",
+      "hotel": "Hotels",
+      "activity": "Activities",
+      "car": "Cars"
+    },
+    "sort": {
+      "relevance": "Relevance",
+      "priceAsc": "Price: Lowest",
+      "priceDesc": "Price: Highest",
+      "rating": "Top Rated"
+    }
+  },
+  "results": {
+    "emptyCategoryTitle": "No results",
+    "emptyCategoryDescription": "No results found for this category."
+  },
+  "providers": {
+    "label": "Sources: {providers}"
+  },
+  "aiInsights": {
+    "recommendationsTitle": "AI Recommendations",
+    "compatibilityTitle": "Compatibility",
+    "basedOn": "Based on: {items}",
+    "relevanceAria": "Relevance: {score} out of 100",
+    "compatibilityAria": "Compatibility: {score}%",
+    "matchedInterestsLabel": "Matched interests",
+    "progressAria": "{destination}: {score}% compatible"
+  },
+  "resultCard": {
+    "available": "Available",
+    "unavailable": "Unavailable",
+    "remove": "✕ Remove",
+    "add": "+ Add to trip",
+    "viewOnProvider": "View on {provider}"
+  },
+  "blog": {
+    "sectionTitle": "Tips about {destination}",
+    "loadingSr": "Loading articles…",
+    "readTime": "{minutes} min",
+    "readTimeAria": "{minutes} minutes read",
+    "tagsLabel": "Tags"
+  },
+  "cart": {
+    "sidebarTitle": "Your trip",
+    "clear": "Clear",
+    "emptyTitle": "Your trip is empty",
+    "emptySubtitle": "Add flights, hotels or activities to get started.",
+    "total": "Total",
+    "bookTrip": "Book Trip",
+    "completeSuggestions": "Suggestions to complete",
+    "hintFlights": "Flights are missing",
+    "hintHotel": "Add accommodation",
+    "hintActivities": "Explore activities",
+    "summary": "Summary",
+    "book": "Book",
+    "removeAria": "Remove {title}",
+    "mobileSummaryAria": "View cart details",
+    "selectedItems": "{count} selected items",
+    "estimatedTotal": "Estimated total",
+    "bookNow": "Book now"
+  },
+  "booking": {
+    "title": "Book Trip",
+    "close": "Close modal",
+    "progress": "Booking progress",
+    "reviewTitle": "Review your selection",
+    "continue": "Continue",
+    "total": "Total",
+    "travelerTitle": "Traveler details",
+    "fields": {
+      "firstName": "First name",
+      "lastName": "Last name",
+      "email": "Email",
+      "phone": "Phone",
+      "notes": "Special requests",
+      "notesPlaceholder": "E.g. Sea view room, vegetarian meals…",
+      "required": "*"
+    },
+    "back": "Back",
+    "paymentTitle": "Payment",
+    "paymentHint": "You can book everything at once or go directly to each provider.",
+    "bookDirect": "Book directly with the provider:",
+    "openInProvider": "Open in {provider}",
+    "confirm": "Confirm booking",
+    "processing": "Processing…",
+    "confirmedTitle": "Booking confirmed!",
+    "confirmedEmail": "You'll receive an email with the details at <strong>{email}</strong>.",
+    "destination": "Destination",
+    "viewBookings": "View my bookings",
+    "closeAction": "Close"
+  }
+}

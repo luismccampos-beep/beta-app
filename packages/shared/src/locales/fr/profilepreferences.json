@@ -1,0 +1,13 @@
+{
+  "budget": "Budget",
+  "duration": "Durée",
+  "group_size": "Taille du Groupe",
+  "payment_methods": "Méthodes de Paiement",
+  "preferred_currency": "Devise Préférée",
+  "preferred_language": "Langue Préférée",
+  "select_budget": "Sélectionnez le budget",
+  "select_duration": "Sélectionnez la durée",
+  "select_payment_method": "Sélectionnez la méthode de paiement",
+  "title": "Préférences du Profil",
+  "travel_preferences": "Préférences de Voyage"
+}

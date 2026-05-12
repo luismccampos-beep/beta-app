@@ -1,0 +1,11 @@
+export { default as Footer } from './Footer';
+export { default as SharedHeader } from './SharedHeader';
+export { default as SharedDesktopMenu } from './SharedDesktopMenu';
+export { default as SharedMobileMenu } from './SharedMobileMenu';
+export { default as SharedUserMenu } from './SharedUserMenu';
+export { default as SharedThemeToggle } from './SharedThemeToggle';
+export { default as SharedMobileHeader } from './SharedMobileHeader';
+export { default as SharedPageHeader } from './SharedPageHeader';
+export { default as SharedUserAvatar } from './SharedUserAvatar';
+export { default as VibrantBackground } from './VibrantBackground';
+export type { SharedNavItem, SharedUser, SharedHeaderProps } from './navigation/types';

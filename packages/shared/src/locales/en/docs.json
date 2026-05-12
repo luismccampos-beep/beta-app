@@ -1,0 +1,40 @@
+{
+  "hero": {
+    "title": "AKMLEVA Developer Documentation",
+    "subtitle": "Comprehensive guides, API references, and SDK documentation to integrate AKMLEVA travel services into your applications",
+    "searchPlaceholder": "Search documentation...",
+    "getStarted": "Get Started",
+    "apiReference": "API Reference"
+  },
+  "levels": {
+    "beginner": "Beginner",
+    "intermediate": "Intermediate",
+    "advanced": "Advanced"
+  },
+  "sections": {
+    "title": "Documentation Sections",
+    "articles": "articles",
+    "readMore": "Read more"
+  },
+  "apiReference": {
+    "title": "API Reference",
+    "parameters": "Parameters",
+    "example": "Example"
+  },
+  "sdk": {
+    "title": "SDKs & Libraries",
+    "download": "Download",
+    "docs": "Docs"
+  },
+  "support": {
+    "title": "Need Help?",
+    "contact": "Contact Support",
+    "contactDescription": "Our support team is available to help you with any questions or issues.",
+    "liveChat": "Live Chat",
+    "community": "Community & Resources",
+    "communityDescription": "Connect with other developers and access additional resources.",
+    "apiStatus": "API Status",
+    "operational": "All systems operational",
+    "lastUpdated": "Last updated: {date}"
+  }
+}

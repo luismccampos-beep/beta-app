@@ -1,0 +1,38 @@
+{
+  "destinations": {
+    "caribbean": "Caraïbes",
+    "caribbean_desc": "Des eaux cristallines et des plages de sable blanc vous attendent.",
+    "mediterranean": "Méditerranée",
+    "mediterranean_desc": "Plongez dans l'histoire et la culture de magnifiques villes côtières.",
+    "alaska": "Alaska",
+    "alaska_desc": "Admirez la grandeur des glaciers et une faune unique.",
+    "norway": "Fjords Norvégiens",
+    "norway_desc": "Naviguez à travers des paysages spectaculaires et des villages pittoresques."
+  },
+  "hero": {
+    "title": "Des Océans de Rêves Vous Attendent",
+    "subtitle": "Découvrez le monde depuis le confort luxueux de nos croisières partenaires."
+  },
+  "popularDestinations": {
+    "title": "Destinations de Croisière Populaires",
+    "subtitle": "Explorez certains des itinéraires les plus prisés et embarquez pour une aventure inoubliable."
+  },
+  "search": {
+    "destination": "Destination",
+    "destination_placeholder": "Où voulez-vous naviguer ?",
+    "date": "Date de Départ",
+    "cruise_line": "Compagnie",
+    "cruise_line_placeholder": "Choisissez une compagnie",
+    "button": "Rechercher des Croisières"
+  },
+  "whyChooseUs": {
+    "title": "Pourquoi Voyager Avec Nous ?",
+    "subtitle": "Nous offrons plus qu'un voyage. Nous offrons une expérience complète et sans souci.",
+    "exclusive": "Itinéraires Exclusifs",
+    "exclusive_desc": "Accédez à des itinéraires uniques et des expériences que vous ne trouverez nulle part ailleurs.",
+    "luxury": "Luxe et Confort",
+    "luxury_desc": "Les navires les plus modernes et un service d'excellence pour un confort maximal.",
+    "support": "Soutien Spécialisé",
+    "support_desc": "Notre équipe est disponible 24/7 pour garantir que votre voyage soit parfait."
+  }
+}

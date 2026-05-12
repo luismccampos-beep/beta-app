@@ -1,0 +1,163 @@
+{
+  "accommodationTypes": {
+    "title": "Types d'Hébergement",
+    "description": "Nous proposons différentes options d'hébergement pour tous les goûts et budgets",
+    "learnMore": "Voir les Détails",
+    "types": {
+      "hotels": {
+        "title": "Hôtels",
+        "description": "Hôtels de 3 à 5 étoiles",
+        "feature1": "Emplacement privilégié",
+        "feature2": "Services complets"
+      },
+      "resorts": {
+        "title": "Resorts",
+        "description": "Resorts avec toutes les commodités",
+        "feature1": "Piscines et spa",
+        "feature2": "Activités incluses"
+      },
+      "apartments": {
+        "title": "Appartements",
+        "description": "Appartements pour familles",
+        "feature1": "Plus d'espace",
+        "feature2": "Cuisine équipée"
+      },
+      "boutique": {
+        "title": "Boutique",
+        "description": "Hôtels boutique uniques",
+        "feature1": "Design exclusif",
+        "feature2": "Service personnalisé"
+      }
+    }
+  },
+  "bookingCta": {
+    "title": "Besoin d'Aide pour Choisir ?",
+    "description": "Nos spécialistes peuvent vous aider à trouver l'hébergement parfait",
+    "cta": "Parler à un Spécialiste"
+  },
+  "hero": {
+    "title": "Hôtels et Hébergement Premium",
+    "subtitle": "Sélection exclusive des meilleurs hôtels et resorts avec des tarifs spéciaux",
+    "cta": "Réserver Maintenant"
+  },
+  "destinations": {
+    "lisbon": "Lisbonne",
+    "porto": "Porto",
+    "algarve": "Algarve",
+    "madrid": "Madrid"
+  },
+  "popularDestinations": {
+    "title": "Destinations Populaires",
+    "subtitle": "Découvrez les meilleurs hôtels dans les destinations les plus recherchées",
+    "viewHotels": "Voir les Hôtels",
+    "explore": "Explorer les hôtels",
+    "explorer": "Explorer les hôtels",
+    "error": "Impossible de charger les destinations populaires"
+  },
+  "ratings": {
+    "wonderful": "Merveilleux",
+    "veryGood": "Très Bon",
+    "good": "Bon",
+    "pleasant": "Agréable",
+    "average": "Moyen"
+  },
+  "common": {
+    "show_more": "Afficher plus",
+    "show_less": "Afficher moins"
+  },
+  "addFavorite": "Ajouter aux favoris",
+  "removeFavorite": "Retirer des favoris",
+  "dealOfTheDay": "Offre du jour",
+  "pricePerNight": "Prix par nuit",
+  "includesTaxes": "Taxes incluses",
+  "details": "Détails",
+  "bookNow": "Réserver maintenant",
+  "listView": "Vue liste",
+  "mapView": "Vue carte",
+  "showingResults": "Affichage de {count} résultats",
+  "mapIntegration": "Vue carte",
+  "mapCenter": "Centre : {lat}, {lng}",
+  "noResults": "Aucun résultat trouvé",
+  "noResultsDescription": "Essayez d'ajuster vos critères de recherche",
+  "clearFilters": "Effacer les filtres",
+  "sort": {
+    "popularity": "Popularité",
+    "priceAsc": "Prix (du moins cher au plus cher)",
+    "priceDesc": "Prix (du plus cher au moins cher)",
+    "rating": "Note",
+    "distance": "Distance"
+  },
+  "amenities": {
+    "wifi": "Wi‑Fi",
+    "parking": "Parking",
+    "restaurant": "Restaurant",
+    "pool": "Piscine",
+    "gym": "Salle de sport",
+    "airConditioning": "Climatisation"
+  },
+  "propertyTypes": {
+    "hotel": "Hôtel",
+    "apartment": "Appartement",
+    "guesthouse": "Maison d'hôtes",
+    "resort": "Resort"
+  },
+  "mealPlans": {
+    "breakfast": "Petit-déjeuner inclus",
+    "halfBoard": "Demi-pension",
+    "fullBoard": "Pension complète",
+    "allInclusive": "Tout compris"
+  },
+  "filters": {
+    "title": "Filtres de Recherche",
+    "freeCancellation": "Annulation Gratuite",
+    "payAtProperty": "Payer sur Place",
+    "mealPlans": "Pension",
+    "propertyType": "Type de Propriété",
+    "sortBy": "Trier par",
+    "starRating": "Classement par Étoiles",
+    "starRatingHint": "Filtrer les hôtels par nombre d'étoiles",
+    "wonderful": "Merveilleux",
+    "veryGood": "Très Bon",
+    "good": "Bon",
+    "pleasant": "Agréable",
+    "bookingPolicies": "Politiques de réservation",
+    "amenities": "Équipements",
+    "guestRating": "Note des clients",
+    "priceRange": "Fourchette de prix",
+    "minPrice": "Min",
+    "maxPrice": "Max",
+    "clear": "Effacer",
+    "apply": "Appliquer",
+    "activeFilters": "Filtres Actifs",
+    "noActiveFilters": "Aucun filtre actif",
+    "activeDescription": "{count} filtres actifs",
+    "description": "Affinez vos résultats",
+    "showResults": "Afficher les résultats",
+    "clearFilters": "Effacer tous les filtres",
+    "clearAll": "Tout effacer"
+  },
+  "openMaps": {
+    "title": "Rechercher des destinations pour les hôtels",
+    "description": "Recherchez une ville et voyez les hôtels à proximité grâce à OpenStreetMap."
+  },
+  "hotelbeds": {
+    "title": "Rechercher des hôtels (Hotelbeds)",
+    "description": "Trouvez des hôtels et des disponibilités avec l'intégration Hotelbeds."
+  },
+  "search": {
+    "results": "Résultats de recherche",
+    "searching": "Recherche d'hôtels...",
+    "searchHotels": "Rechercher des hôtels",
+    "hotelsFound": "{count} hôtels trouvés",
+    "guestOption": "{adults} adultes, {children} enfants",
+    "placeholder": "Rechercher des hôtels, des destinations ou des points d'intérêt...",
+    "tryAgain": "Réessayer"
+  },
+  "seo": {
+    "title": "Hôtels et Hébergement Premium - AKMLEVA",
+    "titleWithDestination": "Hôtels à {destination}",
+    "siteName": "AKMLEVA - Voyages et Tourisme",
+    "description": "Découvrez notre sélection exclusive des meilleurs hôtels et resorts avec des tarifs spéciaux.",
+    "descriptionWithDestination": "Découvrez des hôtels à {destination} avec notre sélection exclusive et des tarifs spéciaux."
+  }
+}

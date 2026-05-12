@@ -1,0 +1,89 @@
+{
+  "hero": {
+    "title": "Construa o Futuro das Viagens",
+    "subtitle": "Junte-se a uma equipa inovadora que está a revolucionar a indústria do turismo. Construímos tecnologia que liga o mundo.",
+    "badge": "Estamos a Contratar"
+  },
+  "benefits": {
+    "title": "Benefícios",
+    "health": "Seguro de Saúde",
+    "health_desc": "Cobertura completa para si e família",
+    "flex": "Trabalho Flexível",
+    "flex_desc": "Horários flexíveis e trabalho remoto",
+    "growth": "Crescimento",
+    "growth_desc": "Oportunidades de desenvolvimento profissional",
+    "tech": "Tecnologia",
+    "tech_desc": "Equipamento e ferramentas de última geração"
+  },
+  "cta": {
+    "badge": "Junte-se ao time",
+    "title": "Pronto para fazer parte da nossa jornada?",
+    "subtitle": "Seu talento pode ser o motor da nossa próxima grande inovação tecnológica.",
+    "button": "Enviar Candidatura"
+  },
+  "form": {
+    "title": "Candidatura Espontânea"
+  },
+  "application": {
+    "title": "Candidatar-se à Vaga",
+    "close": "Fechar",
+    "name": "Nome Completo",
+    "email": "E-mail",
+    "phone": "Telefone",
+    "linkedin": "LinkedIn",
+    "message": {
+      "label": "Mensagem (Opcional)",
+      "placeholder": "Conte-nos por que você seria perfeito para esta vaga..."
+    },
+    "cv": {
+      "label": "Currículo (PDF)",
+      "upload": "Upload CV",
+      "drag": "Arraste seu currículo ou clique para selecionar",
+      "format": "Apenas arquivos PDF (máx. 5MB)"
+    },
+    "error": "Preencha todos os campos obrigatórios e anexe seu currículo.",
+    "submitting": "Enviando...",
+    "submit": "Enviar Candidatura",
+    "success": {
+      "title": "Candidatura Enviada!",
+      "message": "Entraremos em contato em breve."
+    }
+  },
+  "job": {
+    "none": "Nenhuma posição encontrada",
+    "checkback": "Novas vagas são publicadas regularmente. Volte em breve!",
+    "spontaneous": "Candidatura Espontânea",
+    "apply": {
+      "label": "Candidatar-se",
+      "aria": "Candidatar-se para a vaga"
+    },
+    "requirements_label": "Requisitos",
+    "benefits_label": "Benefícios"
+  },
+  "jobs": {
+    "empty": {
+      "title": "Nenhuma vaga disponível no momento",
+      "department": "Não há vagas abertas em {departmentName} atualmente.",
+      "general": "Não há vagas abertas neste momento. Novas oportunidades serão publicadas em breve.",
+      "checkback": "Verifique novamente em breve!"
+    }
+  },
+  "departments": {
+    "empty": {
+      "title": "Nenhum departamento ativo no momento",
+      "subtitle": "Futuros departamentos e novas vagas abertas aparecerão aqui. Fique de olho em nossas atualizações!"
+    }
+  },
+  "open_positions": "Vagas em Destaque",
+  "opportunities": "posições abertas",
+  "sections": {
+    "whyJoinUs": {
+      "title": "Por que trabalhar conosco?",
+      "description": "Oferecemos um ecossistema de inovação, equilíbrio e benefícios focados no seu crescimento integral."
+    },
+    "openPositions": {
+      "title": "Posições Abertas",
+      "noPositions": "Tente buscar em outro departamento ou candidatura espontânea."
+    }
+  }
+}

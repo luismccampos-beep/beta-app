@@ -1,0 +1,41 @@
+{
+  "compilerOptions": {
+    "target": "ES2020",
+    "lib": ["ES2020", "DOM", "DOM.Iterable"],
+    "declaration": true,
+    "declarationDir": "./dist",
+    "outDir": "./dist",
+    "rootDir": "./src",
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "resolveJsonModule": true,
+    "allowSyntheticDefaultImports": true,
+    "jsx": "react-jsx",
+    "baseUrl": ".",
+    "paths": {
+      "@akmleva/ui": ["./src/index.ts"],
+      "@akmleva/ui/*": ["./src/*"],
+      "@akmleva/shared": ["../shared/dist/index.d.ts"],
+      "@akmleva/shared/*": ["../shared/dist/*"]
+    },
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "allowImportingTsExtensions": false,
+    "noEmit": false,
+    "isolatedModules": true,
+    "verbatimModuleSyntax": true
+  },
+  "include": ["src/**/*"],
+  "exclude": [
+    "node_modules",
+    "./dist",
+    "./dist/**",
+    "dist",
+    "dist/**",
+    "**/dist",
+    "**/dist/**",
+    "../shared/src"
+  ]
+}

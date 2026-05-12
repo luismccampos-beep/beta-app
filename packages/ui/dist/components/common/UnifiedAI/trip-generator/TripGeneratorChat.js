@@ -1,0 +1,10 @@
+"use client";
+import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
+import { Button } from '../../../Button';
+import { TripFormRenderer } from './TripFormRenderer';
+import { useTripGenerator } from './useTripGenerator';
+export function TripGeneratorChat() {
+    const { trip, error, generateTrip, clearTrip } = useTripGenerator();
+    return (_jsxs("div", { className: "space-y-4", children: [_jsx(TripFormRenderer, { onSubmit: generateTrip }), error && _jsx("div", { className: "text-sm text-destructive", children: error }), trip && (_jsxs("div", { className: "rounded-lg border border-border p-4 space-y-3", children: [_jsxs("div", { className: "flex items-center justify-between", children: [_jsxs("div", { children: [_jsx("div", { className: "text-lg font-semibold", children: trip.destination }), _jsx("div", { className: "text-sm text-muted-foreground", children: trip.summary })] }), _jsx(Button, { size: "sm", variant: "ghost", type: "button", onClick: clearTrip, children: "Limpar" })] }), _jsxs("div", { className: "text-sm text-muted-foreground", children: [trip.duration, " dias \u00B7 ", trip.totalEstimatedCost.toLocaleString('pt-PT', { style: 'currency', currency: 'EUR' })] }), _jsx("div", { className: "space-y-2", children: trip.days.map((day) => (_jsxs("div", { className: "rounded-md border border-border p-3", children: [_jsxs("div", { className: "font-medium", children: ["Dia ", day.day, ": ", day.title] }), _jsx("div", { className: "text-sm text-muted-foreground", children: day.location }), _jsx("ul", { className: "mt-2 list-disc pl-5 text-sm", children: day.activities.map((activity, index) => (_jsx("li", { children: activity }, `${day.day}-${index}`))) }), _jsxs("div", { className: "mt-2 text-xs text-muted-foreground", children: ["Estimativa: ", day.estimatedCost.toLocaleString('pt-PT', { style: 'currency', currency: 'EUR' })] })] }, day.day))) })] }))] }));
+}
+//# sourceMappingURL=TripGeneratorChat.js.map

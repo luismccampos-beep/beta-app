@@ -1,0 +1,50 @@
+{
+  "allDestinations": "All Destinations",
+  "amazing": "Waiting for You",
+  "contactUsButton": "Contact Us",
+  "contactUsForMoreInfo": "Contact us for more information about our destinations",
+  "destination1Description": "A fairy-tale castle in the Bavarian mountains, inspiration for Disney's Sleeping Beauty castle.",
+  "destination1Name": "Neuschwanstein Castle",
+  "destination2Description": "A 19th-century Romantic palace in Sintra, Portugal, known for its vibrant colors and unique architecture.",
+  "destination2Name": "Pena Palace",
+  "destinationsFound": "destinations found",
+  "destinationsTitle": "Amazing Destinations",
+  "discoverUniquePlaces": "Discover unique places and unforgettable experiences around the world",
+  "exploreTheWorld": "Explore the World",
+  "featuredDestinations": "Featured Destinations",
+  "mostSoughtAfter": "The most sought-after destinations by our clients",
+  "noDestinationsFound": "No destinations found",
+  "ourServices": "Our Services",
+  "readyToExplore": "Ready to Explore?",
+  "searchDestinations": "Search destinations...",
+  "selectContinent": "Select continent",
+  "selectPriceRange": "Select price range",
+  "service1Description": "Discover unique experiences and exciting activities at each destination",
+  "service1Name": "Activities and Experiences",
+  "service2Description": "Explore with experienced local guides who know all the secrets",
+  "service2Name": "Specialized Guides",
+  "tryAdjustingFilters": "Try adjusting the filters to find more options",
+  "page": {
+    "featured": {
+      "editorialLabel": "Editorial selection",
+      "title": "Featured Destinations"
+    },
+    "results": {
+      "showingPrefix": "Showing",
+      "of": "of",
+      "destinations": "destinations"
+    },
+    "countries": {
+      "label": "Countries",
+      "more": "+{count} more"
+    },
+    "filters": {
+      "title": "Filter destinations"
+    },
+    "newsletter": {
+      "eyebrow": "Stay in the know",
+      "title": "Get inspired before you go",
+      "description": "Get exclusive guides, travel tips, and the best offers delivered to your inbox."
+    }
+  }
+}

@@ -1,0 +1,111 @@
+{
+  "allRightsReserved": "Todos los derechos reservados.",
+  "byTravelers": "por viajeros, para viajeros",
+  "categories": {
+    "empresa": "Empresa",
+    "legal": {
+      "security": "Seguridad",
+      "terms": "Términos de Uso",
+      "privacy": "Política de Privacidad",
+      "cookies": "Política de Cookies",
+      "gdpr": "RGPD",
+      "cancellation-policy": "Política de Cancelación"
+    },
+    "ajuda": "Ayuda",
+    "suporte": "Soporte",
+    "integrações": "Integraciones"
+  },
+  "company": {
+    "title": "Empresa",
+    "careers": "Carreras",
+    "press": "Prensa",
+    "admin": "Administración"
+  },
+  "complaints": {
+    "title": "Reclamaciones y Entidad Reguladora",
+    "tooltip": "Acceder al Libro de Reclamaciones en Línea",
+    "alt": "Logotipo del Libro de Reclamaciones Electrónico",
+    "entity": "Entidad Reguladora: Turismo de Portugal, I.P."
+  },
+  "cookies": "Cookies",
+  "description": "Soluciones innovadoras para simplificar tu experiencia digital.",
+  "followOn": "Síganos en {{platform}}",
+  "guest": {
+    "title": "Comenzar",
+    "smartForm": "Formulario Inteligente",
+    "howItWorks": "Cómo Funciona"
+  },
+  "ia": {
+    "preferences": "Preferencias de IA",
+    "toggle": "Activar preferencias de IA"
+  },
+  "legalTitle": "Información Legal",
+  "madeWith": "Hecho con",
+  "newsletter": {
+    "title": "Suscríbete a nuestro boletín",
+    "description": "Recibe novedades, actualizaciones y contenido exclusivo."
+  },
+  "newsletterDescription": "Suscríbete para recibir ofertas exclusivas y descuentos especiales",
+  "newsletterPlaceholder": "Tu mejor correo electrónico",
+  "newsletterPrivacy": "Privacidad total. Cancela con un clic.",
+  "newsletterSuccess": "¡Suscripción confirmada! Revisa tu correo electrónico.",
+  "newsletterTitle": "Recibe las mejores ofertas",
+  "partnersDisclaimer": "Sistemas auditados y en conformidad con las normas ISO 2026.",
+  "partnersTitle": "Socios",
+  "partnerships": {
+    "title": "Nuestros Socios",
+    "gea": "Grupo de Agencias de Viajes Independientes",
+    "sanjotec": "Sanjotec - Parque de Ciencia y Tecnología",
+    "dg": "DG Consulting",
+    "turismodeportugal": "Turismo de Portugal"
+  },
+  "paymentMethods": "Métodos de Pago",
+  "paymentMethodsData": {
+    "transfer": "Transferencia Bancaria"
+  },
+  "paymentMethodsTitle": "Pagos Seguros",
+  "privacy": "Privacidad",
+  "product": {
+    "title": "Producto",
+    "features": "Características",
+    "pricing": "Precios",
+    "integrations": "Integraciones",
+    "api": "API",
+    "mobile": "App Móvil"
+  },
+  "quickLinksTitle": "Enlaces Rápidos",
+  "rightsReserved": "Todos los derechos reservados",
+  "securePayments": "Pagos Seguros",
+  "resources": {
+    "title": "Recursos"
+  },
+  "services": {
+    "packages": "Paquetes",
+    "hotels": "Hoteles",
+    "flights": "Vuelos",
+    "transfers": "Transfers",
+    "insurance": "Seguros"
+  },
+  "servicesTitle": "Nuestros Servicios",
+  "support": {
+    "title": "Soporte",
+    "help": "Centro de Ayuda",
+    "documentation": "Documentación",
+    "status": "Estado del Sistema",
+    "community": "Comunidad",
+    "technical": "Soporte Técnico",
+    "partnerships": "Asociaciones",
+    "howItWorks": "Cómo Funciona",
+    "integrations": "Integraciones",
+    "app": "App Móvil"
+  },
+  "terms": "Términos",
+  "user": {
+    "title": "Mi Cuenta",
+    "preferences": "Preferencias de IA",
+    "accountSettings": "Configuración de Cuenta",
+    "bookingHistory": "Historial de Reservas"
+  },
+  "verifiedProvider": "Proveedor Verificado",
+  "blogTitle": "Blog"
+}

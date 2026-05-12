@@ -1,0 +1,11 @@
+{
+  "loading": {
+    "admin": "Chargement du panneau d'administration...",
+    "user": "Chargement de votre tableau de bord...",
+    "default": "Chargement...",
+    "publicPage": "Chargement de la page...",
+    "adminDashboard": "Chargement du panneau d'administration...",
+    "userDashboard": "Chargement de votre tableau de bord...",
+    "auth": "Authentification..."
+  }
+}

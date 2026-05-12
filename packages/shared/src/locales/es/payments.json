@@ -1,0 +1,95 @@
+{
+  "actions": {
+    "menu": "Menú",
+    "options": "Opciones",
+    "configure": "Configurar",
+    "viewProvider": "Ver en el Proveedor",
+    "activate": "Activar",
+    "deactivate": "Desactivar",
+    "delete": "Eliminar",
+    "clickToActivate": "Hacer clic para Activar",
+    "clickToDeactivate": "Hacer clic para Desactivar"
+  },
+  "addMethod": "Agregar Método",
+  "currency": {
+    "free": "Gratis (pueden aplicarse tarifas bancarias)"
+  },
+  "description": "Configure y gestione los métodos de pago de su plataforma.",
+  "dialog": {
+    "addTitle": "Agregar Nuevo Método de Pago",
+    "editTitle": "Editar Método de Pago",
+    "addDescription": "Configure un nuevo método para sus clientes.",
+    "editDescription": "Modifique los detalles de",
+    "fields": {
+      "methodName": "Nombre del Método",
+      "methodNamePlaceholder": "Ej: Tarjeta de Crédito Internacional",
+      "provider": "Proveedor",
+      "providerPlaceholder": "Seleccionar proveedor",
+      "feesDescription": "Descripción de Tarifas",
+      "feesPlaceholder": "Ej: 2,9% + 0,30€ por transacción",
+      "activeMethod": "Método Activo"
+    },
+    "buttons": {
+      "cancel": "Cancelar",
+      "saving": "Guardando...",
+      "saveChanges": "Guardar Cambios",
+      "addMethod": "Agregar Método"
+    }
+  },
+  "messages": {
+    "methodsLoaded": "Métodos de Pago Cargados",
+    "loadError": "Error al Cargar Datos",
+    "loadErrorDescription": "No se pudieron obtener los métodos de pago.",
+    "validationError": "Error de Validación",
+    "nameRequired": "El nombre del método de pago es obligatorio.",
+    "updateSuccess": "Éxito",
+    "methodUpdated": "actualizado.",
+    "methodAdded": "agregado.",
+    "saveError": "Error al Guardar",
+    "saveErrorDescription": "No se pudo guardar el método de pago.",
+    "statusUpdated": "Estado Actualizado",
+    "statusUpdateError": "Error al Actualizar Estado",
+    "deleteConfirm": "¿Está seguro de que desea eliminar este método de pago?",
+    "methodDeleted": "Método Eliminado",
+    "deleteError": "Error al Eliminar"
+  },
+  "stats": {
+    "activeMethods": "Métodos Activos",
+    "activeMethodsDescription": "métodos configurados en total",
+    "averageFee": "Tarifa Promedio Estimada",
+    "averageFeeDescription": "Basado en tarifas porcentuales",
+    "mostPopular": "Más Popular",
+    "mostPopularValue": "Tarjeta (Simulado)",
+    "mostPopularDescription": "Basado en transacciones (simulado)",
+    "nextReview": "Próxima Revisión",
+    "nextReviewValue": "Stripe (30 días)",
+    "nextReviewDescription": "Contratos y tarifas (simulado)"
+  },
+  "status": {
+    "ativo": "activo",
+    "inativo": "inactivo",
+    "em_configuracao": "en configuración"
+  },
+  "table": {
+    "title": "Todos los Métodos de Pago",
+    "description": "Visualice y gestione la configuración de cada método.",
+    "searchPlaceholder": "Buscar por nombre o proveedor...",
+    "tabs": {
+      "all": "Todos",
+      "active": "Activos",
+      "inactive": "Inactivos/Config."
+    },
+    "headers": {
+      "name": "Nombre",
+      "provider": "Proveedor",
+      "status": "Estado",
+      "fees": "Tarifas",
+      "availableIn": "Disponible En",
+      "lastUpdated": "Última Actualización",
+      "actions": "Acciones"
+    },
+    "noMethods": "No se encontraron métodos para",
+    "global": "Global"
+  },
+  "title": "Sistema de Pagos"
+}

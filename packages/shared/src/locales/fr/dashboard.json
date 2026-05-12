@@ -1,0 +1,12 @@
+{
+  "dashboard": {
+    "title": "Tableau de bord",
+    "subtitle": "Bienvenue sur votre tableau de bord personnel",
+    "upcomingTrips": "Voyages à venir",
+    "noUpcomingTrips": "Vous n'avez aucun voyage programmé",
+    "recentBookings": "Réservations récentes",
+    "noRecentBookings": "Aucune réservation récente",
+    "recommendations": "Recommandations",
+    "noRecommendations": "Aucune recommandation disponible"
+  }
+}

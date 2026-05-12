@@ -1,0 +1,31 @@
+{
+  "accessibility": {
+    "themeToggle": "Alternar tema",
+    "currentTheme": "Tema actual: {{theme}}",
+    "themeMenu": "Menú de selección de tema",
+    "closeMenu": "Cerrar menú de tema"
+  },
+  "adminDark": "Admin Oscuro",
+  "adminLight": "Admin Claro",
+  "auto": "Automático",
+  "autoActive": "Modo automático activo",
+  "current": "Actual",
+  "dark": "Oscuro",
+  "interfaceTitle": "Tema de la Interfaz",
+  "light": "Claro",
+  "moreOptions": "Más opciones de tema",
+  "nightSchedule": "Modo oscuro de {{start}} a {{end}}",
+  "settings": {
+    "title": "Configuración de Tema",
+    "description": "Personaliza la apariencia de la interfaz",
+    "autoMode": "Modo Automático",
+    "autoModeDescription": "Cambia automáticamente entre claro y oscuro según la hora",
+    "manualMode": "Modo Manual",
+    "manualModeDescription": "Elige manualmente tu tema preferido"
+  },
+  "simpleMode": "Modo simple",
+  "toggleAria": "Cambiar a modo {{mode}}",
+  "toggleTitle": "Cambiar a modo {{mode}}",
+  "userDark": "Modo Oscuro",
+  "userLight": "Modo Claro"
+}

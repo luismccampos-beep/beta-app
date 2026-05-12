@@ -1,0 +1,173 @@
+{
+  "profile": {
+    "title": "Perfil de Viajero",
+    "completeness": {
+      "title": "Perfil de Viajero",
+      "complete": "¡Tu perfil está completo!",
+      "incomplete": "Completa tu perfil para una mejor experiencia",
+      "progress": "Progreso",
+      "completeItem": "Completar",
+      "items": {
+        "profile_photo": "Foto de perfil",
+        "phone": "Teléfono",
+        "documents": "Documentos",
+        "emergency_contact": "Contacto de emergencia",
+        "ai_preferences": "Preferencias de IA",
+        "travel_preferences": "Preferencias de viaje",
+        "payment_methods": "Métodos de pago",
+        "address": "Dirección"
+      }
+    }
+  },
+  "documents": {
+    "title": "Documentos de Viaje",
+    "subtitle": "Mantén tus documentos actualizados para reservas más rápidas",
+    "add": "Añadir",
+    "addTitle": "Añadir Documento",
+    "addDescription": "Añade tus documentos de viaje para una experiencia más rápida.",
+    "noDocuments": "No hay documentos registrados. Añade tus documentos de viaje para agilizar tus reservas.",
+    "fields": {
+      "type": "Tipo de Documento",
+      "number": "Número de Documento",
+      "issueDate": "Fecha de Emisión",
+      "expiryDate": "Fecha de Caducidad",
+      "issuer": "País Emisor"
+    },
+    "types": {
+      "passport": "Pasaporte",
+      "national_id": "DNI",
+      "visa": "Visado",
+      "drivers_license": "Licencia de Conducir",
+      "travel_pass": "Pase de Viaje"
+    },
+    "status": {
+      "valid": "Válido",
+      "expiring_soon": "Próximo a vencer",
+      "expired": "Vencido",
+      "needs_verification": "Pendiente"
+    },
+    "verified": "Verificado",
+    "issued": "Emitido",
+    "expires": "Vence",
+    "expiresIn": "Vence en {{days}} días - Considera renovarlo",
+    "upload": "Subir documento",
+    "delete": "Eliminar"
+  },
+  "emergencyContact": {
+    "title": "Contacto de Emergencia",
+    "subtitle": "Información de contacto para situaciones de emergencia durante los viajes",
+    "add": "Añadir",
+    "addTitle": "Añadir Contacto de Emergencia",
+    "addDescription": "Este contacto se utilizará en caso de emergencia durante tus viajes.",
+    "noContacts": "No hay contacto de emergencia registrado. Añade alguien de confianza para situaciones de emergencia.",
+    "fields": {
+      "name": "Nombre Completo",
+      "relationship": "Relación",
+      "phone": "Teléfono",
+      "email": "Email (opcional)"
+    },
+    "relationships": {
+      "spouse": "Cónyuge",
+      "parent": "Padre/Madre",
+      "sibling": "Hermano/Hermana",
+      "child": "Hijo/Hija",
+      "friend": "Amigo(a)",
+      "other": "Otro"
+    },
+    "primary": "Principal",
+    "delete": "Eliminar"
+  },
+  "stats": {
+    "title": "Tus Viajes",
+    "subtitle": "Sigue tu historial y logros de viaje",
+    "totalTrips": "Viajes",
+    "countries": "Países",
+    "cities": "Ciudades",
+    "daysTraveled": "Días viajando",
+    "milesTraveled": "Millas recorridas",
+    "reviews": "Reseñas",
+    "averageRating": "Calificación promedio",
+    "upcomingTrips_one": "¡Tienes {{count}} viaje próximo!",
+    "upcomingTrips_other": "¡Tienes {{count}} viajes próximos!",
+    "favoriteDestination": "Destino favorito"
+  },
+  "badges": {
+    "title": "Logros",
+    "earned": "Ganados",
+    "nextBadges": "Próximos logros",
+    "types": {
+      "first_trip": {
+        "name": "Primer Viaje",
+        "description": "Completaste tu primer viaje"
+      },
+      "explorer": {
+        "name": "Explorador",
+        "description": "Visitaste 5 países diferentes"
+      },
+      "world_traveler": {
+        "name": "Viajero Mundial",
+        "description": "Visitaste 10 países diferentes"
+      },
+      "early_booker": {
+        "name": "Reserva Temprana",
+        "description": "Reservaste 3 viajes con más de 60 días de anticipación"
+      },
+      "sustainable_traveler": {
+        "name": "Viajero Sostenible",
+        "description": "Elegiste opciones ecológicas 5 veces"
+      },
+      "reviewer": {
+        "name": "Crítico",
+        "description": "Dejaste 5 reseñas para tus viajes"
+      },
+      "loyal_customer": {
+        "name": "Cliente Fiel",
+        "description": "Completaste 10 viajes con nosotros"
+      },
+      "adventure_seeker": {
+        "name": "Aventurero",
+        "description": "Reservaste 3 actividades de aventura"
+      },
+      "culture_enthusiast": {
+        "name": "Entusiasta Cultural",
+        "description": "Visitaste 5 museos o sitios históricos"
+      },
+      "beach_lover": {
+        "name": "Amante de la Playa",
+        "description": "Reservaste 3 destinos de playa"
+      },
+      "mountain_explorer": {
+        "name": "Explorador de Montañas",
+        "description": "Completaste 3 viajes a la montaña"
+      },
+      "city_hopper": {
+        "name": "Viajero Urbano",
+        "description": "Visitaste 5 ciudades diferentes"
+      },
+      "foodie_traveler": {
+        "name": "Gastrónomo",
+        "description": "Reservaste 3 experiencias culinarias"
+      },
+      "budget_savvy": {
+        "name": "Ahorrador",
+        "description": "Ahorraste dinero usando nuestras ofertas 5 veces"
+      },
+      "luxury_traveler": {
+        "name": "Viajero de Lujo",
+        "description": "Reservaste 3 paquetes premium"
+      }
+    }
+  },
+  "tabs": {
+    "personal": "Datos Personales",
+    "travel": "Viajes",
+    "preferences": "Preferencias"
+  },
+  "actions": {
+    "save": "Guardar",
+    "cancel": "Cancelar",
+    "edit": "Editar",
+    "delete": "Eliminar",
+    "add": "Añadir"
+  }
+}

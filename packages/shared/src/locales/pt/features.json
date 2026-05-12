@@ -1,0 +1,35 @@
+{
+  "categories": {
+    "core": "Essenciais",
+    "advanced": "Avançadas",
+    "premium": "Premium"
+  },
+  "cta": {
+    "title": "Pronto para começar?",
+    "subtitle": "Experimente todas estas funcionalidades gratuitamente."
+  },
+  "features": {
+    "aiPlanning": {
+      "title": "Planeamento com IA",
+      "description": "Nossa inteligência artificial cria itinerários personalizados baseados nas suas preferências, orçamento e interesses únicos."
+    },
+    "secureBooking": {
+      "title": "Reservas Seguras",
+      "description": "Processo de reserva 100% seguro com criptografia de ponta e proteção de dados garantida."
+    },
+    "globalDestinations": {
+      "title": "Destinos Globais",
+      "description": "Acesso a mais de 1000 destinos em todo o mundo, desde cidades cosmopolitas a paraísos tropicais."
+    },
+    "community": {
+      "title": "Comunidade de Viajantes",
+      "description": "Conecte-se com outros viajantes, partilhe experiências e descubra destinos únicos através da nossa comunidade."
+    },
+    "analytics": {
+      "title": "Análises de Viagem",
+      "description": "Relatórios detalhados das suas viagens com insights sobre gastos, preferências e recomendações personalizadas."
+    }
+  },
+  "subtitle": "Descubra todas as funcionalidades que tornam a sua experiência de viagem única",
+  "title": "Funcionalidades"
+}

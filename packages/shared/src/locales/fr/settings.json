@@ -1,0 +1,25 @@
+{
+  "settings": {
+    "title": "Paramètres",
+    "subtitle": "Gérez vos préférences et les paramètres de votre compte",
+    "notifications": "Notifications",
+    "notificationsDescription": "Choisissez comment vous souhaitez être notifié des mises à jour et activités.",
+    "disable": "Désactiver",
+    "enable": "Activer",
+    "language": "Langue",
+    "languageDescription": "Sélectionnez votre langue préférée pour l'interface.",
+    "dangerZone": "Zone de Danger",
+    "dangerZoneDescription": "Actions irréversibles qui affectent votre compte.",
+    "deleteAccount": "Supprimer le Compte",
+    "notificationTypes": {
+      "email": "Notifications par Email",
+      "push": "Notifications Push",
+      "sms": "Notifications SMS"
+    },
+    "notificationDescriptions": {
+      "email": "Recevez des mises à jour sur votre compte et vos voyages par email.",
+      "push": "Recevez des notifications en temps réel sur votre appareil.",
+      "sms": "Recevez des alertes importantes par SMS."
+    }
+  }
+}

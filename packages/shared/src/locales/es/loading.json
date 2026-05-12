@@ -1,0 +1,11 @@
+{
+  "loading": {
+    "admin": "Cargando panel de administración...",
+    "user": "Cargando tu panel...",
+    "default": "Cargando...",
+    "publicPage": "Cargando página...",
+    "adminDashboard": "Cargando panel de administración...",
+    "userDashboard": "Cargando tu panel...",
+    "auth": "Autenticando..."
+  }
+}

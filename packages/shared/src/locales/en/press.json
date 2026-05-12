@@ -1,0 +1,25 @@
+{
+  "hero": {
+    "title": "Press Room",
+    "subtitle": "Your central hub for the latest news, brand resources, and official contacts for AKMLEVA.",
+    "contactPress": "Contact Press",
+    "pressKit": "Download Media Kit"
+  },
+  "releases": {
+    "title": "Latest Press Releases",
+    "subtitle": "Follow our journey, product launches, and corporate updates.",
+    "filterLabel": "Filter by category",
+    "featured": "Featured",
+    "readMore": "Read More",
+    "noResults": "No releases found in this category."
+  },
+  "mediaKit": {
+    "title": "Official Media Kit",
+    "subtitle": "Access our official logos, brand guides, team photos, and b-roll for your media pieces.",
+    "download": "Download"
+  },
+  "contact": {
+    "title": "Need more information?",
+    "subtitle": "Our communications team is available to respond to press inquiries, interviews, and provide additional data."
+  }
+}

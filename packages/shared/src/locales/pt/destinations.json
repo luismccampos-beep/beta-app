@@ -1,0 +1,50 @@
+{
+  "allDestinations": "Todos os Destinos",
+  "amazing": "Esperando por Si",
+  "contactUsButton": "Contactar-nos",
+  "contactUsForMoreInfo": "Entre em contacto connosco para mais informações sobre os nossos destinos",
+  "destination1Description": "Um castelo de conto de fadas nas montanhas da Baviera, inspiração para o castelo da Bela Adormecida da Disney.",
+  "destination1Name": "Castelo de Neuschwanstein",
+  "destination2Description": "Um palácio romântico do século XIX em Sintra, Portugal, conhecido pelas suas cores vibrantes e arquitetura única.",
+  "destination2Name": "Castelo de Pena",
+  "destinationsFound": "destinos encontrados",
+  "destinationsTitle": "Destinos Incríveis",
+  "discoverUniquePlaces": "Descubra lugares únicos e experiências inesquecíveis ao redor do mundo",
+  "exploreTheWorld": "Explore o Mundo",
+  "featuredDestinations": "Destinos em Destaque",
+  "mostSoughtAfter": "Os destinos mais procurados pelos nossos clientes",
+  "noDestinationsFound": "Nenhum destino encontrado",
+  "ourServices": "Os Nossos Serviços",
+  "readyToExplore": "Pronto para Explorar?",
+  "searchDestinations": "Pesquisar destinos...",
+  "selectContinent": "Selecionar continente",
+  "selectPriceRange": "Selecionar faixa de preço",
+  "service1Description": "Descubra experiências únicas e atividades emocionantes em cada destino",
+  "service1Name": "Atividades e Experiências",
+  "service2Description": "Explore com guias locais experientes que conhecem todos os segredos",
+  "service2Name": "Guias Especializados",
+  "tryAdjustingFilters": "Tente ajustar os filtros para encontrar mais opções",
+  "page": {
+    "featured": {
+      "editorialLabel": "Selecção editorial",
+      "title": "Destinos em Destaque"
+    },
+    "results": {
+      "showingPrefix": "Mostrando",
+      "of": "de",
+      "destinations": "destinos"
+    },
+    "countries": {
+      "label": "Países",
+      "more": "+{count} mais"
+    },
+    "filters": {
+      "title": "Filtrar destinos"
+    },
+    "newsletter": {
+      "eyebrow": "Fique por dentro",
+      "title": "Inspire-se antes de partir",
+      "description": "Receba guias exclusivos, dicas de viagem e as melhores ofertas directamente no seu email."
+    }
+  }
+}

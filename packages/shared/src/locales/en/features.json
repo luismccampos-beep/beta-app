@@ -1,0 +1,35 @@
+{
+  "categories": {
+    "core": "Essential",
+    "advanced": "Advanced",
+    "premium": "Premium"
+  },
+  "cta": {
+    "title": "Ready to get started?",
+    "subtitle": "Try all these features for free."
+  },
+  "features": {
+    "aiPlanning": {
+      "title": "AI Planning",
+      "description": "Our artificial intelligence creates personalized itineraries based on your preferences, budget, and unique interests."
+    },
+    "secureBooking": {
+      "title": "Secure Booking",
+      "description": "100% secure booking process with state-of-the-art encryption and guaranteed data protection."
+    },
+    "globalDestinations": {
+      "title": "Global Destinations",
+      "description": "Access to over 1000 destinations worldwide, from cosmopolitan cities to tropical paradises."
+    },
+    "community": {
+      "title": "Traveler Community",
+      "description": "Connect with other travelers, share experiences, and discover unique destinations through our community."
+    },
+    "analytics": {
+      "title": "Travel Analytics",
+      "description": "Detailed reports of your travels with insights on spending, preferences, and personalized recommendations."
+    }
+  },
+  "subtitle": "Discover all the features that make your travel experience unique",
+  "title": "Features"
+}

@@ -1,0 +1,114 @@
+{
+  "tabs": {
+    "posts": "Publicações",
+    "trips": "Viagens",
+    "events": "Eventos"
+  },
+  "actions": {
+    "like": "Gostar",
+    "unlike": "Remover gosto",
+    "comment": "Comentar",
+    "share": "Partilhar",
+    "save": "Guardar",
+    "report": "Denunciar",
+    "follow": "Seguir",
+    "unfollow": "Deixar de seguir",
+    "edit": "Editar",
+    "delete": "Eliminar",
+    "retry": "Tentar novamente",
+    "reply": "Responder"
+  },
+  "hero": {
+    "badge": "Comunidade",
+    "title": "Comunidade AKMLEVA",
+    "description": "Conecte-se com viajantes, partilhe experiências e descubra novos destinos.",
+    "primaryAction": "Juntar-se agora",
+    "secondaryAction": "Explorar",
+    "socialProof": "+5.000 viajantes já aderiram"
+  },
+  "posts": {
+    "title": "Feed da Comunidade",
+    "traveler_fallback": "Viajante",
+    "explorer_fallback": "Explorador",
+    "recent_interaction": "Interação recente de viajantes",
+    "view_linked_trip": "Ver viagem vinculada",
+    "likes_count": "Gostos",
+    "liked": "Gostado",
+    "like": "Gostar",
+    "comment_count": "Comentários ({count})",
+    "back": "Retroceder",
+    "no_results": "Nenhum post encontrado nesta categoria."
+  },
+  "categories": {
+    "title": "Categorias",
+    "all": "Todos",
+    "experiences": "Experiências",
+    "tips": "Dicas",
+    "photos": "Fotos",
+    "reviews": "Avaliações",
+    "questions": "Perguntas",
+    "stories": "Relatos",
+    "dev": "Programação",
+    "help": "Ajuda"
+  },
+  "search": {
+    "placeholder": "Pesquisar na comunidade..."
+  },
+  "sidebar": {
+    "upgradeTitle": "Atualizar para Pro",
+    "upgradeDesc": "Obtenha acesso exclusivo a viagens e ferramentas premium."
+  },
+  "footer": {
+    "privacy": "Política de Privacidade",
+    "terms": "Termos de Serviço",
+    "help": "Centro de Ajuda",
+    "systemInfo": "Estado do Sistema"
+  },
+  "cta": {
+    "badge": "Junta-te a nós",
+    "title": "Cria, colabora e partilha",
+    "description": "Começa já a planear uma viagem colaborativa com amigos — cria roteiros, convida participantes e guarda memórias inesquecíveis.",
+    "create_trip": "Criar Viagem",
+    "explore_posts": "Explorar Posts"
+  },
+  "errors": {
+    "like_failed": "Não foi possível atualizar o gosto",
+    "try_again": "Por favor verifique a sua conexão e tente novamente.",
+    "join_failed": "Falha ao juntar-se à viagem",
+    "post_create_failed": "Não foi possível criar a publicação."
+  },
+  "success": {
+    "joined_trip": "Juntou-se à viagem com sucesso!"
+  },
+  "notifications": {
+    "title": "Notificações",
+    "markAllRead": "Marcar todas como lidas",
+    "noNotifications": "Não há notificações",
+    "newPost": "Nova publicação",
+    "newComment": "Novo comentário",
+    "newLike": "Novo gosto",
+    "newFollower": "Novo seguidor",
+    "eventReminder": "Lembrete de evento"
+  },
+  "profile": {
+    "posts": "Publicações",
+    "followers": "Seguidores",
+    "following": "A seguir",
+    "joined": "Membro desde",
+    "location": "Localização",
+    "website": "Website",
+    "bio": "Biografia"
+  },
+  "sections": {
+    "feed": { "title": "Feed da Comunidade" },
+    "categories": {
+      "title": "Categorias",
+      "all": "Todos",
+      "experiences": "Experiências",
+      "tips": "Dicas",
+      "photos": "Fotos",
+      "reviews": "Avaliações",
+      "questions": "Perguntas"
+    }
+  }
+}

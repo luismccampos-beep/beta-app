@@ -1,0 +1,95 @@
+{
+  "booking": {
+    "title": "Confirm Booking",
+    "description": "Review your booking details before confirming.",
+    "flightDetails": "Flight Details",
+    "passengerInfo": "Passenger Information",
+    "name": "Full Name",
+    "email": "Email",
+    "phone": "Phone",
+    "totalPrice": "Total Price",
+    "confirm": "Confirm Booking",
+    "cancel": "Cancel",
+    "bookingSuccess": "Booking confirmed successfully!",
+    "bookingError": "Error confirming booking. Please try again."
+  },
+  "contactCta": {
+    "title": "Need Help with Your Booking?",
+    "description": "Our team of experts is available 24/7 to help you find the perfect flight.",
+    "cta": "Contact Now"
+  },
+  "flightTypes": {
+    "title": "Flight Types",
+    "subtitle": "Choose the option that best suits your travel needs.",
+    "international": {
+      "title": "International Flights",
+      "description": "Explore the world with our international flights to over 200 destinations."
+    },
+    "domestic": {
+      "title": "Domestic Flights",
+      "description": "Travel within the country with convenience and comfort on our domestic flights."
+    },
+    "group": {
+      "title": "Group Flights",
+      "description": "Special discounts for groups of 10 or more passengers."
+    },
+    "learnMore": "Learn More"
+  },
+  "flights": {
+    "popular": {
+      "newYork": "New York",
+      "london": "London",
+      "paris": "Paris",
+      "tokyo": "Tokyo"
+    }
+  },
+  "hero": {
+    "title": "Flight Services",
+    "subtitle": "Your journey begins here",
+    "description": "Find the best deals on flights to your dream destinations. We offer a wide selection of airlines and routes to suit your travel needs."
+  },
+  "popularFlights": {
+    "title": "Popular Flights",
+    "subtitle": "Discover the most sought-after destinations and book your next flight with the best deals."
+  },
+  "results": {
+    "title": "Available Flights",
+    "noResults": "No flights found",
+    "tryDifferentSearch": "Try refining your search with different criteria.",
+    "loadingFlights": "Loading flights...",
+    "flightsFound": "{{count}} flights found for your search.",
+    "airline": "Airline",
+    "departure": "Departure",
+    "arrival": "Arrival",
+    "duration": "Duration",
+    "stops": "Stops",
+    "price": "Price",
+    "action": "Action",
+    "bookNow": "Book Now",
+    "direct": "Direct",
+    "oneStop": "1 Stop",
+    "multipleStops": "Multiple Stops"
+  },
+  "search": {
+    "title": "Search Flights",
+    "origin": "Origin",
+    "originPlaceholder": "Select origin",
+    "destination": "Destination",
+    "destinationPlaceholder": "Select destination",
+    "selectDate": "Select date",
+    "passenger": "passenger",
+    "passengersPlural": "passengers",
+    "clear": "Clear",
+    "departure": "Departure",
+    "departurePlaceholder": "Where from?",
+    "arrival": "Arrival",
+    "arrivalPlaceholder": "Where to?",
+    "departureDate": "Departure Date",
+    "returnDate": "Return Date",
+    "passengers": "Passengers",
+    "button": "Search Flights",
+    "searching": "Searching...",
+    "roundTrip": "Round Trip",
+    "oneWay": "One Way"
+  }
+}

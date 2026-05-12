@@ -1,0 +1,59 @@
+{
+  "awards": {
+    "title": "Premios y Reconocimientos",
+    "noAwards": "Los premios y reconocimientos se mostrarán aquí."
+  },
+  "hero": {
+    "title": "Sala de Prensa",
+    "subtitle": "Recursos para periodistas, bloggers y profesionales de los medios."
+  },
+  "resources": {
+    "title": "Recursos",
+    "brandGuidelines": "Directrices de Marca",
+    "logos": "Logotipos",
+    "screenshots": "Capturas de Pantalla",
+    "videos": "Videos",
+    "presentations": "Presentaciones"
+  },
+  "sections": {
+    "about": {
+      "title": "Sobre AKMLEVA",
+      "description": "AKMLEVA es una plataforma innovadora que revoluciona la forma en que las personas planifican y reservan sus viajes, utilizando inteligencia artificial para crear experiencias personalizadas."
+    },
+    "newsReleases": {
+      "title": "Comunicados de Prensa",
+      "noReleases": "No hay comunicados de prensa disponibles en este momento.",
+      "viewAll": "Ver todos los comunicados"
+    },
+    "mediaKit": {
+      "title": "Kit de Medios",
+      "description": "Descarga nuestro kit de medios con logotipos, imágenes e información de la empresa.",
+      "downloadButton": "Descargar Kit de Medios"
+    },
+    "contact": {
+      "title": "Contacto para Medios",
+      "description": "Para consultas de prensa, entrevistas o información adicional, contacta con nuestro equipo de comunicaciones.",
+      "email": "prensa@akmleva.com",
+      "phone": "+351 xxx xxx xxx",
+      "contactButton": "Contactar Prensa"
+    },
+    "facts": {
+      "title": "Datos y Cifras",
+      "founded": "Fundada en",
+      "headquarters": "Sede",
+      "employees": "Empleados",
+      "users": "Usuarios activos",
+      "countries": "Países servidos"
+    },
+    "leadership": {
+      "title": "Liderazgo",
+      "ceo": "CEO",
+      "cto": "CTO",
+      "cmo": "CMO"
+    }
+  },
+  "timeline": {
+    "title": "Cronología de la Empresa",
+    "milestones": "Hitos clave en nuestro camino"
+  }
+}

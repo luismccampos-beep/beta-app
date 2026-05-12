@@ -1,0 +1,95 @@
+{
+  "actions": {
+    "menu": "Menu",
+    "options": "Options",
+    "configure": "Configure",
+    "viewProvider": "View on Provider",
+    "activate": "Activate",
+    "deactivate": "Deactivate",
+    "delete": "Delete",
+    "clickToActivate": "Click to Activate",
+    "clickToDeactivate": "Click to Deactivate"
+  },
+  "addMethod": "Add Method",
+  "currency": {
+    "free": "Free (bank fees may apply)"
+  },
+  "description": "Configure and manage your platform's payment methods.",
+  "dialog": {
+    "addTitle": "Add New Payment Method",
+    "editTitle": "Edit Payment Method",
+    "addDescription": "Configure a new method for your customers.",
+    "editDescription": "Modify the details of",
+    "fields": {
+      "methodName": "Method Name",
+      "methodNamePlaceholder": "Ex: International Credit Card",
+      "provider": "Provider",
+      "providerPlaceholder": "Select provider",
+      "feesDescription": "Fees Description",
+      "feesPlaceholder": "Ex: 2.9% + €0.30 per transaction",
+      "activeMethod": "Active Method"
+    },
+    "buttons": {
+      "cancel": "Cancel",
+      "saving": "Saving...",
+      "saveChanges": "Save Changes",
+      "addMethod": "Add Method"
+    }
+  },
+  "messages": {
+    "methodsLoaded": "Payment Methods Loaded",
+    "loadError": "Error Loading Data",
+    "loadErrorDescription": "Could not fetch payment methods.",
+    "validationError": "Validation Error",
+    "nameRequired": "Payment method name is required.",
+    "updateSuccess": "Success",
+    "methodUpdated": "updated.",
+    "methodAdded": "added.",
+    "saveError": "Error Saving",
+    "saveErrorDescription": "Could not save payment method.",
+    "statusUpdated": "Status Updated",
+    "statusUpdateError": "Error Updating Status",
+    "deleteConfirm": "Are you sure you want to delete this payment method?",
+    "methodDeleted": "Method Deleted",
+    "deleteError": "Error Deleting"
+  },
+  "stats": {
+    "activeMethods": "Active Methods",
+    "activeMethodsDescription": "methods configured in total",
+    "averageFee": "Estimated Average Fee",
+    "averageFeeDescription": "Based on percentage fees",
+    "mostPopular": "Most Popular",
+    "mostPopularValue": "Card (Simulated)",
+    "mostPopularDescription": "Based on transactions (simulated)",
+    "nextReview": "Next Review",
+    "nextReviewValue": "Stripe (30 days)",
+    "nextReviewDescription": "Contracts and fees (simulated)"
+  },
+  "status": {
+    "ativo": "active",
+    "inativo": "inactive",
+    "em_configuracao": "in setup"
+  },
+  "table": {
+    "title": "All Payment Methods",
+    "description": "View and manage each method's settings.",
+    "searchPlaceholder": "Search by name or provider...",
+    "tabs": {
+      "all": "All",
+      "active": "Active",
+      "inactive": "Inactive/Config."
+    },
+    "headers": {
+      "name": "Name",
+      "provider": "Provider",
+      "status": "Status",
+      "fees": "Fees",
+      "availableIn": "Available In",
+      "lastUpdated": "Last Updated",
+      "actions": "Actions"
+    },
+    "noMethods": "No methods found for",
+    "global": "Global"
+  },
+  "title": "Payment System"
+}

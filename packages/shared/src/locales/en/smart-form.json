@@ -1,0 +1,235 @@
+{
+  "basics": {
+    "header": {
+      "title": "Basics",
+      "subtitle": "Tell us the essentials so we can personalize your trip"
+    },
+    "completion": {
+      "allDone": "All set",
+      "progress": "{completed}/{total} completed"
+    },
+    "aria": {
+      "progressBar": "Progress",
+      "done": "done",
+      "pending": "pending",
+      "stepStatus": "{label}: {status}"
+    },
+    "groups": {
+      "whereWhen": {
+        "label": "Where & When",
+        "description": "Destination and travel dates"
+      },
+      "whoHow": {
+        "label": "Who & How",
+        "description": "Travelers and languages"
+      },
+      "travelType": {
+        "label": "Travel type",
+        "description": "Choose the kind of trip you want"
+      }
+    },
+    "sections": {
+      "destination": {
+        "title": "Destination",
+        "subtitle": "Where do you want to go?"
+      },
+      "dates": {
+        "title": "Dates",
+        "subtitle": "Pick your travel dates"
+      },
+      "travelers": {
+        "title": "Travelers",
+        "subtitle": "How many people are going?"
+      },
+      "language": {
+        "title": "Languages",
+        "subtitle": "Your preferred languages"
+      }
+    }
+  },
+  "dates": {
+    "header": {
+      "title": "Dates",
+      "subtitle": "Tell us the essentials so we can personalize your trip"
+    },
+    "completion": {
+      "allDone": "All set",
+      "progress": "{completed}/{total} completed"
+    },
+    "aria": {
+      "progressBar": "Progress",
+      "done": "done",
+      "pending": "pending",
+      "stepStatus": "{label}: {status}"
+    },
+    "groups": {
+      "whereWhen": {
+        "label": "Where & When",
+        "description": "Destination and travel dates"
+      },
+      "whoHow": {
+        "label": "Who & How",
+        "description": "Travelers and languages"
+      },
+      "travelType": {
+        "label": "Travel type",
+        "description": "Choose the kind of trip you want"
+      }
+    },
+    "sections": {
+      "destination": {
+        "title": "Destination",
+        "subtitle": "Where do you want to go?"
+      },
+      "dates": {
+        "title": "Dates",
+        "subtitle": "Pick your travel dates"
+      },
+      "travelers": {
+        "title": "Travelers",
+        "subtitle": "How many people are going?"
+      },
+      "language": {
+        "title": "Languages",
+        "subtitle": "Your preferred languages"
+      }
+    }
+  },
+  "budget": {
+    "header": {
+      "title": "Budget Planning",
+      "subtitle": "Build a comprehensive budget for your trip"
+    },
+    "categories": {
+      "accommodation": "Accommodation",
+      "food": "Food & Dining",
+      "activities": "Activities",
+      "transport": "Transportation",
+      "shopping": "Shopping",
+      "emergency": "Emergency Fund",
+      "travelInsurance": "Travel Insurance"
+    },
+    "settings": {
+      "title": "Trip Budget Range",
+      "subtitle": "Set your overall trip budget and duration",
+      "currency": "Currency",
+      "durationDays": "Duration (days)"
+    },
+    "savings": {
+      "title": "Savings Goal",
+      "subtitle": "Reserve funds for unexpected expenses",
+      "amount": "Savings Amount",
+      "progress": "Savings Progress",
+      "savedOf": "saved of",
+      "total": "total"
+    },
+    "tips": {
+      "title": "Smart Tips",
+      "subtitle": "Recommendations based on your plan",
+      "emergencyBuffer": {
+        "title": "Emergency Buffer",
+        "body": "Allocate ~20 % of your total budget to emergency funds to avoid stressful surprises."
+      },
+      "dailySpending": {
+        "title": "Daily Spending",
+        "body": "Your daily average is {amount}.",
+        "bodyWithSuggestion": "Your daily average is {amount}. Review high-cost categories to trim daily spend."
+      },
+      "savingsStrategy": {
+        "title": "Savings Strategy",
+        "good": "Great savings goal — you're well-prepared for the unexpected.",
+        "improve": "Aim for ≥ 15 % in savings for better financial security."
+      }
+    },
+    "overview": {
+      "totalBudget": {
+        "label": "Total Budget",
+        "perDay": "{amount} / day"
+      },
+      "savingsGoal": {
+        "label": "Savings Goal",
+        "percentOfTotal": "{percent}% of total"
+      },
+      "tripDuration": {
+        "label": "Trip Duration",
+        "value": "{days} days",
+        "extended": "Extended trip",
+        "short": "Short trip"
+      }
+    },
+    "categoriesEditor": {
+      "title": "Category budgets",
+      "subtitle": "Split your budget by category (optional)",
+      "expand": "Expand",
+      "collapse": "Collapse"
+    },
+    "aria": {
+      "sidebar": "Budget summary sidebar"
+    },
+    "summary": {
+      "ariaLabel": "Budget summary",
+      "health": {
+        "over": "Over budget",
+        "healthy": "Budget looks healthy",
+        "needsAttention": "Adjust your allocation"
+      },
+      "metrics": {
+        "totalAllocated": "Total allocated",
+        "dailyAverage": "Daily average",
+        "savingsGoal": "Savings goal",
+        "of": "of {amount}",
+        "acrossOne": "across {days} day",
+        "acrossMany": "across {days} days",
+        "targetAmount": "Target amount"
+      },
+      "allocation": {
+        "title": "Budget allocation",
+        "exceededBy": "⚠ Budget exceeded by {percent}%"
+      }
+    }
+  },
+  "personalization": {
+    "title": "Personalization",
+    "description": "Customize your trip preferences to improve recommendations.",
+    "banner": {
+      "noPreferences": "Configure your travel preferences to get started.",
+      "noActivities": "Add at least one activity to improve recommendations.",
+      "ready": "Great! Your personalization profile is looking good.",
+      "count": "{selected}/{max} activities • {remaining} remaining"
+    },
+    "sections": {
+      "travelPreferences": {
+        "title": "Travel Preferences",
+        "subtitle": "Configure accommodation, dietary needs, and accessibility options."
+      },
+      "activities": {
+        "title": "Activity Intensity & Themes",
+        "subtitle": "Fine-tune trip style across pace and interests.",
+        "summary": "Selected",
+        "open": "Edit activities"
+      },
+      "travelType": {
+        "title": "Trip type",
+        "subtitle": "Tell us the context"
+      },
+      "language": {
+        "title": "Language",
+        "subtitle": "Language preferences"
+      },
+      "sustainability": {
+        "title": "Sustainability",
+        "subtitle": "Eco preferences",
+        "ecoTitle": "Eco preferences",
+        "ecoSubtitle": "Choose your sustainability priorities",
+        "openEco": "Edit eco preferences",
+        "ecoSummary": "Selected",
+        "certTitle": "Eco certifications",
+        "certSubtitle": "Prefer properties with recognized certifications",
+        "openCert": "Edit certification preferences",
+        "certSummary": "Selected",
+        "scoreTitle": "Sustainability score",
+        "scoreSubtitle": "Set a minimum score you prefer"
+      }
+    }
+  }
+}

@@ -1,0 +1,224 @@
+{
+  "Business": {
+    "metadata": {
+      "title": "AKMLEVA Business — CRM multi-locataire pour agences",
+      "description": "Gestion des clients, leads et réservations avec isolation par agence via Row-Level Security et une expérience white-label."
+    },
+    "hero": {
+      "badge": "AKMLEVA Business",
+      "title": "CRM Multi-locataire",
+      "titleHighlight": "pour agences",
+      "description": "Gestion des clients, leads et réservations avec isolation des agences via Row-Level Security — et une expérience white-label dès la base."
+    },
+    "cta": {
+      "createAccount": "Créer un compte agence",
+      "signIn": "Se connecter au CRM"
+    },
+    "subdomain": {
+      "text": "Vous avez un sous-domaine ? Accédez à",
+      "placeholder": "{agency}"
+    },
+    "stats": [
+      { "value": "100%", "label": "Isolation des données" },
+      { "value": "Multi", "label": "Multi-locataire natif" },
+      { "value": "RLS", "label": "Sécurité Postgres" },
+      { "value": "24/7", "label": "Support" }
+    ],
+    "features": {
+      "badge": "Fonctionnalités",
+      "title": "Tout ce dont vous avez besoin",
+      "titleHighlight": "pour gérer votre agence",
+      "description": "Une plateforme complète conçue pour les agences de voyages — de la capture de leads à la gestion des réservations, tout en un seul endroit.",
+      "items": [
+        {
+          "title": "Sécurité Agence",
+          "description": "RLS avec agency_id dans le JWT — chaque agence ne voit que ses propres données.",
+          "features": [
+            "Isolation forte dans Postgres",
+            "Réduction des risques d’erreurs logiques",
+            "Audit d’accès intégré"
+          ]
+        },
+        {
+          "title": "Opérations Complètes",
+          "description": "Clients, leads, pipeline et réservations gérés en un seul endroit sans intégrations fragiles.",
+          "features": [
+            "Gestion d’équipe et permissions",
+            "Vue client 360°",
+            "Pipeline de ventes visuel"
+          ]
+        },
+        {
+          "title": "Prêt à Évoluer",
+          "description": "Multi-tenancy, thèmes personnalisés et domaines sur mesure — architecture prête pour le white-label.",
+          "features": [
+            "Sous-domaines et domaines personnalisés",
+            "Feature flags par plan",
+            "Thèmes par agence"
+          ]
+        },
+        {
+          "title": "Analyses et Rapports",
+          "description": "Suivez les performances, les taux de conversion et les revenus avec des tableaux de bord en temps réel.",
+          "features": [
+            "Tableaux de bord en temps réel",
+            "Créateur de rapports personnalisés",
+            "Export CSV & PDF"
+          ]
+        },
+        {
+          "title": "Prêt pour White-Label",
+          "description": "Personnalisez la plateforme à votre image avec logos, couleurs et domaines personnalisés.",
+          "features": [
+            "Branding sur mesure",
+            "Modèles d’email à votre marque",
+            "Portail client"
+          ]
+        },
+        {
+          "title": "Protection des Données",
+          "description": "Gestion des données conforme RGPD avec chiffrement au repos et en transit.",
+          "features": [
+            "Chiffrement de bout en bout",
+            "Outils de conformité RGPD",
+            "Sauvegardes quotidiennes automatiques"
+          ]
+        }
+      ]
+    },
+    "pricing": {
+      "badge": "Tarification",
+      "title": "Tarification simple et transparente",
+      "titleHighlight": "",
+      "description": "Choisissez le forfait qui convient à votre agence. Changez de plan à tout moment — aucun frais caché.",
+      "monthly": "Mensuel",
+      "yearly": "Annuel",
+      "save": "Économisez 17%",
+      "perMonth": "/mois",
+      "currency": "€",
+      "popularLabel": "Le plus populaire",
+      "plans": [
+        {
+          "name": "Plan Base",
+          "monthlyPrice": "49.99",
+          "yearlyPrice": "399",
+          "description": "Fonctionnalités essentielles de gestion de clients pour les petites agences",
+          "cta": "Commencer maintenant",
+          "popular": false,
+          "features": [
+            "Jusqu’à 1 000 contacts",
+            "3 membres d’équipe",
+            "Gestion de clients basique",
+            "Pipeline de ventes simple",
+            "Support par email",
+            "Rapports basiques",
+            "Accès à la communauté"
+          ]
+        },
+        {
+          "name": "Plan Premium",
+          "monthlyPrice": "79.99",
+          "yearlyPrice": "699",
+          "description": "Fonctionnalités CRM avancées, rapports et intégrations pour les opérateurs plus importants",
+          "cta": "Commencer l’essai gratuit de 14 jours",
+          "popular": true,
+          "features": [
+            "Contacts illimités",
+            "10 membres d’équipe",
+            "CRM avancé avec automatisations",
+            "Rapports détaillés et analyses",
+            "Intégrations API externes",
+            "Support prioritaire 24/7",
+            "Domaine personnalisé",
+            "Modèles d’email white-label",
+            "Tableaux de bord personnalisés",
+            "Export de données avancé"
+          ]
+        }
+      ]
+    },
+    "faq": {
+      "badge": "FAQ",
+      "title": "Questions fréquemment posées",
+      "titleHighlight": "",
+      "description": "Trouvez les réponses aux questions les plus courantes sur AKMLEVA CRM.",
+      "items": [
+        {
+          "question": "Qu’est-ce qu’AKMLEVA CRM ?",
+          "answer": "AKMLEVA CRM est une plateforme de gestion de la relation client multi-locataire conçue spécifiquement pour les agences de voyages. Elle offre la gestion des clients, le suivi des leads, un pipeline de ventes visuel et la gestion des réservations — le tout avec une isolation complète des données entre agences via Row-Level Security de PostgreSQL."
+        },
+        {
+          "question": "Comment fonctionne le multi-tenancy ?",
+          "answer": "Chaque agence bénéficie de son propre environnement totalement isolé. Nous utilisons Row-Level Security (RLS) de PostgreSQL avec agency_id intégré dans les jetons JWT."
+        },
+        {
+          "question": "Puis-je utiliser mon propre domaine ?",
+          "answer": "Oui ! Sur les forfaits Professional et Enterprise, vous pouvez configurer des domaines et sous-domaines personnalisés. Vos clients verront votre marque, pas la nôtre."
+        },
+        {
+          "question": "Mes données sont-elles sécurisées ?",
+          "answer": "Absolument. Nous implémentons Row-Level Security au niveau base de données, chiffrons toutes les données en transit (TLS 1.3) et au repos (AES-256), et maintenons des outils de conformité RGPD."
+        },
+        {
+          "question": "Puis-je changer de forfait ?",
+          "answer": "Oui, vous pouvez modifier votre forfait à tout moment depuis le tableau de bord de votre agence. Les mises à niveau prennent effet immédiatement."
+        },
+        {
+          "question": "Proposez-vous un essai gratuit ?",
+          "answer": "Nous offrons un essai gratuit de 14 jours pour le Plan Premium avec un accès complet à toutes les fonctionnalités. Aucune carte bancaire n'est requise pour commencer l'essai. Le Plan Base peut être utilisé sans période d'essai."
+        },
+        {
+          "question": "Quels moyens de paiement acceptez-vous ?",
+          "answer": "Nous acceptons toutes les principales cartes de crédit et de débit (Visa, Mastercard, American Express), les virements SEPA pour les clients UE et PayPal."
+        }
+      ]
+    },
+    "PricingTiers": {
+      "badge": "Tarification",
+      "subtitle": "Comparez nos plans et choisissez ce qui correspond le mieux à vos besoins de voyage.",
+      "table": {
+        "title": "Comparaison des Fonctionnalités",
+        "badge": "Populaire",
+        "description": "Voyez côte à côte ce que chaque plan offre.",
+        "headerFeature": "Fonctionnalité",
+        "headerExplorer": "Explorer",
+        "headerVoyager": "Voyager"
+      },
+      "rows": {
+        "aiGenerations": {
+          "feature": "Générations par IA",
+          "explorer": "10 par mois",
+          "voyager": "Illimitées"
+        },
+        "aiPreferences": {
+          "feature": "Préférences IA"
+        },
+        "advancedOptim": {
+          "feature": "Optimisation Avancée"
+        },
+        "priority": {
+          "feature": "Support Prioritaire"
+        }
+      },
+      "explorer": {
+        "title": "Explorer",
+        "description": "Parfait pour les voyageurs occasionnels qui veulent des expériences de base avec quelques optimisations IA.",
+        "cta": "Commencer avec Explorer"
+      },
+      "voyager": {
+        "title": "Voyager",
+        "badge": "Le plus populaire",
+        "description": "Idéal pour les voyageurs fréquents qui veulent une personnalisation maximale et des fonctionnalités avancées.",
+        "cta": "Aller à Voyager"
+      },
+      "yes": "Oui",
+      "no": "Non"
+    },
+    "bottomCta": {
+      "title": "Prêt à transformer votre agence ?",
+      "description": "Rejoignez des centaines d’agences qui utilisent déjà AKMLEVA CRM pour optimiser leurs opérations et accélérer leur croissance. Commencez dès aujourd’hui.",
+      "button": "Commencer maintenant",
+      "signIn": "Se connecter à un compte existant"
+    }
+  }
+}

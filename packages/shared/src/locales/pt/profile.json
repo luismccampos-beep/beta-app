@@ -1,0 +1,130 @@
+{
+  "profile": {
+    "title": "Seu Perfil",
+    "subtitle": "Gerencie suas informações pessoais e configurações",
+    "personalInfo": "Informações Pessoais",
+    "updateYourInfo": "Atualize suas informações",
+    "form": {
+      "firstName": "Nome",
+      "lastName": "Sobrenome",
+      "email": "Email",
+      "phone": "Telefone",
+      "location": "Localização",
+      "bio": "Biografia",
+      "required": "Este campo é obrigatório",
+      "invalidEmail": "Por favor insira um email válido"
+    },
+    "saveChanges": "Salvar Alterações",
+    "successMessage": "Perfil atualizado com sucesso!",
+    "security": "Configurações de Segurança",
+    "notifications": "Configurações de Notificação",
+    "preferences": "Preferências",
+    "completeness": "Completude do Perfil",
+    "complete": "Completo",
+    "save_changes": "Salvar Alterações",
+    "info_updated": "Informações atualizadas com sucesso!",
+    "unexpected_error": "Ocorreu um erro inesperado. Tente novamente.",
+    "personal": "Pessoal",
+    "contact": "Contato",
+    "payment": "Pagamento",
+    "privacy": "Privacidade",
+    "admin": {
+      "dashboard": "Painel de Admin",
+      "users": "Usuários",
+      "settings": {
+        "title": "Configurações de Admin"
+      },
+      "blog": "Blog",
+      "sustainable_travel": "Viagem Sustentável"
+    },
+    "verification": {
+      "email_verified": "E-mail verificado",
+      "phone_not_verified": "Telefone não verificado"
+    },
+    "admin_panel": "Painel de Administração",
+    "admin_panel_description": "Acesse o painel de administração para gerenciar o sistema",
+    "admin_panel_instruction": "Clique aqui para acessar as funcionalidades administrativas",
+    "personal_data": {
+      "title": "Dados Pessoais",
+      "description": "Gerencie seus dados pessoais abaixo.",
+      "first_name": "Primeiro Nome",
+      "last_name": "Sobrenome",
+      "email": "E-mail",
+      "phone": "Telefone",
+      "date_of_birth": "Data de Nascimento",
+      "nationality": "Nacionalidade",
+      "tax_id": "NIF",
+      "gender": "Gênero",
+      "gender_female": "Feminino",
+      "gender_male": "Masculino",
+      "marital_status": "Estado Civil",
+      "marital_status_married": "Casado(a)",
+      "marital_status_single": "Solteiro(a)"
+    },
+    "address": {
+      "title": "Endereço",
+      "description": "Seu endereço residencial completo.",
+      "street": "Rua",
+      "number": "Número",
+      "complement": "Complemento",
+      "neighborhood": "Bairro",
+      "city": "Cidade",
+      "state": "Distrito",
+      "postal_code": "Código Postal",
+      "country": "País"
+    },
+    "travel_preferences": {
+      "title": "Preferências de Viagem",
+      "description": "Personalize suas preferências de viagem para melhores recomendações.",
+      "preferred_currency": "Moeda preferida"
+    },
+    "payment_methods": {
+      "title": "Métodos de Pagamento",
+      "description": "Gerencie seus métodos de pagamento.",
+      "no_payment_methods": "Nenhum método de pagamento cadastrado.",
+      "add_payment_method": "Adicionar método de pagamento",
+      "add_payment_method_button": "Adicionar"
+    },
+    "privacy_settings": {
+      "title": "Configurações de Privacidade",
+      "description": "Gerencie suas preferências de privacidade.",
+      "profile_visibility": "Visibilidade do perfil",
+      "show_email": "Mostrar e-mail",
+      "show_email_description": "Permitir que outros vejam seu e-mail.",
+      "show_phone": "Mostrar telefone",
+      "show_phone_description": "Permitir que outros vejam seu telefone.",
+      "show_address": "Mostrar endereço",
+      "show_address_description": "Permitir que outros vejam seu endereço."
+    },
+    "notificationsSection": {
+      "title": "Notificações",
+      "marketing_emails": "E-mails de marketing",
+      "marketing_emails_description": "Receber novidades e promoções por e-mail.",
+      "sms_notifications": "Notificações por SMS",
+      "sms_notifications_description": "Receber notificações por SMS.",
+      "push_notifications": "Notificações push",
+      "push_notifications_description": "Receber notificações push."
+    },
+    "data_sharing": {
+      "title": "Compartilhamento de Dados",
+      "share_with_partners": "Compartilhar dados com parceiros",
+      "share_with_partners_description": "Permitir compartilhamento de dados com parceiros."
+    },
+    "securitySection": {
+      "title": "Segurança",
+      "current_password": "Senha Atual",
+      "new_password": "Nova Senha",
+      "confirm_new_password": "Confirmar Nova Senha",
+      "change_password": "Alterar Senha",
+      "passwords_dont_match": "As senhas não coincidem",
+      "password_updated": "Senha atualizada com sucesso!",
+      "invalid_password": "A senha atual está inválida."
+    },
+    "account": {
+      "title": "Conta",
+      "delete_account": "Apagar Conta",
+      "delete_confirm": "Tem certeza de que deseja apagar sua conta? Esta ação é irreversível.",
+      "account_deleted": "Conta apagada com sucesso."
+    }
+  }
+}

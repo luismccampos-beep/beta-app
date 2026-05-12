@@ -1,0 +1,32 @@
+{
+  "hero": {
+    "badge": "Sala de Imprensa",
+    "title": "Sala de Imprensa",
+    "subtitle": "O seu hub central para as últimas notícias, recursos de marca e contactos oficiais da AKMLEVA.",
+    "contactPress": "Contactar Imprensa",
+    "pressKit": "Baixar Media Kit"
+  },
+  "releases": {
+    "title": "Últimos Comunicados",
+    "subtitle": "Acompanhe a nossa jornada, lançamentos de produtos e atualizações corporativas.",
+    "filterLabel": "Filtrar por categoria",
+    "featured": "Destaque",
+    "readMore": "Ler Artigo",
+    "noResults": "Nenhum comunicado encontrado nesta categoria.",
+    "noResultsTitle": "Nenhum comunicado encontrado",
+    "viewArchive": "Ver Arquivo Completo"
+  },
+  "mediaKit": {
+    "title": "Media Kit Oficial",
+    "subtitle": "Aceda aos nossos logótipos oficiais, guias de marca, fotos da equipa e b-roll para as suas peças jornalísticas.",
+    "download": "Baixar"
+  },
+  "contact": {
+    "title": "Precisa de mais informações?",
+    "subtitle": "A nossa equipa de comunicação está disponível para responder a pedidos de imprensa, entrevistas e fornecer dados adicionais."
+  },
+  "meta": {
+    "title": "Sala de Imprensa - AKMLEVA",
+    "description": "Recursos para jornalistas e profissionais dos media. Comunicados de imprensa, kit de media e informações sobre a AKMLEVA."
+  }
+}

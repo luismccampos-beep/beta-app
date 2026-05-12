@@ -1,0 +1,13 @@
+{
+  "newsletter": {
+    "description": "Receive our latest offers, travel tips, and exclusive destinations directly to your inbox.",
+    "emailLabel": "Email Address",
+    "emailPlaceholder": "Enter your email address",
+    "subscribeButton": "Subscribe",
+    "title": "Stay Informed"
+  },
+  "title": "Stay Informed",
+  "description": "Receive our latest offers, travel tips, and exclusive destinations directly to your inbox.",
+  "emailPlaceholder": "Enter your email address",
+  "subscribeButton": "Subscribe"
+}

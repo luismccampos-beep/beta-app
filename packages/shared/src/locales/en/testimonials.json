@@ -1,0 +1,28 @@
+{
+  "listTitle": "Testimonials List",
+  "quotePrefix": "\"",
+  "quoteSuffix": "\"",
+  "rating": "{rating} out of 5",
+  "subtitle": "Real testimonials from satisfied travelers",
+  "title": "What Our Clients Say",
+  "feedbackLabel": "Verified Traveler",
+  "noReviews": "No reviews available for this destination yet. Be the first to share your experience!",
+  "totalReviews": "Total Reviews",
+  "averageRating": "Average Rating",
+  "featuredReviews": "Featured Reviews",
+  "noTestimonials": "No testimonials available yet.",
+  "verified": "Verified Rate",
+  "featured": "Featured",
+  "fallback": {
+    "comments": [
+      "An absolutely amazing experience! The team at AKMLEVA made our trip unforgettable. Every detail was perfectly arranged.",
+      "Professional service from start to finish. The transfers were seamless and the accommodations exceeded our expectations.",
+      "Wonderful customer service and beautiful destinations. Highly recommend for anyone visiting Portugal!"
+    ],
+    "trips": [
+      "7-day Portugal Adventure",
+      "5-day Madeira Discovery",
+      "Azores Nature Tour"
+    ]
+  }
+}

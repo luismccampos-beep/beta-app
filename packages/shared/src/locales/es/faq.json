@@ -1,0 +1,74 @@
+{
+  "answers": {
+    "bp_howToBook": "Puedes reservar directamente en nuestro sitio web, seleccionando el destino y las fechas deseadas, o contactando a nuestro equipo de atención al cliente.",
+    "bp_paymentMethods": "Aceptamos Tarjeta de Crédito (Visa, Mastercard) y Transferencia Bancaria. Todos los pagos se procesan de forma segura.",
+    "bp_installments": "Sí, para determinados paquetes de viaje, ofrecemos la opción de pago a plazos. Por favor, consulta las condiciones específicas de tu reserva o contáctanos para más información.",
+    "cc_policy": "Nuestra política de cancelación varía según el servicio reservado (vuelo, hotel, paquete). Puedes consultar nuestra Política de Cancelación completa en la sección 'Legal' de nuestro sitio o en los detalles de tu reserva.",
+    "cc_canIChange": "Los cambios son posibles, pero pueden estar sujetos a cargos y a la disponibilidad de los proveedores. Te recomendamos que nos contactes lo antes posible para verificar las opciones.",
+    "dt_passport": "Para la mayoría de los destinos, necesitas un pasaporte válido con al menos 6 meses de validez. Para destinos específicos, pueden ser necesarios documentos adicionales. Consulta siempre los requisitos de tu destino antes de viajar.",
+    "dt_visa": "Los requisitos de visado varían según el destino y tu nacionalidad. Algunos países permiten entrada sin visado para estancias cortas, otros requieren visado previo. Informamos siempre sobre los requisitos específicos durante el proceso de reserva.",
+    "dt_travelInsurance": "Aunque no es siempre obligatorio, recomendamos vivamente que contrates un seguro de viaje. Ofrece protección contra imprevistos médicos, cancelaciones, pérdida de equipaje y otros incidentes durante el viaje.",
+    "dt_healthRequirements": "Algunos destinos pueden requerir vacunas específicas o certificados de salud. Consulta siempre a tu médico y verifica los requisitos del país de destino. Podemos proporcionarte información general, pero recomendamos consultar a un profesional sanitario especializado.",
+    "ds_popularDestinations": "Nuestros destinos más populares incluyen Portugal (Lisboa, Porto, Algarve), España, Italia, Francia, Grecia y destinos exóticos como Marruecos y Cabo Verde. Ofrecemos tanto destinos europeos como internacionales.",
+    "ds_customPackages": "¡Sí! Creamos paquetes totalmente personalizados de acuerdo con tus preferencias, presupuesto y necesidades específicas. Desde viajes románticos a aventuras familiares, adaptamos cada experiencia a tu perfil.",
+    "ds_groupTravel": "Sí, organizamos viajes para grupos de todos los tamaños. Ofrecemos condiciones especiales para grupos, incluyendo descuentos, itinerarios personalizados y acompañamiento dedicado. Ideal para familias, amigos o eventos corporativos.",
+    "ds_localGuides": "Sí, trabajamos con una red de guías locales experimentadas y certificadas en todos nuestros destinos. Nuestros guías conocen profundamente la cultura, historia y secretos locales, proporcionando así experiencias auténticas y memorables.",
+    "lc_agencyObligations": "AKMLEVA se compromete a proporcionar todos los servicios contratados con la más alta calidad y a prestar asistencia en caso de imprevistos, de acuerdo con la legislación vigente.",
+    "lc_travelerRights": "Tus derechos están protegidos por la legislación europea y nacional. Tienes derecho a información clara, asistencia y compensación en los casos aplicables. Para más detalles, consulta los Términos y Condiciones.",
+    "lc_complaints": "Puedes presentar una queja a través de nuestro correo electrónico de soporte o utilizando el Libro de Reclamaciones Electrónico, disponible en nuestro sitio web.",
+    "lc_rnavt": "El RNAVT (Registro Nacional de Agencias de Viajes y Turismo) es el registro obligatorio que certifica que la agencia opera legalmente en Portugal. Nuestro número es el 0000.",
+    "sc_contactMethods": "Puedes contactarnos por teléfono (+351 123 456 789), email (geral@akmleva.pt), a través de nuestro formulario de contacto online, o visitando nuestra agencia en Santa Maria da Feira. Estamos disponibles de lunes a viernes, de 9h a 18h.",
+    "sc_emergencySupport": "Sí, ofrecemos soporte de emergencia 24/7 para todos nuestros clientes durante sus viajes. En caso de emergencia, puedes contactarnos a través del número de emergencia proporcionado antes del viaje.",
+    "sc_responseTime": "Respondemos normalmente en el plazo de 24 horas hábiles. Para consultas urgentes o relacionadas con viajes en curso, respondemos el mismo día. En caso de emergencia, estamos disponibles 24/7.",
+    "sc_languages": "Prestamos apoyo en Portugués, Inglés, Francés y Español. Nuestro equipo es multilingüe y está preparado para atender clientes de diferentes nacionalidades con la máxima calidad."
+  },
+  "categories": {
+    "bookingPayment": "Reservas y Pagos",
+    "cancellationsChanges": "Cancelaciones y Cambios",
+    "documentationTravel": "Documentación y Viaje",
+    "destinationsServices": "Destinos y Servicios",
+    "legalCompliance": "Legal y Cumplimiento",
+    "supportContacts": "Soporte y Contactos"
+  },
+  "contactDetails": {
+    "phone": "Teléfono",
+    "email": "Correo Electrónico"
+  },
+  "hero": {
+    "title": "Preguntas Frecuentes",
+    "subtitle": "¿Tiene preguntas? Encuentre aquí las respuestas a las consultas más comunes."
+  },
+  "linkTexts": {
+    "lre": "Libro de Reclamaciones en Línea"
+  },
+  "noResults": "No se encontraron resultados para su búsqueda.",
+  "notFound": {
+    "title": "No se encontraron preguntas",
+    "description": "No hemos encontrado ninguna pregunta que coincida con su búsqueda. Pruebe con otros términos o navegue por las categorías.",
+    "contactUs": "Contáctenos"
+  },
+  "questions": {
+    "bp_howToBook": "¿Cómo puedo reservar un viaje?",
+    "bp_paymentMethods": "¿Qué métodos de pago se aceptan?",
+    "bp_installments": "¿Es posible pagar a plazos?",
+    "cc_policy": "¿Cuál es la política de cancelación?",
+    "cc_canIChange": "¿Puedo cambiar mi reserva después de confirmarla?",
+    "dt_passport": "¿Qué documentos necesito para viajar?",
+    "dt_visa": "¿Necesito visado para mi destino?",
+    "dt_travelInsurance": "¿Es obligatorio tener seguro de viaje?",
+    "dt_healthRequirements": "¿Hay requisitos de salud específicos para mi destino?",
+    "ds_popularDestinations": "¿Cuáles son los destinos más populares?",
+    "ds_customPackages": "¿Ofrecen paquetes personalizados?",
+    "ds_groupTravel": "¿Organizan viajes para grupos?",
+    "ds_localGuides": "¿Hay guías locales disponibles?",
+    "lc_agencyObligations": "¿Cuáles son las obligaciones de la agencia?",
+    "lc_travelerRights": "¿Cuáles son mis derechos como viajero?",
+    "lc_complaints": "¿Cómo puedo presentar una queja?",
+    "lc_rnavt": "¿Qué es el RNAVT y por qué es importante?",
+    "sc_contactMethods": "¿Cómo puedo contactarles?",
+    "sc_emergencySupport": "¿Tienen soporte de emergencia 24/7?",
+    "sc_responseTime": "¿En cuánto tiempo responden a las consultas?",
+    "sc_languages": "¿En qué idiomas prestan apoyo?"
+  },
+  "searchPlaceholder": "Busque una pregunta..."
+}

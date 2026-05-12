@@ -32,9 +32,9 @@
     "test:staged": "vitest run --changed --staged"
   },
   "dependencies": {
-    "@akmleva/auth": "file:../../packages/auth",
-    "@akmleva/shared": "file:../../packages/shared",
-    "@akmleva/ui": "file:../../packages/ui",
+    "@akmleva/auth": "file:./packages/auth",
+    "@akmleva/shared": "file:./packages/shared",
+    "@akmleva/ui": "file:./packages/ui",
     "@hookform/resolvers": "^5.2.2",
     "@prisma/client": "6.17.1",
     "@radix-ui/react-accordion": "^1.2.12",

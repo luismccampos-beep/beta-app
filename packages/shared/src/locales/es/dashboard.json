@@ -1,0 +1,12 @@
+{
+  "dashboard": {
+    "title": "Panel",
+    "subtitle": "Bienvenido a tu panel personal",
+    "upcomingTrips": "Próximos Viajes",
+    "noUpcomingTrips": "No tienes viajes programados",
+    "recentBookings": "Reservas Recientes",
+    "noRecentBookings": "No hay reservas recientes",
+    "recommendations": "Recomendaciones",
+    "noRecommendations": "No hay recomendaciones disponibles"
+  }
+}

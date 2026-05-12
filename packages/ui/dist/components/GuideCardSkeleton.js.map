@@ -1,0 +1,1 @@
+{"version":3,"file":"GuideCardSkeleton.js","sourceRoot":"","sources":["../../src/components/GuideCardSkeleton.tsx"],"names":[],"mappings":";AAAA,OAAO,EAAE,QAAQ,EAAE,MAAM,YAAY,CAAC;AAEtC,MAAM,iBAAiB,GAAG,GAAG,EAAE;IAC7B,OAAO,KAAC,QAAQ,IAAC,SAAS,EAAC,kBAAkB,GAAG,CAAC;AACnD,CAAC,CAAC;AAEF,OAAO,EAAE,iBAAiB,EAAE,CAAC;AAC7B,eAAe,iBAAiB,CAAC"}

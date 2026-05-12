@@ -1,0 +1,121 @@
+{
+  "customCta": {
+    "title": "Want a Custom Itinerary?",
+    "description": "Tell us about your travel dreams and we will create an exclusive package for you",
+    "cta": "Contact Specialist"
+  },
+  "hero": {
+    "title": "Customized Travel Packages",
+    "subtitle": "We create unique experiences tailored to your dreams and preferences",
+    "cta": "Request Quote",
+    "viewDeals": "View Deals"
+  },
+  "packageTypes": {
+    "title": "Package Types",
+    "description": "We offer different types of packages to meet all traveler profiles",
+    "explore": "Explore",
+    "romantic": {
+      "title": "Honeymoon",
+      "description": "Romantic packages for couples",
+      "feature1": "Romantic hotels",
+      "feature2": "Special dinners"
+    },
+    "family": {
+      "title": "Family",
+      "description": "Trips for the whole family",
+      "feature1": "Kids activities",
+      "feature2": "Family hotels"
+    },
+    "adventure": {
+      "title": "Adventure",
+      "description": "Packages for adventurers",
+      "feature1": "Extreme activities",
+      "feature2": "Specialized guides"
+    },
+    "gastronomic": {
+      "title": "Gastronomy",
+      "description": "Packages for foodies",
+      "feature1": "Exclusive restaurants",
+      "feature2": "Special tastings"
+    },
+    "luxury": {
+      "title": "Luxury",
+      "description": "Exclusive luxury experiences with the best hotels and premium services"
+    },
+    "wellness": {
+      "title": "Wellness",
+      "description": "Packages focused on relaxation, spa and wellness activities"
+    },
+    "group-travel": {
+      "title": "Group Travel",
+      "description": "Special experiences for groups of friends, families or colleagues"
+    },
+    "cultural-exchange": {
+      "title": "Cultural Exchange",
+      "description": "Immerse yourself in new cultures and live like a local"
+    },
+    "photography-tourism": {
+      "title": "Photography Tourism",
+      "description": "Capture stunning landscapes with photography-focused itineraries"
+    },
+    "snow-sports": {
+      "title": "Snow Sports",
+      "description": "Snow adventures with skiing, snowboarding and other winter activities"
+    },
+    "corporate-travel": {
+      "title": "Corporate Travel",
+      "description": "Professional solutions for events, meetings and business incentives"
+    },
+    "coastal-tourism": {
+      "title": "Coastal Tourism",
+      "description": "Relax on paradise beaches and explore unique coastal destinations"
+    }
+  },
+  "personalized": {
+    "title": "Package Types",
+    "description": "We offer different types of packages to meet all traveler profiles",
+    "learnMore": "Learn More"
+  },
+  "featuredPackages": {
+    "title": "Featured Packages"
+  },
+  "page": {
+    "hero": {
+      "title": "Travel Packages",
+      "subtitle": "Plan with confidence: verified packages, clear pricing, and 24/7 support."
+    },
+    "error": {
+      "title": "Oops! Something went wrong",
+      "message": "We couldn't load the packages. Please try again later.",
+      "retry": "Try Again"
+    },
+    "empty": {
+      "title": "No packages available",
+      "message": "We're preparing amazing new destinations for you. Check back soon!"
+    },
+    "unknown": "Unknown Destination",
+    "onRequest": "On Request",
+    "brand": "AKMLEVA",
+    "featured": "Featured",
+    "categoryBanner": {
+      "title": "Explore Travel Categories",
+      "subtitle": "{count} categories available",
+      "cta": "View all packages"
+    },
+    "stats": {
+      "packages": "Packages",
+      "destinations": "Destinations",
+      "categories": "Categories",
+      "averageRating": "Average Rating",
+      "na": "N/A"
+    },
+    "schema": {
+      "collectionName": "Travel Packages",
+      "collectionDescription": "Packages with duration, price and ratings.",
+      "breadcrumbHome": "Home",
+      "breadcrumbPackages": "Packages",
+      "organizationName": "Travel",
+      "organizationDescription": "Travel agency specialized in complete and personalized packages"
+    }
+  }
+}

@@ -1,0 +1,79 @@
+{
+  "app": {
+    "app": "Mobile App"
+  },
+  "cta": {
+    "title": "Ready to Get Started?",
+    "subtitle": "Join millions of travelers who already trust our app",
+    "ios": "Download for iOS",
+    "android": "Download for Android"
+  },
+  "features": {
+    "title": "Key Features",
+    "subtitle": "Discover everything our mobile app has to offer",
+    "offlineMaps": {
+      "title": "Offline Maps",
+      "desc": "Access detailed maps even without internet connection. Perfect for traveling in remote areas."
+    },
+    "pushNotifications": {
+      "title": "Push Notifications",
+      "desc": "Receive real-time alerts about your flight, bookings, and special offers."
+    },
+    "offlineSync": {
+      "title": "Offline Sync",
+      "desc": "Your data is automatically synchronized when connection is restored."
+    },
+    "cameraIntegration": {
+      "title": "Camera Integration",
+      "desc": "Capture and share your travel experiences directly from the app."
+    },
+    "gpsNavigation": {
+      "title": "GPS Navigation",
+      "desc": "Accurate turn-by-turn navigation to reach your destination hassle-free."
+    },
+    "secureStorage": {
+      "title": "Secure Storage",
+      "desc": "Your personal data and travel documents are protected with bank-level encryption."
+    }
+  },
+  "hero": {
+    "appLabel": "Mobile App",
+    "appStore": "Download on the App Store",
+    "googlePlay": "Get it on Google Play"
+  },
+  "reviews": {
+    "title": "What Users Say",
+    "subtitle": "Real testimonials from satisfied travelers",
+    "maria": {
+      "comment": "This app completely changed how I travel. Everything is organized and super easy to use!"
+    },
+    "joao": {
+      "comment": "The offline maps are incredible! They've saved me multiple times when I had no signal."
+    },
+    "ana": {
+      "comment": "The interface is intuitive and the notifications are very helpful. I recommend it to all travelers!"
+    }
+  },
+  "screenshots": {
+    "title": "Screenshots",
+    "subtitle": "See how easy it is to plan and manage your travels",
+    "explore": {
+      "title": "Explore Destinations",
+      "desc": "Discover new places with personalized recommendations based on your preferences."
+    },
+    "plan": {
+      "title": "Plan Trips",
+      "desc": "Create detailed itineraries with all the information you need in one place."
+    },
+    "book": {
+      "title": "Book Easily",
+      "desc": "Make flight, hotel, and activity bookings with just a few taps."
+    }
+  },
+  "stats": {
+    "downloads": "Downloads",
+    "rating": "Rating",
+    "activeUsers": "Active Users",
+    "countries": "Countries"
+  }
+}

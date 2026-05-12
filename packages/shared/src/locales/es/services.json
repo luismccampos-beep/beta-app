@@ -1,0 +1,157 @@
+{
+  "benefits": {
+    "title": "Las Ventajas de <span class='text-primary'>Viajar con Nosotros</span>",
+    "subtitle": "Más que una agencia, somos su socio de viaje.",
+    "items": [
+      "Atención personalizada y dedicada",
+      "Expertos en destinos con profundo conocimiento",
+      "Precios competitivos y transparentes",
+      "Soporte continuo antes, durante y después del viaje",
+      "Socios y proveedores de confianza",
+      "Flexibilidad para ajustar sus planes"
+    ]
+  },
+  "cta": {
+    "title": "¿Listo para Empezar su Aventura?",
+    "subtitle": "Hable con uno de nuestros expertos o explore nuestros destinos y descubra su próximo gran itinerario.",
+    "buttons": {
+      "quote": "Solicitar Presupuesto",
+      "destinations": "Ver Destinos"
+    }
+  },
+  "hero": {
+    "badge": "Servicios de Excelencia",
+    "title": "Soluciones de Viaje <span class='text-secondary'>A Su Medida</span>",
+    "subtitle": "Desde paquetes completos hasta experiencias únicas, diseñamos cada detalle para crear su viaje perfecto. Su aventura comienza aquí."
+  },
+  "mainServices": {
+    "title": "Nuestros <span class='text-primary'>Servicios Principales</span>",
+    "subtitle": "Todo lo que necesita para un viaje tranquilo e inolvidable, organizado por expertos.",
+    "popularBadge": "Popular",
+    "ctaButton": "Saber Más",
+    "items": {
+      "packages": {
+        "title": "Paquetes de Viaje",
+        "price": "Desde 499€",
+        "description": "Paquetes completos con vuelos, hoteles y actividades. La opción ideal para quienes buscan comodidad y el mejor precio.",
+        "features": [
+          "Vuelos y Alojamiento Incluidos",
+          "Itinerarios Optimizados",
+          "Soporte 24/7"
+        ],
+        "popular": "true"
+      },
+      "flights": {
+        "title": "Vuelos",
+        "price": "Mejores Tarifas",
+        "description": "Encuentra y reserva vuelos a cualquier destino con las mejores tarifas y horarios.",
+        "features": [
+          "Comparación de Precios",
+          "Reserva Instantánea",
+          "Soporte Especializado"
+        ],
+        "popular": "false"
+      },
+      "hotels": {
+        "title": "Reservas de Hoteles",
+        "price": "Mejor Precio Garantizado",
+        "description": "Acceso a una amplia selección de hoteles en todo el mundo, desde los más lujosos hasta los más económicos.",
+        "features": [
+          "Miles de Opciones",
+          "Confirmación Inmediata",
+          "Cancelación Flexible"
+        ],
+        "popular": "false"
+      },
+      "transfers": {
+        "title": "Traslados y Transportes",
+        "price": "Comodidad y Seguridad",
+        "description": "Asegure su transporte desde el aeropuerto al hotel y entre ciudades con total comodidad y seguridad.",
+        "features": [
+          "Conductores Profesionales",
+          "Vehículos Modernos",
+          "Precios Fijos"
+        ],
+        "popular": "false"
+      },
+      "cruises": {
+        "title": "Cruceros",
+        "price": "Mares de Aventura",
+        "description": "Explore múltiples destinos en un solo viaje a bordo de los mejores cruceros del mundo.",
+        "features": [
+          "Itinerarios Exclusivos",
+          "Todo Incluido a Bordo",
+          "Entretenimiento Garantizado"
+        ],
+        "popular": "false"
+      },
+      "localGuides": {
+        "title": "Guías Locales",
+        "price": "Experiencias Auténticas",
+        "description": "Descubra los secretos de cada destino con guías locales experimentados que hablan su idioma.",
+        "features": [
+          "Tours Privados y en Grupo",
+          "Conocimiento Local",
+          "Inmersión Cultural"
+        ],
+        "popular": "true"
+      },
+      "insurance": {
+        "title": "Seguro de Viaje",
+        "price": "Viaje sin Preocupaciones",
+        "description": "Proteja su viaje contra imprevistos con nuestro seguro de viaje completo y fiable.",
+        "features": [
+          "Cobertura Médica Internacional",
+          "Cancelación de Viaje",
+          "Asistencia 24h"
+        ],
+        "popular": "false"
+      }
+    }
+  },
+  "process": {
+    "title": "¿Cómo <span class='text-primary'>Funciona</span>?",
+    "subtitle": "Nuestro proceso es simple, transparente y centrado en usted.",
+    "items": {
+      "step1": {
+        "title": "Inspírese",
+        "description": "Explore nuestros destinos y paquetes o cuéntenos su idea."
+      },
+      "step2": {
+        "title": "Planificación",
+        "description": "Uno de nuestros especialistas se pondrá en contacto para diseñar un itinerario a su medida."
+      },
+      "step3": {
+        "title": "Reserva",
+        "description": "Tras su aprobación, nos encargamos de todas las reservas y detalles."
+      },
+      "step4": {
+        "title": "¡Viaje!",
+        "description": "Disfrute de su viaje con la certeza de que tenemos todo bajo control."
+      }
+    }
+  },
+  "specializedServices": {
+    "title": "Viajes <span class='text-primary'>Especializados</span>",
+    "subtitle": "Creamos experiencias temáticas para viajeros con pasiones específicas.",
+    "ctaButton": "Explorar Opciones",
+    "items": {
+      "honeymoon": {
+        "title": "Lunas de Miel",
+        "description": "Destinos románticos y experiencias inolvidables para celebrar el amor."
+      },
+      "groupTravel": {
+        "title": "Viajes en Grupo",
+        "description": "Organizamos viajes para grupos de amigos, familias o empresas."
+      },
+      "culturalExchange": {
+        "title": "Intercambio Cultural",
+        "description": "Viva como un local y sumérjase en nuevas culturas con nuestros viajes de inmersión."
+      },
+      "photoTourism": {
+        "title": "Turismo Fotográfico",
+        "description": "Capture paisajes impresionantes con nuestros itinerarios centrados en la fotografía."
+      }
+    }
+  }
+}

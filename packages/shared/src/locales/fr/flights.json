@@ -1,0 +1,113 @@
+{
+  "action": "Action",
+  "any": "N'importe",
+  "book": "Réserver un Vol",
+  "bookNow": "Réserver Maintenant",
+  "booking": {
+    "title": "Confirmer la Réservation",
+    "description": "Vérifiez les détails de votre réservation avant de confirmer.",
+    "flightDetails": "Détails du Vol",
+    "passengerInfo": "Informations du Passager",
+    "name": "Nom Complet",
+    "email": "Email",
+    "phone": "Téléphone",
+    "totalPrice": "Prix Total",
+    "confirm": "Confirmer la Réservation",
+    "cancel": "Annuler",
+    "bookingSuccess": "Réservation confirmée avec succès!",
+    "bookingError": "Erreur lors de la confirmation de la réservation. Veuillez réessayer."
+  },
+  "catalog": "Catalogue de Vols",
+  "contact": "Contact",
+  "contactButton": "Contacter",
+  "contactCta": {
+    "title": "Besoin d'Aide avec votre Réservation?",
+    "description": "Notre équipe d'experts est disponible 24h/24 et 7j/7 pour vous aider à trouver le vol parfait.",
+    "cta": "Contacter Maintenant"
+  },
+  "contactInfo": "Informations de Contact",
+  "destination": "Destination",
+  "feature1": "Divertissement en Vol",
+  "feature2": "Espace Supplémentaire pour les Jambes",
+  "feature3": "Options de Repas",
+  "features": "Caractéristiques",
+  "flightTypes": {
+    "title": "Types de Vol",
+    "subtitle": "Choisissez l'option qui convient le mieux à vos besoins de voyage.",
+    "international": {
+      "title": "Vols Internationaux",
+      "description": "Explorez le monde avec nos vols internationaux vers plus de 200 destinations."
+    },
+    "domestic": {
+      "title": "Vols Domestiques",
+      "description": "Voyagez dans le pays avec commodité et confort sur nos vols domestiques."
+    },
+    "group": {
+      "title": "Vols de Groupe",
+      "description": "Remises spéciales pour les groupes de 10 passagers ou plus."
+    },
+    "learnMore": "En Savoir Plus"
+  },
+  "flights": {
+    "popular": {
+      "newYork": "New York",
+      "london": "Londres",
+      "paris": "Paris",
+      "tokyo": "Tokyo"
+    }
+  },
+  "hero": {
+    "title": "Services de Vols",
+    "subtitle": "Votre voyage commence ici",
+    "description": "Trouvez les meilleures offres de vols vers vos destinations de rêve. Nous offrons une large sélection de compagnies aériennes et de routes pour répondre à vos besoins de voyage."
+  },
+  "operator": "Opérateur",
+  "origin": "Origine",
+  "popularFlights": {
+    "title": "Vols Populaires",
+    "subtitle": "Découvrez les destinations les plus recherchées et réservez votre prochain vol avec les meilleures offres."
+  },
+  "price": "Prix",
+  "results": {
+    "title": "Vols Disponibles",
+    "noResults": "Aucun vol trouvé",
+    "tryDifferentSearch": "Essayez d'affiner votre recherche avec des critères différents.",
+    "loadingFlights": "Chargement des vols...",
+    "flightsFound": "{{count}} vols trouvés pour votre recherche.",
+    "airline": "Compagnie Aérienne",
+    "departure": "Départ",
+    "arrival": "Arrivée",
+    "duration": "Durée",
+    "stops": "Escales",
+    "price": "Prix",
+    "action": "Action",
+    "bookNow": "Réserver Maintenant",
+    "direct": "Direct",
+    "oneStop": "1 Escale",
+    "multipleStops": "Escales Multiples"
+  },
+  "route": "Itinéraire",
+  "search": {
+    "title": "Rechercher des Vols",
+    "origin": "Origine",
+    "originPlaceholder": "Sélectionnez l'origine",
+    "destination": "Destination",
+    "destinationPlaceholder": "Sélectionnez la destination",
+    "selectDate": "Sélectionnez la date",
+    "passenger": "passager",
+    "passengersPlural": "passagers",
+    "clear": "Effacer",
+    "departure": "Départ",
+    "departurePlaceholder": "D'où partez-vous ?",
+    "arrival": "Arrivée",
+    "arrivalPlaceholder": "Où allez-vous ?",
+    "departureDate": "Date de Départ",
+    "returnDate": "Date de Retour",
+    "passengers": "Passagers",
+    "button": "Rechercher des Vols",
+    "searching": "Recherche en cours...",
+    "roundTrip": "Aller-Retour",
+    "oneWay": "Aller Simple"
+  },
+  "title": "Services de Vols"
+}

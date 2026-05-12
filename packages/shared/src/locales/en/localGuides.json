@@ -1,0 +1,106 @@
+{
+  "becomeGuide": {
+    "title": "Become a Local Guide at AKMLEVA",
+    "description": "Share your passion for your city, showcase its best, and earn extra income doing what you love.",
+    "applyNow": "Apply Now",
+    "feature1": {
+      "title": "Total Flexibility",
+      "desc": "Set your own schedule and availability. Work when and how you want."
+    },
+    "feature2": {
+      "title": "Extra Income",
+      "desc": "Turn your local knowledge into a reliable and rewarding source of income."
+    },
+    "feature3": {
+      "title": "Global Community",
+      "desc": "Join a network of passionate guides and connect with travelers from all over the world."
+    }
+  },
+  "detailsPanel": {
+    "about": "About",
+    "tours": "Tours",
+    "moreInfo": "More Info",
+    "memberSince": "Member since",
+    "bookTour": "Book Tour",
+    "noTours": "This guide has not added any tours yet.",
+    "languages": "Languages",
+    "specialties": "Specialties",
+    "experienceYears": "Years of Experience",
+    "certifications": "Certifications",
+    "basePrice": "Base Price",
+    "hour": "hour",
+    "contactGuideCta": "Contact {{name}}"
+  },
+  "filters": {
+    "title": "Filter Guides",
+    "clear": "Clear Filters",
+    "searchLabel": "Search by name or keyword",
+    "searchPlaceholder": "E.g., 'Carlos' or 'gastronomy'",
+    "locationLabel": "Location",
+    "allLocations": "All Locations",
+    "specialtyLabel": "Specialty",
+    "allSpecialties": "All Specialties",
+    "languageLabel": "Language",
+    "allLanguages": "All Languages"
+  },
+  "guides": {
+    "guide_1": {
+      "bio": "Carlos is an art historian who turns every street in Lisbon into an open-air gallery. His tours are a journey through time.",
+      "tagline": "Unveiling history on every corner of Lisbon.",
+      "tour_title": "Historic Lisbon: From the Castle to Belém",
+      "tour_desc": "A 4-hour walk through the most significant moments of Portugal's history, visiting iconic monuments."
+    },
+    "guide_2": {
+      "bio": "...",
+      "tagline": "...",
+      "tour_title": "...",
+      "tour_desc": "..."
+    }
+  },
+  "guidesList": {
+    "title": "Available Guides",
+    "sortBy": "Sort by",
+    "sortOptions": {
+      "rating": "Top Rated",
+      "name": "Name (A-Z)",
+      "experience": "Most Experienced",
+      "price": "Lowest Price"
+    },
+    "verified": "Verified Guide",
+    "reviews_one": "review",
+    "reviews_other": "reviews",
+    "experience_one": "{{count}} year of experience",
+    "experience_other": "{{count}} years of experience",
+    "viewProfile": "View Profile",
+    "noResultsTitle": "No Guides Found",
+    "noResultsDesc": "Try adjusting your filters or clearing the search to see all our fantastic guides."
+  },
+  "hero": {
+    "badge": "Our Community",
+    "title": "Meet Our Local Guides",
+    "subtitle": "Passionate travelers who turn your destination into an authentic experience."
+  },
+  "specialties": {
+    "history": "History",
+    "gastronomy": "Gastronomy",
+    "nature": "Nature",
+    "architecture": "Architecture"
+  },
+  "page": {
+    "titlePrefix": "Find your",
+    "titleHighlight": "Adventure Partner",
+    "loadingExperts": "Loading experts...",
+    "guidesAvailable": "{count} guides available for you",
+    "emptyState": {
+      "title": "No guides match your criteria",
+      "description": "Try removing filters or searching for another term.",
+      "clearAll": "Clear all filters"
+    },
+    "cta": {
+      "title": "Ready for your next story?",
+      "subtitle": "Join thousands of travelers who discovered the hidden side of their favorite destinations.",
+      "primary": "Get started",
+      "secondary": "Talk to support"
+    }
+  }
+}

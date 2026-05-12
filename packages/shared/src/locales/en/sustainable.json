@@ -1,0 +1,134 @@
+{
+  "articles": {
+    "readMore": "Read More"
+  },
+  "page": {
+    "hero": {
+      "title": "Travel with Purpose",
+      "subtitle": "Discover how tourism can be a force for good, protecting our planet and enriching communities."
+    },
+    "commitment": {
+      "title": "Our Sustainable <span class='text-primary'>Commitment</span>",
+      "subtitle": "We believe that responsible travel is the only way forward. These are our three pillars.",
+      "pillars": [
+        {
+          "icon": "Leaf",
+          "title": "Environmental Protection",
+          "description": "We minimize our ecological footprint through partnerships with eco-friendly hotels and carbon offsetting.",
+          "colorClass": "bg-green-600"
+        },
+        {
+          "icon": "Globe",
+          "title": "Cultural Respect",
+          "description": "We promote experiences that value and respect local traditions, history, and way of life.",
+          "colorClass": "bg-blue-600"
+        },
+        {
+          "icon": "HandCoins",
+          "title": "Community Support",
+          "description": "We prioritize local businesses, ensuring that tourism directly benefits those who live in the destination.",
+          "colorClass": "bg-orange-600"
+        }
+      ]
+    },
+    "practices": {
+      "title": "Our <span class='text-primary'>Practices</span> in Action",
+      "subtitle": "How we turn our commitment into concrete actions in every trip we plan.",
+      "items": [
+        {
+          "id": "carbon",
+          "icon": "Footprints",
+          "title": "Carbon Reduction",
+          "description": "We actively work to reduce the environmental impact of each trip by promoting conscious choices.",
+          "points": [
+            "We offset 100% of the carbon emissions from flights included in our packages.",
+            "We suggest using public or low-carbon transport at destinations.",
+            "We choose airlines with more modern and efficient fleets."
+          ]
+        },
+        {
+          "id": "waste",
+          "icon": "Recycle",
+          "title": "Waste Management",
+          "description": "We encourage a 'leave no trace' philosophy to preserve the natural and cultural beauty of the places we visit.",
+          "points": [
+            "We encourage the use of reusable water bottles and shopping bags.",
+            "We partner with hotels that have serious recycling and composting policies.",
+            "We have eliminated single-use plastics from our welcome kits."
+          ]
+        },
+        {
+          "id": "water",
+          "icon": "Droplet",
+          "title": "Conscious Water Use",
+          "description": "Water is a precious resource in many of our destinations. We promote its responsible use.",
+          "points": [
+            "We support hotels with towel and linen reuse programs.",
+            "We inform our travelers about the importance of saving water in vulnerable ecosystems."
+          ]
+        },
+        {
+          "id": "community",
+          "icon": "Users",
+          "title": "Community Support",
+          "description": "We believe that tourism should economically empower local populations in a fair and sustainable way.",
+          "points": [
+            "We exclusively hire certified local guides for all our excursions.",
+            "We recommend family-owned restaurants and locally-owned shops.",
+            "We facilitate visits to artisan cooperatives and social projects that benefit the community."
+          ]
+        },
+        {
+          "id": "wildlife",
+          "icon": "Trees",
+          "title": "Respect for Wildlife",
+          "description": "We promote tourism that protects animals and their natural habitats, never exploiting them for entertainment.",
+          "points": [
+            "We do not offer activities involving unethical direct contact with wild animals.",
+            "We only work with sanctuaries and reserves that follow strict animal ethics codes.",
+            "We educate our travelers on the importance of maintaining a safe distance and not feeding wild animals."
+          ]
+        }
+      ]
+    },
+    "articles": {
+      "title": "Get Inspired on Our <span class='text-primary'>Blog</span>",
+      "subtitle": "Articles, tips, and stories to help you become a more conscious and responsible traveler.",
+      "items": [
+        {
+          "title": "How to Reduce Your Carbon Footprint When Traveling",
+          "excerpt": "Small changes can have a big impact. Discover practical tips for flying, staying, and moving around more sustainably.",
+          "image": "/placeholder.svg",
+          "category": "Practical Tips",
+          "date": "June 10, 2024",
+          "slug": "/en/blog/how-to-reduce-carbon-footprint"
+        },
+        {
+          "title": "The Power of Community Tourism: Support Local Development",
+          "excerpt": "Understand how choosing local experiences can transform economies and preserve cultures. A richer, more authentic way to travel.",
+          "image": "/placeholder.svg",
+          "category": "Communities",
+          "date": "May 15, 2024",
+          "slug": "/en/blog/community-tourism"
+        },
+        {
+          "title": "Ecotourism in Brazil: 5 Must-See Destinations",
+          "excerpt": "From the Amazon to the Pantanal, Brazil offers incredible natural paradises. Learn how to explore them responsibly and consciously.",
+          "image": "/placeholder.svg",
+          "category": "Destinations",
+          "date": "April 22, 2024",
+          "slug": "/en/blog/ecotourism-brazil"
+        }
+      ],
+      "readMore": "Read More",
+      "cta": "View All Articles"
+    },
+    "joinMovement": {
+      "title": "Join the Responsible Tourism Movement",
+      "description": "Every trip is an opportunity to make a difference. Start planning your next adventure with us and be part of the change the world needs to see.",
+      "mainCta": "Take the Pledge",
+      "secondaryCta": "Contact Us"
+    },
+    "callToAction": "Ready to embark on a sustainable journey? Explore our destinations and start planning your trip today!"
+  }
+}

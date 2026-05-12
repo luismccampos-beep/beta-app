@@ -1,0 +1,89 @@
+{
+  "hero": {
+    "title": "Build the Future of Travel",
+    "subtitle": "Join an innovative team revolutionizing the travel industry. We build technology that connects the world.",
+    "badge": "We are Hiring"
+  },
+  "benefits": {
+    "title": "Benefits",
+    "health": "Health Insurance",
+    "health_desc": "Comprehensive coverage for you and family",
+    "flex": "Flexible Work",
+    "flex_desc": "Flexible hours and remote work",
+    "growth": "Growth",
+    "growth_desc": "Professional development opportunities",
+    "tech": "Technology",
+    "tech_desc": "State-of-the-art equipment and tools"
+  },
+  "cta": {
+    "badge": "Join the team",
+    "title": "Ready to be part of our journey?",
+    "subtitle": "Your talent can be the engine of our next big technological innovation.",
+    "button": "Send Application"
+  },
+  "form": {
+    "title": "Spontaneous Application"
+  },
+  "application": {
+    "title": "Apply for Position",
+    "close": "Close",
+    "name": "Full Name",
+    "email": "Email",
+    "phone": "Phone",
+    "linkedin": "LinkedIn",
+    "message": {
+      "label": "Message (Optional)",
+      "placeholder": "Tell us why you would be perfect for this role..."
+    },
+    "cv": {
+      "label": "Resume (PDF)",
+      "upload": "Upload CV",
+      "drag": "Drag your resume or click to select",
+      "format": "PDF files only (max. 5MB)"
+    },
+    "error": "Please fill in all required fields and attach your resume.",
+    "submitting": "Submitting...",
+    "submit": "Submit Application",
+    "success": {
+      "title": "Application Sent!",
+      "message": "We will be in touch soon."
+    }
+  },
+  "job": {
+    "none": "No positions found",
+    "checkback": "New jobs are posted regularly. Check back soon!",
+    "spontaneous": "Spontaneous Application",
+    "apply": {
+      "label": "Apply Now",
+      "aria": "Apply for this position"
+    },
+    "requirements_label": "Requirements",
+    "benefits_label": "Benefits"
+  },
+  "jobs": {
+    "empty": {
+      "title": "No positions available at the moment",
+      "department": "There are currently no open positions in {departmentName}.",
+      "general": "There are no open positions at this time. New opportunities will be published soon.",
+      "checkback": "Check back again soon!"
+    }
+  },
+  "departments": {
+    "empty": {
+      "title": "No active departments at the moment",
+      "subtitle": "Future departments and new job openings will appear here. Keep an eye on our updates!"
+    }
+  },
+  "open_positions": "Featured Positions",
+  "opportunities": "open positions",
+  "sections": {
+    "whyJoinUs": {
+      "title": "Why Join Us?",
+      "description": "We offer an ecosystem of innovation, balance, and benefits focused on your overall growth."
+    },
+    "openPositions": {
+      "title": "Open Positions",
+      "noPositions": "Try searching in another department or spontaneous application."
+    }
+  }
+}

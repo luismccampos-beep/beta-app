@@ -1,0 +1,11 @@
+{
+  "cta_button": "Explorar Pacotes",
+  "cta_description": "Descubra pacotes personalizados para cada um desses destinos incríveis",
+  "cta_title": "Pronto para Viver Essas Experiências?",
+  "error_loading": "Erro ao carregar a galeria. Tente novamente.",
+  "items_shown": "{count} itens",
+  "no_images_found": "Nenhuma imagem encontrada.",
+  "subtitle": "Explore destinos incríveis através de uma experiência visual única",
+  "title": "Galeria Imersiva",
+  "viewItemAria": "Ver {title}"
+}

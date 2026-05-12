@@ -1,0 +1,662 @@
+{
+  "quickAccess": "Acesso Rápido",
+  "tryAgain": "Tentar Novamente",
+  "close": "Fechar",
+  "actions": "Ações",
+  "slogan": "O seu parceiro de confiança para viagens inesquecíveis.",
+  "phone": "+351 123 456 789",
+  "email": "contato@akmleva.com",
+  "address": {
+    "city": "Santa Maria da Feira",
+    "street": "R. São Nicolau n.º 9, 4520-248"
+  },
+  "ui": {
+    "edit": "Editar",
+    "loading": "A carregar...",
+    "error": "Erro",
+    "retry": "Tentar novamente",
+    "close": "Fechar",
+    "save": "Guardar",
+    "cancel": "Cancelar",
+    "confirm": "Confirmar",
+    "delete": "Eliminar",
+    "view": "Ver",
+    "show": "Mostrar",
+    "show_less": "Mostrar menos",
+    "show_more": "Mostrar mais",
+    "hide": "Ocultar",
+    "add": "Adicionar",
+    "remove": "Remover",
+    "create": "Criar",
+    "update": "Atualizar",
+    "submit": "Submeter",
+    "search": "Pesquisar",
+    "select": "Selecionar",
+    "choose": "Escolher",
+    "book": "Reservar",
+    "join": "Juntar-se",
+    "overview": "Visão geral",
+    "notAvailable": "N/A",
+    "emailPlaceholder": "o.seu.email@exemplo.com"
+  },
+  "header": {
+    "brand": "AKMLEVA",
+    "tagline": "O seu parceiro de confiança para viagens inesquecíveis.",
+    "menu": "Menu",
+    "notifications": "Notificações",
+    "profile": "Perfil",
+    "settings": "Definições",
+    "billing": "Faturação",
+    "help": "Ajuda",
+    "login": "Entrar",
+    "logout": "Terminar sessão",
+    "user": "Utilizador"
+  },
+  "theme": {
+    "dark": "Escuro",
+    "light": "Claro",
+    "toggleTitle": "Alternar tema",
+    "moreOptions": "Mais opções",
+    "toggleAriaLabel": "Alternar tema",
+    "switchToDark": "Mudar para tema escuro",
+    "toggle": "Alternar tema"
+  },
+  "admin": {
+    "users_description": "Gestão de usuários do sistema",
+    "actions": "Ações",
+    "edit": "Editar",
+    "dashboard": "Painel de Controle",
+    "users": "Utilizadores",
+    "blog": {
+      "title": "Blog",
+      "blog_posts": "Artigos do Blog",
+      "social_media": "Publicações nas Redes Sociais",
+      "create_new": "Criar Novo",
+      "author": "Autor",
+      "select_author": "Selecionar Autor",
+      "excerpt": "Resumo",
+      "excerpt_placeholder": "Digite um resumo...",
+      "content": "Conteúdo",
+      "required_fields": "Campos Obrigatórios",
+      "posts": "Artigos do Blog",
+      "create_post": "Criar Novo Artigo",
+      "title_placeholder": "Título do Artigo",
+      "content_placeholder": "Conteúdo do Artigo",
+      "draft": "Rascunho",
+      "published": "Publicado",
+      "create": "Criar Artigo",
+      "existing_posts": "Artigos Existentes",
+      "slug": "URL Amigável",
+      "date": "Data",
+      "status": "Estado"
+    },
+    "social": {
+      "posts": "Publicações nas Redes Sociais",
+      "create_post": "Criar Nova Publicação",
+      "content_placeholder": "Conteúdo da Publicação",
+      "schedule": "Agendar Publicação",
+      "existing_posts": "Publicações Existentes",
+      "platform": "Plataforma",
+      "content": "Conteúdo",
+      "scheduled_date": "Data Agendada",
+      "status": "Estado"
+    },
+    "sustainable_travel": {
+      "title": "Viagens Sustentáveis",
+      "page_content": "Conteúdo da Página",
+      "add_initiative": "Adicionar Iniciativa",
+      "hero_title": "Título Principal",
+      "hero_description": "Descrição Principal",
+      "mission_statement": "Declaração de Missão",
+      "initiatives": "Iniciativas",
+      "initiative_title": "Título da Iniciativa",
+      "initiative_description": "Descrição da Iniciativa"
+    }
+  },
+  "allDestinations": "Todos os Destinos",
+  "amazing": "Incríveis",
+  "auth": {
+    "login": "Entrar",
+    "register": "Registar",
+    "loginSuccess": "Login efetuado com sucesso!",
+    "logoutSuccess": "Sessão terminada com sucesso!",
+    "loginError": "Credenciais inválidas. Tente novamente.",
+    "registerSuccess": "Registo efetuado com sucesso! Verifique o seu email para confirmar.",
+    "registerError": "Ocorreu um erro ao registar. Tente novamente."
+  },
+  "bags": "Bagagens",
+  "billing": {
+    "monthly": "Mensal",
+    "annually": "Anual",
+    "toggleAriaLabel": "Alternar entre faturação mensal e anual",
+    "defaultSave": "Poupe até 20%",
+    "perMonthShort": "/mês",
+    "perYearShort": "/ano"
+  },
+  "blog": {
+    "title": "Blog",
+    "posts": "Artigos do Blog",
+    "create_post": "Criar Novo Artigo",
+    "title_placeholder": "Título do Artigo",
+    "content_placeholder": "Conteúdo do Artigo",
+    "draft": "Rascunho",
+    "published": "Publicado",
+    "create": "Criar Artigo",
+    "existing_posts": "Artigos Existentes",
+    "slug": "URL Amigável",
+    "date": "Data",
+    "status": "Estado"
+  },
+  "book_now": "Reservar Agora",
+  "buttons": {
+    "getStarted": "Começar Agora"
+  },
+  "cancel": "Cancelar",
+  "choosePlan": {
+    "title": "Escolha o Seu Plano",
+    "description": "Selecione o plano que melhor se adapta às suas necessidades de viagem"
+  },
+  "clearAll": "Limpar Tudo",
+  "company": {
+    "name": "AKMLEVA",
+    "slogan": "Descubra destinos únicos com itinerários criados especialmente para si",
+    "phone": "+351 123 456 789",
+    "email": "contato@akmleva.com",
+    "address": {
+      "city": "Santa Maria da Feira",
+      "street": "R. São Nicolau n.º 9, 4520-248"
+    }
+  },
+  "companyInfo": {
+    "name": "AKMLEVA",
+    "slogan": "O seu parceiro de confiança para viagens inesquecíveis.",
+    "address": "R. São Nicolau n.º 9, 4520-248 Santa Maria da Feira",
+    "phone": "+351 123 456 789"
+  },
+  "contact": {
+    "info": {
+      "title": "Informações de Contacto",
+      "subtitle": "Entre em contacto connosco através dos seguintes meios"
+    },
+    "faq": {
+      "title": "Perguntas Frequentes",
+      "subtitle": "Encontre respostas para as dúvidas mais comuns",
+      "more_questions": "Tem mais perguntas?",
+      "view_all": "Ver todas as perguntas",
+      "items": {
+        "response_time": {
+          "question": "Qual é o tempo de resposta para consultas?",
+          "answer": "Respondemos a todas as consultas dentro de 24 horas durante os dias úteis."
+        },
+        "booking_changes": {
+          "question": "Posso alterar minha reserva após a confirmação?",
+          "answer": "Sim, alterações podem ser feitas até 48 horas antes da data de viagem, sujeitas a disponibilidade e possíveis taxas."
+        },
+        "payment_methods": {
+          "question": "Quais métodos de pagamento são aceitos?",
+          "answer": "Aceitamos cartões de crédito, débito, transferência bancária e PIX para sua conveniência."
+        },
+        "cancellation": {
+          "question": "Qual é a política de cancelamento?",
+          "answer": "Cancelamentos podem ser feitos até 72 horas antes da viagem com reembolso total. Consulte nossos termos para mais detalhes."
+        }
+      }
+    }
+  },
+  "contactUsButton": "Contactar-nos",
+  "contactUsForMoreInfo": "Entre em contato conosco para mais informações sobre nossos destinos e serviços personalizados",
+  "delete": "Apagar",
+  "destination1Description": "Descubra a capital portuguesa com sua rica história, arquitetura deslumbrante e cultura vibrante.",
+  "destination1Name": "Lisboa, Portugal",
+  "destination2Description": "Explore a cidade do vinho do Porto, com suas ruas medievais e vistas espetaculares do rio Douro.",
+  "destination2Name": "Porto, Portugal",
+  "destinationsFound": "destinos encontrados",
+  "destinationsTitle": "Destinos Incríveis",
+  "discoverUniquePlaces": "Descubra lugares únicos e experiências inesquecíveis ao redor do mundo",
+  "dismiss": "Fechar",
+  "edit": "Editar",
+  "exploreTheWorld": "Explore o Mundo",
+  "explore_now": "Explorar Agora",
+  "faq": {
+    "title": "Perguntas Frequentes",
+    "description": "Encontre respostas para as suas perguntas sobre os nossos planos",
+    "q1": {
+      "title": "Posso alterar o meu plano a qualquer momento?",
+      "description": "Sim, pode fazer upgrade ou downgrade do seu plano a qualquer momento. As alterações entrarão em vigor no próximo ciclo de faturação."
+    },
+    "q2": {
+      "title": "Há período de carência?",
+      "description": "Oferecemos um período de carência de 30 dias para todos os planos pagos. Se não ficar satisfeito, reembolsamos 100% do valor."
+    },
+    "q3": {
+      "title": "Que métodos de pagamento aceitam?",
+      "description": "Aceitamos todos os principais cartões de crédito, PayPal, transferência bancária e outros métodos de pagamento locais."
+    },
+    "q4": {
+      "title": "Os preços incluem impostos?",
+      "description": "Os preços mostrados são antes de impostos. Os impostos aplicáveis serão calculados no checkout com base na sua localização."
+    },
+    "q5": {
+      "title": "Preciso de ajuda para escolher um plano?",
+      "description": "A nossa equipa está aqui para ajudar! Contacte-nos para uma consulta gratuita.",
+      "linkText": "Contactar Suporte"
+    }
+  },
+  "featured": "Destaque",
+  "featuredDestinations": "Destinos em Destaque",
+  "form": {
+    "activities": "Atividades de Interesse",
+    "additionalInfo": "Informações Adicionais",
+    "budget": "Orçamento",
+    "dates": "Datas Preferidas",
+    "destinations": "Destinos",
+    "dietary": "Restrições Alimentares",
+    "duration": "Duração",
+    "email": "Email",
+    "groupSize": "Tamanho do Grupo",
+    "name": "Nome",
+    "personalInfo": "Informações Pessoais",
+    "phone": "Telefone",
+    "specialRequests": "Pedidos Especiais",
+    "submit": "Enviar Pedido",
+    "travelStyle": "Estilo de Viagem",
+    "title": "Contacte-nos",
+    "subtitle": "Estamos aqui para ajudar a planear a sua próxima aventura",
+    "sidePanel": {
+      "title": "Entre em Contato",
+      "subtitle": "Estamos aqui para tornar a sua viagem dos sonhos realidade. Entre em contato connosco!",
+      "phone": "+351 914 999 999",
+      "email": "contato@akmleva.pt",
+      "address": "Lisboa, Portugal",
+      "followUs": "Siga-nos nas redes sociais"
+    },
+    "fields": {
+      "name": {
+        "label": "Nome Completo",
+        "placeholder": "Digite o seu nome completo"
+      },
+      "email": {
+        "label": "Endereço de Email",
+        "placeholder": "Digite o seu email"
+      },
+      "phone": {
+        "label": "Número de Telefone",
+        "placeholder": "Digite o seu número de telefone"
+      },
+      "travelType": {
+        "label": "Tipo de Viagem",
+        "placeholder": "Selecione o tipo de viagem",
+        "options": {
+          "leisure": "Lazer",
+          "business": "Negócios",
+          "adventure": "Aventura",
+          "cultural": "Cultural",
+          "romantic": "Romântica",
+          "family": "Família"
+        }
+      },
+      "subject": {
+        "label": "Assunto",
+        "placeholder": "Digite o assunto da sua mensagem"
+      },
+      "message": {
+        "label": "Mensagem",
+        "placeholder": "Digite a sua mensagem aqui..."
+      },
+      "consent": {
+        "label": "Aceito a ",
+        "privacyLink": "Política de Privacidade",
+        "and": " e autorizo o tratamento dos meus dados pessoais para fins de contacto comercial."
+      }
+    }
+  },
+  "free": "Grátis",
+  "getQuote": "Obter Cotação",
+  "gridView": "Vista de Grelha",
+  "hero": {
+    "title": "Planos de Preços",
+    "subtitle": "Escolha o plano perfeito para as suas necessidades de viagem"
+  },
+  "high": "Alto",
+  "learnMore": "Saiba mais",
+  "loading": "Carregando...",
+  "location": "Localização",
+  "low": "Baixo",
+  "medium": "Médio",
+  "mostSoughtAfter": "Os destinos mais procurados pelos nossos clientes",
+  "needHelp": {
+    "title": "Precisa de Ajuda?",
+    "description": "A nossa equipa está disponível para responder às suas perguntas",
+    "contactSupport": "Contactar Suporte"
+  },
+  "newsletter": {
+    "title": "Mantenha-se Atualizado",
+    "description": "Receba as nossas últimas ofertas, dicas de viagem e destinos exclusivos diretamente no seu email.",
+    "emailLabel": "Endereço de Email",
+    "emailPlaceholder": "Digite o seu email",
+    "stayUpdated": "Mantenha-se atualizado",
+    "dealsAndNews": "Receba as últimas ofertas de viagem e notícias.",
+    "successMessage": "Obrigado por subscrever! Verifique o seu email para confirmar.",
+    "errorMessage": "Ocorreu um erro ao subscrever. Tente novamente mais tarde."
+  },
+  "noDestinationsFound": "Nenhum destino encontrado",
+  "ourServices": "Nossos Serviços",
+  "partnerships": {
+    "title": "Os Nossos Parceiros",
+    "dg": "Dg Consulting",
+    "gea": "Grupo das Agências de viagens independentes",
+    "sanjotec": "Sanjotec - Parque de Ciência e Tecnologia",
+    "turismodeportugal": "Turismo de Portugal"
+  },
+  "passengers": "Passageiros",
+  "paymentMethods": {
+    "transfer": "Transferência Bancária"
+  },
+  "plans": {
+    "basic": {
+      "name": "Básico",
+      "feature1": "Até 3 destinos por mês",
+      "feature2": "Suporte por email",
+      "feature3": "Mapas básicos",
+      "feature4": "Relatórios básicos",
+      "feature4Tooltip": "Relatórios mensais simples",
+      "description": "Perfeito para viajantes casuais",
+      "cta": "Começar Grátis"
+    },
+    "premium": {
+      "name": "Premium",
+      "feature1": "Destinos ilimitados",
+      "feature2": "Suporte prioritário 24/7",
+      "feature3": "Mapas avançados e offline",
+      "feature3Tooltip": "Mapas detalhados com funcionalidades offline",
+      "feature4": "Relatórios avançados",
+      "feature5": "Integração com calendário",
+      "feature6": "Backup automático",
+      "description": "Ideal para viajantes frequentes",
+      "cta": "Escolher Premium"
+    },
+    "business": {
+      "name": "Empresarial",
+      "priceSuffix": "por utilizador",
+      "feature1": "Tudo do Premium",
+      "feature2": "Gestão de equipa",
+      "feature3": "API personalizada",
+      "feature4": "Suporte dedicado",
+      "feature5": "Integração empresarial",
+      "feature5Tooltip": "Integração com sistemas empresariais existentes",
+      "feature6": "Relatórios personalizados",
+      "feature7": "SLA garantido",
+      "description": "Para empresas e equipas",
+      "cta": "Contactar Vendas"
+    },
+    "popularBadge": "Mais Popular",
+    "mostPopular": "Mais Popular",
+    "bonusFeature": "Funcionalidade Bónus"
+  },
+  "profile": {
+    "personal": "Dados Pessoais",
+    "contact": "Contato",
+    "preferences": "Preferências",
+    "payment": "Pagamento",
+    "privacy": "Privacidade",
+    "title": "Seu Perfil",
+    "description": "Gerencie as informações da sua conta aqui.",
+    "edit": "Editar",
+    "account_menu": "Menu da Conta",
+    "profile": "Perfil",
+    "admin_dashboard": "Painel de Administração",
+    "logout": "Sair",
+    "logout_success": "Sessão terminada com sucesso.",
+    "newsletter": {
+      "title": "Gestão de Newsletters",
+      "subtitle": "Crie e envie campanhas para os seus subscritores."
+    },
+    "newCampaign": "Nova Campanha",
+    "refreshList": "Atualizar Lista",
+    "stats": {
+      "totalSubscribers": "Total de Subscritores",
+      "activeSubscribers": "Subscritores Ativos",
+      "totalCampaigns": "Total de Campanhas",
+      "sentCampaigns": "Campanhas Enviadas",
+      "avgOpenRate": "Taxa de Abertura Média",
+      "avgOpenRateDesc": "+2,5% desde o último mês"
+    },
+    "tabs": {
+      "campaigns": "Campanhas",
+      "subscribers": "Subscritores",
+      "templates": "Modelos",
+      "analytics": "Analytics"
+    },
+    "tableHeaders": {
+      "subject": "Assunto",
+      "status": "Estado",
+      "recipients": "Destinatários",
+      "sentAt": "Enviado em",
+      "openRate": "Aberturas",
+      "createdAt": "Criado em",
+      "email": "Email",
+      "name": "Nome",
+      "language": "Idioma",
+      "tags": "Tags",
+      "actions": "Ações"
+    },
+    "subscribers": {
+      "title": "Todos os Subscritores",
+      "description": "Gestão da sua lista de contactos.",
+      "searchPlaceholder": "Pesquisar por email...",
+      "noData": "Nenhum subscritor encontrado."
+    },
+    "templates": {
+      "title": "Modelos de Email",
+      "description": "Crie e gira os seus modelos reutilizáveis."
+    },
+    "analytics": {
+      "title": "Análise de Desempenho",
+      "description": "Veja o desempenho geral das suas newsletters."
+    },
+    "comingSoon": "Brevemente...",
+    "campaignStatus": {
+      "draft": "Rascunho",
+      "sending": "A Enviar",
+      "sent": "Enviado",
+      "failed": "Falhou",
+      "archived": "Arquivado",
+      "scheduled": "Agendado"
+    },
+    "actions": {
+      "preview": "Pré-visualizar",
+      "edit": "Editar",
+      "send": "Enviar",
+      "sendNow": "Enviar Agora",
+      "delete": "Apagar"
+    },
+    "subscriberStatus": {
+      "active": "Ativo",
+      "pending": "Pendente",
+      "unsubscribed": "Cancelado",
+      "bounced": "Com Erro"
+    },
+    "tableFooter_one": "{{count}} resultado encontrado",
+    "tableFooter_other": "{{count}} resultados encontrados",
+    "buttons": {
+      "refreshList": "Atualizar Lista"
+    },
+    "campaigns": {
+      "title": "Todas as Campanhas",
+      "description": "Veja, edite ou envie as suas campanhas de email.",
+      "searchPlaceholder": "Pesquisar pelo assunto...",
+      "noData": "Nenhuma campanha encontrada."
+    },
+    "loading": "A carregar..."
+  },
+  "readyToExplore": "Pronto para Explorar?",
+  "recenter": "Recentrar mapa",
+  "recommendations": {
+    "title": "Recomendações",
+    "loading": "A carregar recomendações…",
+    "loadingAria": "A carregar recomendações",
+    "empty": "Sem recomendações no momento",
+    "typeFallback": "Geral"
+  },
+  "rentacar": {
+    "hero": {
+      "title": "Aluguer de carros",
+      "subtitle": "Encontre o veículo ideal para a sua viagem"
+    },
+    "errors": {
+      "invalidDateRange": "A data de fim deve ser posterior à data de início.",
+      "pastDate": "A data de início não pode estar no passado.",
+      "missingDates": "Selecione as datas de início e de fim.",
+      "bookingFailed": "Não foi possível concluir a reserva. Tente novamente."
+    },
+    "searchAndBook": "Pesquisar e Reservar",
+    "location": "Localização",
+    "any": "Qualquer",
+    "carType": "Tipo de Carro",
+    "searchModel": "Modelo de Carro",
+    "searchPlaceholder": "Pesquisar por modelo ou localização...",
+    "startDate": "Data de Início",
+    "endDate": "Data de Fim",
+    "maxPrice": "Preço Máximo",
+    "search": "Pesquisar",
+    "availableCars": "Carros Disponíveis",
+    "carsFound": "carros encontrados",
+    "price": "Preço",
+    "image": "Imagem",
+    "model": "Modelo",
+    "pricePerDay": "Preço por Dia",
+    "totalPrice": "Preço Total",
+    "action": "Ação",
+    "bookNow": "Reservar Agora",
+    "whyChooseUs": "Porquê Escolher-nos?",
+    "feature1": "Entrega e recolha flexíveis",
+    "feature2": "Seguro incluído",
+    "feature3": "Suporte 24/7",
+    "quickStats": "Estatísticas Rápidas",
+    "totalCars": "Total de Carros",
+    "availableNow": "Disponíveis Agora",
+    "locations": "Localizações",
+    "needHelp": "Precisa de Ajuda?",
+    "contactInfo": "Informações de Contacto",
+    "contactSupport": "Contactar Suporte"
+  },
+  "routeTransition": {
+    "loading": "Carregando..."
+  },
+  "save": "Salvar",
+  "search": "Pesquisar",
+  "searchDestinations": "Pesquisar destinos...",
+  "selectContinent": "Selecionar continente",
+  "selectPriceRange": "Selecionar faixa de preço",
+  "smartForm": {
+    "title": "Solicitação de Viagem Inteligente",
+    "subtitle": "Preencha o formulário e receba sugestões personalizadas de viagem",
+    "success": {
+      "title": "Solicitação enviada com sucesso!",
+      "message": "Entraremos em contato em breve com detalhes da viagem.",
+      "button": "Fazer nova solicitação"
+    },
+    "fields": {
+      "destination": "Destino",
+      "dateFrom": "Data de partida",
+      "dateTo": "Data de retorno",
+      "travelers": "Número de viajantes",
+      "travelType": "Tipo de viagem",
+      "budget": "Orçamento estimado",
+      "name": "Nome completo",
+      "phone": "Telefone",
+      "email": "E-mail",
+      "message": "Mensagem (opcional)"
+    },
+    "placeholders": {
+      "destination": "Para onde você quer viajar?",
+      "travelers": "Selecione o número de viajantes",
+      "travelType": "Selecione o tipo de viagem",
+      "budget": "Selecione o orçamento",
+      "name": "Seu nome completo",
+      "phone": "+351 123 456 789",
+      "email": "seu@email.com",
+      "message": "Detalhes adicionais sobre sua viagem..."
+    },
+    "errors": {
+      "nameRequired": "Nome é obrigatório",
+      "emailRequired": "E-mail é obrigatório",
+      "emailInvalid": "E-mail inválido",
+      "phoneRequired": "Telefone é obrigatório",
+      "destinationRequired": "Destino é obrigatório",
+      "travelTypeRequired": "Tipo de viagem é obrigatório",
+      "budgetRequired": "Orçamento é obrigatório"
+    },
+    "reset": "Limpar",
+    "submit": "Enviar Solicitação",
+    "submitting": "Enviando..."
+  },
+  "social": {
+    "posts": "Publicações nas Redes Sociais",
+    "create_post": "Criar Nova Publicação",
+    "content_placeholder": "Conteúdo da Publicação",
+    "schedule": "Agendar Publicação",
+    "existing_posts": "Publicações Existentes",
+    "platform": "Plataforma",
+    "content": "Conteúdo",
+    "scheduled_date": "Data Agendada",
+    "status": "Estado"
+  },
+  "socialMediaTitle": "Siga-nos nas Redes Sociais",
+  "socials": {
+    "facebookUrl": "https://facebook.com/suaempresa",
+    "instagramUrl": "https://instagram.com/suaempresa",
+    "twitterUrl": "https://twitter.com/suaempresa"
+  },
+  "sortBy": "Ordenar Por",
+  "available": "Disponível",
+  "booking": "A reservar...",
+  "searching": "A pesquisar...",
+  "day": "dia",
+  "days": "dias",
+  "roundTrip": "Ida e Volta",
+  "returnDate": "Data de Retorno",
+  "submit": "Enviar",
+  "sustainable_travel": {
+    "title": "Viagens Sustentáveis",
+    "page_content": "Conteúdo da Página",
+    "add_initiative": "Adicionar Iniciativa",
+    "hero_title": "Título Principal",
+    "hero_description": "Descrição Principal",
+    "mission_statement": "Declaração de Missão",
+    "initiatives": "Iniciativas",
+    "initiative_title": "Título da Iniciativa",
+    "initiative_description": "Descrição da Iniciativa"
+  },
+  "tableView": "Vista de Tabela",
+  "testimonials": {
+    "title": "O que dizem os nossos clientes",
+    "subtitle": "Experiências reais de viajantes que confiaram em nós"
+  },
+  "tryAdjustingFilters": "Tente ajustar os filtros para encontrar mais opções",
+  "video_not_supported": "O seu navegador não suporta a reprodução de vídeo.",
+  "viewAll": "Ver todos",
+  "nav": {
+    "destinations": "Destinos",
+    "flights": "Voos",
+    "hotels": "Hotéis",
+    "community": "Comunidade",
+    "demo": "Demo"
+  },
+  "legal": {
+    "terms": "Termos de Uso",
+    "privacy": "Política de Privacidade",
+    "cookies": "Política de Cookies",
+    "gdpr": "GDPR",
+    "cancellation": "Política de Cancelamento"
+  },
+  "mobile": {
+    "app": "Aplicação Móvel"
+  },
+  "help": {
+    "documentation": "Documentação"
+  },
+  "view_details": "Ver Detalhes",
+  "zoom_in": "Ampliar",
+  "zoom_out": "Reduzir"
+}

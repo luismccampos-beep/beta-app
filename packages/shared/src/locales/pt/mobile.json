@@ -1,0 +1,79 @@
+{
+  "app": {
+    "app": "Aplicação Móvel"
+  },
+  "cta": {
+    "title": "Pronto para Começar?",
+    "subtitle": "Junte-se a milhões de viajantes que já confiam na nossa aplicação",
+    "ios": "Baixar para iOS",
+    "android": "Baixar para Android"
+  },
+  "features": {
+    "title": "Funcionalidades Principais",
+    "subtitle": "Descubra tudo o que a nossa aplicação móvel tem para oferecer",
+    "offlineMaps": {
+      "title": "Mapas Offline",
+      "desc": "Aceda a mapas detalhados mesmo sem ligação à internet. Perfeito para viagens em áreas remotas."
+    },
+    "pushNotifications": {
+      "title": "Notificações Push",
+      "desc": "Receba alertas em tempo real sobre o seu voo, reservas e ofertas especiais."
+    },
+    "offlineSync": {
+      "title": "Sincronização Offline",
+      "desc": "Os seus dados são sincronizados automaticamente quando a ligação é restaurada."
+    },
+    "cameraIntegration": {
+      "title": "Integração com Câmara",
+      "desc": "Capture e partilhe as suas experiências de viagem diretamente da aplicação."
+    },
+    "gpsNavigation": {
+      "title": "Navegação GPS",
+      "desc": "Navegação turn-by-turn precisa para chegar ao seu destino sem problemas."
+    },
+    "secureStorage": {
+      "title": "Armazenamento Seguro",
+      "desc": "Os seus dados pessoais e documentos de viagem são protegidos com encriptação de nível bancário."
+    }
+  },
+  "hero": {
+    "appLabel": "Aplicação Móvel",
+    "appStore": "Baixar na App Store",
+    "googlePlay": "Obter no Google Play"
+  },
+  "reviews": {
+    "title": "O que os Utilizadores Dizem",
+    "subtitle": "Depoimentos reais de viajantes satisfeitos",
+    "maria": {
+      "comment": "Esta aplicação mudou completamente a forma como viajo. Tudo está organizado e é super fácil de usar!"
+    },
+    "joao": {
+      "comment": "Os mapas offline são incríveis! Já me salvaram várias vezes quando não tinha sinal."
+    },
+    "ana": {
+      "comment": "A interface é intuitiva e as notificações são muito úteis. Recomendo a todos os viajantes!"
+    }
+  },
+  "screenshots": {
+    "title": "Capturas de Ecrã",
+    "subtitle": "Veja como é fácil planear e gerir as suas viagens",
+    "explore": {
+      "title": "Explorar Destinos",
+      "desc": "Descubra novos lugares com recomendações personalizadas baseadas nas suas preferências."
+    },
+    "plan": {
+      "title": "Planear Viagens",
+      "desc": "Crie itinerários detalhados com todas as informações necessárias num só lugar."
+    },
+    "book": {
+      "title": "Reservar Facilmente",
+      "desc": "Faça reservas de voos, hotéis e atividades com apenas alguns toques."
+    }
+  },
+  "stats": {
+    "downloads": "Downloads",
+    "rating": "Avaliação",
+    "activeUsers": "Utilizadores Ativos",
+    "countries": "Países"
+  }
+}

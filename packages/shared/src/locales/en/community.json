@@ -1,0 +1,135 @@
+{
+  "tabs": {
+    "posts": "Posts",
+    "trips": "Trips",
+    "events": "Events"
+  },
+  "actions": {
+    "retry": "Retry",
+    "like": "Like",
+    "comment": "Comment",
+    "share": "Share",
+    "save": "Save",
+    "report": "Report",
+    "follow": "Follow",
+    "unfollow": "Unfollow",
+    "edit": "Edit",
+    "delete": "Delete"
+  },
+  "hero": {
+    "badge": "Community",
+    "title": "AKMLEVA Community",
+    "description": "Connect with travelers, share experiences and discover new destinations.",
+    "primaryAction": "Join Now",
+    "secondaryAction": "Explore",
+    "socialProof": "+5,000 travelers already joined"
+  },
+  "posts": {
+    "title": "Community Feed",
+    "traveler_fallback": "Traveler",
+    "explorer_fallback": "Explorer",
+    "recent_interaction": "Recent interaction by travelers",
+    "view_linked_trip": "View linked trip",
+    "likes_count": "Likes",
+    "liked": "Liked",
+    "like": "Like",
+    "comment_count": "Comment ({count})",
+    "back": "Back",
+    "no_results": "No posts found in this category."
+  },
+  "categories": {
+    "title": "Categories",
+    "general": "General",
+    "all": "All",
+    "experiences": "Experiences",
+    "tips": "Tips",
+    "photos": "Photos",
+    "reviews": "Reviews",
+    "questions": "Questions",
+    "recommendations": "Recommendations",
+    "stories": "Stories",
+    "dev": "Dev",
+    "help": "Help"
+  },
+  "search": {
+    "placeholder": "Search the community..."
+  },
+  "sidebar": {
+    "upgradeTitle": "Upgrade to Pro",
+    "upgradeDesc": "Get exclusive access to premium trips and tools."
+  },
+  "footer": {
+    "privacy": "Privacy Policy",
+    "terms": "Terms of Service",
+    "help": "Help Center",
+    "systemInfo": "System Status"
+  },
+  "cta": {
+    "badge": "Join Us",
+    "title": "Create, collaborate and share",
+    "description": "Start planning a collaborative trip with friends now — create itineraries, invite participants and save unforgettable memories.",
+    "create_trip": "Create Trip",
+    "explore_posts": "Explore Posts"
+  },
+  "errors": {
+    "like_failed": "Could not update like",
+    "try_again": "Please check your connection and try again.",
+    "join_failed": "Failed to join trip",
+    "post_create_failed": "Could not create post."
+  },
+  "success": {
+    "joined_trip": "Joined trip successfully!"
+  },
+  "notifications": {
+    "title": "Notifications",
+    "markAllRead": "Mark all as read",
+    "noNotifications": "No notifications",
+    "newPost": "New post in",
+    "newComment": "New comment on your post",
+    "newFollower": "started following you",
+    "eventReminder": "Event reminder",
+    "challengeUpdate": "Challenge update"
+  },
+  "profile": {
+    "posts": "Posts",
+    "followers": "Followers",
+    "following": "Following",
+    "joinedDate": "Joined",
+    "location": "Location",
+    "bio": "Bio",
+    "travelStats": "Travel Stats",
+    "countriesVisited": "Countries Visited",
+    "tripsCompleted": "Trips Completed",
+    "badges": "Badges"
+  },
+  "sections": {
+    "feed": { "title": "Community Feed" },
+    "trending": {
+      "title": "Trending",
+      "destinations": "Popular Destinations",
+      "discussions": "Active Discussions",
+      "members": "Active Members"
+    },
+    "groups": {
+      "title": "Groups",
+      "joinGroup": "Join Group",
+      "createGroup": "Create Group",
+      "myGroups": "My Groups",
+      "discover": "Discover Groups",
+      "members": "members",
+      "posts": "posts"
+    },
+    "events": {
+      "title": "Events",
+      "upcoming": "Upcoming Events",
+      "past": "Past Events",
+      "createEvent": "Create Event",
+      "joinEvent": "Join",
+      "interested": "Interested",
+      "going": "Going",
+      "date": "Date",
+      "location": "Location",
+      "attendees": "Attendees"
+    }
+  }
+}
