@@ -14,7 +14,7 @@ export declare const USER_ROLES: {
     readonly USER: "USER";
     readonly GUEST: "GUEST";
 };
-export declare const SUPPORTED_LANGUAGES: readonly ["pt-BR", "en-US", "es-ES"];
+export declare const SUPPORTED_LANGUAGES: readonly ["pt-PT", "en-US", "es-ES"];
 export declare const LOCALE_KEYS: {
     readonly WELCOME: "welcome";
     readonly LOGIN: "login";

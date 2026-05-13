@@ -1,5 +1,5 @@
 export const DEFAULT_CURRENCY = 'BRL';
-export const DEFAULT_LOCALE = 'pt-BR';
+export const DEFAULT_LOCALE = 'pt-PT';
 
 export const ITEM_TYPE_CONFIG = {
   base: {

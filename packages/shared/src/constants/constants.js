@@ -20,7 +20,7 @@ export const USER_ROLES = {
     GUEST: 'GUEST',
 };
 // Locales suportados
-export const SUPPORTED_LANGUAGES = ['pt-BR', 'en-US', 'es-ES'];
+export const SUPPORTED_LANGUAGES = ['pt-PT', 'en-US', 'es-ES'];
 // Chaves de localização
 export const LOCALE_KEYS = {
     WELCOME: 'welcome',

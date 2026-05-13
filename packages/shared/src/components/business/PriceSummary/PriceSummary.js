@@ -7,7 +7,7 @@ import { cn } from '../../../utils';
 import { usePriceCalculations } from './hooks/usePriceCalculations';
 // Import components
 import { MinimalView, CompactView, DefaultView, DetailedView, CalculationBreakdown } from './components';
-export const PriceSummary = ({ items, currency = 'BRL', locale = 'pt-BR', variant = 'default', showCalculation = true, showTaxes = true, showDiscounts = true, className, onItemHover, animated = true, highlightTotal = true }) => {
+export const PriceSummary = ({ items, currency = 'BRL', locale = 'pt-PT', variant = 'default', showCalculation = true, showTaxes = true, showDiscounts = true, className, onItemHover, animated = true, highlightTotal = true }) => {
     const [hoveredItem, setHoveredItem] = React.useState(null);
     // Use custom hook for calculations
     const calculations = usePriceCalculations(items, showDiscounts, showTaxes);

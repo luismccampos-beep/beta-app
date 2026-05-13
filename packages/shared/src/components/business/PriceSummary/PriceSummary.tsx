@@ -19,7 +19,7 @@ import {
 export const PriceSummary: React.FC<PriceSummaryProps> = ({
   items,
   currency = 'BRL',
-  locale = 'pt-BR',
+  locale = 'pt-PT',
   variant = 'default',
   showCalculation = true,
   showTaxes = true,

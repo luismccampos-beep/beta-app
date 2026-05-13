@@ -25,7 +25,7 @@ export const USER_ROLES = {
 } as const;
 
 // Locales suportados
-export const SUPPORTED_LANGUAGES = ['pt-BR', 'en-US', 'es-ES'] as const;
+export const SUPPORTED_LANGUAGES = ['pt-PT', 'en-US', 'es-ES'] as const;
 
 // Chaves de localização
 export const LOCALE_KEYS = {

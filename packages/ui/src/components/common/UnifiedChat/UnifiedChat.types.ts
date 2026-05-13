@@ -184,7 +184,7 @@ const AIConfigSchema = z.object({
 
 // ===== Localization Config Schema =====
 const LocalizationConfigSchema = z.object({
-  locale: z.string().default('pt-BR'),
+  locale: z.string().default('pt-PT'),
   customTranslations: z.record(z.string(), z.string()).optional(),
   dateFormat: z.string().default('dd/MM/yyyy HH:mm'),
 });

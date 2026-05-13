@@ -407,7 +407,7 @@ export const BookingDialog: React.FC<BookingDialogProps> = ({
   onSubmit,
   loading = false,
   currency = 'BRL',
-  locale = 'pt-BR',
+  locale = 'pt-PT',
   className,
   showSteps = true,
   customFields

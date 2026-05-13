@@ -136,7 +136,7 @@ model User {
 
   // User Preferences
   preferredCurrency Currency?       @default(BRL) @map("preferred_currency")
-  preferredLanguage String?         @default("pt-BR") @map("preferred_language") @db.VarChar(10)
+  preferredLanguage String?         @default("pt-PT") @map("preferred_language") @db.VarChar(10)
   travelFrequency   TravelFrequency @default(OCCASIONAL) @map("travel_frequency")
   timezone          String?         @db.VarChar(50)
   theme             String?         @db.VarChar(20) // "light", "dark", "system"

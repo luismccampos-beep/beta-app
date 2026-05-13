@@ -1,5 +1,5 @@
 export declare const DEFAULT_CURRENCY = "BRL";
-export declare const DEFAULT_LOCALE = "pt-BR";
+export declare const DEFAULT_LOCALE = "pt-PT";
 export declare const ITEM_TYPE_CONFIG: {
     readonly base: {
         readonly icon: "Receipt";

@@ -1,9 +1,9 @@
 // Define as traduções por idioma
 export const locales = {
-  'pt-BR': {
+  'pt-PT': {
     greeting: 'Olá',
     farewell: 'Adeus',
-    welcome: 'Bem-vindo ao nosso aplicativo',
+    welcome: 'Bem-vindo à nossa aplicação',
   },
   'en-US': {
     greeting: 'Hello',
@@ -18,14 +18,14 @@ export const locales = {
 } as const;
 
 // Função helper para obter a tradução de uma chave
-export const t = (locale: keyof typeof locales, key: keyof (typeof locales)['pt-BR']) => {
+export const t = (locale: keyof typeof locales, key: keyof (typeof locales)['pt-PT']) => {
   // eslint-disable-next-line security/detect-object-injection
   return locales[locale][key] || locales['en-US'][key];
 };
 
 // Exportar tipos para uso em outros arquivos
 export type Locale = keyof typeof locales;
-export type LocaleKey = keyof (typeof locales)['pt-BR'];
+export type LocaleKey = keyof (typeof locales)['pt-PT'];
 
 // Exportar a função t para uso em outros arquivos
 // t is already exported above, no need for additional export
