@@ -15,3 +15,7 @@ export declare const validateWithSchema: <T>(schema: z.ZodSchema<T>, data: unkno
 export declare const nonEmptyString: (message?: string) => z.ZodString;
 export declare const optionalDate: () => z.ZodUnion<[z.ZodOptional<z.ZodDate>, z.ZodLiteral<"">]>;
 export declare const uuidSchema: () => z.ZodString;
+export declare const isValidNIF: (input: string | null | undefined) => boolean;
+export declare const nifSchema: z.ZodString;
+export declare const isValidTaxId: (input: string | null | undefined) => boolean;
+export declare const taxIdSchema: z.ZodString;

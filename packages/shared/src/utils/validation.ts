@@ -102,3 +102,65 @@ export const nonEmptyString = (message = 'This field cannot be empty') =>
 export const optionalDate = () => z.date().optional().or(z.literal(''));
 
 export const uuidSchema = () => z.string().uuid({ message: 'Invalid UUID format' }).trim();
+
+// ============================================
+// Tax ID / NIF validation
+// ============================================
+
+/**
+ * Validates a Portuguese NIF (Número de Identificação Fiscal).
+ *
+ * Rules:
+ *  - 9 digits
+ *  - First digit indicates the entity type (1, 2, 3, 5, 6, 7, 8, 9 are valid)
+ *  - Last digit is a check digit calculated using mod 11 over the first 8 digits
+ *    weighted from 9 down to 2. If the remainder is 0 or 1, the check digit is 0.
+ *
+ * Accepts inputs with spaces or dashes (they are stripped before validation).
+ */
+export const isValidNIF = (input: string | null | undefined): boolean => {
+  if (typeof input !== 'string') return false;
+
+  const nif = input.replace(/[\s-]/g, '');
+  if (!/^\d{9}$/.test(nif)) return false;
+
+  const validFirstDigits = new Set(['1', '2', '3', '5', '6', '7', '8', '9']);
+  if (!validFirstDigits.has(nif[0])) return false;
+
+  let checksum = 0;
+  for (let i = 0; i < 8; i += 1) {
+    checksum += Number(nif[i]) * (9 - i);
+  }
+  const remainder = checksum % 11;
+  const expected = remainder < 2 ? 0 : 11 - remainder;
+  return expected === Number(nif[8]);
+};
+
+/**
+ * Zod schema for a Portuguese NIF. Empty string and undefined pass through
+ * via `.optional()`; chain `.refine` on top if it must be required.
+ */
+export const nifSchema = z
+  .string()
+  .trim()
+  .refine((val) => val === '' || isValidNIF(val), {
+    message: 'Invalid NIF (must be 9 digits with a valid check digit)',
+  });
+
+/**
+ * Loose validation for non-PT tax IDs / VAT numbers (EN/ES/FR fallback).
+ * Only enforces 5-20 alphanumeric characters; jurisdiction-specific rules can
+ * be layered on top per country.
+ */
+export const isValidTaxId = (input: string | null | undefined): boolean => {
+  if (typeof input !== 'string') return false;
+  const trimmed = input.replace(/[\s-]/g, '');
+  return /^[A-Za-z0-9]{5,20}$/.test(trimmed);
+};
+
+export const taxIdSchema = z
+  .string()
+  .trim()
+  .refine((val) => val === '' || isValidTaxId(val), {
+    message: 'Invalid tax identification number',
+  });

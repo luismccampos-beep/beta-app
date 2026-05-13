@@ -8,6 +8,7 @@ export const DOCUMENT_TYPE_LABELS = {
     visa: 'Visa',
     drivers_license: "Driver's License",
     travel_pass: 'Travel Pass',
+    tax_id: 'Tax Identification Number',
 };
 /**
  * Badge type configurations

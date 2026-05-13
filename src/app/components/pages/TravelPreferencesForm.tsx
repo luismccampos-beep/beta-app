@@ -37,6 +37,7 @@ interface TravelPreferences {
   dateOfBirth: string;
   nationality: string;
   passportNumber: string;
+  taxIdNumber: string;
   
   // Travel Preferences
   travelFrequency: string;
@@ -112,6 +113,7 @@ export function TravelPreferencesForm() {
     dateOfBirth: '',
     nationality: '',
     passportNumber: '',
+    taxIdNumber: '',
     travelFrequency: '',
     preferredDestinations: [],
     travelPurpose: [],
@@ -325,6 +327,16 @@ export function TravelPreferencesForm() {
                     placeholder="123456789"
                     value={preferences.passportNumber}
                     onChange={(e) => updatePreference('passportNumber', e.target.value)}
+                  />
+                </div>
+
+                <div className="space-y-2">
+                  <Label htmlFor="taxIdNumber">Tax Identification Number</Label>
+                  <Input
+                    id="taxIdNumber"
+                    placeholder="123456789"
+                    value={preferences.taxIdNumber}
+                    onChange={(e) => updatePreference('taxIdNumber', e.target.value)}
                   />
                 </div>
               </div>

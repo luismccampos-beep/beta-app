@@ -37,3 +37,4 @@ Thumbs.db
 # Prisma (optional local DB dumps)
 *.db
 *.db-journal
+.env*.local

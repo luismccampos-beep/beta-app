@@ -77,4 +77,42 @@ export const nonEmptyString = (message = 'This field cannot be empty') => z
     .refine((val) => val.length > 0, { message });
 export const optionalDate = () => z.date().optional().or(z.literal(''));
 export const uuidSchema = () => z.string().uuid({ message: 'Invalid UUID format' }).trim();
+// ============================================
+// Tax ID / NIF validation
+// ============================================
+export const isValidNIF = (input) => {
+    if (typeof input !== 'string')
+        return false;
+    const nif = input.replace(/[\s-]/g, '');
+    if (!/^\d{9}$/.test(nif))
+        return false;
+    const validFirstDigits = new Set(['1', '2', '3', '5', '6', '7', '8', '9']);
+    if (!validFirstDigits.has(nif[0]))
+        return false;
+    let checksum = 0;
+    for (let i = 0; i < 8; i += 1) {
+        checksum += Number(nif[i]) * (9 - i);
+    }
+    const remainder = checksum % 11;
+    const expected = remainder < 2 ? 0 : 11 - remainder;
+    return expected === Number(nif[8]);
+};
+export const nifSchema = z
+    .string()
+    .trim()
+    .refine((val) => val === '' || isValidNIF(val), {
+    message: 'Invalid NIF (must be 9 digits with a valid check digit)',
+});
+export const isValidTaxId = (input) => {
+    if (typeof input !== 'string')
+        return false;
+    const trimmed = input.replace(/[\s-]/g, '');
+    return /^[A-Za-z0-9]{5,20}$/.test(trimmed);
+};
+export const taxIdSchema = z
+    .string()
+    .trim()
+    .refine((val) => val === '' || isValidTaxId(val), {
+    message: 'Invalid tax identification number',
+});
 //# sourceMappingURL=validation.js.map

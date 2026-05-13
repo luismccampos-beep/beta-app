@@ -1,7 +1,7 @@
 /**
  * Traveler document types for identity verification
  */
-export type DocumentType = 'passport' | 'national_id' | 'visa' | 'drivers_license' | 'travel_pass';
+export type DocumentType = 'passport' | 'national_id' | 'visa' | 'drivers_license' | 'travel_pass' | 'tax_id';
 /**
  * Document status for tracking validity
  */

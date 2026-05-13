@@ -3,7 +3,7 @@
 /**
  * Traveler document types for identity verification
  */
-export type DocumentType = 'passport' | 'national_id' | 'visa' | 'drivers_license' | 'travel_pass';
+export type DocumentType = 'passport' | 'national_id' | 'visa' | 'drivers_license' | 'travel_pass' | 'tax_id';
 
 /**
  * Document status for tracking validity
@@ -181,6 +181,7 @@ export const DOCUMENT_TYPE_LABELS: Record<DocumentType, string> = {
   visa: 'Visa',
   drivers_license: "Driver's License",
   travel_pass: 'Travel Pass',
+  tax_id: 'Tax Identification Number',
 };
 
 /**

@@ -254,6 +254,12 @@ const translations: Translations = {
     es: 'Número de Pasaporte',
     fr: 'Numéro de Passeport'
   },
+  taxIdNumber: {
+    en: 'Tax Identification Number',
+    pt: 'NIF (Número de Identificação Fiscal)',
+    es: 'Número de Identificación Fiscal',
+    fr: "Numéro d'Identification Fiscale"
+  },
   enterpriseGradeSecurity: {
     en: 'Enterprise-Grade Security',
     pt: 'Segurança de Nível Empresarial',
@@ -846,6 +852,7 @@ export interface TravelPreferences {
   dateOfBirth: string;
   nationality: string;
   passportNumber: string;
+  taxIdNumber: string;
   
   // Travel Style
   travelStyles: string[];
@@ -1006,6 +1013,7 @@ export function EnhancedTravelPreferencesForm({ onComplete, onBack }: EnhancedTr
     dateOfBirth: '',
     nationality: '',
     passportNumber: '',
+    taxIdNumber: '',
     travelStyles: [],
     travelFrequency: '',
     preferredDestinations: [],
@@ -1485,6 +1493,19 @@ export function EnhancedTravelPreferencesForm({ onComplete, onBack }: EnhancedTr
                     placeholder="123456789"
                     value={preferences.passportNumber}
                     onChange={(e) => updatePreference('passportNumber', e.target.value)}
+                    className="h-11"
+                  />
+                </div>
+
+                <div className="space-y-2">
+                  <Label htmlFor="taxIdNumber" className="text-sm font-semibold">
+                    {t('taxIdNumber')}
+                  </Label>
+                  <Input
+                    id="taxIdNumber"
+                    placeholder="123456789"
+                    value={preferences.taxIdNumber}
+                    onChange={(e) => updatePreference('taxIdNumber', e.target.value)}
                     className="h-11"
                   />
                 </div>

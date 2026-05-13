@@ -38,7 +38,8 @@
       "national_id": "Cartão de Cidadão",
       "visa": "Visto",
       "drivers_license": "Carta de Condução",
-      "travel_pass": "Passe de Viagem"
+      "travel_pass": "Passe de Viagem",
+      "tax_id": "NIF (Número de Identificação Fiscal)"
     },
     "status": {
       "valid": "Válido",

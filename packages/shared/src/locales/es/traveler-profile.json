@@ -38,7 +38,8 @@
       "national_id": "DNI",
       "visa": "Visado",
       "drivers_license": "Licencia de Conducir",
-      "travel_pass": "Pase de Viaje"
+      "travel_pass": "Pase de Viaje",
+      "tax_id": "Número de Identificación Fiscal"
     },
     "status": {
       "valid": "Válido",

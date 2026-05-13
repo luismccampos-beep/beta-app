@@ -38,7 +38,8 @@
       "national_id": "National ID",
       "visa": "Visa",
       "drivers_license": "Driver's License",
-      "travel_pass": "Travel Pass"
+      "travel_pass": "Travel Pass",
+      "tax_id": "Tax Identification Number"
     },
     "status": {
       "valid": "Valid",

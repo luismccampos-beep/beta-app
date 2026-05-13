@@ -106,6 +106,7 @@ model User {
   phone           String?   @unique @db.VarChar(20)
   birthDate       DateTime? @map("birth_date") @db.Date
   gender          String?   @db.VarChar(20) // "M", "F", "Other"
+  taxId           String?   @map("tax_id") @db.VarChar(50) // NIF / VAT / Tax ID for invoicing
 
   // Address
   address    String? @db.VarChar(255)

@@ -38,7 +38,8 @@
       "national_id": "Pièce d'identité nationale",
       "visa": "Visa",
       "drivers_license": "Permis de conduire",
-      "travel_pass": "Pass de voyage"
+      "travel_pass": "Pass de voyage",
+      "tax_id": "Numéro d'Identification Fiscale"
     },
     "status": {
       "valid": "Valide",
