@@ -7,8 +7,8 @@
   "scripts": {
     "dev": "next dev",
     "postinstall": "prisma generate",
-    "build": "prisma generate && cross-env NODE_ENV=production DISABLE_SSR_FETCH=true next build",
-    "vercel-build": "prisma generate && cross-env NODE_ENV=production DISABLE_SSR_FETCH=true next build",
+    "build": "prisma generate && prisma migrate deploy && cross-env NODE_ENV=production DISABLE_SSR_FETCH=true next build",
+    "vercel-build": "prisma generate && prisma migrate deploy && cross-env NODE_ENV=production DISABLE_SSR_FETCH=true next build",
     "start": "node .next/standalone/server.js",
     "lint": "eslint . --max-warnings 0",
     "type-check": "tsc --noEmit",
