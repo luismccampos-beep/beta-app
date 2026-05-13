@@ -350,6 +350,7 @@ export function AuthPage({ onLoginSuccess, onBackToHome, onNavigateToLegal }: Au
 
     fetch('/api/auth/login', {
       method: 'POST',
+      credentials: 'include',
       headers: { 'content-type': 'application/json' },
       body: JSON.stringify({ email: loginEmail, password: loginPassword }),
     })
@@ -388,6 +389,7 @@ export function AuthPage({ onLoginSuccess, onBackToHome, onNavigateToLegal }: Au
 
     fetch('/api/auth/register', {
       method: 'POST',
+      credentials: 'include',
       headers: { 'content-type': 'application/json' },
       body: JSON.stringify({
         email: registerEmail,

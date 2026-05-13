@@ -2,9 +2,47 @@ import { NextResponse } from 'next/server';
 import { cookies } from 'next/headers';
 import { randomBytes } from 'node:crypto';
 import bcrypt from 'bcryptjs';
+import { Prisma } from '@prisma/client';
 
 import { prisma } from '../../../../lib/prisma';
 import { isNonEmptyString, SESSION_COOKIE_NAME } from '../../../../lib/auth';
+
+function registerErrorResponse(err: unknown): { message: string; status: number } {
+  console.error('[POST /api/auth/register]', err);
+
+  if (err instanceof Prisma.PrismaClientKnownRequestError) {
+    if (err.code === 'P2002') {
+      const fields = err.meta?.target;
+      const target = Array.isArray(fields) ? fields.join(', ') : String(fields ?? '');
+      if (target.includes('email')) {
+        return { message: 'Email already in use', status: 409 };
+      }
+      if (target.includes('phone')) {
+        return { message: 'Phone number already in use', status: 409 };
+      }
+      return { message: 'Some of this data is already registered', status: 409 };
+    }
+  }
+
+  if (err instanceof Prisma.PrismaClientInitializationError) {
+    return {
+      message:
+        'Could not connect to the database. On Vercel, confirm DATABASE_URL and that MySQL allows remote connections.',
+      status: 503,
+    };
+  }
+
+  const msg = err instanceof Error ? err.message : '';
+  if (/Can't reach database server|ECONNREFUSED|ETIMEDOUT|P1001|P1000/i.test(msg)) {
+    return {
+      message:
+        'Could not connect to the database. Check DATABASE_URL and firewall / remote access for your MySQL host.',
+      status: 503,
+    };
+  }
+
+  return { message: 'Registration failed', status: 500 };
+}
 
 type RegisterBody = {
   email?: unknown;
@@ -81,7 +119,8 @@ export async function POST(req: Request) {
 
     return NextResponse.json({ success: true, user });
   } catch (err) {
-    return NextResponse.json({ success: false, message: 'Registration failed' }, { status: 500 });
+    const { message, status } = registerErrorResponse(err);
+    return NextResponse.json({ success: false, message }, { status });
   }
 }
 
