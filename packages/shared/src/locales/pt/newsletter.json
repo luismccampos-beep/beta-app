@@ -1,6 +1,6 @@
 {
   "description": "Receba as nossas últimas ofertas, dicas de viagem e destinos exclusivos diretamente na sua caixa de entrada.",
-  "emailPlaceholder": "Digite o seu endereço de email",
+  "emailPlaceholder": "Introduza o seu endereço de e-mail",
   "error": {
     "invalidTitle": "Erro",
     "invalidDesc": "Email inválido. Tente novamente."

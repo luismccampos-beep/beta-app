@@ -5,7 +5,14 @@ import { UnifiedChat } from '../../../UnifiedChat';
 import { useChatStore } from '../../../store/useChatStore';
 
 vi.mock('next-intl', () => ({
-  useTranslations: () => (key: string) => key,
+  useTranslations: () => (key: string) => {
+    const map: Record<string, string> = {
+      inputPlaceholder: 'Escreva a sua mensagem...',
+      openChat: 'Abrir chat de suporte',
+      supportTitle: 'Suporte AKMLEVA',
+    };
+    return map[key] ?? key;
+  },
 }));
 
 vi.mock('../../../services/ChatApiService', () => ({
@@ -54,7 +61,7 @@ describe('UnifiedChat', () => {
     const bubble = screen.getByRole('button', { name: /Abrir chat de suporte/i });
     fireEvent.click(bubble);
 
-    const input = await screen.findByPlaceholderText('Digite sua mensagem...');
+    const input = await screen.findByPlaceholderText('Escreva a sua mensagem...');
     expect(input).toBeTruthy();
   });
 });

@@ -112,22 +112,22 @@
     ],
     "q1": {
       "title": "Posso mudar de plano a qualquer momento?",
-      "description": "Sim, você pode fazer upgrade ou downgrade do seu plano a qualquer momento. As alterações entram em vigor imediatamente e você será cobrado proporcionalmente."
+      "description": "Sim, pode fazer upgrade ou downgrade do seu plano a qualquer momento. As alterações têm efeito imediato e será cobrado de forma proporcional."
     },
     "q2": {
       "title": "Existe um período de teste gratuito?",
       "description": "Oferecemos um teste gratuito de 14 dias para o plano Premium. Não é necessário cartão de crédito para começar."
     },
     "q3": {
-      "title": "Que métodos de pagamento vocês aceitam?",
+      "title": "Que métodos de pagamento aceitam?",
       "description": "Aceitamos todos os principais cartões de crédito, PayPal, transferências bancárias e outros métodos de pagamento locais dependendo da sua região."
     },
     "q4": {
       "title": "Posso cancelar a qualquer momento?",
-      "description": "Sim, você pode cancelar sua assinatura a qualquer momento. Não há taxas de cancelamento e você manterá acesso aos recursos premium até o final do período de cobrança."
+      "description": "Sim, pode cancelar a sua subscrição a qualquer momento. Não há taxas de cancelamento e mantém acesso às funcionalidades premium até ao fim do período de faturação em curso."
     },
     "q5": {
-      "title": "Como vocês protegem meus dados?",
+      "title": "Como protegem os meus dados?",
       "description": "Levamos a segurança dos dados muito a sério. Usamos criptografia de nível bancário e seguimos as melhores práticas de segurança da indústria.",
       "linkText": "Saiba mais sobre nossa política de privacidade"
     }
@@ -135,7 +135,7 @@
   "free": "Grátis",
   "hero": {
     "title": "Preços Transparentes",
-    "subtitle": "Escolha o plano perfeito para sua jornada de viagem"
+    "subtitle": "Escolha o plano perfeito para a sua jornada de viagem"
   },
   "plans": {
     "mostPopular": "Mais Popular",
@@ -145,9 +145,9 @@
       "name": "Básico",
       "description": "Perfeito para viajantes ocasionais",
       "cta": "Começar Grátis",
-      "feature1": "Busca básica de destinos",
+      "feature1": "Pesquisa básica de destinos",
       "feature2": "Comparação de preços",
-      "feature3": "Suporte por email",
+      "feature3": "Suporte por e-mail",
       "feature4": "Reservas prioritárias",
       "feature4Tooltip": "Disponível apenas nos planos pagos"
     },
@@ -159,7 +159,7 @@
       "feature1": "Tudo do plano Básico",
       "feature2": "Reservas prioritárias",
       "feature3": "Suporte 24/7",
-      "feature3Tooltip": "Chat ao vivo e suporte telefônico",
+      "feature3Tooltip": "Chat ao vivo e suporte telefónico",
       "feature4": "Cancelamento flexível",
       "feature5": "Acesso a ofertas exclusivas",
       "feature6": "Assistente de viagem IA"
@@ -175,7 +175,7 @@
       "feature3": "Relatórios avançados",
       "feature4": "API personalizada",
       "feature5": "Gestor de conta dedicado",
-      "feature5Tooltip": "Suporte personalizado para sua empresa",
+      "feature5Tooltip": "Suporte personalizado para a sua empresa",
       "feature6": "Integração com sistemas corporativos",
       "feature7": "Faturação centralizada"
     }

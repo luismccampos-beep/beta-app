@@ -1,7 +1,7 @@
 {
   "profile": {
     "title": "Seu Perfil",
-    "subtitle": "Gerencie suas informações pessoais e configurações",
+    "subtitle": "Faça a gestão das suas informações pessoais e definições",
     "personalInfo": "Informações Pessoais",
     "updateYourInfo": "Atualize suas informações",
     "form": {
@@ -30,7 +30,7 @@
     "privacy": "Privacidade",
     "admin": {
       "dashboard": "Painel de Admin",
-      "users": "Usuários",
+      "users": "Utilizadores",
       "settings": {
         "title": "Configurações de Admin"
       },
@@ -42,11 +42,11 @@
       "phone_not_verified": "Telefone não verificado"
     },
     "admin_panel": "Painel de Administração",
-    "admin_panel_description": "Acesse o painel de administração para gerenciar o sistema",
+    "admin_panel_description": "Aceda ao painel de administração para gerir o sistema",
     "admin_panel_instruction": "Clique aqui para acessar as funcionalidades administrativas",
     "personal_data": {
       "title": "Dados Pessoais",
-      "description": "Gerencie seus dados pessoais abaixo.",
+      "description": "Faça a gestão dos seus dados pessoais abaixo.",
       "first_name": "Primeiro Nome",
       "last_name": "Sobrenome",
       "email": "E-mail",
@@ -80,14 +80,14 @@
     },
     "payment_methods": {
       "title": "Métodos de Pagamento",
-      "description": "Gerencie seus métodos de pagamento.",
-      "no_payment_methods": "Nenhum método de pagamento cadastrado.",
+      "description": "Faça a gestão dos seus métodos de pagamento.",
+      "no_payment_methods": "Nenhum método de pagamento registado.",
       "add_payment_method": "Adicionar método de pagamento",
       "add_payment_method_button": "Adicionar"
     },
     "privacy_settings": {
       "title": "Configurações de Privacidade",
-      "description": "Gerencie suas preferências de privacidade.",
+      "description": "Faça a gestão das suas preferências de privacidade.",
       "profile_visibility": "Visibilidade do perfil",
       "show_email": "Mostrar e-mail",
       "show_email_description": "Permitir que outros vejam seu e-mail.",

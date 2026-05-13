@@ -149,7 +149,7 @@ export type ConfigTopic = z.infer<typeof TopicSchema>;
 // ===== Content Config Schema =====
 const ContentConfigSchema = z.object({
   welcomeMessage: z.string().default('Olá! Como posso ajudar?'),
-  placeholderText: z.string().default('Digite sua mensagem...'),
+  placeholderText: z.string().default('Escreva a sua mensagem...'),
   quickReplies: z.array(z.string()).default([]),
   topics: z.array(TopicSchema).default([]),
   errorMessages: ErrorMessagesSchema.optional(),

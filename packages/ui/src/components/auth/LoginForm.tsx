@@ -192,7 +192,7 @@ export const LoginForm: React.FC<LoginFormProps> = ({
   className,
   cardClassName,
   title    = 'Entrar na sua conta',
-  subtitle = 'Digite suas credenciais para acessar o AKMLEVA',
+  subtitle = 'Introduza as suas credenciais para aceder ao AKMLEVA',
   requiredRole: _requiredRole,   // reserved for future role-gate logic
   redirectPath: _redirectPath,   // reserved for future redirect logic
   onLoginSuccess,

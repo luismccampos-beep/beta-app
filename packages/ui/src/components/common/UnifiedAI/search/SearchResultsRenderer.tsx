@@ -21,7 +21,7 @@ export function SearchResultsRenderer(props: SearchResultsRendererProps) {
   const { query, results } = props;
 
   if (!query) {
-    return <div className="text-sm text-muted-foreground">Digite um termo para pesquisar.</div>;
+    return <div className="text-sm text-muted-foreground">Introduza um termo para pesquisar.</div>;
   }
 
   if (!results) {

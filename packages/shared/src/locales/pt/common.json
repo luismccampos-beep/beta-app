@@ -62,7 +62,7 @@
     "toggle": "Alternar tema"
   },
   "admin": {
-    "users_description": "Gestão de usuários do sistema",
+    "users_description": "Gestão de utilizadores do sistema",
     "actions": "Ações",
     "edit": "Editar",
     "dashboard": "Painel de Controle",
@@ -75,7 +75,7 @@
       "author": "Autor",
       "select_author": "Selecionar Autor",
       "excerpt": "Resumo",
-      "excerpt_placeholder": "Digite um resumo...",
+      "excerpt_placeholder": "Introduza um resumo...",
       "content": "Conteúdo",
       "required_fields": "Campos Obrigatórios",
       "posts": "Artigos do Blog",
@@ -273,15 +273,15 @@
     "fields": {
       "name": {
         "label": "Nome Completo",
-        "placeholder": "Digite o seu nome completo"
+        "placeholder": "Introduza o seu nome completo"
       },
       "email": {
         "label": "Endereço de Email",
-        "placeholder": "Digite o seu email"
+        "placeholder": "Introduza o seu e-mail"
       },
       "phone": {
         "label": "Número de Telefone",
-        "placeholder": "Digite o seu número de telefone"
+        "placeholder": "Introduza o seu número de telefone"
       },
       "travelType": {
         "label": "Tipo de Viagem",
@@ -297,11 +297,11 @@
       },
       "subject": {
         "label": "Assunto",
-        "placeholder": "Digite o assunto da sua mensagem"
+        "placeholder": "Introduza o assunto da sua mensagem"
       },
       "message": {
         "label": "Mensagem",
-        "placeholder": "Digite a sua mensagem aqui..."
+        "placeholder": "Introduza a sua mensagem aqui..."
       },
       "consent": {
         "label": "Aceito a ",
@@ -333,7 +333,7 @@
     "title": "Mantenha-se Atualizado",
     "description": "Receba as nossas últimas ofertas, dicas de viagem e destinos exclusivos diretamente no seu email.",
     "emailLabel": "Endereço de Email",
-    "emailPlaceholder": "Digite o seu email",
+    "emailPlaceholder": "Introduza o seu e-mail",
     "stayUpdated": "Mantenha-se atualizado",
     "dealsAndNews": "Receba as últimas ofertas de viagem e notícias.",
     "successMessage": "Obrigado por subscrever! Verifique o seu email para confirmar.",
@@ -400,7 +400,7 @@
     "payment": "Pagamento",
     "privacy": "Privacidade",
     "title": "Seu Perfil",
-    "description": "Gerencie as informações da sua conta aqui.",
+    "description": "Faça a gestão das informações da sua conta aqui.",
     "edit": "Editar",
     "account_menu": "Menu da Conta",
     "profile": "Perfil",
@@ -569,7 +569,7 @@
       "message": "Mensagem (opcional)"
     },
     "placeholders": {
-      "destination": "Para onde você quer viajar?",
+      "destination": "Para onde quer viajar?",
       "travelers": "Selecione o número de viajantes",
       "travelType": "Selecione o tipo de viagem",
       "budget": "Selecione o orçamento",

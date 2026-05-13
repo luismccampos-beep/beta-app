@@ -193,7 +193,7 @@ function EmptyState() {
   return (
     <div className="h-full flex flex-col items-center justify-center text-center p-4 text-muted-foreground space-y-2 opacity-60">
       <MessageCircle className="w-12 h-12" />
-      <p className="text-sm">Como posso ajudar você hoje?</p>
+      <p className="text-sm">Como podemos ajudar hoje?</p>
     </div>
   );
 }

@@ -25,7 +25,7 @@ export function SearchInterface() {
           onChange={(event) => setQuery(event.target.value)}
         />
         <Button type="submit" loading={isLoading}>
-          Buscar
+          Procurar
         </Button>
         <Button type="button" variant="ghost" onClick={clear}>
           Limpar

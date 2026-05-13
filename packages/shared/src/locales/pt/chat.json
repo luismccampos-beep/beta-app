@@ -18,7 +18,7 @@
   "notificationsDisabled": "Notificações desativadas para esta sessão",
   "online": "Online",
   "openChat": "Abrir chat de suporte",
-  "placeholder": "Digite sua mensagem...",
+  "placeholder": "Escreva a sua mensagem...",
   "reconnecting": "Reconectando...",
   "selectTopic": "Selecione um tópico",
   "sendMessage": "Enviar Mensagem",
@@ -28,6 +28,6 @@
   "title": "Chat de Suporte",
   "typing": "Digitando...",
   "unsupportedFileType": "Tipo de arquivo não suportado",
-  "welcome": "Olá! 👋 Bem-vindo(a) ao suporte da AKMLEVA. Como posso ajudar você hoje?",
+  "welcome": "Olá! 👋 Bem-vindo(a) ao suporte da AKMLEVA. Como podemos ajudar hoje?",
   "welcomeMessage": "Olá! Como podemos ajudar?"
 }

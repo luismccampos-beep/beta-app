@@ -14,11 +14,11 @@
   "currency": {
     "free": "Grátis (pode haver taxas bancárias)"
   },
-  "description": "Configure e gerencie os métodos de pagamento da sua plataforma.",
+  "description": "Configure e faça a gestão dos métodos de pagamento da sua plataforma.",
   "dialog": {
     "addTitle": "Adicionar Novo Método de Pagamento",
     "editTitle": "Editar Método de Pagamento",
-    "addDescription": "Configure um novo método para seus clientes.",
+    "addDescription": "Configure um novo método para os seus clientes.",
     "editDescription": "Modifique os detalhes de",
     "fields": {
       "methodName": "Nome do Método",
@@ -39,7 +39,7 @@
   "messages": {
     "methodsLoaded": "Métodos de Pagamento Carregados",
     "loadError": "Erro ao Carregar Dados",
-    "loadErrorDescription": "Não foi possível buscar os métodos de pagamento.",
+    "loadErrorDescription": "Não foi possível obter os métodos de pagamento.",
     "validationError": "Erro de Validação",
     "nameRequired": "O nome do método de pagamento é obrigatório.",
     "updateSuccess": "Sucesso",
@@ -72,8 +72,8 @@
   },
   "table": {
     "title": "Todos os Métodos de Pagamento",
-    "description": "Visualize e gerencie as configurações de cada método.",
-    "searchPlaceholder": "Buscar por nome ou provedor...",
+    "description": "Veja e faça a gestão das definições de cada método.",
+    "searchPlaceholder": "Procurar por nome ou fornecedor...",
     "tabs": {
       "all": "Todos",
       "active": "Ativos",

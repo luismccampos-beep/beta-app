@@ -62,7 +62,7 @@ const translations: AuthTranslations = {
   },
   loginDesc: {
     en: 'Sign in to access your personalized travel dashboard',
-    pt: 'Entre para acessar seu painel de viagens personalizado',
+    pt: 'Entre para aceder ao seu painel de viagens personalizado',
     es: 'Inicia sesión para acceder a tu panel de viajes personalizado',
     fr: 'Connectez-vous pour accéder à votre tableau de bord de voyage personnalisé'
   },
@@ -74,7 +74,7 @@ const translations: AuthTranslations = {
   },
   registerDesc: {
     en: 'Join thousands of travelers using AI-powered travel planning',
-    pt: 'Junte-se a milhares de viajantes usando planejamento de viagens com IA',
+    pt: 'Junte-se a milhares de viajantes que usam planeamento de viagens com IA',
     es: 'Únete a miles de viajeros usando planificación de viajes con IA',
     fr: 'Rejoignez des milliers de voyageurs utilisant la planification de voyage avec IA'
   },
@@ -86,7 +86,7 @@ const translations: AuthTranslations = {
   },
   register: {
     en: 'Register',
-    pt: 'Registrar',
+    pt: 'Registar',
     es: 'Registrarse',
     fr: 'S\'inscrire'
   },
@@ -98,31 +98,31 @@ const translations: AuthTranslations = {
   },
   emailPlaceholder: {
     en: 'your.email@example.com',
-    pt: 'seu.email@exemplo.com',
+    pt: 'o.seu.email@exemplo.com',
     es: 'tu.email@ejemplo.com',
     fr: 'votre.email@exemple.com'
   },
   password: {
     en: 'Password',
-    pt: 'Senha',
+    pt: 'Palavra-passe',
     es: 'Contraseña',
     fr: 'Mot de Passe'
   },
   passwordPlaceholder: {
     en: 'Enter your password',
-    pt: 'Digite sua senha',
+    pt: 'Introduza a sua palavra-passe',
     es: 'Ingresa tu contraseña',
     fr: 'Entrez votre mot de passe'
   },
   confirmPassword: {
     en: 'Confirm Password',
-    pt: 'Confirmar Senha',
+    pt: 'Confirmar palavra-passe',
     es: 'Confirmar Contraseña',
     fr: 'Confirmer le Mot de Passe'
   },
   confirmPasswordPlaceholder: {
     en: 'Re-enter your password',
-    pt: 'Digite sua senha novamente',
+    pt: 'Introduza novamente a sua palavra-passe',
     es: 'Vuelve a ingresar tu contraseña',
     fr: 'Ressaisissez votre mot de passe'
   },
@@ -158,7 +158,7 @@ const translations: AuthTranslations = {
   },
   forgotPassword: {
     en: 'Forgot password?',
-    pt: 'Esqueceu a senha?',
+    pt: 'Esqueceu-se da palavra-passe?',
     es: '¿Olvidaste tu contraseña?',
     fr: 'Mot de passe oublié?'
   },
@@ -170,7 +170,7 @@ const translations: AuthTranslations = {
   },
   signUp: {
     en: 'Sign Up',
-    pt: 'Cadastrar',
+    pt: 'Registar',
     es: 'Registrarse',
     fr: 'S\'inscrire'
   },
@@ -224,25 +224,25 @@ const translations: AuthTranslations = {
   },
   emailRequired: {
     en: 'Please enter your email',
-    pt: 'Por favor, insira seu email',
+    pt: 'Por favor, introduza o seu e-mail',
     es: 'Por favor, ingresa tu correo electrónico',
     fr: 'Veuillez entrer votre email'
   },
   passwordRequired: {
     en: 'Please enter your password',
-    pt: 'Por favor, insira sua senha',
+    pt: 'Por favor, introduza a sua palavra-passe',
     es: 'Por favor, ingresa tu contraseña',
     fr: 'Veuillez entrer votre mot de passe'
   },
   passwordsMatch: {
     en: 'Passwords do not match',
-    pt: 'As senhas não coincidem',
+    pt: 'As palavras-passe não coincidem',
     es: 'Las contraseñas no coinciden',
     fr: 'Les mots de passe ne correspondent pas'
   },
   termsRequired: {
     en: 'You must accept the terms and conditions',
-    pt: 'Você deve aceitar os termos e condições',
+    pt: 'Tem de aceitar os termos e condições',
     es: 'Debes aceptar los términos y condiciones',
     fr: 'Vous devez accepter les termes et conditions'
   },
@@ -254,7 +254,7 @@ const translations: AuthTranslations = {
   },
   encryptedConnection: {
     en: '256-bit encrypted connection',
-    pt: 'Conexão criptografada de 256 bits',
+    pt: 'Ligação encriptada de 256 bits',
     es: 'Conexión cifrada de 256 bits',
     fr: 'Connexion cryptée 256 bits'
   },

@@ -272,9 +272,9 @@ export const CustomerSupport: React.FC = () => {
 
   const faqItems: FAQItem[] = [
     {
-      question: 'Como posso cancelar minha viagem?',
+      question: 'Como posso cancelar a minha viagem?',
       answer:
-        'Você pode cancelar sua viagem até 48h antes da data de partida. Entre em contato conosco para mais detalhes.',
+        'Pode cancelar a sua viagem até 48 h antes da data de partida. Contacte-nos para mais detalhes.',
     },
     {
       question: 'Quais formas de pagamento aceitam?',
@@ -298,7 +298,7 @@ export const CustomerSupport: React.FC = () => {
         <div className='text-center mb-12'>
           <h1 className='text-4xl font-bold text-gray-900 mb-4'>Central de Atendimento</h1>
           <p className='text-xl text-gray-600'>
-            Estamos aqui para ajudar você a planejar sua viagem
+            Estamos aqui para o ajudar a planear a sua viagem
           </p>
         </div>
 

@@ -33,20 +33,20 @@
     "linkedin": "LinkedIn",
     "message": {
       "label": "Mensagem (Opcional)",
-      "placeholder": "Conte-nos por que você seria perfeito para esta vaga..."
+      "placeholder": "Explique porque seria uma boa escolha para esta vaga..."
     },
     "cv": {
       "label": "Currículo (PDF)",
       "upload": "Upload CV",
-      "drag": "Arraste seu currículo ou clique para selecionar",
-      "format": "Apenas arquivos PDF (máx. 5MB)"
+      "drag": "Arraste o seu currículo ou clique para selecionar",
+      "format": "Apenas ficheiros PDF (máx. 5MB)"
     },
-    "error": "Preencha todos os campos obrigatórios e anexe seu currículo.",
+    "error": "Preencha todos os campos obrigatórios e anexe o seu currículo.",
     "submitting": "Enviando...",
     "submit": "Enviar Candidatura",
     "success": {
       "title": "Candidatura Enviada!",
-      "message": "Entraremos em contato em breve."
+      "message": "Entraremos em contacto em breve."
     }
   },
   "job": {
@@ -71,7 +71,7 @@
   "departments": {
     "empty": {
       "title": "Nenhum departamento ativo no momento",
-      "subtitle": "Futuros departamentos e novas vagas abertas aparecerão aqui. Fique de olho em nossas atualizações!"
+      "subtitle": "Futuros departamentos e novas vagas abertas aparecerão aqui. Esteja atento às nossas atualizações!"
     }
   },
   "open_positions": "Vagas em Destaque",

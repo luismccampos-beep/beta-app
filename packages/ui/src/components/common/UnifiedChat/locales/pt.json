@@ -1,7 +1,7 @@
 {
-  "welcome": "Olá! 👋 Bem-vindo(a) ao suporte da AKMLEVA. Como posso ajudar você hoje?",
+  "welcome": "Olá! 👋 Bem-vindo(a) ao suporte da AKMLEVA. Como podemos ajudar hoje?",
   "openChat": "Abrir chat de suporte",
-  "talkToUs": "Fale Conosco!",
+  "talkToUs": "Fale Connosco!",
   "selectTopic": "Selecione um tópico",
   "expandTopics": "Expandir tópicos",
   "collapseTopics": "Minimizar tópicos",
@@ -14,8 +14,8 @@
   "confirmClose": "Confirmar fechamento",
   "cancelClose": "Cancelar fechamento",
   "closeChat": "Fechar Chat",
-  "inputPlaceholder": "Digite sua mensagem...",
+  "inputPlaceholder": "Escreva a sua mensagem...",
   "messageInput": "Caixa de mensagem do chat",
-  "attachFile": "Anexar arquivo",
+  "attachFile": "Anexar ficheiro",
   "sendMessage": "Enviar mensagem"
 }

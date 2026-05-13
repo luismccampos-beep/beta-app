@@ -21,11 +21,11 @@
   },
   "documents": {
     "title": "Documentos de Viagem",
-    "subtitle": "Mantenha seus documentos atualizados para reservas mais rápidas",
+    "subtitle": "Mantenha os seus documentos atualizados para reservas mais rápidas",
     "add": "Adicionar",
     "addTitle": "Adicionar Documento",
-    "addDescription": "Adicione seus documentos de viagem para uma experiência mais rápida.",
-    "noDocuments": "Nenhum documento cadastrado. Adicione seus documentos de viagem para agilizar suas reservas.",
+    "addDescription": "Adicione os seus documentos de viagem para uma experiência mais rápida.",
+    "noDocuments": "Nenhum documento registado. Adicione os seus documentos de viagem para agilizar as suas reservas.",
     "fields": {
       "type": "Tipo de Documento",
       "number": "Número do Documento",
@@ -55,11 +55,11 @@
   },
   "emergencyContact": {
     "title": "Contato de Emergência",
-    "subtitle": "Informações de contato para situações de emergência durante viagens",
+    "subtitle": "Informações de contacto para situações de emergência durante viagens",
     "add": "Adicionar",
-    "addTitle": "Adicionar Contato de Emergência",
-    "addDescription": "Este contato será usado em caso de emergência durante suas viagens.",
-    "noContacts": "Nenhum contato de emergência cadastrado. Adicione alguém de confiança para situações de emergência.",
+    "addTitle": "Adicionar Contacto de Emergência",
+    "addDescription": "Este contacto será usado em caso de emergência durante as suas viagens.",
+    "noContacts": "Nenhum contacto de emergência registado. Adicione alguém de confiança para situações de emergência.",
     "fields": {
       "name": "Nome Completo",
       "relationship": "Relacionamento",
@@ -87,8 +87,8 @@
     "milesTraveled": "Milhas percorridas",
     "reviews": "Avaliações",
     "averageRating": "Avaliação média",
-    "upcomingTrips_one": "Você tem {{count}} viagem agendada!",
-    "upcomingTrips_other": "Você tem {{count}} viagens agendadas!",
+    "upcomingTrips_one": "Tem {{count}} viagem agendada!",
+    "upcomingTrips_other": "Tem {{count}} viagens agendadas!",
     "favoriteDestination": "Destino favorito"
   },
   "badges": {

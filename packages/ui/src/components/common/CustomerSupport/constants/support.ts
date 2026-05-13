@@ -42,7 +42,7 @@ const RESPONSE_RULES = [
   {
     patterns: ['reserva', 'reservar', 'booking'],
     response:
-      'Para ajudar com sua reserva, por favor, me informe:\n1. Número da reserva\n2. E-mail usado no cadastro\n3. Data da reserva',
+      'Para ajudar com a sua reserva, indique, por favor:\n1. Número da reserva\n2. E-mail usado no registo\n3. Data da reserva',
     priority: 1,
     followUp: {
       question: 'Precisa de ajuda com algo específico na reserva?',
@@ -51,7 +51,7 @@ const RESPONSE_RULES = [
   },
   {
     patterns: ['pagamento', 'pagar', 'payment', 'mb way', 'cartão'],
-    response: `Aceitamos várias formas de pagamento:\n💳 Cartão de crédito (Visa, Mastercard)\n🏦 Transferência bancária\n📱 MB Way\n\nComo posso ajudar com seu pagamento?`,
+    response: `Aceitamos várias formas de pagamento:\n💳 Cartão de crédito (Visa, Mastercard)\n🏦 Transferência bancária\n📱 MB Way\n\nComo podemos ajudar com o seu pagamento?`,
     priority: 1,
     followUp: {
       question: 'Selecione uma opção:',
@@ -66,7 +66,7 @@ const RESPONSE_RULES = [
   {
     patterns: ['status', 'situação', 'pedido', 'order', 'entrega'],
     response:
-      'Para verificar o status do seu pedido, preciso de:\n🔢 Número do pedido\n📧 E-mail de cadastro\n\nPosso ajudar com isso?',
+      'Para verificar o estado do seu pedido, preciso de:\n🔢 Número do pedido\n📧 E-mail usado no registo\n\nPosso ajudar com isto?',
     priority: 1,
     followUp: {
       question: 'Qual é a natureza da sua consulta?',
@@ -75,23 +75,23 @@ const RESPONSE_RULES = [
   },
   {
     patterns: ['contato', 'atendente', 'humano', 'falar', 'whatsapp', 'telefone'],
-    response: `Claro! Você pode entrar em contato por:\n📱 WhatsApp: ${WHATSAPP_NUMBER}\n📞 Telefone: ${PHONE_NUMBER}\n⏰ Horário: Seg-Sex 9h-18h\n\nDeseja que eu conecte você com um atendente agora?`,
+    response: `Claro! Pode contactar-nos por:\n📱 WhatsApp: ${WHATSAPP_NUMBER}\n📞 Telefone: ${PHONE_NUMBER}\n⏰ Horário: seg–sex, 9h–18h\n\nDeseja falar com um atendente agora?`,
     priority: 1,
   },
   {
     patterns: [/^ajuda$/, /^socorro$/, /^suporte$/],
-    response: 'Estou aqui para ajudar! Por favor, me diga como posso assistir você hoje.',
+    response: 'Estou aqui para ajudar! Diga como podemos ajudar hoje.',
     priority: 2,
   },
   {
     patterns: [/^olá$/, /^oi$/, /^bom dia$/, /^boa tarde$/, /^boa noite$/],
-    response: 'Olá! 😊 Como posso ajudar você hoje?',
+    response: 'Olá! 😊 Como podemos ajudar hoje?',
     priority: 2,
   },
   {
     patterns: [/.+/],
     response:
-      'Obrigado por entrar em contato! Por favor, escolha uma opção abaixo ou me diga como posso ajudar:',
+      'Obrigado por contactar-nos! Escolha uma opção abaixo ou diga como podemos ajudar:',
     priority: 0,
   },
 ];
@@ -114,7 +114,7 @@ export const getBotResponse = (
 
     if (optionMatch) {
       return {
-        response: `Entendido! Você selecionou "${optionMatch}". Vou te ajudar com isso.`,
+        response: `Perfeito! Selecionou "${optionMatch}". Vou ajudá-lo com isso.`,
         followUp: null,
       };
     }

@@ -316,7 +316,7 @@ const translations: Translations = {
   },
   preferenceSavedDesc: {
     en: 'AI has analyzed your profile and generated personalized recommendations.',
-    pt: 'A IA analisou seu perfil e gerou recomendações personalizadas.',
+    pt: 'A IA analisou o seu perfil e gerou recomendações personalizadas.',
     es: 'La IA ha analizado su perfil y generado recomendaciones personalizadas.',
     fr: 'L\'IA a analysé votre profil et généré des recommandations personnalisées.'
   },
@@ -394,7 +394,7 @@ const translations: Translations = {
   },
   howOftenTravel: {
     en: 'How often do you travel?',
-    pt: 'Com que frequência você viaja?',
+    pt: 'Com que frequência viaja?',
     es: '¿Con qué frecuencia viajas?',
     fr: 'À quelle fréquence voyagez-vous?'
   },
@@ -442,7 +442,7 @@ const translations: Translations = {
   },
   budgetPriorityQuestion: {
     en: 'How do you prioritize your budget?',
-    pt: 'Como você prioriza seu orçamento?',
+    pt: 'Como prioriza o seu orçamento?',
     es: '¿Cómo priorizas tu presupuesto?',
     fr: 'Comment priorisez-vous votre budget?'
   },
@@ -484,7 +484,7 @@ const translations: Translations = {
   },
   selectSeatPreference: {
     en: 'Select your seat preference',
-    pt: 'Selecione sua preferência de assento',
+    pt: 'Selecione a sua preferência de assento',
     es: 'Selecciona tu preferencia de asiento',
     fr: 'Sélectionnez votre préférence de siège'
   },
@@ -562,7 +562,7 @@ const translations: Translations = {
   },
   selectPreferredPace: {
     en: 'Select your preferred pace',
-    pt: 'Selecione seu ritmo preferido',
+    pt: 'Selecione o seu ritmo preferido',
     es: 'Selecciona tu ritmo preferido',
     fr: 'Sélectionnez votre rythme préféré'
   },
@@ -574,7 +574,7 @@ const translations: Translations = {
   },
   languagesYouSpeak: {
     en: 'Languages You Speak',
-    pt: 'Idiomas que Você Fala',
+    pt: 'Idiomas que fala',
     es: 'Idiomas que Hablas',
     fr: 'Langues que Vous Parlez'
   },
@@ -628,7 +628,7 @@ const translations: Translations = {
   },
   helpEnvironmentallyResponsible: {
     en: 'Help us make your travel more environmentally responsible',
-    pt: 'Ajude-nos a tornar sua viagem mais ecologicamente responsável',
+    pt: 'Ajude-nos a tornar a sua viagem mais ecologicamente responsável',
     es: 'Ayúdanos a hacer tu viaje más responsable con el medio ambiente',
     fr: 'Aidez-nous à rendre votre voyage plus respectueux de l\'environnement'
   },
@@ -664,7 +664,7 @@ const translations: Translations = {
   },
   customizeAIExperience: {
     en: 'Customize your AI experience and privacy preferences',
-    pt: 'Personalize sua experiência de IA e preferências de privacidade',
+    pt: 'Personalize a sua experiência de IA e preferências de privacidade',
     es: 'Personaliza tu experiencia de IA y preferencias de privacidad',
     fr: 'Personnalisez votre expérience d\'IA et vos préférences de confidentialité'
   },

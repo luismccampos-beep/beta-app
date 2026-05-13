@@ -4,19 +4,25 @@ import { describe, it, expect, vi } from 'vitest';
 import { MessageInput } from '../../../components/MessageInput/MessageInput';
 
 vi.mock('next-intl', () => ({
-  useTranslations: () => (key: string) => key,
+  useTranslations: () => (key: string) => {
+    const map: Record<string, string> = {
+      inputPlaceholder: 'Escreva a sua mensagem...',
+      sendMessage: 'Enviar mensagem',
+    };
+    return map[key] ?? key;
+  },
 }));
 
 describe('MessageInput', () => {
   it('renders input and button', () => {
     render(<MessageInput onSendMessage={vi.fn()} isSending={false} />);
-    expect(screen.getByPlaceholderText('Digite sua mensagem...')).toBeInTheDocument();
+    expect(screen.getByPlaceholderText('Escreva a sua mensagem...')).toBeInTheDocument();
     expect(screen.getByRole('button', { name: 'Enviar mensagem' })).toBeInTheDocument();
   });
 
   it('updates value on change', () => {
     render(<MessageInput onSendMessage={vi.fn()} isSending={false} />);
-    const input = screen.getByPlaceholderText('Digite sua mensagem...');
+    const input = screen.getByPlaceholderText('Escreva a sua mensagem...');
     fireEvent.change(input, { target: { value: 'Hello' } });
     expect(input).toHaveValue('Hello');
   });
@@ -25,7 +31,7 @@ describe('MessageInput', () => {
     const handleSend = vi.fn();
     render(<MessageInput onSendMessage={handleSend} isSending={false} />);
 
-    const input = screen.getByPlaceholderText('Digite sua mensagem...');
+    const input = screen.getByPlaceholderText('Escreva a sua mensagem...');
     fireEvent.change(input, { target: { value: 'Hello' } });
 
     const button = screen.getByRole('button', { name: 'Enviar mensagem' });
@@ -39,7 +45,7 @@ describe('MessageInput', () => {
     const handleSend = vi.fn();
     render(<MessageInput onSendMessage={handleSend} isSending={false} />);
 
-    const input = screen.getByPlaceholderText('Digite sua mensagem...');
+    const input = screen.getByPlaceholderText('Escreva a sua mensagem...');
     fireEvent.change(input, { target: { value: 'Hello' } });
     fireEvent.keyDown(input, { key: 'Enter', code: 'Enter', charCode: 13 });
 
@@ -58,7 +64,7 @@ describe('MessageInput', () => {
 
   it('shows autocomplete when typing /', () => {
     render(<MessageInput onSendMessage={vi.fn()} isSending={false} />);
-    const input = screen.getByPlaceholderText('Digite sua mensagem...');
+    const input = screen.getByPlaceholderText('Escreva a sua mensagem...');
 
     fireEvent.change(input, { target: { value: '/' } });
     expect(screen.getByText('/help')).toBeInTheDocument();

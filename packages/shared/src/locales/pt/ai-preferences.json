@@ -66,7 +66,7 @@
     "integrations": {
       "title": "Integrações",
       "description": "Configure integrações com serviços externos",
-      "enableRealTimeData": "Habilitar dados em tempo real",
+      "enableRealTimeData": "Ativar dados em tempo real",
       "enableWeatherIntegration": "Integração com clima",
       "enableCurrencyConversion": "Conversão de moeda automática"
     },
@@ -352,7 +352,7 @@
   "errorSaving": "Erro ao salvar preferências",
   "advanced": {
     "title": "Configurações Avançadas",
-    "description": "Gerencie configurações de IA, privacidade e notificações",
+    "description": "Faça a gestão das definições de IA, privacidade e notificações",
     "comingSoon": "Em breve",
     "recommendations": {
       "title": "Recomendações IA",
@@ -362,7 +362,7 @@
     },
     "dataSharing": {
       "title": "Compartilhamento de Dados",
-      "subtitle": "Gerencie sua privacidade e uso de dados",
+      "subtitle": "Faça a gestão da sua privacidade e do uso de dados",
       "generalLabel": "Ativar compartilhamento geral",
       "personalizedLabel": "Recomendações personalizadas",
       "analyticsLabel": "Permitir uso em Analytics",
@@ -513,7 +513,7 @@
     },
     "features": {
       "title": "Recursos Incluídos",
-      "description": "Que informações adicionais você gostaria de receber?",
+      "description": "Que informações adicionais gostaria de receber?",
       "includeLocalTips": "Incluir dicas locais",
       "includeBudgetBreakdown": "Incluir detalhamento de orçamento",
       "includeAlternatives": "Incluir alternativas"
@@ -713,7 +713,7 @@
     }
   },
   "preferencesReset": "Preferências resetadas para os valores padrão",
-  "preferencesSaved": "Preferências salvas com sucesso!",
+  "preferencesSaved": "Preferências guardadas com sucesso!",
   "preferencesUpdated": "Preferências atualizadas!",
   "changesAreSavedAutomatically": "As alterações são guardadas automaticamente.",
   "helpFooter": {
@@ -1118,7 +1118,7 @@
     },
     "activities": {
       "title": "Atividades Preferidas",
-      "description": "Que tipo de atividades você mais gosta?",
+      "description": "Que tipo de atividades gosta mais?",
       "addActivity": "Adicionar Atividade",
       "popularActivities": "Atividades Populares",
       "selectedLabel": "Atividades Selecionadas",
@@ -1126,7 +1126,7 @@
       "availableLabel": "Atividades Disponíveis",
       "limitReached": "Limite atingido",
       "searchPlaceholder": "Pesquisar atividades...",
-      "limitAlert": "Você só pode selecionar até {max} atividades",
+      "limitAlert": "Só pode selecionar até {max} atividades",
       "alreadySelected": "{activity} já selecionada",
       "selectActivity": "Selecionar {activity}",
       "removeActivity": "Remover {activity}"
@@ -1163,7 +1163,7 @@
     "personalization": "Personalização",
     "personalizationDesc": "Suas preferências estão bem configuradas para seu padrão de uso",
     "achievement": "Conquista",
-    "achievementDesc": "Parabéns! Você é um usuário ativo da plataforma",
+    "achievementDesc": "Parabéns! É um utilizador ativo da plataforma",
     "monthlyUsageDescription": "Evolução do seu uso da IA ao longo dos últimos meses",
     "monthlyGrowth": "Crescimento Mensal",
     "favoriteFeaturesDescription": "Suas funcionalidades favoritas da plataforma"
@@ -1192,7 +1192,7 @@
       "completeSetup": "Concluir Configuração"
     },
     "auth": {
-      "saveTitle": "Salve suas Preferências",
+      "saveTitle": "Guarde as Suas Preferências",
       "saveDescription": "Inicie sessão para guardar as suas definições permanentemente e sincronizar entre dispositivos.",
       "loginButton": "Entrar ou Registar"
     }

@@ -84,8 +84,8 @@
   },
   "search": {
     "title": "Pesquisar Hotéis",
-    "placeholder": "Para onde você vai?",
-    "button": "Buscar hotéis",
+    "placeholder": "Para onde vai?",
+    "button": "Procurar hotéis",
     "results": "Resultados da pesquisa",
     "searching": "A pesquisar hotéis...",
     "searchHotels": "Pesquisar hotéis",

@@ -3,9 +3,9 @@
     "title": "Atividades",
     "subtitle": "Explore uma variedade de atividades para a sua viagem.",
     "searchPlaceholder": "Filtrar por destino (ex: Lisboa, Porto)",
-    "searchButton": "Buscar",
+    "searchButton": "Procurar",
     "noActivitiesFound": "Nenhuma atividade encontrada.",
-    "errorFetching": "Erro ao buscar atividades.",
+    "errorFetching": "Erro ao obter atividades.",
     "viewOnTripAdvisor": "Ver no TripAdvisor"
   },
   "categories": {

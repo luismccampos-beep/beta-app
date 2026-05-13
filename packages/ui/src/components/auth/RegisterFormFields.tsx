@@ -230,7 +230,7 @@ export const RegisterFormFields: React.FC<RegisterFormFieldsProps> = ({
 
     <PasswordField
       id='password'
-      label={translations?.passwordLabel || 'Senha'}
+      label={translations?.passwordLabel || 'Palavra-passe'}
       placeholder={translations?.passwordPlaceholder || 'Mínimo 6 caracteres'}
       value={formData.password}
       onChange={onTextChange}
@@ -242,8 +242,8 @@ export const RegisterFormFields: React.FC<RegisterFormFieldsProps> = ({
 
     <PasswordField
       id='confirmPassword'
-      label={translations?.confirmPasswordLabel || 'Confirmar senha'}
-      placeholder={translations?.confirmPasswordPlaceholder || 'Digite a senha novamente'}
+      label={translations?.confirmPasswordLabel || 'Confirmar palavra-passe'}
+      placeholder={translations?.confirmPasswordPlaceholder || 'Introduza novamente a palavra-passe'}
       value={formData.confirmPassword}
       onChange={onTextChange}
       showPassword={showConfirmPassword}
