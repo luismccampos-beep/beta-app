@@ -1103,6 +1103,8 @@
     "fullNamePlaceholder": "Juan García",
     "phoneNumber": "Número de Teléfono",
     "phonePlaceholder": "+34 612 345 678",
+    "dateOfBirth": "Fecha de nacimiento",
+    "dateOfBirthOptional": "Opcional. Se usa para rellenar tu perfil de viaje.",
     "rememberMe": "Recuérdame",
     "forgotPassword": "¿Olvidaste tu contraseña?",
     "signIn": "Iniciar Sesión",

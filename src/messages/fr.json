@@ -1103,6 +1103,8 @@
     "fullNamePlaceholder": "Jean Dupont",
     "phoneNumber": "Numéro de Téléphone",
     "phonePlaceholder": "+33 6 12 34 56 78",
+    "dateOfBirth": "Date de naissance",
+    "dateOfBirthOptional": "Facultatif. Sert à préremplir votre profil voyage.",
     "rememberMe": "Se souvenir de moi",
     "forgotPassword": "Mot de passe oublié?",
     "signIn": "Se Connecter",

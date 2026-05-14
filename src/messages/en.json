@@ -1109,6 +1109,8 @@
     "fullNamePlaceholder": "John Smith",
     "phoneNumber": "Phone Number",
     "phonePlaceholder": "+1 (555) 123-4567",
+    "dateOfBirth": "Date of birth",
+    "dateOfBirthOptional": "Optional. Used to pre-fill your travel profile.",
     "rememberMe": "Remember me",
     "forgotPassword": "Forgot password?",
     "signIn": "Sign In",

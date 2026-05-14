@@ -15,7 +15,19 @@ export async function GET() {
       expiresAt: { gt: new Date() },
     },
     select: {
-      user: { select: { id: true, email: true, name: true, role: true } },
+      user: {
+        select: {
+          id: true,
+          email: true,
+          name: true,
+          role: true,
+          phone: true,
+          birthDate: true,
+          address: true,
+          country: true,
+          taxId: true,
+        },
+      },
       expiresAt: true,
     },
   });

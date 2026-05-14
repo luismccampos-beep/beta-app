@@ -1109,6 +1109,8 @@
     "fullNamePlaceholder": "João Silva",
     "phoneNumber": "Número de Telefone",
     "phonePlaceholder": "+351 912 345 678",
+    "dateOfBirth": "Data de nascimento",
+    "dateOfBirthOptional": "Opcional. Serve para pré-preencher o seu perfil de viagem.",
     "rememberMe": "Lembrar-me",
     "forgotPassword": "Esqueceu-se da palavra-passe?",
     "signIn": "Entrar",

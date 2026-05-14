@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import { Button } from '../ui/button';
 import { Input } from '../ui/input';
 import { Label } from '../ui/label';
@@ -319,9 +319,18 @@ export function AuthPage({ onLoginSuccess, onBackToHome, onNavigateToLegal }: Au
   const [registerName, setRegisterName] = useState('');
   const [registerEmail, setRegisterEmail] = useState('');
   const [registerPhone, setRegisterPhone] = useState('');
+  const [registerBirthDate, setRegisterBirthDate] = useState('');
   const [registerPassword, setRegisterPassword] = useState('');
   const [registerConfirmPassword, setRegisterConfirmPassword] = useState('');
   const [agreeToTerms, setAgreeToTerms] = useState(false);
+
+  const maxBirthDate = useMemo(() => {
+    const d = new Date();
+    const y = d.getFullYear();
+    const m = String(d.getMonth() + 1).padStart(2, '0');
+    const day = String(d.getDate()).padStart(2, '0');
+    return `${y}-${m}-${day}`;
+  }, []);
 
   useEffect(() => {
     if (isDark) {
@@ -396,6 +405,7 @@ export function AuthPage({ onLoginSuccess, onBackToHome, onNavigateToLegal }: Au
         password: registerPassword,
         name: registerName,
         phone: registerPhone,
+        ...(registerBirthDate.trim() ? { birthDate: registerBirthDate.trim() } : {}),
         agreeToTerms,
       }),
     })
@@ -691,6 +701,21 @@ export function AuthPage({ onLoginSuccess, onBackToHome, onNavigateToLegal }: Au
                         className="pl-10 h-12 dark:bg-gray-700 dark:border-gray-600 dark:text-white"
                       />
                     </div>
+                  </div>
+
+                  <div className="space-y-2">
+                    <Label htmlFor="register-birth-date" className="dark:text-gray-200">
+                      {t('dateOfBirth')}
+                    </Label>
+                    <Input
+                      id="register-birth-date"
+                      type="date"
+                      max={maxBirthDate}
+                      value={registerBirthDate}
+                      onChange={(e) => setRegisterBirthDate(e.target.value)}
+                      className="h-12 dark:bg-gray-700 dark:border-gray-600 dark:text-white"
+                    />
+                    <p className="text-xs text-gray-500 dark:text-gray-400">{t('dateOfBirthOptional')}</p>
                   </div>
 
                   <div className="space-y-2">

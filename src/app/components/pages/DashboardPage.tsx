@@ -4,6 +4,11 @@ import { Card, CardContent, CardHeader, CardTitle } from '../ui/card';
 import { Badge } from '../ui/badge';
 import { useLocale, useTranslations } from 'next-intl';
 import {
+  mergeDashboardProfileFromSources,
+  profileFieldsFromMeUser,
+  type MeUserProfile,
+} from '../../../lib/user/account-profile';
+import {
   ArrowLeft,
   Languages,
   Moon,
@@ -74,19 +79,19 @@ export function DashboardPage({ onBack, onNewBooking, initialTab }: DashboardPag
   const [activeTab, setActiveTab] = useState<TabType>(initialTab ?? 'bookings');
   const [isEditingProfile, setIsEditingProfile] = useState(false);
   const [savedPreferences, setSavedPreferences] = useState<SavedPreferences | null>(null);
-  const [isLoadingPreferences, setIsLoadingPreferences] = useState(false);
+  const [isLoadingPreferences, setIsLoadingPreferences] = useState(true);
   const [hbAccommodationLabels, setHbAccommodationLabels] = useState<Record<string, string>>({});
 
   const [profileData, setProfileData] = useState({
-    name: 'João Silva',
-    email: 'joao.silva@email.com',
-    phone: '+351 912 345 678',
-    dateOfBirth: '1985-06-15',
-    nationality: 'Portuguese',
-    passportNumber: 'N1234567',
+    name: '',
+    email: '',
+    phone: '',
+    dateOfBirth: '',
+    nationality: '',
+    passportNumber: '',
     nationalIdNumber: '',
     taxIdNumber: '',
-    address: 'Rua da Liberdade, 123, Santa Maria da Feira'
+    address: '',
   });
 
   useEffect(() => {
@@ -115,20 +120,44 @@ export function DashboardPage({ onBack, onNewBooking, initialTab }: DashboardPag
   }, [activeTab, locale]);
 
   useEffect(() => {
+    let cancelled = false;
     setIsLoadingPreferences(true);
-    fetch('/api/user/preferences', { method: 'GET' })
-      .then(async (res) => {
+    Promise.all([
+      fetch('/api/auth/me', { credentials: 'include' }).then((r) => r.json()),
+      fetch('/api/user/preferences', { credentials: 'include' }).then(async (res) => {
         const data = (await res.json().catch(() => ({}))) as {
           authenticated?: boolean;
           preference?: { aiSettings?: unknown };
         };
         if (!res.ok || data.authenticated === false) return null;
-        const prefs = data.preference?.aiSettings;
-        return prefs && typeof prefs === 'object' ? (prefs as SavedPreferences) : null;
+        return data.preference?.aiSettings ?? null;
+      }),
+    ])
+      .then(([me, aiSettings]) => {
+        if (cancelled) return;
+        const user =
+          me &&
+          typeof me === 'object' &&
+          (me as { authenticated?: boolean }).authenticated === true &&
+          (me as { user?: unknown }).user &&
+          typeof (me as { user: unknown }).user === 'object'
+            ? ((me as { user: MeUserProfile }).user)
+            : null;
+        const account = profileFieldsFromMeUser(user);
+        setProfileData(mergeDashboardProfileFromSources(account, aiSettings));
+        setSavedPreferences(
+          aiSettings && typeof aiSettings === 'object' ? (aiSettings as SavedPreferences) : null,
+        );
       })
-      .then((prefs) => setSavedPreferences(prefs))
-      .catch(() => setSavedPreferences(null))
-      .finally(() => setIsLoadingPreferences(false));
+      .catch(() => {
+        if (!cancelled) setSavedPreferences(null);
+      })
+      .finally(() => {
+        if (!cancelled) setIsLoadingPreferences(false);
+      });
+    return () => {
+      cancelled = true;
+    };
   }, []);
 
   const setLocale = (nextLocale: string) => {

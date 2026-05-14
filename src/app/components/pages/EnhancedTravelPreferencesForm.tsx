@@ -53,6 +53,12 @@ import {
 } from 'lucide-react';
 import { toast } from 'sonner';
 
+import {
+  applyAccountToTravelPreferences,
+  mergeSavedTravelPreferences,
+  type MeUserProfile,
+} from '../../../lib/user/account-profile';
+
 type Language = 'en' | 'pt' | 'es' | 'fr';
 
 interface Translations {
@@ -909,6 +915,46 @@ export interface TravelPreferences {
   privacyLevel: string;
 }
 
+export const DEFAULT_TRAVEL_PREFERENCES: TravelPreferences = {
+  fullName: '',
+  email: '',
+  phone: '',
+  dateOfBirth: '',
+  nationality: '',
+  passportNumber: '',
+  nationalIdNumber: '',
+  taxIdNumber: '',
+  travelStyles: [],
+  travelFrequency: '',
+  preferredDestinations: [],
+  travelPurpose: [],
+  budgetRange: [5000, 15000],
+  currency: 'USD',
+  budgetPriority: 'balanced',
+  accommodationType: [],
+  cabinClass: '',
+  seatPreference: '',
+  mealPreference: '',
+  loyaltyPrograms: [],
+  hotelChain: [],
+  roomType: '',
+  amenities: [],
+  activityTypes: [],
+  pacePreference: 'moderate',
+  experienceTypes: [],
+  languages: [],
+  sustainabilityLevel: 'medium',
+  ecoPreferences: [],
+  carbonOffset: false,
+  dietaryRestrictions: [],
+  accessibility: [],
+  medicalConditions: '',
+  aiRecommendations: true,
+  dataSharing: false,
+  notifications: ['email'],
+  privacyLevel: 'standard',
+};
+
 const currencies = [
   { code: 'USD', symbol: '$', name: 'US Dollar', flag: '🇺🇸' },
   { code: 'EUR', symbol: '€', name: 'Euro', flag: '🇪🇺' },
@@ -1013,45 +1059,42 @@ export function EnhancedTravelPreferencesForm({ onComplete, onBack }: EnhancedTr
     router.push('/dashboard');
   }, [onBack, router]);
 
-  const [preferences, setPreferences] = useState<TravelPreferences>({
-    fullName: '',
-    email: '',
-    phone: '',
-    dateOfBirth: '',
-    nationality: '',
-    passportNumber: '',
-    nationalIdNumber: '',
-    taxIdNumber: '',
-    travelStyles: [],
-    travelFrequency: '',
-    preferredDestinations: [],
-    travelPurpose: [],
-    budgetRange: [5000, 15000],
-    currency: 'USD',
-    budgetPriority: 'balanced',
-    accommodationType: [],
-    cabinClass: '',
-    seatPreference: '',
-    mealPreference: '',
-    loyaltyPrograms: [],
-    hotelChain: [],
-    roomType: '',
-    amenities: [],
-    activityTypes: [],
-    pacePreference: 'moderate',
-    experienceTypes: [],
-    languages: [],
-    sustainabilityLevel: 'medium',
-    ecoPreferences: [],
-    carbonOffset: false,
-    dietaryRestrictions: [],
-    accessibility: [],
-    medicalConditions: '',
-    aiRecommendations: true,
-    dataSharing: false,
-    notifications: ['email'],
-    privacyLevel: 'standard',
-  });
+  const [preferences, setPreferences] = useState<TravelPreferences>(() => ({
+    ...DEFAULT_TRAVEL_PREFERENCES,
+  }));
+
+  useEffect(() => {
+    let cancelled = false;
+    Promise.all([
+      fetch('/api/auth/me', { credentials: 'include' }).then((r) => r.json()),
+      fetch('/api/user/preferences', { credentials: 'include' }).then(async (res) => {
+        const data = (await res.json().catch(() => ({}))) as {
+          authenticated?: boolean;
+          preference?: { aiSettings?: unknown };
+        };
+        if (!res.ok || data.authenticated === false) return null;
+        return data.preference?.aiSettings ?? null;
+      }),
+    ])
+      .then(([me, aiSettings]) => {
+        if (cancelled) return;
+        const user =
+          me &&
+          typeof me === 'object' &&
+          (me as { authenticated?: boolean }).authenticated === true &&
+          (me as { user?: unknown }).user &&
+          typeof (me as { user: unknown }).user === 'object'
+            ? ((me as { user: MeUserProfile }).user)
+            : null;
+        const merged = mergeSavedTravelPreferences(DEFAULT_TRAVEL_PREFERENCES, aiSettings);
+        setPreferences(applyAccountToTravelPreferences(merged, user));
+      })
+      .catch(() => {});
+
+    return () => {
+      cancelled = true;
+    };
+  }, []);
 
   const [travelCatalog, setTravelCatalog] = useState<TravelCatalogResponse | null>(null);
   const [travelCatalogLoading, setTravelCatalogLoading] = useState(true);

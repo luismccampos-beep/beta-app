@@ -49,8 +49,21 @@ type RegisterBody = {
   password?: unknown;
   name?: unknown;
   phone?: unknown;
+  /** Optional `YYYY-MM-DD` (stored as date-only on the user). */
+  birthDate?: unknown;
   agreeToTerms?: unknown;
 };
+
+function parseOptionalBirthDate(value: unknown): Date | undefined {
+  if (typeof value !== 'string') return undefined;
+  const s = value.trim();
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(s)) return undefined;
+  const [y, m, d] = s.split('-').map((x) => Number(x));
+  if (!y || m < 1 || m > 12 || d < 1 || d > 31) return undefined;
+  const dt = new Date(Date.UTC(y, m - 1, d));
+  if (Number.isNaN(dt.getTime())) return undefined;
+  return dt;
+}
 
 export async function POST(req: Request) {
   const body = (await req.json().catch(() => ({}))) as RegisterBody;
@@ -80,12 +93,15 @@ export async function POST(req: Request) {
       return NextResponse.json({ success: false, message: 'Email already in use' }, { status: 409 });
     }
 
+    const birthDate = parseOptionalBirthDate(body.birthDate);
+
     const user = await prisma.user.create({
       data: {
         email,
         password: passwordHash,
         name: isNonEmptyString(body.name) ? body.name.trim() : null,
         phone: isNonEmptyString(body.phone) ? body.phone.trim() : null,
+        birthDate,
         termsAccepted: true,
         acceptedTermsDate: new Date(),
       },
