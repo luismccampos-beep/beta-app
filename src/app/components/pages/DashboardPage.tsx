@@ -84,6 +84,7 @@ export function DashboardPage({ onBack, onNewBooking, initialTab }: DashboardPag
     dateOfBirth: '1985-06-15',
     nationality: 'Portuguese',
     passportNumber: 'N1234567',
+    nationalIdNumber: '',
     taxIdNumber: '',
     address: 'Rua da Liberdade, 123, Santa Maria da Feira'
   });
@@ -784,6 +785,22 @@ export function DashboardPage({ onBack, onNewBooking, initialTab }: DashboardPag
                           type="text"
                           value={profileData.passportNumber}
                           onChange={(e) => setProfileData({ ...profileData, passportNumber: e.target.value })}
+                          disabled={!isEditingProfile}
+                          className="flex-1 px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white disabled:bg-gray-100 dark:disabled:bg-gray-800 disabled:text-gray-600 dark:disabled:text-gray-400"
+                        />
+                      </div>
+                    </div>
+
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                        {t('nationalIdNumber')}
+                      </label>
+                      <div className="flex items-center gap-2">
+                        <CreditCard className="w-5 h-5 text-gray-400" />
+                        <input
+                          type="text"
+                          value={profileData.nationalIdNumber}
+                          onChange={(e) => setProfileData({ ...profileData, nationalIdNumber: e.target.value })}
                           disabled={!isEditingProfile}
                           className="flex-1 px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white disabled:bg-gray-100 dark:disabled:bg-gray-800 disabled:text-gray-600 dark:disabled:text-gray-400"
                         />

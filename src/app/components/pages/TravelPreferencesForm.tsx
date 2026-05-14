@@ -37,6 +37,7 @@ interface TravelPreferences {
   dateOfBirth: string;
   nationality: string;
   passportNumber: string;
+  nationalIdNumber: string;
   taxIdNumber: string;
   
   // Travel Preferences
@@ -113,6 +114,7 @@ export function TravelPreferencesForm() {
     dateOfBirth: '',
     nationality: '',
     passportNumber: '',
+    nationalIdNumber: '',
     taxIdNumber: '',
     travelFrequency: '',
     preferredDestinations: [],
@@ -327,6 +329,16 @@ export function TravelPreferencesForm() {
                     placeholder="123456789"
                     value={preferences.passportNumber}
                     onChange={(e) => updatePreference('passportNumber', e.target.value)}
+                  />
+                </div>
+
+                <div className="space-y-2">
+                  <Label htmlFor="nationalIdNumber">National ID / citizen card number</Label>
+                  <Input
+                    id="nationalIdNumber"
+                    placeholder="123456789"
+                    value={preferences.nationalIdNumber}
+                    onChange={(e) => updatePreference('nationalIdNumber', e.target.value)}
                   />
                 </div>
 
