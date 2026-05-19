@@ -1016,6 +1016,20 @@
     "catalogLoyaltyEmpty": "No loyalty programmes were returned from Duffel.",
     "catalogHotelbedsMissing": "Hotelbeds is not configured (set HOTELBEDS_API_KEY and HOTELBEDS_API_SECRET). Hotel types, chains, and facilities cannot load.",
     "catalogHotelbedsEmpty": "No hotel reference data was returned from Hotelbeds.",
+    "catalogSiloahMissing": "Could not load cruise lines from Siloah Travel. Check your network connection.",
+    "catalogSiloahEmpty": "No cruise brands were returned from Siloah.",
+    "cruisePreferences": "Cruises",
+    "cruiseIncludeToggle": "Include a cruise experience",
+    "cruiseIncludeHint": "Search luxury cruises via Siloah Travel (no API key required).",
+    "cruiseCollapsedHint": "Enable to add cruise preferences and search cruise-only results.",
+    "cruiseRegions": "Preferred regions",
+    "cruiseTier": "Brand tier",
+    "cruiseTierAny": "Any tier",
+    "cruiseShipType": "Ship type",
+    "cruiseShipTypeAny": "Any type",
+    "cruiseDuration": "Duration",
+    "cruiseBrands": "Preferred cruise lines",
+    "cruiseBrandsNote": "Luxury brands loaded live from Siloah Travel.",
     "catalogPartialBanner": "Some travel providers failed to load. Preferences you can still edit are shown below.",
     "travelPurpose": "Travel Purpose",
     "budgetRangePerTrip": "Budget Range per Trip",
@@ -1088,7 +1102,233 @@
     "basedOnProfile": "Based on your profile, we recommend destinations like",
     "activitiesInCategory": "activities in the",
     "accommodationsInRange": "category, and accommodations in the",
-    "range": "range"
+    "range": "range",
+    "options": {
+      "travelFrequency": {
+        "weekly": "🚀 Weekly traveler (50+ trips/year)",
+        "monthly": "✈️ Monthly traveler (12–50 trips/year)",
+        "quarterly": "🗓️ Quarterly traveler (4–12 trips/year)",
+        "yearly": "🏖️ Occasional traveler (1–3 trips/year)"
+      },
+      "travelPurpose": {
+        "business": "Business",
+        "leisure": "Leisure",
+        "conference": "Conference / events",
+        "family": "Family visit"
+      },
+      "budgetPriority": {
+        "maximum-savings": "💰 Maximum savings — best deals only",
+        "value": "⚖️ Value-focused — balance of quality and price",
+        "balanced": "🎯 Balanced — quality matters, price flexible",
+        "premium": "⭐ Premium — high quality, price less important",
+        "luxury": "💎 Luxury — best available, budget unlimited"
+      },
+      "cabinClass": {
+        "economy": "Economy",
+        "premium_economy": "Premium economy",
+        "business": "Business",
+        "first": "First"
+      },
+      "seatPreference": {
+        "window": "🪟 Window — enjoy the view",
+        "aisle": "🚶 Aisle — easy access",
+        "middle": "📦 Middle — don't mind",
+        "any": "🎲 No preference"
+      },
+      "mealPreference": {
+        "regular": "🍽️ Regular",
+        "vegetarian": "🥗 Vegetarian",
+        "vegan": "🌱 Vegan",
+        "halal": "🕌 Halal",
+        "kosher": "✡️ Kosher",
+        "gluten-free": "🌾 Gluten-free",
+        "low-sodium": "🧂 Low sodium"
+      },
+      "roomType": {
+        "single": "🛏️ Single room",
+        "double": "🛏️🛏️ Double room",
+        "twin": "👥 Twin room",
+        "suite": "🏰 Suite",
+        "executive": "💼 Executive suite",
+        "presidential": "👑 Presidential suite"
+      },
+      "pacePreference": {
+        "relaxed": "🧘 Relaxed — minimal activities, maximum relaxation",
+        "moderate": "⚖️ Moderate — balanced activities and downtime",
+        "active": "🏃 Active — packed schedule, multiple activities",
+        "adventure": "🚀 Adventure — high-energy, thrill-seeking"
+      },
+      "sustainabilityLevel": {
+        "low": "Low — not a priority",
+        "medium": "Medium — important but flexible",
+        "high": "High — essential consideration",
+        "essential": "Essential — top priority"
+      },
+      "privacyLevel": {
+        "minimal": "Minimal — maximum data usage for best experience",
+        "standard": "Standard — balanced privacy and functionality",
+        "high": "High — enhanced privacy, limited data sharing",
+        "maximum": "Maximum — strict privacy, minimal data collection"
+      },
+      "activityTypes": {
+        "adventure": "Adventure sports",
+        "cultural": "Cultural tours",
+        "beach": "Beach relaxation",
+        "city": "City exploration",
+        "hiking": "Mountain hiking",
+        "wildlife": "Wildlife safari",
+        "food": "Food & wine",
+        "shopping": "Shopping",
+        "historical": "Historical sites",
+        "photography": "Photography",
+        "water": "Water sports",
+        "nightlife": "Nightlife"
+      },
+      "experienceTypes": {
+        "guidedTours": "Guided tours",
+        "selfGuided": "Self-guided",
+        "groupActivities": "Group activities",
+        "privateExperiences": "Private experiences",
+        "localImmersion": "Local immersion",
+        "luxuryExperiences": "Luxury experiences",
+        "budgetFriendly": "Budget-friendly",
+        "offTheBeatenPath": "Off the beaten path"
+      },
+      "languages": {
+        "english": "🇺🇸 English",
+        "spanish": "🇪🇸 Spanish",
+        "french": "🇫🇷 French",
+        "german": "🇩🇪 German",
+        "italian": "🇮🇹 Italian",
+        "portuguese": "🇵🇹 Portuguese",
+        "mandarin": "🇨🇳 Mandarin",
+        "japanese": "🇯🇵 Japanese",
+        "korean": "🇰🇷 Korean",
+        "russian": "🇷🇺 Russian",
+        "arabic": "🇦🇪 Arabic",
+        "hindi": "🇮🇳 Hindi"
+      },
+      "dietary": {
+        "vegetarian": "Vegetarian",
+        "vegan": "Vegan",
+        "halal": "Halal",
+        "kosher": "Kosher",
+        "glutenFree": "Gluten-free",
+        "lactoseFree": "Lactose-free",
+        "nutAllergy": "Nut allergy",
+        "seafoodAllergy": "Seafood allergy",
+        "dairyFree": "Dairy-free",
+        "lowCarb": "Low carb",
+        "diabetic": "Diabetic",
+        "noRestrictions": "No restrictions"
+      },
+      "accessibility": {
+        "wheelchairAccess": "Wheelchair access",
+        "visualAssistance": "Visual assistance",
+        "hearingAssistance": "Hearing assistance",
+        "mobilitySupport": "Mobility support",
+        "serviceAnimal": "Service animal",
+        "specialEquipment": "Special equipment"
+      },
+      "ecoPreferences": {
+        "carbonOffsetting": "Carbon offsetting",
+        "ecoCertifiedHotels": "Eco-certified hotels",
+        "publicTransportation": "Public transportation",
+        "localBusinesses": "Local businesses",
+        "plasticFree": "Plastic-free",
+        "sustainableTours": "Sustainable tours"
+      },
+      "notifications": {
+        "email": "Email notifications",
+        "sms": "SMS alerts",
+        "push": "Push notifications",
+        "whatsapp": "WhatsApp messages"
+      },
+      "notificationDesc": {
+        "email": "Booking confirmations, itinerary updates",
+        "sms": "Flight changes, urgent travel updates",
+        "push": "Real-time travel alerts",
+        "whatsapp": "Travel documents and reminders"
+      },
+      "currencies": {
+        "USD": "US Dollar",
+        "EUR": "Euro",
+        "GBP": "British Pound",
+        "BRL": "Brazilian Real",
+        "JPY": "Japanese Yen",
+        "CNY": "Chinese Yuan",
+        "AUD": "Australian Dollar",
+        "CAD": "Canadian Dollar",
+        "CHF": "Swiss Franc",
+        "INR": "Indian Rupee",
+        "SGD": "Singapore Dollar",
+        "MXN": "Mexican Peso"
+      },
+      "currencyFlags": {
+        "USD": "🇺🇸",
+        "EUR": "🇪🇺",
+        "GBP": "🇬🇧",
+        "BRL": "🇧🇷",
+        "JPY": "🇯🇵",
+        "CNY": "🇨🇳",
+        "AUD": "🇦🇺",
+        "CAD": "🇨🇦",
+        "CHF": "🇨🇭",
+        "INR": "🇮🇳",
+        "SGD": "🇸🇬",
+        "MXN": "🇲🇽"
+      },
+      "aiBadges": {
+        "predictiveAnalytics": "Predictive analytics",
+        "machineLearning": "Machine learning",
+        "realTimeOptimization": "Real-time optimization"
+      },
+      "securityBadges": {
+        "soc2": "SOC 2 Type II",
+        "iso27001": "ISO 27001",
+        "gdpr": "GDPR compliant",
+        "ccpa": "CCPA compliant",
+        "pci": "PCI DSS"
+      },
+      "uiLanguages": {
+        "en": "🇺🇸 EN",
+        "pt": "🇵🇹 PT",
+        "es": "🇪🇸 ES",
+        "fr": "🇫🇷 FR"
+      },
+      "cruise": {
+        "destinations": {
+          "Mediterranean": "Mediterranean",
+          "Caribbean": "Caribbean",
+          "Alaska": "Alaska",
+          "Antarctica": "Antarctica",
+          "Europe": "Europe",
+          "Asia": "Asia",
+          "Oceania": "Oceania",
+          "NorthAmerica": "North America",
+          "SouthAmerica": "South America",
+          "Africa": "Africa",
+          "Transatlantic": "Transatlantic",
+          "Baltic": "Baltic",
+          "NorthernEurope": "Northern Europe"
+        },
+        "tier": {
+          "ultra_luxury": "Ultra luxury",
+          "luxury": "Luxury",
+          "popular": "Popular"
+        },
+        "shipType": {
+          "ocean": "Ocean",
+          "river": "River",
+          "expedition": "Expedition"
+        },
+        "duration": {
+          "short": { "label": "Short", "days": "3–5 nights" },
+          "medium": { "label": "Medium", "days": "6–9 nights" },
+          "long": { "label": "Extended", "days": "10+ nights" }
+        }
+      }
+    }
   },
   "auth": {
     "hero": "Discover Your Perfect Trip with AI",
@@ -1154,6 +1394,11 @@
     "modeBoth": "Flights + hotels",
     "modeFlights": "Flights only",
     "modeHotels": "Hotels only",
+    "modeCruises": "Cruises only (Siloah)",
+    "noCruiseResults": "No cruise voyages returned. Try another region, dates, or budget.",
+    "viewOnSiloah": "View on Siloah",
+    "viewOnWikivoyage": "Wikivoyage guide",
+    "loadingCruiseResults": "Loading luxury cruises from Siloah Travel…",
     "nightsStay": "Nights (stay)",
     "returnDate": "Return flight date",
     "returnDateHint": "Must be after departure. If omitted, departure + nights is used on the server.",
@@ -1167,6 +1412,7 @@
     "duration": "Duration",
     "sustainableOnly": "Sustainable Only",
     "aiMatch": "AI Match",
+    "matchExplain": "Match probability from your preferences (activities, budget, style)",
     "perPerson": "per person",
     "days": "days",
     "reviews": "reviews",

@@ -140,7 +140,11 @@ Thumbs.db
 
 # ML specific
 models/trained/*.pkl
+app/models/trained/*.pkl
 models/trained/*.joblib
+app/models/trained/*.joblib
+app/data/wikivoyage_destinations.csv
+app/data/wikivoyage_destinations.jsonl
 data/raw/
 data/processed/
 logs/

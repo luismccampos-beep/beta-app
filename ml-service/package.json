@@ -5,7 +5,7 @@
   "main": "app/main.py",
   "scripts": {
     "start": "python app/main.py",
-    "dev": "uvicorn app.main:app --host 0.0.0.0 --port 3002 --reload",
+    "dev": "py -3 -m uvicorn app.main:app --host 0.0.0.0 --port 3002 --reload",
     "test": "pytest tests/ -v",
     "test:unit": "pytest tests/ -v -m unit",
     "test:integration": "pytest tests/ -v -m integration",
@@ -17,7 +17,9 @@
     "install:dev": "pip install -e .[dev]",
     "install:all": "pip install -e .[all]",
     "docker:build": "docker build -t akmleva/ml-service .",
-    "docker:run": "docker run -p 3002:3002 akmleva/ml-service"
+    "docker:run": "docker run -p 3002:3002 akmleva/ml-service",
+    "train:destinations": "python -m app.pipelines.train_destination_embeddings_runner",
+    "export:from-web": "node ../scripts/export-wikivoyage-ml-features.mjs"
   },
   "keywords": [
     "travel",

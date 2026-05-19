@@ -16,6 +16,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '../ui/tabs';
 import {
   Plane,
   Hotel,
+  Ship,
   UtensilsCrossed,
   Palmtree,
   Wallet,
@@ -58,6 +59,30 @@ import {
   mergeSavedTravelPreferences,
   type MeUserProfile,
 } from '../../../lib/user/account-profile';
+import {
+  ACCESSIBILITY_IDS,
+  ACTIVITY_TYPE_IDS,
+  BUDGET_PRIORITY_IDS,
+  CABIN_CLASS_IDS,
+  CURRENCY_CODES,
+  DIETARY_IDS,
+  ECO_PREFERENCE_IDS,
+  EXPERIENCE_TYPE_IDS,
+  LANGUAGE_IDS,
+  MEAL_PREFERENCE_IDS,
+  NOTIFICATION_IDS,
+  PACE_PREFERENCE_IDS,
+  PRIVACY_LEVEL_IDS,
+  ROOM_TYPE_IDS,
+  SEAT_PREFERENCE_IDS,
+  SUSTAINABILITY_LEVEL_IDS,
+  TRAVEL_FREQUENCY_IDS,
+  CRUISE_DESTINATION_IDS,
+  CRUISE_DURATION_IDS,
+  CRUISE_SHIP_TYPE_IDS,
+  CRUISE_TIER_IDS,
+  normalizePreferenceOptionIds,
+} from '../../../lib/i18n/preferences-form-options';
 
 type Language = 'en' | 'pt' | 'es' | 'fr';
 
@@ -889,6 +914,14 @@ export interface TravelPreferences {
   hotelChain: string[];
   roomType: string;
   amenities: string[];
+
+  // Cruise (Siloah)
+  cruiseEnabled: boolean;
+  cruiseDestinations: string[];
+  cruiseBrandNames: string[];
+  cruiseTier: string;
+  cruiseShipType: string;
+  cruiseDuration: string;
   
   // Activities
   activityTypes: string[];
@@ -939,6 +972,12 @@ export const DEFAULT_TRAVEL_PREFERENCES: TravelPreferences = {
   hotelChain: [],
   roomType: '',
   amenities: [],
+  cruiseEnabled: false,
+  cruiseDestinations: [],
+  cruiseBrandNames: [],
+  cruiseTier: '',
+  cruiseShipType: '',
+  cruiseDuration: '',
   activityTypes: [],
   pacePreference: 'moderate',
   experienceTypes: [],
@@ -955,20 +994,20 @@ export const DEFAULT_TRAVEL_PREFERENCES: TravelPreferences = {
   privacyLevel: 'standard',
 };
 
-const currencies = [
-  { code: 'USD', symbol: '$', name: 'US Dollar', flag: '🇺🇸' },
-  { code: 'EUR', symbol: '€', name: 'Euro', flag: '🇪🇺' },
-  { code: 'GBP', symbol: '£', name: 'British Pound', flag: '🇬🇧' },
-  { code: 'BRL', symbol: 'R$', name: 'Brazilian Real', flag: '🇧🇷' },
-  { code: 'JPY', symbol: '¥', name: 'Japanese Yen', flag: '🇯🇵' },
-  { code: 'CNY', symbol: '¥', name: 'Chinese Yuan', flag: '🇨🇳' },
-  { code: 'AUD', symbol: '$', name: 'Australian Dollar', flag: '🇦🇺' },
-  { code: 'CAD', symbol: '$', name: 'Canadian Dollar', flag: '🇨🇦' },
-  { code: 'CHF', symbol: 'Fr', name: 'Swiss Franc', flag: '🇨🇭' },
-  { code: 'INR', symbol: '₹', name: 'Indian Rupee', flag: '🇮🇳' },
-  { code: 'SGD', symbol: '$', name: 'Singapore Dollar', flag: '🇸🇬' },
-  { code: 'MXN', symbol: '$', name: 'Mexican Peso', flag: '🇲🇽' },
-];
+const CURRENCY_SYMBOLS: Record<string, string> = {
+  USD: '$',
+  EUR: '€',
+  GBP: '£',
+  BRL: 'R$',
+  JPY: '¥',
+  CNY: '¥',
+  AUD: '$',
+  CAD: '$',
+  CHF: 'Fr',
+  INR: '₹',
+  SGD: '$',
+  MXN: '$',
+};
 
 const getTravelStylesData = (t: (key: string) => string) => [
   { id: 'luxury', label: t('luxury'), icon: Star, color: 'from-yellow-500 to-amber-600' },
@@ -981,35 +1020,45 @@ const getTravelStylesData = (t: (key: string) => string) => [
   { id: 'foodie', label: t('foodie'), icon: Utensils, color: 'from-orange-600 to-amber-600' },
 ];
 
-const activityTypesData = [
-  { id: 'adventure', label: 'Adventure Sports', icon: Mountain },
-  { id: 'cultural', label: 'Cultural Tours', icon: Camera },
-  { id: 'beach', label: 'Beach Relaxation', icon: Waves },
-  { id: 'city', label: 'City Exploration', icon: MapPin },
-  { id: 'hiking', label: 'Mountain Hiking', icon: Mountain },
-  { id: 'wildlife', label: 'Wildlife Safari', icon: Palmtree },
-  { id: 'food', label: 'Food & Wine', icon: Utensils },
-  { id: 'shopping', label: 'Shopping', icon: ShoppingBag },
-  { id: 'historical', label: 'Historical Sites', icon: Flag },
-  { id: 'photography', label: 'Photography', icon: Camera },
-  { id: 'water', label: 'Water Sports', icon: Waves },
-  { id: 'nightlife', label: 'Nightlife', icon: Moon },
-];
+const ACTIVITY_TYPE_ICONS: Record<string, typeof Mountain> = {
+  adventure: Mountain,
+  cultural: Camera,
+  beach: Waves,
+  city: MapPin,
+  hiking: Mountain,
+  wildlife: Palmtree,
+  food: Utensils,
+  shopping: ShoppingBag,
+  historical: Flag,
+  photography: Camera,
+  water: Waves,
+  nightlife: Moon,
+};
 
-const languagesData = [
-  '🇺🇸 English', '🇪🇸 Spanish', '🇫🇷 French', '🇩🇪 German', 
-  '🇮🇹 Italian', '🇵🇹 Portuguese', '🇨🇳 Mandarin', '🇯🇵 Japanese',
-  '🇰🇷 Korean', '🇷🇺 Russian', '🇦🇪 Arabic', '🇮🇳 Hindi'
+const getActivityTypesData = (t: (key: string) => string) =>
+  ACTIVITY_TYPE_IDS.map((id) => ({
+    id,
+    label: t(`options.activityTypes.${id}`),
+    icon: ACTIVITY_TYPE_ICONS[id] ?? MapPin,
+  }));
+
+const getTravelPurposeData = (t: (key: string) => string) => [
+  { id: 'business', label: t('options.travelPurpose.business'), icon: Briefcase },
+  { id: 'leisure', label: t('options.travelPurpose.leisure'), icon: Palmtree },
+  { id: 'conference', label: t('options.travelPurpose.conference'), icon: Users },
+  { id: 'family', label: t('options.travelPurpose.family'), icon: Heart },
 ];
 
 interface TravelCatalogResponse {
-  configured: { duffel: boolean; hotelbeds: boolean };
+  configured: { duffel: boolean; hotelbeds: boolean; mockHotels?: boolean; siloah?: boolean };
   duffelCabinClasses: { value: string; label: string }[];
   loyaltyProgrammes: { id: string; label: string }[];
   airports: { iataCode: string; label: string; country: string | null }[];
   accommodations: { code: string; label: string }[];
   chains: { code: string; label: string }[];
   facilities: { code: string; label: string }[];
+  cruiseDestinations?: { id: string; label: string }[];
+  cruiseBrands?: { name: string; tier: string; label: string; shipCount: number }[];
   errors: { source: string; message: string }[];
 }
 
@@ -1087,7 +1136,8 @@ export function EnhancedTravelPreferencesForm({ onComplete, onBack }: EnhancedTr
             ? ((me as { user: MeUserProfile }).user)
             : null;
         const merged = mergeSavedTravelPreferences(DEFAULT_TRAVEL_PREFERENCES, aiSettings);
-        setPreferences(applyAccountToTravelPreferences(merged, user));
+        const withAccount = applyAccountToTravelPreferences(merged, user);
+        setPreferences(normalizePreferenceOptionIds(withAccount));
       })
       .catch(() => {});
 
@@ -1311,12 +1361,10 @@ export function EnhancedTravelPreferencesForm({ onComplete, onBack }: EnhancedTr
         <div className="flex items-center justify-center gap-2 pt-2">
           <Languages className="w-4 h-4 text-teal-700" />
           <div className="inline-flex rounded-lg border border-teal-200 bg-white p-1 shadow-sm">
-            {[
-              { code: 'en', label: '🇺🇸 EN', name: 'English' },
-              { code: 'pt', label: '🇵🇹 PT', name: 'Português' },
-              { code: 'es', label: '🇪🇸 ES', name: 'Español' },
-              { code: 'fr', label: '🇫🇷 FR', name: 'Français' }
-            ].map((lang) => (
+            {(['en', 'pt', 'es', 'fr'] as const).map((code) => ({
+              code,
+              label: t(`options.uiLanguages.${code}`),
+            })).map((lang) => (
               <button
                 key={lang.code}
                 onClick={() => setLocale(lang.code)}
@@ -1327,7 +1375,7 @@ export function EnhancedTravelPreferencesForm({ onComplete, onBack }: EnhancedTr
                     : 'text-gray-600 hover:text-gray-900 hover:bg-gray-50'
                   }
                 `}
-                title={lang.name}
+                title={lang.label}
               >
                 {lang.label}
               </button>
@@ -1644,10 +1692,11 @@ export function EnhancedTravelPreferencesForm({ onComplete, onBack }: EnhancedTr
                     <SelectValue placeholder={t('howOftenTravel')} />
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="weekly">🚀 Weekly Traveler (50+ trips/year)</SelectItem>
-                    <SelectItem value="monthly">✈️ Monthly Traveler (12-50 trips/year)</SelectItem>
-                    <SelectItem value="quarterly">🗓️ Quarterly Traveler (4-12 trips/year)</SelectItem>
-                    <SelectItem value="yearly">🏖️ Occasional Traveler (1-3 trips/year)</SelectItem>
+                    {TRAVEL_FREQUENCY_IDS.map((id) => (
+                      <SelectItem key={id} value={id}>
+                        {t(`options.travelFrequency.${id}`)}
+                      </SelectItem>
+                    ))}
                   </SelectContent>
                 </Select>
               </div>
@@ -1686,12 +1735,7 @@ export function EnhancedTravelPreferencesForm({ onComplete, onBack }: EnhancedTr
               <div className="space-y-3">
                 <Label className="text-base font-semibold">{t('travelPurpose')}</Label>
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
-                  {[
-                    { id: 'business', label: 'Business', icon: Briefcase },
-                    { id: 'leisure', label: 'Leisure', icon: Palmtree },
-                    { id: 'conference', label: 'Conference/Events', icon: Users },
-                    { id: 'family', label: 'Family Visit', icon: Heart }
-                  ].map(purpose => {
+                  {getTravelPurposeData(t).map(purpose => {
                     const Icon = purpose.icon;
                     const isSelected = preferences.travelPurpose.includes(purpose.id);
                     
@@ -1742,12 +1786,14 @@ export function EnhancedTravelPreferencesForm({ onComplete, onBack }: EnhancedTr
                       <SelectValue />
                     </SelectTrigger>
                     <SelectContent>
-                      {currencies.map(curr => (
-                        <SelectItem key={curr.code} value={curr.code}>
+                      {CURRENCY_CODES.map((code) => (
+                        <SelectItem key={code} value={code}>
                           <span className="flex items-center gap-2">
-                            <span className="text-lg">{curr.flag}</span>
-                            <span>{curr.symbol} {curr.code}</span>
-                            <span className="text-gray-500">- {curr.name}</span>
+                            <span className="text-lg">{t(`options.currencyFlags.${code}`)}</span>
+                            <span>
+                              {CURRENCY_SYMBOLS[code]} {code}
+                            </span>
+                            <span className="text-gray-500">- {t(`options.currencies.${code}`)}</span>
                           </span>
                         </SelectItem>
                       ))}
@@ -1770,7 +1816,7 @@ export function EnhancedTravelPreferencesForm({ onComplete, onBack }: EnhancedTr
                       <div className="text-center bg-white rounded-lg px-4 py-3 shadow-sm">
                         <p className="text-xs text-gray-600 mb-1">{t('minimum')}</p>
                         <p className="text-xl font-bold text-green-600">
-                          {currencies.find(c => c.code === preferences.currency)?.symbol}
+                          {CURRENCY_SYMBOLS[preferences.currency] ?? '$'}
                           {preferences.budgetRange[0].toLocaleString()}
                         </p>
                       </div>
@@ -1778,7 +1824,7 @@ export function EnhancedTravelPreferencesForm({ onComplete, onBack }: EnhancedTr
                       <div className="text-center bg-white rounded-lg px-4 py-3 shadow-sm">
                         <p className="text-xs text-gray-600 mb-1">{t('maximum')}</p>
                         <p className="text-xl font-bold text-blue-600">
-                          {currencies.find(c => c.code === preferences.currency)?.symbol}
+                          {CURRENCY_SYMBOLS[preferences.currency] ?? '$'}
                           {preferences.budgetRange[1].toLocaleString()}
                         </p>
                       </div>
@@ -1798,11 +1844,11 @@ export function EnhancedTravelPreferencesForm({ onComplete, onBack }: EnhancedTr
                       <SelectValue placeholder={t('budgetPriorityQuestion')} />
                     </SelectTrigger>
                     <SelectContent>
-                      <SelectItem value="maximum-savings">💰 Maximum Savings - Best deals only</SelectItem>
-                      <SelectItem value="value">⚖️ Value-Focused - Balance of quality and price</SelectItem>
-                      <SelectItem value="balanced">🎯 Balanced - Quality matters, price flexible</SelectItem>
-                      <SelectItem value="premium">⭐ Premium - High quality, price less important</SelectItem>
-                      <SelectItem value="luxury">💎 Luxury - Best available, budget unlimited</SelectItem>
+                      {BUDGET_PRIORITY_IDS.map((id) => (
+                        <SelectItem key={id} value={id}>
+                          {t(`options.budgetPriority.${id}`)}
+                        </SelectItem>
+                      ))}
                     </SelectContent>
                   </Select>
                 </div>
@@ -1813,12 +1859,7 @@ export function EnhancedTravelPreferencesForm({ onComplete, onBack }: EnhancedTr
                   <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
                     {(travelCatalog?.duffelCabinClasses?.length
                       ? travelCatalog.duffelCabinClasses
-                      : [
-                          { value: 'economy', label: 'Economy' },
-                          { value: 'premium_economy', label: 'Premium Economy' },
-                          { value: 'business', label: 'Business' },
-                          { value: 'first', label: 'First' },
-                        ]
+                      : CABIN_CLASS_IDS.map((value) => ({ value, label: '' }))
                     ).map((cabin) => (
                       <button
                         key={cabin.value}
@@ -1833,7 +1874,9 @@ export function EnhancedTravelPreferencesForm({ onComplete, onBack }: EnhancedTr
                         `}
                       >
                         <div className="text-2xl mb-2">{cabinClassEmoji(cabin.value)}</div>
-                        <div className="text-sm font-semibold">{cabin.label}</div>
+                        <div className="text-sm font-semibold">{(CABIN_CLASS_IDS as readonly string[]).includes(cabin.value)
+                            ? t(`options.cabinClass.${cabin.value}`)
+                            : cabin.label}</div>
                       </button>
                     ))}
                   </div>
@@ -1855,7 +1898,7 @@ export function EnhancedTravelPreferencesForm({ onComplete, onBack }: EnhancedTr
               </div>
 
               <Tabs defaultValue="flight" className="w-full">
-                <TabsList className="grid w-full grid-cols-2 h-12">
+                <TabsList className="grid w-full grid-cols-3 h-12">
                   <TabsTrigger value="flight" className="gap-2">
                     <Plane className="w-4 h-4" />
                     {t('flightPreferences')}
@@ -1863,6 +1906,10 @@ export function EnhancedTravelPreferencesForm({ onComplete, onBack }: EnhancedTr
                   <TabsTrigger value="accommodation" className="gap-2">
                     <Hotel className="w-4 h-4" />
                     {t('accommodation')}
+                  </TabsTrigger>
+                  <TabsTrigger value="cruise" className="gap-2">
+                    <Ship className="w-4 h-4" />
+                    {t('cruisePreferences')}
                   </TabsTrigger>
                 </TabsList>
 
@@ -1875,10 +1922,11 @@ export function EnhancedTravelPreferencesForm({ onComplete, onBack }: EnhancedTr
                           <SelectValue placeholder={t('selectSeatPreference')} />
                         </SelectTrigger>
                         <SelectContent>
-                          <SelectItem value="window">🪟 Window - Enjoy the view</SelectItem>
-                          <SelectItem value="aisle">🚶 Aisle - Easy access</SelectItem>
-                          <SelectItem value="middle">📦 Middle - Don't mind</SelectItem>
-                          <SelectItem value="any">🎲 No Preference</SelectItem>
+                          {SEAT_PREFERENCE_IDS.map((id) => (
+                            <SelectItem key={id} value={id}>
+                              {t(`options.seatPreference.${id}`)}
+                            </SelectItem>
+                          ))}
                         </SelectContent>
                       </Select>
                     </div>
@@ -1890,13 +1938,11 @@ export function EnhancedTravelPreferencesForm({ onComplete, onBack }: EnhancedTr
                           <SelectValue placeholder={t('selectMealPreference')} />
                         </SelectTrigger>
                         <SelectContent>
-                          <SelectItem value="regular">🍽️ Regular</SelectItem>
-                          <SelectItem value="vegetarian">🥗 Vegetarian</SelectItem>
-                          <SelectItem value="vegan">🌱 Vegan</SelectItem>
-                          <SelectItem value="halal">🕌 Halal</SelectItem>
-                          <SelectItem value="kosher">✡️ Kosher</SelectItem>
-                          <SelectItem value="gluten-free">🌾 Gluten-Free</SelectItem>
-                          <SelectItem value="low-sodium">🧂 Low Sodium</SelectItem>
+                          {MEAL_PREFERENCE_IDS.map((id) => (
+                            <SelectItem key={id} value={id}>
+                              {t(`options.mealPreference.${id}`)}
+                            </SelectItem>
+                          ))}
                         </SelectContent>
                       </Select>
                     </div>
@@ -1973,12 +2019,11 @@ export function EnhancedTravelPreferencesForm({ onComplete, onBack }: EnhancedTr
                         <SelectValue placeholder={t('selectRoomType')} />
                       </SelectTrigger>
                       <SelectContent>
-                        <SelectItem value="single">🛏️ Single Room</SelectItem>
-                        <SelectItem value="double">🛏️🛏️ Double Room</SelectItem>
-                        <SelectItem value="twin">👥 Twin Room</SelectItem>
-                        <SelectItem value="suite">🏰 Suite</SelectItem>
-                        <SelectItem value="executive">💼 Executive Suite</SelectItem>
-                        <SelectItem value="presidential">👑 Presidential Suite</SelectItem>
+                        {ROOM_TYPE_IDS.map((id) => (
+                          <SelectItem key={id} value={id}>
+                            {t(`options.roomType.${id}`)}
+                          </SelectItem>
+                        ))}
                       </SelectContent>
                     </Select>
                   </div>
@@ -2046,6 +2091,141 @@ export function EnhancedTravelPreferencesForm({ onComplete, onBack }: EnhancedTr
                     )}
                   </div>
                 </TabsContent>
+
+                <TabsContent value="cruise" className="space-y-6 mt-6">
+                  <div className="flex items-center justify-between rounded-lg border border-teal-100 bg-teal-50/50 p-4">
+                    <div>
+                      <Label className="text-base font-semibold">{t('cruiseIncludeToggle')}</Label>
+                      <p className="text-sm text-gray-600 mt-1">{t('cruiseIncludeHint')}</p>
+                    </div>
+                    <Switch
+                      checked={preferences.cruiseEnabled}
+                      onCheckedChange={(v) => updatePreference('cruiseEnabled', Boolean(v))}
+                    />
+                  </div>
+
+                  {!preferences.cruiseEnabled ? (
+                    <p className="text-sm text-gray-500">{t('cruiseCollapsedHint')}</p>
+                  ) : (
+                    <>
+                      <div className="space-y-3">
+                        <Label className="text-base font-semibold">{t('cruiseRegions')}</Label>
+                        <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
+                          {CRUISE_DESTINATION_IDS.map((id) => (
+                            <div
+                              key={id}
+                              className="flex items-center space-x-2 bg-gray-50 rounded-lg p-3 hover:bg-gray-100 transition-colors"
+                            >
+                              <Checkbox
+                                id={`cruise-dest-${id}`}
+                                checked={preferences.cruiseDestinations.includes(id)}
+                                onCheckedChange={() => toggleArrayValue('cruiseDestinations', id)}
+                              />
+                              <Label htmlFor={`cruise-dest-${id}`} className="cursor-pointer text-sm font-medium">
+                                {t(`options.cruise.destinations.${id}`)}
+                              </Label>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+
+                      <div className="grid md:grid-cols-2 gap-6">
+                        <div className="space-y-3">
+                          <Label className="text-base font-semibold">{t('cruiseTier')}</Label>
+                          <Select
+                            value={preferences.cruiseTier || undefined}
+                            onValueChange={(value: string) => updatePreference('cruiseTier', value)}
+                          >
+                            <SelectTrigger className="h-11">
+                              <SelectValue placeholder={t('cruiseTierAny')} />
+                            </SelectTrigger>
+                            <SelectContent>
+                              {CRUISE_TIER_IDS.map((id) => (
+                                <SelectItem key={id} value={id}>
+                                  {t(`options.cruise.tier.${id}`)}
+                                </SelectItem>
+                              ))}
+                            </SelectContent>
+                          </Select>
+                        </div>
+                        <div className="space-y-3">
+                          <Label className="text-base font-semibold">{t('cruiseShipType')}</Label>
+                          <Select
+                            value={preferences.cruiseShipType || undefined}
+                            onValueChange={(value: string) => updatePreference('cruiseShipType', value)}
+                          >
+                            <SelectTrigger className="h-11">
+                              <SelectValue placeholder={t('cruiseShipTypeAny')} />
+                            </SelectTrigger>
+                            <SelectContent>
+                              {CRUISE_SHIP_TYPE_IDS.map((id) => (
+                                <SelectItem key={id} value={id}>
+                                  {t(`options.cruise.shipType.${id}`)}
+                                </SelectItem>
+                              ))}
+                            </SelectContent>
+                          </Select>
+                        </div>
+                      </div>
+
+                      <div className="space-y-3">
+                        <Label className="text-base font-semibold">{t('cruiseDuration')}</Label>
+                        <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                          {CRUISE_DURATION_IDS.map((id) => (
+                            <button
+                              key={id}
+                              type="button"
+                              onClick={() => updatePreference('cruiseDuration', id)}
+                              className={`p-4 rounded-lg border-2 text-left transition-all ${
+                                preferences.cruiseDuration === id
+                                  ? 'border-teal-600 bg-teal-50 shadow-md'
+                                  : 'border-gray-200 hover:border-gray-300 bg-white'
+                              }`}
+                            >
+                              <div className="font-semibold text-sm">{t(`options.cruise.duration.${id}.label`)}</div>
+                              <div className="text-xs text-gray-600">{t(`options.cruise.duration.${id}.days`)}</div>
+                            </button>
+                          ))}
+                        </div>
+                      </div>
+
+                      <div className="space-y-3">
+                        <Label className="text-base font-semibold">{t('cruiseBrands')}</Label>
+                        <p className="text-xs text-gray-500">{t('cruiseBrandsNote')}</p>
+                        {travelCatalogLoading ? (
+                          <p className="text-sm text-gray-500">{t('catalogLoading')}</p>
+                        ) : (travelCatalog?.cruiseBrands?.length ?? 0) === 0 ? (
+                          <p className="text-sm text-amber-700">
+                            {travelCatalog?.configured?.siloah === false
+                              ? t('catalogSiloahMissing')
+                              : t('catalogSiloahEmpty')}
+                          </p>
+                        ) : (
+                          <div className="grid grid-cols-2 md:grid-cols-3 gap-3 max-h-64 overflow-y-auto pr-1">
+                            {travelCatalog!.cruiseBrands!.map((brand) => (
+                              <div
+                                key={brand.name}
+                                className="flex items-center space-x-2 bg-gray-50 rounded-lg p-3 hover:bg-gray-100 transition-colors"
+                              >
+                                <Checkbox
+                                  id={`cruise-brand-${brand.name}`}
+                                  checked={preferences.cruiseBrandNames.includes(brand.name)}
+                                  onCheckedChange={() => toggleArrayValue('cruiseBrandNames', brand.name)}
+                                />
+                                <Label
+                                  htmlFor={`cruise-brand-${brand.name}`}
+                                  className="cursor-pointer text-sm font-medium flex-1"
+                                >
+                                  {brand.label}
+                                </Label>
+                              </div>
+                            ))}
+                          </div>
+                        )}
+                      </div>
+                    </>
+                  )}
+                </TabsContent>
               </Tabs>
             </div>
           )}
@@ -2065,7 +2245,7 @@ export function EnhancedTravelPreferencesForm({ onComplete, onBack }: EnhancedTr
               <div className="space-y-4">
                 <Label className="text-base font-semibold">{t('preferredActivities')}</Label>
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                  {activityTypesData.map((activity) => {
+                  {getActivityTypesData(t).map((activity) => {
                     const Icon = activity.icon;
                     const isSelected = preferences.activityTypes.includes(activity.id);
                     
@@ -2101,10 +2281,11 @@ export function EnhancedTravelPreferencesForm({ onComplete, onBack }: EnhancedTr
                     <SelectValue placeholder={t('selectPreferredPace')} />
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="relaxed">🧘 Relaxed - Minimal activities, maximum relaxation</SelectItem>
-                    <SelectItem value="moderate">⚖️ Moderate - Balanced mix of activities and downtime</SelectItem>
-                    <SelectItem value="active">🏃 Active - Packed schedule with multiple activities</SelectItem>
-                    <SelectItem value="adventure">🚀 Adventure - High-energy, thrill-seeking experiences</SelectItem>
+                    {PACE_PREFERENCE_IDS.map((id) => (
+                      <SelectItem key={id} value={id}>
+                        {t(`options.pacePreference.${id}`)}
+                      </SelectItem>
+                    ))}
                   </SelectContent>
                 </Select>
               </div>
@@ -2112,18 +2293,15 @@ export function EnhancedTravelPreferencesForm({ onComplete, onBack }: EnhancedTr
               <div className="space-y-3">
                 <Label className="text-base font-semibold">{t('experienceTypes')}</Label>
                 <div className="grid grid-cols-2 gap-3">
-                  {[
-                    'Guided Tours', 'Self-Guided', 'Group Activities', 'Private Experiences',
-                    'Local Immersion', 'Luxury Experiences', 'Budget-Friendly', 'Off-the-beaten-path'
-                  ].map(experience => (
-                    <div key={experience} className="flex items-center space-x-2 bg-gray-50 rounded-lg p-3 hover:bg-gray-100 transition-colors">
+                  {EXPERIENCE_TYPE_IDS.map((id) => (
+                    <div key={id} className="flex items-center space-x-2 bg-gray-50 rounded-lg p-3 hover:bg-gray-100 transition-colors">
                       <Checkbox
-                        id={`experience-${experience}`}
-                        checked={preferences.experienceTypes.includes(experience)}
-                        onCheckedChange={() => toggleArrayValue('experienceTypes', experience)}
+                        id={`experience-${id}`}
+                        checked={preferences.experienceTypes.includes(id)}
+                        onCheckedChange={() => toggleArrayValue('experienceTypes', id)}
                       />
-                      <Label htmlFor={`experience-${experience}`} className="cursor-pointer text-sm font-medium">
-                        {experience}
+                      <Label htmlFor={`experience-${id}`} className="cursor-pointer text-sm font-medium">
+                        {t(`options.experienceTypes.${id}`)}
                       </Label>
                     </div>
                   ))}
@@ -2136,17 +2314,24 @@ export function EnhancedTravelPreferencesForm({ onComplete, onBack }: EnhancedTr
                   {t('languagesYouSpeak')}
                 </Label>
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
-                  {languagesData.map(language => {
-                    const isSelected = preferences.languages.some(l => l.language === language);
-                    
+                  {LANGUAGE_IDS.map((langId) => {
+                    const isSelected = preferences.languages.some((l) => l.language === langId);
+
                     return (
                       <button
-                        key={language}
+                        key={langId}
+                        type="button"
                         onClick={() => {
                           if (isSelected) {
-                            updatePreference('languages', preferences.languages.filter(l => l.language !== language));
+                            updatePreference(
+                              'languages',
+                              preferences.languages.filter((l) => l.language !== langId),
+                            );
                           } else {
-                            updatePreference('languages', [...preferences.languages, { language, proficiency: 'intermediate' }]);
+                            updatePreference('languages', [
+                              ...preferences.languages,
+                              { language: langId, proficiency: 'intermediate' },
+                            ]);
                           }
                         }}
                         className={`
@@ -2157,7 +2342,7 @@ export function EnhancedTravelPreferencesForm({ onComplete, onBack }: EnhancedTr
                           }
                         `}
                       >
-                        {language}
+                        {t(`options.languages.${langId}`)}
                       </button>
                     );
                   })}
@@ -2182,15 +2367,15 @@ export function EnhancedTravelPreferencesForm({ onComplete, onBack }: EnhancedTr
                 <div className="space-y-3">
                   <Label className="text-base font-semibold">{t('dietaryRestrictions')}</Label>
                   <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
-                    {['Vegetarian', 'Vegan', 'Halal', 'Kosher', 'Gluten-Free', 'Lactose-Free', 'Nut Allergy', 'Seafood Allergy', 'Dairy-Free', 'Low Carb', 'Diabetic', 'No Restrictions'].map(diet => (
-                      <div key={diet} className="flex items-center space-x-2 bg-gray-50 rounded-lg p-3 hover:bg-gray-100 transition-colors">
+                    {DIETARY_IDS.map((id) => (
+                      <div key={id} className="flex items-center space-x-2 bg-gray-50 rounded-lg p-3 hover:bg-gray-100 transition-colors">
                         <Checkbox
-                          id={`diet-${diet}`}
-                          checked={preferences.dietaryRestrictions.includes(diet)}
-                          onCheckedChange={() => toggleArrayValue('dietaryRestrictions', diet)}
+                          id={`diet-${id}`}
+                          checked={preferences.dietaryRestrictions.includes(id)}
+                          onCheckedChange={() => toggleArrayValue('dietaryRestrictions', id)}
                         />
-                        <Label htmlFor={`diet-${diet}`} className="cursor-pointer text-sm font-medium">
-                          {diet}
+                        <Label htmlFor={`diet-${id}`} className="cursor-pointer text-sm font-medium">
+                          {t(`options.dietary.${id}`)}
                         </Label>
                       </div>
                     ))}
@@ -2200,15 +2385,15 @@ export function EnhancedTravelPreferencesForm({ onComplete, onBack }: EnhancedTr
                 <div className="space-y-3">
                   <Label className="text-base font-semibold">{t('accessibilityRequirements')}</Label>
                   <div className="grid grid-cols-2 gap-3">
-                    {['Wheelchair Access', 'Visual Assistance', 'Hearing Assistance', 'Mobility Support', 'Service Animal', 'Special Equipment'].map(access => (
-                      <div key={access} className="flex items-center space-x-2 bg-gray-50 rounded-lg p-3 hover:bg-gray-100 transition-colors">
+                    {ACCESSIBILITY_IDS.map((id) => (
+                      <div key={id} className="flex items-center space-x-2 bg-gray-50 rounded-lg p-3 hover:bg-gray-100 transition-colors">
                         <Checkbox
-                          id={`access-${access}`}
-                          checked={preferences.accessibility.includes(access)}
-                          onCheckedChange={() => toggleArrayValue('accessibility', access)}
+                          id={`access-${id}`}
+                          checked={preferences.accessibility.includes(id)}
+                          onCheckedChange={() => toggleArrayValue('accessibility', id)}
                         />
-                        <Label htmlFor={`access-${access}`} className="cursor-pointer text-sm font-medium">
-                          {access}
+                        <Label htmlFor={`access-${id}`} className="cursor-pointer text-sm font-medium">
+                          {t(`options.accessibility.${id}`)}
                         </Label>
                       </div>
                     ))}
@@ -2246,10 +2431,11 @@ export function EnhancedTravelPreferencesForm({ onComplete, onBack }: EnhancedTr
                           <SelectValue />
                         </SelectTrigger>
                         <SelectContent>
-                          <SelectItem value="low">Low - Not a priority</SelectItem>
-                          <SelectItem value="medium">Medium - Important but flexible</SelectItem>
-                          <SelectItem value="high">High - Essential consideration</SelectItem>
-                          <SelectItem value="essential">Essential - Top priority</SelectItem>
+                          {SUSTAINABILITY_LEVEL_IDS.map((id) => (
+                            <SelectItem key={id} value={id}>
+                              {t(`options.sustainabilityLevel.${id}`)}
+                            </SelectItem>
+                          ))}
                         </SelectContent>
                       </Select>
                     </div>
@@ -2257,15 +2443,15 @@ export function EnhancedTravelPreferencesForm({ onComplete, onBack }: EnhancedTr
                     <div className="space-y-3">
                       <Label className="text-base font-semibold">{t('ecoPreferences')}</Label>
                       <div className="grid grid-cols-2 gap-3">
-                        {['Carbon Offsetting', 'Eco-Certified Hotels', 'Public Transportation', 'Local Businesses', 'Plastic-Free', 'Sustainable Tours'].map(eco => (
-                          <div key={eco} className="flex items-center space-x-2 bg-white rounded-lg p-3 hover:bg-green-50 transition-colors">
+                        {ECO_PREFERENCE_IDS.map((id) => (
+                          <div key={id} className="flex items-center space-x-2 bg-white rounded-lg p-3 hover:bg-green-50 transition-colors">
                             <Checkbox
-                              id={`eco-${eco}`}
-                              checked={preferences.ecoPreferences.includes(eco)}
-                              onCheckedChange={() => toggleArrayValue('ecoPreferences', eco)}
+                              id={`eco-${id}`}
+                              checked={preferences.ecoPreferences.includes(id)}
+                              onCheckedChange={() => toggleArrayValue('ecoPreferences', id)}
                             />
-                            <Label htmlFor={`eco-${eco}`} className="cursor-pointer text-sm font-medium">
-                              {eco}
+                            <Label htmlFor={`eco-${id}`} className="cursor-pointer text-sm font-medium">
+                              {t(`options.ecoPreferences.${id}`)}
                             </Label>
                           </div>
                         ))}
@@ -2321,9 +2507,9 @@ export function EnhancedTravelPreferencesForm({ onComplete, onBack }: EnhancedTr
                         {t('aiRecommendationsDesc')}
                       </p>
                       <div className="flex gap-2 pt-2">
-                        <Badge variant="secondary" className="text-xs">Predictive Analytics</Badge>
-                        <Badge variant="secondary" className="text-xs">Machine Learning</Badge>
-                        <Badge variant="secondary" className="text-xs">Real-time Optimization</Badge>
+                        <Badge variant="secondary" className="text-xs">{t('options.aiBadges.predictiveAnalytics')}</Badge>
+                        <Badge variant="secondary" className="text-xs">{t('options.aiBadges.machineLearning')}</Badge>
+                        <Badge variant="secondary" className="text-xs">{t('options.aiBadges.realTimeOptimization')}</Badge>
                       </div>
                     </div>
                     <Switch
@@ -2384,23 +2570,18 @@ export function EnhancedTravelPreferencesForm({ onComplete, onBack }: EnhancedTr
                   </CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-3">
-                  {[
-                    { id: 'email', label: 'Email Notifications', desc: 'Booking confirmations, itinerary updates' },
-                    { id: 'sms', label: 'SMS Alerts', desc: 'Flight changes, urgent travel updates' },
-                    { id: 'push', label: 'Push Notifications', desc: 'Real-time travel alerts' },
-                    { id: 'whatsapp', label: 'WhatsApp Messages', desc: 'Travel documents and reminders' }
-                  ].map(notif => (
-                    <div key={notif.id} className="flex items-center space-x-3 bg-gray-50 rounded-lg p-3">
+                  {NOTIFICATION_IDS.map((id) => (
+                    <div key={id} className="flex items-center space-x-3 bg-gray-50 rounded-lg p-3">
                       <Checkbox
-                        id={`notif-${notif.id}`}
-                        checked={preferences.notifications.includes(notif.id)}
-                        onCheckedChange={() => toggleArrayValue('notifications', notif.id)}
+                        id={`notif-${id}`}
+                        checked={preferences.notifications.includes(id)}
+                        onCheckedChange={() => toggleArrayValue('notifications', id)}
                       />
                       <div className="flex-1">
-                        <Label htmlFor={`notif-${notif.id}`} className="cursor-pointer font-medium">
-                          {notif.label}
+                        <Label htmlFor={`notif-${id}`} className="cursor-pointer font-medium">
+                          {t(`options.notifications.${id}`)}
                         </Label>
-                        <p className="text-xs text-gray-600">{notif.desc}</p>
+                        <p className="text-xs text-gray-600">{t(`options.notificationDesc.${id}`)}</p>
                       </div>
                     </div>
                   ))}
@@ -2422,10 +2603,11 @@ export function EnhancedTravelPreferencesForm({ onComplete, onBack }: EnhancedTr
                         <SelectValue />
                       </SelectTrigger>
                       <SelectContent>
-                        <SelectItem value="minimal">Minimal - Maximum data usage for best experience</SelectItem>
-                        <SelectItem value="standard">Standard - Balanced privacy and functionality</SelectItem>
-                        <SelectItem value="high">High - Enhanced privacy, limited data sharing</SelectItem>
-                        <SelectItem value="maximum">Maximum - Strict privacy, minimal data collection</SelectItem>
+                        {PRIVACY_LEVEL_IDS.map((id) => (
+                          <SelectItem key={id} value={id}>
+                            {t(`options.privacyLevel.${id}`)}
+                          </SelectItem>
+                        ))}
                       </SelectContent>
                     </Select>
                   </div>
@@ -2436,11 +2618,9 @@ export function EnhancedTravelPreferencesForm({ onComplete, onBack }: EnhancedTr
                       {t('securityCertifications')}
                     </div>
                     <div className="flex flex-wrap gap-2">
-                      <Badge variant="outline">SOC 2 Type II</Badge>
-                      <Badge variant="outline">ISO 27001</Badge>
-                      <Badge variant="outline">GDPR Compliant</Badge>
-                      <Badge variant="outline">CCPA Compliant</Badge>
-                      <Badge variant="outline">PCI DSS</Badge>
+                      {(['soc2', 'iso27001', 'gdpr', 'ccpa', 'pci'] as const).map((key) => (
+                      <Badge key={key} variant="outline">{t(`options.securityBadges.${key}`)}</Badge>
+                    ))}
                     </div>
                     <p className="text-xs text-gray-600 pt-2">
                       {t('allDataEncrypted')}

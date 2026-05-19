@@ -1016,6 +1016,20 @@
     "catalogLoyaltyEmpty": "Nenhum programa de fidelidade foi devolvido pelo Duffel.",
     "catalogHotelbedsMissing": "Hotelbeds não está configurado (defina HOTELBEDS_API_KEY e HOTELBEDS_API_SECRET). Tipos de hotel, redes e comodidades não podem ser carregados.",
     "catalogHotelbedsEmpty": "Nenhum dado de referência de hotéis foi devolvido pelo Hotelbeds.",
+    "catalogSiloahMissing": "Não foi possível carregar companhias de cruzeiro do Siloah Travel. Verifique a ligação à rede.",
+    "catalogSiloahEmpty": "Nenhuma marca de cruzeiro foi devolvida pelo Siloah.",
+    "cruisePreferences": "Cruzeiros",
+    "cruiseIncludeToggle": "Incluir experiência de cruzeiro",
+    "cruiseIncludeHint": "Pesquise cruzeiros de luxo via Siloah Travel (sem chave de API).",
+    "cruiseCollapsedHint": "Ative para adicionar preferências de cruzeiro e pesquisar só cruzeiros.",
+    "cruiseRegions": "Regiões preferidas",
+    "cruiseTier": "Nível da marca",
+    "cruiseTierAny": "Qualquer nível",
+    "cruiseShipType": "Tipo de navio",
+    "cruiseShipTypeAny": "Qualquer tipo",
+    "cruiseDuration": "Duração",
+    "cruiseBrands": "Companhias de cruzeiro preferidas",
+    "cruiseBrandsNote": "Marcas de luxo carregadas em tempo real do Siloah Travel.",
     "catalogPartialBanner": "Alguns fornecedores de viagem falharam ao carregar. As preferências que ainda pode editar aparecem abaixo.",
     "travelPurpose": "Propósito da Viagem",
     "budgetRangePerTrip": "Faixa de Orçamento por Viagem",
@@ -1088,7 +1102,233 @@
     "basedOnProfile": "Com base no seu perfil, recomendamos destinos como",
     "activitiesInCategory": "atividades na categoria",
     "accommodationsInRange": "e acomodações na faixa",
-    "range": ""
+    "range": "",
+    "options": {
+      "travelFrequency": {
+        "weekly": "🚀 Viajante semanal (50+ viagens/ano)",
+        "monthly": "✈️ Viajante mensal (12–50 viagens/ano)",
+        "quarterly": "🗓️ Viajante trimestral (4–12 viagens/ano)",
+        "yearly": "🏖️ Viajante ocasional (1–3 viagens/ano)"
+      },
+      "travelPurpose": {
+        "business": "Negócios",
+        "leisure": "Lazer",
+        "conference": "Conferência / eventos",
+        "family": "Visita à família"
+      },
+      "budgetPriority": {
+        "maximum-savings": "💰 Poupança máxima — só as melhores ofertas",
+        "value": "⚖️ Foco no valor — equilíbrio qualidade/preço",
+        "balanced": "🎯 Equilibrado — qualidade importa, preço flexível",
+        "premium": "⭐ Premium — alta qualidade, preço menos importante",
+        "luxury": "💎 Luxo — o melhor disponível, orçamento ilimitado"
+      },
+      "cabinClass": {
+        "economy": "Económica",
+        "premium_economy": "Económica premium",
+        "business": "Executiva",
+        "first": "Primeira classe"
+      },
+      "seatPreference": {
+        "window": "🪟 Janela — apreciar a vista",
+        "aisle": "🚶 Corredor — acesso fácil",
+        "middle": "📦 Meio — sem preferência",
+        "any": "🎲 Sem preferência"
+      },
+      "mealPreference": {
+        "regular": "🍽️ Normal",
+        "vegetarian": "🥗 Vegetariana",
+        "vegan": "🌱 Vegana",
+        "halal": "🕌 Halal",
+        "kosher": "✡️ Kosher",
+        "gluten-free": "🌾 Sem glúten",
+        "low-sodium": "🧂 Baixo teor de sal"
+      },
+      "roomType": {
+        "single": "🛏️ Quarto individual",
+        "double": "🛏️🛏️ Quarto duplo",
+        "twin": "👥 Quarto twin",
+        "suite": "🏰 Suite",
+        "executive": "💼 Suite executiva",
+        "presidential": "👑 Suite presidencial"
+      },
+      "pacePreference": {
+        "relaxed": "🧘 Relaxado — poucas atividades, máximo descanso",
+        "moderate": "⚖️ Moderado — equilíbrio entre atividades e descanso",
+        "active": "🏃 Ativo — agenda cheia, várias atividades",
+        "adventure": "🚀 Aventura — alta energia, experiências intensas"
+      },
+      "sustainabilityLevel": {
+        "low": "Baixa — não é prioridade",
+        "medium": "Média — importante mas flexível",
+        "high": "Alta — consideração essencial",
+        "essential": "Essencial — prioridade máxima"
+      },
+      "privacyLevel": {
+        "minimal": "Mínima — máximo uso de dados para melhor experiência",
+        "standard": "Padrão — privacidade e funcionalidade equilibradas",
+        "high": "Alta — mais privacidade, menos partilha de dados",
+        "maximum": "Máxima — privacidade estrita, recolha mínima de dados"
+      },
+      "activityTypes": {
+        "adventure": "Desportos de aventura",
+        "cultural": "Tours culturais",
+        "beach": "Relaxamento na praia",
+        "city": "Exploração urbana",
+        "hiking": "Caminhadas na montanha",
+        "wildlife": "Safari de vida selvagem",
+        "food": "Gastronomia e vinhos",
+        "shopping": "Compras",
+        "historical": "Locais históricos",
+        "photography": "Fotografia",
+        "water": "Desportos aquáticos",
+        "nightlife": "Vida noturna"
+      },
+      "experienceTypes": {
+        "guidedTours": "Tours guiados",
+        "selfGuided": "Autoguiado",
+        "groupActivities": "Atividades em grupo",
+        "privateExperiences": "Experiências privadas",
+        "localImmersion": "Imersão local",
+        "luxuryExperiences": "Experiências de luxo",
+        "budgetFriendly": "Económico",
+        "offTheBeatenPath": "Fora dos circuitos habituais"
+      },
+      "languages": {
+        "english": "🇺🇸 Inglês",
+        "spanish": "🇪🇸 Espanhol",
+        "french": "🇫🇷 Francês",
+        "german": "🇩🇪 Alemão",
+        "italian": "🇮🇹 Italiano",
+        "portuguese": "🇵🇹 Português",
+        "mandarin": "🇨🇳 Mandarim",
+        "japanese": "🇯🇵 Japonês",
+        "korean": "🇰🇷 Coreano",
+        "russian": "🇷🇺 Russo",
+        "arabic": "🇦🇪 Árabe",
+        "hindi": "🇮🇳 Hindi"
+      },
+      "dietary": {
+        "vegetarian": "Vegetariano",
+        "vegan": "Vegano",
+        "halal": "Halal",
+        "kosher": "Kosher",
+        "glutenFree": "Sem glúten",
+        "lactoseFree": "Sem lactose",
+        "nutAllergy": "Alergia a frutos secos",
+        "seafoodAllergy": "Alergia a marisco",
+        "dairyFree": "Sem laticínios",
+        "lowCarb": "Baixo teor de hidratos",
+        "diabetic": "Diabético",
+        "noRestrictions": "Sem restrições"
+      },
+      "accessibility": {
+        "wheelchairAccess": "Acesso para cadeira de rodas",
+        "visualAssistance": "Apoio visual",
+        "hearingAssistance": "Apoio auditivo",
+        "mobilitySupport": "Apoio à mobilidade",
+        "serviceAnimal": "Animal de assistência",
+        "specialEquipment": "Equipamento especial"
+      },
+      "ecoPreferences": {
+        "carbonOffsetting": "Compensação de carbono",
+        "ecoCertifiedHotels": "Hotéis com certificação ecológica",
+        "publicTransportation": "Transportes públicos",
+        "localBusinesses": "Negócios locais",
+        "plasticFree": "Sem plástico",
+        "sustainableTours": "Tours sustentáveis"
+      },
+      "notifications": {
+        "email": "Notificações por e-mail",
+        "sms": "Alertas SMS",
+        "push": "Notificações push",
+        "whatsapp": "Mensagens WhatsApp"
+      },
+      "notificationDesc": {
+        "email": "Confirmações de reserva, atualizações de itinerário",
+        "sms": "Alterações de voo, atualizações urgentes",
+        "push": "Alertas de viagem em tempo real",
+        "whatsapp": "Documentos de viagem e lembretes"
+      },
+      "currencies": {
+        "USD": "Dólar americano",
+        "EUR": "Euro",
+        "GBP": "Libra esterlina",
+        "BRL": "Real brasileiro",
+        "JPY": "Iene japonês",
+        "CNY": "Yuan chinês",
+        "AUD": "Dólar australiano",
+        "CAD": "Dólar canadiano",
+        "CHF": "Franco suíço",
+        "INR": "Rupia indiana",
+        "SGD": "Dólar de Singapura",
+        "MXN": "Peso mexicano"
+      },
+      "currencyFlags": {
+        "USD": "🇺🇸",
+        "EUR": "🇪🇺",
+        "GBP": "🇬🇧",
+        "BRL": "🇧🇷",
+        "JPY": "🇯🇵",
+        "CNY": "🇨🇳",
+        "AUD": "🇦🇺",
+        "CAD": "🇨🇦",
+        "CHF": "🇨🇭",
+        "INR": "🇮🇳",
+        "SGD": "🇸🇬",
+        "MXN": "🇲🇽"
+      },
+      "aiBadges": {
+        "predictiveAnalytics": "Análise preditiva",
+        "machineLearning": "Aprendizagem automática",
+        "realTimeOptimization": "Otimização em tempo real"
+      },
+      "securityBadges": {
+        "soc2": "SOC 2 Tipo II",
+        "iso27001": "ISO 27001",
+        "gdpr": "Conforme RGPD",
+        "ccpa": "Conforme CCPA",
+        "pci": "PCI DSS"
+      },
+      "uiLanguages": {
+        "en": "🇺🇸 EN",
+        "pt": "🇵🇹 PT",
+        "es": "🇪🇸 ES",
+        "fr": "🇫🇷 FR"
+      },
+      "cruise": {
+        "destinations": {
+          "Mediterranean": "Mediterrâneo",
+          "Caribbean": "Caraíbas",
+          "Alaska": "Alasca",
+          "Antarctica": "Antártida",
+          "Europe": "Europa",
+          "Asia": "Ásia",
+          "Oceania": "Oceânia",
+          "NorthAmerica": "América do Norte",
+          "SouthAmerica": "América do Sul",
+          "Africa": "África",
+          "Transatlantic": "Transatlântico",
+          "Baltic": "Báltico",
+          "NorthernEurope": "Europa do Norte"
+        },
+        "tier": {
+          "ultra_luxury": "Ultra luxo",
+          "luxury": "Luxo",
+          "popular": "Popular"
+        },
+        "shipType": {
+          "ocean": "Oceano",
+          "river": "Rio",
+          "expedition": "Expedição"
+        },
+        "duration": {
+          "short": { "label": "Curto", "days": "3–5 noites" },
+          "medium": { "label": "Médio", "days": "6–9 noites" },
+          "long": { "label": "Prolongado", "days": "10+ noites" }
+        }
+      }
+    }
   },
   "auth": {
     "hero": "Descubra a Sua Viagem Perfeita com IA",
@@ -1154,6 +1394,11 @@
     "modeBoth": "Voos + hotéis",
     "modeFlights": "Só voos",
     "modeHotels": "Só hotéis",
+    "modeCruises": "Só cruzeiros (Siloah)",
+    "noCruiseResults": "Nenhuma viagem de cruzeiro encontrada. Tente outra região, datas ou orçamento.",
+    "viewOnSiloah": "Ver no Siloah",
+    "viewOnWikivoyage": "Guia Wikivoyage",
+    "loadingCruiseResults": "A carregar cruzeiros de luxo do Siloah Travel…",
     "nightsStay": "Noites (estadia)",
     "returnDate": "Data do voo de regresso",
     "returnDateHint": "Deve ser após a ida. Se vazio, o servidor usa ida + noites.",
@@ -1167,6 +1412,7 @@
     "duration": "Duração",
     "sustainableOnly": "Apenas Sustentável",
     "aiMatch": "Correspondência IA",
+    "matchExplain": "Probabilidade de combinação com as suas preferências (atividades, orçamento, estilo)",
     "perPerson": "por pessoa",
     "days": "dias",
     "reviews": "avaliações",

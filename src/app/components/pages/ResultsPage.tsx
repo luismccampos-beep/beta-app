@@ -20,6 +20,8 @@ import {
   Star,
   Plane,
   Hotel,
+  Ship,
+  ExternalLink,
   Award,
   Filter,
   X,
@@ -34,6 +36,11 @@ import {
   Calendar
 } from 'lucide-react';
 import { filterOptions, TravelResult } from '../data/mockResults';
+import {
+  decodeTravelPreferencesCompact,
+  encodeTravelPreferencesCompact,
+  readStoredTravelPreferences,
+} from '../../../lib/travel/travel-preferences-query';
 
 type Language = 'en' | 'pt' | 'es' | 'fr';
 
@@ -234,7 +241,21 @@ export function ResultsPage({ onBackToHome, onLogout, onNavigateToLegal, onNavig
     let cancelled = false;
     setResultsLoading(true);
     setResultsError(null);
-    const url = resultsQuery ? `/api/travel/results?${resultsQuery}` : '/api/travel/results';
+    const modeQ = new URLSearchParams(resultsQuery).get('mode') ?? 'both';
+    const isCruise = modeQ === 'cruises' || modeQ === 'cruise';
+    const base = isCruise ? '/api/travel/cruises' : '/api/travel/results';
+    const qs = new URLSearchParams(resultsQuery);
+    if (!qs.get('prefs')) {
+      const fromUrl = decodeTravelPreferencesCompact(searchParams.get('prefs'));
+      const stored = readStoredTravelPreferences();
+      const compact = fromUrl ?? stored;
+      if (compact && !isCruise) {
+        const enc = encodeTravelPreferencesCompact(compact);
+        if (enc.length <= 1800) qs.set('prefs', enc);
+      }
+    }
+    const query = qs.toString();
+    const url = query ? `${base}?${query}` : base;
     fetch(url)
       .then(async (res) => {
         const data = (await res.json().catch(() => ({}))) as {
@@ -252,7 +273,14 @@ export function ResultsPage({ onBackToHome, onLogout, onNavigateToLegal, onNavig
         setResults(rows);
         if (rows.length === 0) {
           const modeQ = new URLSearchParams(resultsQuery).get('mode') ?? 'both';
-          setResultsError(modeQ === 'hotels' ? t('noHotelResults') : t('noLiveResults'));
+          const m = new URLSearchParams(resultsQuery).get('mode') ?? 'both';
+          setResultsError(
+            m === 'cruises' || m === 'cruise'
+              ? t('noCruiseResults')
+              : m === 'hotels'
+                ? t('noHotelResults')
+                : t('noLiveResults'),
+          );
         }
       })
       .catch((e: unknown) => {
@@ -267,7 +295,7 @@ export function ResultsPage({ onBackToHome, onLogout, onNavigateToLegal, onNavig
     return () => {
       cancelled = true;
     };
-  }, [resultsQuery, t]);
+  }, [resultsQuery, searchParams, t, mode]);
 
   useEffect(() => {
     if (results.length === 0) return;
@@ -460,7 +488,7 @@ export function ResultsPage({ onBackToHome, onLogout, onNavigateToLegal, onNavig
               <div className="space-y-2">
                 <Label className="text-sm dark:text-gray-300">{t('searchMode')}</Label>
                 <Select
-                  value={['both', 'flights', 'hotels'].includes(mode) ? mode : 'both'}
+                  value={['both', 'flights', 'hotels', 'cruises'].includes(mode) ? mode : 'both'}
                   onValueChange={(v) => patchSearchParams({ mode: v })}
                 >
                   <SelectTrigger className="dark:bg-gray-700 dark:border-gray-600">
@@ -470,6 +498,7 @@ export function ResultsPage({ onBackToHome, onLogout, onNavigateToLegal, onNavig
                     <SelectItem value="both">{t('modeBoth')}</SelectItem>
                     <SelectItem value="flights">{t('modeFlights')}</SelectItem>
                     <SelectItem value="hotels">{t('modeHotels')}</SelectItem>
+                    <SelectItem value="cruises">{t('modeCruises')}</SelectItem>
                   </SelectContent>
                 </Select>
               </div>
@@ -631,7 +660,7 @@ export function ResultsPage({ onBackToHome, onLogout, onNavigateToLegal, onNavig
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {resultsLoading && (
             <div className="col-span-full text-center py-16 text-gray-600 dark:text-gray-400">
-              {t('loadingLiveResults')}
+              {(mode === 'cruises' || mode === 'cruise') ? t('loadingCruiseResults') : t('loadingLiveResults')}
             </div>
           )}
           {!resultsLoading &&
@@ -645,7 +674,10 @@ export function ResultsPage({ onBackToHome, onLogout, onNavigateToLegal, onNavig
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                 />
                 <div className="absolute top-3 right-3 flex gap-2">
-                  <Badge className="bg-gradient-to-r from-teal-600 to-orange-500 text-white border-0">
+                  <Badge
+                    className="bg-gradient-to-r from-teal-600 to-orange-500 text-white border-0"
+                    title={t('matchExplain')}
+                  >
                     <Sparkles className="w-3 h-3 mr-1" />
                     {result.aiMatchScore}% {t('aiMatch')}
                   </Badge>
@@ -726,25 +758,68 @@ export function ResultsPage({ onBackToHome, onLogout, onNavigateToLegal, onNavig
                       </div>
                     </div>
                     <div className="text-right text-xs text-gray-500 dark:text-gray-400">
-                      <div className="flex items-center gap-1 mb-1">
-                        <Plane className="w-3 h-3" />
-                        {result.flight.class}
-                      </div>
-                      <div className="flex items-center gap-1">
-                        <Hotel className="w-3 h-3" />
-                        {result.accommodation.type}
-                      </div>
+                      {result.productType === 'cruise' && result.cruise ? (
+                        <>
+                          <div className="flex items-center justify-end gap-1 mb-1">
+                            <Ship className="w-3 h-3" />
+                            {result.cruise.shipName}
+                          </div>
+                          <div className="flex items-center justify-end gap-1">
+                            <Award className="w-3 h-3" />
+                            {result.cruise.brandName}
+                          </div>
+                        </>
+                      ) : (
+                        <>
+                          <div className="flex items-center gap-1 mb-1 justify-end">
+                            <Plane className="w-3 h-3" />
+                            {result.flight.class}
+                          </div>
+                          <div className="flex items-center gap-1 justify-end">
+                            <Hotel className="w-3 h-3" />
+                            {result.accommodation.type}
+                          </div>
+                        </>
+                      )}
                     </div>
                   </div>
 
                   <div className="grid grid-cols-2 gap-2">
-                    <Button variant="outline" className="gap-2 dark:border-gray-600 dark:text-gray-300">
-                      {t('viewDetails')}
-                    </Button>
-                    <Button className="gap-2 bg-gradient-to-r from-teal-600 to-orange-500 hover:from-teal-700 hover:to-orange-600">
-                      {t('bookNow')}
-                      <ArrowRight className="w-4 h-4" />
-                    </Button>
+                    {result.cruise?.link ? (
+                      <Button variant="outline" asChild className="gap-2 dark:border-gray-600 dark:text-gray-300">
+                        <a href={result.cruise.link} target="_blank" rel="noopener noreferrer">
+                          {t('viewOnSiloah')}
+                          <ExternalLink className="w-4 h-4" />
+                        </a>
+                      </Button>
+                    ) : result.sourceUrl ? (
+                      <Button variant="outline" asChild className="gap-2 dark:border-gray-600 dark:text-gray-300">
+                        <a href={result.sourceUrl} target="_blank" rel="noopener noreferrer">
+                          {t('viewOnWikivoyage')}
+                          <ExternalLink className="w-4 h-4" />
+                        </a>
+                      </Button>
+                    ) : (
+                      <Button variant="outline" className="gap-2 dark:border-gray-600 dark:text-gray-300">
+                        {t('viewDetails')}
+                      </Button>
+                    )}
+                    {result.cruise?.link ? (
+                      <Button
+                        asChild
+                        className="gap-2 bg-gradient-to-r from-teal-600 to-orange-500 hover:from-teal-700 hover:to-orange-600"
+                      >
+                        <a href={result.cruise.link} target="_blank" rel="noopener noreferrer">
+                          {t('bookNow')}
+                          <ArrowRight className="w-4 h-4" />
+                        </a>
+                      </Button>
+                    ) : (
+                      <Button className="gap-2 bg-gradient-to-r from-teal-600 to-orange-500 hover:from-teal-700 hover:to-orange-600">
+                        {t('bookNow')}
+                        <ArrowRight className="w-4 h-4" />
+                      </Button>
+                    )}
                   </div>
                 </div>
               </CardContent>

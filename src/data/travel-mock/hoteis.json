@@ -1,0 +1,6866 @@
+[
+  {
+    "id": 1,
+    "destino_id": 114,
+    "nome": "Grande Palace",
+    "estrelas": 3,
+    "preco_por_noite": 402.94,
+    "comodidades": [
+      "pequeno-almoço"
+    ]
+  },
+  {
+    "id": 2,
+    "destino_id": 27,
+    "nome": "Douro Pousada",
+    "estrelas": 3,
+    "preco_por_noite": 57.04,
+    "comodidades": [
+      "estacionamento",
+      "spa"
+    ]
+  },
+  {
+    "id": 3,
+    "destino_id": 2,
+    "nome": "Douro Palace",
+    "estrelas": 3,
+    "preco_por_noite": 324.45,
+    "comodidades": [
+      "ginásio",
+      "pequeno-almoço",
+      "ar-condicionado",
+      "wifi"
+    ]
+  },
+  {
+    "id": 4,
+    "destino_id": 85,
+    "nome": "Palácio Palace",
+    "estrelas": 3,
+    "preco_por_noite": 416.4,
+    "comodidades": [
+      "piscina",
+      "wifi",
+      "spa",
+      "ginásio"
+    ]
+  },
+  {
+    "id": 5,
+    "destino_id": 81,
+    "nome": "Boutique Hotel",
+    "estrelas": 4,
+    "preco_por_noite": 368.33,
+    "comodidades": [
+      "pequeno-almoço"
+    ]
+  },
+  {
+    "id": 6,
+    "destino_id": 28,
+    "nome": "Palácio Pousada",
+    "estrelas": 3,
+    "preco_por_noite": 451.59,
+    "comodidades": [
+      "piscina",
+      "wifi",
+      "ginásio"
+    ]
+  },
+  {
+    "id": 7,
+    "destino_id": 5,
+    "nome": "Douro Pousada Prague",
+    "estrelas": 5,
+    "preco_por_noite": 433.8,
+    "comodidades": [
+      "piscina",
+      "estacionamento",
+      "spa",
+      "wifi"
+    ]
+  },
+  {
+    "id": 8,
+    "destino_id": 77,
+    "nome": "Palácio Albergaria",
+    "estrelas": 4,
+    "preco_por_noite": 61.86,
+    "comodidades": [
+      "ar-condicionado",
+      "estacionamento",
+      "spa",
+      "ginásio"
+    ]
+  },
+  {
+    "id": 9,
+    "destino_id": 27,
+    "nome": "Solar Hotel",
+    "estrelas": 5,
+    "preco_por_noite": 118.62,
+    "comodidades": [
+      "ar-condicionado"
+    ]
+  },
+  {
+    "id": 10,
+    "destino_id": 74,
+    "nome": "Palácio Pousada Amsterdam",
+    "estrelas": 3,
+    "preco_por_noite": 339.22,
+    "comodidades": [
+      "ar-condicionado"
+    ]
+  },
+  {
+    "id": 11,
+    "destino_id": 78,
+    "nome": "Boutique Suites",
+    "estrelas": 5,
+    "preco_por_noite": 238.95,
+    "comodidades": [
+      "piscina",
+      "estacionamento",
+      "pequeno-almoço",
+      "spa"
+    ]
+  },
+  {
+    "id": 12,
+    "destino_id": 24,
+    "nome": "Douro Suites",
+    "estrelas": 4,
+    "preco_por_noite": 415.41,
+    "comodidades": [
+      "estacionamento"
+    ]
+  },
+  {
+    "id": 13,
+    "destino_id": 104,
+    "nome": "Vila Pousada",
+    "estrelas": 5,
+    "preco_por_noite": 179.42,
+    "comodidades": [
+      "spa",
+      "ginásio",
+      "wifi"
+    ]
+  },
+  {
+    "id": 14,
+    "destino_id": 114,
+    "nome": "Boutique Pousada",
+    "estrelas": 3,
+    "preco_por_noite": 148.32,
+    "comodidades": [
+      "wifi"
+    ]
+  },
+  {
+    "id": 15,
+    "destino_id": 86,
+    "nome": "Real Resort",
+    "estrelas": 4,
+    "preco_por_noite": 72.6,
+    "comodidades": [
+      "estacionamento",
+      "spa",
+      "piscina"
+    ]
+  },
+  {
+    "id": 16,
+    "destino_id": 78,
+    "nome": "Palácio Resort",
+    "estrelas": 5,
+    "preco_por_noite": 401.5,
+    "comodidades": [
+      "ar-condicionado",
+      "spa",
+      "piscina"
+    ]
+  },
+  {
+    "id": 17,
+    "destino_id": 72,
+    "nome": "Douro Resort",
+    "estrelas": 4,
+    "preco_por_noite": 157.66,
+    "comodidades": [
+      "spa",
+      "piscina",
+      "pequeno-almoço"
+    ]
+  },
+  {
+    "id": 18,
+    "destino_id": 95,
+    "nome": "Palácio Suites",
+    "estrelas": 5,
+    "preco_por_noite": 415.43,
+    "comodidades": [
+      "estacionamento",
+      "spa",
+      "ginásio"
+    ]
+  },
+  {
+    "id": 19,
+    "destino_id": 31,
+    "nome": "Grande Albergaria",
+    "estrelas": 3,
+    "preco_por_noite": 105.7,
+    "comodidades": [
+      "piscina"
+    ]
+  },
+  {
+    "id": 20,
+    "destino_id": 46,
+    "nome": "Douro Pousada Zurich",
+    "estrelas": 5,
+    "preco_por_noite": 395.44,
+    "comodidades": [
+      "piscina",
+      "pequeno-almoço",
+      "spa",
+      "estacionamento"
+    ]
+  },
+  {
+    "id": 21,
+    "destino_id": 8,
+    "nome": "Boutique Palace",
+    "estrelas": 5,
+    "preco_por_noite": 240.53,
+    "comodidades": [
+      "ar-condicionado",
+      "estacionamento"
+    ]
+  },
+  {
+    "id": 22,
+    "destino_id": 33,
+    "nome": "Douro Palace Budapest",
+    "estrelas": 4,
+    "preco_por_noite": 250.22,
+    "comodidades": [
+      "spa",
+      "ginásio",
+      "pequeno-almoço",
+      "wifi"
+    ]
+  },
+  {
+    "id": 23,
+    "destino_id": 106,
+    "nome": "Boutique Suites Miami",
+    "estrelas": 3,
+    "preco_por_noite": 199.71,
+    "comodidades": [
+      "ginásio",
+      "spa",
+      "piscina"
+    ]
+  },
+  {
+    "id": 24,
+    "destino_id": 65,
+    "nome": "Grande Resort",
+    "estrelas": 5,
+    "preco_por_noite": 438.42,
+    "comodidades": [
+      "estacionamento",
+      "piscina",
+      "wifi"
+    ]
+  },
+  {
+    "id": 25,
+    "destino_id": 106,
+    "nome": "Vila Resort",
+    "estrelas": 5,
+    "preco_por_noite": 312.79,
+    "comodidades": [
+      "spa"
+    ]
+  },
+  {
+    "id": 26,
+    "destino_id": 25,
+    "nome": "Real Suites",
+    "estrelas": 5,
+    "preco_por_noite": 304.85,
+    "comodidades": [
+      "pequeno-almoço",
+      "piscina"
+    ]
+  },
+  {
+    "id": 27,
+    "destino_id": 70,
+    "nome": "Solar Albergaria",
+    "estrelas": 4,
+    "preco_por_noite": 234.81,
+    "comodidades": [
+      "ar-condicionado",
+      "piscina"
+    ]
+  },
+  {
+    "id": 28,
+    "destino_id": 83,
+    "nome": "Atlântico Albergaria",
+    "estrelas": 3,
+    "preco_por_noite": 401.91,
+    "comodidades": [
+      "estacionamento"
+    ]
+  },
+  {
+    "id": 29,
+    "destino_id": 91,
+    "nome": "Vila Hotel",
+    "estrelas": 3,
+    "preco_por_noite": 235.03,
+    "comodidades": [
+      "ar-condicionado"
+    ]
+  },
+  {
+    "id": 30,
+    "destino_id": 68,
+    "nome": "Palácio Suites Porto",
+    "estrelas": 5,
+    "preco_por_noite": 106.67,
+    "comodidades": [
+      "pequeno-almoço"
+    ]
+  },
+  {
+    "id": 31,
+    "destino_id": 95,
+    "nome": "Palácio Hotel",
+    "estrelas": 3,
+    "preco_por_noite": 229.32,
+    "comodidades": [
+      "spa"
+    ]
+  },
+  {
+    "id": 32,
+    "destino_id": 75,
+    "nome": "Boutique Palace Braga",
+    "estrelas": 5,
+    "preco_por_noite": 242.33,
+    "comodidades": [
+      "ginásio",
+      "ar-condicionado",
+      "pequeno-almoço",
+      "piscina"
+    ]
+  },
+  {
+    "id": 33,
+    "destino_id": 24,
+    "nome": "Grande Albergaria Singapore",
+    "estrelas": 3,
+    "preco_por_noite": 441.87,
+    "comodidades": [
+      "ginásio",
+      "piscina",
+      "ar-condicionado"
+    ]
+  },
+  {
+    "id": 34,
+    "destino_id": 9,
+    "nome": "Vila Albergaria",
+    "estrelas": 4,
+    "preco_por_noite": 354.49,
+    "comodidades": [
+      "pequeno-almoço",
+      "ginásio",
+      "ar-condicionado"
+    ]
+  },
+  {
+    "id": 35,
+    "destino_id": 104,
+    "nome": "Palácio Suites Munich",
+    "estrelas": 4,
+    "preco_por_noite": 52.57,
+    "comodidades": [
+      "piscina",
+      "pequeno-almoço"
+    ]
+  },
+  {
+    "id": 36,
+    "destino_id": 26,
+    "nome": "Boutique Resort",
+    "estrelas": 5,
+    "preco_por_noite": 159.96,
+    "comodidades": [
+      "piscina"
+    ]
+  },
+  {
+    "id": 37,
+    "destino_id": 23,
+    "nome": "Douro Suites Venice",
+    "estrelas": 3,
+    "preco_por_noite": 347.49,
+    "comodidades": [
+      "spa"
+    ]
+  },
+  {
+    "id": 38,
+    "destino_id": 21,
+    "nome": "Palácio Suites Horta",
+    "estrelas": 5,
+    "preco_por_noite": 371.92,
+    "comodidades": [
+      "ar-condicionado",
+      "pequeno-almoço",
+      "piscina",
+      "spa"
+    ]
+  },
+  {
+    "id": 39,
+    "destino_id": 50,
+    "nome": "Real Suites Horta",
+    "estrelas": 4,
+    "preco_por_noite": 380.27,
+    "comodidades": [
+      "ginásio",
+      "pequeno-almoço"
+    ]
+  },
+  {
+    "id": 40,
+    "destino_id": 86,
+    "nome": "Real Resort Angra do Heroísmo",
+    "estrelas": 4,
+    "preco_por_noite": 203.1,
+    "comodidades": [
+      "wifi",
+      "piscina",
+      "pequeno-almoço",
+      "estacionamento"
+    ]
+  },
+  {
+    "id": 41,
+    "destino_id": 16,
+    "nome": "Boutique Suites Warsaw",
+    "estrelas": 2,
+    "preco_por_noite": 116.51,
+    "comodidades": [
+      "ginásio"
+    ]
+  },
+  {
+    "id": 42,
+    "destino_id": 108,
+    "nome": "Solar Pousada",
+    "estrelas": 4,
+    "preco_por_noite": 131.1,
+    "comodidades": [
+      "ar-condicionado",
+      "spa"
+    ]
+  },
+  {
+    "id": 43,
+    "destino_id": 58,
+    "nome": "Douro Albergaria",
+    "estrelas": 4,
+    "preco_por_noite": 249.5,
+    "comodidades": [
+      "wifi",
+      "piscina",
+      "ar-condicionado"
+    ]
+  },
+  {
+    "id": 44,
+    "destino_id": 118,
+    "nome": "Vila Resort London",
+    "estrelas": 4,
+    "preco_por_noite": 204.46,
+    "comodidades": [
+      "estacionamento",
+      "spa"
+    ]
+  },
+  {
+    "id": 45,
+    "destino_id": 9,
+    "nome": "Solar Palace",
+    "estrelas": 3,
+    "preco_por_noite": 129.71,
+    "comodidades": [
+      "ginásio",
+      "pequeno-almoço"
+    ]
+  },
+  {
+    "id": 46,
+    "destino_id": 76,
+    "nome": "Solar Albergaria Mykonos",
+    "estrelas": 4,
+    "preco_por_noite": 118.46,
+    "comodidades": [
+      "pequeno-almoço",
+      "estacionamento",
+      "ar-condicionado"
+    ]
+  },
+  {
+    "id": 47,
+    "destino_id": 42,
+    "nome": "Boutique Albergaria",
+    "estrelas": 4,
+    "preco_por_noite": 130.32,
+    "comodidades": [
+      "estacionamento",
+      "wifi"
+    ]
+  },
+  {
+    "id": 48,
+    "destino_id": 60,
+    "nome": "Vila Resort Miami",
+    "estrelas": 3,
+    "preco_por_noite": 363.08,
+    "comodidades": [
+      "estacionamento"
+    ]
+  },
+  {
+    "id": 49,
+    "destino_id": 99,
+    "nome": "Boutique Pousada Valencia",
+    "estrelas": 4,
+    "preco_por_noite": 88.11,
+    "comodidades": [
+      "pequeno-almoço"
+    ]
+  },
+  {
+    "id": 50,
+    "destino_id": 27,
+    "nome": "Palácio Pousada Cape Town",
+    "estrelas": 5,
+    "preco_por_noite": 275.1,
+    "comodidades": [
+      "pequeno-almoço",
+      "estacionamento"
+    ]
+  },
+  {
+    "id": 51,
+    "destino_id": 47,
+    "nome": "Real Palace",
+    "estrelas": 5,
+    "preco_por_noite": 427.2,
+    "comodidades": [
+      "pequeno-almoço",
+      "estacionamento",
+      "wifi",
+      "piscina"
+    ]
+  },
+  {
+    "id": 52,
+    "destino_id": 15,
+    "nome": "Douro Palace Ponta Delgada",
+    "estrelas": 4,
+    "preco_por_noite": 156.83,
+    "comodidades": [
+      "ginásio",
+      "piscina",
+      "estacionamento"
+    ]
+  },
+  {
+    "id": 53,
+    "destino_id": 120,
+    "nome": "Douro Palace Horta",
+    "estrelas": 4,
+    "preco_por_noite": 420.98,
+    "comodidades": [
+      "wifi"
+    ]
+  },
+  {
+    "id": 54,
+    "destino_id": 7,
+    "nome": "Solar Resort",
+    "estrelas": 5,
+    "preco_por_noite": 394.66,
+    "comodidades": [
+      "wifi",
+      "ginásio",
+      "spa"
+    ]
+  },
+  {
+    "id": 55,
+    "destino_id": 74,
+    "nome": "Vila Pousada Amsterdam",
+    "estrelas": 5,
+    "preco_por_noite": 342.3,
+    "comodidades": [
+      "spa",
+      "piscina",
+      "wifi",
+      "ar-condicionado"
+    ]
+  },
+  {
+    "id": 56,
+    "destino_id": 26,
+    "nome": "Atlântico Albergaria Paris",
+    "estrelas": 4,
+    "preco_por_noite": 301.09,
+    "comodidades": [
+      "spa",
+      "wifi",
+      "piscina"
+    ]
+  },
+  {
+    "id": 57,
+    "destino_id": 3,
+    "nome": "Atlântico Hotel",
+    "estrelas": 3,
+    "preco_por_noite": 240.85,
+    "comodidades": [
+      "wifi",
+      "pequeno-almoço"
+    ]
+  },
+  {
+    "id": 58,
+    "destino_id": 116,
+    "nome": "Solar Pousada Zurich",
+    "estrelas": 3,
+    "preco_por_noite": 276.68,
+    "comodidades": [
+      "piscina"
+    ]
+  },
+  {
+    "id": 59,
+    "destino_id": 10,
+    "nome": "Grande Resort Évora",
+    "estrelas": 5,
+    "preco_por_noite": 335.99,
+    "comodidades": [
+      "piscina",
+      "estacionamento"
+    ]
+  },
+  {
+    "id": 60,
+    "destino_id": 91,
+    "nome": "Grande Hotel",
+    "estrelas": 4,
+    "preco_por_noite": 204.88,
+    "comodidades": [
+      "wifi"
+    ]
+  },
+  {
+    "id": 61,
+    "destino_id": 117,
+    "nome": "Palácio Suites Lagos",
+    "estrelas": 4,
+    "preco_por_noite": 208.74,
+    "comodidades": [
+      "pequeno-almoço"
+    ]
+  },
+  {
+    "id": 62,
+    "destino_id": 81,
+    "nome": "Real Suites Viana do Castelo",
+    "estrelas": 5,
+    "preco_por_noite": 290.22,
+    "comodidades": [
+      "piscina",
+      "pequeno-almoço"
+    ]
+  },
+  {
+    "id": 63,
+    "destino_id": 26,
+    "nome": "Real Albergaria",
+    "estrelas": 5,
+    "preco_por_noite": 194.6,
+    "comodidades": [
+      "piscina",
+      "ginásio",
+      "spa",
+      "estacionamento"
+    ]
+  },
+  {
+    "id": 64,
+    "destino_id": 48,
+    "nome": "Vila Albergaria Santorini",
+    "estrelas": 5,
+    "preco_por_noite": 355.87,
+    "comodidades": [
+      "wifi",
+      "piscina"
+    ]
+  },
+  {
+    "id": 65,
+    "destino_id": 12,
+    "nome": "Atlântico Albergaria Warsaw",
+    "estrelas": 4,
+    "preco_por_noite": 348.66,
+    "comodidades": [
+      "estacionamento",
+      "ar-condicionado",
+      "pequeno-almoço"
+    ]
+  },
+  {
+    "id": 66,
+    "destino_id": 106,
+    "nome": "Real Palace Miami",
+    "estrelas": 4,
+    "preco_por_noite": 441.82,
+    "comodidades": [
+      "estacionamento",
+      "piscina",
+      "ar-condicionado",
+      "wifi"
+    ]
+  },
+  {
+    "id": 67,
+    "destino_id": 107,
+    "nome": "Douro Albergaria Cape Town",
+    "estrelas": 5,
+    "preco_por_noite": 149.17,
+    "comodidades": [
+      "pequeno-almoço"
+    ]
+  },
+  {
+    "id": 68,
+    "destino_id": 68,
+    "nome": "Grande Hotel Porto",
+    "estrelas": 3,
+    "preco_por_noite": 439.12,
+    "comodidades": [
+      "spa",
+      "estacionamento",
+      "ar-condicionado"
+    ]
+  },
+  {
+    "id": 69,
+    "destino_id": 31,
+    "nome": "Vila Resort Porto",
+    "estrelas": 4,
+    "preco_por_noite": 91.9,
+    "comodidades": [
+      "wifi",
+      "spa"
+    ]
+  },
+  {
+    "id": 70,
+    "destino_id": 112,
+    "nome": "Solar Albergaria Prague",
+    "estrelas": 4,
+    "preco_por_noite": 205.47,
+    "comodidades": [
+      "estacionamento",
+      "spa",
+      "wifi"
+    ]
+  },
+  {
+    "id": 71,
+    "destino_id": 36,
+    "nome": "Grande Suites",
+    "estrelas": 5,
+    "preco_por_noite": 355.23,
+    "comodidades": [
+      "piscina",
+      "spa",
+      "ar-condicionado"
+    ]
+  },
+  {
+    "id": 72,
+    "destino_id": 90,
+    "nome": "Real Suites Buenos Aires",
+    "estrelas": 5,
+    "preco_por_noite": 54.55,
+    "comodidades": [
+      "ginásio",
+      "estacionamento"
+    ]
+  },
+  {
+    "id": 73,
+    "destino_id": 28,
+    "nome": "Grande Palace Budapest",
+    "estrelas": 5,
+    "preco_por_noite": 354.51,
+    "comodidades": [
+      "spa"
+    ]
+  },
+  {
+    "id": 74,
+    "destino_id": 39,
+    "nome": "Real Resort Edinburgh",
+    "estrelas": 5,
+    "preco_por_noite": 75.15,
+    "comodidades": [
+      "wifi",
+      "spa"
+    ]
+  },
+  {
+    "id": 75,
+    "destino_id": 24,
+    "nome": "Real Suites Singapore",
+    "estrelas": 3,
+    "preco_por_noite": 122.7,
+    "comodidades": [
+      "estacionamento",
+      "pequeno-almoço",
+      "wifi",
+      "ginásio"
+    ]
+  },
+  {
+    "id": 76,
+    "destino_id": 61,
+    "nome": "Real Palace Stockholm",
+    "estrelas": 2,
+    "preco_por_noite": 72.11,
+    "comodidades": [
+      "ar-condicionado",
+      "spa",
+      "pequeno-almoço",
+      "wifi"
+    ]
+  },
+  {
+    "id": 77,
+    "destino_id": 38,
+    "nome": "Grande Suites Prague",
+    "estrelas": 3,
+    "preco_por_noite": 227.8,
+    "comodidades": [
+      "wifi",
+      "ar-condicionado"
+    ]
+  },
+  {
+    "id": 78,
+    "destino_id": 73,
+    "nome": "Boutique Palace Copenhagen",
+    "estrelas": 3,
+    "preco_por_noite": 325.8,
+    "comodidades": [
+      "ginásio"
+    ]
+  },
+  {
+    "id": 79,
+    "destino_id": 73,
+    "nome": "Atlântico Albergaria Copenhagen",
+    "estrelas": 4,
+    "preco_por_noite": 114.14,
+    "comodidades": [
+      "pequeno-almoço"
+    ]
+  },
+  {
+    "id": 80,
+    "destino_id": 14,
+    "nome": "Douro Suites Budapest",
+    "estrelas": 3,
+    "preco_por_noite": 394.92,
+    "comodidades": [
+      "wifi"
+    ]
+  },
+  {
+    "id": 81,
+    "destino_id": 113,
+    "nome": "Solar Hotel Prague",
+    "estrelas": 3,
+    "preco_por_noite": 111.69,
+    "comodidades": [
+      "ginásio",
+      "wifi",
+      "pequeno-almoço",
+      "spa"
+    ]
+  },
+  {
+    "id": 82,
+    "destino_id": 36,
+    "nome": "Atlântico Suites",
+    "estrelas": 4,
+    "preco_por_noite": 108.73,
+    "comodidades": [
+      "ginásio",
+      "ar-condicionado",
+      "piscina",
+      "pequeno-almoço"
+    ]
+  },
+  {
+    "id": 83,
+    "destino_id": 107,
+    "nome": "Palácio Albergaria Cape Town",
+    "estrelas": 3,
+    "preco_por_noite": 439.99,
+    "comodidades": [
+      "pequeno-almoço"
+    ]
+  },
+  {
+    "id": 84,
+    "destino_id": 74,
+    "nome": "Palácio Palace Amsterdam",
+    "estrelas": 4,
+    "preco_por_noite": 186.75,
+    "comodidades": [
+      "piscina",
+      "wifi",
+      "spa"
+    ]
+  },
+  {
+    "id": 85,
+    "destino_id": 55,
+    "nome": "Real Pousada",
+    "estrelas": 5,
+    "preco_por_noite": 84.22,
+    "comodidades": [
+      "wifi",
+      "piscina",
+      "ginásio"
+    ]
+  },
+  {
+    "id": 86,
+    "destino_id": 6,
+    "nome": "Atlântico Resort",
+    "estrelas": 3,
+    "preco_por_noite": 265.82,
+    "comodidades": [
+      "ar-condicionado",
+      "pequeno-almoço",
+      "piscina",
+      "estacionamento"
+    ]
+  },
+  {
+    "id": 87,
+    "destino_id": 57,
+    "nome": "Grande Albergaria Cape Town",
+    "estrelas": 5,
+    "preco_por_noite": 107.27,
+    "comodidades": [
+      "ginásio"
+    ]
+  },
+  {
+    "id": 88,
+    "destino_id": 97,
+    "nome": "Real Hotel",
+    "estrelas": 4,
+    "preco_por_noite": 239.41,
+    "comodidades": [
+      "wifi",
+      "pequeno-almoço",
+      "estacionamento",
+      "piscina"
+    ]
+  },
+  {
+    "id": 89,
+    "destino_id": 114,
+    "nome": "Douro Palace Rome",
+    "estrelas": 5,
+    "preco_por_noite": 299.77,
+    "comodidades": [
+      "wifi",
+      "spa"
+    ]
+  },
+  {
+    "id": 90,
+    "destino_id": 98,
+    "nome": "Real Palace Nice",
+    "estrelas": 5,
+    "preco_por_noite": 313.97,
+    "comodidades": [
+      "ginásio"
+    ]
+  },
+  {
+    "id": 91,
+    "destino_id": 61,
+    "nome": "Atlântico Palace",
+    "estrelas": 4,
+    "preco_por_noite": 278.37,
+    "comodidades": [
+      "piscina"
+    ]
+  },
+  {
+    "id": 92,
+    "destino_id": 77,
+    "nome": "Douro Resort Amsterdam",
+    "estrelas": 3,
+    "preco_por_noite": 64.34,
+    "comodidades": [
+      "estacionamento",
+      "wifi"
+    ]
+  },
+  {
+    "id": 93,
+    "destino_id": 16,
+    "nome": "Real Palace Warsaw",
+    "estrelas": 3,
+    "preco_por_noite": 221.56,
+    "comodidades": [
+      "wifi",
+      "ar-condicionado"
+    ]
+  },
+  {
+    "id": 94,
+    "destino_id": 80,
+    "nome": "Boutique Hotel Valencia",
+    "estrelas": 4,
+    "preco_por_noite": 91.14,
+    "comodidades": [
+      "wifi",
+      "estacionamento",
+      "spa",
+      "pequeno-almoço"
+    ]
+  },
+  {
+    "id": 95,
+    "destino_id": 39,
+    "nome": "Grande Pousada",
+    "estrelas": 4,
+    "preco_por_noite": 233.49,
+    "comodidades": [
+      "ar-condicionado",
+      "pequeno-almoço",
+      "spa",
+      "ginásio"
+    ]
+  },
+  {
+    "id": 96,
+    "destino_id": 76,
+    "nome": "Real Suites Mykonos",
+    "estrelas": 5,
+    "preco_por_noite": 50.59,
+    "comodidades": [
+      "ginásio",
+      "spa"
+    ]
+  },
+  {
+    "id": 97,
+    "destino_id": 66,
+    "nome": "Solar Resort Cascais",
+    "estrelas": 3,
+    "preco_por_noite": 150.67,
+    "comodidades": [
+      "pequeno-almoço",
+      "estacionamento"
+    ]
+  },
+  {
+    "id": 98,
+    "destino_id": 23,
+    "nome": "Boutique Resort Venice",
+    "estrelas": 4,
+    "preco_por_noite": 422.75,
+    "comodidades": [
+      "piscina",
+      "estacionamento"
+    ]
+  },
+  {
+    "id": 99,
+    "destino_id": 39,
+    "nome": "Boutique Palace Edinburgh",
+    "estrelas": 4,
+    "preco_por_noite": 142.05,
+    "comodidades": [
+      "ar-condicionado"
+    ]
+  },
+  {
+    "id": 100,
+    "destino_id": 109,
+    "nome": "Palácio Albergaria Santorini",
+    "estrelas": 5,
+    "preco_por_noite": 309.02,
+    "comodidades": [
+      "estacionamento",
+      "spa",
+      "piscina"
+    ]
+  },
+  {
+    "id": 101,
+    "destino_id": 104,
+    "nome": "Grande Pousada Munich",
+    "estrelas": 5,
+    "preco_por_noite": 55.84,
+    "comodidades": [
+      "ar-condicionado",
+      "spa",
+      "estacionamento",
+      "wifi"
+    ]
+  },
+  {
+    "id": 102,
+    "destino_id": 48,
+    "nome": "Vila Suites",
+    "estrelas": 5,
+    "preco_por_noite": 145.17,
+    "comodidades": [
+      "wifi",
+      "ginásio",
+      "ar-condicionado",
+      "estacionamento"
+    ]
+  },
+  {
+    "id": 103,
+    "destino_id": 3,
+    "nome": "Douro Resort Zurich",
+    "estrelas": 3,
+    "preco_por_noite": 440.76,
+    "comodidades": [
+      "piscina",
+      "wifi",
+      "spa",
+      "ginásio"
+    ]
+  },
+  {
+    "id": 104,
+    "destino_id": 89,
+    "nome": "Douro Suites Budapest",
+    "estrelas": 4,
+    "preco_por_noite": 435,
+    "comodidades": [
+      "piscina",
+      "pequeno-almoço",
+      "wifi"
+    ]
+  },
+  {
+    "id": 105,
+    "destino_id": 67,
+    "nome": "Palácio Resort New York",
+    "estrelas": 3,
+    "preco_por_noite": 106.31,
+    "comodidades": [
+      "pequeno-almoço",
+      "ar-condicionado",
+      "estacionamento"
+    ]
+  },
+  {
+    "id": 106,
+    "destino_id": 64,
+    "nome": "Boutique Albergaria Miami",
+    "estrelas": 3,
+    "preco_por_noite": 87.03,
+    "comodidades": [
+      "piscina",
+      "spa"
+    ]
+  },
+  {
+    "id": 107,
+    "destino_id": 13,
+    "nome": "Douro Pousada Dubai",
+    "estrelas": 4,
+    "preco_por_noite": 232.03,
+    "comodidades": [
+      "ginásio",
+      "wifi",
+      "pequeno-almoço",
+      "ar-condicionado"
+    ]
+  },
+  {
+    "id": 108,
+    "destino_id": 102,
+    "nome": "Real Pousada Manchester",
+    "estrelas": 4,
+    "preco_por_noite": 315.02,
+    "comodidades": [
+      "piscina",
+      "pequeno-almoço",
+      "spa"
+    ]
+  },
+  {
+    "id": 109,
+    "destino_id": 54,
+    "nome": "Real Hotel Budapest",
+    "estrelas": 4,
+    "preco_por_noite": 84.56,
+    "comodidades": [
+      "spa",
+      "piscina",
+      "ar-condicionado",
+      "wifi"
+    ]
+  },
+  {
+    "id": 110,
+    "destino_id": 81,
+    "nome": "Real Hotel Viana do Castelo",
+    "estrelas": 4,
+    "preco_por_noite": 309.7,
+    "comodidades": [
+      "spa",
+      "estacionamento",
+      "ar-condicionado",
+      "wifi"
+    ]
+  },
+  {
+    "id": 111,
+    "destino_id": 99,
+    "nome": "Real Hotel Valencia",
+    "estrelas": 3,
+    "preco_por_noite": 273.44,
+    "comodidades": [
+      "piscina",
+      "spa",
+      "estacionamento"
+    ]
+  },
+  {
+    "id": 112,
+    "destino_id": 33,
+    "nome": "Douro Pousada Budapest",
+    "estrelas": 3,
+    "preco_por_noite": 351.65,
+    "comodidades": [
+      "ginásio",
+      "piscina"
+    ]
+  },
+  {
+    "id": 113,
+    "destino_id": 53,
+    "nome": "Atlântico Palace Coimbra",
+    "estrelas": 4,
+    "preco_por_noite": 413.2,
+    "comodidades": [
+      "ar-condicionado"
+    ]
+  },
+  {
+    "id": 114,
+    "destino_id": 74,
+    "nome": "Boutique Suites Amsterdam",
+    "estrelas": 5,
+    "preco_por_noite": 414.7,
+    "comodidades": [
+      "ginásio"
+    ]
+  },
+  {
+    "id": 115,
+    "destino_id": 41,
+    "nome": "Vila Resort Ponta Delgada",
+    "estrelas": 4,
+    "preco_por_noite": 235.4,
+    "comodidades": [
+      "ar-condicionado"
+    ]
+  },
+  {
+    "id": 116,
+    "destino_id": 54,
+    "nome": "Real Suites Budapest",
+    "estrelas": 3,
+    "preco_por_noite": 403.89,
+    "comodidades": [
+      "estacionamento",
+      "spa"
+    ]
+  },
+  {
+    "id": 117,
+    "destino_id": 19,
+    "nome": "Real Pousada Lisboa",
+    "estrelas": 4,
+    "preco_por_noite": 270.66,
+    "comodidades": [
+      "ar-condicionado"
+    ]
+  },
+  {
+    "id": 118,
+    "destino_id": 38,
+    "nome": "Real Suites Prague",
+    "estrelas": 2,
+    "preco_por_noite": 147.36,
+    "comodidades": [
+      "wifi",
+      "ar-condicionado",
+      "ginásio",
+      "pequeno-almoço"
+    ]
+  },
+  {
+    "id": 119,
+    "destino_id": 69,
+    "nome": "Real Albergaria Rio de Janeiro",
+    "estrelas": 4,
+    "preco_por_noite": 40.13,
+    "comodidades": [
+      "spa"
+    ]
+  },
+  {
+    "id": 120,
+    "destino_id": 90,
+    "nome": "Douro Hotel",
+    "estrelas": 2,
+    "preco_por_noite": 307.38,
+    "comodidades": [
+      "estacionamento"
+    ]
+  },
+  {
+    "id": 121,
+    "destino_id": 1,
+    "nome": "Boutique Pousada Munich",
+    "estrelas": 4,
+    "preco_por_noite": 444.32,
+    "comodidades": [
+      "estacionamento",
+      "piscina",
+      "ginásio",
+      "pequeno-almoço"
+    ]
+  },
+  {
+    "id": 122,
+    "destino_id": 48,
+    "nome": "Boutique Albergaria Santorini",
+    "estrelas": 3,
+    "preco_por_noite": 450.56,
+    "comodidades": [
+      "estacionamento",
+      "ar-condicionado",
+      "pequeno-almoço",
+      "wifi"
+    ]
+  },
+  {
+    "id": 123,
+    "destino_id": 12,
+    "nome": "Grande Hotel Warsaw",
+    "estrelas": 5,
+    "preco_por_noite": 255.55,
+    "comodidades": [
+      "spa",
+      "piscina",
+      "pequeno-almoço",
+      "wifi"
+    ]
+  },
+  {
+    "id": 124,
+    "destino_id": 53,
+    "nome": "Vila Palace",
+    "estrelas": 3,
+    "preco_por_noite": 233.95,
+    "comodidades": [
+      "wifi",
+      "pequeno-almoço"
+    ]
+  },
+  {
+    "id": 125,
+    "destino_id": 64,
+    "nome": "Boutique Suites Miami",
+    "estrelas": 4,
+    "preco_por_noite": 38.6,
+    "comodidades": [
+      "wifi",
+      "ginásio",
+      "spa"
+    ]
+  },
+  {
+    "id": 126,
+    "destino_id": 19,
+    "nome": "Atlântico Albergaria Lisboa",
+    "estrelas": 4,
+    "preco_por_noite": 425.8,
+    "comodidades": [
+      "pequeno-almoço",
+      "estacionamento",
+      "ar-condicionado"
+    ]
+  },
+  {
+    "id": 127,
+    "destino_id": 74,
+    "nome": "Real Pousada Amsterdam",
+    "estrelas": 3,
+    "preco_por_noite": 441.18,
+    "comodidades": [
+      "piscina"
+    ]
+  },
+  {
+    "id": 128,
+    "destino_id": 92,
+    "nome": "Real Suites Prague",
+    "estrelas": 5,
+    "preco_por_noite": 194.95,
+    "comodidades": [
+      "ginásio"
+    ]
+  },
+  {
+    "id": 129,
+    "destino_id": 46,
+    "nome": "Douro Hotel Zurich",
+    "estrelas": 3,
+    "preco_por_noite": 51.85,
+    "comodidades": [
+      "estacionamento",
+      "ar-condicionado",
+      "piscina",
+      "pequeno-almoço"
+    ]
+  },
+  {
+    "id": 130,
+    "destino_id": 65,
+    "nome": "Douro Palace Auckland",
+    "estrelas": 4,
+    "preco_por_noite": 203,
+    "comodidades": [
+      "estacionamento"
+    ]
+  },
+  {
+    "id": 131,
+    "destino_id": 86,
+    "nome": "Palácio Suites Angra do Heroísmo",
+    "estrelas": 5,
+    "preco_por_noite": 265.14,
+    "comodidades": [
+      "pequeno-almoço",
+      "ginásio",
+      "wifi",
+      "spa"
+    ]
+  },
+  {
+    "id": 132,
+    "destino_id": 79,
+    "nome": "Palácio Palace Brussels",
+    "estrelas": 4,
+    "preco_por_noite": 224.97,
+    "comodidades": [
+      "estacionamento"
+    ]
+  },
+  {
+    "id": 133,
+    "destino_id": 23,
+    "nome": "Douro Hotel Venice",
+    "estrelas": 4,
+    "preco_por_noite": 323.17,
+    "comodidades": [
+      "estacionamento",
+      "piscina",
+      "spa",
+      "wifi"
+    ]
+  },
+  {
+    "id": 134,
+    "destino_id": 65,
+    "nome": "Real Hotel Auckland",
+    "estrelas": 5,
+    "preco_por_noite": 291.43,
+    "comodidades": [
+      "estacionamento",
+      "wifi"
+    ]
+  },
+  {
+    "id": 135,
+    "destino_id": 13,
+    "nome": "Boutique Hotel Dubai",
+    "estrelas": 2,
+    "preco_por_noite": 130.87,
+    "comodidades": [
+      "pequeno-almoço"
+    ]
+  },
+  {
+    "id": 136,
+    "destino_id": 5,
+    "nome": "Atlântico Pousada",
+    "estrelas": 5,
+    "preco_por_noite": 72.93,
+    "comodidades": [
+      "estacionamento"
+    ]
+  },
+  {
+    "id": 137,
+    "destino_id": 51,
+    "nome": "Douro Resort Mykonos",
+    "estrelas": 5,
+    "preco_por_noite": 408.76,
+    "comodidades": [
+      "wifi"
+    ]
+  },
+  {
+    "id": 138,
+    "destino_id": 58,
+    "nome": "Real Suites Buenos Aires",
+    "estrelas": 3,
+    "preco_por_noite": 260.13,
+    "comodidades": [
+      "ginásio",
+      "piscina",
+      "estacionamento",
+      "wifi"
+    ]
+  },
+  {
+    "id": 139,
+    "destino_id": 111,
+    "nome": "Grande Palace Mykonos",
+    "estrelas": 5,
+    "preco_por_noite": 287.84,
+    "comodidades": [
+      "estacionamento",
+      "piscina",
+      "ginásio",
+      "ar-condicionado"
+    ]
+  },
+  {
+    "id": 140,
+    "destino_id": 8,
+    "nome": "Real Pousada Sintra",
+    "estrelas": 3,
+    "preco_por_noite": 305.53,
+    "comodidades": [
+      "spa"
+    ]
+  },
+  {
+    "id": 141,
+    "destino_id": 18,
+    "nome": "Vila Suites Santorini",
+    "estrelas": 4,
+    "preco_por_noite": 361.31,
+    "comodidades": [
+      "estacionamento",
+      "ar-condicionado",
+      "wifi",
+      "pequeno-almoço"
+    ]
+  },
+  {
+    "id": 142,
+    "destino_id": 27,
+    "nome": "Real Palace Cape Town",
+    "estrelas": 4,
+    "preco_por_noite": 287.03,
+    "comodidades": [
+      "ar-condicionado",
+      "wifi",
+      "ginásio",
+      "pequeno-almoço"
+    ]
+  },
+  {
+    "id": 143,
+    "destino_id": 69,
+    "nome": "Atlântico Pousada Rio de Janeiro",
+    "estrelas": 4,
+    "preco_por_noite": 118.92,
+    "comodidades": [
+      "spa",
+      "ginásio",
+      "pequeno-almoço",
+      "ar-condicionado"
+    ]
+  },
+  {
+    "id": 144,
+    "destino_id": 117,
+    "nome": "Grande Pousada Lagos",
+    "estrelas": 4,
+    "preco_por_noite": 367.85,
+    "comodidades": [
+      "pequeno-almoço",
+      "piscina"
+    ]
+  },
+  {
+    "id": 145,
+    "destino_id": 74,
+    "nome": "Vila Palace Amsterdam",
+    "estrelas": 5,
+    "preco_por_noite": 394.8,
+    "comodidades": [
+      "ar-condicionado",
+      "estacionamento",
+      "piscina"
+    ]
+  },
+  {
+    "id": 146,
+    "destino_id": 78,
+    "nome": "Boutique Suites Budapest",
+    "estrelas": 3,
+    "preco_por_noite": 309.02,
+    "comodidades": [
+      "ar-condicionado",
+      "pequeno-almoço"
+    ]
+  },
+  {
+    "id": 147,
+    "destino_id": 8,
+    "nome": "Vila Suites Sintra",
+    "estrelas": 2,
+    "preco_por_noite": 327.84,
+    "comodidades": [
+      "estacionamento",
+      "spa",
+      "ar-condicionado",
+      "wifi"
+    ]
+  },
+  {
+    "id": 148,
+    "destino_id": 82,
+    "nome": "Boutique Suites Buenos Aires",
+    "estrelas": 5,
+    "preco_por_noite": 411.79,
+    "comodidades": [
+      "wifi",
+      "ar-condicionado",
+      "ginásio"
+    ]
+  },
+  {
+    "id": 149,
+    "destino_id": 50,
+    "nome": "Grande Palace Horta",
+    "estrelas": 4,
+    "preco_por_noite": 143.58,
+    "comodidades": [
+      "wifi",
+      "piscina",
+      "pequeno-almoço"
+    ]
+  },
+  {
+    "id": 150,
+    "destino_id": 72,
+    "nome": "Solar Hotel Coimbra",
+    "estrelas": 5,
+    "preco_por_noite": 341.91,
+    "comodidades": [
+      "ar-condicionado",
+      "piscina",
+      "spa"
+    ]
+  },
+  {
+    "id": 151,
+    "destino_id": 40,
+    "nome": "Real Suites Warsaw",
+    "estrelas": 3,
+    "preco_por_noite": 214.88,
+    "comodidades": [
+      "spa"
+    ]
+  },
+  {
+    "id": 152,
+    "destino_id": 11,
+    "nome": "Solar Hotel Funchal",
+    "estrelas": 4,
+    "preco_por_noite": 367.53,
+    "comodidades": [
+      "ginásio"
+    ]
+  },
+  {
+    "id": 153,
+    "destino_id": 107,
+    "nome": "Palácio Hotel Cape Town",
+    "estrelas": 3,
+    "preco_por_noite": 348.54,
+    "comodidades": [
+      "spa",
+      "ar-condicionado",
+      "pequeno-almoço"
+    ]
+  },
+  {
+    "id": 154,
+    "destino_id": 69,
+    "nome": "Atlântico Pousada Rio de Janeiro",
+    "estrelas": 3,
+    "preco_por_noite": 319.43,
+    "comodidades": [
+      "ar-condicionado",
+      "ginásio",
+      "wifi",
+      "piscina"
+    ]
+  },
+  {
+    "id": 155,
+    "destino_id": 74,
+    "nome": "Douro Hotel Amsterdam",
+    "estrelas": 3,
+    "preco_por_noite": 325.75,
+    "comodidades": [
+      "spa",
+      "pequeno-almoço"
+    ]
+  },
+  {
+    "id": 156,
+    "destino_id": 104,
+    "nome": "Solar Suites",
+    "estrelas": 4,
+    "preco_por_noite": 145.33,
+    "comodidades": [
+      "estacionamento",
+      "pequeno-almoço",
+      "ar-condicionado",
+      "wifi"
+    ]
+  },
+  {
+    "id": 157,
+    "destino_id": 93,
+    "nome": "Atlântico Albergaria Warsaw",
+    "estrelas": 5,
+    "preco_por_noite": 84.67,
+    "comodidades": [
+      "spa"
+    ]
+  },
+  {
+    "id": 158,
+    "destino_id": 78,
+    "nome": "Real Pousada Budapest",
+    "estrelas": 4,
+    "preco_por_noite": 265.91,
+    "comodidades": [
+      "piscina",
+      "wifi",
+      "ginásio"
+    ]
+  },
+  {
+    "id": 159,
+    "destino_id": 65,
+    "nome": "Real Hotel Auckland",
+    "estrelas": 4,
+    "preco_por_noite": 313.81,
+    "comodidades": [
+      "spa",
+      "piscina"
+    ]
+  },
+  {
+    "id": 160,
+    "destino_id": 51,
+    "nome": "Palácio Resort Mykonos",
+    "estrelas": 2,
+    "preco_por_noite": 134.54,
+    "comodidades": [
+      "piscina",
+      "estacionamento"
+    ]
+  },
+  {
+    "id": 161,
+    "destino_id": 92,
+    "nome": "Real Pousada Prague",
+    "estrelas": 3,
+    "preco_por_noite": 76.55,
+    "comodidades": [
+      "piscina",
+      "estacionamento",
+      "spa",
+      "ar-condicionado"
+    ]
+  },
+  {
+    "id": 162,
+    "destino_id": 71,
+    "nome": "Solar Palace Coimbra",
+    "estrelas": 4,
+    "preco_por_noite": 60.59,
+    "comodidades": [
+      "pequeno-almoço"
+    ]
+  },
+  {
+    "id": 163,
+    "destino_id": 86,
+    "nome": "Boutique Resort Angra do Heroísmo",
+    "estrelas": 4,
+    "preco_por_noite": 205.11,
+    "comodidades": [
+      "spa",
+      "piscina",
+      "pequeno-almoço",
+      "ar-condicionado"
+    ]
+  },
+  {
+    "id": 164,
+    "destino_id": 8,
+    "nome": "Vila Suites Sintra",
+    "estrelas": 5,
+    "preco_por_noite": 126.3,
+    "comodidades": [
+      "ginásio",
+      "spa",
+      "estacionamento"
+    ]
+  },
+  {
+    "id": 165,
+    "destino_id": 61,
+    "nome": "Palácio Suites Stockholm",
+    "estrelas": 5,
+    "preco_por_noite": 373.89,
+    "comodidades": [
+      "wifi"
+    ]
+  },
+  {
+    "id": 166,
+    "destino_id": 89,
+    "nome": "Atlântico Suites Budapest",
+    "estrelas": 3,
+    "preco_por_noite": 373.05,
+    "comodidades": [
+      "ar-condicionado",
+      "wifi"
+    ]
+  },
+  {
+    "id": 167,
+    "destino_id": 47,
+    "nome": "Solar Hotel Valencia",
+    "estrelas": 4,
+    "preco_por_noite": 204.57,
+    "comodidades": [
+      "wifi",
+      "pequeno-almoço",
+      "spa"
+    ]
+  },
+  {
+    "id": 168,
+    "destino_id": 68,
+    "nome": "Grande Albergaria Porto",
+    "estrelas": 4,
+    "preco_por_noite": 270.54,
+    "comodidades": [
+      "pequeno-almoço"
+    ]
+  },
+  {
+    "id": 169,
+    "destino_id": 39,
+    "nome": "Solar Palace Edinburgh",
+    "estrelas": 3,
+    "preco_por_noite": 58.26,
+    "comodidades": [
+      "ar-condicionado",
+      "spa",
+      "piscina",
+      "ginásio"
+    ]
+  },
+  {
+    "id": 170,
+    "destino_id": 16,
+    "nome": "Real Resort Warsaw",
+    "estrelas": 4,
+    "preco_por_noite": 138.84,
+    "comodidades": [
+      "estacionamento",
+      "ar-condicionado",
+      "wifi"
+    ]
+  },
+  {
+    "id": 171,
+    "destino_id": 99,
+    "nome": "Boutique Suites Valencia",
+    "estrelas": 5,
+    "preco_por_noite": 404.29,
+    "comodidades": [
+      "piscina"
+    ]
+  },
+  {
+    "id": 172,
+    "destino_id": 64,
+    "nome": "Palácio Resort Miami",
+    "estrelas": 4,
+    "preco_por_noite": 384.59,
+    "comodidades": [
+      "ginásio",
+      "wifi",
+      "pequeno-almoço"
+    ]
+  },
+  {
+    "id": 173,
+    "destino_id": 72,
+    "nome": "Real Pousada Coimbra",
+    "estrelas": 3,
+    "preco_por_noite": 300.38,
+    "comodidades": [
+      "ginásio"
+    ]
+  },
+  {
+    "id": 174,
+    "destino_id": 42,
+    "nome": "Vila Hotel Prague",
+    "estrelas": 4,
+    "preco_por_noite": 173.38,
+    "comodidades": [
+      "pequeno-almoço",
+      "wifi"
+    ]
+  },
+  {
+    "id": 175,
+    "destino_id": 110,
+    "nome": "Vila Pousada Singapore",
+    "estrelas": 4,
+    "preco_por_noite": 353.93,
+    "comodidades": [
+      "ginásio",
+      "piscina"
+    ]
+  },
+  {
+    "id": 176,
+    "destino_id": 67,
+    "nome": "Douro Palace New York",
+    "estrelas": 4,
+    "preco_por_noite": 278.25,
+    "comodidades": [
+      "ginásio",
+      "ar-condicionado",
+      "piscina",
+      "wifi"
+    ]
+  },
+  {
+    "id": 177,
+    "destino_id": 104,
+    "nome": "Vila Pousada Munich",
+    "estrelas": 4,
+    "preco_por_noite": 145.92,
+    "comodidades": [
+      "piscina",
+      "estacionamento"
+    ]
+  },
+  {
+    "id": 178,
+    "destino_id": 35,
+    "nome": "Boutique Albergaria Guimarães",
+    "estrelas": 4,
+    "preco_por_noite": 292.02,
+    "comodidades": [
+      "ar-condicionado",
+      "pequeno-almoço",
+      "wifi",
+      "ginásio"
+    ]
+  },
+  {
+    "id": 179,
+    "destino_id": 62,
+    "nome": "Vila Palace Phuket",
+    "estrelas": 5,
+    "preco_por_noite": 286.06,
+    "comodidades": [
+      "piscina"
+    ]
+  },
+  {
+    "id": 180,
+    "destino_id": 83,
+    "nome": "Vila Albergaria Miami",
+    "estrelas": 5,
+    "preco_por_noite": 231.09,
+    "comodidades": [
+      "ginásio",
+      "spa"
+    ]
+  },
+  {
+    "id": 181,
+    "destino_id": 48,
+    "nome": "Palácio Resort Santorini",
+    "estrelas": 5,
+    "preco_por_noite": 68.18,
+    "comodidades": [
+      "estacionamento"
+    ]
+  },
+  {
+    "id": 182,
+    "destino_id": 100,
+    "nome": "Real Palace Seville",
+    "estrelas": 5,
+    "preco_por_noite": 70.46,
+    "comodidades": [
+      "ginásio",
+      "wifi"
+    ]
+  },
+  {
+    "id": 183,
+    "destino_id": 34,
+    "nome": "Real Resort Sydney",
+    "estrelas": 4,
+    "preco_por_noite": 387.07,
+    "comodidades": [
+      "pequeno-almoço",
+      "wifi",
+      "piscina"
+    ]
+  },
+  {
+    "id": 184,
+    "destino_id": 46,
+    "nome": "Real Suites Zurich",
+    "estrelas": 5,
+    "preco_por_noite": 38.01,
+    "comodidades": [
+      "estacionamento",
+      "piscina"
+    ]
+  },
+  {
+    "id": 185,
+    "destino_id": 23,
+    "nome": "Real Palace Venice",
+    "estrelas": 3,
+    "preco_por_noite": 51.5,
+    "comodidades": [
+      "ar-condicionado"
+    ]
+  },
+  {
+    "id": 186,
+    "destino_id": 19,
+    "nome": "Atlântico Suites Lisboa",
+    "estrelas": 5,
+    "preco_por_noite": 35.24,
+    "comodidades": [
+      "ar-condicionado"
+    ]
+  },
+  {
+    "id": 187,
+    "destino_id": 101,
+    "nome": "Douro Hotel Lagos",
+    "estrelas": 4,
+    "preco_por_noite": 106.35,
+    "comodidades": [
+      "wifi",
+      "estacionamento"
+    ]
+  },
+  {
+    "id": 188,
+    "destino_id": 28,
+    "nome": "Boutique Resort Budapest",
+    "estrelas": 5,
+    "preco_por_noite": 81.47,
+    "comodidades": [
+      "ginásio",
+      "estacionamento"
+    ]
+  },
+  {
+    "id": 189,
+    "destino_id": 63,
+    "nome": "Real Palace Athens",
+    "estrelas": 5,
+    "preco_por_noite": 94.01,
+    "comodidades": [
+      "ar-condicionado"
+    ]
+  },
+  {
+    "id": 190,
+    "destino_id": 39,
+    "nome": "Atlântico Palace Edinburgh",
+    "estrelas": 3,
+    "preco_por_noite": 122.34,
+    "comodidades": [
+      "ginásio",
+      "piscina",
+      "pequeno-almoço",
+      "ar-condicionado"
+    ]
+  },
+  {
+    "id": 191,
+    "destino_id": 28,
+    "nome": "Vila Resort Budapest",
+    "estrelas": 2,
+    "preco_por_noite": 440.53,
+    "comodidades": [
+      "spa"
+    ]
+  },
+  {
+    "id": 192,
+    "destino_id": 101,
+    "nome": "Atlântico Suites Lagos",
+    "estrelas": 3,
+    "preco_por_noite": 305.78,
+    "comodidades": [
+      "estacionamento",
+      "spa",
+      "pequeno-almoço",
+      "wifi"
+    ]
+  },
+  {
+    "id": 193,
+    "destino_id": 70,
+    "nome": "Real Resort Vienna",
+    "estrelas": 5,
+    "preco_por_noite": 196.09,
+    "comodidades": [
+      "ginásio"
+    ]
+  },
+  {
+    "id": 194,
+    "destino_id": 30,
+    "nome": "Douro Hotel Braga",
+    "estrelas": 2,
+    "preco_por_noite": 56.91,
+    "comodidades": [
+      "spa",
+      "wifi",
+      "ginásio",
+      "ar-condicionado"
+    ]
+  },
+  {
+    "id": 195,
+    "destino_id": 74,
+    "nome": "Boutique Palace Amsterdam",
+    "estrelas": 3,
+    "preco_por_noite": 291.64,
+    "comodidades": [
+      "ginásio",
+      "pequeno-almoço",
+      "piscina",
+      "wifi"
+    ]
+  },
+  {
+    "id": 196,
+    "destino_id": 81,
+    "nome": "Palácio Palace Viana do Castelo",
+    "estrelas": 4,
+    "preco_por_noite": 448.83,
+    "comodidades": [
+      "piscina"
+    ]
+  },
+  {
+    "id": 197,
+    "destino_id": 75,
+    "nome": "Douro Pousada Braga",
+    "estrelas": 4,
+    "preco_por_noite": 92.53,
+    "comodidades": [
+      "piscina"
+    ]
+  },
+  {
+    "id": 198,
+    "destino_id": 9,
+    "nome": "Boutique Resort Geneva",
+    "estrelas": 4,
+    "preco_por_noite": 336.67,
+    "comodidades": [
+      "pequeno-almoço",
+      "spa",
+      "ar-condicionado"
+    ]
+  },
+  {
+    "id": 199,
+    "destino_id": 118,
+    "nome": "Vila Palace London",
+    "estrelas": 3,
+    "preco_por_noite": 302.52,
+    "comodidades": [
+      "ginásio"
+    ]
+  },
+  {
+    "id": 200,
+    "destino_id": 36,
+    "nome": "Boutique Suites Stockholm",
+    "estrelas": 4,
+    "preco_por_noite": 365.46,
+    "comodidades": [
+      "spa",
+      "piscina",
+      "pequeno-almoço",
+      "ar-condicionado"
+    ]
+  },
+  {
+    "id": 201,
+    "destino_id": 46,
+    "nome": "Atlântico Palace Zurich",
+    "estrelas": 4,
+    "preco_por_noite": 294.43,
+    "comodidades": [
+      "ar-condicionado",
+      "estacionamento",
+      "wifi"
+    ]
+  },
+  {
+    "id": 202,
+    "destino_id": 45,
+    "nome": "Vila Hotel Vienna",
+    "estrelas": 3,
+    "preco_por_noite": 218.17,
+    "comodidades": [
+      "pequeno-almoço"
+    ]
+  },
+  {
+    "id": 203,
+    "destino_id": 104,
+    "nome": "Douro Resort Munich",
+    "estrelas": 4,
+    "preco_por_noite": 184.8,
+    "comodidades": [
+      "piscina",
+      "ginásio",
+      "pequeno-almoço"
+    ]
+  },
+  {
+    "id": 204,
+    "destino_id": 54,
+    "nome": "Palácio Suites Budapest",
+    "estrelas": 4,
+    "preco_por_noite": 282.19,
+    "comodidades": [
+      "wifi",
+      "piscina",
+      "pequeno-almoço",
+      "estacionamento"
+    ]
+  },
+  {
+    "id": 205,
+    "destino_id": 73,
+    "nome": "Vila Resort Copenhagen",
+    "estrelas": 5,
+    "preco_por_noite": 84.36,
+    "comodidades": [
+      "spa"
+    ]
+  },
+  {
+    "id": 206,
+    "destino_id": 58,
+    "nome": "Atlântico Hotel Buenos Aires",
+    "estrelas": 5,
+    "preco_por_noite": 161.48,
+    "comodidades": [
+      "estacionamento",
+      "ar-condicionado"
+    ]
+  },
+  {
+    "id": 207,
+    "destino_id": 70,
+    "nome": "Atlântico Hotel Vienna",
+    "estrelas": 5,
+    "preco_por_noite": 173.94,
+    "comodidades": [
+      "piscina"
+    ]
+  },
+  {
+    "id": 208,
+    "destino_id": 93,
+    "nome": "Vila Palace Warsaw",
+    "estrelas": 4,
+    "preco_por_noite": 411.15,
+    "comodidades": [
+      "ginásio",
+      "spa",
+      "estacionamento"
+    ]
+  },
+  {
+    "id": 209,
+    "destino_id": 99,
+    "nome": "Palácio Suites Valencia",
+    "estrelas": 2,
+    "preco_por_noite": 251.37,
+    "comodidades": [
+      "spa",
+      "ginásio",
+      "pequeno-almoço"
+    ]
+  },
+  {
+    "id": 210,
+    "destino_id": 4,
+    "nome": "Palácio Hotel Bangkok",
+    "estrelas": 2,
+    "preco_por_noite": 255.49,
+    "comodidades": [
+      "pequeno-almoço",
+      "estacionamento",
+      "piscina"
+    ]
+  },
+  {
+    "id": 211,
+    "destino_id": 42,
+    "nome": "Douro Palace Prague",
+    "estrelas": 5,
+    "preco_por_noite": 369.21,
+    "comodidades": [
+      "ar-condicionado",
+      "estacionamento",
+      "piscina"
+    ]
+  },
+  {
+    "id": 212,
+    "destino_id": 97,
+    "nome": "Boutique Pousada Valencia",
+    "estrelas": 5,
+    "preco_por_noite": 357.03,
+    "comodidades": [
+      "pequeno-almoço",
+      "estacionamento",
+      "spa"
+    ]
+  },
+  {
+    "id": 213,
+    "destino_id": 47,
+    "nome": "Vila Palace Valencia",
+    "estrelas": 4,
+    "preco_por_noite": 205.15,
+    "comodidades": [
+      "spa",
+      "estacionamento",
+      "piscina"
+    ]
+  },
+  {
+    "id": 214,
+    "destino_id": 23,
+    "nome": "Solar Pousada Venice",
+    "estrelas": 3,
+    "preco_por_noite": 255.53,
+    "comodidades": [
+      "ar-condicionado",
+      "wifi"
+    ]
+  },
+  {
+    "id": 215,
+    "destino_id": 93,
+    "nome": "Vila Suites Warsaw",
+    "estrelas": 4,
+    "preco_por_noite": 299.01,
+    "comodidades": [
+      "ar-condicionado",
+      "piscina",
+      "estacionamento",
+      "spa"
+    ]
+  },
+  {
+    "id": 216,
+    "destino_id": 35,
+    "nome": "Solar Pousada Guimarães",
+    "estrelas": 5,
+    "preco_por_noite": 434.97,
+    "comodidades": [
+      "spa"
+    ]
+  },
+  {
+    "id": 217,
+    "destino_id": 47,
+    "nome": "Atlântico Palace Valencia",
+    "estrelas": 4,
+    "preco_por_noite": 255.36,
+    "comodidades": [
+      "estacionamento",
+      "ginásio",
+      "piscina"
+    ]
+  },
+  {
+    "id": 218,
+    "destino_id": 116,
+    "nome": "Real Albergaria Zurich",
+    "estrelas": 4,
+    "preco_por_noite": 212.77,
+    "comodidades": [
+      "spa",
+      "pequeno-almoço"
+    ]
+  },
+  {
+    "id": 219,
+    "destino_id": 23,
+    "nome": "Vila Palace Venice",
+    "estrelas": 3,
+    "preco_por_noite": 117.17,
+    "comodidades": [
+      "spa",
+      "piscina"
+    ]
+  },
+  {
+    "id": 220,
+    "destino_id": 9,
+    "nome": "Grande Palace Geneva",
+    "estrelas": 5,
+    "preco_por_noite": 441.88,
+    "comodidades": [
+      "ar-condicionado"
+    ]
+  },
+  {
+    "id": 221,
+    "destino_id": 110,
+    "nome": "Douro Albergaria Singapore",
+    "estrelas": 5,
+    "preco_por_noite": 394.31,
+    "comodidades": [
+      "estacionamento",
+      "ginásio",
+      "piscina",
+      "ar-condicionado"
+    ]
+  },
+  {
+    "id": 222,
+    "destino_id": 116,
+    "nome": "Vila Suites Zurich",
+    "estrelas": 5,
+    "preco_por_noite": 56.75,
+    "comodidades": [
+      "ar-condicionado",
+      "ginásio"
+    ]
+  },
+  {
+    "id": 223,
+    "destino_id": 103,
+    "nome": "Grande Pousada Athens",
+    "estrelas": 5,
+    "preco_por_noite": 88.41,
+    "comodidades": [
+      "ginásio",
+      "spa",
+      "wifi"
+    ]
+  },
+  {
+    "id": 224,
+    "destino_id": 92,
+    "nome": "Vila Palace Prague",
+    "estrelas": 5,
+    "preco_por_noite": 319.72,
+    "comodidades": [
+      "spa",
+      "estacionamento"
+    ]
+  },
+  {
+    "id": 225,
+    "destino_id": 13,
+    "nome": "Palácio Albergaria Dubai",
+    "estrelas": 3,
+    "preco_por_noite": 126.01,
+    "comodidades": [
+      "estacionamento",
+      "ginásio",
+      "spa"
+    ]
+  },
+  {
+    "id": 226,
+    "destino_id": 33,
+    "nome": "Atlântico Suites Budapest",
+    "estrelas": 3,
+    "preco_por_noite": 364.15,
+    "comodidades": [
+      "estacionamento",
+      "piscina"
+    ]
+  },
+  {
+    "id": 227,
+    "destino_id": 49,
+    "nome": "Vila Resort Tokyo",
+    "estrelas": 5,
+    "preco_por_noite": 434.94,
+    "comodidades": [
+      "pequeno-almoço"
+    ]
+  },
+  {
+    "id": 228,
+    "destino_id": 59,
+    "nome": "Palácio Albergaria Tavira",
+    "estrelas": 3,
+    "preco_por_noite": 380.95,
+    "comodidades": [
+      "ginásio",
+      "pequeno-almoço",
+      "spa"
+    ]
+  },
+  {
+    "id": 229,
+    "destino_id": 55,
+    "nome": "Atlântico Suites Horta",
+    "estrelas": 4,
+    "preco_por_noite": 179.39,
+    "comodidades": [
+      "spa",
+      "ar-condicionado"
+    ]
+  },
+  {
+    "id": 230,
+    "destino_id": 68,
+    "nome": "Solar Pousada Porto",
+    "estrelas": 4,
+    "preco_por_noite": 81.63,
+    "comodidades": [
+      "piscina",
+      "spa"
+    ]
+  },
+  {
+    "id": 231,
+    "destino_id": 7,
+    "nome": "Douro Resort New York",
+    "estrelas": 5,
+    "preco_por_noite": 449.34,
+    "comodidades": [
+      "ginásio",
+      "piscina",
+      "spa"
+    ]
+  },
+  {
+    "id": 232,
+    "destino_id": 49,
+    "nome": "Grande Palace Tokyo",
+    "estrelas": 4,
+    "preco_por_noite": 52.07,
+    "comodidades": [
+      "estacionamento"
+    ]
+  },
+  {
+    "id": 233,
+    "destino_id": 38,
+    "nome": "Boutique Suites Prague",
+    "estrelas": 4,
+    "preco_por_noite": 300.55,
+    "comodidades": [
+      "ginásio",
+      "piscina"
+    ]
+  },
+  {
+    "id": 234,
+    "destino_id": 57,
+    "nome": "Grande Hotel Cape Town",
+    "estrelas": 5,
+    "preco_por_noite": 398.64,
+    "comodidades": [
+      "ginásio",
+      "piscina"
+    ]
+  },
+  {
+    "id": 235,
+    "destino_id": 97,
+    "nome": "Atlântico Hotel Valencia",
+    "estrelas": 4,
+    "preco_por_noite": 68.25,
+    "comodidades": [
+      "pequeno-almoço",
+      "estacionamento",
+      "ginásio"
+    ]
+  },
+  {
+    "id": 236,
+    "destino_id": 69,
+    "nome": "Vila Pousada Rio de Janeiro",
+    "estrelas": 3,
+    "preco_por_noite": 44.74,
+    "comodidades": [
+      "spa",
+      "estacionamento",
+      "piscina",
+      "ginásio"
+    ]
+  },
+  {
+    "id": 237,
+    "destino_id": 37,
+    "nome": "Atlântico Resort Munich",
+    "estrelas": 4,
+    "preco_por_noite": 259,
+    "comodidades": [
+      "spa"
+    ]
+  },
+  {
+    "id": 238,
+    "destino_id": 18,
+    "nome": "Grande Hotel Santorini",
+    "estrelas": 3,
+    "preco_por_noite": 375.61,
+    "comodidades": [
+      "spa",
+      "ginásio",
+      "ar-condicionado"
+    ]
+  },
+  {
+    "id": 239,
+    "destino_id": 21,
+    "nome": "Palácio Resort Horta",
+    "estrelas": 4,
+    "preco_por_noite": 293.29,
+    "comodidades": [
+      "ar-condicionado",
+      "wifi"
+    ]
+  },
+  {
+    "id": 240,
+    "destino_id": 72,
+    "nome": "Real Hotel Coimbra",
+    "estrelas": 5,
+    "preco_por_noite": 391.48,
+    "comodidades": [
+      "pequeno-almoço"
+    ]
+  },
+  {
+    "id": 241,
+    "destino_id": 56,
+    "nome": "Grande Suites Ponta Delgada",
+    "estrelas": 4,
+    "preco_por_noite": 321.43,
+    "comodidades": [
+      "spa",
+      "ar-condicionado",
+      "pequeno-almoço",
+      "piscina"
+    ]
+  },
+  {
+    "id": 242,
+    "destino_id": 32,
+    "nome": "Palácio Palace Munich",
+    "estrelas": 3,
+    "preco_por_noite": 288.93,
+    "comodidades": [
+      "spa",
+      "estacionamento"
+    ]
+  },
+  {
+    "id": 243,
+    "destino_id": 114,
+    "nome": "Palácio Pousada Rome",
+    "estrelas": 4,
+    "preco_por_noite": 181.68,
+    "comodidades": [
+      "pequeno-almoço"
+    ]
+  },
+  {
+    "id": 244,
+    "destino_id": 98,
+    "nome": "Real Hotel Nice",
+    "estrelas": 5,
+    "preco_por_noite": 63.97,
+    "comodidades": [
+      "ginásio"
+    ]
+  },
+  {
+    "id": 245,
+    "destino_id": 113,
+    "nome": "Solar Suites Prague",
+    "estrelas": 3,
+    "preco_por_noite": 108.74,
+    "comodidades": [
+      "estacionamento",
+      "ginásio"
+    ]
+  },
+  {
+    "id": 246,
+    "destino_id": 85,
+    "nome": "Vila Hotel Milan",
+    "estrelas": 5,
+    "preco_por_noite": 219.94,
+    "comodidades": [
+      "ginásio"
+    ]
+  },
+  {
+    "id": 247,
+    "destino_id": 36,
+    "nome": "Grande Palace Stockholm",
+    "estrelas": 5,
+    "preco_por_noite": 292.55,
+    "comodidades": [
+      "pequeno-almoço",
+      "estacionamento",
+      "ar-condicionado",
+      "piscina"
+    ]
+  },
+  {
+    "id": 248,
+    "destino_id": 4,
+    "nome": "Atlântico Pousada Bangkok",
+    "estrelas": 5,
+    "preco_por_noite": 76.92,
+    "comodidades": [
+      "piscina",
+      "wifi",
+      "ar-condicionado"
+    ]
+  },
+  {
+    "id": 249,
+    "destino_id": 27,
+    "nome": "Palácio Palace Cape Town",
+    "estrelas": 3,
+    "preco_por_noite": 345.49,
+    "comodidades": [
+      "ar-condicionado",
+      "spa",
+      "wifi"
+    ]
+  },
+  {
+    "id": 250,
+    "destino_id": 66,
+    "nome": "Boutique Suites Cascais",
+    "estrelas": 4,
+    "preco_por_noite": 380.53,
+    "comodidades": [
+      "pequeno-almoço",
+      "ar-condicionado",
+      "ginásio"
+    ]
+  },
+  {
+    "id": 251,
+    "destino_id": 91,
+    "nome": "Grande Pousada Oslo",
+    "estrelas": 3,
+    "preco_por_noite": 110.71,
+    "comodidades": [
+      "ginásio",
+      "piscina",
+      "estacionamento"
+    ]
+  },
+  {
+    "id": 252,
+    "destino_id": 80,
+    "nome": "Boutique Hotel Valencia",
+    "estrelas": 4,
+    "preco_por_noite": 231.91,
+    "comodidades": [
+      "estacionamento"
+    ]
+  },
+  {
+    "id": 253,
+    "destino_id": 50,
+    "nome": "Grande Palace Horta",
+    "estrelas": 4,
+    "preco_por_noite": 313.7,
+    "comodidades": [
+      "spa",
+      "ginásio"
+    ]
+  },
+  {
+    "id": 254,
+    "destino_id": 19,
+    "nome": "Boutique Albergaria Lisboa",
+    "estrelas": 3,
+    "preco_por_noite": 89.86,
+    "comodidades": [
+      "estacionamento",
+      "ar-condicionado",
+      "spa"
+    ]
+  },
+  {
+    "id": 255,
+    "destino_id": 67,
+    "nome": "Real Suites New York",
+    "estrelas": 3,
+    "preco_por_noite": 433.88,
+    "comodidades": [
+      "ar-condicionado",
+      "spa",
+      "piscina",
+      "pequeno-almoço"
+    ]
+  },
+  {
+    "id": 256,
+    "destino_id": 48,
+    "nome": "Solar Palace Santorini",
+    "estrelas": 3,
+    "preco_por_noite": 290.41,
+    "comodidades": [
+      "estacionamento",
+      "ar-condicionado",
+      "piscina"
+    ]
+  },
+  {
+    "id": 257,
+    "destino_id": 61,
+    "nome": "Grande Albergaria Stockholm",
+    "estrelas": 3,
+    "preco_por_noite": 178.2,
+    "comodidades": [
+      "wifi",
+      "estacionamento"
+    ]
+  },
+  {
+    "id": 258,
+    "destino_id": 82,
+    "nome": "Palácio Palace Buenos Aires",
+    "estrelas": 2,
+    "preco_por_noite": 413.74,
+    "comodidades": [
+      "ginásio",
+      "pequeno-almoço"
+    ]
+  },
+  {
+    "id": 259,
+    "destino_id": 46,
+    "nome": "Atlântico Suites Zurich",
+    "estrelas": 3,
+    "preco_por_noite": 286.53,
+    "comodidades": [
+      "pequeno-almoço"
+    ]
+  },
+  {
+    "id": 260,
+    "destino_id": 51,
+    "nome": "Boutique Hotel Mykonos",
+    "estrelas": 4,
+    "preco_por_noite": 40.75,
+    "comodidades": [
+      "piscina",
+      "ginásio"
+    ]
+  },
+  {
+    "id": 261,
+    "destino_id": 23,
+    "nome": "Solar Hotel Venice",
+    "estrelas": 5,
+    "preco_por_noite": 405.63,
+    "comodidades": [
+      "piscina",
+      "ginásio",
+      "estacionamento",
+      "pequeno-almoço"
+    ]
+  },
+  {
+    "id": 262,
+    "destino_id": 108,
+    "nome": "Vila Resort Tokyo",
+    "estrelas": 2,
+    "preco_por_noite": 369.09,
+    "comodidades": [
+      "estacionamento",
+      "pequeno-almoço"
+    ]
+  },
+  {
+    "id": 263,
+    "destino_id": 115,
+    "nome": "Vila Palace Lyon",
+    "estrelas": 3,
+    "preco_por_noite": 246.52,
+    "comodidades": [
+      "ar-condicionado"
+    ]
+  },
+  {
+    "id": 264,
+    "destino_id": 46,
+    "nome": "Douro Albergaria Zurich",
+    "estrelas": 4,
+    "preco_por_noite": 394.39,
+    "comodidades": [
+      "ginásio",
+      "spa"
+    ]
+  },
+  {
+    "id": 265,
+    "destino_id": 29,
+    "nome": "Real Palace Rome",
+    "estrelas": 3,
+    "preco_por_noite": 121.73,
+    "comodidades": [
+      "spa",
+      "ginásio",
+      "ar-condicionado",
+      "piscina"
+    ]
+  },
+  {
+    "id": 266,
+    "destino_id": 46,
+    "nome": "Real Pousada Zurich",
+    "estrelas": 3,
+    "preco_por_noite": 259.98,
+    "comodidades": [
+      "pequeno-almoço",
+      "piscina",
+      "wifi",
+      "ginásio"
+    ]
+  },
+  {
+    "id": 267,
+    "destino_id": 58,
+    "nome": "Palácio Albergaria Buenos Aires",
+    "estrelas": 4,
+    "preco_por_noite": 290.5,
+    "comodidades": [
+      "ar-condicionado",
+      "estacionamento",
+      "pequeno-almoço",
+      "wifi"
+    ]
+  },
+  {
+    "id": 268,
+    "destino_id": 67,
+    "nome": "Douro Resort New York",
+    "estrelas": 3,
+    "preco_por_noite": 231.55,
+    "comodidades": [
+      "estacionamento"
+    ]
+  },
+  {
+    "id": 269,
+    "destino_id": 34,
+    "nome": "Real Suites Sydney",
+    "estrelas": 3,
+    "preco_por_noite": 187.77,
+    "comodidades": [
+      "pequeno-almoço",
+      "estacionamento",
+      "ginásio",
+      "ar-condicionado"
+    ]
+  },
+  {
+    "id": 270,
+    "destino_id": 68,
+    "nome": "Real Pousada Porto",
+    "estrelas": 4,
+    "preco_por_noite": 230.39,
+    "comodidades": [
+      "pequeno-almoço"
+    ]
+  },
+  {
+    "id": 271,
+    "destino_id": 37,
+    "nome": "Grande Hotel Munich",
+    "estrelas": 4,
+    "preco_por_noite": 124.87,
+    "comodidades": [
+      "ginásio",
+      "estacionamento",
+      "pequeno-almoço",
+      "wifi"
+    ]
+  },
+  {
+    "id": 272,
+    "destino_id": 17,
+    "nome": "Grande Albergaria Lagos",
+    "estrelas": 5,
+    "preco_por_noite": 351.52,
+    "comodidades": [
+      "pequeno-almoço"
+    ]
+  },
+  {
+    "id": 273,
+    "destino_id": 110,
+    "nome": "Grande Resort Singapore",
+    "estrelas": 4,
+    "preco_por_noite": 193.04,
+    "comodidades": [
+      "ginásio",
+      "spa"
+    ]
+  },
+  {
+    "id": 274,
+    "destino_id": 91,
+    "nome": "Real Resort Oslo",
+    "estrelas": 2,
+    "preco_por_noite": 272.87,
+    "comodidades": [
+      "piscina"
+    ]
+  },
+  {
+    "id": 275,
+    "destino_id": 20,
+    "nome": "Boutique Suites Brussels",
+    "estrelas": 5,
+    "preco_por_noite": 401.04,
+    "comodidades": [
+      "ar-condicionado",
+      "piscina"
+    ]
+  },
+  {
+    "id": 276,
+    "destino_id": 116,
+    "nome": "Palácio Albergaria Zurich",
+    "estrelas": 4,
+    "preco_por_noite": 406.77,
+    "comodidades": [
+      "ginásio",
+      "estacionamento"
+    ]
+  },
+  {
+    "id": 277,
+    "destino_id": 93,
+    "nome": "Douro Hotel Warsaw",
+    "estrelas": 4,
+    "preco_por_noite": 335.37,
+    "comodidades": [
+      "estacionamento",
+      "ginásio",
+      "wifi"
+    ]
+  },
+  {
+    "id": 278,
+    "destino_id": 18,
+    "nome": "Boutique Albergaria Santorini",
+    "estrelas": 3,
+    "preco_por_noite": 176.64,
+    "comodidades": [
+      "ar-condicionado",
+      "wifi",
+      "estacionamento"
+    ]
+  },
+  {
+    "id": 279,
+    "destino_id": 89,
+    "nome": "Douro Palace Budapest",
+    "estrelas": 2,
+    "preco_por_noite": 115.37,
+    "comodidades": [
+      "piscina"
+    ]
+  },
+  {
+    "id": 280,
+    "destino_id": 32,
+    "nome": "Palácio Pousada Munich",
+    "estrelas": 5,
+    "preco_por_noite": 318.58,
+    "comodidades": [
+      "ar-condicionado",
+      "spa",
+      "estacionamento",
+      "ginásio"
+    ]
+  },
+  {
+    "id": 281,
+    "destino_id": 18,
+    "nome": "Solar Albergaria Santorini",
+    "estrelas": 5,
+    "preco_por_noite": 338.16,
+    "comodidades": [
+      "estacionamento",
+      "ar-condicionado"
+    ]
+  },
+  {
+    "id": 282,
+    "destino_id": 18,
+    "nome": "Atlântico Pousada Santorini",
+    "estrelas": 3,
+    "preco_por_noite": 421.35,
+    "comodidades": [
+      "estacionamento"
+    ]
+  },
+  {
+    "id": 283,
+    "destino_id": 77,
+    "nome": "Solar Albergaria Amsterdam",
+    "estrelas": 5,
+    "preco_por_noite": 244.77,
+    "comodidades": [
+      "ar-condicionado",
+      "spa",
+      "ginásio",
+      "pequeno-almoço"
+    ]
+  },
+  {
+    "id": 284,
+    "destino_id": 13,
+    "nome": "Vila Resort Dubai",
+    "estrelas": 3,
+    "preco_por_noite": 176.33,
+    "comodidades": [
+      "spa"
+    ]
+  },
+  {
+    "id": 285,
+    "destino_id": 113,
+    "nome": "Vila Pousada Prague",
+    "estrelas": 4,
+    "preco_por_noite": 359.78,
+    "comodidades": [
+      "spa"
+    ]
+  },
+  {
+    "id": 286,
+    "destino_id": 6,
+    "nome": "Real Palace Paris",
+    "estrelas": 4,
+    "preco_por_noite": 40.78,
+    "comodidades": [
+      "estacionamento",
+      "spa",
+      "piscina"
+    ]
+  },
+  {
+    "id": 287,
+    "destino_id": 101,
+    "nome": "Vila Resort Lagos",
+    "estrelas": 4,
+    "preco_por_noite": 378.62,
+    "comodidades": [
+      "wifi",
+      "spa",
+      "piscina",
+      "pequeno-almoço"
+    ]
+  },
+  {
+    "id": 288,
+    "destino_id": 104,
+    "nome": "Atlântico Resort Munich",
+    "estrelas": 4,
+    "preco_por_noite": 308.4,
+    "comodidades": [
+      "piscina",
+      "estacionamento",
+      "spa",
+      "wifi"
+    ]
+  },
+  {
+    "id": 289,
+    "destino_id": 70,
+    "nome": "Boutique Resort Vienna",
+    "estrelas": 3,
+    "preco_por_noite": 186.81,
+    "comodidades": [
+      "spa",
+      "wifi",
+      "piscina"
+    ]
+  },
+  {
+    "id": 290,
+    "destino_id": 68,
+    "nome": "Vila Palace Porto",
+    "estrelas": 5,
+    "preco_por_noite": 432.75,
+    "comodidades": [
+      "piscina",
+      "spa",
+      "ar-condicionado",
+      "wifi"
+    ]
+  },
+  {
+    "id": 291,
+    "destino_id": 98,
+    "nome": "Palácio Palace Nice",
+    "estrelas": 4,
+    "preco_por_noite": 328.07,
+    "comodidades": [
+      "ginásio",
+      "pequeno-almoço",
+      "estacionamento"
+    ]
+  },
+  {
+    "id": 292,
+    "destino_id": 18,
+    "nome": "Atlântico Palace Santorini",
+    "estrelas": 3,
+    "preco_por_noite": 303.72,
+    "comodidades": [
+      "ginásio",
+      "pequeno-almoço",
+      "ar-condicionado",
+      "piscina"
+    ]
+  },
+  {
+    "id": 293,
+    "destino_id": 74,
+    "nome": "Palácio Hotel Amsterdam",
+    "estrelas": 5,
+    "preco_por_noite": 59.21,
+    "comodidades": [
+      "estacionamento",
+      "piscina",
+      "spa",
+      "ginásio"
+    ]
+  },
+  {
+    "id": 294,
+    "destino_id": 23,
+    "nome": "Atlântico Pousada Venice",
+    "estrelas": 5,
+    "preco_por_noite": 247.06,
+    "comodidades": [
+      "pequeno-almoço"
+    ]
+  },
+  {
+    "id": 295,
+    "destino_id": 107,
+    "nome": "Vila Hotel Cape Town",
+    "estrelas": 4,
+    "preco_por_noite": 326.53,
+    "comodidades": [
+      "spa"
+    ]
+  },
+  {
+    "id": 296,
+    "destino_id": 79,
+    "nome": "Vila Suites Brussels",
+    "estrelas": 5,
+    "preco_por_noite": 150.67,
+    "comodidades": [
+      "piscina",
+      "estacionamento"
+    ]
+  },
+  {
+    "id": 297,
+    "destino_id": 74,
+    "nome": "Solar Albergaria Amsterdam",
+    "estrelas": 4,
+    "preco_por_noite": 358.99,
+    "comodidades": [
+      "spa"
+    ]
+  },
+  {
+    "id": 298,
+    "destino_id": 61,
+    "nome": "Palácio Suites Stockholm",
+    "estrelas": 5,
+    "preco_por_noite": 196.5,
+    "comodidades": [
+      "ar-condicionado",
+      "spa",
+      "ginásio",
+      "piscina"
+    ]
+  },
+  {
+    "id": 299,
+    "destino_id": 71,
+    "nome": "Grande Suites Coimbra",
+    "estrelas": 4,
+    "preco_por_noite": 437.39,
+    "comodidades": [
+      "estacionamento",
+      "ginásio",
+      "ar-condicionado",
+      "wifi"
+    ]
+  },
+  {
+    "id": 300,
+    "destino_id": 23,
+    "nome": "Real Pousada Venice",
+    "estrelas": 4,
+    "preco_por_noite": 380.57,
+    "comodidades": [
+      "estacionamento",
+      "pequeno-almoço",
+      "ginásio"
+    ]
+  },
+  {
+    "id": 301,
+    "destino_id": 52,
+    "nome": "Boutique Hotel Rio de Janeiro",
+    "estrelas": 4,
+    "preco_por_noite": 75.4,
+    "comodidades": [
+      "ginásio",
+      "ar-condicionado",
+      "estacionamento"
+    ]
+  },
+  {
+    "id": 302,
+    "destino_id": 82,
+    "nome": "Grande Albergaria Buenos Aires",
+    "estrelas": 4,
+    "preco_por_noite": 426.32,
+    "comodidades": [
+      "spa",
+      "estacionamento",
+      "ginásio"
+    ]
+  },
+  {
+    "id": 303,
+    "destino_id": 39,
+    "nome": "Vila Albergaria Edinburgh",
+    "estrelas": 4,
+    "preco_por_noite": 113.23,
+    "comodidades": [
+      "piscina",
+      "estacionamento"
+    ]
+  },
+  {
+    "id": 304,
+    "destino_id": 47,
+    "nome": "Douro Albergaria Valencia",
+    "estrelas": 4,
+    "preco_por_noite": 131.72,
+    "comodidades": [
+      "ar-condicionado",
+      "ginásio",
+      "pequeno-almoço"
+    ]
+  },
+  {
+    "id": 305,
+    "destino_id": 108,
+    "nome": "Grande Hotel Tokyo",
+    "estrelas": 4,
+    "preco_por_noite": 230.01,
+    "comodidades": [
+      "ar-condicionado"
+    ]
+  },
+  {
+    "id": 306,
+    "destino_id": 51,
+    "nome": "Real Suites Mykonos",
+    "estrelas": 4,
+    "preco_por_noite": 39.32,
+    "comodidades": [
+      "piscina",
+      "ar-condicionado",
+      "spa",
+      "ginásio"
+    ]
+  },
+  {
+    "id": 307,
+    "destino_id": 28,
+    "nome": "Vila Palace Budapest",
+    "estrelas": 4,
+    "preco_por_noite": 83.42,
+    "comodidades": [
+      "estacionamento",
+      "wifi",
+      "ginásio"
+    ]
+  },
+  {
+    "id": 308,
+    "destino_id": 120,
+    "nome": "Douro Hotel Horta",
+    "estrelas": 5,
+    "preco_por_noite": 445.82,
+    "comodidades": [
+      "ginásio",
+      "spa"
+    ]
+  },
+  {
+    "id": 309,
+    "destino_id": 35,
+    "nome": "Douro Resort Guimarães",
+    "estrelas": 3,
+    "preco_por_noite": 298.16,
+    "comodidades": [
+      "ginásio"
+    ]
+  },
+  {
+    "id": 310,
+    "destino_id": 107,
+    "nome": "Vila Suites Cape Town",
+    "estrelas": 4,
+    "preco_por_noite": 117.56,
+    "comodidades": [
+      "estacionamento",
+      "pequeno-almoço"
+    ]
+  },
+  {
+    "id": 311,
+    "destino_id": 75,
+    "nome": "Palácio Suites Braga",
+    "estrelas": 5,
+    "preco_por_noite": 233.96,
+    "comodidades": [
+      "pequeno-almoço",
+      "ar-condicionado",
+      "estacionamento"
+    ]
+  },
+  {
+    "id": 312,
+    "destino_id": 31,
+    "nome": "Boutique Palace Porto",
+    "estrelas": 4,
+    "preco_por_noite": 261.17,
+    "comodidades": [
+      "spa",
+      "piscina",
+      "pequeno-almoço",
+      "estacionamento"
+    ]
+  },
+  {
+    "id": 313,
+    "destino_id": 7,
+    "nome": "Atlântico Albergaria New York",
+    "estrelas": 3,
+    "preco_por_noite": 273.23,
+    "comodidades": [
+      "wifi",
+      "ginásio"
+    ]
+  },
+  {
+    "id": 314,
+    "destino_id": 102,
+    "nome": "Real Albergaria Manchester",
+    "estrelas": 3,
+    "preco_por_noite": 314.21,
+    "comodidades": [
+      "piscina",
+      "estacionamento"
+    ]
+  },
+  {
+    "id": 315,
+    "destino_id": 61,
+    "nome": "Solar Albergaria Stockholm",
+    "estrelas": 5,
+    "preco_por_noite": 98.55,
+    "comodidades": [
+      "spa",
+      "estacionamento"
+    ]
+  },
+  {
+    "id": 316,
+    "destino_id": 47,
+    "nome": "Solar Resort Valencia",
+    "estrelas": 4,
+    "preco_por_noite": 197.95,
+    "comodidades": [
+      "estacionamento",
+      "wifi",
+      "piscina",
+      "ginásio"
+    ]
+  },
+  {
+    "id": 317,
+    "destino_id": 94,
+    "nome": "Boutique Hotel Viana do Castelo",
+    "estrelas": 5,
+    "preco_por_noite": 271.6,
+    "comodidades": [
+      "wifi",
+      "ar-condicionado",
+      "ginásio",
+      "estacionamento"
+    ]
+  },
+  {
+    "id": 318,
+    "destino_id": 39,
+    "nome": "Solar Hotel Edinburgh",
+    "estrelas": 4,
+    "preco_por_noite": 388.38,
+    "comodidades": [
+      "spa"
+    ]
+  },
+  {
+    "id": 319,
+    "destino_id": 77,
+    "nome": "Grande Pousada Amsterdam",
+    "estrelas": 4,
+    "preco_por_noite": 233.12,
+    "comodidades": [
+      "spa",
+      "estacionamento"
+    ]
+  },
+  {
+    "id": 320,
+    "destino_id": 60,
+    "nome": "Grande Pousada Miami",
+    "estrelas": 3,
+    "preco_por_noite": 340.11,
+    "comodidades": [
+      "ginásio",
+      "spa",
+      "piscina"
+    ]
+  },
+  {
+    "id": 321,
+    "destino_id": 59,
+    "nome": "Real Resort Tavira",
+    "estrelas": 3,
+    "preco_por_noite": 147.51,
+    "comodidades": [
+      "wifi"
+    ]
+  },
+  {
+    "id": 322,
+    "destino_id": 50,
+    "nome": "Vila Suites Horta",
+    "estrelas": 2,
+    "preco_por_noite": 154.2,
+    "comodidades": [
+      "pequeno-almoço",
+      "wifi",
+      "spa"
+    ]
+  },
+  {
+    "id": 323,
+    "destino_id": 94,
+    "nome": "Douro Hotel Viana do Castelo",
+    "estrelas": 4,
+    "preco_por_noite": 287.1,
+    "comodidades": [
+      "piscina"
+    ]
+  },
+  {
+    "id": 324,
+    "destino_id": 18,
+    "nome": "Boutique Pousada Santorini",
+    "estrelas": 5,
+    "preco_por_noite": 304.5,
+    "comodidades": [
+      "spa",
+      "ginásio"
+    ]
+  },
+  {
+    "id": 325,
+    "destino_id": 42,
+    "nome": "Grande Albergaria Prague",
+    "estrelas": 4,
+    "preco_por_noite": 198.55,
+    "comodidades": [
+      "piscina",
+      "pequeno-almoço",
+      "ginásio"
+    ]
+  },
+  {
+    "id": 326,
+    "destino_id": 110,
+    "nome": "Atlântico Pousada Singapore",
+    "estrelas": 4,
+    "preco_por_noite": 321.64,
+    "comodidades": [
+      "wifi",
+      "piscina"
+    ]
+  },
+  {
+    "id": 327,
+    "destino_id": 111,
+    "nome": "Real Hotel Mykonos",
+    "estrelas": 5,
+    "preco_por_noite": 93.23,
+    "comodidades": [
+      "ar-condicionado",
+      "piscina",
+      "wifi",
+      "spa"
+    ]
+  },
+  {
+    "id": 328,
+    "destino_id": 47,
+    "nome": "Boutique Suites Valencia",
+    "estrelas": 5,
+    "preco_por_noite": 323.87,
+    "comodidades": [
+      "pequeno-almoço",
+      "piscina"
+    ]
+  },
+  {
+    "id": 329,
+    "destino_id": 77,
+    "nome": "Solar Albergaria Amsterdam",
+    "estrelas": 3,
+    "preco_por_noite": 286.19,
+    "comodidades": [
+      "ar-condicionado",
+      "pequeno-almoço",
+      "spa"
+    ]
+  },
+  {
+    "id": 330,
+    "destino_id": 3,
+    "nome": "Grande Pousada Zurich",
+    "estrelas": 4,
+    "preco_por_noite": 381.98,
+    "comodidades": [
+      "piscina",
+      "ar-condicionado",
+      "ginásio"
+    ]
+  },
+  {
+    "id": 331,
+    "destino_id": 61,
+    "nome": "Atlântico Resort Stockholm",
+    "estrelas": 5,
+    "preco_por_noite": 290.86,
+    "comodidades": [
+      "ginásio",
+      "estacionamento",
+      "piscina",
+      "wifi"
+    ]
+  },
+  {
+    "id": 332,
+    "destino_id": 119,
+    "nome": "Palácio Hotel Sydney",
+    "estrelas": 4,
+    "preco_por_noite": 248.73,
+    "comodidades": [
+      "piscina",
+      "spa",
+      "estacionamento"
+    ]
+  },
+  {
+    "id": 333,
+    "destino_id": 2,
+    "nome": "Grande Pousada Phuket",
+    "estrelas": 4,
+    "preco_por_noite": 404.63,
+    "comodidades": [
+      "estacionamento",
+      "spa",
+      "piscina"
+    ]
+  },
+  {
+    "id": 334,
+    "destino_id": 27,
+    "nome": "Solar Hotel Cape Town",
+    "estrelas": 5,
+    "preco_por_noite": 368.77,
+    "comodidades": [
+      "estacionamento",
+      "wifi",
+      "spa"
+    ]
+  },
+  {
+    "id": 335,
+    "destino_id": 27,
+    "nome": "Grande Resort Cape Town",
+    "estrelas": 5,
+    "preco_por_noite": 328.42,
+    "comodidades": [
+      "wifi"
+    ]
+  },
+  {
+    "id": 336,
+    "destino_id": 90,
+    "nome": "Real Pousada Buenos Aires",
+    "estrelas": 3,
+    "preco_por_noite": 384.71,
+    "comodidades": [
+      "estacionamento",
+      "pequeno-almoço"
+    ]
+  },
+  {
+    "id": 337,
+    "destino_id": 15,
+    "nome": "Boutique Hotel Ponta Delgada",
+    "estrelas": 5,
+    "preco_por_noite": 355.39,
+    "comodidades": [
+      "ar-condicionado",
+      "ginásio",
+      "piscina"
+    ]
+  },
+  {
+    "id": 338,
+    "destino_id": 24,
+    "nome": "Douro Albergaria Singapore",
+    "estrelas": 4,
+    "preco_por_noite": 223.87,
+    "comodidades": [
+      "ginásio"
+    ]
+  },
+  {
+    "id": 339,
+    "destino_id": 83,
+    "nome": "Douro Albergaria Miami",
+    "estrelas": 5,
+    "preco_por_noite": 444.13,
+    "comodidades": [
+      "piscina"
+    ]
+  },
+  {
+    "id": 340,
+    "destino_id": 117,
+    "nome": "Vila Albergaria Lagos",
+    "estrelas": 5,
+    "preco_por_noite": 331.29,
+    "comodidades": [
+      "estacionamento",
+      "piscina",
+      "ginásio",
+      "spa"
+    ]
+  },
+  {
+    "id": 341,
+    "destino_id": 61,
+    "nome": "Boutique Albergaria Stockholm",
+    "estrelas": 4,
+    "preco_por_noite": 122.86,
+    "comodidades": [
+      "piscina",
+      "wifi",
+      "estacionamento",
+      "spa"
+    ]
+  },
+  {
+    "id": 342,
+    "destino_id": 85,
+    "nome": "Vila Suites Milan",
+    "estrelas": 5,
+    "preco_por_noite": 203.42,
+    "comodidades": [
+      "estacionamento"
+    ]
+  },
+  {
+    "id": 343,
+    "destino_id": 79,
+    "nome": "Palácio Resort Brussels",
+    "estrelas": 3,
+    "preco_por_noite": 82,
+    "comodidades": [
+      "spa"
+    ]
+  },
+  {
+    "id": 344,
+    "destino_id": 111,
+    "nome": "Atlântico Albergaria Mykonos",
+    "estrelas": 4,
+    "preco_por_noite": 356.6,
+    "comodidades": [
+      "spa",
+      "estacionamento",
+      "pequeno-almoço"
+    ]
+  },
+  {
+    "id": 345,
+    "destino_id": 92,
+    "nome": "Palácio Pousada Prague",
+    "estrelas": 3,
+    "preco_por_noite": 377.2,
+    "comodidades": [
+      "wifi",
+      "ginásio"
+    ]
+  },
+  {
+    "id": 346,
+    "destino_id": 118,
+    "nome": "Solar Suites London",
+    "estrelas": 4,
+    "preco_por_noite": 56.15,
+    "comodidades": [
+      "estacionamento"
+    ]
+  },
+  {
+    "id": 347,
+    "destino_id": 97,
+    "nome": "Vila Suites Valencia",
+    "estrelas": 4,
+    "preco_por_noite": 433.56,
+    "comodidades": [
+      "estacionamento",
+      "wifi",
+      "ar-condicionado"
+    ]
+  },
+  {
+    "id": 348,
+    "destino_id": 54,
+    "nome": "Boutique Hotel Budapest",
+    "estrelas": 3,
+    "preco_por_noite": 245.71,
+    "comodidades": [
+      "piscina",
+      "ar-condicionado"
+    ]
+  },
+  {
+    "id": 349,
+    "destino_id": 60,
+    "nome": "Grande Suites Miami",
+    "estrelas": 4,
+    "preco_por_noite": 253.44,
+    "comodidades": [
+      "wifi",
+      "ginásio",
+      "piscina",
+      "ar-condicionado"
+    ]
+  },
+  {
+    "id": 350,
+    "destino_id": 51,
+    "nome": "Solar Resort Mykonos",
+    "estrelas": 4,
+    "preco_por_noite": 352.38,
+    "comodidades": [
+      "estacionamento",
+      "wifi",
+      "pequeno-almoço",
+      "piscina"
+    ]
+  },
+  {
+    "id": 351,
+    "destino_id": 33,
+    "nome": "Solar Hotel Budapest",
+    "estrelas": 4,
+    "preco_por_noite": 59,
+    "comodidades": [
+      "ginásio",
+      "piscina"
+    ]
+  },
+  {
+    "id": 352,
+    "destino_id": 2,
+    "nome": "Solar Albergaria Phuket",
+    "estrelas": 4,
+    "preco_por_noite": 265.07,
+    "comodidades": [
+      "pequeno-almoço"
+    ]
+  },
+  {
+    "id": 353,
+    "destino_id": 107,
+    "nome": "Douro Albergaria Cape Town",
+    "estrelas": 4,
+    "preco_por_noite": 443.18,
+    "comodidades": [
+      "spa",
+      "pequeno-almoço",
+      "ginásio",
+      "piscina"
+    ]
+  },
+  {
+    "id": 354,
+    "destino_id": 14,
+    "nome": "Douro Albergaria Budapest",
+    "estrelas": 4,
+    "preco_por_noite": 42.7,
+    "comodidades": [
+      "spa"
+    ]
+  },
+  {
+    "id": 355,
+    "destino_id": 18,
+    "nome": "Vila Palace Santorini",
+    "estrelas": 4,
+    "preco_por_noite": 336.54,
+    "comodidades": [
+      "piscina",
+      "ar-condicionado",
+      "pequeno-almoço"
+    ]
+  },
+  {
+    "id": 356,
+    "destino_id": 108,
+    "nome": "Boutique Resort Tokyo",
+    "estrelas": 4,
+    "preco_por_noite": 178.82,
+    "comodidades": [
+      "pequeno-almoço"
+    ]
+  },
+  {
+    "id": 357,
+    "destino_id": 36,
+    "nome": "Vila Suites Stockholm",
+    "estrelas": 4,
+    "preco_por_noite": 368.67,
+    "comodidades": [
+      "wifi",
+      "piscina",
+      "spa",
+      "pequeno-almoço"
+    ]
+  },
+  {
+    "id": 358,
+    "destino_id": 104,
+    "nome": "Vila Hotel Munich",
+    "estrelas": 5,
+    "preco_por_noite": 161.72,
+    "comodidades": [
+      "estacionamento",
+      "pequeno-almoço"
+    ]
+  },
+  {
+    "id": 359,
+    "destino_id": 31,
+    "nome": "Palácio Palace Porto",
+    "estrelas": 5,
+    "preco_por_noite": 247.34,
+    "comodidades": [
+      "pequeno-almoço",
+      "wifi"
+    ]
+  },
+  {
+    "id": 360,
+    "destino_id": 15,
+    "nome": "Atlântico Pousada Ponta Delgada",
+    "estrelas": 4,
+    "preco_por_noite": 379.69,
+    "comodidades": [
+      "ar-condicionado",
+      "spa"
+    ]
+  },
+  {
+    "id": 361,
+    "destino_id": 31,
+    "nome": "Real Suites Porto",
+    "estrelas": 3,
+    "preco_por_noite": 137.27,
+    "comodidades": [
+      "piscina"
+    ]
+  },
+  {
+    "id": 362,
+    "destino_id": 89,
+    "nome": "Real Albergaria Budapest",
+    "estrelas": 4,
+    "preco_por_noite": 442.33,
+    "comodidades": [
+      "ginásio",
+      "estacionamento",
+      "spa"
+    ]
+  },
+  {
+    "id": 363,
+    "destino_id": 119,
+    "nome": "Atlântico Resort Sydney",
+    "estrelas": 4,
+    "preco_por_noite": 401.17,
+    "comodidades": [
+      "spa",
+      "wifi"
+    ]
+  },
+  {
+    "id": 364,
+    "destino_id": 64,
+    "nome": "Atlântico Palace Miami",
+    "estrelas": 4,
+    "preco_por_noite": 223.06,
+    "comodidades": [
+      "estacionamento",
+      "spa"
+    ]
+  },
+  {
+    "id": 365,
+    "destino_id": 103,
+    "nome": "Grande Resort Athens",
+    "estrelas": 4,
+    "preco_por_noite": 386.8,
+    "comodidades": [
+      "pequeno-almoço",
+      "spa",
+      "ar-condicionado"
+    ]
+  },
+  {
+    "id": 366,
+    "destino_id": 17,
+    "nome": "Vila Albergaria Lagos",
+    "estrelas": 3,
+    "preco_por_noite": 55.94,
+    "comodidades": [
+      "estacionamento",
+      "spa",
+      "ginásio",
+      "pequeno-almoço"
+    ]
+  },
+  {
+    "id": 367,
+    "destino_id": 98,
+    "nome": "Boutique Pousada Nice",
+    "estrelas": 4,
+    "preco_por_noite": 96.9,
+    "comodidades": [
+      "piscina",
+      "pequeno-almoço"
+    ]
+  },
+  {
+    "id": 368,
+    "destino_id": 117,
+    "nome": "Grande Suites Lagos",
+    "estrelas": 5,
+    "preco_por_noite": 134.25,
+    "comodidades": [
+      "estacionamento",
+      "piscina"
+    ]
+  },
+  {
+    "id": 369,
+    "destino_id": 105,
+    "nome": "Douro Albergaria Lisboa",
+    "estrelas": 3,
+    "preco_por_noite": 230.31,
+    "comodidades": [
+      "ar-condicionado",
+      "piscina",
+      "pequeno-almoço",
+      "spa"
+    ]
+  },
+  {
+    "id": 370,
+    "destino_id": 32,
+    "nome": "Solar Hotel Munich",
+    "estrelas": 4,
+    "preco_por_noite": 370.16,
+    "comodidades": [
+      "ginásio",
+      "pequeno-almoço",
+      "piscina"
+    ]
+  },
+  {
+    "id": 371,
+    "destino_id": 93,
+    "nome": "Boutique Suites Warsaw",
+    "estrelas": 3,
+    "preco_por_noite": 157.74,
+    "comodidades": [
+      "estacionamento",
+      "wifi"
+    ]
+  },
+  {
+    "id": 372,
+    "destino_id": 67,
+    "nome": "Palácio Pousada New York",
+    "estrelas": 4,
+    "preco_por_noite": 267.47,
+    "comodidades": [
+      "spa",
+      "pequeno-almoço",
+      "ginásio"
+    ]
+  },
+  {
+    "id": 373,
+    "destino_id": 109,
+    "nome": "Vila Suites Santorini",
+    "estrelas": 3,
+    "preco_por_noite": 55.32,
+    "comodidades": [
+      "ar-condicionado",
+      "wifi",
+      "spa",
+      "estacionamento"
+    ]
+  },
+  {
+    "id": 374,
+    "destino_id": 75,
+    "nome": "Vila Palace Braga",
+    "estrelas": 3,
+    "preco_por_noite": 122.77,
+    "comodidades": [
+      "ar-condicionado",
+      "spa"
+    ]
+  },
+  {
+    "id": 375,
+    "destino_id": 34,
+    "nome": "Boutique Resort Sydney",
+    "estrelas": 4,
+    "preco_por_noite": 181.96,
+    "comodidades": [
+      "ginásio",
+      "piscina"
+    ]
+  },
+  {
+    "id": 376,
+    "destino_id": 96,
+    "nome": "Solar Hotel Geneva",
+    "estrelas": 3,
+    "preco_por_noite": 240.65,
+    "comodidades": [
+      "estacionamento"
+    ]
+  },
+  {
+    "id": 377,
+    "destino_id": 35,
+    "nome": "Solar Palace Guimarães",
+    "estrelas": 3,
+    "preco_por_noite": 291.12,
+    "comodidades": [
+      "wifi",
+      "piscina",
+      "ginásio",
+      "pequeno-almoço"
+    ]
+  },
+  {
+    "id": 378,
+    "destino_id": 105,
+    "nome": "Boutique Palace Lisboa",
+    "estrelas": 4,
+    "preco_por_noite": 61.66,
+    "comodidades": [
+      "pequeno-almoço",
+      "piscina"
+    ]
+  },
+  {
+    "id": 379,
+    "destino_id": 12,
+    "nome": "Solar Suites Warsaw",
+    "estrelas": 4,
+    "preco_por_noite": 54.17,
+    "comodidades": [
+      "pequeno-almoço"
+    ]
+  },
+  {
+    "id": 380,
+    "destino_id": 34,
+    "nome": "Douro Hotel Sydney",
+    "estrelas": 3,
+    "preco_por_noite": 48.39,
+    "comodidades": [
+      "estacionamento",
+      "spa",
+      "ginásio",
+      "piscina"
+    ]
+  },
+  {
+    "id": 381,
+    "destino_id": 41,
+    "nome": "Atlântico Hotel Ponta Delgada",
+    "estrelas": 4,
+    "preco_por_noite": 364.11,
+    "comodidades": [
+      "wifi",
+      "piscina",
+      "spa"
+    ]
+  },
+  {
+    "id": 382,
+    "destino_id": 92,
+    "nome": "Grande Palace Prague",
+    "estrelas": 5,
+    "preco_por_noite": 282.19,
+    "comodidades": [
+      "pequeno-almoço",
+      "spa",
+      "ar-condicionado"
+    ]
+  },
+  {
+    "id": 383,
+    "destino_id": 116,
+    "nome": "Solar Albergaria Zurich",
+    "estrelas": 5,
+    "preco_por_noite": 406.07,
+    "comodidades": [
+      "spa"
+    ]
+  },
+  {
+    "id": 384,
+    "destino_id": 10,
+    "nome": "Atlântico Resort Évora",
+    "estrelas": 5,
+    "preco_por_noite": 443.32,
+    "comodidades": [
+      "estacionamento",
+      "spa"
+    ]
+  },
+  {
+    "id": 385,
+    "destino_id": 10,
+    "nome": "Grande Resort Évora",
+    "estrelas": 5,
+    "preco_por_noite": 295.69,
+    "comodidades": [
+      "ar-condicionado",
+      "wifi",
+      "ginásio"
+    ]
+  },
+  {
+    "id": 386,
+    "destino_id": 26,
+    "nome": "Vila Suites Paris",
+    "estrelas": 3,
+    "preco_por_noite": 441.44,
+    "comodidades": [
+      "pequeno-almoço"
+    ]
+  },
+  {
+    "id": 387,
+    "destino_id": 94,
+    "nome": "Boutique Suites Viana do Castelo",
+    "estrelas": 3,
+    "preco_por_noite": 267.69,
+    "comodidades": [
+      "wifi",
+      "pequeno-almoço",
+      "piscina",
+      "ar-condicionado"
+    ]
+  },
+  {
+    "id": 388,
+    "destino_id": 8,
+    "nome": "Douro Suites Sintra",
+    "estrelas": 5,
+    "preco_por_noite": 312.98,
+    "comodidades": [
+      "piscina",
+      "estacionamento"
+    ]
+  },
+  {
+    "id": 389,
+    "destino_id": 84,
+    "nome": "Vila Hotel Aveiro",
+    "estrelas": 5,
+    "preco_por_noite": 427.99,
+    "comodidades": [
+      "ginásio",
+      "spa",
+      "estacionamento",
+      "wifi"
+    ]
+  },
+  {
+    "id": 390,
+    "destino_id": 29,
+    "nome": "Real Albergaria Rome",
+    "estrelas": 4,
+    "preco_por_noite": 218.68,
+    "comodidades": [
+      "ar-condicionado",
+      "pequeno-almoço"
+    ]
+  },
+  {
+    "id": 391,
+    "destino_id": 115,
+    "nome": "Douro Suites Lyon",
+    "estrelas": 3,
+    "preco_por_noite": 166.78,
+    "comodidades": [
+      "spa",
+      "ginásio",
+      "piscina"
+    ]
+  },
+  {
+    "id": 392,
+    "destino_id": 97,
+    "nome": "Real Resort Valencia",
+    "estrelas": 5,
+    "preco_por_noite": 124.38,
+    "comodidades": [
+      "wifi",
+      "spa",
+      "ginásio"
+    ]
+  },
+  {
+    "id": 393,
+    "destino_id": 1,
+    "nome": "Vila Resort Munich",
+    "estrelas": 4,
+    "preco_por_noite": 258.78,
+    "comodidades": [
+      "estacionamento",
+      "ar-condicionado",
+      "piscina",
+      "wifi"
+    ]
+  },
+  {
+    "id": 394,
+    "destino_id": 2,
+    "nome": "Atlântico Suites Phuket",
+    "estrelas": 3,
+    "preco_por_noite": 395.39,
+    "comodidades": [
+      "wifi",
+      "ar-condicionado",
+      "ginásio"
+    ]
+  },
+  {
+    "id": 395,
+    "destino_id": 68,
+    "nome": "Douro Suites Porto",
+    "estrelas": 4,
+    "preco_por_noite": 133.27,
+    "comodidades": [
+      "piscina",
+      "spa",
+      "wifi"
+    ]
+  },
+  {
+    "id": 396,
+    "destino_id": 55,
+    "nome": "Grande Suites Horta",
+    "estrelas": 5,
+    "preco_por_noite": 245.71,
+    "comodidades": [
+      "estacionamento"
+    ]
+  },
+  {
+    "id": 397,
+    "destino_id": 89,
+    "nome": "Atlântico Suites Budapest",
+    "estrelas": 4,
+    "preco_por_noite": 275.19,
+    "comodidades": [
+      "estacionamento"
+    ]
+  },
+  {
+    "id": 398,
+    "destino_id": 85,
+    "nome": "Vila Palace Milan",
+    "estrelas": 4,
+    "preco_por_noite": 43.75,
+    "comodidades": [
+      "ar-condicionado"
+    ]
+  },
+  {
+    "id": 399,
+    "destino_id": 96,
+    "nome": "Palácio Pousada Geneva",
+    "estrelas": 5,
+    "preco_por_noite": 315.32,
+    "comodidades": [
+      "pequeno-almoço",
+      "estacionamento",
+      "wifi",
+      "piscina"
+    ]
+  },
+  {
+    "id": 400,
+    "destino_id": 88,
+    "nome": "Solar Palace Bangkok",
+    "estrelas": 5,
+    "preco_por_noite": 297.34,
+    "comodidades": [
+      "estacionamento",
+      "pequeno-almoço",
+      "ar-condicionado",
+      "wifi"
+    ]
+  },
+  {
+    "id": 401,
+    "destino_id": 73,
+    "nome": "Solar Pousada Copenhagen",
+    "estrelas": 4,
+    "preco_por_noite": 444.44,
+    "comodidades": [
+      "estacionamento",
+      "ginásio",
+      "wifi",
+      "ar-condicionado"
+    ]
+  },
+  {
+    "id": 402,
+    "destino_id": 113,
+    "nome": "Boutique Resort Prague",
+    "estrelas": 4,
+    "preco_por_noite": 39.66,
+    "comodidades": [
+      "wifi",
+      "piscina"
+    ]
+  },
+  {
+    "id": 403,
+    "destino_id": 103,
+    "nome": "Real Hotel Athens",
+    "estrelas": 2,
+    "preco_por_noite": 168.22,
+    "comodidades": [
+      "wifi"
+    ]
+  },
+  {
+    "id": 404,
+    "destino_id": 115,
+    "nome": "Boutique Resort Lyon",
+    "estrelas": 3,
+    "preco_por_noite": 449.35,
+    "comodidades": [
+      "spa"
+    ]
+  },
+  {
+    "id": 405,
+    "destino_id": 114,
+    "nome": "Palácio Suites Rome",
+    "estrelas": 4,
+    "preco_por_noite": 52.9,
+    "comodidades": [
+      "ar-condicionado",
+      "wifi",
+      "estacionamento"
+    ]
+  },
+  {
+    "id": 406,
+    "destino_id": 40,
+    "nome": "Vila Palace Warsaw",
+    "estrelas": 3,
+    "preco_por_noite": 279.44,
+    "comodidades": [
+      "spa",
+      "ar-condicionado"
+    ]
+  },
+  {
+    "id": 407,
+    "destino_id": 68,
+    "nome": "Grande Palace Porto",
+    "estrelas": 3,
+    "preco_por_noite": 254.59,
+    "comodidades": [
+      "wifi",
+      "piscina",
+      "pequeno-almoço",
+      "ginásio"
+    ]
+  },
+  {
+    "id": 408,
+    "destino_id": 7,
+    "nome": "Grande Hotel New York",
+    "estrelas": 5,
+    "preco_por_noite": 327.9,
+    "comodidades": [
+      "wifi",
+      "piscina",
+      "spa",
+      "ginásio"
+    ]
+  },
+  {
+    "id": 409,
+    "destino_id": 49,
+    "nome": "Boutique Hotel Tokyo",
+    "estrelas": 4,
+    "preco_por_noite": 180.62,
+    "comodidades": [
+      "ar-condicionado",
+      "ginásio",
+      "pequeno-almoço",
+      "piscina"
+    ]
+  },
+  {
+    "id": 410,
+    "destino_id": 83,
+    "nome": "Vila Palace Miami",
+    "estrelas": 4,
+    "preco_por_noite": 372.27,
+    "comodidades": [
+      "ginásio",
+      "ar-condicionado"
+    ]
+  },
+  {
+    "id": 411,
+    "destino_id": 19,
+    "nome": "Palácio Hotel Lisboa",
+    "estrelas": 3,
+    "preco_por_noite": 127.55,
+    "comodidades": [
+      "piscina",
+      "wifi",
+      "estacionamento"
+    ]
+  },
+  {
+    "id": 412,
+    "destino_id": 82,
+    "nome": "Solar Resort Buenos Aires",
+    "estrelas": 3,
+    "preco_por_noite": 174.48,
+    "comodidades": [
+      "ginásio",
+      "estacionamento"
+    ]
+  },
+  {
+    "id": 413,
+    "destino_id": 19,
+    "nome": "Real Resort Lisboa",
+    "estrelas": 5,
+    "preco_por_noite": 44.54,
+    "comodidades": [
+      "estacionamento",
+      "pequeno-almoço",
+      "ginásio",
+      "wifi"
+    ]
+  },
+  {
+    "id": 414,
+    "destino_id": 57,
+    "nome": "Vila Suites Cape Town",
+    "estrelas": 5,
+    "preco_por_noite": 179.42,
+    "comodidades": [
+      "ginásio"
+    ]
+  },
+  {
+    "id": 415,
+    "destino_id": 44,
+    "nome": "Grande Suites Madrid",
+    "estrelas": 3,
+    "preco_por_noite": 318.95,
+    "comodidades": [
+      "spa"
+    ]
+  },
+  {
+    "id": 416,
+    "destino_id": 83,
+    "nome": "Douro Resort Miami",
+    "estrelas": 3,
+    "preco_por_noite": 297.69,
+    "comodidades": [
+      "pequeno-almoço",
+      "ar-condicionado"
+    ]
+  },
+  {
+    "id": 417,
+    "destino_id": 21,
+    "nome": "Atlântico Resort Horta",
+    "estrelas": 5,
+    "preco_por_noite": 118.82,
+    "comodidades": [
+      "spa",
+      "estacionamento"
+    ]
+  },
+  {
+    "id": 418,
+    "destino_id": 76,
+    "nome": "Atlântico Palace Mykonos",
+    "estrelas": 4,
+    "preco_por_noite": 318.77,
+    "comodidades": [
+      "piscina",
+      "wifi",
+      "spa"
+    ]
+  },
+  {
+    "id": 419,
+    "destino_id": 66,
+    "nome": "Douro Albergaria Cascais",
+    "estrelas": 5,
+    "preco_por_noite": 378.99,
+    "comodidades": [
+      "spa",
+      "ginásio",
+      "estacionamento"
+    ]
+  },
+  {
+    "id": 420,
+    "destino_id": 38,
+    "nome": "Real Pousada Prague",
+    "estrelas": 5,
+    "preco_por_noite": 104.02,
+    "comodidades": [
+      "pequeno-almoço",
+      "wifi"
+    ]
+  },
+  {
+    "id": 421,
+    "destino_id": 43,
+    "nome": "Solar Resort Rio de Janeiro",
+    "estrelas": 4,
+    "preco_por_noite": 269.8,
+    "comodidades": [
+      "ginásio"
+    ]
+  },
+  {
+    "id": 422,
+    "destino_id": 117,
+    "nome": "Palácio Resort Lagos",
+    "estrelas": 5,
+    "preco_por_noite": 152.15,
+    "comodidades": [
+      "ginásio",
+      "piscina",
+      "estacionamento"
+    ]
+  },
+  {
+    "id": 423,
+    "destino_id": 117,
+    "nome": "Palácio Palace Lagos",
+    "estrelas": 4,
+    "preco_por_noite": 145.13,
+    "comodidades": [
+      "pequeno-almoço",
+      "spa"
+    ]
+  },
+  {
+    "id": 424,
+    "destino_id": 118,
+    "nome": "Solar Albergaria London",
+    "estrelas": 5,
+    "preco_por_noite": 259.36,
+    "comodidades": [
+      "piscina",
+      "wifi"
+    ]
+  },
+  {
+    "id": 425,
+    "destino_id": 46,
+    "nome": "Douro Palace Zurich",
+    "estrelas": 5,
+    "preco_por_noite": 220.86,
+    "comodidades": [
+      "pequeno-almoço",
+      "spa",
+      "ginásio",
+      "ar-condicionado"
+    ]
+  },
+  {
+    "id": 426,
+    "destino_id": 23,
+    "nome": "Douro Albergaria Venice",
+    "estrelas": 2,
+    "preco_por_noite": 274.72,
+    "comodidades": [
+      "piscina",
+      "spa",
+      "ginásio"
+    ]
+  },
+  {
+    "id": 427,
+    "destino_id": 92,
+    "nome": "Real Resort Prague",
+    "estrelas": 3,
+    "preco_por_noite": 408.27,
+    "comodidades": [
+      "pequeno-almoço",
+      "ar-condicionado",
+      "ginásio"
+    ]
+  },
+  {
+    "id": 428,
+    "destino_id": 119,
+    "nome": "Palácio Palace Sydney",
+    "estrelas": 5,
+    "preco_por_noite": 447.7,
+    "comodidades": [
+      "ar-condicionado",
+      "ginásio",
+      "piscina"
+    ]
+  },
+  {
+    "id": 429,
+    "destino_id": 75,
+    "nome": "Douro Palace Braga",
+    "estrelas": 4,
+    "preco_por_noite": 130.15,
+    "comodidades": [
+      "ginásio"
+    ]
+  },
+  {
+    "id": 430,
+    "destino_id": 109,
+    "nome": "Real Albergaria Santorini",
+    "estrelas": 3,
+    "preco_por_noite": 396.29,
+    "comodidades": [
+      "spa"
+    ]
+  },
+  {
+    "id": 431,
+    "destino_id": 106,
+    "nome": "Atlântico Albergaria Miami",
+    "estrelas": 4,
+    "preco_por_noite": 401.6,
+    "comodidades": [
+      "ginásio",
+      "ar-condicionado",
+      "pequeno-almoço"
+    ]
+  },
+  {
+    "id": 432,
+    "destino_id": 5,
+    "nome": "Boutique Resort Prague",
+    "estrelas": 4,
+    "preco_por_noite": 35.61,
+    "comodidades": [
+      "ar-condicionado",
+      "piscina",
+      "pequeno-almoço"
+    ]
+  },
+  {
+    "id": 433,
+    "destino_id": 67,
+    "nome": "Atlântico Palace New York",
+    "estrelas": 5,
+    "preco_por_noite": 264.72,
+    "comodidades": [
+      "ginásio"
+    ]
+  },
+  {
+    "id": 434,
+    "destino_id": 114,
+    "nome": "Real Resort Rome",
+    "estrelas": 3,
+    "preco_por_noite": 294.23,
+    "comodidades": [
+      "ar-condicionado"
+    ]
+  },
+  {
+    "id": 435,
+    "destino_id": 95,
+    "nome": "Real Albergaria Bangkok",
+    "estrelas": 3,
+    "preco_por_noite": 260.19,
+    "comodidades": [
+      "ar-condicionado",
+      "ginásio"
+    ]
+  },
+  {
+    "id": 436,
+    "destino_id": 9,
+    "nome": "Atlântico Palace Geneva",
+    "estrelas": 3,
+    "preco_por_noite": 171.2,
+    "comodidades": [
+      "estacionamento",
+      "ginásio",
+      "pequeno-almoço"
+    ]
+  },
+  {
+    "id": 437,
+    "destino_id": 119,
+    "nome": "Grande Suites Sydney",
+    "estrelas": 5,
+    "preco_por_noite": 68.59,
+    "comodidades": [
+      "spa",
+      "ginásio",
+      "wifi",
+      "estacionamento"
+    ]
+  },
+  {
+    "id": 438,
+    "destino_id": 94,
+    "nome": "Real Resort Viana do Castelo",
+    "estrelas": 4,
+    "preco_por_noite": 414.45,
+    "comodidades": [
+      "spa",
+      "estacionamento",
+      "ginásio"
+    ]
+  },
+  {
+    "id": 439,
+    "destino_id": 33,
+    "nome": "Solar Albergaria Budapest",
+    "estrelas": 2,
+    "preco_por_noite": 136.12,
+    "comodidades": [
+      "pequeno-almoço"
+    ]
+  },
+  {
+    "id": 440,
+    "destino_id": 91,
+    "nome": "Boutique Suites Oslo",
+    "estrelas": 4,
+    "preco_por_noite": 113.86,
+    "comodidades": [
+      "wifi",
+      "pequeno-almoço",
+      "ginásio",
+      "piscina"
+    ]
+  },
+  {
+    "id": 441,
+    "destino_id": 71,
+    "nome": "Douro Palace Coimbra",
+    "estrelas": 2,
+    "preco_por_noite": 105.1,
+    "comodidades": [
+      "piscina"
+    ]
+  },
+  {
+    "id": 442,
+    "destino_id": 28,
+    "nome": "Atlântico Hotel Budapest",
+    "estrelas": 4,
+    "preco_por_noite": 71.33,
+    "comodidades": [
+      "spa",
+      "ginásio"
+    ]
+  },
+  {
+    "id": 443,
+    "destino_id": 47,
+    "nome": "Atlântico Pousada Valencia",
+    "estrelas": 3,
+    "preco_por_noite": 340.92,
+    "comodidades": [
+      "estacionamento",
+      "ar-condicionado",
+      "piscina"
+    ]
+  },
+  {
+    "id": 444,
+    "destino_id": 114,
+    "nome": "Real Palace Rome",
+    "estrelas": 3,
+    "preco_por_noite": 360.13,
+    "comodidades": [
+      "wifi",
+      "ginásio",
+      "spa"
+    ]
+  },
+  {
+    "id": 445,
+    "destino_id": 1,
+    "nome": "Boutique Palace Munich",
+    "estrelas": 4,
+    "preco_por_noite": 369.5,
+    "comodidades": [
+      "piscina",
+      "wifi",
+      "ar-condicionado",
+      "pequeno-almoço"
+    ]
+  },
+  {
+    "id": 446,
+    "destino_id": 9,
+    "nome": "Vila Palace Geneva",
+    "estrelas": 5,
+    "preco_por_noite": 346.11,
+    "comodidades": [
+      "ginásio",
+      "estacionamento",
+      "piscina"
+    ]
+  },
+  {
+    "id": 447,
+    "destino_id": 21,
+    "nome": "Douro Hotel Horta",
+    "estrelas": 4,
+    "preco_por_noite": 107.99,
+    "comodidades": [
+      "pequeno-almoço",
+      "spa"
+    ]
+  },
+  {
+    "id": 448,
+    "destino_id": 64,
+    "nome": "Douro Albergaria Miami",
+    "estrelas": 4,
+    "preco_por_noite": 400.62,
+    "comodidades": [
+      "piscina"
+    ]
+  },
+  {
+    "id": 449,
+    "destino_id": 14,
+    "nome": "Douro Palace Budapest",
+    "estrelas": 4,
+    "preco_por_noite": 154.71,
+    "comodidades": [
+      "wifi",
+      "ginásio"
+    ]
+  },
+  {
+    "id": 450,
+    "destino_id": 16,
+    "nome": "Real Albergaria Warsaw",
+    "estrelas": 4,
+    "preco_por_noite": 106.55,
+    "comodidades": [
+      "spa"
+    ]
+  },
+  {
+    "id": 451,
+    "destino_id": 117,
+    "nome": "Solar Pousada Lagos",
+    "estrelas": 2,
+    "preco_por_noite": 83.52,
+    "comodidades": [
+      "ginásio",
+      "ar-condicionado",
+      "estacionamento"
+    ]
+  },
+  {
+    "id": 452,
+    "destino_id": 66,
+    "nome": "Real Hotel Cascais",
+    "estrelas": 5,
+    "preco_por_noite": 316.14,
+    "comodidades": [
+      "ginásio",
+      "piscina",
+      "wifi",
+      "ar-condicionado"
+    ]
+  },
+  {
+    "id": 453,
+    "destino_id": 21,
+    "nome": "Solar Suites Horta",
+    "estrelas": 4,
+    "preco_por_noite": 201.22,
+    "comodidades": [
+      "ar-condicionado",
+      "spa",
+      "piscina"
+    ]
+  },
+  {
+    "id": 454,
+    "destino_id": 89,
+    "nome": "Atlântico Resort Budapest",
+    "estrelas": 3,
+    "preco_por_noite": 301.19,
+    "comodidades": [
+      "pequeno-almoço"
+    ]
+  },
+  {
+    "id": 455,
+    "destino_id": 49,
+    "nome": "Real Albergaria Tokyo",
+    "estrelas": 5,
+    "preco_por_noite": 191.7,
+    "comodidades": [
+      "ar-condicionado",
+      "wifi",
+      "ginásio",
+      "pequeno-almoço"
+    ]
+  },
+  {
+    "id": 456,
+    "destino_id": 58,
+    "nome": "Douro Albergaria Buenos Aires",
+    "estrelas": 4,
+    "preco_por_noite": 160.85,
+    "comodidades": [
+      "piscina",
+      "ginásio",
+      "wifi",
+      "pequeno-almoço"
+    ]
+  },
+  {
+    "id": 457,
+    "destino_id": 39,
+    "nome": "Douro Palace Edinburgh",
+    "estrelas": 5,
+    "preco_por_noite": 419.94,
+    "comodidades": [
+      "wifi",
+      "pequeno-almoço"
+    ]
+  },
+  {
+    "id": 458,
+    "destino_id": 107,
+    "nome": "Grande Albergaria Cape Town",
+    "estrelas": 5,
+    "preco_por_noite": 365.35,
+    "comodidades": [
+      "pequeno-almoço",
+      "spa",
+      "wifi"
+    ]
+  },
+  {
+    "id": 459,
+    "destino_id": 83,
+    "nome": "Boutique Palace Miami",
+    "estrelas": 5,
+    "preco_por_noite": 404.94,
+    "comodidades": [
+      "estacionamento",
+      "wifi"
+    ]
+  },
+  {
+    "id": 460,
+    "destino_id": 33,
+    "nome": "Solar Albergaria Budapest",
+    "estrelas": 4,
+    "preco_por_noite": 273.84,
+    "comodidades": [
+      "ar-condicionado",
+      "spa"
+    ]
+  },
+  {
+    "id": 461,
+    "destino_id": 108,
+    "nome": "Solar Hotel Tokyo",
+    "estrelas": 4,
+    "preco_por_noite": 297.32,
+    "comodidades": [
+      "ar-condicionado",
+      "wifi"
+    ]
+  },
+  {
+    "id": 462,
+    "destino_id": 102,
+    "nome": "Atlântico Albergaria Manchester",
+    "estrelas": 4,
+    "preco_por_noite": 181.27,
+    "comodidades": [
+      "wifi",
+      "spa",
+      "piscina",
+      "ar-condicionado"
+    ]
+  },
+  {
+    "id": 463,
+    "destino_id": 35,
+    "nome": "Atlântico Pousada Guimarães",
+    "estrelas": 3,
+    "preco_por_noite": 312.64,
+    "comodidades": [
+      "spa",
+      "pequeno-almoço"
+    ]
+  },
+  {
+    "id": 464,
+    "destino_id": 25,
+    "nome": "Palácio Pousada Rio de Janeiro",
+    "estrelas": 4,
+    "preco_por_noite": 407.87,
+    "comodidades": [
+      "wifi",
+      "ar-condicionado",
+      "piscina"
+    ]
+  },
+  {
+    "id": 465,
+    "destino_id": 57,
+    "nome": "Solar Albergaria Cape Town",
+    "estrelas": 5,
+    "preco_por_noite": 240.64,
+    "comodidades": [
+      "ginásio",
+      "spa"
+    ]
+  },
+  {
+    "id": 466,
+    "destino_id": 86,
+    "nome": "Real Pousada Angra do Heroísmo",
+    "estrelas": 5,
+    "preco_por_noite": 293.79,
+    "comodidades": [
+      "ar-condicionado",
+      "spa",
+      "pequeno-almoço",
+      "estacionamento"
+    ]
+  },
+  {
+    "id": 467,
+    "destino_id": 27,
+    "nome": "Boutique Hotel Cape Town",
+    "estrelas": 3,
+    "preco_por_noite": 43.39,
+    "comodidades": [
+      "ginásio"
+    ]
+  },
+  {
+    "id": 468,
+    "destino_id": 96,
+    "nome": "Atlântico Palace Geneva",
+    "estrelas": 4,
+    "preco_por_noite": 170.78,
+    "comodidades": [
+      "estacionamento",
+      "wifi",
+      "pequeno-almoço"
+    ]
+  },
+  {
+    "id": 469,
+    "destino_id": 61,
+    "nome": "Palácio Pousada Stockholm",
+    "estrelas": 3,
+    "preco_por_noite": 327.85,
+    "comodidades": [
+      "piscina",
+      "wifi",
+      "spa",
+      "pequeno-almoço"
+    ]
+  },
+  {
+    "id": 470,
+    "destino_id": 120,
+    "nome": "Boutique Suites Horta",
+    "estrelas": 3,
+    "preco_por_noite": 152.55,
+    "comodidades": [
+      "pequeno-almoço",
+      "wifi",
+      "estacionamento",
+      "spa"
+    ]
+  },
+  {
+    "id": 471,
+    "destino_id": 80,
+    "nome": "Atlântico Albergaria Valencia",
+    "estrelas": 4,
+    "preco_por_noite": 113.53,
+    "comodidades": [
+      "piscina",
+      "spa",
+      "ar-condicionado"
+    ]
+  },
+  {
+    "id": 472,
+    "destino_id": 75,
+    "nome": "Vila Suites Braga",
+    "estrelas": 5,
+    "preco_por_noite": 203.8,
+    "comodidades": [
+      "wifi",
+      "ginásio",
+      "piscina"
+    ]
+  },
+  {
+    "id": 473,
+    "destino_id": 63,
+    "nome": "Palácio Resort Athens",
+    "estrelas": 4,
+    "preco_por_noite": 326.85,
+    "comodidades": [
+      "wifi",
+      "estacionamento"
+    ]
+  },
+  {
+    "id": 474,
+    "destino_id": 11,
+    "nome": "Palácio Palace Funchal",
+    "estrelas": 4,
+    "preco_por_noite": 68.26,
+    "comodidades": [
+      "piscina",
+      "ginásio",
+      "ar-condicionado"
+    ]
+  },
+  {
+    "id": 475,
+    "destino_id": 82,
+    "nome": "Palácio Hotel Buenos Aires",
+    "estrelas": 4,
+    "preco_por_noite": 445.6,
+    "comodidades": [
+      "piscina"
+    ]
+  },
+  {
+    "id": 476,
+    "destino_id": 85,
+    "nome": "Palácio Albergaria Milan",
+    "estrelas": 4,
+    "preco_por_noite": 355.39,
+    "comodidades": [
+      "ar-condicionado",
+      "ginásio",
+      "pequeno-almoço",
+      "wifi"
+    ]
+  },
+  {
+    "id": 477,
+    "destino_id": 112,
+    "nome": "Palácio Palace Prague",
+    "estrelas": 4,
+    "preco_por_noite": 434.78,
+    "comodidades": [
+      "pequeno-almoço",
+      "ginásio"
+    ]
+  },
+  {
+    "id": 478,
+    "destino_id": 73,
+    "nome": "Vila Pousada Copenhagen",
+    "estrelas": 3,
+    "preco_por_noite": 168.4,
+    "comodidades": [
+      "piscina",
+      "pequeno-almoço"
+    ]
+  },
+  {
+    "id": 479,
+    "destino_id": 21,
+    "nome": "Vila Pousada Horta",
+    "estrelas": 5,
+    "preco_por_noite": 312.49,
+    "comodidades": [
+      "ar-condicionado",
+      "piscina",
+      "spa"
+    ]
+  },
+  {
+    "id": 480,
+    "destino_id": 67,
+    "nome": "Palácio Hotel New York",
+    "estrelas": 4,
+    "preco_por_noite": 263.43,
+    "comodidades": [
+      "estacionamento",
+      "spa"
+    ]
+  },
+  {
+    "id": 481,
+    "destino_id": 109,
+    "nome": "Grande Resort Santorini",
+    "estrelas": 4,
+    "preco_por_noite": 48.23,
+    "comodidades": [
+      "piscina",
+      "estacionamento",
+      "ar-condicionado"
+    ]
+  },
+  {
+    "id": 482,
+    "destino_id": 94,
+    "nome": "Grande Albergaria Viana do Castelo",
+    "estrelas": 3,
+    "preco_por_noite": 325.79,
+    "comodidades": [
+      "wifi",
+      "piscina"
+    ]
+  },
+  {
+    "id": 483,
+    "destino_id": 13,
+    "nome": "Boutique Albergaria Dubai",
+    "estrelas": 3,
+    "preco_por_noite": 392.26,
+    "comodidades": [
+      "ar-condicionado",
+      "spa"
+    ]
+  },
+  {
+    "id": 484,
+    "destino_id": 88,
+    "nome": "Palácio Palace Bangkok",
+    "estrelas": 4,
+    "preco_por_noite": 353.94,
+    "comodidades": [
+      "ar-condicionado",
+      "wifi"
+    ]
+  },
+  {
+    "id": 485,
+    "destino_id": 65,
+    "nome": "Grande Resort Auckland",
+    "estrelas": 4,
+    "preco_por_noite": 147.1,
+    "comodidades": [
+      "spa",
+      "ar-condicionado",
+      "wifi",
+      "ginásio"
+    ]
+  },
+  {
+    "id": 486,
+    "destino_id": 2,
+    "nome": "Palácio Hotel Phuket",
+    "estrelas": 4,
+    "preco_por_noite": 372.33,
+    "comodidades": [
+      "ginásio",
+      "ar-condicionado",
+      "piscina",
+      "pequeno-almoço"
+    ]
+  },
+  {
+    "id": 487,
+    "destino_id": 114,
+    "nome": "Solar Resort Rome",
+    "estrelas": 3,
+    "preco_por_noite": 75.3,
+    "comodidades": [
+      "piscina",
+      "spa"
+    ]
+  },
+  {
+    "id": 488,
+    "destino_id": 67,
+    "nome": "Grande Suites New York",
+    "estrelas": 4,
+    "preco_por_noite": 185.78,
+    "comodidades": [
+      "ar-condicionado",
+      "pequeno-almoço",
+      "estacionamento"
+    ]
+  },
+  {
+    "id": 489,
+    "destino_id": 112,
+    "nome": "Solar Hotel Prague",
+    "estrelas": 5,
+    "preco_por_noite": 445.08,
+    "comodidades": [
+      "pequeno-almoço",
+      "ar-condicionado",
+      "spa"
+    ]
+  },
+  {
+    "id": 490,
+    "destino_id": 109,
+    "nome": "Grande Hotel Santorini",
+    "estrelas": 5,
+    "preco_por_noite": 89.03,
+    "comodidades": [
+      "wifi",
+      "ginásio"
+    ]
+  },
+  {
+    "id": 491,
+    "destino_id": 47,
+    "nome": "Boutique Palace Valencia",
+    "estrelas": 5,
+    "preco_por_noite": 287.85,
+    "comodidades": [
+      "wifi",
+      "pequeno-almoço",
+      "ar-condicionado"
+    ]
+  },
+  {
+    "id": 492,
+    "destino_id": 96,
+    "nome": "Atlântico Palace Geneva",
+    "estrelas": 4,
+    "preco_por_noite": 383.2,
+    "comodidades": [
+      "wifi"
+    ]
+  },
+  {
+    "id": 493,
+    "destino_id": 29,
+    "nome": "Palácio Resort Rome",
+    "estrelas": 5,
+    "preco_por_noite": 299.43,
+    "comodidades": [
+      "ginásio"
+    ]
+  },
+  {
+    "id": 494,
+    "destino_id": 60,
+    "nome": "Solar Resort Miami",
+    "estrelas": 5,
+    "preco_por_noite": 426.22,
+    "comodidades": [
+      "ginásio"
+    ]
+  },
+  {
+    "id": 495,
+    "destino_id": 52,
+    "nome": "Real Hotel Rio de Janeiro",
+    "estrelas": 5,
+    "preco_por_noite": 134.78,
+    "comodidades": [
+      "estacionamento"
+    ]
+  },
+  {
+    "id": 496,
+    "destino_id": 118,
+    "nome": "Grande Pousada London",
+    "estrelas": 4,
+    "preco_por_noite": 433.61,
+    "comodidades": [
+      "piscina",
+      "pequeno-almoço",
+      "ginásio"
+    ]
+  },
+  {
+    "id": 497,
+    "destino_id": 81,
+    "nome": "Douro Hotel Viana do Castelo",
+    "estrelas": 4,
+    "preco_por_noite": 149.29,
+    "comodidades": [
+      "spa",
+      "ar-condicionado",
+      "ginásio"
+    ]
+  },
+  {
+    "id": 498,
+    "destino_id": 69,
+    "nome": "Douro Pousada Rio de Janeiro",
+    "estrelas": 3,
+    "preco_por_noite": 396.23,
+    "comodidades": [
+      "wifi",
+      "ginásio",
+      "ar-condicionado"
+    ]
+  },
+  {
+    "id": 499,
+    "destino_id": 109,
+    "nome": "Atlântico Palace Santorini",
+    "estrelas": 5,
+    "preco_por_noite": 166.16,
+    "comodidades": [
+      "estacionamento",
+      "pequeno-almoço",
+      "ginásio"
+    ]
+  },
+  {
+    "id": 500,
+    "destino_id": 48,
+    "nome": "Douro Resort Santorini",
+    "estrelas": 4,
+    "preco_por_noite": 186.54,
+    "comodidades": [
+      "estacionamento"
+    ]
+  },
+  {
+    "id": 501,
+    "destino_id": 82,
+    "nome": "Vila Palace Buenos Aires",
+    "estrelas": 5,
+    "preco_por_noite": 44.24,
+    "comodidades": [
+      "ginásio",
+      "spa",
+      "ar-condicionado"
+    ]
+  },
+  {
+    "id": 502,
+    "destino_id": 4,
+    "nome": "Real Hotel Bangkok",
+    "estrelas": 3,
+    "preco_por_noite": 285.17,
+    "comodidades": [
+      "pequeno-almoço"
+    ]
+  },
+  {
+    "id": 503,
+    "destino_id": 55,
+    "nome": "Solar Palace Horta",
+    "estrelas": 3,
+    "preco_por_noite": 150.84,
+    "comodidades": [
+      "piscina",
+      "pequeno-almoço",
+      "ginásio"
+    ]
+  },
+  {
+    "id": 504,
+    "destino_id": 66,
+    "nome": "Real Resort Cascais",
+    "estrelas": 4,
+    "preco_por_noite": 357.49,
+    "comodidades": [
+      "spa"
+    ]
+  },
+  {
+    "id": 505,
+    "destino_id": 82,
+    "nome": "Atlântico Hotel Buenos Aires",
+    "estrelas": 4,
+    "preco_por_noite": 113.38,
+    "comodidades": [
+      "spa",
+      "ginásio",
+      "estacionamento"
+    ]
+  },
+  {
+    "id": 506,
+    "destino_id": 87,
+    "nome": "Real Resort New York",
+    "estrelas": 5,
+    "preco_por_noite": 316.92,
+    "comodidades": [
+      "piscina",
+      "pequeno-almoço"
+    ]
+  },
+  {
+    "id": 507,
+    "destino_id": 56,
+    "nome": "Palácio Hotel Ponta Delgada",
+    "estrelas": 4,
+    "preco_por_noite": 105.94,
+    "comodidades": [
+      "wifi"
+    ]
+  },
+  {
+    "id": 508,
+    "destino_id": 89,
+    "nome": "Real Palace Budapest",
+    "estrelas": 5,
+    "preco_por_noite": 257.31,
+    "comodidades": [
+      "piscina",
+      "spa",
+      "wifi"
+    ]
+  },
+  {
+    "id": 509,
+    "destino_id": 24,
+    "nome": "Douro Albergaria Singapore",
+    "estrelas": 5,
+    "preco_por_noite": 59.33,
+    "comodidades": [
+      "spa",
+      "pequeno-almoço",
+      "ar-condicionado",
+      "wifi"
+    ]
+  },
+  {
+    "id": 510,
+    "destino_id": 33,
+    "nome": "Boutique Palace Budapest",
+    "estrelas": 4,
+    "preco_por_noite": 94.55,
+    "comodidades": [
+      "wifi"
+    ]
+  },
+  {
+    "id": 511,
+    "destino_id": 10,
+    "nome": "Vila Palace Évora",
+    "estrelas": 3,
+    "preco_por_noite": 117.73,
+    "comodidades": [
+      "estacionamento"
+    ]
+  },
+  {
+    "id": 512,
+    "destino_id": 45,
+    "nome": "Boutique Resort Vienna",
+    "estrelas": 5,
+    "preco_por_noite": 55.61,
+    "comodidades": [
+      "wifi",
+      "piscina",
+      "pequeno-almoço"
+    ]
+  },
+  {
+    "id": 513,
+    "destino_id": 16,
+    "nome": "Solar Pousada Warsaw",
+    "estrelas": 3,
+    "preco_por_noite": 423.17,
+    "comodidades": [
+      "ginásio",
+      "wifi"
+    ]
+  },
+  {
+    "id": 514,
+    "destino_id": 92,
+    "nome": "Palácio Palace Prague",
+    "estrelas": 4,
+    "preco_por_noite": 103.82,
+    "comodidades": [
+      "estacionamento",
+      "pequeno-almoço"
+    ]
+  },
+  {
+    "id": 515,
+    "destino_id": 28,
+    "nome": "Vila Albergaria Budapest",
+    "estrelas": 4,
+    "preco_por_noite": 49.16,
+    "comodidades": [
+      "spa"
+    ]
+  },
+  {
+    "id": 516,
+    "destino_id": 120,
+    "nome": "Grande Suites Horta",
+    "estrelas": 4,
+    "preco_por_noite": 195.59,
+    "comodidades": [
+      "estacionamento",
+      "ginásio"
+    ]
+  },
+  {
+    "id": 517,
+    "destino_id": 87,
+    "nome": "Atlântico Hotel New York",
+    "estrelas": 5,
+    "preco_por_noite": 73.38,
+    "comodidades": [
+      "piscina",
+      "spa",
+      "ar-condicionado",
+      "ginásio"
+    ]
+  },
+  {
+    "id": 518,
+    "destino_id": 39,
+    "nome": "Palácio Palace Edinburgh",
+    "estrelas": 2,
+    "preco_por_noite": 416.96,
+    "comodidades": [
+      "spa",
+      "ar-condicionado"
+    ]
+  },
+  {
+    "id": 519,
+    "destino_id": 59,
+    "nome": "Douro Resort Tavira",
+    "estrelas": 5,
+    "preco_por_noite": 258.08,
+    "comodidades": [
+      "pequeno-almoço",
+      "wifi",
+      "piscina"
+    ]
+  },
+  {
+    "id": 520,
+    "destino_id": 104,
+    "nome": "Palácio Palace Munich",
+    "estrelas": 4,
+    "preco_por_noite": 350.82,
+    "comodidades": [
+      "ar-condicionado",
+      "wifi"
+    ]
+  },
+  {
+    "id": 521,
+    "destino_id": 53,
+    "nome": "Vila Suites Coimbra",
+    "estrelas": 5,
+    "preco_por_noite": 168.04,
+    "comodidades": [
+      "wifi",
+      "ar-condicionado"
+    ]
+  },
+  {
+    "id": 522,
+    "destino_id": 68,
+    "nome": "Douro Resort Porto",
+    "estrelas": 4,
+    "preco_por_noite": 319.56,
+    "comodidades": [
+      "ar-condicionado",
+      "estacionamento",
+      "wifi"
+    ]
+  },
+  {
+    "id": 523,
+    "destino_id": 117,
+    "nome": "Vila Hotel Lagos",
+    "estrelas": 3,
+    "preco_por_noite": 292.48,
+    "comodidades": [
+      "piscina",
+      "pequeno-almoço",
+      "estacionamento",
+      "spa"
+    ]
+  },
+  {
+    "id": 524,
+    "destino_id": 86,
+    "nome": "Atlântico Resort Angra do Heroísmo",
+    "estrelas": 5,
+    "preco_por_noite": 178.49,
+    "comodidades": [
+      "ar-condicionado",
+      "wifi",
+      "pequeno-almoço"
+    ]
+  },
+  {
+    "id": 525,
+    "destino_id": 56,
+    "nome": "Grande Hotel Ponta Delgada",
+    "estrelas": 4,
+    "preco_por_noite": 300.18,
+    "comodidades": [
+      "ginásio",
+      "ar-condicionado",
+      "pequeno-almoço",
+      "piscina"
+    ]
+  },
+  {
+    "id": 526,
+    "destino_id": 27,
+    "nome": "Grande Suites Cape Town",
+    "estrelas": 3,
+    "preco_por_noite": 430.24,
+    "comodidades": [
+      "estacionamento",
+      "wifi"
+    ]
+  },
+  {
+    "id": 527,
+    "destino_id": 28,
+    "nome": "Real Resort Budapest",
+    "estrelas": 4,
+    "preco_por_noite": 148.9,
+    "comodidades": [
+      "pequeno-almoço"
+    ]
+  },
+  {
+    "id": 528,
+    "destino_id": 10,
+    "nome": "Palácio Hotel Évora",
+    "estrelas": 5,
+    "preco_por_noite": 442.7,
+    "comodidades": [
+      "piscina"
+    ]
+  },
+  {
+    "id": 529,
+    "destino_id": 48,
+    "nome": "Douro Palace Santorini",
+    "estrelas": 4,
+    "preco_por_noite": 308.07,
+    "comodidades": [
+      "estacionamento"
+    ]
+  },
+  {
+    "id": 530,
+    "destino_id": 10,
+    "nome": "Palácio Hotel Évora",
+    "estrelas": 4,
+    "preco_por_noite": 55.3,
+    "comodidades": [
+      "ginásio",
+      "pequeno-almoço"
+    ]
+  },
+  {
+    "id": 531,
+    "destino_id": 95,
+    "nome": "Palácio Albergaria Bangkok",
+    "estrelas": 5,
+    "preco_por_noite": 113.77,
+    "comodidades": [
+      "wifi",
+      "ar-condicionado"
+    ]
+  },
+  {
+    "id": 532,
+    "destino_id": 16,
+    "nome": "Palácio Resort Warsaw",
+    "estrelas": 5,
+    "preco_por_noite": 430.16,
+    "comodidades": [
+      "piscina",
+      "estacionamento"
+    ]
+  },
+  {
+    "id": 533,
+    "destino_id": 31,
+    "nome": "Vila Pousada Porto",
+    "estrelas": 4,
+    "preco_por_noite": 155.29,
+    "comodidades": [
+      "spa",
+      "pequeno-almoço",
+      "estacionamento",
+      "piscina"
+    ]
+  },
+  {
+    "id": 534,
+    "destino_id": 117,
+    "nome": "Grande Palace Lagos",
+    "estrelas": 2,
+    "preco_por_noite": 183.11,
+    "comodidades": [
+      "estacionamento",
+      "piscina",
+      "spa"
+    ]
+  },
+  {
+    "id": 535,
+    "destino_id": 45,
+    "nome": "Real Suites Vienna",
+    "estrelas": 2,
+    "preco_por_noite": 306.12,
+    "comodidades": [
+      "estacionamento",
+      "spa",
+      "wifi"
+    ]
+  },
+  {
+    "id": 536,
+    "destino_id": 99,
+    "nome": "Palácio Hotel Valencia",
+    "estrelas": 3,
+    "preco_por_noite": 68.97,
+    "comodidades": [
+      "piscina",
+      "ginásio",
+      "estacionamento",
+      "ar-condicionado"
+    ]
+  },
+  {
+    "id": 537,
+    "destino_id": 55,
+    "nome": "Boutique Resort Horta",
+    "estrelas": 4,
+    "preco_por_noite": 122.91,
+    "comodidades": [
+      "ar-condicionado",
+      "piscina",
+      "pequeno-almoço"
+    ]
+  },
+  {
+    "id": 538,
+    "destino_id": 39,
+    "nome": "Douro Pousada Edinburgh",
+    "estrelas": 3,
+    "preco_por_noite": 55.98,
+    "comodidades": [
+      "piscina",
+      "wifi"
+    ]
+  },
+  {
+    "id": 539,
+    "destino_id": 45,
+    "nome": "Vila Albergaria Vienna",
+    "estrelas": 4,
+    "preco_por_noite": 42.7,
+    "comodidades": [
+      "spa",
+      "ginásio",
+      "wifi"
+    ]
+  },
+  {
+    "id": 540,
+    "destino_id": 106,
+    "nome": "Solar Pousada Miami",
+    "estrelas": 3,
+    "preco_por_noite": 218.82,
+    "comodidades": [
+      "estacionamento",
+      "ginásio",
+      "ar-condicionado",
+      "pequeno-almoço"
+    ]
+  },
+  {
+    "id": 541,
+    "destino_id": 101,
+    "nome": "Solar Suites Lagos",
+    "estrelas": 4,
+    "preco_por_noite": 338.95,
+    "comodidades": [
+      "pequeno-almoço",
+      "piscina",
+      "estacionamento"
+    ]
+  },
+  {
+    "id": 542,
+    "destino_id": 74,
+    "nome": "Palácio Albergaria Amsterdam",
+    "estrelas": 3,
+    "preco_por_noite": 157.02,
+    "comodidades": [
+      "pequeno-almoço",
+      "estacionamento"
+    ]
+  },
+  {
+    "id": 543,
+    "destino_id": 6,
+    "nome": "Solar Resort Paris",
+    "estrelas": 3,
+    "preco_por_noite": 282.1,
+    "comodidades": [
+      "ar-condicionado"
+    ]
+  },
+  {
+    "id": 544,
+    "destino_id": 85,
+    "nome": "Real Albergaria Milan",
+    "estrelas": 5,
+    "preco_por_noite": 38.17,
+    "comodidades": [
+      "estacionamento"
+    ]
+  },
+  {
+    "id": 545,
+    "destino_id": 109,
+    "nome": "Solar Resort Santorini",
+    "estrelas": 3,
+    "preco_por_noite": 383.52,
+    "comodidades": [
+      "wifi",
+      "ar-condicionado"
+    ]
+  },
+  {
+    "id": 546,
+    "destino_id": 47,
+    "nome": "Atlântico Pousada Valencia",
+    "estrelas": 4,
+    "preco_por_noite": 58.4,
+    "comodidades": [
+      "wifi",
+      "ginásio",
+      "pequeno-almoço"
+    ]
+  },
+  {
+    "id": 547,
+    "destino_id": 61,
+    "nome": "Atlântico Hotel Stockholm",
+    "estrelas": 5,
+    "preco_por_noite": 54.05,
+    "comodidades": [
+      "ar-condicionado",
+      "pequeno-almoço",
+      "piscina"
+    ]
+  },
+  {
+    "id": 548,
+    "destino_id": 52,
+    "nome": "Solar Suites Rio de Janeiro",
+    "estrelas": 3,
+    "preco_por_noite": 196.37,
+    "comodidades": [
+      "ar-condicionado"
+    ]
+  },
+  {
+    "id": 549,
+    "destino_id": 103,
+    "nome": "Boutique Albergaria Athens",
+    "estrelas": 4,
+    "preco_por_noite": 117.6,
+    "comodidades": [
+      "estacionamento",
+      "ginásio",
+      "wifi"
+    ]
+  },
+  {
+    "id": 550,
+    "destino_id": 87,
+    "nome": "Vila Hotel New York",
+    "estrelas": 5,
+    "preco_por_noite": 311.36,
+    "comodidades": [
+      "estacionamento",
+      "spa",
+      "wifi"
+    ]
+  },
+  {
+    "id": 551,
+    "destino_id": 45,
+    "nome": "Atlântico Suites Vienna",
+    "estrelas": 4,
+    "preco_por_noite": 323.1,
+    "comodidades": [
+      "spa",
+      "ar-condicionado"
+    ]
+  },
+  {
+    "id": 552,
+    "destino_id": 97,
+    "nome": "Real Albergaria Valencia",
+    "estrelas": 2,
+    "preco_por_noite": 383.37,
+    "comodidades": [
+      "spa",
+      "ar-condicionado"
+    ]
+  },
+  {
+    "id": 553,
+    "destino_id": 84,
+    "nome": "Real Hotel Aveiro",
+    "estrelas": 3,
+    "preco_por_noite": 276.41,
+    "comodidades": [
+      "ginásio"
+    ]
+  },
+  {
+    "id": 554,
+    "destino_id": 9,
+    "nome": "Vila Resort Geneva",
+    "estrelas": 3,
+    "preco_por_noite": 353.99,
+    "comodidades": [
+      "pequeno-almoço",
+      "estacionamento"
+    ]
+  },
+  {
+    "id": 555,
+    "destino_id": 72,
+    "nome": "Solar Pousada Coimbra",
+    "estrelas": 3,
+    "preco_por_noite": 439.14,
+    "comodidades": [
+      "wifi",
+      "piscina",
+      "pequeno-almoço"
+    ]
+  },
+  {
+    "id": 556,
+    "destino_id": 14,
+    "nome": "Atlântico Hotel Budapest",
+    "estrelas": 4,
+    "preco_por_noite": 215.52,
+    "comodidades": [
+      "spa"
+    ]
+  },
+  {
+    "id": 557,
+    "destino_id": 22,
+    "nome": "Boutique Albergaria Viana do Castelo",
+    "estrelas": 3,
+    "preco_por_noite": 155.05,
+    "comodidades": [
+      "estacionamento"
+    ]
+  },
+  {
+    "id": 558,
+    "destino_id": 114,
+    "nome": "Douro Palace Rome",
+    "estrelas": 4,
+    "preco_por_noite": 268.93,
+    "comodidades": [
+      "ginásio",
+      "wifi"
+    ]
+  },
+  {
+    "id": 559,
+    "destino_id": 30,
+    "nome": "Vila Hotel Braga",
+    "estrelas": 4,
+    "preco_por_noite": 312.24,
+    "comodidades": [
+      "pequeno-almoço",
+      "ginásio",
+      "ar-condicionado",
+      "estacionamento"
+    ]
+  },
+  {
+    "id": 560,
+    "destino_id": 87,
+    "nome": "Palácio Suites New York",
+    "estrelas": 5,
+    "preco_por_noite": 95.46,
+    "comodidades": [
+      "estacionamento",
+      "ar-condicionado"
+    ]
+  },
+  {
+    "id": 561,
+    "destino_id": 75,
+    "nome": "Atlântico Resort Braga",
+    "estrelas": 4,
+    "preco_por_noite": 354.11,
+    "comodidades": [
+      "pequeno-almoço",
+      "piscina",
+      "spa",
+      "estacionamento"
+    ]
+  },
+  {
+    "id": 562,
+    "destino_id": 39,
+    "nome": "Palácio Resort Edinburgh",
+    "estrelas": 2,
+    "preco_por_noite": 346.95,
+    "comodidades": [
+      "estacionamento",
+      "pequeno-almoço",
+      "spa"
+    ]
+  },
+  {
+    "id": 563,
+    "destino_id": 54,
+    "nome": "Boutique Albergaria Budapest",
+    "estrelas": 5,
+    "preco_por_noite": 337.97,
+    "comodidades": [
+      "spa",
+      "ginásio"
+    ]
+  },
+  {
+    "id": 564,
+    "destino_id": 117,
+    "nome": "Solar Pousada Lagos",
+    "estrelas": 3,
+    "preco_por_noite": 160.35,
+    "comodidades": [
+      "ar-condicionado"
+    ]
+  },
+  {
+    "id": 565,
+    "destino_id": 28,
+    "nome": "Atlântico Hotel Budapest",
+    "estrelas": 4,
+    "preco_por_noite": 445.48,
+    "comodidades": [
+      "estacionamento",
+      "spa"
+    ]
+  },
+  {
+    "id": 566,
+    "destino_id": 90,
+    "nome": "Grande Suites Buenos Aires",
+    "estrelas": 5,
+    "preco_por_noite": 123.71,
+    "comodidades": [
+      "pequeno-almoço",
+      "ginásio",
+      "spa"
+    ]
+  },
+  {
+    "id": 567,
+    "destino_id": 100,
+    "nome": "Grande Hotel Seville",
+    "estrelas": 4,
+    "preco_por_noite": 81.2,
+    "comodidades": [
+      "wifi",
+      "estacionamento",
+      "pequeno-almoço",
+      "spa"
+    ]
+  },
+  {
+    "id": 568,
+    "destino_id": 11,
+    "nome": "Grande Hotel Funchal",
+    "estrelas": 4,
+    "preco_por_noite": 71.03,
+    "comodidades": [
+      "ginásio",
+      "pequeno-almoço"
+    ]
+  },
+  {
+    "id": 569,
+    "destino_id": 117,
+    "nome": "Vila Pousada Lagos",
+    "estrelas": 4,
+    "preco_por_noite": 253.7,
+    "comodidades": [
+      "estacionamento",
+      "spa",
+      "wifi",
+      "ar-condicionado"
+    ]
+  },
+  {
+    "id": 570,
+    "destino_id": 82,
+    "nome": "Real Resort Buenos Aires",
+    "estrelas": 3,
+    "preco_por_noite": 166.77,
+    "comodidades": [
+      "pequeno-almoço"
+    ]
+  },
+  {
+    "id": 571,
+    "destino_id": 12,
+    "nome": "Solar Albergaria Warsaw",
+    "estrelas": 5,
+    "preco_por_noite": 357.26,
+    "comodidades": [
+      "ar-condicionado",
+      "pequeno-almoço"
+    ]
+  },
+  {
+    "id": 572,
+    "destino_id": 64,
+    "nome": "Vila Suites Miami",
+    "estrelas": 5,
+    "preco_por_noite": 60.1,
+    "comodidades": [
+      "pequeno-almoço",
+      "estacionamento",
+      "ar-condicionado"
+    ]
+  },
+  {
+    "id": 573,
+    "destino_id": 73,
+    "nome": "Atlântico Pousada Copenhagen",
+    "estrelas": 4,
+    "preco_por_noite": 77.62,
+    "comodidades": [
+      "ar-condicionado",
+      "estacionamento",
+      "piscina"
+    ]
+  },
+  {
+    "id": 574,
+    "destino_id": 32,
+    "nome": "Boutique Resort Munich",
+    "estrelas": 5,
+    "preco_por_noite": 55.74,
+    "comodidades": [
+      "spa",
+      "piscina"
+    ]
+  },
+  {
+    "id": 575,
+    "destino_id": 120,
+    "nome": "Solar Resort Horta",
+    "estrelas": 3,
+    "preco_por_noite": 312.69,
+    "comodidades": [
+      "spa",
+      "pequeno-almoço",
+      "estacionamento"
+    ]
+  },
+  {
+    "id": 576,
+    "destino_id": 23,
+    "nome": "Douro Hotel Venice",
+    "estrelas": 5,
+    "preco_por_noite": 53.2,
+    "comodidades": [
+      "ginásio",
+      "spa",
+      "estacionamento"
+    ]
+  },
+  {
+    "id": 577,
+    "destino_id": 69,
+    "nome": "Solar Hotel Rio de Janeiro",
+    "estrelas": 4,
+    "preco_por_noite": 225.42,
+    "comodidades": [
+      "ar-condicionado"
+    ]
+  },
+  {
+    "id": 578,
+    "destino_id": 29,
+    "nome": "Atlântico Pousada Rome",
+    "estrelas": 4,
+    "preco_por_noite": 248.77,
+    "comodidades": [
+      "spa",
+      "wifi",
+      "ginásio"
+    ]
+  },
+  {
+    "id": 579,
+    "destino_id": 10,
+    "nome": "Grande Pousada Évora",
+    "estrelas": 5,
+    "preco_por_noite": 305.99,
+    "comodidades": [
+      "estacionamento",
+      "pequeno-almoço",
+      "piscina"
+    ]
+  },
+  {
+    "id": 580,
+    "destino_id": 108,
+    "nome": "Solar Resort Tokyo",
+    "estrelas": 3,
+    "preco_por_noite": 75.82,
+    "comodidades": [
+      "wifi",
+      "ar-condicionado",
+      "piscina"
+    ]
+  },
+  {
+    "id": 581,
+    "destino_id": 117,
+    "nome": "Grande Suites Lagos",
+    "estrelas": 4,
+    "preco_por_noite": 288.12,
+    "comodidades": [
+      "piscina",
+      "estacionamento"
+    ]
+  },
+  {
+    "id": 582,
+    "destino_id": 18,
+    "nome": "Real Palace Santorini",
+    "estrelas": 4,
+    "preco_por_noite": 303.75,
+    "comodidades": [
+      "wifi",
+      "estacionamento"
+    ]
+  },
+  {
+    "id": 583,
+    "destino_id": 109,
+    "nome": "Douro Suites Santorini",
+    "estrelas": 4,
+    "preco_por_noite": 146.74,
+    "comodidades": [
+      "spa"
+    ]
+  },
+  {
+    "id": 584,
+    "destino_id": 75,
+    "nome": "Grande Suites Braga",
+    "estrelas": 4,
+    "preco_por_noite": 282.2,
+    "comodidades": [
+      "ginásio",
+      "wifi",
+      "spa"
+    ]
+  },
+  {
+    "id": 585,
+    "destino_id": 26,
+    "nome": "Palácio Albergaria Paris",
+    "estrelas": 4,
+    "preco_por_noite": 365.7,
+    "comodidades": [
+      "ar-condicionado",
+      "ginásio",
+      "piscina"
+    ]
+  },
+  {
+    "id": 586,
+    "destino_id": 3,
+    "nome": "Grande Pousada Zurich",
+    "estrelas": 4,
+    "preco_por_noite": 129.09,
+    "comodidades": [
+      "spa"
+    ]
+  },
+  {
+    "id": 587,
+    "destino_id": 58,
+    "nome": "Atlântico Palace Buenos Aires",
+    "estrelas": 4,
+    "preco_por_noite": 360.84,
+    "comodidades": [
+      "spa"
+    ]
+  },
+  {
+    "id": 588,
+    "destino_id": 18,
+    "nome": "Palácio Hotel Santorini",
+    "estrelas": 2,
+    "preco_por_noite": 343.64,
+    "comodidades": [
+      "estacionamento"
+    ]
+  },
+  {
+    "id": 589,
+    "destino_id": 56,
+    "nome": "Palácio Palace Ponta Delgada",
+    "estrelas": 4,
+    "preco_por_noite": 363.59,
+    "comodidades": [
+      "ar-condicionado",
+      "estacionamento",
+      "pequeno-almoço",
+      "spa"
+    ]
+  },
+  {
+    "id": 590,
+    "destino_id": 116,
+    "nome": "Atlântico Suites Zurich",
+    "estrelas": 5,
+    "preco_por_noite": 395.05,
+    "comodidades": [
+      "pequeno-almoço",
+      "ginásio",
+      "ar-condicionado"
+    ]
+  },
+  {
+    "id": 591,
+    "destino_id": 59,
+    "nome": "Boutique Palace Tavira",
+    "estrelas": 4,
+    "preco_por_noite": 440.05,
+    "comodidades": [
+      "pequeno-almoço",
+      "spa",
+      "ar-condicionado"
+    ]
+  },
+  {
+    "id": 592,
+    "destino_id": 38,
+    "nome": "Grande Hotel Prague",
+    "estrelas": 4,
+    "preco_por_noite": 116.37,
+    "comodidades": [
+      "pequeno-almoço"
+    ]
+  },
+  {
+    "id": 593,
+    "destino_id": 9,
+    "nome": "Atlântico Resort Geneva",
+    "estrelas": 5,
+    "preco_por_noite": 114.16,
+    "comodidades": [
+      "spa",
+      "pequeno-almoço",
+      "wifi"
+    ]
+  },
+  {
+    "id": 594,
+    "destino_id": 106,
+    "nome": "Solar Pousada Miami",
+    "estrelas": 5,
+    "preco_por_noite": 179.39,
+    "comodidades": [
+      "ginásio",
+      "pequeno-almoço",
+      "piscina",
+      "ar-condicionado"
+    ]
+  },
+  {
+    "id": 595,
+    "destino_id": 63,
+    "nome": "Palácio Pousada Athens",
+    "estrelas": 5,
+    "preco_por_noite": 217.6,
+    "comodidades": [
+      "piscina",
+      "estacionamento",
+      "wifi"
+    ]
+  },
+  {
+    "id": 596,
+    "destino_id": 45,
+    "nome": "Atlântico Resort Vienna",
+    "estrelas": 5,
+    "preco_por_noite": 386.43,
+    "comodidades": [
+      "estacionamento",
+      "ginásio",
+      "piscina"
+    ]
+  },
+  {
+    "id": 597,
+    "destino_id": 119,
+    "nome": "Douro Albergaria Sydney",
+    "estrelas": 4,
+    "preco_por_noite": 337.58,
+    "comodidades": [
+      "ar-condicionado",
+      "estacionamento",
+      "wifi"
+    ]
+  },
+  {
+    "id": 598,
+    "destino_id": 105,
+    "nome": "Palácio Resort Lisboa",
+    "estrelas": 4,
+    "preco_por_noite": 241,
+    "comodidades": [
+      "estacionamento",
+      "spa"
+    ]
+  },
+  {
+    "id": 599,
+    "destino_id": 103,
+    "nome": "Vila Hotel Athens",
+    "estrelas": 3,
+    "preco_por_noite": 404.25,
+    "comodidades": [
+      "estacionamento"
+    ]
+  },
+  {
+    "id": 600,
+    "destino_id": 38,
+    "nome": "Solar Pousada Prague",
+    "estrelas": 5,
+    "preco_por_noite": 130.77,
+    "comodidades": [
+      "wifi",
+      "ginásio"
+    ]
+  }
+]
