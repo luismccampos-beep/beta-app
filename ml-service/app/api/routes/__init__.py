@@ -14,6 +14,7 @@ try:
     from .unified import router as unified_router
     from .recommendations import router as recommendations_router
     from .chat import router as chat_router
+    from .travel_ranking import router as travel_ranking_router
     ADVANCED_ROUTES_AVAILABLE = True
 except ImportError as e:
     print(f"Advanced routes not available: {e}")
@@ -55,6 +56,8 @@ if ADVANCED_ROUTES_AVAILABLE:
         api_router.include_router(xai_router)
     if unified_router:
         api_router.include_router(unified_router)
+    if travel_ranking_router:
+        api_router.include_router(travel_ranking_router)
 
 # Export para compatibilidade
 __all__ = [

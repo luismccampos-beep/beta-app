@@ -1,0 +1,7 @@
+{
+  "items": 12000,
+  "dimensions": 64,
+  "explained_variance_ratio": 0.17188725134229188,
+  "csv": "C:\\Users\\luism\\Documents\\beta-app\\ml-service\\app\\data\\wikivoyage_destinations.csv",
+  "model": "C:\\Users\\luism\\Documents\\beta-app\\ml-service\\app\\models\\trained\\destination_embeddings.pkl"
+}

@@ -38,3 +38,9 @@ Thumbs.db
 *.db
 *.db-journal
 .env*.local
+
+# Wikivoyage dumps & extracted JSONL (large; keep locally in data/)
+data/*.xml.bz2
+data/wikivoyage/out/
+src/data/travel-mock/bundle-wikivoyage.json
+src/data/travel-mock/unsplash-cache.json

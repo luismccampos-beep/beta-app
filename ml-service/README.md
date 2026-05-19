@@ -91,6 +91,24 @@ docker build -t akmleva/ml-service .
 docker run -p 3002:3002 akmleva/ml-service
 ```
 
+## 🗺️ Wikivoyage destination embeddings
+
+Content-based ranking (TF-IDF + SVD) for travel preferences. Run from the **repo root**:
+
+```bash
+npm run travel:ml:export   # bundle-wikivoyage.json → app/data/wikivoyage_destinations.csv
+npm run travel:ml:train    # trains destination_embeddings.pkl (~1 min for 12k items)
+# or
+npm run travel:ml:build
+```
+
+**API** (with `npm run dev`):
+
+- `GET /v1/travel/rank/health` — model loaded?
+- `POST /v1/travel/rank` — body: `{ "preferences": { ... }, "candidates": [{ "destino_id": 1, "iata": "LIS" }] }`
+
+The Next.js app blends these scores with rule-based matching when `ML_SERVICE_BASE_URL` is set.
+
 ## 📊 API Documentation
 
 Once running, visit:

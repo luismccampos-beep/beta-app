@@ -43,6 +43,8 @@ class ModelLoader:
 
         primary_path = os.path.join(self.model_dir, f"{model_name}.pkl")
         alt_path = os.path.join(self.model_dir, "trained", f"{model_name}.pkl")
+        if model_name == "destination_embeddings":
+            alt_path = os.path.join("app", "models", "trained", "destination_embeddings.pkl")
         model_path = primary_path if os.path.exists(primary_path) else alt_path
         if not os.path.exists(model_path):
             logger.warning(f"Model file not found: {primary_path} or {alt_path}")

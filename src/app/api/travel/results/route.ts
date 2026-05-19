@@ -9,6 +9,17 @@ import {
   fetchDuffelCheapestOfferForSlices,
 } from '../../../../lib/travel/duffel';
 import { hotelbedsMinHotelRateByGeo } from '../../../../lib/travel/hotelbeds';
+import {
+  getMockDestinationByIata,
+  getMockHotelsForDestination,
+  getTravelDemoStats,
+  isTravelMockEnabled,
+  shouldUseMockFlights,
+  shouldUseMockHotels,
+} from '../../../../lib/travel/mock-travel/load';
+import { rankResultsWithMlAndPreferences } from '../../../../lib/travel/ml-ranking';
+import { searchMockTravelResults } from '../../../../lib/travel/mock-travel/search';
+import { decodeTravelPreferencesCompact } from '../../../../lib/travel/travel-preferences-query';
 
 export const dynamic = 'force-dynamic';
 
@@ -246,6 +257,19 @@ async function buildPackageOrFlightResult(input: {
     accommodationLabel = `${hotelMin.hotelName ?? 'Hotel'} (${hotelMin.currency} ${hotelMin.minRate})`;
   } else if (input.mode !== 'flights' && hotelError) {
     accommodationLabel = `Hotels unavailable (${hotelError.slice(0, 60)})`;
+  } else if (input.mode !== 'flights' && !input.hbKey && shouldUseMockHotels()) {
+    const mockDest = getMockDestinationByIata(input.dest);
+    const mockHotels = mockDest ? getMockHotelsForDestination(mockDest.id) : [];
+    const mockHotel = mockHotels.length
+      ? [...mockHotels].sort((a, b) => a.preco_por_noite - b.preco_por_noite)[0]
+      : null;
+    if (mockHotel) {
+      const stayTotal = Math.round(mockHotel.preco_por_noite * input.nights);
+      totalPrice = Math.round((totalPrice + stayTotal) * 100) / 100;
+      accommodationLabel = `${mockHotel.nome} (${mockHotel.estrelas}★ · demo)`;
+    } else {
+      accommodationLabel = 'Hotéis demo (sem disponibilidade para este destino)';
+    }
   } else if (input.mode !== 'flights' && !input.hbKey) {
     accommodationLabel = 'Configure Hotelbeds for live hotel rates';
   }
@@ -311,12 +335,14 @@ export async function GET(req: Request) {
 
   const needsFlights = mode === 'both' || mode === 'flights';
   const needsHotels = mode === 'both' || mode === 'hotels';
+  const mockFlights = shouldUseMockFlights(duffelToken);
+  const mockHotels = shouldUseMockHotels(hbKey, hbSecret);
 
-  if (needsFlights && !duffelToken) {
+  if (needsFlights && !duffelToken && !mockFlights) {
     return NextResponse.json(
       {
         ok: false,
-        message: 'Duffel is not configured (DUFFEL_ACCESS_TOKEN).',
+        message: 'Duffel is not configured (DUFFEL_ACCESS_TOKEN). Set TRAVEL_USE_MOCK_DATA=true for demo data.',
         results: [] as TravelResult[],
         errors: [],
       },
@@ -324,24 +350,12 @@ export async function GET(req: Request) {
     );
   }
 
-  if (mode === 'hotels' && (!hbKey || !hbSecret)) {
-    return NextResponse.json(
-      {
-        ok: false,
-        message: 'Hotel-only mode requires HOTELBEDS_API_KEY and HOTELBEDS_API_SECRET.',
-        results: [] as TravelResult[],
-        errors: [],
-      },
-      { status: 503 },
-    );
-  }
-
-  if (mode === 'hotels' && !duffelToken) {
+  if (mode === 'hotels' && (!hbKey || !hbSecret) && !mockHotels) {
     return NextResponse.json(
       {
         ok: false,
         message:
-          'Hotel-only mode still uses Duffel to resolve airport coordinates. Set DUFFEL_ACCESS_TOKEN.',
+          'Hotel-only mode requires HOTELBEDS_API_KEY and HOTELBEDS_API_SECRET, or TRAVEL_USE_MOCK_DATA=true.',
         results: [] as TravelResult[],
         errors: [],
       },
@@ -376,9 +390,69 @@ export async function GET(req: Request) {
 
   const errors: { destination: string; message: string }[] = [];
   const results: TravelResult[] = [];
+  const travelPrefs = decodeTravelPreferencesCompact(url.searchParams.get('prefs'));
+
+  const useFullMock =
+    isTravelMockEnabled() ||
+    (needsFlights && !duffelToken && mockFlights && (!needsHotels || (!hbKey && mockHotels)));
+
+  if (useFullMock && (needsHotels || needsFlights)) {
+    const mock = await searchMockTravelResults({
+      origin,
+      destinationIatas: destList,
+      mode: needsFlights && needsHotels ? mode : needsHotels ? 'hotels' : 'flights',
+      tripType,
+      nights,
+      departureDate,
+      returnDate: tripType === 'roundtrip' ? returnDate : null,
+      cabinClass,
+      preferences: travelPrefs,
+    });
+    const demo = getTravelDemoStats();
+    return NextResponse.json({
+      ok: true,
+      results: mock.results,
+      errors: mock.errors,
+      meta: {
+        origin,
+        destinations: destList,
+        departureDate,
+        returnDate: tripType === 'roundtrip' ? returnDate : null,
+        nights,
+        adults,
+        cabinClass,
+        tripType,
+        mode,
+        mock: true,
+        preferenceMatch: Boolean(travelPrefs),
+        mlRanking: Boolean(process.env.ML_SERVICE_BASE_URL?.trim()),
+        demoSource: demo?.source ?? 'mock',
+        demoCounts: demo ?? undefined,
+        hotelbeds: false,
+        duffel: false,
+      },
+    });
+  }
 
   for (const dest of destList) {
     if (dest === origin) continue;
+
+    if (mode === 'hotels' && mockHotels && !hbKey) {
+      const mock = await searchMockTravelResults({
+        origin,
+        destinationIatas: [dest],
+        mode: 'hotels',
+        tripType,
+        nights,
+        departureDate,
+        returnDate: tripType === 'roundtrip' ? returnDate : null,
+        cabinClass,
+        preferences: travelPrefs,
+      });
+      if (mock.results[0]) results.push(mock.results[0]);
+      else errors.push({ destination: dest, message: mock.errors[0]?.message ?? 'Sem hotéis demo' });
+      continue;
+    }
 
     if (mode === 'hotels' && duffelToken && hbKey && hbSecret) {
       const { result, error } = await buildHotelOnlyResult({
@@ -417,9 +491,17 @@ export async function GET(req: Request) {
     }
   }
 
+  let ranked = results;
+  let mlUsed = false;
+  if (travelPrefs && results.length > 0) {
+    const blended = await rankResultsWithMlAndPreferences(results, travelPrefs);
+    ranked = blended.results;
+    mlUsed = blended.mlUsed;
+  }
+
   return NextResponse.json({
     ok: true,
-    results,
+    results: ranked,
     errors,
     meta: {
       origin,
@@ -431,7 +513,10 @@ export async function GET(req: Request) {
       cabinClass,
       tripType,
       mode,
+      preferenceMatch: Boolean(travelPrefs),
+      mlRanking: mlUsed,
       hotelbeds: Boolean(hbKey && hbSecret),
+      mock: false,
     },
   });
 }

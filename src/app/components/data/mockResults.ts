@@ -17,12 +17,24 @@ export type TravelResult = {
   description: Record<Language, string>;
   highlights: string[];
   bestFor: string[];
+  /** When set, card shows cruise details instead of flight/hotel only. */
+  productType?: 'package' | 'cruise';
   flight: {
     class: string;
   };
   accommodation: {
     type: string;
   };
+  cruise?: {
+    brandName: string;
+    shipName: string;
+    sailDate: string;
+    departurePort: string;
+    arrivalPort: string;
+    link: string;
+  };
+  /** Wikivoyage or provider attribution URL (CC BY-SA). */
+  sourceUrl?: string;
 };
 
 export const filterOptions = {
