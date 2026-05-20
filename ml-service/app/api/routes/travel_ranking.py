@@ -4,12 +4,15 @@ from __future__ import annotations
 
 import logging
 import os
+import threading
+import time
 from datetime import datetime, timezone
 from typing import Any, Dict, List, Optional
 
 import joblib
 from fastapi import APIRouter, HTTPException
 from pydantic import BaseModel, Field
+from pathlib import Path
 
 logger = logging.getLogger(__name__)
 
@@ -17,6 +20,7 @@ router = APIRouter(prefix="/travel", tags=["travel-ranking"])
 
 _model = None
 _model_mtime: float | None = None
+_model_lock = threading.Lock()
 
 
 class TravelRankCandidate(BaseModel):
@@ -52,53 +56,61 @@ class TravelRankResponse(BaseModel):
     timestamp: str
 
 
-def _model_path() -> str:
-    return os.environ.get(
-        "ML_SERVICE_DESTINATION_MODEL_PATH",
-        os.path.join(
-            os.path.dirname(__file__),
-            "..",
-            "..",
-            "models",
-            "trained",
-            "destination_embeddings.pkl",
-        ),
+def _model_path() -> Path:
+    override = os.environ.get("ML_SERVICE_DESTINATION_MODEL_PATH")
+    if override:
+        return Path(override).expanduser().resolve()
+
+    return (
+        Path(__file__).resolve().parent.parent
+        / "models"
+        / "trained"
+        / "destination_embeddings.pkl"
     )
 
 
 def _load_model():
     global _model, _model_mtime
-    path = os.path.normpath(_model_path())
-    if not os.path.exists(path):
+    path = _model_path()
+    if not path.exists():
         return None
-    mtime = os.path.getmtime(path)
+
+    mtime = path.stat().st_mtime
     if _model is not None and _model_mtime == mtime:
         return _model
-    try:
-        _model = joblib.load(path)
-        _model_mtime = mtime
-        logger.info("Loaded destination embedding model from %s", path)
-        return _model
-    except Exception as e:
-        logger.error("Failed to load destination model: %s", e)
-        return None
+
+    with _model_lock:
+        # Re-check after acquiring lock (avoid double loads under concurrency).
+        mtime = path.stat().st_mtime
+        if _model is not None and _model_mtime == mtime:
+            return _model
+
+        try:
+            _model = joblib.load(str(path))
+            _model_mtime = mtime
+            logger.info("Loaded destination embedding model from %s", str(path))
+            return _model
+        except Exception as e:
+            logger.error("Failed to load destination model: %s", e)
+            return None
 
 
 @router.get("/rank/health")
 async def travel_rank_health():
     model = _load_model()
-    path = os.path.normpath(_model_path())
+    path = _model_path()
     return {
         "ok": model is not None,
-        "model_path": path,
-        "model_exists": os.path.exists(path),
+        "model_path": str(path),
+        "model_exists": path.exists(),
         "items": len(model.item_ids) if model else 0,
     }
 
 
 @router.post("/rank", response_model=TravelRankResponse)
 async def rank_destinations(body: TravelRankRequest):
-    start = datetime.now(timezone.utc)
+    started_at = datetime.now(timezone.utc)
+    t0 = time.perf_counter()
     model = _load_model()
     if model is None:
         raise HTTPException(
@@ -107,11 +119,19 @@ async def rank_destinations(body: TravelRankRequest):
         )
 
     candidates = [c.model_dump(exclude_none=True) for c in body.candidates]
-    raw = model.rank(
-        body.preferences,
-        candidates=candidates if candidates else None,
-        limit=body.limit,
-    )
+    try:
+        raw = model.rank(
+            body.preferences,
+            candidates=candidates if candidates else None,
+            limit=body.limit,
+        )
+    except Exception:
+        logger.exception(
+            "Destination ranking failed (candidates=%d, limit=%d)",
+            len(candidates),
+            body.limit,
+        )
+        raise HTTPException(status_code=500, detail="Ranking failed")
 
     rankings = [
         TravelRankItem(
@@ -127,11 +147,18 @@ async def rank_destinations(body: TravelRankRequest):
         for r in raw
     ]
 
-    elapsed = (datetime.now(timezone.utc) - start).total_seconds()
+    elapsed = time.perf_counter() - t0
+    logger.info(
+        "Destination rank: candidates=%d limit=%d elapsed=%.4fs returned=%d",
+        len(candidates),
+        body.limit,
+        elapsed,
+        len(rankings),
+    )
     return TravelRankResponse(
         success=True,
         rankings=rankings,
         model_loaded=True,
         processing_time=elapsed,
-        timestamp=start.isoformat(),
+        timestamp=started_at.isoformat(),
     )
