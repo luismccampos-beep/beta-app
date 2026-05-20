@@ -2,6 +2,7 @@ const GENERIC_PHOTO_ID = 'photo-1469854523086-cc02afe5c88';
 
 export function isGenericDestinationImage(url: string | undefined | null): boolean {
   if (!url?.trim()) return true;
+  if (url.startsWith('/travel-images/')) return false;
   return url.includes(GENERIC_PHOTO_ID) && /[?&]sig=\d+/.test(url);
 }
 

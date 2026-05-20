@@ -1,13 +1,14 @@
 /**
- * Enrich bundle-wikivoyage.json with real Unsplash photos per destination.
+ * Enrich bundle-wikivoyage.json com fotos reais via `images-map`:
+ * Pexels → Pixabay (cache local) → Unsplash
  *
- * Requires: UNSPLASH_ACCESS_KEY in .env.local
+ * Variáveis (`.env.local` carregado automaticamente):
+ *   PIXABAY_API_KEY      — ~100 req/min; imagens guardadas em public/travel-images/
+ *   PEXELS_API_KEY       — ~200 req/h
+ *   UNSPLASH_ACCESS_KEY  — fallback (~50 req/h demo)
  *
- * Demo Unsplash: ~50 API requests/hour — use defaults or:
- *   UNSPLASH_ENRICH_LIMIT=40
- *   UNSPLASH_MAX_API_CALLS=45
- *
- * Safe to re-run: skips destinations already enriched; uses cache.
+ *   npm run travel:images:enrich
+ *   npm run travel:images:status
  */
 import { existsSync, readFileSync, writeFileSync, mkdirSync } from 'node:fs';
 import { resolve, dirname } from 'node:path';
@@ -16,10 +17,9 @@ import {
   buildDestinationImageQuery,
   buildDestinationImageQueryFallbacks,
   isGenericPlaceholderImage,
-  searchUnsplashPhotoUrl,
-  UnsplashRateLimitError,
   sleep,
 } from './lib/unsplash-client.mjs';
+import { createImageServicesFromEnv, fetchHeroPhotoUrl } from './lib/image-providers.mjs';
 import { loadProjectEnv } from './lib/load-env.mjs';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
@@ -29,12 +29,26 @@ const CACHE_PATH = resolve(ROOT, 'src/data/travel-mock/unsplash-cache.json');
 
 loadProjectEnv(ROOT);
 
-const ACCESS_KEY = process.env.UNSPLASH_ACCESS_KEY?.trim();
-/** Max destinations to attempt this run (default safe for demo tier). */
-const LIMIT = parseInt(process.env.UNSPLASH_ENRICH_LIMIT ?? '40', 10);
-/** Max HTTP calls to Unsplash per run (fallbacks count too). */
-const MAX_API_CALLS = parseInt(process.env.UNSPLASH_MAX_API_CALLS ?? '45', 10);
-const DELAY_MS = parseInt(process.env.UNSPLASH_DELAY_MS ?? '2500', 10);
+const HAS_PIXABAY = Boolean(process.env.PIXABAY_API_KEY?.trim());
+const HAS_PEXELS = Boolean(process.env.PEXELS_API_KEY?.trim());
+const HAS_UNSPLASH = Boolean(process.env.UNSPLASH_ACCESS_KEY?.trim());
+
+/** Máx. destinos por execução */
+const LIMIT = parseInt(
+  process.env.UNSPLASH_ENRICH_LIMIT ??
+    (HAS_PIXABAY ? '250' : HAS_PEXELS ? '120' : '40'),
+  10,
+);
+/** Orçamento de pedidos HTTP às APIs de pesquisa (não inclui download Pixabay). */
+const MAX_API_CALLS = parseInt(
+  process.env.UNSPLASH_MAX_API_CALLS ??
+    (HAS_PIXABAY ? '300' : HAS_PEXELS ? '200' : '45'),
+  10,
+);
+const DELAY_MS = parseInt(
+  process.env.UNSPLASH_DELAY_MS ?? (HAS_PIXABAY ? '400' : HAS_PEXELS ? '900' : '2500'),
+  10,
+);
 const WIDTH = parseInt(process.env.UNSPLASH_IMAGE_WIDTH ?? '1400', 10);
 const ONLY_IATA = process.env.UNSPLASH_ONLY_IATA === '1';
 const SAVE_EVERY = parseInt(process.env.UNSPLASH_SAVE_EVERY ?? '10', 10);
@@ -70,32 +84,44 @@ function cacheLookup(cache, dest) {
   return null;
 }
 
-async function fetchPhotoUrl(dest, query, apiBudget) {
-  if (apiBudget.remaining <= 0) return { url: null, stopped: 'budget' };
+/** @param {Awaited<ReturnType<createImageServicesFromEnv>>} imageService */
+async function fetchPhotoUrl(imageService, dest, query, apiBudget) {
+  const queries = [
+    query,
+    ...buildDestinationImageQueryFallbacks(dest).filter((q) => q !== query),
+  ];
 
-  apiBudget.remaining -= 1;
-  let url = await searchUnsplashPhotoUrl(ACCESS_KEY, query, { width: WIDTH });
-  if (url) return { url, stopped: null };
+  for (const q of queries) {
+    if (apiBudget.remaining <= 0) return { url: null, stopped: 'budget', provider: null };
 
-  for (const alt of buildDestinationImageQueryFallbacks(dest)) {
-    if (alt === query) continue;
-    if (apiBudget.remaining <= 0) return { url: null, stopped: 'budget' };
-    apiBudget.remaining -= 1;
-    url = await searchUnsplashPhotoUrl(ACCESS_KEY, alt, { width: WIDTH });
-    if (url) return { url, stopped: null };
-    await sleep(300);
+    const { url, provider, apiCalls } = await fetchHeroPhotoUrl(imageService, q, {
+      width: WIDTH,
+      destId: dest.id,
+      destLang: dest.lang ?? 'pt',
+    });
+    apiBudget.remaining -= apiCalls;
+
+    if (url) return { url, stopped: null, provider };
+
+    await sleep(250);
   }
-  return { url: null, stopped: null };
+
+  return { url: null, stopped: null, provider: null };
 }
 
 async function main() {
-  if (!ACCESS_KEY) {
+  const imageService = createImageServicesFromEnv();
+
+  if (!imageService) {
     console.error(
-      'Missing UNSPLASH_ACCESS_KEY. Add it to .env.local or set the variable in the shell.\n' +
-        '  https://unsplash.com/oauth/applications',
+      'Define pelo menos uma chave no .env.local:\n' +
+        '  PIXABAY_API_KEY — https://pixabay.com/api/docs/ (recomendado para volume)\n' +
+        '  PEXELS_API_KEY — https://www.pexels.com/api/\n' +
+        '  UNSPLASH_ACCESS_KEY — https://unsplash.com/oauth/applications',
     );
     process.exit(1);
   }
+
   if (!existsSync(BUNDLE)) {
     console.error(`Missing ${BUNDLE}. Run: npm run travel:demo:build`);
     process.exit(1);
@@ -113,14 +139,26 @@ async function main() {
   const alreadyDone = destinos.length - candidates.length;
   const toProcess = candidates.slice(0, LIMIT);
 
+  const providers = [
+    HAS_PIXABAY ? 'Pixabay (local cache)' : null,
+    HAS_PEXELS ? 'Pexels' : null,
+    HAS_UNSPLASH ? 'Unsplash' : null,
+  ]
+    .filter(Boolean)
+    .join(' → ');
+
   console.log(
-    `Unsplash enrich — ${toProcess.length} destinos nesta execução (${candidates.length} por fazer, ${alreadyDone} já com foto).\n` +
-      `  limit=${LIMIT}  max_api_calls=${MAX_API_CALLS}  delay=${DELAY_MS}ms  (demo ≈50 req/h)\n`,
+    `Travel images enrich — ${toProcess.length} destinos nesta execução (${candidates.length} por fazer, ${alreadyDone} já com foto).\n` +
+      `  APIs: ${providers || '(n/a)'}\n` +
+      `  limit=${LIMIT}  max_http=${MAX_API_CALLS}  delay=${DELAY_MS}ms\n`,
   );
 
   let updated = 0;
   let fromCache = 0;
   let failed = 0;
+  let pexelsHits = 0;
+  let pixabayHits = 0;
+  let unsplashHits = 0;
   const apiBudget = { remaining: MAX_API_CALLS };
 
   for (const dest of toProcess) {
@@ -137,14 +175,14 @@ async function main() {
     }
 
     try {
-      const { url, stopped } = await fetchPhotoUrl(dest, query, apiBudget);
+      const { url, stopped, provider } = await fetchPhotoUrl(imageService, dest, query, apiBudget);
 
       if (stopped === 'budget') {
         console.log(
-          `\nLimite de pedidos API atingido (${MAX_API_CALLS}/execução). Progresso guardado.`,
+          `\nOrçamento HTTP atingido (${MAX_API_CALLS}/execução). Progresso guardado.`,
         );
         persist(bundle, cache);
-        printResumeHint(updated, fromCache, failed, candidates.length - updated);
+        printResumeHint(candidates.length, toProcess.length);
         process.exit(0);
       }
 
@@ -152,8 +190,11 @@ async function main() {
         dest.imagem_url = url;
         dest.imagem_query = query;
         cache[query.toLowerCase()] = url;
+        if (provider === 'pexels') pexelsHits += 1;
+        if (provider === 'pixabay') pixabayHits += 1;
+        if (provider === 'unsplash') unsplashHits += 1;
         updated += 1;
-        process.stdout.write(`  ✓ ${dest.nome}\n`);
+        process.stdout.write(`  ✓ ${dest.nome} (${provider})\n`);
         if (updated % SAVE_EVERY === 0) persist(bundle, cache);
       } else {
         failed += 1;
@@ -161,12 +202,6 @@ async function main() {
       }
     } catch (e) {
       persist(bundle, cache);
-      if (e instanceof UnsplashRateLimitError) {
-        console.error(`\n${e.message}`);
-        console.log(`\nProgresso guardado (${updated} fotos nesta sessão).`);
-        printResumeHint(updated, fromCache, failed, candidates.length - updated);
-        process.exit(0);
-      }
       console.error(`\nErro: ${e.message}`);
       process.exit(1);
     }
@@ -176,25 +211,28 @@ async function main() {
 
   persist(bundle, cache);
 
-  console.log(`\nConcluído. Atualizados: ${updated} (${fromCache} do cache), sem foto: ${failed}`);
-  console.log(`Cache: ${CACHE_PATH}`);
-  if (candidates.length > updated + failed) {
-    console.log(`\nAinda faltam ~${candidates.length - updated - failed} destinos. Corre de novo mais tarde:`);
-    console.log('  npm run travel:unsplash:enrich');
+  console.log(
+    `\nConcluído. Atualizados: ${updated} (${fromCache} cache), sem foto: ${failed}`,
+  );
+  console.log(
+    `  Por API: Pixabay ${pixabayHits} | Pexels ${pexelsHits} | Unsplash ${unsplashHits}`,
+  );
+  console.log(`Cache URLs: ${CACHE_PATH}`);
+  if (candidates.length > toProcess.length) {
+    console.log(`\nFaltam ~${candidates.length - toProcess.length} destinos. Corre de novo:`);
+    console.log('  npm run travel:images:enrich');
   }
   console.log('\nReinicia o Next.js dev server para ver as imagens nos resultados.');
 }
 
-function printResumeHint(updated, fromCache, failed, remaining) {
+function printResumeHint(candidatesCount, batchSize) {
   console.log(
-    `\nPara continuar (após ~1 hora no plano demo):\n` +
-      `  npm run travel:unsplash:enrich\n` +
-      `Ou só destinos com aeroporto:\n` +
-      `  $env:UNSPLASH_ONLY_IATA=1; npm run travel:unsplash:enrich`,
+    `\nPara continuar:\n` +
+      `  npm run travel:images:enrich\n` +
+      `Só IATA:\n` +
+      `  $env:UNSPLASH_ONLY_IATA=1; npm run travel:images:enrich`,
   );
-  if (remaining > 0) {
-    console.log(`Restam ~${remaining} destinos com imagem genérica.`);
-  }
+  console.log(`Restam ~${Math.max(0, candidatesCount - batchSize)} destinos placeholder neste bundle.`);
 }
 
 main();

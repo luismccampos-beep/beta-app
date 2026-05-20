@@ -21,6 +21,7 @@ const baseImageConfig = {
     '127.0.0.1',
     'images.unsplash.com',
     'plus.unsplash.com',
+    'images.pexels.com',
     'ui-avatars.com',
   ],
   formats: ['image/webp', 'image/avif'],

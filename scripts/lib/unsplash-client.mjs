@@ -101,6 +101,7 @@ export function buildDestinationImageQueryFallbacks(dest) {
 
 export function isGenericPlaceholderImage(url) {
   if (!url) return true;
+  if (url.startsWith('/travel-images/')) return false;
   return /photo-1469854523086-cc02afe5c88/.test(url) && /[?&]sig=\d+/.test(url);
 }
 
