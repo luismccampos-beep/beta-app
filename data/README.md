@@ -92,12 +92,23 @@ npm run travel:ml:build
 
 Com `ML_SERVICE_BASE_URL` e o ml-service a correr (`cd ml-service && npm run dev`), os resultados em `/results` misturam **regras + embeddings** (55% ML, 45% regras). Endpoint: `POST /v1/travel/rank`.
 
-## Imagens Unsplash
+## Imagens de destinos (Pixabay + Pexels + Unsplash)
 
-1. [Unsplash Developers](https://unsplash.com/oauth/applications) → **Access Key** → `UNSPLASH_ACCESS_KEY` no `.env.local`
-2. Enriquecer fotos no bundle: `npm run travel:unsplash:enrich`  
-   Plano **demo** Unsplash: ~**50 pedidos/hora**. O script usa limite 40 destinos e 45 chamadas API por execução; podes repetir de hora a hora (retoma automaticamente).
-3. Teste: `GET /api/travel/unsplash-image?nome=Porto&pais=Portugal`
+Ordem no script **`images-map`**: **Pexels → Pixabay (cache local) → Unsplash**.
+
+| API | Variável | Limites (gratuito) | Notas |
+|-----|----------|-------------------|--------|
+| Pixabay | `PIXABAY_API_KEY` | ~100 req/min | Sem hotlink permanente — ficheiros em `public/travel-images/` |
+| Pexels | `PEXELS_API_KEY` | ~200 req/h | Hotlink OK |
+| Unsplash | `UNSPLASH_ACCESS_KEY` | ~50 req/h (demo) | Fallback |
+
+1. [Pixabay](https://pixabay.com/api/docs/) → `PIXABAY_API_KEY`
+2. [Pexels](https://www.pexels.com/api/) → `PEXELS_API_KEY` (opcional)
+3. [Unsplash](https://unsplash.com/oauth/applications) → `UNSPLASH_ACCESS_KEY` (opcional)
+4. `npm run travel:images:enrich`
+5. `npm run travel:images:status`
+
+**Vercel:** imagens Pixabay ficam em `public/travel-images/` (local). Para produção, corre o enrich antes do deploy ou usa só Pexels/Unsplash (URLs remotas).
 
 ## Licença na app
 

@@ -44,3 +44,5 @@ data/*.xml.bz2
 data/wikivoyage/out/
 src/data/travel-mock/bundle-wikivoyage.json
 src/data/travel-mock/unsplash-cache.json
+public/travel-images/*
+!public/travel-images/.gitkeep
