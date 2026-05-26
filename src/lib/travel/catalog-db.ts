@@ -19,7 +19,6 @@ type WvHotelRow = {
   imageUrl: string | null;
   googlePlaceId: string | null;
   wikidataId: string | null;
-  destino?: { nome: string; pais: string; slug: string } | null;
 };
 
 function rowToHotel(h: WvHotelRow, extra?: { distance_km?: number }): MockHotel {
@@ -409,14 +408,14 @@ export async function lookupCostOfLivingDb(city: string, country: string) {
       moeda: 'USD',
       fonte: 'col_cities',
       nivel: 'cidade' as const,
-      indices: row.indices,
-      orcamentos: row.budgets,
+      indices: row.indices as { cost_of_living?: number },
+      orcamentos: row.budgets as { conforto?: { total_dia: number } },
     };
     return { custo, summary: summarizeCostOfLiving(custo) };
   }
 
   const countryRow = await prisma.colCountryIndex.findFirst({
-    where: { country: { equals: pEn, mode: 'insensitive' } },
+    where: { country: { equals: country, mode: 'insensitive' } },
   });
   if (!countryRow) return null;
 
