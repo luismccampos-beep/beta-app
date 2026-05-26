@@ -4,11 +4,18 @@ import {
   softmaxToMatchPercents,
   type CompactTravelPreferences,
 } from './preference-match';
+import { getMockDestinationByIata } from './mock-travel/load';
 import {
   iataFromMockResultId,
   rankResultsByPreferences,
   resolveMockDestinationForResult,
 } from './mock-travel/preference-lookup';
+import {
+  fetchRoadDistanceBatch,
+  proximityScoreFromKm,
+  type LatLon,
+  type RoadDistanceResult,
+} from './road-distance';
 
 export type MlRankScore = {
   score: number;
@@ -17,6 +24,33 @@ export type MlRankScore = {
 };
 
 const ML_RULE_BLEND = 0.45;
+const ROAD_DISTANCE_BLEND = 0.12;
+
+function coordsFromDestination(dest: {
+  latitude?: number | null;
+  longitude?: number | null;
+  transporte?: { aeroporto?: { lat: number; lon: number } } | null;
+}): LatLon | null {
+  const lat = dest.latitude ?? dest.transporte?.aeroporto?.lat;
+  const lon = dest.longitude ?? dest.transporte?.aeroporto?.lon;
+  if (lat == null || lon == null || !Number.isFinite(lat) || !Number.isFinite(lon)) return null;
+  return { lat, lon };
+}
+
+function coordsForOriginIata(originIata: string): LatLon | null {
+  const dest = getMockDestinationByIata(originIata);
+  if (!dest) return null;
+  return coordsFromDestination(dest);
+}
+
+function coordsForResult(
+  result: TravelResult,
+  destIataHint?: string,
+): LatLon | null {
+  const info = resolveMockDestinationForResult(result, destIataHint);
+  if (!info) return null;
+  return coordsFromDestination(info.dest);
+}
 
 function mlServiceBaseUrl(): string | null {
   const url = process.env.ML_SERVICE_BASE_URL?.trim();
@@ -100,23 +134,40 @@ export async function fetchMlTravelRankScores(
   return out;
 }
 
-/** Rule-based scores + optional ML embedding blend → softmax % on aiMatchScore. */
+/** Rule-based scores + optional ML embedding + SCGraph road proximity → softmax %. */
 export async function rankResultsWithMlAndPreferences(
   results: TravelResult[],
   preferences: CompactTravelPreferences | null | undefined,
   destIataByResultId?: Map<string, string>,
-): Promise<{ results: TravelResult[]; mlUsed: boolean }> {
+  originIata?: string,
+): Promise<{ results: TravelResult[]; mlUsed: boolean; roadDistanceUsed: boolean }> {
   if (!preferences || !results.length) {
-    return { results, mlUsed: false };
+    return { results, mlUsed: false, roadDistanceUsed: false };
   }
 
   const mlScores = await fetchMlTravelRankScores(results, preferences);
   const mlUsed = mlScores.size > 0;
 
-  if (!mlUsed) {
+  let roadByResultId = new Map<string, RoadDistanceResult>();
+  const originCoords = originIata ? coordsForOriginIata(originIata) : null;
+  if (originCoords) {
+    const destPoints: Array<{ id: string; lat: number; lon: number }> = [];
+    for (const r of results) {
+      const iata = destIataByResultId?.get(r.id) ?? iataFromMockResultId(r.id);
+      const c = coordsForResult(r, iata ?? undefined);
+      if (c) destPoints.push({ id: r.id, lat: c.lat, lon: c.lon });
+    }
+    if (destPoints.length) {
+      roadByResultId = await fetchRoadDistanceBatch(originCoords, destPoints);
+    }
+  }
+  const roadDistanceUsed = roadByResultId.size > 0;
+
+  if (!mlUsed && !roadDistanceUsed) {
     return {
       results: rankResultsByPreferences(results, preferences, destIataByResultId),
       mlUsed: false,
+      roadDistanceUsed: false,
     };
   }
 
@@ -133,9 +184,15 @@ export async function rankResultsWithMlAndPreferences(
     const ml = mlScores.get(r.id);
     const mlNorm = ml ? Math.min(1, Math.max(0, ml.score)) : 0.5;
     const priceNorm = Math.min(1, Math.max(0, r.aiMatchScore / 100));
-    raw.push(
-      (1 - ML_RULE_BLEND) * ruleScore + ML_RULE_BLEND * mlNorm + 0.1 * priceNorm,
-    );
+    const road = roadByResultId.get(r.id);
+    const roadNorm = road ? proximityScoreFromKm(road.distanceKm) : 0.5;
+
+    const mlPart = mlUsed ? ML_RULE_BLEND * mlNorm : 0;
+    const rulePart = mlUsed ? (1 - ML_RULE_BLEND) * ruleScore : ruleScore;
+    const roadPart = roadDistanceUsed ? ROAD_DISTANCE_BLEND * roadNorm : 0;
+    const baseWeight = 1 - (roadDistanceUsed ? ROAD_DISTANCE_BLEND : 0);
+
+    raw.push(baseWeight * (rulePart + mlPart) + roadPart + 0.1 * priceNorm);
   }
 
   const percents = softmaxToMatchPercents(raw);
@@ -145,5 +202,5 @@ export async function rankResultsWithMlAndPreferences(
   }));
   ranked.sort((a, b) => b.aiMatchScore - a.aiMatchScore);
 
-  return { results: ranked, mlUsed: true };
+  return { results: ranked, mlUsed, roadDistanceUsed };
 }

@@ -1,0 +1,6 @@
+*.pbf
+*.zip
+graph.obj
+otp-shaded.jar
+build/
+*.log

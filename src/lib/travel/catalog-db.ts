@@ -1,0 +1,464 @@
+import { prisma } from '../prisma';
+import { buildDestinationSlug, parseDestinationSlug } from './destination-slug';
+import { summarizeCostOfLiving } from './cost-tier';
+import { boundingBox, haversineKm } from './geo';
+import { buildTravelMapMarkers, type DestinationMapMarker } from './destination-map';
+import type { MockDestination, MockFlight, MockHotel } from './mock-travel/types';
+
+type WvHotelRow = {
+  id: number;
+  destinoId: number;
+  nome: string;
+  estrelas: number;
+  precoPorNoite: number;
+  comodidades: unknown;
+  fonte: string | null;
+  latitude: number | null;
+  longitude: number | null;
+  description: string | null;
+  imageUrl: string | null;
+  googlePlaceId: string | null;
+  wikidataId: string | null;
+  destino?: { nome: string; pais: string; slug: string } | null;
+};
+
+function rowToHotel(h: WvHotelRow, extra?: { distance_km?: number }): MockHotel {
+  return {
+    id: h.id,
+    destino_id: h.destinoId,
+    nome: h.nome,
+    estrelas: h.estrelas,
+    preco_por_noite: h.precoPorNoite,
+    comodidades: (h.comodidades as string[]) ?? [],
+    latitude: h.latitude,
+    longitude: h.longitude,
+    description: h.description,
+    image_url: h.imageUrl,
+    google_place_id: h.googlePlaceId,
+    wikidata_id: h.wikidataId,
+    fonte: h.fonte,
+    ...extra,
+  };
+}
+
+const hotelSelect = {
+  id: true,
+  destinoId: true,
+  nome: true,
+  estrelas: true,
+  precoPorNoite: true,
+  comodidades: true,
+  fonte: true,
+  latitude: true,
+  longitude: true,
+  description: true,
+  imageUrl: true,
+  googlePlaceId: true,
+  wikidataId: true,
+} as const;
+
+export function isTravelCatalogDbEnabled(): boolean {
+  const v = process.env.TRAVEL_CATALOG_SOURCE?.trim().toLowerCase();
+  return v === 'db' || v === 'postgres' || v === 'prisma';
+}
+
+export function rowToDestination(row: {
+  id: number;
+  lang: string;
+  nome: string;
+  pais: string;
+  paisCode: string;
+  continente: string | null;
+  iata: string | null;
+  tipo: string | null;
+  clima: string | null;
+  descricao: string | null;
+  descricaoCompleta: string | null;
+  resumo: string | null;
+  veja: unknown;
+  faca: unknown;
+  coma: unknown;
+  dicas: unknown;
+  tags: unknown;
+  wikivoyageUrl: string | null;
+  wikipediaResumo: string | null;
+  wikipediaUrl: string | null;
+  climaTempo: unknown;
+  custoDeVida: unknown;
+  transporte: unknown;
+  latitude: number | null;
+  longitude: number | null;
+  imagemUrl: string | null;
+  imagemQuery: string | null;
+}): MockDestination {
+  return {
+    id: row.id,
+    lang: row.lang,
+    nome: row.nome,
+    pais: row.pais,
+    paisCode: row.paisCode,
+    continente: row.continente ?? 'Europa',
+    iata: row.iata,
+    tipo: row.tipo ?? 'cidade',
+    clima: row.clima ?? 'continental',
+    descricao: row.descricao ?? '',
+    descricaoCompleta: row.descricaoCompleta ?? undefined,
+    resumo: row.resumo ?? undefined,
+    veja: (row.veja as string[]) ?? undefined,
+    faca: (row.faca as string[]) ?? undefined,
+    coma: (row.coma as string[]) ?? undefined,
+    dicas: (row.dicas as MockDestination['dicas']) ?? undefined,
+    tags: (row.tags as string[]) ?? undefined,
+    wikivoyageUrl: row.wikivoyageUrl ?? undefined,
+    wikipedia_resumo: row.wikipediaResumo ?? undefined,
+    wikipedia_url: row.wikipediaUrl ?? undefined,
+    clima_tempo: row.climaTempo as MockDestination['clima_tempo'],
+    custo_de_vida: row.custoDeVida as MockDestination['custo_de_vida'],
+    transporte: row.transporte as MockDestination['transporte'],
+    latitude: row.latitude ?? undefined,
+    longitude: row.longitude ?? undefined,
+    imagem_url: row.imagemUrl ?? '',
+    imagem_query: row.imagemQuery ?? undefined,
+  };
+}
+
+export async function getCatalogStatsFromDb() {
+  const [destinos, hoteis, voos, listings, cities] = await Promise.all([
+    prisma.wvDestination.count(),
+    prisma.wvHotel.count(),
+    prisma.wvFlight.count(),
+    prisma.wvListing.count(),
+    prisma.colCity.count(),
+  ]);
+  return { destinos, hoteis, voos, listings, colCities: cities, source: 'db' as const };
+}
+
+export async function searchDestinationsDb(opts: {
+  q?: string;
+  pais?: string;
+  lang?: string;
+  limit?: number;
+  offset?: number;
+}) {
+  const limit = Math.min(opts.limit ?? 24, 100);
+  const offset = opts.offset ?? 0;
+  const where: {
+    nome?: { contains: string; mode: 'insensitive' };
+    pais?: { equals: string; mode: 'insensitive' };
+    lang?: string;
+  } = {};
+
+  if (opts.q?.trim()) {
+    where.nome = { contains: opts.q.trim(), mode: 'insensitive' };
+  }
+  if (opts.pais?.trim()) {
+    where.pais = { equals: opts.pais.trim(), mode: 'insensitive' };
+  }
+  if (opts.lang?.trim()) {
+    where.lang = opts.lang.trim();
+  }
+
+  const [rows, total] = await Promise.all([
+    prisma.wvDestination.findMany({
+      where,
+      orderBy: { nome: 'asc' },
+      skip: offset,
+      take: limit,
+      select: {
+        id: true,
+        slug: true,
+        lang: true,
+        nome: true,
+        pais: true,
+        paisCode: true,
+        continente: true,
+        iata: true,
+        tipo: true,
+        clima: true,
+        descricao: true,
+        imagemUrl: true,
+        hotelCount: true,
+        latitude: true,
+        longitude: true,
+      },
+    }),
+    prisma.wvDestination.count({ where }),
+  ]);
+
+  return {
+    total,
+    items: rows.map((r) => ({
+      ...r,
+      slug: r.slug,
+      imageUrl: r.imagemUrl,
+    })),
+  };
+}
+
+export async function getDestinationBySlugFromDb(slug: string) {
+  const parsed = parseDestinationSlug(slug);
+  if (!parsed) return null;
+
+  const row = await prisma.wvDestination.findFirst({
+    where: { id: parsed.id, lang: parsed.lang },
+  });
+  if (!row) return null;
+
+  const dest = rowToDestination(row);
+  const hotels = await prisma.wvHotel.findMany({
+    where: { destinoId: row.id },
+    orderBy: { precoPorNoite: 'asc' },
+    take: 24,
+    select: hotelSelect,
+  });
+
+  return {
+    dest,
+    slug: buildDestinationSlug(dest),
+    hotels: hotels.map((h) => rowToHotel(h)),
+  };
+}
+
+/** Marcadores OSM a partir de hotéis com coordenadas na DB (preferível ao índice JSON). */
+export function mapMarkersFromDbHotels(
+  dest: MockDestination,
+  hotels: MockHotel[],
+  maxHotels = 4,
+): DestinationMapMarker[] {
+  const hotelPoints = hotels
+    .filter(
+      (h) =>
+        h.latitude != null &&
+        h.longitude != null &&
+        Number.isFinite(h.latitude) &&
+        Number.isFinite(h.longitude),
+    )
+    .slice(0, maxHotels)
+    .map((h) => ({
+      lat: h.latitude!,
+      lon: h.longitude!,
+      label: h.nome,
+    }));
+
+  return buildTravelMapMarkers(
+    {
+      nome: dest.nome,
+      latitude: dest.latitude,
+      longitude: dest.longitude,
+      transporte: dest.transporte,
+    },
+    hotelPoints,
+    maxHotels,
+  );
+}
+
+export async function getHotelByIdFromDb(id: number) {
+  const row = await prisma.wvHotel.findUnique({
+    where: { id },
+    select: {
+      ...hotelSelect,
+      destino: { select: { nome: true, pais: true, slug: true, lang: true, id: true } },
+    },
+  });
+  if (!row) return null;
+
+  const hotel = rowToHotel(row);
+  const dest = row.destino
+    ? {
+        id: row.destinoId,
+        nome: row.destino.nome,
+        pais: row.destino.pais,
+        slug: row.destino.slug,
+      }
+    : null;
+
+  return { hotel, dest };
+}
+
+export async function getHotelsNearbyFromDb(opts: {
+  lat: number;
+  lng: number;
+  radiusKm?: number;
+  minStars?: number;
+  limit?: number;
+}) {
+  const lat = opts.lat;
+  const lng = opts.lng;
+  if (!Number.isFinite(lat) || !Number.isFinite(lng)) return [];
+
+  const radiusKm = Math.min(Math.max(opts.radiusKm ?? 10, 0.5), 100);
+  const limit = Math.min(opts.limit ?? 50, 100);
+  const box = boundingBox(lat, lng, radiusKm);
+
+  const rows = await prisma.wvHotel.findMany({
+    where: {
+      latitude: { gte: box.latMin, lte: box.latMax },
+      longitude: { gte: box.lonMin, lte: box.lonMax },
+      ...(opts.minStars != null && opts.minStars > 0
+        ? { estrelas: { gte: opts.minStars } }
+        : {}),
+    },
+    select: {
+      ...hotelSelect,
+      destino: { select: { nome: true, pais: true } },
+    },
+    take: limit * 4,
+  });
+
+  return rows
+    .filter((h) => h.latitude != null && h.longitude != null)
+    .map((h) => ({
+      ...rowToHotel(h, {
+        distance_km: Math.round(haversineKm(lat, lng, h.latitude!, h.longitude!) * 100) / 100,
+      }),
+      city: h.destino?.nome,
+      country: h.destino?.pais,
+    }))
+    .filter((h) => (h.distance_km ?? 0) <= radiusKm)
+    .sort((a, b) => (a.distance_km ?? 0) - (b.distance_km ?? 0))
+    .slice(0, limit);
+}
+
+export async function countHotelsWithGeoFromDb() {
+  return prisma.wvHotel.count({
+    where: { latitude: { not: null }, longitude: { not: null } },
+  });
+}
+
+export async function getHotelsFromDb(opts: {
+  destinoId?: number;
+  slug?: string;
+  limit?: number;
+}) {
+  let destinoId = opts.destinoId;
+  if (!destinoId && opts.slug) {
+    const parsed = parseDestinationSlug(opts.slug);
+    if (parsed) destinoId = parsed.id;
+  }
+  if (!destinoId) return [];
+
+  const limit = Math.min(opts.limit ?? 24, 50);
+  const rows = await prisma.wvHotel.findMany({
+    where: { destinoId },
+    orderBy: { precoPorNoite: 'asc' },
+    take: limit,
+    select: hotelSelect,
+  });
+
+  return rows.map((h) => rowToHotel(h));
+}
+
+export async function getFlightsFromDb(opts: {
+  origin: string;
+  destinoId?: number;
+  destinoIata?: string;
+  limit?: number;
+}) {
+  const origin = opts.origin.trim().toUpperCase();
+  const limit = Math.min(opts.limit ?? 20, 50);
+
+  const where: {
+    origem: string;
+    destinoId?: number;
+    destinoIata?: string;
+  } = { origem: origin };
+
+  if (opts.destinoId) where.destinoId = opts.destinoId;
+  if (opts.destinoIata) where.destinoIata = opts.destinoIata.trim().toUpperCase();
+
+  const rows = await prisma.wvFlight.findMany({
+    where,
+    orderBy: { preco: 'asc' },
+    take: limit,
+  });
+
+  return rows.map(
+    (f): MockFlight => ({
+      id: f.id,
+      origem: f.origem,
+      destino_id: f.destinoId,
+      destino_iata: f.destinoIata,
+      preco: f.preco,
+      duracao_minutos: f.duracaoMinutos,
+      companhia: f.companhia,
+      cabin_class: f.cabinClass,
+      escalas: f.escalas,
+    }),
+  );
+}
+
+export async function lookupCostOfLivingDb(city: string, country: string) {
+  const leaf = city.replace(/\([^)]*\)/g, ' ').split('/')[0]?.trim() ?? city;
+
+  const row =
+    (await prisma.colCity.findFirst({
+      where: {
+        city: { equals: leaf, mode: 'insensitive' },
+        country: { contains: country, mode: 'insensitive' },
+      },
+    })) ??
+    (await prisma.colCity.findFirst({
+      where: {
+        city: { contains: leaf.slice(0, Math.min(leaf.length, 24)), mode: 'insensitive' },
+        country: { contains: country, mode: 'insensitive' },
+      },
+    }));
+
+  if (row) {
+    const custo = {
+      moeda: 'USD',
+      fonte: 'col_cities',
+      nivel: 'cidade' as const,
+      indices: row.indices,
+      orcamentos: row.budgets,
+    };
+    return { custo, summary: summarizeCostOfLiving(custo) };
+  }
+
+  const countryRow = await prisma.colCountryIndex.findFirst({
+    where: { country: { equals: pEn, mode: 'insensitive' } },
+  });
+  if (!countryRow) return null;
+
+  const custo = {
+    moeda: 'USD',
+    fonte: 'col_country',
+    nivel: 'pais' as const,
+    indices: { cost_of_living: countryRow.colIndex, rent: countryRow.rentIndex },
+  };
+  return { custo, summary: summarizeCostOfLiving(custo) };
+}
+
+export async function getListingsFromDb(opts: {
+  destinoId?: number;
+  slug?: string;
+  type?: string;
+  limit?: number;
+}) {
+  let destinoId = opts.destinoId;
+  if (!destinoId && opts.slug) {
+    const parsed = parseDestinationSlug(opts.slug);
+    if (parsed) destinoId = parsed.id;
+  }
+  if (!destinoId) return [];
+
+  const limit = Math.min(opts.limit ?? 30, 100);
+  const where: { destinoId: number; type?: string } = { destinoId };
+  if (opts.type) where.type = opts.type;
+
+  return prisma.wvListing.findMany({
+    where,
+    orderBy: { title: 'asc' },
+    take: limit,
+    select: {
+      id: true,
+      type: true,
+      title: true,
+      address: true,
+      price: true,
+      latitude: true,
+      longitude: true,
+      url: true,
+    },
+  });
+}

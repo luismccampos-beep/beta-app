@@ -106,8 +106,20 @@ npm run travel:ml:build
 
 - `GET /v1/travel/rank/health` — model loaded?
 - `POST /v1/travel/rank` — body: `{ "preferences": { ... }, "candidates": [{ "destino_id": 1, "iata": "LIS" }] }`
+- `GET /v1/travel/distance/health` — SCGraph installed?
+- `POST /v1/travel/distance` — road distance (km) between two lat/lon points
+- `POST /v1/travel/distance/batch` — up to 50 destinations from one origin (for ranking)
 
-The Next.js app blends these scores with rule-based matching when `ML_SERVICE_BASE_URL` is set.
+Install SCGraph on Linux/Docker (first query downloads `world_highways`; ~1 GB cache):
+
+```bash
+pip install "scgraph>=3.1,<4"
+# optional: ML_SERVICE_SCGRAPH_GEOGRAPH=world_highways
+```
+
+Without `scgraph`, endpoints still work using **haversine** fallback (straight-line km).
+
+The Next.js app blends embedding scores and **road proximity** (SCGraph) with rule-based matching when `ML_SERVICE_BASE_URL` is set.
 
 ## 📊 API Documentation
 

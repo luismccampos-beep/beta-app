@@ -9,6 +9,10 @@
  *
  *   npm run travel:images:enrich
  *   npm run travel:images:status
+ *
+ *   TRAVEL_IMAGES_REFRESH=duplicates  — volta a buscar foto nos destinos com URL repetida
+ *   TRAVEL_IMAGES_REFRESH=dedupe      — só duplicados; força URL não usada noutro destino
+ *   TRAVEL_IMAGES_REFRESH=all         — re-enriquece todos os que já têm foto
  */
 import { existsSync, readFileSync, writeFileSync, mkdirSync } from 'node:fs';
 import { resolve, dirname } from 'node:path';
@@ -19,7 +23,11 @@ import {
   isGenericPlaceholderImage,
   sleep,
 } from './lib/unsplash-client.mjs';
-import { createImageServicesFromEnv, fetchHeroPhotoUrl } from './lib/image-providers.mjs';
+import {
+  createImageServicesFromEnv,
+  fetchHeroPhotoUrl,
+  imageUrlKey,
+} from './lib/image-providers.mjs';
 import { loadProjectEnv } from './lib/load-env.mjs';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
@@ -52,6 +60,34 @@ const DELAY_MS = parseInt(
 const WIDTH = parseInt(process.env.UNSPLASH_IMAGE_WIDTH ?? '1400', 10);
 const ONLY_IATA = process.env.UNSPLASH_ONLY_IATA === '1';
 const SAVE_EVERY = parseInt(process.env.UNSPLASH_SAVE_EVERY ?? '10', 10);
+const REFRESH_MODE = process.env.TRAVEL_IMAGES_REFRESH?.trim().toLowerCase() ?? '';
+const REFRESH_DUPLICATES =
+  REFRESH_MODE === 'duplicates' || REFRESH_MODE === 'duplicate' || REFRESH_MODE === '1';
+const REFRESH_ALL = REFRESH_MODE === 'all';
+
+/** @param {typeof bundle.destinos} destinos */
+function buildUrlUsage(destinos) {
+  /** @type {Map<string, unknown[]>} */
+  const byUrl = new Map();
+  for (const d of destinos) {
+    if (isGenericPlaceholderImage(d.imagem_url)) continue;
+    const u = d.imagem_url;
+    if (!byUrl.has(u)) byUrl.set(u, []);
+    byUrl.get(u).push(d);
+  }
+  return byUrl;
+}
+
+function isDuplicateImage(dest, urlUsage) {
+  const list = urlUsage.get(dest.imagem_url);
+  return Boolean(list && list.length > 1);
+}
+
+function shouldRefreshDest(dest, urlUsage) {
+  if (REFRESH_ALL && !isGenericPlaceholderImage(dest.imagem_url)) return true;
+  if (REFRESH_DUPLICATES && isDuplicateImage(dest, urlUsage)) return true;
+  return false;
+}
 
 function loadCache() {
   if (!existsSync(CACHE_PATH)) return {};
@@ -72,24 +108,60 @@ function persist(bundle, cache) {
   writeFileSync(BUNDLE, JSON.stringify(bundle));
 }
 
+function destCacheKey(dest) {
+  return `d:${dest.lang ?? 'pt'}:${dest.id}`;
+}
+
 function cacheLookup(cache, dest) {
-  const keys = [
-    buildDestinationImageQuery(dest).toLowerCase(),
-    ...(dest.imagem_query ? [dest.imagem_query.toLowerCase()] : []),
-    ...buildDestinationImageQueryFallbacks(dest).map((q) => q.toLowerCase()),
-  ];
-  for (const k of keys) {
-    if (cache[k]) return { url: cache[k], key: k };
-  }
+  const idKey = destCacheKey(dest);
+  if (cache[idKey]) return { url: cache[idKey], key: idKey };
   return null;
 }
 
+/** URLs já usadas por outros destinos — evita repetir a mesma foto. */
+function buildForbiddenUrls(dest, destinos) {
+  /** @type {Set<string>} */
+  const forbidden = new Set();
+  const lang = dest.lang ?? 'pt';
+  for (const d of destinos) {
+    if (d.id === dest.id && (d.lang ?? 'pt') === lang) continue;
+    if (!isGenericPlaceholderImage(d.imagem_url)) forbidden.add(d.imagem_url);
+  }
+  return forbidden;
+}
+
+/** Destinos que partilham URL (exceto o primeiro de cada grupo — mantém-se). */
+function listDuplicateDestsToFix(destinos) {
+  const byUrl = buildUrlUsage(destinos);
+  /** @type {typeof destinos} */
+  const out = [];
+  for (const list of byUrl.values()) {
+    if (list.length < 2) continue;
+    for (let i = 1; i < list.length; i++) out.push(list[i]);
+  }
+  return out;
+}
+
+/** @param {Set<string>} forbidden @param {string} url */
+function urlIsForbidden(forbidden, url) {
+  if (!url || forbidden.has(url)) return true;
+  const key = imageUrlKey(url);
+  for (const f of forbidden) {
+    if (imageUrlKey(f) === key) return true;
+  }
+  return false;
+}
+
 /** @param {Awaited<ReturnType<createImageServicesFromEnv>>} imageService */
-async function fetchPhotoUrl(imageService, dest, query, apiBudget) {
+async function fetchPhotoUrl(imageService, dest, query, apiBudget, forbiddenUrls) {
+  const aggressive = forbiddenUrls.size > 0;
   const queries = [
     query,
     ...buildDestinationImageQueryFallbacks(dest).filter((q) => q !== query),
   ];
+  if (aggressive) {
+    queries.push(`${query} ${dest.id}`, `${dest.nome} photo ${dest.id}`);
+  }
 
   for (const q of queries) {
     if (apiBudget.remaining <= 0) return { url: null, stopped: 'budget', provider: null };
@@ -98,12 +170,14 @@ async function fetchPhotoUrl(imageService, dest, query, apiBudget) {
       width: WIDTH,
       destId: dest.id,
       destLang: dest.lang ?? 'pt',
+      forbiddenUrls,
+      aggressive,
     });
     apiBudget.remaining -= apiCalls;
 
     if (url) return { url, stopped: null, provider };
 
-    await sleep(250);
+    await sleep(aggressive ? 150 : 250);
   }
 
   return { url: null, stopped: null, provider: null };
@@ -130,11 +204,20 @@ async function main() {
   const bundle = JSON.parse(readFileSync(BUNDLE, 'utf8'));
   const cache = loadCache();
   const destinos = bundle.destinos ?? [];
+  const urlUsage = buildUrlUsage(destinos);
+  const duplicateDestCount = destinos.filter((d) => isDuplicateImage(d, urlUsage)).length;
 
-  const candidates = destinos.filter((d) => {
-    if (ONLY_IATA && !d.iata) return false;
-    return isGenericPlaceholderImage(d.imagem_url);
-  });
+  const DEDUPE_ONLY = REFRESH_MODE === 'dedupe' || REFRESH_MODE === 'unique';
+  const duplicateFixList = listDuplicateDestsToFix(destinos);
+
+  const candidates = DEDUPE_ONLY
+    ? duplicateFixList.filter((d) => !ONLY_IATA || d.iata)
+    : destinos.filter((d) => {
+        if (ONLY_IATA && !d.iata) return false;
+        if (isGenericPlaceholderImage(d.imagem_url)) return true;
+        if (shouldRefreshDest(d, urlUsage)) return true;
+        return false;
+      });
 
   const alreadyDone = destinos.length - candidates.length;
   const toProcess = candidates.slice(0, LIMIT);
@@ -147,14 +230,23 @@ async function main() {
     .filter(Boolean)
     .join(' → ');
 
+  const refreshLabel = DEDUPE_ONLY
+    ? `dedupe (${duplicateFixList.length} destinos, URL única forçada)`
+    : REFRESH_ALL
+      ? 'all'
+      : REFRESH_DUPLICATES
+        ? `duplicates (${duplicateDestCount} destinos com URL partilhada)`
+        : 'off';
+
   console.log(
     `Travel images enrich — ${toProcess.length} destinos nesta execução (${candidates.length} por fazer, ${alreadyDone} já com foto).\n` +
       `  APIs: ${providers || '(n/a)'}\n` +
-      `  limit=${LIMIT}  max_http=${MAX_API_CALLS}  delay=${DELAY_MS}ms\n`,
+      `  limit=${LIMIT}  max_http=${MAX_API_CALLS}  delay=${DELAY_MS}ms  refresh=${refreshLabel}\n`,
   );
 
   let updated = 0;
   let fromCache = 0;
+  let refreshed = 0;
   let failed = 0;
   let pexelsHits = 0;
   let pixabayHits = 0;
@@ -163,19 +255,33 @@ async function main() {
 
   for (const dest of toProcess) {
     const query = buildDestinationImageQuery(dest);
-    const cached = cacheLookup(cache, dest);
+    const refreshing = shouldRefreshDest(dest, urlUsage);
+    const needsUniqueUrl =
+      refreshing ||
+      DEDUPE_ONLY ||
+      (REFRESH_DUPLICATES && isDuplicateImage(dest, urlUsage));
+    if (needsUniqueUrl) delete cache[destCacheKey(dest)];
 
-    if (cached) {
-      dest.imagem_url = cached.url;
+    const forbiddenUrls = needsUniqueUrl ? buildForbiddenUrls(dest, destinos) : new Set();
+
+    const cachedEntry = cacheLookup(cache, dest);
+    if (cachedEntry && !needsUniqueUrl && !urlIsForbidden(forbiddenUrls, cachedEntry.url)) {
+      dest.imagem_url = cachedEntry.url;
       dest.imagem_query = query;
-      cache[cached.key] = cached.url;
+      cache[cachedEntry.key] = cachedEntry.url;
       fromCache += 1;
       updated += 1;
       continue;
     }
 
     try {
-      const { url, stopped, provider } = await fetchPhotoUrl(imageService, dest, query, apiBudget);
+      const { url, stopped, provider } = await fetchPhotoUrl(
+        imageService,
+        dest,
+        query,
+        apiBudget,
+        forbiddenUrls,
+      );
 
       if (stopped === 'budget') {
         console.log(
@@ -189,12 +295,14 @@ async function main() {
       if (url) {
         dest.imagem_url = url;
         dest.imagem_query = query;
-        cache[query.toLowerCase()] = url;
+        cache[destCacheKey(dest)] = url;
         if (provider === 'pexels') pexelsHits += 1;
         if (provider === 'pixabay') pixabayHits += 1;
         if (provider === 'unsplash') unsplashHits += 1;
         updated += 1;
-        process.stdout.write(`  ✓ ${dest.nome} (${provider})\n`);
+        if (needsUniqueUrl) refreshed += 1;
+        const tag = DEDUPE_ONLY ? 'dedupe' : needsUniqueUrl ? 'refresh' : provider;
+        process.stdout.write(`  ✓ ${dest.nome} (${tag})\n`);
         if (updated % SAVE_EVERY === 0) persist(bundle, cache);
       } else {
         failed += 1;
@@ -212,7 +320,7 @@ async function main() {
   persist(bundle, cache);
 
   console.log(
-    `\nConcluído. Atualizados: ${updated} (${fromCache} cache), sem foto: ${failed}`,
+    `\nConcluído. Atualizados: ${updated} (${fromCache} cache, ${refreshed} refresh), sem foto: ${failed}`,
   );
   console.log(
     `  Por API: Pixabay ${pixabayHits} | Pexels ${pexelsHits} | Unsplash ${unsplashHits}`,
@@ -229,6 +337,9 @@ function printResumeHint(candidatesCount, batchSize) {
   console.log(
     `\nPara continuar:\n` +
       `  npm run travel:images:enrich\n` +
+      `Corrigir fotos repetidas (URL única):\n` +
+      `  npm run travel:images:dedupe\n` +
+      `  $env:TRAVEL_IMAGES_REFRESH=duplicates; npm run travel:images:enrich\n` +
       `Só IATA:\n` +
       `  $env:UNSPLASH_ONLY_IATA=1; npm run travel:images:enrich`,
   );

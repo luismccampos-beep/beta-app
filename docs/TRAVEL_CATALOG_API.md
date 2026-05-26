@@ -1,0 +1,101 @@
+# API interna — catálogo Wikivoyage
+
+Substitui o JSON monolítico (`bundle-wikivoyage.json`) por **Postgres (Vercel Neon)** quando `TRAVEL_CATALOG_SOURCE=db`.
+
+## Porquê Postgres e não só JSON?
+
+| | Bundle JSON | Postgres |
+|--|-------------|----------|
+| Tamanho | ~100+ MB | Indexado, queries |
+| Deploy Vercel | Limite de bundle | Só ligação DB |
+| Filtros | Carregar tudo | `?q=&pais=` |
+| Atualização | Rebuild manual | `npm run travel:catalog:import` |
+
+Já usa **Prisma + DATABASE_URL** — não é necessário Supabase extra.
+
+## Setup (uma vez)
+
+```bash
+# 1. Migração
+npm run travel:catalog:migrate
+npx prisma migrate deploy   # inclui wv_hotels geo
+
+# 2. Importar bundle + custo de vida (+ listagens opcional)
+npm run travel:catalog:import -- --fresh
+npm run travel:catalog:import -- --fresh --listings --listings-limit=80000
+
+# 3. Coordenadas nos hotéis (hotel-index.json)
+npm run travel:catalog:backfill-geo
+```
+
+`.env.local`:
+
+```env
+DATABASE_URL="postgresql://..."
+DATABASE_URL_UNPOOLED="postgresql://..."
+TRAVEL_CATALOG_SOURCE=db
+```
+
+## Endpoints (`/api/travel/v1/`)
+
+| Método | Path | Dados |
+|--------|------|--------|
+| GET | `/destinations?q=Lisboa&pais=Portugal` | Destinos |
+| GET | `/destinations/pt-42` | Destino + hotéis + custo de vida + transporte |
+| GET | `/hotels?slug=pt-42` | Hotéis do destino |
+| GET | `/hotels/nearby?lat=&lng=&radiusKm=10&stars=4` | Hotéis por proximidade (requer geo na DB) |
+| GET | `/hotels/12345` | Detalhe do hotel + `mapMarkers` |
+| GET | `/hotels/osm?location=` | Hotéis OSM (BizData / Overpass) |
+| GET | `/hotels/geocode?q=` | Pesquisa por nome (Photon) |
+| GET | `/hotels/:id/image` | Imagem Wikidata → Commons |
+| GET/POST | `/hotels/:id/reviews` | Avaliações utilizador (MVP) |
+
+Ver também [OSM_HOTELS.md](./OSM_HOTELS.md).
+
+| GET | `/recommend?nights=&travelers=&origin=&prefs=&budgetFilter=1` | Destinos por regras + custo estimado |
+
+Ver [TRIP_RECOMMENDATION.md](./TRIP_RECOMMENDATION.md).
+| GET | `/flights?origin=LIS&destinoId=42` | Voos mock (OpenFlights) |
+| GET | `/cost-of-living?city=Lisboa&country=Portugal` | Orçamento diário (CSV) |
+| GET | `/listings?slug=pt-42&type=sleep` | Listagens Wikivoyage EN |
+
+Resposta inclui `source: "db" | "bundle"`.
+
+Rota legada: `/api/travel/destinations/[slug]` → delega para v1.
+
+## Tabelas Prisma
+
+- `wv_destinations` — destinos Wikivoyage
+- `wv_hotels` — ~370k hotéis (`latitude`, `longitude`, `google_place_id`, `wikidata_id`, `image_url`, `description`)
+- `wv_flights` — voos indicativos
+- `wv_listings` — sleep/eat/see/do (CSV EN)
+- `col_cities` — custo de vida por cidade
+- `col_country_indices` — índice por país
+
+## Atualizar dados (cron Vercel)
+
+1. Rebuild bundle local: `npm run travel:demo:build` + enriquecimentos
+2. `npm run travel:catalog:import -- --fresh`
+3. Cron semanal (exemplo `vercel.json`):
+
+```json
+{
+  "crons": [
+    {
+      "path": "/api/cron/travel-catalog-import",
+      "schedule": "0 4 * * 0"
+    }
+  ]
+}
+```
+
+O endpoint cron deve validar `CRON_SECRET` e chamar o script de import (ou webhook CI).
+
+## Frontend
+
+```ts
+const res = await fetch('/api/travel/v1/destinations/pt-42');
+const dest = await res.json();
+```
+
+Com `TRAVEL_CATALOG_SOURCE` não definido, as rotas v1 usam o **bundle JSON** (comportamento actual).

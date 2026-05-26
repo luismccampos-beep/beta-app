@@ -38,6 +38,9 @@ dependencies = [
 ]
 
 [project.optional-dependencies]
+routing = [
+    "scgraph~=3.1.0",
+]
 dev = [
     "pytest~=7.4.0",
     "pytest-asyncio~=0.21.1",
@@ -57,6 +60,7 @@ monitoring = [
     "prometheus-client~=0.17.1",
 ]
 all = [
+    "scgraph~=3.1.0",
     "pytest~=7.4.0",
     "pytest-asyncio~=0.21.1",
     "black~=23.7.0",

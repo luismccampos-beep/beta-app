@@ -1,0 +1,890 @@
+{
+  "uruguai|acegua": {
+    "lat": -31.8718318,
+    "lon": -54.1627778
+  },
+  "brasil|africa": {
+    "lat": -22.9023817,
+    "lon": -43.2366781
+  },
+  "brasil|agua branca": {
+    "lat": -5.895038,
+    "lon": -42.6368104
+  },
+  "brasil|alegrete": {
+    "lat": -29.790166,
+    "lon": -55.794862
+  },
+  "brasil|aluminio": {
+    "lat": -23.5203479,
+    "lon": -47.2575256
+  },
+  "franca|america do norte": {
+    "lat": -10.1999364,
+    "lon": -48.9044217
+  },
+  "brasil|america do sul": {
+    "lat": -20.8259201,
+    "lon": -49.3808018
+  },
+  "brasil|arara": {
+    "lat": -6.8271895,
+    "lon": -35.7605703
+  },
+  "brasil|areias": {
+    "lat": -22.5800929,
+    "lon": -44.6975127
+  },
+  "tailandia|bangkok": {
+    "lat": 13.7524938,
+    "lon": 100.4935089
+  },
+  "reino unido|barbados": {
+    "lat": 51.4902138,
+    "lon": 0.2953782
+  },
+  "argentina|bariloche": {
+    "lat": -41.1334781,
+    "lon": -71.3101474
+  },
+  "brasil|barra de sao miguel": {
+    "lat": -7.7528088,
+    "lon": -36.3170996
+  },
+  "brasil|barretos": {
+    "lat": -20.5531437,
+    "lon": -48.5697509
+  },
+  "brasil|bastos": {
+    "lat": -21.9222474,
+    "lon": -50.7317727
+  },
+  "brasil|batalha": {
+    "lat": -4.022391,
+    "lon": -42.0780926
+  },
+  "brasil|bebedouro": {
+    "lat": -20.949077,
+    "lon": -48.479083
+  },
+  "brasil|belem de sao francisco": {
+    "lat": -8.7897342,
+    "lon": -38.9594832
+  },
+  "brasil|ilha do mosqueiro": {
+    "lat": -1.1414485,
+    "lon": -48.3954485
+  },
+  "brasil|bella union": {
+    "lat": -30.2560339,
+    "lon": -57.5898505
+  },
+  "egito|beni hasan": {
+    "lat": 27.9313392,
+    "lon": 30.8752957
+  },
+  "suica|berna": {
+    "lat": 46.9484742,
+    "lon": 7.4521749
+  },
+  "brasil|bernardo de irigoyen": {
+    "lat": -26.2548049,
+    "lon": -53.6448789
+  },
+  "brasil|bezerros": {
+    "lat": -8.2372132,
+    "lon": -35.7558262
+  },
+  "brasil|biquinhas": {
+    "lat": -18.783611,
+    "lon": -45.502222
+  },
+  "brasil|birigui": {
+    "lat": -21.2908491,
+    "lon": -50.34144
+  },
+  "brasil|boca do acre": {
+    "lat": -8.7553487,
+    "lon": -67.3930873
+  },
+  "brasil|bocaina do sul": {
+    "lat": -27.745494,
+    "lon": -49.942279
+  },
+  "colombia|bogota": {
+    "lat": 4.6533817,
+    "lon": -74.0836331
+  },
+  "brasil|boituva": {
+    "lat": -23.2838893,
+    "lon": -47.6738231
+  },
+  "brasil|bombinhas": {
+    "lat": -27.1519159,
+    "lon": -48.4875691
+  },
+  "brasil|bom jesus da lapa": {
+    "lat": -13.2498754,
+    "lon": -43.4101019
+  },
+  "brasil|bom jesus dos perdoes": {
+    "lat": -23.1353864,
+    "lon": -46.4648052
+  },
+  "brasil|bonito": {
+    "lat": -11.9686885,
+    "lon": -41.2643292
+  },
+  "brasil|borborema": {
+    "lat": -21.6212706,
+    "lon": -49.074135
+  },
+  "brasil|braganca paulista": {
+    "lat": -22.9520235,
+    "lon": -46.5418586
+  },
+  "brasil|brasil": {
+    "lat": -15.7939869,
+    "lon": -47.8828
+  },
+  "brasil|brejo da madre de deus": {
+    "lat": -8.1409718,
+    "lon": -36.3712527
+  },
+  "franca|brest": {
+    "lat": 48.3905283,
+    "lon": -4.4860088
+  },
+  "brasil|britania": {
+    "lat": -15.2427599,
+    "lon": -51.1602061
+  },
+  "franca|bruxelas": {
+    "lat": 50.8467799,
+    "lon": 4.3680302
+  },
+  "brasil|buriti alegre": {
+    "lat": -18.1377879,
+    "lon": -49.0404411
+  },
+  "coreia do sul|busan": {
+    "lat": 35.1799528,
+    "lon": 129.0752365
+  },
+  "brasil|cabo de santo agostinho": {
+    "lat": -8.2838945,
+    "lon": -35.0320984
+  },
+  "brasil|calhetas": {
+    "lat": -8.3447314,
+    "lon": -34.9442475
+  },
+  "brasil|suape": {
+    "lat": -8.3539067,
+    "lon": -34.9567358
+  },
+  "brasil|cabo frio": {
+    "lat": -22.7378309,
+    "lon": -42.0240869
+  },
+  "brasil|cabreuva": {
+    "lat": -23.3076663,
+    "lon": -47.1324726
+  },
+  "brasil|cacapava": {
+    "lat": -23.099204,
+    "lon": -45.707645
+  },
+  "brasil|cachoeira": {
+    "lat": -12.5998256,
+    "lon": -38.9665918
+  },
+  "brasil|cachoeira dourada": {
+    "lat": -18.517136,
+    "lon": -49.5002062
+  },
+  "brasil|cachoeira paulista": {
+    "lat": -22.6605578,
+    "lon": -45.0081689
+  },
+  "brasil|cacoal": {
+    "lat": -11.4333,
+    "lon": -61.4420502
+  },
+  "franca|caiena": {
+    "lat": 4.9371544,
+    "lon": -52.3258736
+  },
+  "brasil|cajazeiras": {
+    "lat": -6.8897849,
+    "lon": -38.5570389
+  },
+  "brasil|caldas": {
+    "lat": -21.923611,
+    "lon": -46.386111
+  },
+  "portugal|calheta": {
+    "lat": 38.6055151,
+    "lon": -28.0187906
+  },
+  "brasil|camanducaia": {
+    "lat": -22.755278,
+    "lon": -46.144444
+  },
+  "brasil|monte verde": {
+    "lat": -22.8722784,
+    "lon": -46.0669339
+  },
+  "portugal|camara de lobos": {
+    "lat": 32.6485492,
+    "lon": -16.9752409
+  },
+  "brasil|camaragibe": {
+    "lat": -8.0213832,
+    "lon": -34.9810768
+  },
+  "brasil|cambara do sul": {
+    "lat": -29.0573983,
+    "lon": -50.0875585
+  },
+  "australia|camberra": {
+    "lat": -35.2975906,
+    "lon": 149.1012676
+  },
+  "brasil|campos dos goytacazes": {
+    "lat": -21.7546,
+    "lon": -41.3242
+  },
+  "brasil|canas": {
+    "lat": -22.7029347,
+    "lon": -45.0526508
+  },
+  "brasil|candido rodrigues": {
+    "lat": -21.3255615,
+    "lon": -48.6308798
+  },
+  "brasil|cangucu": {
+    "lat": -31.398276,
+    "lon": -52.6773522
+  },
+  "brasil|canion itaimbezinho": {
+    "lat": -29.164566,
+    "lon": -50.0929422
+  },
+  "brasil|canoas": {
+    "lat": -29.9216045,
+    "lon": -51.1799525
+  },
+  "brasil|canoinhas": {
+    "lat": -26.1755121,
+    "lon": -50.3949592
+  },
+  "turquia|capadocia": {
+    "lat": 38.6386124,
+    "lon": 34.8455184
+  },
+  "brasil|capela do alto": {
+    "lat": -23.4704798,
+    "lon": -47.7352309
+  },
+  "brasil|capital": {
+    "lat": -31.5449322,
+    "lon": -68.5625395
+  },
+  "brasil|caravelas": {
+    "lat": -17.734979,
+    "lon": -39.2627179
+  },
+  "brasil|cardoso moreira": {
+    "lat": -21.5366664,
+    "lon": -41.5029962
+  },
+  "brasil|carrancas": {
+    "lat": -21.4910462,
+    "lon": -44.6436151
+  },
+  "brasil|caruaru": {
+    "lat": -8.2829702,
+    "lon": -35.9722852
+  },
+  "brasil|cascavel": {
+    "lat": -24.9554996,
+    "lon": -53.4560544
+  },
+  "brasil|cassilandia": {
+    "lat": -19.1128242,
+    "lon": -51.7345354
+  },
+  "espanha|castelo de vide": {
+    "lat": 42.3229972,
+    "lon": -8.0084978
+  },
+  "brasil|cataguases": {
+    "lat": -21.387426,
+    "lon": -42.6957219
+  },
+  "brasil|catalao": {
+    "lat": -18.1702546,
+    "lon": -47.9447082
+  },
+  "brasil|catanduva": {
+    "lat": -21.1331035,
+    "lon": -48.9712817
+  },
+  "brasil|caucaia": {
+    "lat": -3.771737,
+    "lon": -38.7905693
+  },
+  "brasil|centro oeste": {
+    "lat": -15.6985,
+    "lon": -53.5339827
+  },
+  "espanha|ceuta": {
+    "lat": 35.894422,
+    "lon": -5.3558174
+  },
+  "brasil|chapeco": {
+    "lat": -27.0922364,
+    "lon": -52.6166878
+  },
+  "brasil|cha preta": {
+    "lat": -9.255605,
+    "lon": -36.298334
+  },
+  "estados unidos|chicago": {
+    "lat": 41.8755616,
+    "lon": -87.6244212
+  },
+  "mexico|chilpancingo": {
+    "lat": 17.5542149,
+    "lon": -99.5048416
+  },
+  "brasil|chui": {
+    "lat": -33.6895237,
+    "lon": -53.454704
+  },
+  "brasil|cidade da guatemala": {
+    "lat": 14.5934918,
+    "lon": -90.516187
+  },
+  "espanha|cidade real": {
+    "lat": 43.6621341,
+    "lon": -7.5953162
+  },
+  "mexico|ciudad del carmen": {
+    "lat": 18.651739,
+    "lon": -91.81492
+  },
+  "mexico|ciudad obregon": {
+    "lat": 27.4846619,
+    "lon": -109.9337782
+  },
+  "mexico|ciudad victoria": {
+    "lat": 23.7389846,
+    "lon": -99.1441352
+  },
+  "argentina|clorinda": {
+    "lat": -25.2900303,
+    "lon": -57.7125898
+  },
+  "mexico|coatzacoalcos": {
+    "lat": 18.1405019,
+    "lon": -94.4344003
+  },
+  "brasil|colatina": {
+    "lat": -19.5346732,
+    "lon": -40.6287836
+  },
+  "brasil|colina": {
+    "lat": -20.711443,
+    "lon": -48.53867
+  },
+  "brasil|colombia": {
+    "lat": -20.1774291,
+    "lon": -48.6872822
+  },
+  "portugal|colonia do sacramento": {
+    "lat": -34.4710621,
+    "lon": -57.8514482
+  },
+  "brasil|comandante andresito": {
+    "lat": -25.6735525,
+    "lon": -54.0536016
+  },
+  "argentina|comodoro rivadavia": {
+    "lat": -45.8632024,
+    "lon": -67.4752615
+  },
+  "chile|concepcion": {
+    "lat": -36.8270698,
+    "lon": -73.0502064
+  },
+  "brasil|concordia": {
+    "lat": -27.2312011,
+    "lon": -52.0231024
+  },
+  "portugal|copenhaga": {
+    "lat": 55.6819069,
+    "lon": 12.5930488
+  },
+  "argentina|cordoba": {
+    "lat": -31.4166867,
+    "lon": -64.1834193
+  },
+  "mexico|cordoba": {
+    "lat": 18.8944704,
+    "lon": -96.9352891
+  },
+  "espanha|cordova": {
+    "lat": 37.8845813,
+    "lon": -4.7760138
+  },
+  "brasil|corumbaiba": {
+    "lat": -18.1348982,
+    "lon": -48.564223
+  },
+  "brasil|costa do sauipe": {
+    "lat": -12.4391251,
+    "lon": -37.9233062
+  },
+  "brasil|crato": {
+    "lat": -7.2885006,
+    "lon": -39.4820298
+  },
+  "brasil|cristalina": {
+    "lat": -16.7680599,
+    "lon": -47.6133427
+  },
+  "brasil|cruzeiro": {
+    "lat": -22.5783685,
+    "lon": -44.9642044
+  },
+  "brasil|cruzeiro do sul": {
+    "lat": -29.5139742,
+    "lon": -51.9917068
+  },
+  "mexico|cuautla": {
+    "lat": 20.2036094,
+    "lon": -104.4858267
+  },
+  "estados unidos|cuba": {
+    "lat": 42.2175668,
+    "lon": -78.2752927
+  },
+  "peru|cusco": {
+    "lat": -13.5170887,
+    "lon": -71.9785356
+  },
+  "egito|dakhla": {
+    "lat": 25.5120622,
+    "lon": 29.2581601
+  },
+  "estados unidos|dallas": {
+    "lat": 32.7762719,
+    "lon": -96.7968559
+  },
+  "brasil|delta do parnaiba": {
+    "lat": -2.9019849,
+    "lon": -41.7794837
+  },
+  "brasil|descalvado": {
+    "lat": -21.9090404,
+    "lon": -47.6203241
+  },
+  "chile|deserto de atacama": {
+    "lat": -24.5563029,
+    "lon": -69.4226479
+  },
+  "estados unidos|detroit": {
+    "lat": 42.3315509,
+    "lon": -83.0466403
+  },
+  "brasil|dionisio cerqueira": {
+    "lat": -26.2604681,
+    "lon": -53.6346379
+  },
+  "brasil|dois corregos": {
+    "lat": -22.3697554,
+    "lon": -48.3845315
+  },
+  "brasil|domingos martins": {
+    "lat": -20.3646483,
+    "lon": -40.6585797
+  },
+  "brasil|dourados": {
+    "lat": -22.2206145,
+    "lon": -54.812208
+  },
+  "portugal|douro litoral": {
+    "lat": 41.1583445,
+    "lon": -8.3197529
+  },
+  "brasil|dracena": {
+    "lat": -21.4835523,
+    "lon": -51.5334408
+  },
+  "brasil|duque de caxias": {
+    "lat": -22.6429163,
+    "lon": -43.3021266
+  },
+  "mexico|durango": {
+    "lat": 24.833333,
+    "lon": -104.833333
+  },
+  "egito|el alamein": {
+    "lat": 30.833944,
+    "lon": 28.949268
+  },
+  "brasil|engenheiro coelho": {
+    "lat": -22.4896659,
+    "lon": -47.2119005
+  },
+  "brasil|epitaciolandia": {
+    "lat": -11.0289439,
+    "lon": -68.7411519
+  },
+  "noruega|escandinavia": {
+    "lat": 40.2908317,
+    "lon": -3.8067807
+  },
+  "brasil|espera feliz": {
+    "lat": -20.6494192,
+    "lon": -41.9080693
+  },
+  "brasil|espirito santo do pinhal": {
+    "lat": -22.1929522,
+    "lon": -46.7470021
+  },
+  "argentina|esquel": {
+    "lat": -42.9173055,
+    "lon": -71.3216508
+  },
+  "brasil|estados unidos da america": {
+    "lat": 29.7425325,
+    "lon": -95.4022603
+  },
+  "suecia|estocolmo": {
+    "lat": 59.3251172,
+    "lon": 18.0710935
+  },
+  "brasil|estrada real": {
+    "lat": -15.843973,
+    "lon": -47.7311918
+  },
+  "franca|estrasburgo": {
+    "lat": 48.584614,
+    "lon": 7.7507127
+  },
+  "grecia|europa": {
+    "lat": 38.0017396,
+    "lon": 23.7209483
+  },
+  "brasil|extrema": {
+    "lat": -22.8548355,
+    "lon": -46.3184553
+  },
+  "brasil|exu": {
+    "lat": -7.515434,
+    "lon": -39.722015
+  },
+  "brasil|feira de santana": {
+    "lat": -12.2578934,
+    "lon": -38.9598047
+  },
+  "brasil|feliz natal": {
+    "lat": -12.3802463,
+    "lon": -54.9389793
+  },
+  "brasil|fernandopolis": {
+    "lat": -20.2825647,
+    "lon": -50.2500762
+  },
+  "brasil|fernando prestes": {
+    "lat": -21.266061,
+    "lon": -48.687384
+  },
+  "egito|templo de filas": {
+    "lat": 24.0252548,
+    "lon": 32.8841893
+  },
+  "russia|finlandia": {
+    "lat": 60.1596463,
+    "lon": 24.9519702
+  },
+  "brasil|floresta": {
+    "lat": -23.6144046,
+    "lon": -52.0819003
+  },
+  "brasil|franca": {
+    "lat": -20.5381768,
+    "lon": -47.4009795
+  },
+  "estados unidos|fredericksburg": {
+    "lat": 38.3031837,
+    "lon": -77.4605399
+  },
+  "brasil|fumaca": {
+    "lat": -12.6006849,
+    "lon": -41.4550865
+  },
+  "brasil|fundao": {
+    "lat": -19.9332174,
+    "lon": -40.4049674
+  },
+  "brasil|garanhuns": {
+    "lat": -8.8905889,
+    "lon": -36.4930896
+  },
+  "brasil|garca": {
+    "lat": -22.2125766,
+    "lon": -49.6547994
+  },
+  "suica|genebra": {
+    "lat": 46.2017559,
+    "lon": 6.1466014
+  },
+  "australia|georgetown": {
+    "lat": -18.2897926,
+    "lon": 143.5476606
+  },
+  "egito|gilf kebir": {
+    "lat": 23.7380474,
+    "lon": 25.3532422
+  },
+  "brasil|goiana": {
+    "lat": -7.560603,
+    "lon": -34.99591
+  },
+  "brasil|goias": {
+    "lat": -15.9323662,
+    "lon": -50.1392928
+  },
+  "australia|gold coast": {
+    "lat": -28.0023731,
+    "lon": 153.4145987
+  },
+  "brasil|goncalves": {
+    "lat": -22.658883,
+    "lon": -45.8558405
+  },
+  "brasil|grande sao paulo": {
+    "lat": -23.6236525,
+    "lon": -46.3772544
+  },
+  "brasil|gravata": {
+    "lat": -8.1990371,
+    "lon": -35.5627006
+  },
+  "brasil|gravatai": {
+    "lat": -29.9440222,
+    "lon": -50.9930938
+  },
+  "russia|grozni": {
+    "lat": 43.3197031,
+    "lon": 45.6934308
+  },
+  "brasil|guaiba": {
+    "lat": -30.1130731,
+    "lon": -51.329442
+  },
+  "brasil|guajara mirim": {
+    "lat": -10.7804239,
+    "lon": -65.3327825
+  },
+  "china|cantao": {
+    "lat": 23.1288454,
+    "lon": 113.2590064
+  },
+  "brasil|guaramirim": {
+    "lat": -26.4744805,
+    "lon": -48.9981151
+  },
+  "brasil|guarapuava": {
+    "lat": -25.3950986,
+    "lon": -51.4622016
+  },
+  "brasil|guaratingueta": {
+    "lat": -22.8057839,
+    "lon": -45.1908926
+  },
+  "brasil|gurupi": {
+    "lat": -11.72794,
+    "lon": -49.068046
+  },
+  "holanda|haia": {
+    "lat": 52.0799838,
+    "lon": 4.3113461
+  },
+  "alemanha|hamburgo": {
+    "lat": 53.5501721,
+    "lon": 10.0013165
+  },
+  "australia|hamilton": {
+    "lat": -37.7433872,
+    "lon": 142.0242865
+  },
+  "finlandia|helsinki": {
+    "lat": 60.1666204,
+    "lon": 24.9435408
+  },
+  "brasil|holambra": {
+    "lat": -22.6332028,
+    "lon": -47.0545305
+  },
+  "holanda|paises baixos": {
+    "lat": 52.2434979,
+    "lon": 5.6343227
+  },
+  "estados unidos|honolulu": {
+    "lat": 21.304547,
+    "lon": -157.855676
+  },
+  "estados unidos|houston": {
+    "lat": 29.7589382,
+    "lon": -95.3676974
+  },
+  "brasil|ibira": {
+    "lat": -21.0815104,
+    "lon": -49.2424619
+  },
+  "brasil|ibiuna": {
+    "lat": -23.6544825,
+    "lon": -47.220856
+  },
+  "brasil|igarata": {
+    "lat": -23.2063475,
+    "lon": -46.156934
+  },
+  "mexico|iguala": {
+    "lat": 18.3466358,
+    "lon": -99.5376944
+  },
+  "brasil|iguape": {
+    "lat": -24.7042692,
+    "lon": -47.5563733
+  },
+  "brasil|ilha comprida": {
+    "lat": -24.7445292,
+    "lon": -47.5525529
+  },
+  "brasil|ilha do bananal": {
+    "lat": -11.3518209,
+    "lon": -50.3461536
+  },
+  "brasil|ilha do cajual": {
+    "lat": -2.4817153,
+    "lon": -44.4882577
+  },
+  "brasil|ilha do cardoso": {
+    "lat": -25.1616908,
+    "lon": -47.9744066
+  },
+  "portugal|ilhas desertas": {
+    "lat": 32.5245449,
+    "lon": -16.5099336
+  },
+  "brasil|ilha solteira": {
+    "lat": -20.4281001,
+    "lon": -51.3410871
+  },
+  "brasil|imarui": {
+    "lat": -28.3440491,
+    "lon": -48.8151737
+  },
+  "brasil|imperatriz": {
+    "lat": -5.5269279,
+    "lon": -47.478115
+  },
+  "brasil|inapari": {
+    "lat": -10.9413962,
+    "lon": -69.5770487
+  },
+  "brasil|indaiatuba": {
+    "lat": -23.0908356,
+    "lon": -47.2180677
+  },
+  "reino unido|inglaterra": {
+    "lat": 52.5310214,
+    "lon": -1.2649062
+  },
+  "brasil|inhapim": {
+    "lat": -19.5501834,
+    "lon": -42.1209879
+  },
+  "brasil|ipatinga": {
+    "lat": -19.4777807,
+    "lon": -42.5270802
+  },
+  "brasil|ipero": {
+    "lat": -23.3508977,
+    "lon": -47.687611
+  },
+  "brasil|ipojuca": {
+    "lat": -8.3980773,
+    "lon": -35.0611068
+  },
+  "brasil|maracaipe": {
+    "lat": -8.5168342,
+    "lon": -35.0086635
+  },
+  "brasil|serrambi": {
+    "lat": -8.5744092,
+    "lon": -35.0369765
+  },
+  "brasil|irati": {
+    "lat": -25.469663,
+    "lon": -50.649287
+  },
+  "islandia|islandia": {
+    "lat": 64.9663748,
+    "lon": -18.4504182
+  },
+  "turquia|istambul": {
+    "lat": 41.006381,
+    "lon": 28.9758715
+  },
+  "brasil|itaberai": {
+    "lat": -16.0205509,
+    "lon": -49.8060341
+  },
+  "brasil|ipoema": {
+    "lat": -19.6199949,
+    "lon": -43.4143315
+  },
+  "brasil|itabuna": {
+    "lat": -14.793173,
+    "lon": -39.2750341
+  },
+  "brasil|itaguai": {
+    "lat": -22.8122697,
+    "lon": -43.823563
+  },
+  "brasil|itamaraca": {
+    "lat": -3.8734921,
+    "lon": -40.3691794
+  },
+  "brasil|itamonte": {
+    "lat": -22.2830726,
+    "lon": -44.8695785
+  },
+  "brasil|itanhaem": {
+    "lat": -24.1833421,
+    "lon": -46.7896229
+  },
+  "brasil|itapema": {
+    "lat": -27.09472,
+    "lon": -48.6137778
+  },
+  "brasil|itapolis": {
+    "lat": -21.5958368,
+    "lon": -48.8122696
+  },
+  "brasil|itatiaia": {
+    "lat": -22.4431534,
+    "lon": -44.5635213
+  },
+  "brasil|maromba": {
+    "lat": -22.32449,
+    "lon": -44.5970335
+  }
+}

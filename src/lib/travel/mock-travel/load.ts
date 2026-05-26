@@ -2,6 +2,7 @@ import { readFileSync, existsSync } from 'node:fs';
 import { resolve } from 'node:path';
 
 import type { MockDestination, MockHotel, MockFlight, MockTravelBundle } from './types';
+import { parseDestinationSlug } from '../destination-slug';
 import { buildDestinationImageQuery, isGenericDestinationImage } from '../unsplash';
 
 let cached: MockTravelBundle | null = null;
@@ -75,12 +76,12 @@ export function shouldUseMockHotels(hbKey?: string, hbSecret?: string): boolean 
   return !hbKey?.trim() || !hbSecret?.trim();
 }
 
-/** Use mock flights when Duffel is not configured. */
-export function shouldUseMockFlights(duffelToken?: string): boolean {
+/** Use mock flights when no live flight provider is configured. */
+export function shouldUseMockFlights(duffelToken?: string, scrapeDoToken?: string): boolean {
   if (isTravelMockEnabled()) return true;
   const forceOff = process.env.TRAVEL_MOCK_FLIGHTS?.trim().toLowerCase() === 'false';
   if (forceOff) return false;
-  return !duffelToken?.trim();
+  return !duffelToken?.trim() && !scrapeDoToken?.trim();
 }
 
 export function loadMockTravelBundle(): MockTravelBundle {
@@ -105,6 +106,14 @@ export function getMockDestinationById(id: number): MockDestination | undefined 
   return loadMockTravelBundle().destinos.find((d) => d.id === id);
 }
 
+export function getMockDestinationBySlug(slug: string): MockDestination | undefined {
+  const parsed = parseDestinationSlug(slug);
+  if (!parsed) return undefined;
+  return loadMockTravelBundle().destinos.find(
+    (d) => d.id === parsed.id && (d.lang ?? 'pt') === parsed.lang,
+  );
+}
+
 export function getMockDestinationByName(name: string): MockDestination | undefined {
   const n = name.trim().toLowerCase();
   return loadMockTravelBundle().destinos.find((d) => d.nome.trim().toLowerCase() === n);
@@ -112,6 +121,14 @@ export function getMockDestinationByName(name: string): MockDestination | undefi
 
 export function getMockHotelsForDestination(destinoId: number): MockHotel[] {
   return loadMockTravelBundle().hoteis.filter((h) => h.destino_id === destinoId);
+}
+
+export function getMockHotelById(id: number): { hotel: MockHotel; dest: MockDestination } | null {
+  const hotel = loadMockTravelBundle().hoteis.find((h) => h.id === id);
+  if (!hotel) return null;
+  const dest = getMockDestinationById(hotel.destino_id);
+  if (!dest) return null;
+  return { hotel, dest };
 }
 
 export function getMockFlights(origin: string, destIata: string): MockFlight[] {

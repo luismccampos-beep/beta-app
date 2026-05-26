@@ -33,6 +33,8 @@ Thumbs.db
 .idea/
 .vscode/*
 !.vscode/extensions.json
+__pycache__/
+*.py[cod]
 
 # Prisma (optional local DB dumps)
 *.db
@@ -42,6 +44,8 @@ Thumbs.db
 # Wikivoyage dumps & extracted JSONL (large; keep locally in data/)
 data/*.xml.bz2
 data/wikivoyage/out/
+data/hotels/hotel-index.json
+data/google-hotels/*.json
 src/data/travel-mock/bundle-wikivoyage.json
 src/data/travel-mock/unsplash-cache.json
 public/travel-images/*

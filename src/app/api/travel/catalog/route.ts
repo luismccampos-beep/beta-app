@@ -13,6 +13,8 @@ import {
 } from '../../../../lib/travel/hotelbeds';
 import { getMockCatalogData } from '../../../../lib/travel/mock-travel/catalog';
 import { shouldUseMockHotels } from '../../../../lib/travel/mock-travel/load';
+import { isLiteApiConfigured } from '../../../../lib/travel/liteapi';
+import { isScrapeDoConfigured } from '../../../../lib/travel/scrape-do';
 import { fetchSiloahBrands, SILOAH_DESTINATION_IDS } from '../../../../lib/travel/siloah';
 
 export const dynamic = 'force-dynamic';
@@ -114,7 +116,9 @@ export async function GET(req: Request) {
   return NextResponse.json({
     configured: {
       duffel: Boolean(duffelToken),
+      scrapeDo: isScrapeDoConfigured(),
       hotelbeds: Boolean(hbKey && hbSecret),
+      liteapi: isLiteApiConfigured(),
       mockHotels: Boolean(mockCatalog),
       siloah: cruiseBrandsRes.length > 0,
     },

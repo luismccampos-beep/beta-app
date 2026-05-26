@@ -16,3 +16,7 @@ python-dotenv==1.0.0
 requests==2.31.0
 httpx==0.27.0
 opencv-python==4.8.1.78
+
+# Travel road distances (optional — haversine fallback if missing/unavailable)
+# Linux/Docker: pip install "scgraph>=3.1,<4"
+# Windows may need MSVC; without scgraph, /v1/travel/distance uses haversine only

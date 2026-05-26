@@ -1,3 +1,5 @@
+import type { DestinationMapMarker } from '../../../lib/travel/destination-map';
+
 export type Language = 'en' | 'pt' | 'es' | 'fr';
 
 export type TravelResult = {
@@ -35,6 +37,36 @@ export type TravelResult = {
   };
   /** Wikivoyage or provider attribution URL (CC BY-SA). */
   sourceUrl?: string;
+  /** Página de detalhe: `pt-42`, `en-1203` */
+  destinationSlug?: string;
+  /** Secções do artigo Wikivoyage (resumo, veja, faça, coma). */
+  destinationCard?: {
+    resumo?: string;
+    veja?: string[];
+    faca?: string[];
+    coma?: string[];
+    tags?: string[];
+    dicas?: Record<string, string[]>;
+  };
+  /** Custo de vida (1–5 €, índice NYC=100). */
+  costOfLiving?: {
+    tier: 1 | 2 | 3 | 4 | 5;
+    symbols: string;
+    index?: number;
+    nivel?: string;
+    confianca?: 'alta' | 'media' | 'baixa';
+    estimado?: boolean;
+  };
+  /** Aeroporto mais próximo / IATA do destino (OurAirports offline). */
+  airport?: {
+    iata: string;
+    distanciaKm?: number;
+    hubFrom?: string;
+    indicativePriceEur?: number;
+    directFromOrigin?: boolean;
+  };
+  /** Marcadores OSM (destino, aeroporto, hotéis) para o mini-mapa no card. */
+  mapMarkers?: DestinationMapMarker[];
 };
 
 export const filterOptions = {
