@@ -11,6 +11,10 @@ import {
 } from './load';
 import type { CompactTravelPreferences } from '../preference-match';
 import { rankResultsWithMlAndPreferences } from '../ml-ranking';
+import { buildDestinationSlug } from '../destination-slug';
+import { summarizeCostOfLiving } from '../cost-tier';
+import { summarizeAirport } from '../transport-summary';
+import { resolveMapMarkersForDestination } from '../travel-map-markers';
 import type { MockDestination, MockFlight, MockHotel } from './types';
 
 const CABIN_LABELS: Record<string, string> = {
@@ -117,7 +121,7 @@ function buildResult(input: {
     ? `${hotel.nome} (${hotel.estrelas}★ · ${hotel.preco_por_noite} EUR/noite)`
     : 'Hotéis (dados de demonstração)';
 
-  const desc = dest.descricaoCompleta ?? dest.descricao;
+  const desc = dest.resumo ?? dest.descricaoCompleta ?? dest.descricao;
   const sourceNote =
     dest.wikivoyageUrl != null
       ? 'Conteúdo de destino via Wikivoyage (CC BY-SA 3.0).'
@@ -141,7 +145,13 @@ function buildResult(input: {
     highlights.push(`${Math.round(flight.duracao_minutos / 60)}h ${flight.duracao_minutos % 60}m`);
   }
   if (hotel) highlights.push(`${hotel.estrelas} estrelas`);
-  highlights.push(dest.tipo, dest.clima);
+  const cardVeja = dest.veja?.[0];
+  const cardFaca = dest.faca?.[0];
+  if (cardVeja) highlights.push(cardVeja);
+  else if (cardFaca) highlights.push(cardFaca);
+  else {
+    highlights.push(dest.tipo, dest.clima);
+  }
   if (dest.wikivoyageUrl) highlights.push('Wikivoyage');
 
   const imageUrl =
@@ -164,10 +174,33 @@ function buildResult(input: {
     productType: 'package',
     description: { en: blurb, pt: blurb, es: blurb, fr: blurb },
     highlights: highlights.slice(0, 4),
-    bestFor: [dest.tipo, tripLabel, mode === 'flights' ? 'Só voos' : 'Pacote demo'],
+    bestFor:
+      dest.tags?.length ? [...dest.tags.slice(0, 2), tripLabel] : [dest.tipo, tripLabel, mode === 'flights' ? 'Só voos' : 'Pacote demo'],
     flight: { class: flightLabel },
     accommodation: { type: mode === 'flights' ? 'Sem hotel (demo)' : hotelLabel },
     sourceUrl: dest.wikivoyageUrl,
+    destinationSlug: buildDestinationSlug(dest),
+    destinationCard:
+      dest.resumo ||
+      dest.veja?.length ||
+      dest.faca?.length ||
+      dest.coma?.length ||
+      (dest.dicas && Object.keys(dest.dicas).length > 0)
+        ? {
+            resumo: dest.resumo,
+            veja: dest.veja,
+            faca: dest.faca,
+            coma: dest.coma,
+            tags: dest.tags,
+            dicas: dest.dicas,
+          }
+        : undefined,
+    costOfLiving: summarizeCostOfLiving(dest.custo_de_vida) ?? undefined,
+    airport: summarizeAirport(dest, destIata, origin) ?? undefined,
+    mapMarkers: (() => {
+      const markers = resolveMapMarkersForDestination(dest);
+      return markers.length > 0 ? markers : undefined;
+    })(),
   };
 }
 
@@ -231,6 +264,7 @@ export async function searchMockTravelResults(input: MockSearchInput): Promise<M
     results,
     input.preferences,
     iataHints,
+    input.origin,
   );
   if (!mlUsed) {
     ranked.sort((a, b) => b.aiMatchScore - a.aiMatchScore);

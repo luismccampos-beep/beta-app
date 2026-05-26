@@ -15,6 +15,7 @@ export function toCompactTravelPreferences(p: TravelPreferences): CompactTravelP
         ? [p.budgetRange[0]!, p.budgetRange[1]!]
         : undefined,
     budgetPriority: p.budgetPriority || undefined,
+    dailyBudgetProfile: p.dailyBudgetProfile || undefined,
     sustainabilityLevel: p.sustainabilityLevel || undefined,
     ecoPreferences: p.ecoPreferences?.length ? [...p.ecoPreferences] : undefined,
     accommodationType: p.accommodationType?.length ? [...p.accommodationType] : undefined,

@@ -55,9 +55,13 @@ function checkVar(name) {
 
 const vars = [
   'DUFFEL_ACCESS_TOKEN',
+  'SCRAPE_DO_API_KEY',
+  'SCRAPE_DO_TOKEN',
   'HOTELBEDS_API_KEY',
   'HOTELBEDS_API_SECRET',
   'HOTELBEDS_API_BASE_URL',
+  'LITEAPI_API_KEY',
+  'CRAWLBASE_JS_TOKEN',
 ];
 
 console.log('=== Environment variables ===\n');
@@ -68,6 +72,8 @@ for (const v of vars) {
 }
 
 const duffelToken = process.env.DUFFEL_ACCESS_TOKEN?.trim();
+const scrapeDoToken =
+  process.env.SCRAPE_DO_API_KEY?.trim() || process.env.SCRAPE_DO_TOKEN?.trim();
 const hbKey = process.env.HOTELBEDS_API_KEY?.trim();
 const hbSecret = process.env.HOTELBEDS_API_SECRET?.trim();
 const hbBase =
@@ -76,6 +82,10 @@ const hbBase =
 if (duffelToken) {
   const prefix = duffelToken.startsWith('duffel_') ? 'looks like Duffel token format' : 'unusual prefix (expected duffel_test_ or duffel_live_)';
   console.log(`\nDuffel token: ${prefix}`);
+}
+
+if (scrapeDoToken) {
+  console.log('\nScrape.do: token set (Google Flights fallback when Duffel is missing or has no offers)');
 }
 
 if (hbKey && hbSecret) {
@@ -168,6 +178,31 @@ async function testHotelbedsAll() {
   console.log('  Common fixes: match base URL to key type; Api-key + secret from same Hotelbeds account');
 }
 
+async function testScrapeDo() {
+  if (!scrapeDoToken) {
+    console.log('\n=== Scrape.do API: skipped (no SCRAPE_DO_API_KEY) ===');
+    return;
+  }
+  console.log('\n=== Scrape.do API (auth check) ===');
+  const url = 'https://q.scrape.do/api/v1/jobs?limit=1';
+  try {
+    const res = await fetch(url, {
+      headers: { Accept: 'application/json', 'X-Token': scrapeDoToken },
+    });
+    const text = await res.text();
+    if (res.ok || res.status === 404) {
+      console.log(`✓ async API reachable (${res.status})`);
+    } else if (res.status === 401) {
+      console.log(`✗ unauthorized (${res.status}) — check SCRAPE_DO_API_KEY`);
+    } else {
+      console.log(`? response ${res.status}: ${text.slice(0, 200).replace(/\s+/g, ' ')}`);
+    }
+  } catch (e) {
+    console.log(`✗ network error: ${e instanceof Error ? e.message : e}`);
+  }
+}
+
 await testDuffel();
+await testScrapeDo();
 await testHotelbedsAll();
 console.log('\nDone.');

@@ -1,6 +1,8 @@
 import type { TravelResult } from '../../app/components/data/mockResults';
 import type { MockDestination, MockHotel } from './mock-travel/types';
 
+import type { TravelBudgetProfileId } from './daily-budget-profiles';
+
 /** Subset of travel preferences used for rule-based matching (URL-safe). */
 export type CompactTravelPreferences = {
   travelStyles?: string[];
@@ -10,6 +12,7 @@ export type CompactTravelPreferences = {
   pacePreference?: string;
   budgetRange?: [number, number];
   budgetPriority?: string;
+  dailyBudgetProfile?: TravelBudgetProfileId;
   sustainabilityLevel?: string;
   ecoPreferences?: string[];
   accommodationType?: string[];
@@ -81,6 +84,28 @@ function extractIatasFromLabels(labels: string[]): string[] {
     if (m) out.push(m[1].toUpperCase());
   }
   return out;
+}
+
+function dailyLivingBudgetFit(
+  dest: MockDestination,
+  prefs: CompactTravelPreferences,
+  nights: number,
+): number {
+  const profile = prefs.dailyBudgetProfile ?? 'conforto';
+  const daily = dest.custo_de_vida?.orcamentos?.[profile]?.total_dia;
+  const range = prefs.budgetRange;
+  if (daily == null || !range || range.length < 2) return 0.55;
+
+  const days = Math.max(1, nights);
+  const tripMid = (range[0]! + range[1]!) / 2;
+  const perDayBudget = tripMid / days;
+  const ratio = daily / Math.max(perDayBudget, 1);
+
+  if (ratio <= 0.75) return 1;
+  if (ratio <= 1) return 0.88;
+  if (ratio <= 1.25) return 0.55;
+  if (ratio <= 1.6) return 0.32;
+  return 0.15;
 }
 
 function budgetFit(
@@ -179,16 +204,28 @@ export function scoreDestinationMatch(
   });
 
   weights.push({
+    w: 0.12,
+    s: dailyLivingBudgetFit(dest, prefs, opts?.nights ?? 3),
+  });
+
+  weights.push({
     w: 0.1,
     s: sustainabilityBoost(dest, prefs, opts?.sustainable ?? false),
   });
 
   const priority = prefs.budgetPriority ?? 'balanced';
+  const profile = prefs.dailyBudgetProfile ?? 'conforto';
   if (priority === 'luxury' && (opts?.hotel?.estrelas ?? 0) >= 4) {
     weights.push({ w: 0.06, s: 1 });
   }
-  if (priority === 'maximum-savings' && (opts?.hotel?.preco_por_noite ?? 999) < 100) {
+  if (
+    (priority === 'maximum-savings' || profile === 'mochileiro') &&
+    (opts?.hotel?.preco_por_noite ?? 999) < 100
+  ) {
     weights.push({ w: 0.06, s: 1 });
+  }
+  if (profile === 'luxo' && (opts?.hotel?.estrelas ?? 0) >= 4) {
+    weights.push({ w: 0.05, s: 0.95 });
   }
 
   const totalW = weights.reduce((a, x) => a + x.w, 0) || 1;

@@ -30,6 +30,34 @@ services:
       - redis-data:/data
     command: redis-server --appendonly yes
 
+  # Roteamento local OSM (demo sem API na cloud). Primeira execução: build dos tiles (~minutos).
+  valhalla:
+    image: ghcr.io/gis-ops/docker-valhalla/valhalla:latest
+    container_name: akmleva-valhalla
+    restart: unless-stopped
+    ports:
+      - "8002:8002"
+    volumes:
+      - valhalla-tiles:/custom_files
+    environment:
+      tile_urls: https://download.geofabrik.de/europe/portugal-latest.osm.pbf
+      use_tiles_ignore_pbf: "True"
+      force_rebuild: "False"
+
+  # OpenTripPlanner — transit GTFS (Lisboa / Carris Metropolitana). Build first: npm run otp:build
+  otp:
+    image: opentripplanner/opentripplanner:latest
+    container_name: akmleva-otp
+    restart: unless-stopped
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./data/opentripplanner:/var/opentripplanner
+    environment:
+      JAVA_TOOL_OPTIONS: "-Xmx4g"
+    command: --load --serve
+
 volumes:
   mysql-data:
   redis-data:
+  valhalla-tiles:

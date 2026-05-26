@@ -62,7 +62,6 @@ import {
 import {
   ACCESSIBILITY_IDS,
   ACTIVITY_TYPE_IDS,
-  BUDGET_PRIORITY_IDS,
   CABIN_CLASS_IDS,
   CURRENCY_CODES,
   DIETARY_IDS,
@@ -83,6 +82,11 @@ import {
   CRUISE_TIER_IDS,
   normalizePreferenceOptionIds,
 } from '../../../lib/i18n/preferences-form-options';
+import {
+  PROFILE_TO_BUDGET_PRIORITY,
+  type TravelBudgetProfileId,
+} from '../../../lib/travel/daily-budget-profiles';
+import { TravelBudgetProfileSelector } from '../travel/TravelBudgetProfileSelector';
 
 type Language = 'en' | 'pt' | 'es' | 'fr';
 
@@ -902,6 +906,8 @@ export interface TravelPreferences {
   budgetRange: number[];
   currency: string;
   budgetPriority: string;
+  /** Perfil diário: mochileiro / conforto / luxo (orçamento alimentação+transporte). */
+  dailyBudgetProfile: TravelBudgetProfileId;
   
   // Flight Preferences
   accommodationType: string[];
@@ -964,6 +970,7 @@ export const DEFAULT_TRAVEL_PREFERENCES: TravelPreferences = {
   budgetRange: [5000, 15000],
   currency: 'USD',
   budgetPriority: 'balanced',
+  dailyBudgetProfile: 'conforto',
   accommodationType: [],
   cabinClass: '',
   seatPreference: '',
@@ -1326,7 +1333,7 @@ export function EnhancedTravelPreferencesForm({ onComplete, onBack }: EnhancedTr
   };
 
   return (
-    <div className="w-full max-w-7xl mx-auto p-4 md:p-6 space-y-6">
+    <div className="w-full max-w-7xl mx-auto px-3 sm:px-4 md:px-6 pt-3 sm:pt-4 md:pt-6 pb-28 md:pb-6 space-y-4 sm:space-y-6 overflow-x-hidden">
       {travelCatalogError ? (
         <div className="rounded-lg border border-amber-200 bg-amber-50 dark:bg-amber-950/30 dark:border-amber-800 px-4 py-3 text-sm text-amber-900 dark:text-amber-100">
           <p className="font-medium">{t('catalogPartialBanner')}</p>
@@ -1334,42 +1341,49 @@ export function EnhancedTravelPreferencesForm({ onComplete, onBack }: EnhancedTr
         </div>
       ) : null}
       {/* Header */}
-      <div className="text-center space-y-4 py-8">
-        <div className="flex items-center justify-start">
-          <Button variant="outline" onClick={handleBack} className="gap-2">
+      <div className="text-center space-y-3 sm:space-y-4 py-4 sm:py-8">
+        <div className="flex items-center justify-start w-full">
+          <Button
+            variant="outline"
+            onClick={handleBack}
+            size="sm"
+            className="gap-2 shrink-0 min-h-10"
+            aria-label={t('back')}
+          >
             <ArrowLeft className="w-4 h-4" />
-            {t('back')}
+            <span className="hidden sm:inline">{t('back')}</span>
           </Button>
         </div>
-        <div className="flex items-center justify-center gap-3">
-          <div className="relative">
-            <Brain className="w-12 h-12 text-teal-700" />
-            <Sparkles className="w-5 h-5 text-orange-500 absolute -top-1 -right-1 animate-pulse" />
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-3">
+          <div className="relative shrink-0">
+            <Brain className="w-10 h-10 sm:w-12 sm:h-12 text-teal-700" />
+            <Sparkles className="w-4 h-4 sm:w-5 sm:h-5 text-orange-500 absolute -top-1 -right-1 animate-pulse" />
           </div>
-          <h1 className="text-5xl font-bold bg-gradient-to-r from-teal-700 via-teal-600 to-orange-500 bg-clip-text text-transparent">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold bg-gradient-to-r from-teal-700 via-teal-600 to-orange-500 bg-clip-text text-transparent leading-tight">
             {t('appTitle')}
           </h1>
         </div>
-        <p className="text-xl text-gray-700">
+        <p className="text-base sm:text-xl text-gray-700 px-1">
           {t('appSubtitle')}
         </p>
-        <p className="text-sm text-gray-600 max-w-2xl mx-auto">
+        <p className="text-xs sm:text-sm text-gray-600 max-w-2xl mx-auto px-1">
           {t('appFeatures')}
         </p>
 
         {/* Language Selector */}
-        <div className="flex items-center justify-center gap-2 pt-2">
-          <Languages className="w-4 h-4 text-teal-700" />
-          <div className="inline-flex rounded-lg border border-teal-200 bg-white p-1 shadow-sm">
+        <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-2 pt-2 w-full max-w-md mx-auto">
+          <Languages className="w-4 h-4 text-teal-700 shrink-0 hidden sm:block" />
+          <div className="flex rounded-lg border border-teal-200 bg-white p-1 shadow-sm overflow-x-auto overscroll-x-contain">
             {(['en', 'pt', 'es', 'fr'] as const).map((code) => ({
               code,
               label: t(`options.uiLanguages.${code}`),
             })).map((lang) => (
               <button
                 key={lang.code}
+                type="button"
                 onClick={() => setLocale(lang.code)}
                 className={`
-                  px-3 py-1.5 text-sm font-medium rounded-md transition-all
+                  flex-1 sm:flex-none min-w-[4.5rem] px-2.5 sm:px-3 py-2 text-xs sm:text-sm font-medium rounded-md transition-all whitespace-nowrap
                   ${locale === lang.code
                     ? 'bg-gradient-to-r from-teal-600 to-orange-500 text-white shadow-md'
                     : 'text-gray-600 hover:text-gray-900 hover:bg-gray-50'
@@ -1383,7 +1397,7 @@ export function EnhancedTravelPreferencesForm({ onComplete, onBack }: EnhancedTr
           </div>
         </div>
 
-        <div className="flex items-center justify-center gap-3 flex-wrap">
+        <div className="flex items-center justify-center gap-2 sm:gap-3 flex-wrap px-1">
           <Badge variant="outline" className="gap-1.5 py-1.5 px-3 border-teal-300 text-teal-700">
             <Sparkles className="w-3.5 h-3.5" /> {t('aiEnhanced')}
           </Badge>
@@ -1403,7 +1417,7 @@ export function EnhancedTravelPreferencesForm({ onComplete, onBack }: EnhancedTr
       </div>
 
       {/* AI Intelligence Dashboard */}
-      <div className="grid md:grid-cols-3 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 sm:gap-4">
         <Card className="border-2 border-teal-200 bg-gradient-to-br from-teal-50 to-cyan-50">
           <CardHeader className="pb-3">
             <div className="flex items-center justify-between">
@@ -1451,51 +1465,69 @@ export function EnhancedTravelPreferencesForm({ onComplete, onBack }: EnhancedTr
       </div>
 
       {/* Progress Steps */}
-      <Card className="bg-white shadow-sm">
-        <CardContent className="p-6">
-          <div className="flex justify-between items-center relative mb-2">
-            <div className="absolute top-5 left-0 right-0 h-1 bg-gray-200 -z-10 rounded-full">
-              <div
-                className="h-full bg-gradient-to-r from-teal-600 to-orange-500 transition-all duration-500 rounded-full"
-                style={{ width: `${progress}%` }}
-              />
-            </div>
-            {steps.map((step, index) => {
-              const Icon = step.icon;
-              const isActive = index === currentStep;
-              const isCompleted = index < currentStep;
+      <Card className="bg-white shadow-sm overflow-hidden">
+        <CardContent className="p-4 sm:p-6">
+          <div className="-mx-1 overflow-x-auto overscroll-x-contain pb-1 sm:overflow-visible sm:mx-0">
+            <div className="flex justify-between items-start relative mb-2 min-w-[min(100%,22rem)] sm:min-w-0 px-2 sm:px-0 gap-0.5">
+              <div className="absolute top-4 sm:top-5 left-6 right-6 sm:left-0 sm:right-0 h-0.5 sm:h-1 bg-gray-200 -z-10 rounded-full">
+                <div
+                  className="h-full bg-gradient-to-r from-teal-600 to-orange-500 transition-all duration-500 rounded-full"
+                  style={{ width: `${progress}%` }}
+                />
+              </div>
+              {steps.map((step, index) => {
+                const Icon = step.icon;
+                const isActive = index === currentStep;
+                const isCompleted = index < currentStep;
 
-              return (
-                <button
-                  key={step.id}
-                  onClick={() => setCurrentStep(index)}
-                  className="flex flex-col items-center gap-2 group cursor-pointer"
-                >
-                  <div className={`
-                    w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300 relative
+                return (
+                  <button
+                    key={step.id}
+                    type="button"
+                    onClick={() => setCurrentStep(index)}
+                    className="flex flex-col items-center gap-1 sm:gap-2 group cursor-pointer min-w-[2.75rem] sm:min-w-0 flex-1 sm:flex-none touch-manipulation"
+                    aria-current={isActive ? 'step' : undefined}
+                    aria-label={step.label}
+                  >
+                    <div
+                      className={`
+                    w-8 h-8 sm:w-10 sm:h-10 rounded-full flex items-center justify-center transition-all duration-300 relative shrink-0
                     ${isCompleted ? 'bg-gradient-to-br from-green-500 to-emerald-600 text-white shadow-lg' :
-                      isActive ? 'bg-gradient-to-br from-teal-600 to-orange-500 text-white scale-110 shadow-xl' :
-                      'bg-gray-200 text-gray-400 group-hover:bg-gray-300'}
-                  `}>
-                    {isCompleted ? <Check className="w-5 h-5" /> : <Icon className="w-5 h-5" />}
-                    {isActive && (
-                      <span className="absolute inset-0 rounded-full bg-teal-600 animate-ping opacity-20" />
-                    )}
-                  </div>
-                  <span className={`text-xs whitespace-nowrap hidden md:block ${
-                    isActive ? 'font-semibold text-teal-700' :
-                    isCompleted ? 'font-medium text-green-600' :
-                    'text-gray-500'
-                  }`}>
-                    {step.label}
-                  </span>
-                </button>
-              );
-            })}
+                      isActive ? 'bg-gradient-to-br from-teal-600 to-orange-500 text-white sm:scale-110 shadow-xl' :
+                      'bg-gray-200 text-gray-400 group-hover:bg-gray-300 group-active:bg-gray-300'}
+                  `}
+                    >
+                      {isCompleted ? (
+                        <Check className="w-4 h-4 sm:w-5 sm:h-5" />
+                      ) : (
+                        <Icon className="w-4 h-4 sm:w-5 sm:h-5" />
+                      )}
+                      {isActive && (
+                        <span className="absolute inset-0 rounded-full bg-teal-600 animate-ping opacity-20 hidden sm:block" />
+                      )}
+                    </div>
+                    <span
+                      className={`text-[10px] sm:text-xs leading-tight text-center max-w-[4.5rem] sm:max-w-none sm:whitespace-nowrap hidden sm:block ${
+                        isActive
+                          ? 'font-semibold text-teal-700'
+                          : isCompleted
+                            ? 'font-medium text-green-600'
+                            : 'text-gray-500'
+                      }`}
+                    >
+                      {step.label}
+                    </span>
+                  </button>
+                );
+              })}
+            </div>
           </div>
-          <div className="text-center mt-4">
+          <div className="text-center mt-3 sm:mt-4 px-1">
             <p className="text-sm text-gray-600">
-              {t('stepLabel')} {currentStep + 1} {t('of')} {totalSteps}: <span className="font-semibold text-gray-900">{steps[currentStep].label}</span>
+              {t('stepLabel')} {currentStep + 1} {t('of')} {totalSteps}:{' '}
+              <span className="font-semibold text-gray-900 block sm:inline mt-0.5 sm:mt-0">
+                {steps[currentStep].label}
+              </span>
             </p>
           </div>
         </CardContent>
@@ -1503,12 +1535,12 @@ export function EnhancedTravelPreferencesForm({ onComplete, onBack }: EnhancedTr
 
       {/* Form Content */}
       <Card className="shadow-lg">
-        <CardContent className="p-6 md:p-8">
+        <CardContent className="p-4 sm:p-6 md:p-8">
           {/* Step 0: Profile */}
           {currentStep === 0 && (
             <div className="space-y-6">
               <div className="border-b pb-4">
-                <h3 className="text-2xl font-bold mb-2 flex items-center gap-2">
+                <h3 className="text-xl sm:text-2xl font-bold mb-2 flex flex-wrap items-center gap-2">
                   <Users className="w-6 h-6 text-teal-700" /> {t('personalProfile')}
                 </h3>
                 <p className="text-sm text-gray-600">
@@ -1516,7 +1548,7 @@ export function EnhancedTravelPreferencesForm({ onComplete, onBack }: EnhancedTr
                 </p>
               </div>
 
-              <div className="grid md:grid-cols-2 gap-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
                 <div className="space-y-2">
                   <Label htmlFor="fullName" className="text-sm font-semibold">
                     {t('fullName')} <span className="text-red-500">*</span>
@@ -1639,7 +1671,7 @@ export function EnhancedTravelPreferencesForm({ onComplete, onBack }: EnhancedTr
           {currentStep === 1 && (
             <div className="space-y-6">
               <div className="border-b pb-4">
-                <h3 className="text-2xl font-bold mb-2 flex items-center gap-2">
+                <h3 className="text-xl sm:text-2xl font-bold mb-2 flex flex-wrap items-center gap-2">
                   <Sparkles className="w-6 h-6 text-orange-600" /> {t('travelStylePreferences')}
                 </h3>
                 <p className="text-sm text-gray-600">
@@ -1649,7 +1681,7 @@ export function EnhancedTravelPreferencesForm({ onComplete, onBack }: EnhancedTr
 
               <div className="space-y-4">
                 <Label className="text-base font-semibold">{t('whatsYourTravelStyle')}</Label>
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3 sm:gap-4">
                   {getTravelStylesData(t).map((style) => {
                     const Icon = style.icon;
                     const isSelected = preferences.travelStyles.includes(style.id);
@@ -1659,8 +1691,8 @@ export function EnhancedTravelPreferencesForm({ onComplete, onBack }: EnhancedTr
                         key={style.id}
                         onClick={() => toggleArrayValue('travelStyles', style.id)}
                         className={`
-                          relative overflow-hidden rounded-xl p-4 transition-all duration-300
-                          border-2 hover:scale-105 hover:shadow-xl
+                          relative overflow-hidden rounded-xl p-3 sm:p-4 transition-all duration-300 touch-manipulation
+                          border-2 sm:hover:scale-105 sm:hover:shadow-xl
                           ${isSelected
                             ? 'border-transparent shadow-lg'
                             : 'border-gray-200 bg-white hover:border-gray-300'
@@ -1712,7 +1744,7 @@ export function EnhancedTravelPreferencesForm({ onComplete, onBack }: EnhancedTr
                       : t('catalogAirportsEmpty')}
                   </p>
                 ) : (
-                  <div className="grid grid-cols-2 md:grid-cols-3 gap-3 max-h-72 overflow-y-auto pr-1">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 max-h-60 sm:max-h-72 overflow-y-auto overscroll-y-contain pr-1 -mr-1">
                     {travelCatalog!.airports.map((a) => (
                       <div
                         key={a.iataCode}
@@ -1734,7 +1766,7 @@ export function EnhancedTravelPreferencesForm({ onComplete, onBack }: EnhancedTr
 
               <div className="space-y-3">
                 <Label className="text-base font-semibold">{t('travelPurpose')}</Label>
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3">
                   {getTravelPurposeData(t).map(purpose => {
                     const Icon = purpose.icon;
                     const isSelected = preferences.travelPurpose.includes(purpose.id);
@@ -1765,7 +1797,7 @@ export function EnhancedTravelPreferencesForm({ onComplete, onBack }: EnhancedTr
           {currentStep === 2 && (
             <div className="space-y-6">
               <div className="border-b pb-4">
-                <h3 className="text-2xl font-bold mb-2 flex items-center gap-2">
+                <h3 className="text-xl sm:text-2xl font-bold mb-2 flex flex-wrap items-center gap-2">
                   <Wallet className="w-6 h-6 text-teal-700" /> {t('budgetFinancialPreferences')}
                 </h3>
                 <p className="text-sm text-gray-600">
@@ -1801,29 +1833,42 @@ export function EnhancedTravelPreferencesForm({ onComplete, onBack }: EnhancedTr
                   </Select>
                 </div>
 
+                <TravelBudgetProfileSelector
+                  value={preferences.dailyBudgetProfile}
+                  currency={preferences.currency}
+                  referenceCity={locale === 'pt' ? 'lisbon' : 'london'}
+                  onChange={(profile) => {
+                    setPreferences((prev) => ({
+                      ...prev,
+                      dailyBudgetProfile: profile,
+                      budgetPriority: PROFILE_TO_BUDGET_PRIORITY[profile],
+                    }));
+                  }}
+                />
+
                 <div className="space-y-4">
                   <Label className="text-base font-semibold">{t('budgetRangePerTrip')}</Label>
-                  <div className="bg-gradient-to-br from-green-50 to-blue-50 rounded-xl p-6 space-y-4">
+                  <div className="bg-gradient-to-br from-green-50 to-blue-50 rounded-xl p-4 sm:p-6 space-y-4">
                     <Slider
                       min={1000}
                       max={50000}
                       step={500}
                       value={preferences.budgetRange}
                       onValueChange={(value: number[]) => updatePreference('budgetRange', value)}
-                      className="w-full"
+                      className="w-full touch-none py-2"
                     />
-                    <div className="flex justify-between items-center">
-                      <div className="text-center bg-white rounded-lg px-4 py-3 shadow-sm">
+                    <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-3">
+                      <div className="flex-1 text-center bg-white rounded-lg px-3 sm:px-4 py-3 shadow-sm">
                         <p className="text-xs text-gray-600 mb-1">{t('minimum')}</p>
-                        <p className="text-xl font-bold text-green-600">
+                        <p className="text-lg sm:text-xl font-bold text-green-600 break-all">
                           {CURRENCY_SYMBOLS[preferences.currency] ?? '$'}
                           {preferences.budgetRange[0].toLocaleString()}
                         </p>
                       </div>
-                      <ChevronRight className="w-5 h-5 text-gray-400" />
-                      <div className="text-center bg-white rounded-lg px-4 py-3 shadow-sm">
+                      <ChevronRight className="w-5 h-5 text-gray-400 hidden sm:block shrink-0" />
+                      <div className="flex-1 text-center bg-white rounded-lg px-3 sm:px-4 py-3 shadow-sm">
                         <p className="text-xs text-gray-600 mb-1">{t('maximum')}</p>
-                        <p className="text-xl font-bold text-blue-600">
+                        <p className="text-lg sm:text-xl font-bold text-blue-600 break-all">
                           {CURRENCY_SYMBOLS[preferences.currency] ?? '$'}
                           {preferences.budgetRange[1].toLocaleString()}
                         </p>
@@ -1838,25 +1883,9 @@ export function EnhancedTravelPreferencesForm({ onComplete, onBack }: EnhancedTr
                 </div>
 
                 <div className="space-y-3">
-                  <Label htmlFor="budgetPriority" className="text-base font-semibold">{t('budgetPriority')}</Label>
-                  <Select value={preferences.budgetPriority} onValueChange={(value: string) => updatePreference('budgetPriority', value)}>
-                    <SelectTrigger className="h-11">
-                      <SelectValue placeholder={t('budgetPriorityQuestion')} />
-                    </SelectTrigger>
-                    <SelectContent>
-                      {BUDGET_PRIORITY_IDS.map((id) => (
-                        <SelectItem key={id} value={id}>
-                          {t(`options.budgetPriority.${id}`)}
-                        </SelectItem>
-                      ))}
-                    </SelectContent>
-                  </Select>
-                </div>
-
-                <div className="space-y-3">
                   <Label htmlFor="cabinClass" className="text-base font-semibold">{t('preferredFlightCabin')}</Label>
                   <p className="text-xs text-gray-500">{t('cabinDuffelNote')}</p>
-                  <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3">
                     {(travelCatalog?.duffelCabinClasses?.length
                       ? travelCatalog.duffelCabinClasses
                       : CABIN_CLASS_IDS.map((value) => ({ value, label: '' }))
@@ -1889,7 +1918,7 @@ export function EnhancedTravelPreferencesForm({ onComplete, onBack }: EnhancedTr
           {currentStep === 3 && (
             <div className="space-y-6">
               <div className="border-b pb-4">
-                <h3 className="text-2xl font-bold mb-2 flex items-center gap-2">
+                <h3 className="text-xl sm:text-2xl font-bold mb-2 flex flex-wrap items-center gap-2">
                   <Heart className="w-6 h-6 text-pink-600" /> {t('flightAccommodationPreferences')}
                 </h3>
                 <p className="text-sm text-gray-600">
@@ -1898,23 +1927,23 @@ export function EnhancedTravelPreferencesForm({ onComplete, onBack }: EnhancedTr
               </div>
 
               <Tabs defaultValue="flight" className="w-full">
-                <TabsList className="grid w-full grid-cols-3 h-12">
-                  <TabsTrigger value="flight" className="gap-2">
-                    <Plane className="w-4 h-4" />
-                    {t('flightPreferences')}
+                <TabsList className="flex flex-col h-auto w-full gap-1 p-1 sm:grid sm:grid-cols-3 sm:h-12">
+                  <TabsTrigger value="flight" className="gap-2 justify-start sm:justify-center min-h-11 text-xs sm:text-sm px-2">
+                    <Plane className="w-4 h-4 shrink-0" />
+                    <span className="truncate">{t('flightPreferences')}</span>
                   </TabsTrigger>
-                  <TabsTrigger value="accommodation" className="gap-2">
-                    <Hotel className="w-4 h-4" />
-                    {t('accommodation')}
+                  <TabsTrigger value="accommodation" className="gap-2 justify-start sm:justify-center min-h-11 text-xs sm:text-sm px-2">
+                    <Hotel className="w-4 h-4 shrink-0" />
+                    <span className="truncate">{t('accommodation')}</span>
                   </TabsTrigger>
-                  <TabsTrigger value="cruise" className="gap-2">
-                    <Ship className="w-4 h-4" />
-                    {t('cruisePreferences')}
+                  <TabsTrigger value="cruise" className="gap-2 justify-start sm:justify-center min-h-11 text-xs sm:text-sm px-2">
+                    <Ship className="w-4 h-4 shrink-0" />
+                    <span className="truncate">{t('cruisePreferences')}</span>
                   </TabsTrigger>
                 </TabsList>
 
                 <TabsContent value="flight" className="space-y-6 mt-6">
-                  <div className="grid md:grid-cols-2 gap-6">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
                     <div className="space-y-3">
                       <Label htmlFor="seatPreference" className="text-base font-semibold">{t('seatPreference')}</Label>
                       <Select value={preferences.seatPreference} onValueChange={(value: string) => updatePreference('seatPreference', value)}>
@@ -1992,7 +2021,7 @@ export function EnhancedTravelPreferencesForm({ onComplete, onBack }: EnhancedTr
                           : t('catalogHotelbedsEmpty')}
                       </p>
                     ) : (
-                      <div className="grid grid-cols-2 md:grid-cols-3 gap-3 max-h-64 overflow-y-auto pr-1">
+                      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 max-h-64 overflow-y-auto overscroll-y-contain pr-1">
                         {travelCatalog!.accommodations.map((type) => (
                           <div
                             key={type.code}
@@ -2040,7 +2069,7 @@ export function EnhancedTravelPreferencesForm({ onComplete, onBack }: EnhancedTr
                           : t('catalogHotelbedsEmpty')}
                       </p>
                     ) : (
-                      <div className="grid grid-cols-2 md:grid-cols-3 gap-3 max-h-64 overflow-y-auto pr-1">
+                      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 max-h-64 overflow-y-auto overscroll-y-contain pr-1">
                         {travelCatalog!.facilities.map((amenity) => (
                           <div
                             key={amenity.code}
@@ -2071,7 +2100,7 @@ export function EnhancedTravelPreferencesForm({ onComplete, onBack }: EnhancedTr
                           : t('catalogHotelbedsEmpty')}
                       </p>
                     ) : (
-                      <div className="grid grid-cols-2 md:grid-cols-3 gap-3 max-h-64 overflow-y-auto pr-1">
+                      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 max-h-64 overflow-y-auto overscroll-y-contain pr-1">
                         {travelCatalog!.chains.map((chain) => (
                           <div
                             key={chain.code}
@@ -2093,12 +2122,13 @@ export function EnhancedTravelPreferencesForm({ onComplete, onBack }: EnhancedTr
                 </TabsContent>
 
                 <TabsContent value="cruise" className="space-y-6 mt-6">
-                  <div className="flex items-center justify-between rounded-lg border border-teal-100 bg-teal-50/50 p-4">
-                    <div>
+                  <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between rounded-lg border border-teal-100 bg-teal-50/50 p-4">
+                    <div className="flex-1 min-w-0">
                       <Label className="text-base font-semibold">{t('cruiseIncludeToggle')}</Label>
                       <p className="text-sm text-gray-600 mt-1">{t('cruiseIncludeHint')}</p>
                     </div>
                     <Switch
+                      className="shrink-0 self-start sm:self-center"
                       checked={preferences.cruiseEnabled}
                       onCheckedChange={(v) => updatePreference('cruiseEnabled', Boolean(v))}
                     />
@@ -2110,7 +2140,7 @@ export function EnhancedTravelPreferencesForm({ onComplete, onBack }: EnhancedTr
                     <>
                       <div className="space-y-3">
                         <Label className="text-base font-semibold">{t('cruiseRegions')}</Label>
-                        <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
+                        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
                           {CRUISE_DESTINATION_IDS.map((id) => (
                             <div
                               key={id}
@@ -2129,7 +2159,7 @@ export function EnhancedTravelPreferencesForm({ onComplete, onBack }: EnhancedTr
                         </div>
                       </div>
 
-                      <div className="grid md:grid-cols-2 gap-6">
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
                         <div className="space-y-3">
                           <Label className="text-base font-semibold">{t('cruiseTier')}</Label>
                           <Select
@@ -2201,7 +2231,7 @@ export function EnhancedTravelPreferencesForm({ onComplete, onBack }: EnhancedTr
                               : t('catalogSiloahEmpty')}
                           </p>
                         ) : (
-                          <div className="grid grid-cols-2 md:grid-cols-3 gap-3 max-h-64 overflow-y-auto pr-1">
+                          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 max-h-64 overflow-y-auto overscroll-y-contain pr-1">
                             {travelCatalog!.cruiseBrands!.map((brand) => (
                               <div
                                 key={brand.name}
@@ -2234,7 +2264,7 @@ export function EnhancedTravelPreferencesForm({ onComplete, onBack }: EnhancedTr
           {currentStep === 4 && (
             <div className="space-y-6">
               <div className="border-b pb-4">
-                <h3 className="text-2xl font-bold mb-2 flex items-center gap-2">
+                <h3 className="text-xl sm:text-2xl font-bold mb-2 flex flex-wrap items-center gap-2">
                   <Palmtree className="w-6 h-6 text-green-600" /> {t('activitiesExperiences')}
                 </h3>
                 <p className="text-sm text-gray-600">
@@ -2244,7 +2274,7 @@ export function EnhancedTravelPreferencesForm({ onComplete, onBack }: EnhancedTr
 
               <div className="space-y-4">
                 <Label className="text-base font-semibold">{t('preferredActivities')}</Label>
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3 sm:gap-4">
                   {getActivityTypesData(t).map((activity) => {
                     const Icon = activity.icon;
                     const isSelected = preferences.activityTypes.includes(activity.id);
@@ -2254,7 +2284,7 @@ export function EnhancedTravelPreferencesForm({ onComplete, onBack }: EnhancedTr
                         key={activity.id}
                         onClick={() => toggleArrayValue('activityTypes', activity.id)}
                         className={`
-                          p-4 rounded-lg border-2 transition-all hover:scale-105
+                          p-3 sm:p-4 rounded-lg border-2 transition-all sm:hover:scale-105 touch-manipulation
                           ${isSelected 
                             ? 'border-green-600 bg-green-50 shadow-lg' 
                             : 'border-gray-200 bg-white hover:border-gray-300'
@@ -2292,7 +2322,7 @@ export function EnhancedTravelPreferencesForm({ onComplete, onBack }: EnhancedTr
 
               <div className="space-y-3">
                 <Label className="text-base font-semibold">{t('experienceTypes')}</Label>
-                <div className="grid grid-cols-2 gap-3">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                   {EXPERIENCE_TYPE_IDS.map((id) => (
                     <div key={id} className="flex items-center space-x-2 bg-gray-50 rounded-lg p-3 hover:bg-gray-100 transition-colors">
                       <Checkbox
@@ -2313,7 +2343,7 @@ export function EnhancedTravelPreferencesForm({ onComplete, onBack }: EnhancedTr
                   <Globe className="w-5 h-5" />
                   {t('languagesYouSpeak')}
                 </Label>
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3">
                   {LANGUAGE_IDS.map((langId) => {
                     const isSelected = preferences.languages.some((l) => l.language === langId);
 
@@ -2355,7 +2385,7 @@ export function EnhancedTravelPreferencesForm({ onComplete, onBack }: EnhancedTr
           {currentStep === 5 && (
             <div className="space-y-6">
               <div className="border-b pb-4">
-                <h3 className="text-2xl font-bold mb-2 flex items-center gap-2">
+                <h3 className="text-xl sm:text-2xl font-bold mb-2 flex flex-wrap items-center gap-2">
                   <Shield className="w-6 h-6 text-red-600" /> {t('specialRequirementsNeeds')}
                 </h3>
                 <p className="text-sm text-gray-600">
@@ -2366,7 +2396,7 @@ export function EnhancedTravelPreferencesForm({ onComplete, onBack }: EnhancedTr
               <div className="space-y-6">
                 <div className="space-y-3">
                   <Label className="text-base font-semibold">{t('dietaryRestrictions')}</Label>
-                  <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3">
                     {DIETARY_IDS.map((id) => (
                       <div key={id} className="flex items-center space-x-2 bg-gray-50 rounded-lg p-3 hover:bg-gray-100 transition-colors">
                         <Checkbox
@@ -2384,7 +2414,7 @@ export function EnhancedTravelPreferencesForm({ onComplete, onBack }: EnhancedTr
 
                 <div className="space-y-3">
                   <Label className="text-base font-semibold">{t('accessibilityRequirements')}</Label>
-                  <div className="grid grid-cols-2 gap-3">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                     {ACCESSIBILITY_IDS.map((id) => (
                       <div key={id} className="flex items-center space-x-2 bg-gray-50 rounded-lg p-3 hover:bg-gray-100 transition-colors">
                         <Checkbox
@@ -2442,7 +2472,7 @@ export function EnhancedTravelPreferencesForm({ onComplete, onBack }: EnhancedTr
 
                     <div className="space-y-3">
                       <Label className="text-base font-semibold">{t('ecoPreferences')}</Label>
-                      <div className="grid grid-cols-2 gap-3">
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                         {ECO_PREFERENCE_IDS.map((id) => (
                           <div key={id} className="flex items-center space-x-2 bg-white rounded-lg p-3 hover:bg-green-50 transition-colors">
                             <Checkbox
@@ -2458,9 +2488,9 @@ export function EnhancedTravelPreferencesForm({ onComplete, onBack }: EnhancedTr
                       </div>
                     </div>
 
-                    <div className="flex items-center justify-between bg-white rounded-lg p-4">
-                      <div className="space-y-0.5">
-                        <Label htmlFor="carbonOffset" className="font-semibold">{t('automaticCarbonOffset')}</Label>
+                  <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between bg-white rounded-lg p-4">
+                    <div className="space-y-0.5 flex-1 min-w-0">
+                      <Label htmlFor="carbonOffset" className="font-semibold">{t('automaticCarbonOffset')}</Label>
                         <p className="text-xs text-gray-600">{t('offsetCO2Flights')}</p>
                       </div>
                       <Switch
@@ -2479,7 +2509,7 @@ export function EnhancedTravelPreferencesForm({ onComplete, onBack }: EnhancedTr
           {currentStep === 6 && (
             <div className="space-y-6">
               <div className="border-b pb-4">
-                <h3 className="text-2xl font-bold mb-2 flex items-center gap-2">
+                <h3 className="text-xl sm:text-2xl font-bold mb-2 flex flex-wrap items-center gap-2">
                   <Zap className="w-6 h-6 text-yellow-600" /> {t('advancedSettingsAI')}
                 </h3>
                 <p className="text-sm text-gray-600">
@@ -2631,49 +2661,96 @@ export function EnhancedTravelPreferencesForm({ onComplete, onBack }: EnhancedTr
             </div>
           )}
 
-          {/* Navigation Buttons */}
-          <div className="flex justify-between mt-8 pt-6 border-t">
-            <Button
-              variant="outline"
-              onClick={() => setCurrentStep(prev => Math.max(0, prev - 1))}
-              disabled={currentStep === 0}
-              size="lg"
-              className="gap-2"
-            >
-              ← {t('previous')}
-            </Button>
-
-            {currentStep < totalSteps - 1 ? (
+          {/* Navigation — sticky no telemóvel */}
+          <div className="mt-6 sm:mt-8 pt-4 sm:pt-6 border-t md:border-t">
+            <div className="hidden md:flex justify-between gap-4">
               <Button
-                onClick={() => setCurrentStep(prev => Math.min(totalSteps - 1, prev + 1))}
+                variant="outline"
+                onClick={() => setCurrentStep((prev) => Math.max(0, prev - 1))}
+                disabled={currentStep === 0}
                 size="lg"
-                className="gap-2 bg-gradient-to-r from-teal-600 to-orange-500 hover:from-teal-700 hover:to-orange-600"
+                className="gap-2 min-h-11"
               >
-                {t('nextStep')} →
+                ← {t('previous')}
               </Button>
-            ) : (
-              <Button
-                onClick={handleSubmit}
-                disabled={isProcessing}
-                size="lg"
-                className="gap-2 bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700"
-              >
-                {isProcessing ? (
-                  <>
-                    <Brain className="w-5 h-5 animate-pulse" />
-                    {t('processingWithAI')}
-                  </>
-                ) : (
-                  <>
-                    <Check className="w-5 h-5" />
-                    {t('completeProfile')}
-                  </>
-                )}
-              </Button>
-            )}
+              {currentStep < totalSteps - 1 ? (
+                <Button
+                  onClick={() => setCurrentStep((prev) => Math.min(totalSteps - 1, prev + 1))}
+                  size="lg"
+                  className="gap-2 min-h-11 bg-gradient-to-r from-teal-600 to-orange-500 hover:from-teal-700 hover:to-orange-600"
+                >
+                  {t('nextStep')} →
+                </Button>
+              ) : (
+                <Button
+                  onClick={handleSubmit}
+                  disabled={isProcessing}
+                  size="lg"
+                  className="gap-2 min-h-11 bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700"
+                >
+                  {isProcessing ? (
+                    <>
+                      <Brain className="w-5 h-5 animate-pulse" />
+                      {t('processingWithAI')}
+                    </>
+                  ) : (
+                    <>
+                      <Check className="w-5 h-5" />
+                      {t('completeProfile')}
+                    </>
+                  )}
+                </Button>
+              )}
+            </div>
           </div>
         </CardContent>
       </Card>
+
+      <div
+        className="fixed bottom-0 left-0 right-0 z-50 border-t border-gray-200 bg-white/95 backdrop-blur-md p-3 pb-[max(0.75rem,env(safe-area-inset-bottom))] shadow-[0_-4px_20px_rgba(0,0,0,0.08)] md:hidden"
+        role="navigation"
+        aria-label={t('stepLabel')}
+      >
+        <div className="flex flex-col-reverse gap-2 max-w-7xl mx-auto">
+          {currentStep < totalSteps - 1 ? (
+            <Button
+              onClick={() => setCurrentStep((prev) => Math.min(totalSteps - 1, prev + 1))}
+              size="lg"
+              className="w-full min-h-12 gap-2 bg-gradient-to-r from-teal-600 to-orange-500"
+            >
+              {t('nextStep')} →
+            </Button>
+          ) : (
+            <Button
+              onClick={handleSubmit}
+              disabled={isProcessing}
+              size="lg"
+              className="w-full min-h-12 gap-2 bg-gradient-to-r from-green-600 to-emerald-600"
+            >
+              {isProcessing ? (
+                <>
+                  <Brain className="w-5 h-5 animate-pulse" />
+                  {t('processingWithAI')}
+                </>
+              ) : (
+                <>
+                  <Check className="w-5 h-5" />
+                  {t('completeProfile')}
+                </>
+              )}
+            </Button>
+          )}
+          <Button
+            variant="outline"
+            onClick={() => setCurrentStep((prev) => Math.max(0, prev - 1))}
+            disabled={currentStep === 0}
+            size="lg"
+            className="w-full min-h-11 gap-2"
+          >
+            ← {t('previous')}
+          </Button>
+        </div>
+      </div>
 
       {/* AI Insights Panel */}
       <Card className="border-2 border-teal-300 bg-gradient-to-br from-teal-50 via-cyan-50 to-orange-50 shadow-xl">
@@ -2687,7 +2764,7 @@ export function EnhancedTravelPreferencesForm({ onComplete, onBack }: EnhancedTr
           </CardDescription>
         </CardHeader>
         <CardContent>
-          <div className="grid md:grid-cols-4 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4">
             <div className="bg-white rounded-lg p-4 shadow-sm">
               <p className="text-sm text-gray-600 mb-1">{t('travelerType.label')}</p>
               <p className="font-bold text-lg text-teal-900">{getTravelerType()}</p>
@@ -2735,7 +2812,7 @@ export function EnhancedTravelPreferencesForm({ onComplete, onBack }: EnhancedTr
       </Card>
 
       {/* Trust Indicators */}
-      <div className="flex items-center justify-center gap-8 flex-wrap text-sm text-gray-600">
+      <div className="flex items-center justify-center gap-4 sm:gap-8 flex-wrap text-xs sm:text-sm text-gray-600 px-2">
         <div className="flex items-center gap-2">
           <Shield className="w-4 h-4 text-green-600" />
           <span>SOC 2 Certified</span>

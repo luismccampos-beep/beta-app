@@ -24,7 +24,14 @@ except ImportError as e:
     unified_router = None
     recommendations_router = None
     chat_router = None
+    travel_ranking_router = None
     ADVANCED_ROUTES_AVAILABLE = False
+
+try:
+    from .travel_distance import router as travel_distance_router
+except ImportError as e:
+    print(f"Travel distance routes not available: {e}")
+    travel_distance_router = None
 
 # Import router de predictions (sempre deve existir)
 try:
@@ -58,6 +65,8 @@ if ADVANCED_ROUTES_AVAILABLE:
         api_router.include_router(unified_router)
     if travel_ranking_router:
         api_router.include_router(travel_ranking_router)
+    if travel_distance_router:
+        api_router.include_router(travel_distance_router)
 
 # Export para compatibilidade
 __all__ = [

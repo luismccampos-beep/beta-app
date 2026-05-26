@@ -33,9 +33,15 @@ import {
   Sun,
   DollarSign,
   Users,
-  Calendar
+  Calendar,
+  LogOut,
 } from 'lucide-react';
 import { filterOptions, TravelResult } from '../data/mockResults';
+import { DestinationResultCard } from '../travel/DestinationResultCard';
+import { DestinationAirportBadge } from '../travel/DestinationAirportBadge';
+import { RecommendationsSection } from '../travel/RecommendationsSection';
+import { destinationDetailPath } from '../../../lib/travel/destination-path';
+import { orderTipSectionsForProfile } from '../../../lib/travel/destination-tips';
 import {
   decodeTravelPreferencesCompact,
   encodeTravelPreferencesCompact,
@@ -201,10 +207,17 @@ interface ResultsPageProps {
 export function ResultsPage({ onBackToHome, onLogout, onNavigateToLegal, onNavigateToDashboard }: ResultsPageProps) {
   const locale = useLocale();
   const t = useTranslations('results');
+  const tDest = useTranslations('destination');
   const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
   const resultsQuery = useMemo(() => searchParams.toString(), [searchParams]);
+  const travelPrefs = useMemo(
+    () =>
+      decodeTravelPreferencesCompact(searchParams.get('prefs')) ??
+      readStoredTravelPreferences(),
+    [searchParams],
+  );
 
   const patchSearchParams = useCallback(
     (updates: Record<string, string | null | undefined>) => {
@@ -218,10 +231,26 @@ export function ResultsPage({ onBackToHome, onLogout, onNavigateToLegal, onNavig
     [pathname, router, searchParams],
   );
 
+  const handleFocusLiveSearch = useCallback(
+    (iata: string) => {
+      patchSearchParams({ destinations: iata.toUpperCase(), mode: 'both' });
+      requestAnimationFrame(() => {
+        document.getElementById('live-offers')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+    },
+    [patchSearchParams],
+  );
+
   const tripType = (searchParams.get('tripType') ?? 'oneway').toLowerCase() === 'roundtrip' ? 'roundtrip' : 'oneway';
   const mode = (searchParams.get('mode') ?? 'both').toLowerCase();
   const nightsParam = Math.min(30, Math.max(1, parseInt(searchParams.get('nights') ?? '3', 10) || 3));
+  const adultsParam = Math.min(9, Math.max(1, parseInt(searchParams.get('adults') ?? '1', 10) || 1));
+  const originParam =
+    searchParams.get('origin')?.trim().toUpperCase() ||
+    process.env.NEXT_PUBLIC_DEFAULT_ORIGIN_IATA?.trim().toUpperCase() ||
+    'LIS';
   const departureParam = searchParams.get('departure')?.trim() || defaultDepartureIso(21);
+  const isCruiseMode = mode === 'cruises' || mode === 'cruise';
   const defaultReturn = addDaysIso(departureParam, nightsParam);
   const returnParam = searchParams.get('return')?.trim() || defaultReturn;
 
@@ -380,16 +409,16 @@ export function ResultsPage({ onBackToHome, onLogout, onNavigateToLegal, onNavig
     <div className="min-h-screen bg-gradient-to-br from-gray-50 via-teal-50 to-orange-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 transition-colors">
       {/* Header */}
       <header className="sticky top-0 bg-white/80 dark:bg-gray-900/80 backdrop-blur-md border-b border-gray-200 dark:border-gray-700 z-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
-          <div className="flex items-center justify-between">
+        <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-3 sm:py-4">
+          <div className="flex items-center justify-between gap-2">
             <button
               onClick={onNavigateToDashboard || onBackToHome}
-              className="text-2xl font-bold bg-gradient-to-r from-teal-700 via-teal-600 to-orange-500 bg-clip-text text-transparent hover:opacity-80 transition-opacity"
+              className="text-xl sm:text-2xl font-bold bg-gradient-to-r from-teal-700 via-teal-600 to-orange-500 bg-clip-text text-transparent hover:opacity-80 transition-opacity shrink-0"
             >
               AKMLEVA
             </button>
 
-            <div className="flex items-center gap-4">
+            <div className="flex items-center gap-2 sm:gap-4 min-w-0">
               {/* Theme Toggle */}
               <button
                 onClick={() => setIsDark(!isDark)}
@@ -399,9 +428,9 @@ export function ResultsPage({ onBackToHome, onLogout, onNavigateToLegal, onNavig
               </button>
 
               {/* Language Selector */}
-              <div className="flex items-center gap-2">
-                <Languages className="w-4 h-4 text-teal-700 dark:text-teal-400" />
-                <div className="inline-flex rounded-lg border border-teal-200 dark:border-gray-600 bg-white dark:bg-gray-800 p-1 shadow-sm">
+              <div className="flex items-center gap-1 sm:gap-2 min-w-0">
+                <Languages className="w-4 h-4 text-teal-700 dark:text-teal-400 hidden sm:block shrink-0" />
+                <div className="inline-flex rounded-lg border border-teal-200 dark:border-gray-600 bg-white dark:bg-gray-800 p-0.5 sm:p-1 shadow-sm overflow-x-auto max-w-[9.5rem] sm:max-w-none">
                   {[
                     { code: 'en', label: '🇺🇸' },
                     { code: 'pt', label: '🇵🇹' },
@@ -411,7 +440,7 @@ export function ResultsPage({ onBackToHome, onLogout, onNavigateToLegal, onNavig
                     <button
                       key={lang.code}
                       onClick={() => setLocale(lang.code)}
-                      className={`px-3 py-1.5 text-sm font-medium rounded-md transition-all ${
+                      className={`px-2 sm:px-3 py-1.5 text-sm font-medium rounded-md transition-all shrink-0 touch-manipulation ${
                         locale === lang.code
                           ? 'bg-gradient-to-r from-teal-600 to-orange-500 text-white shadow-md'
                           : 'text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700'
@@ -423,8 +452,15 @@ export function ResultsPage({ onBackToHome, onLogout, onNavigateToLegal, onNavig
                 </div>
               </div>
 
-              <Button variant="outline" onClick={onLogout} className="gap-2 text-red-600 dark:text-red-400 border-red-300 dark:border-gray-600">
-                {t('logout')}
+              <Button
+                variant="outline"
+                onClick={onLogout}
+                size="sm"
+                className="gap-2 text-red-600 dark:text-red-400 border-red-300 dark:border-gray-600 shrink-0 min-h-10 px-2.5 sm:px-4"
+                aria-label={t('logout')}
+              >
+                <LogOut className="w-4 h-4 sm:hidden" />
+                <span className="hidden sm:inline">{t('logout')}</span>
               </Button>
             </div>
           </div>
@@ -432,18 +468,18 @@ export function ResultsPage({ onBackToHome, onLogout, onNavigateToLegal, onNavig
       </header>
 
       {/* Hero Section */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="text-center space-y-4 mb-8">
+      <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-6 sm:py-12 overflow-x-hidden">
+        <div className="text-center space-y-3 sm:space-y-4 mb-6 sm:mb-8">
           <div className="inline-flex items-center gap-2 bg-white dark:bg-gray-800 border border-teal-200 dark:border-gray-600 rounded-full px-4 py-2 shadow-sm">
             <Sparkles className="w-4 h-4 text-orange-500 animate-pulse" />
             <span className="text-sm font-medium text-teal-900 dark:text-teal-300">{t('aiPoweredResults')}</span>
           </div>
 
-          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white">
+          <h1 className="text-2xl sm:text-4xl md:text-5xl font-bold text-gray-900 dark:text-white leading-tight px-1">
             {t('title')}
           </h1>
 
-          <p className="text-xl text-gray-600 dark:text-gray-300">
+          <p className="text-base sm:text-xl text-gray-600 dark:text-gray-300 px-1">
             {t('subtitle')}
           </p>
 
@@ -456,13 +492,24 @@ export function ResultsPage({ onBackToHome, onLogout, onNavigateToLegal, onNavig
           )}
         </div>
 
+        <RecommendationsSection
+          preferences={travelPrefs}
+          nights={nightsParam}
+          travelers={adultsParam}
+          originIata={originParam}
+          resultsQuery={resultsQuery}
+          locale={locale}
+          onFocusLiveSearch={handleFocusLiveSearch}
+          enabled={!isCruiseMode && !!travelPrefs}
+        />
+
         <Card className="mb-8 border-2 border-teal-100 dark:border-gray-700 dark:bg-gray-800/90 shadow-md">
           <CardHeader className="pb-2">
             <CardTitle className="text-lg dark:text-white">{t('searchOptionsTitle')}</CardTitle>
             <CardDescription>{t('searchOptionsDesc')}</CardDescription>
           </CardHeader>
           <CardContent>
-            <div className="grid sm:grid-cols-2 lg:grid-cols-5 gap-4 items-end">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 items-end">
               <div className="space-y-2">
                 <Label className="text-sm dark:text-gray-300">{t('tripType')}</Label>
                 <Select
@@ -536,8 +583,8 @@ export function ResultsPage({ onBackToHome, onLogout, onNavigateToLegal, onNavig
         </Card>
 
         {/* Filters and Sort */}
-        <div className="flex flex-col md:flex-row gap-4 items-start md:items-center justify-between mb-8">
-          <div className="flex gap-2 flex-wrap">
+        <div className="flex flex-col md:flex-row gap-3 sm:gap-4 items-stretch md:items-center justify-between mb-6 sm:mb-8">
+          <div className="flex gap-2 flex-wrap w-full md:w-auto">
             <Button
               variant="outline"
               onClick={() => setShowFilters(!showFilters)}
@@ -560,10 +607,10 @@ export function ResultsPage({ onBackToHome, onLogout, onNavigateToLegal, onNavig
             )}
           </div>
 
-          <div className="flex items-center gap-2">
-            <span className="text-sm text-gray-600 dark:text-gray-400">{t('sortBy')}:</span>
+          <div className="flex flex-col sm:flex-row sm:items-center gap-2 w-full md:w-auto">
+            <span className="text-sm text-gray-600 dark:text-gray-400 shrink-0">{t('sortBy')}:</span>
             <Select value={sortBy} onValueChange={setSortBy}>
-              <SelectTrigger className="w-[200px] dark:bg-gray-800 dark:border-gray-600">
+              <SelectTrigger className="w-full sm:w-[200px] dark:bg-gray-800 dark:border-gray-600 min-h-10">
                 <SelectValue />
               </SelectTrigger>
               <SelectContent>
@@ -656,15 +703,61 @@ export function ResultsPage({ onBackToHome, onLogout, onNavigateToLegal, onNavig
           </Card>
         )}
 
+        <div id="live-offers" className="mb-5 sm:mb-6 scroll-mt-[4.5rem] sm:scroll-mt-24 pt-2 border-t border-teal-100/80 dark:border-gray-700/80">
+          <h2 className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white">{t('liveOffersTitle')}</h2>
+          <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-400 mt-1">{t('liveOffersSubtitle')}</p>
+        </div>
+
         {/* Results Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
           {resultsLoading && (
             <div className="col-span-full text-center py-16 text-gray-600 dark:text-gray-400">
               {(mode === 'cruises' || mode === 'cruise') ? t('loadingCruiseResults') : t('loadingLiveResults')}
             </div>
           )}
           {!resultsLoading &&
-            filteredResults.map((result) => (
+            filteredResults.map((result) => {
+            const prefsQ = searchParams.get('prefs');
+            const detailHref = result.destinationSlug
+              ? `${destinationDetailPath(result.destinationSlug, locale)}?rq=${encodeURIComponent(resultsQuery)}${prefsQ ? `&prefs=${encodeURIComponent(prefsQ)}` : ''}`
+              : null;
+            const tipKeys = orderTipSectionsForProfile(
+              result.destinationCard?.dicas,
+              travelPrefs,
+            ).slice(0, 2);
+            const tipPreviews = tipKeys
+              .map((key) => {
+                const tip = result.destinationCard?.dicas?.[key]?.[0];
+                if (!tip) return null;
+                return { label: tDest(key), text: tip };
+              })
+              .filter(Boolean) as { label: string; text: string }[];
+            const cardLabels = {
+              aiMatch: t('aiMatch'),
+              matchExplain: t('matchExplain'),
+              sustainable: t('sustainable'),
+              reviews: t('reviews'),
+              days: t('days'),
+              cardSummary: t('cardSummary'),
+              cardSee: t('cardSee'),
+              cardDo: t('cardDo'),
+              highlights: t('highlights'),
+              perPerson: t('perPerson'),
+              viewDestination: t('viewDestination'),
+              from: t('from'),
+            };
+            if (detailHref) {
+              return (
+                <DestinationResultCard
+                  key={result.id}
+                  result={result}
+                  href={detailHref}
+                  labels={cardLabels}
+                  tipPreviews={tipPreviews}
+                />
+              );
+            }
+            return (
             <Card key={result.id} className="border-2 border-gray-200 dark:border-gray-700 hover:border-teal-300 dark:hover:border-teal-600 transition-all hover:shadow-2xl group overflow-hidden dark:bg-gray-800">
               {/* Image */}
               <div className="relative h-56 overflow-hidden">
@@ -673,7 +766,8 @@ export function ResultsPage({ onBackToHome, onLogout, onNavigateToLegal, onNavig
                   alt={result.destination}
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                 />
-                <div className="absolute top-3 right-3 flex gap-2">
+                <div className="absolute top-3 right-3 flex flex-wrap gap-2 justify-end max-w-[70%]">
+                  {result.airport && <DestinationAirportBadge airport={result.airport} />}
                   <Badge
                     className="bg-gradient-to-r from-teal-600 to-orange-500 text-white border-0"
                     title={t('matchExplain')}
@@ -706,23 +800,77 @@ export function ResultsPage({ onBackToHome, onLogout, onNavigateToLegal, onNavig
                   </button>
                 </div>
 
-                <div className="flex items-center gap-4 pt-2">
+                <div className="flex flex-wrap items-center gap-x-4 gap-y-1 pt-2">
                   <div className="flex items-center gap-1">
-                    <Star className="w-4 h-4 fill-yellow-500 text-yellow-500" />
+                    <Star className="w-4 h-4 fill-yellow-500 text-yellow-500 shrink-0" />
                     <span className="font-bold dark:text-white">{result.rating}</span>
                     <span className="text-sm text-gray-500 dark:text-gray-400">({result.reviews} {t('reviews')})</span>
                   </div>
                   <div className="flex items-center gap-1 text-sm text-gray-600 dark:text-gray-400">
-                    <Clock className="w-4 h-4" />
+                    <Clock className="w-4 h-4 shrink-0" />
                     {result.duration} {t('days')}
                   </div>
                 </div>
               </CardHeader>
 
               <CardContent className="space-y-4">
-                <p className="text-sm text-gray-600 dark:text-gray-300 line-clamp-2">
-                  {result.description[(locale as keyof typeof result.description) ?? 'en'] ?? result.description.en}
-                </p>
+                {result.destinationCard?.resumo ? (
+                  <div className="space-y-3 text-sm text-gray-600 dark:text-gray-300">
+                    <div>
+                      <p className="text-xs font-semibold text-gray-700 dark:text-gray-300 mb-1">
+                        {t('cardSummary')}
+                      </p>
+                      <p className="line-clamp-3">{result.destinationCard.resumo}</p>
+                    </div>
+                    {result.destinationCard.veja && result.destinationCard.veja.length > 0 && (
+                      <div>
+                        <p className="text-xs font-semibold text-gray-700 dark:text-gray-300 mb-1">
+                          {t('cardSee')}
+                        </p>
+                        <ul className="list-disc list-inside space-y-0.5 text-xs">
+                          {result.destinationCard.veja.map((item) => (
+                            <li key={item} className="line-clamp-1">
+                              {item}
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    )}
+                    {result.destinationCard.faca && result.destinationCard.faca.length > 0 && (
+                      <div>
+                        <p className="text-xs font-semibold text-gray-700 dark:text-gray-300 mb-1">
+                          {t('cardDo')}
+                        </p>
+                        <ul className="list-disc list-inside space-y-0.5 text-xs">
+                          {result.destinationCard.faca.map((item) => (
+                            <li key={item} className="line-clamp-1">
+                              {item}
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    )}
+                    {result.destinationCard.coma && result.destinationCard.coma.length > 0 && (
+                      <div>
+                        <p className="text-xs font-semibold text-gray-700 dark:text-gray-300 mb-1">
+                          {t('cardEat')}
+                        </p>
+                        <ul className="list-disc list-inside space-y-0.5 text-xs">
+                          {result.destinationCard.coma.map((item) => (
+                            <li key={item} className="line-clamp-1">
+                              {item}
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    )}
+                  </div>
+                ) : (
+                  <p className="text-sm text-gray-600 dark:text-gray-300 line-clamp-2">
+                    {result.description[(locale as keyof typeof result.description) ?? 'en'] ??
+                      result.description.en}
+                  </p>
+                )}
 
                 {/* Highlights */}
                 <div className="space-y-2">
@@ -747,17 +895,17 @@ export function ResultsPage({ onBackToHome, onLogout, onNavigateToLegal, onNavig
 
                 {/* Price & CTA */}
                 <div className="pt-4 border-t dark:border-gray-700">
-                  <div className="flex items-end justify-between mb-3">
+                  <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-3 mb-3">
                     <div>
                       <p className="text-xs text-gray-500 dark:text-gray-400">From</p>
-                      <div className="flex items-baseline gap-1">
-                        <span className="text-3xl font-bold text-teal-700 dark:text-teal-400">
+                      <div className="flex flex-wrap items-baseline gap-1">
+                        <span className="text-2xl sm:text-3xl font-bold text-teal-700 dark:text-teal-400 tabular-nums">
                           {(result.priceCurrency ?? 'EUR')} {result.price.toLocaleString()}
                         </span>
                         <span className="text-sm text-gray-500 dark:text-gray-400">{t('perPerson')}</span>
                       </div>
                     </div>
-                    <div className="text-right text-xs text-gray-500 dark:text-gray-400">
+                    <div className="text-left sm:text-right text-xs text-gray-500 dark:text-gray-400">
                       {result.productType === 'cruise' && result.cruise ? (
                         <>
                           <div className="flex items-center justify-end gap-1 mb-1">
@@ -784,30 +932,30 @@ export function ResultsPage({ onBackToHome, onLogout, onNavigateToLegal, onNavig
                     </div>
                   </div>
 
-                  <div className="grid grid-cols-2 gap-2">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                     {result.cruise?.link ? (
-                      <Button variant="outline" asChild className="gap-2 dark:border-gray-600 dark:text-gray-300">
+                      <Button variant="outline" asChild className="gap-2 min-h-11 w-full dark:border-gray-600 dark:text-gray-300 touch-manipulation">
                         <a href={result.cruise.link} target="_blank" rel="noopener noreferrer">
                           {t('viewOnSiloah')}
                           <ExternalLink className="w-4 h-4" />
                         </a>
                       </Button>
                     ) : result.sourceUrl ? (
-                      <Button variant="outline" asChild className="gap-2 dark:border-gray-600 dark:text-gray-300">
+                      <Button variant="outline" asChild className="gap-2 min-h-11 w-full dark:border-gray-600 dark:text-gray-300 touch-manipulation">
                         <a href={result.sourceUrl} target="_blank" rel="noopener noreferrer">
-                          {t('viewOnWikivoyage')}
+                          {result.destinationCard ? t('viewFullArticle') : t('viewOnWikivoyage')}
                           <ExternalLink className="w-4 h-4" />
                         </a>
                       </Button>
                     ) : (
-                      <Button variant="outline" className="gap-2 dark:border-gray-600 dark:text-gray-300">
+                      <Button variant="outline" className="gap-2 min-h-11 w-full dark:border-gray-600 dark:text-gray-300 touch-manipulation">
                         {t('viewDetails')}
                       </Button>
                     )}
                     {result.cruise?.link ? (
                       <Button
                         asChild
-                        className="gap-2 bg-gradient-to-r from-teal-600 to-orange-500 hover:from-teal-700 hover:to-orange-600"
+                        className="gap-2 min-h-11 w-full bg-gradient-to-r from-teal-600 to-orange-500 hover:from-teal-700 hover:to-orange-600 touch-manipulation"
                       >
                         <a href={result.cruise.link} target="_blank" rel="noopener noreferrer">
                           {t('bookNow')}
@@ -815,7 +963,7 @@ export function ResultsPage({ onBackToHome, onLogout, onNavigateToLegal, onNavig
                         </a>
                       </Button>
                     ) : (
-                      <Button className="gap-2 bg-gradient-to-r from-teal-600 to-orange-500 hover:from-teal-700 hover:to-orange-600">
+                      <Button className="gap-2 min-h-11 w-full bg-gradient-to-r from-teal-600 to-orange-500 hover:from-teal-700 hover:to-orange-600 touch-manipulation">
                         {t('bookNow')}
                         <ArrowRight className="w-4 h-4" />
                       </Button>
@@ -824,7 +972,8 @@ export function ResultsPage({ onBackToHome, onLogout, onNavigateToLegal, onNavig
                 </div>
               </CardContent>
             </Card>
-          ))}
+            );
+          })}
         </div>
 
         {/* Empty State */}

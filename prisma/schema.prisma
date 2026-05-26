@@ -4331,5 +4331,160 @@ model ResponsePrediction {
 }
 
 // ============================================
+// WIKIVOYAGE TRAVEL CATALOG (demo / API interna)
+// ============================================
+
+/// Destino Wikivoyage (bundle importado)
+model WvDestination {
+  id                Int      @id
+  slug              String   @unique @db.VarChar(32)
+  lang              String   @default("pt") @db.VarChar(8)
+  nome              String   @db.VarChar(255)
+  pais              String   @db.VarChar(120)
+  paisCode          String   @map("pais_code") @db.VarChar(8)
+  continente        String?  @db.VarChar(80)
+  iata              String?  @db.VarChar(8)
+  tipo              String?  @db.VarChar(40)
+  clima             String?  @db.VarChar(40)
+  descricao         String?  @db.Text
+  descricaoCompleta String?  @map("descricao_completa") @db.Text
+  resumo            String?  @db.Text
+  veja              Json?    @db.JsonB
+  faca              Json?    @db.JsonB
+  coma              Json?    @db.JsonB
+  dicas             Json?    @db.JsonB
+  tags              Json?    @db.JsonB
+  wikivoyageUrl     String?  @map("wikivoyage_url") @db.VarChar(500)
+  wikipediaResumo   String?  @map("wikipedia_resumo") @db.Text
+  wikipediaUrl      String?  @map("wikipedia_url") @db.VarChar(500)
+  climaTempo        Json?    @map("clima_tempo") @db.JsonB
+  custoDeVida       Json?    @map("custo_de_vida") @db.JsonB
+  transporte        Json?    @db.JsonB
+  latitude          Float?   @db.Real
+  longitude         Float?   @db.Real
+  imagemUrl         String?  @map("imagem_url") @db.VarChar(500)
+  imagemQuery       String?  @map("imagem_query") @db.VarChar(255)
+  hotelCount        Int      @default(0) @map("hotel_count")
+  createdAt         DateTime @default(now()) @map("created_at")
+  updatedAt         DateTime @updatedAt @map("updated_at")
+
+  hotels   WvHotel[]
+  flights  WvFlight[]
+  listings WvListing[]
+
+  @@index([pais, nome])
+  @@index([lang, nome])
+  @@index([iata])
+  @@map("wv_destinations")
+}
+
+model WvHotel {
+  id            Int      @id
+  destinoId     Int      @map("destino_id")
+  nome          String   @db.VarChar(300)
+  estrelas      Int      @default(3)
+  precoPorNoite Int      @map("preco_por_noite")
+  comodidades   Json     @default("[]") @db.JsonB
+  fonte         String?  @db.VarChar(40)
+  latitude      Float?   @db.Real
+  longitude     Float?   @db.Real
+  description   String?  @db.Text
+  imageUrl      String?  @map("image_url") @db.Text
+  googlePlaceId String?  @map("google_place_id") @db.VarChar(128)
+  wikidataId    String?  @map("wikidata_id") @db.VarChar(32)
+  createdAt     DateTime @default(now()) @map("created_at")
+
+  destino  WvDestination   @relation(fields: [destinoId], references: [id], onDelete: Cascade)
+  reviews  WvHotelReview[]
+
+  @@index([destinoId])
+  @@index([latitude, longitude])
+  @@map("wv_hotels")
+}
+
+/// Avaliações MVP (utilizadores da app; sem stars OSM centralizados).
+model WvHotelReview {
+  id         String   @id @default(cuid())
+  hotelId    Int      @map("hotel_id")
+  rating     Int
+  comment    String?  @db.Text
+  authorName String?  @map("author_name") @db.VarChar(120)
+  createdAt  DateTime @default(now()) @map("created_at")
+
+  hotel WvHotel @relation(fields: [hotelId], references: [id], onDelete: Cascade)
+
+  @@index([hotelId, createdAt])
+  @@map("wv_hotel_reviews")
+}
+
+model WvFlight {
+  id              Int      @id
+  origem          String   @db.VarChar(8)
+  destinoId       Int      @map("destino_id")
+  destinoIata     String?  @map("destino_iata") @db.VarChar(8)
+  preco           Int
+  duracaoMinutos  Int      @map("duracao_minutos")
+  companhia       String   @db.VarChar(120)
+  cabinClass      String   @default("economy") @map("cabin_class") @db.VarChar(32)
+  escalas         Int      @default(0)
+  createdAt       DateTime @default(now()) @map("created_at")
+
+  destino WvDestination @relation(fields: [destinoId], references: [id], onDelete: Cascade)
+
+  @@index([origem, destinoId])
+  @@index([destinoIata])
+  @@map("wv_flights")
+}
+
+/// Listagens Wikivoyage (sleep, eat, see, …)
+model WvListing {
+  id        String   @id @default(cuid())
+  destinoId Int?     @map("destino_id")
+  article   String   @db.VarChar(255)
+  type      String   @db.VarChar(32)
+  title     String   @db.Text
+  address   String?  @db.Text
+  price     String?  @db.Text
+  latitude  Float?   @db.Real
+  longitude Float?   @db.Real
+  url       String?  @db.Text
+  payload   Json?    @db.JsonB
+  createdAt DateTime @default(now()) @map("created_at")
+
+  destino WvDestination? @relation(fields: [destinoId], references: [id], onDelete: SetNull)
+
+  @@index([destinoId, type])
+  @@index([article, type])
+  @@map("wv_listings")
+}
+
+/// Custo de vida por cidade (CSV Numbeo/Kaggle)
+model ColCity {
+  id        String   @id @default(cuid())
+  city      String   @db.VarChar(200)
+  country   String   @db.VarChar(120)
+  cityKey   String   @unique @map("city_key") @db.VarChar(255)
+  indices   Json     @db.JsonB
+  budgets   Json?    @db.JsonB
+  rawPrices Json?    @map("raw_prices") @db.JsonB
+  createdAt DateTime @default(now()) @map("created_at")
+
+  @@index([country, city])
+  @@map("col_cities")
+}
+
+/// Índice de custo de vida por país
+model ColCountryIndex {
+  id        String   @id @default(cuid())
+  country   String   @unique @db.VarChar(120)
+  colIndex  Float    @map("col_index") @db.Real
+  rentIndex Float?   @map("rent_index") @db.Real
+  payload   Json?    @db.JsonB
+  createdAt DateTime @default(now()) @map("created_at")
+
+  @@map("col_country_indices")
+}
+
+// ============================================
 // END OF SCHEMA
 // ============================================

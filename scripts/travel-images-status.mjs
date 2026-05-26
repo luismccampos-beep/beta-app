@@ -29,6 +29,29 @@ function countLocalInBundle(destinos) {
   return destinos.filter((d) => d.imagem_url?.startsWith('/travel-images/')).length;
 }
 
+function duplicateStats(destinos) {
+  const byUrl = new Map();
+  for (const d of destinos) {
+    if (isGenericPlaceholderImage(d.imagem_url)) continue;
+    const u = d.imagem_url;
+    if (!byUrl.has(u)) byUrl.set(u, []);
+    byUrl.get(u).push(d);
+  }
+  const shared = [...byUrl.values()].filter((list) => list.length > 1);
+  const destsWithDupUrl = shared.reduce((n, list) => n + list.length, 0);
+  const withPhoto = destinos.length - destinos.filter((d) => isGenericPlaceholderImage(d.imagem_url)).length;
+  return {
+    withPhoto,
+    destsWithDupUrl,
+    sharedUrlCount: shared.length,
+    pct: withPhoto ? ((100 * destsWithDupUrl) / withPhoto).toFixed(1) : '0',
+  };
+}
+
+function filterInternacional(destinos) {
+  return destinos.filter((d) => d.pais === 'Internacional');
+}
+
 function main() {
   const path = existsSync(BUNDLE_WV) ? BUNDLE_WV : BUNDLE_FAKER;
   if (!existsSync(path)) {
@@ -52,6 +75,18 @@ function main() {
   console.log(`📁 URLs locais (/travel-images/): ${localPaths} no bundle`);
   console.log(`🗂️  Ficheiros em public/travel-images/: ${cachedFiles}`);
   console.log(`🗃️  Cache URL (unsplash-cache.json): ${loadCacheKeys()} entradas`);
+
+  const dup = duplicateStats(destinos);
+  const intl = filterInternacional(destinos);
+  const intlDup = duplicateStats(intl);
+  console.log('');
+  console.log(`🔁 Fotos repetidas (URL partilhada por 2+ destinos):`);
+  console.log(`   Global: ${dup.destsWithDupUrl} / ${dup.withPhoto} com foto (~${dup.pct}%) — ${dup.sharedUrlCount} URLs distintas repetidas`);
+  console.log(
+    `   pais=Internacional: ${intlDup.destsWithDupUrl} / ${intlDup.withPhoto} com foto (~${intlDup.pct}%) — ${intl.length} destinos totais nessa categoria`,
+  );
+  console.log('');
+  console.log('   Corrigir repetidas (URL única): npm run travel:images:dedupe');
 }
 
 main();

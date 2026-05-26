@@ -3,22 +3,24 @@ import { NextResponse } from 'next/server';
 import type { TravelResult } from '../../../components/data/mockResults';
 import { addDaysIso, defaultDepartureIso } from '../../../../lib/travel/buildResultsQuery';
 import { continentFromCountryCode } from '../../../../lib/travel/continent';
-import {
-  fetchDuffelAirportByIata,
-  fetchDuffelCheapestOfferForSlice,
-  fetchDuffelCheapestOfferForSlices,
-} from '../../../../lib/travel/duffel';
+import { fetchDuffelAirportByIata } from '../../../../lib/travel/duffel';
+import { fetchLiveCheapestFlight } from '../../../../lib/travel/live-flights';
 import { hotelbedsMinHotelRateByGeo } from '../../../../lib/travel/hotelbeds';
+import { buildDestinationSlug } from '../../../../lib/travel/destination-slug';
+import { summarizeAirport } from '../../../../lib/travel/transport-summary';
+import { getScrapeDoToken } from '../../../../lib/travel/scrape-do';
 import {
   getMockDestinationByIata,
   getMockHotelsForDestination,
   getTravelDemoStats,
   isTravelMockEnabled,
+  resolveDestinationImageUrl,
   shouldUseMockFlights,
   shouldUseMockHotels,
 } from '../../../../lib/travel/mock-travel/load';
 import { rankResultsWithMlAndPreferences } from '../../../../lib/travel/ml-ranking';
 import { searchMockTravelResults } from '../../../../lib/travel/mock-travel/search';
+import { resolveMapMarkersForDestination } from '../../../../lib/travel/travel-map-markers';
 import { decodeTravelPreferencesCompact } from '../../../../lib/travel/travel-preferences-query';
 
 export const dynamic = 'force-dynamic';
@@ -128,12 +130,15 @@ async function buildHotelOnlyResult(input: {
 
   const blurb = `Hotel-only stay in ${city} (${input.departureDate} → ${checkOut}) via Hotelbeds geo search.`;
 
+  const mockDestHotel = getMockDestinationByIata(input.dest);
+
   const result: TravelResult = {
     id: `hotel-only-${input.dest}-${input.departureDate}-${input.nights}`,
     destination: city,
     country: country || '—',
     continent,
-    imageUrl: GENERIC_IMAGE,
+    imageUrl: mockDestHotel ? resolveDestinationImageUrl(mockDestHotel) : GENERIC_IMAGE,
+    destinationSlug: mockDestHotel ? buildDestinationSlug(mockDestHotel) : undefined,
     aiMatchScore: scoreFromPrice(hotelMin.minRate),
     rating: 4.4,
     reviews: 80,
@@ -146,13 +151,20 @@ async function buildHotelOnlyResult(input: {
     bestFor: ['Hotel stay', 'Hotel-only mode'],
     flight: { class: '—' },
     accommodation: { type: hotelMin.hotelName ? `From ${hotelMin.hotelName}` : 'Hotels (Hotelbeds)' },
+    airport: summarizeAirport(mockDestHotel, input.dest) ?? { iata: input.dest.toUpperCase() },
+    mapMarkers: mockDestHotel
+      ? (() => {
+          const m = resolveMapMarkersForDestination(mockDestHotel);
+          return m.length > 0 ? m : undefined;
+        })()
+      : undefined,
   };
 
   return { result };
 }
 
 async function buildPackageOrFlightResult(input: {
-  token: string;
+  duffelToken?: string;
   origin: string;
   dest: string;
   departureDate: string;
@@ -169,49 +181,33 @@ async function buildPackageOrFlightResult(input: {
   const checkOut = addDaysIso(input.departureDate, input.nights);
   const includeHotels = input.mode === 'both';
 
-  let flight: Awaited<ReturnType<typeof fetchDuffelCheapestOfferForSlice>> = null;
-  try {
-    if (input.tripType === 'roundtrip') {
-      flight = await fetchDuffelCheapestOfferForSlices(input.token, {
-        slices: [
-          {
-            origin: input.origin,
-            destination: input.dest,
-            departure_date: input.departureDate,
-          },
-          {
-            origin: input.dest,
-            destination: input.origin,
-            departure_date: input.returnDate,
-          },
-        ],
-        cabinClass: input.cabinClass,
-        adults: input.adults,
-      });
-    } else {
-      flight = await fetchDuffelCheapestOfferForSlice(input.token, {
-        originIata: input.origin,
-        destinationIata: input.dest,
-        departureDate: input.departureDate,
-        cabinClass: input.cabinClass,
-        adults: input.adults,
-      });
-    }
-  } catch (e: unknown) {
-    return {
-      result: null,
-      error: e instanceof Error ? e.message : 'Duffel search failed',
-    };
-  }
+  const { flight, provider, error } = await fetchLiveCheapestFlight({
+    origin: input.origin,
+    dest: input.dest,
+    departureDate: input.departureDate,
+    returnDate: input.returnDate,
+    tripType: input.tripType,
+    cabinClass: input.cabinClass,
+    adults: input.adults,
+    duffelToken: input.duffelToken,
+  });
 
   if (!flight) {
-    return { result: null, error: 'No Duffel offers for this route/date' };
+    return { result: null, error: error ?? 'No flight offers for this route/date' };
   }
 
-  const destAp = await fetchDuffelAirportByIata(input.token, input.dest);
-  const city = destAp?.cityName ?? destAp?.name ?? input.dest;
-  const country = destAp?.iataCountryCode ?? '';
+  const providerLabel = provider === 'scrape.do' ? 'Google Flights (Scrape.do)' : 'Duffel';
+
+  const mockDestLive = getMockDestinationByIata(input.dest);
+  const destAp = input.duffelToken
+    ? await fetchDuffelAirportByIata(input.duffelToken, input.dest)
+    : null;
+  const city = destAp?.cityName ?? destAp?.name ?? mockDestLive?.nome ?? input.dest;
+  const country = destAp?.iataCountryCode ?? mockDestLive?.pais ?? '';
   const continent = continentFromCountryCode(country);
+
+  const destLat = destAp?.latitude ?? mockDestLive?.latitude;
+  const destLon = destAp?.longitude ?? mockDestLive?.longitude;
 
   let hotelMin: Awaited<ReturnType<typeof hotelbedsMinHotelRateByGeo>> = null;
   let hotelError: string | null = null;
@@ -220,17 +216,17 @@ async function buildPackageOrFlightResult(input: {
     includeHotels &&
     input.hbKey &&
     input.hbSecret &&
-    destAp?.latitude != null &&
-    destAp?.longitude != null &&
-    Number.isFinite(destAp.latitude) &&
-    Number.isFinite(destAp.longitude)
+    destLat != null &&
+    destLon != null &&
+    Number.isFinite(destLat) &&
+    Number.isFinite(destLon)
   ) {
     try {
       hotelMin = await hotelbedsMinHotelRateByGeo(input.hbBase, input.hbKey, input.hbSecret, {
         checkIn: input.departureDate,
         checkOut,
-        latitude: destAp.latitude,
-        longitude: destAp.longitude,
+        latitude: destLat,
+        longitude: destLon,
         adults: input.adults,
         rooms: 1,
         radiusKm: 15,
@@ -280,8 +276,8 @@ async function buildPackageOrFlightResult(input: {
   const tripLabel = input.tripType === 'roundtrip' ? 'Round-trip' : 'One-way';
   const blurb =
     input.tripType === 'roundtrip'
-      ? `Duffel ${tripLabel.toLowerCase()} ${input.origin} ↔ ${input.dest}, outbound ${input.departureDate}, return ${input.returnDate}. ${includeHotels ? 'Hotelbeds stay priced when currency matches flight.' : ''}`.trim()
-      : `Duffel one-way flight ${input.origin} → ${input.dest} (${input.departureDate}). ${includeHotels ? 'Hotelbeds hotel rate included when currencies match.' : ''}`.trim();
+      ? `${providerLabel} ${tripLabel.toLowerCase()} ${input.origin} ↔ ${input.dest}, outbound ${input.departureDate}, return ${input.returnDate}. ${includeHotels ? 'Hotelbeds stay priced when currency matches flight.' : ''}`.trim()
+      : `${providerLabel} one-way flight ${input.origin} → ${input.dest} (${input.departureDate}). ${includeHotels ? 'Hotelbeds hotel rate included when currencies match.' : ''}`.trim();
 
   const highlights = [
     tripLabel,
@@ -295,7 +291,8 @@ async function buildPackageOrFlightResult(input: {
     destination: city,
     country: country || '—',
     continent,
-    imageUrl: GENERIC_IMAGE,
+    imageUrl: mockDestLive ? resolveDestinationImageUrl(mockDestLive) : GENERIC_IMAGE,
+    destinationSlug: mockDestLive ? buildDestinationSlug(mockDestLive) : undefined,
     aiMatchScore: scoreFromPrice(totalPrice),
     rating: hotelMin && input.mode !== 'flights' ? 4.5 : 4.2,
     reviews: hotelMin && input.mode !== 'flights' ? 120 : 40,
@@ -313,10 +310,35 @@ async function buildPackageOrFlightResult(input: {
     bestFor: [
       flight.cabinLabel,
       input.tripType === 'roundtrip' ? 'Round-trip' : 'One-way',
-      input.mode === 'flights' ? 'Flights only' : 'Duffel + Hotelbeds',
+      input.mode === 'flights' ? 'Flights only' : `${providerLabel} + Hotelbeds`,
     ],
     flight: { class: flight.cabinLabel },
     accommodation: { type: accommodationLabel },
+    sourceUrl: mockDestLive?.wikivoyageUrl,
+    airport:
+      summarizeAirport(mockDestLive, input.dest) ?? { iata: input.dest.toUpperCase() },
+    mapMarkers: mockDestLive
+      ? (() => {
+          const m = resolveMapMarkersForDestination(mockDestLive);
+          return m.length > 0 ? m : undefined;
+        })()
+      : undefined,
+    destinationCard:
+      mockDestLive &&
+      (      mockDestLive.resumo ||
+        mockDestLive.veja?.length ||
+        mockDestLive.faca?.length ||
+        mockDestLive.coma?.length ||
+        (mockDestLive.dicas && Object.keys(mockDestLive.dicas).length > 0))
+        ? {
+            resumo: mockDestLive.resumo,
+            veja: mockDestLive.veja,
+            faca: mockDestLive.faca,
+            coma: mockDestLive.coma,
+            tags: mockDestLive.tags,
+            dicas: mockDestLive.dicas,
+          }
+        : undefined,
   };
 
   return { result };
@@ -328,6 +350,7 @@ export async function GET(req: Request) {
   const tripType = parseTripType(url.searchParams.get('tripType'));
 
   const duffelToken = process.env.DUFFEL_ACCESS_TOKEN?.trim();
+  const scrapeDoToken = getScrapeDoToken();
   const hbKey = process.env.HOTELBEDS_API_KEY?.trim();
   const hbSecret = process.env.HOTELBEDS_API_SECRET?.trim();
   const hbBase =
@@ -335,14 +358,15 @@ export async function GET(req: Request) {
 
   const needsFlights = mode === 'both' || mode === 'flights';
   const needsHotels = mode === 'both' || mode === 'hotels';
-  const mockFlights = shouldUseMockFlights(duffelToken);
+  const mockFlights = shouldUseMockFlights(duffelToken, scrapeDoToken);
   const mockHotels = shouldUseMockHotels(hbKey, hbSecret);
 
-  if (needsFlights && !duffelToken && !mockFlights) {
+  if (needsFlights && !duffelToken && !scrapeDoToken && !mockFlights) {
     return NextResponse.json(
       {
         ok: false,
-        message: 'Duffel is not configured (DUFFEL_ACCESS_TOKEN). Set TRAVEL_USE_MOCK_DATA=true for demo data.',
+        message:
+          'No flight provider configured (DUFFEL_ACCESS_TOKEN or SCRAPE_DO_API_KEY). Set TRAVEL_USE_MOCK_DATA=true for demo data.',
         results: [] as TravelResult[],
         errors: [],
       },
@@ -394,7 +418,11 @@ export async function GET(req: Request) {
 
   const useFullMock =
     isTravelMockEnabled() ||
-    (needsFlights && !duffelToken && mockFlights && (!needsHotels || (!hbKey && mockHotels)));
+    (needsFlights &&
+      !duffelToken &&
+      !scrapeDoToken &&
+      mockFlights &&
+      (!needsHotels || (!hbKey && mockHotels)));
 
   if (useFullMock && (needsHotels || needsFlights)) {
     const mock = await searchMockTravelResults({
@@ -430,6 +458,7 @@ export async function GET(req: Request) {
         demoCounts: demo ?? undefined,
         hotelbeds: false,
         duffel: false,
+        scrapeDo: false,
       },
     });
   }
@@ -470,9 +499,9 @@ export async function GET(req: Request) {
       continue;
     }
 
-    if (needsFlights && duffelToken) {
+    if (needsFlights && (duffelToken || scrapeDoToken)) {
       const { result, error } = await buildPackageOrFlightResult({
-        token: duffelToken,
+        duffelToken,
         origin,
         dest,
         departureDate,
@@ -493,10 +522,12 @@ export async function GET(req: Request) {
 
   let ranked = results;
   let mlUsed = false;
+  let roadDistanceUsed = false;
   if (travelPrefs && results.length > 0) {
-    const blended = await rankResultsWithMlAndPreferences(results, travelPrefs);
+    const blended = await rankResultsWithMlAndPreferences(results, travelPrefs, undefined, origin);
     ranked = blended.results;
     mlUsed = blended.mlUsed;
+    roadDistanceUsed = blended.roadDistanceUsed;
   }
 
   return NextResponse.json({
@@ -515,7 +546,10 @@ export async function GET(req: Request) {
       mode,
       preferenceMatch: Boolean(travelPrefs),
       mlRanking: mlUsed,
+      roadDistanceRanking: roadDistanceUsed,
       hotelbeds: Boolean(hbKey && hbSecret),
+      duffel: Boolean(duffelToken),
+      scrapeDo: Boolean(scrapeDoToken),
       mock: false,
     },
   });

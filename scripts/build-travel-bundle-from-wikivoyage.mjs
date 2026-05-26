@@ -12,6 +12,9 @@ import { createInterface } from 'node:readline';
 import { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
+import { buildDestinationCard, excerptResumo } from './lib/wikivoyage-card.mjs';
+import { inferCountryFromDestination } from './lib/city-country-lookup.mjs';
+
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = resolve(__dirname, '..');
 const WV_OUT = resolve(ROOT, 'data/wikivoyage/out');
@@ -269,12 +272,8 @@ function excerpt(text, max = 420) {
   return (last > 80 ? cut.slice(0, last + 1) : cut).trim() + (clean.length > max ? '…' : '');
 }
 
-function inferCountry(text, lang) {
-  for (const h of COUNTRY_HINTS) {
-    if (h.re.test(text)) return { name: h.name, code: h.code, continent: h.continent };
-  }
-  if (lang === 'pt') return { name: 'Portugal', code: 'PT', continent: 'Europa' };
-  return { name: 'Internacional', code: 'XX', continent: 'Europa' };
+function inferCountry(title, text, lang) {
+  return inferCountryFromDestination(title, text, lang);
 }
 
 function inferTipo(text) {
@@ -372,12 +371,16 @@ function buildBundle(articles, lang) {
   for (const art of limited) {
     const title = art.title.trim();
     const text = art.text ?? '';
-    const country = inferCountry(text, lang);
+    const country = inferCountry(title, text, lang);
     const iata = lookupIata(title);
     const listings = art.listings ?? [];
 
     destId += 1;
     const slug = title.replace(/\s+/g, '-').replace(/[^a-zA-Z0-9-]/g, '');
+    const tipo = inferTipo(text);
+    const clima = inferClima(text);
+    const card = buildDestinationCard({ text, title, tipo, clima, lang: art.lang ?? lang });
+
     destinos.push({
       id: destId,
       nome: title,
@@ -385,10 +388,16 @@ function buildBundle(articles, lang) {
       paisCode: country.code,
       iata,
       continente: country.continent,
-      tipo: inferTipo(text),
-      clima: inferClima(text),
-      descricao: excerpt(text),
-      descricaoCompleta: excerpt(text, 1200),
+      tipo,
+      clima,
+      descricao: card.resumo ?? excerpt(text),
+      descricaoCompleta: excerptResumo(text, 1200) || excerpt(text, 1200),
+      resumo: card.resumo,
+      veja: card.veja,
+      faca: card.faca,
+      coma: card.coma,
+      tags: card.tags,
+      dicas: card.dicas,
       imagem_url: `https://images.unsplash.com/photo-1469854523086-cc02afe5c88?auto=format&fit=crop&w=1200&q=70&sig=${destId}`,
       imagem_query: `${title},${country.name},travel`,
       wikivoyageUrl: art.url,

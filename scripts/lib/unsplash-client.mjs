@@ -74,7 +74,34 @@ export function simplifyForSearch(text) {
     .trim();
 }
 
+/** Wikivoyage titles like "Barcelona/Eixample" → leaf + parent for search. */
+export function parseDestinationTitleParts(nome) {
+  const parts = simplifyForSearch(nome)
+    .split('/')
+    .map((p) => p.trim())
+    .filter(Boolean);
+  if (parts.length === 0) return { leaf: simplifyForSearch(nome), parent: null };
+  return {
+    leaf: parts[parts.length - 1],
+    parent: parts.length > 1 ? parts[0] : null,
+  };
+}
+
+/** Skip default PT / "Internacional" — they make thousands of near-identical API queries. */
+export function shouldIncludeCountryInImageQuery(dest) {
+  const pais = dest.pais?.trim();
+  if (!pais || pais === 'Internacional' || dest.paisCode === 'XX') return false;
+  if (dest.lang === 'pt' && pais === 'Portugal' && dest.paisCode === 'PT') {
+    const blob = `${dest.nome ?? ''}`.toLowerCase();
+    return /portugal|lisboa|porto|algarve|madeira|açores|azores|sintra|coimbra|braga|faro|alentejo|douro|minho|setúbal|setubal|cascais|évora|evora|guimarães|guimaraes|aveiro|leiria|viseu|guarda|castelo branco|santarém|santarem|beja|portalegre|évora|evora|matosinhos|maia|gaia|amadora|almada|oeiras|funchal|angra|ponta delgada|horta/i.test(
+      blob,
+    );
+  }
+  return true;
+}
+
 export function buildDestinationImageQuery(dest) {
+  const { leaf, parent } = parseDestinationTitleParts(dest.nome);
   const tipoHint =
     dest.tipo === 'praia'
       ? 'beach'
@@ -82,20 +109,27 @@ export function buildDestinationImageQuery(dest) {
         ? 'mountains'
         : dest.tipo === 'ilha'
           ? 'island'
-          : 'city';
-  return [simplifyForSearch(dest.nome), simplifyForSearch(dest.pais), tipoHint, 'travel']
+          : 'landmark';
+  const country = shouldIncludeCountryInImageQuery(dest)
+    ? simplifyForSearch(dest.pais)
+    : null;
+  return [leaf, parent, country, tipoHint, 'travel']
     .filter(Boolean)
     .join(' ');
 }
 
 /** Fallback queries when the full query returns no photos. */
 export function buildDestinationImageQueryFallbacks(dest) {
-  const nome = simplifyForSearch(dest.nome);
-  const pais = simplifyForSearch(dest.pais);
+  const { leaf, parent } = parseDestinationTitleParts(dest.nome);
+  const country = shouldIncludeCountryInImageQuery(dest)
+    ? simplifyForSearch(dest.pais)
+    : null;
   return [
-    [nome, pais, 'travel'].filter(Boolean).join(' '),
-    [nome, 'travel'].join(' '),
-    nome,
+    [leaf, parent, country, 'travel'].filter(Boolean).join(' '),
+    [leaf, parent, 'travel'].filter(Boolean).join(' '),
+    [leaf, country, 'travel'].filter(Boolean).join(' '),
+    [leaf, 'travel'].join(' '),
+    leaf,
   ].filter((q, i, arr) => q && arr.indexOf(q) === i);
 }
 
