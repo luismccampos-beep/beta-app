@@ -116,6 +116,7 @@ async function recommendFromDb(input: RecommendDestinationsInput): Promise<Recom
 
   for (const row of rows) {
     const dest = rowToDestination(row);
+    if (!dest.paisCode || dest.paisCode === 'XX') continue;
     const hRow = hotelByDest.get(row.id);
     const hotel = hRow
       ? {
@@ -164,7 +165,7 @@ async function recommendFromDb(input: RecommendDestinationsInput): Promise<Recom
             preco_por_noite: hotel.preco_por_noite,
           }
         : null,
-      imageUrl: row.imagemUrl ?? dest.imagem_url,
+      imageUrl: row.imagemUrl || dest.imagem_url || undefined,
     });
   }
 

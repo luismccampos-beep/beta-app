@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-label="Travel placeholder">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0f766e"/>
+      <stop offset="0.55" stop-color="#14b8a6"/>
+      <stop offset="1" stop-color="#f97316"/>
+    </linearGradient>
+    <linearGradient id="shine" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.35"/>
+      <stop offset="1" stop-color="#ffffff" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <path d="M0,0 H1200 V180 C980,250 740,120 520,190 C320,255 160,290 0,260 Z" fill="url(#shine)"/>
+  <g fill="#ffffff" fill-opacity="0.92">
+    <path d="M610 255c-108 0-196 88-196 196 0 108 88 196 196 196s196-88 196-196c0-108-88-196-196-196zm0 52c78 0 142 64 142 144s-64 144-142 144-142-64-142-144 64-144 142-144z"/>
+    <path d="M610 360c-50 0-91 41-91 91s41 91 91 91 91-41 91-91-41-91-91-91zm0 52c22 0 39 18 39 39s-18 39-39 39-39-18-39-39 18-39 39-39z"/>
+    <path d="M250 485c0-17 14-31 31-31h218c17 0 31 14 31 31v28c0 17-14 31-31 31H281c-17 0-31-14-31-31v-28z" fill-opacity="0.55"/>
+    <path d="M870 485c0-17 14-31 31-31h218c17 0 31 14 31 31v28c0 17-14 31-31 31H901c-17 0-31-14-31-31v-28z" fill-opacity="0.55"/>
+  </g>
+  <g font-family="ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial" fill="#ffffff">
+    <text x="600" y="140" font-size="44" text-anchor="middle" font-weight="700">AKMLEVA Travel</text>
+    <text x="600" y="190" font-size="22" text-anchor="middle" fill-opacity="0.9">Imagem a carregar</text>
+  </g>
+</svg>

@@ -50,3 +50,4 @@ src/data/travel-mock/bundle-wikivoyage.json
 src/data/travel-mock/unsplash-cache.json
 public/travel-images/*
 !public/travel-images/.gitkeep
+!public/travel-images/placeholder.svg
