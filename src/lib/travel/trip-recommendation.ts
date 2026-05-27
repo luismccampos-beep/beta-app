@@ -63,6 +63,7 @@ async function recommendFromDb(input: RecommendDestinationsInput): Promise<Recom
     input.preferences.budgetPriority === 'luxury'
       ? 4
       : 1;
+  const allowSources = new Set(['liteapi', 'wikivoyage']);
 
   const rows = await prisma.wvDestination.findMany({
     where: { lang, hotelCount: { gt: 0 } },
@@ -80,7 +81,7 @@ async function recommendFromDb(input: RecommendDestinationsInput): Promise<Recom
       where: {
         destinoId: { in: destIds },
         estrelas: { gte: minStars },
-        NOT: { fonte: 'synthetic' },
+        fonte: { in: [...allowSources] },
       },
       orderBy: { precoPorNoite: 'asc' },
       distinct: ['destinoId'],
