@@ -33,6 +33,7 @@ const argValue = (name, fallback) => {
 };
 
 const dryRun = args.has('--dry-run');
+const verbose = args.has('--verbose');
 const limit = parseInt(argValue('--limit', '500'), 10);
 const sleepMs = parseInt(argValue('--sleep-ms', '250'), 10);
 const onlyBad = !args.has('--all');
@@ -164,15 +165,24 @@ async function main() {
 
   let updated = 0;
   let skipped = 0;
+  const skipReasons = {
+    no_coords: 0,
+    invalid_coords: 0,
+    photon_no_country: 0,
+    already_ok: 0,
+  };
+
   for (const r of rows) {
     const lat = r.latitude;
     const lon = r.longitude;
     if (lat == null || lon == null) {
       skipped += 1;
+      skipReasons.no_coords += 1;
       continue;
     }
     if (!Number.isFinite(lat) || !Number.isFinite(lon)) {
       skipped += 1;
+      skipReasons.invalid_coords += 1;
       continue;
     }
 
@@ -180,6 +190,10 @@ async function main() {
     await delay(Math.max(0, sleepMs));
     if (!rev?.countryCode) {
       skipped += 1;
+      skipReasons.photon_no_country += 1;
+      if (verbose) {
+        console.log(`[skip photon] ${r.slug} (${r.nome}) @${lat.toFixed(3)},${lon.toFixed(3)}`);
+      }
       continue;
     }
 
@@ -194,6 +208,12 @@ async function main() {
 
     if (changes.length === 0) {
       skipped += 1;
+      skipReasons.already_ok += 1;
+      if (verbose) {
+        console.log(
+          `[ok] ${r.slug} (${r.nome}) ${newPaisCode} · ${newPais} — coords batem com a DB`,
+        );
+      }
       continue;
     }
 
@@ -216,6 +236,15 @@ async function main() {
   }
 
   console.log(`Done. updated=${updated} skipped=${skipped}`);
+  console.log('Skip breakdown:', skipReasons);
+  if (updated === 0 && skipReasons.already_ok > 0 && !onlyBad) {
+    console.log(
+      '\nNada a alterar: para estes destinos, pais/paisCode/continente já coincidem com as coordenadas (Photon).',
+    );
+    console.log(
+      'Se a UI ainda mostra países errados, verifica TRAVEL_CATALOG_SOURCE=db e o campo IATA (vem dos voos, não do país).',
+    );
+  }
 }
 
 main()
