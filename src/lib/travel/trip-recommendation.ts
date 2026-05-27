@@ -17,6 +17,18 @@ import {
 } from './mock-travel/load';
 import { isTravelCatalogDbEnabled, rowToDestination } from './catalog-db';
 
+function displayCountryFromCode(code: string | null | undefined, locale: string): string | null {
+  const cc = (code ?? '').trim().toUpperCase();
+  if (!cc || cc === 'XX') return null;
+  try {
+    const dn = new Intl.DisplayNames([locale], { type: 'region' });
+    const label = dn.of(cc);
+    return label && label !== cc ? label : null;
+  } catch {
+    return null;
+  }
+}
+
 export type RecommendedDestination = {
   destinoId: number;
   slug: string;
@@ -65,7 +77,11 @@ async function recommendFromDb(input: RecommendDestinationsInput): Promise<Recom
 
   const [cheapestHotels, flightRows] = await Promise.all([
     prisma.wvHotel.findMany({
-      where: { destinoId: { in: destIds }, estrelas: { gte: minStars } },
+      where: {
+        destinoId: { in: destIds },
+        estrelas: { gte: minStars },
+        NOT: { fonte: 'synthetic' },
+      },
       orderBy: { precoPorNoite: 'asc' },
       distinct: ['destinoId'],
       select: {
@@ -81,13 +97,18 @@ async function recommendFromDb(input: RecommendDestinationsInput): Promise<Recom
           where: { origem: origin, destinoId: { in: destIds } },
           orderBy: { preco: 'asc' },
           distinct: ['destinoId'],
-          select: { destinoId: true, preco: true },
+          select: { destinoId: true, preco: true, destinoIata: true },
         })
       : Promise.resolve([]),
   ]);
 
   const hotelByDest = new Map(cheapestHotels.map((h) => [h.destinoId, h]));
   const flightByDest = new Map(flightRows.map((f) => [f.destinoId, f.preco]));
+  const iataByDest = new Map(
+    flightRows
+      .map((f) => [f.destinoId, f.destinoIata?.trim().toUpperCase() || null] as const)
+      .filter(([, iata]) => Boolean(iata)),
+  );
 
   const candidates: RecommendedDestination[] = [];
   const rawScores: number[] = [];
@@ -127,8 +148,8 @@ async function recommendFromDb(input: RecommendDestinationsInput): Promise<Recom
       destinoId: row.id,
       slug: row.slug,
       nome: dest.nome,
-      pais: dest.pais,
-      iata: dest.iata,
+      pais: displayCountryFromCode(dest.paisCode, lang) ?? dest.pais,
+      iata: iataByDest.get(row.id) ?? dest.iata,
       tipo: dest.tipo,
       matchScore: combined,
       matchPercent: 0,
