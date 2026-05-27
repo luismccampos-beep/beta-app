@@ -19,8 +19,7 @@ import { Badge } from '../ui/badge';
 import { Button } from '../ui/button';
 import { Card, CardContent } from '../ui/card';
 
-const PLACEHOLDER_IMAGE =
-  'https://images.unsplash.com/photo-1469854523086-cc02afe5c88?auto=format&fit=crop&w=1200&q=70';
+const PLACEHOLDER_IMAGE = '/travel-images/placeholder.svg';
 
 export type RecommendedDestinationCardLabels = {
   match: string;
