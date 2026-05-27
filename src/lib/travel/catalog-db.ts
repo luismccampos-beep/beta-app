@@ -293,6 +293,7 @@ export async function getHotelsNearbyFromDb(opts: {
     where: {
       latitude: { gte: box.latMin, lte: box.latMax },
       longitude: { gte: box.lonMin, lte: box.lonMax },
+      NOT: { fonte: 'rejected_geo' },
       ...(opts.minStars != null && opts.minStars > 0
         ? { estrelas: { gte: opts.minStars } }
         : {}),
@@ -338,7 +339,7 @@ export async function getHotelsFromDb(opts: {
 
   const limit = Math.min(opts.limit ?? 24, 50);
   const rows = await prisma.wvHotel.findMany({
-    where: { destinoId },
+    where: { destinoId, NOT: { fonte: 'rejected_geo' } },
     orderBy: { precoPorNoite: 'asc' },
     take: limit,
     select: hotelSelect,
