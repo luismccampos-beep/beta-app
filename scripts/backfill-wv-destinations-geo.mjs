@@ -36,6 +36,19 @@ const dryRun = args.has('--dry-run');
 const limit = parseInt(argValue('--limit', '500'), 10);
 const sleepMs = parseInt(argValue('--sleep-ms', '250'), 10);
 const onlyBad = !args.has('--all');
+const lang = String(argValue('--lang', 'pt')).trim() || 'pt';
+
+function displayCountryFromCode(code, locale) {
+  const cc = typeof code === 'string' ? code.trim().toUpperCase() : '';
+  if (!cc || cc.length !== 2) return null;
+  try {
+    const dn = new Intl.DisplayNames([locale], { type: 'region' });
+    const label = dn.of(cc);
+    return label && label !== cc ? label : null;
+  } catch {
+    return null;
+  }
+}
 
 function normCC(v) {
   const cc = typeof v === 'string' ? v.trim().toUpperCase() : '';
@@ -171,7 +184,7 @@ async function main() {
     }
 
     const newPaisCode = rev.countryCode;
-    const newPais = rev.countryName ?? r.pais;
+    const newPais = displayCountryFromCode(newPaisCode, lang) ?? rev.countryName ?? r.pais;
     const newCont = continentFromCountryCode(newPaisCode);
 
     const changes = [];
