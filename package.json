@@ -37,6 +37,7 @@
     "travel:catalog:import": "node scripts/import-travel-catalog-to-db.mjs",
     "travel:catalog:backfill-geo": "node scripts/backfill-wv-hotels-geo.mjs",
     "travel:catalog:backfill-dest-geo": "node scripts/backfill-wv-destinations-geo.mjs",
+    "travel:catalog:verify-hotels-geo": "node scripts/verify-wv-hotels-geo.mjs",
     "travel:demo:rebuild-flights": "node scripts/rebuild-bundle-flights-routes.mjs",
     "travel:demo:enrich-pipeline": "npm run travel:demo:patch-countries && npm run travel:demo:enrich-external && npm run travel:demo:enrich-transport && npm run travel:demo:enrich-budget && npm run travel:demo:rebuild-flights",
     "travel:demo:patch-countries": "node scripts/patch-bundle-countries.mjs",
