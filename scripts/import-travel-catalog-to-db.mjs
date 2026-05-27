@@ -366,6 +366,23 @@ async function main() {
     await importListings(destinos);
   }
 
+  const backfillDestGeo =
+    process.env.TRAVEL_BACKFILL_DEST_GEO === '1' ||
+    process.env.TRAVEL_BACKFILL_DEST_GEO === 'true' ||
+    process.argv.includes('--backfill-dest-geo');
+  if (backfillDestGeo && !listingsOnly) {
+    const backfillLimit = process.env.TRAVEL_BACKFILL_DEST_GEO_LIMIT || '800';
+    const backfillLang = process.env.TRAVEL_BACKFILL_DEST_GEO_LANG || 'pt';
+    const backfillSleep = process.env.TRAVEL_BACKFILL_DEST_GEO_SLEEP_MS || '250';
+    console.log(
+      `\n🔎 Backfill destinos (Photon reverse) — limit=${backfillLimit} lang=${backfillLang} sleepMs=${backfillSleep}`,
+    );
+    execSync(
+      `node scripts/backfill-wv-destinations-geo.mjs --limit ${backfillLimit} --lang ${backfillLang} --sleep-ms ${backfillSleep}`,
+      { cwd: ROOT, stdio: 'inherit' },
+    );
+  }
+
   const stats = {
     destinos: await prisma.wvDestination.count(),
     hoteis: await prisma.wvHotel.count(),
