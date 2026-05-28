@@ -99,3 +99,58 @@ const dest = await res.json();
 ```
 
 Com `TRAVEL_CATALOG_SOURCE` não definido, as rotas v1 usam o **bundle JSON** (comportamento actual).
+
+## Vercel (produção) — corrigir países/hotéis
+
+Os scripts `backfill-dest-geo` / `verify-hotels-geo` **só alteram a base onde correres** (local `localhost:5433` ou Neon).  
+A app em [beta-app-tau.vercel.app](https://beta-app-tau.vercel.app) **não herda** automaticamente o que corriste no PC.
+
+### 1) Confirmar o modo actual
+
+Abre (com prefs na URL ou após preencher o formulário):
+
+`https://beta-app-tau.vercel.app/api/travel/v1/recommend?nights=5&travelers=1&origin=LIS&budgetFilter=1&prefs=...`
+
+No JSON, vê o campo **`source`**:
+
+| `source` | Significado |
+|----------|-------------|
+| `"bundle"` | JSON em `src/data/travel-mock/` (dados antigos / demo) — **sem** backfill Photon |
+| `"db"` | Postgres (Neon) — precisa de import + backfills na **mesma** `DATABASE_URL` da Vercel |
+
+### 2) Ativar catálogo na DB (recomendado)
+
+No projeto Vercel → **Settings → Environment Variables** (Production):
+
+```env
+TRAVEL_CATALOG_SOURCE=db
+DATABASE_URL=postgresql://...   # Neon pooled
+DATABASE_URL_UNPOOLED=postgresql://...   # Neon direct (Prisma migrate)
+```
+
+Redeploy depois de guardar.
+
+### 3) Popular a Neon (uma vez, a partir do PC)
+
+Com a connection string da **produção** (Vercel → Storage/Neon ou `vercel env pull`):
+
+```powershell
+# PowerShell — usa a URL da Neon de PRODUÇÃO, não localhost:5433
+$env:DATABASE_URL = "postgresql://USER:PASS@HOST/DB?sslmode=require"
+$env:DATABASE_URL_UNPOOLED = $env:DATABASE_URL
+
+npx prisma migrate deploy
+npm run travel:catalog:import -- --fresh --backfill-hotel-geo --backfill-dest-geo --verify-hotels-geo
+```
+
+Isto importa o bundle Wikivoyage, corrige países (Photon), preenche coords de hotéis e marca hotéis incoerentes como `rejected_geo`.
+
+### 4) Validar em produção
+
+- `GET /api/travel/v1/recommend?...` → `"source": "db"`
+- Países coerentes (ex. Munique → Alemanha, não Brasil)
+- IATA pode ainda estar errado se `wv_flights` estiver mal — isso é outro backfill (OpenFlights)
+
+### Nota sobre Docker local
+
+`docker compose up -d postgres` só serve para **desenvolvimento local**. A Vercel usa **Neon** (ou outra URL em `DATABASE_URL`), não o Postgres do teu PC.
