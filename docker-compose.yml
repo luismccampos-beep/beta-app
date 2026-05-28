@@ -1,4 +1,23 @@
 services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: akmleva-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: akmleva
+    ports:
+      # Prisma/local scripts expect localhost:5433 by default
+      - "5433:5432"
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d akmleva"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+
   mysql:
     image: mysql:8.0
     container_name: akmleva-mysql
@@ -58,6 +77,7 @@ services:
     command: --load --serve
 
 volumes:
+  postgres-data:
   mysql-data:
   redis-data:
   valhalla-tiles:
