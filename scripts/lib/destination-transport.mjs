@@ -42,7 +42,12 @@ export function resolveTransportForDestination(indexes, dest) {
 
   if (dest.iata) {
     const airport = byIata.get(String(dest.iata).toUpperCase()) ?? null;
-    if (airport) resolved = { airport, match: 'iata', score: 1 };
+    if (airport) {
+      const cc = paisCode;
+      if (!cc || !airport.iso_country || airport.iso_country === cc) {
+        resolved = { airport, match: 'iata', score: 1 };
+      }
+    }
   }
 
   if (!resolved && paisCode) {
@@ -140,7 +145,7 @@ export function resolveTransportForDestination(indexes, dest) {
       rotas: n,
     }));
 
-  if (!dest.iata && airport.iata) {
+  if (airport.iata) {
     dest.iata = airport.iata;
   }
   if ((!dest.paisCode || dest.paisCode === 'XX') && airport.iso_country) {

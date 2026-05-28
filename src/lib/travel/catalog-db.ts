@@ -4,6 +4,7 @@ import { summarizeCostOfLiving } from './cost-tier';
 import { boundingBox, haversineKm } from './geo';
 import { buildTravelMapMarkers, type DestinationMapMarker } from './destination-map';
 import { resolveDestinationImageFromFields } from './destination-image';
+import { resolveDestinationIata } from './destination-iata';
 import type { MockDestination, MockFlight, MockHotel } from './mock-travel/types';
 
 type WvHotelRow = {
@@ -178,6 +179,7 @@ export async function searchDestinationsDb(opts: {
         descricao: true,
         imagemUrl: true,
         imagemQuery: true,
+        transporte: true,
         hotelCount: true,
         latitude: true,
         longitude: true,
@@ -188,21 +190,25 @@ export async function searchDestinationsDb(opts: {
 
   return {
     total,
-    items: rows.map((r) => ({
-      ...r,
-      slug: r.slug,
-      imageUrl: resolveDestinationImageFromFields({
-        id: r.id,
-        lang: r.lang,
-        nome: r.nome,
-        pais: r.pais,
-        paisCode: r.paisCode,
-        tipo: r.tipo,
-        continente: r.continente,
-        imagem_url: r.imagemUrl,
-        imagem_query: r.imagemQuery,
-      }),
-    })),
+    items: rows.map((r) => {
+      const dest = rowToDestination(r as Parameters<typeof rowToDestination>[0]);
+      return {
+        ...r,
+        slug: r.slug,
+        iata: resolveDestinationIata(dest),
+        imageUrl: resolveDestinationImageFromFields({
+          id: r.id,
+          lang: r.lang,
+          nome: r.nome,
+          pais: r.pais,
+          paisCode: r.paisCode,
+          tipo: r.tipo,
+          continente: r.continente,
+          imagem_url: r.imagemUrl,
+          imagem_query: r.imagemQuery,
+        }),
+      };
+    }),
   };
 }
 

@@ -468,6 +468,19 @@ async function main() {
       );
     }
 
+    const backfillIata =
+      process.env.TRAVEL_BACKFILL_IATA === '1' ||
+      process.env.TRAVEL_BACKFILL_IATA === 'true' ||
+      process.argv.includes('--backfill-iata');
+    if (backfillIata) {
+      const iataLang = process.env.TRAVEL_BACKFILL_IATA_LANG || 'pt';
+      console.log(`\n✈️ Backfill IATA destinos (OurAirports) — lang=${iataLang}`);
+      execSync(`node scripts/backfill-wv-destinations-iata.mjs --all --lang ${iataLang}`, {
+        cwd: ROOT,
+        stdio: 'inherit',
+      });
+    }
+
     const verifyHotelsGeo =
       process.env.TRAVEL_VERIFY_HOTELS_GEO === '1' ||
       process.env.TRAVEL_VERIFY_HOTELS_GEO === 'true' ||
