@@ -27,6 +27,12 @@ const LISTINGS_CSV = resolve(ROOT, 'data/hotels/wikivoyage-listings-en.csv');
 const prisma = new PrismaClient();
 const BATCH = 400;
 const fresh = process.argv.includes('--fresh');
+const skipDestinations = process.argv.includes('--skip-destinations');
+const skipHotels = process.argv.includes('--skip-hotels');
+const syncHotelCount = process.argv.includes('--sync-hotel-count');
+const imagesOnly = process.argv.includes('--images-only');
+const skipVoos = process.argv.includes('--skip-voos') || imagesOnly;
+const skipCol = process.argv.includes('--skip-col') || imagesOnly;
 const listingsOnly = process.argv.includes('--listings-only');
 const withListings = process.argv.includes('--listings') || listingsOnly;
 const listingsLimitArg = process.argv.find((a) => a.startsWith('--listings-limit'));
@@ -93,12 +99,50 @@ async function importDestinations(destinos) {
   console.log('');
 }
 
+async function syncDestinationImages(destinos) {
+  let n = 0;
+  for (let i = 0; i < destinos.length; i += BATCH) {
+    const batch = destinos.slice(i, i + BATCH);
+    await Promise.all(
+      batch.map((d) =>
+        prisma.wvDestination.updateMany({
+          where: { id: d.id },
+          data: {
+            imagemUrl: d.imagem_url ?? null,
+            imagemQuery: d.imagem_query ?? null,
+          },
+        }),
+      ),
+    );
+    n += batch.length;
+    process.stdout.write(`\r  imagens ${n}/${destinos.length}`);
+  }
+  console.log('');
+}
+
+async function syncHotelCounts() {
+  console.log('  Atualizando hotel_count (SQL agregado)…');
+  await prisma.$executeRaw`
+    UPDATE wv_destinations d
+    SET hotel_count = sub.c
+    FROM (
+      SELECT destino_id, COUNT(*)::int AS c
+      FROM wv_hotels
+      GROUP BY destino_id
+    ) sub
+    WHERE d.id = sub.destino_id
+  `;
+  await prisma.$executeRaw`
+    UPDATE wv_destinations
+    SET hotel_count = 0
+    WHERE id NOT IN (SELECT DISTINCT destino_id FROM wv_hotels)
+  `;
+}
+
 async function importHotels(hoteis) {
   let n = 0;
-  const counts = new Map();
   for (let i = 0; i < hoteis.length; i += BATCH) {
     const batch = hoteis.slice(i, i + BATCH).map((h) => {
-      counts.set(h.destino_id, (counts.get(h.destino_id) ?? 0) + 1);
       return {
         id: h.id,
         destinoId: h.destino_id,
@@ -120,9 +164,7 @@ async function importHotels(hoteis) {
     process.stdout.write(`\r  hotéis ${n}/${hoteis.length}`);
   }
   console.log('');
-  for (const [destinoId, hotelCount] of counts) {
-    await prisma.wvDestination.update({ where: { id: destinoId }, data: { hotelCount } });
-  }
+  await syncHotelCounts();
 }
 
 async function importFlights(voos) {
@@ -347,17 +389,41 @@ async function main() {
   if (!listingsOnly) {
     console.log(`Bundle: ${destinos.length} destinos, ${hoteis.length} hotéis, ${voos.length} voos\n`);
 
-    console.log('1/4 Destinos…');
-    await importDestinations(destinos);
+    if (imagesOnly) {
+      console.log('Modo --images-only (atualiza imagem_url / imagem_query na Neon)…');
+      await syncDestinationImages(destinos);
+    } else {
+      if (!skipDestinations) {
+        console.log('1/4 Destinos…');
+        await importDestinations(destinos);
+      } else {
+        console.log('1/4 Destinos… (skip)');
+      }
 
-    console.log('2/4 Hotéis…');
-    await importHotels(hoteis);
+      if (!skipHotels) {
+        console.log('2/4 Hotéis…');
+        await importHotels(hoteis);
+      } else if (syncHotelCount) {
+        console.log('2/4 Hotéis… (skip, sync hotel_count)');
+        await syncHotelCounts();
+      } else {
+        console.log('2/4 Hotéis… (skip)');
+      }
 
-    console.log('3/4 Voos…');
-    await importFlights(voos);
+      if (!skipVoos) {
+        console.log('3/4 Voos…');
+        await importFlights(voos);
+      } else {
+        console.log('3/4 Voos… (skip)');
+      }
 
-    console.log('4/4 Custo de vida…');
-    await importCostOfLiving(destinos);
+      if (!skipCol) {
+        console.log('4/4 Custo de vida…');
+        await importCostOfLiving(destinos);
+      } else {
+        console.log('4/4 Custo de vida… (skip)');
+      }
+    }
   } else {
     console.log('Modo --listings-only (mantém destinos/hotéis já importados)\n');
     if (fresh) await prisma.wvListing.deleteMany();

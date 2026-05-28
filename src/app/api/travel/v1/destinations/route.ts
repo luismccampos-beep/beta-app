@@ -4,6 +4,7 @@ import {
   isTravelCatalogDbEnabled,
   searchDestinationsDb,
 } from '../../../../../lib/travel/catalog-db';
+import { resolveDestinationImageUrl } from '../../../../../lib/travel/destination-image';
 import { loadMockTravelBundle } from '../../../../../lib/travel/mock-travel/load';
 import { buildDestinationSlug } from '../../../../../lib/travel/destination-slug';
 
@@ -62,7 +63,7 @@ export async function GET(req: Request) {
       tipo: d.tipo,
       clima: d.clima,
       descricao: d.descricao,
-      imageUrl: d.imagem_url,
+      imageUrl: resolveDestinationImageUrl(d),
       latitude: d.latitude,
       longitude: d.longitude,
     })),

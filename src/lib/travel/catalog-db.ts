@@ -3,6 +3,7 @@ import { buildDestinationSlug, parseDestinationSlug } from './destination-slug';
 import { summarizeCostOfLiving } from './cost-tier';
 import { boundingBox, haversineKm } from './geo';
 import { buildTravelMapMarkers, type DestinationMapMarker } from './destination-map';
+import { resolveDestinationImageFromFields } from './destination-image';
 import type { MockDestination, MockFlight, MockHotel } from './mock-travel/types';
 
 type WvHotelRow = {
@@ -176,6 +177,7 @@ export async function searchDestinationsDb(opts: {
         clima: true,
         descricao: true,
         imagemUrl: true,
+        imagemQuery: true,
         hotelCount: true,
         latitude: true,
         longitude: true,
@@ -189,7 +191,17 @@ export async function searchDestinationsDb(opts: {
     items: rows.map((r) => ({
       ...r,
       slug: r.slug,
-      imageUrl: r.imagemUrl,
+      imageUrl: resolveDestinationImageFromFields({
+        id: r.id,
+        lang: r.lang,
+        nome: r.nome,
+        pais: r.pais,
+        paisCode: r.paisCode,
+        tipo: r.tipo,
+        continente: r.continente,
+        imagem_url: r.imagemUrl,
+        imagem_query: r.imagemQuery,
+      }),
     })),
   };
 }
