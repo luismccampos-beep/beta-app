@@ -176,18 +176,27 @@ async function recommendFromDb(input: RecommendDestinationsInput): Promise<Recom
     .slice(0, limit);
 }
 
+const TRUSTED_HOTEL_SOURCES = new Set(['liteapi', 'wikivoyage']);
+
+function pickBundleHotel(destId: number) {
+  const hotels = getMockHotelsForDestination(destId)
+    .filter((h) => h.fonte !== 'synthetic' && h.fonte !== 'rejected_geo')
+    .filter((h) => !h.fonte || TRUSTED_HOTEL_SOURCES.has(h.fonte));
+  if (!hotels.length) return null;
+  return [...hotels].sort((a, b) => a.preco_por_noite - b.preco_por_noite)[0]!;
+}
+
 function recommendFromBundle(input: RecommendDestinationsInput): RecommendedDestination[] {
   const limit = Math.min(input.limit ?? 24, 40);
+  const lang = input.lang ?? 'pt';
   const destinos = listMockDestinationsWithIata().slice(0, limit * 3);
   const origin = input.originIata?.toUpperCase();
   const candidates: RecommendedDestination[] = [];
   const rawScores: number[] = [];
 
   for (const dest of destinos) {
-    const hotels = getMockHotelsForDestination(dest.id);
-    const hotel = hotels.length
-      ? [...hotels].sort((a, b) => a.preco_por_noite - b.preco_por_noite)[0]!
-      : null;
+    if (!dest.paisCode || dest.paisCode === 'XX') continue;
+    const hotel = pickBundleHotel(dest.id);
 
     let flight: number | null = null;
     if (origin && dest.iata) {
@@ -215,7 +224,7 @@ function recommendFromBundle(input: RecommendDestinationsInput): RecommendedDest
       destinoId: dest.id,
       slug: buildDestinationSlug(dest),
       nome: dest.nome,
-      pais: dest.pais,
+      pais: displayCountryFromCode(dest.paisCode, lang) ?? dest.pais,
       iata: dest.iata,
       tipo: dest.tipo,
       matchScore: combined,
