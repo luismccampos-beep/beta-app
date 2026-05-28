@@ -5,11 +5,13 @@
  *   npm run travel:catalog:import
  *   npm run travel:catalog:import -- --fresh
  *   npm run travel:catalog:import -- --listings --listings-limit=50000
+ *   npm run travel:catalog:import -- --backfill-dest-geo --verify-hotels-geo
  */
 import { existsSync, readFileSync, createReadStream } from 'node:fs';
 import { resolve, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { createInterface } from 'node:readline';
+import { execSync } from 'node:child_process';
 
 import { PrismaClient } from '@prisma/client';
 
@@ -366,21 +368,56 @@ async function main() {
     await importListings(destinos);
   }
 
-  const backfillDestGeo =
-    process.env.TRAVEL_BACKFILL_DEST_GEO === '1' ||
-    process.env.TRAVEL_BACKFILL_DEST_GEO === 'true' ||
-    process.argv.includes('--backfill-dest-geo');
-  if (backfillDestGeo && !listingsOnly) {
-    const backfillLimit = process.env.TRAVEL_BACKFILL_DEST_GEO_LIMIT || '800';
-    const backfillLang = process.env.TRAVEL_BACKFILL_DEST_GEO_LANG || 'pt';
-    const backfillSleep = process.env.TRAVEL_BACKFILL_DEST_GEO_SLEEP_MS || '250';
-    console.log(
-      `\n🔎 Backfill destinos (Photon reverse) — limit=${backfillLimit} lang=${backfillLang} sleepMs=${backfillSleep}`,
-    );
-    execSync(
-      `node scripts/backfill-wv-destinations-geo.mjs --limit ${backfillLimit} --lang ${backfillLang} --sleep-ms ${backfillSleep}`,
-      { cwd: ROOT, stdio: 'inherit' },
-    );
+  if (!listingsOnly) {
+    const backfillHotelGeo =
+      process.env.TRAVEL_BACKFILL_HOTEL_GEO === '1' ||
+      process.env.TRAVEL_BACKFILL_HOTEL_GEO === 'true' ||
+      process.argv.includes('--backfill-hotel-geo');
+    if (backfillHotelGeo) {
+      const hotelGeoLimit = process.env.TRAVEL_BACKFILL_HOTEL_GEO_LIMIT_DESTINOS || '';
+      const hotelGeoArgs = hotelGeoLimit
+        ? `--limit-destinos=${hotelGeoLimit}`
+        : '';
+      console.log('\n📍 Backfill hotéis (coords do hotel-index)…');
+      execSync(`node scripts/backfill-wv-hotels-geo.mjs ${hotelGeoArgs}`.trim(), {
+        cwd: ROOT,
+        stdio: 'inherit',
+      });
+    }
+
+    const backfillDestGeo =
+      process.env.TRAVEL_BACKFILL_DEST_GEO === '1' ||
+      process.env.TRAVEL_BACKFILL_DEST_GEO === 'true' ||
+      process.argv.includes('--backfill-dest-geo');
+    if (backfillDestGeo) {
+      const backfillLimit = process.env.TRAVEL_BACKFILL_DEST_GEO_LIMIT || '800';
+      const backfillLang = process.env.TRAVEL_BACKFILL_DEST_GEO_LANG || 'pt';
+      const backfillSleep = process.env.TRAVEL_BACKFILL_DEST_GEO_SLEEP_MS || '250';
+      console.log(
+        `\n🔎 Backfill destinos (Photon reverse) — limit=${backfillLimit} lang=${backfillLang} sleepMs=${backfillSleep}`,
+      );
+      execSync(
+        `node scripts/backfill-wv-destinations-geo.mjs --limit ${backfillLimit} --lang ${backfillLang} --sleep-ms ${backfillSleep}`,
+        { cwd: ROOT, stdio: 'inherit' },
+      );
+    }
+
+    const verifyHotelsGeo =
+      process.env.TRAVEL_VERIFY_HOTELS_GEO === '1' ||
+      process.env.TRAVEL_VERIFY_HOTELS_GEO === 'true' ||
+      process.argv.includes('--verify-hotels-geo');
+    if (verifyHotelsGeo) {
+      const verifyLimit = process.env.TRAVEL_VERIFY_HOTELS_GEO_LIMIT || '2000';
+      const verifyMaxKm = process.env.TRAVEL_VERIFY_HOTELS_GEO_MAX_KM || '250';
+      const verifySleep = process.env.TRAVEL_VERIFY_HOTELS_GEO_SLEEP_MS || '150';
+      console.log(
+        `\n🛡️ Verificar hotéis (país/distância) — limit=${verifyLimit} maxKm=${verifyMaxKm} sleepMs=${verifySleep}`,
+      );
+      execSync(
+        `node scripts/verify-wv-hotels-geo.mjs --limit ${verifyLimit} --max-km ${verifyMaxKm} --sleep-ms ${verifySleep}`,
+        { cwd: ROOT, stdio: 'inherit' },
+      );
+    }
   }
 
   const stats = {
