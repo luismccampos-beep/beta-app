@@ -18,8 +18,7 @@ import { destinationDetailPath } from '../../../lib/travel/destination-path';
 import { Badge } from '../ui/badge';
 import { Button } from '../ui/button';
 import { Card, CardContent } from '../ui/card';
-
-const PLACEHOLDER_IMAGE = '/travel-images/placeholder.svg';
+import { DESTINATION_PLACEHOLDER, onDestinationImageError } from './destination-image-fallback';
 
 export type RecommendedDestinationCardLabels = {
   match: string;
@@ -62,9 +61,10 @@ export function RecommendedDestinationCard({
     <Card className="overflow-hidden border-0 shadow-lg ring-1 ring-teal-200/70 dark:ring-teal-900/50 dark:bg-gray-800">
       <div className="relative h-36 sm:h-40 overflow-hidden">
         <img
-          src={item.imageUrl || PLACEHOLDER_IMAGE}
+          src={item.imageUrl || DESTINATION_PLACEHOLDER}
           alt={item.nome}
           className="h-full w-full object-cover"
+          onError={onDestinationImageError}
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
         <div className="absolute top-2 right-2 flex flex-wrap gap-1 justify-end">

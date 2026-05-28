@@ -3,35 +3,15 @@ import { resolve } from 'node:path';
 
 import type { MockDestination, MockHotel, MockFlight, MockTravelBundle } from './types';
 import { parseDestinationSlug } from '../destination-slug';
-import { buildDestinationImageQuery, isGenericDestinationImage } from '../unsplash';
+import { resolveDestinationImageUrl } from '../destination-image';
+
+export { resolveDestinationImageUrl, TRAVEL_PLACEHOLDER_IMAGE } from '../destination-image';
 
 let cached: MockTravelBundle | null = null;
 let cachedPath: string | null = null;
-let unsplashCache: Record<string, string> | null | undefined;
 
 const BUNDLE_WIKIVOYAGE = resolve(process.cwd(), 'src/data/travel-mock/bundle-wikivoyage.json');
 const BUNDLE_FAKER = resolve(process.cwd(), 'src/data/travel-mock/bundle.json');
-const UNSPLASH_CACHE = resolve(process.cwd(), 'src/data/travel-mock/unsplash-cache.json');
-
-function loadUnsplashImageCache(): Record<string, string> {
-  if (unsplashCache !== undefined) return unsplashCache ?? {};
-  unsplashCache = {};
-  if (!existsSync(UNSPLASH_CACHE)) return unsplashCache;
-  try {
-    unsplashCache = JSON.parse(readFileSync(UNSPLASH_CACHE, 'utf8')) as Record<string, string>;
-  } catch {
-    unsplashCache = {};
-  }
-  return unsplashCache;
-}
-
-/** Hero image: bundle URL, then unsplash-cache.json, else placeholder. */
-export function resolveDestinationImageUrl(dest: MockDestination): string {
-  if (!isGenericDestinationImage(dest.imagem_url)) return dest.imagem_url;
-  const cache = loadUnsplashImageCache();
-  const q = (dest.imagem_query ?? buildDestinationImageQuery(dest)).toLowerCase();
-  return cache[q] ?? dest.imagem_url;
-}
 
 export function isTravelMockEnabled(): boolean {
   const v = process.env.TRAVEL_USE_MOCK_DATA?.trim().toLowerCase();

@@ -132,16 +132,26 @@ Redeploy depois de guardar.
 
 ### 3) Popular a Neon (uma vez, a partir do PC)
 
-Com a connection string da **produção** (Vercel → Storage/Neon ou `vercel env pull`):
+Com a connection string da **produção** (Vercel → **Storage** → `neon-beta-app` → **Connect**):
+
+> `vercel env pull` e `vercel env run` **não expõem** `DATABASE_URL` da integração Neon (ficam vazios no PC). Copia manualmente do dashboard. O `.env` local com `localhost:5433` sobrepõe a Neon se não o renomeares.
 
 ```powershell
-# PowerShell — usa a URL da Neon de PRODUÇÃO, não localhost:5433
+# PowerShell — URLs da Neon de PRODUÇÃO (não localhost:5433)
 $env:DATABASE_URL = "postgresql://USER:PASS@HOST/DB?sslmode=require"
-$env:DATABASE_URL_UNPOOLED = $env:DATABASE_URL
+$env:DATABASE_URL_UNPOOLED = "postgresql://USER:PASS@HOST/DB?sslmode=require"  # direct / unpooled
 
+.\scripts\neon-production-import.ps1 -Fresh -Backfill
+```
+
+Ou manualmente (com `.env` renomeado para não usar Docker local):
+
+```powershell
 npx prisma migrate deploy
 npm run travel:catalog:import -- --fresh --backfill-hotel-geo --backfill-dest-geo --verify-hotels-geo
 ```
+
+Depois: **Redeploy** em produção (ou `vercel redeploy <url-prod> --target production`) para aplicar `TRAVEL_CATALOG_SOURCE=db`.
 
 Isto importa o bundle Wikivoyage, corrige países (Photon), preenche coords de hotéis e marca hotéis incoerentes como `rejected_geo`.
 

@@ -35,6 +35,7 @@
     "travel:demo:enrich-hotels-remaining": "node scripts/enrich-bundle-hotels-remaining.mjs",
     "travel:catalog:migrate": "prisma migrate dev --name travel_wikivoyage_catalog",
     "travel:catalog:import": "node scripts/import-travel-catalog-to-db.mjs",
+    "travel:catalog:sync-images": "node scripts/import-travel-catalog-to-db.mjs --images-only",
     "travel:catalog:backfill-geo": "node scripts/backfill-wv-hotels-geo.mjs",
     "travel:catalog:backfill-dest-geo": "node scripts/backfill-wv-destinations-geo.mjs",
     "travel:catalog:verify-hotels-geo": "node scripts/verify-wv-hotels-geo.mjs",

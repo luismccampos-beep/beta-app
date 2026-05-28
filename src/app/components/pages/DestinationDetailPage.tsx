@@ -240,7 +240,17 @@ export function DestinationDetailPage({
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-teal-50/20 to-orange-50/30 dark:from-gray-950 dark:via-gray-900 dark:to-gray-950">
       <div className="relative h-[42vh] min-h-[280px] max-h-[480px] w-full overflow-hidden">
-        <img src={data.imageUrl} alt={data.nome} className="h-full w-full object-cover" />
+        <img
+          src={data.imageUrl || '/travel-images/placeholder.svg'}
+          alt={data.nome}
+          className="h-full w-full object-cover"
+          onError={(e) => {
+            const img = e.currentTarget;
+            if (!img.src.endsWith('/travel-images/placeholder.svg')) {
+              img.src = '/travel-images/placeholder.svg';
+            }
+          }}
+        />
         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-black/10" />
         <div className="absolute top-4 left-4 right-4 flex justify-between items-start">
           <Button

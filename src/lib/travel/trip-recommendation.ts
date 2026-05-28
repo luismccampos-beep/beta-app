@@ -1,5 +1,6 @@
 import { prisma } from '../prisma';
 import { buildDestinationSlug } from './destination-slug';
+import { resolveDestinationImageUrl } from './destination-image';
 import { scoreWikivoyageInterests } from './destination-interests';
 import {
   scoreDestinationMatch,
@@ -165,7 +166,7 @@ async function recommendFromDb(input: RecommendDestinationsInput): Promise<Recom
             preco_por_noite: hotel.preco_por_noite,
           }
         : null,
-      imageUrl: row.imagemUrl || dest.imagem_url || undefined,
+      imageUrl: resolveDestinationImageUrl(dest),
     });
   }
 
@@ -239,7 +240,7 @@ function recommendFromBundle(input: RecommendDestinationsInput): RecommendedDest
             preco_por_noite: hotel.preco_por_noite,
           }
         : null,
-      imageUrl: dest.imagem_url,
+      imageUrl: resolveDestinationImageUrl(dest),
     });
   }
 

@@ -21,6 +21,7 @@ import { DestinationCardMap } from './DestinationCardMap';
 import { Badge } from '../ui/badge';
 import { Button } from '../ui/button';
 import { Card, CardContent, CardDescription, CardHeader } from '../ui/card';
+import { DESTINATION_PLACEHOLDER, onDestinationImageError } from './destination-image-fallback';
 
 export type DestinationResultCardProps = {
   result: TravelResult;
@@ -49,9 +50,10 @@ export function DestinationResultCard({ result, href, labels, tipPreviews = [] }
     <Card className="group overflow-hidden border-0 bg-white dark:bg-gray-800 shadow-lg hover:shadow-2xl ring-1 ring-gray-200/80 dark:ring-gray-700 transition-all duration-300">
       <Link href={href} className="block relative h-52 overflow-hidden">
         <img
-          src={result.imageUrl}
+          src={result.imageUrl || DESTINATION_PLACEHOLDER}
           alt={result.destination}
           className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+          onError={onDestinationImageError}
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-transparent" />
         <div className="absolute top-3 right-3 flex flex-wrap gap-2 justify-end max-w-[70%]">

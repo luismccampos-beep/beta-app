@@ -8,6 +8,8 @@ out/
 # Env (secrets — never commit)
 .env
 .env.*.local
+.env.vercel.*
+.env.localdev.bak
 !.env.example
 
 # Vercel
@@ -47,7 +49,7 @@ data/wikivoyage/out/
 data/hotels/hotel-index.json
 data/google-hotels/*.json
 src/data/travel-mock/bundle-wikivoyage.json
-src/data/travel-mock/unsplash-cache.json
+# unsplash-cache.json is committed (~2.6MB) so Vercel can resolve hero images in production
 public/travel-images/*
 !public/travel-images/.gitkeep
 !public/travel-images/placeholder.svg

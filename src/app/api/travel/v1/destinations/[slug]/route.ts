@@ -43,7 +43,7 @@ export async function GET(_req: Request, ctx: RouteCtx) {
         iata: dest.iata,
         tipo: dest.tipo,
         clima: dest.clima,
-        imageUrl: dest.imagem_url,
+        imageUrl: resolveDestinationImageUrl(dest),
         descricao: dest.descricao,
         descricaoCompleta: dest.descricaoCompleta,
         resumo: dest.resumo,
