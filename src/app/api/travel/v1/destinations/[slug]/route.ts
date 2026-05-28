@@ -12,6 +12,7 @@ import {
   isTravelMockEnabled,
   resolveDestinationImageUrl,
 } from '../../../../../../lib/travel/mock-travel/load';
+import { resolveDestinationIata } from '../../../../../../lib/travel/destination-iata';
 import { resolveMapMarkersForDestination } from '../../../../../../lib/travel/travel-map-markers';
 
 export const dynamic = 'force-dynamic';
@@ -40,7 +41,7 @@ export async function GET(_req: Request, ctx: RouteCtx) {
         pais: dest.pais,
         paisCode: dest.paisCode,
         continente: dest.continente,
-        iata: dest.iata,
+        iata: resolveDestinationIata(dest),
         tipo: dest.tipo,
         clima: dest.clima,
         imageUrl: resolveDestinationImageUrl(dest),
@@ -92,7 +93,7 @@ export async function GET(_req: Request, ctx: RouteCtx) {
     pais: dest.pais,
     paisCode: dest.paisCode,
     continente: dest.continente,
-    iata: dest.iata,
+    iata: resolveDestinationIata(dest),
     tipo: dest.tipo,
     clima: dest.clima,
     imageUrl: resolveDestinationImageUrl(dest),

@@ -1,6 +1,7 @@
 import { prisma } from '../prisma';
 import { buildDestinationSlug } from './destination-slug';
 import { resolveDestinationImageUrl } from './destination-image';
+import { resolveDestinationIata } from './destination-iata';
 import { scoreWikivoyageInterests } from './destination-interests';
 import {
   scoreDestinationMatch,
@@ -106,10 +107,8 @@ async function recommendFromDb(input: RecommendDestinationsInput): Promise<Recom
 
   const hotelByDest = new Map(cheapestHotels.map((h) => [h.destinoId, h]));
   const flightByDest = new Map(flightRows.map((f) => [f.destinoId, f.preco]));
-  const iataByDest = new Map(
-    flightRows
-      .map((f) => [f.destinoId, f.destinoIata?.trim().toUpperCase() || null] as const)
-      .filter(([, iata]) => Boolean(iata)),
+  const flightIataByDest = new Map(
+    flightRows.map((f) => [f.destinoId, f.destinoIata?.trim().toUpperCase() || null] as const),
   );
 
   const candidates: RecommendedDestination[] = [];
@@ -152,7 +151,7 @@ async function recommendFromDb(input: RecommendDestinationsInput): Promise<Recom
       slug: row.slug,
       nome: dest.nome,
       pais: displayCountryFromCode(dest.paisCode, lang) ?? dest.pais,
-      iata: iataByDest.get(row.id) ?? dest.iata,
+      iata: resolveDestinationIata(dest, flightIataByDest.get(row.id)),
       tipo: dest.tipo,
       matchScore: combined,
       matchPercent: 0,
@@ -226,7 +225,7 @@ function recommendFromBundle(input: RecommendDestinationsInput): RecommendedDest
       slug: buildDestinationSlug(dest),
       nome: dest.nome,
       pais: displayCountryFromCode(dest.paisCode, lang) ?? dest.pais,
-      iata: dest.iata,
+      iata: resolveDestinationIata(dest),
       tipo: dest.tipo,
       matchScore: combined,
       matchPercent: 0,
