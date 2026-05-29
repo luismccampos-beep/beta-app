@@ -28,6 +28,18 @@ const AIRLINES = [
 const MAX_HOTELS_PER_DEST = parseInt(process.env.MAX_HOTELS_PER_DEST ?? '40', 10);
 const MAX_DESTINATIONS = parseInt(process.env.MAX_WV_DESTINATIONS ?? '0', 10) || Infinity;
 
+const SHOP_OR_POI_RE =
+  /\b(primark|zara|h&m|mediamarkt|supermercado|mercadona|carrefour|decathlon|fnac|ikea|mcdonald|starbucks|caf[eé]|restaurant|restaurante|bar\b|pub\b|plaza|praça|church|igreja|cathedral|museu|museum|monument|castelo|castle|fortaleza|fort\b|playground|parque nacional|national park|mercado|market|shopping|loja|store\b|boutique|galeria|gallery|teatro|theater|theatre|estádio|stadium|universidade|university|escola|school|hospital|farmácia|pharmacy|banco|bank\b|atm\b|posto|gas station|estação|station\b|terminal\b|porto\b|harbour|harbor|beach\b|praia\b|miradouro|viewpoint|torre\b|tower\b|ponte\b|bridge\b|ruínas|ruins|monast[eé]rio|monastery|palácio|palace|sinagoga|synagogue|mesquita|mosque|templo|temple\b|aquário|aquarium|zoo\b|jardim bot|botanical)\b/i;
+const ACCOMMODATION_RE =
+  /\b(hotel|hostel|pousada|resort|albergar|guesthouse|guest house|motel|inn\b|suites?\b|lodging|alojamento|parador|pens[aã]o|bed and breakfast|b&b|apartamento tur[ií]stico|apart-?hotel|aparthotel|ryokan|pension\b|auberge|herberg|hospedaria|hostal\b|posada\b|fonda\b|caravan|camping\b|glamping|ref[uú]gio|hut\b|chalet\b|villa hotel|eco-?lodge)\b/i;
+
+function isLikelyAccommodationName(nome) {
+  const n = String(nome ?? '').trim();
+  if (n.length < 2) return false;
+  if (SHOP_OR_POI_RE.test(n)) return false;
+  return ACCOMMODATION_RE.test(n);
+}
+
 /** Nome do artigo → IATA (expandido para demo PT/EU) */
 const CITY_IATA = {
   Lisboa: 'LIS',
@@ -404,11 +416,12 @@ function buildBundle(articles, lang) {
       lang: art.lang ?? lang,
     });
 
-    const hotelList = listings.slice(0, MAX_HOTELS_PER_DEST);
+    const hotelList = listings.slice(0, MAX_HOTELS_PER_DEST * 3);
     for (const listing of hotelList) {
       const nome =
         listing.nome || listing.name || listing.alt || `Alojamento ${hotelId + 1}`;
       if (!nome || nome.length < 2) continue;
+      if (!isLikelyAccommodationName(nome)) continue;
       const stars = inferStars(listing, nome);
       hotelId += 1;
       hoteis.push({
@@ -419,7 +432,9 @@ function buildBundle(articles, lang) {
         preco_por_noite: inferPrice(stars),
         comodidades: listingAmenities(listing),
         wikivoyageUrl: art.url,
+        fonte: 'wikivoyage-listing',
       });
+      if (hoteis.filter((h) => h.destino_id === destId).length >= MAX_HOTELS_PER_DEST) break;
     }
 
     if (iata) {

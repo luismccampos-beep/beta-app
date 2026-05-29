@@ -9,6 +9,7 @@ import {
   loadMockTravelBundle,
   resolveDestinationImageUrl,
 } from './load';
+import { pickBestAccommodationHotel } from '../hotel-filter';
 import type { CompactTravelPreferences } from '../preference-match';
 import { rankResultsWithMlAndPreferences } from '../ml-ranking';
 import { buildDestinationSlug } from '../destination-slug';
@@ -40,7 +41,7 @@ function scoreFromPrice(total: number): number {
   return Math.max(55, Math.min(96, Math.round(100 - total / 120)));
 }
 
-function pickCheapestFlight(flights: MockFlight[], cabinClass?: string): MockFlight | null {
+export function pickCheapestFlight(flights: MockFlight[], cabinClass?: string): MockFlight | null {
   if (!flights.length) return null;
   const cabin = cabinClass?.trim().toLowerCase().replace(/-/g, '_');
   const filtered = cabin
@@ -50,7 +51,7 @@ function pickCheapestFlight(flights: MockFlight[], cabinClass?: string): MockFli
   return [...list].sort((a, b) => a.preco - b.preco)[0];
 }
 
-function pickBestHotel(hotels: MockHotel[]): MockHotel | null {
+export function pickBestHotel(hotels: MockHotel[]): MockHotel | null {
   if (!hotels.length) return null;
   return [...hotels].sort((a, b) => a.preco_por_noite - b.preco_por_noite)[0];
 }
@@ -84,7 +85,7 @@ export type MockSearchOutput = {
   errors: { destination: string; message: string }[];
 };
 
-function buildResult(input: {
+export function buildCatalogTravelResult(input: {
   dest: MockDestination;
   destIata: string;
   origin: string;
@@ -230,7 +231,7 @@ export async function searchMockTravelResults(input: MockSearchInput): Promise<M
     const flights = getMockFlights(origin, destIata);
     const flight = input.mode === 'hotels' ? null : pickCheapestFlight(flights, input.cabinClass);
     const hotels = getMockHotelsForDestination(dest.id);
-    const hotel = input.mode === 'flights' ? null : pickBestHotel(hotels);
+    const hotel = input.mode === 'flights' ? null : pickBestAccommodationHotel(hotels);
 
     if (input.mode === 'flights' && !flight) {
       errors.push({ destination: destIata, message: 'Sem voos mock para esta rota' });
@@ -241,7 +242,7 @@ export async function searchMockTravelResults(input: MockSearchInput): Promise<M
       continue;
     }
 
-    const result = buildResult({
+    const result = buildCatalogTravelResult({
       dest,
       destIata,
       origin,

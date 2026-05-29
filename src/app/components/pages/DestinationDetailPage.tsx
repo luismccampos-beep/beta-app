@@ -251,29 +251,32 @@ export function DestinationDetailPage({
             }
           }}
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-black/10" />
-        <div className="absolute top-4 left-4 right-4 flex justify-between items-start">
-          <Button
-            variant="secondary"
-            size="sm"
-            className="gap-1 bg-white/90 dark:bg-gray-900/90 backdrop-blur"
-            asChild={!onBackToResults}
-            onClick={onBackToResults}
-          >
-            {onBackToResults ? (
-              <span className="flex items-center gap-1 cursor-pointer">
-                <ArrowLeft className="h-4 w-4" />
-                {t('backToResults')}
-              </span>
-            ) : (
+        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-black/10 pointer-events-none" />
+        <div className="absolute top-4 left-4 right-4 z-10 flex justify-between items-start">
+          {onBackToResults ? (
+            <Button
+              type="button"
+              variant="secondary"
+              className="gap-1 min-h-11 bg-white/90 dark:bg-gray-900/90 backdrop-blur touch-manipulation"
+              onClick={onBackToResults}
+            >
+              <ArrowLeft className="h-4 w-4" />
+              {t('backToResults')}
+            </Button>
+          ) : (
+            <Button
+              variant="secondary"
+              asChild
+              className="gap-1 min-h-11 bg-white/90 dark:bg-gray-900/90 backdrop-blur touch-manipulation"
+            >
               <Link href={resultsHref}>
                 <ArrowLeft className="h-4 w-4" />
                 {t('backToResults')}
               </Link>
-            )}
-          </Button>
+            </Button>
+          )}
         </div>
-        <div className="absolute bottom-0 left-0 right-0 p-6 md:p-10 max-w-5xl">
+        <div className="absolute bottom-0 left-0 right-0 z-10 p-6 md:p-10 max-w-5xl pointer-events-none">
           <h1 className="text-3xl md:text-5xl font-bold text-white drop-shadow-lg">{data.nome}</h1>
           <p className="mt-2 flex flex-wrap items-center gap-3 text-white/90">
             <span className="flex items-center gap-1">
@@ -560,7 +563,7 @@ export function DestinationDetailPage({
         {data.wikivoyageUrl && (
           <div className="rounded-xl border border-dashed border-gray-300 dark:border-gray-600 p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-white/50 dark:bg-gray-800/50">
             <p className="text-xs text-gray-500 dark:text-gray-400">{t('attribution', { license: data.license ?? 'CC BY-SA 3.0' })}</p>
-            <Button asChild variant="outline" className="gap-2 shrink-0">
+            <Button asChild variant="outline" className="gap-2 min-h-11 shrink-0 touch-manipulation">
               <a href={data.wikivoyageUrl} target="_blank" rel="noopener noreferrer">
                 {t('viewFullArticle')}
                 <ExternalLink className="h-4 w-4" />

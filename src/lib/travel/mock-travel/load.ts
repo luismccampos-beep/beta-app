@@ -4,6 +4,7 @@ import { resolve } from 'node:path';
 import type { MockDestination, MockHotel, MockFlight, MockTravelBundle } from './types';
 import { parseDestinationSlug } from '../destination-slug';
 import { resolveDestinationImageUrl } from '../destination-image';
+import { isTravelCatalogDbEnabled } from '../catalog-db';
 
 export { resolveDestinationImageUrl, TRAVEL_PLACEHOLDER_IMAGE } from '../destination-image';
 
@@ -14,6 +15,7 @@ const BUNDLE_WIKIVOYAGE = resolve(process.cwd(), 'src/data/travel-mock/bundle-wi
 const BUNDLE_FAKER = resolve(process.cwd(), 'src/data/travel-mock/bundle.json');
 
 export function isTravelMockEnabled(): boolean {
+  if (isTravelCatalogDbEnabled()) return false;
   const v = process.env.TRAVEL_USE_MOCK_DATA?.trim().toLowerCase();
   return v === '1' || v === 'true' || v === 'yes';
 }
@@ -50,6 +52,7 @@ export function getTravelDemoStats(): {
 
 /** Use mock hotels when Hotelbeds is not configured (unless explicitly disabled). */
 export function shouldUseMockHotels(hbKey?: string, hbSecret?: string): boolean {
+  if (isTravelCatalogDbEnabled()) return false;
   if (isTravelMockEnabled()) return true;
   const forceOff = process.env.TRAVEL_MOCK_HOTELS?.trim().toLowerCase() === 'false';
   if (forceOff) return false;
@@ -58,6 +61,7 @@ export function shouldUseMockHotels(hbKey?: string, hbSecret?: string): boolean 
 
 /** Use mock flights when no live flight provider is configured. */
 export function shouldUseMockFlights(duffelToken?: string, scrapeDoToken?: string): boolean {
+  if (isTravelCatalogDbEnabled()) return false;
   if (isTravelMockEnabled()) return true;
   const forceOff = process.env.TRAVEL_MOCK_FLIGHTS?.trim().toLowerCase() === 'false';
   if (forceOff) return false;

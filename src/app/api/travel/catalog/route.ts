@@ -13,6 +13,10 @@ import {
 } from '../../../../lib/travel/hotelbeds';
 import { getMockCatalogData } from '../../../../lib/travel/mock-travel/catalog';
 import { shouldUseMockHotels } from '../../../../lib/travel/mock-travel/load';
+import {
+  getPreferredDestinationAirportsFromDb,
+  isTravelCatalogDbEnabled,
+} from '../../../../lib/travel/catalog-db';
 import { isLiteApiConfigured } from '../../../../lib/travel/liteapi';
 import { isScrapeDoConfigured } from '../../../../lib/travel/scrape-do';
 import { fetchSiloahBrands, SILOAH_DESTINATION_IDS } from '../../../../lib/travel/siloah';
@@ -20,6 +24,11 @@ import { fetchSiloahBrands, SILOAH_DESTINATION_IDS } from '../../../../lib/trave
 export const dynamic = 'force-dynamic';
 
 type CatalogError = { source: string; message: string };
+
+function localeToTravelLang(locale: string): string {
+  const base = locale.split('-')[0]?.toLowerCase() ?? 'pt';
+  return base === 'en' || base === 'es' || base === 'fr' || base === 'pt' ? base : 'pt';
+}
 
 export async function GET(req: Request) {
   const { searchParams } = new URL(req.url);
@@ -33,7 +42,8 @@ export async function GET(req: Request) {
     process.env.HOTELBEDS_API_BASE_URL?.trim() || 'https://api.test.hotelbeds.com';
 
   const errors: CatalogError[] = [];
-  const useMockHotels = shouldUseMockHotels(hbKey, hbSecret);
+  const useDbCatalog = isTravelCatalogDbEnabled();
+  const useMockHotels = !useDbCatalog && shouldUseMockHotels(hbKey, hbSecret);
   let mockCatalog: ReturnType<typeof getMockCatalogData> | null = null;
   if (useMockHotels) {
     try {
@@ -46,7 +56,8 @@ export async function GET(req: Request) {
     }
   }
 
-  const [loyaltyRes, airportsRes, accRes, chainsRes, facRes, cruiseBrandsRes] = await Promise.all([
+  const [loyaltyRes, airportsRes, dbAirportsRes, accRes, chainsRes, facRes, cruiseBrandsRes] =
+    await Promise.all([
     duffelToken
       ? fetchDuffelLoyaltyProgrammes(duffelToken).catch((e: unknown) => {
           errors.push({
@@ -61,6 +72,17 @@ export async function GET(req: Request) {
           errors.push({
             source: 'duffel',
             message: e instanceof Error ? e.message : 'Duffel airports fetch failed',
+          });
+          return [];
+        })
+      : Promise.resolve([]),
+    useDbCatalog
+      ? getPreferredDestinationAirportsFromDb({
+          lang: localeToTravelLang(locale),
+        }).catch((e: unknown) => {
+          errors.push({
+            source: 'db',
+            message: e instanceof Error ? e.message : 'DB airports fetch failed',
           });
           return [];
         })
@@ -106,7 +128,7 @@ export async function GET(req: Request) {
     label: `${a.cityName ?? a.name} (${a.iataCode})`,
     country: a.iataCountryCode,
   }));
-  const mockAirports = mockCatalog?.airports ?? [];
+  const mockAirports = useDbCatalog ? dbAirportsRes : (mockCatalog?.airports ?? []);
   const airportMap = new Map<string, { iataCode: string; label: string; country: string | null }>();
   for (const a of [...mockAirports, ...duffelAirports]) {
     airportMap.set(a.iataCode, a);
@@ -120,6 +142,7 @@ export async function GET(req: Request) {
       hotelbeds: Boolean(hbKey && hbSecret),
       liteapi: isLiteApiConfigured(),
       mockHotels: Boolean(mockCatalog),
+      catalogSource: useDbCatalog ? 'db' : 'bundle',
       siloah: cruiseBrandsRes.length > 0,
     },
     cruiseDestinations: SILOAH_DESTINATION_IDS.map((id) => ({ id, label: id })),

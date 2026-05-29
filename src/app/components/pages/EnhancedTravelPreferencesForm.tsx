@@ -1333,7 +1333,7 @@ export function EnhancedTravelPreferencesForm({ onComplete, onBack }: EnhancedTr
   };
 
   return (
-    <div className="w-full max-w-7xl mx-auto px-3 sm:px-4 md:px-6 pt-3 sm:pt-4 md:pt-6 pb-28 md:pb-6 space-y-4 sm:space-y-6 overflow-x-hidden">
+    <div className="w-full max-w-7xl mx-auto px-3 sm:px-4 md:px-6 pt-3 sm:pt-4 md:pt-6 pb-32 md:pb-6 space-y-4 sm:space-y-6 overflow-x-hidden">
       {travelCatalogError ? (
         <div className="rounded-lg border border-amber-200 bg-amber-50 dark:bg-amber-950/30 dark:border-amber-800 px-4 py-3 text-sm text-amber-900 dark:text-amber-100">
           <p className="font-medium">{t('catalogPartialBanner')}</p>
@@ -1346,8 +1346,7 @@ export function EnhancedTravelPreferencesForm({ onComplete, onBack }: EnhancedTr
           <Button
             variant="outline"
             onClick={handleBack}
-            size="sm"
-            className="gap-2 shrink-0 min-h-10"
+            className="gap-2 shrink-0 min-h-11 touch-manipulation"
             aria-label={t('back')}
           >
             <ArrowLeft className="w-4 h-4" />
@@ -1700,7 +1699,7 @@ export function EnhancedTravelPreferencesForm({ onComplete, onBack }: EnhancedTr
                         `}
                       >
                         {isSelected && (
-                          <div className={`absolute inset-0 bg-gradient-to-br ${style.color} opacity-90`} />
+                          <div className={`absolute inset-0 bg-gradient-to-br ${style.color} opacity-90 pointer-events-none`} />
                         )}
                         <div className="relative z-10 flex flex-col items-center gap-2">
                           <Icon className={`w-8 h-8 ${isSelected ? 'text-white' : 'text-gray-600'}`} />
@@ -2716,7 +2715,8 @@ export function EnhancedTravelPreferencesForm({ onComplete, onBack }: EnhancedTr
             <Button
               onClick={() => setCurrentStep((prev) => Math.min(totalSteps - 1, prev + 1))}
               size="lg"
-              className="w-full min-h-12 gap-2 bg-gradient-to-r from-teal-600 to-orange-500"
+              type="button"
+              className="w-full min-h-12 gap-2 bg-gradient-to-r from-teal-600 to-orange-500 touch-manipulation"
             >
               {t('nextStep')} →
             </Button>
@@ -2725,7 +2725,8 @@ export function EnhancedTravelPreferencesForm({ onComplete, onBack }: EnhancedTr
               onClick={handleSubmit}
               disabled={isProcessing}
               size="lg"
-              className="w-full min-h-12 gap-2 bg-gradient-to-r from-green-600 to-emerald-600"
+              type="button"
+              className="w-full min-h-12 gap-2 bg-gradient-to-r from-green-600 to-emerald-600 touch-manipulation"
             >
               {isProcessing ? (
                 <>
