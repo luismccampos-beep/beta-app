@@ -66,7 +66,7 @@ export function RecommendedDestinationCard({
           className="h-full w-full object-cover"
           onError={onDestinationImageError}
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent pointer-events-none" />
         <div className="absolute top-2 right-2 flex flex-wrap gap-1 justify-end">
           <Badge className="border-0 bg-gradient-to-r from-teal-500 to-orange-500 text-white">
             <Sparkles className="mr-1 h-3 w-3" />

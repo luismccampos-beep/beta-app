@@ -947,8 +947,25 @@ export function ResultsPage({ onBackToHome, onLogout, onNavigateToLegal, onNavig
                           <ExternalLink className="w-4 h-4" />
                         </a>
                       </Button>
+                    ) : result.sourceUrl ? (
+                      <Button variant="outline" asChild className="gap-2 min-h-11 w-full dark:border-gray-600 dark:text-gray-300 touch-manipulation">
+                        <a href={result.sourceUrl} target="_blank" rel="noopener noreferrer">
+                          {t('viewDetails')}
+                          <ExternalLink className="w-4 h-4" />
+                        </a>
+                      </Button>
+                    ) : result.airport?.iata ? (
+                      <Button
+                        type="button"
+                        variant="outline"
+                        className="gap-2 min-h-11 w-full dark:border-gray-600 dark:text-gray-300 touch-manipulation"
+                        onClick={() => handleFocusLiveSearch(result.airport!.iata!)}
+                      >
+                        {t('viewDetails')}
+                        <ArrowRight className="w-4 h-4" />
+                      </Button>
                     ) : (
-                      <Button variant="outline" className="gap-2 min-h-11 w-full dark:border-gray-600 dark:text-gray-300 touch-manipulation">
+                      <Button variant="outline" disabled className="gap-2 min-h-11 w-full dark:border-gray-600 dark:text-gray-300 touch-manipulation">
                         {t('viewDetails')}
                       </Button>
                     )}
@@ -962,8 +979,17 @@ export function ResultsPage({ onBackToHome, onLogout, onNavigateToLegal, onNavig
                           <ArrowRight className="w-4 h-4" />
                         </a>
                       </Button>
+                    ) : result.airport?.iata ? (
+                      <Button
+                        type="button"
+                        className="gap-2 min-h-11 w-full bg-gradient-to-r from-teal-600 to-orange-500 hover:from-teal-700 hover:to-orange-600 touch-manipulation"
+                        onClick={() => handleFocusLiveSearch(result.airport!.iata!)}
+                      >
+                        {t('bookNow')}
+                        <ArrowRight className="w-4 h-4" />
+                      </Button>
                     ) : (
-                      <Button className="gap-2 min-h-11 w-full bg-gradient-to-r from-teal-600 to-orange-500 hover:from-teal-700 hover:to-orange-600 touch-manipulation">
+                      <Button disabled className="gap-2 min-h-11 w-full bg-gradient-to-r from-teal-600 to-orange-500 touch-manipulation">
                         {t('bookNow')}
                         <ArrowRight className="w-4 h-4" />
                       </Button>

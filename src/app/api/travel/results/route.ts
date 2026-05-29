@@ -10,6 +10,16 @@ import { buildDestinationSlug } from '../../../../lib/travel/destination-slug';
 import { summarizeAirport } from '../../../../lib/travel/transport-summary';
 import { getScrapeDoToken } from '../../../../lib/travel/scrape-do';
 import {
+  getCatalogStatsFromDb,
+  getDestinationByIataFromDb,
+  getHotelsFromDb,
+  isTravelCatalogDbEnabled,
+  listTopDestinationIatasFromDb,
+} from '../../../../lib/travel/catalog-db';
+import { searchDbTravelResults } from '../../../../lib/travel/db-travel/search';
+import { pickBestAccommodationHotel } from '../../../../lib/travel/hotel-filter';
+import type { MockDestination } from '../../../../lib/travel/mock-travel/types';
+import {
   getMockDestinationByIata,
   getMockHotelsForDestination,
   getTravelDemoStats,
@@ -78,6 +88,26 @@ function resolveReturnDate(
   return addDaysIso(departureDate, nights);
 }
 
+async function lookupDestinationForResults(iata: string): Promise<MockDestination | undefined> {
+  if (isTravelCatalogDbEnabled()) {
+    const dest = await getDestinationByIataFromDb(iata);
+    return dest ?? undefined;
+  }
+  return getMockDestinationByIata(iata);
+}
+
+async function lookupCheapestHotelForResults(
+  dest: MockDestination | undefined,
+): Promise<{ nome: string; estrelas: number; preco_por_noite: number } | null> {
+  if (!dest) return null;
+  if (isTravelCatalogDbEnabled()) {
+    const hotels = await getHotelsFromDb({ destinoId: dest.id, limit: 24 });
+    return pickBestAccommodationHotel(hotels);
+  }
+  const mockHotels = getMockHotelsForDestination(dest.id);
+  return pickBestAccommodationHotel(mockHotels);
+}
+
 async function buildHotelOnlyResult(input: {
   token: string;
   dest: string;
@@ -130,7 +160,7 @@ async function buildHotelOnlyResult(input: {
 
   const blurb = `Hotel-only stay in ${city} (${input.departureDate} → ${checkOut}) via Hotelbeds geo search.`;
 
-  const mockDestHotel = getMockDestinationByIata(input.dest);
+  const mockDestHotel = await lookupDestinationForResults(input.dest);
 
   const result: TravelResult = {
     id: `hotel-only-${input.dest}-${input.departureDate}-${input.nights}`,
@@ -198,7 +228,7 @@ async function buildPackageOrFlightResult(input: {
 
   const providerLabel = provider === 'scrape.do' ? 'Google Flights (Scrape.do)' : 'Duffel';
 
-  const mockDestLive = getMockDestinationByIata(input.dest);
+  const mockDestLive = await lookupDestinationForResults(input.dest);
   const destAp = input.duffelToken
     ? await fetchDuffelAirportByIata(input.duffelToken, input.dest)
     : null;
@@ -253,12 +283,9 @@ async function buildPackageOrFlightResult(input: {
     accommodationLabel = `${hotelMin.hotelName ?? 'Hotel'} (${hotelMin.currency} ${hotelMin.minRate})`;
   } else if (input.mode !== 'flights' && hotelError) {
     accommodationLabel = `Hotels unavailable (${hotelError.slice(0, 60)})`;
-  } else if (input.mode !== 'flights' && !input.hbKey && shouldUseMockHotels()) {
-    const mockDest = getMockDestinationByIata(input.dest);
-    const mockHotels = mockDest ? getMockHotelsForDestination(mockDest.id) : [];
-    const mockHotel = mockHotels.length
-      ? [...mockHotels].sort((a, b) => a.preco_por_noite - b.preco_por_noite)[0]
-      : null;
+  } else if (input.mode !== 'flights' && !input.hbKey && (shouldUseMockHotels() || isTravelCatalogDbEnabled())) {
+    const mockDest = mockDestLive ?? (await lookupDestinationForResults(input.dest));
+    const mockHotel = await lookupCheapestHotelForResults(mockDest);
     if (mockHotel) {
       const stayTotal = Math.round(mockHotel.preco_por_noite * input.nights);
       totalPrice = Math.round((totalPrice + stayTotal) * 100) / 100;
@@ -358,10 +385,11 @@ export async function GET(req: Request) {
 
   const needsFlights = mode === 'both' || mode === 'flights';
   const needsHotels = mode === 'both' || mode === 'hotels';
+  const useDbCatalog = isTravelCatalogDbEnabled();
   const mockFlights = shouldUseMockFlights(duffelToken, scrapeDoToken);
   const mockHotels = shouldUseMockHotels(hbKey, hbSecret);
 
-  if (needsFlights && !duffelToken && !scrapeDoToken && !mockFlights) {
+  if (needsFlights && !duffelToken && !scrapeDoToken && !mockFlights && !useDbCatalog) {
     return NextResponse.json(
       {
         ok: false,
@@ -374,7 +402,7 @@ export async function GET(req: Request) {
     );
   }
 
-  if (mode === 'hotels' && (!hbKey || !hbSecret) && !mockHotels) {
+  if (mode === 'hotels' && (!hbKey || !hbSecret) && !mockHotels && !useDbCatalog) {
     return NextResponse.json(
       {
         ok: false,
@@ -395,8 +423,11 @@ export async function GET(req: Request) {
     .trim()
     .toUpperCase();
   const destinations = parseDestinations(url.searchParams.get('destinations'));
+  const defaultDestList = useDbCatalog
+    ? await listTopDestinationIatasFromDb(6)
+    : ['OPO', 'MAD', 'BCN', 'FAO', 'ORY', 'MXP'];
   const destList =
-    destinations.length > 0 ? destinations.slice(0, 6) : ['OPO', 'MAD', 'BCN', 'FAO', 'ORY', 'MXP'];
+    destinations.length > 0 ? destinations.slice(0, 6) : defaultDestList;
 
   const departureDate = url.searchParams.get('departure')?.trim() || defaultDepartureIso(21);
   const nights = Math.min(
@@ -417,12 +448,58 @@ export async function GET(req: Request) {
   const travelPrefs = decodeTravelPreferencesCompact(url.searchParams.get('prefs'));
 
   const useFullMock =
-    isTravelMockEnabled() ||
-    (needsFlights &&
-      !duffelToken &&
-      !scrapeDoToken &&
-      mockFlights &&
-      (!needsHotels || (!hbKey && mockHotels)));
+    !useDbCatalog &&
+    (isTravelMockEnabled() ||
+      (needsFlights &&
+        !duffelToken &&
+        !scrapeDoToken &&
+        mockFlights &&
+        (!needsHotels || (!hbKey && mockHotels))));
+
+  const useDbDemoSearch =
+    useDbCatalog &&
+    ((needsFlights && !duffelToken && !scrapeDoToken) ||
+      (mode === 'hotels' && (!hbKey || !hbSecret)));
+
+  if (useDbDemoSearch && (needsHotels || needsFlights)) {
+    const db = await searchDbTravelResults({
+      origin,
+      destinationIatas: destList,
+      mode: needsFlights && needsHotels ? mode : needsHotels ? 'hotels' : 'flights',
+      tripType,
+      nights,
+      departureDate,
+      returnDate: tripType === 'roundtrip' ? returnDate : null,
+      cabinClass,
+      preferences: travelPrefs,
+    });
+    const demo = await getCatalogStatsFromDb();
+    return NextResponse.json({
+      ok: true,
+      results: db.results,
+      errors: db.errors,
+      meta: {
+        origin,
+        destinations: destList,
+        departureDate,
+        returnDate: tripType === 'roundtrip' ? returnDate : null,
+        nights,
+        adults,
+        cabinClass,
+        tripType,
+        mode,
+        mock: false,
+        catalogSource: 'db',
+        preferenceMatch: Boolean(travelPrefs),
+        mlRanking: Boolean(process.env.ML_SERVICE_BASE_URL?.trim()),
+        demoSource: demo.source,
+        demoCounts: demo,
+        hotelbeds: false,
+        duffel: false,
+        scrapeDo: false,
+      },
+    });
+  }
 
   if (useFullMock && (needsHotels || needsFlights)) {
     const mock = await searchMockTravelResults({
@@ -466,8 +543,9 @@ export async function GET(req: Request) {
   for (const dest of destList) {
     if (dest === origin) continue;
 
-    if (mode === 'hotels' && mockHotels && !hbKey) {
-      const mock = await searchMockTravelResults({
+    if (mode === 'hotels' && (mockHotels || useDbCatalog) && !hbKey) {
+      const searchFn = useDbCatalog ? searchDbTravelResults : searchMockTravelResults;
+      const mock = await searchFn({
         origin,
         destinationIatas: [dest],
         mode: 'hotels',
@@ -551,6 +629,7 @@ export async function GET(req: Request) {
       duffel: Boolean(duffelToken),
       scrapeDo: Boolean(scrapeDoToken),
       mock: false,
+      catalogSource: useDbCatalog ? 'db' : 'bundle',
     },
   });
 }

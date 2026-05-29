@@ -5,6 +5,7 @@ import { boundingBox, haversineKm } from './geo';
 import { buildTravelMapMarkers, type DestinationMapMarker } from './destination-map';
 import { resolveDestinationImageFromFields } from './destination-image';
 import { resolveDestinationIata } from './destination-iata';
+import { isAccommodationHotel } from './hotel-filter';
 import type { MockDestination, MockFlight, MockHotel } from './mock-travel/types';
 
 type WvHotelRow = {
@@ -356,11 +357,32 @@ export async function getHotelsFromDb(opts: {
   const rows = await prisma.wvHotel.findMany({
     where: { destinoId, NOT: { fonte: 'rejected_geo' } },
     orderBy: { precoPorNoite: 'asc' },
-    take: limit,
+    take: limit * 6,
     select: hotelSelect,
   });
 
-  return rows.map((h) => rowToHotel(h));
+  const filtered = rows.filter(isAccommodationHotel).slice(0, limit);
+  if (filtered.length > 0) {
+    return filtered.map((h) => rowToHotel(h));
+  }
+
+  const sleepListings = await prisma.wvListing.findMany({
+    where: { destinoId, type: 'sleep' },
+    orderBy: { title: 'asc' },
+    take: limit,
+  });
+
+  return sleepListings.map((listing, index) => ({
+    id: destinoId * 10_000 + index + 1,
+    destino_id: destinoId,
+    nome: listing.title.trim(),
+    estrelas: 3,
+    preco_por_noite: 85,
+    comodidades: [] as string[],
+    latitude: listing.latitude,
+    longitude: listing.longitude,
+    fonte: 'wikivoyage-sleep',
+  }));
 }
 
 export async function getFlightsFromDb(opts: {
@@ -476,4 +498,133 @@ export async function getListingsFromDb(opts: {
       url: true,
     },
   });
+}
+
+export type CatalogAirportOption = {
+  iataCode: string;
+  label: string;
+  country: string | null;
+};
+
+const destinationSelectForLookup = {
+  id: true,
+  lang: true,
+  nome: true,
+  pais: true,
+  paisCode: true,
+  continente: true,
+  iata: true,
+  tipo: true,
+  clima: true,
+  descricao: true,
+  descricaoCompleta: true,
+  resumo: true,
+  veja: true,
+  faca: true,
+  coma: true,
+  dicas: true,
+  tags: true,
+  wikivoyageUrl: true,
+  wikipediaResumo: true,
+  wikipediaUrl: true,
+  climaTempo: true,
+  custoDeVida: true,
+  transporte: true,
+  latitude: true,
+  longitude: true,
+  imagemUrl: true,
+  imagemQuery: true,
+  hotelCount: true,
+} as const;
+
+function applyResolvedIata(dest: MockDestination, hint?: string | null): MockDestination {
+  const resolved = resolveDestinationIata(dest, hint);
+  if (resolved) dest.iata = resolved;
+  return dest;
+}
+
+/** Destinos com IATA válido para o formulário de preferências (Neon). */
+export async function getPreferredDestinationAirportsFromDb(opts?: {
+  lang?: string;
+  limit?: number;
+}): Promise<CatalogAirportOption[]> {
+  const lang = opts?.lang?.trim() || 'pt';
+  const limit = Math.min(opts?.limit ?? 800, 2000);
+
+  const rows = await prisma.wvDestination.findMany({
+    where: {
+      lang,
+      iata: { not: null },
+      paisCode: { not: 'XX' },
+      hotelCount: { gt: 0 },
+    },
+    select: {
+      nome: true,
+      paisCode: true,
+      iata: true,
+      transporte: true,
+      hotelCount: true,
+    },
+    orderBy: [{ hotelCount: 'desc' }, { nome: 'asc' }],
+    take: limit * 3,
+  });
+
+  const airportMap = new Map<string, CatalogAirportOption>();
+  for (const row of rows) {
+    const iataCode = resolveDestinationIata({
+      iata: row.iata,
+      transporte: row.transporte as MockDestination['transporte'],
+    });
+    if (!iataCode || airportMap.has(iataCode)) continue;
+    airportMap.set(iataCode, {
+      iataCode,
+      label: `${row.nome} (${iataCode})`,
+      country: row.paisCode,
+    });
+    if (airportMap.size >= limit) break;
+  }
+
+  return [...airportMap.values()].sort((a, b) => a.label.localeCompare(b.label));
+}
+
+/** Lookup de destino por código IATA (Neon), com IATA resolvido. */
+export async function getDestinationByIataFromDb(
+  iata: string,
+  lang = 'pt',
+): Promise<MockDestination | null> {
+  const code = iata.trim().toUpperCase();
+  if (!/^[A-Z0-9]{3}$/.test(code)) return null;
+
+  const byField = await prisma.wvDestination.findMany({
+    where: { lang, iata: code },
+    orderBy: { hotelCount: 'desc' },
+    take: 3,
+    select: destinationSelectForLookup,
+  });
+
+  for (const row of byField) {
+    const dest = applyResolvedIata(rowToDestination(row), code);
+    if (dest.iata === code) return dest;
+  }
+  if (byField[0]) return applyResolvedIata(rowToDestination(byField[0]), code);
+
+  const flight = await prisma.wvFlight.findFirst({
+    where: { destinoIata: code },
+    orderBy: { preco: 'asc' },
+    select: { destinoId: true },
+  });
+  if (!flight) return null;
+
+  const row = await prisma.wvDestination.findFirst({
+    where: { id: flight.destinoId, lang },
+    select: destinationSelectForLookup,
+  });
+  if (!row) return null;
+  return applyResolvedIata(rowToDestination(row), code);
+}
+
+/** IATAs populares para pesquisa demo quando o cliente não envia destinos. */
+export async function listTopDestinationIatasFromDb(limit = 6, lang = 'pt'): Promise<string[]> {
+  const airports = await getPreferredDestinationAirportsFromDb({ lang, limit: limit * 2 });
+  return airports.slice(0, limit).map((a) => a.iataCode);
 }

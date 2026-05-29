@@ -2,6 +2,7 @@ import { prisma } from '../prisma';
 import { buildDestinationSlug } from './destination-slug';
 import { resolveDestinationImageUrl } from './destination-image';
 import { resolveDestinationIata } from './destination-iata';
+import { isAccommodationHotel } from './hotel-filter';
 import { scoreWikivoyageInterests } from './destination-interests';
 import {
   scoreDestinationMatch,
@@ -65,7 +66,6 @@ async function recommendFromDb(input: RecommendDestinationsInput): Promise<Recom
     input.preferences.budgetPriority === 'luxury'
       ? 4
       : 1;
-  const allowSources = new Set(['liteapi', 'wikivoyage']);
 
   const rows = await prisma.wvDestination.findMany({
     where: { lang, hotelCount: { gt: 0 } },
@@ -78,21 +78,21 @@ async function recommendFromDb(input: RecommendDestinationsInput): Promise<Recom
   const destIds = rows.map((r) => r.id);
   const origin = input.originIata?.toUpperCase();
 
-  const [cheapestHotels, flightRows] = await Promise.all([
+  const [allHotels, flightRows] = await Promise.all([
     prisma.wvHotel.findMany({
       where: {
         destinoId: { in: destIds },
         estrelas: { gte: minStars },
-        fonte: { in: [...allowSources] },
+        NOT: { fonte: 'rejected_geo' },
       },
       orderBy: { precoPorNoite: 'asc' },
-      distinct: ['destinoId'],
       select: {
         id: true,
         destinoId: true,
         nome: true,
         estrelas: true,
         precoPorNoite: true,
+        fonte: true,
       },
     }),
     origin
@@ -105,7 +105,11 @@ async function recommendFromDb(input: RecommendDestinationsInput): Promise<Recom
       : Promise.resolve([]),
   ]);
 
-  const hotelByDest = new Map(cheapestHotels.map((h) => [h.destinoId, h]));
+  const hotelByDest = new Map<number, (typeof allHotels)[0]>();
+  for (const h of allHotels) {
+    if (!isAccommodationHotel(h)) continue;
+    if (!hotelByDest.has(h.destinoId)) hotelByDest.set(h.destinoId, h);
+  }
   const flightByDest = new Map(flightRows.map((f) => [f.destinoId, f.preco]));
   const flightIataByDest = new Map(
     flightRows.map((f) => [f.destinoId, f.destinoIata?.trim().toUpperCase() || null] as const),
@@ -176,12 +180,10 @@ async function recommendFromDb(input: RecommendDestinationsInput): Promise<Recom
     .slice(0, limit);
 }
 
-const TRUSTED_HOTEL_SOURCES = new Set(['liteapi', 'wikivoyage']);
-
 function pickBundleHotel(destId: number) {
   const hotels = getMockHotelsForDestination(destId)
     .filter((h) => h.fonte !== 'synthetic' && h.fonte !== 'rejected_geo')
-    .filter((h) => !h.fonte || TRUSTED_HOTEL_SOURCES.has(h.fonte));
+    .filter(isAccommodationHotel);
   if (!hotels.length) return null;
   return [...hotels].sort((a, b) => a.preco_por_noite - b.preco_por_noite)[0]!;
 }

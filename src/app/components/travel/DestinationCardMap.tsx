@@ -29,7 +29,7 @@ export function DestinationCardMap({ markers, className }: DestinationCardMapPro
     <div
       className={
         className ??
-        'h-32 w-full overflow-hidden border-t border-teal-100/80 dark:border-teal-900/40 bg-teal-50/30 dark:bg-gray-900/40'
+        'h-32 w-full overflow-hidden border-t border-teal-100/80 dark:border-teal-900/40 bg-teal-50/30 dark:bg-gray-900/40 [&_.leaflet-container]:pointer-events-none sm:[&_.leaflet-container]:pointer-events-auto'
       }
       aria-label={t('mapTitle')}
     >
