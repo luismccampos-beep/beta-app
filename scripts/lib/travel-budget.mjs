@@ -3,14 +3,77 @@
  */
 import {
   countryToEnglish,
+  fold,
   leafCityName,
   lookupCityRow,
   lookupCityGlobal,
   lookupCountryRow,
 } from './cost-of-living-data.mjs';
+import { existsSync, readFileSync } from 'node:fs';
+import { resolve, dirname } from 'node:path';
+import { fileURLToPath } from 'node:url';
 import { continentIndices, inferLocalityTier } from './destination-locality.mjs';
 
+const __dirname = dirname(fileURLToPath(import.meta.url));
+const TOURISM_INDEX = resolve(__dirname, '../../data/tourism cost/tourism-expenditure-index.json');
+
 const REFERENCE_DAILY_USD = 92;
+
+/** @type {import('../../data/tourism cost/tourism-expenditure-index.json') | null} */
+let tourismCache = undefined;
+
+function loadTourismIndex() {
+  if (tourismCache !== undefined) return tourismCache;
+  if (!existsSync(TOURISM_INDEX)) {
+    tourismCache = null;
+    return null;
+  }
+  try {
+    tourismCache = JSON.parse(readFileSync(TOURISM_INDEX, 'utf8'));
+    return tourismCache;
+  } catch {
+    tourismCache = null;
+    return null;
+  }
+}
+
+/**
+ * @param {string} countryEn
+ */
+function budgetsFromTourism(countryEn) {
+  const idx = loadTourismIndex();
+  if (!idx?.countries) return null;
+  const row = idx.countries[fold(countryEn)];
+  if (!row?.budgetsUsd) return null;
+  return {
+    nivel: 'pais',
+    estimado: true,
+    confianca: 'media',
+    moeda: 'USD',
+    fonte: `UNWTO ${row.displayName ?? countryEn} (${row.year}) · gasto turístico/dia`,
+    fator_localidade: 1,
+    indices: {
+      cost_of_living: row.colIndexFromTourism,
+    },
+    orcamentos: {
+      mochileiro: {
+        total_dia: row.budgetsUsd.mochileiro,
+        moeda: 'USD',
+        itens: [`Gasto turístico UNWTO ÷${row.tripDaysAssumed ?? 5} dias`],
+      },
+      conforto: {
+        total_dia: row.budgetsUsd.conforto,
+        moeda: 'USD',
+        itens: [`~$${row.spendPerDayUsd}/dia (visitante médio)`],
+      },
+      luxo: {
+        total_dia: row.budgetsUsd.luxo,
+        moeda: 'USD',
+        itens: [`Intensidade turística relativa ${row.relativeSpend}`],
+      },
+    },
+  };
+}
 
 /**
  * @param {Record<string, number | null>} prices
@@ -166,6 +229,11 @@ export function resolveBudgetForDestination(indexes, dest) {
   }
 
   const countryRow = countryEn ? lookupCountryRow(indexes.countries, countryEn) : null;
+  if (!countryRow && countryEn) {
+    const tourism = budgetsFromTourism(countryEn);
+    if (tourism) return tourism;
+  }
+
   if (countryRow) {
     return {
       nivel: 'pais',
