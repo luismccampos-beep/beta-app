@@ -1,0 +1,951 @@
+# 949 destinos sem hotel (antes de enrich-hotels-remaining)
+# nome	pais	continente	id
+Munique	Alemanha	Europa	1142
+Peterhof	Alemanha	Europa	1396
+Bahía Blanca	Argentina	América	189
+Clorinda	Argentina	América	472
+Esquel	Argentina	América	619
+Estrada Austral	Argentina	América	625
+La Rioja (cidade)	Argentina	América	951
+Península Valdés	Argentina	América	1389
+Puerto Pirámides	Argentina	América	1484
+Qhapaq Ñan	Argentina	América	1495
+Rawson	Argentina	América	1514
+Rio Cuarto	Argentina	América	1564
+Roque Saenz Peña	Argentina	América	1585
+Santiago del Estero (cidade)	Argentina	América	1690
+Socompa	Argentina	América	1816
+Trelew	Argentina	América	1984
+Yacuíba	Argentina	América	2083
+Camberra	Austrália	Oceânia	362
+Oceania	Austrália	Oceânia	1215
+Tourist Drive 33	Austrália	Oceânia	2529
+Viajar economicamente	Bélgica	Europa	2081
+Abaetetuba	Brasil	América	2561
+Abelardo Luz	Brasil	América	2172
+Abrolhos	Brasil	América	12
+Aceguá (Rio Grande do Sul)	Brasil	América	17
+Acopiara	Brasil	América	2557
+Agrestina	Brasil	América	33
+Água Doce	Brasil	América	2274
+Alcântara	Brasil	América	54
+Alegrete	Brasil	América	56
+Alfenas	Brasil	América	2515
+Alter do Chão	Brasil	América	64
+Alumínio	Brasil	América	66
+América do Sul	Brasil	América	75
+Américo Brasiliense	Brasil	América	77
+Andradas	Brasil	América	2169
+Andrelândia	Brasil	América	95
+Angatuba	Brasil	América	2191
+Antônio Carlos (Santa Catarina)	Brasil	América	2176
+Apicum-Açu	Brasil	América	2292
+Aquidauana	Brasil	América	114
+Aracaju	Brasil	América	118
+Araci	Brasil	América	2147
+Araçoiaba da Serra	Brasil	América	123
+Aracruz	Brasil	América	124
+Aragarças	Brasil	América	125
+Arambaré	Brasil	América	127
+Arantina	Brasil	América	128
+Arapeí	Brasil	América	129
+Arapiraca	Brasil	América	130
+Araranguá	Brasil	América	132
+Araxá	Brasil	América	2581
+Areia (Paraíba)	Brasil	América	2518
+Areias	Brasil	América	138
+Ariranha	Brasil	América	142
+Artigas	Brasil	América	150
+Avaré	Brasil	América	178
+Baixada Fluminense	Brasil	América	194
+Balneário Arroio do Silva	Brasil	América	2428
+Balneário Gaivota	Brasil	América	2426
+Bastos	Brasil	América	237
+Bebedouro	Brasil	América	243
+Belford Roxo	Brasil	América	2794
+Betim	Brasil	América	2153
+Bezerros	Brasil	América	262
+Bilac	Brasil	América	2145
+Biquinhas	Brasil	América	266
+Birigui	Brasil	América	267
+Boa Esperança	Brasil	América	2173
+Boca do Acre	Brasil	América	273
+Bocaina do Sul	Brasil	América	274
+Boituva	Brasil	América	276
+Bom Jesus da Lapa	Brasil	América	281
+Bom Jesus dos Perdões	Brasil	América	282
+Bombinhas	Brasil	América	280
+Brejo da Madre de Deus	Brasil	América	303
+Breves	Brasil	América	2566
+Britânia	Brasil	América	308
+Brumado	Brasil	América	2159
+Buriti Alegre	Brasil	América	318
+Cabo Frio	Brasil	América	326
+Caçapava do Sul	Brasil	América	2210
+Cachoeira Dourada	Brasil	América	333
+Cachoeira Paulista	Brasil	América	334
+Cachoeiras de Macacu	Brasil	América	2802
+Cacoal	Brasil	América	336
+Caicó	Brasil	América	2300
+Cajati	Brasil	América	2136
+Cajazeiras	Brasil	América	348
+Camaquã	Brasil	América	2503
+Cambará do Sul	Brasil	América	361
+Cametá	Brasil	América	2562
+Caminhos do Imigrante	Brasil	América	365
+Campina do Monte Alegre	Brasil	América	2193
+Campo Belo	Brasil	América	2138
+Campo do Meio	Brasil	América	2310
+Campo Verde	Brasil	América	2674
+Campos dos Goytacazes	Brasil	América	373
+Canas	Brasil	América	375
+Cândido Rodrigues	Brasil	América	378
+Canguçu	Brasil	América	380
+Cânion Itaimbezinho	Brasil	América	382
+Canoinhas	Brasil	América	385
+Capão Bonito	Brasil	América	2189
+Capela do Alto	Brasil	América	392
+Capital (Venezuela)	Brasil	América	393
+Caravelas	Brasil	América	398
+Cardoso Moreira	Brasil	América	400
+Carnaubais	Brasil	América	2306
+Carrancas	Brasil	América	404
+Cascavel	Brasil	América	413
+Casimiro de Abreu	Brasil	América	2800
+Cassilândia	Brasil	América	416
+Castanhal	Brasil	América	2560
+Cataguases	Brasil	América	422
+Catalão	Brasil	América	423
+Catanduva	Brasil	América	424
+Ceilândia	Brasil	América	2137
+Centro-Oeste (Brasil)	Brasil	América	432
+Chã Preta	Brasil	América	440
+Chapecó	Brasil	América	439
+Chavantes	Brasil	América	2179
+Cidade da Guatemala	Brasil	América	458
+Cidade do Panamá	Brasil	América	462
+Coari	Brasil	América	2569
+Colina	Brasil	América	482
+Combinado	Brasil	América	2185
+Conceição do Ibitipoca	Brasil	América	2297
+Concórdia	Brasil	América	496
+Conselheiro Lafaiete	Brasil	América	2577
+Coruripe	Brasil	América	2809
+Costa do Sauípe	Brasil	América	515
+Crato	Brasil	América	519
+Criciúma	Brasil	América	2420
+Cristalina	Brasil	América	520
+Cruzeiro	Brasil	América	522
+Cruzeiro do Sul	Brasil	América	523
+Dionísio Cerqueira	Brasil	América	560
+Dois Córregos	Brasil	América	570
+Domingos Martins	Brasil	América	572
+Dourados	Brasil	América	575
+Dracena	Brasil	América	577
+Engenheiro Coelho	Brasil	América	606
+Epitaciolândia	Brasil	América	608
+Ervália	Brasil	América	2186
+Escada	Brasil	América	2807
+Espera Feliz	Brasil	América	615
+Espírito Santo do Pinhal	Brasil	América	617
+Estados Unidos da América	Brasil	América	622
+Estrada Real	Brasil	América	626
+Estrela	Brasil	América	2493
+Extrema	Brasil	América	631
+Extremoz	Brasil	América	2506
+Exu	Brasil	América	633
+Farroupilha	Brasil	América	2497
+Fernando Prestes	Brasil	América	641
+Fernandópolis	Brasil	América	640
+Franca	Brasil	América	664
+Frederico Westphalen	Brasil	América	2451
+Fumaça	Brasil	América	677
+Fundão (Espírito Santo)	Brasil	América	681
+Garanhuns	Brasil	América	686
+Goiana	Brasil	América	702
+Goianinha	Brasil	América	2476
+Governador Celso Ramos	Brasil	América	2448
+Gravatá	Brasil	América	714
+Gravataí	Brasil	América	715
+Guaíba	Brasil	América	719
+Guarapuava	Brasil	América	728
+Guareí	Brasil	América	2190
+Guayaramerín	Brasil	América	736
+Gurupi	Brasil	América	738
+Herval	Brasil	América	2141
+Holambra	Brasil	América	755
+Ibirá	Brasil	América	768
+Ibirité	Brasil	América	2573
+Icó	Brasil	América	2553
+Igaporã	Brasil	América	2156
+Iguape	Brasil	América	778
+Ilha Comprida	Brasil	América	782
+Ilha do Bananal	Brasil	América	787
+Ilha do Cajual	Brasil	América	788
+Ilha do Cardoso	Brasil	América	789
+Ilha do Mosqueiro	Brasil	América	248
+Ilha Solteira	Brasil	América	799
+Ilhota	Brasil	América	2178
+Imaruí	Brasil	América	802
+Imperatriz	Brasil	América	803
+Indaiatuba	Brasil	América	805
+Inhapim	Brasil	América	809
+Ipatinga	Brasil	América	810
+Iperó	Brasil	América	811
+Ipoema	Brasil	América	827
+Ipupiara	Brasil	América	2281
+Itaberaí	Brasil	América	826
+Itabira	Brasil	América	2578
+Itabuna	Brasil	América	828
+Itacoatiara	Brasil	América	2571
+Itaguaí	Brasil	América	830
+Itamogi	Brasil	América	2167
+Itamonte	Brasil	América	833
+Itanhaém	Brasil	América	834
+Itapema	Brasil	América	836
+Itapissuma	Brasil	América	2379
+Itápolis	Brasil	América	841
+Itatiaia	Brasil	América	844
+Itaú de Minas	Brasil	América	848
+Itaúnas	Brasil	América	850
+Itirapina	Brasil	América	851
+Ituberá	Brasil	América	854
+Itumbiara	Brasil	América	855
+Itutinga	Brasil	América	2168
+Ivoti	Brasil	América	2470
+Jaboatão dos Guararapes	Brasil	América	859
+Jaciara	Brasil	América	862
+Jacinto Machado	Brasil	América	2425
+Jaguarão	Brasil	América	864
+Jaguaripe	Brasil	América	2375
+Jales	Brasil	América	868
+Jambeiro	Brasil	América	870
+Jandira	Brasil	América	871
+Janduís	Brasil	América	872
+Japaratinga	Brasil	América	874
+Japeri	Brasil	América	875
+Jardim (Mato Grosso do Sul)	Brasil	América	876
+Jaru	Brasil	América	878
+Ji-Paraná	Brasil	América	885
+Joaçaba	Brasil	América	2273
+Juazeiro do Norte	Brasil	América	895
+Juína	Brasil	América	2672
+Juréia	Brasil	América	902
+Lagoinha	Brasil	América	936
+Lajeado	Brasil	América	2184
+Lavras	Brasil	América	955
+Lavrinhas	Brasil	América	956
+Leste (Rio Grande do Norte)	Brasil	América	966
+Lima Duarte	Brasil	América	2212
+Limoeiro	Brasil	América	974
+Limoeiro do Norte	Brasil	América	2556
+Lorena	Brasil	América	989
+Lucas do Rio Verde	Brasil	América	2677
+Luiz Alves (Santa Catarina)	Brasil	América	1003
+Luziânia	Brasil	América	1011
+Madre de Deus	Brasil	América	1022
+Mafra (Brasil)	Brasil	América	1025
+Mairinque	Brasil	América	1029
+Mangaratiba	Brasil	América	1044
+Manicoré	Brasil	América	2568
+Mar de Espanha	Brasil	América	1058
+Maracaípe	Brasil	América	813
+Maragogi	Brasil	América	2217
+Marechal Deodoro	Brasil	América	1060
+Marília	Brasil	América	1062
+Marituba	Brasil	América	2563
+Maromba	Brasil	América	845
+Maués	Brasil	América	2160
+Mesquita	Brasil	América	2796
+Minaçu	Brasil	América	1097
+Mineiros	Brasil	América	1099
+Miracatu	Brasil	América	1101
+Monte Alegre do Sul	Brasil	América	1118
+Monte Santo de Minas	Brasil	América	2149
+Monteiro	Brasil	América	1120
+Monteiro Lobato	Brasil	América	1121
+Montes Claros	Brasil	América	2572
+Morada Nova	Brasil	América	2554
+Morrinhos	Brasil	América	1133
+Morrinhos do Sul	Brasil	América	2781
+Mucugê	Brasil	América	2784
+Navegantes	Brasil	América	1166
+Nilópolis	Brasil	América	2795
+Niquelândia	Brasil	América	1180
+Nobres	Brasil	América	1183
+Nova Andradina	Brasil	América	2311
+Nova Europa	Brasil	América	1189
+Nova Friburgo	Brasil	América	2134
+Nova Iguaçu	Brasil	América	2211
+Nova Mutum	Brasil	América	2673
+Novo Airão	Brasil	América	1201
+Novo Hamburgo	Brasil	América	1202
+Núcleo Caboclos	Brasil	América	2524
+Núcleo Casa de Pedra	Brasil	América	2525
+Núcleo Ouro Grosso	Brasil	América	2523
+Osório	Brasil	América	1233
+Osvaldo Cruz	Brasil	América	1235
+Ouricuri	Brasil	América	1242
+Ourinhos	Brasil	América	1243
+Pacajus	Brasil	América	2555
+Pacaraima	Brasil	América	1250
+Pacatuba	Brasil	América	2551
+Palhoça	Brasil	América	1266
+Palmeiras	Brasil	América	2229
+Paracambi	Brasil	América	2790
+Paracatu	Brasil	América	2330
+Paragominas	Brasil	América	2565
+Paraíba do Sul	Brasil	América	2368
+Paraibuna	Brasil	América	1280
+Paraisópolis	Brasil	América	1283
+Parcel de Manoel Luís	Brasil	América	1290
+Parelhas	Brasil	América	2201
+Parintins	Brasil	América	1291
+Parque Estadual do Ibitipoca	Brasil	América	2296
+Parque Estadual do Jalapão	Brasil	América	1305
+Parque Estadual Morro do Diabo	Brasil	América	1307
+Passa Quatro	Brasil	América	1371
+Passo de Torres	Brasil	América	2419
+Patos de Minas	Brasil	América	2574
+Patrocínio Paulista	Brasil	América	1375
+Paulínia	Brasil	América	1377
+Paulo Lopes	Brasil	América	2483
+Pé de Serra	Brasil	América	1379
+Pedreira	Brasil	América	1382
+Pedro Juan Caballero	Brasil	América	1383
+Pelotas	Brasil	América	1384
+Pernambuco	Brasil	América	1392
+Petrolina	Brasil	América	1397
+Piçarras	Brasil	América	1402
+Pirambu	Brasil	América	1415
+Piratini	Brasil	América	2502
+Piratuba	Brasil	América	1418
+Pitimbu	Brasil	América	1422
+Poconé	Brasil	América	1427
+Ponta Porã	Brasil	América	1435
+Pontes e Lacerda	Brasil	América	2675
+Portão	Brasil	América	2467
+Potim	Brasil	América	1456
+Pouso Alegre	Brasil	América	2575
+Presidente Epitácio	Brasil	América	2144
+Primavera do Leste	Brasil	América	2676
+Quaraí	Brasil	América	1496
+Quatis	Brasil	América	2162
+Recanto das Emas	Brasil	América	1517
+Redenção da Serra	Brasil	América	1519
+Registro	Brasil	América	1522
+Riachão	Brasil	América	1551
+Riade	Brasil	América	1552
+Rincão	Brasil	América	1559
+Rio Bonito	Brasil	América	2788
+Rio Claro (Rio de Janeiro)	Brasil	América	2283
+Rio das Ostras	Brasil	América	2214
+Rio Novo	Brasil	América	1576
+Rio Verde	Brasil	América	1578
+Rolândia	Brasil	América	1580
+Rosana	Brasil	América	1586
+Roseira	Brasil	América	1588
+Russas	Brasil	América	2552
+Salgueiro	Brasil	América	2378
+San Andrés e Providência	Brasil	América	1619
+Santa Adélia	Brasil	América	1656
+Santa Fé do Sul	Brasil	América	1668
+Santa Inês (Maranhão)	Brasil	América	1669
+Santa Rita do Sapucaí	Brasil	América	1684
+Santo Amaro da Imperatriz	Brasil	América	1693
+Santo Hipólito	Brasil	América	2140
+São Bento do Sul	Brasil	América	1706
+São Borja	Brasil	América	1709
+São Cristóvão	Brasil	América	1712
+São Fidélis	Brasil	América	1715
+São Francisco de Paula	Brasil	América	1718
+São Francisco do Sul	Brasil	América	1719
+São Gonçalo	Brasil	América	1721
+São Gonçalo do Rio das Pedras	Brasil	América	1789
+São João d'Aliança	Brasil	América	1725
+São João de Meriti	Brasil	América	1727
+São João do Sul	Brasil	América	2430
+São Joaquim	Brasil	América	1728
+São José de Ribamar	Brasil	América	1733
+São José do Norte	Brasil	América	1735
+São José dos Ausentes	Brasil	América	2446
+São Martinho	Brasil	América	2194
+São Roque	Brasil	América	1763
+São Vicente	Brasil	América	1768
+Saquarema	Brasil	América	1771
+Sarapuí	Brasil	América	1774
+Senador Firmino	Brasil	América	1784
+Seropédica	Brasil	América	2791
+Serra Negra	Brasil	América	1786
+Serra Talhada	Brasil	América	2377
+Serrambi	Brasil	América	815
+Sertãozinho	Brasil	América	1790
+Silva Jardim	Brasil	América	2801
+Silveiras	Brasil	América	1803
+Silvianópolis	Brasil	América	1805
+Sirinhaém	Brasil	América	1810
+Sucupira	Brasil	América	1838
+Surubim	Brasil	América	2380
+Tanguá	Brasil	América	2799
+Tapes	Brasil	América	1869
+Tapiraí	Brasil	América	1870
+Taquaritinga	Brasil	América	1872
+Taquaritinga do Norte	Brasil	América	1873
+Taquarussu	Brasil	América	1874
+Timbé do Sul	Brasil	América	2432
+Timbó	Brasil	América	1915
+Tobuna	Brasil	América	1925
+Torrinha	Brasil	América	1974
+Trabiju	Brasil	América	1979
+Tremembé	Brasil	América	1985
+Treze Tílias	Brasil	América	1988
+Trilha do Ouro	Brasil	América	1989
+Triunfo	Brasil	América	1995
+Triunfo (Rio Grande do Sul)	Brasil	América	2224
+Tucano	Brasil	América	2154
+Ubá	Brasil	América	2005
+Uberaba	Brasil	América	2151
+Urubici	Brasil	América	2016
+Vacaria	Brasil	América	2479
+Vale do Capão	Brasil	América	2786
+Vale do Paraíba (São Paulo)	Brasil	América	2023
+Vale dos Dinossauros	Brasil	América	2029
+Vale dos Vinhedos	Brasil	América	2030
+Varginha	Brasil	América	2055
+Veranópolis	Brasil	América	2500
+Viamão	Brasil	América	2082
+Vianópolis	Brasil	América	2122
+Viçosa	Brasil	América	2123
+Vila Velha	Brasil	América	2110
+Vinhedo	Brasil	América	2121
+Visconde de Mauá	Brasil	América	2025
+Zurique	Brasil	América	2103
+Deserto de Atacama	Chile	América	552
+Los Vilos	Chile	América	994
+Temuco	Chile	América	1894
+Đồng Hới	China	Ásia	2255
+Pequim	China	Ásia	1390
+Rota da Seda	China	Ásia	1589
+Xangai	China	Ásia	2068
+Ilhas Colombianas	Colômbia	América	796
+Coreia do Norte	Coreia do Sul	Ásia	506
+Geoje	Coreia do Sul	Ásia	2435
+Panmunjeom	Coreia do Sul	Ásia	1273
+Amarna	Egito	África	71
+El Alamein	Egito	África	592
+Gilf Kebir	Egito	África	699
+Saqqara	Egito	África	1770
+Sohag	Egito	África	1820
+Tell Basta	Egito	África	1892
+Chuy	Espanha	Europa	457
+Cidade Real	Espanha	Europa	463
+O Grove	Espanha	Europa	1217
+Rota Via da Prata	Espanha	Europa	1590
+Santa Cruz de la Sierra	Espanha	Europa	1662
+Saragoça	Espanha	Europa	1772
+Sevilha	Espanha	Europa	1794
+Terra do Fogo	Espanha	Europa	1905
+Agawam	Estados Unidos	América	2608
+Cape Coral	Estados Unidos	América	2640
+Cartagena das Índias	Estados Unidos	América	406
+Cleveland Heights	Estados Unidos	América	2600
+Coral Springs	Estados Unidos	América	2642
+Enviken	Estados Unidos	América	2170
+Gadsden	Estados Unidos	América	2656
+Malden	Estados Unidos	América	2619
+Mentor	Estados Unidos	América	2603
+Miami Gardens	Estados Unidos	América	2646
+North Miami	Estados Unidos	América	2647
+Nova Orleans	Estados Unidos	América	1191
+Pembroke Pines	Estados Unidos	América	2648
+Resort Disney Tóquio	Estados Unidos	América	1548
+Route 66	Estados Unidos	América	1593
+Villazón	Estados Unidos	América	2118
+Waynesville	Estados Unidos	América	2052
+Luzon	Filipinas	Ásia	1012
+América do Norte	França	Europa	74
+Antuérpia	França	Europa	108
+Brest	França	Europa	304
+Caiena	França	Europa	340
+Courchevel	França	Europa	2175
+Da Lat	França	Europa	2337
+Ilha dos Cocos	França	Europa	793
+Ille-et-Vilaine	França	Europa	2522
+Le Mans	França	Europa	963
+Port Jeanne'd Arc	França	Europa	2825
+Sapopema	França	Europa	2532
+Toulon	França	Europa	1977
+Valle Nevado	França	Europa	2046
+Versalhes	França	Europa	2077
+Náuplia	Grécia	Europa	1157
+Neeritter	Holanda	Europa	2301
+Roterdam	Holanda	Europa	1591
+Abadan	Internacional	Europa	5
+Abomey	Internacional	Europa	10
+Acaponeta	Internacional	Europa	14
+Adamstown	Internacional	Europa	2449
+Afeganistão	Internacional	Europa	27
+Agana	Internacional	Europa	32
+Aguaí	Internacional	Europa	35
+Águas da Prata	Internacional	Europa	38
+Aiquile	Internacional	Europa	41
+Akaba	Internacional	Europa	2679
+Al-Khums	Internacional	Europa	61
+Alto Jequitibá	Internacional	Europa	2811
+Amã	Internacional	Europa	2678
+Amarapura	Internacional	Europa	69
+Ambaca	Internacional	Europa	2734
+Amboim	Internacional	Europa	2738
+Ambriz	Internacional	Europa	2694
+Amontada	Internacional	Europa	79
+Andulo	Internacional	Europa	2717
+Anse Boileau	Internacional	Europa	100
+Anse Royale	Internacional	Europa	101
+Aracati	Internacional	Europa	120
+Aracoiaba	Internacional	Europa	2818
+Araripina	Internacional	Europa	135
+Assomada	Internacional	Europa	161
+Asten	Internacional	Europa	2182
+Avinhão	Internacional	Europa	181
+Ayorou	Internacional	Europa	182
+Baía de Ha Long	Internacional	Europa	2340
+Baía Farta	Internacional	Europa	2698
+Baie Ste. Anne	Internacional	Europa	192
+Baikonur	Internacional	Europa	193
+Baleyara	Internacional	Europa	195
+Balombo	Internacional	Europa	2699
+Barbalha	Internacional	Europa	216
+Barroquinha	Internacional	Europa	233
+Bartsam	Internacional	Europa	234
+Batna	Internacional	Europa	239
+Bengasi	Internacional	Europa	253
+Bengo	Internacional	Europa	2313
+Bié	Internacional	Europa	2314
+Biguaçu	Internacional	Europa	2508
+Boa Esperança do Sul	Internacional	Europa	271
+Bocoio	Internacional	Europa	2712
+Bolongongo	Internacional	Europa	2735
+Bordéus	Internacional	Europa	288
+Brabante do Norte	Internacional	Europa	294
+Brod	Internacional	Europa	310
+Buco-Zau	Internacional	Europa	2725
+Bula Atumba	Internacional	Europa	2695
+Caacupé	Internacional	Europa	320
+Caála	Internacional	Europa	2748
+Cabo Canaveral	Internacional	Europa	322
+Cachiungo	Internacional	Europa	2747
+Caconda	Internacional	Europa	2765
+Cacuaco	Internacional	Europa	2705
+Caimbambo	Internacional	Europa	2713
+Calcutá	Internacional	Europa	351
+Caluquembe	Internacional	Europa	2764
+Camacupa	Internacional	Europa	2718
+Cambambe	Internacional	Europa	2736
+Cambulo	Internacional	Europa	2299
+Caminho da Iluminação	Internacional	Europa	2216
+Caminho de Santiago	Internacional	Europa	364
+Campo Limpo Paulista	Internacional	Europa	371
+Cantão de Isabela	Internacional	Europa	386
+Cantão de São Cristóvão	Internacional	Europa	387
+Cartum	Internacional	Europa	407
+Cascavel (Ceará)	Internacional	Europa	414
+Cassongue	Internacional	Europa	2739
+Catabola	Internacional	Europa	2719
+Catumbela	Internacional	Europa	2714
+Caungula	Internacional	Europa	2708
+Caxito	Internacional	Europa	2693
+Cazã	Internacional	Europa	2289
+Cazenga	Internacional	Europa	2418
+Cazengo	Internacional	Europa	2737
+Chhumey	Internacional	Europa	445
+Chiange	Internacional	Europa	2763
+Chibia	Internacional	Europa	2762
+Chicala-Choloanga	Internacional	Europa	2754
+Chicomba	Internacional	Europa	2761
+Chinguar	Internacional	Europa	2720
+Chinjenje	Internacional	Europa	2758
+Chipindo	Internacional	Europa	2760
+Chitembo	Internacional	Europa	2721
+Chongoroi	Internacional	Europa	2715
+Chukhung	Internacional	Europa	2427
+Cidade do Kuwait	Internacional	Europa	460
+Cidade Velha	Internacional	Europa	464
+Cidades Históricas	Internacional	Europa	2243
+Cobija	Internacional	Europa	475
+Cordeirópolis	Internacional	Europa	502
+Cosmópolis	Internacional	Europa	513
+Costa do Marfim	Internacional	Europa	514
+Cuangar	Internacional	Europa	2728
+Cuango	Internacional	Europa	2704
+Cubal	Internacional	Europa	2716
+Cuchi	Internacional	Europa	2729
+Cuemba	Internacional	Europa	2722
+Cuílo	Internacional	Europa	2703
+Cunene	Internacional	Europa	2317
+Cunhinga	Internacional	Europa	2723
+Curoca	Internacional	Europa	2753
+Cuvango	Internacional	Europa	2767
+Cuvelai	Internacional	Europa	2752
+Dembos	Internacional	Europa	2696
+Dengue	Internacional	Europa	2245
+Diffa	Internacional	Europa	557
+Dirico	Internacional	Europa	2731
+Divinolândia	Internacional	Europa	566
+Djibuti (cidade)	Internacional	Europa	2447
+Dourado	Internacional	Europa	574
+Edimburgo	Internacional	Europa	2209
+El Alto	Internacional	Europa	593
+El Fuerte	Internacional	Europa	596
+El Jem	Internacional	Europa	599
+El Tajín	Internacional	Europa	602
+Elias Fausto	Internacional	Europa	597
+Espargos	Internacional	Europa	614
+Estiva Gerbi	Internacional	Europa	623
+Fatehpur Sikri	Internacional	Europa	635
+Fort-de-France	Internacional	Europa	658
+Fortim	Internacional	Europa	659
+Fujino	Internacional	Europa	674
+Funafuti	Internacional	Europa	678
+Gaoua	Internacional	Europa	685
+Garapan	Internacional	Europa	687
+Gavião Peixoto	Internacional	Europa	692
+Gharyan	Internacional	Europa	697
+Goa	Internacional	Europa	701
+Guaíra	Internacional	Europa	720
+Gualeguaychú	Internacional	Europa	722
+Guaramiranga	Internacional	Europa	725
+Hanga-Roa	Internacional	Europa	747
+Ho	Internacional	Europa	753
+Honiara	Internacional	Europa	758
+Hortolândia	Internacional	Europa	761
+Huatajata	Internacional	Europa	763
+Huíla	Internacional	Europa	2341
+Humpata	Internacional	Europa	2766
+Ibitinga	Internacional	Europa	770
+Icapuí	Internacional	Europa	772
+Icaraí	Internacional	Europa	773
+Iguatu	Internacional	Europa	779
+Ilha Brava	Internacional	Europa	781
+Ilha do Fogo	Internacional	Europa	790
+Ilha Kish	Internacional	Europa	795
+Iráklio	Internacional	Europa	819
+Itapipoca	Internacional	Europa	839
+Itapira	Internacional	Europa	840
+Itarema	Internacional	Europa	843
+Itaúna	Internacional	Europa	849
+Itobi	Internacional	Europa	852
+Itupeva	Internacional	Europa	856
+Ituzaingó	Internacional	Europa	857
+Jaguariaíva	Internacional	Europa	865
+Jarinu	Internacional	Europa	877
+Jidá	Internacional	Europa	2424
+Junín de los Andes	Internacional	Europa	899
+Kalandula	Internacional	Europa	2260
+Kangerlussuaq	Internacional	Europa	908
+Khaling	Internacional	Europa	914
+Khumbu	Internacional	Europa	2538
+Koforidua	Internacional	Europa	920
+Kolonia	Internacional	Europa	921
+Koure	Internacional	Europa	926
+Kuando-Kubango	Internacional	Europa	2315
+Kuito	Internacional	Europa	2465
+Kwanza-Norte	Internacional	Europa	932
+La Peñita de Jaltemba	Internacional	Europa	948
+La Quiaca	Internacional	Europa	950
+Lázaro Cardenas	Internacional	Europa	958
+Lhuentse	Internacional	Europa	969
+Lilongué	Internacional	Europa	2823
+Litoral Piauiense	Internacional	Europa	981
+Loncopué	Internacional	Europa	986
+Londuimbali	Internacional	Europa	2755
+Longonjo	Internacional	Europa	2756
+Louveira	Internacional	Europa	997
+Lóvua	Internacional	Europa	2702
+Lua	Internacional	Europa	2284
+Lubalo	Internacional	Europa	2701
+Lubango	Internacional	Europa	2759
+Lucapa	Internacional	Europa	2700
+Luena	Internacional	Europa	2466
+Luís Correia	Internacional	Europa	1004
+Luxemburgo (cidade)	Internacional	Europa	1007
+M'banza Congo	Internacional	Europa	2322
+Makhachkala	Internacional	Europa	2259
+Malanje	Internacional	Europa	2305
+Malargüe	Internacional	Europa	1033
+Maldivas	Internacional	Europa	1035
+Mambucaba	Internacional	Europa	1039
+Maracanaú	Internacional	Europa	1052
+Maranguape	Internacional	Europa	1054
+Marselha	Internacional	Europa	1066
+Mascate	Internacional	Europa	2441
+Mauritânia	Internacional	Europa	1075
+Mavinga	Internacional	Europa	2732
+Melekeok	Internacional	Europa	1084
+Menongue	Internacional	Europa	2726
+Mingun	Internacional	Europa	1100
+Misratah	Internacional	Europa	1104
+Monte Mor	Internacional	Europa	1122
+Monte Saint-Michel	Internacional	Europa	1126
+Montevidéu	Internacional	Europa	1127
+Morungaba	Internacional	Europa	1135
+Motuca	Internacional	Europa	1138
+Mungo	Internacional	Europa	2757
+Múrcia (cidade)	Internacional	Europa	1143
+Nalut	Internacional	Europa	1152
+Namacunde	Internacional	Europa	2751
+Nambuangongo	Internacional	Europa	2697
+Namibe	Internacional	Europa	2304
+Nay Pyi Taw	Internacional	Europa	1167
+Nazaré Paulista	Internacional	Europa	1169
+Nazret	Internacional	Europa	1170
+Necochea	Internacional	Europa	2348
+Neiafu	Internacional	Europa	1171
+Nharea	Internacional	Europa	2724
+Nitra	Internacional	Europa	2415
+Nova Deli	Internacional	Europa	1187
+Nuevo Vallarta	Internacional	Europa	1204
+Nuku'alofa	Internacional	Europa	1205
+Nzulezo	Internacional	Europa	1209
+Obuasi	Internacional	Europa	1213
+Ocara	Internacional	Europa	1214
+Ombadja	Internacional	Europa	2750
+Ondjiva	Internacional	Europa	2743
+Orizaba	Internacional	Europa	1225
+Osogbo	Internacional	Europa	1232
+Otacílio Costa	Internacional	Europa	1236
+Ouadane	Internacional	Europa	1238
+Oualata	Internacional	Europa	1239
+Palikir	Internacional	Europa	1267
+Papeete	Internacional	Europa	1277
+Paracuru	Internacional	Europa	1278
+Paraipaba	Internacional	Europa	1281
+Parque Arqueológico de Angkor	Internacional	Europa	2261
+Parque Estadual da Serra do Tabuleiro	Internacional	Europa	1302
+Parque Estadual de Vila Velha	Internacional	Europa	1304
+Parque Provincial dos Dinossauros	Internacional	Europa	1368
+Paso de los Libres	Internacional	Europa	1370
+Pedra de Lume (Ilha do Sal)	Internacional	Europa	1381
+Pérouges	Internacional	Europa	1393
+Pilões	Internacional	Europa	2516
+Pinhalzinho	Internacional	Europa	1409
+Pirassununga	Internacional	Europa	1417
+Pólo Norte	Internacional	Europa	1430
+Queimados	Internacional	Europa	2797
+Quellón	Internacional	Europa	1499
+Quilenda	Internacional	Europa	2744
+Quilengues	Internacional	Europa	2710
+Quipungo	Internacional	Europa	2709
+Quissama	Internacional	Europa	2706
+Quixadá	Internacional	Europa	1507
+Quixelô	Internacional	Europa	1508
+Quixeramobim	Internacional	Europa	1509
+Rabil	Internacional	Europa	1511
+Rasht	Internacional	Europa	2444
+Reconquista	Internacional	Europa	1518
+Reserva da Natureza do Vallée de Mai	Internacional	Europa	1527
+Reserva de Caça Ajai	Internacional	Europa	1528
+Reserva de Fauna de Dja	Internacional	Europa	1529
+Reserva de Fauna dos Ocapis	Internacional	Europa	1530
+Reserva de Shai Hills	Internacional	Europa	1531
+Reserva Natural de Aïr e Ténéré	Internacional	Europa	1538
+Reserva Natural Integral do Monte Nimba	Internacional	Europa	1545
+Reserva Natural Integral do Tsingy de Bemaraha	Internacional	Europa	1546
+Rivungo	Internacional	Europa	2733
+Rustemburgo	Internacional	Europa	1596
+San José de Mayo	Internacional	Europa	1632
+Santa Cruz das Palmeiras	Internacional	Europa	1661
+Santa Maria de Lamas	Internacional	Europa	2158
+Santo Antônio de Posse	Internacional	Europa	1697
+Santo Antônio do Jardim	Internacional	Europa	1698
+Santo Tomé	Internacional	Europa	1702
+Santuário de Fauna de de Agumatsa	Internacional	Europa	1703
+São Jorge dos Órgãos	Internacional	Europa	1730
+São José do Rio Pardo	Internacional	Europa	1736
+São Raimundo Nonato	Internacional	Europa	1762
+Seguro para Viagem	Internacional	Europa	2806
+Serguiev Possad	Internacional	Europa	2234
+Seul	Internacional	Europa	1793
+Shahhat	Internacional	Europa	1795
+Sierra Colorada	Internacional	Europa	1801
+Sigave	Internacional	Europa	1802
+Síria	Internacional	Europa	1809
+Sognaayilli	Internacional	Europa	1819
+Sombrerete	Internacional	Europa	1822
+Souillac	Internacional	Europa	1825
+Sul da Ásia	Internacional	Europa	1839
+Sumaré	Internacional	Europa	1841
+Surt	Internacional	Europa	1844
+Tafi Viejo	Internacional	Europa	1853
+Tahoua	Internacional	Europa	1854
+Takamaka	Internacional	Europa	102
+Tambaú	Internacional	Europa	1860
+Tanegashima	Internacional	Europa	1863
+Tapiratiba	Internacional	Europa	1871
+Tarrafal (Santiago)	Internacional	Europa	1879
+Tarrafal de São Nicolau	Internacional	Europa	1878
+Tecuala	Internacional	Europa	1888
+Termas de Rio Hondo	Internacional	Europa	1904
+Tianguá	Internacional	Europa	1911
+Tichit	Internacional	Europa	1913
+Tijucas	Internacional	Europa	2509
+Tobruk	Internacional	Europa	1924
+Tocuaro	Internacional	Europa	1926
+Tolhuin	Internacional	Europa	1929
+Tóquio/Adachi	Internacional	Europa	1934
+Tóquio/Akasaka	Internacional	Europa	1935
+Tóquio/Akihabara	Internacional	Europa	1936
+Tóquio/Arakawa	Internacional	Europa	1937
+Tóquio/Asakusa	Internacional	Europa	1938
+Tóquio/Bunkyo	Internacional	Europa	1939
+Tóquio/Chuo	Internacional	Europa	1941
+Tóquio/Ebisu	Internacional	Europa	1942
+Tóquio/Edogawa	Internacional	Europa	1943
+Tóquio/Ginza	Internacional	Europa	1944
+Tóquio/Harajuku	Internacional	Europa	1945
+Tóquio/Ikebukuro	Internacional	Europa	1946
+Tóquio/Itabashi	Internacional	Europa	1947
+Tóquio/Kabukicho	Internacional	Europa	904
+Tóquio/Katsushika	Internacional	Europa	1948
+Tóquio/Kita	Internacional	Europa	1949
+Tóquio/Koto	Internacional	Europa	1950
+Tóquio/Meguro	Internacional	Europa	1951
+Tóquio/Minato	Internacional	Europa	1952
+Tóquio/Nakano	Internacional	Europa	1953
+Tóquio/Nerima	Internacional	Europa	1954
+Tóquio/Odaiba	Internacional	Europa	1955
+Tóquio/Ota	Internacional	Europa	1956
+Tóquio/Roppongi	Internacional	Europa	1957
+Tóquio/Ryogoku	Internacional	Europa	1958
+Tóquio/Shibuya	Internacional	Europa	1960
+Tóquio/Shimokitazawa	Internacional	Europa	1961
+Tóquio/Shinagawa	Internacional	Europa	1962
+Tóquio/Shiodome	Internacional	Europa	1964
+Tóquio/Suginami	Internacional	Europa	1965
+Tóquio/Sumida	Internacional	Europa	1966
+Tóquio/Taito	Internacional	Europa	1967
+Tóquio/Toshima	Internacional	Europa	1968
+Tóquio/Tsukiji	Internacional	Europa	1969
+Trairi	Internacional	Europa	1980
+Trashi Yangtse	Internacional	Europa	1983
+Trashigang	Internacional	Europa	1982
+Trilha Inca	Internacional	Europa	1990
+Triolet	Internacional	Europa	1993
+Tsabong	Internacional	Europa	2355
+Tsodilo	Internacional	Europa	1997
+Tuiuti	Internacional	Europa	1999
+Tupungato	Internacional	Europa	2002
+Tuxtla Gutiérrez	Internacional	Europa	2004
+Uíge	Internacional	Europa	2308
+Ulan Bator	Internacional	Europa	2166
+Ura	Internacional	Europa	2012
+Vaduz	Internacional	Europa	2458
+Vale de Fajã	Internacional	Europa	2021
+Vale do Paul	Internacional	Europa	2024
+Vargem Grande do Sul	Internacional	Europa	2053
+Varsóvia	Internacional	Europa	2056
+Várzea Paulista	Internacional	Europa	2058
+Vespasiano	Internacional	Europa	2078
+Viagens de moto	Internacional	Europa	2079
+Viedma	Internacional	Europa	2125
+Villa Gesell	Internacional	Europa	2113
+Villa Maria	Internacional	Europa	2116
+Wamrong	Internacional	Europa	2048
+Williamsville	Internacional	Europa	2063
+Xanxerê	Internacional	Europa	2070
+Yadi	Internacional	Europa	2084
+Zaire	Internacional	Europa	2321
+Zinacantán	Internacional	Europa	2094
+Newry	Irlanda	Europa	1174
+Islândia	Islândia	Europa	823
+Liubliana	Itália	Europa	982
+Monte Sant'Angelo	Itália	Europa	2279
+Ostuni	Itália	Europa	1234
+Sabha	Itália	Europa	1597
+Sardenha	Itália	Europa	2384
+Siracusa	Itália	Europa	2370
+Sombrio	Itália	Europa	2371
+Ticino	Itália	Europa	2542
+Ako	Japão	Ásia	2815
+Extremo Oriente	Japão	Ásia	632
+Japão	Japão	Ásia	873
+Oyabe	Japão	Ásia	1249
+Quioto	Japão	Ásia	1505
+Tóquio	Japão	Ásia	1933
+Tóquio/Setagaya	Japão	Ásia	1959
+Tóquio/Shinjuku	Japão	Ásia	1963
+Chilpancingo	México	América	452
+Ciudad del Carmen	México	América	467
+Ciudad Obregón	México	América	469
+Ciudad Victoria	México	América	470
+Coatapec	México	América	473
+Coatzacoalcos	México	América	474
+Cuautla	México	América	524
+Iguala	México	América	777
+Ilha das Mulheres	México	América	784
+Jiutepec	México	América	886
+Los Mochis	México	América	992
+Poza Rica	México	América	1459
+San Joaquín (Querétaro)	México	América	1631
+Tapachula	México	América	1868
+Tecolutla	México	América	1886
+Tecomán	México	América	1887
+Tehuacán	México	América	1891
+Temixco	México	América	1893
+Tepic	México	América	1897
+Tequisquiapan	México	América	1899
+Texcoco	México	América	1909
+Tlaxcala	México	América	1922
+Gotemburgo	Noruega	Europa	709
+Óbidos (Pará)	Paraguai	América	2450
+Calheta	Portugal	Europa	356
+Camacha	Portugal	Europa	2152
+Câmara de Lobos	Portugal	Europa	359
+Caminhar no Corvo	Portugal	Europa	363
+Copenhaga	Portugal	Europa	501
+Furnas	Portugal	Europa	2155
+Herdade da Comporta	Portugal	Europa	2266
+Ilhas Desertas	Portugal	Europa	798
+Londres/City of London	Portugal	Europa	2484
+Moxico	Portugal	Europa	2320
+Oriente Médio	Portugal	Europa	1224
+Paisagem Protegida da Serra do Açor	Portugal	Europa	1259
+Parque Natural da Arrábida	Portugal	Europa	1354
+Parque Natural da Ria Formosa	Portugal	Europa	1356
+Parque Natural da Serra da Estrela	Portugal	Europa	1357
+Parque Natural das Serras de Aire e Candeeiros	Portugal	Europa	1359
+Parque Natural de Montesinho	Portugal	Europa	1360
+Parque Natural do Litoral Norte	Portugal	Europa	1364
+Parque Natural do Sudoeste Alentejano e Costa Vicentina	Portugal	Europa	1365
+Parque Natural do Vale do Guadiana	Portugal	Europa	1367
+Reserva Natural da Serra da Malcata	Portugal	Europa	1534
+Reserva Natural das Berlengas	Portugal	Europa	1532
+Reserva Natural das Dunas de São Jacinto	Portugal	Europa	1533
+Reserva Natural das Ilhas Desertas	Portugal	Europa	1535
+Reserva Natural das Ilhas Selvagens	Portugal	Europa	1536
+Reserva Natural do Estuário do Sado	Portugal	Europa	1539
+Reserva Natural do Estuário do Tejo	Portugal	Europa	1540
+Reserva Natural do Paul de Arzila	Portugal	Europa	1541
+Reserva Natural do Paul de Boquilobo	Portugal	Europa	1542
+Torre de Bera	Portugal	Europa	1972
+Viajar ecologicamente	Portugal	Europa	2080
+Vila Baleira	Portugal	Europa	2129
+Blaenau Gwent	Reino Unido	Europa	2681
+Ceredigion	Reino Unido	Europa	2684
+Deothang	Reino Unido	Europa	549
+Gwynedd	Reino Unido	Europa	2687
+Londres	Reino Unido	Europa	987
+Londres/Southwark-Lewisham	Reino Unido	Europa	2489
+País de Gales	Reino Unido	Europa	1260
+Powys	Reino Unido	Europa	2692
+Zâmbia	Reino Unido	Europa	2092
+Abecásia	Rússia	Europa	6
+Anel de Ouro	Rússia	Europa	96
+Derbent	Rússia	Europa	2252
+Korolev	Rússia	Europa	2250
+Lucerna	Suíça	Europa	1001
+Ilhas Similan	Tailândia	Ásia	2409
+Ko Pha Ngan	Tailândia	Ásia	2401
+Ko Samui	Tailândia	Ásia	2399
+Kayseri	Turquia	Ásia	913
+Aceguá (Uruguai)	Uruguai	América	18
+Cidade Ho Chi Minh	Vietname	Ásia	2338
