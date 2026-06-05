@@ -7,6 +7,12 @@ export function destinationDetailPath(slug: string, locale?: string | null): str
   return `/destinations/${safe}`;
 }
 
+/** Path to destinations browse / catalog page. */
+export function destinationsBrowsePath(locale?: string | null): string {
+  if (locale && LOCALES.has(locale)) return `/${locale}/destinations`;
+  return '/destinations';
+}
+
 /** Path back to results preserving search query. */
 export function resultsListPath(locale?: string | null, searchQuery?: string): string {
   const base = locale && LOCALES.has(locale) ? `/${locale}/results` : '/results';

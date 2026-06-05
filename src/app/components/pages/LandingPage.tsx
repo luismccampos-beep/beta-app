@@ -32,13 +32,14 @@ type MeResponse =
 
 interface LandingPageProps {
   onGetStarted: () => void;
+  onNavigateToDestinations?: () => void;
   onNavigateToLegal?: (pageType: 'terms' | 'privacy' | 'gdpr' | 'cancellations' | 'cookies') => void;
   onNavigateToAbout?: () => void;
   onNavigateToContact?: () => void;
   onNavigateToFAQ?: () => void;
 }
 
-export function LandingPage({ onGetStarted, onNavigateToLegal, onNavigateToAbout, onNavigateToContact, onNavigateToFAQ }: LandingPageProps) {
+export function LandingPage({ onGetStarted, onNavigateToDestinations, onNavigateToLegal, onNavigateToAbout, onNavigateToContact, onNavigateToFAQ }: LandingPageProps) {
   const router = useRouter();
   const locale = useLocale();
   const t = useTranslations('landing');
@@ -408,6 +409,17 @@ export function LandingPage({ onGetStarted, onNavigateToLegal, onNavigateToAbout
           </div>
 
           <div className="flex items-center justify-center gap-6 flex-wrap text-sm mb-6">
+            {onNavigateToDestinations && (
+              <>
+                <button
+                  onClick={onNavigateToDestinations}
+                  className="text-gray-400 hover:text-teal-400 transition-colors font-medium"
+                >
+                  {t('footerLinks.destinations')}
+                </button>
+                <span className="text-gray-700">•</span>
+              </>
+            )}
             {onNavigateToAbout && (
               <>
                 <button
