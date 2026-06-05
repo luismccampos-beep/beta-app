@@ -10,18 +10,19 @@ import { buildDestinationSlug } from '../../../../../lib/travel/destination-slug
 
 export const dynamic = 'force-dynamic';
 
-/** GET /api/travel/v1/destinations?q=Lisboa&pais=Portugal&limit=24 */
+/** GET /api/travel/v1/destinations?q=Lisboa&pais=Portugal&continente=Europa&limit=24 */
 export async function GET(req: Request) {
   const url = new URL(req.url);
   const q = url.searchParams.get('q')?.trim() || undefined;
   const pais = url.searchParams.get('pais')?.trim() || undefined;
+  const continente = url.searchParams.get('continente')?.trim() || undefined;
   const lang = url.searchParams.get('lang')?.trim() || undefined;
   const limit = parseInt(url.searchParams.get('limit') ?? '24', 10);
   const offset = parseInt(url.searchParams.get('offset') ?? '0', 10);
 
   if (isTravelCatalogDbEnabled()) {
     try {
-      const result = await searchDestinationsDb({ q, pais, lang, limit, offset });
+      const result = await searchDestinationsDb({ q, pais, continente, lang, limit, offset });
       return NextResponse.json({ ok: true, source: 'db', ...result });
     } catch (e: unknown) {
       const message = e instanceof Error ? e.message : 'Database query failed';
@@ -39,6 +40,10 @@ export async function GET(req: Request) {
   if (pais) {
     const pl = pais.toLowerCase();
     items = items.filter((d) => d.pais.toLowerCase().includes(pl));
+  }
+  if (continente) {
+    const cl = continente.toLowerCase();
+    items = items.filter((d) => d.continente.toLowerCase() === cl);
   }
   if (lang) {
     items = items.filter((d) => (d.lang ?? 'pt') === lang);

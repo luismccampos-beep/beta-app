@@ -31,10 +31,12 @@ export default function Page() {
   const onNavigateToAbout = useCallback(() => router.push('/about'), [router]);
   const onNavigateToContact = useCallback(() => router.push('/contact'), [router]);
   const onNavigateToFAQ = useCallback(() => router.push('/faq'), [router]);
+  const onNavigateToDestinations = useCallback(() => router.push('/destinations'), [router]);
 
   return (
     <LandingPage
       onGetStarted={onGetStarted}
+      onNavigateToDestinations={onNavigateToDestinations}
       onNavigateToLegal={onNavigateToLegal}
       onNavigateToAbout={onNavigateToAbout}
       onNavigateToContact={onNavigateToContact}

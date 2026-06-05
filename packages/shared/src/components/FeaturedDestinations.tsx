@@ -206,7 +206,7 @@ export const FeaturedDestinations: React.FC<FeaturedDestinationsProps> = ({
   title,
   subtitle,
   showAllDestinationsButton = true,
-  allDestinationsUrl = '/destinos',
+  allDestinationsUrl = '/destinations',
   className,
   variant = 'default',
   showBackground = true,

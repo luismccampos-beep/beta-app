@@ -138,6 +138,7 @@ export async function getCatalogStatsFromDb() {
 export async function searchDestinationsDb(opts: {
   q?: string;
   pais?: string;
+  continente?: string;
   lang?: string;
   limit?: number;
   offset?: number;
@@ -147,6 +148,7 @@ export async function searchDestinationsDb(opts: {
   const where: {
     nome?: { contains: string; mode: 'insensitive' };
     pais?: { equals: string; mode: 'insensitive' };
+    continente?: { equals: string; mode: 'insensitive' };
     lang?: string;
   } = {};
 
@@ -155,6 +157,9 @@ export async function searchDestinationsDb(opts: {
   }
   if (opts.pais?.trim()) {
     where.pais = { equals: opts.pais.trim(), mode: 'insensitive' };
+  }
+  if (opts.continente?.trim()) {
+    where.continente = { equals: opts.continente.trim(), mode: 'insensitive' };
   }
   if (opts.lang?.trim()) {
     where.lang = opts.lang.trim();
