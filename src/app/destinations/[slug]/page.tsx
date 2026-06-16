@@ -45,8 +45,12 @@ export default function Page() {
   return (
     <Suspense
       fallback={
-        <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-50 via-teal-50 to-orange-50">
-          <p className="text-gray-600">Loading…</p>
+        <div className="min-h-screen bg-gradient-to-br from-slate-50 via-teal-50/20 to-orange-50/30 dark:from-gray-950 dark:via-gray-900 dark:to-gray-950">
+          <div className="h-[42vh] bg-gray-200 dark:bg-gray-800 animate-pulse" />
+          <div className="max-w-5xl mx-auto px-4 py-8 space-y-8">
+            <div className="h-32 bg-gray-100 dark:bg-gray-800 animate-pulse rounded-xl" />
+            <div className="h-64 bg-gray-100 dark:bg-gray-800 animate-pulse rounded-xl" />
+          </div>
         </div>
       }
     >
