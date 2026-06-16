@@ -1,0 +1,18 @@
+{
+  "version": 2,
+  "buildCommand": "prisma generate && cross-env NODE_ENV=production DISABLE_SSR_FETCH=true next build",
+  "installCommand": "npm ci",
+  "outputDirectory": ".next",
+  "framework": "nextjs",
+  "crons": [
+    {
+      "path": "/api/cron/prisma-migrate",
+      "schedule": "0 0 * * *"
+    }
+  ],
+  "git": {
+    "deploymentEnabled": {
+      "main": true
+    }
+  }
+}
