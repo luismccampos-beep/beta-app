@@ -1615,6 +1615,7 @@
       "attributionTripgo": "TripGo / SkedGo · multimodal (API en la nube)",
       "attributionNavitia": "Navitia.io · multi-modal (API cloud, Europa)",
       "attributionTransitland": "Transit.land · agregador GTFS (API cloud)",
+      "attributionTransitous": "Transitous · rutas de transporte público comunitario",
       "costingTransit": "Transit",
       "costingAuto": "Coche",
       "costingWalk": "A pie",
