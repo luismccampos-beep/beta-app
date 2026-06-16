@@ -17,8 +17,12 @@ import {
   isTransitLandConfigured,
   getTransitLandApiKey,
 } from './transitland';
+import {
+  fetchTransitousRouting,
+  isTransitousConfigured,
+} from './transitous';
 
-export type LocalRoutingProvider = 'otp' | 'valhalla' | 'tripgo' | 'navitia' | 'transitland';
+export type LocalRoutingProvider = 'otp' | 'valhalla' | 'tripgo' | 'navitia' | 'transitland' | 'transitous';
 
 /** UI / API routing mode */
 export type LocalRoutingMode = 'transit' | ValhallaCosting;
@@ -56,7 +60,7 @@ function isLocalOnly(input: LocalRoutingInput): boolean {
 }
 
 export function isLocalRoutingConfigured(): boolean {
-  return isOtpConfigured() || isValhallaConfigured() || isTripGoConfigured() || isNavitiaConfigured() || isTransitLandConfigured();
+  return isOtpConfigured() || isValhallaConfigured() || isTripGoConfigured() || isNavitiaConfigured() || isTransitLandConfigured() || isTransitousConfigured();
 }
 
 function logProviderFallback(from: LocalRoutingProvider, to: LocalRoutingProvider, reason: string): void {
@@ -70,6 +74,7 @@ export function preferredLocalRoutingProvider(mode?: LocalRoutingMode): LocalRou
     if (isOtpConfigured()) return 'otp';
     if (isNavitiaConfigured()) return 'navitia';
     if (isTransitLandConfigured()) return 'transitland';
+    if (isTransitousConfigured()) return 'transitous';
     if (!isLocalOnly({ from: { lat: 0, lon: 0 }, to: { lat: 0, lon: 0 } }) && isTripGoConfigured()) {
       return 'tripgo';
     }
@@ -82,6 +87,7 @@ export function preferredLocalRoutingProvider(mode?: LocalRoutingMode): LocalRou
   if (isOtpConfigured()) return 'otp';
   if (isNavitiaConfigured()) return 'navitia';
   if (isTransitLandConfigured()) return 'transitland';
+  if (isTransitousConfigured()) return 'transitous';
   return null;
 }
 
@@ -146,9 +152,27 @@ export async function fetchLocalRouting(input: LocalRoutingInput): Promise<Local
         if (tl.plans.length) {
           return { plans: tl.plans, provider: 'transitland', configured: true };
         }
-        logProviderFallback('transitland', 'tripgo', tl.error ?? 'no plans');
+        logProviderFallback('transitland', 'transitous', tl.error ?? 'no plans');
       } catch (e) {
-        logProviderFallback('transitland', 'tripgo', e instanceof Error ? e.message : 'unknown');
+        logProviderFallback('transitland', 'transitous', e instanceof Error ? e.message : 'unknown');
+      }
+    }
+
+    // Transitous (free, no API key needed — always available)
+    if (!localOnly) {
+      try {
+        const tt = await fetchTransitousRouting('', {
+          from: input.from,
+          to: input.to,
+          departAfter: input.departAfter,
+          locale: input.locale,
+        });
+        if (tt.plans.length) {
+          return { plans: tt.plans, provider: 'transitous', configured: true };
+        }
+        logProviderFallback('transitous', 'tripgo', tt.error ?? 'no plans');
+      } catch (e) {
+        logProviderFallback('transitous', 'tripgo', e instanceof Error ? e.message : 'unknown');
       }
     }
 

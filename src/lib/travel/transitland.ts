@@ -2,13 +2,21 @@
  * Transit.land (Interline) — GTFS feed aggregator & routing API.
  * https://www.transit.land/documentation
  *
- * Auth: `apikey` query parameter or `x-api-key` header.
+ * REST API v2: https://transit.land/api/v2/rest/
+ * Routing API (OTP): https://transit.land/api/v2/routing/otp/plan
+ *
+ * Auth: `apikey` query parameter or `apikey` header.
  * Free (Explorer): Routing 1 000 queries/month, REST 10 000 queries/month.
  */
 
-import type { TripGoTripPlan, TripGoSegmentSummary } from './tripgo';
+import type { TripGoTripPlan } from './tripgo';
+import { parseOtpResponse } from './otp-parser';
 
-const TRANSITLAND_API = 'https://transit.land/api';
+// ── API base URLs ────────────────────────────────────────────────────────
+/** REST API v2 — operators, stops, feeds */
+const TRANSITLAND_REST_API = 'https://transit.land/api/v2/rest';
+/** Routing API — OTP-compatible trip planning */
+const TRANSITLAND_ROUTING_API = 'https://transit.land/api/v2/routing/otp/plan';
 
 // ── Types ────────────────────────────────────────────────────────────────
 
@@ -19,7 +27,7 @@ export type TransitLandRoutingInput = {
   to: TransitLandLatLng;
   /** Unix seconds; default ≈ now */
   departAfter?: number;
-  /** Optional comma-separated modes: bus, subway, train, ferry, etc. */
+  /** Optional comma-separated modes: BUS, SUBWAY, TRAIN, FERRY, WALK, etc. */
   modes?: string;
   locale?: string;
   /** Max itineraries (default 3) */
@@ -36,151 +44,26 @@ export function isTransitLandConfigured(): boolean {
   return Boolean(getTransitLandApiKey());
 }
 
-function transitLandUrl(path: string, params: Record<string, string>): string {
+/** Build a URL for the REST API v2 with apikey. */
+function restUrl(path: string, params: Record<string, string>): string {
   const key = getTransitLandApiKey()!;
   const qs = new URLSearchParams({ ...params, apikey: key });
-  return `${TRANSITLAND_API}${path}?${qs.toString()}`;
+  return `${TRANSITLAND_REST_API}${path}?${qs.toString()}`;
 }
 
-// ── Mode labels ──────────────────────────────────────────────────────────
-
-const MODE_LABELS: Record<string, string> = {
-  bus: 'Bus',
-  rail: 'Train',
-  subway: 'Metro',
-  tram: 'Tram',
-  ferry: 'Ferry',
-  cable_car: 'Cable Car',
-  gondola: 'Gondola',
-  funicular: 'Funicular',
-  walking: 'Walk',
-  bicycle: 'Bicycle',
-};
-
-function modeLabel(mode: string): string {
-  return MODE_LABELS[mode.toLowerCase()] ?? mode.replace(/_/g, ' ').replace(/\b\w/g, (c) => c.toUpperCase());
+/** Build a URL for the Routing (OTP) API with apikey. */
+function routingUrl(params: Record<string, string>): string {
+  const key = getTransitLandApiKey()!;
+  const qs = new URLSearchParams({ ...params, apikey: key });
+  return `${TRANSITLAND_ROUTING_API}?${qs.toString()}`;
 }
 
-// ── Parser ───────────────────────────────────────────────────────────────
-
-type TransitLandItinerary = Record<string, unknown>;
-type TransitLandLeg = Record<string, unknown>;
-
-function parseLeg(leg: TransitLandLeg): TripGoSegmentSummary | null {
-  const mode = (leg.mode as string) ?? 'unknown';
-  const durationMinutes =
-    typeof leg.duration_minutes === 'number'
-      ? (leg.duration_minutes as number)
-      : undefined;
-
-  const fromStop = leg.from_stop as Record<string, unknown> | undefined;
-  const toStop = leg.to_stop as Record<string, unknown> | undefined;
-
-  const routeName =
-    (leg.route_name as string) ??
-    (leg.route_long_name as string) ??
-    (leg.route_short_name as string) ??
-    undefined;
-
-  const departStr = leg.departure_time as string | undefined;
-  const arriveStr = leg.arrival_time as string | undefined;
-  const startTime = departStr
-    ? Math.floor(new Date(departStr).getTime() / 1000)
-    : undefined;
-  const endTime = arriveStr
-    ? Math.floor(new Date(arriveStr).getTime() / 1000)
-    : undefined;
-
-  return {
-    mode,
-    modeLabel: routeName ? `${modeLabel(mode)} ${routeName}` : modeLabel(mode),
-    from:
-      typeof fromStop?.name === 'string'
-        ? (fromStop.name as string)
-        : typeof leg.from_name === 'string'
-          ? (leg.from_name as string)
-          : '—',
-    to:
-      typeof toStop?.name === 'string'
-        ? (toStop.name as string)
-        : typeof leg.to_name === 'string'
-          ? (leg.to_name as string)
-          : '—',
-    startTime,
-    endTime,
-    durationMinutes,
-    serviceName: routeName,
-    notes: leg.wheelchair_accessible
-      ? 'Wheelchair accessible'
-      : undefined,
-  };
-}
-
-/**
- * Parse Transit.land routing response.
- * Returns itineraries as TripGoTripPlan[] sorted by duration.
- */
-export function parseTransitLandResponse(data: Record<string, unknown>): {
-  plans: TripGoTripPlan[];
-  error?: string;
-} {
-  // Transit.land v2 routing returns: { data: { itineraries: [...] } }
-  const root = data.data as Record<string, unknown> | undefined;
-  const itineraries = Array.isArray(root?.itineraries)
-    ? (root.itineraries as TransitLandItinerary[])
-    : Array.isArray(data.itineraries)
-      ? (data.itineraries as TransitLandItinerary[])
-      : [];
-
-  if (!itineraries.length) {
-    return { plans: [], error: 'No itineraries found for this route' };
-  }
-
-  const plans: TripGoTripPlan[] = [];
-
-  for (const it of itineraries) {
-    const legs = Array.isArray(it.legs)
-      ? (it.legs as TransitLandLeg[])
-      : [];
-
-    if (!legs.length) continue;
-
-    const segments: TripGoSegmentSummary[] = [];
-    for (const leg of legs) {
-      const seg = parseLeg(leg);
-      if (seg) segments.push(seg);
-    }
-
-    if (!segments.length) continue;
-
-    const durationMinutes =
-      (typeof it.duration_minutes === 'number'
-        ? (it.duration_minutes as number)
-        : undefined) ??
-      segments.reduce((sum, s) => sum + (s.durationMinutes ?? 0), 0);
-
-    const startTime = segments[0]?.startTime ?? Math.floor(Date.now() / 1000);
-    const endTime =
-      segments[segments.length - 1]?.endTime ?? startTime + durationMinutes * 60;
-
-    plans.push({
-      depart: startTime,
-      arrive: endTime,
-      durationMinutes: Math.max(1, durationMinutes),
-      segments,
-    });
-  }
-
-  plans.sort((a, b) => a.durationMinutes - b.durationMinutes);
-  return { plans };
-}
-
-// ── Fetch routing ────────────────────────────────────────────────────────
+// ── Fetch routing (OTP /plan) ────────────────────────────────────────────
 
 /**
  * Query Transit.land routing API for multi-modal itineraries.
  *
- * Uses the v2 routing endpoint: /api/v2/routings
+ * Uses the OTP-compatible endpoint: /api/v2/routing/otp/plan
  */
 export async function fetchTransitLandRouting(
   apiKey: string,
@@ -188,17 +71,32 @@ export async function fetchTransitLandRouting(
   opts?: { timeoutMs?: number },
 ): Promise<{ plans: TripGoTripPlan[]; error?: string }> {
   const departAfter = input.departAfter ?? Math.floor(Date.now() / 1000);
-  const departISO = new Date(departAfter * 1000).toISOString();
+  const departDate = new Date(departAfter * 1000);
+
+  // Format time as HH:MMam/pm (OTP format)
+  const hours = departDate.getHours();
+  const minutes = departDate.getMinutes();
+  const ampm = hours >= 12 ? 'pm' : 'am';
+  const hour12 = hours % 12 || 12;
+  const timeStr = `${hour12}:${minutes.toString().padStart(2, '0')}${ampm}`;
+
+  // Format date as YYYY-MM-DD
+  const dateStr = departDate.toISOString().slice(0, 10);
 
   const params: Record<string, string> = {
-    from: `${input.from.lat},${input.from.lon}`,
-    to: `${input.to.lat},${input.to.lon}`,
-    time: departISO,
-    max_itineraries: String(input.maxItineraries ?? 3),
+    fromPlace: `${input.from.lat},${input.from.lon}`,
+    toPlace: `${input.to.lat},${input.to.lon}`,
+    time: timeStr,
+    date: dateStr,
+    numItineraries: String(input.maxItineraries ?? 3),
   };
 
   if (input.modes) {
-    params.modes = input.modes;
+    // Convert code modes (e.g., "bus, train, ferry") to OTP uppercase format
+    params.mode = input.modes
+      .split(',')
+      .map((m) => m.trim().toUpperCase())
+      .join(',');
   }
   if (input.locale) {
     params.locale = input.locale.slice(0, 2);
@@ -211,11 +109,11 @@ export async function fetchTransitLandRouting(
   );
 
   try {
-    const url = transitLandUrl('/api/v2/routings', params);
+    const url = routingUrl(params);
     const res = await fetch(url, {
       headers: {
         Accept: 'application/json',
-        'x-api-key': apiKey,
+        apikey: apiKey,
       },
       signal: controller.signal,
       cache: 'no-store',
@@ -239,7 +137,7 @@ export async function fetchTransitLandRouting(
       return { plans: [], error: `Transit.land ${res.status}: ${msg}` };
     }
 
-    return parseTransitLandResponse(data);
+    return parseOtpResponse(data);
   } catch (e: unknown) {
     if (e instanceof Error && e.name === 'AbortError') {
       return { plans: [], error: 'Transit.land request timed out' };
@@ -251,7 +149,7 @@ export async function fetchTransitLandRouting(
   }
 }
 
-// ── Data queries ─────────────────────────────────────────────────────────
+// ── Data queries (REST API v2) ───────────────────────────────────────────
 
 export type TransitLandOperator = {
   name: string;
@@ -261,39 +159,48 @@ export type TransitLandOperator = {
 };
 
 /**
- * Search for operators (transit agencies) near a location.
- * Returns up to `limit` operators.
+ * Search for operators (transit agencies).
+ * REST v2: GET /agencies
+ * Note: v2 REST API may not support proximity search for agencies directly.
+ * Use stops endpoint for location-based lookups.
  */
 export async function fetchTransitLandOperators(
   apiKey: string,
-  near?: TransitLandLatLng,
+  _near?: TransitLandLatLng,
   limit = 20,
 ): Promise<TransitLandOperator[]> {
   const params: Record<string, string> = {
     per_page: String(limit),
   };
 
-  if (near) {
-    params.near = `${near.lat},${near.lon}`;
-  }
-
   try {
-    const url = transitLandUrl('/api/v1/operators', params);
+    const url = restUrl('/agencies', params);
     const res = await fetch(url, {
-      headers: { Accept: 'application/json', 'x-api-key': apiKey },
+      headers: { Accept: 'application/json', apikey: apiKey },
       next: { revalidate: 3600 },
     });
 
     if (!res.ok) return [];
     const data = (await res.json()) as Record<string, unknown>;
-    const operators = data.operators as Record<string, unknown>[] | undefined;
-    if (!Array.isArray(operators)) return [];
 
-    return operators.map((op) => ({
-      name: String(op.name ?? 'Unknown'),
-      url: typeof op.url === 'string' ? (op.url as string) : undefined,
+    // v2 REST may return { agencies: [...] } or { data: { agencies: [...] } }
+    const agencies = (
+      (data.agencies as Record<string, unknown>[]) ??
+      ((data.data as Record<string, unknown>)?.agencies as Record<string, unknown>[]) ??
+      []
+    );
+
+    if (!Array.isArray(agencies)) return [];
+
+    return agencies.map((op) => ({
+      name: String(op.name ?? (op.agency_name as string) ?? 'Unknown'),
+      url: typeof op.url === 'string' ? (op.url as string) : typeof op.agency_url === 'string' ? (op.agency_url as string) : undefined,
       timezone:
-        typeof op.timezone === 'string' ? (op.timezone as string) : undefined,
+        typeof op.timezone === 'string'
+          ? (op.timezone as string)
+          : typeof op.agency_timezone === 'string'
+            ? (op.agency_timezone as string)
+            : undefined,
       modes: Array.isArray(op.modes)
         ? (op.modes as string[]).map(String)
         : [],
@@ -305,6 +212,7 @@ export async function fetchTransitLandOperators(
 
 /**
  * Search for stops near a location.
+ * REST v2: GET /stops?lat=...&lon=...&radius=... (radius in meters)
  */
 export async function fetchTransitLandStops(
   apiKey: string,
@@ -312,30 +220,56 @@ export async function fetchTransitLandStops(
   radiusKm = 1,
   limit = 20,
 ): Promise<{ name: string; lat: number; lon: number; modes: string[] }[]> {
+  // v2 REST uses radius in meters
   const params: Record<string, string> = {
     per_page: String(limit),
-    near: `${near.lat},${near.lon}`,
-    radius: String(radiusKm),
+    lat: String(near.lat),
+    lon: String(near.lon),
+    radius: String(radiusKm * 1000),
   };
 
   try {
-    const url = transitLandUrl('/api/v1/stops', params);
+    const url = restUrl('/stops', params);
     const res = await fetch(url, {
-      headers: { Accept: 'application/json', 'x-api-key': apiKey },
+      headers: { Accept: 'application/json', apikey: apiKey },
       next: { revalidate: 3600 },
     });
 
     if (!res.ok) return [];
     const data = (await res.json()) as Record<string, unknown>;
-    const stops = data.stops as Record<string, unknown>[] | undefined;
+
+    // v2 REST may return { stops: [...] } or { data: { stops: [...] } }
+    const stops = (
+      (data.stops as Record<string, unknown>[]) ??
+      ((data.data as Record<string, unknown>)?.stops as Record<string, unknown>[]) ??
+      []
+    );
+
     if (!Array.isArray(stops)) return [];
 
-    return stops.map((s) => ({
-      name: String(s.name ?? 'Unknown'),
-      lat: Number(s.lat ?? 0),
-      lon: Number(s.lon ?? 0),
-      modes: Array.isArray(s.modes) ? (s.modes as string[]).map(String) : [],
-    }));
+    return stops.map((s) => {
+      // Geometry may be { coordinates: [lon, lat] } (GeoJSON Point)
+      const geom = s.geometry as Record<string, unknown> | undefined;
+      let lat = Number(s.lat ?? 0);
+      let lon = Number(s.lon ?? 0);
+
+      if ((!lat || !lon) && geom?.type === 'Point') {
+        const coords = geom.coordinates as number[] | undefined;
+        if (Array.isArray(coords) && coords.length >= 2) {
+          lon = coords[0] ?? 0;
+          lat = coords[1] ?? 0;
+        }
+      }
+
+      return {
+        name: String(s.name ?? 'Unknown'),
+        lat,
+        lon,
+        modes: Array.isArray(s.served_by)
+          ? (s.served_by as string[]).map(String)
+          : [],
+      };
+    });
   } catch {
     return [];
   }
