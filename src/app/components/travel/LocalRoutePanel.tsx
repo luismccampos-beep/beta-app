@@ -16,7 +16,7 @@ type LocalRoutePanelProps = {
   modes?: string;
 };
 
-type RoutingProvider = 'otp' | 'valhalla' | 'tripgo' | null;
+type RoutingProvider = 'otp' | 'valhalla' | 'tripgo' | 'navitia' | 'transitland' | null;
 
 const MODE_OPTIONS: {
   value: LocalRoutingMode;
@@ -29,7 +29,11 @@ const MODE_OPTIONS: {
 ];
 
 function modeIcon(mode: string, provider: RoutingProvider) {
-  if (provider === 'otp' || mode.includes('bus') || mode.includes('rail') || mode.includes('subway')) {
+  const isTransit = mode.includes('bus') || mode.includes('rail') || mode.includes('subway') ||
+    mode.includes('train') || mode.includes('metro') || mode.includes('tram') ||
+    mode.includes('ferry');
+
+  if (provider === 'otp' || provider === 'navitia' || provider === 'transitland' || isTransit) {
     return Bus;
   }
   if (provider === 'valhalla') {
@@ -114,11 +118,15 @@ export function LocalRoutePanel({
       ? t('attributionOtp')
       : provider === 'valhalla'
         ? t('attributionValhalla')
-        : provider === 'tripgo'
-          ? t('attributionTripgo')
+      : provider === 'tripgo'
+        ? t('attributionTripgo')
+      : provider === 'navitia'
+        ? t('attributionNavitia')
+      : provider === 'transitland'
+        ? t('attributionTransitland')
           : t('attribution');
 
-  const showDeparture = provider === 'tripgo' || provider === 'otp';
+  const showDeparture = provider === 'tripgo' || provider === 'otp' || provider === 'navitia' || provider === 'transitland';
 
   return (
     <div className="space-y-4">

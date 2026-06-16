@@ -1033,11 +1033,18 @@ model Package {
 // ARLINE PRODUCTS 
 // =============== ============================
 
+enum AirlineType {
+  LOW_COST
+  LEGACY
+  REGIONAL
+}
+
 /// Airlines
 model Airline {
   id        String  @id @default(uuid()) 
   name      String  @db.VarChar(255)
   code      String  @unique @db.VarChar(3) // "AA", "UA", etc.
+  type      AirlineType @default(LEGACY) // low_cost, legacy, regional
   logo      String? @db.Text
   website   String? @db.VarChar(500)
   rating    Float?  @default(0) @db.Real
@@ -1066,6 +1073,9 @@ model Airport {
 
   departureFlights Flight[] @relation("DepartureAirport")
   arrivalFlights   Flight[] @relation("ArrivalAirport")
+
+  routeOrigins     FlightRoute[] @relation("RouteOriginAirport")
+  routeDests       FlightRoute[] @relation("RouteDestAirport")
 
   @@index([code])
   @@map("airports")
@@ -1127,6 +1137,55 @@ model FlightDetail {
 
   @@map("flight_details")
 }
+
+/// FlightRoute — rotas aéreas (origem → destino) com distância e duração média
+model FlightRoute {
+  id        String @id @default(uuid()) 
+  originId  String @map("origin_id") 
+  destId    String @map("dest_id") 
+  distanceKm Int?  @map("distance_km") 
+  durationMin Int? @map("duration_min") 
+
+  origin Airport @relation("RouteOriginAirport", fields: [originId], references: [id])
+  dest   Airport @relation("RouteDestAirport", fields: [destId], references: [id])
+
+  priceStats FlightPriceStatistic[]
+
+  @@unique([originId, destId])
+  @@index([originId])
+  @@index([destId])
+  @@map("flight_routes")
+}
+
+/// FlightPriceStatistic — estatísticas mensais de preços por rota
+enum ConfidenceLevel {
+  ALTA
+  MEDIA
+  BAIXA
+}
+
+model FlightPriceStatistic {
+  id               String         @id @default(uuid()) 
+  routeId          String         @map("route_id") 
+  mes              Int            // 1-12
+  precoMedio       Decimal?       @map("preco_medio") @db.Decimal(10, 2)
+  precoMin         Decimal?       @map("preco_min") @db.Decimal(10, 2)
+  precoMax         Decimal?       @map("preco_max") @db.Decimal(10, 2)
+  precoMedioLowCost Decimal?      @map("preco_medio_low_cost") @db.Decimal(10, 2)
+  precoMedioLegacy Decimal?       @map("preco_medio_legacy") @db.Decimal(10, 2)
+  amostraCount     Int            @default(0) @map("amostra_count") 
+  confianca        ConfidenceLevel @default(MEDIA)
+  fonte            String?        @db.VarChar(100) // "kaggle", "scrape", "api", "manual"
+  ano              Int            @default(2026)
+
+  route FlightRoute @relation(fields: [routeId], references: [id], onDelete: Cascade)
+
+  @@unique([routeId, mes, ano])
+  @@index([routeId])
+  @@index([mes])
+  @@map("flight_price_statistics")
+}
+
 
 model ServiceDetail {
   id           String   @id @default(uuid()) 

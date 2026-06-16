@@ -63,6 +63,8 @@ export async function GET(_req: Request, ctx: RouteCtx) {
         longitude: dest.longitude,
         wikivoyageUrl: dest.wikivoyageUrl,
         license: 'CC BY-SA 3.0',
+        videoUrl: (dest as Record<string, unknown>).videoUrl ?? null,
+        galleryImages: (dest as Record<string, unknown>).galleryImages ?? null,
         hotels,
         mapMarkers: (() => {
           const fromDb = mapMarkersFromDbHotels(dest, hotels);
@@ -115,6 +117,8 @@ export async function GET(_req: Request, ctx: RouteCtx) {
     longitude: dest.longitude,
     wikivoyageUrl: dest.wikivoyageUrl,
     license: 'CC BY-SA 3.0',
+    videoUrl: (dest as Record<string, unknown>).videoUrl ?? null,
+    galleryImages: (dest as Record<string, unknown>).galleryImages ?? null,
     hotels: hotels.map((h) => ({
       id: h.id,
       nome: h.nome,

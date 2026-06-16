@@ -284,7 +284,7 @@ async function main() {
       if (!enriched.bizdata) enriched.bizdata = [];
       if (!enriched.bizdata.includes(cat)) enriched.bizdata.push(cat);
 
-      await new Promise((r) => setTimeout(r, 250));
+      await new Promise((r) => setTimeout(r, 80));
     }
 
     // ── Phase 2: Overpass (rate-limited) ──

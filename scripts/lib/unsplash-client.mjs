@@ -136,7 +136,61 @@ export function buildDestinationImageQueryFallbacks(dest) {
 export function isGenericPlaceholderImage(url) {
   if (!url) return true;
   if (url.startsWith('/travel-images/')) return false;
-  return /photo-1469854523086-cc02afe5c88/.test(url) && /[?&]sig=\d+/.test(url);
+  // Default Unsplash placeholder: photo-1469854523086-cc02afe5c88 (with or without sig=)
+  if (/photo-1469854523086-cc02afe5c88/.test(url)) return true;
+  return /[?&]sig=\d+/.test(url);
+}
+
+/**
+ * Search Unsplash for multiple photos (gallery use).
+ * @param {string} accessKey
+ * @param {string} query
+ * @param {{ orientation?: string; width?: number; perPage?: number }} [opts]
+ * @returns {Promise<string[]>}
+ */
+export async function searchUnsplashPhotoUrls(accessKey, query, opts = {}) {
+  const q = query.trim();
+  if (!accessKey?.trim() || !q) return [];
+
+  const perPage = Math.min(opts.perPage ?? 5, 30);
+  const params = new URLSearchParams({
+    query: q,
+    per_page: String(perPage),
+    content_filter: 'high',
+    orientation: opts.orientation ?? 'landscape',
+  });
+
+  const res = await fetch(`${API}?${params}`, {
+    headers: {
+      Authorization: `Client-ID ${accessKey.trim()}`,
+      'Accept-Version': 'v1',
+    },
+  });
+
+  if (!res.ok) {
+    if (res.status === 429 || (res.status === 403 && /rate limit/i.test(await res.text().catch(() => '')))) {
+      return 'RATE_LIMITED';
+    }
+    return [];
+  }
+
+  const data = await res.json();
+  const photos = data?.results ?? [];
+  if (!photos.length) return [];
+
+  const w = opts.width ?? 800;
+  return photos
+    .map((photo) => {
+      const base = photo?.urls?.raw ?? photo?.urls?.regular ?? photo?.urls?.full;
+      if (!base) return null;
+      const url = new URL(base);
+      url.searchParams.set('auto', 'format');
+      url.searchParams.set('fit', 'crop');
+      url.searchParams.set('w', String(w));
+      url.searchParams.set('q', '75');
+      return url.toString();
+    })
+    .filter(Boolean);
 }
 
 export function sleep(ms) {

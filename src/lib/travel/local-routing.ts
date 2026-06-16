@@ -1,5 +1,6 @@
 /**
  * Local routing for demo: OTP (transit) + Valhalla (street) — TripGo cloud only as fallback.
+ * Extended with Navitia.io and Transit.land as additional transit providers.
  */
 
 import type { TripGoTripPlan } from './tripgo';
@@ -10,8 +11,14 @@ import {
   isValhallaConfigured,
   type ValhallaCosting,
 } from './valhalla';
+import { fetchNavitiaJourney, isNavitiaConfigured, getNavitiaApiKey } from './navitia';
+import {
+  fetchTransitLandRouting,
+  isTransitLandConfigured,
+  getTransitLandApiKey,
+} from './transitland';
 
-export type LocalRoutingProvider = 'otp' | 'valhalla' | 'tripgo';
+export type LocalRoutingProvider = 'otp' | 'valhalla' | 'tripgo' | 'navitia' | 'transitland';
 
 /** UI / API routing mode */
 export type LocalRoutingMode = 'transit' | ValhallaCosting;
@@ -49,12 +56,20 @@ function isLocalOnly(input: LocalRoutingInput): boolean {
 }
 
 export function isLocalRoutingConfigured(): boolean {
-  return isOtpConfigured() || isValhallaConfigured() || isTripGoConfigured();
+  return isOtpConfigured() || isValhallaConfigured() || isTripGoConfigured() || isNavitiaConfigured() || isTransitLandConfigured();
+}
+
+function logProviderFallback(from: LocalRoutingProvider, to: LocalRoutingProvider, reason: string): void {
+  if (process.env.NODE_ENV !== 'test') {
+    console.debug(`[routing] ${from} → ${to}: ${reason}`);
+  }
 }
 
 export function preferredLocalRoutingProvider(mode?: LocalRoutingMode): LocalRoutingProvider | null {
   if (mode === 'transit') {
     if (isOtpConfigured()) return 'otp';
+    if (isNavitiaConfigured()) return 'navitia';
+    if (isTransitLandConfigured()) return 'transitland';
     if (!isLocalOnly({ from: { lat: 0, lon: 0 }, to: { lat: 0, lon: 0 } }) && isTripGoConfigured()) {
       return 'tripgo';
     }
@@ -64,7 +79,10 @@ export function preferredLocalRoutingProvider(mode?: LocalRoutingMode): LocalRou
   if (!isLocalOnly({ from: { lat: 0, lon: 0 }, to: { lat: 0, lon: 0 } }) && isTripGoConfigured()) {
     return 'tripgo';
   }
-  return isOtpConfigured() ? 'otp' : null;
+  if (isOtpConfigured()) return 'otp';
+  if (isNavitiaConfigured()) return 'navitia';
+  if (isTransitLandConfigured()) return 'transitland';
+  return null;
 }
 
 /**
@@ -75,6 +93,7 @@ export async function fetchLocalRouting(input: LocalRoutingInput): Promise<Local
   const localOnly = isLocalOnly(input);
 
   if (mode === 'transit') {
+    // Attempt providers in priority order: OTP → Navitia → Transit.land → TripGo
     if (isOtpConfigured()) {
       const otp = await fetchOtpPlan({
         from: input.from,
@@ -93,15 +112,47 @@ export async function fetchLocalRouting(input: LocalRoutingInput): Promise<Local
           error: otp.error ?? 'OTP returned no transit itineraries',
         };
       }
-    } else if (localOnly) {
-      return {
-        plans: [],
-        provider: null,
-        configured: isOtpConfigured(),
-        error: 'OTP not configured — npm run otp:prepare && npm run otp:build && npm run otp:up',
-      };
     }
 
+    // Navitia.io (cloud API with free tier)
+    const navitiaKey = getNavitiaApiKey();
+    if (navitiaKey && !localOnly) {
+      try {
+        const nav = await fetchNavitiaJourney(navitiaKey, {
+          from: input.from,
+          to: input.to,
+          datetime: input.departAfter ? new Date(input.departAfter * 1000).toISOString().slice(0, 16) : undefined,
+          locale: input.locale,
+        });
+        if (nav.plans.length) {
+          return { plans: nav.plans, provider: 'navitia', configured: true };
+        }
+        logProviderFallback('navitia', 'transitland', nav.error ?? 'no plans');
+      } catch (e) {
+        logProviderFallback('navitia', 'transitland', e instanceof Error ? e.message : 'unknown');
+      }
+    }
+
+    // Transit.land (cloud API with free tier)
+    const transitLandKey = getTransitLandApiKey();
+    if (transitLandKey && !localOnly) {
+      try {
+        const tl = await fetchTransitLandRouting(transitLandKey, {
+          from: input.from,
+          to: input.to,
+          departAfter: input.departAfter,
+          locale: input.locale,
+        });
+        if (tl.plans.length) {
+          return { plans: tl.plans, provider: 'transitland', configured: true };
+        }
+        logProviderFallback('transitland', 'tripgo', tl.error ?? 'no plans');
+      } catch (e) {
+        logProviderFallback('transitland', 'tripgo', e instanceof Error ? e.message : 'unknown');
+      }
+    }
+
+    // TripGo (final fallback)
     const tripGoKey = process.env.TRIPGO_API_KEY?.trim();
     if (tripGoKey) {
       try {
@@ -135,7 +186,7 @@ export async function fetchLocalRouting(input: LocalRoutingInput): Promise<Local
       plans: [],
       provider: null,
       configured: false,
-      error: 'Transit: configure OTP_BASE_URL or TRIPGO_API_KEY',
+      error: 'Transit: configure OTP_BASE_URL, NAVITIA_API_KEY, TRANSITLAND_API_KEY, or TRIPGO_API_KEY',
     };
   }
 
