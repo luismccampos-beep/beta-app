@@ -7,10 +7,10 @@
     "noEmit": false,
     "skipLibCheck": true,
     "tsBuildInfoFile": "./.generated/tsconfig.tsbuildinfo",
-    
-    "baseUrl": ".",
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": ["./src/*"],
+      "@akmleva/shared": ["./src/index"],
+      "@akmleva/shared/*": ["./src/*"]
     },
     
     "types": [

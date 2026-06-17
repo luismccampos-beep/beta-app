@@ -1,0 +1,13 @@
+{
+  "name": "tavily",
+  "description": "Tavily MCP Server - Web search and extraction capabilities",
+  "type": "stdio",
+  "command": "npx",
+  "args": [
+    "mcp-tavily"
+  ],
+  "env": {
+    "TAVILY_API_KEY": "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"
+  },
+  "disabled": false
+}

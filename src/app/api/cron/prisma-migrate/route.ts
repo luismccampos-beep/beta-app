@@ -37,6 +37,24 @@ export async function GET(request: Request) {
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
   }
 
+  // Run status check first (non-blocking — exits 1 when migrations are pending)
+  let statusOutput = '';
+  try {
+    const { stdout: statusStdout } = await asyncExec('node node_modules/.bin/prisma migrate status', {
+      cwd: process.cwd(),
+      env: { ...process.env },
+      timeout: 30_000,
+      encoding: 'utf8',
+    });
+    statusOutput = statusStdout.trim();
+    console.log('[cron/prisma-migrate] Status:', statusOutput);
+  } catch (statusErr) {
+    // migrate status exits 1 when migrations are pending — that's expected
+    const execErr = statusErr as { stdout?: string; stderr?: string };
+    statusOutput = execErr.stdout || execErr.stderr || '';
+    console.log('[cron/prisma-migrate] Status (pending migrations):', statusOutput);
+  }
+
   try {
     const { stdout } = await asyncExec('node node_modules/.bin/prisma migrate deploy', {
       cwd: process.cwd(),
@@ -49,6 +67,7 @@ export async function GET(request: Request) {
 
     return NextResponse.json({
       ok: true,
+      status: statusOutput,
       output: stdout.trim(),
       timestamp: new Date().toISOString(),
     });
@@ -63,6 +82,7 @@ export async function GET(request: Request) {
     return NextResponse.json(
       {
         error: 'Migration failed',
+        status: statusOutput,
         detail: message,
         timestamp: new Date().toISOString(),
       },
