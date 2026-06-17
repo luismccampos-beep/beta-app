@@ -33,11 +33,11 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/akmleva/akmleva.git",
+    "url": "https://github.com/luismccampos-beep/beta-app.git",
     "directory": "ml-service"
   },
   "bugs": {
-    "url": "https://github.com/akmleva/akmleva/issues"
+    "url": "https://github.com/luismccampos-beep/beta-app/issues"
   },
   "homepage": "https://docs.akmleva.com",
   "engines": {

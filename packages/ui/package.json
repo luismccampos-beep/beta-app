@@ -91,7 +91,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/akmleva/akmleva.git"
+    "url": "https://github.com/luismccampos-beep/beta-app.git"
   },
   "publishConfig": {
     "access": "restricted"

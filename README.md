@@ -347,7 +347,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 ## 📞 Contact & Support
 
 - **Website**: [akmleva.com](https://akmleva.com)
-- **Email**: support@akmleva.com
+- **Email**: luismccampos@gmail.com
 - **Documentation**: [docs.akmleva.com](https://docs.akmleva.com)
 - **Status Page**: [status.akmleva.com](https://status.akmleva.com)
 

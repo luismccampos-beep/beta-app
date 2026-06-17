@@ -183,5 +183,5 @@ MIT License - see LICENSE file for details.
 ## 🆘 Support
 
 - **Documentation**: https://docs.akmleva.com
-- **Issues**: https://github.com/akmleva/akmleva/issues
-- **Email**: dev@akmleva.com
+- **Issues**: https://github.com/luismccampos-beep/beta-app/issues
+- **Email**: luismccampos@gmail.com
