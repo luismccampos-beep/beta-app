@@ -1,26 +1,14 @@
 import { NextResponse } from 'next/server';
-import { cookies } from 'next/headers';
 import { Prisma } from '@prisma/client';
 
 import { prisma } from '../../../../lib/prisma';
-import { SESSION_COOKIE_NAME } from '../../../../lib/auth';
+import { auth } from '@/auth';
 
 type PreferencePayload = Record<string, unknown>;
 
 async function getAuthenticatedUserId(): Promise<string | null> {
-  const token = (await cookies()).get(SESSION_COOKIE_NAME)?.value;
-  if (!token) return null;
-
-  const session = await prisma.session.findFirst({
-    where: {
-      token,
-      isRevoked: false,
-      expiresAt: { gt: new Date() },
-    },
-    select: { userId: true },
-  });
-
-  return session?.userId ?? null;
+  const session = await auth();
+  return session?.user?.id ?? null;
 }
 
 export async function GET() {

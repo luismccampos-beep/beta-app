@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { useLocale, useTranslations } from 'next-intl';
+import { useSession } from 'next-auth/react';
 import { Button } from '../ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../ui/card';
 import { Badge } from '../ui/badge';
@@ -26,10 +27,6 @@ import {
   Sun
 } from 'lucide-react';
 
-type MeResponse =
-  | { authenticated: false }
-  | { authenticated: true; user: { id: string; email: string; name: string | null } };
-
 interface LandingPageProps {
   onGetStarted: () => void;
   onNavigateToDestinations?: () => void;
@@ -44,7 +41,7 @@ export function LandingPage({ onGetStarted, onNavigateToDestinations, onNavigate
   const locale = useLocale();
   const t = useTranslations('landing');
   const [isDark, setIsDark] = useState(false);
-  const [me, setMe] = useState<MeResponse | null>(null);
+  const { data: session } = useSession();
 
   useEffect(() => {
     if (isDark) {
@@ -54,13 +51,6 @@ export function LandingPage({ onGetStarted, onNavigateToDestinations, onNavigate
     }
   }, [isDark]);
 
-  useEffect(() => {
-    fetch('/api/auth/me', { method: 'GET' })
-      .then(async (res) => (await res.json().catch(() => ({ authenticated: false }))) as MeResponse)
-      .then((data) => setMe(data))
-      .catch(() => setMe({ authenticated: false }));
-  }, []);
-  
   const setLocale = useCallback(
     (nextLocale: string) => {
       document.cookie = `NEXT_LOCALE=${nextLocale}; path=/; max-age=31536000; samesite=lax`;
@@ -70,14 +60,14 @@ export function LandingPage({ onGetStarted, onNavigateToDestinations, onNavigate
   );
 
   const initials = useMemo(() => {
-    if (!me || me.authenticated === false) return null;
-    const base = (me.user.name?.trim() || me.user.email || '').trim();
+    if (!session?.user) return null;
+    const base = (session.user.name?.trim() || session.user.email || '').trim();
     if (!base) return null;
     const parts = base.split(/\s+/).filter(Boolean);
     const first = (parts[0]?.[0] ?? '').toUpperCase();
     const second = (parts.length > 1 ? parts[parts.length - 1]?.[0] : parts[0]?.[1]) ?? '';
     return (first + String(second).toUpperCase()).slice(0, 2);
-  }, [me]);
+  }, [session]);
 
   const goDashboard = useCallback(() => router.push('/dashboard'), [router]);
   const goForm = useCallback(() => router.push('/preferences/edit'), [router]);
@@ -93,7 +83,7 @@ export function LandingPage({ onGetStarted, onNavigateToDestinations, onNavigate
             </h1>
 
             <div className="flex items-center gap-4">
-              {me?.authenticated === true && initials && (
+              {session?.user && initials && (
                 <div className="flex items-center gap-2">
                   <button
                     onClick={goDashboard}

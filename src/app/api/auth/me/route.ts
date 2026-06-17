@@ -1,39 +1,35 @@
 import { NextResponse } from 'next/server';
-import { cookies } from 'next/headers';
-
+import { auth } from '@/auth';
 import { prisma } from '../../../../lib/prisma';
-import { SESSION_COOKIE_NAME } from '../../../../lib/auth';
 
 export async function GET() {
-  const token = (await cookies()).get(SESSION_COOKIE_NAME)?.value;
-  if (!token) return NextResponse.json({ authenticated: false }, { status: 200 });
+  const session = await auth();
+  
+  if (!session?.user?.id) {
+    return NextResponse.json({ authenticated: false }, { status: 200 });
+  }
 
-  const session = await prisma.session.findFirst({
-    where: {
-      token,
-      isRevoked: false,
-      expiresAt: { gt: new Date() },
-    },
+  const user = await prisma.user.findUnique({
+    where: { id: session.user.id },
     select: {
-      user: {
-        select: {
-          id: true,
-          email: true,
-          name: true,
-          role: true,
-          phone: true,
-          birthDate: true,
-          address: true,
-          country: true,
-          taxId: true,
-        },
-      },
-      expiresAt: true,
+      id: true,
+      email: true,
+      name: true,
+      role: true,
+      phone: true,
+      birthDate: true,
+      address: true,
+      country: true,
+      taxId: true,
     },
   });
 
-  if (!session) return NextResponse.json({ authenticated: false }, { status: 200 });
+  if (!user) return NextResponse.json({ authenticated: false }, { status: 200 });
 
-  return NextResponse.json({ authenticated: true, user: session.user, expiresAt: session.expiresAt });
+  return NextResponse.json({ 
+    authenticated: true, 
+    user, 
+    expiresAt: session.expires 
+  });
 }
 

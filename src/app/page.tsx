@@ -2,24 +2,23 @@
 
 import { useCallback } from 'react';
 import { useRouter } from 'next/navigation';
+import { useSession } from 'next-auth/react';
 
 import { LandingPage } from './components/pages/LandingPage';
 
 export default function Page() {
   const router = useRouter();
+  const { data: session, status } = useSession();
 
   const onGetStarted = useCallback(() => {
-    fetch('/api/auth/me', { method: 'GET' })
-      .then(async (res) => {
-        const data = (await res.json().catch(() => ({}))) as { authenticated?: boolean };
-        if (res.ok && data.authenticated) {
-          router.push('/preferences/edit');
-          return;
-        }
-        router.push('/auth');
-      })
-      .catch(() => router.push('/auth'));
-  }, [router]);
+    if (status === 'loading') return;
+    
+    if (session) {
+      router.push('/preferences/edit');
+    } else {
+      router.push('/auth');
+    }
+  }, [router, session, status]);
 
   const onNavigateToLegal = useCallback(
     (pageType: 'terms' | 'privacy' | 'gdpr' | 'cancellations' | 'cookies') => {

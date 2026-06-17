@@ -5,6 +5,7 @@ import { getLocale, getMessages } from 'next-intl/server';
 
 import '../styles/index.css';
 import { Toaster } from './components/ui/sonner';
+import { Providers } from './components/Providers';
 
 export const metadata: Metadata = {
   icons: {
@@ -21,10 +22,12 @@ export default async function RootLayout({ children }: { children: ReactNode }) 
   return (
     <html lang={locale}>
       <body>
-        <NextIntlClientProvider messages={messages}>
-          {children}
-        </NextIntlClientProvider>
-        <Toaster richColors closeButton />
+        <Providers>
+          <NextIntlClientProvider messages={messages}>
+            {children}
+          </NextIntlClientProvider>
+          <Toaster richColors closeButton />
+        </Providers>
       </body>
     </html>
   );
