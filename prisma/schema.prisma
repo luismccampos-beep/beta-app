@@ -3,10 +3,11 @@
 // ============================================
 
 datasource db {
-  provider  = "postgresql"
+  provider     = "postgresql"
   // Neon / Vercel: pooled + direct (matches Storage → Neon env names)
-  url       = env("DATABASE_URL")
-  directUrl = env("DATABASE_URL_UNPOOLED")
+  url          = env("DATABASE_URL")
+  directUrl    = env("DATABASE_URL_UNPOOLED")
+  relationMode = "prisma"
 }
 
 generator client {
