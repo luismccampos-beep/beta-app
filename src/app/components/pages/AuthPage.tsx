@@ -1,4 +1,5 @@
-import { useState, useEffect, useMemo } from 'react';
+import { useState, useMemo } from 'react';
+import { signIn } from 'next-auth/react';
 import { Button } from '../ui/button';
 import { Input } from '../ui/input';
 import { Label } from '../ui/label';
@@ -19,7 +20,6 @@ import {
   Sparkles,
   Shield,
   CheckCircle2,
-  AlertCircle,
   ArrowRight,
   Languages,
   Moon,
@@ -28,273 +28,6 @@ import {
 import { toast } from 'sonner';
 
 type Language = 'en' | 'pt' | 'es' | 'fr';
-
-interface AuthTranslations {
-  [key: string]: {
-    en: string;
-    pt: string;
-    es: string;
-    fr: string;
-  };
-}
-
-// Legacy inline translations (migrated into `src/messages/{locale}.json`).
-// Kept temporarily to avoid a massive diff; safe to delete later.
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-const translations: AuthTranslations = {
-  hero: {
-    en: 'Discover Your Perfect Trip with AI',
-    pt: 'Descubra a Sua Viagem Perfeita com IA',
-    es: 'Descubre Tu Viaje Perfecto con IA',
-    fr: 'Découvrez Votre Voyage Parfait avec l\'IA'
-  },
-  heroDesc: {
-    en: 'Experience personalized travel recommendations with artificial intelligence',
-    pt: 'Experimente recomendações de viagem personalizadas com inteligência artificial',
-    es: 'Experimenta recomendaciones de viaje personalizadas con inteligencia artificial',
-    fr: 'Découvrez des recommandations de voyage personnalisées avec l\'intelligence artificielle'
-  },
-  welcomeBack: {
-    en: 'Welcome Back',
-    pt: 'Bem-vindo de Volta',
-    es: 'Bienvenido de Nuevo',
-    fr: 'Bon Retour'
-  },
-  loginDesc: {
-    en: 'Sign in to access your personalized travel dashboard',
-    pt: 'Entre para aceder ao seu painel de viagens personalizado',
-    es: 'Inicia sesión para acceder a tu panel de viajes personalizado',
-    fr: 'Connectez-vous pour accéder à votre tableau de bord de voyage personnalisé'
-  },
-  createAccount: {
-    en: 'Create Account',
-    pt: 'Criar Conta',
-    es: 'Crear Cuenta',
-    fr: 'Créer un Compte'
-  },
-  registerDesc: {
-    en: 'Join thousands of travelers using AI-powered travel planning',
-    pt: 'Junte-se a milhares de viajantes que usam planeamento de viagens com IA',
-    es: 'Únete a miles de viajeros usando planificación de viajes con IA',
-    fr: 'Rejoignez des milliers de voyageurs utilisant la planification de voyage avec IA'
-  },
-  login: {
-    en: 'Login',
-    pt: 'Entrar',
-    es: 'Iniciar Sesión',
-    fr: 'Connexion'
-  },
-  register: {
-    en: 'Register',
-    pt: 'Registar',
-    es: 'Registrarse',
-    fr: 'S\'inscrire'
-  },
-  email: {
-    en: 'Email',
-    pt: 'Email',
-    es: 'Correo Electrónico',
-    fr: 'Email'
-  },
-  emailPlaceholder: {
-    en: 'your.email@example.com',
-    pt: 'o.seu.email@exemplo.com',
-    es: 'tu.email@ejemplo.com',
-    fr: 'votre.email@exemple.com'
-  },
-  password: {
-    en: 'Password',
-    pt: 'Palavra-passe',
-    es: 'Contraseña',
-    fr: 'Mot de Passe'
-  },
-  passwordPlaceholder: {
-    en: 'Enter your password',
-    pt: 'Introduza a sua palavra-passe',
-    es: 'Ingresa tu contraseña',
-    fr: 'Entrez votre mot de passe'
-  },
-  confirmPassword: {
-    en: 'Confirm Password',
-    pt: 'Confirmar palavra-passe',
-    es: 'Confirmar Contraseña',
-    fr: 'Confirmer le Mot de Passe'
-  },
-  confirmPasswordPlaceholder: {
-    en: 'Re-enter your password',
-    pt: 'Introduza novamente a sua palavra-passe',
-    es: 'Vuelve a ingresar tu contraseña',
-    fr: 'Ressaisissez votre mot de passe'
-  },
-  fullName: {
-    en: 'Full Name',
-    pt: 'Nome Completo',
-    es: 'Nombre Completo',
-    fr: 'Nom Complet'
-  },
-  fullNamePlaceholder: {
-    en: 'John Smith',
-    pt: 'João Silva',
-    es: 'Juan García',
-    fr: 'Jean Dupont'
-  },
-  phoneNumber: {
-    en: 'Phone Number',
-    pt: 'Número de Telefone',
-    es: 'Número de Teléfono',
-    fr: 'Numéro de Téléphone'
-  },
-  phonePlaceholder: {
-    en: '+1 (555) 123-4567',
-    pt: '+351 912 345 678',
-    es: '+34 612 345 678',
-    fr: '+33 6 12 34 56 78'
-  },
-  rememberMe: {
-    en: 'Remember me',
-    pt: 'Lembrar-me',
-    es: 'Recuérdame',
-    fr: 'Se souvenir de moi'
-  },
-  forgotPassword: {
-    en: 'Forgot password?',
-    pt: 'Esqueceu-se da palavra-passe?',
-    es: '¿Olvidaste tu contraseña?',
-    fr: 'Mot de passe oublié?'
-  },
-  signIn: {
-    en: 'Sign In',
-    pt: 'Entrar',
-    es: 'Iniciar Sesión',
-    fr: 'Se Connecter'
-  },
-  signUp: {
-    en: 'Sign Up',
-    pt: 'Registar',
-    es: 'Registrarse',
-    fr: 'S\'inscrire'
-  },
-  dontHaveAccount: {
-    en: "Don't have an account?",
-    pt: 'Não tem uma conta?',
-    es: '¿No tienes una cuenta?',
-    fr: 'Vous n\'avez pas de compte?'
-  },
-  alreadyHaveAccount: {
-    en: 'Already have an account?',
-    pt: 'Já tem uma conta?',
-    es: '¿Ya tienes una cuenta?',
-    fr: 'Vous avez déjà un compte?'
-  },
-  signInHere: {
-    en: 'Sign in here',
-    pt: 'Entre aqui',
-    es: 'Inicia sesión aquí',
-    fr: 'Connectez-vous ici'
-  },
-  createOne: {
-    en: 'Create one',
-    pt: 'Criar uma',
-    es: 'Crear una',
-    fr: 'En créer un'
-  },
-  agreeToTerms: {
-    en: 'I agree to the Terms of Service and Privacy Policy',
-    pt: 'Concordo com os Termos de Serviço e Política de Privacidade',
-    es: 'Acepto los Términos de Servicio y la Política de Privacidad',
-    fr: 'J\'accepte les Conditions d\'utilisation et la Politique de confidentialité'
-  },
-  continueWith: {
-    en: 'Or continue with',
-    pt: 'Ou continue com',
-    es: 'O continúa con',
-    fr: 'Ou continuez avec'
-  },
-  loginSuccess: {
-    en: 'Login successful! Welcome back.',
-    pt: 'Login bem-sucedido! Bem-vindo de volta.',
-    es: 'Inicio de sesión exitoso! Bienvenido de nuevo.',
-    fr: 'Connexion réussie! Bon retour.'
-  },
-  registerSuccess: {
-    en: 'Account created successfully! Welcome to AKMLEVA.',
-    pt: 'Conta criada com sucesso! Bem-vindo ao AKMLEVA.',
-    es: 'Cuenta creada con éxito! Bienvenido a AKMLEVA.',
-    fr: 'Compte créé avec succès! Bienvenue sur AKMLEVA.'
-  },
-  emailRequired: {
-    en: 'Please enter your email',
-    pt: 'Por favor, introduza o seu e-mail',
-    es: 'Por favor, ingresa tu correo electrónico',
-    fr: 'Veuillez entrer votre email'
-  },
-  passwordRequired: {
-    en: 'Please enter your password',
-    pt: 'Por favor, introduza a sua palavra-passe',
-    es: 'Por favor, ingresa tu contraseña',
-    fr: 'Veuillez entrer votre mot de passe'
-  },
-  passwordsMatch: {
-    en: 'Passwords do not match',
-    pt: 'As palavras-passe não coincidem',
-    es: 'Las contraseñas no coinciden',
-    fr: 'Les mots de passe ne correspondent pas'
-  },
-  termsRequired: {
-    en: 'You must accept the terms and conditions',
-    pt: 'Tem de aceitar os termos e condições',
-    es: 'Debes aceptar los términos y condiciones',
-    fr: 'Vous devez accepter les termes et conditions'
-  },
-  secureLogin: {
-    en: 'Secure Login',
-    pt: 'Login Seguro',
-    es: 'Inicio de Sesión Seguro',
-    fr: 'Connexion Sécurisée'
-  },
-  encryptedConnection: {
-    en: '256-bit encrypted connection',
-    pt: 'Ligação encriptada de 256 bits',
-    es: 'Conexión cifrada de 256 bits',
-    fr: 'Connexion cryptée 256 bits'
-  },
-  enterpriseSecurity: {
-    en: 'Enterprise-grade security',
-    pt: 'Segurança de nível empresarial',
-    es: 'Seguridad de nivel empresarial',
-    fr: 'Sécurité de niveau entreprise'
-  },
-  countriesSupported: {
-    en: '190+ countries supported',
-    pt: '190+ países suportados',
-    es: '190+ países soportados',
-    fr: '190+ pays pris en charge'
-  },
-  aiRecommendations: {
-    en: 'AI-powered recommendations',
-    pt: 'Recomendações com IA',
-    es: 'Recomendaciones con IA',
-    fr: 'Recommandations IA'
-  },
-  freeAccount: {
-    en: 'Free account',
-    pt: 'Conta gratuita',
-    es: 'Cuenta gratis',
-    fr: 'Compte gratuit'
-  },
-  aiPoweredRecommendations: {
-    en: 'AI-powered recommendations',
-    pt: 'Recomendações com IA',
-    es: 'Recomendaciones con IA',
-    fr: 'Recommandations IA'
-  },
-  accessDestinations: {
-    en: 'Access to 190+ destinations',
-    pt: 'Acesso a 190+ destinos',
-    es: 'Acceso a 190+ destinos',
-    fr: 'Accès à 190+ destinations'
-  }
-};
 
 interface AuthPageProps {
   onLoginSuccess: () => void;
@@ -309,6 +42,7 @@ export function AuthPage({ onLoginSuccess, onBackToHome, onNavigateToLegal }: Au
   const [activeTab, setActiveTab] = useState<'login' | 'register'>('login');
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   // Login form state
   const [loginEmail, setLoginEmail] = useState('');
@@ -332,20 +66,12 @@ export function AuthPage({ onLoginSuccess, onBackToHome, onNavigateToLegal }: Au
     return `${y}-${m}-${day}`;
   }, []);
 
-  useEffect(() => {
-    if (isDark) {
-      document.documentElement.classList.add('dark');
-    } else {
-      document.documentElement.classList.remove('dark');
-    }
-  }, [isDark]);
-
   const setLocale = (nextLocale: string) => {
     document.cookie = `NEXT_LOCALE=${nextLocale}; path=/; max-age=31536000; samesite=lax`;
     window.location.reload();
   };
 
-  const handleLogin = (e: React.FormEvent) => {
+  const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
 
     if (!loginEmail) {
@@ -357,26 +83,30 @@ export function AuthPage({ onLoginSuccess, onBackToHome, onNavigateToLegal }: Au
       return;
     }
 
-    fetch('/api/auth/login', {
-      method: 'POST',
-      credentials: 'include',
-      headers: { 'content-type': 'application/json' },
-      body: JSON.stringify({ email: loginEmail, password: loginPassword }),
-    })
-      .then(async (res) => {
-        const data = (await res.json().catch(() => ({}))) as { success?: boolean; message?: string };
-        if (!res.ok || data.success === false) {
-          throw new Error(data.message || 'Login failed');
-        }
-        toast.success(t('loginSuccess'));
-        onLoginSuccess();
-      })
-      .catch((err: unknown) => {
-        toast.error(err instanceof Error ? err.message : 'Login failed');
+    setIsSubmitting(true);
+
+    try {
+      const result = await signIn('credentials', {
+        email: loginEmail,
+        password: loginPassword,
+        redirect: false,
       });
+
+      if (result?.error) {
+        toast.error(t('loginError') || 'Invalid credentials');
+        return;
+      }
+
+      toast.success(t('loginSuccess'));
+      onLoginSuccess();
+    } catch (err) {
+      toast.error(err instanceof Error ? err.message : 'Login failed');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
-  const handleRegister = (e: React.FormEvent) => {
+  const handleRegister = async (e: React.FormEvent) => {
     e.preventDefault();
 
     if (!registerEmail) {
@@ -396,30 +126,35 @@ export function AuthPage({ onLoginSuccess, onBackToHome, onNavigateToLegal }: Au
       return;
     }
 
-    fetch('/api/auth/register', {
-      method: 'POST',
-      credentials: 'include',
-      headers: { 'content-type': 'application/json' },
-      body: JSON.stringify({
-        email: registerEmail,
-        password: registerPassword,
-        name: registerName,
-        phone: registerPhone,
-        ...(registerBirthDate.trim() ? { birthDate: registerBirthDate.trim() } : {}),
-        agreeToTerms,
-      }),
-    })
-      .then(async (res) => {
-        const data = (await res.json().catch(() => ({}))) as { success?: boolean; message?: string };
-        if (!res.ok || data.success === false) {
-          throw new Error(data.message || 'Registration failed');
-        }
-        toast.success(t('registerSuccess'));
-        onLoginSuccess();
-      })
-      .catch((err: unknown) => {
-        toast.error(err instanceof Error ? err.message : 'Registration failed');
+    setIsSubmitting(true);
+
+    try {
+      const res = await fetch('/api/auth/register', {
+        method: 'POST',
+        credentials: 'include',
+        headers: { 'content-type': 'application/json' },
+        body: JSON.stringify({
+          email: registerEmail,
+          password: registerPassword,
+          name: registerName,
+          phone: registerPhone,
+          ...(registerBirthDate.trim() ? { birthDate: registerBirthDate.trim() } : {}),
+          agreeToTerms,
+        }),
       });
+
+      const data = (await res.json().catch(() => ({}))) as { success?: boolean; message?: string };
+      if (!res.ok || data.success === false) {
+        throw new Error(data.message || 'Registration failed');
+      }
+
+      toast.success(t('registerSuccess'));
+      onLoginSuccess();
+    } catch (err) {
+      toast.error(err instanceof Error ? err.message : 'Registration failed');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -606,10 +341,20 @@ export function AuthPage({ onLoginSuccess, onBackToHome, onNavigateToLegal }: Au
 
                 <Button
                   type="submit"
+                  disabled={isSubmitting}
                   className="w-full h-12 bg-gradient-to-r from-teal-600 to-orange-500 hover:from-teal-700 hover:to-orange-600 text-base gap-2"
                 >
-                  {t('signIn')}
-                  <ArrowRight className="w-5 h-5" />
+                  {isSubmitting ? (
+                    <span className="flex items-center gap-2">
+                      <span className="animate-spin h-4 w-4 border-2 border-white border-t-transparent rounded-full" />
+                      {t('signingIn')}
+                    </span>
+                  ) : (
+                    <>
+                      {t('signIn')}
+                      <ArrowRight className="w-5 h-5" />
+                    </>
+                  )}
                 </Button>
 
                 <div className="relative">
@@ -798,10 +543,20 @@ export function AuthPage({ onLoginSuccess, onBackToHome, onNavigateToLegal }: Au
 
                 <Button
                   type="submit"
+                  disabled={isSubmitting}
                   className="w-full h-12 bg-gradient-to-r from-teal-600 to-orange-500 hover:from-teal-700 hover:to-orange-600 text-base gap-2"
                 >
-                  {t('signUp')}
-                  <ArrowRight className="w-5 h-5" />
+                  {isSubmitting ? (
+                    <span className="flex items-center gap-2">
+                      <span className="animate-spin h-4 w-4 border-2 border-white border-t-transparent rounded-full" />
+                      {t('creatingAccount')}
+                    </span>
+                  ) : (
+                    <>
+                      {t('signUp')}
+                      <ArrowRight className="w-5 h-5" />
+                    </>
+                  )}
                 </Button>
 
                 <div className="bg-teal-50 dark:bg-gray-700 border border-teal-200 dark:border-gray-600 rounded-lg p-3 flex items-start gap-2">

@@ -1,11 +1,10 @@
 import { NextResponse } from 'next/server';
-import { cookies } from 'next/headers';
-import { randomBytes } from 'node:crypto';
 import bcrypt from 'bcryptjs';
 import { Prisma } from '@prisma/client';
 
 import { prisma } from '../../../../lib/prisma';
-import { isNonEmptyString, SESSION_COOKIE_NAME } from '../../../../lib/auth';
+import { signIn } from '@/auth';
+import { isNonEmptyString } from '../../../../lib/auth';
 
 function registerErrorResponse(err: unknown): { message: string; status: number } {
   console.error('[POST /api/auth/register]', err);
@@ -112,25 +111,11 @@ export async function POST(req: Request) {
       },
     });
 
-    // Create session + cookie (auto-login after registration)
-    const token = randomBytes(48).toString('base64url');
-    const expiresAt = new Date(Date.now() + 1000 * 60 * 60 * 24 * 30); // 30 days
-
-    await prisma.session.create({
-      data: {
-        userId: user.id,
-        token,
-        expiresAt,
-      },
-      select: { id: true },
-    });
-
-    (await cookies()).set(SESSION_COOKIE_NAME, token, {
-      httpOnly: true,
-      sameSite: 'lax',
-      secure: process.env.NODE_ENV === 'production',
-      path: '/',
-      expires: expiresAt,
+    // Auto-login using Auth.js
+    await signIn('credentials', {
+      email,
+      password: body.password as string,
+      redirect: false,
     });
 
     return NextResponse.json({ success: true, user });

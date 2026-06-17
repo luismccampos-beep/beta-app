@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
 import createIntlMiddleware from 'next-intl/middleware';
+import { auth } from '@/auth';
 
 const intlMiddleware = createIntlMiddleware({
   locales: ['pt', 'en', 'es', 'fr'],
@@ -154,6 +155,19 @@ async function log404(url: string, referer?: string | null) {
 export async function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
   const tenant = resolveTenant(request);
+
+  // Auth Protection
+  const session = await auth();
+  const isAuthPage = pathname === '/auth';
+  const isProtectedRoute = pathname.startsWith('/dashboard') || pathname.startsWith('/preferences');
+
+  if (isProtectedRoute && !session) {
+    return NextResponse.redirect(new URL('/auth', request.url));
+  }
+
+  if (isAuthPage && session) {
+    return NextResponse.redirect(new URL('/dashboard', request.url));
+  }
   
   // Skip API routes, static files, and _next internal paths
   if (
