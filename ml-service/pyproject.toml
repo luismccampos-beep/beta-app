@@ -9,7 +9,7 @@ description = "AKMLEVA ML Service - Machine Learning microservice for travel rec
 readme = "README.md"
 requires-python = ">=3.10"
 authors = [
-    { name = "AKMLEVA Team", email = "dev@akmleva.com" }
+    { name = "AKMLEVA Team", email = "luismccampos@gmail.com" }
 ]
 classifiers = [
     "Development Status :: 4 - Beta",
@@ -74,10 +74,10 @@ all = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/akmleva/akmleva"
-Repository = "https://github.com/akmleva/akmleva.git"
+Homepage = "https://github.com/luismccampos-beep/beta-app"
+Repository = "https://github.com/luismccampos-beep/beta-app.git"
 Documentation = "https://docs.akmleva.com"
-"Bug Tracker" = "https://github.com/akmleva/akmleva/issues"
+"Bug Tracker" = "https://github.com/luismccampos-beep/beta-app/issues"
 
 [project.scripts]
 akmleva-ml = "app.main:main"
