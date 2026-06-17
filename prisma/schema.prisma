@@ -275,11 +275,12 @@ model CommunityComment {
   post   CommunityPost     @relation(fields: [postId], references: [id], onDelete: Cascade)
   author User              @relation(fields: [authorId], references: [id], onDelete: Cascade)
   parent CommunityComment? @relation("CommunityCommentThread", fields: [parentId], references: [id], onDelete: Restrict, onUpdate: Restrict)
-  replies CommunityComment[] @relation("CommunityCommentThread", onDelete: NoAction, onUpdate: NoAction)
+  replies CommunityComment[] @relation("CommunityCommentThread")
 
   @@index([postId])
   @@index([authorId])
   @@index([createdAt])
+  @@index([parentId])
   @@map("community_comments")
 }
 
@@ -1121,6 +1122,8 @@ model Flight {
 
   @@index([airlineId])
   @@index([agencyId])
+  @@index([departureAirportId])
+  @@index([arrivalAirportId])
   @@map("flights")
 }
 
@@ -2180,6 +2183,7 @@ model Booking {
   @@index([destinationId])
   @@index([tripId])
   @@index([bookingStatus, paymentStatus])
+  @@index([tripDestinationId])
   @@map("bookings")
 }
 
@@ -2269,6 +2273,7 @@ model TransferBooking {
   booking  Booking  @relation(fields: [bookingId], references: [id], onDelete: Cascade)
   transfer Transfer @relation(fields: [transferId], references: [id])
 
+  @@index([transferId])
   @@map("transfer_bookings")
 }
 
@@ -3168,6 +3173,9 @@ model Article {
 
   @@index([slug])
   @@index([isFeatured])
+  @@index([authorId])
+  @@index([destinationId])
+  @@index([moderatedBy])
   @@map("articles")
 }
 
@@ -3217,9 +3225,13 @@ model ArticleComment {
   article       Article          @relation(fields: [articleId], references: [id], onDelete: Cascade)
   user          User?            @relation("UserComments", fields: [userId], references: [id], onDelete: SetNull)
   parentComment ArticleComment?  @relation("CommentReplies", fields: [parentCommentId], references: [id], onDelete: Restrict, onUpdate: Restrict)
-  replies       ArticleComment[] @relation("CommentReplies", onDelete: NoAction, onUpdate: NoAction)
+  replies       ArticleComment[] @relation("CommentReplies")
   moderator     User?            @relation("ModeratedComments", fields: [moderatedBy], references: [id], onDelete: SetNull)
 
+  @@index([articleId])
+  @@index([userId])
+  @@index([parentCommentId])
+  @@index([moderatedBy])
   @@map("article_comments")
 }
 
