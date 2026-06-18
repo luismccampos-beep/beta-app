@@ -1,11 +1,19 @@
 import type { ReactNode } from 'react';
 import type { Metadata } from 'next';
+import { Inter } from 'next/font/google';
 import { NextIntlClientProvider } from 'next-intl';
 import { getLocale, getMessages } from 'next-intl/server';
 
 import '../styles/index.css';
 import { Toaster } from './components/ui/sonner';
 import { Providers } from './components/Providers';
+import { AppBottomNav } from './components/BottomNav';
+
+const inter = Inter({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-inter',
+});
 
 export const metadata: Metadata = {
   icons: {
@@ -15,16 +23,38 @@ export const metadata: Metadata = {
   },
 };
 
+const themeScript = `
+  (function() {
+    try {
+      var theme = localStorage.getItem('theme-mode');
+      if (!theme) {
+        theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      }
+      if (theme === 'dark') {
+        document.documentElement.classList.add('dark');
+      } else {
+        document.documentElement.classList.remove('dark');
+      }
+    } catch(e) {}
+  })();
+`;
+
 export default async function RootLayout({ children }: { children: ReactNode }) {
   const locale = await getLocale();
   const messages = await getMessages();
 
   return (
-    <html lang={locale}>
-      <body>
+    <html lang={locale} suppressHydrationWarning className={inter.variable}>
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: themeScript }} />
+      </head>
+      <body className="bg-white dark:bg-gray-950 font-sans antialiased">
         <Providers>
           <NextIntlClientProvider messages={messages}>
-            {children}
+            <div className="pb-16 sm:pb-0">
+              {children}
+            </div>
+            <AppBottomNav />
           </NextIntlClientProvider>
           <Toaster richColors closeButton />
         </Providers>
@@ -32,4 +62,3 @@ export default async function RootLayout({ children }: { children: ReactNode }) 
     </html>
   );
 }
-

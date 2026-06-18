@@ -71,6 +71,72 @@ LISTING_RE = re.compile(
 FIELD_RE = re.compile(r"\|\s*([a-zA-Z_]+)\s*=\s*([^|{}]+)", re.DOTALL)
 REDIRECT_RE = re.compile(r"#redirect\s*\[\[", re.IGNORECASE)
 
+# Secções de dicas práticas (PT + EN) para extração estruturada
+ADVANCED_SECTION_MAP = {
+    "seguranca": [
+        re.compile(r"mantenha[- ]se seguro", re.IGNORECASE),
+        re.compile(r"fique seguro", re.IGNORECASE),
+        re.compile(r"seguran[cç]a", re.IGNORECASE),
+        re.compile(r"stay safe", re.IGNORECASE),
+        re.compile(r"safety", re.IGNORECASE),
+    ],
+    "respeite": [
+        re.compile(r"respeite", re.IGNORECASE),
+        re.compile(r"respect", re.IGNORECASE),
+        re.compile(r"etiquette", re.IGNORECASE),
+        re.compile(r"costumes?", re.IGNORECASE),
+    ],
+    "comunique": [
+        re.compile(r"comunique", re.IGNORECASE),
+        re.compile(r"^fale$", re.IGNORECASE),
+        re.compile(r"^talk$", re.IGNORECASE),
+        re.compile(r"idioma", re.IGNORECASE),
+        re.compile(r"communicate", re.IGNORECASE),
+        re.compile(r"phrasebook", re.IGNORECASE),
+    ],
+    "dinheiro": [
+        re.compile(r"dinheiro", re.IGNORECASE),
+        re.compile(r"^money$", re.IGNORECASE),
+        re.compile(r"custo de vida", re.IGNORECASE),
+        re.compile(r"cost of living", re.IGNORECASE),
+        re.compile(r"budget", re.IGNORECASE),
+    ],
+    "saude": [
+        re.compile(r"sa[uú]de", re.IGNORECASE),
+        re.compile(r"mantenha[- ]se saud[aá]vel", re.IGNORECASE),
+        re.compile(r"stay healthy", re.IGNORECASE),
+        re.compile(r"^health$", re.IGNORECASE),
+    ],
+    "transporte": [
+        re.compile(r"^chegue$", re.IGNORECASE),
+        re.compile(r"^chegar$", re.IGNORECASE),
+        re.compile(r"get in", re.IGNORECASE),
+        re.compile(r"^circule$", re.IGNORECASE),
+        re.compile(r"get around", re.IGNORECASE),
+        re.compile(r"transporte", re.IGNORECASE),
+        re.compile(r"transport", re.IGNORECASE),
+    ],
+    "horarios": [
+        re.compile(r"hor[aá]rios", re.IGNORECASE),
+        re.compile(r"^hours$", re.IGNORECASE),
+        re.compile(r"when to go", re.IGNORECASE),
+        re.compile(r"quando ir", re.IGNORECASE),
+        re.compile(r"opening hours", re.IGNORECASE),
+    ],
+    "compre": [
+        re.compile(r"^compre$", re.IGNORECASE),
+        re.compile(r"^buy$", re.IGNORECASE),
+        re.compile(r"comprar", re.IGNORECASE),
+        re.compile(r"shopping", re.IGNORECASE),
+    ],
+    "clima": [
+        re.compile(r"^clima$", re.IGNORECASE),
+        re.compile(r"^climate$", re.IGNORECASE),
+        re.compile(r"weather", re.IGNORECASE),
+        re.compile(r"temperatura", re.IGNORECASE),
+    ],
+}
+
 
 def detect_namespace_from_file(path: Path) -> str:
     with bz2.open(path, "rb") as f:
@@ -85,7 +151,29 @@ def qname(ns: str, local: str) -> str:
     return f"{{{ns}}}{local}"
 
 
-def parse_listings(wiki_text: str) -> list[dict[str, str]]:
+def parse_sections(wiki_text: str) -> dict[str, str]:
+    """Extrai secções de nível 2 do texto Wikivoyage. Mapeia títulos PT/EN para chaves canónicas."""
+    sections: dict[str, str] = {}
+    if not wiki_text:
+        return sections
+
+    header_re = re.compile(r"^={2,}\s*([^=\n]+?)\s*={2,}\s*$", re.MULTILINE)
+    headers = [
+        (m.group(1).strip(), m.start(), m.end())
+        for m in header_re.finditer(wiki_text)
+    ]
+
+    for i, (title, _, body_start) in enumerate(headers):
+        body_end = headers[i + 1][1] if i + 1 < len(headers) else len(wiki_text)
+        body = wiki_text[body_start:body_end]
+
+        # Mapear para chaves canónicas de dicas práticas
+        for key, patterns in ADVANCED_SECTION_MAP.items():
+            if any(p.search(title) for p in patterns):
+                sections[key] = (sections.get(key, "") + "\n" + body).strip()
+                break
+
+    return sections
     listings: list[dict[str, str]] = []
     for block in LISTING_RE.findall(wiki_text or ""):
         fields: dict[str, str] = {}
@@ -118,6 +206,7 @@ def article_record(
     }
     if extract_listings:
         rec["listings"] = parse_listings(text)
+        rec["sections"] = parse_sections(text)
     return rec
 
 

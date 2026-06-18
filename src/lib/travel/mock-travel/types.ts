@@ -36,6 +36,13 @@ export type MockDestination = {
   >;
   imagem_url: string;
   imagem_query?: string;
+  /** Atribuição do fotógrafo (Unsplash/Pexels/Pixabay). */
+  imagem_attribuicao?: {
+    fotografo?: string;
+    fotografo_url?: string;
+    fonte?: string;
+    licenca?: string;
+  };
   wikivoyageUrl?: string;
   lang?: string;
   latitude?: number;

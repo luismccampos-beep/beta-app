@@ -1,3 +1,6 @@
+# Windows reserved device file
+nul
+
 # Dependencies
 node_modules/
 
@@ -8,6 +11,7 @@ out/
 # Env (secrets — never commit)
 .env
 .env.*.local
+.env.vercel
 .env.vercel.*
 .env.localdev.bak
 !.env.example

@@ -112,10 +112,13 @@ function destCacheKey(dest) {
   return `d:${dest.lang ?? 'pt'}:${dest.id}`;
 }
 
+/** Compatível com cache antigo (string) e novo (objecto com url + attribution). */
 function cacheLookup(cache, dest) {
   const idKey = destCacheKey(dest);
-  if (cache[idKey]) return { url: cache[idKey], key: idKey };
-  return null;
+  const raw = cache[idKey];
+  if (!raw) return null;
+  if (typeof raw === 'string') return { url: raw, key: idKey };
+  return { url: raw.url, key: idKey, photographer: raw.photographer, photographer_url: raw.photographer_url, source: raw.source };
 }
 
 /** URLs já usadas por outros destinos — evita repetir a mesma foto. */
@@ -166,7 +169,7 @@ async function fetchPhotoUrl(imageService, dest, query, apiBudget, forbiddenUrls
   for (const q of queries) {
     if (apiBudget.remaining <= 0) return { url: null, stopped: 'budget', provider: null };
 
-    const { url, provider, apiCalls } = await fetchHeroPhotoUrl(imageService, q, {
+    const { url, provider, apiCalls, photographer, photographer_url } = await fetchHeroPhotoUrl(imageService, q, {
       width: WIDTH,
       destId: dest.id,
       destLang: dest.lang ?? 'pt',
@@ -175,12 +178,12 @@ async function fetchPhotoUrl(imageService, dest, query, apiBudget, forbiddenUrls
     });
     apiBudget.remaining -= apiCalls;
 
-    if (url) return { url, stopped: null, provider };
+    if (url) return { url, stopped: null, provider, photographer, photographer_url };
 
     await sleep(aggressive ? 150 : 250);
   }
 
-  return { url: null, stopped: null, provider: null };
+  return { url: null, stopped: null, provider: null, photographer: null, photographer_url: null };
 }
 
 async function main() {
@@ -268,14 +271,25 @@ async function main() {
     if (cachedEntry && !needsUniqueUrl && !urlIsForbidden(forbiddenUrls, cachedEntry.url)) {
       dest.imagem_url = cachedEntry.url;
       dest.imagem_query = query;
-      cache[cachedEntry.key] = cachedEntry.url;
+      if (cachedEntry.photographer) {
+        dest.imagem_attribuicao = {
+          fotografo: cachedEntry.photographer,
+          fotografo_url: cachedEntry.photographer_url,
+          fonte: cachedEntry.source,
+          licenca: cachedEntry.source === 'pixabay' ? 'Pixabay License' : cachedEntry.source === 'unsplash' ? 'Unsplash License' : undefined,
+        };
+      }
+      // Preservar objectos do novo formato; só reescrever strings do formato antigo
+      if (typeof cache[cachedEntry.key] !== 'object' || cache[cachedEntry.key] === null) {
+        cache[cachedEntry.key] = cachedEntry.url;
+      }
       fromCache += 1;
       updated += 1;
       continue;
     }
 
     try {
-      const { url, stopped, provider } = await fetchPhotoUrl(
+      const { url, stopped, provider, photographer, photographer_url } = await fetchPhotoUrl(
         imageService,
         dest,
         query,
@@ -295,7 +309,15 @@ async function main() {
       if (url) {
         dest.imagem_url = url;
         dest.imagem_query = query;
-        cache[destCacheKey(dest)] = url;
+        if (photographer) {
+          dest.imagem_attribuicao = {
+            fotografo: photographer,
+            fotografo_url: photographer_url,
+            fonte: provider,
+            licenca: provider === 'pixabay' ? 'Pixabay License' : provider === 'unsplash' ? 'Unsplash License' : undefined,
+          };
+        }
+        cache[destCacheKey(dest)] = { url, photographer, photographer_url, source: provider };
         if (provider === 'pexels') pexelsHits += 1;
         if (provider === 'pixabay') pixabayHits += 1;
         if (provider === 'unsplash') unsplashHits += 1;

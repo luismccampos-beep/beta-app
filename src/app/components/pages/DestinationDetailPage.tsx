@@ -27,9 +27,13 @@ import {
   X,
   ChevronLeft,
   ChevronRight,
+  Moon,
+  Sun,
 } from 'lucide-react';
 import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion';
 
+import { useDarkMode } from '../../../lib/use-dark-mode';
+import { LanguageSwitcher } from '../../../components/LanguageSwitcher';
 import { resultsListPath } from '../../../lib/travel/destination-path';
 import type { DestinationTipsMap, TipSectionKey } from '../../../lib/travel/destination-tips';
 import type { CompactTravelPreferences } from '../../../lib/travel/preference-match';
@@ -134,6 +138,13 @@ export type DestinationDetailData = {
   latitude?: number;
   longitude?: number;
   mapMarkers?: DestinationMapMarker[];
+  /** Atribuição do fotógrafo para a imagem principal. */
+  imageAttribution?: {
+    fotografo?: string;
+    fotografo_url?: string;
+    fonte?: string;
+    licenca?: string;
+  };
 };
 
 type DestinationDetailPageProps = {
@@ -422,6 +433,12 @@ export function DestinationDetailPage({
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
   const [showVideo, setShowVideo] = useState(false);
+  const { isDark, toggle: toggleDark } = useDarkMode();
+
+  const setLocaleCookie = (nextLocale: string) => {
+    document.cookie = `NEXT_LOCALE=${nextLocale}; path=/; max-age=31536000; samesite=lax`;
+    window.location.reload();
+  };
 
   // ── Parallax hero ──────────────────────────────────────────────────────
   const heroRef = useRef<HTMLDivElement>(null);
@@ -561,43 +578,99 @@ export function DestinationDetailPage({
           </div>
         )}
 
-        {/* Back button */}
+        {/* Top controls: Back button + Theme Toggle + Lang Selector */}
         <div className="absolute top-4 left-4 right-4 z-10 flex justify-between items-start">
-          {onBackToResults ? (
-            <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 0.2 }}
-            >
-              <Button
-                type="button"
-                variant="secondary"
-                className="gap-1 min-h-11 bg-white/90 dark:bg-gray-900/90 backdrop-blur-md border-0 shadow-lg hover:shadow-xl transition-all duration-200"
-                onClick={onBackToResults}
+          <div className="flex items-center gap-2">
+            {onBackToResults ? (
+              <motion.div
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: 0.2 }}
               >
-                <ArrowLeft className="h-4 w-4" />
-                {t('backToResults')}
-              </Button>
-            </motion.div>
-          ) : (
-            <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 0.2 }}
-            >
-              <Button
-                variant="secondary"
-                asChild
-                className="gap-1 min-h-11 bg-white/90 dark:bg-gray-900/90 backdrop-blur-md border-0 shadow-lg hover:shadow-xl transition-all duration-200"
-              >
-                <Link href={resultsHref}>
+                <Button
+                  type="button"
+                  variant="secondary"
+                  className="gap-1 min-h-9 sm:min-h-11 bg-white/90 dark:bg-gray-900/90 backdrop-blur-md border-0 shadow-lg hover:shadow-xl transition-all duration-200 text-xs sm:text-sm px-2 sm:px-4"
+                  onClick={onBackToResults}
+                >
                   <ArrowLeft className="h-4 w-4" />
-                  {t('backToResults')}
-                </Link>
-              </Button>
-            </motion.div>
-          )}
+                  <span className="hidden sm:inline">{t('backToResults')}</span>
+                </Button>
+              </motion.div>
+            ) : (
+              <motion.div
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: 0.2 }}
+              >
+                <Button
+                  variant="secondary"
+                  asChild
+                  className="gap-1 min-h-9 sm:min-h-11 bg-white/90 dark:bg-gray-900/90 backdrop-blur-md border-0 shadow-lg hover:shadow-xl transition-all duration-200 text-xs sm:text-sm px-2 sm:px-4"
+                >
+                  <Link href={resultsHref}>
+                    <ArrowLeft className="h-4 w-4" />
+                    <span className="hidden sm:inline">{t('backToResults')}</span>
+                  </Link>
+                </Button>
+              </motion.div>
+            )}
+          </div>
+
+          <div className="flex items-center gap-1.5 sm:gap-2">
+            {/* Theme Toggle */}
+            <motion.button
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              type="button"
+              onClick={toggleDark}
+              className="p-2 rounded-lg bg-white/90 dark:bg-gray-900/90 backdrop-blur-md border-0 shadow-lg hover:shadow-xl transition-all duration-200"
+              title={isDark ? 'Light mode' : 'Dark mode'}
+            >
+              {isDark ? <Sun className="h-4 w-4 text-orange-400" /> : <Moon className="h-4 w-4 text-gray-700" />}
+            </motion.button>
+
+            {/* Language Selector */}
+            {/* Language Selector */}
+            <LanguageSwitcher variant="overlay" showIcon={false} />
+          </div>
         </div>
+
+        {/* Photo attribution overlay */}
+        {data.imageAttribution?.fotografo && (
+          <div className="absolute bottom-4 right-4 z-10 pointer-events-none">
+            {data.imageAttribution.fotografo_url ? (
+              <a
+                href={data.imageAttribution.fotografo_url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-black/30 backdrop-blur-sm text-white/80 text-xs hover:bg-black/50 hover:text-white transition-all duration-200 pointer-events-auto"
+              >
+                <Camera className="h-3 w-3" />
+                <span>
+                  {t('photoBy', { name: data.imageAttribution.fotografo })}
+                </span>
+                {data.imageAttribution.fonte?.trim() && (
+                  <span className="opacity-60">
+                    {t('onSource', { source: data.imageAttribution.fonte })}
+                  </span>
+                )}
+              </a>
+            ) : (
+              <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-black/30 backdrop-blur-sm text-white/80 text-xs pointer-events-auto">
+                <Camera className="h-3 w-3" />
+                <span>
+                  {t('photoBy', { name: data.imageAttribution.fotografo })}
+                </span>
+                {data.imageAttribution.fonte?.trim() && (
+                  <span className="opacity-60">
+                    {t('onSource', { source: data.imageAttribution.fonte })}
+                  </span>
+                )}
+              </span>
+            )}
+          </div>
+        )}
 
         {/* Hero text */}
         <div className="absolute bottom-0 left-0 right-0 z-10 p-6 md:p-10 max-w-5xl pointer-events-none">

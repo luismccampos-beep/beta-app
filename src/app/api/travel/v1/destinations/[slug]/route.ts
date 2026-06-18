@@ -14,6 +14,11 @@ import {
 } from '../../../../../../lib/travel/mock-travel/load';
 import { resolveDestinationIata } from '../../../../../../lib/travel/destination-iata';
 import { resolveMapMarkersForDestination } from '../../../../../../lib/travel/travel-map-markers';
+import {
+  isDemoPerfectEnabled,
+  isDemoSlug,
+  buildDemoDestinationDetail,
+} from '../../../../../../lib/travel/demo-perfect-path';
 
 export const dynamic = 'force-dynamic';
 
@@ -22,6 +27,19 @@ type RouteCtx = { params: Promise<{ slug: string }> };
 /** GET /api/travel/v1/destinations/pt-42 */
 export async function GET(_req: Request, ctx: RouteCtx) {
   const { slug } = await ctx.params;
+
+  // ── Demo Perfect Path ─────────────────────────────────────────────
+  if (isDemoPerfectEnabled() && isDemoSlug(slug)) {
+    const demoData = buildDemoDestinationDetail(slug);
+    if (demoData) {
+      return NextResponse.json({
+        ok: true,
+        source: 'demo-perfect',
+        ...demoData,
+        mock: false,
+      });
+    }
+  }
 
   if (isTravelCatalogDbEnabled()) {
     try {
@@ -65,6 +83,7 @@ export async function GET(_req: Request, ctx: RouteCtx) {
         license: 'CC BY-SA 3.0',
         videoUrl: (dest as Record<string, unknown>).videoUrl ?? null,
         galleryImages: (dest as Record<string, unknown>).galleryImages ?? null,
+        imageAttribution: dest.imagem_attribuicao ?? null,
         hotels,
         mapMarkers: (() => {
           const fromDb = mapMarkersFromDbHotels(dest, hotels);
@@ -119,6 +138,7 @@ export async function GET(_req: Request, ctx: RouteCtx) {
     license: 'CC BY-SA 3.0',
     videoUrl: (dest as Record<string, unknown>).videoUrl ?? null,
     galleryImages: (dest as Record<string, unknown>).galleryImages ?? null,
+    imageAttribution: dest.imagem_attribuicao ?? null,
     hotels: hotels.map((h) => ({
       id: h.id,
       nome: h.nome,

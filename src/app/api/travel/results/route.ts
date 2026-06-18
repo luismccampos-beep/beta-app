@@ -32,6 +32,12 @@ import { rankResultsWithMlAndPreferences } from '../../../../lib/travel/ml-ranki
 import { searchMockTravelResults } from '../../../../lib/travel/mock-travel/search';
 import { resolveMapMarkersForDestination } from '../../../../lib/travel/travel-map-markers';
 import { decodeTravelPreferencesCompact } from '../../../../lib/travel/travel-preferences-query';
+import {
+  isDemoPerfectRequest,
+  isDemoDestinationIata,
+  buildDemoTravelResult,
+  buildDemoResultsMeta,
+} from '../../../../lib/travel/demo-perfect-path';
 
 export const dynamic = 'force-dynamic';
 
@@ -460,6 +466,55 @@ export async function GET(req: Request) {
     useDbCatalog &&
     ((needsFlights && !duffelToken && !scrapeDoToken) ||
       (mode === 'hotels' && (!hbKey || !hbSecret)));
+
+  // ── Demo Perfect Path ─────────────────────────────────────────────
+  // Interceta destinos demo quando TRAVEL_DEMO_PERFECT=true ou ?perfect=1
+  const useDemoPerfect = isDemoPerfectRequest(url.searchParams);
+  const demoDestinations = useDemoPerfect ? destList.filter(isDemoDestinationIata) : [];
+
+  if (useDemoPerfect && demoDestinations.length > 0) {
+    const demoResults: TravelResult[] = [];
+    const demoErrors: { destination: string; message: string }[] = [];
+
+    for (const destIata of demoDestinations) {
+      if (destIata === origin) continue;
+      const result = buildDemoTravelResult({
+        origin,
+        destIata,
+        mode: needsFlights && needsHotels ? mode : needsHotels ? 'hotels' : 'flights',
+        tripType,
+        nights,
+        departureDate,
+        returnDate: tripType === 'roundtrip' ? returnDate : null,
+        cabinClass,
+      });
+      if (result) {
+        demoResults.push(result);
+      } else {
+        demoErrors.push({
+          destination: destIata,
+          message: 'Não foi possível gerar o pacote demo perfeito',
+        });
+      }
+    }
+
+    return NextResponse.json({
+      ok: true,
+      results: demoResults,
+      errors: demoErrors,
+      meta: buildDemoResultsMeta({
+        origin,
+        destList: demoDestinations,
+        departureDate,
+        returnDate: tripType === 'roundtrip' ? returnDate : null,
+        nights,
+        adults,
+        cabinClass,
+        tripType,
+        mode,
+      }),
+    });
+  }
 
   if (useDbDemoSearch && (needsHotels || needsFlights)) {
     const db = await searchDbTravelResults({

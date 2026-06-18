@@ -8,13 +8,8 @@ import { ResultsPage } from '../components/pages/ResultsPage';
 export default function Page() {
   const router = useRouter();
 
-  const onBackToHome = useCallback(() => router.push('/'), [router]);
   const onLogout = useCallback(() => router.push('/auth'), [router]);
   const onNavigateToDashboard = useCallback(() => router.push('/dashboard'), [router]);
-  const onNavigateToLegal = useCallback(
-    (pageType: 'terms' | 'privacy' | 'gdpr' | 'cancellations') => router.push(`/legal/${pageType}`),
-    [router],
-  );
 
   return (
     <Suspense
@@ -25,10 +20,8 @@ export default function Page() {
       }
     >
       <ResultsPage
-        onBackToHome={onBackToHome}
         onLogout={onLogout}
         onNavigateToDashboard={onNavigateToDashboard}
-        onNavigateToLegal={onNavigateToLegal}
       />
     </Suspense>
   );

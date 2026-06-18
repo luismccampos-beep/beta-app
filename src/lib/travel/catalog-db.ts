@@ -633,3 +633,26 @@ export async function listTopDestinationIatasFromDb(limit = 6, lang = 'pt'): Pro
   const airports = await getPreferredDestinationAirportsFromDb({ lang, limit: limit * 2 });
   return airports.slice(0, limit).map((a) => a.iataCode);
 }
+
+/** Lista de países distintos com contagem de destinos (ordenados por popularidade decrescente). */
+export async function listDistinctCountriesFromDb(): Promise<{ name: string; count: number }[]> {
+  const rows = await prisma.wvDestination.groupBy({
+    by: ['pais'],
+    _count: { pais: true },
+    orderBy: { _count: { pais: 'desc' } },
+  });
+  return rows
+    .filter((r) => r.pais)
+    .map((r) => ({ name: r.pais, count: r._count.pais }));
+}
+
+/** Lista de continentes distintos com contagem de destinos (ordenados por popularidade decrescente). */
+export async function listDistinctContinentsFromDb(): Promise<{ name: string; count: number }[]> {
+  const rows = await prisma.wvDestination.groupBy({
+    by: ['continente'],
+    _count: { continente: true },
+    orderBy: { _count: { continente: 'desc' } },
+    where: { continente: { not: null } },
+  });
+  return rows.map((r) => ({ name: r.continente!, count: r._count.continente }));
+}

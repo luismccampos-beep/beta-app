@@ -7,6 +7,8 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../ui
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '../ui/tabs';
 import { Checkbox } from '../ui/checkbox';
 import { useLocale, useTranslations } from 'next-intl';
+import { AppHeader } from '../AppHeader';
+import { AppFooter } from '../AppFooter';
 
 type CheckedState = boolean | 'indeterminate';
 import {
@@ -20,10 +22,7 @@ import {
   Sparkles,
   Shield,
   CheckCircle2,
-  ArrowRight,
-  Languages,
-  Moon,
-  Sun
+  ArrowRight
 } from 'lucide-react';
 import { toast } from 'sonner';
 
@@ -38,7 +37,6 @@ interface AuthPageProps {
 export function AuthPage({ onLoginSuccess, onBackToHome, onNavigateToLegal }: AuthPageProps) {
   const locale = useLocale();
   const t = useTranslations('auth');
-  const [isDark, setIsDark] = useState(false);
   const [activeTab, setActiveTab] = useState<'login' | 'register'>('login');
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
@@ -65,11 +63,6 @@ export function AuthPage({ onLoginSuccess, onBackToHome, onNavigateToLegal }: Au
     const day = String(d.getDate()).padStart(2, '0');
     return `${y}-${m}-${day}`;
   }, []);
-
-  const setLocale = (nextLocale: string) => {
-    document.cookie = `NEXT_LOCALE=${nextLocale}; path=/; max-age=31536000; samesite=lax`;
-    window.location.reload();
-  };
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -158,66 +151,11 @@ export function AuthPage({ onLoginSuccess, onBackToHome, onNavigateToLegal }: Au
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-teal-50 via-cyan-50 to-orange-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 transition-colors flex items-center justify-center p-4">
-      {/* Header */}
-      <div className="fixed top-0 left-0 right-0 bg-white/80 dark:bg-gray-900/80 backdrop-blur-md border-b border-gray-200 dark:border-gray-700 z-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
-          <div className="flex items-center justify-between">
-            <button
-              onClick={onBackToHome}
-              className="text-2xl font-bold bg-gradient-to-r from-teal-700 via-teal-600 to-orange-500 bg-clip-text text-transparent hover:opacity-80 transition-opacity"
-            >
-              AKMLEVA
-            </button>
-
-            <div className="flex items-center gap-4">
-              {/* Theme Toggle */}
-              <button
-                onClick={() => setIsDark(!isDark)}
-                className="p-2 rounded-lg border border-teal-200 dark:border-gray-600 bg-white dark:bg-gray-800 hover:bg-teal-50 dark:hover:bg-gray-700 transition-colors"
-                title={isDark ? t('header.lightMode') : t('header.darkMode')}
-              >
-                {isDark ? (
-                  <Sun className="w-5 h-5 text-orange-500" />
-                ) : (
-                  <Moon className="w-5 h-5 text-teal-700" />
-                )}
-              </button>
-
-              {/* Language Selector */}
-              <div className="flex items-center gap-2">
-                <Languages className="w-4 h-4 text-teal-700 dark:text-teal-400" />
-                <div className="inline-flex rounded-lg border border-teal-200 dark:border-gray-600 bg-white dark:bg-gray-800 p-1 shadow-sm">
-                  {[
-                    { code: 'en', label: '🇺🇸', name: 'English' },
-                    { code: 'pt', label: '🇵🇹', name: 'Português' },
-                    { code: 'es', label: '🇪🇸', name: 'Español' },
-                    { code: 'fr', label: '🇫🇷', name: 'Français' }
-                  ].map((lang) => (
-                    <button
-                      key={lang.code}
-                      onClick={() => setLocale(lang.code)}
-                      className={`
-                        px-3 py-1.5 text-sm font-medium rounded-md transition-all
-                        ${locale === lang.code
-                          ? 'bg-gradient-to-r from-teal-600 to-orange-500 text-white shadow-md'
-                          : 'text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white hover:bg-gray-50 dark:hover:bg-gray-700'
-                        }
-                      `}
-                      title={lang.name}
-                    >
-                      {lang.label}
-                    </button>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+    <div className="min-h-screen bg-gradient-to-br from-teal-50 via-cyan-50 to-orange-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 transition-colors flex flex-col">
+      <AppHeader showBack={false} onBack={onBackToHome} />
 
       {/* Main Content */}
-      <div className="w-full max-w-6xl mx-auto mt-20 grid md:grid-cols-2 gap-8 items-center">
+      <div className="flex-1 w-full max-w-6xl mx-auto px-4 py-6 grid md:grid-cols-2 gap-8 items-center">
         {/* Left Side - Branding */}
         <div className="hidden md:block space-y-6">
           <div className="space-y-4">
@@ -572,6 +510,8 @@ export function AuthPage({ onLoginSuccess, onBackToHome, onNavigateToLegal }: Au
           </CardContent>
         </Card>
       </div>
+
+      <AppFooter />
     </div>
   );
 }

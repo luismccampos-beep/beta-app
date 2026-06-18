@@ -137,7 +137,8 @@ async function main() {
         }
         // Merge, deduplicate — skip if it matches the hero image (unless hero is placeholder)
         const skipHero = !isGenericPlaceholderImage(dest.imagem_url);
-        for (const u of results) {
+        for (const r of results) {
+          const u = typeof r === 'string' ? r : r.url;
           if (!urls.includes(u) && (!skipHero || u !== dest.imagem_url)) urls.push(u);
           if (urls.length >= PHOTOS_PER_DEST) break;
         }

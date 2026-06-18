@@ -16,7 +16,7 @@ export class UnsplashRateLimitError extends Error {
  * @param {string} accessKey
  * @param {string} query
  * @param {{ orientation?: string; width?: number }} [opts]
- * @returns {Promise<string | null>}
+ * @returns {Promise<{ url: string; photographer: string | null; photographer_url: string | null } | null>}
  */
 export async function searchUnsplashPhotoUrl(accessKey, query, opts = {}) {
   const q = query.trim();
@@ -61,7 +61,11 @@ export async function searchUnsplashPhotoUrl(accessKey, query, opts = {}) {
   url.searchParams.set('fit', 'crop');
   url.searchParams.set('w', String(w));
   url.searchParams.set('q', '80');
-  return url.toString();
+
+  const photographer = photo.user?.name ?? null;
+  const photographer_url = photo.user?.links?.html ?? null;
+
+  return { url: url.toString(), photographer, photographer_url };
 }
 
 /** Strip accents for better Unsplash search matches. */
@@ -146,7 +150,7 @@ export function isGenericPlaceholderImage(url) {
  * @param {string} accessKey
  * @param {string} query
  * @param {{ orientation?: string; width?: number; perPage?: number }} [opts]
- * @returns {Promise<string[]>}
+ * @returns {Promise<Array<{ url: string; photographer: string | null; photographer_url: string | null }> | 'RATE_LIMITED'>}
  */
 export async function searchUnsplashPhotoUrls(accessKey, query, opts = {}) {
   const q = query.trim();
@@ -188,7 +192,11 @@ export async function searchUnsplashPhotoUrls(accessKey, query, opts = {}) {
       url.searchParams.set('fit', 'crop');
       url.searchParams.set('w', String(w));
       url.searchParams.set('q', '75');
-      return url.toString();
+      return {
+        url: url.toString(),
+        photographer: photo.user?.name ?? null,
+        photographer_url: photo.user?.links?.html ?? null,
+      };
     })
     .filter(Boolean);
 }
