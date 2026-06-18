@@ -100,7 +100,7 @@ function rotatedImages(images, startIdx) {
  * @param {InstanceType<typeof ImageServices>} imageService
  * @param {string} query
  * @param {{ width?: number; destId?: number; destLang?: string; forbiddenUrls?: Set<string>; aggressive?: boolean }} [opts]
- * @returns {Promise<{ url: string | null; provider: 'pexels' | 'pixabay' | 'unsplash' | null; apiCalls: number }>}
+ * @returns {Promise<{ url: string | null; provider: 'pexels' | 'pixabay' | 'unsplash' | null; apiCalls: number; photographer: string | null; photographer_url: string | null }>}
  */
 export async function fetchHeroPhotoUrl(imageService, query, opts = {}) {
   const width = opts.width ?? 1400;
@@ -124,11 +124,16 @@ export async function fetchHeroPhotoUrl(imageService, query, opts = {}) {
       try {
         const pex = await imageService.getSpecificServiceData(params, 'pexels');
         for (const img of rotatedImages(pex.images, pickIdx)) {
-          if (!img?.url || pex.error) continue;
-          const url = normalizeHeroImageUrl(img.url, width);
-          if (url && !isForbiddenUrl(forbidden, url)) {
-            return { url, provider: 'pexels', apiCalls };
-          }
+          if (!img?.url || pex.error) continue;            const url = normalizeHeroImageUrl(img.url, width);
+            if (url && !isForbiddenUrl(forbidden, url)) {
+              return {
+                url,
+                provider: 'pexels',
+                apiCalls,
+                photographer: img.photographer ?? null,
+                photographer_url: img.photographer_url ?? null,
+              };
+            }
         }
       } catch {
         /* rede */
@@ -141,11 +146,18 @@ export async function fetchHeroPhotoUrl(imageService, query, opts = {}) {
         const pix = await imageService.getSpecificServiceData(pixabayParams, 'pixabay');
         for (const img of rotatedImages(pix.images, pickIdx)) {
           if (!img?.url || pix.error) continue;
-          const fileName = cacheFileName(opts.destId ?? query.slice(0, 24), opts.destLang, 'pixabay');
-          const localUrl = await downloadAndCacheImage(img.url, fileName);
-          if (localUrl && !isForbiddenUrl(forbidden, localUrl)) {
-            return { url: localUrl, provider: 'pixabay', apiCalls };
-          }
+          const fileName = cacheFileName(opts.destId ?? query.slice(0, 24), opts.destLang, 'pixabay');            const localUrl = await downloadAndCacheImage(img.url, fileName);
+            if (localUrl && !isForbiddenUrl(forbidden, localUrl)) {
+              return {
+                url: localUrl,
+                provider: 'pixabay',
+                apiCalls,
+                photographer: img.user ?? img.photographer ?? null,
+                // Pixabay: userImageURL é avatar thumbnail, não link de perfil.
+                // Usar pageURL (link da página da imagem) como atribuição se disponível.
+                photographer_url: img.pageURL ?? img.photographer_url ?? null,
+              };
+            }
         }
       } catch {
         /* rede */
@@ -157,11 +169,16 @@ export async function fetchHeroPhotoUrl(imageService, query, opts = {}) {
       try {
         const uns = await imageService.getSpecificServiceData(params, 'unsplash');
         for (const img of rotatedImages(uns.images, pickIdx)) {
-          if (!img?.url || uns.error) continue;
-          const url = normalizeHeroImageUrl(img.url, width);
-          if (url && !isForbiddenUrl(forbidden, url)) {
-            return { url, provider: 'unsplash', apiCalls };
-          }
+          if (!img?.url || uns.error) continue;            const url = normalizeHeroImageUrl(img.url, width);
+            if (url && !isForbiddenUrl(forbidden, url)) {
+              return {
+                url,
+                provider: 'unsplash',
+                apiCalls,
+                photographer: img.user?.name ?? img.photographer ?? null,
+                photographer_url: img.user?.links?.html ?? img.photographer_url ?? null,
+              };
+            }
         }
       } catch {
         /* rede */
@@ -169,5 +186,5 @@ export async function fetchHeroPhotoUrl(imageService, query, opts = {}) {
     }
   }
 
-  return { url: null, provider: null, apiCalls };
+  return { url: null, provider: null, apiCalls, photographer: null, photographer_url: null };
 }

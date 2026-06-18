@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react';
-import { useSession } from 'next-auth/react';
 import { Button } from '../ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '../ui/card';
 import { Badge } from '../ui/badge';
@@ -10,10 +9,6 @@ import {
   type MeUserProfile,
 } from '../../../lib/user/account-profile';
 import {
-  ArrowLeft,
-  Languages,
-  Moon,
-  Sun,
   User,
   Plane,
   Calendar,
@@ -30,12 +25,13 @@ import {
   Phone,
   Globe,
   Briefcase,
-  Users,
   Palmtree,
   Hotel,
   Utensils,
-  Mountain
 } from 'lucide-react';
+import { Input } from '../ui/input';
+import { toast } from 'sonner';
+import { AppHeader } from '../AppHeader';
 
 type TabType = 'bookings' | 'history' | 'profile' | 'preferences';
 
@@ -76,12 +72,20 @@ interface TravelHistory {
 export function DashboardPage({ onBack, onNewBooking, initialTab }: DashboardPageProps) {
   const locale = useLocale();
   const t = useTranslations('dashboard');
-  const [isDark, setIsDark] = useState(false);
   const [activeTab, setActiveTab] = useState<TabType>(initialTab ?? 'bookings');
   const [isEditingProfile, setIsEditingProfile] = useState(false);
   const [savedPreferences, setSavedPreferences] = useState<SavedPreferences | null>(null);
+  const [isLoadingProfile, setIsLoadingProfile] = useState(true);
   const [isLoadingPreferences, setIsLoadingPreferences] = useState(true);
+  const [isSavingProfile, setIsSavingProfile] = useState(false);
   const [hbAccommodationLabels, setHbAccommodationLabels] = useState<Record<string, string>>({});
+
+  const [avatarReady, setAvatarReady] = useState(false);
+
+  useEffect(() => {
+    const timer = setTimeout(() => setAvatarReady(true), 150);
+    return () => clearTimeout(timer);
+  }, []);
 
   const [profileData, setProfileData] = useState({
     name: '',
@@ -94,14 +98,6 @@ export function DashboardPage({ onBack, onNewBooking, initialTab }: DashboardPag
     taxIdNumber: '',
     address: '',
   });
-
-  useEffect(() => {
-    if (isDark) {
-      document.documentElement.classList.add('dark');
-    } else {
-      document.documentElement.classList.remove('dark');
-    }
-  }, [isDark]);
 
   useEffect(() => {
     if (activeTab !== 'preferences') return;
@@ -123,6 +119,7 @@ export function DashboardPage({ onBack, onNewBooking, initialTab }: DashboardPag
   useEffect(() => {
     let cancelled = false;
     setIsLoadingPreferences(true);
+    setIsLoadingProfile(true);
     Promise.all([
       fetch('/api/auth/me', { credentials: 'include' }).then((r) => r.json()),
       fetch('/api/user/preferences', { credentials: 'include' }).then(async (res) => {
@@ -154,284 +151,21 @@ export function DashboardPage({ onBack, onNewBooking, initialTab }: DashboardPag
         if (!cancelled) setSavedPreferences(null);
       })
       .finally(() => {
-        if (!cancelled) setIsLoadingPreferences(false);
+        if (!cancelled) {
+          setIsLoadingProfile(false);
+          setIsLoadingPreferences(false);
+        }
       });
     return () => {
       cancelled = true;
     };
   }, []);
 
-  const setLocale = (nextLocale: string) => {
-    document.cookie = `NEXT_LOCALE=${nextLocale}; path=/; max-age=31536000; samesite=lax`;
-    window.location.reload();
-  };
+  // Bookings and history are not yet connected to a live API.
+  // Show empty state with a clear "coming soon" message.
+  const mockBookings: Booking[] = [];
 
-  /*
-   * Legacy inline translations (migrated to next-intl JSON).
-   * Remove once you're happy with the migration.
-   */
-  /* const content = {
-    en: {
-      title: 'My Dashboard',
-      subtitle: 'Manage your bookings and preferences',
-      newBooking: 'New Booking',
-      tabBookings: 'My Bookings',
-      tabHistory: 'Travel History',
-      tabProfile: 'Personal Data',
-      tabPreferences: 'Saved Preferences',
-      activeBookings: 'Active Bookings',
-      noBookings: 'You have no active bookings',
-      bookNow: 'Book Now',
-      status: 'Status',
-      confirmed: 'Confirmed',
-      pending: 'Pending',
-      cancelled: 'Cancelled',
-      bookingDate: 'Booking Date',
-      viewDetails: 'View Details',
-      cancelBooking: 'Cancel',
-      pastTrips: 'Past Trips',
-      noHistory: 'No travel history yet',
-      rating: 'Rating',
-      personalInfo: 'Personal Information',
-      editProfile: 'Edit Profile',
-      saveProfile: 'Save Changes',
-      name: 'Full Name',
-      email: 'Email',
-      phone: 'Phone',
-      dateOfBirth: 'Date of Birth',
-      nationality: 'Nationality',
-      passportNumber: 'Passport Number',
-      taxIdNumber: 'Tax Identification Number',
-      address: 'Address',
-      travelPreferences: 'Travel Preferences',
-      budgetRange: 'Budget Range',
-      preferredDestinations: 'Preferred Destinations',
-      travelStyle: 'Travel Style',
-      accommodation: 'Accommodation Type',
-      activities: 'Preferred Activities',
-      dietary: 'Dietary Requirements',
-      budget: 'Budget',
-      moderate: 'Moderate (€1000-€3000)',
-      luxury: 'Luxury (€3000+)',
-      adventure: 'Adventure',
-      relaxation: 'Relaxation',
-      cultural: 'Cultural',
-      boutique: 'Boutique Hotels',
-      resort: 'Beach Resorts',
-      hiking: 'Hiking & Nature',
-      dining: 'Fine Dining',
-      sightseeing: 'Sightseeing',
-      vegetarian: 'Vegetarian',
-      none: 'None'
-    },
-    pt: {
-      title: 'Meu Painel',
-      subtitle: 'Gerir as suas reservas e preferências',
-      newBooking: 'Nova Reserva',
-      tabBookings: 'Minhas Reservas',
-      tabHistory: 'Histórico de Viagens',
-      tabProfile: 'Dados Pessoais',
-      tabPreferences: 'Preferências Guardadas',
-      activeBookings: 'Reservas Ativas',
-      noBookings: 'Não tem reservas ativas',
-      bookNow: 'Reservar Agora',
-      status: 'Estado',
-      confirmed: 'Confirmada',
-      pending: 'Pendente',
-      cancelled: 'Cancelada',
-      bookingDate: 'Data da Reserva',
-      viewDetails: 'Ver Detalhes',
-      cancelBooking: 'Cancelar',
-      pastTrips: 'Viagens Anteriores',
-      noHistory: 'Ainda sem histórico de viagens',
-      rating: 'Avaliação',
-      personalInfo: 'Informações Pessoais',
-      editProfile: 'Editar Perfil',
-      saveProfile: 'Guardar Alterações',
-      name: 'Nome Completo',
-      email: 'Email',
-      phone: 'Telefone',
-      dateOfBirth: 'Data de Nascimento',
-      nationality: 'Nacionalidade',
-      passportNumber: 'Número do Passaporte',
-      taxIdNumber: 'NIF (Número de Identificação Fiscal)',
-      address: 'Morada',
-      travelPreferences: 'Preferências de Viagem',
-      budgetRange: 'Orçamento',
-      preferredDestinations: 'Destinos Preferidos',
-      travelStyle: 'Estilo de Viagem',
-      accommodation: 'Tipo de Alojamento',
-      activities: 'Atividades Preferidas',
-      dietary: 'Requisitos Alimentares',
-      budget: 'Orçamento',
-      moderate: 'Moderado (€1000-€3000)',
-      luxury: 'Luxo (€3000+)',
-      adventure: 'Aventura',
-      relaxation: 'Relaxamento',
-      cultural: 'Cultural',
-      boutique: 'Hotéis Boutique',
-      resort: 'Resorts de Praia',
-      hiking: 'Caminhadas & Natureza',
-      dining: 'Gastronomia',
-      sightseeing: 'Turismo',
-      vegetarian: 'Vegetariano',
-      none: 'Nenhum'
-    },
-    es: {
-      title: 'Mi Panel',
-      subtitle: 'Gestione sus reservas y preferencias',
-      newBooking: 'Nueva Reserva',
-      tabBookings: 'Mis Reservas',
-      tabHistory: 'Historial de Viajes',
-      tabProfile: 'Datos Personales',
-      tabPreferences: 'Preferencias Guardadas',
-      activeBookings: 'Reservas Activas',
-      noBookings: 'No tiene reservas activas',
-      bookNow: 'Reservar Ahora',
-      status: 'Estado',
-      confirmed: 'Confirmada',
-      pending: 'Pendiente',
-      cancelled: 'Cancelada',
-      bookingDate: 'Fecha de Reserva',
-      viewDetails: 'Ver Detalles',
-      cancelBooking: 'Cancelar',
-      pastTrips: 'Viajes Anteriores',
-      noHistory: 'Aún sin historial de viajes',
-      rating: 'Calificación',
-      personalInfo: 'Información Personal',
-      editProfile: 'Editar Perfil',
-      saveProfile: 'Guardar Cambios',
-      name: 'Nombre Completo',
-      email: 'Email',
-      phone: 'Teléfono',
-      dateOfBirth: 'Fecha de Nacimiento',
-      nationality: 'Nacionalidad',
-      passportNumber: 'Número de Pasaporte',
-      taxIdNumber: 'Número de Identificación Fiscal',
-      address: 'Dirección',
-      travelPreferences: 'Preferencias de Viaje',
-      budgetRange: 'Presupuesto',
-      preferredDestinations: 'Destinos Preferidos',
-      travelStyle: 'Estilo de Viaje',
-      accommodation: 'Tipo de Alojamiento',
-      activities: 'Actividades Preferidas',
-      dietary: 'Requisitos Dietéticos',
-      budget: 'Presupuesto',
-      moderate: 'Moderado (€1000-€3000)',
-      luxury: 'Lujo (€3000+)',
-      adventure: 'Aventura',
-      relaxation: 'Relajación',
-      cultural: 'Cultural',
-      boutique: 'Hoteles Boutique',
-      resort: 'Resorts de Playa',
-      hiking: 'Senderismo y Naturaleza',
-      dining: 'Gastronomía',
-      sightseeing: 'Turismo',
-      vegetarian: 'Vegetariano',
-      none: 'Ninguno'
-    },
-    fr: {
-      title: 'Mon Tableau de Bord',
-      subtitle: 'Gérez vos réservations et préférences',
-      newBooking: 'Nouvelle Réservation',
-      tabBookings: 'Mes Réservations',
-      tabHistory: 'Historique des Voyages',
-      tabProfile: 'Données Personnelles',
-      tabPreferences: 'Préférences Enregistrées',
-      activeBookings: 'Réservations Actives',
-      noBookings: 'Vous n\'avez pas de réservations actives',
-      bookNow: 'Réserver Maintenant',
-      status: 'Statut',
-      confirmed: 'Confirmée',
-      pending: 'En attente',
-      cancelled: 'Annulée',
-      bookingDate: 'Date de Réservation',
-      viewDetails: 'Voir les Détails',
-      cancelBooking: 'Annuler',
-      pastTrips: 'Voyages Précédents',
-      noHistory: 'Pas encore d\'historique de voyages',
-      rating: 'Évaluation',
-      personalInfo: 'Informations Personnelles',
-      editProfile: 'Modifier le Profil',
-      saveProfile: 'Enregistrer les Modifications',
-      name: 'Nom Complet',
-      email: 'Email',
-      phone: 'Téléphone',
-      dateOfBirth: 'Date de Naissance',
-      nationality: 'Nationalité',
-      passportNumber: 'Numéro de Passeport',
-      taxIdNumber: "Numéro d'Identification Fiscale",
-      address: 'Adresse',
-      travelPreferences: 'Préférences de Voyage',
-      budgetRange: 'Budget',
-      preferredDestinations: 'Destinations Préférées',
-      travelStyle: 'Style de Voyage',
-      accommodation: 'Type d\'Hébergement',
-      activities: 'Activités Préférées',
-      dietary: 'Exigences Alimentaires',
-      budget: 'Budget',
-      moderate: 'Modéré (€1000-€3000)',
-      luxury: 'Luxe (€3000+)',
-      adventure: 'Aventure',
-      relaxation: 'Détente',
-      cultural: 'Culturel',
-      boutique: 'Hôtels Boutique',
-      resort: 'Stations Balnéaires',
-      hiking: 'Randonnée et Nature',
-      dining: 'Gastronomie',
-      sightseeing: 'Tourisme',
-      vegetarian: 'Végétarien',
-      none: 'Aucun'
-    }
-  };
-
-  const t = content[language]; */
-
-  // Mock data
-  const mockBookings: Booking[] = [
-    {
-      id: '1',
-      destination: 'Paris, France',
-      dates: '15 May 2026 - 22 May 2026',
-      status: 'confirmed',
-      price: '€2,450',
-      type: 'Package: Flights + Hotel + Tours',
-      bookingDate: '10 Apr 2026'
-    },
-    {
-      id: '2',
-      destination: 'Tokyo, Japan',
-      dates: '10 Jul 2026 - 24 Jul 2026',
-      status: 'pending',
-      price: '€4,200',
-      type: 'Custom Package',
-      bookingDate: '25 Apr 2026'
-    }
-  ];
-
-  const mockHistory: TravelHistory[] = [
-    {
-      id: '1',
-      destination: 'Barcelona, Spain',
-      dates: '20 Sep 2025 - 27 Sep 2025',
-      rating: 5,
-      type: 'City Break'
-    },
-    {
-      id: '2',
-      destination: 'Lisbon, Portugal',
-      dates: '15 Jun 2025 - 20 Jun 2025',
-      rating: 5,
-      type: 'Cultural Tour'
-    },
-    {
-      id: '3',
-      destination: 'Rome, Italy',
-      dates: '10 Mar 2025 - 17 Mar 2025',
-      rating: 4,
-      type: 'Historical Tour'
-    }
-  ];
+  const mockHistory: TravelHistory[] = [];
 
   const getStatusColor = (status: string) => {
     switch (status) {
@@ -467,73 +201,32 @@ export function DashboardPage({ onBack, onNewBooking, initialTab }: DashboardPag
     ));
   };
 
+  const skeletonCls = 'h-10 w-full rounded-md bg-gray-200 dark:bg-gray-700 animate-pulse';
+
+  const initials = profileData.name
+    ? profileData.name
+        .split(/\s+/)
+        .filter(Boolean)
+        .map((n) => n[0])
+        .join('')
+        .toUpperCase()
+        .slice(0, 2)
+    : '?';
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 via-teal-50 to-orange-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 transition-colors">
-      {/* Header */}
-      <header className="sticky top-0 bg-white/90 dark:bg-gray-900/90 backdrop-blur-lg border-b border-gray-200 dark:border-gray-700 z-50 shadow-sm">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
-          <div className="flex items-center justify-between">
-            <button
-              onClick={onBack}
-              className="text-xl font-bold bg-gradient-to-r from-teal-700 via-teal-600 to-orange-500 bg-clip-text text-transparent hover:opacity-80 transition-opacity"
-            >
-              AKMLEVA
-            </button>
-
-            <div className="flex items-center gap-3">
-              <button
-                onClick={() => setIsDark(!isDark)}
-                className="p-2 rounded-lg border border-teal-200 dark:border-gray-600 bg-white dark:bg-gray-800 hover:bg-teal-50 dark:hover:bg-gray-700 transition-colors"
-              >
-                {isDark ? <Sun className="w-4 h-4 text-orange-500" /> : <Moon className="w-4 h-4 text-teal-700" />}
-              </button>
-
-              <div className="flex items-center gap-2">
-                <Languages className="w-4 h-4 text-teal-700 dark:text-teal-400 hidden sm:block" />
-                <div className="inline-flex rounded-lg border border-teal-200 dark:border-gray-600 bg-white dark:bg-gray-800 p-0.5 shadow-sm">
-                  {[
-                    { code: 'en', label: '🇺🇸' },
-                    { code: 'pt', label: '🇵🇹' },
-                    { code: 'es', label: '🇪🇸' },
-                    { code: 'fr', label: '🇫🇷' }
-                  ].map((lang) => (
-                    <button
-                      key={lang.code}
-                      onClick={() => setLocale(lang.code)}
-                      className={`px-2.5 py-1 text-sm font-medium rounded-md transition-all ${
-                        locale === lang.code
-                          ? 'bg-gradient-to-r from-teal-600 to-orange-500 text-white shadow-md scale-105'
-                          : 'text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700'
-                      }`}
-                    >
-                      {lang.label}
-                    </button>
-                  ))}
-                </div>
-              </div>
-
-              <Button
-                variant="outline"
-                onClick={onBack}
-                size="sm"
-                className="gap-2 border-teal-300 dark:border-gray-600 hover:bg-teal-50 dark:hover:bg-gray-700 dark:text-gray-200"
-              >
-                <ArrowLeft className="w-4 h-4" />
-                <span className="hidden sm:inline">{t('header.back')}</span>
-              </Button>
-            </div>
-          </div>
-        </div>
-      </header>
+      <AppHeader showBack onBack={onBack} />
 
       {/* Content */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-12">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-12 pb-24 sm:pb-12">
         {/* Hero */}
         <div className="mb-8">
           <div className="flex items-center justify-between gap-4 mb-2">
             <div className="flex items-center gap-4">
-              <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-gradient-to-br from-teal-600 to-orange-500 flex items-center justify-center shadow-xl">
-                <User className="w-7 h-7 sm:w-8 sm:h-8 text-white" />
+              <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-gradient-to-br from-teal-600 to-orange-500 flex items-center justify-center shadow-xl text-white text-lg sm:text-xl font-bold">
+                <span className={`transition-opacity duration-700 ${avatarReady ? 'opacity-100' : 'opacity-0'}`}>
+                  {initials}
+                </span>
               </div>
               <div>
                 <h1 className="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white">
@@ -545,22 +238,13 @@ export function DashboardPage({ onBack, onNewBooking, initialTab }: DashboardPag
             {onNewBooking && (
               <Button
                 onClick={onNewBooking}
-                className="bg-gradient-to-r from-teal-600 to-orange-500 hover:from-teal-700 hover:to-orange-600 gap-2 hidden sm:flex"
+                className="bg-gradient-to-r from-teal-600 to-orange-500 hover:from-teal-700 hover:to-orange-600 gap-2 max-sm:w-full max-sm:mt-4"
               >
                 <Plane className="w-4 h-4" />
                 {t('newBooking')}
               </Button>
             )}
           </div>
-          {onNewBooking && (
-            <Button
-              onClick={onNewBooking}
-              className="bg-gradient-to-r from-teal-600 to-orange-500 hover:from-teal-700 hover:to-orange-600 gap-2 w-full sm:hidden mt-4"
-            >
-              <Plane className="w-4 h-4" />
-              {t('newBooking')}
-            </Button>
-          )}
         </div>
 
         {/* Tabs */}
@@ -577,10 +261,10 @@ export function DashboardPage({ onBack, onNewBooking, initialTab }: DashboardPag
                 <button
                   key={tab.id}
                   onClick={() => setActiveTab(tab.id)}
-                  className={`px-4 sm:px-6 py-3 rounded-t-lg font-medium transition-all flex items-center gap-2 whitespace-nowrap text-sm sm:text-base ${
+                  className={`px-4 sm:px-6 py-3 font-medium transition-all flex items-center gap-2 whitespace-nowrap text-sm sm:text-base border-b-2 ${
                     activeTab === tab.id
-                      ? 'bg-gradient-to-r from-teal-600 to-orange-500 text-white shadow-lg'
-                      : 'bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700'
+                      ? 'border-teal-600 dark:border-orange-500 text-teal-700 dark:text-orange-400 bg-teal-50/30 dark:bg-gray-800/50'
+                      : 'border-transparent text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300 hover:border-gray-300 dark:hover:border-gray-600 bg-transparent'
                   }`}
                 >
                   <Icon className="w-4 h-4 sm:w-5 sm:h-5" />
@@ -704,11 +388,43 @@ export function DashboardPage({ onBack, onNewBooking, initialTab }: DashboardPag
               <div className="flex items-center justify-between mb-6">
                 <h2 className="text-2xl font-bold text-gray-900 dark:text-white">{t('personalInfo')}</h2>
                 <Button
-                  onClick={() => setIsEditingProfile(!isEditingProfile)}
+                  onClick={async () => {
+                    if (isEditingProfile) {
+                      setIsSavingProfile(true);
+                      try {
+                        const res = await fetch('/api/auth/me', {
+                          method: 'PUT',
+                          credentials: 'include',
+                          headers: { 'content-type': 'application/json' },
+                          body: JSON.stringify({ user: profileData }),
+                        });
+                        if (!res.ok) {
+                          throw new Error(t('profileSaveError') || 'Failed to save profile');
+                        }
+                        toast.success(t('profileSaved') || 'Profile saved successfully');
+                        setIsEditingProfile(false);
+                      } catch (err) {
+                        toast.error(err instanceof Error ? err.message : t('profileSaveError') || 'Failed to save profile');
+                      } finally {
+                        setIsSavingProfile(false);
+                      }
+                    } else {
+                      setIsEditingProfile(true);
+                    }
+                  }}
+                  disabled={isSavingProfile || isLoadingProfile}
                   className={isEditingProfile ? 'bg-gradient-to-r from-teal-600 to-orange-500' : ''}
                   variant={isEditingProfile ? 'default' : 'outline'}
                 >
-                  {isEditingProfile ? (
+                  {isSavingProfile ? (
+                    <>
+                      <svg className="animate-spin h-4 w-4 mr-2" viewBox="0 0 24 24">
+                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none" />
+                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
+                      </svg>
+                      {t('saving') || 'Saving...'}
+                    </>
+                  ) : isEditingProfile ? (
                     <>
                       <Save className="w-4 h-4 mr-2" />
                       {t('saveProfile')}
@@ -724,151 +440,162 @@ export function DashboardPage({ onBack, onNewBooking, initialTab }: DashboardPag
 
               <Card className="border-2 border-gray-200 dark:border-gray-700 shadow-xl dark:bg-gray-800">
                 <CardContent className="p-6 sm:p-8">
-                  <div className="grid sm:grid-cols-2 gap-6">
-                    <div>
-                      <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                        {t('name')}
-                      </label>
-                      <div className="flex items-center gap-2">
-                        <User className="w-5 h-5 text-gray-400" />
-                        <input
-                          type="text"
-                          value={profileData.name}
-                          onChange={(e) => setProfileData({ ...profileData, name: e.target.value })}
-                          disabled={!isEditingProfile}
-                          className="flex-1 px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white disabled:bg-gray-100 dark:disabled:bg-gray-800 disabled:text-gray-600 dark:disabled:text-gray-400"
-                        />
-                      </div>
+                  {isLoadingProfile ? (
+                    <div className="grid sm:grid-cols-2 gap-6">
+                      {Array.from({ length: 9 }).map((_, i) => (
+                        <div key={i} className={`space-y-2 ${i === 8 ? 'sm:col-span-2' : ''}`}>
+                          <div className="h-4 w-24 rounded bg-gray-200 dark:bg-gray-700 animate-pulse" />
+                          <div className={skeletonCls} />
+                        </div>
+                      ))}
                     </div>
+                  ) : (
+                    <div className="grid sm:grid-cols-2 gap-6">
+                      <div className="space-y-2">
+                        <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">
+                          {t('name')}
+                        </label>
+                        <div className="relative">
+                          <User className="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" />
+                          <Input
+                            type="text"
+                            value={profileData.name}
+                            onChange={(e) => setProfileData({ ...profileData, name: e.target.value })}
+                            disabled={!isEditingProfile}
+                            className="pl-10"
+                          />
+                        </div>
+                      </div>
 
-                    <div>
-                      <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                        {t('email')}
-                      </label>
-                      <div className="flex items-center gap-2">
-                        <Mail className="w-5 h-5 text-gray-400" />
-                        <input
-                          type="email"
-                          value={profileData.email}
-                          onChange={(e) => setProfileData({ ...profileData, email: e.target.value })}
-                          disabled={!isEditingProfile}
-                          className="flex-1 px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white disabled:bg-gray-100 dark:disabled:bg-gray-800 disabled:text-gray-600 dark:disabled:text-gray-400"
-                        />
+                      <div className="space-y-2">
+                        <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">
+                          {t('email')}
+                        </label>
+                        <div className="relative">
+                          <Mail className="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" />
+                          <Input
+                            type="email"
+                            value={profileData.email}
+                            onChange={(e) => setProfileData({ ...profileData, email: e.target.value })}
+                            disabled={!isEditingProfile}
+                            className="pl-10"
+                          />
+                        </div>
                       </div>
-                    </div>
 
-                    <div>
-                      <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                        {t('phone')}
-                      </label>
-                      <div className="flex items-center gap-2">
-                        <Phone className="w-5 h-5 text-gray-400" />
-                        <input
-                          type="tel"
-                          value={profileData.phone}
-                          onChange={(e) => setProfileData({ ...profileData, phone: e.target.value })}
-                          disabled={!isEditingProfile}
-                          className="flex-1 px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white disabled:bg-gray-100 dark:disabled:bg-gray-800 disabled:text-gray-600 dark:disabled:text-gray-400"
-                        />
+                      <div className="space-y-2">
+                        <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">
+                          {t('phone')}
+                        </label>
+                        <div className="relative">
+                          <Phone className="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" />
+                          <Input
+                            type="tel"
+                            value={profileData.phone}
+                            onChange={(e) => setProfileData({ ...profileData, phone: e.target.value })}
+                            disabled={!isEditingProfile}
+                            className="pl-10"
+                          />
+                        </div>
                       </div>
-                    </div>
 
-                    <div>
-                      <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                        {t('dateOfBirth')}
-                      </label>
-                      <div className="flex items-center gap-2">
-                        <Calendar className="w-5 h-5 text-gray-400" />
-                        <input
-                          type="date"
-                          value={profileData.dateOfBirth}
-                          onChange={(e) => setProfileData({ ...profileData, dateOfBirth: e.target.value })}
-                          disabled={!isEditingProfile}
-                          className="flex-1 px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white disabled:bg-gray-100 dark:disabled:bg-gray-800 disabled:text-gray-600 dark:disabled:text-gray-400"
-                        />
+                      <div className="space-y-2">
+                        <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">
+                          {t('dateOfBirth')}
+                        </label>
+                        <div className="relative">
+                          <Calendar className="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" />
+                          <Input
+                            type="date"
+                            value={profileData.dateOfBirth}
+                            onChange={(e) => setProfileData({ ...profileData, dateOfBirth: e.target.value })}
+                            disabled={!isEditingProfile}
+                            className="pl-10"
+                          />
+                        </div>
                       </div>
-                    </div>
 
-                    <div>
-                      <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                        {t('nationality')}
-                      </label>
-                      <div className="flex items-center gap-2">
-                        <Globe className="w-5 h-5 text-gray-400" />
-                        <input
-                          type="text"
-                          value={profileData.nationality}
-                          onChange={(e) => setProfileData({ ...profileData, nationality: e.target.value })}
-                          disabled={!isEditingProfile}
-                          className="flex-1 px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white disabled:bg-gray-100 dark:disabled:bg-gray-800 disabled:text-gray-600 dark:disabled:text-gray-400"
-                        />
+                      <div className="space-y-2">
+                        <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">
+                          {t('nationality')}
+                        </label>
+                        <div className="relative">
+                          <Globe className="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" />
+                          <Input
+                            type="text"
+                            value={profileData.nationality}
+                            onChange={(e) => setProfileData({ ...profileData, nationality: e.target.value })}
+                            disabled={!isEditingProfile}
+                            className="pl-10"
+                          />
+                        </div>
                       </div>
-                    </div>
 
-                    <div>
-                      <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                        {t('passportNumber')}
-                      </label>
-                      <div className="flex items-center gap-2">
-                        <CreditCard className="w-5 h-5 text-gray-400" />
-                        <input
-                          type="text"
-                          value={profileData.passportNumber}
-                          onChange={(e) => setProfileData({ ...profileData, passportNumber: e.target.value })}
-                          disabled={!isEditingProfile}
-                          className="flex-1 px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white disabled:bg-gray-100 dark:disabled:bg-gray-800 disabled:text-gray-600 dark:disabled:text-gray-400"
-                        />
+                      <div className="space-y-2">
+                        <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">
+                          {t('passportNumber')}
+                        </label>
+                        <div className="relative">
+                          <CreditCard className="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" />
+                          <Input
+                            type="text"
+                            value={profileData.passportNumber}
+                            onChange={(e) => setProfileData({ ...profileData, passportNumber: e.target.value })}
+                            disabled={!isEditingProfile}
+                            className="pl-10"
+                          />
+                        </div>
                       </div>
-                    </div>
 
-                    <div>
-                      <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                        {t('nationalIdNumber')}
-                      </label>
-                      <div className="flex items-center gap-2">
-                        <CreditCard className="w-5 h-5 text-gray-400" />
-                        <input
-                          type="text"
-                          value={profileData.nationalIdNumber}
-                          onChange={(e) => setProfileData({ ...profileData, nationalIdNumber: e.target.value })}
-                          disabled={!isEditingProfile}
-                          className="flex-1 px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white disabled:bg-gray-100 dark:disabled:bg-gray-800 disabled:text-gray-600 dark:disabled:text-gray-400"
-                        />
+                      <div className="space-y-2">
+                        <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">
+                          {t('nationalIdNumber')}
+                        </label>
+                        <div className="relative">
+                          <CreditCard className="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" />
+                          <Input
+                            type="text"
+                            value={profileData.nationalIdNumber}
+                            onChange={(e) => setProfileData({ ...profileData, nationalIdNumber: e.target.value })}
+                            disabled={!isEditingProfile}
+                            className="pl-10"
+                          />
+                        </div>
                       </div>
-                    </div>
 
-                    <div>
-                      <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                        {t('taxIdNumber')}
-                      </label>
-                      <div className="flex items-center gap-2">
-                        <CreditCard className="w-5 h-5 text-gray-400" />
-                        <input
-                          type="text"
-                          value={profileData.taxIdNumber}
-                          onChange={(e) => setProfileData({ ...profileData, taxIdNumber: e.target.value })}
-                          disabled={!isEditingProfile}
-                          className="flex-1 px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white disabled:bg-gray-100 dark:disabled:bg-gray-800 disabled:text-gray-600 dark:disabled:text-gray-400"
-                        />
+                      <div className="space-y-2">
+                        <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">
+                          {t('taxIdNumber')}
+                        </label>
+                        <div className="relative">
+                          <CreditCard className="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" />
+                          <Input
+                            type="text"
+                            value={profileData.taxIdNumber}
+                            onChange={(e) => setProfileData({ ...profileData, taxIdNumber: e.target.value })}
+                            disabled={!isEditingProfile}
+                            className="pl-10"
+                          />
+                        </div>
                       </div>
-                    </div>
 
-                    <div className="sm:col-span-2">
-                      <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                        {t('address')}
-                      </label>
-                      <div className="flex items-center gap-2">
-                        <MapPin className="w-5 h-5 text-gray-400" />
-                        <input
-                          type="text"
-                          value={profileData.address}
-                          onChange={(e) => setProfileData({ ...profileData, address: e.target.value })}
-                          disabled={!isEditingProfile}
-                          className="flex-1 px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white disabled:bg-gray-100 dark:disabled:bg-gray-800 disabled:text-gray-600 dark:disabled:text-gray-400"
-                        />
+                      <div className="sm:col-span-2 space-y-2">
+                        <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">
+                          {t('address')}
+                        </label>
+                        <div className="relative">
+                          <MapPin className="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" />
+                          <Input
+                            type="text"
+                            value={profileData.address}
+                            onChange={(e) => setProfileData({ ...profileData, address: e.target.value })}
+                            disabled={!isEditingProfile}
+                            className="pl-10"
+                          />
+                        </div>
                       </div>
                     </div>
-                  </div>
+                  )}
                 </CardContent>
               </Card>
             </div>
@@ -881,10 +608,11 @@ export function DashboardPage({ onBack, onNewBooking, initialTab }: DashboardPag
                 <h2 className="text-2xl font-bold text-gray-900 dark:text-white">{t('travelPreferences')}</h2>
                 <Button
                   onClick={() => (window.location.href = '/preferences/edit')}
-                  className="bg-gradient-to-r from-teal-600 to-orange-500 hover:from-teal-700 hover:to-orange-600"
+                  className="bg-gradient-to-r from-teal-600 to-orange-500 hover:from-teal-700 hover:to-orange-600 gap-2"
                   size="sm"
                 >
-                  Edit preferences
+                  <Edit className="w-4 h-4" />
+                  {t('editProfile')}
                 </Button>
               </div>
 

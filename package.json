@@ -78,6 +78,8 @@
     "travel:images:refresh-duplicates": "cross-env TRAVEL_IMAGES_REFRESH=duplicates node scripts/enrich-bundle-unsplash-images.mjs",
     "travel:images:dedupe": "cross-env TRAVEL_IMAGES_REFRESH=dedupe UNSPLASH_MAX_API_CALLS=400 node scripts/enrich-bundle-unsplash-images.mjs",
     "travel:images:status": "node scripts/travel-images-status.mjs",
+    "travel:demo:enrich-weather": "node scripts/enrich-bundle-weather.mjs",
+    "travel:demo:enrich-hotels-from-db": "node scripts/enrich-bundle-hotels-from-db.mjs",
     "travel:google-hotels:install": "py -3 -m pip install -r scripts/requirements-google-hotels.txt",
     "travel:google-hotels:listings": "py -3 scripts/google-hotels/google_hotels_listings_scraper.py",
     "travel:google-hotels:details": "py -3 scripts/google-hotels/google_hotel_details_scraper.py",

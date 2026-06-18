@@ -1,5 +1,6 @@
 'use client';
 
+import { useState } from 'react';
 import Link from 'next/link';
 import {
   ArrowRight,
@@ -12,7 +13,15 @@ import {
   Star,
   Compass,
   Shield,
+  Expand,
 } from 'lucide-react';
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogDescription,
+} from '../ui/dialog';
 
 import type { TravelResult } from '../data/mockResults';
 import { CostOfLivingBadge } from './CostOfLivingBadge';
@@ -45,6 +54,7 @@ export type DestinationResultCardProps = {
 
 export function DestinationResultCard({ result, href, labels, tipPreviews = [] }: DestinationResultCardProps) {
   const card = result.destinationCard;
+  const [isExpanded, setIsExpanded] = useState(false);
 
   return (
     <Card className="group overflow-hidden border-0 bg-white dark:bg-gray-800 shadow-lg hover:shadow-2xl ring-1 ring-gray-200/80 dark:ring-gray-700 transition-all duration-300">
@@ -110,6 +120,17 @@ export function DestinationResultCard({ result, href, labels, tipPreviews = [] }
             onClick={(e) => e.preventDefault()}
           >
             <Heart className="h-5 w-5" />
+          </button>
+          <button
+            type="button"
+            className="rounded-full p-2 text-gray-400 hover:bg-gray-100 hover:text-teal-600 dark:hover:bg-gray-700"
+            aria-label="Expandir detalhes"
+            onClick={(e) => {
+              e.preventDefault();
+              setIsExpanded(true);
+            }}
+          >
+            <Expand className="h-5 w-5" />
           </button>
         </div>
       </CardHeader>
@@ -199,6 +220,71 @@ export function DestinationResultCard({ result, href, labels, tipPreviews = [] }
           </Button>
         </div>
       </CardContent>
+
+      <Dialog open={isExpanded} onOpenChange={setIsExpanded}>
+        <DialogContent className="max-w-3xl max-h-[90vh] overflow-y-auto">
+          <DialogHeader>
+            <DialogTitle className="text-2xl">{result.destination}</DialogTitle>
+            <DialogDescription>
+              {result.country}, {result.continent}
+            </DialogDescription>
+          </DialogHeader>
+          <div className="space-y-4">
+            {card?.resumo && (
+              <div>
+                <h4 className="font-semibold text-gray-900 dark:text-white mb-1">{labels.cardSummary}</h4>
+                <p className="text-sm text-gray-700 dark:text-gray-300">{card.resumo}</p>
+              </div>
+            )}
+            {(card?.veja?.length || card?.faca?.length) && (
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm">
+                {card.veja && card.veja.length > 0 && (
+                  <div className="rounded-lg bg-gray-50 dark:bg-gray-900/50 p-3">
+                    <p className="font-semibold text-gray-700 dark:text-gray-300 flex items-center gap-1 mb-1">
+                      <Eye className="h-4 w-4 text-teal-600" />
+                      {labels.cardSee}
+                    </p>
+                    <ul className="list-disc list-inside text-gray-600 dark:text-gray-400 space-y-1">
+                      {card.veja.map((item, idx) => <li key={idx}>{item}</li>)}
+                    </ul>
+                  </div>
+                )}
+                {card.faca && card.faca.length > 0 && (
+                  <div className="rounded-lg bg-gray-50 dark:bg-gray-900/50 p-3">
+                    <p className="font-semibold text-gray-700 dark:text-gray-300 flex items-center gap-1 mb-1">
+                      <Compass className="h-4 w-4 text-orange-500" />
+                      {labels.cardDo}
+                    </p>
+                    <ul className="list-disc list-inside text-gray-600 dark:text-gray-400 space-y-1">
+                      {card.faca.map((item, idx) => <li key={idx}>{item}</li>)}
+                    </ul>
+                  </div>
+                )}
+              </div>
+            )}
+            {tipPreviews.length > 0 && (
+              <div className="space-y-2">
+                {tipPreviews.map((tip) => (
+                  <div key={tip.label} className="rounded-lg border border-amber-100 dark:border-amber-900/40 bg-amber-50/60 dark:bg-amber-950/20 px-3 py-2 text-sm">
+                    <p className="font-semibold text-amber-900 dark:text-amber-200 flex items-center gap-1 mb-0.5">
+                      <Shield className="h-4 w-4" />
+                      {tip.label}
+                    </p>
+                    <p className="text-gray-600 dark:text-gray-400">{tip.text}</p>
+                  </div>
+                ))}
+              </div>
+            )}
+            <div className="flex flex-wrap gap-1.5">
+              {result.bestFor.map((tag) => (
+                <Badge key={tag} variant="secondary" className="text-xs bg-teal-100/80 text-teal-900 dark:bg-teal-900/50 dark:text-teal-100">
+                  {tag}
+                </Badge>
+              ))}
+            </div>
+          </div>
+        </DialogContent>
+      </Dialog>
     </Card>
   );
 }

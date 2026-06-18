@@ -1,0 +1,194 @@
+'use client';
+
+import { useMemo } from 'react';
+import { Controller } from 'react-hook-form';
+import { Check, Palmtree, Globe } from 'lucide-react';
+import { Label } from '../../ui/label';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '../../ui/select';
+import { Checkbox } from '../../ui/checkbox';
+import { Badge } from '../../ui/badge';
+import type { PreferencesSectionProps } from './types';
+import {
+  ACTIVITY_TYPE_IDS,
+  PACE_PREFERENCE_IDS,
+  EXPERIENCE_TYPE_IDS,
+  LANGUAGE_IDS,
+} from '../../../../lib/i18n/preferences-form-options';
+import { Mountain, Camera, Waves, MapPin, Utensils, ShoppingBag, Flag, Moon } from 'lucide-react';
+
+const ACTIVITY_TYPE_ICONS: Record<string, typeof Mountain> = {
+  adventure: Mountain,
+  cultural: Camera,
+  beach: Waves,
+  city: MapPin,
+  hiking: Mountain,
+  wildlife: Palmtree,
+  food: Utensils,
+  shopping: ShoppingBag,
+  historical: Flag,
+  photography: Camera,
+  water: Waves,
+  nightlife: Moon,
+};
+
+const getActivityTypesData = (t: (key: string) => string) =>
+  ACTIVITY_TYPE_IDS.map((activityId: string) => ({
+    id: activityId,
+    label: t(`options.activityTypes.${activityId}`),
+    icon: ACTIVITY_TYPE_ICONS[activityId] ?? MapPin,
+  }));
+
+export function ActivitiesSection({
+  form,
+  preferences,
+  errors,
+  t,
+  travelCatalog,
+  travelCatalogLoading,
+  filterCountries,
+  filterContinents,
+  locale,
+}: PreferencesSectionProps) {
+  const { control, setValue, watch } = form;
+  const watchedPreferences = watch();
+
+  const toggleArrayValue = (key: keyof typeof preferences, value: string) => {
+    const currentArray = watchedPreferences[key] as string[];
+    if (currentArray.includes(value)) {
+      setValue(key, currentArray.filter((item: string) => item !== value));
+    } else {
+      setValue(key, [...currentArray, value]);
+    }
+  };
+
+  return (
+    <div className="space-y-6">
+      <div className="border-b pb-4">
+        <h3 className="text-xl sm:text-2xl font-bold mb-2 flex flex-wrap items-center gap-2">
+          <Palmtree className="w-6 h-6 text-green-600" /> {t('activitiesExperiences')}
+        </h3>
+        <p className="text-sm text-gray-600">
+          {t('aiCurateExperiences')}
+        </p>
+      </div>
+
+      <div className="space-y-4">
+        <Label className="text-base font-semibold">{t('preferredActivities')}</Label>
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3 sm:gap-4">
+          {getActivityTypesData(t).map((activity) => {
+            const Icon = activity.icon;
+            const isSelected = watchedPreferences.activityTypes.includes(activity.id);
+            
+            return (
+              <button
+                key={activity.id}
+                type="button"
+                onClick={() => {
+                  toggleArrayValue('activityTypes', activity.id);
+                }}
+                className={`
+                  p-3 sm:p-4 rounded-lg border-2 transition-all sm:hover:scale-105 touch-manipulation
+                  ${isSelected 
+                    ? 'border-green-600 bg-green-50 shadow-lg' 
+                    : 'border-gray-200 bg-white hover:border-gray-300'
+                  }
+                `}
+              >
+                <Icon className={`w-6 h-6 mb-2 mx-auto ${isSelected ? 'text-green-600' : 'text-gray-600'}`} />
+                <span className={`text-xs font-semibold block ${isSelected ? 'text-green-900' : 'text-gray-900'}`}>
+                  {activity.label}
+                </span>
+                {isSelected && (
+                  <Check className="w-4 h-4 text-green-600 mx-auto mt-1" />
+                )}
+              </button>
+            );
+          })}
+        </div>
+        {errors.activityTypes && <p className="text-red-500 text-xs mt-1">{errors.activityTypes.message}</p>}
+      </div>
+
+      <div className="space-y-3">
+        <Label htmlFor="pacePreference" className="text-base font-semibold">{t('travelPace')}</Label>
+        <Controller name="pacePreference" control={control} render={({ field }) => (
+          <>
+            <SelectTrigger className="h-11">
+              <SelectValue placeholder={t('selectPreferredPace')} />
+            </SelectTrigger>
+            <SelectContent>
+              {PACE_PREFERENCE_IDS.map((id) => (
+                <SelectItem key={id} value={id}>
+                  {t(`options.pacePreference.${id}`)}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </>
+        )} />
+        {errors.pacePreference && <p className="text-red-500 text-xs mt-1">{errors.pacePreference.message}</p>}
+      </div>
+
+      <div className="space-y-3">
+        <Label className="text-base font-semibold">{t('experienceTypes')}</Label>
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          {EXPERIENCE_TYPE_IDS.map((id) => (
+            <div key={id} className="flex items-center space-x-2 bg-gray-50 rounded-lg p-3 hover:bg-gray-100 transition-colors">
+              <Controller name="experienceTypes" control={control} render={({ field }) => (
+                <Checkbox
+                  id={`experience-${id}`}
+                  checked={field.value.includes(id)}
+                  onCheckedChange={(checked) => toggleArrayValue('experienceTypes', id)}
+                />
+              )} />
+              <Label htmlFor={`experience-${id}`} className="cursor-pointer text-sm font-medium">
+                {t(`options.experienceTypes.${id}`)}
+              </Label>
+            </div>
+          ))}
+        </div>
+      </div>
+      {errors.experienceTypes && <p className="text-red-500 text-xs mt-1">{errors.experienceTypes.message}</p>}
+
+      <div className="space-y-3">
+        <Label className="text-base font-semibold flex items-center gap-2">
+          <Globe className="w-5 h-5" />
+          {t('languagesYouSpeak')}
+        </Label>
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3">
+          {LANGUAGE_IDS.map((langId) => {
+            const isSelected = watchedPreferences.languages.some((l: { language: string }) => l.language === langId);
+
+            return (
+              <button
+                key={langId}
+                type="button"
+                onClick={() => {
+                  if (isSelected) {
+                    setValue(
+                      'languages',
+                      watchedPreferences.languages.filter((l: { language: string }) => l.language !== langId),
+                    );
+                  } else {
+                    setValue('languages', [
+                      ...watchedPreferences.languages,
+                      { language: langId, proficiency: 'intermediate' },
+                    ]);
+                  }
+                }}
+                className={`
+                  p-3 rounded-lg border-2 transition-all text-sm font-medium
+                  ${isSelected
+                    ? 'border-teal-600 bg-teal-50'
+                    : 'border-gray-200 bg-white hover:border-gray-300'
+                  }
+                `}
+              >
+                {t(`options.languages.${langId}`)}
+              </button>
+            );
+          })}
+        </div>
+        {errors.travelPurpose && <p className="text-red-500 text-xs mt-1">{errors.travelPurpose.message}</p>}
+      </div>
+    </div>
+  );
+}

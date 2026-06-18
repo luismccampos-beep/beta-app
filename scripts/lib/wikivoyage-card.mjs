@@ -107,7 +107,7 @@ function mapAdvancedSectionKey(title) {
  * All level-2 sections by canonical key (entenda, veja, … + dicas).
  * @param {string} wikitext
  */
-export function parseWikiSections(wikitext) {
+export function parseWikiSections(wikitext, skipAdvanced = false) {
   /** @type {Record<string, string>} */
   const sections = {};
   if (!wikitext) return sections;
@@ -133,8 +133,11 @@ export function parseWikiSections(wikitext) {
     const basic = mapSectionKey(title);
     if (basic) sections[basic] = sections[basic] ? `${sections[basic]}\n${body}` : body;
 
-    const advanced = mapAdvancedSectionKey(title);
-    if (advanced) sections[advanced] = sections[advanced] ? `${sections[advanced]}\n${body}` : body;
+    // Saltar mapeamento de secções avançadas se já vierem pré-extraídas do Python
+    if (!skipAdvanced) {
+      const advanced = mapAdvancedSectionKey(title);
+      if (advanced) sections[advanced] = sections[advanced] ? `${sections[advanced]}\n${body}` : body;
+    }
   }
 
   return sections;
@@ -284,7 +287,7 @@ export function extractAdvancedSections(sections, opts = {}) {
 }
 
 /**
- * @param {{ text?: string; title?: string; tipo?: string; clima?: string; lang?: string }} dest
+ * @param {{ text?: string; title?: string; tipo?: string; clima?: string; lang?: string; preParsedSections?: Record<string, string> }} dest
  * @param {{ resumoMax?: number; itemsMax?: number; tipsMax?: number }} [opts]
  */
 export function buildDestinationCard(dest, opts = {}) {
@@ -292,8 +295,21 @@ export function buildDestinationCard(dest, opts = {}) {
   const itemsMax = opts.itemsMax ?? 3;
   const tipsMax = opts.tipsMax ?? 4;
   const text = dest.text ?? '';
-  const sections = parseWikiSections(text);
+  // Secções básicas: entenda, veja, faca, coma (sempre do wikitext).
+  // Secções avançadas: se preParsedSections tem dados, salta o mapeamento caro aqui.
+  const hasAdvanced = dest.preParsedSections && Object.keys(dest.preParsedSections).length > 0;
+  const sections = parseWikiSections(text, hasAdvanced);
   const fromListings = extrairListingsPorTipo(text, itemsMax);
+
+  // Complementar com secções avançadas pré-extraídas do parser Python.
+  // Só preenche lacunas (skip se o parseWikiSections já capturou a secção).
+  if (dest.preParsedSections) {
+    for (const [key, body] of Object.entries(dest.preParsedSections)) {
+      if (body?.trim() && ADVANCED_SECTION_PATTERNS[key] && !sections[key]) {
+        sections[key] = body;
+      }
+    }
+  }
 
   const veja =
     extrairItensLista(sections.veja ?? '', itemsMax).length > 0

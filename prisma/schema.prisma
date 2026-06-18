@@ -104,7 +104,7 @@ model User {
   avatarUrl       String?   @map("avatar_url") @db.Text
   bio             String?   @db.Text
   location        String?   @db.VarChar(255)
-  phone           String?   @unique @db.VarChar(20)
+  phone           String?   @db.VarChar(20)
   birthDate       DateTime? @map("birth_date") @db.Date
   gender          String?   @db.VarChar(20) // "M", "F", "Other"
   taxId           String?   @map("tax_id") @db.VarChar(50) // NIF / VAT / Tax ID for invoicing
@@ -157,11 +157,6 @@ model User {
   profileCompletion Int @default(0) @map("profile_completion") @db.SmallInt // 0-100
   experiencePoints  Int @default(0) @map("experience_points")
   streakCount       Int @default(0) @map("streak_count")
-
-  // Social
-  favoriteDestinations Json? @map("favorite_destinations") @db.JsonB
-  friends              Json? @db.JsonB
-  blockedUsers         Json? @map("blocked_users") @db.JsonB
 
   // Account Status
   deletedAt     DateTime? @map("deleted_at") @db.Timestamp(3)
@@ -336,7 +331,6 @@ model Agency {
   cruises  Cruise[]
   packages Package[]
 
-  @@index([slug])
   @@index([domain])
   @@map("agencies")
 }
@@ -1267,7 +1261,7 @@ model Cruise {
 }
 
 // Cruise service steps (how it works)
-model CruiseStep {
+// DEP
   id        String   @id @default(cuid())
   iconName  String // 'map-pin', 'car', 'shield-check'
   iconColor String // 'blue', 'green', 'purple'
@@ -1348,7 +1342,6 @@ model Accommodation {
   pricePerNight       Decimal? @map("price_per_night") @db.Decimal(10, 2)
   currency            String?  @db.Text
   image               String?  @db.Text
-  images              Json?    @db.JsonB
   rating              Decimal? @db.Decimal(3, 1)
   amenities           Json?    @db.JsonB
   latitude            Decimal? @db.Decimal(10, 6)
@@ -1361,6 +1354,8 @@ model Accommodation {
 
   destination Destination? @relation(fields: [destinationId], references: [id])
 
+  @@index([destinationId, type])
+  @@index([published, name])
   @@map("accommodations")
 }
 
@@ -1381,22 +1376,40 @@ model Hotel {
   reviewsCount  Int?     @map("reviews_count") 
   published     Boolean? @default(true)
   featured      Boolean? @default(false)
-  metadata      Json?    @db.JsonB
   agencyId      String?  @map("agency_id") 
   createdAt     DateTime @default(now()) @map("createdat") @db.Timestamp(0)
   updatedAt     DateTime @updatedAt @map("updatedat") @db.Timestamp(0)
+
+  // Relations
+  amenityItems  HotelAmenity[] @relation("HotelAmenities")
 
   // Relationships
   agency      Agency?       @relation(fields: [agencyId], references: [id], onDelete: Cascade)
   hotelImages HotelImage[]
   bookings    HotelBooking[]
   rooms       HotelRoom[]
-  detail      HotelDetail?
+  detail      HotelDetail? @relation("HotelDetail")
 
   @@index([slug])
   @@index([city, country])
+  @@index([starRating, pricePerNight])
   @@index([agencyId])
   @@map("hotels")
+}
+
+
+/// Amenidades normalizadas do Hotel (extraídas do JSON amenities)
+model HotelAmenity {
+  id      String @id @default(uuid())
+  hotelId String @map("hotel_id")
+  name    String @db.VarChar(100)
+
+  hotel Hotel @relation("HotelAmenities", fields: [hotelId], references: [id], onDelete: Cascade)
+
+  @@unique([hotelId, name])
+  @@index([hotelId])
+  @@index([name])
+  @@map("hotel_amenities")
 }
 
 model HotelDetail {
@@ -1410,7 +1423,7 @@ model HotelDetail {
   createdAt    DateTime @default(now()) @map("createdat") @db.Timestamp(0)
   updatedAt    DateTime @updatedAt @map("updatedat") @db.Timestamp(0)
 
-  hotel Hotel @relation(fields: [hotelId], references: [id], onDelete: Cascade)
+  hotel Hotel @relation("HotelDetail", fields: [hotelId], references: [id], onDelete: Cascade)
 
   @@map("hotel_details")
 }
@@ -2095,7 +2108,7 @@ model Booking {
   userId                   String  @map("user_id") 
   agencyId                 String? @map("agency_id") 
   clientId                 String? @map("client_id") 
-  destinationId            String  @map("destination_id") 
+  destinationId            String? @map("destination_id") 
   tripId                   String? @map("trip_id") 
   tripDestinationId        String? @map("trip_destination_id") 
   bookingReference         String  @unique @map("booking_reference") @db.VarChar(50)
@@ -2164,7 +2177,7 @@ model Booking {
   user            User              @relation(fields: [userId], references: [id], onDelete: Cascade)
   agency          Agency?           @relation(fields: [agencyId], references: [id], onDelete: Cascade)
   client          Client?           @relation("ClientBookings", fields: [clientId], references: [id], onDelete: SetNull)
-  destination     Destination       @relation(fields: [destinationId], references: [id])
+  destination     Destination?      @relation(fields: [destinationId], references: [id])
   trip            Trip?             @relation(fields: [tripId], references: [id])
   tripDestination TripDestination?  @relation("TripDestinationBookings", fields: [tripDestinationId], references: [id])
   payments        PaymentTransaction[]
@@ -3886,7 +3899,7 @@ model HotelImage {
   title     String?  @db.Text
   createdAt DateTime @default(now()) @db.Timestamp(0)
 
-  hotel Hotel @relation(fields: [hotelId], references: [id], onDelete: Cascade)
+    hotel Hotel @relation(fields: [hotelId], references: [id], onDelete: Cascade)
 
   @@map("hotel_images")
 }
@@ -4445,8 +4458,10 @@ model WvDestination {
   listings WvListing[]
 
   @@index([pais, nome])
+  @@index([slug])
   @@index([lang, nome])
   @@index([iata])
+  @@index([iata, lang, hotelCount])
   @@map("wv_destinations")
 }
 
@@ -4455,7 +4470,7 @@ model WvHotel {
   destinoId     Int      @map("destino_id")
   nome          String   @db.VarChar(300)
   estrelas      Int      @default(3)
-  precoPorNoite Int      @map("preco_por_noite")
+  precoPorNoite Decimal  @map("preco_por_noite") @db.Decimal(10, 2)
   comodidades   Json     @default("[]") @db.JsonB
   fonte         String?  @db.VarChar(40)
   latitude      Float?   @db.Real
@@ -4467,14 +4482,31 @@ model WvHotel {
   createdAt     DateTime @default(now()) @map("created_at")
 
   destino  WvDestination   @relation(fields: [destinoId], references: [id], onDelete: Cascade)
+  amenities  WvHotelAmenity[]
   reviews  WvHotelReview[]
 
   @@index([destinoId])
+  @@index([destinoId, precoPorNoite])
   @@index([latitude, longitude])
   @@map("wv_hotels")
 }
 
 /// Avaliações MVP (utilizadores da app; sem stars OSM centralizados).
+
+/// Amenidades normalizadas do WvHotel (extraídas do JSON comodidades)
+model WvHotelAmenity {
+  id        Int      @id @default(autoincrement())
+  wvHotelId Int      @map("wv_hotel_id")
+  name      String   @db.VarChar(100)
+
+  wvHotel WvHotel @relation(fields: [wvHotelId], references: [id], onDelete: Cascade)
+
+  @@unique([wvHotelId, name])
+  @@index([wvHotelId])
+  @@index([name])
+  @@map("wv_hotel_amenities")
+}
+
 model WvHotelReview {
   id         String   @id @default(cuid())
   hotelId    Int      @map("hotel_id")
@@ -4504,6 +4536,7 @@ model WvFlight {
   destino WvDestination @relation(fields: [destinoId], references: [id], onDelete: Cascade)
 
   @@index([origem, destinoId])
+  @@index([origem, destinoIata])
   @@index([destinoIata])
   @@map("wv_flights")
 }

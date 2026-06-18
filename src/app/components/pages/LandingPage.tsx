@@ -1,7 +1,8 @@
-import { useCallback, useEffect, useMemo, useState } from 'react';
+'use client';
+
+import { useCallback } from 'react';
 import { useRouter } from 'next/navigation';
-import { useLocale, useTranslations } from 'next-intl';
-import { useSession } from 'next-auth/react';
+import { useTranslations } from 'next-intl';
 import { Button } from '../ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../ui/card';
 import { Badge } from '../ui/badge';
@@ -13,138 +14,32 @@ import {
   Zap,
   Brain,
   Plane,
-  Hotel,
-  Calendar,
   Users,
   Award,
   CheckCircle2,
   ArrowRight,
   Palmtree,
-  Languages,
   Lock,
-  Wallet,
-  Moon,
-  Sun
 } from 'lucide-react';
+import { AppHeader } from '../AppHeader';
+import { AppFooter } from '../AppFooter';
 
 interface LandingPageProps {
   onGetStarted: () => void;
-  onNavigateToDestinations?: () => void;
-  onNavigateToLegal?: (pageType: 'terms' | 'privacy' | 'gdpr' | 'cancellations' | 'cookies') => void;
-  onNavigateToAbout?: () => void;
-  onNavigateToContact?: () => void;
-  onNavigateToFAQ?: () => void;
 }
 
-export function LandingPage({ onGetStarted, onNavigateToDestinations, onNavigateToLegal, onNavigateToAbout, onNavigateToContact, onNavigateToFAQ }: LandingPageProps) {
+export function LandingPage({ onGetStarted }: LandingPageProps) {
   const router = useRouter();
-  const locale = useLocale();
   const t = useTranslations('landing');
-  const [isDark, setIsDark] = useState(false);
-  const { data: session } = useSession();
-
-  useEffect(() => {
-    if (isDark) {
-      document.documentElement.classList.add('dark');
-    } else {
-      document.documentElement.classList.remove('dark');
-    }
-  }, [isDark]);
-
-  const setLocale = useCallback(
-    (nextLocale: string) => {
-      document.cookie = `NEXT_LOCALE=${nextLocale}; path=/; max-age=31536000; samesite=lax`;
-      router.refresh();
-    },
-    [router],
-  );
-
-  const initials = useMemo(() => {
-    if (!session?.user) return null;
-    const base = (session.user.name?.trim() || session.user.email || '').trim();
-    if (!base) return null;
-    const parts = base.split(/\s+/).filter(Boolean);
-    const first = (parts[0]?.[0] ?? '').toUpperCase();
-    const second = (parts.length > 1 ? parts[parts.length - 1]?.[0] : parts[0]?.[1]) ?? '';
-    return (first + String(second).toUpperCase()).slice(0, 2);
-  }, [session]);
-
   const goDashboard = useCallback(() => router.push('/dashboard'), [router]);
   const goForm = useCallback(() => router.push('/preferences/edit'), [router]);
 
   return (
     <div className="min-h-screen">
-      {/* Header */}
-      <header className="fixed top-0 left-0 right-0 bg-white/80 dark:bg-gray-900/80 backdrop-blur-md border-b border-gray-200 dark:border-gray-700 z-50 transition-colors">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
-          <div className="flex items-center justify-between">
-            <h1 className="text-2xl font-bold bg-gradient-to-r from-teal-700 via-teal-600 to-orange-500 bg-clip-text text-transparent">
-              AKMLEVA
-            </h1>
-
-            <div className="flex items-center gap-4">
-              {session?.user && initials && (
-                <div className="flex items-center gap-2">
-                  <button
-                    onClick={goDashboard}
-                    title={t('header.dashboard')}
-                    className="w-10 h-10 rounded-full bg-gradient-to-r from-teal-600 to-orange-500 text-white font-semibold shadow-md hover:opacity-90 transition-opacity"
-                  >
-                    {initials}
-                  </button>
-                  <Button variant="outline" size="sm" onClick={goForm} className="border-teal-300 dark:border-gray-600">
-                    {t('header.preferencesForm')}
-                  </Button>
-                </div>
-              )}
-
-              {/* Theme Toggle */}
-              <button
-                onClick={() => setIsDark(!isDark)}
-                className="p-2 rounded-lg border border-teal-200 dark:border-gray-600 bg-white dark:bg-gray-800 hover:bg-teal-50 dark:hover:bg-gray-700 transition-colors"
-                title={isDark ? t('header.lightMode') : t('header.darkMode')}
-              >
-                {isDark ? (
-                  <Sun className="w-5 h-5 text-orange-500" />
-                ) : (
-                  <Moon className="w-5 h-5 text-teal-700" />
-                )}
-              </button>
-
-              {/* Language Selector */}
-              <div className="flex items-center gap-2">
-                <Languages className="w-4 h-4 text-teal-700 dark:text-teal-400" />
-                <div className="inline-flex rounded-lg border border-teal-200 dark:border-gray-600 bg-white dark:bg-gray-800 p-1 shadow-sm">
-                  {[
-                    { code: 'en', label: '🇺🇸', name: 'English' },
-                    { code: 'pt', label: '🇵🇹', name: 'Português' },
-                    { code: 'es', label: '🇪🇸', name: 'Español' },
-                    { code: 'fr', label: '🇫🇷', name: 'Français' }
-                  ].map((lang) => (
-                    <button
-                      key={lang.code}
-                      onClick={() => setLocale(lang.code)}
-                      className={`
-                        px-3 py-1.5 text-sm font-medium rounded-md transition-all
-                        ${locale === lang.code
-                          ? 'bg-gradient-to-r from-teal-600 to-orange-500 text-white shadow-md'
-                          : 'text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white hover:bg-gray-50 dark:hover:bg-gray-700'
-                        }
-                      `}
-                      title={lang.name}
-                    >
-                      {lang.label}
-                    </button>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </header>
+      <AppHeader showDashboard showPreferences onDashboard={goDashboard} />
 
       {/* Hero Section */}
-      <section className="pt-32 pb-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-teal-50 via-cyan-50 to-orange-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 transition-colors">
+      <section className="pt-28 pb-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-teal-50 via-cyan-50 to-orange-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 transition-colors">
         <div className="max-w-7xl mx-auto">
           <div className="text-center space-y-8">
             <div className="inline-flex items-center gap-2 bg-white dark:bg-gray-800 border border-teal-200 dark:border-gray-600 rounded-full px-4 py-2 shadow-sm">
@@ -177,8 +72,9 @@ export function LandingPage({ onGetStarted, onNavigateToDestinations, onNavigate
                 variant="outline"
                 size="lg"
                 className="gap-2 text-lg px-8 py-6 h-auto border-teal-300 dark:border-gray-600 hover:bg-teal-50 dark:hover:bg-gray-800 dark:text-gray-200"
+                asChild
               >
-                {t('learnMore')}
+                <a href="#features">{t('learnMore')}</a>
               </Button>
             </div>
 
@@ -328,7 +224,7 @@ export function LandingPage({ onGetStarted, onNavigateToDestinations, onNavigate
         </div>
       </section>
 
-      {/* Stats Section */}
+      {/* Stats Section - values come from translations */}
       <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-r from-teal-700 to-orange-600">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-12">
@@ -336,21 +232,26 @@ export function LandingPage({ onGetStarted, onNavigateToDestinations, onNavigate
           </div>
 
           <div className="grid md:grid-cols-4 gap-8">
-            {[
-              { icon: Globe, label: t('destinations'), value: '190+' },
-              { icon: Users, label: t('happyTravelers'), value: '50K+' },
-              { icon: Award, label: t('aiAccuracy'), value: '98%' },
-              { icon: Shield, label: t('statsBadges.soc2Label'), value: t('statsBadges.soc2Value') }
-            ].map((stat, index) => {
-              const Icon = stat.icon;
-              return (
-                <div key={index} className="text-center">
-                  <Icon className="w-12 h-12 text-white/80 mx-auto mb-4" />
-                  <div className="text-5xl font-bold text-white mb-2">{stat.value}</div>
-                  <div className="text-lg text-white/90">{stat.label}</div>
-                </div>
-              );
-            })}
+            <div className="text-center">
+              <Globe className="w-12 h-12 text-white/80 mx-auto mb-4" />
+              <div className="text-5xl font-bold text-white mb-2">190+</div>
+              <div className="text-lg text-white/90">{t('destinations')}</div>
+            </div>
+            <div className="text-center">
+              <Users className="w-12 h-12 text-white/80 mx-auto mb-4" />
+              <div className="text-5xl font-bold text-white mb-2">50K+</div>
+              <div className="text-lg text-white/90">{t('happyTravelers')}</div>
+            </div>
+            <div className="text-center">
+              <Award className="w-12 h-12 text-white/80 mx-auto mb-4" />
+              <div className="text-5xl font-bold text-white mb-2">98%</div>
+              <div className="text-lg text-white/90">{t('aiAccuracy')}</div>
+            </div>
+            <div className="text-center">
+              <Shield className="w-12 h-12 text-white/80 mx-auto mb-4" />
+              <div className="text-5xl font-bold text-white mb-2">{t('statsBadges.soc2Value')}</div>
+              <div className="text-lg text-white/90">{t('statsBadges.soc2Label')}</div>
+            </div>
           </div>
         </div>
       </section>
@@ -376,118 +277,7 @@ export function LandingPage({ onGetStarted, onNavigateToDestinations, onNavigate
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="bg-gray-900 dark:bg-black text-white py-12 px-4 sm:px-6 lg:px-8 border-t border-gray-800 dark:border-gray-900 transition-colors">
-        <div className="max-w-7xl mx-auto">
-          <div className="flex items-center justify-center gap-8 flex-wrap text-sm text-gray-400 dark:text-gray-500 mb-6">
-            <div className="flex items-center gap-2">
-              <Shield className="w-4 h-4 text-green-500" />
-                <span>{t('footerBadges.soc2Certified')}</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <Lock className="w-4 h-4 text-teal-500 dark:text-teal-400" />
-                <span>{t('footerBadges.encryption256')}</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <Globe className="w-4 h-4 text-teal-500 dark:text-teal-400" />
-                <span>{t('footerBadges.gdprCompliant')}</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <Award className="w-4 h-4 text-orange-500 dark:text-orange-400" />
-                <span>{t('footerBadges.iso27001')}</span>
-            </div>
-          </div>
-
-          <div className="flex items-center justify-center gap-6 flex-wrap text-sm mb-6">
-            {onNavigateToDestinations && (
-              <>
-                <button
-                  onClick={onNavigateToDestinations}
-                  className="text-gray-400 hover:text-teal-400 transition-colors font-medium"
-                >
-                  {t('footerLinks.destinations')}
-                </button>
-                <span className="text-gray-700">•</span>
-              </>
-            )}
-            {onNavigateToAbout && (
-              <>
-                <button
-                  onClick={onNavigateToAbout}
-                  className="text-gray-400 hover:text-teal-400 transition-colors font-medium"
-                >
-                  {t('footerLinks.about')}
-                </button>
-                <span className="text-gray-700">•</span>
-              </>
-            )}
-            {onNavigateToContact && (
-              <>
-                <button
-                  onClick={onNavigateToContact}
-                  className="text-gray-400 hover:text-teal-400 transition-colors font-medium"
-                >
-                  {t('footerLinks.contact')}
-                </button>
-                <span className="text-gray-700">•</span>
-              </>
-            )}
-            {onNavigateToFAQ && (
-              <>
-                <button
-                  onClick={onNavigateToFAQ}
-                  className="text-gray-400 hover:text-teal-400 transition-colors font-medium"
-                >
-                  {t('footerLinks.faq')}
-                </button>
-                <span className="text-gray-700">•</span>
-              </>
-            )}
-            {onNavigateToLegal && (
-              <>
-                <button
-                  onClick={() => onNavigateToLegal('terms')}
-                  className="text-gray-400 hover:text-teal-400 transition-colors"
-                >
-                  {t('footerLinks.terms')}
-                </button>
-                <span className="text-gray-700">•</span>
-                <button
-                  onClick={() => onNavigateToLegal('privacy')}
-                  className="text-gray-400 hover:text-teal-400 transition-colors"
-                >
-                  {t('footerLinks.privacy')}
-                </button>
-                <span className="text-gray-700">•</span>
-                <button
-                  onClick={() => onNavigateToLegal('gdpr')}
-                  className="text-gray-400 hover:text-teal-400 transition-colors"
-                >
-                  {t('footerLinks.gdpr')}
-                </button>
-                <span className="text-gray-700">•</span>
-                <button
-                  onClick={() => onNavigateToLegal('cancellations')}
-                  className="text-gray-400 hover:text-teal-400 transition-colors"
-                >
-                  {t('footerLinks.cancellations')}
-                </button>
-                <span className="text-gray-700">•</span>
-                <button
-                  onClick={() => onNavigateToLegal('cookies')}
-                  className="text-gray-400 hover:text-teal-400 transition-colors"
-                >
-                  {t('footerLinks.cookies')}
-                </button>
-              </>
-            )}
-          </div>
-
-          <div className="text-center text-gray-500 dark:text-gray-600 text-sm">
-            {t('footerCopyright')}
-          </div>
-        </div>
-      </footer>
+      <AppFooter />
     </div>
   );
 }

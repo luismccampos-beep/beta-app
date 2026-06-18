@@ -18,27 +18,6 @@ services:
       timeout: 5s
       retries: 10
 
-  mysql:
-    image: mysql:8.0
-    container_name: akmleva-mysql
-    restart: unless-stopped
-    environment:
-      MYSQL_ROOT_PASSWORD: password
-      MYSQL_DATABASE: akmleva
-    ports:
-      - "3306:3306"
-    volumes:
-      - mysql-data:/var/lib/mysql
-    command:
-      --default-authentication-plugin=mysql_native_password
-      --character-set-server=utf8mb4
-      --collation-server=utf8mb4_unicode_ci
-    healthcheck:
-      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-uroot", "-ppassword"]
-      interval: 10s
-      timeout: 5s
-      retries: 5
-
   redis:
     image: redis:7-alpine
     container_name: akmleva-redis
@@ -78,6 +57,5 @@ services:
 
 volumes:
   postgres-data:
-  mysql-data:
   redis-data:
   valhalla-tiles:
