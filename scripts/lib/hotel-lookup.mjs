@@ -16,7 +16,77 @@ const GEO_NEIGHBORS = [
   [1, 1],
 ];
 
+// Mapeamento EN→PT para nomes de cidades/distritos (para matching cruzado)
+const EN_TO_PT = {
+  'lisbon': 'lisboa',
+  'oporto': 'porto',
+  'coimbra': 'coimbra',
+  'evora': 'evora',
+  'faro': 'faro',
+  'funchal': 'funchal',
+  'ponta delgada': 'ponta delgada',
+  'angra do heroismo': 'angra do heroismo',
+  'braga': 'braga',
+  'aveiro': 'aveiro',
+  'guimaraes': 'guimaraes',
+  'lagos': 'lagos',
+  'albufeira': 'albufeira',
+  'portimao': 'portimao',
+  'tavira': 'tavira',
+  'setubal': 'setubal',
+  'santarem': 'santarem',
+  'viseu': 'viseu',
+  'guarda': 'guarda',
+  'castelo branco': 'castelo branco',
+  'portalegre': 'portalegre',
+  'beja': 'beja',
+  'leiria': 'leiria',
+  'madeira': 'madeira',
+  'azores': 'acores',
+  'seville': 'sevilla',
+  'barcelona': 'barcelona',
+  'madrid': 'madrid',
+  'granada': 'granada',
+  'valencia': 'valencia',
+  'mallorca': 'palma de mallorca',
+  'ibiza': 'eivissa',
+  'copenhagen': 'copenhaga',
+  'munich': 'munique',
+  'cologne': 'colonia',
+  'rome': 'roma',
+  'milan': 'milao',
+  'florence': 'florenca',
+  'venice': 'veneza',
+  'naples': 'napoles',
+  'turin': 'turim',
+  'genoa': 'genova',
+  'zurich': 'zurique',
+  'geneva': 'genebra',
+  'basel': 'basileia',
+  'berne': 'berna',
+  'vienna': 'viena',
+  'prague': 'praga',
+  'warsaw': 'varsovia',
+  'budapest': 'budapeste',
+  'bucharest': 'bucareste',
+  'athens': 'atenas',
+  'istanbul': 'istambul',
+  'moscow': 'moscovo',
+  'amsterdam': 'amesterdao',
+  'brussels': 'bruxelas',
+  'antwerp': 'antuerpia',
+  'luxembourg': 'luxemburgo',
+  'london': 'londres',
+  'edinburgh': 'edimburgo',
+  'dublin': 'dublin',
+  'stockholm': 'estocolmo',
+  'oslo': 'oslo',
+  'helsinki': 'helsinquia',
+  'reykjavik': 'reiquiavique',
+};
+
 /**
+ * Gera chaves de destino incluindo alternativas EN→PT.
  * @param {string} nome
  */
 export function destKeys(nome) {
@@ -24,6 +94,14 @@ export function destKeys(nome) {
   const keys = new Set([fold(base), fold(nome)]);
   const leaf = base.split(/[,|/]/)[0]?.trim();
   if (leaf) keys.add(fold(leaf));
+  // Adicionar alternativa PT se o nome for inglês
+  const folded = fold(base);
+  const ptAlt = EN_TO_PT[folded];
+  if (ptAlt) keys.add(ptAlt);
+  // Também tentar o inverso: se o nome já for PT, tentar EN
+  for (const [en, pt] of Object.entries(EN_TO_PT)) {
+    if (pt === folded) keys.add(en);
+  }
   return [...keys].filter((k) => k.length > 1);
 }
 
@@ -67,6 +145,35 @@ export function lookupHotelsByName(dest, index, max = 8) {
     if (pushRows(index.byArticle?.[k], seen, out, max)) return out;
   }
 
+  // Também consultar byCity para TBO + Global Hotels
+  for (const k of keys) {
+    if (pushRows(index.byCity?.[k], seen, out, max)) return out;
+  }
+
+  return out;
+}
+
+/**
+ * Lookup hotéis por nome individual (byNome index - TBO + Global + Wikivoyage).
+ * Faz match exato por fold do nome do hotel.
+ * @param {string} hotelNome
+ * @param {object} index
+ * @param {number} max
+ */
+export function lookupHotelsByNome(hotelNome, index, max = 8) {
+  const key = fold(hotelNome);
+  if (!key || key.length < 2) return [];
+  const out = [];
+  const seen = new Set();
+  // Match exato
+  pushRows(index.byNome?.[key], seen, out, max);
+  if (out.length >= max) return out;
+  // Match fuzzy: procurar chaves que contenham ou sejam contidas
+  for (const k of index.nomeKeys ?? []) {
+    if (k === key || k.includes(key) || key.includes(k)) {
+      if (pushRows(index.byNome?.[k], seen, out, max)) return out;
+    }
+  }
   return out;
 }
 
@@ -134,6 +241,7 @@ export function lookupAllHotels(dest, index, max = 8) {
   for (const fn of [
     () => lookupHotelsByName(dest, index, max),
     () => lookupHotelsFuzzyArticle(dest, index, max),
+    () => lookupHotelsByNome(dest.nome ?? '', index, max),
     () =>
       lookupHotelsGeo(dest.latitude, dest.longitude, index, max),
   ]) {

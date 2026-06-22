@@ -30,7 +30,8 @@ const RADIUS = radiusArg
   : 5000;
 
 const BIZDATA_ONLY = process.argv.includes('--bizdata-only');
-const RESUME = process.argv.includes('--resume');
+const RESUME = !process.argv.includes('--force');
+const FORCE = process.argv.includes('--force');
 
 // ── BizData categories (fast, reliable) ──
 const BIZDATA_CATEGORIES = ['museum', 'gallery', 'theatre', 'cinema'];

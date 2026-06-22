@@ -31,7 +31,7 @@ const RADIUS = radiusArg
 const HOSPITALS_ONLY = process.argv.includes('--hospitals-only');
 const POLICE_ONLY = process.argv.includes('--police-only');
 const BIZDATA_ONLY = process.argv.includes('--bizdata-only');
-const RESUME = process.argv.includes('--resume');
+const RESUME = !process.argv.includes('--force');
 
 // ── BizData categories (primary, no rate limits) ──
 const BIZDATA_HOSPITAL_CATEGORIES = ['hospital', 'clinic', 'doctors'];

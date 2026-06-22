@@ -24,7 +24,10 @@ const ROOT = resolve(__dirname, '..');
 const BUNDLE = resolve(ROOT, 'src/data/travel-mock/bundle-wikivoyage.json');
 const LISTINGS_CSV = resolve(ROOT, 'data/hotels/wikivoyage-listings-en.csv');
 
-const prisma = new PrismaClient();
+// Use direct (unpooled) URL for long-running scripts — Neon pooler closes idle connections
+const prisma = new PrismaClient({
+  datasources: { db: { url: process.env.DATABASE_URL_UNPOOLED ?? process.env.DATABASE_URL } },
+});
 const BATCH = 400;
 const fresh = process.argv.includes('--fresh');
 const skipDestinations = process.argv.includes('--skip-destinations');
