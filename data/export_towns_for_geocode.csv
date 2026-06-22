@@ -1,0 +1,736 @@
+id,nome,pais_code,pais,hotelCount
+23654,"Letenye",HR,HR,52
+18215,"Visegrád",HU,HU,49
+18169,"Villach",AT,AT,48
+4230,"Bergen",NO,NO,44
+14795,"Rømø",DK,DK,42
+4403,"Birmingham",US,US,41
+25241,"Tiszafüred",HU,HU,41
+22598,"Iskandar Puteri",MY,MY,41
+7572,"La Fortuna",CR,CR,41
+11142,"Luhansk",UA,UA,41
+21799,"Pasir Gudang",MY,MY,41
+28102,"National parks in Thailand",TH,TH,40
+20713,"Pyeongchang",KR,KR,40
+14026,"Phu Quoc",VN,VN,40
+20963,"Kimitoön",FI,FI,40
+16664,"St Helens (Tasmania)",AU,AU,40
+17538,"Tornio",FI,FI,40
+4360,"Australia's big things",AU,AU,40
+19615,"Kronstadt",RO,RO,39
+27499,"Pocheon",KR,KR,39
+23682,"Pacsa",HU,HU,38
+13273,"Odsherred",DK,DK,38
+9974,"Kincardine (Ontario)",CA,CA,37
+2582,"Bergen",NO,NO,36
+23584,"Kamenice nad Lipou",CZ,CZ,35
+15405,"Samsø",TR,TR,34
+14391,"Poulsbo",US,US,34
+13607,"Pakse",LA,LA,34
+24738,"Encs",HU,HU,33
+16861,"Sur",LB,LB,33
+13812,"Patras",GR,GR,33
+19773,"Samoeng Loop",TH,TH,33
+13347,"Ollantaytambo",PE,PE,33
+17303,"The Catlins",NZ,NZ,33
+17065,"Taman Negara",MY,MY,33
+16152,"Sigulda",LV,LV,32
+16170,"Sillamäe",EE,EE,32
+6763,"Dong Hoi",VN,VN,31
+13536,"Oxapampa",PE,PE,31
+22462,"Flores (Azores)",PT,PT,31
+15657,"Sa Pa",VN,VN,31
+28135,"Hadong",KR,KR,31
+12509,"Mysen",NO,NO,30
+23696,"Reefton",NZ,NZ,30
+20037,"Laponia",NO,NO,30
+16672,"St. Jacobs (Ontario)",CA,CA,30
+24019,"Arts in Japan",JP,JP,29
+24210,"Pelkosenniemi",SE,SE,28
+8447,"Hamelin",DE,DE,28
+15561,"San Pedro de Atacama",CL,CL,28
+15200,"Saaremaa",DE,DE,27
+5871,"Chuy",BR,BR,27
+8102,"Grand Case",MF,MF,27
+19565,"Koroni",FM,FM,27
+12647,"Narva",EE,EE,26
+17932,"Utsjoki",NO,NO,26
+24964,"Rymättylä",FI,FI,26
+24962,"Paimio",FI,FI,25
+26278,"Ilmajoki",FI,FI,25
+25998,"Askola",FI,FI,25
+10669,"Lüderitz",NA,NA,25
+26301,"Bad Staffelstein",DE,DE,24
+28018,"Tatehuarí Huajuyé",MX,MX,24
+26290,"Bella Coola",CA,CA,24
+13516,"Ouray",CH,CH,24
+26954,"Linnanmäki",FI,FI,24
+10594,"Lappajärvi",SE,SE,24
+8892,"Huay Xai",TH,TH,24
+8929,"Huanchaco",PE,PE,23
+22945,"Manazuru",JP,JP,23
+19665,"Taipa-Mangonui",NZ,NZ,23
+8612,"Höfn",IS,IS,22
+13602,"Paju",KR,KR,22
+25958,"Saint-Aimé-des-Lacs",CA,CA,22
+24138,"Didsbury and Carstairs",CA,CA,21
+28274,"Hinsdale (Massachusetts)",PE,PE,21
+25382,"Adjuntas",PR,PR,21
+5843,"Choquequirao",PE,PE,21
+9795,"Keetmanshoop",NA,NA,21
+17913,"Urubamba",PE,PE,20
+23643,"Vulcan (Alberta)",CA,CA,20
+23221,"Karamea",NZ,NZ,20
+20397,"Loviisa",FI,FI,20
+22547,"Trece Martires",PH,PH,20
+8885,"Hortobágy",HU,HU,20
+15171,"Rurrenabaque",BO,BO,20
+17909,"Urmia",IR,IR,20
+20643,"Zruč nad Sázavou",CZ,CZ,20
+21661,"Raetihi",NZ,NZ,20
+14122,"Placentia (Newfoundland)",CA,CA,19
+11818,"Meriden (Connecticut)",MX,MX,19
+11324,"Makarska",HR,HR,19
+26305,"Nastola",FI,FI,19
+12874,"New Ulm (Minnesota)",US,US,19
+26951,"Marttila",FI,FI,19
+16981,"Tachileik",MM,MM,19
+13793,"Passu",CN,CN,19
+14120,"Placencia",IT,IT,19
+24961,"Sauvo",FI,FI,18
+26457,"Pudasjärvi",FI,FI,18
+13960,"Petawawa",CA,CA,18
+26052,"Kaskinen",FI,FI,18
+6971,"Eastport (Newfoundland)",CA,CA,18
+26565,"Tohmajärvi",FI,FI,17
+26206,"Viking (Alberta)",NO,NO,17
+18720,"Winkler",CA,CA,17
+18300,"Waitomo",NZ,NZ,17
+25205,"Jomon Prehistoric Sites in Northern Japan",JP,JP,17
+15891,"Selkirk (Manitoba)",CA,CA,17
+16919,"Sydfynske Øhav",DK,DK,17
+23730,"Utö (Finland)",SE,SE,17
+7416,"Ferghana",UZ,UZ,17
+18308,"Wakefield (New Zealand)",NZ,NZ,17
+14458,"Princeton (British Columbia)",CA,CA,16
+4254,"Bernal",PE,PE,16
+27489,"Bréhat",FR,FR,16
+14012,"Phimai",TH,TH,16
+20279,"Kalajoki",FI,FI,16
+21805,"Acadia",CA,CA,16
+13853,"Pedasi",PA,PA,16
+27232,"Aš",CZ,CZ,16
+8239,"Grodno",BY,BY,16
+16651,"Stewart",CA,CA,16
+24884,"Gelephu",BT,BT,16
+16880,"Sussex (New Brunswick)",CA,CA,16
+7203,"Ephesus",TR,TR,16
+24528,"Orivesi",FI,FI,16
+22797,"Pottenstein",DE,DE,16
+11537,"Mariánské Lázně",CZ,CZ,15
+6391,"Dabu",CI,CI,15
+15285,"St. Lawrence",JE,JE,15
+18678,"Williamstown (New Jersey)",US,US,15
+17436,"Tivat",ME,ME,15
+25094,"Ritsem",SE,SE,15
+23417,"Geraldton (Ontario)",CA,CA,15
+24776,"Parkano",FI,FI,15
+18165,"Vilcabamba",PE,PE,15
+18372,"Warroad",BR,BR,15
+17952,"Vadstena and Ödeshög",SE,SE,15
+19290,"Nackawic",CA,CA,15
+27682,"Amatlán de Cañas",MX,MX,15
+26188,"Saint-Amable",CA,CA,15
+15345,"Salento",CO,CO,14
+20433,"Riksgränsen",NO,NO,14
+25994,"Pertunmaa",FI,FI,14
+13139,"Notodden",NO,NO,14
+23858,"Waterford (Ontario)",CA,CA,14
+26224,"Myrskylä",SE,SE,14
+23993,"Stokmarknes",NO,NO,14
+24948,"Kuhmoinen",FI,FI,14
+16658,"St George (Queensland)",AU,AU,14
+24264,"Utrechtse Heuvelrug",DE,DE,14
+24860,"Carman (Manitoba)",CA,CA,14
+22240,"Lüdinghausen",DE,DE,14
+6568,"Delphi",GR,GR,14
+18775,"Wonsan",KP,KP,13
+3475,"Ascension",BO,BO,13
+10192,"Ko Sichang",TH,TH,13
+22921,"Novo Selo",MK,MK,13
+26840,"Pomarkku",FI,FI,13
+18380,"Wartrail and New England",ZA,ZA,13
+21318,"Boac",PH,PH,13
+20547,"Minca",DE,DE,13
+24492,"New Administrative Capital (Egypt)",EG,EG,13
+27343,"Las Leñas",AR,AR,13
+15912,"Senmonorom",KH,KH,13
+14095,"Pisac",PE,PE,13
+21235,"Hell-Ville",MG,MG,13
+23216,"Longlac",CA,CA,13
+24449,"Glückstadt",DE,DE,13
+24853,"Souris (Manitoba)",CA,CA,13
+24774,"Hämeenkyrö",FI,FI,12
+28441,"Diwali",GB,GB,12
+27371,"Tamsahelte",MA,MA,12
+20241,"Bayham (Ontario)",CA,CA,12
+21761,"Sacheon",KR,KR,12
+24960,"Somero",FI,FI,12
+4400,"Birgunj",NP,NP,12
+19806,"Gasan",IN,IN,12
+22941,"Occitanie",ES,ES,12
+14532,"Puerto Varas",CL,CL,12
+23265,"Jementah",MY,MY,12
+7064,"Elba",EE,EE,12
+12147,"Monte Albán",MX,MX,12
+20366,"Innisfail (Queensland)",AU,AU,12
+20396,"Clinton (Ontario)",CA,CA,12
+3291,"Anlong Veng",KH,KH,11
+3279,"Angola (Indiana)",US,US,11
+20220,"Lordsburg",US,US,11
+27298,"Concepción de Ataco",SV,SV,11
+21297,"Knokke-Heist",BE,BE,11
+5603,"Charleville",FR,FR,11
+11293,"Magnolia (Arkansas)",US,US,11
+26124,"Glass House Mountains",AU,AU,11
+16506,"Southwest Washington",CA,CA,11
+26518,"Tambrauw Regency",ID,ID,11
+16180,"Silverton (Colorado)",US,US,11
+18297,"Wairarapa",NZ,NZ,11
+7128,"Elmira (Ontario)",DE,DE,11
+20925,"Saint-Claude",FR,FR,11
+27628,"Tonatico",MX,MX,11
+9016,"Ibarra",EC,EC,11
+26528,"Toivakka",FI,FI,11
+24182,"Hanna (Alberta)",CA,CA,11
+27204,"Maxcanú",MX,MX,11
+26839,"Cuetzalan",MX,MX,11
+26619,"Utajärvi",FI,FI,11
+26681,"St. Christoph",AT,AT,11
+3744,"Baiona",ES,ES,10
+22954,"Cambron-Casteau",BE,BE,10
+26911,"Inland Central Ostrobothnia",FI,FI,10
+7531,"Forestville",AU,AU,10
+26574,"Oripää",FI,FI,10
+18614,"Whangaroa",NZ,NZ,10
+4543,"Bol",TD,TD,10
+11229,"Machadodorp",ZA,ZA,10
+9980,"Kingaroy",AU,AU,10
+24626,"Mismaloya",MX,MX,10
+12913,"Nikel",AL,AL,10
+21523,"Tenhippalam",BR,BR,10
+5325,"Carnarvon",AU,AU,10
+17849,"Uliastai",MN,MN,10
+25858,"Bonham (Texas)",US,US,10
+24299,"Sakura",JP,JP,10
+16529,"Spencer (West Virginia)",US,US,10
+6346,"Culebra",PR,PR,10
+13364,"Omarama",NZ,NZ,10
+19658,"Hveragerði",IS,IS,10
+8548,"Hasle",DK,DK,10
+13155,"Nové Město pod Smrkem",PL,PL,10
+21725,"Berrima",AU,AU,10
+16440,"Southern Tasmania",AU,AU,10
+21979,"Wheaton (Illinois)",BR,BR,10
+24659,"Whataroa",NZ,NZ,9
+18027,"Vanderkloof",ZA,ZA,9
+26704,"Kärsämäki",FI,FI,9
+11295,"Magnolia (Texas)",US,US,9
+15743,"São Filipe",CV,CV,9
+19395,"Spiritwood",CA,CA,9
+23938,"Tamu",MM,MM,9
+26871,"Haapavesi",FI,FI,9
+23087,"Le Locle",CH,CH,9
+26219,"Vuolijoki",FI,FI,9
+13606,"Paksan",LA,LA,9
+24773,"Juupajoki",FI,FI,9
+17993,"Valles Calchaquíes",AR,AR,9
+3841,"Bandel",PT,PT,9
+17430,"Tissamaharama",LK,LK,9
+5422,"Catoosa",US,US,9
+25832,"Weslaco (Texas)",MX,MX,9
+22137,"Holašovice",CZ,CZ,9
+23856,"Fortune",US,US,9
+22501,"Irvinestown",IE,IE,9
+27971,"Cimarron",MX,MX,9
+22198,"T. Narsipur",IN,IN,9
+17534,"Torbay",CA,CA,9
+16119,"Siargao",PH,PH,9
+20257,"Cimaja",ID,ID,9
+21834,"Karesuando",SE,SE,8
+10281,"Kūaotunu",NZ,NZ,8
+23595,"Červená Lhota",CZ,CZ,8
+15179,"Rust",US,US,8
+27961,"Ihuatzio",MX,MX,8
+1616,"Salzburgo",AT,AT,8
+5623,"Charm",MX,MX,8
+20513,"La Grange (Texas)",CZ,CZ,8
+2598,"Canton",US,US,8
+2105,"Vila Nova de Gaia",PT,PT,8
+911,"Katmandu",NP,NP,8
+15881,"Sekupang",SG,SG,8
+2653,"Birmingham",US,US,8
+7148,"El Salvador",PH,PH,8
+1072,"Matina Franca",PT,PT,8
+27704,"Chalcatzingo",MX,MX,8
+6732,"DMZ (Vietnam)",VN,VN,8
+22332,"Sawarna",ID,ID,8
+2815,"Ako",JP,JP,8
+1332,"Parque Nacional dos Lagos de Plitvice",HR,HR,8
+7476,"Flaxmere",NZ,NZ,8
+2344,"Sa Pa",VN,VN,8
+3424,"Arizona",BR,BR,8
+1085,"Melgaço",BR,BR,8
+7186,"Englewood (Florida)",MX,MX,8
+23363,"Sant'Erasmo",AT,AT,8
+6271,"Cradle of Humankind",ZA,ZA,8
+26209,"Nusantara",ID,ID,8
+26783,"Rääkkylä",FI,FI,8
+26924,"Gedong Tataan",ID,ID,8
+20820,"Castletownbere",IE,IE,8
+1190,"Nova Odessa",BR,BR,8
+28345,"Dačice",CZ,CZ,8
+5655,"Chedworth",GB,GB,8
+8744,"Hillsborough (Northern Ireland)",IE,IE,8
+1203,"Novo Laredo",MX,MX,8
+21449,"Montebello (Quebec)",MX,MX,8
+26340,"Modisi",ID,ID,8
+12658,"Nassau (Germany)",DE,DE,8
+24448,"Friedrichstadt",DE,DE,8
+1856,"Taipei",TW,TW,8
+22831,"Sulitjelma",NO,NO,8
+14049,"Piha",NZ,NZ,8
+23003,"Chaitén",CL,CL,8
+11524,"Maremma",IT,IT,8
+19937,"Arau",CH,CH,8
+20793,"Thumrait",OM,OM,8
+26845,"Tablas",PH,PH,8
+25550,"Sainte-Ursule",CA,CA,8
+166,"Atenas",GR,GR,8
+12398,"Muang Ngeun",TH,TH,8
+13387,"Opatija",HR,HR,8
+2327,"Belmonte",BR,BR,8
+15558,"San Patricio-Melaque",BR,BR,8
+27101,"Savonranta",FI,FI,8
+19861,"Crewe (Virginia)",US,US,8
+17902,"Urban camping in Japan",JP,JP,8
+8389,"Hafjell",NO,NO,8
+28422,"Tunuyán",AR,AR,8
+163,"Assunção",BR,BR,8
+16116,"Shuswap",CA,CA,7
+269,"Bloomington-Normal",PT,PT,7
+25552,"Zirc",HU,HU,7
+18810,"Worthington (Minnesota)",US,US,7
+15247,"Saimaa",FI,FI,7
+21663,"Krapinske Toplice",HR,HR,7
+26283,"Franquelin",CA,CA,7
+7888,"Ghangaria",IN,IN,7
+17118,"Tarapoto",PE,PE,7
+16721,"Stonewall (Texas)",US,US,7
+18887,"Yamba",AU,AU,7
+25456,"Zec Borgia",CA,CA,7
+27728,"San Mauro Mare",IT,IT,7
+15739,"Sânnicolau Mare",RO,RO,7
+18059,"Vágar",FO,FO,7
+28040,"General Terán",MX,MX,7
+20189,"Årjäng",NO,NO,7
+23283,"Jasin",MY,MY,7
+19514,"Merowe",SD,SD,7
+26413,"Siikainen",FI,FI,7
+26155,"Kisantu",PT,PT,7
+22578,"Kilbirnie",GB,GB,7
+15224,"Safiental",CH,CH,7
+21986,"Cumilla",IN,IN,7
+26420,"Ausgram",IN,IN,7
+2117,"Villa Mercedes",AR,AR,7
+18296,"Waipukurau",NZ,NZ,7
+9809,"Kemaman",MY,MY,7
+13511,"Ouidah",BJ,BJ,7
+28288,"Chapleau",CA,CA,7
+26877,"Tuusniemi",FI,FI,7
+26883,"Ristijärvi",FI,FI,7
+22115,"Grenå",DK,DK,7
+1320,"Parque Nacional de Comoé",PT,PT,7
+18482,"Wellingborough",GB,GB,7
+23256,"Sandane",NO,NO,7
+22382,"Dugi Otok",HR,HR,7
+19165,"Muurame",FI,FI,7
+7973,"Glenorchy",AU,AU,7
+3045,"Alderney",FR,FR,7
+12899,"Güzelyurt (Northern Cyprus)",TR,TR,7
+17315,"Thenmala",IN,IN,7
+26178,"Jorgucat",GR,GR,7
+17301,"Thaton (Thailand)",TH,TH,7
+22815,"Kaechon",KP,KP,7
+23874,"Thandwe",MM,MM,7
+22363,"Rengasdengklok",ID,ID,7
+13450,"Oryol",RU,RU,7
+27159,"Castellnou de Seana",ES,ES,7
+7371,"Fanø",FR,FR,7
+1330,"Parque Nacional de Nahanni",PT,PT,7
+26870,"Haapajärvi",FI,FI,7
+1400,"Phuentsholing",BT,BT,7
+27454,"Licheń Stary",PL,PL,6
+14935,"Riederalp-Bettmeralp",CH,CH,6
+28364,"Krnov",CZ,CZ,6
+26723,"Neom",EG,EG,6
+13113,"Northwest Washington",CA,CA,6
+4363,"Big White",CA,CA,6
+15397,"Sam Neua",LA,LA,6
+16431,"Southeastern Alaska",CA,CA,6
+21212,"Curacautín",CL,CL,6
+10083,"Ko Bulon Leh",TH,TH,6
+7960,"Glencolmcille",IE,IE,6
+19359,"Rutherglen (Victoria)",AU,AU,6
+6905,"Eagle Nest",MX,MX,6
+21572,"Albenga",IT,IT,6
+10580,"Lao Cai",VN,VN,6
+26267,"Vårdö",FI,FI,6
+26347,"Commerce (Georgia)",US,US,6
+28350,"Fountains",NZ,NZ,6
+19008,"Yukon - Charley Rivers National Preserve",CA,CA,6
+22002,"Reinhardswald",DE,DE,6
+8789,"Hoedspruit",ZA,ZA,6
+9750,"Kawarthas",CA,CA,6
+4139,"Belen",MX,MX,6
+22171,"Karesuvanto",IT,IT,6
+18006,"Valtimo",FI,FI,6
+26246,"Multia",FI,FI,6
+20046,"Älvkarleby",SE,SE,6
+22158,"Anambas",CN,CN,6
+24365,"Puerto Williams",AR,AR,6
+14807,"Recaș",RO,RO,6
+18519,"Western Arizona",MX,MX,6
+26659,"Franklin (Tasmania)",AU,AU,6
+27368,"Langøya",NO,NO,6
+11567,"Marlinton",TR,TR,6
+26848,"Kragerø",NO,NO,6
+2985,"Ako",JP,JP,6
+2106,"Vila Nova Sintra",CV,CV,6
+20464,"Mpande",ZA,ZA,6
+28099,"Northwest Tyrol",IT,IT,6
+26590,"Xochicalco",MX,MX,6
+15261,"Sainte-Anne-des-Lacs",CA,CA,6
+27503,"Horinger",CN,CN,6
+26029,"Viitasaari",FI,FI,6
+16859,"Supraśl",PL,PL,6
+15731,"Saxon Elbland",CH,CH,6
+20566,"Niepołomice",PL,PL,6
+23744,"ǁKaras",PE,PE,6
+188,"Bahariyya",GB,GB,6
+27685,"Idlib",SY,SY,6
+21280,"Aberffraw",GB,GB,5
+7500,"Florida Panhandle",MX,MX,5
+20091,"Båstad",SE,SE,5
+140,"Argel",DZ,DZ,5
+15952,"Seyðisfjörður",DK,DK,5
+20316,"Minerve",FR,FR,5
+24701,"Haytor Vale",GB,GB,5
+15267,"Saint George (Florida)",MX,MX,5
+27520,"Cerro Castor",AR,AR,5
+1348,"Parque Nacional dos Everglades",PT,PT,5
+3761,"Bakhchysarai",UA,UA,5
+26226,"Jacobabad",PK,PK,5
+24699,"Patara",TR,TR,5
+2027,"Vitória (Canadá)",PT,PT,5
+26211,"Keitele",FI,FI,5
+15241,"Saharan Morocco",MA,MA,5
+27641,"Hatoma",JP,JP,5
+28466,"Street-running trains",VN,VN,5
+26281,"El-Obeid",EG,EG,5
+20247,"Naracoorte",AU,AU,5
+21871,"Calbiga",PH,PH,5
+12746,"Neupré",DE,DE,5
+26941,"Nousiainen",FI,FI,5
+27148,"L'Estany",ES,ES,5
+16812,"Sulina",RO,RO,5
+1322,"Parque Nacional de Gorilas de Mgahinga",PT,PT,5
+20291,"Bize Minervois",FR,FR,5
+19987,"Lockhart",US,US,5
+10519,"Lamayuru",IN,IN,5
+27305,"Jökulsárgljúfur",IS,IS,5
+21041,"Săpânța",RO,RO,5
+9671,"Karawaci",ID,ID,5
+24058,"Shenkeng",JP,JP,5
+20123,"Tuchan",FR,FR,5
+16500,"Rivierenland",NL,NL,5
+19059,"Zanskar",IN,IN,5
+23036,"Igaliku",GL,GL,5
+27196,"Manapouri",NZ,NZ,5
+867,"Jakar",BT,BT,5
+2464,"Rangel",AO,AO,5
+24115,"Ashburnham",US,US,5
+26886,"Ilomantsi",FI,FI,5
+15594,"Santa Cruz de Mompox",CO,CO,5
+24602,"Wadi El Natrun",EG,EG,5
+28035,"Enfidha",TN,TN,5
+23536,"Tibasosa",CO,CO,5
+24383,"Sandvika",NO,NO,5
+15283,"Saint Kitts and Nevis",GB,GB,4
+27211,"Mariental",NA,NA,4
+11596,"Marstrand",SE,SE,4
+1326,"Parque Nacional de Manovo-Gounda St. Floris",PT,PT,4
+11680,"Maybee",DE,DE,4
+26929,"Pielavesi",FI,FI,4
+927,"Kourou",GF,GF,4
+27966,"Bamanpukur",IN,IN,4
+22052,"Paranas",PH,PH,4
+24711,"Drumshanbo",IE,IE,4
+5401,"Castletownshend",IE,IE,4
+8530,"Hartberg",AT,AT,4
+12585,"Namhae",KR,KR,4
+545,"Deli",GB,GB,4
+20289,"Mollepata",PE,PE,4
+22587,"Anholt",SE,SE,4
+5784,"Chimayó",MX,MX,4
+20364,"Mataura",NZ,NZ,4
+8878,"Hornsea",GB,GB,4
+26921,"Pyhäjoki",FI,FI,4
+15699,"Sathing Phra",TH,TH,4
+11644,"Matawai",NZ,NZ,4
+28381,"Česká Kanada",CA,CA,4
+20680,"Abington (Scotland)",GB,GB,4
+27124,"Cap Skirring",SN,SN,4
+4993,"Åland",IN,IN,4
+22590,"Inland of Finland Proper",FI,FI,4
+7061,"El Aaiún",EH,EH,4
+24011,"Driving in Japan",JP,JP,4
+25597,"Kiskunmajsa",HU,HU,4
+23032,"Bengtskär",FI,FI,4
+26379,"New Italy",IT,IT,4
+11526,"Margao",IN,IN,4
+11999,"Minlaton",AU,AU,4
+21311,"Malbazar",IN,IN,4
+21750,"Sariwon",KP,KP,4
+26881,"Puolanka",FI,FI,4
+28002,"Abbots Leigh",FR,FR,4
+15696,"Satakunta",FI,FI,4
+22320,"Saeftinghe",NL,NL,4
+7216,"Erg Chebbi",MA,MA,4
+3593,"Auschwitz-Birkenau",PL,PL,4
+22671,"Western Xia",CN,CN,4
+18268,"Wa",US,US,4
+5686,"Cherry",PE,PE,4
+23286,"Előszállás",HU,HU,4
+2771,"Villach",AT,AT,4
+26884,"Joutsa",FI,FI,4
+1615,"Salvaterra",BR,BR,4
+26771,"Beaconsfield (Tasmania)",AU,AU,4
+26446,"Hanle",IN,IN,4
+15842,"Sea to Sky",CA,CA,4
+10665,"Lötschental",CH,CH,4
+1747,"São Miguel do Oeste",BR,BR,4
+13951,"LaSalle-Peru",PE,PE,4
+26483,"Parikkala",RU,RU,4
+5214,"Canna",GB,GB,4
+1537,"Reserva Natural das Lagoas de Santo André e de Santa Sancha",PT,PT,4
+27764,"Volcan Cosigüina",MX,MX,4
+25389,"Ceiba",PR,PR,4
+8013,"Golden Triangle (Thailand)",TH,TH,4
+26264,"Minganie",CA,CA,4
+18531,"Western Transdanubia",HU,HU,4
+14669,"Quintay",CL,CL,4
+24081,"Zaouiat Ahansal",MA,MA,3
+5975,"Clonmacnoise",IE,IE,3
+13352,"Oltrepò Pavese",IT,IT,3
+19052,"Zamyn-Üüd",CN,CN,3
+24557,"Axim",GH,GH,3
+14416,"Prairies",FR,FR,3
+27349,"Irabu",JP,JP,3
+23386,"Tabant",MA,MA,3
+25137,"Sotenäs",SE,SE,3
+25352,"Stronsay",GB,GB,3
+19428,"Barra de Potosí",MX,MX,3
+1875,"Tarawa",KI,KI,3
+23230,"Qamishli",TR,TR,3
+27810,"Murjek",NO,NO,3
+21360,"Icelandic hot springs",IS,IS,3
+19967,"Uusimaa",FI,FI,3
+25623,"Dibulla",CO,CO,3
+7890,"Ghat (Libya)",IT,IT,3
+8938,"Huayna Potosí",CL,CL,3
+27456,"Šilutė",LT,LT,3
+17084,"Tana",MG,MG,3
+11510,"Maras",TM,TM,3
+26885,"Pihtipudas",FI,FI,3
+2412,"Mae Sai",TH,TH,3
+11392,"Manawatu",NZ,NZ,3
+1503,"Puerto Quijarro",BO,BO,3
+26691,"Paltamo",FI,FI,3
+10107,"Kohoku",JP,JP,3
+27027,"Uiryeong",KR,KR,3
+21701,"Älvsbyn",SE,SE,3
+24613,"Porrentruy",CH,CH,3
+17115,"Taranaki",NZ,NZ,3
+26774,"Fertile Crescent",TR,TR,3
+14940,"Rifle",US,US,3
+21246,"Liquiçá",TL,TL,3
+28351,"Jovellar",PH,PH,3
+27900,"Yumurtalık",CN,CN,3
+21310,"Wallachian Plain",RO,RO,3
+145,"Arquipélago de Anavilhanas",BR,BR,3
+17884,"Upcountry Árnessýsla",IS,IS,3
+14656,"Queyras",FR,FR,3
+26610,"Taranna",AU,AU,3
+8651,"Hellvik",NO,NO,3
+22938,"Auvergne-Rhône-Alpes",FR,FR,3
+24351,"Shlisselburg",RU,RU,3
+22665,"Chablis",FR,FR,3
+23749,"Southern Great Plain",HU,HU,3
+4659,"Bra",IT,IT,3
+20914,"Haĺšany",PL,PL,3
+26891,"Evijärvi",FI,FI,3
+942,"La Libertad",EC,EC,3
+7400,"Făgăraș",RO,RO,3
+26263,"Palashi",IN,IN,3
+26553,"Bonampak",MX,MX,3
+27317,"Rydal",AU,AU,3
+23173,"Paekākāriki",NZ,NZ,3
+18893,"Yanbian",CN,CN,3
+16895,"Svealand",SE,SE,3
+21085,"Râu de Mori",RO,RO,3
+27427,"Wadi al-Dawasir",SA,SA,3
+15178,"Russia to Japan via Sakhalin",JP,JP,3
+393,"Capital (Venezuela)",VE,VE,2
+1648,"San Marino",SM,SM,2
+4174,"Belogorsk",RU,RU,2
+5527,"Chałupy",PL,PL,2
+1832,"St. James",US,US,2
+21818,"Smara",MA,MA,2
+6586,"Dengue fever",AU,AU,2
+2014,"Urmia",IR,IR,2
+11668,"Mauricie",CA,CA,2
+24527,"Guanajay",CU,CU,2
+893,"Jordânia",BR,BR,2
+152,"Arua",UG,UG,2
+19390,"Bhimashankar",IN,IN,2
+9655,"Kappil",IN,IN,2
+19787,"Nankana Sahib",PK,PK,2
+23751,"Hardap",ZA,ZA,2
+2468,"Sri Jayawardenapura Kotte",PT,PT,2
+27905,"Sahagún",CO,CO,2
+22576,"Hvaler",NO,NO,2
+5098,"Cai Rong",VN,VN,2
+12680,"Nausori",FJ,FJ,2
+22795,"Pyramiden",SE,SE,2
+20356,"Angangueo",MX,MX,2
+10257,"Krutyń",PL,PL,2
+25487,"Szada",HU,HU,2
+17532,"Topslip",IN,IN,2
+21374,"Hampyeong",KR,KR,2
+26027,"Vännäs",SE,SE,2
+682,"Gadamés",LY,LY,2
+7131,"El Morro",MX,MX,2
+20913,"Travels of Hans Christian Andersen",DK,DK,2
+20153,"Varvara",TR,TR,2
+2834,"Rfnmgf",PT,PT,2
+22780,"Tåsinge",DK,DK,2
+22897,"Maamigili",MV,MV,2
+27206,"Kabah",MX,MX,2
+17146,"Tasiilaq",IS,IS,2
+27243,"Skiing on Mt Ruapehu",AU,AU,2
+28193,"Ichkabal",MX,MX,2
+22528,"Steam power",GB,GB,2
+11508,"Maramureș",RO,RO,2
+17957,"Valaam",RU,RU,2
+1831,"St. Clair",AU,AU,2
+4777,"Bristol-Norfolk",GB,GB,2
+26564,"Damphu",IN,IN,2
+13619,"Palau",MX,MX,2
+2455,"Baucau",TL,TL,2
+3318,"Antioquia",CO,CO,2
+13063,"Northern Quebec",TR,TR,2
+8158,"Gröbming",AT,AT,2
+13051,"Northern Isaan",TH,TH,2
+7151,"Elsthorpe",NZ,NZ,2
+4190,"Bendery",MD,MD,2
+24150,"Montalto delle Marche",IT,IT,2
+20729,"Nampho",KR,KR,2
+20519,"Val Camonica",IT,IT,2
+15210,"Sabha",JO,JO,2
+10863,"Linden (New Jersey)",PL,PL,2
+26677,"Glenridding",GB,GB,2
+1335,"Parque Nacional de Salonga",PT,PT,2
+172,"Auschwitz",PL,PL,2
+26196,"Fossholl",IS,IS,2
+26315,"Rangsang",ID,ID,2
+4361,"Bigul",IN,IN,2
+24340,"Boating in Finland",NL,NL,2
+3300,"Annobón",PT,PT,2
+25919,"Sprague",CA,CA,2
+13032,"North-Eastern India",CN,CN,1
+5807,"Chi Phat",TH,TH,1
+21691,"Sunwal",CN,CN,1
+16502,"Southwest Iceland",IS,IS,1
+165,"Atar",MR,MR,1
+1344,"Parque Nacional do Banco de Arguim",PT,PT,1
+7296,"Evian",FR,FR,1
+1328,"Parque Nacional de Mole",PT,PT,1
+2817,"Parque Nacional Coiba",PT,PT,1
+28006,"Hồ Tràm",VN,VN,1
+2463,"Viana",AO,AO,1
+1337,"Parque Nacional de Simien",PT,PT,1
+22564,"Inlandsbanan",SE,SE,1
+1353,"Parque Nacional W",PT,PT,1
+6394,"Dachstein",AT,AT,1
+2107,"Vila Real",PT,PT,1
+23990,"Saho",SO,SO,1
+1341,"Parque Nacional de Virunga",PT,PT,1
+1331,"Parque Nacional de Niokolo-Koba",PT,PT,1
+24127,"Top Gear Vietnam special",VN,VN,1
+1334,"Parque Nacional de Rwenzori",PT,PT,1
+8394,"Hagfors",SE,SE,1
+3826,"Banat",IN,IN,1
+19185,"Finland Proper",FI,FI,1
+27152,"Nordfjord",NO,NO,1
+1336,"Parque Nacional de Sete Cidades",PT,PT,1
+25471,"Délegyháza",HU,HU,1
+28169,"Yuseong-gu",KR,KR,1
+1350,"Parque Nacional Impenetrável de Bwindi",PT,PT,1
+1339,"Parque Nacional de Tassili n'Ajjer",PT,PT,1
+1325,"Parque Nacional de Luangwa Sul",PT,PT,1
+1349,"Parque Nacional do Vale de Kidepo",PT,PT,1
+1324,"Parque Nacional de Kakum",PT,PT,1
+1321,"Parque Nacional de Garamba",PT,PT,1
+1351,"Parque Nacional Marinho de St. Anne",PT,PT,1
+1338,"Parque Nacional de Taï",PT,PT,1
+791,"Ilha do Maio",PT,PT,1
+23453,"Bilwi",NI,NI,1
+1347,"Parque Nacional do Lago Malawi",PT,PT,1
+25927,"Western Tasmania",AU,AU,1
+10619,"Lashio",MM,MM,1
+1520,"Região Floral do Cabo",PT,PT,1
+150,"Artigas",UY,UY,1
+2262,"Lida",BY,BY,1
+1323,"Parque Nacional de Kahuzi-Biega",PT,PT,1
+3772,"Balboa",CO,CO,1
+2234,"Serguiev Possad",PT,PT,0
+457,"Chuy",BR,BR,0
+747,"Hanga-Roa",CL,CL,0
+1393,"Pérouges",PT,PT,0
+2289,"Cazã",RU,RU,0
+819,"Iráklio",GR,GR,0
+514,"Costa do Marfim",PT,PT,0
+1702,"Santo Tomé",AR,AR,0
+340,"Caiena",GF,GF,0
+288,"Bordéus",FR,FR,0
+687,"Garapan",MX,MX,0
+1589,"Rota da Seda",CN,CN,0
+921,"Kolonia",DE,DE,0
+2012,"Ura",KZ,KZ,0
+1793,"Seul",KR,KR,0
+796,"Ilhas Colombianas",CO,CO,0
+1204,"Nuevo Vallarta",PT,PT,0
+475,"Cobija",BO,BO,0
+1844,"Surt",LY,LY,0
+593,"El Alto",PE,PE,0
+2216,"Caminho da Iluminação",PT,PT,0
+1596,"Rustemburgo",ZA,ZA,0
+1809,"Síria",RO,RO,0
+351,"Calcutá",IN,IN,0
+2080,"Viajar ecologicamente",PT,PT,0
+2806,"Seguro para Viagem",PT,PT,0
+2182,"Asten",NL,NL,0
+181,"Avinhão",FR,FR,0
+253,"Bengasi",LY,LY,0
+2079,"Viagens de moto",PT,PT,0

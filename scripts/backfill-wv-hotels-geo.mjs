@@ -13,14 +13,23 @@ import { execSync } from 'node:child_process';
 import { PrismaClient } from '@prisma/client';
 
 import { loadProjectEnv } from './lib/load-env.mjs';
-import { fold } from './lib/cost-of-living-data.mjs';
+import { fold, nameSimilarity } from './lib/cost-of-living-data.mjs';
 import { lookupAllHotels } from './lib/hotel-lookup.mjs';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = resolve(__dirname, '..');
 const INDEX = resolve(ROOT, 'data/hotels/hotel-index.json');
 
-const prisma = new PrismaClient();
+loadProjectEnv(ROOT);
+
+// Use direct (unpooled) URL for long-running scripts — Neon pooler closes idle connections
+const prisma = new PrismaClient({
+  datasources: {
+    db: {
+      url: process.env.DATABASE_URL_UNPOOLED ?? process.env.DATABASE_URL,
+    },
+  },
+});
 const dryRun = process.argv.includes('--dry-run');
 const limitDestArg = process.argv.find((a) => a.startsWith('--limit-destinos'));
 const LIMIT_DESTINOS = limitDestArg
@@ -43,12 +52,24 @@ function matchIndexRow(hotelNome, indexRows) {
   const key = fold(hotelNome);
   if (!key) return null;
 
+  // 1. Exact match (fold normalizado)
   let row = indexRows.find((r) => fold(r.nome) === key);
   if (row) return row;
 
+  // 2. Substring match (includes)
   row = indexRows.find((r) => {
     const rk = fold(r.nome);
     return rk.includes(key) || key.includes(rk);
+  });
+  if (row) return row;
+
+  // 3. Fuzzy match via bigram similarity (Dice coefficient)
+  //    Isto captura hotéis com nomes próximos mas não exactos,
+  //    como "Hotel Paris" vs "Hotel de Paris" ou "Grand Hôtel" vs "Grand Hotel"
+  row = indexRows.find((r) => {
+    const rk = fold(r.nome);
+    if (rk.length < 4 || key.length < 4) return false;
+    return nameSimilarity(key, rk) >= 0.80;
   });
   return row ?? null;
 }

@@ -20,7 +20,10 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = resolve(__dirname, '..');
 loadProjectEnv(ROOT);
 
-const prisma = new PrismaClient();
+// Use direct (unpooled) URL for long-running scripts — Neon pooler closes idle connections
+const prisma = new PrismaClient({
+  datasources: { db: { url: process.env.DATABASE_URL_UNPOOLED ?? process.env.DATABASE_URL } },
+});
 
 const args = new Set(process.argv.slice(2));
 const argValue = (name, fallback) => {

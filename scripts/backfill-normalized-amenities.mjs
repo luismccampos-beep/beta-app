@@ -18,7 +18,7 @@ async function backfillWvHotelAmenities() {
   let total = 0;
   for (const hotel of hotels) {
     const amenities = Array.isArray(hotel.comodidades)
-      ? hotel.comodidades.filter((a): a is string => typeof a === 'string')
+      ? hotel.comodidades.filter((a) => typeof a === 'string')
       : [];
 
     if (amenities.length === 0) continue;
@@ -55,7 +55,7 @@ async function backfillHotelAmenities() {
   let total = 0;
   for (const hotel of hotels) {
     const amenities = Array.isArray(hotel.amenities)
-      ? hotel.amenities.filter((a): a is string => typeof a === 'string')
+      ? hotel.amenities.filter((a) => typeof a === 'string')
       : [];
 
     if (amenities.length === 0) continue;

@@ -16,7 +16,10 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = resolve(__dirname, '..');
 const BUNDLE = resolve(ROOT, 'src/data/travel-mock/bundle-wikivoyage.json');
 
-const prisma = new PrismaClient();
+// Use direct (unpooled) URL for long-running scripts — Neon pooler closes idle connections
+const prisma = new PrismaClient({
+  datasources: { db: { url: process.env.DATABASE_URL_UNPOOLED ?? process.env.DATABASE_URL } },
+});
 const BATCH = 200;
 const destinationsOnly = process.argv.includes('--destinations-only');
 const hotelsOnly = process.argv.includes('--hotels-only');

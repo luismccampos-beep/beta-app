@@ -47,8 +47,10 @@ async function main() {
   console.log(`Bundle: ${bundle.meta.counts.destinos} destinos, ${bundle.meta.counts.hoteis} hotéis`);
   console.log(`Modo: ${dryRun ? 'dry-run' : 'escrita'} | max por destino: ${enrichAll ? 'ILIMITADO' : maxPerDest}`);
 
-  // 2. Connect to DB
-  const prisma = new PrismaClient();
+  // 2. Connect to DB (use unpooled URL to avoid Neon idle connection drops)
+  const prisma = new PrismaClient({
+    datasources: { db: { url: process.env.DATABASE_URL_UNPOOLED ?? process.env.DATABASE_URL } },
+  });
   try {
     // 3. Build a set of all normalized bundle nomes for batch lookup
     const bundleNomeToDests = new Map();
