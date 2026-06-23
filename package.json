@@ -9,20 +9,20 @@
   "type": "module",
   "scripts": {
     "dev": "next dev",
-    "postinstall": "prisma generate",
-    "build": "prisma generate && cross-env NODE_ENV=production DISABLE_SSR_FETCH=true next build",
-    "vercel-build": "prisma generate && cross-env NODE_ENV=production DISABLE_SSR_FETCH=true next build",
+    "postinstall": "node scripts/prisma-with-fallback.mjs generate",
+    "build": "node scripts/prisma-with-fallback.mjs generate && cross-env NODE_ENV=production DISABLE_SSR_FETCH=true next build",
+    "vercel-build": "node scripts/prisma-with-fallback.mjs generate && cross-env NODE_ENV=production DISABLE_SSR_FETCH=true next build",
     "start": "node .next/standalone/server.js",
     "lint": "eslint . --max-warnings 0",
     "type-check": "tsc --noEmit",
     "i18n:extract": "npx tsx scripts/extract-next-intl.ts",
-    "prisma:generate": "prisma generate",
-    "prisma:migrate": "prisma migrate dev",
+    "prisma:generate": "node scripts/prisma-with-fallback.mjs generate",
+    "prisma:migrate": "node scripts/prisma-with-fallback.mjs migrate dev",
     "prisma:studio": "prisma studio",
-    "db:push": "prisma db push",
-    "db:migrate": "prisma migrate deploy",
+    "db:push": "node scripts/prisma-with-fallback.mjs db push",
+    "db:migrate": "node scripts/prisma-with-fallback.mjs migrate deploy",
     "db:seed": "npx tsx prisma/seed.ts",
-    "db:reset": "prisma migrate reset --force",
+    "db:reset": "node scripts/prisma-with-fallback.mjs migrate reset --force",
     "db:studio": "prisma studio",
     "mock:travel:generate": "node scripts/generate-travel-mock-data.mjs",
     "wikivoyage:extract": "py -3 -X utf8 scripts/parse-wikivoyage-dump.py --lang both --listings",
@@ -275,6 +275,9 @@
     "typescript": "^5.6.0",
     "vitest": "^4.0.15",
     "webpack-bundle-analyzer": "^4.10.1"
+  },
+  "overrides": {
+    "axios": "^1.18.0"
   },
   "engines": {
     "node": ">=18.0.0",

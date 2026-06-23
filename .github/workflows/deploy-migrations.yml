@@ -7,9 +7,16 @@ on:
       - '*.md'
   workflow_dispatch:
 
+# GitHub Actions injects "" (empty string) when a secret is missing — it does NOT
+# unset it. That empty value used to be set at the job-level env block without
+# fallback, which broke `prisma generate` and any other step that inherited it
+# (P1012: "DATABASE_URL_UNPOOLED resolved to an empty string"). The fallback below
+# is applied at the job level so EVERY step (npm install's postinstall, generate,
+# migrate deploy) inherits a non-empty value. A "Validate database env vars" step
+# below fails fast if even DATABASE_URL is missing.
 env:
   DATABASE_URL: ${{ secrets.DATABASE_URL }}
-  DATABASE_URL_UNPOOLED: ${{ secrets.DATABASE_URL_UNPOOLED }}
+  DATABASE_URL_UNPOOLED: ${{ secrets.DATABASE_URL_UNPOOLED || secrets.DATABASE_URL }}
 
 jobs:
   migrate:
@@ -26,20 +33,36 @@ jobs:
           node-version: 24
           cache: 'npm'
 
+      - name: Validate database env vars
+        # MUST run BEFORE `npm ci`: postinstall triggers `prisma generate`,
+        # which validates the schema and would die with P1012 before a later guard.
+        run: |
+          if [ -z "${DATABASE_URL:-}" ]; then
+            echo "::error::DATABASE_URL is empty. Configure at least DATABASE_URL in repo Settings → Secrets and variables → Actions (and ideally DATABASE_URL_UNPOOLED for Neon)."
+            exit 1
+          fi
+          echo "DATABASE_URL length: ${#DATABASE_URL}"
+          if [ -z "${DATABASE_URL_UNPOOLED:-}" ]; then
+            echo "::warning::DATABASE_URL_UNPOOLED empty — job-level fallback now routes prisma steps through the pooled URL. That's fine for schema validation but unreliable for migrate status / deploy under PgBouncer, so those steps have an explicit env block below without fallback."
+          fi
+
       - run: npm ci --legacy-peer-deps
 
       - name: Check migration status
+        # Step-level env WITHOUT fallback: PgBouncer in transaction mode (Neon)
+        # blocks the advisory locks Prisma uses for migrate status, so we MUST
+        # hit the unpooled URL. A missing unpooled secret aborts loudly here.
         run: npx prisma migrate status
         continue-on-error: true
         env:
           DATABASE_URL: ${{ secrets.DATABASE_URL }}
-          DATABASE_URL_UNPOOLED: ${{ secrets.DATABASE_URL_UNPOOLED || secrets.DATABASE_URL }}
+          DATABASE_URL_UNPOOLED: ${{ secrets.DATABASE_URL_UNPOOLED }}
 
       - name: Apply migrations
         run: npx prisma migrate deploy
         env:
           DATABASE_URL: ${{ secrets.DATABASE_URL }}
-          DATABASE_URL_UNPOOLED: ${{ secrets.DATABASE_URL_UNPOOLED || secrets.DATABASE_URL }}
+          DATABASE_URL_UNPOOLED: ${{ secrets.DATABASE_URL_UNPOOLED }}
 
       - name: Generate Prisma Client
         run: npx prisma generate
