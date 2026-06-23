@@ -57,3 +57,4 @@ src/data/travel-mock/bundle-wikivoyage.json
 public/travel-images/*
 !public/travel-images/.gitkeep
 !public/travel-images/placeholder.svg
+data/hotels/tbo-hotels.csv
