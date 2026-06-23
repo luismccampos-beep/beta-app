@@ -418,7 +418,7 @@ export function ResultsPage({ onLogout, onNavigateToDashboard }: ResultsPageProp
                   return (
                     <Card key={result.id} className="group relative overflow-hidden border-0 bg-white dark:bg-gray-800 shadow-md hover:shadow-xl ring-1 ring-gray-200/60 dark:ring-gray-700/60 transition-all duration-300">
                       {/* Hero image */}
-                      <div className="relative h-56 overflow-hidden">
+                      <div className="relative aspect-video overflow-hidden">
                         <img src={result.imageUrl} alt={result.destination} className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110" />
                         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
                         <div className="absolute top-3 right-3">

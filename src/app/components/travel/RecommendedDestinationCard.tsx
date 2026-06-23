@@ -59,7 +59,7 @@ export function RecommendedDestinationCard({
 
   return (
     <Card className="overflow-hidden border-0 shadow-lg ring-1 ring-teal-200/70 dark:ring-teal-900/50 dark:bg-gray-800">
-      <div className="relative h-36 sm:h-40 overflow-hidden">
+      <div className="relative aspect-video overflow-hidden">
         <img
           src={item.imageUrl || DESTINATION_PLACEHOLDER}
           alt={item.nome}

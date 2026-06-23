@@ -601,7 +601,7 @@ export function DestinationsBrowsePage({ onBack }: DestinationsBrowsePageProps) 
                 >
                   {famousItems.map((item, idx) => (
                     <a key={item.id} href={destinationDetailPath(locale, item.slug)} className="group shrink-0 w-48 sm:w-56 snap-start select-none">
-                      <div className="relative h-32 sm:h-36 rounded-xl overflow-hidden ring-1 ring-black/5 dark:ring-white/10">
+                      <div className="relative aspect-video rounded-xl overflow-hidden ring-1 ring-black/5 dark:ring-white/10">
                         <img
                           src={item.imageUrl}
                           alt={item.nome}

@@ -327,7 +327,7 @@ function DestinationGallery({
                 setLightboxOpen(true);
               }}
               aria-label={`${title} ${i + 1} of ${images.length}`}
-              className="relative shrink-0 w-40 h-28 rounded-xl overflow-hidden snap-start cursor-pointer ring-1 ring-gray-200/60 dark:ring-gray-700/60 hover:ring-teal-400 dark:hover:ring-teal-500 transition-all duration-200"
+              className="relative shrink-0 w-40 aspect-video rounded-xl overflow-hidden snap-start cursor-pointer ring-1 ring-gray-200/60 dark:ring-gray-700/60 hover:ring-teal-400 dark:hover:ring-teal-500 transition-all duration-200"
             >
               <img
                 src={url}
