@@ -58,3 +58,7 @@ public/travel-images/*
 !public/travel-images/.gitkeep
 !public/travel-images/placeholder.svg
 data/hotels/tbo-hotels.csv
+
+# Orphaned submodules (local only)
+Zoo-Code/
+google-maps-scraper/
