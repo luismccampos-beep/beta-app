@@ -40,6 +40,8 @@ const OFFSET = offsetArg
   ? parseInt(offsetArg.split('=')[1] ?? process.argv[process.argv.indexOf('--offset') + 1], 10)
   : parseInt(process.env.EXTERNAL_ENRICH_OFFSET ?? '0', 10);
 
+const SAVE_EVERY = parseInt(process.env.EXTERNAL_SAVE_EVERY ?? '100', 10);
+
 const onlyIdx = process.argv.indexOf('--only');
 const ONLY = onlyIdx >= 0 ? process.argv[onlyIdx + 1]?.split(',') ?? [] : null;
 
@@ -103,7 +105,7 @@ async function main() {
   for (const dest of slice) {
     const lang = dest.lang ?? 'pt';
 
-    if (shouldRun('wikipedia')) {
+    if (shouldRun('wikipedia') && !dest.wikipedia_resumo) {
       const title = wikipediaTitleFromDestination(dest.nome);
       const wiki = await fetchWikipediaSummary(title, lang);
       if (wiki) {
@@ -114,7 +116,7 @@ async function main() {
       await sleep(200);
     }
 
-    if (shouldRun('weather') && OPENWEATHER_KEY) {
+    if (shouldRun('weather') && OPENWEATHER_KEY && !dest.clima_tempo) {
       const coords = await resolveCoords(dest, geoCache);
       if (coords) {
         dest.latitude = coords.lat;
@@ -129,6 +131,10 @@ async function main() {
     }
 
     process.stdout.write('.');
+    if ((wikiOk + weatherOk) > 0 && (wikiOk + weatherOk) % SAVE_EVERY === 0) {
+      writeFileSync(BUNDLE, JSON.stringify(bundle));
+      saveGeoCache(geoCache);
+    }
   }
 
   saveGeoCache(geoCache);
