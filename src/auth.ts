@@ -9,8 +9,10 @@ import { authProviders } from "./auth.providers";
  * Includes PrismaAdapter, Credentials provider, and all auth features.
  * Do NOT import this in middleware or Edge Runtime — use @/auth-edge instead.
  */
+const isBuild = process.env.NEXT_PHASE === 'build';
+
 export const { auth, signIn, signOut, handlers } = NextAuth({
-  adapter: PrismaAdapter(prisma),
+  ...(isBuild ? {} : { adapter: PrismaAdapter(prisma) }),
   session: { strategy: "jwt" },
   ...authConfig,
   providers: authProviders,
