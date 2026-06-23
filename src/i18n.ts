@@ -17,6 +17,10 @@ export default getRequestConfig(async ({requestLocale}) => {
   return {
     locale,
     // One JSON file per locale.
-    messages: (await import(`./messages/${locale}.json`)).default
+    messages: (await import(`./messages/${locale}.json`)).default,
+    onError: (error: any) => {
+      if (error?.code === 'MISSING_MESSAGE') return;
+      throw error;
+    },
   };
 });
