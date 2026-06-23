@@ -92,8 +92,8 @@ parser.add_argument("--save-every", type=int, default=10,
                     help="Commit to DB every N processed hotels")
 parser.add_argument("--retry-not-found", action="store_true",
                     help="Retry hotels previously marked as geo_not_found")
-parser.add_argument("--no-gmaps", action="store_true",
-                    help="Skip Google Maps Scraper API (strategy 5)")
+parser.add_argument("--gmaps", action="store_true",
+                    help="Enable Google Maps Scraper API (strategy 5, disabled by default)")
 parser.add_argument("--photon", action="store_true",
                     help="Enable Photon API (strategy 3+4, disabled by default — times out on this network)")
 parser.add_argument("--check-country", action="store_true",
@@ -419,7 +419,7 @@ def try_geocode_nominatim(query: str, viewbox: str = None) -> tuple | None:
 
     url = f"https://nominatim.openstreetmap.org/search?{urllib.parse.urlencode(params)}"
 
-    for attempt in range(3):
+    for attempt in range(2):
         try:
             req = urllib.request.Request(url, headers={"User-Agent": USER_AGENT})
             with urllib.request.urlopen(req, timeout=10) as resp:
@@ -429,16 +429,18 @@ def try_geocode_nominatim(query: str, viewbox: str = None) -> tuple | None:
             return None
         except urllib.error.HTTPError as e:
             if e.code == 429:
-                wait = 30 * (attempt + 1)
-                print(f"    [Nominatim 429] waiting {wait}s... ({attempt+1}/3)")
-                time.sleep(wait)
+                if attempt == 0:
+                    print(f"    [Nominatim 429] waiting 60s...")
+                    time.sleep(60)
+                else:
+                    print(f"    [Nominatim 429] giving up")
+                    return None
             else:
                 print(f"    [Nominatim HTTP {e.code}]")
                 return None
-        except (urllib.error.URLError, OSError) as e:
-            wait = 5 * (attempt + 1)
-            print(f"    [Nominatim timeout] waiting {wait}s...")
-            time.sleep(wait)
+        except (urllib.error.URLError, OSError):
+            print(f"    [Nominatim timeout]")
+            return None
         except Exception as e:
             print(f"    [Nominatim error] {e}")
             return None
@@ -492,7 +494,7 @@ def try_reverse_geocode(lat: float, lon: float) -> str | None:
     if lat is None or lon is None:
         return None
     url = f"https://nominatim.openstreetmap.org/reverse?lat={lat}&lon={lon}&format=json&language=en"
-    for attempt in range(3):
+    for attempt in range(2):
         try:
             req = urllib.request.Request(url, headers={"User-Agent": USER_AGENT})
             with urllib.request.urlopen(req, timeout=10) as resp:
@@ -504,15 +506,16 @@ def try_reverse_geocode(lat: float, lon: float) -> str | None:
             return None
         except urllib.error.HTTPError as e:
             if e.code == 429:
-                wait = 30 * (attempt + 1)
-                print(f"    [Reverse 429] waiting {wait}s...")
-                time.sleep(wait)
+                if attempt == 0:
+                    print(f"    [Reverse 429] waiting 60s...")
+                    time.sleep(60)
+                else:
+                    return None
             else:
                 return None
         except (urllib.error.URLError, OSError):
-            wait = 5 * (attempt + 1)
-            print(f"    [Reverse timeout] waiting {wait}s...")
-            time.sleep(wait)
+            print(f"    [Reverse timeout]")
+            return None
         except Exception as e:
             print(f"    [Reverse error] {e}")
             return None
@@ -634,7 +637,7 @@ def geocode_hotel(
     # Strategy 5: Google Maps Scraper API (Docker local) — can be disabled via --no-gmaps
     # Slow (~60-120s) but can find hotels that OSM doesn't have
     # Only use as last resort — the API is slow per request
-    if not args.no_gmaps:
+    if args.gmaps:
         time.sleep(0.5)
         result = try_geocode_gmaps(hotel_name, dest_name)
         if result:
@@ -667,7 +670,7 @@ def main():
           f"country={COUNTRY or 'ALL'}  delay={DELAY}s")
     print(f"  Strategy: 1.Nominatim(Hotel+City) 2.Nominatim(City) "
            f"3.Photon(Hotel+City) 4.Photon(City) [{'ON' if args.photon else 'OFF'}] "
-           f"5.GoogleMapsScraper [{'ON' if not args.no_gmaps else 'OFF'}]")
+           f"5.GoogleMapsScraper [{'ON' if args.gmaps else 'OFF'}]")
     print()
 
     conn = ensure_connection(conn)
