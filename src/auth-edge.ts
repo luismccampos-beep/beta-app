@@ -14,7 +14,7 @@ export const { auth } = NextAuth({
   providers: [],
 });
 
-// Ensure AUTH_SECRET is defined for Edge Runtime
+// Warn if AUTH_SECRET is missing but don't crash the middleware
 if (!process.env.AUTH_SECRET) {
-  throw new Error('AUTH_SECRET is required for auth-edge.ts');
+  console.warn('[auth-edge] AUTH_SECRET not set — auth() will not validate sessions in Edge Runtime');
 }
