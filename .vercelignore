@@ -1,11 +1,8 @@
 Zoo-Code
 google-maps-scraper
-data
-ml-service
+/data
+/ml-service
 public/travel-images
 fk_diff_output.sql
 fk_diff_output.err
 COMMIT_MSG.md
-.git
-.next
-node_modules
