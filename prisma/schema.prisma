@@ -10,13 +10,13 @@
 
 datasource db {
   provider     = "postgresql"
-  // Neon / Vercel: pooled + direct (matches Storage → Neon env names).
+  // Neon / Vercel: usa apenas DATABASE_URL (pooled).
+  // Migrations são executadas via GitHub Actions, não no build do Vercel.
   // Postgres natively supports FK constraints, so Prisma's relation emulation layer is unnecessary
   // and was harming query plans (nested mutations run an extra round-trip) and dropping database-level
   // referential integrity. With foreignKeys, the schema's @relation declarations are enforced by the DB
   // and Prisma simply trusts them.
   url          = env("DATABASE_URL")
-  directUrl    = env("DATABASE_URL_UNPOOLED")
   relationMode = "foreignKeys"
 }
 
