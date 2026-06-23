@@ -14,6 +14,7 @@ const isBuild = process.env.NEXT_PHASE === 'build';
 export const { auth, signIn, signOut, handlers } = NextAuth({
   ...(isBuild ? {} : { adapter: PrismaAdapter(prisma) }),
   session: { strategy: "jwt" },
+  secret: process.env.AUTH_SECRET,
   ...authConfig,
   providers: authProviders,
 });

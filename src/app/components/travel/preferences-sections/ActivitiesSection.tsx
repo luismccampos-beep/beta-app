@@ -108,18 +108,18 @@ export function ActivitiesSection({
       <div className="space-y-3">
         <Label htmlFor="pacePreference" className="text-base font-semibold">{t('travelPace')}</Label>
         <Controller name="pacePreference" control={control} render={({ field }) => (
-          <>
+          <Select value={field.value} onValueChange={field.onChange}>
             <SelectTrigger className="h-11">
               <SelectValue placeholder={t('selectPreferredPace')} />
             </SelectTrigger>
             <SelectContent>
               {PACE_PREFERENCE_IDS.map((id) => (
                 <SelectItem key={id} value={id}>
-                  {t(`options.pacePreference.${id}`)}
+                  {t('options.pacePreference.' + id)}
                 </SelectItem>
               ))}
             </SelectContent>
-          </>
+          </Select>
         )} />
         {errors.pacePreference && <p className="text-red-500 text-xs mt-1">{errors.pacePreference.message}</p>}
       </div>

@@ -167,9 +167,9 @@ export function AdvancedSettingsSection({
           <div className="space-y-3">
             <Label htmlFor="privacyLevel" className="text-base font-semibold">{t('privacyLevel')}</Label>
             <Controller name="privacyLevel" control={control} render={({ field }) => (
-              <>
+              <Select value={field.value} onValueChange={field.onChange}>
                 <SelectTrigger className="h-11">
-                  <SelectValue placeholder={t('privacyLevel')} {...field} />
+                  <SelectValue placeholder={t('privacyLevel')} />
                 </SelectTrigger>
                 <SelectContent>
                   {PRIVACY_LEVEL_IDS.map((id) => (
@@ -178,7 +178,7 @@ export function AdvancedSettingsSection({
                     </SelectItem>
                   ))}
                 </SelectContent>
-              </>
+              </Select>
             )} />
             {errors.privacyLevel && <p className="text-red-500 text-xs mt-1">{errors.privacyLevel.message}</p>}
           </div>

@@ -90,7 +90,7 @@ export function FlightAccommodationSection({
             <div className="space-y-3">
               <Label htmlFor="mealPreference" className="text-base font-semibold">{t('mealPreference')}</Label>
               <Controller name="mealPreference" control={control} render={({ field }) => (
-                <>
+                <Select value={field.value} onValueChange={field.onChange}>
                   <SelectTrigger className="h-11">
                     <SelectValue placeholder={t('selectMealPreference')} />
                   </SelectTrigger>
@@ -101,7 +101,7 @@ export function FlightAccommodationSection({
                       </SelectItem>
                     ))}
                   </SelectContent>
-                </>
+                </Select>
               )} />
               {errors.mealPreference && <p className="text-red-500 text-xs mt-1">{errors.mealPreference.message}</p>}
             </div>
@@ -179,9 +179,9 @@ export function FlightAccommodationSection({
           <div className="space-y-3">
             <Label htmlFor="roomType" className="text-base font-semibold">{t('roomType')}</Label>
             <Controller name="roomType" control={control} render={({ field }) => (
-              <>
+              <Select value={field.value} onValueChange={field.onChange}>
                 <SelectTrigger className="h-11">
-                  <SelectValue placeholder={t('selectRoomType')} {...field} />
+                  <SelectValue placeholder={t('selectRoomType')} />
                 </SelectTrigger>
                 <SelectContent>
                   {ROOM_TYPE_IDS.map((id) => (
@@ -190,7 +190,7 @@ export function FlightAccommodationSection({
                     </SelectItem>
                   ))}
                 </SelectContent>
-              </>
+              </Select>
             )} />
             {errors.roomType && <p className="text-red-500 text-xs mt-1">{errors.roomType.message}</p>}
           </div>
