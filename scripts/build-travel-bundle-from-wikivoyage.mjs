@@ -1331,10 +1331,11 @@ function inferClima(text) {
 }
 
 function inferStars(listing, nome) {
-  const blob = `${nome} ${listing.sobre ?? ''} ${listing.alt ?? ''}`.toLowerCase();
-  if (/5 estrela|luxury|luxo|palace|grand hotel/i.test(blob)) return 5;
-  if (/4 estrela|boutique/i.test(blob)) return 4;
-  if (/hostel|pousada|albergue|budget|económ/i.test(blob)) return 2;
+  const desc = listing.sobre ?? listing.content ?? listing.alt ?? '';
+  const blob = `${nome} ${desc}`.toLowerCase();
+  if (/5 estrela|5.?star|luxury|luxo|palace|grand hotel/i.test(blob)) return 5;
+  if (/4 estrela|4.?star|boutique/i.test(blob)) return 4;
+  if (/hostel|pousada|albergue|budget|económ|dorm/i.test(blob)) return 2;
   return 3;
 }
 
@@ -1353,13 +1354,13 @@ function isDestinationArticle(article) {
   const listings = article.listings?.length ?? 0;
   if (listings > 0) return true;
   if (/{{estilo}}/i.test(text)) return true;
-  if (/==Entenda|==Chegue|==Veja|==Faça|==Coma|==Durma|==Saiba/i.test(text)) return true;
+  if (/==Entenda|==Chegue|==Veja|==Faça|==Coma|==Durma|==Saiba|==Understand|==Get in|==See|==Do|==Eat|==Sleep|==Stay safe|==Connect|==Go next|==Cope|==Work|==Learn/i.test(text)) return true;
   return false;
 }
 
 function listingAmenities(listing) {
   const out = [];
-  const blob = `${listing.sobre ?? ''} ${listing.wifi ?? ''}`.toLowerCase();
+  const blob = `${listing.sobre ?? ''} ${listing.content ?? ''} ${listing.wifi ?? ''} ${listing.alt ?? ''}`.toLowerCase();
   if (/wifi|wi-fi|internet/i.test(blob)) out.push('wifi');
   if (/piscina|pool/i.test(blob)) out.push('piscina');
   if (/spa/i.test(blob)) out.push('spa');

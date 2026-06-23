@@ -886,5 +886,189 @@
   "internacional|antártida": {
     "lat": -72.8438691,
     "lon": 0
+  },
+  "brasil|adamantina": {
+    "lat": -21.6866517,
+    "lon": -51.0762975
+  },
+  "austrália|adelaide": {
+    "lat": -34.9281805,
+    "lon": 138.5999312
+  },
+  "internacional|adis abeba": {
+    "lat": 9.0358119,
+    "lon": 38.7524315
+  },
+  "brasil|áfrica": {
+    "lat": -22.9023817,
+    "lon": -43.2366781
+  },
+  "brasil|água branca": {
+    "lat": -5.895038,
+    "lon": -42.6368104
+  },
+  "méxico|aguascalientes": {
+    "lat": 21.880487,
+    "lon": -102.2967195
+  },
+  "internacional|águas da prata": {
+    "lat": -21.9464285,
+    "lon": -46.7192121
+  },
+  "brasil|águas de lindóia": {
+    "lat": -22.4718855,
+    "lon": -46.6291034
+  },
+  "grécia|albânia": {
+    "lat": 39.62562,
+    "lon": 19.9099438
+  },
+  "brasil|alegrete": {
+    "lat": -29.790166,
+    "lon": -55.794862
+  },
+  "internacional|alta gracia": {
+    "lat": -31.6578916,
+    "lon": -64.4338563
+  },
+  "brasil|alumínio": {
+    "lat": -23.5203479,
+    "lon": -47.2575256
+  },
+  "estados unidos|américa central": {
+    "lat": 37.8729539,
+    "lon": -122.2380229
+  },
+  "frança|américa do norte": {
+    "lat": -10.2000777,
+    "lon": -48.9043442
+  },
+  "brasil|américa do sul": {
+    "lat": -20.8259201,
+    "lon": -49.3808018
+  },
+  "brasil|anápolis": {
+    "lat": -16.3332828,
+    "lon": -48.9525756
+  },
+  "turquia|ancara": {
+    "lat": 39.9207759,
+    "lon": 32.8540497
+  },
+  "internacional|ancona": {
+    "lat": 43.4801189,
+    "lon": 13.2187279
+  },
+  "espanha|andorra": {
+    "lat": 40.9753365,
+    "lon": -0.4442782
+  },
+  "antártida|antártida": {
+    "lat": -32.940423,
+    "lon": -60.7250337
+  },
+  "internacional|antibes": {
+    "lat": 43.5813878,
+    "lon": 7.1236966
+  },
+  "brasil|aparecida": {
+    "lat": -22.851552,
+    "lon": -45.2340924
+  },
+  "brasil|aparecida de goiânia": {
+    "lat": -16.8226769,
+    "lon": -49.2452546
+  },
+  "brasil|aracaju": {
+    "lat": -10.9162061,
+    "lon": -37.0774655
+  },
+  "brasil|aracruz": {
+    "lat": -19.8245218,
+    "lon": -40.2735025
+  },
+  "brasil|arara": {
+    "lat": -6.8271895,
+    "lon": -35.7605703
+  },
+  "brasil|araranguá": {
+    "lat": -28.9348832,
+    "lon": -49.4858389
+  },
+  "internacional|araripina": {
+    "lat": -7.5768582,
+    "lon": -40.5038509
+  },
+  "brasil|araruama": {
+    "lat": -22.7446908,
+    "lon": -42.3231292
+  },
+  "brasil|areias": {
+    "lat": -22.5800929,
+    "lon": -44.6975127
+  },
+  "peru|arequipa": {
+    "lat": -16.3988667,
+    "lon": -71.5369607
+  },
+  "internacional|argel": {
+    "lat": 36.7729333,
+    "lon": 3.0588445
+  },
+  "grécia|atenas": {
+    "lat": 37.9755648,
+    "lon": 23.7348324
+  },
+  "grécia|ática": {
+    "lat": 37.7561803,
+    "lon": 23.6669006
+  },
+  "nova zelândia|auckland": {
+    "lat": -36.852095,
+    "lon": 174.7631803
+  },
+  "austrália|austrália": {
+    "lat": -35.2965236,
+    "lon": 149.1295736
+  },
+  "áustria|áustria": {
+    "lat": 48.2817813,
+    "lon": 15.7632457
+  },
+  "brasil|balneário camboriú": {
+    "lat": -26.9924395,
+    "lon": -48.6339782
+  },
+  "dinamarca|aalborg": {
+    "lat": 57.0462626,
+    "lon": 9.9215263
+  },
+  "brasil|acapulco": {
+    "lat": -21.0215962,
+    "lon": -40.8206429
+  },
+  "uruguai|aceguá (uruguai)": {
+    "lat": -30.0297283,
+    "lon": -51.2287771
+  },
+  "áfrica do sul|áfrica do sul": {
+    "lat": 32.6453358,
+    "lon": -16.935385
+  },
+  "reino unido|alexandria": {
+    "lat": 55.9878736,
+    "lon": -4.5822088
+  },
+  "argentina|alta gracia": {
+    "lat": -31.6578916,
+    "lon": -64.4338563
+  },
+  "brasil|amarante": {
+    "lat": -6.4057146,
+    "lon": -42.7476393
+  },
+  "brasil|araripina": {
+    "lat": -7.5768582,
+    "lon": -40.5038509
   }
 }
