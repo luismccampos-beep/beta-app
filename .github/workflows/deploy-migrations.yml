@@ -46,7 +46,7 @@ jobs:
             echo "::warning::DATABASE_URL_UNPOOLED empty — job-level fallback now routes prisma steps through the pooled URL. That's fine for schema validation but unreliable for migrate status / deploy under PgBouncer, so those steps have an explicit env block below without fallback."
           fi
 
-      - run: npm ci --legacy-peer-deps
+      - run: npm install --legacy-peer-deps
 
       - name: Check migration status
         # Step-level env WITHOUT fallback: PgBouncer in transaction mode (Neon)
