@@ -513,7 +513,6 @@ export function DashboardPage({ onBack, onNewBooking, initialTab }: DashboardPag
   useEffect(() => {
     fetch2faStatus();
     fetchSessions();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   // ── Password handler ──

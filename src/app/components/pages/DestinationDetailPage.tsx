@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 import { useLocale, useTranslations } from 'next-intl';
 import {
@@ -290,12 +290,15 @@ function DestinationGallery({
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
 
-  if (!images.length) return null;
-
-  const prev = () =>
-    setCurrentIndex((i) => (i - 1 + images.length) % images.length);
-  const next = () => setCurrentIndex((i) => (i + 1) % images.length);
-  const close = () => setLightboxOpen(false);
+  const prev = useCallback(
+    () => setCurrentIndex((i) => (i - 1 + images.length) % images.length),
+    [images.length],
+  );
+  const next = useCallback(
+    () => setCurrentIndex((i) => (i + 1) % images.length),
+    [images.length],
+  );
+  const close = useCallback(() => setLightboxOpen(false), []);
 
   // Keyboard navigation
   useEffect(() => {
@@ -307,7 +310,9 @@ function DestinationGallery({
     };
     window.addEventListener('keydown', handleKey);
     return () => window.removeEventListener('keydown', handleKey);
-  }, [lightboxOpen]);
+  }, [lightboxOpen, prev, next, close]);
+
+  if (!images.length) return null;
 
   return (
     <>

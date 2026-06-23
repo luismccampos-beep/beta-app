@@ -1033,6 +1033,9 @@
   },
   "results": {
     "aiPoweredResults": "AI-Powered Results",
+    "noResults": "No results found",
+    "noResultsDesc": "Try adjusting your filters to see more options",
+    "clearFilters": "Clear Filters",
     "title": "Your Personalized Travel Recommendations",
     "subtitle": "AI-curated destinations based on your preferences",
     "resultsFound": "results found",
@@ -1069,7 +1072,7 @@
     "noHotelResults": "No hotel results returned. Check Hotelbeds credentials and dates.",
     "sortBy": "Sort by",
     "filters": "Filters",
-    "clearFilters": "Clear All",
+    "clearAll": "Clear All",
     "priceRange": "Price Range",
     "continent": "Continent",
     "duration": "Duration",

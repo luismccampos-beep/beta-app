@@ -4427,7 +4427,6 @@ model WvDestination {
   longitude         Float?   @db.Real
   imagemUrl         String?  @map("imagem_url") @db.VarChar(500)
   imagemQuery       String?  @map("imagem_query") @db.VarChar(255)
-  categorias        Json?    @db.JsonB
   hotelCount        Int      @default(0) @map("hotel_count")
   createdAt         DateTime @default(now()) @map("created_at")
   updatedAt         DateTime @updatedAt @map("updated_at")
