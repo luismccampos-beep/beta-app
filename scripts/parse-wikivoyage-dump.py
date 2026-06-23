@@ -174,6 +174,10 @@ def parse_sections(wiki_text: str) -> dict[str, str]:
                 break
 
     return sections
+
+
+def parse_listings(wiki_text: str) -> list[dict[str, str]]:
+    """Extrai listagens (sleep/eat/see/do/etc.) do texto Wikivoyage."""
     listings: list[dict[str, str]] = []
     for block in LISTING_RE.findall(wiki_text or ""):
         fields: dict[str, str] = {}

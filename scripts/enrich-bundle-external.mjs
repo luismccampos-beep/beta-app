@@ -35,6 +35,11 @@ const LIMIT = limitArg
   ? parseInt(limitArg.split('=')[1] ?? process.argv[process.argv.indexOf('--limit') + 1], 10)
   : parseInt(process.env.EXTERNAL_ENRICH_LIMIT ?? '200', 10);
 
+const offsetArg = process.argv.find((a) => a.startsWith('--offset'));
+const OFFSET = offsetArg
+  ? parseInt(offsetArg.split('=')[1] ?? process.argv[process.argv.indexOf('--offset') + 1], 10)
+  : parseInt(process.env.EXTERNAL_ENRICH_OFFSET ?? '0', 10);
+
 const onlyIdx = process.argv.indexOf('--only');
 const ONLY = onlyIdx >= 0 ? process.argv[onlyIdx + 1]?.split(',') ?? [] : null;
 
@@ -83,7 +88,7 @@ async function main() {
 
   const bundle = JSON.parse(readFileSync(BUNDLE, 'utf8'));
   const destinos = bundle.destinos ?? [];
-  const slice = destinos.slice(0, LIMIT);
+  const slice = destinos.slice(OFFSET, OFFSET + LIMIT);
   const geoCache = loadGeoCache();
 
   let wikiOk = 0;
