@@ -72,7 +72,7 @@ export function DestinationResultCard({ result, href, labels, tipPreviews = [] }
   return (
     <Card className="group relative overflow-hidden border-0 bg-white dark:bg-gray-800 shadow-md hover:shadow-xl ring-1 ring-gray-200/60 dark:ring-gray-700/60 transition-all duration-300">
       {/* ── Hero Image ── */}
-      <Link href={href} className="block relative h-56 overflow-hidden">
+      <Link href={href} className="block relative aspect-video overflow-hidden">
         <img
           src={result.imageUrl || DESTINATION_PLACEHOLDER}
           alt={result.destination}

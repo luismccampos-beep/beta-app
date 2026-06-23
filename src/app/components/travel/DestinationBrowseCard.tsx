@@ -70,7 +70,7 @@ export function DestinationBrowseCard({ item, href, labels }: DestinationBrowseC
   return (
     <Card className="group relative overflow-hidden border-0 bg-white dark:bg-gray-800 shadow-md hover:shadow-xl ring-1 ring-gray-200/60 dark:ring-gray-700/60 transition-all duration-300 h-full flex flex-col">
       {/* Hero image */}
-      <Link href={href} className="block relative h-48 overflow-hidden shrink-0">
+      <Link href={href} className="block relative aspect-video overflow-hidden shrink-0">
         <img
           src={item.imageUrl || DESTINATION_PLACEHOLDER}
           alt={item.nome}
