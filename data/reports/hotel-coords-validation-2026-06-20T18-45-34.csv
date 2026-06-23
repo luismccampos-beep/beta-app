@@ -1,0 +1,1404 @@
+hotel_name;external_city;external_country;external_lat;external_lon;db_city;db_country;db_lat;db_lon;distance_km;status
+"Hotel Riviera";"Sukhumi";"Abecásia";43.0031;41.0205;"Bukavu";"Internacional";-2.505584;28.85949;5205.16;DISCREPANCY
+"Comfort Hotel";"Sukhumi";"Abecásia";43.004;41.0175;"Fier";"Albânia";40.72511;19.55821;1790.00;DISCREPANCY
+"Hotel do Comércio";"Bagé";"Brasil";-31.3308;-54.1068;"Santo Ângelo";"Brasil";-28.30005;-54.267;337.36;DISCREPANCY
+"Hotel Juana";"Melo";"Uruguai";-32.3855;-54.1624;"Antibes";"França";43.58139;7.123697;10488.04;DISCREPANCY
+"Hotel Sahara";"Mandalay";"Myanmar";21.952;96.079;"M'Hamid";"Marrocos";29.82866;-5.723405;9871.38;DISCREPANCY
+"Hotel Aurora";"Mandalay";"Myanmar";21.951;96.078;"Amalfi";"Itália";6.90701;-75.07359;16664.42;DISCREPANCY
+"Kempinski Nile Hotel";"Cairo";"Egito";30.0412;31.2263;"Cairo/Garden City";"Egito";40.72677;-73.6343;8994.22;DISCREPANCY
+"Hilton Cairo Heliopolis";"Cairo";"Egito";30.085;31.335;"Cairo/East";"Egito";27.9532;-82.44859;10474.73;DISCREPANCY
+"Conrad Cairo";"Cairo";"Egito";30.054;31.231;"Cairo/Midan Tahrir";"Egito";30.04439;31.23573;1.16;DISCREPANCY
+"Safir Hotel Cairo";"Cairo";"Egito";30.057;31.229;"Cairo/Dokki and Mohandiseen";"Egito";30.03522;31.21375;2.83;DISCREPANCY
+"Hôtel des Roches";"Kourou";"Guiana Francesa (França)";5.16;-52.65;"Kourou";"Portugal";14.48504;-4.962145;5315.93;DISCREPANCY
+"Hotel Express";"Luanda";"Angola";-8.838;13.234;"São Leopoldo";"Brasil";-29.76535;-51.14581;7053.93;DISCREPANCY
+"Oberoi Vanyavilas";"Ranthambhore";"Índia";25.9961;76.3621;"Sawai Madhopur";"Internacional";26.02449;76.38708;4.02;DISCREPANCY
+"Mandarin Oriental";"Milão";"Itália";45.4691;9.1916;"Munique";"Alemanha";48.13689;11.58096;347.91;DISCREPANCY
+"Alila Manggis";"Bali (Karangasem)";"Indonésia";-8.4967;115.5342;"Candidasa";"Internacional";37.09103;-8.217216;13547.06;DISCREPANCY
+"Mandarin Oriental";"Banguecoque";"Tailândia";13.7236;100.5144;"Munique";"Alemanha";48.13689;11.58096;8797.77;DISCREPANCY
+"Grand Hotel Excelsior";"Sorrento";"Itália";40.6277;14.3697;"Montreux";"Alemanha";48.41404;9.949925;933.61;DISCREPANCY
+"Mandarin Oriental";"Paris";"França";48.8665;2.3283;"Munique";"Alemanha";48.13689;11.58096;686.09;DISCREPANCY
+"St. Regis Bora Bora";"Bora Bora";"Polinésia Fr.";-16.4883;-151.7111;"Bora Bora";"Portugal";38.7381;-9.133599;15622.62;DISCREPANCY
+"Sosan Hotel";"Pyongyang";"Coreia do Norte";39.0118;125.6885;"Pyongyang";"Internacional";39.0168;125.7474;5.12;DISCREPANCY
+"Ryanggang Hotel";"Pyongyang";"Coreia do Norte";38.9935;125.6982;"Pyongyang";"Internacional";39.0168;125.7474;4.98;DISCREPANCY
+"Lemon Tree Premier, Mumbai International Airport";"";"India";19.108165;72.88225;"Chhatrapati Shivaji Maharaj International Airport";"Índia";37.11314;-8.675184;8011.84;DISCREPANCY
+"Kingfisher Hotel";"UK";"MK44 3SA";52.1287;-0.4283;"Ambala";"Índia";30.38437;76.77042;6548.81;DISCREPANCY
+"The Mill";"UK";"MK40 3ND";52.1378;-0.4635;"Long Melford";"Internacional";52.08139;0.720556;81.10;DISCREPANCY
+"Waterfront Hotel";"UK";"MK44 3AL";52.2036;-0.2854;"Baltimore (Ireland)";"Estados Unidos";39.29088;-76.61076;5807.43;DISCREPANCY
+"The Peninsula";"France";"75116";48.8715;2.2933;"Buri";"Brasil";46.01042;13.33383;888.16;DISCREPANCY
+"Grand Hyatt";"Germany";"10785";52.5076;13.3734;"São Paulo/Brooklin, Campo Belo e Berrini";"Brasil";-23.55065;-46.63338;10250.35;DISCREPANCY
+"The Ritz-Carlton";"Germany";"10785";52.5101;13.376;"Korolev";"Rússia";55.91901;37.81504;1624.35;DISCREPANCY
+"Kings Arms";"UK";"BH23 1DT*";50.7335;-1.7748;"Berkhamsted";"Reino Unido";51.76073;-0.5652554;141.89;DISCREPANCY
+"Bridge House";"UK";"BH22 9AN";50.7776;-1.9079;"Ambleside";"Internacional";54.45701;-3.02347;415.99;DISCREPANCY
+"Riverside";"UK";"SP2 8JN";51.0592;-1.802;"Austin/South";"Estados Unidos";41.8709;-87.77679;6282.06;DISCREPANCY
+"Hotel Nazionale";"Roma";"Italia";186;41.9009;"Roma";"Itália";41.90103;12.47795;15078.78;DISCREPANCY
+"Hotel Santa Maria";"Roma";"Italia";153;41.8902;"Praia da Vitória";"Portugal";38.73104;-27.06035;9788.36;DISCREPANCY
+"Hotel Ponte Sisto";"Roma";"Italia";186;41.8933;"Roma";"Itália";41.89327;12.47189;15079.49;DISCREPANCY
+"Hotel Florida";"Itália";"Via Lido 15, 07041 Alghero";40.57064;8.31889;"Filadelfia";"Portugal";41.70519;-8.817631;1438.22;DISCREPANCY
+"Hotel Oasis";"Itália";"Viale I Maggio snc, 07041 Alghero";40.58481;8.31091;"Niamey";"Níger";13.52483;2.109823;3068.89;DISCREPANCY
+"Hotel Italia";"Itália";"Via Sardegna 31, 09124 Cagliari";39.215;9.1148;"Mantua";"Itália";38.85372;-77.25943;7141.93;DISCREPANCY
+"Hotel Villa delle Rose";"Itália";"Piazza Italia 5, 09170 Oristano";39.9037;8.591;"Roma";"Itália";41.89332;12.48293;394.84;DISCREPANCY
+"Hotel d'Angleterre";"Dinamarca";"Copenhaga";55.68;12.586;"Avignon";"França";43.9446;4.800702;1417.35;DISCREPANCY
+"Hotel d'Angleterre";"Dinamarca";"Copenhaga";55.68;12.586;"Avignon";"França";43.9446;4.800702;1417.35;DISCREPANCY
+"Hotel Metropol";"Cidade do México";"México";19.433;-99.14;"Korolev";"Rússia";55.91901;37.81504;10713.83;DISCREPANCY
+"Courtyard by Marriott Mexico City Airport";"Cidade do México";"México";19.435;-99.082;"Benito Juárez International Airport";"México";37.09937;-8.128007;8801.43;DISCREPANCY
+"Hotel Riazor";"Cidade do México";"México";19.42;-99.1;"A Corunha";"Espanha";42.94936;-8.791023;8575.94;DISCREPANCY
+"Cosmos Hotel";"Moscovo";"Rússia";55.8222;37.6461;"Caxias do Sul";"Brasil";-29.16455;-51.17582;12581.24;DISCREPANCY
+"Aman-i-Khas";"Sawai Madhopur";"Índia";26.0465;76.3828;"Sawai Madhopur";"Internacional";26.06366;76.44123;6.14;DISCREPANCY
+"Amanjiwo";"Magelang";"Indonésia";-7.6186;110.1878;"Borobudur";"Internacional";-7.603103;110.2041;2.49;DISCREPANCY
+"Amankila";"Karangasem";"Indonésia";-8.4867;115.5244;"Candidasa";"Internacional";37.09103;-8.217216;13545.53;DISCREPANCY
+"Splendido";"Portofino";"Itália";44.3015;9.2074;"Beirut/Ain El Mraiseh";"Internacional";33.89871;35.48543;2530.13;DISCREPANCY
+"Belmond Hotel das Cataratas";"Foz do Iguaçu";"Brasil";-25.6894;-54.4378;"América do Sul";"Brasil";-20.82592;-49.3808;747.71;DISCREPANCY
+"Hotel Savoy";"Florença";"Itália";43.7717;11.2544;"Vila Ribeira Brava";"Internacional";37.21012;-8.648105;1828.40;DISCREPANCY
+"Swissôtel Nusantara";"Nusantara";"Indonésia";-0.9625;116.7117;"Nusantara";"Indonésia";37.09103;-8.217216;13101.63;DISCREPANCY
+"Sofitel Athens Airport";"Atenas";"Grécia";37.9364;23.9472;"Spata";"Grécia";38.68093;-9.330173;2888.68;DISCREPANCY
+"Sofitel Abidjan Hotel Ivoire";"Abidjan";"Costa do Marfim";5.3289;-3.9989;"Abidjan";"Internacional";37.09103;-8.217216;3557.74;DISCREPANCY
+"Sofitel Malabo Sipopo Le Golf";"Malabo";"Guiné Equatorial";3.7489;8.8783;"Malabo";"Internacional";37.11314;-8.675184;4119.47;DISCREPANCY
+"Hotel de Paris";"Monte Carlo";"Mónaco";43;7;"Amsterdam/Jordaan";"Holanda";52.36578;4.879771;1053.33;DISCREPANCY
+"Laxmi Niwas Palace";"Bikaner";"India";28;73;"Bikaner";"Índia";28.01593;73.31714;31.18;DISCREPANCY
+"Hilton Chennai";"Chennai";"India";13;80;"Chennai/South";"Índia";37.09014;-8.678213;9025.13;DISCREPANCY
+"Elite Grand Hotel";"Chennai";"India";13;80;"Gävle";"Suécia";60.67501;17.14932;7288.95;DISCREPANCY
+"Park Hyatt Chennai";"Chennai";"India";13;80;"Chennai/South";"Índia";37.09014;-8.678213;9025.13;DISCREPANCY
+"Jhargram Palace";"Jhargram";"India";22;86;"Jhargram";"Índia";41.75703;-8.58207;8762.23;DISCREPANCY
+"Bally's Atlantic City";"Atlantic City";"USA";39;-74;"Atlantic City";"Estados Unidos";37.09103;-8.217216;5633.98;DISCREPANCY
+"The Borgata";"Atlantic City";"USA";39;-74;"Atlantic City";"Estados Unidos";38.68093;-9.330173;5475.44;DISCREPANCY
+"Encore Boston Harbor";"Everett";"USA";42;-71;"Everett (Massachusetts)";"Estados Unidos";47.97934;-122.2127;4006.19;DISCREPANCY
+"Harrah's Laughlin";"Laughlin";"USA";35;-114;"Laughlin";"Estados Unidos";35.14428;-114.5775;54.95;DISCREPANCY
+"Hotel de Paris";"Monte Carlo";"Monaco";43;7;"Amsterdam/Jordaan";"Holanda";52.36578;4.879771;1053.33;DISCREPANCY
+"IP Casino Resort & Spa";"Biloxi";"USA";30;-88;"Biloxi";"Estados Unidos";30.40076;-88.88938;96.39;DISCREPANCY
+"Jackson Rancheria Casino Resort";"Jackson";"USA";38;-120;"Jackson (California)";"Estados Unidos";32.29987;-90.18304;2771.25;DISCREPANCY
+"The Linq";"Las Vegas";"USA";36;-115;"Las Vegas";"Estados Unidos";36.11826;-115.171;20.23;DISCREPANCY
+"The Palazzo";"Las Vegas";"USA";36;-115;"Burnley";"Reino Unido";53.79073;-2.24392;8137.01;DISCREPANCY
+"Riviera";"Las Vegas";"USA";36;-115;"Araçatuba";"Brasil";-21.1415;-50.48321;9288.32;DISCREPANCY
+"The Star Gold Coast";"Broadbeach";"Australia";-28;153;"Gold Coast/Broadbeach";"Austrália";37.15121;-8.228189;17988.61;DISCREPANCY
+"Fenícia Hotel";"Bagé";"Brasil";-31.3283;-54.106;"Bagé";"Brasil";-31.33143;-54.10628;0.35;MATCH
+"Peacock Lodge";"Mandalay";"Myanmar";21.961;96.089;"Mandalay (cidade)";"Portugal";21.95968;96.09487;0.62;MATCH
+"Badrutt's Palace";"St. Moritz";"Suíça";46.4965;9.84;"St. Moritz";"Suíça";46.49755;9.84051;0.12;MATCH
+"Pyongyang Hotel";"Pyongyang";"Coreia do Norte";39.0145;125.7512;"Pyongyang";"Internacional";39.0168;125.7474;0.42;MATCH
+"Mercure Bedford Centre Hotel";"UK";"MK42 0AR";52.1334;-0.4673;"Bedford";"Reino Unido";52.13638;-0.4675041;0.33;MATCH
+"The White Hart";"UK";"MK45 2NG";52.0284;-0.4927;"Ampthill";"Reino Unido";52.03154;-0.4929938;0.35;MATCH
+"Holiday Inn Camden Lock";"UK";"NW1 7BY";51.5401;-0.1449;"Londres/Camden";"Estados Unidos";51.54045;-0.146061;0.09;MATCH
+"Thornbury Castle";"UK";"BS35 1HH";51.6144;-2.528;"Thornbury";"Internacional";51.6137;-2.531072;0.23;MATCH
+"Islay House";"UK";"PA44 7PA";55.7803;-6.2484;"Islay";"Internacional";55.78484;-6.25408;0.62;MATCH
+"JW Marriott Mexico City";"México";"Andrés Bello 29, Polanco";19.427;-99.192;"Mexico City/Chapultepec";"México";19.42692;-99.19477;0.29;MATCH
+"Hilton Hawaiian Village";"Honolulu";"Estados Unidos";21.2842;-157.8375;"Honolulu/Waikiki";"Estados Unidos";21.2824;-157.8374;0.20;MATCH
+"Disney's Sequoia Lodge";"Coupvray (Paris)";"França";48.8675;2.7871;"Disneyland Resort Paris/Disney Village";"Internacional";48.86866;2.790224;0.26;MATCH
+"Disney's Hotel Santa Fe";"Coupvray (Paris)";"França";48.8698;2.7932;"Disneyland Resort Paris";"Estados Unidos";48.87282;2.795502;0.38;MATCH
+"Disney's Hotel Cheyenne";"Coupvray (Paris)";"França";48.8712;2.7901;"Disneyland Resort Paris/Disney Village";"Internacional";48.8744;2.791388;0.37;MATCH
+"Hotel Astoria";"São Petersburgo";"Rússia";59.9328;30.3086;"São Petersburgo";"Rússia";59.93304;30.30878;0.03;MATCH
+"Swissôtel The Bosphorus Istanbul";"Istambul";"Turquia";41.0406;28.9989;"Istambul";"Turquia";41.0409;28.9977;0.11;MATCH
+"Garuda Boutique Hotel";"Sukhumi";"Abecásia";43.0015;41.02;;;;;NOT_FOUND
+"Hotel DEM";"Sukhumi";"Abecásia";43.0025;41.0155;;;;;NOT_FOUND
+"Inter-Sukhum";"Sukhumi";"Abecásia";43.001;41.013;;;;;NOT_FOUND
+"Leon Hotel";"Sukhumi";"Abecásia";43.0018;41.016;;;;;NOT_FOUND
+"Olimp Hotel";"Sukhumi";"Abecásia";43.003;41.014;;;;;NOT_FOUND
+"Amra Butik-Hotel";"Sukhumi";"Abecásia";43.0022;41.017;;;;;NOT_FOUND
+"Dioskuria Hotel";"Sukhumi";"Abecásia";43.0012;41.019;;;;;NOT_FOUND
+"Viva Maria";"Sukhumi";"Abecásia";43.0035;41.0125;;;;;NOT_FOUND
+"Dom Moskvy Hotel";"Sukhumi";"Abecásia";43.0019;41.0145;;;;;NOT_FOUND
+"Samson Hotel";"Sukhumi";"Abecásia";43.0008;41.0095;;;;;NOT_FOUND
+"Hotel Aytar More";"Sukhumi";"Abecásia";43.018;41.043;;;;;NOT_FOUND
+"Hotel Strana Dushi";"Sukhumi";"Abecásia";43.0025;41.012;;;;;NOT_FOUND
+"Stolitsa Hotel";"Sukhumi";"Abecásia";43.0033;41.0165;;;;;NOT_FOUND
+"Dioskuriya Guest House";"Sukhumi";"Abecásia";43.0027;41.0148;;;;;NOT_FOUND
+"Oasis Apartment Hotel";"Sukhumi";"Abecásia";43.0045;41.021;;;;;NOT_FOUND
+"Mini Hotel 4Rooms";"Sukhumi";"Abecásia";43.019;41.04;;;;;NOT_FOUND
+"Akra Hotel";"Sukhumi";"Abecásia";43.0041;41.0185;;;;;NOT_FOUND
+"Gostevoy Dom John's";"Sukhumi";"Abecásia";43.0026;41.0143;;;;;NOT_FOUND
+"Family Inn";"Sukhumi";"Abecásia";43.002;41.011;;;;;NOT_FOUND
+"Kalipso Hotel";"Sukhumi";"Abecásia";43.007;41.028;;;;;NOT_FOUND
+"Riverrun Apart-Hotel";"Sukhumi";"Abecásia";43.0042;41.019;;;;;NOT_FOUND
+"Eden Apartment Hotel";"Sukhumi";"Abecásia";43.0039;41.018;;;;;NOT_FOUND
+"Greys Akva Villa Hotel";"Sukhumi";"Abecásia";43.05;41.06;;;;;NOT_FOUND
+"Sukhum Avenyu Mini-Hotel";"Sukhumi";"Abecásia";43.0035;41.0162;;;;;NOT_FOUND
+"Loft Garden Apartments";"Sukhumi";"Abecásia";43.0048;41.022;;;;;NOT_FOUND
+"Mys Sukhuma Mini-Hotel";"Sukhumi";"Abecásia";43.052;41.062;;;;;NOT_FOUND
+"Gostevoy Dom Dvorets Relaksa";"Sukhumi";"Abecásia";43.0028;41.015;;;;;NOT_FOUND
+"Lime Guest House";"Sukhumi";"Abecásia";43.0055;41.023;;;;;NOT_FOUND
+"Aqua Resort Dacha Resort";"Sukhumi";"Abecásia";43.01;41.005;;;;;NOT_FOUND
+"Hotel Black Sea";"Sukhumi";"Abecásia";42.9748;41.0624;;;;;NOT_FOUND
+"Loft Hotel";"Novii Afon";"Abecásia";43.092;40.825;;;;;NOT_FOUND
+"Griffon Hotel";"Novii Afon";"Abecásia";43.091;40.823;;;;;NOT_FOUND
+"Abaash Afon Hotel";"Novii Afon";"Abecásia";43.0905;40.822;;;;;NOT_FOUND
+"Nikopoli Hotel";"Novii Afon";"Abecásia";43.0915;40.824;;;;;NOT_FOUND
+"Noema Mini-Hotel";"Novii Afon";"Abecásia";43.09;40.821;;;;;NOT_FOUND
+"Gostevoy Dom Ritsa";"Gagra";"Abecásia";43.32;40.28;;;;;NOT_FOUND
+"Hotel Art-Otel Astoriya";"Gagra";"Abecásia";43.3185;40.277;;;;;NOT_FOUND
+"Laura - Kiparis Hotel";"Pitsunda";"Abecásia";43.157;40.338;;;;;NOT_FOUND
+"Kurort Pitsunda";"Pitsunda";"Abecásia";43.1587;40.3407;;;;;NOT_FOUND
+"Pitsunda Hotel";"Pitsunda";"Abecásia";43.1605;40.3407;;;;;NOT_FOUND
+"Mini-Hotel Bungalow";"Pitsunda";"Abecásia";43.1764;40.3729;;;;;NOT_FOUND
+"Mini-Hotel Bambucha";"Pitsunda";"Abecásia";43.1807;40.3855;;;;;NOT_FOUND
+"Hotel Marina Porto Abrolhos";"Caravelas";"Brasil";-17.7428;-39.2577;;;;;NOT_FOUND
+"Pousada Corais de Abrolhos";"Caravelas";"Brasil";-17.745;-39.259;;;;;NOT_FOUND
+"Hotel Brisa dos Abrolhos";"Alcobaça";"Brasil";-17.52;-39.2;;;;;NOT_FOUND
+"Pontal do Pero";"Caravelas";"Brasil";-17.744;-39.258;;;;;NOT_FOUND
+"Pousada Caravelas";"Caravelas";"Brasil";-17.743;-39.257;;;;;NOT_FOUND
+"Pousada do Beco";"Caravelas";"Brasil";-17.7435;-39.2565;;;;;NOT_FOUND
+"Pousada dos Navegantes";"Caravelas";"Brasil";-17.7425;-39.2575;;;;;NOT_FOUND
+"Abrolhos Dive Inn";"Caravelas";"Brasil";-17.7422;-39.256;;;;;NOT_FOUND
+"Pousada Encanto Abrolhos";"Caravelas";"Brasil";-17.7418;-39.2555;;;;;NOT_FOUND
+"Pousada Liberdade";"Caravelas";"Brasil";-17.746;-39.2595;;;;;NOT_FOUND
+"Pousada Abrolhos Sol a Mar";"Caravelas";"Brasil";-17.7415;-39.255;;;;;NOT_FOUND
+"Cantinho da Beth";"Caravelas";"Brasil";-17.7432;-39.2568;;;;;NOT_FOUND
+"Pousada das Sereias";"Caravelas";"Brasil";-17.7442;-39.2582;;;;;NOT_FOUND
+"Pousada Oliveiras";"Caravelas";"Brasil";-17.7438;-39.2574;;;;;NOT_FOUND
+"Pousada Siriba";"Caravelas";"Brasil";-17.742;-39.2558;;;;;NOT_FOUND
+"Pousada Opa – O Paraíso É Aqui Abrolhos";"Caravelas";"Brasil";-17.7412;-39.2548;;;;;NOT_FOUND
+"Hotel Obino Bagé";"Bagé";"Brasil";-31.331;-54.106;;;;;NOT_FOUND
+"Hotel Villa De Carli";"Bagé";"Brasil";-31.3322;-54.0894;;;;;NOT_FOUND
+"Bagé City Hotel";"Bagé";"Brasil";-31.3315;-54.1075;;;;;NOT_FOUND
+"Hotel Candiota";"Candiota";"Brasil";-31.5583;-53.6766;;;;;NOT_FOUND
+"Posada Imperial";"Melo";"Uruguai";-32.37;-54.17;;;;;NOT_FOUND
+"Hotel Crown";"Melo";"Uruguai";-32.3725;-54.1685;;;;;NOT_FOUND
+"Hotel Posada La Comandancia";"Melo";"Uruguai";-32.37;-54.17;;;;;NOT_FOUND
+"Hotel Virrey Pedro de Melo";"Melo";"Uruguai";-32.3718;-54.169;;;;;NOT_FOUND
+"Howard Johnson Sierras Hotel y Casino Alta Gracia";"Alta Gracia";"Argentina";-31.6498;-64.4297;;;;;NOT_FOUND
+"Solares Hotel & Spa";"Alta Gracia";"Argentina";-31.651;-64.431;;;;;NOT_FOUND
+"Hotel Ritz Alta Gracia";"Alta Gracia";"Argentina";-31.6495;-64.429;;;;;NOT_FOUND
+"Alta Gracia Hotel Boutique";"Alta Gracia";"Argentina";-31.6494;-64.4292;;;;;NOT_FOUND
+"Nuestra Señora de Altagracia Hotel Boutique";"Alta Gracia";"Argentina";-31.6505;-64.4305;;;;;NOT_FOUND
+"El Potrerillo de Larreta";"Alta Gracia";"Argentina";-31.67;-64.45;;;;;NOT_FOUND
+"Posada del Qenti";"Alta Gracia";"Argentina";-31.66;-64.5;;;;;NOT_FOUND
+"Posada Mi Morada";"Alta Gracia";"Argentina";-31.65;-64.4295;;;;;NOT_FOUND
+"Hostal Hispania";"Alta Gracia";"Argentina";-31.6487;-64.4285;;;;;NOT_FOUND
+"Hospedaje Covadonga";"Alta Gracia";"Argentina";-31.649;-64.4288;;;;;NOT_FOUND
+"Mi Posada B&B";"Alta Gracia";"Argentina";-31.648;-64.4275;;;;;NOT_FOUND
+"Posada Raíces del Carolino";"Alta Gracia";"Argentina";-31.648;-64.4275;;;;;NOT_FOUND
+"Hostal Baudi";"Alta Gracia";"Argentina";-31.6492;-64.4288;;;;;NOT_FOUND
+"Quetzal Bed and Breakfast";"Alta Gracia";"Argentina";-31.6488;-64.4282;;;;;NOT_FOUND
+"Hostería El Viejo Molino";"Alta Gracia";"Argentina";-31.647;-64.426;;;;;NOT_FOUND
+"Maktub Alta Gracia";"Alta Gracia";"Argentina";-31.6496;-64.4294;;;;;NOT_FOUND
+"Bagan Hotel";"Amarapura";"Myanmar";21.91;96.055;;;;;NOT_FOUND
+"Hilton Mandalay";"Mandalay";"Myanmar";21.9588;96.0891;;;;;NOT_FOUND
+"Mercure Mandalay Hill Resort";"Mandalay";"Myanmar";21.9783;96.0883;;;;;NOT_FOUND
+"Mingalar Mandalay Hotel";"Mandalay";"Myanmar";21.973;96.084;;;;;NOT_FOUND
+"Yuan Sheng Hotel";"Mandalay";"Myanmar";21.959;96.087;;;;;NOT_FOUND
+"Rupar Mandalar Resort";"Mandalay";"Myanmar";21.9585;96.0855;;;;;NOT_FOUND
+"Ritz Grand Myanmar";"Mandalay";"Myanmar";21.95;96.07;;;;;NOT_FOUND
+"Triumph Hotel Mandalay";"Mandalay";"Myanmar";21.956;96.081;;;;;NOT_FOUND
+"Mandalay Lodge";"Mandalay";"Myanmar";21.955;96.08;;;;;NOT_FOUND
+"The Home Hotel";"Mandalay";"Myanmar";21.96;96.086;;;;;NOT_FOUND
+"Dreamland Guesthouse";"Mandalay";"Myanmar";21.958;96.085;;;;;NOT_FOUND
+"Hotel 82";"Mandalay";"Myanmar";21.957;96.084;;;;;NOT_FOUND
+"Tiger One Hotel";"Mandalay";"Myanmar";21.956;96.083;;;;;NOT_FOUND
+"Hotel Yadanarbon";"Mandalay";"Myanmar";21.955;96.082;;;;;NOT_FOUND
+"Hotel 879 Living Hotel";"Mandalay";"Myanmar";21.954;96.081;;;;;NOT_FOUND
+"Diamonds Inn Mandalay";"Mandalay";"Myanmar";21.953;96.08;;;;;NOT_FOUND
+"Mandalay City Hotel";"Mandalay";"Myanmar";21.95;96.077;;;;;NOT_FOUND
+"Smart Hotel";"Mandalay";"Myanmar";21.949;96.076;;;;;NOT_FOUND
+"Hotel Apex";"Mandalay";"Myanmar";21.948;96.075;;;;;NOT_FOUND
+"Ayarwaddy River View Hotel";"Mandalay";"Myanmar";21.962;96.09;;;;;NOT_FOUND
+"The Hotel Emperor";"Mandalay";"Myanmar";21.963;96.091;;;;;NOT_FOUND
+"Cairo Marriott Hotel";"Cairo";"Egito";30.0594;31.2234;;;;;NOT_FOUND
+"Four Seasons Cairo at Nile Plaza";"Cairo";"Egito";30.0399;31.2252;;;;;NOT_FOUND
+"Sofitel Cairo Nile El Gezirah";"Cairo";"Egito";30.061;31.221;;;;;NOT_FOUND
+"The Nile Ritz-Carlton Cairo";"Cairo";"Egito";30.0444;31.2357;;;;;NOT_FOUND
+"Fairmont Nile City Cairo";"Cairo";"Egito";30.065;31.228;;;;;NOT_FOUND
+"InterContinental Cairo Semiramis";"Cairo";"Egito";30.043;31.227;;;;;NOT_FOUND
+"The St. Regis Cairo";"Cairo";"Egito";30.02;31.7;;;;;NOT_FOUND
+"The Westin Cairo Golf Resort & Spa";"Cairo";"Egito";30.01;31.49;;;;;NOT_FOUND
+"Sonesta Hotel Tower & Casino Cairo";"Cairo";"Egito";30.062;31.339;;;;;NOT_FOUND
+"Mövenpick Resort Aswan";"Assuão";"Egito";24.09;32.899;;;;;NOT_FOUND
+"Sofitel Legend Old Cataract Aswan";"Assuão";"Egito";24.0849;32.8929;;;;;NOT_FOUND
+"Nefertiti Hotel Amarna";"El Minya";"Egito";27.645;30.89;;;;;NOT_FOUND
+"Mercure Nefertiti & Aton";"El Minya";"Egito";28.089;30.757;;;;;NOT_FOUND
+"Nikko Hotel Guam";"Tamuning";"Guam (EUA)";13.5085;144.7978;;;;;NOT_FOUND
+"Dusit Thani Guam Resort";"Tumon";"Guam (EUA)";13.513;144.796;;;;;NOT_FOUND
+"Hyatt Regency Guam";"Tumon";"Guam (EUA)";13.512;144.7955;;;;;NOT_FOUND
+"Westin Resort Guam";"Tumon";"Guam (EUA)";13.5142;144.7975;;;;;NOT_FOUND
+"Outrigger Guam Beach Resort";"Tumon";"Guam (EUA)";13.5128;144.7958;;;;;NOT_FOUND
+"Pacific Islands Club Guam";"Tumon";"Guam (EUA)";13.5115;144.794;;;;;NOT_FOUND
+"Hotel Aguaí";"Aguaí";"Brasil";-22.0616;-46.9775;;;;;NOT_FOUND
+"Pousada das Orquídeas";"Aguaí";"Brasil";-22.062;-46.98;;;;;NOT_FOUND
+"Hotel Al-Khums";"Al-Khums";"Líbia";32.6486;14.2619;;;;;NOT_FOUND
+"Al Batra Hotel Tripoli";"Trípoli";"Líbia";32.8752;13.1875;;;;;NOT_FOUND
+"Holiday Inn Guatemala City";"Cidade da Guatemala";"Guatemala";14.61;-90.5133;;;;;NOT_FOUND
+"Barceló Guatemala City";"Cidade da Guatemala";"Guatemala";14.605;-90.512;;;;;NOT_FOUND
+"Real InterContinental San José";"San José";"Costa Rica";9.9281;-84.1366;;;;;NOT_FOUND
+"Hotel Sofitel Legend Santa Clara";"Cartagena";"Colômbia";10.4244;-75.5479;;;;;NOT_FOUND
+"Mercure Cayenne";"Caiena";"Guiana Francesa (França)";4.922;-52.327;;;;;NOT_FOUND
+"InterContinental Luanda Miramar";"Luanda";"Angola";-8.8077;13.2527;;;;;NOT_FOUND
+"EPIC SANA Luanda Hotel";"Luanda";"Angola";-8.81;13.241;;;;;NOT_FOUND
+"Hotel Alvalade";"Luanda";"Angola";-8.835;13.234;;;;;NOT_FOUND
+"Hotel Trópico";"Luanda";"Angola";-8.838;13.293;;;;;NOT_FOUND
+"Hotel Florença";"Luanda";"Angola";-8.838;13.234;;;;;NOT_FOUND
+"Hotel Diamante (Luanda)";"Luanda";"Angola";-8.838;13.234;;;;;NOT_FOUND
+"Hotel Ritz Capital";"Luanda";"Angola";-8.838;13.234;;;;;NOT_FOUND
+"Protea Hotel by Marriott Luanda";"Luanda";"Angola";-8.811;13.236;;;;;NOT_FOUND
+"Hotel Kilimanjaro";"Luanda";"Angola";-8.83;13.236;;;;;NOT_FOUND
+"Maculusso Boutique Hotel";"Luanda";"Angola";-8.832;13.234;;;;;NOT_FOUND
+"Casas de Luanda GH-Alvalade";"Luanda";"Angola";-8.835;13.234;;;;;NOT_FOUND
+"Viana Hotel";"Luanda";"Angola";-8.9055;13.3722;;;;;NOT_FOUND
+"AC Hotel Luanda";"Luanda";"Angola";-8.9231;13.1895;;;;;NOT_FOUND
+"Flow Hotel Benguela";"Benguela";"Angola";-12.6025;13.3928;;;;;NOT_FOUND
+"Ombaka Ritz";"Benguela";"Angola";-12.578;13.407;;;;;NOT_FOUND
+"Hotel Moibela";"Benguela";"Angola";-12.578;13.407;;;;;NOT_FOUND
+"Hotel Luso";"Benguela";"Angola";-12.578;13.407;;;;;NOT_FOUND
+"Aparthotel Mil Cidades";"Benguela";"Angola";-12.578;13.407;;;;;NOT_FOUND
+"Oceano Boutique Hotel";"Lobito";"Angola";-12.348;13.546;;;;;NOT_FOUND
+"Foz do Loge";"Ambriz";"Angola";-7.857;13.122;;;;;NOT_FOUND
+"J. Martins Hotel";"Ambriz";"Angola";-7.857;13.122;;;;;NOT_FOUND
+"Hotel Panguila";"Ambriz";"Angola";-7.857;13.122;;;;;NOT_FOUND
+"IU Hotel Ambriz";"Ambriz";"Angola";-7.857;13.122;;;;;NOT_FOUND
+"Casa Branca Hotel";"Porto Amboim";"Angola";-10.726;13.759;;;;;NOT_FOUND
+"Hotel Marítimo";"Porto Amboim";"Angola";-10.726;13.759;;;;;NOT_FOUND
+"Hotel Rochas";"Porto Amboim";"Angola";-10.726;13.759;;;;;NOT_FOUND
+"Hotel Complexo Residencial Quimbo";"Sumbe";"Angola";-11.206;13.844;;;;;NOT_FOUND
+"Hotel Kalunda";"Sumbe";"Angola";-11.206;13.844;;;;;NOT_FOUND
+"Hotel Gabela";"Gabela";"Angola";-10.85;14.383;;;;;NOT_FOUND
+"Hotel Fazenda Cabuta";"Calulo / Libolo";"Angola";-9.937;14.812;;;;;NOT_FOUND
+"WK Hotel & Spa";"Waku Kungo";"Angola";-11.358;15.117;;;;;NOT_FOUND
+"Hotel Iura";"Conda";"Angola";-10.683;14.467;;;;;NOT_FOUND
+"Lupupa Lodge";"Kissanga Kungo";"Angola";-11.358;15.117;;;;;NOT_FOUND
+"Hotel Licy";"Soyo";"Angola";-6.135;12.369;;;;;NOT_FOUND
+"Hotel Casmad";"Soyo";"Angola";-6.135;12.369;;;;;NOT_FOUND
+"Oui Hotel";"Soyo";"Angola";-6.135;12.369;;;;;NOT_FOUND
+"Hotel Porto Rico";"Soyo";"Angola";-6.135;12.369;;;;;NOT_FOUND
+"Hotel VIP Huila";"Lubango";"Angola";-14.917;13.5;;;;;NOT_FOUND
+"Chik-Chik Lubango";"Lubango";"Angola";-14.917;13.5;;;;;NOT_FOUND
+"Ibis Styles IU Lubango";"Lubango";"Angola";-14.917;13.5;;;;;NOT_FOUND
+"Novo Hotel do Lubango";"Lubango";"Angola";-14.917;13.5;;;;;NOT_FOUND
+"Serra da Chela Hotel";"Lubango";"Angola";-14.917;13.5;;;;;NOT_FOUND
+"Pousada Flor de Lis";"Lubango";"Angola";-14.917;13.5;;;;;NOT_FOUND
+"Lodge Obama";"Chibia";"Angola";-15.187;13.687;;;;;NOT_FOUND
+"Pensão e Restaurante Dias & Filhos";"Chibia";"Angola";-15.1896;13.6904;;;;;NOT_FOUND
+"Hotel Palanca";"Humpata";"Angola";-15.017;13.367;;;;;NOT_FOUND
+"PIF-PAF Hotel";"Ambaca";"Angola";-8.183;15.367;;;;;NOT_FOUND
+"GEMAC Hotel";"Ambaca";"Angola";-8.183;15.367;;;;;NOT_FOUND
+"Hotel Mufongo";"Camabatela";"Angola";-8.188;15.374;;;;;NOT_FOUND
+"Hotel Cacuaco";"Cacuaco";"Angola";-8.78;13.37;;;;;NOT_FOUND
+"IU Hotel Luanda Cacuaco";"Cacuaco";"Angola";-8.78;13.37;;;;;NOT_FOUND
+"Casa da Montanha";"Icolo e Bengo";"Angola";-9.116;13.7;;;;;NOT_FOUND
+"Quinta Quimbela";"Vila da Funda / Catete";"Angola";-9.05;13.65;;;;;NOT_FOUND
+"Chik Chik Bié";"Kuito";"Angola";-12.383;16.933;;;;;NOT_FOUND
+"Hotel Quinta da Terrincha";"Kuito";"Angola";-12.383;16.933;;;;;NOT_FOUND
+"Hotel Aguia Verde";"Ondjiva";"Angola";-17.066;15.733;;;;;NOT_FOUND
+"Pensão Piedade S. Clara";"Ondjiva";"Angola";-17.066;15.733;;;;;NOT_FOUND
+"IU Hotel Dundo";"Dundo";"Angola";-7.367;20.833;;;;;NOT_FOUND
+"Hotel Diamante (Dundo)";"Dundo";"Angola";-7.367;20.833;;;;;NOT_FOUND
+"Hotel Kawissa Saurimo";"Saurimo";"Angola";-9.66;20.4;;;;;NOT_FOUND
+"IU Hotel Saurimo Rotunda";"Saurimo";"Angola";-9.658;20.395;;;;;NOT_FOUND
+"Resort Uhenha";"Saurimo";"Angola";-9.67;20.41;;;;;NOT_FOUND
+"Residencial Club Wuino Wetu";"Saurimo";"Angola";-9.662;20.405;;;;;NOT_FOUND
+"Chik Chik Saurimo";"Saurimo";"Angola";-9.6595;20.3995;;;;;NOT_FOUND
+"Hotéis Luboia";"Saurimo";"Angola";-9.665;20.398;;;;;NOT_FOUND
+"Hotel Residencial Portugalia";"Malanje";"Angola";-9.5447;16.3453;;;;;NOT_FOUND
+"Hotel Portugália";"Malanje";"Angola";-9.545;16.34;;;;;NOT_FOUND
+"Kahombo Resort Rural";"Malanje";"Angola";-9.546;16.342;;;;;NOT_FOUND
+"Kahombo Rural";"Cacuso";"Angola";-9.4333;15.7333;;;;;NOT_FOUND
+"Pousada Quedas Duque de Bragança";"Kalandula";"Angola";-9.076;15.995;;;;;NOT_FOUND
+"Xavier House";"Malanje";"Angola";-9.543;16.348;;;;;NOT_FOUND
+"Hotel Palanca Negra";"Malanje";"Angola";-9.542;16.346;;;;;NOT_FOUND
+"Pousada Caliandra da Serra";"Malanje";"Angola";-9.55;16.35;;;;;NOT_FOUND
+"Funda Hotel";"Malanje";"Angola";-9.54;16.33;;;;;NOT_FOUND
+"Hotel Yolaca";"Malanje";"Angola";-9.548;16.344;;;;;NOT_FOUND
+"Njinga Hotel";"Malanje";"Angola";-9.547;16.341;;;;;NOT_FOUND
+"IU Hotel Uíge";"Uíge";"Angola";-7.613;15.058;;;;;NOT_FOUND
+"Hotel Salala";"Uíge";"Angola";-7.614;15.059;;;;;NOT_FOUND
+"Grande Hotel do Uíge";"Uíge";"Angola";-7.612;15.0575;;;;;NOT_FOUND
+"Cuilo River Hotel";"Uíge";"Angola";-7.615;15.06;;;;;NOT_FOUND
+"Posada San Fernando";"Uíge";"Angola";-7.611;15.056;;;;;NOT_FOUND
+"Hotel Residencial Moxico";"Luena";"Angola";-11.788;19.902;;;;;NOT_FOUND
+"Hotéis em Moxico";"Luena";"Angola";-11.792;19.898;;;;;NOT_FOUND
+"Executive Paraíso Hotel";"Cabinda";"Angola";-5.556;12.19;;;;;NOT_FOUND
+"Hotel Apolónia Complexos";"Cabinda";"Angola";-5.557;12.1915;;;;;NOT_FOUND
+"IU Hotel Namibe";"Moçâmedes";"Angola";-15.196;12.152;;;;;NOT_FOUND
+"Hotel Chik Chik Namibe";"Moçâmedes";"Angola";-15.1975;12.151;;;;;NOT_FOUND
+"Hotel Yona Namibe";"Moçâmedes";"Angola";-15.1965;12.154;;;;;NOT_FOUND
+"Viva Executive Hotel Namibe";"Moçâmedes";"Angola";-15.1955;12.155;;;;;NOT_FOUND
+"Residencial Maweza";"Moçâmedes";"Angola";-15.194;12.1525;;;;;NOT_FOUND
+"Infotur Namibe";"Moçâmedes";"Angola";-15.195;12.15;;;;;NOT_FOUND
+"Casa 2 Namibe";"Moçâmedes";"Angola";-15.1945;12.153;;;;;NOT_FOUND
+"Mahali Mzuri";"Maasai Mara";"Quénia";-1.3023;35.2443;;;;;NOT_FOUND
+"Nayara Tented Camp";"La Fortuna";"Costa Rica";10.5015;-84.6745;;;;;NOT_FOUND
+"The Opposite House";"Pequim";"China";39.9365;116.4544;;;;;NOT_FOUND
+"Capella Bangkok";"Banguecoque";"Tailândia";13.7126;100.5126;;;;;NOT_FOUND
+"Capella Ubud";"Bali (Ubud)";"Indonésia";-8.4497;115.2678;;;;;NOT_FOUND
+"Grace Hotel";"Santorini";"Grécia";36.4326;25.4227;;;;;NOT_FOUND
+"Kamalame Cay";"Kamalame Cay";"Bahamas";24.8722;-77.9155;;;;;NOT_FOUND
+"The Oberoi Udaivilas";"Udaipur";"Índia";24.5768;73.6706;;;;;NOT_FOUND
+"The Temple House";"Chengdu";"China";30.6508;104.0815;;;;;NOT_FOUND
+"The Oberoi New Delhi";"Nova Deli";"Índia";28.5998;77.2372;;;;;NOT_FOUND
+"Hotel Paracas";"Paracas";"Peru";-13.8347;-76.2494;;;;;NOT_FOUND
+"Taj Holiday Village";"Goa";"Índia";15.4984;73.7667;;;;;NOT_FOUND
+"Savute Elephant Lodge";"Chobe";"Botsuana";-18.5667;24.0667;;;;;NOT_FOUND
+"La Réserve Paris";"Paris";"França";48.8696;2.3134;;;;;NOT_FOUND
+"Nobu Ryokan";"Malibu, CA";"EUA";34.0381;-118.6657;;;;;NOT_FOUND
+"Soneva Fushi";"Eaaatidhoo";"Maldivas";5.1114;73.0789;;;;;NOT_FOUND
+"Shangri-La the Shard";"Londres";"Reino Unido";51.5045;-0.0865;;;;;NOT_FOUND
+"Phinda Vlei Lodge";"KwaZulu-Natal";"Áf. do Sul";-27.7788;32.3486;;;;;NOT_FOUND
+"Il Sereno";"Torno (Lago Como)";"Itália";45.8576;9.1176;;;;;NOT_FOUND
+"Manoir Hovey";"North Hatley";"Canadá";45.2635;-71.9791;;;;;NOT_FOUND
+"Canaves Oia Epitome";"Santorini (Oia)";"Grécia";36.4633;25.3695;;;;;NOT_FOUND
+"Four Seasons Sultanahmet";"Istambul";"Turquia";41.0064;28.9806;;;;;NOT_FOUND
+"The Peninsula Manila";"Makati (Manila)";"Filipinas";14.5549;121.0252;;;;;NOT_FOUND
+"Hotel Il Pellicano";"Porto Ercole";"Itália";42.3927;11.2057;;;;;NOT_FOUND
+"Hotel Fasano Boa Vista";"Porto Feliz (SP)";"Brasil";-23.2384;-47.4589;;;;;NOT_FOUND
+"Halekulani Okinawa";"Onna";"Japão";26.5413;127.9333;;;;;NOT_FOUND
+"The Lake House";"Canandaigua, NY";"EUA";42.8755;-77.2797;;;;;NOT_FOUND
+"Hyatt Regency Amritsar";"Amritsar";"Índia";31.6214;74.9042;;;;;NOT_FOUND
+"Leela Palace Udaipur";"Udaipur";"Índia";24.5796;73.6806;;;;;NOT_FOUND
+"Nayara Gardens";"La Fortuna";"Costa Rica";10.5028;-84.6729;;;;;NOT_FOUND
+"Pickering House Inn";"Wolfeboro, NH";"EUA";43.5828;-71.2081;;;;;NOT_FOUND
+"Rancho Valencia Resort";"Rancho Santa Fe";"EUA";32.9981;-117.1868;;;;;NOT_FOUND
+"Nihi Sumba";"Ilha Sumba";"Indonésia";-9.645;119.349;;;;;NOT_FOUND
+"The Oberoi Mumbai";"Bombaim";"Índia";18.9272;72.8205;;;;;NOT_FOUND
+"Tierra Atacama";"San Pedro Atacama";"Chile";-22.9238;-68.1969;;;;;NOT_FOUND
+"Viceroy Riviera Maya";"Playa del Carmen";"México";20.6781;-87.0278;;;;;NOT_FOUND
+"St. Regis Istanbul";"Istambul";"Turquia";41.0475;28.9939;;;;;NOT_FOUND
+"Katikies Mykonos";"Míconos";"Grécia";37.4227;25.3059;;;;;NOT_FOUND
+"The Lanesborough";"Londres";"Reino Unido";51.5018;-0.1517;;;;;NOT_FOUND
+"The Roundtree";"Amagansett, NY";"EUA";40.9754;-72.1408;;;;;NOT_FOUND
+"Mashpi Lodge";"Chocó Andino";"Equador";0.1654;-78.8837;;;;;NOT_FOUND
+"Angama Mara";"Maasai Mara";"Quénia";-1.2721;35.0345;;;;;NOT_FOUND
+"Raffles Istanbul";"Istambul";"Turquia";41.0664;29.0169;;;;;NOT_FOUND
+"Sumaq Machu Picchu";"Aguas Calientes";"Peru";-13.1564;-72.5249;;;;;NOT_FOUND
+"Las Ventanas al Paraíso";"San José del Cabo";"México";22.9774;-109.7694;;;;;NOT_FOUND
+"The Oberoi Rajvilas";"Jaipur";"Índia";26.8797;75.8927;;;;;NOT_FOUND
+"Viceroy Chicago";"Chicago";"EUA";41.9026;-87.6284;;;;;NOT_FOUND
+"Singita Grumeti";"Serengeti";"Tanzânia";-2.1524;34.5097;;;;;NOT_FOUND
+"Four Seasons Bangkok";"Banguecoque";"Tailândia";13.7121;100.5124;;;;;NOT_FOUND
+"The Goring";"Londres";"Reino Unido";51.4975;-0.1457;;;;;NOT_FOUND
+"Brush Creek Ranch";"Saratoga, WY";"EUA";41.34;-106.6;;;;;NOT_FOUND
+"Taj Palace";"Nova Deli";"Índia";28.5957;77.1789;;;;;NOT_FOUND
+"St. Regis Florence";"Florença";"Itália";43.7725;11.2455;;;;;NOT_FOUND
+"Matetsi Victoria Falls";"Victoria Falls";"Zimbabué";-17.8643;25.5398;;;;;NOT_FOUND
+"Round Hill Hotel";"Montego Bay";"Jamaica";18.4526;-77.9942;;;;;NOT_FOUND
+"Khwai River Lodge";"Delta do Okavango";"Botsuana";-19.1627;23.7744;;;;;NOT_FOUND
+"Soneva Jani";"Noonu Atoll";"Maldivas";5.8202;73.3292;;;;;NOT_FOUND
+"The Oberoi Amarvilas";"Agra";"Índia";27.1685;78.0465;;;;;NOT_FOUND
+"Inn of the Five Graces";"Santa Fe, NM";"EUA";35.6841;-105.9377;;;;;NOT_FOUND
+"Zadun (Ritz-Carlton)";"San José del Cabo";"México";23.0561;-109.6456;;;;;NOT_FOUND
+"Mfuwe Lodge";"Mfuwe";"Zâmbia";-13.0847;31.7878;;;;;NOT_FOUND
+"InterCont. Bora Bora";"Bora Bora";"Polinésia Fr.";-16.5072;-151.7001;;;;;NOT_FOUND
+"Banyan Tree Cabo";"Acapulco";"México";16.7909;-99.8458;;;;;NOT_FOUND
+"Ngala Safari Lodge";"Kruger Area";"Áf. do Sul";-24.3854;31.3218;;;;;NOT_FOUND
+"Sasaab";"Samburu";"Quénia";0.6586;37.4098;;;;;NOT_FOUND
+"The Sukhothai";"Banguecoque";"Tailândia";13.7237;100.5401;;;;;NOT_FOUND
+"The Oberoi Grand";"Calcutá";"Índia";22.5604;88.3514;;;;;NOT_FOUND
+"Hôtel Plaza Athénée";"Paris";"França";48.8661;2.3023;;;;;NOT_FOUND
+"Mahekal Beach Resort";"Playa del Carmen";"México";20.6358;-87.0628;;;;;NOT_FOUND
+"The Fullerton Hotel";"Singapura";"Singapura";1.2862;103.8532;;;;;NOT_FOUND
+"Jade Mountain";"Soufriere";"Santa Lúcia";13.8583;-61.0601;;;;;NOT_FOUND
+"Casa Chameleon";"Guanacaste";"Costa Rica";10.4789;-85.7876;;;;;NOT_FOUND
+"Hôtel Crillon Le Brave";"Crillon-le-Brave";"França";44.1176;5.1437;;;;;NOT_FOUND
+"Le Bristol Paris";"Paris";"França";48.8719;2.3148;;;;;NOT_FOUND
+"Mandapa (Ritz-Carlton)";"Bali (Ubud)";"Indonésia";-8.4777;115.2443;;;;;NOT_FOUND
+"Six Senses Laamu";"Olhuveli Island";"Maldivas";1.8315;73.3444;;;;;NOT_FOUND
+"Waldorf Astoria";"South Male Atoll";"Maldivas";3.9472;73.3934;;;;;NOT_FOUND
+"Wickaninnish Inn";"Tofino";"Canadá";49.1203;-125.8824;;;;;NOT_FOUND
+"Penha Longa Resort";"Sintra";"Portugal";38.7619;-9.3986;;;;;NOT_FOUND
+"Lion Sands Reserve";"Skukuza";"Áf. do Sul";-24.9657;31.5414;;;;;NOT_FOUND
+"Rambagh Palace";"Jaipur";"Índia";26.8979;75.8093;;;;;NOT_FOUND
+"The Oyster Box";"Umhlanga";"Áf. do Sul";-29.7214;31.0886;;;;;NOT_FOUND
+"The Stafford";"Londres";"Reino Unido";51.5064;-0.1396;;;;;NOT_FOUND
+"Tambo del Inka";"Urubamba";"Peru";-13.3039;-72.1221;;;;;NOT_FOUND
+"Cap Maison";"Gros Islet";"Santa Lúcia";14.0934;-60.9576;;;;;NOT_FOUND
+"Tensing Pen";"Negril";"Jamaica";18.2618;-78.3585;;;;;NOT_FOUND
+"Hôtel Le Toiny";"St. Barth";"Antilhas Fr.";17.8967;-62.8028;;;;;NOT_FOUND
+"Rosewood Mayakoba";"Playa del Carmen";"México";20.6861;-87.0314;;;;;NOT_FOUND
+"Canaves Oia Boutique";"Santorini (Oia)";"Grécia";36.463;25.374;;;;;NOT_FOUND
+"Montage Los Cabos";"Cabo San Lucas";"México";22.9037;-109.8453;;;;;NOT_FOUND
+"Finca Cortesin";"Casares";"Espanha";36.3769;-5.2281;;;;;NOT_FOUND
+"Rodovia Transpantaneira, Km 10 – Zona Rural";"MT";"Brasil";-16.3;-56.65;;;;;NOT_FOUND
+"Porto Jofre, margem do Rio Cuiabá";"MT";"Brasil";-17.3;-56.7;;;;;NOT_FOUND
+"Final da Transpantaneira, km 145, margem do Rio Cuiabá";"MT";"Brasil";-17.35;-56.75;;;;;NOT_FOUND
+"Rodovia Três Morros, Km 0";"MS";"Brasil";-21.13;-56.48;;;;;NOT_FOUND
+"Hotel com quartos amplos, piscina aquecida e agência para passeios turísticos — Rua Cel. Pilad Rebuá, 679";"MS";"Brasil";-21.135;-56.485;;;;;NOT_FOUND
+"Pousada reformada com quartos espaçosos, piscina na varanda e café da manhã delicioso — Rua Santana do Paraíso, 580";"MS";"Brasil";-21.14;-56.49;;;;;NOT_FOUND
+"Av. Coronel Pilad Rebua, 1884";"MS";"Brasil";-21.128;-56.478;;;;;NOT_FOUND
+"Pousada completa, com piscinas, chalés arejados e agências para passeios — Rua 24 de Fevereiro, 1800";"MS";"Brasil";-21.136;-56.487;;;;;NOT_FOUND
+"Ryugyong Hotel";"Pyongyang";"Coreia do Norte";39.0364;125.7311;;;;;NOT_FOUND
+"Yanggakdo International Hotel";"Pyongyang";"Coreia do Norte";38.9915;125.7534;;;;;NOT_FOUND
+"Koryo Hotel";"Pyongyang";"Coreia do Norte";39.0092;125.7375;;;;;NOT_FOUND
+"Potonggang Hotel";"Pyongyang";"Coreia do Norte";39.0235;125.7198;;;;;NOT_FOUND
+"Kaesong Folk Hotel";"Kaesong";"Coreia do Norte";37.9735;126.5515;;;;;NOT_FOUND
+"Hyangsan Hotel";"Myohyang-san";"Coreia do Norte";40.0158;126.2162;;;;;NOT_FOUND
+"Masikryong Hotel";"Wonsan";"Coreia do Norte";39.1672;127.2885;;;;;NOT_FOUND
+"Majon Hotel";"Hamhung";"Coreia do Norte";39.8715;127.6532;;;;;NOT_FOUND
+"Kumgangsan Hotel";"Kosong";"Coreia do Norte";38.6512;128.1885;;;;;NOT_FOUND
+"Pegaebong Hotel";"Samjiyon";"Coreia do Norte";41.8325;128.3245;;;;;NOT_FOUND
+"Chailbong Hotel";"Monte Kumgang";"Coreia do Norte";38.6485;128.1952;;;;;NOT_FOUND
+"Imperial Hotel (Emperor)";"Rason";"Coreia do Norte";42.3425;130.6015;;;;;NOT_FOUND
+"Novel Hotel City Center";"";"UAE";24.488673;54.36169;;;;;NOT_FOUND
+"Dhafra Beach Hotel";"";"UAE";24.163073;52.6459942;;;;;NOT_FOUND
+"Al Raha Beach Resort & Spa";"";"UAE";24.439451;54.575065;;;;;NOT_FOUND
+"Capital Suites Hotel Apartments";"";"UAE";24.41737;54.4402;;;;;NOT_FOUND
+"Green Mubazzarah Chalets";"";"UAE";24.107566;55.740509;;;;;NOT_FOUND
+"NH Collection Curitiba";"";"Brazil";-25.437728;-25.437728;;;;;NOT_FOUND
+"Tivoli President Milano Hotel";"";"Italy";45.463112;45.463112;;;;;NOT_FOUND
+"NH Collection Guadalajara Providencia";"";"Mexico";20.701685;20.701685;;;;;NOT_FOUND
+"NH Geneva Airport";"";"Schweiz";46.227764;46.227764;;;;;NOT_FOUND
+"NH Geneva Airport";"";"Switzerland";46.227764;46.227764;;;;;NOT_FOUND
+"oyal Hideaway Corales Beach - Adults Only";"";"Spain";28.101801;-16.75386;;;;;NOT_FOUND
+"Royal Hideaway Corales Suites";"";"Spain";28.099809;-16.75151;;;;;NOT_FOUND
+"Royal Hideaway Casablanca";"";"Spain";33.5967833;-7.6100902;;;;;NOT_FOUND
+"Barceló Puerto Vallarta - All Inclusive";"";"Spain";20.532455;-105.29069;;;;;NOT_FOUND
+"Barceló Maya Beach - All Inclusive";"";"Spain";20.486411;-87.246552;;;;;NOT_FOUND
+"Mövenpick Resort Al Marjan Island";"";"UAE";6636;25.671776;;;;;NOT_FOUND
+"Movenpick Al Mamzar";"";"UAE";0;25.286688;;;;;NOT_FOUND
+"Grand Plaza Mövenpick Media City";"";"UAE";502713;25.097746;;;;;NOT_FOUND
+"Mövenpick Grand Al Bustan Dubai";"";"UAE";30880;25.2480387;;;;;NOT_FOUND
+"Mövenpick Hotel Jumeirah Beach";"";"UAE";282825;25.080935;;;;;NOT_FOUND
+"Keys Prima by Lemon Tree Hotels, Katti-Ma, Chennai";"";"India";12.990351;80.258609;;;;;NOT_FOUND
+"Lemon Tree Premier, City Center, Gurugram";"";"India";28.464967;77.064705;;;;;NOT_FOUND
+"Adina Apartment Hotel Pentridge Melbourne";"";"Australia";144.96783;-37.73708;;;;;NOT_FOUND
+"Adina Apartment Hotel Adelaide Treasury";"";"Australia";138.60034;-34.92695;;;;;NOT_FOUND
+"Adina Apartment Hotel Melbourne Southbank";"";"Australia";144.96478;-37.82258;;;;;NOT_FOUND
+"Adina Apartment Hotel Sydney Chippendale";"";"Australia";151.19564;-33.88912;;;;;NOT_FOUND
+"Adina Apartment Hotel Brisbane Anzac Square";"";"Australia";153.02592;-27.46669;;;;;NOT_FOUND
+"Quest Hastings";"North Island";"New Zealand";-39.6448126;176.8447429;;;;;NOT_FOUND
+"Quest Taupo";"North Island";"New Zealand";-38.687088;176.0780945;;;;;NOT_FOUND
+"Quest New Plymouth";"North Island";"New Zealand";-39.057044;174.0740852;;;;;NOT_FOUND
+"Quest Rotorua Central";"North Island";"New Zealand";-38.1381293;176.2506588;;;;;NOT_FOUND
+"Quest Burwood East";"VIC";"New Zealand";-37.8533701;145.1625915;;;;;NOT_FOUND
+"Five Flowers Hotel Formentera Meliá Collection";"";"spain";38.72374360053249;1.4550385372811327;;;;;NOT_FOUND
+"INNSiDE Zaragoza";"";"spain";41.651481;-0.885972;;;;;NOT_FOUND
+"Hotel Vigo Los Galeones Affiliated by Meliá";"";"spain";42.2277;-8.7176;;;;;NOT_FOUND
+"Meliá Plaza";"";"spain";39.4707;-0.3768;;;;;NOT_FOUND
+"INNSiDE Valencia Oceanic";"";"spain";39.45827;-0.34814;;;;;NOT_FOUND
+"Mövenpick Resort Al Marjan Island";"";"UAE";6636;25.671776;;;;;NOT_FOUND
+"Movenpick Al Mamzar";"";"UAE";0;25.286688;;;;;NOT_FOUND
+"Grand Plaza Mövenpick Media City";"";"UAE";502713;25.097746;;;;;NOT_FOUND
+"Mövenpick Grand Al Bustan Dubai";"";"UAE";30880;25.2480387;;;;;NOT_FOUND
+"Mövenpick Hotel Jumeirah Beach";"";"UAE";282825;25.080935;;;;;NOT_FOUND
+"Oaks Sydney North Ryde Suites";"";"Australia";-33.79498;151.14087;;;;;NOT_FOUND
+"Oaks Sydney Hyde Park Suites";"";"Australia";-33.876719;151.212402;;;;;NOT_FOUND
+"Oaks Sydney Goldsbrough Suites";"";"Australia";-33.874104;151.197412;;;;;NOT_FOUND
+"Oaks Sunshine Coast Seaforth Resort";"";"Australia";-26.664458;153.104805;;;;;NOT_FOUND
+"Oaks Sunshine Coast Oasis Resort";"";"Australia";-26.806171;153.122541;;;;;NOT_FOUND
+"The LaLiT Hotels 7";"";"India";12.8009;77.5777;;;;;NOT_FOUND
+"The LaLiT Hotels 24";"";"India";24.715226;80.185019;;;;;NOT_FOUND
+"The LaLiT Hotels 12";"";"India";28.415;77.276;;;;;NOT_FOUND
+"The LaLiT Hotels 17";"";"India";15.088785;73.921593;;;;;NOT_FOUND
+"The LaLiT Hotels 16";"";"India";22.5455;88.3473;;;;;NOT_FOUND
+"The Azure Tower";"United States";"5";40;-73;;;;;NOT_FOUND
+"The Royal Compass";"United Kingdom";"5";51;0;;;;;NOT_FOUND
+"L'Étoile Palace";"France";"5";48;2;;;;;NOT_FOUND
+"Kyo-to Grand";"Japan";"5";35;139;;;;;NOT_FOUND
+"The Golden Oasis";"United Arab Emirates";"5";25;55;;;;;NOT_FOUND
+"Marina Bay Zenith";"Singapore";"5";1;103;;;;;NOT_FOUND
+"Sydney Harbour Grand";"Australia";"5";-33;151;;;;;NOT_FOUND
+"Copacabana Lux";"Brazil";"5";-22;-43;;;;;NOT_FOUND
+"Berlin Mitte Elite";"Germany";"5";52;13;;;;;NOT_FOUND
+"The Maple Grove";"Canada";"5";43;-79;;;;;NOT_FOUND
+"The Bund Palace";"China";"5";31;121;;;;;NOT_FOUND
+"Aztec Heights";"Mexico";"5";19;-99;;;;;NOT_FOUND
+"The Gateway Royale";"India";"5";19;72;;;;;NOT_FOUND
+"Colosseum Gardens";"Italy";"5";41;12;;;;;NOT_FOUND
+"Table Mountain View";"South Africa";"5";-33;18;;;;;NOT_FOUND
+"Han River Oasis";"South Korea";"5";37;126;;;;;NOT_FOUND
+"Kremlin Suites";"Russia";"5";55;37;;;;;NOT_FOUND
+"Nile Grandeur";"Egypt";"5";30;31;;;;;NOT_FOUND
+"Gaudi's Retreat";"Spain";"5";41;2;;;;;NOT_FOUND
+"The Orchid Palace";"Thailand";"5";13;100;;;;;NOT_FOUND
+"The Bosphorus Inn";"Turkey";"5";41;28;;;;;NOT_FOUND
+"Canal House Grand";"Netherlands";"5";52;4;;;;;NOT_FOUND
+"Tango Boutique";"Argentina";"5";-34;-58;;;;;NOT_FOUND
+"The Savannah House";"Nigeria";"5";6;3;;;;;NOT_FOUND
+"The Kiwi Grand";"New Zealand";"5";-41;174;;;;;NOT_FOUND
+"4C Hotel Group";"UK";"NW1 6UB";51.5225;-0.1656;;;;;NOT_FOUND
+"7 Hospitality Management (UK) Ltd";"UK";"PH1 1RA";56.3889;-3.4852;;;;;NOT_FOUND
+"777 Hotels Ltd";"UK";"BH22 9AN";50.7776;-1.9079;;;;;NOT_FOUND
+"A Curious Group of Hotels";"UK";"EC4V 4BE";51.5118;-0.0944;;;;;NOT_FOUND
+"A G Hotels Group";"UK";"SE1 7TP";51.4879;-0.1237;;;;;NOT_FOUND
+"Active Hospitality Ltd";"UK";"RG40 3DF";51.3986;-0.788;;;;;NOT_FOUND
+"Adagio Hotels";"UK";"W6 7AP";51.4942;-0.2256;;;;;NOT_FOUND
+"Adham Hotels Group Ltd";"UK";"DN9 3GQ";53.4837;-1.0203;;;;;NOT_FOUND
+"Adnams plc";"UK";"IP18 6JW";52.3273;1.6797;;;;;NOT_FOUND
+"Alfa Hotels Ltd";"UK";"PR7 7NA";53.6866;-2.6726;;;;;NOT_FOUND
+"Bedford Swan Hotel";"UK";"MK40 1RW";52.1354;-0.4655;;;;;NOT_FOUND
+"Cranfield Management Centre";"UK";"MK43 0HG";52.0722;-0.6307;;;;;NOT_FOUND
+"De Pary's Guest House";"UK";"MK40 2TP";52.1427;-0.4659;;;;;NOT_FOUND
+"d'Parys Hotel";"UK";"MK40 2UA";52.1423;-0.4665;;;;;NOT_FOUND
+"Embankment Hotel";"UK";"MK40 3PD";52.1345;-0.4646;;;;;NOT_FOUND
+"Flitwick Manor Hotel";"UK";"MK45 1AE";52.0016;-0.4965;;;;;NOT_FOUND
+"Holiday Inn Express Bedford";"UK";"MK42 9BF";52.1121;-0.4664;;;;;NOT_FOUND
+"Pilgrim's Progress Hotel";"UK";"MK40 1QB";52.1372;-0.4704;;;;;NOT_FOUND
+"Premier Inn Bedford Priory Marina";"UK";"MK41 9DJ";52.1341;-0.4412;;;;;NOT_FOUND
+"Premier Inn Bedford South A421";"UK";"MK42 7FY";52.1095;-0.4851;;;;;NOT_FOUND
+"Travelodge Bedford";"UK";"MK41 7PH";52.1476;-0.4774;;;;;NOT_FOUND
+"Travelodge Bedford Goldington Rd";"UK";"MK41 0DS";52.1425;-0.4406;;;;;NOT_FOUND
+"Travelodge Bedford Marston Moretaine";"UK";"MK43 0PZ";52.0621;-0.5532;;;;;NOT_FOUND
+"Verve Hotel";"UK";"MK40 2DX";52.1453;-0.4778;;;;;NOT_FOUND
+"Woburn Forest";"UK";"MK45 2HZ";52.0071;-0.5053;;;;;NOT_FOUND
+"Woodland Manor Hotel";"UK";"MK41 6EP";52.1642;-0.4841;;;;;NOT_FOUND
+"Regent Berlin";"Germany";"10117";52.5144;13.3908;;;;;NOT_FOUND
+"Brown's Hotel";"UK";"W1S 4BP";51.5085;-0.1404;;;;;NOT_FOUND
+"Grand Hotel Du Palais Royal";"France";"75001";48.8631;2.3375;;;;;NOT_FOUND
+"The Savoy";"UK";"WC2R 0EZ";51.51;-0.12;;;;;NOT_FOUND
+"George V (Four Seasons)";"France";"75008";48.8687;2.3005;;;;;NOT_FOUND
+"The Ritz London";"UK";"W1J 9BR";51.5071;-0.1417;;;;;NOT_FOUND
+"Le Royal Monceau";"France";"75008";48.8752;2.3009;;;;;NOT_FOUND
+"The Langham";"UK";"W1B 1JA";51.5173;-0.1438;;;;;NOT_FOUND
+"Ritz Paris";"France";"75001";48.8681;2.3283;;;;;NOT_FOUND
+"Hotel de Rome";"Germany";"10117";52.5152;13.3932;;;;;NOT_FOUND
+"Canopy by Hilton London City";"UK";"EC3N 1AX*";51.5126;-0.0754;;;;;NOT_FOUND
+"Westin London City";"UK";"EC4V 3AD";51.5108;-0.0945;;;;;NOT_FOUND
+"Comfort Inn Victoria";"UK";"SW1V 1QF";51.492;-0.1408;;;;;NOT_FOUND
+"easyHotel Victoria";"UK";"SW1V 1RG";51.4913;-0.1415;;;;;NOT_FOUND
+"The Exhibitionist Hotel";"UK";"SW7 2EA";51.4947;-0.1772;;;;;NOT_FOUND
+"Comfort Inn Edgware Rd";"UK";"W2 1EG";51.5204;-0.1714;;;;;NOT_FOUND
+"HOLIDAY INN EXPRESS ST ALBANS";"UK";"AL2 1AB";51.7222;-0.2974;;;;;NOT_FOUND
+"Ardoe House";"UK";"AB12 5YP*";57.1055;-2.186;;;;;NOT_FOUND
+"Delta Hotels Birmingham";"UK";"B16 8SJ";52.4725;-1.9234;;;;;NOT_FOUND
+"Dalhousie Castle";"UK";"EH19 3JB";55.8601;-3.0827;;;;;NOT_FOUND
+"Killochan Castle";"UK";"KA26 9QF";55.2673;-4.8181;;;;;NOT_FOUND
+"Glasgow Grosvenor";"UK";"G12 0TA";55.8775;-4.2902;;;;;NOT_FOUND
+"Rosslea Hall";"UK";"G84 8NF";56.0152;-4.7645;;;;;NOT_FOUND
+"Kingston Lodge";"UK";"KT2 7NP";51.4172;-0.2761;;;;;NOT_FOUND
+"Weetwood Hall";"UK";"LS16 5PS";53.8341;-1.5835;;;;;NOT_FOUND
+"Merchants House";"UK";"SP1 2AP";51.0688;-1.7941;;;;;NOT_FOUND
+"A Curious Group of Hotels";"UK";"EC4V 4BE*";51.5118;-0.0944;;;;;NOT_FOUND
+"Hotel Dei Borgognoni";"Roma";"Italia";198;41.9027;;;;;NOT_FOUND
+"Hotel Gregoriana";"Roma";"Italia";187;41.9047;;;;;NOT_FOUND
+"Atlante Star Hotel";"Roma";"Italia";193;41.905;;;;;NOT_FOUND
+"Hotel Condotti";"Roma";"Italia";187;41.9062;;;;;NOT_FOUND
+"Antico Albergo del Sole al Pantheon";"Roma";"Italia";186;41.8995;;;;;NOT_FOUND
+"Hotel Albergo del Senato";"Roma";"Italia";186;41.8992;;;;;NOT_FOUND
+"Room Mate Collection Mia (ex Capo d'Africa)";"Roma";"Italia";184;41.8885;;;;;NOT_FOUND
+"Hotel San Anselmo";"Roma";"Italia";153;41.8821;;;;;NOT_FOUND
+"San Domenico Palace (Four Seasons)";"Taormina (Sicília)";"Itália";98039;37.8508;;;;;NOT_FOUND
+"Grand Hotel Timeo (Belmond)";"Taormina (Sicília)";"Itália";98039;37.8524;;;;;NOT_FOUND
+"Villa Igiea (Rocco Forte)";"Palermo (Sicília)";"Itália";90142;38.1415;;;;;NOT_FOUND
+"Ortea Palace Hotel";"Siracusa (Sicília)";"Itália";96100;37.0658;;;;;NOT_FOUND
+"Grand Hotel Minareto";"Siracusa (Sicília)";"Itália";96100;37.0422;;;;;NOT_FOUND
+"Therasia Resort Sea & Spa";"Vulcano (Ihas Éolias)";"Itália";98050;38.4285;;;;;NOT_FOUND
+"Mazzarò Sea Palace";"Taormina (Sicília)";"Itália";98039;37.857;;;;;NOT_FOUND
+"Verdura Resort";"Sciacca (Sicília)";"Itália";92019;37.4722;;;;;NOT_FOUND
+"NH Collection Taormina";"Taormina (Sicília)";"Itália";98039;37.8532;;;;;NOT_FOUND
+"Sikelia Luxury Hotel";"Scauri (Pantelleria)";"Itália";91017;36.782;;;;;NOT_FOUND
+"Hotel Cala di Volpe";"Porto Cervo (Sardenha)";"Itália";7021;41.0932;;;;;NOT_FOUND
+"Hotel Romazzino";"Porto Cervo (Sardenha)";"Itália";7021;41.0955;;;;;NOT_FOUND
+"Hotel Pitrizza";"Porto Cervo (Sardenha)";"Itália";7021;41.144;;;;;NOT_FOUND
+"Cervo Hotel";"Porto Cervo (Sardenha)";"Itália";7021;41.1332;;;;;NOT_FOUND
+"Forte Village (Hotel Castello)";"Pula (Sardenha)";"Itália";9010;38.9275;;;;;NOT_FOUND
+"T Hotel";"Cagliari (Sardenha)";"Itália";9128;39.229;;;;;NOT_FOUND
+"Hotel Carlos V";"Alghero (Sardenha)";"Itália";7041;40.551;;;;;NOT_FOUND
+"Pullman Timi Ama Sardegna";"Villasimius (Sardenha)";"Itália";9049;39.117;;;;;NOT_FOUND
+"Falkensteiner Resort Capo Boi";"Villasimius (Sardenha)";"Itália";9049;39.1245;;;;;NOT_FOUND
+"Colonna Resort";"Porto Cervo (Sardenha)";"Itália";7021;41.141;;;;;NOT_FOUND
+"Grand Hotel Quisisana";"Capri";"Itália";80073;40.5492;;;;;NOT_FOUND
+"Caesar Augustus";"Anacapri (Capri)";"Itália";80071;40.5562;;;;;NOT_FOUND
+"Mezzatorre Hotel & Thermal Spa";"Forio d'Ischia (Ischia)";"Itália";80075;40.7585;;;;;NOT_FOUND
+"Hotel Biodola";"Portoferraio (Elba)";"Itália";57037;42.8085;;;;;NOT_FOUND
+"Las Alcobas (Luxury Collection)";"México";"Av. Presidente Masaryk 390, Polanco";19.432;-99.195;;;;;NOT_FOUND
+"W Mexico City";"México";"Campos Elíseos 252, Polanco";19.43;-99.194;;;;;NOT_FOUND
+"Hyatt Regency Mexico City";"México";"Campos Elíseos 204, Polanco";19.429;-99.193;;;;;NOT_FOUND
+"InterContinental Presidente";"México";"Campos Elíseos 218, Polanco";19.428;-99.192;;;;;NOT_FOUND
+"Sofitel Mexico City Reforma";"México";"Paseo de la Reforma 297, Cuauhtémoc";19.43;-99.168;;;;;NOT_FOUND
+"Marquis Reforma Hotel & Spa";"México";"Paseo de la Reforma 465, Cuauhtémoc";19.429;-99.166;;;;;NOT_FOUND
+"Gran Hotel Ciudad de México";"México";"16 de Septiembre 82, Centro";19.432;-99.139;;;;;NOT_FOUND
+"Hilton Mexico City Reforma";"México";"Av. Juárez 70, Centro Histórico";19.433;-99.142;;;;;NOT_FOUND
+"Sheraton María Isabel";"México";"Paseo de la Reforma 325, Cuauhtémoc";19.429;-99.167;;;;;NOT_FOUND
+"Hotel Geneve";"México";"Londres 130, Juárez";19.425;-99.165;;;;;NOT_FOUND
+"Barceló México Reforma";"México";"Paseo de la Reforma 1, Cuauhtémoc";19.432;-99.155;;;;;NOT_FOUND
+"Zócalo Central Hotel";"México";"5 de Mayo 61, Centro Histórico";19.433;-99.137;;;;;NOT_FOUND
+"Hotel Catedral";"México";"Donceles 95, Centro Histórico";19.435;-99.135;;;;;NOT_FOUND
+"NH Collection Centro Histórico";"México";"Palma 42, Centro Histórico";19.432;-99.137;;;;;NOT_FOUND
+"Condesa DF";"México";"Veracruz 102, Condesa";19.415;-99.17;;;;;NOT_FOUND
+"Hotel Carlota";"México";"Río Amazonas 73, Cuauhtémoc";19.431;-99.168;;;;;NOT_FOUND
+"Nima Local House Hotel";"México";"Colima 236, Roma Norte";19.418;-99.16;;;;;NOT_FOUND
+"Ignacia Guest House";"México";"Jalapa 208, Roma Norte";19.417;-99.16;;;;;NOT_FOUND
+"Hotel Emporio Reforma";"México";"Paseo de la Reforma 124, Juárez";19.43;-99.157;;;;;NOT_FOUND
+"Galería Plaza Reforma";"México";"Hamburgo 195, Juárez";19.428;-99.165;;;;;NOT_FOUND
+"Hotel Benidorm";"México";"Frontera 217, Roma Norte";19.418;-99.163;;;;;NOT_FOUND
+"Hotel Royal Pedregal";"México";"Periférico Sur 4363, Jardines del Pedregal";19.303;-99.202;;;;;NOT_FOUND
+"Camino Real Pedregal";"México";"Periférico Sur 3647, San Jerónimo";19.32;-99.2;;;;;NOT_FOUND
+"Fiesta Inn Periférico Sur";"México";"Periférico Sur 5530, Pedregal";19.3;-99.195;;;;;NOT_FOUND
+"Hotel Ritz Ciudad de México";"México";"Madero 30, Centro Histórico";19.433;-99.138;;;;;NOT_FOUND
+"One CDMX Alameda";"México";"Av. Juárez 88, Centro Histórico";19.434;-99.143;;;;;NOT_FOUND
+"Hotel Gillow";"México";"Isabel la Católica 17, Centro";19.433;-99.137;;;;;NOT_FOUND
+"Hotel Fontán Reforma";"México";"Paseo de la Reforma 24, Centro";19.434;-99.145;;;;;NOT_FOUND
+"Hotel Casa González";"México";"Río Sena 69, Cuauhtémoc";19.433;-99.162;;;;;NOT_FOUND
+"Hotel El Ejecutivo";"México";"Viena 8, Juárez";19.426;-99.162;;;;;NOT_FOUND
+"Hotel Plaza Florencia (PF)";"México";"Florencia 61, Juárez";19.425;-99.163;;;;;NOT_FOUND
+"Hotel San Francisco";"México";"Luis Moya 11, Centro Histórico";19.432;-99.14;;;;;NOT_FOUND
+"Hotel MX Roma";"México";"Av. Chapultepec 280, Roma Norte";19.42;-99.165;;;;;NOT_FOUND
+"Hotel El Diplomático";"México";"Av. Insurgentes Sur 1105, Nápoles";19.393;-99.175;;;;;NOT_FOUND
+"Hotel Imperial Reforma";"México";"Paseo de la Reforma 64, Tabacalera";19.435;-99.15;;;;;NOT_FOUND
+"Hotel Casa de la Luna";"México";"San Jerónimo 40, Centro Histórico";19.43;-99.137;;;;;NOT_FOUND
+"Hotel San Diego";"México";"Sullivan 105, San Rafael";19.43;-99.16;;;;;NOT_FOUND
+"Hotel Astor";"México";"Antonio Caso 83, San Rafael";19.433;-99.16;;;;;NOT_FOUND
+"Hotel El Salvador";"México";"Rep. de El Salvador 35, Centro";19.431;-99.135;;;;;NOT_FOUND
+"Hotel Isabel";"México";"Isabel la Católica 63, Centro";19.432;-99.136;;;;;NOT_FOUND
+"HR Baja Hotel & Spa Cannigione";"Itália";"Via Nazionale snc, 07021 Arzachena / Cannigione";41.1079;9.4392;;;;;NOT_FOUND
+"Valle dell’Erica Resort Thalasso & Spa";"Itália";"Località La Licciola / Valle dell’Erica, Santa Teresa Gallura";41.23;9.17;;;;;NOT_FOUND
+"Hotel Corallaro";"Itália";"Località Rena Bianca snc, 07028 Santa Teresa Gallura";41.2418;9.1881;;;;;NOT_FOUND
+"Hotel da Cecco";"Itália";"Via Po 3, 07028 Santa Teresa Gallura";41.2445;9.1889;;;;;NOT_FOUND
+"Grand Hotel President Olbia";"Itália";"Via Principe Umberto 39, 07026 Olbia";40.92528;9.4992;;;;;NOT_FOUND
+"Mercure Olbia";"Itália";"Via Puglie, 07026 Olbia";40.9192;9.493;;;;;NOT_FOUND
+"Hotel Martini Olbia";"Itália";"Via Gabriele D’Annunzio 21, 07026 Olbia";40.9231;9.5002;;;;;NOT_FOUND
+"Hotel Felix Olbia";"Itália";"Viale Aldo Moro 333, 07026 Olbia";40.9359;9.5032;;;;;NOT_FOUND
+"Hotel Sporting Porto Rotondo";"Itália";"Via Clelia Donà dalle Rose 16, 07026 Porto Rotondo";41.0299;9.5478;;;;;NOT_FOUND
+"Hotel Capo d’Orso Thalasso & Spa";"Itália";"Località Cala Capra, 07020 Palau";41.1729;9.4146;;;;;NOT_FOUND
+"Hotel Palau";"Itália";"Via Tirso 5/7, 07020 Palau";41.181;9.3836;;;;;NOT_FOUND
+"Hotel La Roccia";"Itália";"Via dei Mille 15, 07020 Palau";41.1797;9.3843;;;;;NOT_FOUND
+"Hotel Piccada";"Itália";"Via degli Asfodeli 6, 07020 Palau";41.17681;9.38335;;;;;NOT_FOUND
+"Hotel Portoconte";"Itália";"Località Porto Conte, 07041 Alghero";40.5946;8.205;;;;;NOT_FOUND
+"Villa Las Tronas Hotel & Spa";"Itália";"Lungomare Valencia 1, 07041 Alghero";40.5551;8.3142;;;;;NOT_FOUND
+"Hotel Catalunya";"Itália";"Via Catalogna 24, 07041 Alghero";40.5587;8.3184;;;;;NOT_FOUND
+"Hotel Soleado";"Itália";"Via Lido 17–19, 07041 Alghero";40.5709;8.3191;;;;;NOT_FOUND
+"Hotel Punta Negra";"Itália";"Regione Punta Negra, 07041 Alghero / Fertilia";40.5919;8.2698;;;;;NOT_FOUND
+"Hotel Rina";"Itália";"Via delle Baleari 34, 07041 Alghero";40.5715;8.3228;;;;;NOT_FOUND
+"Hotel Domomea";"Itália";"Via Vittorio Veneto 47, 07041 Alghero";40.5595;8.3159;;;;;NOT_FOUND
+"Hotel Angedras";"Itália";"Via G. Frank 2, 07041 Alghero";40.5524;8.3098;;;;;NOT_FOUND
+"Alma di Alghero Hotel";"Itália";"Via Lido 29, 07041 Alghero";40.5731;8.3203;;;;;NOT_FOUND
+"Hotel dei Pini";"Itália";"Località Le Bombarde, 07041 Alghero";40.58403;8.25489;;;;;NOT_FOUND
+"Hotel Corte Rosada";"Itália";"Via Porto Conte 77, 07041 Alghero";40.5956;8.2048;;;;;NOT_FOUND
+"Hotel El Faro";"Itália";"Località Porto Conte 52, 07041 Alghero";40.593;8.202;;;;;NOT_FOUND
+"Hotel La Margherita";"Itália";"Via Sassari 70, 07041 Alghero";40.5572;8.3136;;;;;NOT_FOUND
+"San Francesco Heritage Hotel";"Itália";"Via Ambrogio Machin 2, 07041 Alghero";40.5583;8.3147;;;;;NOT_FOUND
+"Hotel Costa dei Fiori";"Itália";"S.S. 195 km 33, Località Santa Margherita, 09050 Pula";38.96;8.88;;;;;NOT_FOUND
+"Forte Village Resort";"Itália";"S.S. 195, Santa Margherita di Pula, 09050 Pula";38.9379;8.8648;;;;;NOT_FOUND
+"Hotel Regina Margherita";"Itália";"Viale Regina Margherita 44, Cagliari";39.2151;9.1163;;;;;NOT_FOUND
+"T Hotel";"Itália";"Via dei Giudicati 66, 09131 Cagliari";39.2246;9.1211;;;;;NOT_FOUND
+"Sardegna Hotel Suites & Restaurant";"Itália";"Via Lunigiana 50, 09122 Cagliari";39.2303;9.098;;;;;NOT_FOUND
+"Il Cagliarese B&B";"Itália";"Via Vittorio Porcile 19, Cagliari";39.2148;9.1156;;;;;NOT_FOUND
+"Hotel Villa Fanny";"Itália";"Via San Giovanni Bosco 8, Cagliari";39.2205;9.1082;;;;;NOT_FOUND
+"Hotel Nautilus";"Itália";"Lungomare Poetto 158, 09126 Cagliari";39.2;9.15;;;;;NOT_FOUND
+"Hotel Stella Maris";"Itália";"Località Campulongu, Villasimius";39.126;9.495;;;;;NOT_FOUND
+"Chia Laguna – Hotel Village";"Itália";"Viale Belvedere, 09010 Domus de Maria";38.905;8.879;;;;;NOT_FOUND
+"Hotel Spartivento";"Itália";"Località Spartivento, Chia";38.8844;8.8647;;;;;NOT_FOUND
+"Hotel Baia di Nora";"Itália";"S.S. 195, Località Su Guventeddu, Nora, 09050 Pula";38.9977;9.0127;;;;;NOT_FOUND
+"Hotel Is Morus Relais";"Itália";"S.S. 195 km 37,400, Santa Margherita di Pula";38.9507;8.9074;;;;;NOT_FOUND
+"Hotel Flamingo Resort";"Itália";"S.S. 195 km 33,800, Santa Margherita di Pula";38.9752;8.9526;;;;;NOT_FOUND
+"Almar Timi Ama Resort & Spa";"Itália";"Via dei Ginepri 3, 09049 Villasimius";39.1182;9.5165;;;;;NOT_FOUND
+"Hotel Simius Playa";"Itália";"Via Matteotti 91, 09049 Villasimius";39.1369;9.524;;;;;NOT_FOUND
+"Cruccùris Resort";"Itália";"Via Cruccuris 17, 09049 Villasimius";39.1337;9.4872;;;;;NOT_FOUND
+"Cormoran Resort";"Itália";"Via del Porto 37, Località Campus, 09049 Villasimius";39.13582;9.4833;;;;;NOT_FOUND
+"Hotel Califfo";"Itália";"Via Leonardo da Vinci 118, Quartu Sant’Elena";39.2025;9.2757;;;;;NOT_FOUND
+"Su Gologone Experience Hotel";"Itália";"Località Su Gologone snc, 08025 Oliena";40.2865;9.4926;;;;;NOT_FOUND
+"Hotel Ristorante Ispinigoli";"Itália";"Strada Comunale di Ispinigoli, 08022 Dorgali";40.2924;9.5867;;;;;NOT_FOUND
+"Mistral 2 Hotel Ristorante";"Itália";"Via XX Settembre 34, 09170 Oristano";39.90508;8.58568;;;;;NOT_FOUND
+"Corte Fiorita Albergo Diffuso";"Itália";"Via Lungo Temo De Gasperi 45, 08013 Bosa";40.2961;8.5005;;;;;NOT_FOUND
+"Hotel Palazzo Sa Pischedda";"Itália";"Via Roma 8 / Via Roma 20, 08013 Bosa";40.2962;8.5;;;;;NOT_FOUND
+"Hotel Su Baione";"Itália";"S.S. 131, uscita Nuraghe Losa, 09071 Abbasanta";40.1195;8.806;;;;;NOT_FOUND
+"Hotel Sandalia";"Itália";"Via Einaudi 12/14, 08100 Nuoro";40.3249;9.3448;;;;;NOT_FOUND
+"Hotel Il Querceto";"Itália";"Via Lamarmora 4, 08022 Dorgali";40.2913;9.5883;;;;;NOT_FOUND
+"Hotel Inhambane";"Moçambique";"Inhambane";-23.86;35.38;;;;;NOT_FOUND
+"Heritage Hotel Osogbo";"Nigéria";"Osogbo";7.78;4.55;;;;;NOT_FOUND
+"Royal Spring Hotel";"Nigéria";"Osogbo";7.76;4.57;;;;;NOT_FOUND
+"Aenon Hotel";"Nigéria";"Osogbo";7.77;4.565;;;;;NOT_FOUND
+"Leisure Spring Hotel";"Nigéria";"Osogbo";7.762;4.548;;;;;NOT_FOUND
+"Nimb Hotel";"Dinamarca";"Copenhaga";55.674;12.566;;;;;NOT_FOUND
+"Radisson Collection Royal Hotel";"Dinamarca";"Copenhaga";55.675;12.564;;;;;NOT_FOUND
+"Villa Copenhagen";"Dinamarca";"Copenhaga";55.67;12.565;;;;;NOT_FOUND
+"Copenhagen Marriott Hotel";"Dinamarca";"Copenhaga";55.668;12.573;;;;;NOT_FOUND
+"Hotel Sanders";"Dinamarca";"Copenhaga";55.679;12.588;;;;;NOT_FOUND
+"Hotel Inhambane";"Moçambique";"Inhambane";-23.86;35.38;;;;;NOT_FOUND
+"Heritage Hotel Osogbo";"Nigéria";"Osogbo";7.78;4.55;;;;;NOT_FOUND
+"Royal Spring Hotel";"Nigéria";"Osogbo";7.76;4.57;;;;;NOT_FOUND
+"Aenon Hotel";"Nigéria";"Osogbo";7.77;4.565;;;;;NOT_FOUND
+"Leisure Spring Hotel";"Nigéria";"Osogbo";7.762;4.548;;;;;NOT_FOUND
+"Nimb Hotel";"Dinamarca";"Copenhaga";55.674;12.566;;;;;NOT_FOUND
+"Radisson Collection Royal Hotel";"Dinamarca";"Copenhaga";55.675;12.564;;;;;NOT_FOUND
+"Villa Copenhagen";"Dinamarca";"Copenhaga";55.67;12.565;;;;;NOT_FOUND
+"NH Collection Copenhagen";"Dinamarca";"Copenhaga";55.676;12.59;;;;;NOT_FOUND
+"Copenhagen Marriott Hotel";"Dinamarca";"Copenhaga";55.668;12.573;;;;;NOT_FOUND
+"Skt. Petri (atual 1 Hotel Copenhagen)";"Dinamarca";"Copenhaga";55.681;12.571;;;;;NOT_FOUND
+"Tivoli Hotel & Congress Centre";"Dinamarca";"Copenhaga";55.668;12.56;;;;;NOT_FOUND
+"Scandic Palace Hotel";"Dinamarca";"Copenhaga";55.675;12.568;;;;;NOT_FOUND
+"Hotel Sanders";"Dinamarca";"Copenhaga";55.679;12.588;;;;;NOT_FOUND
+"Radisson Blu Scandinavia Hotel Aarhus";"Dinamarca";"Aarhus";56.152;10.2;;;;;NOT_FOUND
+"Comwell Aarhus";"Dinamarca";"Aarhus";56.15;10.215;;;;;NOT_FOUND
+"Scandic Aarhus City";"Dinamarca";"Aarhus";56.155;10.208;;;;;NOT_FOUND
+"Camino Real Aeropuerto México";"Cidade do México";"México";19.435;-99.082;;;;;NOT_FOUND
+"Hilton Mexico City Airport";"Cidade do México";"México";19.435;-99.08;;;;;NOT_FOUND
+"Fiesta Inn Aeropuerto Ciudad de México";"Cidade do México";"México";19.435;-99.085;;;;;NOT_FOUND
+"NH Collection Mexico City Airport T2";"Cidade do México";"México";19.435;-99.08;;;;;NOT_FOUND
+"Hotel MX aeropuerto CDMX, Trademark Collection by Wyndham";"Cidade do México";"México";19.43;-99.09;;;;;NOT_FOUND
+"City Express Plus by Marriott Ciudad de México Santa Fe";"Cidade do México";"México";19.37;-99.27;;;;;NOT_FOUND
+"The Westin Cozumel";"San Miguel de Cozumel";"México";20.54;-86.91;;;;;NOT_FOUND
+"Presidente InterContinental Cozumel Resort & Spa";"San Miguel de Cozumel";"México";20.46;-86.92;;;;;NOT_FOUND
+"Secrets Aura Cozumel";"San Miguel de Cozumel";"México";20.37;-86.95;;;;;NOT_FOUND
+"Sunscape Sabor Cozumel";"San Miguel de Cozumel";"México";20.37;-86.95;;;;;NOT_FOUND
+"Iberostar Waves Cozumel";"San Miguel de Cozumel";"México";20.32;-86.98;;;;;NOT_FOUND
+"Occidental Cozumel";"San Miguel de Cozumel";"México";20.33;-86.98;;;;;NOT_FOUND
+"El Cozumeleño Beach Resort";"San Miguel de Cozumel";"México";20.53;-86.92;;;;;NOT_FOUND
+"Fiesta Americana Cozumel All Inclusive";"San Miguel de Cozumel";"México";20.435;-86.925;;;;;NOT_FOUND
+"Hotel B Cozumel";"San Miguel de Cozumel";"México";20.52;-86.925;;;;;NOT_FOUND
+"Casa Mexicana Cozumel";"San Miguel de Cozumel";"México";20.508;-86.948;;;;;NOT_FOUND
+"Coral Princess Hotel & Dive Resort";"San Miguel de Cozumel";"México";20.52;-86.925;;;;;NOT_FOUND
+"Villa Blanca Beach Garden";"San Miguel de Cozumel";"México";20.48;-86.93;;;;;NOT_FOUND
+"Cozumel Hotel & Resort, Trademark Collection by Wyndham";"San Miguel de Cozumel";"México";20.498;-86.94;;;;;NOT_FOUND
+"Hotel Pepita";"San Miguel de Cozumel";"México";20.505;-86.95;;;;;NOT_FOUND
+"Hotel Mary Carmen";"San Miguel de Cozumel";"México";20.505;-86.95;;;;;NOT_FOUND
+"Hotel Vista del Mar";"San Miguel de Cozumel";"México";20.515;-86.95;;;;;NOT_FOUND
+"Casa del Mar Cozumel Hotel & Dive Resort";"San Miguel de Cozumel";"México";20.475;-86.93;;;;;NOT_FOUND
+"Cozumel Palace";"San Miguel de Cozumel";"México";20.498;-86.94;;;;;NOT_FOUND
+"Grand Park Royal Cozumel";"San Miguel de Cozumel";"México";20.48;-86.93;;;;;NOT_FOUND
+"Hacienda San Miguel Suites & Hotel";"San Miguel de Cozumel";"México";20.515;-86.95;;;;;NOT_FOUND
+"Plaza Cozumel";"San Miguel de Cozumel";"México";20.512;-86.95;;;;;NOT_FOUND
+"Hotel Barracuda";"San Miguel de Cozumel";"México";20.505;-86.945;;;;;NOT_FOUND
+"elnan Marselis Hotel 1";"Dinamarca";"Aarhus";56.12;10.22;;;;;NOT_FOUND
+"Hotel Royal Aarhus 2";"Dinamarca";"Aarhus";56.155;10.21;;;;;NOT_FOUND
+"Hotel Koldingfjord 3";"Dinamarca";"Kolding";55.47;9.5;;;;;NOT_FOUND
+"Comwell Kolding 4";"Dinamarca";"Kolding";55.49;9.47;;;;;NOT_FOUND
+"Munkebjerg Hotel 5";"Dinamarca";"Vejle";55.7;9.6;;;;;NOT_FOUND
+"Ruth's Hotel 6";"Dinamarca";"Skagen";57.72;10.58;;;;;NOT_FOUND
+"Marienlyst Strandhotel 7";"Dinamarca";"Helsingør";56.04;12.602;;;;;NOT_FOUND
+"Grand Hôtel Stockholm 8";"Suécia";"Estocolmo";59.329;18.076;;;;;NOT_FOUND
+"Nobis Hotel Stockholm 9";"Suécia";"Estocolmo";59.333;18.073;;;;;NOT_FOUND
+"Lydmar Hotel 10";"Suécia";"Estocolmo";59.329;18.077;;;;;NOT_FOUND
+"Ett Hem 11";"Suécia";"Estocolmo";59.345;18.085;;;;;NOT_FOUND
+"Bank Hotel 12";"Suécia";"Estocolmo";59.332;18.075;;;;;NOT_FOUND
+"Upper House 13";"Suécia";"Gotemburgo";57.698;11.99;;;;;NOT_FOUND
+"Gothia Towers 14";"Suécia";"Gotemburgo";57.697;11.989;;;;;NOT_FOUND
+"Elite Plaza Hotel 15";"Suécia";"Gotemburgo";57.706;11.965;;;;;NOT_FOUND
+"Hotel Avalon 16";"Suécia";"Gotemburgo";57.704;11.968;;;;;NOT_FOUND
+"Clarion Hotel Post 17";"Suécia";"Gotemburgo";57.708;11.975;;;;;NOT_FOUND
+"Elite Park Avenue Hotel 18";"Suécia";"Gotemburgo";57.7;11.978;;;;;NOT_FOUND
+"The Thief 19";"Noruega";"Oslo";59.91;10.73;;;;;NOT_FOUND
+"Hotel Continental 20";"Noruega";"Oslo";59.914;10.735;;;;;NOT_FOUND
+"Amerikalinjen 21";"Noruega";"Oslo";59.912;10.75;;;;;NOT_FOUND
+"Clearwater Motor Lodge";"Taupo";"Nova Zelândia";-38.69;176.08;;;;;NOT_FOUND
+"The Hermitage Hotel";"Monte Cook (Aoraki)";"Nova Zelândia";-43.73;170.1;;;;;NOT_FOUND
+"Lake Tekapo Lodge";"Lake Tekapo";"Nova Zelândia";-44.005;170.48;;;;;NOT_FOUND
+"Mackenzie Country Hotel";"Twizel";"Nova Zelândia";-44.26;170.11;;;;;NOT_FOUND
+"Novotel Christchurch Cathedral Square";"Christchurch";"Nova Zelândia";-43.53;172.64;;;;;NOT_FOUND
+"Distinction Te Anau Hotel & Villas";"Te Anau";"Nova Zelândia";-45.41;167.72;;;;;NOT_FOUND
+"Milford Sound Lodge";"Milford Sound";"Nova Zelândia";-44.67;167.93;;;;;NOT_FOUND
+"Glenorchy Lodge";"Glenorchy";"Nova Zelândia";-44.85;168.38;;;;;NOT_FOUND
+"Park Hyatt Auckland";"Auckland";"Nova Zelândia";-36.85;174.76;;;;;NOT_FOUND
+"Hotel Stary";"Cracóvia";"Polónia";50.064;19.937;;;;;NOT_FOUND
+"Hotel Żubrówka";"Polónia";"Białowieża";52.699;23.872;;;;;NOT_FOUND
+"Hotel Gołębiewski Białystok";"Polónia";"Białystok";53.13;23.175;;;;;NOT_FOUND
+"Hotel Branicki";"Polónia";"Białystok";53.132;23.17;;;;;NOT_FOUND
+"Hotel Esperanto";"Polónia";"Białystok";53.131;23.165;;;;;NOT_FOUND
+"otel Aramis";"Polónia";"Varsóvia";52.17;21.05;;;;;NOT_FOUND
+"Hotel Belwederski";"Polónia";"Varsóvia";52.21;21.03;;;;;NOT_FOUND
+"Hotel Stare Miasto (Castle Inn)";"Polónia";"Varsóvia";52.25;21.013;;;;;NOT_FOUND
+"Hotel Maria";"Polónia";"Raszyn (Varsóvia)";52.15;20.92;;;;;NOT_FOUND
+"Hotel Białowieski";"Polónia";"Białowieża";52.7;23.87;;;;;NOT_FOUND
+"Hotel Żubrówka";"Polónia";"Białowieża";52.699;23.872;;;;;NOT_FOUND
+"Hotel Carska (Apartamenty Carska)";"Polónia";"Białowieża";52.71;23.855;;;;;NOT_FOUND
+"Gościniec Białowieski";"Polónia";"Białowieża";52.7;23.874;;;;;NOT_FOUND
+"Leśny Dwór";"Polónia";"Hajnówka";52.74;23.58;;;;;NOT_FOUND
+"Hotel Hajnówka";"Polónia";"Hajnówka";52.738;23.585;;;;;NOT_FOUND
+"Hotel Gołębiewski Białystok";"Polónia";"Białystok";53.13;23.175;;;;;NOT_FOUND
+"Hotel Branicki";"Polónia";"Białystok";53.132;23.17;;;;;NOT_FOUND
+"Hotel Esperanto";"Polónia";"Białystok";53.131;23.165;;;;;NOT_FOUND
+"Hotel Villa Tradycja";"Polónia";"Białystok";53.132;23.168;;;;;NOT_FOUND
+"Hotel Borowinowy Zdrój";"Polónia";"Supraśl";53.205;23.335;;;;;NOT_FOUND
+"First World Hotel";"Genting Highlands";"Malásia";3.4253;101.7942;;;;;NOT_FOUND
+"The Venetian Resort";"Las Vegas";"Estados Unidos";36.1214;-115.1689;;;;;NOT_FOUND
+"Abraj Al Bait";"Meca";"Arábia Saudita";21.4243;39.8246;;;;;NOT_FOUND
+"The Londoner Macao";"Macau";"China";22.1437;113.5664;;;;;NOT_FOUND
+"MGM Grand Las Vegas";"Las Vegas";"Estados Unidos";36.1026;-115.1702;;;;;NOT_FOUND
+"Izmailovo Hotel";"Moscovo";"Rússia";55.7894;37.7501;;;;;NOT_FOUND
+"Wynn Las Vegas & Encore Resort";"Las Vegas";"Estados Unidos";36.1276;-115.1657;;;;;NOT_FOUND
+"Barkhatnye Sezony";"Sochi";"Rússia";43.3912;39.9915;;;;;NOT_FOUND
+"Mandalay Bay Resort and Casino";"Las Vegas";"Estados Unidos";36.0919;-115.1752;;;;;NOT_FOUND
+"Luxor Las Vegas";"Las Vegas";"Estados Unidos";36.0955;-115.1761;;;;;NOT_FOUND
+"Ambassador City Jomtien";"Pattaya";"Tailândia";12.8315;100.9141;;;;;NOT_FOUND
+"Aria Resort & Casino";"Las Vegas";"Estados Unidos";36.1073;-115.1764;;;;;NOT_FOUND
+"Sheraton Grand Macao";"Macau";"China";22.1432;113.5637;;;;;NOT_FOUND
+"Excalibur Hotel and Casino";"Las Vegas";"Estados Unidos";36.0988;-115.1754;;;;;NOT_FOUND
+"Caesars Palace";"Las Vegas";"Estados Unidos";36.1162;-115.1745;;;;;NOT_FOUND
+"Bellagio";"Las Vegas";"Estados Unidos";36.1126;-115.1767;;;;;NOT_FOUND
+"Circus Circus Las Vegas";"Las Vegas";"Estados Unidos";36.1364;-115.1625;;;;;NOT_FOUND
+"Shinagawa Prince Hotel";"Tóquio";"Japão";35.6274;139.7354;;;;;NOT_FOUND
+"Paris Las Vegas";"Las Vegas";"Estados Unidos";36.1125;-115.1704;;;;;NOT_FOUND
+"Fontainebleau Las Vegas";"Las Vegas";"Estados Unidos";36.1341;-115.1582;;;;;NOT_FOUND
+"Resorts World Las Vegas";"Las Vegas";"Estados Unidos";36.1319;-115.1664;;;;;NOT_FOUND
+"Flamingo Las Vegas";"Las Vegas";"Estados Unidos";36.1158;-115.1706;;;;;NOT_FOUND
+"Galaxy Macau";"Macau";"China";22.1481;113.5539;;;;;NOT_FOUND
+"Atlantis Paradise Island";"Paradise Island";"Bahamas";25.0843;-77.3214;;;;;NOT_FOUND
+"Moon Palace Golf & Spa Resort";"Cancún";"México";21.0319;-86.8488;;;;;NOT_FOUND
+"Disney's Port Orleans Resort";"Lake Buena Vista";"Estados Unidos";28.3844;-81.5358;;;;;NOT_FOUND
+"The Cosmopolitan";"Las Vegas";"Estados Unidos";36.1098;-115.174;;;;;NOT_FOUND
+"The Venetian Macao";"Macau";"China";22.1469;113.5597;;;;;NOT_FOUND
+"Izmailovo Hotel";"Moscovo";"Rússia";55.7894;37.7501;;;;;NOT_FOUND
+"Barkhatnye Sezony";"Sochi";"Rússia";43.3912;39.9915;;;;;NOT_FOUND
+"Royal National Hotel";"Londres";"Reino Unido";51.5234;-0.1264;;;;;NOT_FOUND
+"RIN Grand Hotel";"Bucareste";"Roménia";44.3971;26.1362;;;;;NOT_FOUND
+"Hotel Gołębiewski Pobierowo";"Pobierowo";"Polónia";54.0628;14.9392;;;;;NOT_FOUND
+"Cabinn Copenhagen";"Copenhaga";"Dinamarca";55.6653;12.5658;;;;;NOT_FOUND
+"Gothia Towers";"Gotemburgo";"Suécia";57.6974;11.9877;;;;;NOT_FOUND
+"Barceló Punta Umbría Beach Resort";"Punta Umbría";"Espanha";37.1983;-6.9742;;;;;NOT_FOUND
+"Pribaltiyskaya Hotel";"São Petersburgo";"Rússia";59.9389;30.2201;;;;;NOT_FOUND
+"Lopesan Costa Meloneras Resort";"Gran Canaria";"Espanha";27.7412;-15.6025;;;;;NOT_FOUND
+"Estrel Hotel";"Berlim";"Alemanha";52.4731;13.4594;;;;;NOT_FOUND
+"Disney's Newport Bay Club";"Coupvray (Paris)";"França";48.8652;2.7885;;;;;NOT_FOUND
+"Hilton London Metropole";"Londres";"Reino Unido";51.5204;-0.1706;;;;;NOT_FOUND
+"Park Inn by Radisson Berlin Alexanderplatz";"Berlim";"Alemanha";52.5225;13.4132;;;;;NOT_FOUND
+"Le Méridien Etoile";"Paris";"França";48.8797;2.2858;;;;;NOT_FOUND
+"Park Plaza Westminster Bridge";"Londres";"Reino Unido";51.5012;-0.1174;;;;;NOT_FOUND
+"Cumberland Hotel, Great Cumberland Place";"Londres";"Reino Unido";51.5144;-0.1587;;;;;NOT_FOUND
+"Sheraton Frankfurt Airport Hotel";"Frankfurt";"Alemanha";50.0526;8.5684;;;;;NOT_FOUND
+"Ripamonti Residence & Hotel";"Milão (Pieve Emanuele)";"Itália";45.3533;9.2025;;;;;NOT_FOUND
+"Ciel Tower";"Dubai";"Emirados Árabes Unidos";25.0894;55.1472;;;;;NOT_FOUND
+"Gevora Hotel";"Dubai";"Emirados Árabes Unidos";25.2132;55.2762;;;;;NOT_FOUND
+"JW Marriott Marquis Dubai";"Dubai";"Emirados Árabes Unidos";25.1858;55.2575;;;;;NOT_FOUND
+"Shimao International Plaza";"Xangai";"China";31.2359;121.4744;;;;;NOT_FOUND
+"Rose Rayhaan by Rotana";"Dubai";"Emirados Árabes Unidos";25.2148;55.2773;;;;;NOT_FOUND
+"Burj Al Arab";"Dubai";"Emirados Árabes Unidos";25.1412;55.1852;;;;;NOT_FOUND
+"Jumeirah Emirates Towers Hotel";"Dubai";"Emirados Árabes Unidos";25.2181;55.2825;;;;;NOT_FOUND
+"Baiyoke Tower II";"Banguecoque";"Tailândia";13.7544;100.5404;;;;;NOT_FOUND
+"Wuxi Maoye City – Marriott Hotel";"Wuxi";"China";31.5541;120.3117;;;;;NOT_FOUND
+"The Tower Plaza";"Dubai";"Emirados Árabes Unidos";25.2215;55.2829;;;;;NOT_FOUND
+"The Sky Taipei";"Taipé";"Taiwan";25.0345;121.5652;;;;;NOT_FOUND
+"Four Seasons Hotel Manama";"Manama";"Bahrein";26.2483;50.5822;;;;;NOT_FOUND
+"Radisson Royal Dubai";"Dubai";"Emirados Árabes Unidos";25.2238;55.2847;;;;;NOT_FOUND
+"Sail Tower (Shangri-La)";"Jidá";"Arábia Saudita";21.6033;39.1084;;;;;NOT_FOUND
+"Grand Lisboa";"Macau";"China";22.1897;113.5444;;;;;NOT_FOUND
+"Raffles Jakarta";"Jacarta";"Indonésia";-6.2239;106.8233;;;;;NOT_FOUND
+"Wyndham Ion Majestic";"Genting Highlands";"Malásia";3.4281;101.7958;;;;;NOT_FOUND
+"Financial Street Westin Hotel";"Chongqing";"China";29.5574;106.5518;;;;;NOT_FOUND
+"Western International Finance Center Conrad Hotel";"Chengdu";"China";30.6508;104.0831;;;;;NOT_FOUND
+"The Peak Shangri-La";"Phnom Penh";"Camboja";11.5522;104.9358;;;;;NOT_FOUND
+"Centara Grand Hotel";"Banguecoque";"Tailândia";13.7475;100.5389;;;;;NOT_FOUND
+"Wyndham Grand i-City";"Shah Alam";"Malásia";3.0653;101.4831;;;;;NOT_FOUND
+"The Palm Tower";"Dubai";"Emirados Árabes Unidos";25.1142;55.1389;;;;;NOT_FOUND
+"Courtyard/Residence Inn New York Manhattan";"Nova Iorque";"Estados Unidos";40.7644;-73.9825;;;;;NOT_FOUND
+"Swissôtel The Stamford";"Singapura";"Singapura";1.2932;103.8536;;;;;NOT_FOUND
+"Fontainebleau Las Vegas";"Las Vegas";"Estados Unidos";36.1341;-115.1582;;;;;NOT_FOUND
+"Renaissance Center";"Detroit";"Estados Unidos";42.3291;-83.0397;;;;;NOT_FOUND
+"Carlton Downtown";"Dubai";"Emirados Árabes Unidos";25.2117;55.2747;;;;;NOT_FOUND
+"Residence Inn By Marriott at Sheikh Zayed Road";"Dubai";"Emirados Árabes Unidos";25.2111;55.2742;;;;;NOT_FOUND
+"Westin Peachtree Plaza Hotel";"Atlanta";"Estados Unidos";33.7594;-84.3883;;;;;NOT_FOUND
+"Furama Hotel Phase 3";"Dalian";"China";38.9225;121.6492;;;;;NOT_FOUND
+"Ocean Casino Resort";"Atlantic City";"Estados Unidos";39.3619;-74.4144;;;;;NOT_FOUND
+"Riu Plaza Guadalajara";"Guadalajara";"México";20.6656;-103.3931;;;;;NOT_FOUND
+"Jeju Dream Tower Hotel";"Jeju";"Coreia do Sul";33.4853;126.4814;;;;;NOT_FOUND
+"Ritz-Carlton Jakarta Tower I";"Jacarta";"Indonésia";-6.2286;106.8275;;;;;NOT_FOUND
+"Ritz-Carlton Jakarta Tower II";"Jacarta";"Indonésia";-6.2286;106.8275;;;;;NOT_FOUND
+"Hopewell Hotel";"Hong Kong";"China";22.2747;114.1719;;;;;NOT_FOUND
+"Four Seasons Hotel New York";"Nova Iorque";"Estados Unidos";40.7622;-73.9714;;;;;NOT_FOUND
+"Radisson Hotel Shanghai New World";"Xangai";"China";31.2347;121.4725;;;;;NOT_FOUND
+"Hilton Hotel Main Building Dongguan";"Dongguan";"China";23.0131;113.7511;;;;;NOT_FOUND
+"Tamani Hotel Marina";"Dubai";"Emirados Árabes Unidos";25.0928;55.1503;;;;;NOT_FOUND
+"Sofitel Jin Jiang Oriental Pudong Hotel";"Xangai";"China";31.2217;121.5283;;;;;NOT_FOUND
+"Hotel Ukraina";"Moscovo";"Rússia";55.7531;37.5667;;;;;NOT_FOUND
+"Marina Bay Tower 1";"Singapura";"Singapura";1.2839;103.8594;;;;;NOT_FOUND
+"Marina Bay Tower 3";"Singapura";"Singapura";1.2829;103.8604;;;;;NOT_FOUND
+"Resorts World Las Vegas";"Las Vegas";"Estados Unidos";36.1319;-115.1664;;;;;NOT_FOUND
+"Four Seasons Hotel Hong Kong";"Hong Kong";"China";22.2867;114.1567;;;;;NOT_FOUND
+"Berjaya Times Square Hotel Tower A";"Kuala Lumpur";"Malásia";3.1425;101.7094;;;;;NOT_FOUND
+"Renaissance Hotel Tianjin";"Tianjin";"China";39.1283;117.2025;;;;;NOT_FOUND
+"Marina Bay Tower 2";"Singapura";"Singapura";1.2834;103.8599;;;;;NOT_FOUND
+"Yuanyang Building";"Dalian";"China";38.9181;121.6339;;;;;NOT_FOUND
+"Dolton Hotel Changsha";"Changsha";"China";28.1925;112.9922;;;;;NOT_FOUND
+"Conrad Seoul Hotel";"Seul";"Coreia do Sul";37.5244;126.9253;;;;;NOT_FOUND
+"Dicara Gold Tower - Hilton Hotel";"Hangzhou";"China";30.2336;120.245;;;;;NOT_FOUND
+"City Center Hotel";"Doha";"Catar";25.3256;51.5294;;;;;NOT_FOUND
+"Aman Kyoto";"Quioto";"Japão";35.0489;135.7271;;;;;NOT_FOUND
+"Aman Le Mélézin";"Courchevel";"França";45.4121;6.6498;;;;;NOT_FOUND
+"Aman New York";"Nova Iorque";"Estados Unidos";40.7626;-73.9744;;;;;NOT_FOUND
+"Aman Summer Palace";"Pequim";"China";40.0039;116.2751;;;;;NOT_FOUND
+"Aman Sveti Stefan";"Sveti Stefan";"Montenegro";42.2562;18.8911;;;;;NOT_FOUND
+"Aman Tokyo";"Tóquio";"Japão";35.6865;139.7644;;;;;NOT_FOUND
+"Aman Venice";"Veneza";"Itália";45.4361;12.3308;;;;;NOT_FOUND
+"Aman Villas at Nusa Dua";"Bali";"Indonésia";-8.8142;115.2234;;;;;NOT_FOUND
+"Amanbagh";"Rajasthan";"Índia";27.1189;76.3475;;;;;NOT_FOUND
+"Amandari";"Bali";"Indonésia";-8.4831;115.2444;;;;;NOT_FOUND
+"Amandayan";"Lijiang";"China";26.8722;100.2289;;;;;NOT_FOUND
+"Amanemu";"Shima";"Japão";34.2882;136.7828;;;;;NOT_FOUND
+"Amanera";"Río San Juan";"República Dominicana";19.6456;-70.0489;;;;;NOT_FOUND
+"Amanfayun";"Hangzhou";"China";30.2414;120.1017;;;;;NOT_FOUND
+"Amangalla";"Galle";"Sri Lanka";6.0264;80.2181;;;;;NOT_FOUND
+"Amangani";"Jackson Hole";"Estados Unidos";43.5292;-110.7675;;;;;NOT_FOUND
+"Amangiri";"Canyon Point";"Estados Unidos";37.0181;-111.9056;;;;;NOT_FOUND
+"Amanjena";"Marraquexe";"Marrocos";31.6031;-7.9042;;;;;NOT_FOUND
+"Amankora";"Thimphu";"Butão";27.4812;89.6264;;;;;NOT_FOUND
+"Amanoi";"Ninh Hải";"Vietname";11.7242;109.1978;;;;;NOT_FOUND
+"Amanpulo";"Palawan";"Filipinas";11.3536;120.7303;;;;;NOT_FOUND
+"Amanpuri";"Phuket";"Tailândia";7.9814;98.2778;;;;;NOT_FOUND
+"Amanrüya";"Bodrum";"Turquia";37.1353;27.3917;;;;;NOT_FOUND
+"Amansara";"Siem Reap";"Camboja";13.3653;103.8611;;;;;NOT_FOUND
+"Amantaka";"Luang Prabang";"Laos";19.8894;102.1389;;;;;NOT_FOUND
+"Amanwana";"Sumbawa";"Indonésia";-8.2433;117.5186;;;;;NOT_FOUND
+"Amanwella";"Tangalle";"Sri Lanka";6.0239;80.7811;;;;;NOT_FOUND
+"Amanyangyun";"Xangai";"China";31.0256;121.4328;;;;;NOT_FOUND
+"Amanyara";"Providenciales";"Reino Unido (Turcas e Caicos)";21.8153;-72.2958;;;;;NOT_FOUND
+"Amanzoe";"Porto Heli";"Grécia";37.3933;23.1611;;;;;NOT_FOUND
+"Janu Tokyo";"Tóquio";"Japão";35.6617;139.7397;;;;;NOT_FOUND
+"Rosa Alpina";"Alta Badia";"Itália";46.5481;11.9342;;;;;NOT_FOUND
+"Aman Nai Lert Bangkok";"Banguecoque";"Tailândia";13.7439;100.5461;;;;;NOT_FOUND
+"Splendido Mare";"Portofino";"Itália";44.3031;9.2104;;;;;NOT_FOUND
+"Villa Beatrice";"Portofino";"Itália";44.3005;9.2132;;;;;NOT_FOUND
+"Belmond Villa San Michele";"Florença (Fiesole)";"Itália";43.8064;11.2952;;;;;NOT_FOUND
+"Castello di Casole";"Casole d'Elsa (Toscana)";"Itália";43.3853;11.0456;;;;;NOT_FOUND
+"Caruso";"Costa Amalfitana (Ravello)";"Itália";40.6508;14.6117;;;;;NOT_FOUND
+"Belmond Villa Sant'Andrea";"Taormina (Sicília)";"Itália";37.8547;15.3006;;;;;NOT_FOUND
+"Belmond Grand Hotel Timeo";"Taormina (Sicília)";"Itália";37.8525;15.2894;;;;;NOT_FOUND
+"Hotel Romazzino";"Porto Cervo (Sardenha)";"Itália";41.0847;9.5539;;;;;NOT_FOUND
+"Belmond La Residencia";"Deia (Maiorca)";"Espanha";39.7478;2.6417;;;;;NOT_FOUND
+"Belmond Reid's Palace";"Funchal (Madeira)";"Portugal";32.6403;-16.9242;;;;;NOT_FOUND
+"The Cadogan";"Londres";"Reino Unido";51.4965;-0.1604;;;;;NOT_FOUND
+"Le Manoir aux Quat'Saisons";"Oxfordshire";"Reino Unido";51.7225;-1.1017;;;;;NOT_FOUND
+"Belmond La Samanna";"St. Martin";"Antilhas Francesas";18.0558;-63.1367;;;;;NOT_FOUND
+"Belmond Cap Juluca";"Anguilla";"Antilhas Britânicas";18.1633;-63.1344;;;;;NOT_FOUND
+"Belmond Maroma Resort & Spa";"Riviera Maya";"México";20.7381;-86.9669;;;;;NOT_FOUND
+"Casa de Sierra Nevada";"San Miguel de Allende";"México";20.9136;-100.7431;;;;;NOT_FOUND
+"Copacabana Palace";"Rio de Janeiro";"Brasil";-22.9672;-43.1789;;;;;NOT_FOUND
+"Belmond Miraflores Park";"Lima";"Peru";-12.1303;-77.0308;;;;;NOT_FOUND
+"Belmond Palacio Nazarenas";"Cusco";"Peru";-13.5153;-71.9772;;;;;NOT_FOUND
+"Belmond Hotel Monasterio";"Cusco";"Peru";-13.5158;-71.9775;;;;;NOT_FOUND
+"Belmond Sanctuary Lodge";"Machu Picchu";"Peru";-13.1628;-72.5453;;;;;NOT_FOUND
+"Belmond Hotel Rio Sagrado";"Sacred Valley";"Peru";-13.2956;-72.1558;;;;;NOT_FOUND
+"Belmond Las Casitas";"Colca Canyon";"Peru";-15.6428;-71.6517;;;;;NOT_FOUND
+"Belmond Jimbaran Puri";"Bali";"Indonésia";-8.7753;115.1683;;;;;NOT_FOUND
+"Belmond Mount Nelson Hotel";"Cidade do Cabo";"África do Sul";-33.9317;18.4158;;;;;NOT_FOUND
+"Belmond Savute Elephant Lodge";"Parque Nacional de Chobe";"Botsuana";-18.5672;24.0622;;;;;NOT_FOUND
+"Eagle Island Lodge";"Delta do Okavango";"Botsuana";-19.5314;22.7169;;;;;NOT_FOUND
+"Taj Mahal Palace Hotel";"Bombaim (Mumbai)";"Índia";18.9217;72.8331;;;;;NOT_FOUND
+"Taj Club House Chennai";"Chennai";"Índia";13.0614;80.2608;;;;;NOT_FOUND
+"Taj Connemara";"Chennai";"Índia";13.0631;80.2575;;;;;NOT_FOUND
+"Taj Coromandel";"Chennai";"Índia";13.0601;80.2472;;;;;NOT_FOUND
+"Taj Fisherman's Cove Resort & Spa";"Chennai";"Índia";12.7917;80.2494;;;;;NOT_FOUND
+"Taj Fort Aguada Resort";"Goa";"Índia";15.4942;73.7667;;;;;NOT_FOUND
+"Taj Samudra";"Colombo";"Sri Lanka";6.9247;79.8453;;;;;NOT_FOUND
+"Vivanta Coimbatore";"Coimbatore";"Índia";11.2022;76.9856;;;;;NOT_FOUND
+"Taj West End";"Bangalore";"Índia";12.9839;77.5794;;;;;NOT_FOUND
+"Umaid Bhawan Palace";"Jodhpur";"Índia";26.2811;73.0475;;;;;NOT_FOUND
+"Usha Kiran Palace";"Gwalior";"Índia";26.2089;78.1692;;;;;NOT_FOUND
+"Taj Falaknuma Palace";"Hyderabad";"Índia";17.3314;78.4678;;;;;NOT_FOUND
+"The Pierre";"Nova Iorque";"Estados Unidos";40.7656;-73.9714;;;;;NOT_FOUND
+"The Newbury Boston";"Boston";"Estados Unidos";42.3533;-71.0725;;;;;NOT_FOUND
+"Rambagh Palace";"Jaipur";"Índia";26.8981;75.8089;;;;;NOT_FOUND
+"Lake Palace";"Udaipur";"Índia";24.5756;73.6803;;;;;NOT_FOUND
+"Balmoral Hotel";"Edimburgo";"Reino Unido";55.9525;-3.1903;;;;;NOT_FOUND
+"Hotel Amigo";"Bruxelas";"Bélgica";50.8464;4.3517;;;;;NOT_FOUND
+"Hotel de Russie";"Roma";"Itália";41.9108;12.4764;;;;;NOT_FOUND
+"Brown's Hotel";"Londres";"Reino Unido";51.5094;-0.1425;;;;;NOT_FOUND
+"The Charles Hotel";"Munique";"Alemanha";48.1422;11.5647;;;;;NOT_FOUND
+"Verdura Resort";"Sciacca (Sicília)";"Itália";37.4722;13.1894;;;;;NOT_FOUND
+"Masseria Torre Maizza";"Savelletri di Fasano (Apúlia)";"Itália";40.8714;17.4011;;;;;NOT_FOUND
+"Hotel de la Ville";"Roma";"Itália";41.905;12.4842;;;;;NOT_FOUND
+"Villa Igiea";"Palermo (Sicília)";"Itália";38.1436;13.3725;;;;;NOT_FOUND
+"Rosewood Hotel Georgia";"Vancouver";"Canadá";49.2833;-123.1194;;;;;NOT_FOUND
+"Rosewood Sand Hill";"Menlo Park";"Estados Unidos";37.4225;-122.2039;;;;;NOT_FOUND
+"The Carlyle, A Rosewood Hotel";"Nova Iorque";"Estados Unidos";40.7744;-73.9633;;;;;NOT_FOUND
+"Rosewood Washington, D.C.";"Washington, D.C.";"Estados Unidos";38.9039;-77.0625;;;;;NOT_FOUND
+"Rosewood Miramar Beach";"Montecito";"Estados Unidos";34.4178;-119.6389;;;;;NOT_FOUND
+"Rosewood Mansion on Turtle Creek";"Dallas";"Estados Unidos";32.8053;-96.8042;;;;;NOT_FOUND
+"Rosewood Inn of the Anasazi";"Santa Fe";"Estados Unidos";35.6881;-105.9372;;;;;NOT_FOUND
+"Kona Village, A Rosewood Resort";"Kailua-Kona (Havai)";"Estados Unidos";19.8294;-155.9861;;;;;NOT_FOUND
+"Rosewood São Paulo";"São Paulo";"Brasil";-23.5636;-46.6531;;;;;NOT_FOUND
+"Rosewood Mayakoba";"Riviera Maya";"México";20.6783;-87.0319;;;;;NOT_FOUND
+"Rosewood San Miguel de Allende";"San Miguel de Allende";"México";20.9103;-100.7456;;;;;NOT_FOUND
+"Las Ventanas al Paraiso, A Rosewood Resort";"San José del Cabo";"México";22.9753;-109.7611;;;;;NOT_FOUND
+"Rosewood Bermuda";"Hamilton Parish";"Bermudas";32.3381;-64.6933;;;;;NOT_FOUND
+"Rosewood Baha Mar";"Nassau";"Bahamas";25.0747;-77.3972;;;;;NOT_FOUND
+"Rosewood Little Dix Bay";"Virgin Gorda";"Ilhas Virgens Britânicas";18.4528;-64.4331;;;;;NOT_FOUND
+"Rosewood London";"Londres";"Reino Unido";51.5175;-0.1192;;;;;NOT_FOUND
+"The Chancery Rosewood";"Londres";"Reino Unido";51.5114;-0.1517;;;;;NOT_FOUND
+"Rosewood Castiglion del Bosco";"Montalcino (Toscana)";"Itália";43.0847;11.4194;;;;;NOT_FOUND
+"Hôtel de Crillon, A Rosewood Hotel";"Paris";"França";48.8672;2.3217;;;;;NOT_FOUND
+"Rosewood Jeddah";"Jidá";"Arábia Saudita";21.5794;39.1122;;;;;NOT_FOUND
+"Rosewood Abu Dhabi";"Abu Dhabi";"Emirados Árabes Unidos";24.5028;54.3894;;;;;NOT_FOUND
+"Rosewood Sanya";"Sanya";"China";18.2981;109.7428;;;;;NOT_FOUND
+"Rosewood Beijing";"Pequim";"China";39.9208;116.4594;;;;;NOT_FOUND
+"Rosewood Miyakojima";"Okinawa";"Japão";24.8056;125.2811;;;;;NOT_FOUND
+"Rosewood Phuket";"Phuket";"Tailândia";7.8814;98.2736;;;;;NOT_FOUND
+"Rosewood Bangkok";"Banguecoque";"Tailândia";13.7431;100.5483;;;;;NOT_FOUND
+"Rosewood Yangon";"Yangon";"Mianmar";16.7694;96.1611;;;;;NOT_FOUND
+"Rosewood Luang Prabang";"Luang Prabang";"Laos";19.8653;102.1644;;;;;NOT_FOUND
+"Rosewood Phnom Penh";"Phnom Penh";"Camboja";11.5714;104.9214;;;;;NOT_FOUND
+"Rosewood Hong Kong";"Hong Kong";"China";22.2936;114.1736;;;;;NOT_FOUND
+"Rosewood Guangzhou";"Cantão (Guangzhou)";"China";23.1169;113.3217;;;;;NOT_FOUND
+"Swissôtel Al Ghurair Dubai";"Dubai";"Emirados Árabes Unidos";25.2678;55.3175;;;;;NOT_FOUND
+"Swissôtel Al Maqam Makkah";"Meca";"Arábia Saudita";21.4194;39.8256;;;;;NOT_FOUND
+"Swissôtel Al Murooj Dubai";"Dubai";"Emirados Árabes Unidos";25.2056;55.2794;;;;;NOT_FOUND
+"Swissôtel Amsterdam";"Amesterdão";"Países Baixos";52.3739;4.8931;;;;;NOT_FOUND
+"Swissôtel Beijing Hong Kong Macau Center";"Pequim";"China";39.9328;116.4328;;;;;NOT_FOUND
+"Swissôtel Büyük Efes Izmir";"Izmir";"Turquia";38.4278;27.1353;;;;;NOT_FOUND
+"Swissôtel Chicago";"Chicago";"Estados Unidos";41.8881;-87.6194;;;;;NOT_FOUND
+"Swissôtel Clark Philippines";"Mabalacat";"Filipinas";15.1764;120.5283;;;;;NOT_FOUND
+"Swissôtel Corniche Park Towers Doha";"Doha";"Catar";25.3183;51.5272;;;;;NOT_FOUND
+"Swissôtel Damian Jasna";"Žilina (Jasná)";"Eslováquia";48.9717;19.5853;;;;;NOT_FOUND
+"Swissôtel Foshan";"Foshan";"China";23.0189;113.1169;;;;;NOT_FOUND
+"Swissôtel Grand Shanghai";"Xangai";"China";31.2239;121.4428;;;;;NOT_FOUND
+"Swissôtel Hefei Grand Park";"Hefei";"China";31.8922;117.2658;;;;;NOT_FOUND
+"Swissôtel Jakarta PIK Avenue";"Jacarta";"Indonésia";-6.1111;106.7389;;;;;NOT_FOUND
+"Swissôtel Krasnye Holmy Moscow";"Moscovo";"Rússia";55.7342;37.6436;;;;;NOT_FOUND
+"Swissôtel Kursaal Bern";"Berna";"Suíça";46.9536;7.4497;;;;;NOT_FOUND
+"Swissôtel Lima";"Lima";"Peru";-12.0969;-77.0369;;;;;NOT_FOUND
+"Swissôtel Living Al Ghurair Dubai";"Dubai";"Emirados Árabes Unidos";25.2681;55.3178;;;;;NOT_FOUND
+"Swissôtel Living Jakarta Mega Kuningan";"Jacarta";"Indonésia";-6.2289;106.8267;;;;;NOT_FOUND
+"Swissôtel Living Jeddah";"Jidá";"Arábia Saudita";21.5308;39.1694;;;;;NOT_FOUND
+"Swissôtel Makkah";"Meca";"Arábia Saudita";21.4192;39.8253;;;;;NOT_FOUND
+"Swissôtel Marianske Lazne";"Mariánské Lázně (Cheb)";"Chéquia";49.9644;12.7028;;;;;NOT_FOUND
+"Swissôtel Nankai Osaka";"Osaca";"Japão";34.6644;135.5019;;;;;NOT_FOUND
+"Swissôtel Poiana Brasov";"Brașov";"Roménia";45.5947;25.5514;;;;;NOT_FOUND
+"Swissôtel Quito";"Quito";"Equador";-0.2117;-78.4908;;;;;NOT_FOUND
+"Swissôtel Resort & Spa Cesme";"Çeşme (Izmir)";"Turquia";38.3094;26.3533;;;;;NOT_FOUND
+"Swissôtel Resort Bodrum Beach";"Bodrum (Muğla)";"Turquia";37.0017;27.2539;;;;;NOT_FOUND
+"Swissôtel Resort Changbaishan";"Baishan";"China";41.9422;127.6083;;;;;NOT_FOUND
+"Swissôtel Resort El Quseir";"El Quseir (Mar Vermelho)";"Egito";26.1089;34.2811;;;;;NOT_FOUND
+"Swissôtel Resort Kolasin";"Kolašin";"Montenegro";42.8228;19.5214;;;;;NOT_FOUND
+"Swissôtel Resort Sochi Kamelia";"Sochi";"Rússia";43.5656;39.7586;;;;;NOT_FOUND
+"Swissôtel Santa Cruz de la Sierra";"Santa Cruz de la Sierra";"Bolívia";-17.7611;-63.1931;;;;;NOT_FOUND
+"Swissôtel Sarajevo";"Sarajevo";"Bósnia e Herzegovina";43.8553;18.4089;;;;;NOT_FOUND
+"Swissôtel Sharm El Sheikh";"Sharm El-Sheikh";"Egito";27.9158;34.3275;;;;;NOT_FOUND
+"Swissôtel Shenyang";"Shenyang";"China";41.7853;123.4331;;;;;NOT_FOUND
+"Swissôtel Sydney";"Sydney";"Austrália";-33.8706;151.2081;;;;;NOT_FOUND
+"Swissôtel Tallinn";"Tallinn";"Estónia";59.4328;24.7614;;;;;NOT_FOUND
+"Swissôtel Tashkent";"Tashkent";"Usbequistão";41.3164;69.2814;;;;;NOT_FOUND
+"Swissôtel Tbilisi";"Tbilisi";"Geórgia";41.6989;44.7994;;;;;NOT_FOUND
+"Swissôtel The Stamford Singapore";"Singapura";"Singapura";1.2932;103.8536;;;;;NOT_FOUND
+"Swissôtel Uludag Bursa";"Bursa";"Turquia";40.1056;29.1294;;;;;NOT_FOUND
+"Swissôtel Wellness Resort Alatau Almaty";"Almaty";"Cazaquistão";43.1864;76.8711;;;;;NOT_FOUND
+"Swissôtel Xi'an Xinxing Hot Spring";"Xi'an";"China";34.2589;108.9894;;;;;NOT_FOUND
+"Sofitel Barcelona Skipper";"Barcelona";"Espanha";41.3853;2.1956;;;;;NOT_FOUND
+"Sofitel Biarritz Le Miramar Thalassa Sea & Spa";"Biarritz";"França";43.4894;-1.5544;;;;;NOT_FOUND
+"Sofitel Brussels Europe";"Bruxelas";"Bélgica";50.8369;4.3814;;;;;NOT_FOUND
+"Sofitel Frankfurt Opera";"Frankfurt";"Alemanha";50.1147;8.6714;;;;;NOT_FOUND
+"Sofitel Golfe d'Ajaccio Thalassa Sea & Spa";"Ajaccio";"França";41.9022;8.7944;;;;;NOT_FOUND
+"Sofitel Grand Sopot";"Sopot";"Polónia";54.4464;18.5703;;;;;NOT_FOUND
+"Sofitel Istanbul Taksim";"Istambul";"Turquia";41.0361;28.9856;;;;;NOT_FOUND
+"Sofitel Le Scribe Paris Opéra";"Paris";"França";48.8711;2.3294;;;;;NOT_FOUND
+"Sofitel Legend The Grand Amsterdam";"Amesterdão";"Países Baixos";52.3711;4.8964;;;;;NOT_FOUND
+"Sofitel Lisbon Liberdade";"Lisboa";"Portugal";38.7192;-9.1439;;;;;NOT_FOUND
+"Sofitel London Gatwick";"Londres";"Reino Unido";51.1628;-0.1742;;;;;NOT_FOUND
+"Sofitel London Heathrow";"Londres";"Reino Unido";51.4722;-0.4889;;;;;NOT_FOUND
+"Sofitel London St. James";"Londres";"Reino Unido";51.5072;-0.1317;;;;;NOT_FOUND
+"Sofitel Luxembourg Europe";"Luxemburgo";"Luxemburgo";49.6194;6.1431;;;;;NOT_FOUND
+"Sofitel Luxembourg Le Grand Ducal";"Luxemburgo";"Luxemburgo";49.6053;6.1364;;;;;NOT_FOUND
+"Sofitel Lyon Bellecour";"Lyon";"França";45.7547;4.8364;;;;;NOT_FOUND
+"Sofitel Marseille Vieux Port";"Marselha";"França";43.2933;5.3589;;;;;NOT_FOUND
+"Sofitel Munich Bayerpost";"Munique";"Alemanha";48.1394;11.5564;;;;;NOT_FOUND
+"Sofitel Paris Arc de Triomphe";"Paris";"França";48.8753;2.3017;;;;;NOT_FOUND
+"Sofitel Paris Baltimore Tour Eiffel";"Paris";"França";48.8658;2.2889;;;;;NOT_FOUND
+"Sofitel Paris Le Faubourg";"Paris";"França";48.8683;2.3222;;;;;NOT_FOUND
+"Sofitel Quiberon Thalassa Sea & Spa";"Quiberon (Morbihan)";"França";47.4739;-3.1167;;;;;NOT_FOUND
+"Sofitel Roma Villa Borghese";"Roma";"Itália";41.9069;12.4883;;;;;NOT_FOUND
+"Sofitel Strasbourg Grande Ile";"Estrasburgo";"França";48.5856;7.7464;;;;;NOT_FOUND
+"Sofitel Warsaw Victoria";"Varsóvia";"Polónia";52.2394;21.0131;;;;;NOT_FOUND
+"SO Sofitel Mauritius";"Savanne";"Maurícia";-20.5053;57.4111;;;;;NOT_FOUND
+"Sofitel Agadir Royal Bay Resort";"Agadir";"Marrocos";30.3944;-9.5994;;;;;NOT_FOUND
+"Sofitel Agadir Thalassa Sea & Spa";"Agadir";"Marrocos";30.3922;-9.6025;;;;;NOT_FOUND
+"Sofitel Algiers Hamma Garden";"Algiers";"Argélia";36.7519;3.0694;;;;;NOT_FOUND
+"Sofitel Cairo Downtown Nile";"Cairo";"Egito";30.0411;31.2289;;;;;NOT_FOUND
+"Sofitel Cairo Nile El Gezirah";"Cairo";"Egito";30.0353;31.2244;;;;;NOT_FOUND
+"Sofitel Casablanca Tour Blanche";"Casablanca";"Marrocos";33.5978;-7.6158;;;;;NOT_FOUND
+"Sofitel Cotonou Marina Hotel & Spa";"Cotonou";"Benim";6.3494;2.4111;;;;;NOT_FOUND
+"Sofitel Marrakech Palais Imperial & Spa";"Marraquexe";"Marrocos";31.6186;-8.0131;;;;;NOT_FOUND
+"Sofitel Mauritius L'Impérial Resort & Spa";"Flic en Flac";"Maurícia";-20.3069;57.3614;;;;;NOT_FOUND
+"Sofitel Rabat Jardin des Roses";"Rabat";"Marrocos";33.9789;-6.8283;;;;;NOT_FOUND
+"Sofitel Tamuda Bay Beach & Spa";"Tétouan";"Marrocos";35.6833;-5.3189;;;;;NOT_FOUND
+"Sofitel Abu Dhabi Corniche";"Abu Dhabi";"Emirados Árabes Unidos";24.5003;54.3725;;;;;NOT_FOUND
+"Sofitel Al Hamra Beach Resort";"Ras al-Khaimah";"Emirados Árabes Unidos";25.6881;55.7828;;;;;NOT_FOUND
+"Sofitel Al Khobar The Corniche";"Khobar";"Arábia Saudita";26.2997;50.2175;;;;;NOT_FOUND
+"Sofitel Ambassador Seoul Hotel & Serviced Residences";"Seul";"Coreia do Sul";37.5133;127.1031;;;;;NOT_FOUND
+"Sofitel Angkor Phokeethra Golf & Spa Resort";"Siem Reap";"Camboja";13.3719;103.8594;;;;;NOT_FOUND
+"Sofitel Bahrain Zallaq Thalassa Sea & Spa";"Zallaq";"Bahrein";26.0533;50.4811;;;;;NOT_FOUND
+"Sofitel Bali Nusa Dua Beach Resort";"Bali";"Indonésia";-8.7931;115.2289;;;;;NOT_FOUND
+"Sofitel Bangkok Sukhumvit";"Banguecoque";"Tailândia";13.7389;100.5572;;;;;NOT_FOUND
+"Sofitel Beijing Central";"Pequim";"China";39.9075;116.4319;;;;;NOT_FOUND
+"Sofitel Changzhou Hi-Tech District";"Changzhou";"China";31.8117;119.9725;;;;;NOT_FOUND
+"Sofitel Dubai Downtown";"Dubai";"Emirados Árabes Unidos";25.2017;55.2689;;;;;NOT_FOUND
+"Sofitel Dubai Jumeirah Beach";"Dubai";"Emirados Árabes Unidos";25.0764;55.1325;;;;;NOT_FOUND
+"Sofitel Dubai The Obelisk";"Dubai";"Emirados Árabes Unidos";25.2283;55.3189;;;;;NOT_FOUND
+"Sofitel Dubai The Palm";"Dubai";"Emirados Árabes Unidos";25.1311;55.1483;;;;;NOT_FOUND
+"Sofitel Foshan";"Foshan";"China";22.9519;113.0856;;;;;NOT_FOUND
+"Sofitel Guangzhou Sunrich";"Cantão (Guangzhou)";"China";23.1361;113.3169;;;;;NOT_FOUND
+"Sofitel Guiyang Hunter";"Guiyang";"China";26.5714;106.7214;;;;;NOT_FOUND
+"Sofitel Haikou";"Haikou";"China";20.0353;110.3169;;;;;NOT_FOUND
+"Sofitel Hangzhou Westlake";"Hangzhou";"China";30.2458;120.1611;;;;;NOT_FOUND
+"Sofitel Hangzhou Yingguan";"Hangzhou";"China";30.2189;120.2653;;;;;NOT_FOUND
+"Sofitel Harbin";"Harbin";"China";45.7483;126.6694;;;;;NOT_FOUND
+"Sofitel Krabi Phokeethra Golf & Spa Resort";"Krabi";"Tailândia";8.0417;98.7611;;;;;NOT_FOUND
+"Sofitel Kuala Lumpur Damansara";"Kuala Lumpur";"Malásia";3.1464;101.6625;;;;;NOT_FOUND
+"Sofitel Kunming";"Kunming";"China";25.0253;102.7117;;;;;NOT_FOUND
+"Sofitel Legend Metropole Hanoi";"Hanoi";"Vietname";21.0247;105.8561;;;;;NOT_FOUND
+"Sofitel Legend Peoples Grand Hotel Xian";"Xi'an";"China";34.2678;108.9567;;;;;NOT_FOUND
+"Sofitel Lianyungang Suning";"Lianyungang";"China";34.5972;119.2217;;;;;NOT_FOUND
+"Sofitel Luang Prabang";"Luang Prabang";"Laos";19.8825;102.1383;;;;;NOT_FOUND
+"Sofitel Macau at Pointe 16";"Macau";"China";22.1969;113.5369;;;;;NOT_FOUND
+"Sofitel Mumbai BKC";"Bombaim (Mumbai)";"Índia";19.0664;72.8683;;;;;NOT_FOUND
+"Sofitel Nanjing Galaxy Suning";"Nanjing";"China";32.0681;118.7753;;;;;NOT_FOUND
+"Sofitel Phnom Penh Phokeethra";"Phnom Penh";"Camboja";11.5514;104.9353;;;;;NOT_FOUND
+"Sofitel Riyadh Hotel & Convention Centre";"Riade";"Arábia Saudita";24.7136;46.6753;;;;;NOT_FOUND
+"Sofitel Saigon Plaza";"Cidade de Ho Chi Minh";"Vietname";10.7828;106.7017;;;;;NOT_FOUND
+"Sofitel Sanya Leeman Resort";"Sanya";"China";18.3094;109.7497;;;;;NOT_FOUND
+"Sofitel Shahd Al Madinah";"Medina";"Arábia Saudita";24.4719;39.6111;;;;;NOT_FOUND
+"Sofitel Shanghai Hongqiao";"Xangai";"China";31.1925;121.3147;;;;;NOT_FOUND
+"Sofitel Shanghai North Bund";"Xangai";"China";31.2514;121.5089;;;;;NOT_FOUND
+"Sofitel Singapore City Centre";"Singapura";"Singapura";1.2764;103.8456;;;;;NOT_FOUND
+"Sofitel Singapore Sentosa Resort & Spa";"Singapura";"Singapura";1.2464;103.8294;;;;;NOT_FOUND
+"Sofitel Xian on Renmin Square";"Xi'an";"China";34.2681;108.9564;;;;;NOT_FOUND
+"Sofitel Xining";"Xining";"China";36.6272;101.7331;;;;;NOT_FOUND
+"Sofitel Xiong An";"Xiong'an";"China";38.9953;115.9864;;;;;NOT_FOUND
+"Sofitel Zhengzhou International";"Zhengzhou";"China";34.7617;113.6828;;;;;NOT_FOUND
+"Sofitel Adelaide";"Adelaide";"Austrália";-34.9242;138.5964;;;;;NOT_FOUND
+"Sofitel Auckland Viaduct Harbour";"Auckland";"Nova Zelândia";-36.8453;174.7575;;;;;NOT_FOUND
+"Sofitel Brisbane Central";"Brisbane";"Austrália";-27.4664;153.0264;;;;;NOT_FOUND
+"Sofitel Fiji Resort & Spa";"Nadi";"Fiji";-17.7789;177.3711;;;;;NOT_FOUND
+"Sofitel Gold Coast Broadbeach";"Gold Coast";"Austrália";-28.0289;153.4311;;;;;NOT_FOUND
+"Sofitel Kia Ora Moorea Beach Resort";"Moorea";"Polinésia Francesa";-17.4894;-149.7611;;;;;NOT_FOUND
+"Sofitel Melbourne on Collins";"Melbourne";"Austrália";-37.8142;144.9742;;;;;NOT_FOUND
+"Sofitel Queenstown Hotel & Spa";"Queenstown";"Nova Zelândia";-45.0314;168.6589;;;;;NOT_FOUND
+"Sofitel Sydney Darling Harbour";"Sydney";"Austrália";-33.8731;151.1992;;;;;NOT_FOUND
+"Sofitel Sydney Wentworth";"Sydney";"Austrália";-33.8647;151.2114;;;;;NOT_FOUND
+"Sofitel Wellington";"Wellington";"Nova Zelândia";-41.2814;174.7731;;;;;NOT_FOUND
+"Sofitel Baru Cartagena";"Cartagena das Índias";"Colômbia";10.2289;-75.6111;;;;;NOT_FOUND
+"Sofitel Bogota Victoria Regia";"Bogotá";"Colômbia";4.6714;-74.0517;;;;;NOT_FOUND
+"Sofitel Buenos Aires Recoleta";"Buenos Aires";"Argentina";-34.5894;-58.3844;;;;;NOT_FOUND
+"Sofitel Chicago Magnificent Mile";"Chicago";"Estados Unidos";41.8983;-87.6278;;;;;NOT_FOUND
+"Sofitel La Reserva Cardales";"Campana (Buenos Aires)";"Argentina";-34.2811;-58.8911;;;;;NOT_FOUND
+"Sofitel Legend Casco Viejo - Panama City";"Cidade do Panamá";"Panamá";8.9517;-79.5317;;;;;NOT_FOUND
+"Sofitel Legend Santa Clara Cartagena";"Cartagena das Índias";"Colômbia";10.4289;-75.5456;;;;;NOT_FOUND
+"Sofitel Los Angeles at Beverly Hills";"Los Angeles";"Estados Unidos";34.0756;-118.3789;;;;;NOT_FOUND
+"Sofitel Mexico City Reforma";"Cidade do México";"México";19.4294;-99.1683;;;;;NOT_FOUND
+"Sofitel Montevideo Casino Carrasco & Spa";"Montevideu";"Uruguai";-34.8894;-56.0594;;;;;NOT_FOUND
+"Sofitel Montreal Golden Mile";"Montreal";"Canadá";45.5019;-73.5761;;;;;NOT_FOUND
+"Sofitel New York";"Nova Iorque";"Estados Unidos";40.7553;-73.9822;;;;;NOT_FOUND
+"Sofitel Philadelphia at Rittenhouse Square";"Filadélfia";"Estados Unidos";39.9511;-75.1689;;;;;NOT_FOUND
+"Sofitel Washington DC Lafayette Square";"Washington, D.C.";"Estados Unidos";38.9003;-77.0336;;;;;NOT_FOUND
+"Ashok Hotel";"Delhi";"Índia";28;77;;;;;NOT_FOUND
+"Hyatt Regency Delhi";"Delhi";"Índia";28;77;;;;;NOT_FOUND
+"The Imperial New Delhi";"New Delhi";"Índia";28;77;;;;;NOT_FOUND
+"Maidens Hotel";"Delhi";"Índia";28;77;;;;;NOT_FOUND
+"Grand Hyatt Goa";"Goa";"Índia";15;73;;;;;NOT_FOUND
+"Taj Fort Aguada Resort";"Goa";"Índia";15;73;;;;;NOT_FOUND
+"The Cecil";"Shimla";"Índia";31;77;;;;;NOT_FOUND
+"The Oberoi Gurgaon";"Gurgaon";"Índia";28;77;;;;;NOT_FOUND
+"Taj West End";"Bangalore";"Índia";12;77;;;;;NOT_FOUND
+"Four Seasons Mumbai";"Mumbai";"Índia";18;72;;;;;NOT_FOUND
+"Taj Mahal Palace";"Mumbai";"Índia";18;72;;;;;NOT_FOUND
+"Trident Nariman Point";"Mumbai";"Índia";18;72;;;;;NOT_FOUND
+"Lake Palace Udaipur";"Udaipur";"Índia";24;73;;;;;NOT_FOUND
+"Umaid Bhawan Palace";"Jodhpur";"Índia";26;73;;;;;NOT_FOUND
+"Rambagh Palace";"Jaipur";"Índia";26;75;;;;;NOT_FOUND
+"ITC Grand Chola";"Chennai";"Índia";13;80;;;;;NOT_FOUND
+"Taj Connemara";"Chennai";"Índia";13;80;;;;;NOT_FOUND
+"The Leela Palace Chennai";"Chennai";"Índia";13;80;;;;;NOT_FOUND
+"Taj Falaknuma Palace";"Hyderabad";"Índia";17;78;;;;;NOT_FOUND
+"The Oberoi Grand";"Kolkata";"Índia";22;88;;;;;NOT_FOUND
+"Grand Lisboa";"Macau";"China";22;113;;;;;NOT_FOUND
+"Galaxy Macau";"Macau";"China";22;113;;;;;NOT_FOUND
+"The Londoner Macao";"Macau";"China";22;113;;;;;NOT_FOUND
+"Wynn Palace";"Macau";"China";22;113;;;;;NOT_FOUND
+"MGM Grand Detroit";"Detroit";"EUA";42;-83;;;;;NOT_FOUND
+"Bellagio Las Vegas";"Las Vegas";"EUA";36;-115;;;;;NOT_FOUND
+"Caesars Palace";"Las Vegas";"EUA";36;-115;;;;;NOT_FOUND
+"The Venetian Las Vegas";"Las Vegas";"EUA";36;-115;;;;;NOT_FOUND
+"Mohegan Sun";"Uncasville";"EUA";41;-72;;;;;NOT_FOUND
+"Borgata Hotel Casino";"Atlantic City";"EUA";39;-74;;;;;NOT_FOUND
+"Marina Bay Sands";"Singapura";"Singapura";1;103;;;;;NOT_FOUND
+"Wrest Point Hotel Casino";"Hobart";"Austrália";-42;147;;;;;NOT_FOUND
+"Sun City Resort";"Sun City";"África do Sul";-25;27;;;;;NOT_FOUND
+"Aria Resort and Casino";"Las Vegas";"EUA";36;-115;;;;;NOT_FOUND
+"Atlantis Paradise Island";"Paradise Island";"Bahamas";25;-77;;;;;NOT_FOUND
+"Resorts World Genting";"Pahang";"Malásia";3;101;;;;;NOT_FOUND
+"The Strat";"Las Vegas";"EUA";36;-115;;;;;NOT_FOUND
+"Flamingo Las Vegas";"Las Vegas";"EUA";36;-115;;;;;NOT_FOUND
+"Trump Taj Mahal (Closed)";"Atlantic City";"EUA";39;-74;;;;;NOT_FOUND
+"The Mint (Defunct)";"Las Vegas";"EUA";36;-115;;;;;NOT_FOUND
+"Okada Manila";"Manila";"Filipinas";14;120;;;;;NOT_FOUND
+"Ashok Hotel";"New Delhi";"India";28;77;;;;;NOT_FOUND
+"The Imperial New Delhi";"New Delhi";"India";28;77;;;;;NOT_FOUND
+"Grand Hyatt Goa";"Bambolim";"India";15;73;;;;;NOT_FOUND
+"Planet Hollywood Goa";"Utorda";"India";15;73;;;;;NOT_FOUND
+"Ronil Royale";"Calangute";"India";15;73;;;;;NOT_FOUND
+"Taj Fort Aguada Resort & Spa";"Sinquerim";"India";15;73;;;;;NOT_FOUND
+"Nahar Singh Mahal";"Faridabad";"India";28;77;;;;;NOT_FOUND
+"The Oberoi Gurgaon";"Gurgaon";"India";28;77;;;;;NOT_FOUND
+"The Cecil Shimla";"Shimla";"India";31;77;;;;;NOT_FOUND
+"Peterhoff Shimla";"Shimla";"India";31;77;;;;;NOT_FOUND
+"Hari Niwas Palace";"Jammu";"India";32;74;;;;;NOT_FOUND
+"Jayamahal Palace Hotel";"Bangalore";"India";13;77;;;;;NOT_FOUND
+"Lalitha Mahal Palace Hotel";"Mysore";"India";12;76;;;;;NOT_FOUND
+"Rajendra Vilas";"Mysore";"India";12;76;;;;;NOT_FOUND
+"The Ritz-Carlton Bangalore";"Bangalore";"India";12;77;;;;;NOT_FOUND
+"Taj West End";"Bangalore";"India";12;77;;;;;NOT_FOUND
+"Bolgatty Palace";"Kochi";"India";9;76;;;;;NOT_FOUND
+"Mascot Hotel";"Thiruvananthapuram";"India";8;76;;;;;NOT_FOUND
+"The Raviz Kollam";"Kollam";"India";8;76;;;;;NOT_FOUND
+"Usha Kiran Palace";"Gwalior";"India";26;78;;;;;NOT_FOUND
+"Four Seasons Hotel Mumbai";"Mumbai";"India";18;72;;;;;NOT_FOUND
+"Grand Hyatt Mumbai";"Mumbai";"India";19;72;;;;;NOT_FOUND
+"Shalini Palace";"Kolhapur";"India";16;74;;;;;NOT_FOUND
+"Watson's Hotel (Esplanade Mansion)";"Mumbai";"India";18;72;;;;;NOT_FOUND
+"Hotel de l'Orient";"Puducherry";"India";11;79;;;;;NOT_FOUND
+"Bissau Palace Hotel";"Jaipur";"India";26;75;;;;;NOT_FOUND
+"Devigarh by lebua";"Udaipur";"India";24;73;;;;;NOT_FOUND
+"Diggi Palace";"Jaipur";"India";26;75;;;;;NOT_FOUND
+"Hill Fort Kesroli";"Alwar";"India";27;76;;;;;NOT_FOUND
+"Taj Lake Palace";"Udaipur";"India";24;73;;;;;NOT_FOUND
+"Lalgarh Palace";"Bikaner";"India";28;73;;;;;NOT_FOUND
+"LMB Hotel";"Jaipur";"India";26;75;;;;;NOT_FOUND
+"The Raj Palace";"Jaipur";"India";26;75;;;;;NOT_FOUND
+"Rambagh Palace";"Jaipur";"India";26;75;;;;;NOT_FOUND
+"Ravla Khempur";"Khempur";"India";24;73;;;;;NOT_FOUND
+"Roopangarh Fort";"Roopangarh";"India";26;74;;;;;NOT_FOUND
+"Samode Palace";"Samode";"India";27;75;;;;;NOT_FOUND
+"Shiv Niwas Palace";"Udaipur";"India";24;73;;;;;NOT_FOUND
+"Umaid Bhawan Palace";"Jodhpur";"India";26;73;;;;;NOT_FOUND
+"Accord Metropolitan";"Chennai";"India";13;80;;;;;NOT_FOUND
+"Crowne Plaza Chennai Adyar Park";"Chennai";"India";13;80;;;;;NOT_FOUND
+"WelcomHeritage Fernhills Royal Palace";"Ooty";"India";11;76;;;;;NOT_FOUND
+"Le Royal Meridien Chennai";"Chennai";"India";13;80;;;;;NOT_FOUND
+"The Leela Palace Chennai";"Chennai";"India";13;80;;;;;NOT_FOUND
+"The Park Chennai";"Chennai";"India";13;80;;;;;NOT_FOUND
+"Radisson Blu City Centre Chennai";"Chennai";"India";13;80;;;;;NOT_FOUND
+"Radisson Blu Hotel Chennai (City Centre)";"Chennai";"India";13;80;;;;;NOT_FOUND
+"The Raintree Hotel Anna Salai";"Chennai";"India";13;80;;;;;NOT_FOUND
+"The Raintree Hotel St Mary's Road";"Chennai";"India";13;80;;;;;NOT_FOUND
+"Residency Towers Chennai";"Chennai";"India";13;80;;;;;NOT_FOUND
+"Savera Hotel";"Chennai";"India";13;80;;;;;NOT_FOUND
+"Taj Club House";"Chennai";"India";13;80;;;;;NOT_FOUND
+"Taj Connemara";"Chennai";"India";13;80;;;;;NOT_FOUND
+"Taj Coromandel";"Chennai";"India";13;80;;;;;NOT_FOUND
+"Taj Fisherman's Cove Resort & Spa";"Chennai";"India";12;80;;;;;NOT_FOUND
+"Trident Chennai";"Chennai";"India";12;80;;;;;NOT_FOUND
+"WelcomHotel Chennai (ITC)";"Chennai";"India";13;80;;;;;NOT_FOUND
+"WelcomHotel Kences Palm Beach";"Chennai";"India";12;80;;;;;NOT_FOUND
+"WelcomHotel GST Chennai";"Chennai";"India";12;80;;;;;NOT_FOUND
+"The Westin Chennai Velachery";"Chennai";"India";12;80;;;;;NOT_FOUND
+"West Downs - The Heritage Resort";"Ooty";"India";11;76;;;;;NOT_FOUND
+"The Fernhills Palace";"Ooty";"India";11;76;;;;;NOT_FOUND
+"Park Hyatt Hyderabad";"Hyderabad";"India";17;78;;;;;NOT_FOUND
+"Taj Falaknuma Palace";"Hyderabad";"India";17;78;;;;;NOT_FOUND
+"Taj Mahal Hotel Abids";"Hyderabad";"India";17;78;;;;;NOT_FOUND
+"Fort Madhogarh";"Madhogarh";"India";26;76;;;;;NOT_FOUND
+"Savoy Hotel Mussoorie";"Mussoorie";"India";30;78;;;;;NOT_FOUND
+"The Elgin Darjeeling";"Darjeeling";"India";27;88;;;;;NOT_FOUND
+"Great Eastern Hotel (LaLiT Great Eastern)";"Kolkata";"India";22;88;;;;;NOT_FOUND
+"Spence's Hotel";"Kolkata";"India";22;88;;;;;NOT_FOUND
+"Grand Lisboa";"Macau";"China (Macau SAR)";22;113;;;;;NOT_FOUND
+"Casino Lisboa Macau";"Macau";"China (Macau SAR)";22;113;;;;;NOT_FOUND
+"Galaxy Macau";"Macau";"China (Macau SAR)";22;113;;;;;NOT_FOUND
+"Wynn Palace";"Macau";"China (Macau SAR)";22;113;;;;;NOT_FOUND
+"Wynn Macau";"Macau";"China (Macau SAR)";22;113;;;;;NOT_FOUND
+"The Londoner Macao";"Macau";"China (Macau SAR)";22;113;;;;;NOT_FOUND
+"The Venetian Macao";"Macau";"China (Macau SAR)";22;113;;;;;NOT_FOUND
+"The Parisian Macao";"Macau";"China (Macau SAR)";22;113;;;;;NOT_FOUND
+"Studio City Macau";"Macau";"China (Macau SAR)";22;113;;;;;NOT_FOUND
+"MGM Macau";"Macau";"China (Macau SAR)";22;113;;;;;NOT_FOUND
+"MGM Cotai";"Macau";"China (Macau SAR)";22;113;;;;;NOT_FOUND
+"Sands Macao";"Macau";"China (Macau SAR)";22;113;;;;;NOT_FOUND
+"City of Dreams";"Macau";"China (Macau SAR)";22;113;;;;;NOT_FOUND
+"MGM Grand Detroit";"Detroit";"USA";42;-83;;;;;NOT_FOUND
+"Mohegan Sun";"Uncasville";"USA";41;-72;;;;;NOT_FOUND
+"Wrest Point Hotel Casino";"Hobart";"Australia";-42;147;;;;;NOT_FOUND
+"The Mint Las Vegas";"Las Vegas";"USA";36;-115;;;;;NOT_FOUND
+"Aladdin";"Las Vegas";"USA";36;-115;;;;;NOT_FOUND
+"Aliante Casino and Hotel";"North Las Vegas";"USA";36;-115;;;;;NOT_FOUND
+"Aquarius Casino Resort";"Laughlin";"USA";35;-114;;;;;NOT_FOUND
+"Aria Resort and Casino";"Las Vegas";"USA";36;-115;;;;;NOT_FOUND
+"Arizona Charlie's Boulder";"Las Vegas";"USA";36;-115;;;;;NOT_FOUND
+"Arizona Charlie's Decatur";"Las Vegas";"USA";36;-115;;;;;NOT_FOUND
+"The Atlantic Club Casino Hotel";"Atlantic City";"USA";39;-74;;;;;NOT_FOUND
+"Atlantis Casino Resort Spa";"Reno";"USA";39;-119;;;;;NOT_FOUND
+"Atlantis Paradise Island";"Nassau";"Bahamas";25;-77;;;;;NOT_FOUND
+"L'Auberge Baton Rouge";"Baton Rouge";"USA";30;-91;;;;;NOT_FOUND
+"Baha Mar Casino & Hotel";"Nassau";"Bahamas";25;-77;;;;;NOT_FOUND
+"Beau Rivage";"Biloxi";"USA";30;-88;;;;;NOT_FOUND
+"Bellagio";"Las Vegas";"USA";36;-115;;;;;NOT_FOUND
+"Belle of Baton Rouge";"Baton Rouge";"USA";30;-91;;;;;NOT_FOUND
+"Blue Chip Casino, Hotel and Spa";"Michigan City";"USA";41;-86;;;;;NOT_FOUND
+"Boomtown New Orleans";"Harvey";"USA";29;-90;;;;;NOT_FOUND
+"Boomtown Reno";"Verdi";"USA";39;-119;;;;;NOT_FOUND
+"Boulder Station";"Las Vegas";"USA";36;-115;;;;;NOT_FOUND
+"Buffalo Bill's";"Primm";"USA";35;-115;;;;;NOT_FOUND
+"Cache Creek Casino Resort";"Brooks";"USA";38;-122;;;;;NOT_FOUND
+"Caesars Atlantic City";"Atlantic City";"USA";39;-74;;;;;NOT_FOUND
+"Caesars Palace";"Las Vegas";"USA";36;-115;;;;;NOT_FOUND
+"Caesars Windsor";"Windsor";"Canada";42;-83;;;;;NOT_FOUND
+"California Hotel and Casino";"Las Vegas";"USA";36;-115;;;;;NOT_FOUND
+"Casino New Brunswick";"Moncton";"Canada";46;-64;;;;;NOT_FOUND
+"Casino Rama";"Rama";"Canada";44;-79;;;;;NOT_FOUND
+"Circa Resort & Casino";"Las Vegas";"USA";36;-115;;;;;NOT_FOUND
+"Circus Circus Las Vegas";"Las Vegas";"USA";36;-115;;;;;NOT_FOUND
+"Circus Circus Reno";"Reno";"USA";39;-119;;;;;NOT_FOUND
+"The Cosmopolitan of Las Vegas";"Las Vegas";"USA";36;-115;;;;;NOT_FOUND
+"The Cromwell Las Vegas";"Las Vegas";"USA";36;-115;;;;;NOT_FOUND
+"The D Las Vegas";"Las Vegas";"USA";36;-115;;;;;NOT_FOUND
+"Desert Inn";"Las Vegas";"USA";36;-115;;;;;NOT_FOUND
+"Dover Downs Hotel & Casino (Bally's Dover)";"Dover";"USA";39;-75;;;;;NOT_FOUND
+"Downtown Grand";"Las Vegas";"USA";36;-115;;;;;NOT_FOUND
+"Dunes";"Las Vegas";"USA";36;-115;;;;;NOT_FOUND
+"El Cortez";"Las Vegas";"USA";36;-115;;;;;NOT_FOUND
+"Eldorado Reno";"Reno";"USA";39;-119;;;;;NOT_FOUND
+"Encore Las Vegas";"Las Vegas";"USA";36;-115;;;;;NOT_FOUND
+"Excalibur Hotel and Casino";"Las Vegas";"USA";36;-115;;;;;NOT_FOUND
+"Flamingo Las Vegas";"Las Vegas";"USA";36;-115;;;;;NOT_FOUND
+"Fontainebleau Las Vegas";"Las Vegas";"USA";36;-115;;;;;NOT_FOUND
+"Four Queens";"Las Vegas";"USA";36;-115;;;;;NOT_FOUND
+"Foxwoods Resort Casino";"Mashantucket";"USA";41;-71;;;;;NOT_FOUND
+"Fremont Hotel and Casino";"Las Vegas";"USA";36;-115;;;;;NOT_FOUND
+"Gold Coast Hotel and Casino";"Las Vegas";"USA";36;-115;;;;;NOT_FOUND
+"Golden Gate Hotel and Casino";"Las Vegas";"USA";36;-115;;;;;NOT_FOUND
+"Golden Nugget Atlantic City";"Atlantic City";"USA";39;-74;;;;;NOT_FOUND
+"Golden Nugget Las Vegas";"Las Vegas";"USA";36;-115;;;;;NOT_FOUND
+"Grand Casino Biloxi";"Biloxi";"USA";30;-88;;;;;NOT_FOUND
+"Grand Sierra Resort";"Reno";"USA";39;-119;;;;;NOT_FOUND
+"Greektown Casino Hotel (Hollywood Casino at Greektown)";"Detroit";"USA";42;-83;;;;;NOT_FOUND
+"Hard Rock Hotel and Casino Atlantic City";"Atlantic City";"USA";39;-74;;;;;NOT_FOUND
+"Hard Rock Hotel and Casino Biloxi";"Biloxi";"USA";30;-88;;;;;NOT_FOUND
+"Harrah's Atlantic City";"Atlantic City";"USA";39;-74;;;;;NOT_FOUND
+"Harrah's Cherokee";"Cherokee";"USA";35;-83;;;;;NOT_FOUND
+"Harrah's Council Bluffs";"Council Bluffs";"USA";41;-95;;;;;NOT_FOUND
+"Harrah's Reno";"Reno";"USA";39;-119;;;;;NOT_FOUND
+"Harrah's Resort Southern California";"Valley Center";"USA";33;-116;;;;;NOT_FOUND
+"Harveys Lake Tahoe";"Stateline";"USA";38;-119;;;;;NOT_FOUND
+"Horseshoe Las Vegas";"Las Vegas";"USA";36;-115;;;;;NOT_FOUND
+"Ibiza Gran Hotel";"Ibiza";"Spain";38;1;;;;;NOT_FOUND
+"Luxor Las Vegas";"Las Vegas";"USA";36;-115;;;;;NOT_FOUND
+"M Resort";"Henderson";"USA";36;-115;;;;;NOT_FOUND
+"Main Street Station";"Las Vegas";"USA";36;-115;;;;;NOT_FOUND
+"Mandalay Bay";"Las Vegas";"USA";36;-115;;;;;NOT_FOUND
+"Marina Bay Sands";"Singapore";"Singapore";1;103;;;;;NOT_FOUND
+"MGM Grand Las Vegas";"Las Vegas";"USA";36;-115;;;;;NOT_FOUND
+"The Mirage";"Las Vegas";"USA";36;-115;;;;;NOT_FOUND
+"MontBleu Resort Casino & Spa";"Stateline";"USA";38;-119;;;;;NOT_FOUND
+"Morongo Casino, Resort & Spa";"Cabazon";"USA";33;-116;;;;;NOT_FOUND
+"MotorCity Casino Hotel";"Detroit";"USA";42;-83;;;;;NOT_FOUND
+"Mystic Lake Casino Hotel";"Prior Lake";"USA";44;-93;;;;;NOT_FOUND
+"New York-New York Hotel and Casino";"Las Vegas";"USA";36;-115;;;;;NOT_FOUND
+"Ocean Casino Resort";"Atlantic City";"USA";39;-74;;;;;NOT_FOUND
+"Okada Manila";"Parañaque";"Philippines";14;120;;;;;NOT_FOUND
+"The Orleans";"Las Vegas";"USA";36;-115;;;;;NOT_FOUND
+"Palace Station";"Las Vegas";"USA";36;-115;;;;;NOT_FOUND
+"Palms Casino Resort";"Las Vegas";"USA";36;-115;;;;;NOT_FOUND
+"Paris Las Vegas";"Las Vegas";"USA";36;-115;;;;;NOT_FOUND
+"Park MGM";"Las Vegas";"USA";36;-115;;;;;NOT_FOUND
+"Pechanga Resort & Casino";"Temecula";"USA";33;-117;;;;;NOT_FOUND
+"Peppermill Reno";"Reno";"USA";39;-119;;;;;NOT_FOUND
+"Planet Hollywood Resort & Casino";"Las Vegas";"USA";36;-115;;;;;NOT_FOUND
+"Plaza Hotel & Casino";"Las Vegas";"USA";36;-115;;;;;NOT_FOUND
+"Potawatomi Hotel & Casino";"Milwaukee";"USA";43;-87;;;;;NOT_FOUND
+"Resorts Casino Hotel";"Atlantic City";"USA";39;-74;;;;;NOT_FOUND
+"Resorts World Genting";"Pahang";"Malaysia";3;101;;;;;NOT_FOUND
+"Resorts World Las Vegas";"Las Vegas";"USA";36;-115;;;;;NOT_FOUND
+"Resorts World Manila";"Manila";"Philippines";14;121;;;;;NOT_FOUND
+"Rio All Suite Hotel and Casino";"Las Vegas";"USA";36;-115;;;;;NOT_FOUND
+"River Rock Casino Resort";"Richmond";"Canada";49;-123;;;;;NOT_FOUND
+"Riverside Resort Hotel & Casino";"Laughlin";"USA";35;-114;;;;;NOT_FOUND
+"Sahara Las Vegas";"Las Vegas";"USA";36;-115;;;;;NOT_FOUND
+"San Juan Marriott Resort & Stellaris Casino";"San Juan";"Puerto Rico";18;-66;;;;;NOT_FOUND
+"Seminole Hard Rock Hotel and Casino Hollywood";"Hollywood";"USA";26;-80;;;;;NOT_FOUND
+"Seminole Hard Rock Hotel and Casino Tampa";"Tampa";"USA";27;-82;;;;;NOT_FOUND
+"Seneca Niagara Casino & Hotel";"Niagara Falls";"USA";43;-79;;;;;NOT_FOUND
+"Silver Legacy Reno";"Reno";"USA";39;-119;;;;;NOT_FOUND
+"South Point Hotel, Casino & Spa";"Las Vegas";"USA";36;-115;;;;;NOT_FOUND
+"The Star Sydney";"Sydney";"Australia";-33;151;;;;;NOT_FOUND
+"Stardust Resort and Casino";"Las Vegas";"USA";36;-115;;;;;NOT_FOUND
+"The Strat";"Las Vegas";"USA";36;-115;;;;;NOT_FOUND
+"Sun City Resort";"North West";"South Africa";-25;27;;;;;NOT_FOUND
+"Suncoast Hotel and Casino";"Las Vegas";"USA";36;-115;;;;;NOT_FOUND
+"Sunset Station";"Henderson";"USA";36;-115;;;;;NOT_FOUND
+"Thunder Valley Casino Resort";"Lincoln";"USA";38;-121;;;;;NOT_FOUND
+"Treasure Island Hotel and Casino";"Las Vegas";"USA";36;-115;;;;;NOT_FOUND
+"Treasury Casino";"Brisbane";"Australia";-27;153;;;;;NOT_FOUND
+"Tropicana Casino & Resort Atlantic City";"Atlantic City";"USA";39;-74;;;;;NOT_FOUND
+"Trump Plaza Hotel and Casino";"Atlantic City";"USA";39;-74;;;;;NOT_FOUND
+"Trump Taj Mahal";"Atlantic City";"USA";39;-74;;;;;NOT_FOUND
+"The Venetian Las Vegas";"Las Vegas";"USA";36;-115;;;;;NOT_FOUND
+"Virgin Hotels Las Vegas";"Las Vegas";"USA";36;-115;;;;;NOT_FOUND
+"The Westgate Las Vegas";"Las Vegas";"USA";36;-115;;;;;NOT_FOUND
+"Westin Las Vegas";"Las Vegas";"USA";36;-115;;;;;NOT_FOUND
+"WinStar World Casino";"Thackerville";"USA";33;-97;;;;;NOT_FOUND
+"Wynn Al Marjan Island";"Ras Al Khaimah";"United Arab Emirates";25;55;;;;;NOT_FOUND
+"Wynn Las Vegas";"Las Vegas";"USA";36;-115;;;;;NOT_FOUND
+"1,298501";"189621";"131";45;30;;;;;NOT_FOUND
+"1,310192";"208930";"5";74;7;;;;;NOT_FOUND
+"1,306352";"207472";"8";59983;7;;;;;NOT_FOUND
+"Olive Zip";"-";"125";4;1;;;;;NOT_FOUND
+"Founder Startup House";"-";"384";1;7;;;;;NOT_FOUND
+"Hotéis e Houseboats em Srinagar";"";"";34;74;;;;;NOT_FOUND
+"Hotéis em Amritsar";"";"";31;74;;;;;NOT_FOUND

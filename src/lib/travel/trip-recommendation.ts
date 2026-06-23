@@ -128,7 +128,7 @@ async function recommendFromDb(input: RecommendDestinationsInput): Promise<Recom
           destino_id: row.id,
           nome: hRow.nome,
           estrelas: hRow.estrelas,
-          preco_por_noite: hRow.precoPorNoite,
+          preco_por_noite: Number(hRow.precoPorNoite),
           comodidades: [] as string[],
         }
       : null;

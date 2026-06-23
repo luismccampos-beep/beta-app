@@ -57,15 +57,15 @@ export function FlightAccommodationSection({
         <TabsList className="flex flex-col h-auto w-full gap-1 p-1 sm:grid sm:grid-cols-3 sm:h-12">
           <TabsTrigger value="flight" className="gap-2 justify-start sm:justify-center min-h-11 text-xs sm:text-sm px-2">
             <Plane className="w-4 h-4 shrink-0" />
-            <span className="truncate">{t('flightPreferences')}</span>
+            <span className="truncate">✈️ {t('flightPreferences')}</span>
           </TabsTrigger>
           <TabsTrigger value="accommodation" className="gap-2 justify-start sm:justify-center min-h-11 text-xs sm:text-sm px-2">
             <Hotel className="w-4 h-4 shrink-0" />
-            <span className="truncate">{t('accommodation')}</span>
+            <span className="truncate">🏨 {t('accommodation')}</span>
           </TabsTrigger>
           <TabsTrigger value="cruise" className="gap-2 justify-start sm:justify-center min-h-11 text-xs sm:text-sm px-2">
             <Ship className="w-4 h-4 shrink-0" />
-            <span className="truncate">{t('cruisePreferences')}</span>
+            <span className="truncate">🚢 {t('cruisePreferences')}</span>
           </TabsTrigger>
         </TabsList>
 

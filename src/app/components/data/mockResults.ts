@@ -67,6 +67,8 @@ export type TravelResult = {
   };
   /** Marcadores OSM (destino, aeroporto, hotéis) para o mini-mapa no card. */
   mapMarkers?: DestinationMapMarker[];
+  /** Breakdown de tipos de alojamento por destino (contagem por tipo). */
+  hotelTypes?: Record<string, number> | null;
 };
 
 export const filterOptions = {

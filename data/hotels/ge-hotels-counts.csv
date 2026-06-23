@@ -1,0 +1,231 @@
+country_code;country_name;ge_hotel_count
+US;United States;62465
+ES;Spain;19346
+IT;Italy;16623
+FR;France;12303
+GB;United Kingdom;8310
+GR;Greece;7993
+CN;China;7951
+DE;Germany;7201
+TH;Thailand;6225
+TR;Turkey;6004
+CA;Canada;5527
+AU;Australia;4802
+IN;India;4554
+BR;Brazil;4138
+MX;Mexico;3812
+PT;Portugal;3528
+ID;Indonesia;3202
+JP;Japan;2999
+AT;Austria;2894
+CH;Switzerland;1869
+AR;Argentina;1845
+MA;Morocco;1660
+HR;Croatia;1638
+AE;United Arab Emirates;1577
+MY;Malaysia;1567
+RU;Russia;1544
+IE;Ireland;1443
+NL;Netherlands;1391
+EG;Egypt;1357
+ZA;South Africa;1342
+NZ;New Zealand;1276
+CZ;Czech Republic;1205
+VN;Vietnam;1177
+BG;Bulgaria;1157
+PH;Philippines;1122
+PL;Poland;1078
+KR;South Korea;1001
+CO;Colombia;990
+BE;Belgium;988
+NO;Norway;931
+TW;Taiwan;917
+TN;Tunisia;837
+CY;Cyprus;807
+DO;Dominican Republic;772
+RO;Romania;708
+HU;Hungary;706
+SE;Sweden;650
+CR;Costa Rica;623
+IL;Israel;607
+SA;Saudi Arabia;578
+CU;Cuba;566
+CL;Chile;530
+KH;Cambodia;505
+SG;Singapore;490
+FI;Finland;444
+HK;Hong Kong;432
+DK;Denmark;415
+UA;Ukraine;399
+LK;Sri Lanka;386
+PE;Peru;377
+AD;Andorra;347
+JM;Jamaica;344
+AL;Albania;307
+MT;Malta;294
+TZ;Tanzania;277
+JO;Jordan;262
+MU;Mauritius;237
+KE;Kenya;233
+PA;Panama;232
+RS;Serbia;232
+MV;Maldives;225
+SK;Slovakia;219
+UY;Uruguay;215
+IS;Iceland;212
+LV;Latvia;199
+BH;Bahrain;193
+VE;Venezuela;192
+SI;Slovenia;190
+IR;Iran;181
+PK;Pakistan;180
+LB;Lebanon;179
+PR;Puerto Rico;179
+MM;Myanmar;178
+QA;Qatar;178
+EE;Estonia;169
+OM;Oman;169
+LT;Lithuania;159
+SY;Syria;153
+AZ;Azerbaijan;146
+BA;Bosnia and Herzegovina;146
+DZ;Algeria;144
+NP;Nepal;139
+ME;Montenegro;137
+NA;Namibia;136
+MK;North Macedonia;135
+BB;Barbados;134
+BS;Bahamas;134
+FJ;Fiji;116
+KW;Kuwait;112
+GT;Guatemala;108
+CV;Cabo Verde;104
+BZ;Belize;100
+EC;Ecuador;97
+VI;US Virgin Islands;95
+SC;Seychelles;89
+LC;Saint Lucia;88
+LA;Laos;87
+LU;Luxembourg;84
+SN;Senegal;84
+PS;Palestine;83
+PY;Paraguay;78
+AW;Aruba;76
+JE;Jersey;75
+KZ;Kazakhstan;75
+MO;Macau;70
+PF;French Polynesia;70
+CW;Curaçao;68
+GE;Georgia;68
+NG;Nigeria;68
+AG;Antigua and Barbuda;66
+HN;Honduras;65
+TT;Trinidad and Tobago;62
+SV;El Salvador;60
+TC;Turks and Caicos Islands;60
+ZW;Zimbabwe;60
+AM;Armenia;57
+BO;Bolivia;55
+MD;Moldova;55
+MG;Madagascar;55
+BD;Bangladesh;53
+CK;Cook Islands;53
+MZ;Mozambique;52
+RE;Réunion;52
+UZ;Uzbekistan;52
+ZM;Zambia;52
+BY;Belarus;51
+YE;Yemen;51
+GP;Guadeloupe;50
+LY;Libya;50
+CD;DR Congo;49
+AO;Angola;48
+GU;Guam;48
+GH;Ghana;46
+NI;Nicaragua;46
+SX;Sint Maarten;43
+KY;Cayman Islands;41
+UG;Uganda;38
+MQ;Martinique;35
+BM;Bermuda;34
+FM;Micronesia;33
+GG;Guernsey;33
+GD;Grenada;32
+GM;Gambia;32
+NF;Norfolk Island;29
+XK;Kosovo;29
+BQ;Bonaire;28
+VU;Vanuatu;28
+KN;Saint Kitts and Nevis;27
+MF;Saint Martin;27
+PG;Papua New Guinea;27
+BN;Brunei;26
+BW;Botswana;26
+MP;Northern Mariana Islands;26
+NC;New Caledonia;26
+HT;Haiti;25
+MC;Monaco;25
+WS;Samoa;25
+VG;British Virgin Islands;23
+MR;Mauritania;21
+MW;Malawi;21
+AI;Anguilla;20
+SO;Somalia;19
+TL;Timor-Leste;19
+CM;Cameroon;18
+PW;Palau;18
+RW;Rwanda;18
+ET;Ethiopia;16
+GI;Gibraltar;15
+IQ;Iraq;15
+KG;Kyrgyzstan;15
+CI;Côte d'Ivoire;14
+TO;Tonga;14
+IM;Isle of Man;13
+MN;Mongolia;12
+SZ;Eswatini;12
+BL;Saint Barthélemy;11
+SM;San Marino;11
+SR;Suriname;11
+BF;Burkina Faso;10
+TG;Togo;10
+BJ;Benin;9
+DM;Dominica;9
+VC;Saint Vincent and the Grenadines;8
+AF;Afghanistan;7
+GA;Gabon;7
+LI;Liechtenstein;6
+ML;Mali;6
+ST;São Tomé and Príncipe;6
+TD;Chad;6
+CG;Republic of the Congo;5
+EH;Western Sahara;5
+GF;French Guiana;5
+GL;Greenland;5
+GN;Guinea;5
+GQ;Equatorial Guinea;5
+NU;Niue;5
+SD;Sudan;5
+BT;Bhutan;4
+FO;Faroe Islands;4
+GW;Guinea-Bissau;4
+GY;Guyana;4
+MH;Marshall Islands;4
+NE;Niger;4
+SS;South Sudan;4
+BI;Burundi;3
+DJ;Djibouti;3
+KI;Kiribati;3
+LS;Lesotho;3
+SL;Sierra Leone;3
+TJ;Tajikistan;3
+AX;Åland Islands;2
+CF;Central African Republic;2
+NR;Nauru;2
+SJ;Svalbard and Jan Mayen;2
+AS;American Samoa;1
+ER;Eritrea;1
+MS;Montserrat;1
+TK;Tokelau;1
+TV;Tuvalu;1
+YT;Mayotte;1

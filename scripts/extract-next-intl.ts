@@ -160,7 +160,6 @@ async function main() {
     perLocaleCounts[locale] = sortedKeys.length;
   }
 
-  // eslint-disable-next-line no-console
   console.log(
     `Extracted ${sortedKeys.length} next-intl keys from src/. Updated: ` +
       LOCALES.map((l) => `${l}(${perLocaleCounts[l]})`).join(', ') +
@@ -169,7 +168,6 @@ async function main() {
 }
 
 main().catch((err) => {
-  // eslint-disable-next-line no-console
   console.error(err);
   process.exitCode = 1;
 });

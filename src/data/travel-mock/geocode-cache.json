@@ -630,5 +630,261 @@
   "holanda|aruba": {
     "lat": 12.5013629,
     "lon": -69.9618475
+  },
+  "holanda|amsterdam": {
+    "lat": 52.3730796,
+    "lon": 4.8924534
+  },
+  "internacional|amsterdam": {
+    "lat": 52.3730796,
+    "lon": 4.8924534
+  },
+  "internacional|anchorage": {
+    "lat": 61.2163129,
+    "lon": -149.894852
+  },
+  "internacional|andorra la vella": {
+    "lat": 42.4979185,
+    "lon": 1.5032264
+  },
+  "internacional|anse boileau": {
+    "lat": -4.7110788,
+    "lon": 55.4836699
+  },
+  "internacional|anse royale": {
+    "lat": -4.7403833,
+    "lon": 55.5099956
+  },
+  "internacional|takamaka": {
+    "lat": -4.7845614,
+    "lon": 55.5121364
+  },
+  "internacional|antonina": {
+    "lat": -25.4298854,
+    "lon": -48.7125431
+  },
+  "internacional|apam": {
+    "lat": 5.283297,
+    "lon": -0.737975
+  },
+  "internacional|aquiraz": {
+    "lat": -3.9063117,
+    "lon": -38.387504
+  },
+  "internacional|arábia saudita": {
+    "lat": 25.6242618,
+    "lon": 42.3528328
+  },
+  "internacional|aracati": {
+    "lat": -4.558259,
+    "lon": -37.767894
+  },
+  "brasil|araraquara": {
+    "lat": -21.7886713,
+    "lon": -48.1773096
+  },
+  "brasil|araras": {
+    "lat": -22.3569192,
+    "lon": -47.3838766
+  },
+  "espanha|argel": {
+    "lat": 38.4447554,
+    "lon": -2.3908422
+  },
+  "brasil|arraial d'ajuda": {
+    "lat": -16.4904102,
+    "lon": -39.1771303
+  },
+  "internacional|artur nogueira": {
+    "lat": -22.572737,
+    "lon": -47.172679
+  },
+  "internacional|arua": {
+    "lat": 44.0603921,
+    "lon": -0.3508658
+  },
+  "espanha|aruba": {
+    "lat": 41.1161446,
+    "lon": 1.2445001
+  },
+  "brasil|arujá": {
+    "lat": -23.396266,
+    "lon": -46.3175449
+  },
+  "internacional|ashikaga": {
+    "lat": 36.3400358,
+    "lon": 139.4488397
+  },
+  "internacional|assomada": {
+    "lat": 37.8531624,
+    "lon": -25.1776013
+  },
+  "espanha|assunção": {
+    "lat": -22.4673855,
+    "lon": -46.6287365
+  },
+  "internacional|nur-sultan": {
+    "lat": 51.1282205,
+    "lon": 71.4306682
+  },
+  "internacional|atar": {
+    "lat": 20.5181943,
+    "lon": -13.0543928
+  },
+  "internacional|austin": {
+    "lat": 30.2711286,
+    "lon": -97.7436995
+  },
+  "internacional|ava": {
+    "lat": 36.9519236,
+    "lon": -92.6600096
+  },
+  "internacional|avinhão": {
+    "lat": 43.9492493,
+    "lon": 4.8059012
+  },
+  "internacional|ayorou": {
+    "lat": 14.7335153,
+    "lon": 0.9194517
+  },
+  "internacional|bagan": {
+    "lat": 2.1613397,
+    "lon": 100.8076446
+  },
+  "brasil|bagé": {
+    "lat": -31.3314264,
+    "lon": -54.1062808
+  },
+  "internacional|bahía blanca": {
+    "lat": -38.7176522,
+    "lon": -62.2654871
+  },
+  "internacional|bahir dar": {
+    "lat": 11.5949663,
+    "lon": 37.3882251
+  },
+  "internacional|baie ste. anne": {
+    "lat": 47.0472588,
+    "lon": -64.9625674
+  },
+  "internacional|baikonur": {
+    "lat": 45.6321977,
+    "lon": 63.3209201
+  },
+  "internacional|baleyara": {
+    "lat": 13.7841021,
+    "lon": 2.9515071
+  },
+  "brasil|florianópolis": {
+    "lat": -27.5973002,
+    "lon": -48.5496098
+  },
+  "brasil|recife": {
+    "lat": -8.0584933,
+    "lon": -34.8848193
+  },
+  "internacional|abadan": {
+    "lat": 30.3636097,
+    "lon": 48.2591475
+  },
+  "internacional|abidjan": {
+    "lat": 5.320357,
+    "lon": -4.016107
+  },
+  "internacional|abilene": {
+    "lat": 32.44645,
+    "lon": -99.7475905
+  },
+  "internacional|abomey": {
+    "lat": 7.1820012,
+    "lon": 1.993632
+  },
+  "internacional|acaponeta": {
+    "lat": 22.4604948,
+    "lon": -105.2485721
+  },
+  "internacional|acaraú": {
+    "lat": -2.8869514,
+    "lon": -40.1194713
+  },
+  "espanha|a corunha": {
+    "lat": 43.3466447,
+    "lon": -8.4127029
+  },
+  "internacional|acra": {
+    "lat": 5.5571096,
+    "lon": -0.2012376
+  },
+  "internacional|ada": {
+    "lat": 43.4136539,
+    "lon": -116.2367421
+  },
+  "internacional|afeganistão": {
+    "lat": 33.7680065,
+    "lon": 66.2385139
+  },
+  "internacional|áfrica do sul": {
+    "lat": -28.8166236,
+    "lon": 24.991639
+  },
+  "internacional|agadez": {
+    "lat": 16.972556,
+    "lon": 7.990739
+  },
+  "internacional|agana": {
+    "lat": 13.4738606,
+    "lon": 144.7520557
+  },
+  "internacional|aguaí": {
+    "lat": -22.0592036,
+    "lon": -46.979384
+  },
+  "internacional|aiquile": {
+    "lat": -18.2002218,
+    "lon": -65.1806293
+  },
+  "internacional|aksum": {
+    "lat": 14.1220982,
+    "lon": 38.7321749
+  },
+  "internacional|álamos": {
+    "lat": 27.0226935,
+    "lon": -108.9346037
+  },
+  "internacional|albergaria da serra": {
+    "lat": 40.8685183,
+    "lon": -8.2752777
+  },
+  "egito|alexandria": {
+    "lat": 31.1991806,
+    "lon": 29.8951716
+  },
+  "internacional|algodoal": {
+    "lat": -20.9913722,
+    "lon": -51.2782237
+  },
+  "internacional|amarapura": {
+    "lat": 21.903139,
+    "lon": 96.049483
+  },
+  "internacional|amboise": {
+    "lat": 47.4110351,
+    "lon": 0.983698
+  },
+  "internacional|amontada": {
+    "lat": -3.3634586,
+    "lon": -39.8284791
+  },
+  "brasil|amparo": {
+    "lat": -22.70111,
+    "lon": -46.76444
+  },
+  "argentina|ampére": {
+    "lat": -34.6086749,
+    "lon": -58.4457207
+  },
+  "internacional|antártida": {
+    "lat": -72.8438691,
+    "lon": 0
   }
 }

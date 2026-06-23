@@ -1,0 +1,101 @@
+hotel_name;external_city;external_country;external_lat;external_lon;db_city;db_country;db_lat;db_lon;distance_km;status
+"Hotel Sahara";"Mandalay";"Myanmar";21.952;96.079;"M'Hamid";"Marrocos";29.82866;-5.723405;9871.38;DISCREPANCY
+"Hotel Aurora";"Mandalay";"Myanmar";21.951;96.078;"Amalfi";"Itália";6.90701;-75.07359;16664.42;DISCREPANCY
+"Safir Hotel Cairo";"Cairo";"Egito";30.057;31.229;"Cairo/Dokki and Mohandiseen";"Egito";30.03522;31.21375;2.83;DISCREPANCY
+"Hôtel des Roches";"Kourou";"Guiana Francesa (França)";5.16;-52.65;"Kourou";"Portugal";14.48504;-4.962145;5315.93;DISCREPANCY
+"Hotel Express";"Luanda";"Angola";-8.838;13.234;"São Leopoldo";"Brasil";-29.76535;-51.14581;7053.93;DISCREPANCY
+"Peacock Lodge";"Mandalay";"Myanmar";21.961;96.089;"Mandalay (cidade)";"Portugal";21.95968;96.09487;0.62;MATCH
+"Hotel DEM";"Sukhumi";"Abecásia";43.0025;41.0155;;;;;NOT_FOUND
+"Inter-Sukhum";"Sukhumi";"Abecásia";43.001;41.013;;;;;NOT_FOUND
+"Leon Hotel";"Sukhumi";"Abecásia";43.0018;41.016;;;;;NOT_FOUND
+"Viva Maria";"Sukhumi";"Abecásia";43.0035;41.0125;;;;;NOT_FOUND
+"Dom Moskvy Hotel";"Sukhumi";"Abecásia";43.0019;41.0145;;;;;NOT_FOUND
+"Hotel Black Sea";"Sukhumi";"Abecásia";42.9748;41.0624;;;;;NOT_FOUND
+"Pitsunda Hotel";"Pitsunda";"Abecásia";43.1605;40.3407;;;;;NOT_FOUND
+"Mini-Hotel Bambucha";"Pitsunda";"Abecásia";43.1807;40.3855;;;;;NOT_FOUND
+"Howard Johnson Sierras Hotel y Casino Alta Gracia";"Alta Gracia";"Argentina";-31.6498;-64.4297;;;;;NOT_FOUND
+"El Potrerillo de Larreta";"Alta Gracia";"Argentina";-31.67;-64.45;;;;;NOT_FOUND
+"Posada del Qenti";"Alta Gracia";"Argentina";-31.66;-64.5;;;;;NOT_FOUND
+"Hostal Hispania";"Alta Gracia";"Argentina";-31.6487;-64.4285;;;;;NOT_FOUND
+"The Home Hotel";"Mandalay";"Myanmar";21.96;96.086;;;;;NOT_FOUND
+"Dreamland Guesthouse";"Mandalay";"Myanmar";21.958;96.085;;;;;NOT_FOUND
+"Hotel 82";"Mandalay";"Myanmar";21.957;96.084;;;;;NOT_FOUND
+"Tiger One Hotel";"Mandalay";"Myanmar";21.956;96.083;;;;;NOT_FOUND
+"Hotel Yadanarbon";"Mandalay";"Myanmar";21.955;96.082;;;;;NOT_FOUND
+"Hotel 879 Living Hotel";"Mandalay";"Myanmar";21.954;96.081;;;;;NOT_FOUND
+"Diamonds Inn Mandalay";"Mandalay";"Myanmar";21.953;96.08;;;;;NOT_FOUND
+"Mandalay City Hotel";"Mandalay";"Myanmar";21.95;96.077;;;;;NOT_FOUND
+"Smart Hotel";"Mandalay";"Myanmar";21.949;96.076;;;;;NOT_FOUND
+"Hotel Apex";"Mandalay";"Myanmar";21.948;96.075;;;;;NOT_FOUND
+"Ayarwaddy River View Hotel";"Mandalay";"Myanmar";21.962;96.09;;;;;NOT_FOUND
+"The Hotel Emperor";"Mandalay";"Myanmar";21.963;96.091;;;;;NOT_FOUND
+"The St. Regis Cairo";"Cairo";"Egito";30.02;31.7;;;;;NOT_FOUND
+"Sonesta Hotel Tower & Casino Cairo";"Cairo";"Egito";30.062;31.339;;;;;NOT_FOUND
+"Mövenpick Resort Aswan";"Assuão";"Egito";24.09;32.899;;;;;NOT_FOUND
+"Sofitel Legend Old Cataract Aswan";"Assuão";"Egito";24.0849;32.8929;;;;;NOT_FOUND
+"Nikko Hotel Guam";"Tamuning";"Guam (EUA)";13.5085;144.7978;;;;;NOT_FOUND
+"Dusit Thani Guam Resort";"Tumon";"Guam (EUA)";13.513;144.796;;;;;NOT_FOUND
+"Hyatt Regency Guam";"Tumon";"Guam (EUA)";13.512;144.7955;;;;;NOT_FOUND
+"Westin Resort Guam";"Tumon";"Guam (EUA)";13.5142;144.7975;;;;;NOT_FOUND
+"Outrigger Guam Beach Resort";"Tumon";"Guam (EUA)";13.5128;144.7958;;;;;NOT_FOUND
+"Pacific Islands Club Guam";"Tumon";"Guam (EUA)";13.5115;144.794;;;;;NOT_FOUND
+"Hotel Aguaí";"Aguaí";"Brasil";-22.0616;-46.9775;;;;;NOT_FOUND
+"Hotel Al-Khums";"Al-Khums";"Líbia";32.6486;14.2619;;;;;NOT_FOUND
+"Al Batra Hotel Tripoli";"Trípoli";"Líbia";32.8752;13.1875;;;;;NOT_FOUND
+"Mercure Cayenne";"Caiena";"Guiana Francesa (França)";4.922;-52.327;;;;;NOT_FOUND
+"EPIC SANA Luanda Hotel";"Luanda";"Angola";-8.81;13.241;;;;;NOT_FOUND
+"Hotel Alvalade";"Luanda";"Angola";-8.835;13.234;;;;;NOT_FOUND
+"Hotel Trópico";"Luanda";"Angola";-8.838;13.293;;;;;NOT_FOUND
+"Hotel Florença";"Luanda";"Angola";-8.838;13.234;;;;;NOT_FOUND
+"Hotel Diamante (Luanda)";"Luanda";"Angola";-8.838;13.234;;;;;NOT_FOUND
+"Hotel Ritz Capital";"Luanda";"Angola";-8.838;13.234;;;;;NOT_FOUND
+"Protea Hotel by Marriott Luanda";"Luanda";"Angola";-8.811;13.236;;;;;NOT_FOUND
+"Hotel Kilimanjaro";"Luanda";"Angola";-8.83;13.236;;;;;NOT_FOUND
+"Maculusso Boutique Hotel";"Luanda";"Angola";-8.832;13.234;;;;;NOT_FOUND
+"Casas de Luanda GH-Alvalade";"Luanda";"Angola";-8.835;13.234;;;;;NOT_FOUND
+"Ombaka Ritz";"Benguela";"Angola";-12.578;13.407;;;;;NOT_FOUND
+"Hotel Moibela";"Benguela";"Angola";-12.578;13.407;;;;;NOT_FOUND
+"Hotel Luso";"Benguela";"Angola";-12.578;13.407;;;;;NOT_FOUND
+"Aparthotel Mil Cidades";"Benguela";"Angola";-12.578;13.407;;;;;NOT_FOUND
+"Foz do Loge";"Ambriz";"Angola";-7.857;13.122;;;;;NOT_FOUND
+"J. Martins Hotel";"Ambriz";"Angola";-7.857;13.122;;;;;NOT_FOUND
+"Hotel Panguila";"Ambriz";"Angola";-7.857;13.122;;;;;NOT_FOUND
+"IU Hotel Ambriz";"Ambriz";"Angola";-7.857;13.122;;;;;NOT_FOUND
+"Casa Branca Hotel";"Porto Amboim";"Angola";-10.726;13.759;;;;;NOT_FOUND
+"Hotel Iura";"Conda";"Angola";-10.683;14.467;;;;;NOT_FOUND
+"Lupupa Lodge";"Kissanga Kungo";"Angola";-11.358;15.117;;;;;NOT_FOUND
+"Hotel Casmad";"Soyo";"Angola";-6.135;12.369;;;;;NOT_FOUND
+"Hotel Porto Rico";"Soyo";"Angola";-6.135;12.369;;;;;NOT_FOUND
+"Hotel VIP Huila";"Lubango";"Angola";-14.917;13.5;;;;;NOT_FOUND
+"Chik-Chik Lubango";"Lubango";"Angola";-14.917;13.5;;;;;NOT_FOUND
+"Ibis Styles IU Lubango";"Lubango";"Angola";-14.917;13.5;;;;;NOT_FOUND
+"Novo Hotel do Lubango";"Lubango";"Angola";-14.917;13.5;;;;;NOT_FOUND
+"Serra da Chela Hotel";"Lubango";"Angola";-14.917;13.5;;;;;NOT_FOUND
+"Pousada Flor de Lis";"Lubango";"Angola";-14.917;13.5;;;;;NOT_FOUND
+"Chik Chik Bié";"Kuito";"Angola";-12.383;16.933;;;;;NOT_FOUND
+"Hotel Quinta da Terrincha";"Kuito";"Angola";-12.383;16.933;;;;;NOT_FOUND
+"Hotel Aguia Verde";"Ondjiva";"Angola";-17.066;15.733;;;;;NOT_FOUND
+"Pensão Piedade S. Clara";"Ondjiva";"Angola";-17.066;15.733;;;;;NOT_FOUND
+"IU Hotel Dundo";"Dundo";"Angola";-7.367;20.833;;;;;NOT_FOUND
+"Hotel Diamante (Dundo)";"Dundo";"Angola";-7.367;20.833;;;;;NOT_FOUND
+"Hotel Kawissa Saurimo";"Saurimo";"Angola";-9.66;20.4;;;;;NOT_FOUND
+"IU Hotel Saurimo Rotunda";"Saurimo";"Angola";-9.658;20.395;;;;;NOT_FOUND
+"Resort Uhenha";"Saurimo";"Angola";-9.67;20.41;;;;;NOT_FOUND
+"Residencial Club Wuino Wetu";"Saurimo";"Angola";-9.662;20.405;;;;;NOT_FOUND
+"Chik Chik Saurimo";"Saurimo";"Angola";-9.6595;20.3995;;;;;NOT_FOUND
+"Hotéis Luboia";"Saurimo";"Angola";-9.665;20.398;;;;;NOT_FOUND
+"Hotel Residencial Portugalia";"Malanje";"Angola";-9.5447;16.3453;;;;;NOT_FOUND
+"Hotel Portugália";"Malanje";"Angola";-9.545;16.34;;;;;NOT_FOUND
+"Kahombo Resort Rural";"Malanje";"Angola";-9.546;16.342;;;;;NOT_FOUND
+"Kahombo Rural";"Cacuso";"Angola";-9.4333;15.7333;;;;;NOT_FOUND
+"Pousada Quedas Duque de Bragança";"Kalandula";"Angola";-9.076;15.995;;;;;NOT_FOUND
+"Xavier House";"Malanje";"Angola";-9.543;16.348;;;;;NOT_FOUND
+"Hotel Palanca Negra";"Malanje";"Angola";-9.542;16.346;;;;;NOT_FOUND
+"Pousada Caliandra da Serra";"Malanje";"Angola";-9.55;16.35;;;;;NOT_FOUND
+"Funda Hotel";"Malanje";"Angola";-9.54;16.33;;;;;NOT_FOUND
+"Hotel Yolaca";"Malanje";"Angola";-9.548;16.344;;;;;NOT_FOUND
+"Njinga Hotel";"Malanje";"Angola";-9.547;16.341;;;;;NOT_FOUND
+"IU Hotel Uíge";"Uíge";"Angola";-7.613;15.058;;;;;NOT_FOUND
+"Hotel Salala";"Uíge";"Angola";-7.614;15.059;;;;;NOT_FOUND
+"Grande Hotel do Uíge";"Uíge";"Angola";-7.612;15.0575;;;;;NOT_FOUND
+"Cuilo River Hotel";"Uíge";"Angola";-7.615;15.06;;;;;NOT_FOUND

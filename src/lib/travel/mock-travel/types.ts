@@ -43,6 +43,7 @@ export type MockDestination = {
     fonte?: string;
     licenca?: string;
   };
+  categorias?: string[];
   wikivoyageUrl?: string;
   lang?: string;
   latitude?: number;
@@ -119,6 +120,7 @@ export type MockHotel = {
   google_place_id?: string | null;
   wikidata_id?: string | null;
   fonte?: string | null;
+  tipo_alojamento?: string | null;
   /** Preenchido em buscas por proximidade. */
   distance_km?: number;
 };

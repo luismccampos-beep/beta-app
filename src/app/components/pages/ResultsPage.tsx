@@ -398,46 +398,67 @@ export function ResultsPage({ onLogout, onNavigateToDashboard }: ResultsPageProp
                     reviews: t('reviews'), days: t('days'), cardSummary: t('cardSummary'),
                     cardSee: t('cardSee'), cardDo: t('cardDo'), highlights: t('highlights'),
                     perPerson: t('perPerson'), viewDestination: t('viewDestination'), from: t('from'),
+                    showMap: t('showMap'), hideMap: t('hideMap'),
+                    accommodationTypes: {
+                      hotel: t('accommodationTypes.hotel'),
+                      resort: t('accommodationTypes.resort'),
+                      apartamento: t('accommodationTypes.apartamento'),
+                      guest_house: t('accommodationTypes.guest_house'),
+                      hostel: t('accommodationTypes.hostel'),
+                      motel: t('accommodationTypes.motel'),
+                      pousada: t('accommodationTypes.pousada'),
+                      eco_lodge: t('accommodationTypes.eco_lodge'),
+                      villa: t('accommodationTypes.villa'),
+                      camping: t('accommodationTypes.camping'),
+                    },
                   };
                   if (detailHref) {
                     return <DestinationResultCard key={result.id} result={result} href={detailHref} labels={cardLabels} tipPreviews={tipPreviews} />;
                   }
                   return (
-                    <Card key={result.id} className="border-2 border-gray-200 dark:border-gray-700 hover:border-teal-300 dark:hover:border-teal-600 transition-all hover:shadow-2xl group overflow-hidden dark:bg-gray-800">
+                    <Card key={result.id} className="group relative overflow-hidden border-0 bg-white dark:bg-gray-800 shadow-md hover:shadow-xl ring-1 ring-gray-200/60 dark:ring-gray-700/60 transition-all duration-300">
+                      {/* Hero image */}
                       <div className="relative h-56 overflow-hidden">
-                        <img src={result.imageUrl} alt={result.destination} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
-                        <div className="absolute top-3 right-3 flex flex-wrap gap-2 justify-end max-w-[70%]">
-                          {result.airport && <DestinationAirportBadge airport={result.airport} />}
-                          <Badge className="bg-gradient-to-r from-teal-600 to-orange-500 text-white border-0" title={t('matchExplain')}>
-                            <Sparkles className="w-3 h-3 mr-1" />{result.aiMatchScore}% {t('aiMatch')}
+                        <img src={result.imageUrl} alt={result.destination} className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110" />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+                        <div className="absolute top-3 right-3">
+                          <Badge className="border-0 bg-black/60 backdrop-blur-sm text-white text-xs shadow-sm" title={t('matchExplain')}>
+                            <Sparkles className="mr-1 h-3 w-3 text-orange-400" />{result.aiMatchScore}% {t('aiMatch')}
                           </Badge>
                         </div>
                         {result.sustainable && (
                           <div className="absolute top-3 left-3">
-                            <Badge className="bg-green-600 text-white border-0"><Leaf className="w-3 h-3 mr-1" />{t('sustainable')}</Badge>
+                            <Badge className="border-0 bg-emerald-500/90 backdrop-blur-sm text-white text-xs shadow-sm">
+                              <Leaf className="mr-1 h-3 w-3" />{t('sustainable')}
+                            </Badge>
                           </div>
                         )}
-                      </div>
-                      <CardHeader>
-                        <div className="flex items-start justify-between">
-                          <div className="flex-1">
-                            <CardTitle className="text-2xl dark:text-white">{result.destination}</CardTitle>
-                            <CardDescription className="flex items-center gap-1 mt-1 dark:text-gray-400">
-                              <MapPin className="w-4 h-4" />{result.country}, {result.continent}
-                            </CardDescription>
-                          </div>
-                          <button className="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">
-                            <Heart className="w-5 h-5 text-gray-400 hover:text-red-500" />
-                          </button>
-                        </div>
-                      </CardHeader>
-                      <CardContent>
-                        <div className="pt-4 border-t dark:border-gray-700">
-                          <p className="text-xs text-gray-500 dark:text-gray-400">{t('from')}</p>
-                          <p className="text-2xl sm:text-3xl font-bold text-teal-700 dark:text-teal-400 tabular-nums">
-                            {result.priceCurrency ?? 'EUR'} {result.price.toLocaleString()}
-                            <span className="ml-1 text-xs font-normal text-gray-500">{t('perPerson')}</span>
+                        <div className="absolute bottom-0 left-0 right-0 p-4">
+                          <h3 className="text-xl font-bold leading-tight text-white drop-shadow-md">{result.destination}</h3>
+                          <p className="mt-1 flex items-center gap-1 text-sm text-white/85">
+                            <MapPin className="h-3.5 w-3.5 shrink-0" />{result.country}, {result.continent}
                           </p>
+                        </div>
+                      </div>
+
+                      {/* Meta row */}
+                      <div className="flex items-center gap-x-4 gap-y-1 px-4 pt-3 pb-1 text-xs text-gray-500 dark:text-gray-400 flex-wrap">
+                        {result.airport && <DestinationAirportBadge airport={result.airport} />}
+                      </div>
+
+                      {/* Price + CTA */}
+                      <CardContent className="pt-2 pb-4">
+                        <div className="flex items-end justify-between gap-3 pt-2 border-t border-gray-100 dark:border-gray-700/60">
+                          <div>
+                            <p className="text-xs text-gray-400 dark:text-gray-500 leading-none mb-0.5">{t('from')}</p>
+                            <p className="text-2xl font-bold text-gray-900 dark:text-white tabular-nums leading-tight">
+                              {result.priceCurrency ?? 'EUR'} {result.price.toLocaleString()}
+                              <span className="ml-1 text-xs font-normal text-gray-400 dark:text-gray-500">{t('perPerson')}</span>
+                            </p>
+                          </div>
+                          <span className="text-xs text-teal-600 dark:text-teal-400 font-medium">
+                            {t('viewDestination')} →
+                          </span>
                         </div>
                       </CardContent>
                     </Card>

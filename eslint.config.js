@@ -1,12 +1,12 @@
 import nextPlugin from '@next/eslint-plugin-next';
-
-import baseConfig from '../../eslint.config.js';
+import tsParser from '@typescript-eslint/parser';
+import tsPlugin from '@typescript-eslint/eslint-plugin';
 
 export default [
-  ...baseConfig,
   {
     plugins: {
       '@next/next': nextPlugin,
+      '@typescript-eslint': tsPlugin,
     },
     rules: {
       ...nextPlugin.configs['core-web-vitals'].rules,
@@ -15,20 +15,11 @@ export default [
   {
     files: ['**/*.{js,jsx,ts,tsx}'],
     languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
+      parser: tsParser,
     },
   },
   {
     files: ['next.config.cpanel.js', 'scripts/*.js'],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.cpanel.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-    },
     rules: {
       // Ignore security warnings for deployment scripts
       'security/detect-non-literal-fs-operation': 'off',
@@ -51,6 +42,7 @@ export default [
       '.next/**',
       'dist/**',
       'build/**',
+      'packages/**',
       'webpack.optimization.js',
       'src/config/seo.js',
       'src/lib/data/packages-data-1.ts',

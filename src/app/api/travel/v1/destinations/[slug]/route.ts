@@ -3,6 +3,7 @@ import { NextResponse } from 'next/server';
 import { summarizeCostOfLiving } from '../../../../../../lib/travel/cost-tier';
 import {
   getDestinationBySlugFromDb,
+  getHotelStatsForDestinations,
   isTravelCatalogDbEnabled,
   mapMarkersFromDbHotels,
 } from '../../../../../../lib/travel/catalog-db';
@@ -49,6 +50,11 @@ export async function GET(_req: Request, ctx: RouteCtx) {
       }
 
       const { dest, hotels } = row;
+
+      // Fetch hotel type breakdown for this destination
+      const statsMap = await getHotelStatsForDestinations([row.dest.id]);
+      const destStats = statsMap.get(row.dest.id);
+
       return NextResponse.json({
         ok: true,
         source: 'db',
@@ -85,6 +91,7 @@ export async function GET(_req: Request, ctx: RouteCtx) {
         galleryImages: (dest as Record<string, unknown>).galleryImages ?? null,
         imageAttribution: dest.imagem_attribuicao ?? null,
         hotels,
+        hotelTypes: destStats?.hotelTypes ?? null,
         mapMarkers: (() => {
           const fromDb = mapMarkersFromDbHotels(dest, hotels);
           return fromDb.length > 0 ? fromDb : resolveMapMarkersForDestination(dest);

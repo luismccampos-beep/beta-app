@@ -9,7 +9,6 @@ import 'leaflet/dist/leaflet.css';
 
 // Fix default marker assets when bundled by Next.js
 const iconBase = 'https://unpkg.com/leaflet@1.9.4/dist/images';
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 delete (L.Icon.Default.prototype as any)._getIconUrl;
 L.Icon.Default.mergeOptions({
   iconRetinaUrl: `${iconBase}/marker-icon-2x.png`,

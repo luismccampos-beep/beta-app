@@ -1,0 +1,681 @@
+hotel_name;external_city;external_country;external_lat;external_lon;geocoded_lat;geocoded_lon;geocoder;matched_name;matched_type;distance_km;status
+Les Suites Orient, Bund Shanghai;Shanghai;China;31.2336424;121.4882742;31.2336424;121.4882742;photon;东方饭店, 黄浦区, 中国;commercial/W/446933545;0.0;OK
+Las Casas Filipinas de Acuzar;Luzon;Philippines;14.6013756;120.3854025;14.6013756;120.3854025;photon;Las Casas Filipinas de Acuzar, Bagac, Philippines;attraction/R/7143107;0.0;OK
+White Swan Hotel;Guangzhou;China;23.1086755;113.2371984;23.1086755;113.2371984;photon;广州市, 中国;hotel/N/13802033401;0.0;OK
+Millennium Hotel;Chengdu;China;30.6154568;104.0464841;30.6154568;104.0464841;photon;新东方千禧大酒店, 成都, 中国;hotel/N/2708951129;0.0;OK
+Lemon Tree Premier-Mumbai International Airport;Mumbai;India;19.108247;72.8822827;19.108196;72.8821719;photon;Lemon Tree Premier Mumbai International Airport, Mumbai, India;hotel/W/1253560109;0.01;OK
+Hilton Mumbai International Airport;Mumbai;India;19.1043735;72.8709317;19.1043696;72.8709345;photon;Hilton Mumbai International Airport, Mumbai, India;hotel/W/40819205;0.0;OK
+Hilton Chennai;Chennai (Madras);India;13.016676;80.2047663;13.0167643;80.2047775;photon;Hilton Chennai, Chennai, India;hotel/W/32551266;0.01;OK
+Hotel Universal Port;Osaka;Japan;34.6661009;135.4378877;34.6661405;135.4379225;photon;ホテル ユニバーサル ポート, 大阪市, 日本;hotel/W/257458123;0.01;OK
+Hotel Keihan Universal Tower;Osaka;Japan;34.6678256;135.4379826;34.6678073;135.4379379;photon;ホテル京阪ユニバーサル・タワー, 大阪市, 日本;hotel/W/257458153;0.0;OK
+Holiday Inn Tianjin Riverside;Tianjin;China;39.1518681;117.1838906;39.1518681;117.1838906;photon;河北区, 中国;hotel/N/7862213044;0.0;OK
+Raintree Lodge;Kochi (Cochin);India;9.9644416;76.2415742;9.9644416;76.2415742;photon;Raintree Lodge, Kochi, India;hotel/N/1668520864;0.0;OK
+Royal Park Hotel;Hong Kong;China;22.3797478;114.1885585;22.3797435;114.1885324;photon;帝都酒店 Royal Park Hotel, 中国;hotel/R/20088591;0.0;OK
+Hotel Moonlight;Kathmandu;Nepal;27.7175128;85.3091028;27.7169754;85.3085386;photon;Hotel Moonlight Kathmandu, काठमाडौं, Nepal;hotel/W/343325589;0.08;OK
+Hotel Shambala;Kathmandu;Nepal;27.7416201;85.3383673;27.7416201;85.3383673;photon;Hotel Shambala, काठमाडौं, Nepal;hotel/N/12121424883;0.0;OK
+Green Hotel;Vung Tau;Vietnam;10.337459;107.0909249;10.3374498;107.0909195;photon;Green hotel, Thành phố Hồ Chí Minh, Việt Nam;hotel/W/612283146;0.0;OK
+City Hotel;Krabi Town;Thailand;8.0649044;98.9162048;8.058682;98.9199871;photon;Krabi City Seaview Hotel, กระบี่, ประเทศไทย;hotel/N/2828528474;0.81;OK
+The Ummed Ahmedabad;Ahmedabad;India;23.0823961;72.6165176;23.0823961;72.6165176;photon;The Ummed Ahmedabad, Ahmedabad, India;hotel/N/2050519210;0.0;OK
+Grand Hyatt Incheon;Incheon;South Korea;37.4405857;126.457555;37.4403713;126.4566625;photon;인천광역시, 대한민국;footway/W/840538952;0.08;OK
+Best Western Premier Incheon Airport;Incheon;South Korea;37.4383392;126.4597822;37.4383114;126.4597029;photon;베스트 웨스턴  인천에어포트 호텔, 인천광역시, 대한민국;hotel/W/429005059;0.01;OK
+Hilton Foshan;Foshan;China;23.1488451;113.315283;23.0479265;113.1508863;photon;佛山希尔顿花园酒店, 佛山市, 中国;hotel/N/4885055504;20.22;OK
+Green Hotel;Taichung;Taiwan;24.1765344;120.6432276;24.1765036;120.6432091;photon;葉綠宿旅館, 臺中市, 臺灣;hotel/W/387989688;0.0;OK
+Shangri-La's Rasa Sayang Resort & Spa;Penang Island;Malaysia;5.4791422;100.2539368;5.4789837;100.2542801;photon;Shangri-La Rasa Sayang Resort & Spa, Batu Ferringhi, Malaysia;hotel/W/261193792;0.04;OK
+Eden Resort;Phu Quoc Island;Vietnam;10.1796395;103.9686794;10.1785259;103.9705487;photon;Eden Resort, Phú Quốc, Việt Nam;bus_stop/N/11774825112;0.24;OK
+The Grand Hotel;Nuwara Eliya;Sri Lanka;6.9684284;80.7646053;6.9684194;80.7646544;photon;The Grand Hotel, Nuwara Eliya, ශ්‍රී ලංකාව இலங்கை;hotel/W/258337380;0.01;OK
+Temple Tree Resort & Spa;Pokhara;Nepal;28.2060046;83.9634612;28.2059923;83.9635441;photon;Temple Tree Resort & Spa, पोखरा, Nepal;hotel/W/369194643;0.01;OK
+Shiva guest house;Varanasi;India;25.30538;83.0090194;25.30538;83.0090194;photon;Shiva Guest House, Varanasi, India;guest_house/N/5510955821;0.0;OK
+Anantara Rasananda Koh Phangan Villas;Ko Pha Ngan;Thailand;9.779449;100.0553677;9.779449;100.0553677;photon;Anantara Rasananda Koh Phangan Villas, ตำบลบ้านใต้, ประเทศไทย;hotel/N/4753669826;0.0;OK
+Milky Bay Resort;Ko Pha Ngan;Thailand;9.7028232;100.0115238;9.7028232;100.0115238;photon;Milky Bay Resort, เทศบาลตำบลเกาะพะงัน, ประเทศไทย;hotel/N/4496324839;0.0;OK
+Strand Hotel;Singapore;Singapore;1.2986535;103.8497382;1.2986535;103.8497382;photon;Strand Hotel, Singapore, Singapore;hotel/N/4302906339;0.0;OK
+Hotel Royal;Singapore;Singapore;1.3168306;103.8418595;1.3168306;103.8418595;photon;Hotel Royal, Singapore, Singapore;hotel/N/4302905828;0.0;OK
+Yak Hotel;Lhasa;China;29.6556765;91.1310198;29.6556765;91.1310198;photon;亚宾馆, 拉萨市 ལྷ་ས་གྲོང་ཁྱེར།, 中国;hotel/N/1411385437;0.0;OK
+Crown Hotel;Jinghong;China;22.0026076;100.7974654;22.0026076;100.7974654;photon;皇冠大酒店, 景洪市 ᦵᦋᧂ ᦣᦳᧂᧈ ᦉᦹᧈ, 中国;hotel/N/9921791117;0.0;OK
+Crown Prince Hotel;Surabaya;Indonesia;-7.2713707;112.7420315;-7.2713482;112.7419543;photon;Hotel Crown Prince, Surabaya, Indonesia;hotel/W/184885822;0.01;OK
+UZ Hostel;New Taipei;Taiwan;25.0523808;121.5343176;25.1718307;121.4390985;photon;台北旅人國際青年旅館, 新北市, 臺灣;hostel/N/4795960621;16.38;OK
+Edelweiss;Almaty;Kazakhstan;43.1713978;77.0378434;43.1279345;77.0804335;photon;Edelweiss, Алматы, Қазақстан;restaurant/N/5212285819;5.94;OK
+Grand Hyatt Fukuoka;Fukuoka;Japan;33.5898463;130.4103863;33.5898463;130.4103863;photon;Grand Hyatt Fukuoka, 福岡市, 日本;hotel/N/7021248966;0.0;OK
+The Crown;Bhubaneswar;India;20.2922384;85.8185448;20.2922344;85.8187293;photon;The Crown, Bhubaneswar Municipal Corporation, India;hotel/W/1237536416;0.02;OK
+Hotel Atithi;Pondicherry;India;11.9421869;79.8308845;11.9035682;79.810788;photon;PONDICHERRY INSTITUTE OF HOTEL MANAGEMENT AND CATERING TECHNOLOGY, Puducherry, India;yes/W/1192481454;4.82;OK
+Hotel du Parc;Pondicherry;India;11.9351625;79.8338285;11.9351625;79.8338285;photon;Hôtel Du Parc, Puducherry, India;hotel/N/3349922536;0.0;OK
+Cedar Inn;Darjeeling;India;27.0340479;88.2632086;27.0340479;88.2632086;photon;Cedar Inn, Darjeeling, India;hotel/N/4446515760;0.0;OK
+Hotel Atithi;Guwahati;India;26.1784673;91.7509588;26.1784673;91.7509588;photon;Hotel Atithi, Guwahati, India;hotel/N/11932551852;0.0;OK
+Millennium Hotel;Yangon (Rangoon);Myanmar;16.7697;96.1737419;16.7697;96.1737419;photon;Millennium Hotel, ရန်ကုန်, မြန်မာ;hotel/N/3507962378;0.0;OK
+Seagull Hotel;Quy Nhon;Vietnam;13.7564276;109.2185593;13.7564277;109.2185593;photon;Khách sạn Hải Âu, Quy Nhơn Nam, Việt Nam;hotel/W/741785272;0.0;OK
+Milano Tourist Rest;Anuradhapura;Sri Lanka;8.3192937;80.4059544;8.3192937;80.4059544;photon;Hamilton tourist rest, Anuradhapura, ශ්‍රී ලංකාව இலங்கை;hotel/N/11473330896;0.0;OK
+La Bila Dive Resort;Karangasem;Indonesia;-8.3357729;115.6489516;-8.3356908;115.648954;photon;La Bila Dive Resort, Amed, Indonesia;dive_centre/N/6636761818;0.01;OK
+Dolce Vita;Puerto Princesa;Philippines;9.7522276;118.7507434;9.7522276;118.7507434;photon;Dolce Vita, Puerto Princesa, Philippines;hotel/N/485779069;0.0;OK
+Teddy Bear Hotel;Emeishan;China;29.5693419;103.4488822;29.5693419;103.4488822;photon;Teddy Bear Hotel, 红珠山, 中国;hostel/N/2414711971;0.0;OK
+J Hotel;Johor Bahru;Malaysia;1.459428;103.7648309;1.4949588;103.8145819;photon;GreenTree Hotel Johor Bahru, Kampung Senibong, Malaysia;construction/W/1444683031;6.8;OK
+Fountain Hotel;Mahabaleshwar;India;17.9172622;73.6601319;17.9172622;73.6601319;photon;Fountain Hotel, Mahabaleshwar, India;hotel/N/2879917659;0.0;OK
+Spring Hotel;Can Tho;Vietnam;10.0238335;105.7713908;10.0238362;105.7713923;photon;Spring Hotel, Cần Thơ, Việt Nam;hotel/W/343923391;0.0;OK
+White Sand Beach Resort;Ko Chang;Thailand;12.1167001;102.2649786;12.1167001;102.2649786;photon;White Sand Beach Resort, บ้านคลองสน, ประเทศไทย;hotel/N/1910446546;0.0;OK
+Ambassador Hotel;Bishkek;Kyrgyzstan;42.8689525;74.6019118;42.8690235;74.602062;photon;Амбассадор отель, Бишкек, Кыргызстан;hotel/W/219773465;0.01;OK
+Grand Hotel;Bishkek;Kyrgyzstan;42.881819;74.5833549;42.881819;74.5833549;photon;Grand Hotel, Бишкек, Кыргызстан;hotel/N/1432799707;0.0;OK
+Garden Hotel;Bishkek;Kyrgyzstan;42.8522913;74.6145834;42.8522913;74.6145834;photon;Hotel Garden, Бишкек, Кыргызстан;hotel/W/189351251;0.0;OK
+Art Hostel;Tashkent;Uzbekistan;41.2987109;69.2625359;41.2987109;69.2625359;photon;Art Hostel, Toshkent, Oʻzbekiston;hostel/N/4221398290;0.0;OK
+Villa Jacaranda;Varkala;India;8.7310386;76.7083181;8.7310386;76.7083181;photon;Villa Jacaranda, Varkala, India;guest_house/N/13458344758;0.0;OK
+My Place;Naha;Japan;26.226707;127.681713;26.226932;127.681424;photon;My Place（マイプレイス）, 那覇市, 日本;bicycle_rental/N/11030950772;0.04;OK
+Oasis  Hotel;Geoje;South Korea;34.8856601;128.6039197;34.885674;128.603391;photon;Oasis Hotel, 거제시, 대한민국;hotel/W/241187586;0.05;OK
+Lighthouse Hotel;Geoje;South Korea;34.8635868;128.7296065;34.8635868;128.7296065;photon;라이트하우스호텔, 거제시, 대한민국;hotel/N/368953694;0.0;OK
+Water Garden Sigiriya;Sigiriya;Sri Lanka;7.992271;80.7453207;7.992271;80.7453207;photon;Water Garden Sigiriya, Sigiriya, ශ්‍රී ලංකාව இலங்கை;hotel/N/4516651490;0.0;OK
+The Nest;Canacona;India;15.0072546;74.0265732;15.0072546;74.0265732;photon;The Nest, Kolamb, India;guest_house/N/2625102724;0.0;OK
+J Hotel;Ulaanbaatar;Mongolia;47.9138455;106.9296021;47.9138455;106.9296021;photon;J Hotel, Улан-Батор, Монгол улс ᠮᠤᠩᠭᠤᠯ ᠤᠯᠤᠰ;hotel/N/4173664737;0.0;OK
+Koh Tao Coral Grand Resort;Koh Tao;Thailand;10.1037137;99.8279338;10.1037137;99.8279338;photon;Coral Grand Resort, ตำบลเกาะเต่า, ประเทศไทย;hotel/N/3582426695;0.0;OK
+Green Hotel;Hai Phong;Vietnam;20.6377793;106.4092201;20.6377793;106.4092201;photon;Phụ Dực, Việt Nam;hotel;0.0;OK
+Royal Hotel;Bogor;Indonesia;-6.6026831;106.7950501;-6.6026405;106.7951829;photon;Royal Hotel Bogor, Bogor, Indonesia;hotel/N/1827301699;0.02;OK
+Savoy Hotel;Daegu;South Korea;35.872412;128.591125;35.8721189;128.5980323;photon;Rivertain Hotel Daegu, 대구광역시, 대한민국;hotel/W/661166804;0.62;OK
+Paradise Hotel;Udon Thani;Thailand;17.3998037;102.799402;17.3997908;102.7994033;photon;อุดรธานี, ประเทศไทย;hotel/W/310801691;0.0;OK
+Baia Do sol;Baga;India;15.5627504;73.7489731;15.5627504;73.7489731;photon;Baia Do Sol, Calangute, India;hotel/N/2656687906;0.0;OK
+ABC Hotel;Angeles City;Philippines;15.1670108;120.5895911;15.1655932;120.5813504;photon;ABC Hotel Back Bicycle Parking, Angeles, Philippines;bicycle_parking/N/11470070511;0.9;OK
+Trinco Blu By Cinnamon;Trincomalee;Sri Lanka;8.6181358;81.2179202;8.618104;81.2179033;photon;Trinco Blu by Cinnamon, Uppuveli, ශ්‍රී ලංකාව இலங்கை;hotel/W/363859944;0.0;OK
+Coron Ecolodge;Busuanga Island;Philippines;11.9982547;120.2044556;12.0462544;120.1388423;photon;Busuanga Island Paradise, Coron, Philippines;hotel/W/245886766;8.91;OK
+Hotel Swagat;Mount Abu;India;24.591627;72.7134095;24.5917317;72.7131359;photon;Hotel Swagat, Mount Abu, India;restaurant/N/3902020977;0.03;OK
+Hotel Excelsior;Karachi;Pakistan;24.8564257;67.0301185;24.8564257;67.0301185;photon;Hotel Excelsior, Karachi, پاکستان;hotel/N/5119945178;0.0;OK
+Hotel Aurora;Mandalay;Myanmar;21.9831127;96.074495;21.9831127;96.074495;photon;Hotel Aurora, မန္တလေး, မြန်မာ;hotel/N/6822282577;0.0;OK
+Hotel Sahara;Mandalay;Myanmar;21.9827882;96.0842006;21.9827883;96.0842006;photon;Sahara Hotel, မန္တလေး, မြန်မာ;hotel/W/286369039;0.0;OK
+Hotel Imperial;Ujjain;India;23.1681754;75.773379;23.1681754;75.773379;photon;Hotel Imperial, Ujjain, India;hotel/N/13909336994;0.0;OK
+Garden Hotel;Datong;China;40.0890374;113.2949447;40.0890374;113.2949447;photon;花园大饭店, 大同市, 中国;hotel/N/4228045689;0.0;OK
+Coron Village Lodge;Coron;Philippines;11.9991399;120.2070322;11.9991797;120.207036;photon;Coron Village Lodge, Coron, Philippines;guest_house/W/173939221;0.0;OK
+Le Bokor Palace;Kampot;Cambodia;10.6221056;104.0266663;10.622115;104.0266912;photon;Le Bokor Palace, ព្រះរាជាណាចក្រ​កម្ពុជា;hotel/W/362052245;0.0;OK
+The Columns;Kampot;Cambodia;10.6068935;104.1808635;10.6068935;104.1808635;photon;The Columns, Kampot, ព្រះរាជាណាចក្រ​កម្ពុជា;hotel/N/3210023799;0.0;OK
+ALTA Cebu Resort;Mactan Island;Philippines;10.2672788;123.9434189;10.3076925;124.0201879;photon;Shangrila Mactan Island Resort, Lapu-Lapu, Philippines;resort/W/334271533;9.53;OK
+Shin Yokohama Prince Hotel;Yokohama;Japan;35.5100187;139.6195177;35.5100187;139.6195177;photon;新横浜プリンスホテル, 横浜市, 日本;hotel/N/1704637305;0.0;OK
+La Bila Dive Resort;Amed;Indonesia;-8.3357729;115.6489516;-8.3356908;115.648954;photon;La Bila Dive Resort, Amed, Indonesia;dive_centre/N/6636761818;0.01;OK
+Cinnamon Bentota Beach;Bentota;Sri Lanka;6.4246917;79.9971408;6.4246917;79.9971408;photon;Bentota Beach by Cinnamon, Bentota, ශ්‍රී ලංකාව இலங்கை;hotel/N/4513519118;0.0;OK
+City Hotel;Samarkand;Uzbekistan;39.6429538;66.9601107;39.6429406;66.9601585;photon;Hotel City Samarkand, Samarqand, Oʻzbekiston;hotel/W/310933411;0.0;OK
+Anantara Layan Phuket Resort;Choeng Thale;Thailand;8.0356405;98.2845141;8.0356405;98.2845141;photon;Anantara Layan Phuket Resort, ตำบลเชิงทะเล, ประเทศไทย;hotel/N/8410194439;0.0;OK
+Park Residency;Kozhikode;India;11.3066824;75.8789336;11.1514647;75.8938763;photon;park view residency, Kakkancheri, India;hotel;17.34;OK
+Beach Hotel;Kozhikode;India;11.2523698;75.7712899;11.2523698;75.7712899;photon;Beach Hotel, Kozhikode, India;hotel/N/778837193;0.0;OK
+Siladen Resort & Spa;Manado;Indonesia;1.6321626;124.8004402;1.6325088;124.8005508;photon;Siladen Resort&Spa, Manado, Indonesia;hotel/W/779304062;0.04;OK
+Hilton Tokyo Odaiba;Minato;Japan;35.6262888;139.7706538;35.6262864;139.7707796;photon;ヒルトン東京お台場, 港区, 日本;hotel/R/5804890;0.01;OK
+Dubai Hotel;Gwangju;South Korea;35.162437;126.90682;35.167858;126.9243333;photon;광주동신여자중학교, 광주광역시, 대한민국;school/N/368923682;1.7;OK
+Uluwatu Cottages;Pecatu;Indonesia;-8.8142994;115.0922216;-8.8141594;115.0922555;photon;Uluwatu Cottages, Kuta Selatan, Indonesia;hotel/W/560609968;0.02;OK
+Grand Park Hotel;Nakhon Si Thammarat;Thailand;8.4392051;99.9644953;8.4392051;99.9644953;photon;Grand Park Hotel, นครศรีธรรมราช, ประเทศไทย;hotel/N/2412771412;0.0;OK
+Lotus 2 Guest House;Magelang;Indonesia;-7.6063788;110.2127974;-7.6063788;110.2127974;photon;Lotus 2 Guesthouse, Borobudur, Indonesia;guest_house/N/1370744331;0.0;OK
+Amanjiwo;Magelang;Indonesia;-7.6316765;110.2019995;-7.6316765;110.2019995;photon;Amanjiwo, Majaksingi, Indonesia;hotel/N/6035086289;0.0;OK
+Dream Hostel;Ha Giang;Vietnam;22.8212983;104.9845376;22.8212983;104.9845376;photon;Dream Hostel, Hà Giang 2, Việt Nam;hostel/N/5571123124;0.0;OK
+The Tower Hotel;London;United Kingdom (UK);51.5066195;-0.0731941;51.5066219;-0.0732841;photon;The Tower Hotel, London, United Kingdom;hotel/W/288320597;0.01;OK
+Hotel Lisboa;Lisbon;Portugal;38.7222411;-9.1463048;38.7282868;-9.1476062;photon;Hotel Eurostars Lisboa Parque, Lisboa, Portugal;hotel/N/1155373582;0.68;OK
+Hotel De Paris;Anapa;Russia;44.897959;37.3224163;44.897959;37.3224163;photon;Hotel de Paris, Анапа, Россия;hotel/N/3560345822;0.0;OK
+Hotel Regina;Madrid;Spain;40.4179496;-3.6998271;40.4179496;-3.6998271;photon;Hotel Regina, Madrid, España;hotel/N/847927735;0.0;OK
+Freedom Hostel Budva;Budva Municipality;Montenegro;42.2784679;18.8384846;42.2784679;18.8384846;photon;Freedom Hostel, Budva, Crna Gora / Црна Гора;hostel/N/7739413485;0.0;OK
+Hotel Park;Split;Croatia;43.5031391;16.4482563;43.5031391;16.4482563;photon;Hotel Park, Split, Hrvatska;hotel/W/142955078;0.0;OK
+Hotel Abba;Amsterdam;The Netherlands;52.3627648;4.8745728;52.3627648;4.8745728;photon;Hotel ABBA, Amsterdam, Nederland;hotel/N/977338029;0.0;OK
+Hotel Eden;Rimini;Italy;44.1477832;12.4663277;44.1477603;12.4663032;photon;Hotel Eden, Bellaria-Igea Marina, Italia;hotel/W/223772695;0.0;OK
+Hotel More;Dubrovnik;Croatia;42.6481807;18.1029366;42.6234325;18.1959286;photon;Sheraton Dubrovnik Riviera Hotel, Srebreno, Hrvatska;hotel/N/4282224290;8.09;OK
+Ariston Hotel;Dubrovnik;Croatia;42.6593072;18.0589322;42.6592836;18.0588916;photon;Hotel Ariston, Dubrovnik, Hrvatska;hotel/W/102693054;0.0;OK
+Hotel America;Porto;Portugal;41.1551452;-8.6045745;41.1551452;-8.6045745;photon;Hotel América, Porto, Portugal;hotel/N/9925225100;0.0;OK
+The Manhattan;Blackpool;United Kingdom (UK);53.8236698;-3.0523139;53.8236698;-3.0523139;photon;The Manhattan, Blackpool, United Kingdom;guest_house/N/9151964521;0.0;OK
+The Imperial Hotel;Blackpool;United Kingdom (UK);53.8273644;-3.0545048;53.8273564;-3.0544705;photon;The Imperial Hotel, Blackpool, United Kingdom;hotel/R/11992884;0.0;OK
+Mediteran;Zadar;Croatia;44.1368575;15.2212708;44.1368575;15.2212708;photon;Mediteran, Zadar, Hrvatska;hotel/N/1435989552;0.0;OK
+Castle Inn;Warsaw;Poland;52.248216;21.0139399;52.248216;21.0139399;photon;Castle Inn, Warszawa, Polska;hotel/N/3129302636;0.0;OK
+Hotel Royal;Vienna;Austria;48.2078844;16.3723234;48.2078844;16.3723234;photon;Hotel Royal, Wien, Österreich;hotel/N/956430138;0.0;OK
+Hotel Regina;Vienna;Austria;48.2162554;16.3596582;48.2162554;16.3596582;photon;Hotel Regina, Wien, Österreich;hotel/N/1904570209;0.0;OK
+Hotel Internazionale;Bologna;Italy;44.5010259;11.3441442;44.5010259;11.3441442;photon;Hotel Internazionale, Bologna, Italia;hotel/N/4275280763;0.0;OK
+Panorama Hotel;Bologna;Italy;44.4951319;11.3395463;44.4951319;11.3395463;photon;Hotel Panorama, Bologna, Italia;hotel/N/3645734956;0.0;OK
+Hotel Oasis;Lefkada;Greece;38.7230816;20.7256407;38.7230816;20.7256407;photon;Hotel Oasis, Δημοτική Ενότητα Λευκάδος, Ελλάς;hotel/N/3029484272;0.0;OK
+Hilton Malta;Island of Malta;Malta;35.9221359;14.4936246;35.9032565;14.5001483;photon;Chapel of Saint George, Il-Gżira Manoel, Malta;yes;2.18;OK
+Hotel Valentina;Island of Malta;Malta;35.9226486;14.4913281;35.9226486;14.4913281;photon;Valentina Hotel, San Ġiljan, Malta;hotel;0.0;OK
+Rembrandt Hotel;Bucharest;Romania;44.4323329;26.1000788;44.4323329;26.1000788;photon;Rembrandt Hotel, București, România;hotel/N/2486324803;0.0;OK
+Capitol Hotel;Bucharest;Romania;44.4354765;26.09759;44.4354821;26.0977341;photon;Hotel Capitol, București, România;hotel/W/164369112;0.01;OK
+Hotel Adriatic;Rovinj;Croatia;45.0819185;13.6341347;45.0819185;13.6341347;photon;Hotel Adriatic, Rovinj, Hrvatska;hotel/N/1625109344;0.0;OK
+Hotel Central;Sarajevo;Bosnia and Herzegovina;43.8578887;18.4260228;43.8579245;18.4260293;photon;Hotel Central, Sarajevo, Bosna i Hercegovina / Босна и Херцеговина;hotel/W/190229431;0.0;OK
+Hotel Dali;Constanta;Romania;44.1824928;28.652346;44.182495;28.6523517;photon;Hotel Dali, Constanța, România;hotel/W/1257409680;0.0;OK
+Something Else;Naxos;Greece;37.0689144;25.3569734;37.0689144;25.3569734;photon;Something Else, Άγιος Αρσένιος, Ελλάς;hotel/N/5810260916;0.0;OK
+Riviera;Kazan;Russia;55.8153887;49.1300314;55.8152959;49.130032;photon;Ривьера, Казань, Россия;hotel/W/83289881;0.01;OK
+Hotel Aurora;Elba Island;Italy;42.7595546;10.1124517;42.7595695;10.1124631;photon;Hotel Aurora, Marciana, Italia;hotel;0.0;OK
+Hotel Park;Makarska;Croatia;43.2997186;17.0134874;43.2997186;17.0134874;photon;Hotel Park, Makarska, Hrvatska;hotel/N/335605123;0.0;OK
+Hotel zur Post;Usedom Island;Germany;53.9707524;14.1433939;53.9707498;14.1434339;photon;Hotel zur Post, Heringsdorf, Deutschland;hotel;0.0;OK
+Villa Bianca;Isola d'Ischia;Italy;40.7222466;13.8635312;40.7222466;13.8635312;photon;Villa Bianca, Forio, Italia;hotel;0.0;OK
+George Hotel;Lviv;Ukraine;49.8388551;24.0306279;49.8388551;24.0306279;photon;Жорж, Львів, Україна;hotel/N/5674407072;0.0;OK
+Savoy Hotel;Cologne;Germany;50.9464796;6.9571311;50.9464886;6.957139;photon;Savoy Hotel, Köln, Deutschland;hotel/W/144886425;0.0;OK
+Aria;Herceg-Novi Municipality;Montenegro;42.4508103;18.551734;42.4508103;18.551734;photon;Aria, Herceg Novi, Crna Gora / Црна Гора;hotel/N/4431626224;0.0;OK
+Plaza Hotel;Salerno;Italy;40.6750366;14.7713963;40.6750366;14.7713963;photon;Hotel Plaza, Salerno, Italia;hotel/N/12787603824;0.0;OK
+Casa Maria;Salerno;Italy;40.6800129;14.7556368;40.6800129;14.7556368;photon;Casa Maria, Salerno, Italia;guest_house/N/13247505601;0.0;OK
+Angel Hotel;Samara;Russia;53.350872;50.2222957;53.350872;50.2222957;photon;Angel hotel, Самара, Россия;hotel/N/1498506837;0.0;OK
+Apollon Hotel;Kos;Greece;36.9114018;27.2781267;36.9114018;27.2781267;photon;Apollon Hotel, Λάμπη, Ελλάς;hotel/N/2116212596;0.0;OK
+Grand Palace Hotel;Riga;Latvia;56.9502107;24.1029599;56.9502107;24.1029599;photon;Grand Palace Hotel, Rīga, Latvija;hotel/N/4779360377;0.0;OK
+Panorama Hotel;Skiathos;Greece;39.1520195;23.3983106;39.1520195;23.3983106;photon;Panorama Hotel, Skiathos, Ελλάς;hotel/N/3037795754;0.0;OK
+Atrium Hotel;Skiathos;Greece;39.1432336;23.4357324;39.1432475;23.4357112;photon;Atrium Hotel, Platanias, Ελλάς;hotel/W/635556395;0.0;OK
+Calypso;Sukhumi;Georgia;42.997124;40.996427;43.0063631;41.0229825;photon;Сухумский ботанический сад, Сухум, საქართველო;park/W/79142955;2.39;OK
+Hotel Helvetia;Jesolo;Italy;45.4164454;12.3689516;45.4994437;12.6282453;photon;Helvetia, Jesolo, Italia;hotel/W/178471854;22.23;OK
+Art Hotel;Wroclaw;Poland;51.112182;17.0299191;51.112182;17.0299191;photon;Art Hotel, Wrocław, Polska;hotel/N/4108351492;0.0;OK
+Hotel Continental;Sorrento;Italy;40.6270236;14.3700888;40.6270248;14.3702263;photon;Continental Hotel, Sorrento, Italia;hotel/W/301978881;0.01;OK
+Hotel Miramar;Sozopol;Bulgaria;42.3897871;27.7038177;42.3897957;27.703815;photon;Hotel Miramar, Созопол, Бългaрия;hotel/W/1086190226;0.0;OK
+Casa del Sol;Sozopol;Bulgaria;42.4162017;27.6994763;42.4162017;27.6994763;photon;Casa Del Sol, Созопол, Бългaрия;hotel/N/11257960834;0.0;OK
+Hotel Continental;Genoa;Italy;44.4167044;8.9233607;44.4167044;8.9233607;photon;Hotel Continental Genoa, Genova, Italia;hotel/N/5493155180;0.0;OK
+Dan Hotel;Riccione;Italy;44.0926188;12.5319344;44.0225803;12.632145;photon;Club Family Hotel Village Riccione, Riccione, Italia;hotel/W/226319085;11.17;OK
+Hotel Ala;Riccione;Italy;43.9082175;12.9252469;44.0016316;12.6617958;photon;Le Grand Hotel Riccione, Riccione, Italia;hotel/W/123962041;23.51;OK
+Palace Hotel;Bari;Italy;41.1261961;16.8652691;41.1261961;16.8652691;photon;Palace Hotel, Bari, Italia;hotel/N/2775640773;0.0;OK
+Hotel Majestic;Cervia;Italy;44.2871484;12.3496449;44.2871484;12.3496449;photon;Hotel Majestic, Cervia, Italia;hotel/N/9824743661;0.0;OK
+Hotel Brasil;Cervia;Italy;44.2723667;12.3542531;44.2723666;12.3542532;photon;Hotel Brasil, Cervia, Italia;hotel/W/162978773;0.0;OK
+Hotel Alexander;Cervia;Italy;44.2741006;12.352837;44.2741081;12.352837;photon;Hotel Alexander, Cervia, Italia;hotel/W/162976193;0.0;OK
+Hotel Mondial;Tirana;Albania;41.3267197;19.8026541;41.3267123;19.8026595;photon;Hotel Mondial, Tirana, Shqipëria;hotel/W/196893237;0.0;OK
+Sky Hotel;Tirana;Albania;41.3223759;19.8181872;41.3223759;19.8181872;photon;Sky Hotel, Tirana, Shqipëria;hotel/N/11123991370;0.0;OK
+Hotel Excelsior;Frankfurt;Germany;50.1055622;8.6642148;50.1055622;8.6642148;photon;Hotel Excelsior, Frankfurt am Main, Deutschland;hotel/N/658446087;0.0;OK
+Hotel Eilean Iarmain;Isle of Skye;United Kingdom (UK);57.1453676;-5.7994966;57.1453787;-5.7995012;photon;Hotel Eilean Iarmain, Isle of Skye, United Kingdom;hotel/W/300950101;0.0;OK
+Duisdale House Hotel;Isle of Skye;United Kingdom (UK);57.1567712;-5.802934;57.1567712;-5.802934;photon;Duisdale House Hotel, Isle of Skye, United Kingdom;restaurant/N/6048772421;0.0;OK
+Kinloch Lodge;Isle of Skye;United Kingdom (UK);57.175578;-5.7976956;57.175595;-5.797735;photon;Kinloch Lodge, Isle of Skye, United Kingdom;hotel/W/182436213;0.0;OK
+Hotel Concordia;Trogir;Croatia;43.5156346;16.2484203;43.5156346;16.2484203;photon;Hotel Concordia, Trogir, Hrvatska;hotel/N/5012794525;0.0;OK
+Radisson Blu Hotel Lietuva;Vilnius;Lithuania;54.6950648;25.2747589;54.6950854;25.2747589;photon;Radisson Blu Hotel Lietuva, Vilnius, Lietuva;hotel/W/24569932;0.0;OK
+Astoria;Vladivostok;Russia;43.1271312;131.9016131;43.1271312;131.9016131;photon;Астория, Владивосток, Россия;hotel/N/4658786189;0.0;OK
+Hotel Palace;Tallinn;Estonia;59.4325863;24.7452968;59.432511;24.7453216;photon;Palace Hotel, Tallinn, Eesti;hotel/W/234029034;0.01;OK
+Hilton Tallinn Park;Tallinn;Estonia;59.4337363;24.7689341;59.4337363;24.7689341;photon;Hilton Tallinn Park, Tallinn, Eesti;hotel/N/4207141706;0.0;OK
+Hotel Regina;Solden;Austria;46.9610616;11.008701;46.9610499;11.0086209;photon;Hotel Regina, Sölden, Österreich;hotel/W/207457909;0.01;OK
+Hotel Amadeus;Hannover;Germany;52.4344051;9.8442782;52.3690957;9.7032146;photon;Hotel Amadeus, Hannover, Deutschland;hotel/W/170488731;12.01;OK
+ART Hotel;Sibiu;Romania;45.7966285;24.1484939;45.7966232;24.1484888;photon;Art Hotel, Sibiu, România;hotel/W/439037148;0.0;OK
+Hotel Lido;Siofok;Hungary;46.912567;18.0581758;46.912567;18.0581758;photon;Hotel Lido, Siófok, Magyarország;hotel/N/3471814141;0.0;OK
+RiverSide Hotel;Kaliningrad;Russia;54.7059292;20.5431361;54.7059292;20.5431361;photon;Отель RiverSide, Калининград, Россия;hotel/N/6618571485;0.0;OK
+Hotel Mexico;Bellaria-Igea Marina;Italy;44.1583922;12.4543568;44.158373;12.4543641;photon;Hotel Mexico, Bellaria-Igea Marina, Italia;hotel/W/153794475;0.0;OK
+Hotel Mare;Bellaria-Igea Marina;Italy;44.2081627;12.394329;44.1612575;12.4475489;photon;Hotel Atis, Bellaria-Igea Marina, Italia;hotel/N/4958661431;6.72;OK
+Hotel Italia;Bellaria-Igea Marina;Italy;44.0643909;12.582911;44.1295774;12.4877467;photon;Hotel Touring Spiaggia, Bellaria-Igea Marina, Italia;hotel/W/1311712530;10.5;OK
+Hotel Globus;Bellaria-Igea Marina;Italy;44.2745653;12.3514423;44.1314308;12.4857011;photon;Globus, Bellaria-Igea Marina, Italia;hotel/N/12141566540;19.18;OK
+Hotel Augusta;Bellaria-Igea Marina;Italy;44.147997;12.4662183;44.147997;12.4662181;photon;Hotel Augusta, Bellaria-Igea Marina, Italia;hotel/W/223775322;0.0;OK
+Tyddyn Mawr Farmhouse;Snowdonia National Park;United Kingdom (UK);52.7630537;-4.0898703;52.7630539;-4.0898704;photon;Tyddyn-mawr Farmhouse, Tal-y-bont, United Kingdom;chalet;0.0;OK
+Azka Otel;Bodrum City;Turkey;37.0292819;27.4169375;37.0292777;27.4169555;photon;Azka Otel, Bodrum, Türkiye;hotel/W/28264284;0.0;OK
+Parkim Ayaz Hotel;Bodrum City;Turkey;37.0317767;27.4047413;37.0317767;27.4047413;photon;Parkim Ayaz Hotel, Bodrum, Türkiye;hotel/N/12618313214;0.0;OK
+Shanti Hostel;Skopje;Republic of North Macedonia;41.994569;21.4443835;41.9937332;21.442847;photon;Народна банка на Република Северна Македонија, Cкoпje, Северна Македонија;government/W/174464032;0.16;OK
+Queen's Hotel;Skopje;Republic of North Macedonia;41.9926997;21.4199449;41.9937332;21.442847;photon;Народна банка на Република Северна Македонија, Cкoпje, Северна Македонија;government/W/174464032;1.9;OK
+Hotel Continentale;Trieste;Italy;45.6503305;13.772825;45.6503305;13.772825;photon;Hotel Continentale, Trieste, Italia;hotel/N/537526145;0.0;OK
+Hotel Concordia;Livigno;Italy;46.5396081;10.1368417;46.5396081;10.1368417;photon;Hotel Concordia, Livigno, Italia;hotel/N/5204948026;0.0;OK
+The Queens Hotel;York;United Kingdom (UK);53.7957167;-1.5476616;53.7956489;-1.5476832;photon;The Queens Hotel, Leeds, United Kingdom;hotel/W/31031924;0.01;OK
+City Hotel;Mostar;Bosnia and Herzegovina;43.3521003;17.7985871;43.3521003;17.7985871;photon;City Hotel, Mostar, Bosna i Hercegovina / Босна и Херцеговина;hotel/N/2446514157;0.0;OK
+Hostel Nina;Mostar;Bosnia and Herzegovina;43.3339467;17.8185641;43.3339467;17.8185641;photon;Hostel Nina, Mostar, Bosna i Hercegovina / Босна и Херцеговина;hostel/N/1485703260;0.0;OK
+Panorama Hotel;Varna;Bulgaria;43.1983214;27.9199812;43.1983214;27.9199812;photon;Панорама, Варна, Бългaрия;hotel/N/800647314;0.0;OK
+Hotel Martinez;Cannes;France;43.5482917;7.0310061;43.5482538;7.0309481;photon;Hôtel Martinez, Cannes, France;hotel/W/64947306;0.01;OK
+Hotel Vis;Eforie;Romania;44.059197;28.636964;44.059197;28.636964;photon;Hotel Vis, Eforie Nord, România;hotel/N/5045185331;0.0;OK
+Hotel Victoria;Eforie;Romania;44.028868;28.6511274;44.028868;28.6511274;photon;Hotel Victoria, Eforie Sud, România;hotel/N/3900534599;0.0;OK
+Hotel Talisman;Sao Miguel;Portugal;37.7391174;-25.6723081;37.7391291;-25.6722982;photon;Hotel Talisman, Ponta Delgada, Portugal;hotel/W/126832879;0.0;OK
+Hotel Meridian;Cluj-Napoca;Romania;46.7625612;23.5974344;46.7625641;23.5974934;photon;Hotel Meridian, Cluj-Napoca, România;hotel/W/278313628;0.0;OK
+Hotel Paradis;Cluj-Napoca;Romania;46.7801967;23.6132359;46.7801948;23.6132789;photon;Hotel Paradis, Cluj-Napoca, România;hotel/W/239133263;0.0;OK
+NH Alicante;Alicante;Spain;38.3364538;-0.50713;38.3364538;-0.50713;photon;NH, Alacant / Alicante, España;hotel/N/1242093861;0.0;OK
+Hotel Kristal;Durres;Albania;41.3105756;19.4400445;41.3105755;19.4400445;photon;Hotel Kristal, Durrës, Shqipëria;hotel/W/397225958;0.0;OK
+Hotel Arizona;Lignano Sabbiadoro;Italy;45.6561679;13.0989963;45.6561446;13.0990025;photon;Hotel Arizona, Lignano Sabbiadoro / Lignan, Italia;hotel/W/36703319;0.0;OK
+Hotel Europa;Lignano Sabbiadoro;Italy;45.592197;12.8703861;45.688934;13.132713;photon;Al Cigno, Lignano Sabbiadoro, Italia;hotel/W/36706327;23.06;OK
+Hotel Victoria;Lyon;France;45.7481658;4.8285771;45.7481658;4.8285771;photon;Hôtel Victoria, Lyon, France;hotel/N/1798733181;0.0;OK
+Hotel De Normandie;Lyon;France;45.7483224;4.8272994;45.7483224;4.8272994;photon;Hôtel de Normandie, Lyon, France;hotel/N/6987919844;0.0;OK
+Hotel Split;Podstrana;Croatia;43.4981941;16.5358003;43.4982096;16.5358002;photon;Hotel Split, Podstrana, Hrvatska;hotel/W/244962950;0.0;OK
+Hotel Eden;Podstrana;Croatia;43.4955519;16.5369478;43.4955519;16.5369478;photon;Hotel Eden, Podstrana, Hrvatska;hotel/N/849570223;0.0;OK
+The Residence;Podstrana;Croatia;43.4941654;16.5382015;43.4941395;16.5381562;photon;The Residence, Podstrana, Hrvatska;hotel/W/244799479;0.0;OK
+Hotel Berlin;Leipzig;Germany;51.3290498;12.404133;51.3290498;12.404133;photon;Hotel Berlin, Leipzig, Deutschland;hotel/N/265726640;0.0;OK
+Grand Hotel;Stockholm;Sweden;59.3296107;18.0754902;59.3296107;18.0754902;photon;Grand Hôtel, Stockholm, Sverige;hotel/N/300261971;0.0;OK
+Haymarket by Scandic;Stockholm;Sweden;59.3346725;18.0615011;59.3346725;18.0615011;photon;Haymarket, Stockholm, Sverige;hotel/N/470495623;0.0;OK
+Hotel Diplomat;Stockholm;Sweden;59.3319653;18.0805298;59.3319653;18.0805298;photon;Hotel Diplomat, Stockholm, Sverige;hotel/N/369971305;0.0;OK
+Hotel Viktoria;Oberstdorf;Germany;47.4332107;10.2877077;47.4332098;10.2877537;photon;Hotel Viktoria, Oberstdorf, Deutschland;hotel/W/101332215;0.0;OK
+Hotel Adler;Oberstdorf;Germany;47.2704162;10.1362885;47.3637461;10.3004209;photon;elements Oberstdorf Hotel Christlessee, Oberstdorf, Deutschland;hotel/W/45541620;16.15;OK
+Peak District Holiday Cottage;Peak District National Park;United Kingdom (UK);53.2206955;-1.7897766;53.2206955;-1.7897766;photon;Peak District Holiday Cottage, Derbyshire Dales, United Kingdom;chalet;0.0;OK
+Adlerhof;Salzburg;Austria;47.8135641;13.0417719;47.8135641;13.0417719;photon;Adlerhof, Salzburg, Österreich;guest_house/N/3195314913;0.0;OK
+Hotel Amadeus;Salzburg;Austria;47.8041754;13.047892;47.8041754;13.047892;photon;Hotel Amadeus, Salzburg, Österreich;hotel/N/694146346;0.0;OK
+Hotel Imperial;Karlovy Vary;Czech Republic;50.2195897;12.8863566;50.2195809;12.8865987;photon;Hotel Imperial, Karlovy Vary, Česko;hotel/W/62201511;0.02;OK
+Apollo Hotel;Bratislava;Slovakia;48.1499063;17.1334083;48.1499063;17.1334083;photon;Apollo Hotel, Bratislava, Slovensko;hotel/N/308811582;0.0;OK
+Hotel Adriatic;Biograd na Moru;Croatia;43.9346285;15.4441607;43.9346362;15.4440446;photon;Hotel Adriatic ***+, Biograd na Moru, Hrvatska;hotel/W/1062351455;0.01;OK
+Paradise Beach;Sveti Vlas;Bulgaria;42.7044083;27.799302;42.7044083;27.799302;photon;Paradise Beach, Свети Влас, Бългaрия;hotel/N/2353456639;0.0;OK
+Hotel Post;St. Anton am Arlberg;Austria;47.1288403;10.2654912;47.1286771;10.2656827;photon;St. Anton Hotel Post, St. Anton am Arlberg, Österreich;bus_stop/N/11112671624;0.02;OK
+Hotel Panorama;Sibenik;Croatia;43.7617239;15.8460463;43.7617222;15.8460924;photon;Hotel Panorama, Šibenik, Hrvatska;hotel/W/288462365;0.0;OK
+Hotel Niko;Sibenik;Croatia;43.6957503;15.8816002;43.6957954;15.8815918;photon;Hotel Niko, Šibenik, Hrvatska;hotel/W/934549821;0.01;OK
+Barcelo Marbella;Marbella;Spain;36.4835683;-5.006139;36.483564;-5.0065981;photon;Barcelo Marbella, Marbella, España;hotel/W/702293343;0.04;OK
+Hotel Villa Aurora;Crikvenica;Croatia;45.1807938;14.6863228;45.1807938;14.6863228;photon;Hotel Villa Aurora, Crikvenica, Hrvatska;hotel/N/10719717418;0.0;OK
+Hotel Wodnik;Leba;Poland;54.7650436;17.565113;54.7650436;17.565113;photon;Hotel Wodnik, Łeba, Polska;hotel/N/9939596605;0.0;OK
+Montagu Arms Hotel;New Forest National Park Hampshire;United Kingdom (UK);50.8182946;-1.451434;50.818291;-1.4513833;photon;Montagu Arms Hotel, New Forest, United Kingdom;hotel;0.0;OK
+Twin Oaks Guest House;New Forest National Park Hampshire;United Kingdom (UK);50.9123762;-1.3093752;50.9123762;-1.3093752;photon;Twin Oaks Guest House, Eastleigh, United Kingdom;guest_house;0.0;OK
+Hotel Serrano;Cordoba;Spain;37.8897369;-4.7822985;37.8897369;-4.7822985;photon;Hotel Serrano, Córdoba, España;hotel/N/13115464336;0.0;OK
+Villa Rose;Fira;Greece;36.4129396;25.4362137;36.4129396;25.4362137;photon;Villa Rose, Δημοτική Ενότητα Θήρας, Ελλάς;hotel/N/2757815489;0.0;OK
+Ascot Hotel;Copenhagen;Denmark;55.67687;12.56538;55.67687;12.56538;photon;Ascot Hotel, København, Danmark;hotel/N/4460697542;0.0;OK
+Hotel Cesarskie Ogrody;Swinoujscie;Poland;53.9159381;14.238966;53.9159381;14.238966;photon;Hotel Spa Cesarskie Ogrody, Świnoujście, Polska;hotel/N/1668472169;0.0;OK
+Hotel Nadia;Primorsko;Bulgaria;42.269566;27.7546061;42.2695893;27.7546155;photon;Hotel Nadia, Приморско, Бългaрия;hotel/W/503017519;0.0;OK
+Hotel FIVE;Nuremberg;Germany;49.4547882;11.0782815;49.4547882;11.0782815;photon;Hotel Five, Nürnberg, Deutschland;hotel/N/3651189238;0.0;OK
+Hotel Eldorado;Ischgl;Austria;47.0138706;10.2920692;47.0138706;10.2920692;photon;Hotel Eldorado, Ischgl, Österreich;hotel/N/9444703816;0.0;OK
+Old Borjomi;Borjomi;Georgia;41.8473531;43.3999044;41.847328;43.3999045;photon;Old Borjomi, ბორჯომი, საქართველო;hotel/W/621052097;0.0;OK
+Pirosmani;Borjomi;Georgia;41.8426553;43.380388;41.8427289;43.3795705;photon;ნიკო ფიროსმანის ქუჩა, ბორჯომი, საქართველო;residential/W/1395323570;0.07;OK
+The Grove Hotel;Bournemouth;United Kingdom (UK);50.7193865;-1.8690397;50.7193931;-1.8690602;photon;The Grove Hotel, Bournemouth, United Kingdom;hotel/W/199796376;0.0;OK
+Hotel Neue Post;Zell am See;Austria;47.322705;12.7971455;47.3227104;12.7973532;photon;Hotel Neue Post, Zell am See, Österreich;hotel/W/197159675;0.02;OK
+Hotel Lido;Cattolica;Italy;43.9675185;12.754672;43.968562;12.7326143;photon;Lido delle Sirene, Cattolica, Italia;beach_resort/N/10011319493;1.77;OK
+Hotel Regina;Cattolica;Italy;43.9677452;12.7338697;43.9677046;12.7338436;photon;Hotel Regina, Cattolica, Italia;hotel/W/223665296;0.0;OK
+Hotel Principe;Cattolica;Italy;43.9142684;12.9175046;43.9142684;12.9175047;photon;Hotel Principe, Pesaro, Italia;hotel/W/129586295;0.0;OK
+Hotel President;Cattolica;Italy;44.0632017;12.5847232;44.0632017;12.5847232;photon;Hotel President, Rimini, Italia;hotel/N/5642859121;0.0;OK
+Hotel des Arts;Toulouse;France;43.601585;1.4471901;43.601585;1.4471901;photon;Hôtel des Arts, Toulouse, France;hotel/N/2474616501;0.0;OK
+Hotel Continental;Lourdes;France;43.0957664;-0.0534402;43.0957664;-0.0534402;photon;Hôtel Continental, Lourdes, France;hotel/N/4717354706;0.0;OK
+Panorama Hotel;Lourdes;France;43.0961202;-0.0549671;43.0961207;-0.0549886;photon;Hôtel Panorama, Lourdes, France;hotel/W/68866077;0.0;OK
+Hotel de l'Europe;Lourdes;France;43.0930621;-0.055196;43.0930741;-0.0551788;photon;Hôtel de l'Europe, Lourdes, France;hotel/W/301412120;0.0;OK
+Hotel Paradis;Lourdes;France;43.0934629;-0.0530801;43.0935108;-0.0531107;photon;Hôtel Paradis, Lourdes, France;hotel/W/301412119;0.01;OK
+Hotel Garibaldi;Mestre;Italy;45.4965546;12.2447069;45.4965547;12.2447069;photon;Hotel Garibaldi, Venezia, Italia;hotel/W/133791257;0.0;OK
+Hotel Paris;Mestre;Italy;45.4835593;12.2307986;45.4835593;12.2307986;photon;Hotel Paris, Venezia, Italia;hotel/N/10123055173;0.0;OK
+Victoria House Hotel;Killarney;Ireland;52.0434207;-9.4999908;52.0434254;-9.5000398;photon;Victoria House Hotel, Killarney, Éire / Ireland;hotel/W/315317711;0.0;OK
+Hotel Kristal;Golden Sands;Bulgaria;43.2310325;28.0048652;43.2789053;28.0383331;photon;DoubleTree by Hilton Hotel Varna - Golden Sands, Златни пясъци, Бългaрия;hotel/W/229516409;5.97;OK
+Galaxy Hotel;Naxos Town;Greece;37.0978754;25.3770345;37.0978754;25.3770345;photon;Galaxy Hotel, Νάξος, Ελλάς;hotel/N/1474228708;0.0;OK
+Hotel Harmony;Ghent;Belgium;51.05713;3.7227518;51.05713;3.7227518;photon;Hotel Harmony, Gent, België / Belgique / Belgien;hotel/N/1212142919;0.0;OK
+Grand Hotel Bellevue;Lille;France;50.636671;3.0626379;50.6366673;3.0627234;photon;Grand Hotel Bellevue, Lille, France;hotel/W/45895538;0.01;OK
+Carlton Hotel;Lille;France;50.6367618;3.0653555;50.6367618;3.0653555;photon;Hôtel Carlton, Lille, France;hotel/N/583242433;0.0;OK
+Hotel Mare;Datca;Turkey;36.7307985;27.6896727;36.7307985;27.6896727;photon;Hotel Mare, Datça, Türkiye;hotel/N/928527204;0.0;OK
+Hotel Allalin;Saas-Fee;Switzerland;46.0191432;7.7475025;46.1111287;7.9292259;photon;Hotel Allalin Saas-Fee, Saas-Fee, Schweiz/Suisse/Svizzera/Svizra;hotel/W/185037925;17.35;OK
+Magnolia Hotel;Salou;Spain;41.0758537;1.1392704;41.0758228;1.1392754;photon;Hotel Magnolia, Salou, España;hotel/W/120273080;0.0;OK
+The Riverhouse;Cardiff;United Kingdom (UK);51.4785278;-3.185558;51.4785278;-3.185558;photon;The Riverhouse, Cardiff, United Kingdom;guest_house/N/2247317767;0.0;OK
+Club Hotel;Arzachena;Italy;41.1406159;9.4778236;41.1406159;9.4778236;photon;Club Hotel, Baja Sardinia, Italia;hotel/N/11332789843;0.0;OK
+Holiday Inn Express Cambridge;Cambridge;United Kingdom (UK);52.1034515;0.1660205;52.2199325;-0.0691322;photon;Holiday Inn Express, Cambridge, United Kingdom;hotel/W/1093567020;20.62;OK
+Regent Hotel;Cambridge;United Kingdom (UK);52.2012833;0.1257409;52.2012833;0.1257409;photon;Regent Hotel, Cambridge, United Kingdom;hotel/N/724035403;0.0;OK
+Sea Garden;Peniche;Portugal;39.3590858;-9.3792393;39.3590858;-9.3792393;photon;Sea Garden, Peniche, Portugal;hotel/N/12787944949;0.0;OK
+Casa do Castelo;Peniche;Portugal;39.3398304;-9.3254295;39.3398273;-9.3254152;photon;Casa do Castelo, Peniche, Portugal;guest_house/W/802925583;0.0;OK
+Hotel Austria;Lech;Austria;47.207059;10.1378148;47.2070289;10.1378077;photon;Hotel Austria, Lech, Österreich;hotel/W/130286676;0.0;OK
+Burg Hotel;Lech;Austria;47.2171223;10.1369238;47.2171142;10.136791;photon;Burg Hotel, Lech, Österreich;hotel/W/128241112;0.01;OK
+Panorama Hotel;Lech;Austria;47.2143402;10.1477387;47.2143403;10.1477387;photon;Hotel Panorama, Lech, Österreich;hotel/W/128792706;0.0;OK
+Albergo del Sole;Taranto;Italy;40.4793985;17.2279634;40.4793985;17.2279634;photon;Albergo Del Sole, Taranto, Italia;hotel/N/9685763745;0.0;OK
+Iris Hotel;Llandudno;United Kingdom (UK);53.3232958;-3.8244116;53.3232958;-3.8244116;photon;Iris Hotel, Llandudno, United Kingdom;hotel/N/5914669480;0.0;OK
+Hotel Luna;Medjugorje;Bosnia and Herzegovina;43.3466851;17.8131372;43.1908105;17.6861343;photon;Medjugorje Hotel & Spa, Međugorje, Bosna i Hercegovina / Босна и Херцеговина;hotel/N/4474781635;20.15;OK
+Home Hotel;Bukovel;Ukraine;48.356527;24.4122387;48.3537634;24.4109134;photon;Готель Буковель, Поляниця, Україна;hotel/W/435702995;0.32;OK
+City Park Hotel;Chisinau;Moldova;47.0272318;28.8366114;47.0272318;28.8366114;photon;City Park Hotel, Chișinău, Moldova;hotel/N/7716031405;0.0;OK
+Hotel Imperial;San Benedetto Del Tronto;Italy;42.9180419;13.9008607;42.9180419;13.9008607;photon;Hotel Imperial, San Benedetto del Tronto, Italia;hotel/N/11238909203;0.0;OK
+Hotel Continental;San Benedetto Del Tronto;Italy;42.811794;13.9391097;42.9525328;13.8807144;photon;San Benedetto del Tronto, Italia;town/R/42225;16.36;OK
+Hotel Mediterraneo;Montecatini Terme;Italy;43.8880389;10.7712074;43.8880235;10.7712073;photon;Hotel Mediterraneo, Montecatini Terme, Italia;hotel/W/159490442;0.0;OK
+The GuestHouse;Bran;Romania;45.5176618;25.3694853;45.6290202;25.417807;photon;Guesthouse of the Lutheran Church, Vulcan, România;guest_house/N/1602842087;12.94;OK
+Villa Maria;Krk;Croatia;45.1593355;14.7171519;45.0311037;14.5801898;photon;Villa Palma Krk, Krk, Hrvatska;chalet/N/12204779954;17.86;OK
+Park Hotel;Kislovodsk;Russia;43.8999304;42.7150474;43.8999304;42.7150474;photon;Park Hotel, Кисловодск, Россия;hotel/N/4829254749;0.0;OK
+Hotel President;Timisoara;Romania;45.7582286;21.2129512;45.7582104;21.2129616;photon;Hotel President, Timișoara, România;hotel/W/144305155;0.0;OK
+Hotel Savoy;Timisoara;Romania;45.7633719;21.2563596;45.7548242;21.2250254;photon;Hotel Timișoara, Timișoara, România;bus_stop/N/11073255691;2.61;OK
+Ambassador Hotel;Timisoara;Romania;45.7387892;21.206271;45.738755;21.2062689;photon;Hotel Ambassador, Timișoara, România;hotel/W/445983934;0.0;OK
+NH Timisoara;Timisoara;Romania;45.7546175;21.2420691;45.7546051;21.2420691;photon;NH Timișoara, Timișoara, România;hotel/W/110971409;0.0;OK
+Central Hotel;Timisoara;Romania;45.7522412;21.2268843;45.7522411;21.2268844;photon;Hotel Central, Timișoara, România;hotel/W/192490481;0.0;OK
+Nautilus;Miedzyzdroje;Poland;53.9183343;14.2559008;53.9329995;14.4512745;photon;Velpa Boutique - Nautilus Hotel, Międzyzdroje, Polska;clothes/N/7699105884;12.9;OK
+Hotel Mare;Agropoli;Italy;40.3555695;14.9962452;40.3556602;14.9963094;photon;Hotel Mare, Agropoli, Italia;hotel/W/1042225260;0.01;OK
+The George Hotel;Norwich;United Kingdom (UK);52.6193687;1.2805649;52.6193502;1.2805351;photon;The George Hotel, Norwich, United Kingdom;hotel/W/78610838;0.0;OK
+The Gables;Exmoor National Park;United Kingdom (UK);51.2087117;-3.5936657;51.2316748;-3.8317971;photon;Exmoor National Park Visitors Centre, North Devon, United Kingdom;office/N/5527577926;16.78;OK
+The Cottage;Exmoor National Park;United Kingdom (UK);51.2087777;-3.5965971;51.2316748;-3.8317971;photon;Exmoor National Park Visitors Centre, North Devon, United Kingdom;office/N/5527577926;16.58;OK
+Hotel Nazionale;Ferrara;Italy;44.8349622;11.6185758;44.8349622;11.6185758;photon;Hotel Nazionale, Ferrara, Italia;hotel/N/2313205098;0.0;OK
+Hotel Europa;Ferrara;Italy;44.8371644;11.6222164;44.8371644;11.6222164;photon;Hotel Europa, Ferrara, Italia;hotel/N/4540300052;0.0;OK
+Hotel Torino;Parma;Italy;44.8031017;10.3281883;44.8031017;10.3281883;photon;Hotel Torino, Parma, Italia;hotel/N/4690737089;0.0;OK
+Hotel Baia;Cascais;Portugal;38.697342;-9.4200926;38.6974355;-9.4201072;photon;Hotel Baía Tesla Destination Charger, Cascais, Portugal;charging_station/N/8198508191;0.01;OK
+Hotel Londres;Cascais;Portugal;38.7069027;-9.4038931;38.7068989;-9.4037767;photon;Hotel Londres, Estoril, Portugal;hotel/W/556268709;0.01;OK
+Vila Gale Cascais;Cascais;Portugal;38.6913093;-9.4227361;38.6913088;-9.4226488;photon;Vila Galé, Cascais, Portugal;hotel/W/556173485;0.01;OK
+Vila Gale Estoril;Cascais;Portugal;38.7037593;-9.3969079;38.7037593;-9.3969079;photon;Vila Galé Estoril, Estoril, Portugal;hotel/N/309785374;0.0;OK
+Kolin Hotel;Canakkale;Turkey;40.1126914;26.4063416;40.1126914;26.4063416;photon;Kolin Hotel, Çanakkale, Türkiye;hotel/N/1556172134;0.0;OK
+Cura Hotel;Canakkale;Turkey;40.1325783;26.4121995;40.1325784;26.4121995;photon;Cura Otel, Çanakkale, Türkiye;hotel/W/1156583410;0.0;OK
+Villa Bianca;Forio;Italy;40.7222466;13.8635312;40.7222466;13.8635312;photon;Villa Bianca, Forio, Italia;hotel/N/6580587920;0.0;OK
+Hotel  La Bussola;Ricadi;Italy;38.6375449;15.8483896;38.6375449;15.8483896;photon;La Bussola Hotel, Ricadi, Italia;hotel/N/11105906621;0.0;OK
+Palace Hotel;Como;Italy;45.8139498;9.0828383;45.8139485;9.0832347;photon;Palace Hotel, Como, Italia;hotel/W/110219299;0.03;OK
+Park Hotel;Thessaloniki;Greece;40.6400924;22.9433143;40.6400633;22.9433018;photon;Park Hotel, Θεσσαλονίκη, Ελλάς;hotel/W/460329236;0.0;OK
+Hotel Miramar;Opatija;Croatia;45.3415811;14.3132772;45.3415824;14.313316;photon;Hotel Miramar, Opatija, Hrvatska;hotel/W/826480704;0.0;OK
+Hotel Panorama;Himare;Albania;40.0997564;19.7673058;40.0997564;19.7673058;photon;Panorama Hotel, Himarë, Shqipëria;hotel/N/33208727;0.0;OK
+Blue Star;Ureki;Georgia;41.9937043;41.7634745;41.9937044;41.7634744;photon;Blue star, ურეკი, საქართველო;hotel/W/1066092499;0.0;OK
+Hotel America;Trento;Italy;46.0711429;11.1241736;46.0711429;11.1241736;photon;Hotel America, Trento, Italia;hotel/N/364822145;0.0;OK
+County Hotel;Skegness;United Kingdom (UK);53.1473881;0.3454739;53.1473881;0.3454739;photon;The County Hotel, Skegness, United Kingdom;hotel/N/9074852751;0.0;OK
+Hotel Luagos Club;Lampedusa;Italy;35.5011335;12.5987488;35.5011335;12.5987488;photon;hotel luagos club, Lampedusa, Italia;hotel/N/4001469835;0.0;OK
+The White House;Brighton;United Kingdom (UK);50.8189456;-0.1270107;50.8189456;-0.1270107;photon;The White House, Brighton, United Kingdom;guest_house/N/1297007052;0.0;OK
+City Hostel;Yaroslavl;Russia;57.6296468;39.8802;57.6296468;39.8802;photon;City-Hostel, Ярославль, Россия;hostel/N/3702949988;0.0;OK
+Nagi Beach Hotel;Gumbet;Turkey;37.0318745;27.4031547;37.0318745;27.4031547;photon;Nagui beach hotel, Bodrum, Türkiye;hotel/N/4976680021;0.0;OK
+Green House Apart Hotel;Gumbet;Turkey;37.0338243;27.3981508;37.0338243;27.3981508;photon;Green House Apart Hotel, Bodrum, Türkiye;hotel/N/4781273699;0.0;OK
+Central-Hotel;Winterberg;Germany;51.1934843;8.5286584;51.1934843;8.5286584;photon;Central-Hotel, Winterberg, Deutschland;hotel/N/656393713;0.0;OK
+Royal Palace Hotel;Messina;Italy;38.1849071;15.5584169;38.1849071;15.5584169;photon;Royal Palace Hotel, Messina, Italia;hotel/N/1656333736;0.0;OK
+Hotel Italia;Cortona;Italy;43.2749374;11.9848847;43.2749374;11.9848847;photon;Hotel Italia, Cortona, Italia;hotel/N/12546515363;0.0;OK
+Hotel Astoria;Malcesine;Italy;45.8196214;10.7977433;45.7726305;10.8130577;photon;Malcesine - Hotel Trevi, Malcesine, Italia;bus_stop/N/5986610585;5.36;OK
+Hotel Augusta;Malcesine;Italy;45.7670083;10.8130981;45.7670083;10.8130981;photon;Hotel Augusta, Malcesine, Italia;hotel/N/942697485;0.0;OK
+Wild West;Saratov;Russia;51.5964952;46.0156066;51.5963762;46.0154429;photon;Wild West, Саратов, Россия;cafe/N/4227417120;0.02;OK
+Hotel Continental;Sirmione;Italy;45.631463;10.701608;45.4956965;10.6034369;photon;Continental, Sirmione, Italia;hotel/N/1341383602;16.92;OK
+Hotel Europa;Sirmione;Italy;45.5735516;10.709758;45.467854;10.611259;photon;Hotel Europa, Sirmione, Italia;hotel/N/4594409797;14.04;OK
+Hotel Du Parc;Sirmione;Italy;45.4716753;10.6072863;45.4716753;10.6072863;photon;Hotel Du parc, Sirmione, Italia;hotel/N/4240900295;0.0;OK
+Hotel Suisse;Sirmione;Italy;45.4781003;10.6096245;45.4781016;10.6096236;photon;Hotel Suisse, Sirmione, Italia;hotel/W/234074691;0.0;OK
+Hotel Du Lac;Sirmione;Italy;45.5233534;10.5387614;45.4716753;10.6072863;photon;Hotel Du parc, Sirmione, Italia;hotel/N/4240900295;7.85;OK
+Residence Hotel;Rewal;Poland;54.0818043;15.0116975;54.0818043;15.0116975;photon;Hotel Residence, Rewal, Polska;hotel/N/1694604315;0.0;OK
+Hotel Universal;Senigallia;Italy;43.7225514;13.2142685;43.7225514;13.2142685;photon;Hotel Universal, Senigallia, Italia;hotel/N/3880277725;0.0;OK
+Hotel Majestic;Senigallia;Italy;43.7075652;13.2356036;43.707571;13.2355888;photon;Hotel Majestic, Senigallia, Italia;hotel/W/310927958;0.0;OK
+Hotel Paradiso;Senigallia;Italy;43.7129572;13.2275146;43.7129442;13.2275168;photon;Hotel Paradiso, Senigallia, Italia;hotel/W/304830687;0.0;OK
+Hotel Palace;Senigallia;Italy;43.7153404;13.2236909;43.7153307;13.2236656;photon;Hotel Palace, Senigallia, Italia;hotel/R/4163743;0.0;OK
+Hotel Continental;Senigallia;Italy;43.7072965;13.2360952;43.7072958;13.2360952;photon;Hotel Continental, Senigallia, Italia;hotel/W/310934641;0.0;OK
+Hotel Marina;Balatonfured;Hungary;46.9477025;17.881157;46.9476988;17.881036;photon;Hotel Marina, Balatonfüred, Magyarország;hotel/W/183787492;0.01;OK
+Hotel Lido;Balatonfured;Hungary;46.9575337;17.9105224;46.9575337;17.9105224;photon;Hotel Lidó, Balatonfüred, Magyarország;hotel/N/1812305964;0.0;OK
+Hotel Costa Azzurra;Giardini Naxos;Italy;37.8312715;15.269238;37.8312621;15.2692357;photon;Hotel Costa Azzurra, Giardini-Naxos, Italia;hotel/W/408909992;0.0;OK
+Park Hotel;Szczecin;Poland;53.4319172;14.5597697;53.4319115;14.5599809;photon;Park Hotel, Szczecin, Polska;hotel/W/53425009;0.01;OK
+Grand Park Hotel;Szczecin;Poland;53.4443945;14.5408578;53.4444079;14.5407117;photon;Grand Park Hotel, Szczecin, Polska;hotel/W/469562705;0.01;OK
+Alexander House;Barnaul;Russia;53.3518526;83.7622585;53.3507992;83.7599365;photon;Александр Хаус - Спорт, Барнаул, Россия;hotel/N/8582210821;0.19;OK
+Hotel Windsor;Merano;Italy;46.6692844;11.1531362;46.6692844;11.1531362;photon;Hotel Windsor, Meran - Merano, Italia;hotel/N/2755800691;0.0;OK
+Imperial Hotel;Great Yarmouth;United Kingdom (UK);52.6130041;1.7373772;52.6130114;1.7373773;photon;Imperial Hotel, Great Yarmouth, United Kingdom;hotel/W/179583893;0.0;OK
+The Imperial Hotel;Cork;Ireland;51.8974046;-8.4703821;51.8971692;-8.4702285;photon;Fitzgerald’s Bar, Cork, Éire / Ireland;bar/N/4710373867;0.03;OK
+Pension Regina;Predeal;Romania;45.5010226;25.5739001;45.5010226;25.5739001;photon;Pensiunea Regina, Predeal, România;guest_house/N/8063882038;0.0;OK
+Edelweiss Hotel;Predeal;Romania;45.5886421;25.5509251;45.5087083;25.5887202;photon;Edelweiss, Predeal, România;restaurant/W/190883220;9.36;OK
+Victoria Hotel;Pescara;Italy;42.4722694;14.2083071;42.4722694;14.2083071;photon;Victoria Hotel, Pescara, Italia;hotel/N/7958787308;0.0;OK
+Hotel Am Markt;Cochem;Germany;50.1455297;7.1656208;50.1455297;7.1656208;photon;Hotel am Markt, Cochem, Deutschland;hotel/N/4082559726;0.0;OK
+Hotel Eden;Antibes;France;43.5696312;7.1098905;43.5484489;7.1215745;photon;Hôtel du Cap-Eden-Roc, Antibes, France;hotel/W/68057178;2.54;OK
+Hotel Belles Rives;Antibes;France;43.5647733;7.1154113;43.5647458;7.1154847;photon;Hôtel Belles Rives, Antibes, France;hotel/W/68078538;0.01;OK
+Hotel Juana;Antibes;France;43.5675661;7.1160503;43.5675661;7.1160503;photon;Hôtel Juana, Antibes, France;hotel/N/3117295672;0.0;OK
+The Stump;Cheltenham;United Kingdom (UK);51.7834963;-1.9029787;51.8978737;-2.0709339;photon;UK Top Nails, Cheltenham, United Kingdom;beauty/W/166106648;17.17;OK
+Hotel Monet;Honfleur;France;49.4189941;0.2264446;49.4182957;0.2288608;photon;Hôtel des ventes de Honfleur, Honfleur, France;attraction/N/5508117230;0.19;OK
+Hotel Royal;Geneva;Switzerland;46.2133299;6.1452435;46.213331;6.1452442;photon;Hôtel Royal, Genève, Schweiz/Suisse/Svizzera/Svizra;hotel/W/179543536;0.0;OK
+Hotel Mediterraneo;Ios;Greece;36.7217946;25.2803578;36.7217946;25.2803578;photon;Hotel Mediterraneo, Χώρα, Ελλάς;hotel/N/5001870488;0.0;OK
+Hotel Luna;Massa;Italy;44.0151133;10.0963067;44.0151133;10.0963067;photon;Hotel Luna, Massa, Italia;hotel/N/4515886944;0.0;OK
+Hotel Italia;Massa;Italy;44.0745544;9.9180282;44.0206775;10.0894243;photon;Hotel Peselli, Massa, Italia;hotel/W/464285869;14.95;OK
+Hotel Excelsior;Massa;Italy;44.0076274;10.10053;44.0076119;10.1005291;photon;Hotel Excelsior, Massa, Italia;hotel/W/127647874;0.0;OK
+The Queens Hotel;St Ives;United Kingdom (UK);50.1139828;-5.5379473;50.2122596;-5.4811124;photon;The Queens, St Ives, United Kingdom;pub/W/648698912;11.65;OK
+Eurostars Rey Fernando;Zaragoza;Spain;41.6517534;-0.9822799;41.6517554;-0.9825411;photon;Eurostar Rey Fernando II, Zaragoza, España;hotel/W/289884445;0.02;OK
+Hotel Italia;Foligno;Italy;42.9551986;12.7034688;42.9551986;12.7034688;photon;Hotel Italia, Foligno, Italia;hotel/N/926478302;0.0;OK
+Hotel Panorama;Scena;Italy;46.7073734;11.2017562;46.7073734;11.2017562;photon;Hotel Panorama, Schenna - Scena, Italia;hotel/N/2675565721;0.0;OK
+Astor Hotel;Scena;Italy;46.6816089;11.1892669;46.6816089;11.1892669;photon;Hotel Astor, Schenna - Scena, Italia;hotel/N/3502798379;0.0;OK
+Hotel Splendid;Pinzolo;Italy;46.2267134;10.8260266;46.2267548;10.8260376;photon;Hotel Splendid, Pinzolo, Italia;hotel/W/87959589;0.0;OK
+Palace Hotel;Zandvoort;The Netherlands;52.3763671;4.5277344;52.3763671;4.5277344;photon;Palace Hotel, Zandvoort, Nederland;hotel/N/12091629909;0.0;OK
+Hotel al Sole;Bardolino;Italy;45.5530311;10.7218734;45.5530311;10.7218734;photon;Hotel Al Sole, Bardolino, Italia;hotel/N/5069145421;0.0;OK
+Hotel Deutsches Haus;Bonn;Germany;50.7393688;7.0992605;50.7393688;7.0992605;photon;Hotel Deutsches Haus, Bonn, Deutschland;hotel/N/2967563115;0.0;OK
+Hotel Nazionale;Desenzano Del Garda;Italy;45.4663286;10.5408246;45.4662341;10.5405825;photon;Hotel Nazionale, Desenzano del Garda, Italia;hotel/W/228970160;0.02;OK
+Palace Hotel;Desenzano Del Garda;Italy;45.4604658;10.5857946;45.4604658;10.5857946;photon;Palace Hotel, Desenzano del Garda, Italia;hotel/N/600131692;0.0;OK
+Hotel Europa;Desenzano Del Garda;Italy;45.467854;10.611259;45.4755657;10.5380341;photon;Hotel europa, Desenzano del Garda, Italia;hotel/N/5148503087;5.77;OK
+Apollo Hotel;Aegina;Greece;37.7469668;23.5433448;37.7469668;23.5433448;photon;Hotel Apollo, Αγία Μαρίνα, Ελλάς;hotel/N/5953174963;0.0;OK
+Safir Konak;Safranbolu;Turkey;41.2631847;32.6685405;41.2631847;32.6685405;photon;Safir Konağı, Safranbolu, Türkiye;hotel/N/9663302798;0.0;OK
+Hotel Excelsior;Vasto;Italy;42.0776192;14.7490413;42.0776172;14.7490434;photon;Hotel Excelsior, Vasto, Italia;hotel/W/175413415;0.0;OK
+Hotel Holiday;Vasto;Italy;42.084071;14.7406818;42.084071;14.7406818;photon;Hotel Holiday, Vasto, Italia;hotel/N/8068207115;0.0;OK
+Hotel President;Vasto;Italy;42.0954143;14.7237169;42.0954049;14.7237169;photon;Hotel President, Vasto, Italia;hotel/W/360931646;0.0;OK
+Hotel Lido;Vasto;Italy;42.0863396;14.7364752;42.0864198;14.736462;photon;Hotel Lido, Vasto, Italia;hotel/W/425545827;0.01;OK
+Atlantic Hotel;Ile d'Oleron;France;45.9370178;-1.3593382;45.9370178;-1.3593382;photon;Atlantic Hôtel, Saint-Pierre-d'Oléron, France;hotel/N/5079397768;0.0;OK
+Hotel Talisman;Ponta Delgada;Portugal;37.7391174;-25.6723081;37.7391291;-25.6722982;photon;Hotel Talisman, Ponta Delgada, Portugal;hotel/W/126832879;0.0;OK
+Marine Hotel;Paignton;United Kingdom (UK);50.4342106;-3.5606616;50.4342106;-3.5606616;photon;Marine Hotel, Paignton, United Kingdom;hotel/N/308996642;0.0;OK
+Albergo Bianchi Stazione;Mantua;Italy;45.1582801;10.7834704;45.1582962;10.783489;photon;Albergo Bianchi Stazione, Mantova, Italia;hotel/W/243573895;0.0;OK
+Hotel Casa Poli;Mantua;Italy;45.1517362;10.7962551;45.1517362;10.7962551;photon;Hotel Casa Poli, Mantova, Italia;hotel/N/2884142085;0.0;OK
+Pension Sandbogaard;Bornholm;Denmark;55.2876522;14.7795378;55.2876522;14.7795378;photon;Pension Sandbogaard, Allinge-Sandvig, Danmark;guest_house/N/5933676128;0.0;OK
+Hotel Vital;Zalakaros;Hungary;46.543858;17.1290346;46.5439142;17.1290945;photon;Hotel Vital, Zalakaros, Magyarország;hotel/W/760161211;0.01;OK
+Hotel Alexander;Sanremo;Italy;43.8201429;7.7804619;43.8201429;7.7804619;photon;Hotel Alexander & Spa, Sanremo, Italia;hotel/N/9867432776;0.0;OK
+Hotel Principe;Sanremo;Italy;43.8159042;7.7693003;43.8159212;7.7693016;photon;Hotel Principe, Sanremo, Italia;hotel/W/201191911;0.0;OK
+Hotel Paradiso;Sanremo;Italy;43.8136356;7.7662245;43.813658;7.7662505;photon;Hotel Paradiso, Sanremo, Italia;hotel/W/201488972;0.0;OK
+Parus;Jurmala;Latvia;56.9751201;23.800761;56.9751233;23.8007688;photon;Parus, Jūrmala, Latvija;hotel/W/105125254;0.0;OK
+The Townhouse;Stratford-upon-Avon;United Kingdom (UK);52.1904822;-1.7083872;52.1904968;-1.7083857;photon;The Townhouse, Stratford-upon-Avon, United Kingdom;restaurant/W/158005185;0.0;OK
+Hotel Post;Bad Gastein;Austria;47.1137327;13.1331876;47.1137316;13.1331758;photon;Hotel Post, Bad Gastein, Österreich;hotel/W/197533396;0.0;OK
+Villa Anna;Bad Gastein;Austria;47.0886687;13.118573;47.1162491;13.1378832;photon;Villa Anna, Bad Gastein, Österreich;guest_house/W/114978546;3.4;OK
+Hotel President;Viareggio;Italy;43.8717997;10.2411941;43.8718311;10.2411557;photon;Hotel President, Viareggio, Italia;hotel/W/546938004;0.0;OK
+Palace Hotel;Viareggio;Italy;43.8739966;10.2400078;43.8739973;10.2400676;photon;Palace Hotel, Viareggio, Italia;hotel/W/702848530;0.0;OK
+Hotel Eden;Viareggio;Italy;43.8694199;10.2425944;43.8694203;10.2425944;photon;Hotel Eden, Viareggio, Italia;hotel/W/546938000;0.0;OK
+Hotel Villa Waldfrieden;Sellin;Germany;54.3780329;13.6952184;54.3780329;13.6952184;photon;Hotel Waldfrieden, Sellin, Deutschland;hotel/N/7175178521;0.0;OK
+Continental Hotel;Iasi;Romania;47.165057;27.5817725;47.165057;27.5817725;photon;Hotel Continental, Iași, România;hotel/N/263886116;0.0;OK
+Panorama Resort;Pylos-Nestor;Greece;36.8117559;21.8053563;36.8117559;21.8053563;photon;Panorama Resort, Finikounta Messinias, Ελλάς;hotel/N/2639133990;0.0;OK
+Rose Villa;Oban;United Kingdom (UK);56.4187503;-5.472411;56.4187503;-5.472411;photon;Rose Villa, Oban, United Kingdom;guest_house/N/2860431531;0.0;OK
+Hotel Santa Isabel;Toledo;Spain;39.8555016;-4.0250186;39.8555016;-4.0250186;photon;Hotel Santa Isabel, Toledo, España;hotel/N/1630607772;0.0;OK
+Hotel Albatros;Misano Adriatico;Italy;44.1014215;12.5189128;43.9783913;12.7020478;photon;Albatros, Misano Adriatico, Italia;hotel/W/1194852865;20.04;OK
+Hotel Alexandra;Misano Adriatico;Italy;43.9688792;12.7242904;43.9793332;12.7007842;photon;Alexandra, Misano Adriatico, Italia;hotel/W/223754134;2.21;OK
+Hotel Aurora;Misano Adriatico;Italy;44.0906206;12.5343185;43.9789339;12.6984242;photon;Hotel Vanni, Misano Adriatico, Italia;hotel/W/223754070;18.06;OK
+Hotel Royal;Misano Adriatico;Italy;43.9673324;12.7358824;43.9782788;12.6998204;photon;Mon hotel, Misano Adriatico, Italia;hotel/W/1193646580;3.13;OK
+White Rose;Windermere;United Kingdom (UK);54.3759524;-2.9035787;54.375973;-2.9035416;photon;White Rose, Windermere, United Kingdom;guest_house/W/500226482;0.0;OK
+Hotel Michelangelo;Chianciano Terme;Italy;43.0409938;11.8103649;43.0409749;11.8103649;photon;Hotel Michelangelo, Chianciano Terme, Italia;hotel/W/1118845555;0.0;OK
+Hotel M;Podgorica Municipality;Montenegro;42.4205399;19.2524092;42.4210291;19.2525951;photon;Hotel M Podgorica, Podgorica, Crna Gora / Црна Гора;hotel/N/2104661568;0.06;OK
+Rainbow Lodge;Plymouth;United Kingdom (UK);50.367113;-4.1455993;50.367113;-4.1455993;photon;Rainbow Lodge, Plymouth, United Kingdom;guest_house/N/4305986127;0.0;OK
+Hotel Austria;Wildschonau;Austria;47.4488474;12.0921979;47.4488474;12.0921979;photon;Hotel Austria, Wildschönau, Österreich;restaurant/N/497214138;0.0;OK
+Hotel Sonne;Wildschonau;Austria;47.4542613;12.0966185;47.4488474;12.0921979;photon;Hotel Austria, Wildschönau, Österreich;restaurant/N/497214138;0.69;OK
+Hotel Royal;Pristina;Kosovo;42.658263;21.1565301;42.658263;21.1565301;photon;Hotel Royal, Prishtina, Kosova / Kosovo;hotel/N/612468794;0.0;OK
+Hotel Real;Pristina;Kosovo;42.6583023;21.1555644;42.6583023;21.1555644;photon;Hotel Real, Prishtinë, Kosova / Kosovo;hotel/N/4471413089;0.0;OK
+Hotel Comercio;Denia;Spain;38.8394775;0.108513;38.8454374;0.1138954;photon;Comercio Justo, Dénia, España;second_hand/N/5040822823;0.81;OK
+easyHotel Rotterdam City Centre;Rotterdam;The Netherlands;51.9173227;4.4768778;51.9173227;4.4768778;photon;easyHotel Rotterdam City Centre, Rotterdam, Nederland;hotel/N/2610270002;0.0;OK
+Grand Hotel Central;Rotterdam;The Netherlands;51.9228675;4.4767887;51.9228675;4.4767887;photon;Grand Hotel Central, Rotterdam, Nederland;hotel/N/1342873181;0.0;OK
+nhow Rotterdam;Rotterdam;The Netherlands;52.0788826;4.3368392;51.9563359;4.4397319;photon;Rotterdam The Hague Airport, Rotterdam, Nederland;aerodrome/W/138996678;15.34;OK
+Aqua Hotel;Gyula;Hungary;46.6425802;21.2859258;46.6425802;21.2859258;photon;Aqua Hotel, Gyula, Magyarország;hotel/N/3290196361;0.0;OK
+Hotel La Torre;Centola;Italy;40.0290388;15.2786749;40.0290388;15.2786749;photon;Hotel La Torre, Centola, Italia;hotel/N/9195132571;0.0;OK
+Hotel Casa Rustica;Rust;Germany;48.267796;7.7260055;48.2678063;7.7260046;photon;Hotel Casa Rustica, Rust, Deutschland;hotel/W/299695411;0.0;OK
+Hostel Mostel;Veliko Tarnovo;Bulgaria;43.0798123;25.6450123;43.0798123;25.6450123;photon;Hostel Mostel, Велико Търново, Бългaрия;hostel/W/222128890;0.0;OK
+Hotel Central;Veliko Tarnovo;Bulgaria;43.0825628;25.6338929;43.0825628;25.6338929;photon;Хотел Централ, Велико Търново, Бългaрия;hotel/W/222208123;0.0;OK
+Hotel De la Paix;Lucerne;Switzerland;47.0558753;8.310295;47.0558753;8.310295;photon;Hotel de la Paix, Luzern, Schweiz/Suisse/Svizzera/Svizra;hotel/N/1553431812;0.0;OK
+Hotel Magic;Lucerne;Switzerland;47.0519738;8.3057335;47.0519738;8.3057335;photon;Magic Hotel, Luzern, Schweiz/Suisse/Svizzera/Svizra;hotel/N/4119812455;0.0;OK
+Hotel Il Castello;Pula;Italy;38.9325375;8.9316126;38.9325272;8.9317517;photon;Hotel Il Castello, Pula, Italia;hotel/W/296382342;0.01;OK
+Hotel Colon;Ronda;Spain;36.7445093;-5.1671588;36.7445093;-5.1671588;photon;Hotel Colón, Ronda, España;hotel/N/6176053470;0.0;OK
+Hotel Atlas;Pec pod Snezkou;Czech Republic;50.6902459;15.7700067;50.6902459;15.7700067;photon;Hotel Atlas, Pec pod Sněžkou, Česko;hotel/N/5072463758;0.0;OK
+Hotel Classic;Freiburg im Breisgau;Germany;48.0302889;7.8635353;48.0302889;7.8635353;photon;Hotel Classic, Freiburg im Breisgau, Deutschland;hotel/N/288434369;0.0;OK
+Hotel Krone;Berchtesgaden;Germany;47.6395867;13.0098615;47.6395867;13.0098615;photon;Hotel Krone, Berchtesgaden, Deutschland;hotel/N/1259106845;0.0;OK
+Hotel Marina;Roses;Spain;42.2641849;3.1593013;42.2625801;3.1544857;photon;Hotel Monterey Roses, Roses, España;hotel/W/311800400;0.43;OK
+Hotel Carmen;Roses;Spain;42.2644221;3.1749756;42.264411;3.1749664;photon;Hotel Carmen, Roses, España;hotel/W/164987953;0.0;OK
+Hotel Quellenhof;Baden-Baden;Germany;48.7622842;8.2430744;48.7622842;8.2430744;photon;Hotel Quellenhof, Baden-Baden, Deutschland;hotel/N/251510368;0.0;OK
+Hotel Internazionale;Ancona;Italy;43.5600827;13.5935392;43.5600827;13.5935392;photon;Hotel Internazionale, Ancona, Italia;hotel/N/718310396;0.0;OK
+Art Hotel;Essentuki;Russia;44.0531908;42.8583641;44.0531908;42.8583641;photon;Ессентуки, Россия;hotel/N/5484982521;0.0;OK
+Hotel Europa;Modena;Italy;44.6940332;10.6415305;44.6940332;10.6415305;photon;Hotel Europa, Reggio Emilia, Italia;hotel/N/1227916855;0.0;OK
+Hotel Principe;Modena;Italy;44.6518231;10.932464;44.6518231;10.932464;photon;Hotel Principe, Modena, Italia;hotel/N/4501293249;0.0;OK
+Hotel Angela;Fano;Italy;43.8460841;13.0255815;43.8460841;13.0255815;photon;Hotel Angela, Fano, Italia;hotel/N/10971542731;0.0;OK
+Hotel Paradise;Fano;Italy;43.8460781;13.0249268;43.8460781;13.0249268;photon;Hotel Paradise, Fano, Italia;hotel/N/3544961800;0.0;OK
+Hotel Marina;Fano;Italy;43.8458773;13.0257716;43.8458773;13.0257716;photon;Hotel Marina, Fano, Italia;hotel/N/6565987121;0.0;OK
+Hotel Plaza;Comacchio;Italy;44.6665807;12.2462271;44.6666095;12.246207;photon;Hotel Plaza, Comacchio, Italia;hotel/W/618088467;0.0;OK
+Hotel Post;Velden am Woerthersee;Austria;46.6161182;14.0439438;46.6161182;14.0439438;photon;Hotel Post, Velden am Wörther See, Österreich;hotel/N/2368114578;0.0;OK
+Alfa Hotel;Serfaus;Austria;47.0391405;10.601943;47.0391541;10.6019198;photon;Alfa Hotel, Serfaus, Österreich;hotel/W/98591089;0.0;OK
+Victoria Hotel;North York Moors National Park;United Kingdom (UK);54.4339537;-0.5342986;54.4655122;-0.8947687;photon;Danby Moors National Park Centre, Danby, United Kingdom;bus_stop;23.57;OK
+Hotel Nazionale;Levanto;Italy;44.1695155;9.6118619;44.1695155;9.6118619;photon;Hotel Nazionale, Levanto, Italia;hotel/N/4621414385;0.0;OK
+Hotel Primavera;Levanto;Italy;44.1694534;9.611471;44.1694534;9.611471;photon;Hotel Primavera, Levanto, Italia;hotel/N/4621414387;0.0;OK
+Hotel Europa;Levanto;Italy;44.1694202;9.6130301;44.1694202;9.6130301;photon;Hotel Europa, Levanto, Italia;hotel/N/2331723988;0.0;OK
+City Hotel;Kassel;Germany;51.3121596;9.4787022;51.3110235;9.5105008;photon;B&B Hotel Kassel-City, Kassel, Deutschland;hotel/W/193984471;2.21;OK
+Grand Hotel Vanvitelli;Caserta;Italy;41.0369403;14.3254401;41.0369403;14.32544;photon;Grand Hotel Vanvitelli, Caserta, Italia;hotel/W/306150815;0.0;OK
+The White Hart;St Austell;United Kingdom (UK);50.4724567;-4.7191213;50.3380828;-4.791607;photon;White Hart, St Austell, United Kingdom;hotel/W/177671707;15.8;OK
+Plaza Hotel;Kalymnos;Greece;36.9954782;26.9344746;36.9954782;26.9344746;photon;Plaza Hotel, Μασούρι, Ελλάς;hotel/N/2419018686;0.0;OK
+Hotel Miramar;Royan;France;45.6260134;-1.0500547;45.6260134;-1.0500547;photon;Hôtel Miramar, Royan, France;hotel/N/741696258;0.0;OK
+Hotel Post;Kappl;Austria;47.0626688;10.373938;47.0626604;10.3739124;photon;Hotel Post, Kappl, Österreich;restaurant/W/139072688;0.0;OK
+The Red House;Falmouth;United Kingdom (UK);50.1478022;-5.0628689;50.1478022;-5.0628689;photon;The Red House, Falmouth, United Kingdom;guest_house/N/272815810;0.0;OK
+Hotel Playa Victoria;Cadiz;Spain;36.5052188;-6.2777448;36.5052188;-6.2777448;photon;Hotel Playa Victoria, Cádiz, España;hotel/N/1742128263;0.0;OK
+Family Hotel;Kaunas;Lithuania;54.8996032;23.8957706;54.899604;23.8957245;photon;Family hotel, Kaunas, Lietuva;hotel/W/317841676;0.0;OK
+Art Hotel;Druskininkai;Lithuania;54.0180649;23.9724396;54.0180769;23.9724396;photon;Art Hotel, Druskininkai, Lietuva;hotel/W/246679676;0.0;OK
+Metropolis;Surgut;Russia;61.2502535;73.3642416;61.2502686;73.3642674;photon;Metropolis, Сургут, Россия;hotel/W/199681830;0.0;OK
+Carlton Hotel;Sliema;Malta;35.9144665;14.4967394;35.9144665;14.4967394;photon;Carlton Hotel, Tas-Sliema, Malta;hotel/N/2563788299;0.0;OK
+Hotel Skansen;Oland;Sweden;56.6488992;16.4672577;56.6488992;16.4672577;photon;Hotell Skansen, Färjestaden, Sverige;hotel/N/4389197835;0.0;OK
+Lauriston Hotel;Weston super Mare;United Kingdom (UK);51.351083;-2.982545;51.3510824;-2.9825408;photon;Lauriston Hotel, Weston-super-Mare, United Kingdom;hotel/W/751734188;0.0;OK
+Hotel Europa;Valtournenche;Italy;45.9378418;7.6294536;45.9378415;7.6294534;photon;Hotel Europa, Valtournenche, Italia;hotel/W/166438450;0.0;OK
+Hilton Malta;Saint Julian's;Malta;35.9221359;14.4936246;35.9222764;14.4936112;photon;Hilton Malta, San Ġiljan, Malta;hotel/W/33569420;0.02;OK
+Hotel Valentina;Saint Julian's;Malta;35.9226486;14.4913281;35.9226486;14.4913281;photon;Valentina Hotel, San Ġiljan, Malta;hotel/N/1332708982;0.0;OK
+Hotel Luna Convento;Amalfi;Italy;40.632912;14.606943;40.6331495;14.6067649;photon;Hotel Luna Convento, Amalfi, Italia;hotel/N/3436993871;0.03;OK
+Hotel Krone;Bressanone;Italy;46.7175483;11.6550244;46.7175483;11.6550244;photon;Hotel Krone, Brixen - Bressanone, Italia;hotel/N/2749636198;0.0;OK
+Hotel Majestic;Bressanone;Italy;46.7207631;11.6743823;46.7207631;11.6743823;photon;Hotel Majestic, Brixen - Bressanone, Italia;hotel/N/2121314209;0.0;OK
+Hotel Plaza;Cuenca;Spain;40.0636094;-2.1318246;40.0636094;-2.1318246;photon;Hotel Plaza, Cuenca, España;hotel/N/7203458711;0.0;OK
+Hotel Carmen;Shkoder;Albania;42.0687946;19.5161134;42.0687942;19.5161132;photon;Hotel Carmen, Shkodër, Shqipëria;hotel/W/374120876;0.0;OK
+Hotel Post;Nauders;Austria;46.8916333;10.5010067;46.8916284;10.5010134;photon;Hotel Post, Nauders, Österreich;hotel/W/491516486;0.0;OK
+Hotel Regina;Nauders;Austria;46.8914261;10.4995563;46.8914316;10.499557;photon;Hotel Regina, Nauders, Österreich;hotel/W/230559278;0.0;OK
+City Hotel;Luxembourg City;Luxembourg;49.6014239;6.1325405;49.6014239;6.1325405;photon;City Hotel, Luxembourg, Lëtzebuerg;hotel/N/1783876399;0.0;OK
+Hotel Lido;Alassio;Italy;44.1476891;8.2817874;44.0113983;8.1781101;photon;Hotel Lido, Alassio, Italia;hotel/N/7690945227;17.27;OK
+Hotel Beau Rivage;Alassio;Italy;43.9978527;8.1656247;43.9978542;8.1656662;photon;Hotel Beau Rivage, Alassio, Italia;hotel/W/225627359;0.0;OK
+The Belmont Hotel;Leicester;United Kingdom (UK);52.628516;-1.1237732;52.6284973;-1.123807;photon;Belmont House Hotel, Leicester, United Kingdom;hotel/W/103427389;0.0;OK
+Ambassador Hotel;Pesaro;Italy;43.9165502;12.9137321;43.9165502;12.9137321;photon;Hotel Ambassador, Pesaro, Italia;hotel/N/845275784;0.0;OK
+Hotel Napoleon;Pesaro;Italy;43.9169707;12.9129734;43.9169707;12.9129734;photon;Hotel Napoleon, Pesaro, Italia;hotel/N/845275788;0.0;OK
+The Avenue;Shanklin;United Kingdom (UK);50.6343313;-1.1762938;50.6343519;-1.176293;photon;The Avenue, Shanklin, United Kingdom;guest_house/W/448994760;0.0;OK
+Bedford Lodge;Shanklin;United Kingdom (UK);50.6268374;-1.1773478;50.6267893;-1.1773656;photon;Bedford Lodge, Shanklin, United Kingdom;guest_house/W/540977927;0.01;OK
+Carlton Hotel;Shanklin;United Kingdom (UK);50.6308092;-1.1735006;50.6308016;-1.1734799;photon;Carlton Hotel, Shanklin, United Kingdom;hotel/W/406450964;0.0;OK
+The Queens Hotel;Penzance;United Kingdom (UK);50.1139828;-5.5379473;50.1139828;-5.5379473;photon;Queens Hotel, Penzance, United Kingdom;hotel/N/682347649;0.0;OK
+Panorama Guest House;Penzance;United Kingdom (UK);50.1005196;-5.5521709;50.1005196;-5.5521709;photon;Panorama Guest House, Newlyn, United Kingdom;guest_house/N/11922378184;0.0;OK
+The Queens Hotel;Portsmouth;United Kingdom (UK);50.7850916;-1.0931009;50.7850867;-1.092846;photon;The Queens Hotel, Southsea, United Kingdom;hotel/R/5373683;0.02;OK
+The Pier;Portsmouth;United Kingdom (UK);50.7891603;-1.0960525;50.7891603;-1.0960525;photon;The Pier, Southsea, United Kingdom;guest_house/N/9862244754;0.0;OK
+Hotel Princess;Ostend;Belgium;51.2348514;2.918646;51.2348514;2.918646;photon;Hotel Princess, Oostende, België / Belgique / Belgien;hotel/N/3772069230;0.0;OK
+Centrum Hotel;Nicosia;Cyprus;35.1699953;33.3614831;35.1699953;33.3614831;photon;Hotel Centrum, Τρυπιώτης, Κύπρος - Kıbrıs;hotel/N/4096030983;0.0;OK
+Hotel Eden;Bormio;Italy;46.4647432;10.3735995;46.4647447;10.3735988;photon;Eden Hotel, Bormio, Italia;hotel/W/1355223383;0.0;OK
+Apollon Hotel;Kos Town;Greece;36.9114018;27.2781267;36.9114018;27.2781267;photon;Apollon Hotel, Λάμπη, Ελλάς;hotel/N/2116212596;0.0;OK
+Ikion Eco Boutique Hotel;Alonnisos;Greece;39.1460536;23.8672598;39.1460537;23.8672598;photon;Ikion Eco Boutique Hotel, Πατητήρι, Ελλάς;hotel/W/723770031;0.0;OK
+Paradise Hotel;Alonnisos;Greece;39.1444996;23.8668939;39.1444996;23.8668939;photon;Paradise Hotel, Πατητήρι, Ελλάς;hotel/N/9853807535;0.0;OK
+Hotel Baia Azzurra;Nago-Torbole;Italy;45.8769844;10.8655296;45.8769712;10.8655688;photon;Hotel Baia Azzurra, Arco, Italia;hotel;0.0;OK
+Lotus Hotel;Szeged;Hungary;46.2648956;20.1639027;46.2648956;20.1639027;photon;Lotus Ifjusági Szálló, Szeged, Magyarország;hostel/W/178468886;0.0;OK
+Hotel de la Paix;La Rochelle;France;46.1619694;-1.1509054;46.1619694;-1.1509054;photon;Hôtel de la Paix, La Rochelle, France;hotel/N/1445028127;0.0;OK
+Hotel de Paris;La Rochelle;France;46.1619813;-1.151117;46.1619813;-1.151117;photon;Hôtel de Paris, La Rochelle, France;hotel/N/1445028123;0.0;OK
+Auberge de Jeunesse;La Rochelle;France;46.1444735;-1.1616515;46.144474;-1.1618954;photon;Auberge de Jeunesse, La Rochelle, France;hostel/W/119815480;0.02;OK
+Bellevue Hotel;Ruhpolding;Germany;47.7575446;12.6431631;47.7575913;12.6432064;photon;Hotel Bellevue, Ruhpolding, Deutschland;hotel/W/311862879;0.01;OK
+Hotel Concordia;Davos;Switzerland;46.8041529;9.8370481;46.8041526;9.8370406;photon;Hotel Concordia, Davos Dorf, Schweiz/Suisse/Svizzera/Svizra;hotel/W/126895457;0.0;OK
+Hotel  la Torre;Castiglione del Lago;Italy;43.1270164;12.0515671;43.1270176;12.0515694;photon;Hotel La Torre, Castiglione del Lago, Italia;hotel/W/396683505;0.0;OK
+Hotel Solarium;Civitanova Marche;Italy;43.3038088;13.7217206;43.3038135;13.7217837;photon;Hotel Solarium, Civitanova Marche, Italia;hotel/W/1443445879;0.01;OK
+Ardrinane House;Dingle;Ireland;52.1508314;-10.0564602;52.1508314;-10.0564602;photon;Ardrinane House, Kenmare Municipal District, Éire / Ireland;guest_house/N/1591181452;0.0;OK
+Hotel Elite;Karlsruhe;Germany;48.9964813;8.3915125;48.9964748;8.3915152;photon;Hotel Elite, Karlsruhe, Deutschland;hotel/W/539831639;0.0;OK
+Hostal La Provinciana;La Coruna;Spain;43.3691296;-8.4027541;43.3691296;-8.4027541;photon;Hostal Provinciana, A Coruña, España;guest_house/N/4174151595;0.0;OK
+Castle Hotel;Gjirokaster;Albania;40.0718145;20.1368398;40.0718145;20.1368398;photon;Castle Hotel, Gjirokastër, Shqipëria;hotel/N/10035622464;0.0;OK
+Masseria Incantalupi;Brindisi;Italy;40.6258794;17.7748008;40.625945;17.7758631;photon;Masseria Incantalupi, Brindisi, Italia;guest_house/W/1321484070;0.09;OK
+Hotel Astoria;Garda;Italy;45.8928551;10.8467597;45.892801;10.8467125;photon;Hotel Astoria, Riva del Garda, Italia;hotel/W/60352989;0.01;OK
+National Hotel;Klaipeda;Lithuania;55.7085682;21.1314658;55.7085885;21.1314658;photon;National Hotel, Klaipėda, Lietuva;hotel/W/356501391;0.0;OK
+Beachcomber;Swansea;United Kingdom (UK);51.6130041;-3.9572024;51.6129866;-3.9571943;photon;Beachcomber, Swansea, United Kingdom;guest_house/W/634920601;0.0;OK
+Royal Hotel;Novokuznetsk;Russia;53.7644807;87.1379076;53.7644807;87.1379076;photon;Royal Hotel, Новокузнецк, Россия;hotel/N/13723814701;0.0;OK
+Hotel Diana;Pecs;Hungary;46.0739047;18.2313444;46.0739047;18.2313444;photon;Diana Hotel, Pécs, Magyarország;hotel/N/2846923974;0.0;OK
+The George Hotel;Penrith;United Kingdom (UK);54.6644032;-2.7524849;54.6644032;-2.7524849;photon;The George Hotel, Penrith, United Kingdom;hotel/N/6564373292;0.0;OK
+Albany House;Penrith;United Kingdom (UK);54.6671644;-2.7545721;54.6671644;-2.7545721;photon;Albany House, Penrith, United Kingdom;guest_house/N/1356499031;0.0;OK
+Hotel Carmen;Mijas;Spain;36.5053805;-4.6772371;36.505398;-4.6772443;photon;Hotel Carmen, Mijas, España;hotel/W/428179108;0.0;OK
+Hotel Jardim;Aveiro;Portugal;40.6365411;-8.6464898;40.636547;-8.6464938;photon;Hotel Jardim, Aveiro, Portugal;hotel/W/847788007;0.0;OK
+County Hotel;Carlisle;United Kingdom (UK);54.891621;-2.9321424;54.891621;-2.9321424;photon;County Hotel, Carlisle, United Kingdom;hotel/N/3469729879;0.0;OK
+Rose Cottage;Bridport;United Kingdom (UK);50.7031841;-2.7275315;50.7113864;-2.760402;photon;Harbour Cottage, Bridport, United Kingdom;yes;2.49;OK
+Stirling Court Hotel;Stirling;United Kingdom (UK);56.1432737;-3.9221047;56.1432686;-3.922672;photon;Stirling Court Hotel, Stirling, United Kingdom;hotel/R/13477587;0.04;OK
+Hotel les Orangers;Hyeres;France;43.1199924;6.1222712;43.1199924;6.1222712;photon;Hôtel Les Orangers, Hyères, France;hotel/N/6015883199;0.0;OK
+Hotel Sonne;Fussen;Germany;47.5695219;10.6999681;47.5695219;10.6999681;photon;Hotel Sonne, Füssen, Deutschland;hotel/N/10948473154;0.0;OK
+Central City Hotel;Fussen;Germany;47.570044;10.6990684;47.570044;10.6990684;photon;Central City Hotel, Füssen, Deutschland;hotel/N/4171715889;0.0;OK
+Hotel NeuHaus;Dortmund;Germany;51.5124914;7.4731493;51.5124914;7.4731493;photon;Hotel Neuhaus, Dortmund, Deutschland;hotel/N/685507254;0.0;OK
+Hotel de la Poste;Cortina d'Ampezzo;Italy;46.5380951;12.1357961;46.5383181;12.1351282;photon;Hotel de la Poste, Cortina d'Ampezzo, Italia;hotel/N/5058358107;0.06;OK
+City Hotel;Bydgoszcz;Poland;53.1245461;18.0096285;53.1245427;18.0093486;photon;City Hotel, Bydgoszcz, Polska;hotel/R/6477591;0.02;OK
+Park Hotel;Bydgoszcz;Poland;53.1266242;17.9796089;53.1266242;17.9796089;photon;Park Hotel, Bydgoszcz, Polska;hotel/N/546563255;0.0;OK
+Hotel Wodnik;Bydgoszcz;Poland;53.1321027;17.9472538;53.1321027;17.9472538;photon;Hotel Wodnik, Bydgoszcz, Polska;hotel/N/5121238955;0.0;OK
+Hotel Excelsior;La Maddalena;Italy;41.2123712;9.4066976;41.2123234;9.4066059;photon;Hotel Excelsior, Madalena/La Maddalena, Italia;hotel/W/277778982;0.01;OK
+Grand Hotel;Dombay;Russia;43.2915112;41.6277435;43.2915112;41.6277435;photon;Grand hotel, Домбай, Россия;hotel/N/813822965;0.0;OK
+Onhann Hotel;Balikesir;Turkey;39.6567881;27.9061764;39.6567845;27.9060918;photon;Onhann Hotel, Balıkesir, Türkiye;hotel/W/538949072;0.01;OK
+Pensiunea Ana Maria;Baile Felix;Romania;46.9886695;21.9806376;46.9886695;21.9806376;photon;Pensiunea Ana Maria, Băile Felix, România;guest_house/N/2572815901;0.0;OK
+Hotel Vital;Baile Felix;Romania;46.9881666;21.9776868;46.9881666;21.9776868;photon;Hotel Vital, Sânmartin, România;hotel/N/10691382805;0.0;OK
+Hotel Ansgar;Esbjerg;Denmark;55.4667731;8.4508183;55.4667406;8.4511297;photon;Hotel Ansgar, Esbjerg, Danmark;hotel/R/19211897;0.02;OK
+The Townhouse;Tenby;United Kingdom (UK);51.6692165;-4.7022032;51.6692165;-4.7022032;photon;The Townhouse, Tenby, United Kingdom;guest_house/N/12198615526;0.0;OK
+Panorama Hotel;Tenby;United Kingdom (UK);51.6694291;-4.6997584;51.6694291;-4.6997584;photon;The Panorama Hotel, Tenby, United Kingdom;hotel/N/8444256727;0.0;OK
+Atlantic Hotel;Tenby;United Kingdom (UK);51.6690263;-4.7005471;51.6690263;-4.7005471;photon;Atlantic Hotel, Tenby, United Kingdom;hotel/N/3804670557;0.0;OK
+Hotel Central;Gerlos;Austria;47.2262429;12.0383269;47.2262137;12.0383268;photon;Hotel Central, Gerlos, Österreich;hotel/W/93310021;0.0;OK
+Hotel Victoria;Gerlos;Austria;47.22523;12.0342411;47.2252194;12.0342421;photon;Hotel Victoria, Gerlos, Österreich;hotel/W/228520976;0.0;OK
+Hotel Eden;Primiero San Martino di Castrozza;Italy;46.1752764;11.8327842;46.1752764;11.8327841;photon;Hotel Eden, Primiero San Martino di Castrozza, Italia;hotel/W/394685155;0.0;OK
+Hotel Astoria;Primiero San Martino di Castrozza;Italy;46.1752914;11.8300584;46.1752914;11.8300584;photon;Hotel Astoria, Primiero San Martino di Castrozza, Italia;hotel/N/2394661719;0.0;OK
+Hotel Maria Luisa;Burgos;Spain;42.346939;-3.6971771;42.346939;-3.6971771;photon;Hotel Maria Luisa, Burgos, España;hotel/N/1001453586;0.0;OK
+Hotel Cordon;Burgos;Spain;42.3418342;-3.6986726;42.3418342;-3.6986726;photon;Hotel Cordón, Burgos, España;hotel/N/646660709;0.0;OK
+Hotel Hirschen;Grindelwald;Switzerland;46.6234543;8.0383862;46.6234346;8.0383846;photon;Hotel Hirschen, Grindelwald, Schweiz/Suisse/Svizzera/Svizra;hotel/W/279367090;0.0;OK
+Hotel Post;Brunico;Italy;46.796325;11.9366176;46.796325;11.9366176;photon;Hotel Post, Bruneck - Brunico, Italia;hotel/N/1251625291;0.0;OK
+Upstalsboom Hotelresidenz & SPA Kuhlungsborn;Ostseebad Kuhlungsborn;Germany;54.1524947;11.7473581;54.152488;11.7474587;photon;Upstalsboom Hotelresidenz & SPA Kühlungsborn, Kühlungsborn, Deutschland;defibrillator/W/115711199;0.01;OK
+Hotel Adler;Ceske Budejovice;Czech Republic;48.9881252;14.4702434;48.9881248;14.4702437;photon;Hotel Adler, České Budějovice, Česko;hotel/W/80599140;0.0;OK
+Hotel Astoria;Alba Iulia;Romania;46.1224935;23.6221787;46.1224935;23.6221787;photon;Hotel Astoria, Sântimbru, România;restaurant/N/3229312982;0.0;OK
+Hotel La Perla;Roseto Degli Abruzzi;Italy;42.6850582;14.0100644;42.6850583;14.0100645;photon;Hotel La perla, Roseto degli Abruzzi, Italia;hotel/W/93989809;0.0;OK
+Hotel Astoria;Fermo;Italy;43.1598889;13.7175628;43.1598705;13.7174689;photon;Hotel Astoria, Fermo, Italia;hotel/W/720176546;0.01;OK
+Hotel Regina;Fatima;Portugal;39.6282278;-8.6745016;39.628254;-8.6745528;photon;Hotel Regina, Ourém, Portugal;hotel/W/493140604;0.01;OK
+Hotel Fatima;Fatima;Portugal;39.6309571;-8.6760622;39.7479416;-8.8208451;photon;B&B Hotel Leiria Fatima, Leiria, Portugal;hotel/W/1395102123;17.96;OK
+Villa Panorama;Lemnos;Greece;39.8671231;25.2784604;39.8671394;25.278504;photon;Villa Panorama, Δημοτική Ενότητα Μούδρου, Ελλάς;chalet/W/260760858;0.0;OK
+Metropol;Cheboksary;Russia;56.1284285;47.2132373;56.1284582;47.2133107;photon;Metropol, Чебоксары, Россия;restaurant/N/5247105979;0.01;OK
+Carlton Hotel;Ilfracombe;United Kingdom (UK);51.2095234;-4.1263635;51.2095209;-4.1263917;photon;The Carlton Hotel, North Devon, United Kingdom;hotel/W/374975614;0.0;OK
+Hotel Italia;Corvara in Badia;Italy;46.5514921;11.8738413;46.5551201;11.8704785;photon;Hotel Miramonti Corvara, Corvara - Corvara in Badia, Italia;hotel/N/11568878969;0.48;OK
+Hotel Astoria;Salsomaggiore Terme;Italy;44.8070712;10.0182243;44.8070668;10.0183297;photon;Hotel Astoria, Bagni di Tabiano, Italia;hotel/W/182264407;0.01;OK
+Hotel Elite;Salsomaggiore Terme;Italy;44.8173475;9.9783289;44.8173475;9.9783289;photon;Hotel Elite, Salsomaggiore Terme, Italia;hotel/W/182294017;0.0;OK
+Saint John Hotel;Selcuk;Turkey;37.9540639;27.3700798;37.9540639;27.3700798;photon;Saint John Hotel, Selçuk, Türkiye;hotel/N/3063551033;0.0;OK
+Hotel Victoria;Carovigno;Italy;40.7548941;17.707055;40.7548941;17.707055;photon;Hotel Victoria, Carovigno, Italia;hotel/N/1763186016;0.0;OK
+Hotel Elena;Stresa;Italy;45.8833705;8.5404515;45.8833705;8.5404515;photon;Hotel Elena, Stresa, Italia;hotel/N/2178973789;0.0;OK
+Hotel du Parc;Stresa;Italy;45.8814794;8.538519;45.8814794;8.538519;photon;Hotel Du Parc, Stresa, Italia;hotel/N/1317391747;0.0;OK
+Lido Hotel;Varazze;Italy;44.3580408;8.5715506;44.3580523;8.5715417;photon;Hotel Lido, Varazze, Italia;hotel/W/203202119;0.0;OK
+Hotel Riviera;Varazze;Italy;44.3610513;8.5764318;44.3611915;8.5762235;photon;Hotel Riviera, Varazze, Italia;fire_service_inlet/N/4800505614;0.02;OK
+Garden Hotel;Rennes;France;48.1088874;-1.6733929;48.1088874;-1.6733929;photon;Hôtel Garden, Rennes, France;hotel/N/5484975624;0.0;OK
+Hotel Du Palais;Dijon;France;47.3194716;5.042377;47.3194716;5.042377;photon;Hôtel du Palais, Dijon, France;hotel/N/6153979085;0.0;OK
+Hotel Mediterraneo;Estepona;Spain;36.4262665;-5.1422262;36.4262665;-5.1422262;photon;Hotel Mediterràneo, Estepona, España;hotel/N/10712226378;0.0;OK
+Hotel Puerta Gamboa;Vigo;Spain;42.2390103;-8.7250502;42.2390103;-8.7250502;photon;Hotel Puerta Gamboa, Vigo, España;hotel/N/13671593019;0.0;OK
+Hotel Europa;Livorno;Italy;43.5522515;10.3111691;43.5522515;10.3111691;photon;Hotel Europa, Livorno, Italia;hotel/N/1894706936;0.0;OK
+Hotel Universal;Livorno;Italy;43.5076418;10.3193033;43.5076418;10.3193033;photon;Hotel Universal, Livorno, Italia;hotel/W/75041626;0.0;OK
+Hotel Santa Lucia;Termoli;Italy;42.0039484;14.9956777;42.0039484;14.9956777;photon;Hotel Santa Lucia, Termoli, Italia;hotel/N/701173230;0.0;OK
+Hotel Post;Westendorf;Austria;47.4325298;12.215011;47.4325336;12.2150065;photon;Hotel Post, Westendorf, Österreich;hotel/W/148999820;0.0;OK
+Villa Daniela;Brodarica;Croatia;43.6797023;15.9170474;43.6797023;15.9170474;photon;"villa ""Daniela"", Šibenik, Hrvatska";guest_house/N/2512750491;0.0;OK
+Abbey House Hotel;Reading;United Kingdom (UK);51.4526161;-0.9952581;51.4525973;-0.9952608;photon;Abbey House Hotel, Reading, United Kingdom;hotel/W/98977890;0.0;OK
+Hotel Europa;Reggio Emilia;Italy;44.6940332;10.6415305;44.6940332;10.6415305;photon;Hotel Europa, Reggio Emilia, Italia;hotel/N/1227916855;0.0;OK
+Hotel Lido;Miskolc;Hungary;48.0648387;20.7462163;48.0648387;20.7462163;photon;Hotel Lido, Miskolc, Magyarország;hotel/N/3437148783;0.0;OK
+Alfa Hotel;Miskolc;Hungary;48.0605012;20.7532881;48.0605012;20.7532881;photon;Alfa Hotel, Miskolc, Magyarország;hotel/N/4408256863;0.0;OK
+The Lodge;Kenmare;Ireland;51.8813204;-9.5761135;51.8813204;-9.5761135;photon;The Lodge, Kenmare, Éire / Ireland;guest_house/N/5508459760;0.0;OK
+Apollon Hotel;Tolon;Greece;37.5226237;22.8605953;37.6344363;22.7301877;photon;Apollon Hotel, Άργος, Ελλάς;hotel/W/802141603;16.93;OK
+City Hotel;Derry;United Kingdom (UK);54.9993136;-7.3204123;54.999347;-7.3204486;photon;City Hotel, Derry, United Kingdom;hotel/W/81292105;0.0;OK
+Hotel Atlantico;Lugano;Switzerland;46.0068667;8.9673073;46.0068667;8.9673072;photon;Hotel Atlantico, Lugano, Schweiz/Suisse/Svizzera/Svizra;hotel/W/327631732;0.0;OK
+Hotel Dania;Fehmarn;Germany;54.4971498;11.2200769;54.4971491;11.2200761;photon;Hotel Dania, Fehmarn, Deutschland;hotel/W/123460124;0.0;OK
+Indian House;Zelenogradsk;Russia;54.9560272;20.4673858;54.9560272;20.4673858;photon;Зеленоградск, Россия;guest_house/N/8401956917;0.0;OK
+Hostal Los Pinos;Barbate;Spain;36.2007057;-6.0353685;36.2007057;-6.0353685;photon;Hostal los Pinos, Barbate, España;hotel/N/9118069482;0.0;OK
+Hotel Central;Torrevieja;Spain;37.9772136;-0.6794247;37.9772042;-0.67942;photon;Hotel Central, Torrevieja, España;hotel/W/693875978;0.0;OK
+Paradise;Kobleve;Ukraine;46.6278258;31.2013504;46.6612599;31.2085145;photon;Коблеве, Україна;village/R/8759575;3.76;OK
+Apollo Hotel;Vasiliki;Greece;35.1881428;25.7151311;35.1881428;25.7151311;photon;Apollon Hotel, Δημοτική Ενότητα Αγίου Νικολάου, Ελλάς;hotel;0.0;OK
+Golden Lion;Signagi;Georgia;41.6195431;45.921855;41.6195431;45.921855;photon;Golden Lion, სიღნაღი, საქართველო;guest_house/N/9040257017;0.0;OK
+Hotel Terminal;Castrignano del Capo;Italy;39.7969548;18.3568574;39.7969582;18.3568528;photon;Hotel Terminal, Castrignano del Capo, Italia;hotel/W/320945402;0.0;OK
+Hotel Igea;Brescia;Italy;45.5336406;10.2123557;45.5336406;10.2123557;photon;Hotel Igea, Brescia, Italia;hotel/N/10973319585;0.0;OK
+Hotel Zur Post;Bernkastel-Kues;Germany;49.9127724;7.0112416;49.9128006;7.0112469;photon;Hotel zur Post, Mülheim an der Mosel, Deutschland;hotel/W/469387429;0.0;OK
+Hotel Diana;Tossa de Mar;Spain;41.7188385;2.932496;41.7188385;2.932496;photon;Hotel Diana, Tossa de Mar, España;hotel/N/3605931334;0.0;OK
+Hotel Windsor;Tossa de Mar;Spain;41.7200653;2.9309974;41.7200663;2.930994;photon;Hotel Windsor, Tossa de Mar, España;hotel/W/173988388;0.0;OK
+Hotel Continental;Tossa de Mar;Spain;41.7220777;2.9278283;41.7220777;2.9278283;photon;Hotel Continental, Tossa de Mar, España;hotel/N/944706385;0.0;OK
+Hotel Florida;Tossa de Mar;Spain;41.7212521;2.9327258;41.7212521;2.9327258;photon;Hotel Florida, Tossa de Mar, España;hotel/N/1882916836;0.0;OK
+Hotel Akureyri;Akureyri;Iceland;65.6911063;-18.1067857;65.6790144;-18.1004901;photon;Berjaya Akureyri Hotel, Akureyri, Ísland;hotel/N/13410849064;1.38;OK
+The Corner House Hotel;Taunton;United Kingdom (UK);51.0134405;-3.110721;51.0134427;-3.1107364;photon;Corner House Hotel, Taunton, United Kingdom;hotel/W/145665544;0.0;OK
+Hotel Atlas;Alba Adriatica;Italy;42.8187342;13.936721;42.8187342;13.936721;photon;Hotel Atlas, Alba Adriatica, Italia;hotel/N/12091615457;0.0;OK
+Hotel Lido;Alba Adriatica;Italy;42.6848015;14.0108695;42.8250131;13.9346404;photon;Hotel Lido, Alba Adriatica, Italia;hotel/W/204938702;16.79;OK
+Hotel Eden;Alba Adriatica;Italy;42.9704743;13.877838;42.8176959;13.9368761;photon;Hotel Eden, Alba Adriatica, Italia;hotel/N/5806076754;17.66;OK
+Hotel Eva;Alba Adriatica;Italy;42.8225632;13.9317592;42.8225632;13.9317592;photon;Hotel Eva, Alba Adriatica, Italia;hotel/N/12091940742;0.0;OK
+Hotel La Pergola;Alba Adriatica;Italy;42.8248585;13.9333652;42.8248585;13.9333652;photon;Hotel La Pergola, Alba Adriatica, Italia;hotel/N/3563476593;0.0;OK
+Hotel President;Alba Adriatica;Italy;42.9148109;13.902045;42.8313308;13.9327933;photon;Hotel President, Alba Adriatica, Italia;hotel/W/788127520;9.61;OK
+Napoleon Hotel;Gabicce Mare;Italy;43.9169707;12.9129734;43.9654078;12.7634687;photon;Hotel Adler, Gabicce Mare, Italia;hotel/N/2514049911;13.13;OK
+Hotel Alexander;Gabicce Mare;Italy;43.9688792;12.7242904;43.9661953;12.7602123;photon;Hotel Gloria, Gabicce Mare, Italia;hotel/N/5826971337;2.89;OK
+Hotel Lido;Gabicce Mare;Italy;43.9675185;12.754672;43.9674906;12.7546381;photon;Hotel Lido, Gabicce Mare, Italia;cafe/N/12053999015;0.0;OK
+Hotel Plaza;Gabicce Mare;Italy;43.9690424;12.726726;43.9661953;12.7602123;photon;Hotel Gloria, Gabicce Mare, Italia;hotel/N/5826971337;2.7;OK
+Hotel Suisse;Marina di Pietrasanta;Italy;43.9211319;10.2057946;43.9211319;10.2057946;photon;Hotel Suisse, Marina di Pietrasanta, Italia;hotel/N/3701070605;0.0;OK
+Savoy Hotel;Marina di Pietrasanta;Italy;43.9123888;10.2119357;43.9123888;10.2119357;photon;Savoy Hotel, Marina di Pietrasanta, Italia;hotel/N/4461727937;0.0;OK
+Hotel Alte Post;Grossarl;Austria;47.2374221;13.2010706;47.237332;13.2015502;photon;Hotel Alte Post, Großarl, Österreich;restaurant/N/1140978355;0.04;OK
+Johanneshof;Grossarl;Austria;47.2482138;13.1949559;47.2374042;13.2013974;photon;Großarl, Österreich;village/R/919120;1.3;OK
+Alsos House;Kalambaka;Greece;39.710267;21.6300309;39.710267;21.6300309;photon;Καλαμπάκα, Ελλάς;hotel/N/11816546169;0.0;OK
+The County Hotel;Hexham;United Kingdom (UK);54.8655764;-1.9347907;54.9700363;-2.0976927;photon;County Hotel, Hexham, United Kingdom;hotel/W/515085383;15.6;OK
+Das Kleine Hotel;Weimar;Germany;50.978531;11.3149256;50.9785312;11.3148716;photon;Das kleine Hotel, Weimar, Deutschland;hotel/W/198159456;0.0;OK
+Hotel Astoria;Courmayeur;Italy;45.8183338;6.9640676;45.8183338;6.9640676;photon;Hotel Astoria, Courmayeur, Italia;hotel/N/6565047378;0.0;OK
+Hotel Cruzeiro;Terceira;Portugal;38.6567902;-27.2160171;38.6568124;-27.2159435;photon;Hotel Cruzeiro, Angra do Heroismo, Portugal;restaurant/W/621316472;0.01;OK
+Hotel Dania;Silkeborg;Denmark;56.1696017;9.5494244;56.1696017;9.5494244;photon;Hotel Dania, Silkeborg, Danmark;hotel/N/3329539853;0.0;OK
+Hotel Eden;Toscolano-Maderno;Italy;45.4926263;10.6069018;45.6311113;10.5887463;photon;Maderno hotel Rock, Toscolano Maderno, Italia;bus_stop/N/8953454568;15.46;OK
+Divan Adana;Adana;Turkey;36.9918935;35.3240092;36.9918935;35.3240092;photon;Divan, Adana, Türkiye;hotel/N/5825242454;0.0;OK
+Capricho;Cala Ratjada;Spain;39.7136097;3.4614307;39.7136172;3.4616571;photon;Capricho, Cala Ratjada, España;hotel/W/279088946;0.02;OK
+Hotel City;Montesilvano;Italy;42.5168747;14.1608145;42.5168747;14.1608145;photon;City, Montesilvano, Italia;hotel/N/355612788;0.0;OK
+Kurhotel Alexa;Bad Worishofen;Germany;48.0022758;10.5874851;48.0022758;10.5874851;photon;Kurhotel Alexa, Bad Wörishofen, Deutschland;hotel/N/8906966730;0.0;OK
+Hotel Zur Post;Alpbach;Austria;47.3992442;11.9423922;47.3992486;11.9423891;photon;Hotel zur Post, Alpbach, Österreich;hotel/W/85069603;0.0;OK
+Hotel Sonne;Rothenburg;Germany;49.3770956;10.1803126;49.3770742;10.1803207;photon;Hotel Sonne, Rothenburg ob der Tauber, Deutschland;hotel/W/201417302;0.0;OK
+Albergo Italia;Urbino;Italy;43.7254161;12.6360782;43.7254161;12.6360782;photon;Albergo Italia, Urbino, Italia;hotel/N/9860931070;0.0;OK
+Hotel Victoria;Stavanger;Norway;58.973136;5.7303845;58.973139;5.7303837;photon;Victoria Hotel, Stavanger, Norge;hotel/W/32141897;0.0;OK
+Centrum Hotel;Debrecen;Hungary;47.5325504;21.6252423;47.5325504;21.6252423;photon;Hotel Centrum, Debrecen, Magyarország;hotel/N/2603639143;0.0;OK
+Katerina Hotel;Agios Prokopios;Greece;39.5336887;19.9184984;37.0748;25.3517;photon-approx;Agios Prokopios (centro) - sem POI exacto no OSM;approx (no exact POI);83.99;APPROX
+Hotel Lido;Ledro;Italy;45.808256;10.7924747;45.8855536;10.7358267;photon;Hotel Lido, Ledro, Italia;hotel/W/84525622;9.65;OK
+Rosengarten;Dobbiaco;Italy;46.7306299;12.2299367;46.7306299;12.2299367;photon;Rosengarten, Toblach - Dobbiaco, Italia;hotel/N/7166189265;0.0;OK
+Apollon Hotel;Paleokastritsa;Greece;39.6726143;19.7029272;39.6726143;19.7029272;photon;Hotel Apollon, Παλαιοκαστρίτσα, Ελλάς;hotel/N/11782686569;0.0;OK
+Hotel Italia;Lerici;Italy;44.0745544;9.9180282;44.0720277;9.9119902;photon;Europa Grand Hotel - Lerici, Lerici, Italia;hotel/W/205904988;0.56;OK
+Villa Luisa;Timmendorfer Strand;Germany;53.9920892;10.793935;53.9920905;10.7939146;photon;Villa Luisa, Timmendorfer Strand, Deutschland;guest_house/W/251056006;0.0;OK
+Park-Hotel;Timmendorfer Strand;Germany;54.0007003;10.7780915;54.0007115;10.7780789;photon;Park-Hotel, Timmendorfer Strand, Deutschland;hotel/W/239431888;0.0;OK
+Hotel Post;Lermoos;Austria;47.3981041;10.8877341;47.3981041;10.8877341;photon;Hotel Post, Lermoos, Österreich;hotel/N/10015456922;0.0;OK
+Hotel Regina;Obergurgl;Austria;46.9610616;11.008701;46.8707545;11.0286197;photon;Hotel Regina, Sölden, Österreich;yes/W/92019168;10.16;OK
+Columbus;Rowy;Poland;54.6603971;17.0410429;54.6603972;17.041043;photon;Columbus, Rowy, Polska;hotel/W/172279768;0.0;OK
+The Limes;Telford;United Kingdom (UK);52.7034833;-2.5219962;52.703498;-2.5219998;photon;The Limes, Telford, United Kingdom;guest_house/W/1222269574;0.0;OK
+Hotel Metropol;Diano Marina;Italy;43.901882;8.0737877;43.901882;8.0737877;photon;Hotel Metropol, Diano Marina, Italia;hotel/N/8445113414;0.0;OK
+Hotel Splendid;Diano Marina;Italy;43.9175652;8.0917205;43.9175652;8.0917205;photon;Hotel Splendid, Diano Marina, Italia;hotel/N/301526342;0.0;OK
+Hotel Capri;Diano Marina;Italy;43.9138133;8.0870948;43.9138133;8.0870948;photon;Hotel Capri, Diano Marina, Italia;hotel/N/8449408611;0.0;OK
+Hotel Am Dom;Bamberg;Germany;49.8912176;10.8842865;49.8912176;10.8842865;photon;Hotel Am Dom, Bamberg, Deutschland;hotel/N/1383026677;0.0;OK
+Palms Hotel;Mauritius;Mauritius;-20.2645689;57.4804538;-20.2645684;57.4804538;photon;Palms Hotel, Quatre Bornes, Mauritius;hotel/W/510530201;0.0;OK
+Ambassador Hotel;Addis Ababa;Ethiopia;8.9918957;38.7884052;9.0183573;38.7541796;photon;Ambassador to Arat Kilo (Tourist Hotel), አዲስ አበባ / Addis Ababa, ኢትዮጵያ;taxi/N/847244493;4.77;OK
+Royal Hotel;Durban;South Africa;-29.8595071;31.0258936;-29.8595625;31.025988;photon;Royal Hotel, Durban, South Africa;hotel/W/580484220;0.01;OK
+Rainbow Hotel;Dar es Salaam;Tanzania;-6.8192664;39.2858307;-6.8193027;39.28593;photon;Rainbow Hotel, Dar es Salaam, Tanzania;yes/W/635184348;0.01;OK
+The Nest;Kigali;Rwanda;-1.9534437;30.0823989;-1.9600387;30.0850585;photon;The Shop - Kigali, Kigali, Rwanda;retail/W/376230556;0.79;OK
+Le Meridien Cairo Airport;Cairo;Egypt;30.1137185;31.3953464;30.1137185;31.3953464;photon;Le Méridien Cairo Airport, Cairo, مصر;hotel/N/3887776725;0.0;OK
+Sofitel Abidjan Hotel Ivoire;Abidjan;Ivory Coast;5.326457;-4.0047983;5.3264778;-4.0043241;photon;Sofitel Abidjan Hôtel Ivoire, Cocody, Côte d’Ivoire;hotel/W/429058299;0.05;OK
+Townhouse Hotel;Cape Town Central;South Africa;-33.9261389;18.4218885;-33.9261389;18.4218885;photon;Townhouse Hotel, Cape Town, South Africa;hotel/N/60071907;0.0;OK
+Waterfront Lodge;Knysna;South Africa;-34.0391967;23.0153526;-34.0391967;23.0153526;photon;Waterfront Lodge, Knysna, South Africa;guest_house/N/6242602209;0.0;OK
+Hotel Timoulay & Spa Agadir;Agadir;Morocco;30.3967183;-9.5939441;30.3967183;-9.5939441;photon;Hotel Timoulay, Agadir ⴰⴳⴰⴷⵉⵔ أكادير, Maroc ⵍⵎⵖⵔⵉⴱ المغرب;hotel/N/1834292587;0.0;OK
+Mai Guest House;Bloemfontein;South Africa;-29.146743;26.2026373;-29.146743;26.2026373;photon;Mariki Guest House, Bloemfontein, South Africa;guest_house/N/10801020507;0.0;OK
+Palm Lodge;Bloemfontein;South Africa;-29.1070333;26.19602;-29.1070333;26.19602;photon;Palm Lodge, Bloemfontein, South Africa;hotel/N/6093252272;0.0;OK
+City Lodge;Lusaka;Zambia;-15.4174856;28.3037285;-15.4174856;28.3037285;photon;City Lodge, Lusaka, Zambia;hotel/N/5639103722;0.0;OK
+Bird Nest Backpackers;Lusaka;Zambia;-15.435658;28.3393698;-15.4356587;28.3393713;photon;Birdnest Backpackers, Woodlands, Zambia;hostel/W/495005751;0.0;OK
+Grand Rotana Resort & Spa;Sharm El Sheikh;Egypt;27.9387379;34.3826088;27.9387233;34.3820142;photon;Grand Rotana Resort & Spa, شرم الشيخ, مصر;hotel/R/12162821;0.06;OK
+Ibis Douala;Douala;Cameroon;4.0392409;9.6875931;4.0392329;9.6875927;photon;Ibis, Douala I, Cameroun;hotel/W/299539844;0.0;OK
+Fleur de Sel;Mahe Island;Seychelles;-4.7462092;55.5157583;-4.7462393;55.5157404;photon;Fleur de Sel, Sesel;chalet;0.0;OK
+Travelodge;Gaborone;Botswana;-24.630396;25.9019745;-24.6303805;25.902233;photon;Travelodge, Gaborone, Botswana;hotel/W/429282236;0.03;OK
+Concorde Hotel;Owerri;Nigeria;5.4725864;7.0198747;5.4725116;7.0198725;photon;Concorde Hotel, Owerri, Nigeria;hotel/W/626304183;0.01;OK
+Hotel Casablanca;Casablanca;Morocco;33.5850402;-7.6107526;33.5879443;-7.6277706;photon;Radisson Hotel Casablanca Gauthier La Citadelle, Casablanca, Maroc ⵍⵎⵖⵔⵉⴱ المغرب;hotel/N/13607593158;1.61;OK
+Honey Badger Lodge;Moshi;Tanzania;-3.3511084;37.3838143;-3.3511084;37.3838143;photon;Honey Badger LODGE, Msaranga Street, Tanzania;guest_house/N/2510140989;0.0;OK
+Keys Hotel;Moshi;Tanzania;-3.3322156;37.3623716;-3.3321777;37.3622923;photon;Keys Hotel, Korini Kati, Tanzania;hotel/W/383445168;0.01;OK
+Hotel du Lac;Cotonou;Benin;6.3591093;2.4450372;6.3591093;2.4450372;photon;Hôtel du lac, Cotonou, Bénin;hotel/N/2773800994;0.0;OK
+CocoNuts;Grand Baie;Mauritius;-19.9996013;57.5838136;-19.9996013;57.5838136;photon;Coconuts, Grand Baie VCA, East, Mauritius;guest_house/N/4605166492;0.0;OK
+Hilton Yaounde;Yaounde;Cameroon;3.8645784;11.5156674;3.8645784;11.5156674;photon;Hilton Yaoundé, Yaoundé, Cameroun;hotel/N/6310721514;0.0;OK
+Central Hotel;Yaounde;Cameroon;3.8595282;11.5185731;3.8595359;11.5185731;photon;Central Hotel, Yaoundé, Cameroun;hotel/W/192837930;0.0;OK
+Casa Perleta;Chefchaouen;Morocco;35.1699934;-5.263992;35.1699934;-5.263992;photon;Casa Perleta, Chefchaouen ⵛⴼⵛⴰⵡⵏ شفشاون, Maroc ⵍⵎⵖⵔⵉⴱ المغرب;hotel/N/3795380375;0.0;OK
+Imperial Hotel;Kisumu;Kenya;-0.1027995;34.7520198;-0.1028472;34.7519821;photon;Imperial Hotel Express, Kisumu, Kenya;hotel/W/324327988;0.01;OK
+Villa Paradiso;Madibeng;South Africa;-25.7190181;27.8936902;-25.7190181;27.8936902;photon;Villa Paradiso, Madibeng Local Municipality, South Africa;hotel/N/5657109126;0.0;OK
+Hotel Continental;Tangier;Morocco;35.7875082;-5.8095119;35.7875191;-5.8095229;photon;Hotel Continental, Tanger ⵜⵉⵏ ⵉⴳⴳⵉ طنجة, Maroc ⵍⵎⵖⵔⵉⴱ المغرب;hotel/W/359101160;0.0;OK
+Rembrandt Hotel;Tangier;Morocco;35.7799135;-5.8084522;35.7799162;-5.8084523;photon;Hotel Rembrandt, Tanger ⵟⴰⵏⵊⴰ طنجة, Maroc ⵍⵎⵖⵔⵉⴱ المغرب;hotel/W/360079712;0.0;OK
+Villa Mandarine;Rabat;Morocco;33.9648683;-6.8477025;33.9648683;-6.8477025;photon;Villa Mandarine, Rabat ⵔⴱⴰⵟ الرباط, Maroc ⵍⵎⵖⵔⵉⴱ المغرب;hotel/N/528061362;0.0;OK
+Hotel Santiago;Santiago;Cape Verde;14.9086856;-23.517942;14.9086856;-23.517942;photon;Hotel Santiago, Praia, Cabo Verde;hotel/N/2641826041;0.0;OK
+Dar Sidi Bounou;M'Hamid;Morocco;29.8245429;-5.677888;29.8245429;-5.677888;photon;Dar Sidi Bounou, M'Hamid El Ghizlane ⵎⵃⴰⵎⵉⴷ ⵍⵖⵯⵣⵍⴰⵏ امحاميد الغزلان, Maroc ⵍⵎⵖⵔⵉⴱ المغرب;guest_house/N/11369160744;0.0;OK
+Hotel Kasbah Azalay;M'Hamid;Morocco;29.8211009;-5.718188;29.8211009;-5.718188;photon;Hotel Kasbah Azalay, M'Hamid El Ghizlane ⵎⵃⴰⵎⵉⴷ ⵍⵖⵯⵣⵍⴰⵏ امحاميد الغزلان, Maroc ⵍⵎⵖⵔⵉⴱ المغرب;hotel/N/5506469596;0.0;OK
+Mango Beach House;Jambiani;Tanzania;-6.305202;39.5430096;-6.305202;39.5430096;photon;Mango Beach House, Jambiani, Tanzania;guest_house/N/5305114813;0.0;OK
+Hotel Continental;Luanda;Angola;-8.8108913;13.2254168;-8.8108913;13.2254168;photon;Hotel Continental, Luanda, Angola;hotel/N/2026106457;0.0;OK
+Peppers Broadbeach;Gold Coast;Australia;-28.0307164;153.4319999;-28.0307164;153.4319999;photon;Peppers Broadbeach, Gold Coast, Australia;hotel/N/2443908978;0.0;OK
+Garden Hotel;Christchurch;New Zealand;-43.4992064;172.6637251;-43.4990373;172.6637255;photon;Garden Hotel, Christchurch, New Zealand / Aotearoa;hotel/W/1079420190;0.02;OK
+Grand Pacific Hotel;Viti Levu;Fiji;-18.1470185;178.422521;-18.1471566;178.4227537;photon;Grand Pacific Hotel, Suva, Viti;hotel/W/398960340;0.03;OK
+Holiday Inn Suva;Viti Levu;Fiji;-18.145607;178.4227478;-18.1453357;178.4227503;photon;Holiday Inn Suva, Suva, Viti;hotel/W/23708588;0.03;OK
+Mayfair Hotel;Adelaide;Australia;-34.9232389;138.5991939;-34.9232274;138.5991938;photon;Mayfair Hotel, Adelaide, Australia;hotel/W/227070038;0.0;OK
+Adelaide Central YHA;Adelaide;Australia;-34.9262748;138.5945679;-34.9262748;138.594568;photon;Adelaide Central YHA, Adelaide, Australia;hostel/W/253753048;0.0;OK
+Pacific Resort Rarotonga;Rarotonga;Cook Islands;-21.2562816;-159.7306641;-21.2552238;-159.731552;photon;Pacific Resort, Ngatangiia, Kūki 'Āirani;bus_stop/N/874388620;0.15;OK
+Hyatt Regency Saipan;Saipan;Mariana Islands;13.5127279;144.8048726;15.21631;145.7169;photon;Hyatt Regency Saipan, Garapan, United States;hotel/node (exact name match);213.39;OK_EXACT
+The Moorings;Wanaka;New Zealand;-44.6929462;169.1362704;-44.6929462;169.1362704;photon;The Moorings, Wānaka, New Zealand / Aotearoa;motel/N/10864292817;0.0;OK
+Dave Parker Eco Lodge;Upolu;Samoa;-13.8815125;-171.8237001;-13.8814673;-171.8237563;photon;Dave Parker's Eco Lodge, Leaupani, Sāmoa;alpine_hut/W/1472191401;0.01;OK
+Abbey Beach Resort;Busselton;Australia;-33.6587935;115.2742119;-33.6582992;115.2507137;photon;Busselton Holiday Houses by the Beach, Australia;chalet/W/1299928925;2.18;OK
+Rydges Port Macquarie;Port Macquarie;Australia;-31.4271231;152.8983533;-31.4270821;152.8983528;photon;Sails Port Macquarie by Rydges, Port Macquarie, Australia;hotel/W/379282323;0.0;OK
+Beachside Backpackers;Port Macquarie;Australia;-31.4321;152.9143476;-31.432651;152.9002327;photon;Ozzie Pozzie Backpackers Port Macquarie YHA, Port Macquarie, Australia;hostel/N/4251943720;1.34;OK
+Samoan Outrigger Hotel;Apia;Samoa;-13.8445568;-171.75983;-13.8445537;-171.7598308;photon;Samoan Outrigger Hotel, Tanugamanono, Sāmoa;hotel/W/1125187998;0.0;OK
+Le Alaimoana Hotel;Apia;Samoa;-13.8337069;-171.753186;-13.8337069;-171.753186;photon;Le Alaimoana Hotel, Moata'a, Sāmoa;hotel/N/1980446088;0.0;OK
+Dave Parker Eco Lodge;Apia;Samoa;-13.8815125;-171.8237001;-13.8814673;-171.8237563;photon;Dave Parker's Eco Lodge, Leaupani, Sāmoa;alpine_hut/W/1472191401;0.01;OK
+Hotel Elisa;Apia;Samoa;-13.8260664;-171.7738231;-13.8260272;-171.7738261;photon;Hotel Elisa, Sogi, Sāmoa;hotel/R/19188284;0.0;OK
+Stay Margaret River;Margaret River;Australia;-33.9525135;115.0746846;-33.9175703;115.0414204;photon;Fair harvest permaculture farm stay, Margaret River, Australia;camp_site/N/6326617785;4.95;OK
+Gateway Motel;Picton;New Zealand;-41.2897304;174.0074287;-41.2897304;174.0074287;photon;Gateway Motel, Picton, New Zealand / Aotearoa;motel/N/5616139656;0.0;OK
+Captain Cook Apartments;Tongatapu Island;Tonga;-21.1276113;-175.2094912;-21.1276113;-175.2094912;photon;Captain Cook's Appartments, Hōfoa, Tonga;hotel/N/3436794529;0.0;OK
+Emerald Hotel;Tongatapu Island;Tonga;-21.1347759;-175.1955419;-21.1347673;-175.195535;photon;Emerald Hotel, Nukuʻalofa, Tonga;hotel/W/369334237;0.0;OK
+Alma Motel;Oamaru;New Zealand;-45.1123361;170.9097122;-45.1123304;170.9097139;photon;Alma Motel, New Zealand / Aotearoa;motel/W/1413604483;0.0;OK
+Sandpiper Motel;Apollo Bay;Australia;-38.7515943;143.6681773;-38.7515943;143.6681773;photon;Sandpiper Motel, Apollo Bay, Australia;motel/N/2077031933;0.0;OK

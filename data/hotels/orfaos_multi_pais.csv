@@ -1,0 +1,689 @@
+hotel_id,nome,old_destino_id,fonte,brackets
+261348,Berlin Marathon,19740,gmaps_not_found,
+261349,Boston Marathon,19740,gmaps_not_found,
+261350,Chicago Marathon,19740,gmaps_not_found,
+261351,London Marathon,19740,gmaps_not_found,
+261352,New York City Marathon,19740,gmaps_not_found,
+261353,Tokyo Marathon,19740,gmaps_not_found,
+261354,Amsterdam Marathon,19740,gmaps_not_found,
+261355,Barcelona Marathon,19740,gmaps_not_found,
+261356,Beijing Marathon,19740,gmaps_not_found,
+261357,Dubai Marathon,19740,gmaps_not_found,
+261358,Finlandia Marathon,19740,gmaps_not_found,
+261359,Helsinki City Marathon,19740,gmaps_not_found,
+261360,Hong Kong Marathon,19740,gmaps_not_found,
+261361,Istanbul Marathon,19740,gmaps_not_found,
+261362,Mexico City International Marathon,19740,gmaps_not_found,
+261363,Osaka Marathon,19740,gmaps_not_found,
+261364,Paavo Nurmi Marathon,19740,gmaps_not_found,
+261365,Paris Marathon,19740,gmaps_not_found,
+261366,Prague Marathon,19740,gmaps_not_found,
+261367,Maraton do Rio,19740,gmaps_not_found,
+261368,Rome Marathon,19740,gmaps_not_found,
+261369,Rotterdam Marathon,19740,gmaps_not_found,
+261370,Shanghai Marathon,19740,gmaps_not_found,
+261371,Sydney Marathon,19740,gmaps_not_found,
+261372,Xiamen International Marathon,19740,gmaps_not_found,
+262292,Maralinga atomic test site,19874,local,
+262302,"Hanford Site near [[Richland]], Washington, USA",19874,local,Richland
+262304,Memorial complex of Obninsk Nuclear Power Plant,19874,local,
+262309,"National Museum of Nuclear Science & History in [[Albuquerque]], USA",19874,local,Albuquerque
+262310,"Savannah River Site, South Carolina, USA",19874,local,
+262320,TRIGA Mark I,19874,local,
+262324,The Ignalina Nuclear Power Plant,19874,local,
+262325,Bataan Nuclear Power Plant,19874,local,
+262326,Kalkar,19874,local,
+262327,Zwentendorf Nuclear Power Plant,19874,local,
+262328,"Żarnowiec, [[Poland]]",19874,local,Poland
+279326,Hamlet and Susan,21218,local,
+279327,Ira,21218,hotel_centroid,
+279328,Artur and Sveta,21218,local,
+279329,Nikolai,21218,hotel_centroid,
+279330,Vardan,21218,local,
+279331,Armo,21218,hotel_centroid,
+279332,Aro,21218,hotel_centroid,
+279333,Officer Samvel,21218,hotel_centroid,
+279334,Samvel the younger,21218,hotel_centroid,
+279335,Tiko,21218,hotel_centroid,
+279336,Vasak and Tatevik,21218,local,
+279337,Henrikh and Madlen Stepanian,21218,local,
+279338,Mardik sister,21218,hotel_centroid,
+279339,Surik and Zamira Hayrapetian,21218,local,
+279341,Guesthouse Nadejda,21218,hotel_centroid,
+279342,Ulmar,21218,hotel_centroid,
+279343,Alvart Dadayan,21218,local,
+279344,Gago,21218,hotel_centroid,
+279345,Nver Dadayan,21218,local,
+279346,Albert and Laura,21218,local,
+279347,Armen and Luisa,21218,local,
+279348,Elmira (Emma) Hairapetian,21218,local,
+279349,Suren,21218,hotel_centroid,
+279350,Artur and Anahit Babayan,21218,local,
+279351,Onnik and Amalia Balassanian,21218,local,
+279352,Sergey and Nadia Harutyunian,21218,local,
+279353,Narimon House,21218,hotel_centroid,
+279354,Artush Mangasaryan,21218,local,
+279355,Gagik Zakharyan,21218,local,
+279356,Fedya Ohanyan,21218,local,
+279357,Valo and Mareta Ohanyan,21218,local,
+279358,Vano (Vanya) and Nurvard,21218,local,
+279359,Vazgen and Dzovinar Baghdasarian,21218,local,
+279360,Ara and Inga Adamian,21218,local,
+279361,Elmard and Hranush (Sonia) Sarafian,21218,local,
+279362,Vova and Alina Begnazarian,21218,local,
+279363,Gegham Badalyan,21218,local,
+279364,Hayk and Mrs. Alvart Danielian,21218,local,
+279365,Lova and Mrs. Maret,21218,local,
+282532,[[Qingdao]],21496,gmaps_not_found,Qingdao
+282533,[[Brest (Belarus),21496,gmaps_not_found,
+282534,[[Ypres]],21496,gmaps_not_found,Ypres
+282535,[[Sarajevo]],21496,gmaps_not_found,Sarajevo
+282536,[[Verdun]],21496,gmaps_not_found,Verdun
+282537,Vimy Ridge,21496,gmaps_not_found,
+282538,Forest of [[Compiègne]],21496,gmaps_not_found,Compiègne
+282539,Lochnagar mine,21496,gmaps_not_found,
+282540,[[Kiel]],21496,gmaps_not_found,Kiel
+282541,Manfred von Richthofen's grave,21496,gmaps_not_found,
+282542,Battle of Tannenberg,21496,gmaps_not_found,
+282543,[[Gallipoli]],21496,gmaps_not_found,Gallipoli
+282544,Historial of the Great War Péronne,21496,gmaps_not_found,
+282545,Historial of the Great War Thiepval,21496,gmaps_not_found,
+282546,Somme Trench Museum,21496,gmaps_not_found,
+282547,Museum of the Great War Pays de Meaux,21496,gmaps_not_found,
+282548,U.S. National WWI Museum and Memorial,21496,gmaps_not_found,
+282549,Fort Wohlgemuth & World War I Museum,21496,gmaps_not_found,
+282550,First World War Chinese Laborers Memorial,21496,gmaps_not_found,
+284661,"Great Salt Lake, [[Utah]]",21626,local,Utah
+284662,[[La Macarena]],21626,hotel_centroid,La Macarena
+284663,Western Lake Erie,21626,hotel_centroid,
+428217,Hotel Herzogs Park,21626,hotel_centroid,
+428218,Hotel Krone,21626,hotel_centroid,
+287739,Abdeen Palace,21867,hotel_centroid,
+287740,Ras el Tin Palace,21867,hotel_centroid,
+287741,Menelik Palace,21867,hotel_centroid,
+287742,Fasil Ghebbi,21867,hotel_centroid,
+287743,Forbidden City,21867,hotel_centroid,
+287744,Gyeongbokgung,21867,hotel_centroid,
+287745,Changdeokgung,21867,hotel_centroid,
+287746,Topkapı Palace,21867,hotel_centroid,
+287747,Dolmabahçe Palace,21867,hotel_centroid,
+287748,Narayanhiti Palace,21867,local,
+287749,Mysore Palace,21867,hotel_centroid,
+287750,Red Fort,21867,hotel_centroid,
+287751,Royal Palace of Kandy,21867,hotel_centroid,
+287752,[[Isfahan#Palaces,21867,hotel_centroid,
+287753,[[Samarkand#Q1373583,21867,local,
+287754,"Royal Palace, Luang Prabang",21867,hotel_centroid,
+287755,Potala Palace,21867,hotel_centroid,
+287756,[[Babylon]],21867,hotel_centroid,Babylon
+287757,Schloss Neuschwanstein,21867,hotel_centroid,
+287758,Potsdam and Berlin,21867,hotel_centroid,
+287759,Palace of Versailles,21867,hotel_centroid,
+287760,Palace of Fontainebleau,21867,hotel_centroid,
+287761,Moscow Kremlin,21867,hotel_centroid,
+287762,Peterhof Palace,21867,hotel_centroid,
+287763,State Hermitage Museum,21867,hotel_centroid,
+287764,Catherine Palace,21867,hotel_centroid,
+287765,Royal Castle of Warsaw,21867,local,
+287766,[[Kraków/Old Town,21867,hotel_centroid,
+287767,Hofburg,21867,hotel_centroid,
+287768,[[Budapest/Budavár,21867,local,
+287769,[[Prague/Castle and Lesser Town,21867,hotel_centroid,
+287770,Royal Palace of Turin,21867,hotel_centroid,
+287771,Quirinal Palace,21867,hotel_centroid,
+287772,Palazzo Pitti,21867,hotel_centroid,
+287773,Royal Palace of Caserta,21867,hotel_centroid,
+287774,Dresden Castle,21867,hotel_centroid,
+287775,Palace of Ajuda,21867,hotel_centroid,
+287776,Palace of Queluz,21867,hotel_centroid,
+287777,Royal Palace of Romania,21867,hotel_centroid,
+287778,Cotroceni Palace,21867,hotel_centroid,
+428515,Premier Inn Newport Telford Hotel,21867,hotel_centroid,
+289207,"[[Amsterdam]], Netherlands",22000,local,Amsterdam
+289209,"[[Cambridge]], England",22000,local,Cambridge
+289210,"[[Edinburgh]], Scotland",22000,local,Edinburgh
+289211,"[[Glasgow]], Scotland",22000,local,Glasgow
+289212,"[[London]], England",22000,local,London
+289213,[[Worcester (England),22000,local,
+289214,"[[York]], England",22000,local,York
+289215,"[[Yerevan]], Armenia",22000,local,Yerevan
+289216,"[[Bayreuth]], Germany",22000,local,Bayreuth
+289217,"[[Berlin]], Germany",22000,local,Berlin
+289218,"[[Bonn]], Germany",22000,local,Bonn
+289221,"[[Dresden]], Germany",22000,local,Dresden
+289222,"[[Eisenach]], Germany",22000,local,Eisenach
+289225,"[[Halle]], Germany",22000,local,Halle
+289226,"[[Hamburg]], Germany",22000,local,Hamburg
+289227,"[[Leipzig]], Germany",22000,local,Leipzig
+289228,"[[Munich]], Germany",22000,local,Munich
+289232,"[[Salzburg]], Austria",22000,local,Salzburg
+289234,"[[Weimar]], Germany",22000,local,Weimar
+289235,"[[Żelazowa Wola]], Poland",22000,local,Żelazowa Wola
+289236,"[[Bordeaux]], France",22000,local,Bordeaux
+289237,"[[Lille]], France",22000,local,Lille
+289238,"[[Montfort-l'Amaury]], France",22000,local,Montfort-l'Amaury
+289239,"[[Paris]], France",22000,local,Paris
+289240,"[[Saint-Germain-en-Laye]], France",22000,local,Saint-Germain-en-Laye
+289241,"[[Strasbourg]], France",22000,local,Strasbourg
+289242,"[[Aranjuez]], Spain",22000,local,Aranjuez
+289244,"[[Lisbon]], Portugal",22000,local,Lisbon
+291006,Kirstenbosch National Botanical Garden,22161,gmaps_not_found,
+291008,Namib-Naukluft National Park,22161,gmaps_not_found,
+291009,China National Botanical Garden,22161,gmaps_not_found,
+291010,Qinling National Botanical Garden,22161,gmaps_not_found,
+291011,South China National Botanical Garden,22161,gmaps_not_found,
+291012,Yuyuan Garden,22161,gmaps_not_found,
+291013,Bogor Botanical Gardens,22161,gmaps_not_found,
+291014,National Botanical Garden of Iran,22161,gmaps_not_found,
+291015,Batu Pahat Botanical Park,22161,gmaps_not_found,
+291016,[[Kuala Lumpur/Botanical Garden,22161,gmaps_not_found,
+291017,Melaka Botanical Garden,22161,gmaps_not_found,
+291018,National Botanical Garden Shah Alam,22161,gmaps_not_found,
+291019,Penang Botanic Gardens,22161,gmaps_not_found,
+291020,Putrajaya Botanical Garden,22161,gmaps_not_found,
+291021,Rimba Ilmu Botanical Gardens,22161,gmaps_not_found,
+291022,Zaharah Botanic Gardens,22161,gmaps_not_found,
+291023,National Kandawgyi Gardens,22161,gmaps_not_found,
+291024,Singapore Botanic Gardens,22161,gmaps_not_found,
+291025,Botanic Garden Meise,22161,gmaps_not_found,
+291026,Kaisaniemi Botanic Garden,22161,gmaps_not_found,
+291027,Hatanpää Arboretum,22161,gmaps_not_found,
+291028,Jardin botanique de Bordeaux,22161,gmaps_not_found,
+291029,Jardin des Plantes,22161,gmaps_not_found,
+291030,Palmengarten,22161,gmaps_not_found,
+291032,National Botanic Gardens,22161,gmaps_not_found,
+291033,Medici Villas and Gardens,22161,gmaps_not_found,
+291034,Botanic Garden,22161,gmaps_not_found,
+291035,Arctic Alpine Botanic Garden,22161,gmaps_not_found,
+291037,Stora Alvaret,22161,gmaps_not_found,
+291038,"Royal Botanic Gardens, Kew",22161,gmaps_not_found,
+295557,Santa's Village and Sportsland Theme Park,22523,gmaps_not_found,
+295558,[[Drøbak]],22523,geo_not_found,Drøbak
+295559,[[Rovaniemi]],22523,gmaps_not_found,Rovaniemi
+649588,Alojamento 46036,22523,gmaps_not_found,
+649589,Alojamento 46037,22523,gmaps_not_found,
+649590,Alojamento 46038,22523,gmaps_not_found,
+649591,Alojamento 46039,22523,gmaps_not_found,
+649592,Alojamento 46040,22523,gmaps_not_found,
+649593,Alojamento 46041,22523,gmaps_not_found,
+299026,"[[Stockholm]], Sweden",22784,geo_not_found,Stockholm
+299027,Blackeberg,22784,geo_not_found,
+299028,"[[Ystad]], Sweden",22784,geo_not_found,Ystad
+299029,"[[Copenhagen]], Denmark",22784,geo_not_found,Copenhagen
+299030,[[Copenhagen/Nørrebro,22784,geo_not_found,
+299031,Oslo Opera House,22784,geo_not_found,
+299032,"[[Lillehammer]], Norway",22784,geo_not_found,Lillehammer
+299033,Öresund-Bridge,22784,geo_not_found,
+299034,Borgafjäll,22784,geo_not_found,
+299035,"[[Lappeenranta]], Finland",22784,geo_not_found,Lappeenranta
+299036,"[[Tampere]], Finland",22784,geo_not_found,Tampere
+299037,[[Siglufjörður]],22784,geo_not_found,Siglufjörður
+300417,"Disneyland Park, California",22898,local,
+300419,"Disneyland Paris, France",22898,local,
+300425,[[Death Valley National Park]],22898,local,Death Valley National Park
+300427,Hardangerjøkulen,22898,local,
+300428,[[Redwood National Park]],22898,local,Redwood National Park
+300430,[[Salar de Uyuni]],22898,local,Salar de Uyuni
+301306,[[O.R. Tambo International Airport,22974,gmaps_not_found,
+301307,[[Zayed International Airport,22974,gmaps_not_found,
+301308,[[Ngurah Rai International Airport,22974,gmaps_not_found,
+301309,[[Kempegowda International Airport,22974,gmaps_not_found,
+301310,[[Suvarnabhumi Airport]] (,22974,gmaps_not_found,Suvarnabhumi Airport
+301311,[[Beijing Capital Airport,22974,gmaps_not_found,
+301312,[[Beijing Daxing International Airport,22974,gmaps_not_found,
+301313,[[Gimhae International Airport,22974,gmaps_not_found,
+301314,[[Indira Gandhi International Airport,22974,gmaps_not_found,
+301315,[[Hamad International Airport,22974,gmaps_not_found,
+301316,[[Dubai International Airport,22974,gmaps_not_found,
+301317,[[Guangzhou Baiyun International Airport,22974,gmaps_not_found,
+301318,[[Hong Kong International Airport,22974,gmaps_not_found,
+301319,[[Soekarno-Hatta International Airport,22974,gmaps_not_found,
+301320,[[Kuala Lumpur International Airport,22974,gmaps_not_found,
+301321,[[Ninoy Aquino International Airport,22974,gmaps_not_found,
+301322,[[Kualanamu International Airport,22974,gmaps_not_found,
+301323,[[Chhatrapati Shivaji Maharaj International Airport,22974,gmaps_not_found,
+301324,[[Chubu Centrair International Airport,22974,gmaps_not_found,
+301325,[[Kansai International Airport,22974,gmaps_not_found,
+301326,[[Incheon International Airport,22974,gmaps_not_found,
+301327,[[Shanghai Pudong International Airport,22974,gmaps_not_found,
+301328,[[Singapore Changi Airport,22974,gmaps_not_found,
+301329,[[Taiwan Taoyuan International Airport,22974,gmaps_not_found,
+301330,[[Ben Gurion Airport]] (,22974,gmaps_not_found,Ben Gurion Airport
+301331,[[Tokyo Haneda Airport,22974,gmaps_not_found,
+301332,[[Tokyo Narita Airport,22974,gmaps_not_found,
+301333,[[Schiphol Airport]] (,22974,gmaps_not_found,Schiphol Airport
+301334,[[Barcelona El Prat Airport,22974,gmaps_not_found,
+301335,[[Berlin Brandenburg International Airport,22974,gmaps_not_found,
+301336,[[Copenhagen Airport]] (,22974,gmaps_not_found,Copenhagen Airport
+301337,[[Dublin Airport]],22974,gmaps_not_found,Dublin Airport
+301338,[[Frankfurt Airport]] (,22974,gmaps_not_found,Frankfurt Airport
+301339,[[Helsinki Airport]] (,22974,gmaps_not_found,Helsinki Airport
+301340,[[Istanbul New Airport,22974,gmaps_not_found,
+301341,[[Lisbon Airport]] (,22974,gmaps_not_found,Lisbon Airport
+301342,[[Heathrow Airport]] (,22974,gmaps_not_found,Heathrow Airport
+301343,[[Gatwick Airport]] (,22974,gmaps_not_found,Gatwick Airport
+301344,[[Stansted Airport]] (,22974,gmaps_not_found,Stansted Airport
+430268,Swiss Inn Resort El Arish Hotel,22974,gmaps_not_found,
+302211,Maison Guiette,23042,geo_not_found,
+302213,Cité Frugès,23042,geo_not_found,
+302214,Villa Savoye et loge du jardiner,23042,geo_not_found,
+302215,Immeuble locatif à la Porte Molitor,23042,geo_not_found,
+302216,Unité d’habitation,23042,geo_not_found,
+302217,La Manufacture à Saint-Dié,23042,geo_not_found,
+302218,Chapelle Notre-Dame-du-Haut de Ronchamp,23042,geo_not_found,
+302219,Cabanon de Le <!--(sic)--> Corbusier,23042,geo_not_found,
+302220,Couvent Sainte-Marie-de-la-Tourette,23042,geo_not_found,
+302221,Maison de la Culture de Firminy,23042,geo_not_found,
+302222,Weissenhof Estate,23042,geo_not_found,
+302224,National Museum of Western Art,23042,geo_not_found,
+302225,Villa Le Lac,23042,geo_not_found,
+430351,Fairfield Inn and Suites,23042,gmaps_not_found,
+430352,Hampton Inn,23042,gmaps_not_found,
+304288,Museum Kura Hulanda,23214,local,
+304290,Bois Caïman,23214,local,
+304293,Abraham Lincoln Presidential Library and Museum,23214,local,
+304295,Whitney Plantation,23214,local,
+304296,Evergreen Plantation,23214,local,
+306595,The final race at Terminal Island,23433,local,
+308947,[[London]],23603,hotel_centroid,London
+308948,[[Liverpool]],23603,hotel_centroid,Liverpool
+308949,Rock and Roll Hall of Fame and Museum,23603,local,
+308950,Memphis Rock 'n' Soul Museum,23603,hotel_centroid,
+308951,Graceland,23603,local,
+308952,Buddy Holly Crash Site,23603,hotel_centroid,
+308953,Bethel Woods Center for the Arts,23603,hotel_centroid,
+308954,ABBA the Museum,23603,hotel_centroid,
+308955,Finnish Music Hall of Fame,23603,hotel_centroid,
+308956,Metallica House,23603,hotel_centroid,
+308957,Blueberry Hill,23603,hotel_centroid,
+308958,Bodom Bar & Sauna,23603,hotel_centroid,
+431073,Camping Lac Lafontaine Cottage & RV Resort,23603,hotel_centroid,
+431074,Motel La Cheminee,23603,hotel_centroid,
+431075,Best Western Hotel St. Jerome,23603,hotel_centroid,
+317912,Military Manpower Administration,24303,local,
+317915,Famagusta/Larnaca Enlistment Office,24303,local,
+318843,[[Antarctica]],24368,local,Antarctica
+318844,[[Tierra del Fuego]],24368,hotel_centroid,Tierra del Fuego
+318845,[[Falkland Islands]],24368,local,Falkland Islands
+318846,"[[Phillip Island]], Victoria",24368,local,Phillip Island
+318847,"Penguin Island, [[Rockingham (Western Australia)",24368,local,
+318848,[[Tasmania]],24368,local,Tasmania
+318849,"[[Macquarie Island]], Tasmania",24368,local,Macquarie Island
+318850,[[New Zealand]],24368,local,New Zealand
+318851,South Africa,24368,hotel_centroid,
+318852,[[Galapagos Islands]],24368,local,Galapagos Islands
+318853,[[Kangaroo Island]],24368,local,Kangaroo Island
+318854,[[Great Australian Bight Marine Park]],24368,local,Great Australian Bight Marine Park
+323686,[[Aachen,24748,hotel_centroid,
+323687,[[Avignon]],24748,hotel_centroid,Avignon
+323688,[[Barcelona]],24748,hotel_centroid,Barcelona
+323689,[[Battle]],24748,hotel_centroid,Battle
+323690,[[Bremen]],24748,hotel_centroid,Bremen
+323691,[[Bruges]],24748,hotel_centroid,Bruges
+323692,[[Carcassonne]],24748,hotel_centroid,Carcassonne
+323693,[[Constantinople]],24748,hotel_centroid,Constantinople
+323694,"[[Cordoba (city, Spain)",24748,hotel_centroid,
+323695,[[Dubrovnik]],24748,hotel_centroid,Dubrovnik
+323696,[[Florence]],24748,hotel_centroid,Florence
+323697,[[Genoa]],24748,hotel_centroid,Genoa
+323698,[[Granada]],24748,hotel_centroid,Granada
+323699,[[Kraków]],24748,hotel_centroid,Kraków
+323700,[[Lübeck]],24748,hotel_centroid,Lübeck
+323701,[[Malbork]],24748,local,Malbork
+323702,[[Nördlingen]],24748,hotel_centroid,Nördlingen
+323703,[[Novgorod]],24748,hotel_centroid,Novgorod
+323704,[[Prague]],24748,hotel_centroid,Prague
+323705,[[Rothenburg ob der Tauber]],24748,hotel_centroid,Rothenburg ob der Tauber
+323706,[[Santiago de Compostela]],24748,hotel_centroid,Santiago de Compostela
+323707,[[Sigtuna]],24748,hotel_centroid,Sigtuna
+323708,[[Stockholm]],24748,hotel_centroid,Stockholm
+323709,[[Tallinn]],24748,local,Tallinn
+323710,[[Toledo (Spain),24748,hotel_centroid,
+323711,[[Trier]],24748,hotel_centroid,Trier
+323712,[[Tours]],24748,hotel_centroid,Tours
+323713,[[Trabzon]],24748,hotel_centroid,Trabzon
+323714,[[Uppsala]],24748,local,Uppsala
+323715,[[Venice]],24748,hotel_centroid,Venice
+323716,[[Visby]],24748,hotel_centroid,Visby
+323717,[[Worms]],24748,hotel_centroid,Worms
+323718,[[York]],24748,hotel_centroid,York
+432794,Americas Best Value Inn,24748,local,
+432795,Best Western Plus Deridder Inn & Suites,24748,hotel_centroid,
+326735,Amalienborg,24977,gmaps_not_found,
+326736,Rosenborg Castle,24977,gmaps_not_found,
+326737,Roskilde Cathedral,24977,gmaps_not_found,
+326738,Royal Palace,24977,gmaps_not_found,
+326739,Gamlehaugen,24977,gmaps_not_found,
+326740,Stiftsgaarden,24977,gmaps_not_found,
+326741,Regalia of Norway,24977,gmaps_not_found,
+326742,Nidaros Cathedral,24977,gmaps_not_found,
+326743,Royal Mausoleum at Akershus castle,24977,gmaps_not_found,
+326744,Drottningholm Palace,24977,gmaps_not_found,
+326745,Stockholm Cathedral,24977,gmaps_not_found,
+326746,Riddarholmen Church,24977,gmaps_not_found,
+326748,Stones of Mora,24977,gmaps_not_found,
+326749,Hagaparken,24977,gmaps_not_found,
+326750,The Haga Park Museum,24977,gmaps_not_found,
+326751,Gustav III:s pavilion,24977,gmaps_not_found,
+326752,Ulriksdal Palace,24977,gmaps_not_found,
+326753,Rosendal Palace,24977,gmaps_not_found,
+326754,Rosendal Gardens,24977,gmaps_not_found,
+326755,Rosersberg Palace,24977,gmaps_not_found,
+326756,Tullgarn Palace,24977,gmaps_not_found,
+326757,Gripsholms slott,24977,gmaps_not_found,
+433130,Listowel Arms Hotel,24977,gmaps_not_found,
+327927,Augsburg textile and industry museum,25060,local,
+327929,Big Pit National Coal Museum,25060,local,
+327931,TextilWerk Bocholt LWL Industrial Museum,25060,local,
+327932,The International City of Lace and Fashion,25060,local,
+327933,"Italian Centre for Coal Mining, Culture]]",25060,local,
+327937,Derwent Valley Mills,25060,local,
+327939,LWL Industrial Museum Zollern II/IV Colliery,25060,local,
+327940,North Duisburg Landscape Park,25060,local,
+327941,Verdant Works,25060,local,
+327942,Imperial War Museum Duxford,25060,local,
+327945,Zollverein Coal Mine Industrial Complex World Heritage Site,25060,local,
+327946,LVR Industrial Museum Mueller Cloth Mill,25060,local,
+327947,Falun Mine,25060,local,
+327948,"German Clock Museum, German Clock Route",25060,local,
+327949,Museum of Industrial Archaeology and Textile,25060,local,
+327953,Espace Métal,25060,local,
+327960,Westphalian Industrial Museum Brick Works Lage,25060,local,
+327961,New Lanark,25060,local,
+327963,National Slate Museum,25060,local,
+327964,"Manufaktura, Museum of the Factory",25060,local,
+330057,Flashman,25216,local,
+330061,Flashman's Lady,25216,local,
+330062,[[Singapore]],25216,local,Singapore
+330064,Flashman and the Mountain of Light,25216,local,
+330069,[[New Orleans]],25216,local,New Orleans
+330070,Flashman and the Redskins,25216,local,
+330072,[[Santa Fe Trail]],25216,local,Santa Fe Trail
+330074,Flashman at the Charge,25216,local,
+330078,Flashman in the Great Game,25216,local,
+330079,Rani Lakshmibai,25216,local,
+330084,Flashman and the Angel of the Lord,25216,local,
+330085,Flashman and the Dragon,25216,local,
+330088,[[Beijing/Haidian#Old_Summer_Palace,25216,local,
+330089,Flashman on the March,25216,local,
+330093,Flashman and the Tiger,25216,local,
+330094,[[Dundee_(KwaZulu-Natal)#Isandlwana Battlefield,25216,local,
+340480,Blackbeard's Castle,26130,gmaps_not_found,
+340481,Christiansted National Historic Site,26130,gmaps_not_found,
+340482,Fort Christian,26130,gmaps_not_found,
+340483,Fort Frederik,26130,gmaps_not_found,
+340484,Creque Marine Railway,26130,gmaps_not_found,
+340485,St Olaf's Church,26130,gmaps_not_found,
+340486,National Museum of the Faroe Islands,26130,gmaps_not_found,
+340487,Saint Olav's Church,26130,gmaps_not_found,
+340488,Skansin,26130,gmaps_not_found,
+340489,Tórshavn Cathedral,26130,gmaps_not_found,
+340490,Fort Augustaborg,26130,gmaps_not_found,
+340491,Fort Christiansborg,26130,gmaps_not_found,
+340492,Fort Fredensborg,26130,gmaps_not_found,
+340493,Fort Kongenstein,26130,gmaps_not_found,
+340494,Fort Prinzenstein,26130,gmaps_not_found,
+340495,Básendar,26130,gmaps_not_found,
+340496,Eskifjörður,26130,gmaps_not_found,
+340497,Nicobar Islands,26130,gmaps_not_found,
+340498,Danmarksnagore,26130,gmaps_not_found,
+340499,[[Tranquebar,26130,gmaps_not_found,
+340500,Akershus Fortress,26130,gmaps_not_found,
+340501,Kristiansten Fortress,26130,gmaps_not_found,
+340502,Fredriksten Fortress,26130,gmaps_not_found,
+340503,[[Lund]],26130,gmaps_not_found,Lund
+340504,[[Kirkwall]],26130,gmaps_not_found,Kirkwall
+345217,[[Aachen]],26544,gmaps_not_found,Aachen
+345218,Iesi,26544,gmaps_not_found,
+345219,[[Vienna]],26544,gmaps_not_found,Vienna
+345220,[[Worms]],26544,gmaps_not_found,Worms
+345221,[[Prague]],26544,gmaps_not_found,Prague
+345460,Branch Brook Park,26571,local,
+345463,Waterlands Park,26571,local,
+345464,South Orange Performing Arts Center (SOPAC),26571,local,
+345468,Cryan's,26571,local,
+345469,Gas Light Brewery & Restaurant,26571,local,
+345470,Neelam Exotic Indian Cuisine,26571,local,
+345471,Reservoir Restaurant,26571,local,
+345474,Chris's Texas Weiner Family Restaurant,26571,local,
+345478,Courtyard West Orange,26571,local,
+346080,Naturpark Attersee-Traunsee,26640,local,
+346081,Vrani kamen,26640,hotel_centroid,
+346082,Jelsa,26640,hotel_centroid,
+346083,[[Anholt]],26640,hotel_centroid,Anholt
+346084,Bulbjerg,26640,hotel_centroid,
+346085,Mandø,26640,hotel_centroid,
+346086,[[Møn]] and Nyord,26640,hotel_centroid,Møn
+346087,[[Cévennes National Park]],26640,local,Cévennes National Park
+346088,[[Millevaches Natural Regional Park]],26640,local,Millevaches Natural Regional Park
+346089,[[Morvan Regional Natural Park]],26640,local,Morvan Regional Natural Park
+346090,Regional Natural Park of [[Vercors]],26640,local,Vercors
+346091,[[Bavarian Forest National Park]],26640,local,Bavarian Forest National Park
+346092,[[Eifel National Park]],26640,local,Eifel National Park
+346093,Winklmoosalm,26640,hotel_centroid,
+346094,Aenos National Park,26640,local,
+346095,[[Bükk]] Mountains,26640,hotel_centroid,Bükk
+346096,[[Hortobágy]] National Park,26640,local,Hortobágy
+346097,Zselic Starry Sky Park,26640,local,
+346098,De Boschplaat,26640,hotel_centroid,
+346099,Lauwersmeer National Park,26640,local,
+346100,Artis (zoo),26640,local,
+346101,Øvre Pasvik National Park,26640,local,
+346102,Gantrisch Regional Nature Park,26640,local,
+435305,Hotel Meson la Noria,26640,hotel_centroid,
+435306,Hotel CH,26640,hotel_centroid,
+346640,Science Museum of Long Island,26699,local,
+346641,Plandome Country Club,26699,local,
+346642,Plandome Heights Village Preserve,26699,local,
+346643,Plandome Pond Park,26699,local,
+346644,Plandome Village Hall,26699,local,
+435366,Motel North,26699,hotel_centroid,
+347606,[[Lake Nakuru National Park]],26807,gmaps_not_found,Lake Nakuru National Park
+347607,Mai Po Marshes,26807,gmaps_not_found,
+347608,[[Bhitarkanika Mangroves]],26807,gmaps_not_found,Bhitarkanika Mangroves
+347609,Bhoj Wetland,26807,gmaps_not_found,
+347610,Chandra Taal,26807,gmaps_not_found,
+347611,[[Chilika Lake]],26807,gmaps_not_found,Chilika Lake
+347612,Deepor Beel,26807,gmaps_not_found,
+347613,East Calcutta Wetlands,26807,gmaps_not_found,
+347614,Gulf of Mannar Marine Biosphere Reserve,26807,gmaps_not_found,
+347615,Hirakud Reservoir,26807,gmaps_not_found,
+347616,Karikili Bird Sanctuary,26807,gmaps_not_found,
+347617,[[Kerala Backwaters]],26807,gmaps_not_found,Kerala Backwaters
+347618,Pallikaranai Wetland,26807,gmaps_not_found,
+347619,Point Calimere Wildlife and Bird Sanctuary,26807,gmaps_not_found,
+347620,Runn of Kutch,26807,gmaps_not_found,
+347621,[[Sundarbans]],26807,gmaps_not_found,Sundarbans
+347622,Thane Creek,26807,gmaps_not_found,
+347623,Vedanthangal Bird Sanctuary,26807,gmaps_not_found,
+347624,[[Olango_Island#Olango Wildlife Sanctuary,26807,gmaps_not_found,
+347625,Akyatan Lagoon,26807,gmaps_not_found,
+347626,[[Izmir#Q6043373,26807,gmaps_not_found,
+347627,[[Silifke#See,26807,gmaps_not_found,
+347628,[[Kızılırmak Delta Bird Reserve,26807,gmaps_not_found,
+347629,Kızören Sinkhole,26807,gmaps_not_found,
+347630,[[Burdur,26807,gmaps_not_found,
+347631,[[Bandırma#Bird Paradise National Park,26807,gmaps_not_found,
+347632,Lake Kuyucuk,26807,gmaps_not_found,
+347633,Lake Meke,26807,gmaps_not_found,
+347634,[[Tatvan#Q948747,26807,gmaps_not_found,
+347635,Lake Seyfe,26807,gmaps_not_found,
+347636,Lake Uluabat,26807,gmaps_not_found,
+347637,Sultan Marshes,26807,gmaps_not_found,
+347638,[[Yumurtalık,26807,gmaps_not_found,
+347639,Lake Lachua,26807,gmaps_not_found,
+347640,Jeannette Kawas National Park,26807,gmaps_not_found,
+347641,Cuatrociénegas,26807,gmaps_not_found,
+347642,Huatulco,26807,gmaps_not_found,
+347643,Lago de Pátzcuaro,26807,gmaps_not_found,
+347644,El Mogote Wetlands,26807,gmaps_not_found,
+347645,Islas Marietas,26807,gmaps_not_found,
+435478,Hotel Lawrence,26807,gmaps_not_found,
+435479,Sheel Hotel,26807,gmaps_not_found,
+435480,Ship Hotel,26807,gmaps_not_found,
+435481,Grand Hotel,26807,gmaps_not_found,
+349722,Nirox Sculpture Park,27015,gmaps_not_found,
+349723,Hakone Open Air Museum,27015,gmaps_not_found,
+349724,Changchun World Sculpture Park,27015,gmaps_not_found,
+349725,Yorkshire Sculpture Park,27015,gmaps_not_found,
+349726,Ekeberg Park,27015,gmaps_not_found,
+349727,Kröller-Müller Museum Sculpture Garden,27015,gmaps_not_found,
+349728,Parikkala Sculpture Park,27015,gmaps_not_found,
+349729,Millesgården,27015,gmaps_not_found,
+349730,Frederik Meijer Gardens & Sculpture Park,27015,gmaps_not_found,
+349731,Storm King Sculpture Park,27015,gmaps_not_found,
+349732,Inhotim,27015,gmaps_not_found,
+349733,[[Manhattan/Financial District#,27015,gmaps_not_found,
+349734,[[Kevadia#Q7604504,27015,gmaps_not_found,
+349735,[[Rio de Janeiro/Zona Sul#Q79961,27015,gmaps_not_found,
+349736,[[Volgograd,27015,gmaps_not_found,
+349737,[[Novgorod,27015,gmaps_not_found,
+349738,Trevi Fountain,27015,gmaps_not_found,
+349739,[[Brussels/Centre#Q152072,27015,gmaps_not_found,
+349740,Palace of Versailles,27015,gmaps_not_found,
+349741,Peterhof Grand Palace,27015,gmaps_not_found,
+349742,[[Xilitla#Q11688402,27015,gmaps_not_found,
+349743,[[Barcelona/Gràcia#Q212867,27015,gmaps_not_found,
+349744,[[Los Angeles/South Central#Q445256,27015,gmaps_not_found,
+349745,Museo Subacuático de Arte,27015,gmaps_not_found,
+350093,Altyn-Emel East,27036,gmaps_not_found,
+350094,Altyn-Emel Central,27036,gmaps_not_found,
+350095,Altyn-Emel West,27036,gmaps_not_found,
+350096,Barsakelmes island,27036,gmaps_not_found,
+350097,Kaskakulan,27036,gmaps_not_found,
+350098,Bereketli Garagum,27036,gmaps_not_found,
+350099,Gaplangyr,27036,gmaps_not_found,
+350100,Repetek,27036,gmaps_not_found,
+350101,Yeradzhi,27036,gmaps_not_found,
+350102,Saigachy,27036,gmaps_not_found,
+350103,Saigachy-Beleuli,27036,gmaps_not_found,
+350104,Saigachy-Duana,27036,gmaps_not_found,
+350105,Saigachy-Zhideyli,27036,gmaps_not_found,
+350106,Southern Ustyurt,27036,gmaps_not_found,
+435660,Fonda Eva Martin,27036,gmaps_not_found,
+435661,Hotel D'Cervantes,27036,gmaps_not_found,
+435662,Hotel Las Galeritas de San Sebastián Villas,27036,gmaps_not_found,
+350147,Noushirvān,27042,local,
+350148,Āhovān,27042,local,
+350149,Parand,27042,local,
+350150,Robāt-e Sharaf,27042,local,
+350151,Anjireh Ājori,27042,local,
+350152,Anjireh Sangi,27042,local,
+350157,Sheikhali Khān,27042,local,
+350158,Maranjāb,27042,local,
+350161,Mahyār,27042,local,
+350164,Mazinān,27042,local,
+350166,Zafarāniyeh,27042,local,
+350168,Sarāyān,27042,local,
+350172,Miāndasht,27042,local,
+350175,Farasfaj,27042,local,
+350178,Ganjali Khān,27042,local,
+350180,Khājeh Nazar,27042,local,
+351002,Adelaide Arcade,27095,gmaps_not_found,
+351003,David Jones,27095,gmaps_not_found,
+351004,Myer,27095,gmaps_not_found,
+351005,Queen Victoria Building,27095,gmaps_not_found,
+351006,Galeries Royales Saint-Hubert,27095,gmaps_not_found,
+351007,Churin,27095,gmaps_not_found,
+351008,Shanghai No. 1 Department Store,27095,gmaps_not_found,
+351009,Shanghai YongAn Department Store,27095,gmaps_not_found,
+351010,Xiangshan Commercial Culture Museum,27095,gmaps_not_found,
+351011,Bazar de l'Hôtel de Ville (BHV),27095,gmaps_not_found,
+351012,Le Bon Marché,27095,gmaps_not_found,
+351013,Galeries Lafayette,27095,gmaps_not_found,
+351014,La Samaritaine,27095,gmaps_not_found,
+351015,Printemps,27095,gmaps_not_found,
+351016,KaDeWe,27095,gmaps_not_found,
+351017,[[Milan/Centro Storico#Q51112,27095,gmaps_not_found,
+351018,[[Milan/Centro Storico#La Rinascente,27095,gmaps_not_found,
+351020,Mitsukoshi,27095,gmaps_not_found,
+351021,Takashimaya,27095,gmaps_not_found,
+351023,[[Mexico_City/Polanco#,27095,gmaps_not_found,
+351024,[[Ulaanbaatar#Q125944026,27095,gmaps_not_found,
+351025,De Bijenkorf,27095,gmaps_not_found,
+351026,Smith & Caughey's,27095,gmaps_not_found,
+351027,[[Helsinki/Central#Q644390,27095,gmaps_not_found,
+351028,[[Stockholm/Norrmalm#Q1998385,27095,gmaps_not_found,
+351029,[[Copenhagen/Indre By#Q72923107,27095,gmaps_not_found,
+351030,[[Copenhagen/Indre By#Q11976960,27095,gmaps_not_found,
+351031,[[Oslo/Sentrum#Q7605855,27095,gmaps_not_found,
+351032,Moscow GUM Department Store,27095,gmaps_not_found,
+351033,Moscow TSUM,27095,gmaps_not_found,
+351034,Hayashi Department Store,27095,gmaps_not_found,
+351035,Fortnum & Mason,27095,gmaps_not_found,
+351036,Harrods,27095,gmaps_not_found,
+351037,Harvey Nichols,27095,gmaps_not_found,
+351038,Liberty,27095,gmaps_not_found,
+351039,Selfridges,27095,gmaps_not_found,
+351040,Bergdorf Goodman,27095,gmaps_not_found,
+351041,Bloomingdale's,27095,gmaps_not_found,
+600790,Hotel Quinta Minera,27095,wikivoyage-listing,
+600791,"Hotel Regina ""El Llano""",27095,wikivoyage-listing,
+600792,Hotel Ray 4 Hermanos,27095,wikivoyage-listing,
+600793,Hotel Real de Conde,27095,wikivoyage-listing,
+355526,Latvian Museum of Pharmacy,27515,,
+355529,Surgeons' Hall Museums,27515,,
+355531,Hunterian Museum,27515,,
+355532,The Old Operating Theatre,27515,,
+355640,Woodbine Beach,27523,geo_not_found,
+355641,Lee's Palace,27523,geo_not_found,
+355642,Toronto Reference Library,27523,geo_not_found,
+656243,Mountain Sea Hotel,27523,gmaps_not_found,
+355928,[[Stonehenge]],27552,hotel_centroid,Stonehenge
+355929,[[Avebury]],27552,hotel_centroid,Avebury
+355930,Great Circle at Stanton Drew,27552,hotel_centroid,
+355931,Ring of Brodgar,27552,hotel_centroid,
+355932,Callanish Stones,27552,local,
+355933,Boscawen-Un,27552,hotel_centroid,
+355934,Maeshowe tumulus,27552,hotel_centroid,
+355935,Skara Brae,27552,hotel_centroid,
+355936,Dolmens of Poulnabrone,27552,hotel_centroid,
+355937,Newgrange,27552,hotel_centroid,
+355938,Carrowmore Megalithic Site,27552,local,
+355939,Menhir from Devil's Arrows,27552,hotel_centroid,
+355940,Punchestown Long Stone,27552,hotel_centroid,
+355941,Ales Stenar,27552,local,
+355942,Blå Jungfrun,27552,hotel_centroid,
+355943,Rune stones from Jelling,27552,hotel_centroid,
+355944,[[Carnac]],27552,hotel_centroid,Carnac
+355945,Locmariaquer,27552,hotel_centroid,
+355946,Menhir of Kerloas,27552,hotel_centroid,
+355947,Menhir of Champ-Dolent,27552,hotel_centroid,
+355948,Stone rows of Lagatjar,27552,hotel_centroid,
+355949,La Roche aux Fées,27552,hotel_centroid,
+355950,Dolmens of Gavrinis,27552,hotel_centroid,
+355951,Dolmens de la Pierre Levée,27552,hotel_centroid,
+355952,Dolmens of Fades,27552,hotel_centroid,
+355953,Menhir of Clendy,27552,hotel_centroid,
+355954,Seven stone houses,27552,hotel_centroid,
+355955,Royal tomb of Groß Berßen,27552,local,
+355956,Large stone tombs on the Buschhöhe,27552,hotel_centroid,
+355957,Devil's stones,27552,hotel_centroid,
+355958,Goseck,27552,hotel_centroid,
+355959,Circular ditch system Pömmelte,27552,hotel_centroid,
+355960,Cromlech from Almendres,27552,local,
+355961,Cromlech from Portela de Mogos,27552,hotel_centroid,
+355962,Cromlech of Vale Maria do Meio,27552,local,
+355963,Dolmens of Menga,27552,hotel_centroid,
+355964,Dolmens of Soto,27552,hotel_centroid,
+355965,Antequera Dolmens,27552,hotel_centroid,
+355966,Anta Grande do Zambujeiro,27552,hotel_centroid,
+355967,Megalithic temples of Ġgantija,27552,local,
+436209,Motel Welden,27552,hotel_centroid,
+365685,[[Amritsar]],28441,gmaps_not_found,Amritsar
+365686,[[Ayodhya]],28441,gmaps_not_found,Ayodhya
+365687,[[Chitrakoot]],28441,gmaps_not_found,Chitrakoot
+365688,[[Hampi]],28441,gmaps_not_found,Hampi
+365689,[[Kolkata]],28441,gmaps_not_found,Kolkata
+365690,[[Rameswaram]],28441,gmaps_not_found,Rameswaram
+365691,[[Varanasi]],28441,gmaps_not_found,Varanasi
+365692,[[Janakpur]],28441,gmaps_not_found,Janakpur
+365693,[[Kathmandu]],28441,gmaps_not_found,Kathmandu
+365694,[[Colombo]],28441,gmaps_not_found,Colombo
+365695,[[Nuwara Eliya]],28441,gmaps_not_found,Nuwara Eliya
+365696,[[Trincomalee]],28441,gmaps_not_found,Trincomalee
+365862,Slamet Riyadi Street,28466,,
+365863,[[Aguas Calientes]],28466,,Aguas Calientes
+365864,Shifen Old Street,28466,,
+365865,Maeklong Railway Market,28466,,
+365866,Hanoi Train Street,28466,,

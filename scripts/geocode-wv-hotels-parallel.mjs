@@ -348,53 +348,54 @@ async function printStatus(prisma) {
 // Fetch hotels to geocode
 // ---------------------------------------------------------------------------
 async function fetchHotels(prisma, { limit, country, retryNotFound }) {
-  const where = {
-    latitude: null,
-    longitude: null,
-  };
+  // Usamos raw SQL com LEFT JOIN para evitar erro do Prisma quando
+  // um WvHotel tem destino_id órfão (sem WvDestination correspondente).
+  const conditions = ['h.latitude IS NULL AND h.longitude IS NULL'];
+  const params = [];
 
   if (retryNotFound) {
-    where.fonte = FONTE_NOT_FOUND;
+    conditions.push(`h.fonte = $${params.length + 1}`);
+    params.push(FONTE_NOT_FOUND);
   } else {
-    where.OR = [
-      { fonte: null },
-      { fonte: { notIn: ['rejected_geo', FONTE_NOT_FOUND] } },
-    ];
+    conditions.push(`(h.fonte IS NULL OR h.fonte NOT IN ($${params.length + 1}, $${params.length + 2}))`);
+    params.push('rejected_geo', FONTE_NOT_FOUND);
   }
 
-  // Filtrar por país na própria query Prisma (evita filtro em memória)
   if (country) {
-    where.destino = { paisCode: country };
+    conditions.push(`d.pais_code = $${params.length + 1}`);
+    params.push(country);
   }
 
-  return prisma.wvHotel.findMany({
-    where,
-    select: {
-      id: true,
-      nome: true,
-      destino: {
-        select: {
-          nome: true,
-          pais: true,
-          paisCode: true,
-          latitude: true,
-          longitude: true,
-        },
-      },
-    },
-    orderBy: { id: 'asc' },
-    ...(limit ? { take: limit } : {}),
-  }).then((hotels) =>
-    hotels.map((h) => ({
-      id: h.id,
-      nome: h.nome,
-      dest_nome: h.destino?.nome ?? '',
-      dest_pais: h.destino?.pais ?? '',
-      dest_pais_code: h.destino?.paisCode ?? '',
-      dest_lat: h.destino?.latitude ?? null,
-      dest_lon: h.destino?.longitude ?? null,
-    }))
-  );
+  const whereClause = conditions.join(' AND ');
+  const limitClause = limit ? `LIMIT ${Number(limit)}` : '';
+
+  const sql = `
+    SELECT
+      h.id,
+      h.nome,
+      d.nome AS dest_nome,
+      d.pais AS dest_pais,
+      d.pais_code AS dest_pais_code,
+      d.latitude AS dest_lat,
+      d.longitude AS dest_lon
+    FROM wv_hotels h
+    LEFT JOIN wv_destinations d ON d.id = h.destino_id
+    WHERE ${whereClause}
+    ORDER BY h.id ASC
+    ${limitClause}
+  `;
+
+  const rows = await prisma.$queryRawUnsafe(sql, ...params);
+
+  return (rows || []).map((r) => ({
+    id: r.id,
+    nome: r.nome ?? '',
+    dest_nome: r.dest_nome ?? '',
+    dest_pais: r.dest_pais ?? '',
+    dest_pais_code: r.dest_pais_code ?? '',
+    dest_lat: r.dest_lat ?? null,
+    dest_lon: r.dest_lon ?? null,
+  }));
 }
 
 // ---------------------------------------------------------------------------

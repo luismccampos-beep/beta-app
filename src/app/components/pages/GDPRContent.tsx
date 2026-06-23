@@ -451,26 +451,176 @@ export function GDPRContent() {
           <p className="text-xs mt-3 text-gray-600 dark:text-gray-400">Estos contactos son exclusivamente para cuestiones relacionadas con protección de datos personales.</p>
         </div>
 
-        <h2>2. Sus Derechos RGPD</h2>
-        <p>El RGPD le otorga varios derechos poderosos sobre sus datos personales.</p>
+        <h2>2. Categorías de Datos Personales Tratados</h2>
+        <div className="overflow-x-auto my-4">
+          <table className="w-full text-sm border-collapse">
+            <thead>
+              <tr className="bg-gray-100 dark:bg-gray-800">
+                <th className="border border-gray-300 dark:border-gray-600 p-3 text-left">Categoría</th>
+                <th className="border border-gray-300 dark:border-gray-600 p-3 text-left">Ejemplos</th>
+                <th className="border border-gray-300 dark:border-gray-600 p-3 text-left">Período de Retención</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td className="border border-gray-300 dark:border-gray-600 p-3 font-medium">Datos de Identificación</td>
+                <td className="border border-gray-300 dark:border-gray-600 p-3">Nombre completo, email, teléfono, documento de identidad, fecha de nacimiento</td>
+                <td className="border border-gray-300 dark:border-gray-600 p-3">5 años después de la última interacción</td>
+              </tr>
+              <tr className="bg-gray-50 dark:bg-gray-900/50">
+                <td className="border border-gray-300 dark:border-gray-600 p-3 font-medium">Datos de Contacto</td>
+                <td className="border border-gray-300 dark:border-gray-600 p-3">Dirección postal, teléfono, email, preferencias de comunicación</td>
+                <td className="border border-gray-300 dark:border-gray-600 p-3">3 años después de la última interacción</td>
+              </tr>
+              <tr>
+                <td className="border border-gray-300 dark:border-gray-600 p-3 font-medium">Datos de Reserva</td>
+                <td className="border border-gray-300 dark:border-gray-600 p-3">Detalles del viaje, preferencias de alojamiento, información de pago, historial de reservas</td>
+                <td className="border border-gray-300 dark:border-gray-600 p-3">7 años para fines fiscales</td>
+              </tr>
+              <tr className="bg-gray-50 dark:bg-gray-900/50">
+                <td className="border border-gray-300 dark:border-gray-600 p-3 font-medium">Datos Técnicos</td>
+                <td className="border border-gray-300 dark:border-gray-600 p-3">Dirección IP, cookies, datos de navegación, dispositivo utilizado, geolocalización aproximada</td>
+                <td className="border border-gray-300 dark:border-gray-600 p-3">2 años o hasta que se retire el consentimiento</td>
+              </tr>
+            </tbody>
+          </table>
+          <p className="text-xs mt-2 text-gray-600 dark:text-gray-400">Los plazos de retención pueden ser superiores cuando lo exija la ley o inferiores en caso de ejercicio de derechos por el titular.</p>
+        </div>
+
+        <h2>3. Finalidades del Tratamiento</h2>
+        <p>Tratamos sus datos personales solo para fines específicos, explícitos y legítimos en cumplimiento del RGPD.</p>
+        <div className="space-y-4 my-4">
+          <div className="p-4 border-l-4 border-teal-500 bg-teal-50 dark:bg-teal-900/20 rounded-r">
+            <p className="font-semibold text-lg">Servicios Turísticos</p>
+            <p className="text-sm mt-1">Procesamiento de reservas, comunicación con clientes, prestación de servicios de viaje y turismo.</p>
+            <p className="text-xs mt-2 text-gray-600 dark:text-gray-400"><strong>Base Legal:</strong> Ejecución de contrato</p>
+          </div>
+          <div className="p-4 border-l-4 border-blue-500 bg-blue-50 dark:bg-blue-900/20 rounded-r">
+            <p className="font-semibold text-lg">Marketing y Comunicación</p>
+            <p className="text-sm mt-1">Envío de boletines, ofertas especiales, comunicaciones promocionales y encuestas de satisfacción.</p>
+            <p className="text-xs mt-2 text-gray-600 dark:text-gray-400"><strong>Base Legal:</strong> Consentimiento</p>
+          </div>
+          <div className="p-4 border-l-4 border-green-500 bg-green-50 dark:bg-green-900/20 rounded-r">
+            <p className="font-semibold text-lg">Obligaciones Legales</p>
+            <p className="text-sm mt-1">Cumplimiento de obligaciones fiscales, contables y regulatorias del sector turístico.</p>
+            <p className="text-xs mt-2 text-gray-600 dark:text-gray-400"><strong>Base Legal:</strong> Obligación legal</p>
+          </div>
+          <div className="p-4 border-l-4 border-orange-500 bg-orange-50 dark:bg-orange-900/20 rounded-r">
+            <p className="font-semibold text-lg">Intereses Legítimos</p>
+            <p className="text-sm mt-1">Mejora de nuestros servicios, análisis de datos para optimización de la experiencia del cliente.</p>
+            <p className="text-xs mt-2 text-gray-600 dark:text-gray-400"><strong>Base Legal:</strong> Interés legítimo</p>
+          </div>
+        </div>
+        <p className="text-sm text-gray-600 dark:text-gray-400">No tratamos sus datos para fines incompatibles con los aquí descritos sin una nueva base legal o su consentimiento explícito.</p>
+
+        <h2>4. Sus Derechos RGPD</h2>
+        <p>El RGPD le otorga varios derechos sobre sus datos personales. Puede ejercerlos en cualquier momento contactándonos a través de los datos indicados en la sección "Responsable del Tratamiento".</p>
         <div className="grid md:grid-cols-2 gap-4 my-4">
           <div className="p-4 bg-gray-50 dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700">
             <h3 className="font-semibold flex items-center gap-2 text-base">
               <CheckCircle2 className="w-4 h-4 text-green-600 dark:text-green-400 flex-shrink-0" />
               Derecho de Acceso
             </h3>
-            <p className="text-sm mt-2 text-gray-700 dark:text-gray-300">Solicitar información sobre datos personales que procesamos sobre usted.</p>
+            <p className="text-sm mt-2 text-gray-700 dark:text-gray-300">Solicitar información sobre los datos personales que procesamos sobre usted.</p>
           </div>
           <div className="p-4 bg-gray-50 dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700">
             <h3 className="font-semibold flex items-center gap-2 text-base">
               <CheckCircle2 className="w-4 h-4 text-green-600 dark:text-green-400 flex-shrink-0" />
               Derecho de Rectificación
             </h3>
-            <p className="text-sm mt-2 text-gray-700 dark:text-gray-300">Solicitar corrección de datos personales incorrectos o incompletos.</p>
+            <p className="text-sm mt-2 text-gray-700 dark:text-gray-300">Solicitar la corrección de datos personales incorrectos o incompletos.</p>
+          </div>
+          <div className="p-4 bg-gray-50 dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700">
+            <h3 className="font-semibold flex items-center gap-2 text-base">
+              <CheckCircle2 className="w-4 h-4 text-green-600 dark:text-green-400 flex-shrink-0" />
+              Derecho al Olvido
+            </h3>
+            <p className="text-sm mt-2 text-gray-700 dark:text-gray-300">Solicitar la eliminación de sus datos personales en determinadas circunstancias.</p>
+          </div>
+          <div className="p-4 bg-gray-50 dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700">
+            <h3 className="font-semibold flex items-center gap-2 text-base">
+              <CheckCircle2 className="w-4 h-4 text-green-600 dark:text-green-400 flex-shrink-0" />
+              Derecho a la Limitación del Tratamiento
+            </h3>
+            <p className="text-sm mt-2 text-gray-700 dark:text-gray-300">Solicitar la limitación del procesamiento de sus datos personales.</p>
+          </div>
+          <div className="p-4 bg-gray-50 dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700">
+            <h3 className="font-semibold flex items-center gap-2 text-base">
+              <CheckCircle2 className="w-4 h-4 text-green-600 dark:text-green-400 flex-shrink-0" />
+              Derecho a la Portabilidad
+            </h3>
+            <p className="text-sm mt-2 text-gray-700 dark:text-gray-300">Solicitar la transferencia de sus datos a otro proveedor de servicios.</p>
+          </div>
+          <div className="p-4 bg-gray-50 dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700">
+            <h3 className="font-semibold flex items-center gap-2 text-base">
+              <CheckCircle2 className="w-4 h-4 text-green-600 dark:text-green-400 flex-shrink-0" />
+              Derecho de Oposición
+            </h3>
+            <p className="text-sm mt-2 text-gray-700 dark:text-gray-300">Oponerse al tratamiento de sus datos personales en determinadas situaciones.</p>
+          </div>
+          <div className="p-4 bg-gray-50 dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700">
+            <h3 className="font-semibold flex items-center gap-2 text-base">
+              <CheckCircle2 className="w-4 h-4 text-green-600 dark:text-green-400 flex-shrink-0" />
+              Derecho a Retirar el Consentimiento
+            </h3>
+            <p className="text-sm mt-2 text-gray-700 dark:text-gray-300">Retirar su consentimiento en cualquier momento, cuando corresponda.</p>
+          </div>
+          <div className="p-4 bg-gray-50 dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700">
+            <h3 className="font-semibold flex items-center gap-2 text-base">
+              <CheckCircle2 className="w-4 h-4 text-green-600 dark:text-green-400 flex-shrink-0" />
+              Derecho a Presentar una Reclamación
+            </h3>
+            <p className="text-sm mt-2 text-gray-700 dark:text-gray-300">Presentar una reclamación ante la Comisión Nacional de Protección de Datos (CNPD).</p>
           </div>
         </div>
+        <p className="text-sm text-gray-600 dark:text-gray-400">Para ejercer cualquiera de estos derechos, contáctenos en privacy@akmleva.pt. Responderemos en un plazo máximo de un mes (prorrogable en casos complejos).</p>
 
-        <p className="text-sm text-gray-600 dark:text-gray-400 mt-4">Para ejercer cualquiera de estos derechos, simplemente contáctenos en privacy@akmleva.pt.</p>
+        <h2>5. Seguridad de los Datos</h2>
+        <p>Adoptamos medidas técnicas y organizativas adecuadas y actualizadas para garantizar un nivel de seguridad proporcional al riesgo, en cumplimiento del artículo 32 del RGPD.</p>
+        <ul className="space-y-2 my-4">
+          <li className="flex items-start gap-2">
+            <CheckCircle2 className="w-4 h-4 text-teal-600 dark:text-teal-400 mt-0.5 flex-shrink-0" />
+            <span>Cifrado de datos en tránsito y en reposo (SSL/TLS)</span>
+          </li>
+          <li className="flex items-start gap-2">
+            <CheckCircle2 className="w-4 h-4 text-teal-600 dark:text-teal-400 mt-0.5 flex-shrink-0" />
+            <span>Control de acceso basado en roles y autenticación multifactor</span>
+          </li>
+          <li className="flex items-start gap-2">
+            <CheckCircle2 className="w-4 h-4 text-teal-600 dark:text-teal-400 mt-0.5 flex-shrink-0" />
+            <span>Monitorización continua de seguridad y detección de intrusiones</span>
+          </li>
+          <li className="flex items-start gap-2">
+            <CheckCircle2 className="w-4 h-4 text-teal-600 dark:text-teal-400 mt-0.5 flex-shrink-0" />
+            <span>Formación regular de empleados en protección de datos</span>
+          </li>
+          <li className="flex items-start gap-2">
+            <CheckCircle2 className="w-4 h-4 text-teal-600 dark:text-teal-400 mt-0.5 flex-shrink-0" />
+            <span>Auditorías de seguridad y evaluaciones de impacto periódicas</span>
+          </li>
+          <li className="flex items-start gap-2">
+            <CheckCircle2 className="w-4 h-4 text-teal-600 dark:text-teal-400 mt-0.5 flex-shrink-0" />
+            <span>Copia de seguridad segura y planes de recuperación ante desastres</span>
+          </li>
+          <li className="flex items-start gap-2">
+            <CheckCircle2 className="w-4 h-4 text-teal-600 dark:text-teal-400 mt-0.5 flex-shrink-0" />
+            <span>Seudonimización y minimización de datos siempre que sea posible</span>
+          </li>
+        </ul>
+        <div className="mt-4 p-4 bg-yellow-50 dark:bg-yellow-900/20 border-l-4 border-yellow-500 rounded-r">
+          <p className="text-sm text-gray-700 dark:text-gray-300">A pesar de las medidas implementadas, ningún sistema es 100% inmune a riesgos. En caso de violación de datos, notificaremos a la autoridad de control y a los afectados dentro de los plazos legales.</p>
+        </div>
+
+        <h2>6. Contacto y Ejercicio de Derechos</h2>
+        <p>Para ejercer cualquiera de sus derechos bajo el RGPD o aclarar dudas sobre el tratamiento de sus datos personales, puede contactarnos a través de los siguientes medios:</p>
+        <div className="my-4 p-6 bg-gray-50 dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700">
+          <div className="grid md:grid-cols-2 gap-4 text-sm mb-4">
+            <div><strong>Email general:</strong> privacy@akmleva.pt</div>
+            <div><strong>Teléfono:</strong> +351 123 456 789</div>
+            <div className="md:col-span-2"><strong>Delegado de Protección de Datos (DPO):</strong> dpo@akmleva.pt</div>
+          </div>
+          <p className="text-xs text-gray-600 dark:text-gray-400">Responderemos con la mayor brevedad posible y siempre dentro de los plazos legales previstos en el RGPD.</p>
+        </div>
 
         <div className="mt-8 p-6 bg-blue-50 dark:bg-blue-900/20 border-2 border-blue-300 dark:border-blue-700 rounded-lg">
           <p className="font-semibold text-blue-900 dark:text-blue-300"><strong>En vigor desde:</strong> 25 de Mayo de 2018</p>
@@ -508,8 +658,70 @@ export function GDPRContent() {
           <p className="text-xs mt-3 text-gray-600 dark:text-gray-400">Ces contacts sont exclusivement pour les questions liées à la protection des données personnelles.</p>
         </div>
 
-        <h2>2. Vos Droits RGPD</h2>
-        <p>Le RGPD vous accorde plusieurs droits puissants sur vos données personnelles.</p>
+        <h2>2. Catégories de Données Personnelles Traitées</h2>
+        <div className="overflow-x-auto my-4">
+          <table className="w-full text-sm border-collapse">
+            <thead>
+              <tr className="bg-gray-100 dark:bg-gray-800">
+                <th className="border border-gray-300 dark:border-gray-600 p-3 text-left">Catégorie</th>
+                <th className="border border-gray-300 dark:border-gray-600 p-3 text-left">Exemples</th>
+                <th className="border border-gray-300 dark:border-gray-600 p-3 text-left">Période de Conservation</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td className="border border-gray-300 dark:border-gray-600 p-3 font-medium">Données d'Identification</td>
+                <td className="border border-gray-300 dark:border-gray-600 p-3">Nom complet, email, téléphone, pièce d'identité, date de naissance</td>
+                <td className="border border-gray-300 dark:border-gray-600 p-3">5 ans après la dernière interaction</td>
+              </tr>
+              <tr className="bg-gray-50 dark:bg-gray-900/50">
+                <td className="border border-gray-300 dark:border-gray-600 p-3 font-medium">Données de Contact</td>
+                <td className="border border-gray-300 dark:border-gray-600 p-3">Adresse postale, téléphone, email, préférences de communication</td>
+                <td className="border border-gray-300 dark:border-gray-600 p-3">3 ans après la dernière interaction</td>
+              </tr>
+              <tr>
+                <td className="border border-gray-300 dark:border-gray-600 p-3 font-medium">Données de Réservation</td>
+                <td className="border border-gray-300 dark:border-gray-600 p-3">Détails du voyage, préférences d'hébergement, informations de paiement, historique des réservations</td>
+                <td className="border border-gray-300 dark:border-gray-600 p-3">7 ans à des fins fiscales</td>
+              </tr>
+              <tr className="bg-gray-50 dark:bg-gray-900/50">
+                <td className="border border-gray-300 dark:border-gray-600 p-3 font-medium">Données Techniques</td>
+                <td className="border border-gray-300 dark:border-gray-600 p-3">Adresse IP, cookies, données de navigation, appareil utilisé, géolocalisation approximative</td>
+                <td className="border border-gray-300 dark:border-gray-600 p-3">2 ans ou jusqu'au retrait du consentement</td>
+              </tr>
+            </tbody>
+          </table>
+          <p className="text-xs mt-2 text-gray-600 dark:text-gray-400">Les durées de conservation peuvent être plus longues lorsque la loi l'exige ou plus courtes en cas d'exercice des droits par la personne concernée.</p>
+        </div>
+
+        <h2>3. Finalités du Traitement</h2>
+        <p>Nous traitons vos données personnelles uniquement à des fins spécifiques, explicites et légitimes conformément au RGPD.</p>
+        <div className="space-y-4 my-4">
+          <div className="p-4 border-l-4 border-teal-500 bg-teal-50 dark:bg-teal-900/20 rounded-r">
+            <p className="font-semibold text-lg">Services Touristiques</p>
+            <p className="text-sm mt-1">Traitement des réservations, communication avec les clients, prestation de services de voyage et de tourisme.</p>
+            <p className="text-xs mt-2 text-gray-600 dark:text-gray-400"><strong>Base Légale:</strong> Exécution du contrat</p>
+          </div>
+          <div className="p-4 border-l-4 border-blue-500 bg-blue-50 dark:bg-blue-900/20 rounded-r">
+            <p className="font-semibold text-lg">Marketing et Communication</p>
+            <p className="text-sm mt-1">Envoi de newsletters, offres spéciales, communications promotionnelles et enquêtes de satisfaction.</p>
+            <p className="text-xs mt-2 text-gray-600 dark:text-gray-400"><strong>Base Légale:</strong> Consentement</p>
+          </div>
+          <div className="p-4 border-l-4 border-green-500 bg-green-50 dark:bg-green-900/20 rounded-r">
+            <p className="font-semibold text-lg">Obligations Légales</p>
+            <p className="text-sm mt-1">Respect des obligations fiscales, comptables et réglementaires du secteur touristique.</p>
+            <p className="text-xs mt-2 text-gray-600 dark:text-gray-400"><strong>Base Légale:</strong> Obligation légale</p>
+          </div>
+          <div className="p-4 border-l-4 border-orange-500 bg-orange-50 dark:bg-orange-900/20 rounded-r">
+            <p className="font-semibold text-lg">Intérêts Légitimes</p>
+            <p className="text-sm mt-1">Amélioration de nos services, analyse de données pour l'optimisation de l'expérience client.</p>
+            <p className="text-xs mt-2 text-gray-600 dark:text-gray-400"><strong>Base Légale:</strong> Intérêt légitime</p>
+          </div>
+        </div>
+        <p className="text-sm text-gray-600 dark:text-gray-400">Nous ne traitons pas vos données pour des fins incompatibles avec celles décrites ici sans une nouvelle base légale ou votre consentement explicite.</p>
+
+        <h2>4. Vos Droits RGPD</h2>
+        <p>Le RGPD vous accorde plusieurs droits sur vos données personnelles. Vous pouvez les exercer à tout moment en nous contactant via les informations indiquées dans la section "Responsable du Traitement".</p>
         <div className="grid md:grid-cols-2 gap-4 my-4">
           <div className="p-4 bg-gray-50 dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700">
             <h3 className="font-semibold flex items-center gap-2 text-base">
@@ -523,14 +735,102 @@ export function GDPRContent() {
               <CheckCircle2 className="w-4 h-4 text-green-600 dark:text-green-400 flex-shrink-0" />
               Droit de Rectification
             </h3>
-            <p className="text-sm mt-2 text-gray-700 dark:text-gray-300">Demander la correction de données personnelles incorrectes ou incomplètes.</p>
+            <p className="text-sm mt-2 text-gray-700 dark:text-gray-300">Demander la correction de données personnelles inexactes ou incomplètes.</p>
+          </div>
+          <div className="p-4 bg-gray-50 dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700">
+            <h3 className="font-semibold flex items-center gap-2 text-base">
+              <CheckCircle2 className="w-4 h-4 text-green-600 dark:text-green-400 flex-shrink-0" />
+              Droit à l'Oubli
+            </h3>
+            <p className="text-sm mt-2 text-gray-700 dark:text-gray-300">Demander la suppression de vos données personnelles dans certaines circonstances.</p>
+          </div>
+          <div className="p-4 bg-gray-50 dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700">
+            <h3 className="font-semibold flex items-center gap-2 text-base">
+              <CheckCircle2 className="w-4 h-4 text-green-600 dark:text-green-400 flex-shrink-0" />
+              Droit à la Limitation du Traitement
+            </h3>
+            <p className="text-sm mt-2 text-gray-700 dark:text-gray-300">Demander la limitation du traitement de vos données personnelles.</p>
+          </div>
+          <div className="p-4 bg-gray-50 dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700">
+            <h3 className="font-semibold flex items-center gap-2 text-base">
+              <CheckCircle2 className="w-4 h-4 text-green-600 dark:text-green-400 flex-shrink-0" />
+              Droit à la Portabilité
+            </h3>
+            <p className="text-sm mt-2 text-gray-700 dark:text-gray-300">Demander le transfert de vos données à un autre fournisseur de services.</p>
+          </div>
+          <div className="p-4 bg-gray-50 dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700">
+            <h3 className="font-semibold flex items-center gap-2 text-base">
+              <CheckCircle2 className="w-4 h-4 text-green-600 dark:text-green-400 flex-shrink-0" />
+              Droit d'Opposition
+            </h3>
+            <p className="text-sm mt-2 text-gray-700 dark:text-gray-300">Vous opposer au traitement de vos données personnelles dans certaines situations.</p>
+          </div>
+          <div className="p-4 bg-gray-50 dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700">
+            <h3 className="font-semibold flex items-center gap-2 text-base">
+              <CheckCircle2 className="w-4 h-4 text-green-600 dark:text-green-400 flex-shrink-0" />
+              Droit de Retirer le Consentement
+            </h3>
+            <p className="text-sm mt-2 text-gray-700 dark:text-gray-300">Retirer votre consentement à tout moment, le cas échéant.</p>
+          </div>
+          <div className="p-4 bg-gray-50 dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700">
+            <h3 className="font-semibold flex items-center gap-2 text-base">
+              <CheckCircle2 className="w-4 h-4 text-green-600 dark:text-green-400 flex-shrink-0" />
+              Droit de Déposer une Réclamation
+            </h3>
+            <p className="text-sm mt-2 text-gray-700 dark:text-gray-300">Déposer une réclamation auprès de la Commission Nationale de Protection des Données (CNPD).</p>
           </div>
         </div>
+        <p className="text-sm text-gray-600 dark:text-gray-400">Pour exercer l'un de ces droits, contactez-nous à privacy@akmleva.pt. Nous répondrons dans un délai maximum d'un mois (prolongeable dans les cas complexes).</p>
 
-        <p className="text-sm text-gray-600 dark:text-gray-400 mt-4">Pour exercer l'un de ces droits, contactez-nous simplement à privacy@akmleva.pt.</p>
+        <h2>5. Sécurité des Données</h2>
+        <p>Nous adoptons des mesures techniques et organisationnelles appropriées et actualisées pour garantir un niveau de sécurité proportionné au risque, conformément à l'article 32 du RGPD.</p>
+        <ul className="space-y-2 my-4">
+          <li className="flex items-start gap-2">
+            <CheckCircle2 className="w-4 h-4 text-teal-600 dark:text-teal-400 mt-0.5 flex-shrink-0" />
+            <span>Chiffrement des données en transit et au repos (SSL/TLS)</span>
+          </li>
+          <li className="flex items-start gap-2">
+            <CheckCircle2 className="w-4 h-4 text-teal-600 dark:text-teal-400 mt-0.5 flex-shrink-0" />
+            <span>Contrôle d'accès basé sur les rôles et authentification multifacteur</span>
+          </li>
+          <li className="flex items-start gap-2">
+            <CheckCircle2 className="w-4 h-4 text-teal-600 dark:text-teal-400 mt-0.5 flex-shrink-0" />
+            <span>Surveillance continue de la sécurité et détection d'intrusions</span>
+          </li>
+          <li className="flex items-start gap-2">
+            <CheckCircle2 className="w-4 h-4 text-teal-600 dark:text-teal-400 mt-0.5 flex-shrink-0" />
+            <span>Formation régulière des employés à la protection des données</span>
+          </li>
+          <li className="flex items-start gap-2">
+            <CheckCircle2 className="w-4 h-4 text-teal-600 dark:text-teal-400 mt-0.5 flex-shrink-0" />
+            <span>Audits de sécurité et analyses d'impact périodiques</span>
+          </li>
+          <li className="flex items-start gap-2">
+            <CheckCircle2 className="w-4 h-4 text-teal-600 dark:text-teal-400 mt-0.5 flex-shrink-0" />
+            <span>Sauvegarde sécurisée et plans de reprise après sinistre</span>
+          </li>
+          <li className="flex items-start gap-2">
+            <CheckCircle2 className="w-4 h-4 text-teal-600 dark:text-teal-400 mt-0.5 flex-shrink-0" />
+            <span>Pseudonymisation et minimisation des données chaque fois que possible</span>
+          </li>
+        </ul>
+        <div className="mt-4 p-4 bg-yellow-50 dark:bg-yellow-900/20 border-l-4 border-yellow-500 rounded-r">
+          <p className="text-sm text-gray-700 dark:text-gray-300">Malgré les mesures mises en œuvre, aucun système n'est 100% à l'abri des risques. En cas de violation de données, nous notifierons l'autorité de contrôle et les personnes concernées dans les délais légaux.</p>
+        </div>
+
+        <h2>6. Contact et Exercice des Droits</h2>
+        <p>Pour exercer l'un de vos droits au titre du RGPD ou clarifier des doutes sur le traitement de vos données personnelles, vous pouvez nous contacter par les moyens suivants :</p>
+        <div className="my-4 p-6 bg-gray-50 dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700">
+          <div className="grid md:grid-cols-2 gap-4 text-sm mb-4">
+            <div><strong>Email général :</strong> privacy@akmleva.pt</div>
+            <div><strong>Téléphone :</strong> +351 123 456 789</div>
+            <div className="md:col-span-2"><strong>Délégué à la Protection des Données (DPO) :</strong> dpo@akmleva.pt</div>
+          </div>
+          <p className="text-xs text-gray-600 dark:text-gray-400">Nous répondrons dans les plus brefs délais et toujours dans les délais légaux prévus par le RGPD.</p>
+        </div>
 
         <div className="mt-8 p-6 bg-blue-50 dark:bg-blue-900/20 border-2 border-blue-300 dark:border-blue-700 rounded-lg">
-          <p className="font-semibold text-blue-900 dark:text-blue-300"><strong>En vigueur depuis:</strong> 25 mai 2018</p>
+          <p className="font-semibold text-blue-900 dark:text-blue-300"><strong>En vigueur depuis :</strong> 25 mai 2018</p>
           <p className="text-sm mt-2 text-blue-800 dark:text-blue-400">Ce document est pleinement conforme au Règlement (UE) 2016/679 (RGPD) et à la législation nationale applicable.</p>
         </div>
       </>

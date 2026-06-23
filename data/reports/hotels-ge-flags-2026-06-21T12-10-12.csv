@@ -1,0 +1,181 @@
+flag_type;country_code;country_name;db_hotels;ge_hotels;ratio_or_coverage
+OVER;TJ;"Internacional";145;3;48.33x
+OVER;BI;"Internacional";84;3;28.00x
+OVER;ML;"Internacional";133;6;22.17x
+OVER;ET;"Etiópia";345;16;21.56x
+OVER;CG;"Internacional";100;5;20.00x
+OVER;AS;"Internacional";16;1;16.00x
+OVER;GW;"Internacional";52;4;13.00x
+OVER;MH;"Internacional";45;4;11.25x
+OVER;BT;"Internacional";44;4;11.00x
+OVER;KG;"Internacional";155;15;10.33x
+OVER;AF;"Afeganistão";72;7;10.29x
+OVER;CF;"Internacional";20;2;10.00x
+OVER;SL;"Internacional";27;3;9.00x
+OVER;TD;"Internacional";52;6;8.67x
+OVER;GA;"Internacional";60;7;8.57x
+OVER;BF;"Internacional";85;10;8.50x
+OVER;MN;"Internacional";89;12;7.42x
+OVER;ER;"Internacional";7;1;7.00x
+OVER;GN;"Internacional";34;5;6.80x
+OVER;SO;"Internacional";128;19;6.74x
+OVER;GQ;"Internacional";33;5;6.60x
+OVER;BJ;"Internacional";56;9;6.22x
+OVER;IQ;"Iraque";93;15;6.20x
+OVER;SD;"Sudão";28;5;5.60x
+OVER;HU;"Hungria";3865;706;5.47x
+OVER;UZ;"Internacional";272;52;5.23x
+OVER;VC;"Internacional";41;8;5.13x
+OVER;TG;"Internacional";49;10;4.90x
+OVER;BW;"Internacional";127;26;4.88x
+OVER;GI;"Internacional";70;15;4.67x
+OVER;HT;"Internacional";112;25;4.48x
+OVER;RW;"Internacional";77;18;4.28x
+OVER;BN;"Internacional";108;26;4.15x
+OVER;NE;"Níger";16;4;4.00x
+OVER;MW;"Internacional";76;21;3.62x
+OVER;NG;"Nigéria";235;68;3.46x
+OVER;ZW;"Internacional";192;60;3.20x
+OVER;GH;"Gana";142;46;3.09x
+OVER;IE;"Irlanda";4117;1443;2.85x
+OVER;GE;"Internacional";188;68;2.76x
+OVER;ST;"Internacional";16;6;2.67x
+OVER;ZM;"Internacional";137;52;2.63x
+OVER;BD;"Bangladesh";139;53;2.62x
+OVER;NP;"Internacional";361;139;2.60x
+OVER;MZ;"Moçambique";134;52;2.58x
+OVER;CD;"Internacional";124;49;2.53x
+OVER;CM;"Camarões";43;18;2.39x
+OVER;AO;"Internacional";114;48;2.38x
+OVER;UG;"Internacional";89;38;2.34x
+OVER;TC;"Internacional";131;60;2.18x
+OVER;SG;"Singapura";1031;490;2.10x
+UNDER;PS;"Palestine";0;83;0.0%
+UNDER;JE;"Jersey";0;75;0.0%
+UNDER;MO;"Macau";0;70;0.0%
+UNDER;AG;"Antigua and Barbuda";0;66;0.0%
+UNDER;SV;"El Salvador";0;60;0.0%
+UNDER;SX;"Sint Maarten";0;43;0.0%
+UNDER;KY;"Cayman Islands";0;41;0.0%
+UNDER;BM;"Bermuda";0;34;0.0%
+UNDER;FM;"Micronesia";0;33;0.0%
+UNDER;GG;"Guernsey";0;33;0.0%
+UNDER;GD;"Grenada";0;32;0.0%
+UNDER;GM;"Gambia";0;32;0.0%
+UNDER;NF;"Norfolk Island";0;29;0.0%
+UNDER;XK;"Kosovo";0;29;0.0%
+UNDER;BQ;"Bonaire";0;28;0.0%
+UNDER;MP;"Northern Mariana Islands";0;26;0.0%
+UNDER;MC;"Monaco";0;25;0.0%
+UNDER;VG;"British Virgin Islands";0;23;0.0%
+UNDER;AI;"Anguilla";0;20;0.0%
+UNDER;PW;"Palau";0;18;0.0%
+UNDER;TO;"Tonga";0;14;0.0%
+UNDER;IM;"Isle of Man";0;13;0.0%
+UNDER;BL;"Saint Barthélemy";0;11;0.0%
+UNDER;SM;"San Marino";0;11;0.0%
+UNDER;DM;"Dominica";0;9;0.0%
+UNDER;LI;"Liechtenstein";0;6;0.0%
+UNDER;EH;"Western Sahara";0;5;0.0%
+UNDER;NU;"Niue";0;5;0.0%
+UNDER;GY;"Guyana";0;4;0.0%
+UNDER;SS;"South Sudan";0;4;0.0%
+UNDER;DJ;"Djibouti";0;3;0.0%
+UNDER;KI;"Kiribati";0;3;0.0%
+UNDER;LS;"Lesotho";0;3;0.0%
+UNDER;AX;"Åland Islands";0;2;0.0%
+UNDER;NR;"Nauru";0;2;0.0%
+UNDER;SJ;"Svalbard and Jan Mayen";0;2;0.0%
+UNDER;MS;"Montserrat";0;1;0.0%
+UNDER;TK;"Tokelau";0;1;0.0%
+UNDER;TV;"Tuvalu";0;1;0.0%
+UNDER;YT;"Mayotte";0;1;0.0%
+UNDER;ES;"Internacional";40;19346;0.2%
+UNDER;AZ;"Azerbaijão";1;146;0.7%
+UNDER;FR;"Internacional";99;12303;0.8%
+UNDER;MX;"Internacional";37;3812;1.0%
+UNDER;BE;"Internacional";10;988;1.0%
+UNDER;GB;"Internacional";85;8310;1.0%
+UNDER;TR;"Internacional";70;6004;1.2%
+UNDER;PL;"Polônia";14;1078;1.3%
+UNDER;DE;"Internacional";101;7201;1.4%
+UNDER;RO;"Internacional";10;708;1.4%
+UNDER;PT;"Internacional";51;3528;1.4%
+UNDER;KR;"Internacional";15;1001;1.5%
+UNDER;DO;"República Dominicana";16;772;2.1%
+UNDER;AR;"Internacional";39;1845;2.1%
+UNDER;MA;"Internacional";40;1660;2.4%
+UNDER;UY;"Uruguai";6;215;2.8%
+UNDER;BR;"Internacional";118;4138;2.9%
+UNDER;AD;"Andorra";10;347;2.9%
+UNDER;GR;"Internacional";246;7993;3.1%
+UNDER;KH;"Camboja";16;505;3.2%
+UNDER;AE;"Emirados Árabes Unidos";53;1577;3.4%
+UNDER;CO;"Internacional";38;990;3.8%
+UNDER;CZ;"Tchéquia";50;1205;4.1%
+UNDER;BS;"Bahamas";6;134;4.5%
+UNDER;JM;"Jamaica";16;344;4.7%
+UNDER;JP;"Internacional";141;2999;4.7%
+UNDER;CN;"Internacional";388;7951;4.9%
+UNDER;SE;"Internacional";32;650;4.9%
+UNDER;ZA;"Internacional";68;1342;5.1%
+UNDER;NL;"Países Baixos";73;1391;5.2%
+UNDER;US;"Internacional";3458;62465;5.5%
+UNDER;IN;"Internacional";254;4554;5.6%
+UNDER;PA;"Internacional";17;232;7.3%
+UNDER;CK;"Ilhas Cook";4;53;7.5%
+UNDER;DK;"Internacional";33;415;8.0%
+UNDER;TW;"Internacional";74;917;8.1%
+UNDER;BH;"Barein";16;193;8.3%
+UNDER;AU;"Internacional";425;4802;8.9%
+UNDER;FI;"Internacional";40;444;9.0%
+UNDER;NO;"Internacional";86;931;9.2%
+UNDER;VN;"Vietnã";109;1177;9.3%
+UNDER;ID;"Internacional";304;3202;9.5%
+UNDER;PE;"Internacional";36;377;9.5%
+UNDER;CL;"Internacional";56;530;10.6%
+MISS;PS;"Palestine";0;83;-
+MISS;JE;"Jersey";0;75;-
+MISS;MO;"Macau";0;70;-
+MISS;AG;"Antigua and Barbuda";0;66;-
+MISS;SV;"El Salvador";0;60;-
+MISS;SX;"Sint Maarten";0;43;-
+MISS;KY;"Cayman Islands";0;41;-
+MISS;BM;"Bermuda";0;34;-
+MISS;FM;"Micronesia";0;33;-
+MISS;GG;"Guernsey";0;33;-
+MISS;GD;"Grenada";0;32;-
+MISS;GM;"Gambia";0;32;-
+MISS;NF;"Norfolk Island";0;29;-
+MISS;XK;"Kosovo";0;29;-
+MISS;BQ;"Bonaire";0;28;-
+MISS;MP;"Northern Mariana Islands";0;26;-
+MISS;MC;"Monaco";0;25;-
+MISS;VG;"British Virgin Islands";0;23;-
+MISS;AI;"Anguilla";0;20;-
+MISS;PW;"Palau";0;18;-
+MISS;TO;"Tonga";0;14;-
+MISS;IM;"Isle of Man";0;13;-
+MISS;BL;"Saint Barthélemy";0;11;-
+MISS;SM;"San Marino";0;11;-
+MISS;DM;"Dominica";0;9;-
+MISS;LI;"Liechtenstein";0;6;-
+MISS;EH;"Western Sahara";0;5;-
+MISS;NU;"Niue";0;5;-
+MISS;GY;"Guyana";0;4;-
+MISS;SS;"South Sudan";0;4;-
+MISS;DJ;"Djibouti";0;3;-
+MISS;KI;"Kiribati";0;3;-
+MISS;LS;"Lesotho";0;3;-
+MISS;AX;"Åland Islands";0;2;-
+MISS;NR;"Nauru";0;2;-
+MISS;SJ;"Svalbard and Jan Mayen";0;2;-
+MISS;MS;"Montserrat";0;1;-
+MISS;TK;"Tokelau";0;1;-
+MISS;TV;"Tuvalu";0;1;-
+MISS;YT;"Mayotte";0;1;-
+EXTRA;XX;"Internacional";192403;0;-
+EXTRA;TM;"Internacional";164;0;-
+EXTRA;KP;"Internacional";56;0;-
+EXTRA;LR;"Internacional";49;0;-
+EXTRA;PM;"Internacional";10;0;-

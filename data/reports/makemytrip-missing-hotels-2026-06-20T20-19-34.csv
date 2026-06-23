@@ -1,0 +1,6 @@
+property_id;property_name;city;country;star_rating;latitude;longitude;property_address;mmt_review_rating;mmt_review_count
+"201302071713316867";"Zion Home Stay";"Udaipur";"India";"1 star";24.581788;73.667805;"Zion, F-17, Haridas Ji Ki Magri, Near Bal Vinay Mandir School , Hardasji Ki Magri";"{{ratingCriteria.name}}{{ratingCriteria.value}}";""
+"201312041703404727";"Araliayas Resorts";"Udaipur";"India";"3 star";24.544342;73.644242;"Udaipur-Jhadol Road , Near Nai Gaon";"{{ratingCriteria.name}}{{ratingCriteria.value}}";""
+"201407171324437682";"Shri Udai Palace";"Udaipur";"India";"2 star";24.579942;73.681953;"23/208 Gangaur Ghat Near Bagore Ki Haveli , Near Bagore Ki Haveli";"{{ratingCriteria.name}}{{ratingCriteria.value}}";""
+"201407181538181173";"SNP House Airport Hotel And Restaurant";"Udaipur";"India";"1 star";24.622607;73.855194;"Opp GITS, NH-76, Bamaniya Khet, Dabok , Dabok";"";""
+"201409021258573714";"Hotel Pichola Haveli (LAKE SIDE)";"Udaipur";"India";"2 star";24.5801;73.6822;"64 Ghangour Ghat, Opp Bagore Ki Haveli , East Udaipur";"{{ratingCriteria.name}}{{ratingCriteria.value}}";""

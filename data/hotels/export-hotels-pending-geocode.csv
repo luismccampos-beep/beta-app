@@ -1,0 +1,165 @@
+destino_id,destino_nome,pais,pais_code,tipo,hotel_count
+26448,Arthur-Pieman Conservation Area,AR,AR,praia,4
+27771,Monte Leon National Park,AR,AR,praia,3
+27773,Río Pilcomayo National Park,AR,AR,cidade,2
+28422,Tunuyán,AR,AR,praia,7
+23363,Sant'Erasmo,AT,AT,praia,7
+23264,French Island,AU,AU,praia,3
+26135,Hiking in Kosciuszko National Park,AU,AU,montanha,28
+26356,Morne Seychellois National Park,AU,AU,ilha,4
+24938,National Route 83,AU,AU,cidade,12
+27317,Rydal,AU,AU,cidade,3
+16467,South and West Gippsland,AU,AU,praia,1
+16440,Southern Tasmania,AU,AU,praia,10
+26610,Taranna,AU,AU,cidade,2
+25927,Western Tasmania,AU,AU,praia,1
+27230,Workers’ Assembly Halls,AU,AU,cidade,6
+26152,North Arm,BR,BR,ilha,2
+23233,Aulavik National Park,CA,CA,ilha,1
+25982,Charlevoix Biosphere Reserve,CA,CA,cidade,1
+26283,Franquelin,CA,CA,cidade,7
+25573,Marie-Jean-Eudes Ecological Reserve,CA,CA,montanha,1
+26264,Minganie,CA,CA,praia,4
+26324,Pribaikalsky National Park,CA,CA,ilha,5
+27523,Scott Pilgrim locations,CA,CA,praia,4
+19395,Spiritwood,CA,CA,montanha,9
+23101,Uranium City,CA,CA,cidade,6
+19008,Yukon - Charley Rivers National Preserve,CA,CA,cidade,6
+25456,Zec Borgia,CA,CA,montanha,7
+28381,Česká Kanada,CA,CA,montanha,3
+26380,Alberto de Agostini National Park,CL,CL,ilha,6
+26160,Arturo Merino Benítez International Airport,CL,CL,ilha,4
+26658,Cabo de Hornos National Park,CL,CL,ilha,2
+27293,Llullaillaco National Park,CL,CL,montanha,1
+26119,Patagonia National Park (Chile),CL,CL,cidade,3
+27503,Horinger,CN,CN,cidade,6
+23291,Korean cuisine,CN,CN,ilha,8
+27161,Korean palaces,CN,CN,montanha,4
+23281,Laiyuan County,CN,CN,campo,6
+17618,Trans-Siberian Railway,CN,CN,praia,3
+18893,Yanbian,CN,CN,montanha,3
+27900,Yumurtalık,CN,CN,praia,1
+25623,Dibulla,CO,CO,praia,3
+16473,South Jutland,DK,DK,praia,3
+20913,Travels of Hans Christian Andersen,DK,DK,cidade,2
+18554,West Jutland,DK,DK,praia,7
+26281,El-Obeid,EG,EG,cidade,5
+15579,Santa Barbara County,EG,EG,praia,5
+22523,Christmas and New Year travel,ES,ES,praia,9
+27148,L'Estany,ES,ES,montanha,4
+22181,Archipelago Trail,FI,FI,praia,3
+23032,Bengtskär,FI,FI,montanha,4
+26904,East Central Finland,FI,FI,montanha,6
+26891,Evijärvi,FI,FI,cidade,3
+19185,Finland Proper,FI,FI,praia,1
+22590,Inland of Finland Proper,FI,FI,praia,4
+24225,Karkali Strict Nature Reserve,FI,FI,cidade,2
+26211,Keitele,FI,FI,montanha,5
+26246,Multia,FI,FI,cidade,6
+26941,Nousiainen,FI,FI,praia,5
+26691,Paltamo,FI,FI,cidade,3
+26929,Pielavesi,FI,FI,ilha,4
+26881,Puolanka,FI,FI,montanha,3
+26883,Ristijärvi,FI,FI,montanha,7
+26783,Rääkkylä,FI,FI,cidade,8
+26413,Siikainen,FI,FI,montanha,7
+25329,Stuorrahanoaivi trek,FI,FI,montanha,1
+26905,Suomenselkä countryside,FI,FI,montanha,3
+18006,Valtimo,FI,FI,praia,6
+26267,Vårdö,FI,FI,montanha,6
+18059,Vágar,FO,FO,ilha,7
+28002,Abbots Leigh,FR,FR,cidade,4
+22938,Auvergne-Rhône-Alpes,FR,FR,praia,3
+21496,World War I,FR,FR,ilha,19
+25152,Cross River National Park,GB,GB,cidade,5
+28441,Diwali,GB,GB,praia,12
+15283,Saint Kitts and Nevis,GB,GB,praia,4
+23036,Igaliku,GL,GL,cidade,5
+25487,Szada,HU,HU,cidade,2
+18531,Western Transdanubia,HU,HU,cidade,4
+26924,Gedong Tataan,ID,ID,cidade,7
+26340,Modisi,ID,ID,praia,8
+27531,Mount Sibayak,ID,ID,campo,4
+26315,Rangsang,ID,ID,ilha,2
+22332,Sawarna,ID,ID,praia,8
+18555,West Kalimantan,ID,ID,ilha,2
+24711,Drumshanbo,IE,IE,cidade,4
+26564,Damphu,IN,IN,cidade,2
+26446,Hanle,IN,IN,cidade,3
+21163,Indus Valley Civilisation,IN,IN,montanha,9
+21311,Malbazar,IN,IN,cidade,4
+26263,Palashi,IN,IN,cidade,3
+22198,T. Narsipur,IN,IN,cidade,9
+16987,Tada Falls,IN,IN,cidade,2
+26196,Fossholl,IS,IS,cidade,2
+21360,Icelandic hot springs,IS,IS,praia,3
+16502,Southwest Iceland,IS,IS,praia,1
+26712,Etruscans,IT,IT,cidade,7
+26379,New Italy,IT,IT,cidade,3
+28099,Northwest Tyrol,IT,IT,montanha,6
+20519,Val Camonica,IT,IT,praia,2
+24011,Driving in Japan,JP,JP,praia,4
+27349,Irabu,JP,JP,praia,3
+19740,Marathon race,JP,JP,cidade,25
+28265,K-pop,KR,KR,praia,7
+27060,Nami Island,KR,KR,ilha,3
+22817,Cycling the Western Sahara,MA,MA,praia,41
+23874,Thandwe,MM,MM,praia,7
+20356,Angangueo,MX,MX,cidade,2
+19428,Barra de Potosí,MX,MX,praia,2
+27704,Chalcatzingo,MX,MX,praia,7
+27971,Cimarron,MX,MX,cidade,9
+26653,Constitution 1857 National Park,MX,MX,cidade,3
+28193,Ichkabal,MX,MX,praia,2
+27764,Volcan Cosigüina,MX,MX,ilha,2
+26590,Xochicalco,MX,MX,campo,6
+28172,Zapotec phrasebook,MX,MX,campo,1
+19487,Pom Pom Island,MY,MY,praia,7
+24340,Boating in Finland,NL,NL,montanha,2
+16500,Rivierenland,NL,NL,campo,5
+26130,Danish Empire,NO,NO,praia,25
+26838,E69,NO,NO,cidade,7
+27939,Gränsleden,NO,NO,cidade,8
+22576,Hvaler,NO,NO,montanha,2
+27368,Langøya,NO,NO,praia,5
+27810,Murjek,NO,NO,cidade,3
+27152,Nordfjord,NO,NO,montanha,1
+24977,Nordic monarchies,NO,NO,praia,23
+23256,Sandane,NO,NO,cidade,7
+20189,Årjäng,NO,NO,cidade,7
+19154,Diving in New Zealand,NZ,NZ,montanha,3
+19522,Diving the Alderman Islands,NZ,NZ,montanha,5
+27196,Manapouri,NZ,NZ,ilha,4
+17115,Taranaki,NZ,NZ,montanha,3
+16355,Solomon Islands,PE,PE,praia,2
+21871,Calbiga,PH,PH,praia,5
+28351,Jovellar,PH,PH,cidade,3
+22052,Paranas,PH,PH,praia,4
+17772,Turtle Islands Park,PH,PH,praia,3
+27160,Bullfighting,PT,PT,praia,17
+26155,Kisantu,PT,PT,cidade,7
+15002,Robben Island,PT,PT,praia,3
+21041,Săpânța,RO,RO,campo,5
+26483,Parikkala,RU,RU,montanha,4
+22587,Anholt,SE,SE,praia,4
+28115,Botnialeden,SE,SE,montanha,9
+22564,Inlandsbanan,SE,SE,cidade,1
+27940,Jämtlandsleden,SE,SE,cidade,5
+27897,Roslagsleden,SE,SE,praia,7
+16895,Svealand,SE,SE,praia,3
+26027,Vännäs,SE,SE,cidade,2
+20046,Älvkarleby,SE,SE,praia,6
+21701,Älvsbyn,SE,SE,cidade,3
+28102,National parks in Thailand,TH,TH,praia,40
+26774,Fertile Crescent,TR,TR,cidade,3
+19418,Mark Twain National Forest,TR,TR,cidade,6
+20153,Varvara,TR,TR,praia,2
+24685,Georgian cuisine,US,US,montanha,32
+28466,Street-running trains,VN,VN,cidade,5
+24127,Top Gear Vietnam special,VN,VN,praia,1
+26600,Garden Castle Nature Reserve,ZA,ZA,cidade,1
+23751,Hardap,ZA,ZA,montanha,2
+20464,Mpande,ZA,ZA,praia,6
+17996,Valley of 1000 Hills,ZA,ZA,praia,7
+18027,Vanderkloof,ZA,ZA,montanha,9
+18583,West Rand,ZA,ZA,campo,9

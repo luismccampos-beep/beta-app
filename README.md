@@ -142,19 +142,90 @@ npm run db:studio       # Open Prisma Studio
 ### Production Build
 
 ```bash
-# Build all workspaces (requires database to be running)
+# Build the app (requires database to be running)
 npm run build
-
-# Build without database (for CI/CD or when DB is unavailable)
-npm run build:no-db
-# Build specific workspace
-npm run build:frontend
-npm run build:backend
-npm run build:web
 
 # Start production server
 npm run start
 ```
+
+---
+
+## 🏷️ Travel Catalog - Tagging de Categorias
+
+Scripts para aplicar tags de categorias aos destinos do catálogo de viagens.
+
+### Comandos Disponíveis
+
+```bash
+# Ver estatísticas (sem alterar nada)
+npm run travel:catalog:tag-categorias:stats
+
+# Aplicar tags ao bundle
+npm run travel:catalog:tag-categorias
+
+# Aplicar tags ao bundle + sincronizar DB
+npm run travel:catalog:tag-categorias:db
+
+# Testar com 100 destinos
+node scripts/tag-destinos-categorias.mjs --limit=100
+```
+
+### ⚠️ Próximos passos manuais (antes de correr com --db)
+
+Antes de executar o script com `--db`, precisas de:
+
+1. Adicionar campo ao schema Prisma:
+```bash
+node scripts/_add-categorias-schema.mjs
+```
+
+2. Gerar migração:
+```bash
+npx prisma migrate dev --name add_destino_categorias
+```
+
+3. Executar o auto-tagging:
+```bash
+npm run travel:catalog:tag-categorias
+```
+
+4. Sincronizar com a DB (depois da migração):
+```bash
+npm run travel:catalog:tag-categorias:db
+```
+
+---
+
+## 🗺️ Geocoding de Hotéis Wikivoyage
+
+Scripts para geocodificar hotéis do Wikivoyage em paralelo com retoma automática.
+
+### Comandos Disponíveis
+
+```bash
+# Ver estado do processamento
+node scripts/geocode-wv-hotels-parallel.mjs --status
+
+# Testar (dry-run) com 100 hotéis
+node scripts/geocode-wv-hotels-parallel.mjs --dry-run --limit=100
+
+# Processar 5000 hotéis com 10 workers
+node scripts/geocode-wv-hotels-parallel.mjs --limit=5000 --workers=10
+
+# Processar todos os hotéis de Portugal
+node scripts/geocode-wv-hotels-parallel.mjs --country=PT --workers=8
+
+# Correr em background (retoma automaticamente)
+node scripts/geocode-wv-hotels-parallel.mjs --workers=10 --delay=0.1
+```
+
+### Funcionalidades
+
+- **Processamento paralelo**: Multi-threading com workers configuráveis
+- **Retoma automática**: Continua do ponto onde parou em caso de interrupção
+- **Filtros**: Por país, limite de registos, dry-run para testes
+- **Delay configurável**: Controlo de rate limiting entre requests
 
 ---
 
@@ -168,11 +239,7 @@ Given the scale of 3.5M+ SLOC, AKMLEVA follows a rigorous multi-layer testing ap
 ┌─────────────────────────────────────┐
 │   E2E Tests (Playwright)            │  ← Complete user workflows
 ├─────────────────────────────────────┤
-│   Contract Tests (Pact)             │  ← API contract validation
-├─────────────────────────────────────┤
-│   Integration Tests (Vitest)        │  ← Service integration
-├─────────────────────────────────────┤
-│   Unit Tests (Vitest/Jest)          │  ← Individual components
+│   Unit & Integration Tests (Vitest) │  ← Components & services
 └─────────────────────────────────────┘
 ```
 
@@ -182,26 +249,12 @@ Given the scale of 3.5M+ SLOC, AKMLEVA follows a rigorous multi-layer testing ap
 # Run all tests
 npm test
 
-# Run tests by workspace
-npm run test:backend      # Backend unit + integration
-npm run test:frontend     # Frontend component tests
-npm run test:shared       # Shared package tests
-
-# Run specific test types
-npm run test:unit         # Unit tests only
-npm run test:integration  # Integration tests only
-npm run test:changed      # Only modified files (fast!)
+# Run tests on changed files only (fast!)
+npm run test:changed
 
 # E2E Tests
 npm run e2e               # Headless mode
 npm run e2e:ui            # Interactive UI mode
-npm run e2e:debug         # Debug mode
-
-# Contract Tests
-npm run test:contract     # Frontend-Backend contracts
-
-# Coverage Reports
-npm run test:coverage     # Generate coverage report
 ```
 
 
@@ -214,41 +267,24 @@ npm run test:coverage     # Generate coverage report
 ```bash
 # Linting
 npm run lint              # Lint all workspaces
-npm run lint:fix          # Auto-fix linting issues
-
-# Formatting
-npm run format            # Format with Prettier
-npm run format:check      # Check formatting
 
 # Type Checking
-npm run typecheck         # TypeScript validation
-
+npm run type-check        # TypeScript validation
 
 ### Database Management
 
 ```bash
-# Prisma Commands
 npm run db:migrate        # Create and run migrations
 npm run db:push           # Push schema changes (dev)
-npm run db:studio         # Open Prisma Studio UI
 npm run db:seed           # Seed database
 npm run db:reset          # Reset database (careful!)
-
-# Backup & Restore
-npm run db:backup         # Backup production DB
-npm run db:restore        # Restore from backup
+npm run db:studio         # Open Prisma Studio UI
 ```
 
 ### Monitoring & Debugging
 
 ```bash
-# Logs
-npm run logs              # View application logs
-npm run logs:error        # Error logs only
-npm run logs:performance  # Performance metrics
-
-
-
+# Monitoring via Sentry (configured in code)
 ```
 
 ---
@@ -262,7 +298,7 @@ npm run logs:performance  # Performance metrics
 npm run dev
 
 # Uses:
-# - Local MySQL/Redis
+# - Local PostgreSQL/Redis
 # - Mock payment providers
 # - Debug logging enabled
 ```
@@ -286,7 +322,7 @@ npm run deploy:staging
 npm run deploy:production
 
 # Uses:
-# - Production MySQL clusters
+# - Production PostgreSQL clusters
 # - Live payment processors
 # - Full monitoring stack
 # - CDN integration

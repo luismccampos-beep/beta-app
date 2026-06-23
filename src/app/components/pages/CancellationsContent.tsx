@@ -398,6 +398,119 @@ export function CancellationsContent() {
           </table>
         </div>
 
+        <div className="my-4 space-y-3">
+          <div className="p-4 border-l-4 border-green-500 bg-green-50 dark:bg-green-900/20 rounded-r">
+            <p className="font-semibold">Cancelación con más de 30 días de antelación:</p>
+            <p className="text-sm mt-1">Tarifa de retención del 20%.</p>
+          </div>
+          <div className="p-4 border-l-4 border-orange-500 bg-orange-50 dark:bg-orange-900/20 rounded-r">
+            <p className="font-semibold">Cancelación entre 29 y 15 días:</p>
+            <p className="text-sm mt-1">Tarifa de retención del 50%.</p>
+          </div>
+          <div className="p-4 border-l-4 border-red-500 bg-red-50 dark:bg-red-900/20 rounded-r">
+            <p className="font-semibold">Cancelación con menos de 14 días:</p>
+            <p className="text-sm mt-1">Sin reembolso.</p>
+          </div>
+        </div>
+
+        <h2>3. Vuelos</h2>
+        <p>Las políticas de cancelación de vuelos son dictadas por las aerolíneas y pueden ser 100% no reembolsables.</p>
+
+        <div className="my-4 p-4 bg-blue-50 dark:bg-blue-900/20 border-l-4 border-blue-500 rounded-r">
+          <p className="font-semibold text-blue-900 dark:text-blue-300 flex items-center gap-2">
+            <AlertCircle className="w-5 h-5" />
+            Importante
+          </p>
+          <p className="text-sm mt-2 text-blue-800 dark:text-blue-400">
+            En caso de cancelación por fuerza mayor (pandemia, desastres naturales, etc.), se aplican condiciones especiales. Contáctenos para más información.
+          </p>
+        </div>
+
+        <h2>4. Cómo Solicitar una Cancelación</h2>
+        <p className="mb-4">El proceso es sencillo y automático a través de su área de cliente.</p>
+
+        <div className="space-y-4 my-6">
+          <div className="flex items-start gap-4 p-4 bg-gray-50 dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700">
+            <div className="w-10 h-10 rounded-full bg-gradient-to-br from-teal-600 to-orange-500 flex items-center justify-center text-white font-bold flex-shrink-0">
+              1
+            </div>
+            <div className="flex-1">
+              <h3 className="font-semibold text-lg mb-1">Contacte al Soporte</h3>
+              <p className="text-sm text-gray-700 dark:text-gray-300">
+                La forma más rápida y segura es a través del correo electrónico de soporte oficial.
+              </p>
+            </div>
+          </div>
+
+          <div className="flex items-start gap-4 p-4 bg-gray-50 dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700">
+            <div className="w-10 h-10 rounded-full bg-gradient-to-br from-teal-600 to-orange-500 flex items-center justify-center text-white font-bold flex-shrink-0">
+              2
+            </div>
+            <div className="flex-1">
+              <h3 className="font-semibold text-lg mb-1">Proporcione los Detalles</h3>
+              <p className="text-sm text-gray-700 dark:text-gray-300">
+                Por favor, indique su número de reserva, nombre completo y el motivo de la cancelación.
+              </p>
+            </div>
+          </div>
+
+          <div className="flex items-start gap-4 p-4 bg-gray-50 dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700">
+            <div className="w-10 h-10 rounded-full bg-gradient-to-br from-teal-600 to-orange-500 flex items-center justify-center text-white font-bold flex-shrink-0">
+              3
+            </div>
+            <div className="flex-1">
+              <h3 className="font-semibold text-lg mb-1">Espere la Confirmación</h3>
+              <p className="text-sm text-gray-700 dark:text-gray-300">
+                Recibirá una confirmación por correo electrónico con los detalles del procesamiento.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div className="my-6 p-6 bg-teal-50 dark:bg-teal-900/20 border-2 border-teal-300 dark:border-teal-700 rounded-lg text-center">
+          <Mail className="w-8 h-8 text-teal-600 dark:text-teal-400 mx-auto mb-3" />
+          <p className="font-semibold text-lg text-teal-900 dark:text-teal-300">¿Necesita ayuda adicional?</p>
+          <p className="text-sm text-teal-800 dark:text-teal-400 mt-1">Nuestro equipo está aquí para ayudarle</p>
+        </div>
+
+        <h2>5. Preguntas Frecuentes</h2>
+        <p className="mb-4">Encuentre respuestas rápidas a sus preguntas más comunes.</p>
+
+        <div className="space-y-4 my-4">
+          <details className="p-4 bg-gray-50 dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700">
+            <summary className="font-semibold cursor-pointer flex items-center gap-2">
+              <span className="text-teal-600 dark:text-teal-400">1.</span> ¿Puedo cancelar mi reserva en línea?
+            </summary>
+            <p className="text-sm mt-3 text-gray-700 dark:text-gray-300 pl-6">
+              Sí, puede iniciar el proceso de cancelación a través de su área de cliente o contactando a nuestro equipo de soporte por correo electrónico.
+            </p>
+          </details>
+
+          <details className="p-4 bg-gray-50 dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700">
+            <summary className="font-semibold cursor-pointer flex items-center gap-2">
+              <span className="text-teal-600 dark:text-teal-400">2.</span> ¿Cuánto tiempo tarda el reembolso?
+            </summary>
+            <p className="text-sm mt-3 text-gray-700 dark:text-gray-300 pl-6">
+              Los reembolsos se procesan normalmente dentro de 14-30 días hábiles después de la aprobación, dependiendo de su método de pago y entidad financiera.
+            </p>
+          </details>
+
+          <details className="p-4 bg-gray-50 dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700">
+            <summary className="font-semibold cursor-pointer flex items-center gap-2">
+              <span className="text-teal-600 dark:text-teal-400">3.</span> ¿Puedo modificar en lugar de cancelar?
+            </summary>
+            <p className="text-sm mt-3 text-gray-700 dark:text-gray-300 pl-6">
+              ¡Sí! Las modificaciones pueden estar disponibles dependiendo de las condiciones de su reserva. Contáctenos para explorar sus opciones antes de cancelar.
+            </p>
+          </details>
+        </div>
+
+        <div className="my-6 p-4 bg-gray-100 dark:bg-gray-800 border-l-4 border-gray-400 dark:border-gray-600 rounded-r">
+          <p className="text-sm text-gray-700 dark:text-gray-300 italic">
+            ¿No encontró la respuesta que buscaba? Contáctenos
+          </p>
+        </div>
+
         <div className="mt-8 p-4 bg-gray-50 dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700">
           <p className="text-xs text-gray-600 dark:text-gray-400">
             <strong>Última actualización:</strong> 29 de abril de 2026
@@ -456,9 +569,122 @@ export function CancellationsContent() {
           </table>
         </div>
 
+        <div className="my-4 space-y-3">
+          <div className="p-4 border-l-4 border-green-500 bg-green-50 dark:bg-green-900/20 rounded-r">
+            <p className="font-semibold">Annulation plus de 30 jours à l'avance :</p>
+            <p className="text-sm mt-1">Frais de rétention de 20%.</p>
+          </div>
+          <div className="p-4 border-l-4 border-orange-500 bg-orange-50 dark:bg-orange-900/20 rounded-r">
+            <p className="font-semibold">Annulation entre 29 et 15 jours :</p>
+            <p className="text-sm mt-1">Frais de rétention de 50%.</p>
+          </div>
+          <div className="p-4 border-l-4 border-red-500 bg-red-50 dark:bg-red-900/20 rounded-r">
+            <p className="font-semibold">Annulation moins de 14 jours :</p>
+            <p className="text-sm mt-1">Aucun remboursement.</p>
+          </div>
+        </div>
+
+        <h2>3. Vols</h2>
+        <p>Les politiques d'annulation des vols sont dictées par les compagnies aériennes et peuvent être 100% non remboursables.</p>
+
+        <div className="my-4 p-4 bg-blue-50 dark:bg-blue-900/20 border-l-4 border-blue-500 rounded-r">
+          <p className="font-semibold text-blue-900 dark:text-blue-300 flex items-center gap-2">
+            <AlertCircle className="w-5 h-5" />
+            Important
+          </p>
+          <p className="text-sm mt-2 text-blue-800 dark:text-blue-400">
+            En cas d'annulation pour cause de force majeure (pandémie, catastrophes naturelles, etc.), des conditions spéciales s'appliquent. Contactez-nous pour plus d'informations.
+          </p>
+        </div>
+
+        <h2>4. Comment Demander une Annulation</h2>
+        <p className="mb-4">Le processus est simple et automatique via votre espace client.</p>
+
+        <div className="space-y-4 my-6">
+          <div className="flex items-start gap-4 p-4 bg-gray-50 dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700">
+            <div className="w-10 h-10 rounded-full bg-gradient-to-br from-teal-600 to-orange-500 flex items-center justify-center text-white font-bold flex-shrink-0">
+              1
+            </div>
+            <div className="flex-1">
+              <h3 className="font-semibold text-lg mb-1">Contactez le Support</h3>
+              <p className="text-sm text-gray-700 dark:text-gray-300">
+                Le moyen le plus rapide et le plus sûr est l'email de support officiel.
+              </p>
+            </div>
+          </div>
+
+          <div className="flex items-start gap-4 p-4 bg-gray-50 dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700">
+            <div className="w-10 h-10 rounded-full bg-gradient-to-br from-teal-600 to-orange-500 flex items-center justify-center text-white font-bold flex-shrink-0">
+              2
+            </div>
+            <div className="flex-1">
+              <h3 className="font-semibold text-lg mb-1">Fournissez les Détails</h3>
+              <p className="text-sm text-gray-700 dark:text-gray-300">
+                Veuillez fournir votre numéro de réservation, votre nom complet et le motif de l'annulation.
+              </p>
+            </div>
+          </div>
+
+          <div className="flex items-start gap-4 p-4 bg-gray-50 dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700">
+            <div className="w-10 h-10 rounded-full bg-gradient-to-br from-teal-600 to-orange-500 flex items-center justify-center text-white font-bold flex-shrink-0">
+              3
+            </div>
+            <div className="flex-1">
+              <h3 className="font-semibold text-lg mb-1">Attendez la Confirmation</h3>
+              <p className="text-sm text-gray-700 dark:text-gray-300">
+                Vous recevrez une confirmation par email avec les détails du traitement.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div className="my-6 p-6 bg-teal-50 dark:bg-teal-900/20 border-2 border-teal-300 dark:border-teal-700 rounded-lg text-center">
+          <Mail className="w-8 h-8 text-teal-600 dark:text-teal-400 mx-auto mb-3" />
+          <p className="font-semibold text-lg text-teal-900 dark:text-teal-300">Besoin d'aide supplémentaire ?</p>
+          <p className="text-sm text-teal-800 dark:text-teal-400 mt-1">Notre équipe est là pour vous aider</p>
+        </div>
+
+        <h2>5. Questions Fréquentes</h2>
+        <p className="mb-4">Trouvez des réponses rapides à vos questions les plus courantes.</p>
+
+        <div className="space-y-4 my-4">
+          <details className="p-4 bg-gray-50 dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700">
+            <summary className="font-semibold cursor-pointer flex items-center gap-2">
+              <span className="text-teal-600 dark:text-teal-400">1.</span> Puis-je annuler ma réservation en ligne ?
+            </summary>
+            <p className="text-sm mt-3 text-gray-700 dark:text-gray-300 pl-6">
+              Oui, vous pouvez initier le processus d'annulation via votre espace client ou en contactant notre équipe de support par email.
+            </p>
+          </details>
+
+          <details className="p-4 bg-gray-50 dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700">
+            <summary className="font-semibold cursor-pointer flex items-center gap-2">
+              <span className="text-teal-600 dark:text-teal-400">2.</span> Combien de temps prend le remboursement ?
+            </summary>
+            <p className="text-sm mt-3 text-gray-700 dark:text-gray-300 pl-6">
+              Les remboursements sont généralement traités dans un délai de 14 à 30 jours ouvrables après approbation, selon votre mode de paiement et votre institution financière.
+            </p>
+          </details>
+
+          <details className="p-4 bg-gray-50 dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700">
+            <summary className="font-semibold cursor-pointer flex items-center gap-2">
+              <span className="text-teal-600 dark:text-teal-400">3.</span> Puis-je modifier au lieu d'annuler ?
+            </summary>
+            <p className="text-sm mt-3 text-gray-700 dark:text-gray-300 pl-6">
+              Oui ! Les modifications peuvent être disponibles selon les conditions de votre réservation. Contactez-nous pour explorer vos options avant d'annuler.
+            </p>
+          </details>
+        </div>
+
+        <div className="my-6 p-4 bg-gray-100 dark:bg-gray-800 border-l-4 border-gray-400 dark:border-gray-600 rounded-r">
+          <p className="text-sm text-gray-700 dark:text-gray-300 italic">
+            Vous n'avez pas trouvé la réponse que vous cherchiez ? Contactez-nous
+          </p>
+        </div>
+
         <div className="mt-8 p-4 bg-gray-50 dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700">
           <p className="text-xs text-gray-600 dark:text-gray-400">
-            <strong>Dernière mise à jour:</strong> 29 avril 2026
+            <strong>Dernière mise à jour :</strong> 29 avril 2026
           </p>
         </div>
       </>

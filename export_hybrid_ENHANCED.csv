@@ -1,0 +1,954 @@
+id,nome,pais_original,pais_corrigido,nearest_cc,nearest_city,latitude,longitude,dist_km,hotel_count,status,nota,nivel_confianca,prioridade_revisao,tipo_problema,sugestao_acao
+120,Aracati,PT,BR,BR,Santa Luzia,-5.310998,-35.66412,20.9,0,Revisar (distância alta),,BAIXA,BAIXA,Distância moderada,Verificar coordenadas
+152,Arua,PT,FR,FR,Mont-de-Marsan,44.06039,-0.350866,22.2,2,Revisar (distância alta),,BAIXA,MÉDIA,Distância moderada,Revisar (tem hotéis)
+154,Aruba,NL,AW,AW,Santa Cruz,12.50136,-69.96185,2.3,4,OK,,ALTA,-,Nenhum,Usar como está
+165,Atar,PT,SS,SS,Malakal,9.33746,31.407885,35.2,1,Revisar (distância alta),,BAIXA,MÉDIA,Distância elevada,Revisar (tem hotéis)
+166,Atenas,GR,IT,IT,Ceggia,45.63453,12.6868,6.8,8,OK,,MÉDIA,-,Nenhum,Usar como está
+175,Áustria,AT,IT,IT,Bagno a Ripoli,43.7604,11.30066,2.0,8,OK,,ALTA,-,Nenhum,Usar como está
+185,Bagan,PT,MM,MM,Nyaung-U,21.131712,94.862366,9.0,8,OK,,MÉDIA,-,Nenhum,Usar como está
+192,Baie Ste. Anne,PT,CA,CA,Beaurivage,47.04726,-64.96257,40.6,0,Revisar (distância alta),,BAIXA,BAIXA,Distância elevada,Verificar coordenadas
+229,Barra do Quaraí,BR,UY,UY,Bella Unión,-30.208946,-57.550514,7.3,1,OK,,MÉDIA,-,Nenhum,Usar como está
+233,Barroquinha,PT,BR,BR,Igarapé Grande,-4.642327,-44.952866,11.0,0,OK,,MÉDIA,-,Nenhum,Usar como está
+234,Bartsam,PT,BT,BT,Trashigang,27.37254,91.598755,6.2,0,OK,,MÉDIA,-,Nenhum,Usar como está
+264,Bielorrússia,RU,BY,BY,Druzhny,53.42506,27.697136,25.8,1,Revisar (distância alta),,BAIXA,MÉDIA,Distância moderada,Revisar (tem hotéis)
+294,Brabante do Norte,PT,NL,NL,Waspik,51.66667,5.0,4.4,0,OK,,ALTA,-,Nenhum,Usar como está
+310,Brod,PT,BA,BA,Foča,43.486576,18.746937,3.4,0,OK,,ALTA,-,Nenhum,Usar como está
+313,Brunei,PT,BN,BN,Liang,4.413715,114.56539,30.3,1,Revisar (distância alta),,BAIXA,MÉDIA,Distância elevada,Revisar (tem hotéis)
+322,Cabo Canaveral,PT,US,US,Cape Canaveral,28.451355,-80.528305,9.0,0,OK,,MÉDIA,-,Nenhum,Usar como está
+366,Camocim,PT,BR,BR,Carnaubal,-4.131118,-40.874928,8.5,17,OK,,MÉDIA,-,Nenhum,Usar como está
+386,Cantão de Isabela,PT,PH,PH,San Mariano,17.0,122.0,2.4,0,OK,,ALTA,-,Nenhum,Usar como está
+387,Cantão de São Cristóvão,PT,BR,BR,Santo Cristo,-22.9,-43.23333,3.3,0,OK,,ALTA,-,Nenhum,Usar como está
+393,Capital (Venezuela),VE,AR,AR,San Juan,-31.54493,-68.56254,3.6,2,OK,,ALTA,-,Nenhum,Usar como está
+420,Castro Laboreiro,PT,ES,ES,Celanova,42.030533,-8.159337,21.7,1,Revisar (distância alta),,BAIXA,MÉDIA,Distância moderada,Revisar (tem hotéis)
+426,Cataratas do Iguaçu,BR,AR,AR,Puerto Iguazú,-25.693905,-54.43654,17.3,1,Revisar (distância alta),,BAIXA,MÉDIA,Distância moderada,Revisar (tem hotéis)
+436,Chacala,PT,BO,BO,Colchani,-20.172693,-66.86354,15.9,5,Revisar (distância alta),,BAIXA,MÉDIA,Distância moderada,Revisar (tem hotéis)
+445,Chhumey,PT,BT,BT,Jakar,27.493576,90.699425,8.1,0,OK,,MÉDIA,-,Nenhum,Usar como está
+454,Chinguetti,PT,MR,MR,Atar,20.463434,-12.366484,71.1,1,Revisar (distância alta),,BAIXA,MÉDIA,Distância muito alta,Revisar (tem hotéis)
+460,Cidade do Kuwait,PT,BR,BR,Foz do Iguaçu,-25.532696,-54.600166,2.1,0,OK,,ALTA,-,Nenhum,Usar como está
+462,Cidade do Panamá,BR,MX,MX,Azcapotzalco,19.462324,-99.177246,2.9,0,OK,,ALTA,-,Nenhum,Usar como está
+471,Clarendon,PT,US,US,Pampa,34.935936,-100.89058,67.0,1,Revisar (distância alta),,BAIXA,MÉDIA,Distância muito alta,Revisar (tem hotéis)
+506,Coreia do Norte,KR,KP,KP,Yŏch’im-dong,40.37366,127.08704,36.3,0,Revisar (distância alta),,BAIXA,BAIXA,Distância elevada,Verificar coordenadas
+514,Costa do Marfim,PT,CI,CI,Bodokro,7.989737,-5.567946,17.4,0,Revisar (distância alta),,BAIXA,BAIXA,Distância moderada,Verificar coordenadas
+525,Cuba,CU,US,US,Olean,42.21757,-78.27529,20.1,8,Revisar (distância alta),,BAIXA,MÉDIA,Distância moderada,Revisar (tem hotéis)
+532,Curaçao,PT,CW,CW,Willemstad,12.117649,-68.93092,4.9,5,OK,,ALTA,-,Nenhum,Usar como está
+549,Deothang,GB,BT,BT,Samdrup Jongkhar,26.86258,91.47308,7.6,0,OK,,MÉDIA,-,Nenhum,Usar como está
+550,De Philae a Abu Simbel,EG,SD,SD,Wadi Halfa,22.3457,31.61624,66.2,5,Revisar (distância alta),,BAIXA,MÉDIA,Distância muito alta,Revisar (tem hotéis)
+562,Disneyland Resort Paris,US,FR,FR,Lagny-sur-Marne,48.86785,2.77863,4.5,7,OK,,ALTA,-,Nenhum,Usar como está
+563,Disneyland Resort Paris/Disneyland Paris,PT,FR,FR,Lagny-sur-Marne,48.86785,2.77863,4.5,1,OK,,ALTA,-,Nenhum,Usar como está
+564,Disneyland Resort Paris/Disney Village,PT,FR,FR,Esbly,48.87042,2.79082,4.2,6,OK,,ALTA,-,Nenhum,Usar como está
+574,Dourado,PT,BR,BR,Aratiba,-27.428738,-52.230484,7.9,0,OK,,MÉDIA,-,Nenhum,Usar como está
+602,El Tajín,PT,MX,MX,Papantla de Olarte,20.430176,-97.381256,6.1,0,OK,,MÉDIA,-,Nenhum,Usar como está
+610,Erongaricuaro,PT,MX,MX,Pátzcuaro,19.588808,-101.72131,14.4,2,OK,,MÉDIA,-,Nenhum,Usar como está
+621,Estados Federados da Micronésia,AU,FM,FM,Weno,8.606235,151.83275,129.0,1,Corrigido,País da Micronésia,MÉDIA (manual),-,Coordenadas muito deslocadas,Descartar ou geocodificar novamente
+625,Estrada Austral,AR,CL,CL,Viña del Mar,-33.002216,-71.51905,3.9,3,OK,,ALTA,-,Nenhum,Usar como está
+632,Extremo Oriente,JP,CL,CL,Osorno,-40.5732,-73.110306,2.0,0,OK,,ALTA,-,Nenhum,Usar como está
+673,Fuerteventura,PT,ES,ES,Antigua,28.400377,-14.004869,2.7,7,OK,,ALTA,-,Nenhum,Usar como está
+674,Fujino,PT,JP,JP,Sapporo,42.9365,141.29509,15.1,0,Revisar (distância alta),,BAIXA,BAIXA,Distância moderada,Verificar coordenadas
+683,Galveston,PT,US,US,La Marque,29.387226,-94.99274,2.9,8,OK,,ALTA,-,Nenhum,Usar como está
+687,Garapan,PT,MP,MP,Saipan,15.207085,145.72086,3.7,0,OK,,ALTA,-,Nenhum,Usar como está
+692,Gavião Peixoto,PT,BR,BR,Nova Europa,-21.837753,-48.49285,9.6,0,OK,,MÉDIA,-,Nenhum,Usar como está
+701,Goa,PT,IN,IN,Curchorem,15.300454,74.08551,4.8,0,OK,,ALTA,-,Nenhum,Usar como está
+716,Gray Summit,PT,US,US,Pacific,38.490177,-90.81618,6.6,2,OK,,MÉDIA,-,Nenhum,Usar como está
+741,Hakone,PT,JP,JP,Odawara,35.232365,139.10689,5.4,8,OK,,MÉDIA,-,Nenhum,Usar como está
+763,Huatajata,PT,BO,BO,San Pedro,-16.208857,-68.700485,16.3,0,Revisar (distância alta),,BAIXA,BAIXA,Distância moderada,Verificar coordenadas
+773,Icaraí,PT,BR,BR,Niterói,-22.9042,-43.1057,2.3,0,OK,,ALTA,-,Nenhum,Usar como está
+779,Iguatu,PT,BR,BR,Ubiratã,-24.71704,-53.086555,21.6,0,Revisar (distância alta),,BAIXA,BAIXA,Distância moderada,Verificar coordenadas
+781,Ilha Brava,PT,BR,BR,Alpercata,-18.938555,-42.039837,7.8,0,OK,,MÉDIA,-,Nenhum,Usar como está
+783,Ilha da Boa Vista,PT,BR,BR,Abaré,-8.653101,-39.22397,14.2,3,OK,,MÉDIA,-,Nenhum,Usar como está
+784,Ilha das Mulheres,MX,BR,BR,Conceição das Alagoas,-20.115147,-48.34772,22.7,0,Revisar (distância alta),,BAIXA,BAIXA,Distância moderada,Verificar coordenadas
+786,Ilha de Páscoa,ES,CL,CL,Hanga Roa,-27.12593,-109.34959,8.0,1,OK,,MÉDIA,-,Nenhum,Usar como está
+790,Ilha do Fogo,PT,MZ,MZ,Micolene,-17.233202,38.87909,67.1,0,Revisar (distância alta),,BAIXA,BAIXA,Distância muito alta,Verificar coordenadas
+792,Ilha do Mel,PT,BR,BR,Paranaguá,-25.53453,-48.310745,21.6,2,Revisar (distância alta),,BAIXA,MÉDIA,Distância moderada,Revisar (tem hotéis)
+793,Ilha dos Cocos,FR,BR,BR,Paraty,-23.200516,-44.58118,13.6,0,OK,,MÉDIA,-,Nenhum,Usar como está
+797,Ilhas de Kerama,PT,FR,FR,Quimper,48.023914,-4.095044,3.1,1,OK,,ALTA,-,Nenhum,Usar como está
+800,Ilhas Salomão,GB,SB,SB,Buala,-8.705394,159.10707,82.0,6,Revisar (distância alta),,BAIXA,MÉDIA,Distância muito alta,Revisar (tem hotéis)
+821,Ischgl,PT,AT,AT,Landeck,47.012024,10.291317,25.2,3,Revisar (distância alta),,BAIXA,MÉDIA,Distância moderada,Revisar (tem hotéis)
+856,Itupeva,PT,BR,BR,Medeiros Neto,-17.486542,-40.471535,29.4,0,Revisar (distância alta),,BAIXA,BAIXA,Distância moderada,Verificar coordenadas
+857,Ituzaingó,PT,AR,AR,Castelar,-34.65833,-58.667145,2.5,0,OK,,ALTA,-,Nenhum,Usar como está
+867,Jakar,PT,MY,MY,Sarikei,2.043684,111.49383,8.5,5,OK,,MÉDIA,-,Nenhum,Usar como está
+884,Jinja,PT,UG,UG,Kakira,0.575157,33.28053,7.5,8,OK,,MÉDIA,-,Nenhum,Usar como está
+893,Jordânia,PT,SA,SA,Qurayyat,31.166704,36.941628,42.3,2,Revisar (distância alta),,BAIXA,MÉDIA,Distância elevada,Revisar (tem hotéis)
+914,Khaling,PT,IN,IN,Leh,34.333897,76.97767,58.8,0,Revisar (distância alta),,BAIXA,BAIXA,Distância muito alta,Verificar coordenadas
+926,Koure,PT,NE,NE,Kollo,13.310915,2.57563,25.6,0,Revisar (distância alta),,BAIXA,BAIXA,Distância moderada,Verificar coordenadas
+927,Kourou,PT,ML,ML,Ténenkou,14.485037,-4.962145,5.8,4,OK,,MÉDIA,-,Nenhum,Usar como está
+940,Laguna Yema,PT,AR,AR,Ingeniero Guillermo N. Juárez,-24.25395,-61.242302,73.7,2,Revisar (distância alta),,BAIXA,MÉDIA,Distância muito alta,Revisar (tem hotéis)
+942,La Libertad,PT,PE,PE,Otuzco,-8.0,-78.5,14.4,3,OK,,MÉDIA,-,Nenhum,Usar como está
+952,Las Colimas,PT,US,US,La Verne,34.144413,-117.75502,5.0,1,OK,,MÉDIA,-,Nenhum,Usar como está
+976,Linden,PT,US,US,Atlanta,33.012352,-94.36547,21.9,1,Revisar (distância alta),,BAIXA,MÉDIA,Distância moderada,Revisar (tem hotéis)
+977,Lindóia,PT,BR,BR,Itacoatiara,-2.90796,-59.05347,72.5,3,Revisar (distância alta),,BAIXA,MÉDIA,Distância muito alta,Revisar (tem hotéis)
+986,Loncopué,PT,AR,AR,Chos Malal,-38.073177,-70.61441,83.0,0,Revisar (distância alta),,BAIXA,BAIXA,Distância muito alta,Verificar coordenadas
+1033,Malargüe,PT,AR,AR,San Rafael,-35.46838,-69.58473,148.3,0,Revisar (distância alta),,BAIXA,BAIXA,Coordenadas muito deslocadas,Descartar ou geocodificar novamente
+1039,Mambucaba,PT,BR,BR,Angra dos Reis,-23.025,-44.5175,20.5,0,Revisar (distância alta),,BAIXA,BAIXA,Distância moderada,Verificar coordenadas
+1057,Marcote,CH,ES,ES,Ocaña,39.964516,-3.379113,10.2,1,OK,,MÉDIA,-,Nenhum,Usar como está
+1085,Melgaço,PT,ES,ES,Celanova,42.039192,-8.19663,23.6,8,Revisar (distância alta),,BAIXA,MÉDIA,Distância moderada,Revisar (tem hotéis)
+1100,Mingun,PT,MM,MM,Mandalay,22.041794,96.01882,10.0,0,OK,,MÉDIA,-,Nenhum,Usar como está
+1110,Mojave,PT,US,US,California City,35.05247,-118.173965,19.0,3,Revisar (distância alta),,BAIXA,MÉDIA,Distância moderada,Revisar (tem hotéis)
+1126,Monte Saint-Michel,PT,FR,FR,Avranches,48.635525,-1.510257,12.5,0,OK,,MÉDIA,-,Nenhum,Usar como está
+1138,Motuca,PT,BR,BR,Rincão,-21.509586,-48.150383,11.9,0,OK,,MÉDIA,-,Nenhum,Usar como está
+1139,Mount Olive (Illinois),PT,US,US,Staunton,39.07222,-89.72717,8.7,2,OK,,MÉDIA,-,Nenhum,Usar como está
+1178,Nicósia (Norte),PT,CY,CY,Ágios Dométios,35.21165,33.33119,4.3,8,OK,,ALTA,-,Nenhum,Usar como está
+1203,Novo Laredo,PT,BR,BR,Ribeirão das Neves,-19.80238,-44.00698,9.2,8,OK,,MÉDIA,-,Nenhum,Usar como está
+1224,Oriente Médio,PT,CO,CO,Silvia,2.52246,-76.39219,10.4,0,OK,,MÉDIA,-,Nenhum,Usar como está
+1261,Países Bálticos,PT,LV,LV,Dreiliņi,56.917202,24.225681,3.1,1,OK,,ALTA,-,Nenhum,Usar como está
+1265,Palestina,DE,EC,EC,Colimes,-1.631898,-79.92733,13.4,5,OK,,MÉDIA,-,Nenhum,Usar como está
+1273,Panmunjeom,KR,KP,KP,Kaesŏng,37.955868,126.67701,10.9,8,OK,,MÉDIA,-,Nenhum,Usar como está
+1275,Pantanal,BR,BO,BO,Puerto Quijarro,-17.675068,-57.455338,35.1,2,Revisar (distância alta),,BAIXA,MÉDIA,Distância elevada,Revisar (tem hotéis)
+1301,Parque de uKhahlamba Drakensberg,PT,ZA,ZA,Glencoe,-28.200449,30.15621,2.6,2,OK,,ALTA,-,Nenhum,Usar como está
+1302,Parque Estadual da Serra do Tabuleiro,PT,BR,BR,Paulo Lopes,-27.962252,-48.82168,13.6,0,OK,,MÉDIA,-,Nenhum,Usar como está
+1304,Parque Estadual de Vila Velha,PT,BR,BR,Ponta Grossa,-25.232994,-50.0117,21.5,0,Revisar (distância alta),,BAIXA,BAIXA,Distância moderada,Verificar coordenadas
+1320,Parque Nacional de Comoé,PT,CI,CI,Assinie-Mafia,5.14774,-3.165876,13.9,7,OK,,MÉDIA,-,Nenhum,Usar como está
+1321,Parque Nacional de Garamba,PT,NI,NI,Managua,12.104069,-86.2905,5.4,1,OK,,MÉDIA,-,Nenhum,Usar como está
+1322,Parque Nacional de Gorilas de Mgahinga,PT,GB,GB,Stranraer,54.84213,-5.11632,8.8,5,OK,,MÉDIA,-,Nenhum,Usar como está
+1323,Parque Nacional de Kahuzi-Biega,PT,GB,GB,Stranraer,54.84213,-5.11632,8.8,1,OK,,MÉDIA,-,Nenhum,Usar como está
+1324,Parque Nacional de Kakum,PT,NI,NI,Managua,12.104069,-86.2905,5.4,1,OK,,MÉDIA,-,Nenhum,Usar como está
+1325,Parque Nacional de Luangwa Sul,PT,GB,GB,Stranraer,54.84213,-5.11632,8.8,1,OK,,MÉDIA,-,Nenhum,Usar como está
+1326,Parque Nacional de Manovo-Gounda St. Floris,PT,FR,FR,Merville,50.62824,2.57045,5.3,4,OK,,MÉDIA,-,Nenhum,Usar como está
+1328,Parque Nacional de Mole,PT,IT,IT,Bussoleno,45.15673,7.16957,2.7,1,OK,,ALTA,-,Nenhum,Usar como está
+1329,Parque Nacional de Murchison Falls,PT,UG,UG,Pakwach,2.27653,31.68908,29.7,2,Revisar (distância alta),,BAIXA,MÉDIA,Distância moderada,Revisar (tem hotéis)
+1330,Parque Nacional de Nahanni,PT,NI,NI,Managua,12.104069,-86.2905,5.4,7,OK,,MÉDIA,-,Nenhum,Usar como está
+1331,Parque Nacional de Niokolo-Koba,PT,GN,GN,Youkounkoun,13.07712,-12.72712,74.3,1,Revisar (distância alta),,BAIXA,MÉDIA,Distância muito alta,Revisar (tem hotéis)
+1332,Parque Nacional dos Lagos de Plitvice,HR,SI,SI,Apače,46.67196,15.92369,3.1,8,OK,,ALTA,-,Nenhum,Usar como está
+1334,Parque Nacional de Rwenzori,PT,NI,NI,Managua,12.104069,-86.2905,5.4,1,OK,,MÉDIA,-,Nenhum,Usar como está
+1335,Parque Nacional de Salonga,PT,NI,NI,Managua,12.104069,-86.2905,5.4,2,OK,,MÉDIA,-,Nenhum,Usar como está
+1336,Parque Nacional de Sete Cidades,PT,BR,BR,Piracuruca,-4.098124,-41.715492,18.9,1,Revisar (distância alta),,BAIXA,MÉDIA,Distância moderada,Revisar (tem hotéis)
+1337,Parque Nacional de Simien,PT,NI,NI,Managua,12.104069,-86.2905,5.4,1,OK,,MÉDIA,-,Nenhum,Usar como está
+1338,Parque Nacional de Taï,PT,ES,ES,Vielha,42.57127,0.959937,19.8,1,Revisar (distância alta),,BAIXA,MÉDIA,Distância moderada,Revisar (tem hotéis)
+1339,Parque Nacional de Tassili n'Ajjer,PT,GB,GB,Stranraer,54.84213,-5.11632,8.8,1,OK,,MÉDIA,-,Nenhum,Usar como está
+1340,Parque Nacional de Ubajara,PT,BR,BR,Frecheirinha,-3.769339,-40.8879,8.0,2,OK,,MÉDIA,-,Nenhum,Usar como está
+1341,Parque Nacional de Virunga,PT,CD,CD,Lubero,-0.34706,29.5388,39.4,1,Revisar (distância alta),,BAIXA,MÉDIA,Distância elevada,Revisar (tem hotéis)
+1344,Parque Nacional do Banco de Arguim,PT,GB,GB,Stranraer,54.84213,-5.11632,8.8,1,OK,,MÉDIA,-,Nenhum,Usar como está
+1347,Parque Nacional do Lago Malawi,PT,MW,MW,Monkey Bay,-14.059423,34.887222,4.1,1,OK,,ALTA,-,Nenhum,Usar como está
+1348,Parque Nacional dos Everglades,PT,BR,BR,Londrina,-23.35102,-51.210014,6.6,5,OK,,MÉDIA,-,Nenhum,Usar como está
+1349,Parque Nacional do Vale de Kidepo,PT,BR,BR,Itatiaia,-22.467604,-44.584522,3.8,1,OK,,ALTA,-,Nenhum,Usar como está
+1350,Parque Nacional Impenetrável de Bwindi,PT,UG,UG,Kanungu,-1.08056,29.66139,19.8,1,Revisar (distância alta),,BAIXA,MÉDIA,Distância moderada,Revisar (tem hotéis)
+1351,Parque Nacional Marinho de St. Anne,PT,US,US,Kankakee,41.02503,-87.71392,16.2,1,Revisar (distância alta),,BAIXA,MÉDIA,Distância moderada,Revisar (tem hotéis)
+1353,Parque Nacional W,PT,AR,AR,Mburucuyá,-28.019934,-58.07309,15.5,1,Revisar (distância alta),,BAIXA,MÉDIA,Distância moderada,Revisar (tem hotéis)
+1368,Parque Provincial dos Dinossauros,PT,BR,BR,Campo Magro,-25.336777,-49.442375,3.7,0,OK,,ALTA,-,Nenhum,Usar como está
+1369,Parque Transfronteiriço de Ai-Ais/Richtersveld,PT,,,Aussenkehr,-28.76823,17.05955,56.8,3,Corrigido,,MÉDIA (manual),-,Distância muito alta,Verificar coordenadas
+1381,Pedra de Lume (Ilha do Sal),PT,CV,CV,Espargos,16.76376,-22.89349,5.5,0,OK,,MÉDIA,-,Nenhum,Usar como está
+1391,Perito Moreno,US,AR,AR,Sarmiento,-46.591587,-70.92552,181.6,8,Corrigido,Glaciar na Patagônia Argentina,MÉDIA (manual),-,Coordenadas muito deslocadas,Descartar ou geocodificar novamente
+1403,Picos,PT,BR,BR,Itiúba,-10.631535,-39.900948,8.5,2,OK,,MÉDIA,-,Nenhum,Usar como está
+1404,Piedade,PT,IN,IN,Chimbel,15.523768,73.898674,4.3,1,OK,,ALTA,-,Nenhum,Usar como está
+1487,Puerto Velasco Ibarra,PT,EC,EC,Puerto Ayora,-1.275114,-90.48654,62.5,7,Revisar (distância alta),,BAIXA,MÉDIA,Distância muito alta,Revisar (tem hotéis)
+1488,Puerto Villamil,PT,EC,EC,Puerto Ayora,-0.956111,-90.96558,76.3,8,Revisar (distância alta),,BAIXA,MÉDIA,Distância muito alta,Revisar (tem hotéis)
+1503,Puerto Quijarro,PT,BR,BR,Corumbá,-19.004408,-57.71571,6.6,3,OK,,MÉDIA,-,Nenhum,Usar como está
+1512,Rarotonga,PT,CK,CK,Avarua,-21.236832,-159.77748,3.3,8,OK,,ALTA,-,Nenhum,Usar como está
+1527,Reserva da Natureza do Vallée de Mai,PT,SC,SC,Baie Sainte Anne,-4.332,55.74007,2.0,0,OK,,ALTA,-,Nenhum,Usar como está
+1528,Reserva de Caça Ajai,PT,CL,CL,Cunco,-38.96681,-71.64653,33.5,0,Revisar (distância alta),,BAIXA,BAIXA,Distância elevada,Verificar coordenadas
+1530,Reserva de Fauna dos Ocapis,PT,CD,CD,Wamba,1.720928,28.523476,75.6,0,Revisar (distância alta),,BAIXA,BAIXA,Distância muito alta,Verificar coordenadas
+1531,Reserva de Shai Hills,PT,GH,GH,Akropong,5.90838,0.06144,17.8,0,Revisar (distância alta),,BAIXA,BAIXA,Distância moderada,Verificar coordenadas
+1538,Reserva Natural de Aïr e Ténéré,PT,CL,CL,Cunco,-38.96681,-71.64653,33.5,0,Revisar (distância alta),,BAIXA,BAIXA,Distância elevada,Verificar coordenadas
+1546,Reserva Natural Integral do Tsingy de Bemaraha,PT,MG,MG,Antsalova,-18.6667,44.75,14.0,0,OK,,MÉDIA,-,Nenhum,Usar como está
+1589,Rota da Seda,CN,LV,LV,Valka,57.65,25.75,20.8,0,Revisar (distância alta),,BAIXA,BAIXA,Distância moderada,Verificar coordenadas
+1615,Salvaterra,PT,ES,ES,Moraleja,39.880413,-6.912034,29.9,4,Revisar (distância alta),,BAIXA,MÉDIA,Distância moderada,Revisar (tem hotéis)
+1623,San Antonio de los Cobres,PT,AR,AR,San Salvador de Jujuy,-24.217674,-66.31787,103.9,8,Revisar (distância alta),,BAIXA,MÉDIA,Coordenadas muito deslocadas,Revisar (tem hotéis)
+1629,San Gimignano,PT,IT,IT,Poggibonsi,43.4678,11.043212,8.5,6,OK,,MÉDIA,-,Nenhum,Usar como está
+1703,Santuário de Fauna de de Agumatsa,PT,CL,CL,Limache,-32.97977,-71.26713,3.8,0,OK,,ALTA,-,Nenhum,Usar como está
+1708,São Bonifácio,PT,BR,BR,Paulo Lopes,-27.900908,-48.93261,25.4,5,Revisar (distância alta),,BAIXA,MÉDIA,Distância moderada,Revisar (tem hotéis)
+1717,São Francisco de Itabapoana,PT,BR,BR,São João da Barra,-21.453743,-41.145298,22.9,2,Revisar (distância alta),,BAIXA,MÉDIA,Distância moderada,Revisar (tem hotéis)
+1762,São Raimundo Nonato,PT,BR,BR,São Miguel do Guamá,-1.708,-47.50408,9.3,0,OK,,MÉDIA,-,Nenhum,Usar como está
+1778,Sayulita,PT,MX,MX,Bucerías,20.868925,-105.440704,16.4,5,Revisar (distância alta),,BAIXA,MÉDIA,Distância moderada,Revisar (tem hotéis)
+1783,Seligman,PT,US,US,Pea Ridge,36.5208,-93.939064,17.4,8,Revisar (distância alta),,BAIXA,MÉDIA,Distância moderada,Revisar (tem hotéis)
+1801,Sierra Colorada,PT,AR,AR,Cervantes,-40.587585,-67.75685,173.3,0,Revisar (distância alta),,BAIXA,BAIXA,Coordenadas muito deslocadas,Descartar ou geocodificar novamente
+1802,Sigave,PT,WF,WF,Leava,-14.274337,-178.15456,2.2,0,OK,,ALTA,-,Nenhum,Usar como está
+1809,Síria,PT,SY,SY,Tadmur,34.640186,39.04941,70.6,0,Revisar (distância alta),,BAIXA,BAIXA,Distância muito alta,Verificar coordenadas
+1829,Sri Lanka,PT,LK,LK,Matale,7.555494,80.71378,13.9,3,OK,,MÉDIA,-,Nenhum,Usar como está
+1831,St. Clair,PT,US,US,Clinton,38.059296,-93.79455,34.4,2,Revisar (distância alta),,BAIXA,MÉDIA,Distância elevada,Revisar (tem hotéis)
+1832,St. James,PT,FR,FR,Avranches,48.5232,-1.32375,18.1,2,Revisar (distância alta),,BAIXA,MÉDIA,Distância moderada,Revisar (tem hotéis)
+1835,St. Robert,PT,FR,FR,Terrasson-Lavilledieu,45.25494,1.293566,13.9,8,OK,,MÉDIA,-,Nenhum,Usar como está
+1839,Sul da Ásia,PT,KR,KR,Siheungdong,37.46331,126.95012,3.7,0,OK,,ALTA,-,Nenhum,Usar como está
+1841,Sumaré,PT,BR,BR,Itacarambi,-14.89869,-44.268127,29.5,0,Revisar (distância alta),,BAIXA,BAIXA,Distância moderada,Verificar coordenadas
+1852,Tafí del Valle,PT,AR,AR,Famaillá,-26.851974,-65.710815,38.0,1,Revisar (distância alta),,BAIXA,MÉDIA,Distância elevada,Revisar (tem hotéis)
+1854,Tahoua,PT,NE,NE,Tchin Tabaradèn,16.157675,5.328265,58.0,0,Revisar (distância alta),,BAIXA,BAIXA,Distância muito alta,Verificar coordenadas
+1863,Tanegashima,PT,JP,JP,Nōkan,30.591848,130.9959,4.3,0,OK,,ALTA,-,Nenhum,Usar como está
+1864,Tang,PT,CN,CN,Dingzhou,38.744743,114.97305,25.6,8,Revisar (distância alta),,BAIXA,MÉDIA,Distância moderada,Revisar (tem hotéis)
+1865,Tangamandapio,PT,MX,MX,Tarecuato,19.890148,-102.46566,5.2,8,OK,,MÉDIA,-,Nenhum,Usar como está
+1875,Tarawa,PT,NG,NG,Dakingari,11.589992,3.970292,11.9,3,OK,,MÉDIA,-,Nenhum,Usar como está
+1905,Terra do Fogo,ES,AR,AR,Río Grande,-54.381523,-67.5679,66.7,0,Revisar (distância alta),,BAIXA,BAIXA,Distância muito alta,Verificar coordenadas
+1923,Tobacco Caye,PT,BZ,BZ,Dangriga,16.898266,-88.061676,19.9,6,Revisar (distância alta),,BAIXA,MÉDIA,Distância moderada,Revisar (tem hotéis)
+1925,Tobuna,BR,AR,AR,San Pedro,-26.469713,-53.891476,27.5,0,Revisar (distância alta),,BAIXA,BAIXA,Distância moderada,Verificar coordenadas
+1926,Tocuaro,PT,MX,MX,Pátzcuaro,19.53889,-101.69416,9.3,0,OK,,MÉDIA,-,Nenhum,Usar como está
+1929,Tolhuin,PT,AR,AR,Ushuaia,-54.51135,-67.195404,79.4,0,Revisar (distância alta),,BAIXA,BAIXA,Distância muito alta,Verificar coordenadas
+1932,Tongatapu,PT,TO,TO,Nuku‘alofa,-21.166706,-175.1982,3.3,7,OK,,ALTA,-,Nenhum,Usar como está
+1976,Tottori,PT,JP,JP,Misasa,35.355507,133.86786,6.5,8,OK,,MÉDIA,-,Nenhum,Usar como está
+1980,Trairi,PT,BR,BR,Serra Caiada,-6.151376,-35.69024,5.8,0,OK,,MÉDIA,-,Nenhum,Usar como está
+1990,Trilha Inca,PT,PE,PE,Quillabamba,-13.184423,-72.588776,37.4,0,Revisar (distância alta),,BAIXA,BAIXA,Distância elevada,Verificar coordenadas
+1992,Trinidad e Tobago,PT,TT,TT,Sangre Grande,10.746691,-61.084007,18.5,1,Revisar (distância alta),,BAIXA,MÉDIA,Distância moderada,Revisar (tem hotéis)
+1997,Tsodilo,PT,BW,BW,Shakawe,-18.790106,21.747517,48.3,0,Revisar (distância alta),,BAIXA,BAIXA,Distância elevada,Verificar coordenadas
+2002,Tupungato,PT,AR,AR,Mendoza,-33.372765,-69.14757,60.6,0,Revisar (distância alta),,BAIXA,BAIXA,Distância muito alta,Verificar coordenadas
+2010,Upolu,PT,US,US,Waimea,20.265102,-155.85962,33.2,8,Revisar (distância alta),,BAIXA,MÉDIA,Distância elevada,Revisar (tem hotéis)
+2012,Ura,PT,RU,RU,Malmyzh,56.4537,50.463,15.3,0,Revisar (distância alta),,BAIXA,BAIXA,Distância moderada,Verificar coordenadas
+2029,Vale dos Dinossauros,BR,AR,AR,Puerto Iguazú,-25.592503,-54.516903,5.7,2,OK,,MÉDIA,-,Nenhum,Usar como está
+2048,Wamrong,PT,BT,BT,Pemagatshel,27.136993,91.57124,20.0,0,Revisar (distância alta),,BAIXA,BAIXA,Distância moderada,Verificar coordenadas
+2060,Vava'u,PT,TO,TO,Neiafu,-18.623146,-174.00214,3.7,8,OK,,ALTA,-,Nenhum,Usar como está
+2072,Xcalak,PT,BZ,BZ,San Pedro,18.270376,-87.83596,41.7,5,Revisar (distância alta),,BAIXA,MÉDIA,Distância elevada,Revisar (tem hotéis)
+2081,Viajar economicamente,BE,ES,ES,Sevilla,37.369076,-5.999419,2.8,0,OK,,ALTA,-,Nenhum,Usar como está
+2084,Yadi,PT,NE,NE,Tibiri,13.902016,7.007051,38.0,0,Revisar (distância alta),,BAIXA,BAIXA,Distância elevada,Verificar coordenadas
+2092,Zâmbia,GB,ZM,ZM,Mumbwa,-14.518912,27.558989,74.3,8,Revisar (distância alta),,BAIXA,MÉDIA,Distância muito alta,Revisar (tem hotéis)
+2094,Zinacantán,PT,MX,MX,San Cristóbal de las Casas,16.760412,-92.721794,9.5,0,OK,,MÉDIA,-,Nenhum,Usar como está
+2106,Vila Nova Sintra,PT,GW,GW,Bolama,11.678638,-15.366787,16.4,6,Revisar (distância alta),,BAIXA,MÉDIA,Distância moderada,Revisar (tem hotéis)
+2117,Villa Mercedes,PT,VE,VE,Timotes,9.047259,-70.716095,7.7,7,OK,,MÉDIA,-,Nenhum,Usar como está
+2124,Victoria,AR,AU,AU,Strathfieldsaye,-36.59861,144.67801,36.9,8,Revisar (distância alta),,BAIXA,MÉDIA,Distância elevada,Revisar (tem hotéis)
+2127,Vietnã,TH,VN,VN,Bà Nà,15.926665,107.96509,6.6,15,OK,,MÉDIA,-,Nenhum,Usar como está
+2155,Furnas,PT,US,US,Holdrege,40.179127,-99.8981,53.4,0,Revisar (distância alta),,BAIXA,BAIXA,Distância muito alta,Verificar coordenadas
+2170,Enviken,US,SE,SE,Falun,60.810234,15.754437,24.0,0,Revisar (distância alta),,BAIXA,BAIXA,Distância moderada,Verificar coordenadas
+2182,Asten,PT,DE,DE,Tittmoning,48.097786,12.723793,5.2,0,OK,,MÉDIA,-,Nenhum,Usar como está
+2198,Lukla,PT,NP,NP,Lobuche,27.688972,86.730675,29.9,1,Revisar (distância alta),,BAIXA,MÉDIA,Distância moderada,Revisar (tem hotéis)
+2199,Namche Bazaar,PT,NP,NP,Lobuche,27.804167,86.70979,18.8,1,Revisar (distância alta),,BAIXA,MÉDIA,Distância moderada,Revisar (tem hotéis)
+2216,Caminho da Iluminação,PT,BR,BR,Passo Fundo,-28.236574,-52.4363,4.1,0,OK,,ALTA,-,Nenhum,Usar como está
+2218,Phong Nha-Ke Bang,PT,VN,VN,Xuân Sơn,17.555265,106.112305,22.7,5,Revisar (distância alta),,BAIXA,MÉDIA,Distância moderada,Revisar (tem hotéis)
+2243,Cidades Históricas,PT,ES,ES,Don Benito,38.96727,-5.960276,8.6,0,OK,,MÉDIA,-,Nenhum,Usar como está
+2245,Dengue,PT,AO,AO,Lumbala,-14.811026,20.756878,107.5,0,Revisar (distância alta),,BAIXA,BAIXA,Coordenadas muito deslocadas,Descartar ou geocodificar novamente
+2249,Baixa Galileia,PT,BR,BR,Santa Filomena,-9.103291,-45.410294,56.2,1,Revisar (distância alta),,BAIXA,MÉDIA,Distância muito alta,Revisar (tem hotéis)
+2261,Parque Arqueológico de Angkor,PT,ES,ES,Natahoyo,43.566677,-5.705379,3.5,0,OK,,ALTA,-,Nenhum,Usar como está
+2270,Alvito,PT,IT,IT,Sora,41.688465,13.743264,11.3,1,OK,,MÉDIA,-,Nenhum,Usar como está
+2284,Lua,PT,FR,FR,Mimizan,44.23073,-0.98509,19.7,0,Revisar (distância alta),,BAIXA,BAIXA,Distância moderada,Verificar coordenadas
+2295,Roma/Roma Velha,PT,BR,BR,Vila Velha,-20.43607,-40.342926,12.9,1,OK,,MÉDIA,-,Nenhum,Usar como está
+2301,Neeritter,NL,BE,BE,Kinrooi,51.162827,5.802829,4.7,8,OK,,ALTA,-,Nenhum,Usar como está
+2320,Moxico,PT,AO,AO,Cameia,-12.72872,21.273764,124.7,0,Revisar (distância alta),,BAIXA,BAIXA,Coordenadas muito deslocadas,Descartar ou geocodificar novamente
+2327,Belmonte,PT,ES,ES,Las Pedroñeras,39.559284,-2.703812,12.4,8,OK,,MÉDIA,-,Nenhum,Usar como está
+2355,Tsabong,PT,BW,BW,Tshabong,-26.021746,22.401007,5.8,0,OK,,MÉDIA,-,Nenhum,Usar como está
+2358,Bhaktapur,PT,NP,NP,Madhyapur Thimi,27.671114,85.42617,4.0,6,OK,,ALTA,-,Nenhum,Usar como está
+2370,Siracusa,US,PR,PR,Eleanor Roosevelt,18.391949,-66.02987,4.5,3,OK,,ALTA,-,Nenhum,Usar como está
+2403,Ko Chang,TH,MM,MM,Kawthoung,9.832075,98.45298,19.8,8,Revisar (distância alta),,BAIXA,MÉDIA,Distância moderada,Revisar (tem hotéis)
+2405,Ko Lipe,TH,MY,MY,Padang Mat Sirat,6.487591,99.30247,49.9,8,Revisar (distância alta),,BAIXA,MÉDIA,Distância elevada,Revisar (tem hotéis)
+2406,Paro,BT,ID,ID,Kenyam,-4.384065,138.23149,29.4,5,Revisar (distância alta),,BAIXA,MÉDIA,Distância moderada,Revisar (tem hotéis)
+2411,Pai,TH,RU,RU,Podporozh’ye,61.207226,34.441944,36.3,8,Revisar (distância alta),,BAIXA,MÉDIA,Distância elevada,Revisar (tem hotéis)
+2423,Vinh,VN,CN,CN,Zigong,29.44574,104.414764,36.9,4,Revisar (distância alta),,BAIXA,MÉDIA,Distância elevada,Revisar (tem hotéis)
+2427,Chukhung,PT,NP,NP,Lobuche,27.904665,86.87137,7.7,0,OK,,MÉDIA,-,Nenhum,Usar como está
+2429,Praia do Rosa,PT,BR,BR,Garopaba,-28.129454,-48.641697,12.1,6,OK,,MÉDIA,-,Nenhum,Usar como está
+2447,Djibuti (cidade),PT,DJ,DJ,Tadjoura,11.83333,42.5,41.9,0,Revisar (distância alta),,BAIXA,BAIXA,Distância elevada,Verificar coordenadas
+2449,Adamstown,PT,US,US,Ballenger Creek,39.310913,-77.475235,7.7,0,OK,,MÉDIA,-,Nenhum,Usar como está
+2463,Viana,PT,ES,ES,Logroño,42.515472,-2.371344,8.5,1,OK,,MÉDIA,-,Nenhum,Usar como está
+2464,Rangel,PT,CO,CO,Montecristo,8.254102,-74.497246,5.5,5,OK,,MÉDIA,-,Nenhum,Usar como está
+2488,Disneylândia,PT,BR,BR,Itabirito,-20.18048,-43.9669,19.1,3,Revisar (distância alta),,BAIXA,MÉDIA,Distância moderada,Revisar (tem hotéis)
+2537,Crawford (Nebraska),DE,US,US,Chadron,42.686726,-103.41332,37.3,17,Revisar (distância alta),,BAIXA,ALTA,Distância elevada,Revisar URGENTE (muitos hotéis)
+2538,Khumbu,PT,NP,NP,Lobuche,27.9693,86.82854,3.0,0,OK,,ALTA,-,Nenhum,Usar como está
+2542,Ticino,IT,CH,CH,Biasca,46.33519,8.75259,16.9,8,Revisar (distância alta),,BAIXA,MÉDIA,Distância moderada,Revisar (tem hotéis)
+2544,Point Roberts,US,CA,CA,Tsawwassen,48.984703,-123.0678,3.7,13,OK,,ALTA,-,Nenhum,Usar como está
+2548,La Macarena,PT,CO,CO,Puerto Lleras,2.183383,-73.78579,102.4,4,Revisar (distância alta),,BAIXA,MÉDIA,Coordenadas muito deslocadas,Revisar (tem hotéis)
+2585,Kent,US,GB,GB,Ashford,51.207073,0.721036,12.6,8,OK,,MÉDIA,-,Nenhum,Usar como está
+2728,Cuangar,AO,,,Nkurenkuru,-17.609768,18.622328,3.6,0,Corrigido,,MÉDIA (manual),-,País não bate com nearestCc,Verificar coordenadas
+2731,Dirico,AO,,,Ndiyona,-17.984703,20.776932,10.1,0,Corrigido,,MÉDIA (manual),-,País não bate com nearestCc,Verificar coordenadas
+2733,Rivungo,AO,ZM,ZM,Senanga,-16.328007,22.024546,134.7,0,Corrigido,,MÉDIA (manual),-,Coordenadas muito deslocadas,Descartar ou geocodificar novamente
+2737,Cazengo,PT,AO,AO,N'dalatando,-9.30815,14.79858,12.5,0,OK,,MÉDIA,-,Nenhum,Usar como está
+2751,Namacunde,AO,,,Helao Nafidi,-17.304886,15.84221,11.1,0,Corrigido,,MÉDIA (manual),-,País não bate com nearestCc,Verificar coordenadas
+2772,Alishan,PT,TW,TW,Lugu,23.515036,120.80975,26.4,12,Revisar (distância alta),,BAIXA,ALTA,Distância moderada,Revisar URGENTE (muitos hotéis)
+2773,Alta Galileia,PT,IL,IL,Safed,33.0,35.5,3.9,6,OK,,ALTA,-,Nenhum,Usar como está
+2774,Galileia Ocidental,PT,DE,DE,Kröpeliner-Tor-Vorstadt,54.066517,12.119124,2.5,4,OK,,ALTA,-,Nenhum,Usar como está
+2775,Mar da Galileia,PT,IL,IL,Tiberias,32.800846,35.588974,5.4,6,OK,,MÉDIA,-,Nenhum,Usar como está
+2817,Parque Nacional Coiba,PT,PA,PA,Soná,7.372716,-81.71668,83.3,1,Revisar (distância alta),,BAIXA,MÉDIA,Distância muito alta,Revisar (tem hotéis)
+2819,Colônia Pimentel,PT,DO,DO,Las Guáranas,19.21667,-70.16667,5.1,6,OK,,MÉDIA,-,Nenhum,Usar como está
+2823,Lilongué,PT,MW,MW,Lilongwe,-13.987511,33.768143,3.1,0,OK,,ALTA,-,Nenhum,Usar como está
+2831,Davie,PT,US,US,Mocksville,35.937515,-80.54649,5.0,5,OK,,MÉDIA,-,Nenhum,Usar como está
+2876,Abkhazia,RU,GE,GE,Sokhumi,43.150024,41.22998,25.2,2,Revisar (distância alta),,BAIXA,MÉDIA,Distância moderada,Revisar (tem hotéis)
+2882,Abu Simbel,EG,SD,SD,Wadi Halfa,22.360964,31.617912,67.8,12,Revisar (distância alta),,BAIXA,ALTA,Distância muito alta,Revisar URGENTE (muitos hotéis)
+2884,Abydos,EG,TR,TR,Çanakkale,40.194298,26.411268,4.3,6,OK,,ALTA,-,Nenhum,Usar como está
+2938,Agios Ioannis,GR,CY,CY,Tséri,35.074825,33.17812,13.2,6,OK,,MÉDIA,-,Nenhum,Usar como está
+2948,Aguas Calientes,PE,AR,AR,San Pedro de Jujuy,-24.584251,-64.92321,39.7,27,Revisar (distância alta),,BAIXA,ALTA,Distância elevada,Revisar URGENTE (muitos hotéis)
+2957,Ai-Ais Richtersveld Transfrontier Park,ZA,US,US,Colby,39.11251,-100.35875,67.5,8,Revisar (distância alta),,BAIXA,MÉDIA,Distância muito alta,Revisar (tem hotéis)
+2980,Oslo region,NO,SZ,SZ,Hluti,-27.237926,31.64171,5.7,4,OK,,MÉDIA,-,Nenhum,Usar como está
+2995,Akyaka,TR,AM,AM,Azatan,40.740013,43.62381,17.3,4,Revisar (distância alta),,BAIXA,MÉDIA,Distância moderada,Revisar (tem hotéis)
+3016,Alba County,RO,US,US,Lindale,32.792942,-95.63441,37.3,2,Revisar (distância alta),,BAIXA,MÉDIA,Distância elevada,Revisar (tem hotéis)
+3050,Aleppo,SY,US,US,Moundsville,39.823967,-80.44618,27.5,36,Revisar (distância alta),,BAIXA,ALTA,Distância moderada,Revisar URGENTE (muitos hotéis)
+3054,Alexander Bay,ZA,,,Oranjemund,-28.594788,16.482647,7.2,2,Corrigido,,MÉDIA (manual),-,País não bate com nearestCc,Verificar coordenadas
+3113,Along the Grand Canal,CN,US,US,Newport Beach,33.60669,-117.88922,3.9,4,OK,,ALTA,-,Nenhum,Usar como está
+3126,Skiing and snowboarding,AU,US,US,Green Bay,44.509754,-87.94832,5.8,2,OK,,MÉDIA,-,Nenhum,Usar como está
+3129,Alsace,FR,US,US,Ladera Heights,33.982155,-118.41228,3.7,1,OK,,ALTA,-,Nenhum,Usar como está
+3132,Alta,NO,US,US,Storm Lake,42.67369,-95.30399,8.5,12,OK,,MÉDIA,-,Nenhum,Usar como está
+3161,Amalfi Coast,IT,AU,AU,Broken Hill,-31.912083,141.46983,6.2,6,OK,,MÉDIA,-,Nenhum,Usar como está
+3178,Ambato,EC,MG,MG,Sadabe,-18.598822,47.49461,22.0,6,Revisar (distância alta),,BAIXA,MÉDIA,Distância moderada,Revisar (tem hotéis)
+3180,Amber Road,IT,US,US,Wytheville,37.008892,-81.27254,18.0,27,Revisar (distância alta),,BAIXA,ALTA,Distância moderada,Revisar URGENTE (muitos hotéis)
+3191,Amelia Island,ES,US,US,Fernandina Beach,30.607738,-81.46009,6.9,12,OK,,MÉDIA,-,Nenhum,Usar como está
+3194,American Samoa,US,AS,AS,Pago Pago,-14.297124,-170.71315,2.4,2,OK,,ALTA,-,Nenhum,Usar como está
+3220,Amsterdam/Canal District,NL,IT,IT,Alba,44.79532,7.99373,11.1,48,OK,,MÉDIA,-,Nenhum,Usar como está
+3227,Amsterdam/West,NL,CM,CM,Foumbot,5.5,10.66667,3.9,29,OK,,ALTA,-,Nenhum,Usar como está
+3268,Aner Dam Wildlife Sanctuary,IN,US,US,Azle,32.90874,-97.58419,3.9,1,OK,,ALTA,-,Nenhum,Usar como está
+3273,Angel Fire,MX,US,US,Taos,36.39309,-105.28501,25.8,9,Revisar (distância alta),,BAIXA,MÉDIA,Distância moderada,Revisar (tem hotéis)
+3277,Angle Inlet,US,CA,CA,Kenora,49.34302,-95.06367,62.8,13,Revisar (distância alta),,BAIXA,ALTA,Distância muito alta,Revisar URGENTE (muitos hotéis)
+3359,Apure,CO,VE,VE,Elorza,7.047318,-68.798294,77.2,5,Revisar (distância alta),,BAIXA,MÉDIA,Distância muito alta,Revisar (tem hotéis)
+3397,Arctic,US,RO,RO,Văcăreşti,44.87482,25.513878,3.7,1,OK,,ALTA,-,Nenhum,Usar como está
+3422,Arisaig,GB,CA,CA,Antigonish,45.760136,-62.162556,20.4,7,Revisar (distância alta),,BAIXA,MÉDIA,Distância moderada,Revisar (tem hotéis)
+3424,Arizona,MX,US,US,Camp Verde,34.395344,-111.763275,20.5,8,Revisar (distância alta),,BAIXA,MÉDIA,Distância moderada,Revisar (tem hotéis)
+3462,Aruba,NL,AW,AW,Santa Cruz,12.501363,-69.961845,2.3,5,OK,,ALTA,-,Nenhum,Usar como está
+3475,Ascension,PT,SH,SH,Georgetown,-7.942,-14.357895,6.1,13,OK,,MÉDIA,-,Nenhum,Usar como está
+3511,Asmat,ID,ER,ER,Keren,16.16879,38.0741,59.3,11,Revisar (distância alta),,BAIXA,ALTA,Distância muito alta,Revisar URGENTE (muitos hotéis)
+3520,Astana,KZ,MY,MY,Kuching,1.563635,110.34605,2.1,49,OK,,ALTA,-,Nenhum,Usar como está
+3532,A Taste of Coastal Texas,MX,US,US,Brady,31.25044,-99.25061,15.1,43,Revisar (distância alta),,BAIXA,ALTA,Distância moderada,Revisar URGENTE (muitos hotéis)
+3550,Atlanta/South,US,NI,NI,Nueva Guinea,11.578307,-84.01396,49.7,13,Revisar (distância alta),,BAIXA,ALTA,Distância elevada,Revisar URGENTE (muitos hotéis)
+3582,Auli,IN,UA,UA,Dniprovske,48.54324,34.45467,6.0,2,OK,,MÉDIA,-,Nenhum,Usar como está
+3584,Aure,NO,FR,FR,Mourmelon-le-Grand,49.27385,4.634843,25.2,13,Revisar (distância alta),,BAIXA,ALTA,Distância moderada,Revisar URGENTE (muitos hotéis)
+3604,Austin/UT and the Drag,US,RO,RO,Baciu,47.01667,23.4,25.7,29,Revisar (distância alta),,BAIXA,ALTA,Distância moderada,Revisar URGENTE (muitos hotéis)
+3641,Ayia Napa,ES,CY,CY,Paralímni,34.989323,33.996204,5.7,23,OK,,MÉDIA,-,Nenhum,Usar como está
+3658,Babakale,TR,GR,GR,Kalloní,39.479736,26.064867,30.0,3,Revisar (distância alta),,BAIXA,MÉDIA,Distância moderada,Revisar (tem hotéis)
+3668,Bac Ha,CN,VN,VN,Si Ma Cai,22.537756,104.29156,17.5,12,Revisar (distância alta),,BAIXA,ALTA,Distância moderada,Revisar URGENTE (muitos hotéis)
+3703,Baekdu Mountains,CN,KR,KR,Sangju,36.280052,128.04341,18.3,4,Revisar (distância alta),,BAIXA,MÉDIA,Distância moderada,Revisar (tem hotéis)
+3722,Bahawalpur,PK,IN,IN,Zira,31.029535,75.00919,7.0,26,OK,,MÉDIA,-,Nenhum,Usar como está
+3750,Baja Peninsula,MX,BR,BR,Camamu,-13.89214,-38.951336,17.4,7,Revisar (distância alta),,BAIXA,MÉDIA,Distância moderada,Revisar (tem hotéis)
+3752,Baja California Sur,US,MX,MX,Ciudad Insurgentes,25.5818,-111.57062,40.9,1,Revisar (distância alta),,BAIXA,MÉDIA,Distância elevada,Revisar (tem hotéis)
+3754,Bajgiran,IR,TM,TM,Änew,37.621933,58.41827,30.8,1,Revisar (distância alta),,BAIXA,MÉDIA,Distância elevada,Revisar (tem hotéis)
+3766,Baku Region,TR,GH,GH,Esim,4.970179,-2.501459,31.0,16,Revisar (distância alta),,BAIXA,ALTA,Distância elevada,Revisar URGENTE (muitos hotéis)
+3772,Balboa,US,ES,ES,Cacabelos,42.71017,-6.91472,19.8,1,Revisar (distância alta),,BAIXA,MÉDIA,Distância moderada,Revisar (tem hotéis)
+3776,Balestrand,DE,NO,NO,Hermansverk,61.209618,6.536083,17.1,14,Revisar (distância alta),,BAIXA,ALTA,Distância moderada,Revisar URGENTE (muitos hotéis)
+3780,Bali District,CN,TW,TW,Danshui,25.14569,121.40351,4.9,10,OK,,ALTA,-,Nenhum,Usar como está
+3786,Balkans,RO,BG,BG,Gotse Delchev,41.778503,23.814676,24.5,2,Revisar (distância alta),,BAIXA,MÉDIA,Distância moderada,Revisar (tem hotéis)
+3799,Ballyshannon,GB,IE,IE,Sligo,54.50198,-8.189766,31.5,9,Revisar (distância alta),,BAIXA,MÉDIA,Distância elevada,Revisar (tem hotéis)
+3803,Balta,UA,GB,GB,Lerwick,60.75019,-0.788887,69.2,2,Revisar (distância alta),,BAIXA,MÉDIA,Distância muito alta,Revisar (tem hotéis)
+3826,Banat,RO,US,US,Kingsford,45.517746,-87.69762,42.4,1,Revisar (distância alta),,BAIXA,MÉDIA,Distância elevada,Revisar (tem hotéis)
+3842,Bandelier National Monument,MX,US,US,Los Alamos,35.7789,-106.33176,12.3,3,OK,,MÉDIA,-,Nenhum,Usar como está
+3861,Bangkok/Khao San Road,TH,IE,IE,Edenderry,53.35222,-7.20167,10.3,54,OK,,MÉDIA,-,Nenhum,Usar como está
+3883,Bangui,CF,CD,CD,Zongo,4.363512,18.583591,2.6,12,OK,,ALTA,-,Nenhum,Usar como está
+3892,Ban Nahin,VN,TH,TH,Seka,18.242395,104.2128,44.3,4,Revisar (distância alta),,BAIXA,MÉDIA,Distância elevada,Revisar (tem hotéis)
+3938,Barelang Islands,ID,HK,HK,San Tung Chung Hang,22.26382,113.96038,2.4,1,OK,,ALTA,-,Nenhum,Usar como está
+3939,Barentsburg,NO,SJ,SJ,Longyearbyen,78.06536,14.217236,37.1,21,Corrigido,Svalbard (Noruega),MÉDIA (manual),-,Distância elevada,Verificar coordenadas
+3975,Basaseachic Falls National Park,MX,NZ,NZ,Queenstown,-44.791634,167.7542,76.3,2,Revisar (distância alta),,BAIXA,MÉDIA,Distância muito alta,Revisar (tem hotéis)
+3983,Basra,IQ,SA,SA,Fayfā’,17.395979,43.10557,13.3,36,OK,,MÉDIA,-,Nenhum,Usar como está
+3990,Bataan,CN,PH,PH,Balanga,14.643603,120.46576,8.4,9,OK,,MÉDIA,-,Nenhum,Usar como está
+4066,Beaudry Provincial Park,BR,CA,CA,Winnipeg,49.86169,-97.477196,23.8,2,Revisar (distância alta),,BAIXA,MÉDIA,Distância moderada,Revisar (tem hotéis)
+4136,Belcoo,IE,GB,GB,Enniskillen,54.29667,-7.871408,15.9,7,Revisar (distância alta),,BAIXA,MÉDIA,Distância moderada,Revisar (tem hotéis)
+4138,Belek,TR,TM,TM,Jebel,39.938534,53.847305,47.1,15,Revisar (distância alta),,BAIXA,ALTA,Distância elevada,Revisar URGENTE (muitos hotéis)
+4176,Belo Horizonte,BR,AO,AO,Cunhinga,-11.916575,16.905655,37.6,43,Revisar (distância alta),,BAIXA,ALTA,Distância elevada,Revisar URGENTE (muitos hotéis)
+4179,Belturbet,GB,IE,IE,Cavan,54.10074,-7.444042,13.4,13,OK,,MÉDIA,-,Nenhum,Usar como está
+4254,Bernal,MX,AR,AR,Quilmes,-34.711445,-58.28128,2.6,16,OK,,ALTA,-,Nenhum,Usar como está
+4287,Bethuadahari Wildlife Sanctuary,IN,US,US,Azle,32.90874,-97.58419,3.9,2,OK,,ALTA,-,Nenhum,Usar como está
+4290,Bettendorf,US,FR,FR,Altkirch,47.585247,7.277087,5.2,16,OK,,MÉDIA,-,Nenhum,Usar como está
+4301,Beypore Beach,IN,US,US,Glendive,46.91807,-104.00437,57.6,20,Revisar (distância alta),,BAIXA,ALTA,Distância muito alta,Revisar URGENTE (muitos hotéis)
+4324,Bhutan,IN,BT,BT,Trongsa,27.549511,90.511925,5.2,39,OK,,MÉDIA,-,Nenhum,Usar como está
+4352,Big Pine Key,BR,US,US,Marathon,24.692642,-81.37258,28.6,11,Revisar (distância alta),,BAIXA,ALTA,Distância moderada,Revisar URGENTE (muitos hotéis)
+4391,Bintan Resorts,SG,ID,PG,Tabubil,-4.518894,140.55768,112.2,17,Corrigido,Indonésia,MÉDIA (manual),-,Coordenadas muito deslocadas,Descartar ou geocodificar novamente
+4396,Bioko,FR,PG,PG,Mendi,-5.875043,143.40898,40.8,1,Revisar (distância alta),,BAIXA,MÉDIA,Distância elevada,Revisar (tem hotéis)
+4406,Birr,IE,FR,FR,Héricourt,47.61396,6.78557,4.9,16,OK,,ALTA,-,Nenhum,Usar como está
+4437,Black Point and Pine Point,AU,US,US,Detroit Lakes,46.97774,-95.38364,39.4,5,Revisar (distância alta),,BAIXA,MÉDIA,Distância elevada,Revisar (tem hotéis)
+4493,Blueskin Bay,NZ,IT,IT,Cefalù,38.41409,14.04068,41.8,5,Revisar (distância alta),,BAIXA,MÉDIA,Distância elevada,Revisar (tem hotéis)
+4497,Blumenau,BR,PL,PL,Elbląg,54.19367,19.58983,12.7,20,OK,,MÉDIA,-,Nenhum,Usar como está
+4534,Bohuslän,NO,SE,SE,Uddevalla,58.23333,11.8,15.2,3,Revisar (distância alta),,BAIXA,MÉDIA,Distância moderada,Revisar (tem hotéis)
+4543,Bol,HR,BO,BO,San Julian,-17.740334,-62.93384,8.6,10,OK,,MÉDIA,-,Nenhum,Usar como está
+4560,Bonaire,NL,US,US,Warner Robins,32.543842,-83.59602,8.5,12,OK,,MÉDIA,-,Nenhum,Usar como está
+4590,Boring,BR,US,US,Damascus,45.432663,-122.36951,7.2,10,OK,,MÉDIA,-,Nenhum,Usar como está
+4602,Bosanska Krajina,HR,BA,BA,Gradiška,45.05972,17.050463,18.6,1,Revisar (distância alta),,BAIXA,MÉDIA,Distância moderada,Revisar (tem hotéis)
+4616,Boston/North End,US,GB,GB,Boston,52.9556,-0.167727,9.7,45,OK,,MÉDIA,-,Nenhum,Usar como está
+4628,Bougainville,AU,FR,FR,Amiens,49.869915,2.043234,18.7,17,Revisar (distância alta),,BAIXA,ALTA,Distância moderada,Revisar URGENTE (muitos hotéis)
+4655,Boyle,IE,CA,CA,Fort Saskatchewan,54.59083,-112.809166,102.7,8,Corrigido,"Alberta, Canadá",MÉDIA (manual),-,Coordenadas muito deslocadas,Descartar ou geocodificar novamente
+4657,Bozel,IT,FR,FR,Bourg-Saint-Maurice,45.442383,6.64694,21.4,9,Revisar (distância alta),,BAIXA,MÉDIA,Distância moderada,Revisar (tem hotéis)
+4660,Brač,HR,FR,FR,Saint-Maximin-la-Sainte-Baume,43.472027,5.953499,7.9,2,OK,,MÉDIA,-,Nenhum,Usar como está
+4687,Brandenburg,DE,US,US,Fort Knox,37.99896,-86.16941,21.7,2,Revisar (distância alta),,BAIXA,MÉDIA,Distância moderada,Revisar (tem hotéis)
+4766,Brighton Seminole Indian Reservation,US,CA,CA,Eastern Charlotte,45.26545,-67.61208,66.5,2,Revisar (distância alta),,BAIXA,MÉDIA,Distância muito alta,Revisar (tem hotéis)
+4828,Brown County State Park,TR,US,US,Bloomington,39.145573,-86.22602,26.0,10,Revisar (distância alta),,BAIXA,MÉDIA,Distância moderada,Revisar (tem hotéis)
+4843,Brunei,CN,BN,BN,Liang,4.413715,114.56539,30.3,1,Revisar (distância alta),,BAIXA,MÉDIA,Distância elevada,Revisar (tem hotéis)
+4883,Buenos Aires (province),AR,PE,PE,Chimbote,-9.122116,-78.530975,8.7,4,OK,,MÉDIA,-,Nenhum,Usar como está
+4896,Bukit Peninsula,ID,US,US,Macedonia,41.24117,-81.55262,8.9,40,OK,,MÉDIA,-,Nenhum,Usar como está
+4898,Bukit Tinggi,MY,ID,ID,Sintang,-0.243651,112.70704,138.6,4,Corrigido,Indonésia (não Malásia),MÉDIA (manual),-,Coordenadas muito deslocadas,Descartar ou geocodificar novamente
+4910,Bundang,KR,CM,CM,Tchéboa,9.13333,12.95,28.3,30,Revisar (distância alta),,BAIXA,ALTA,Distância moderada,Revisar URGENTE (muitos hotéis)
+4932,Burley (England),FR,GB,GB,Ringwood,50.8266,-1.70164,6.5,14,OK,,MÉDIA,-,Nenhum,Usar como está
+4942,Burlington County,BR,US,US,Vincentown,39.93254,-74.722664,2.2,2,OK,,ALTA,-,Nenhum,Usar como está
+4943,Burma Road,CN,AU,AU,Geraldton,-28.954975,115.03724,45.6,5,Revisar (distância alta),,BAIXA,MÉDIA,Distância elevada,Revisar (tem hotéis)
+4957,Buru Island,IN,ID,ID,Namrole,-3.459143,126.65623,43.7,19,Revisar (distância alta),,BAIXA,ALTA,Distância elevada,Revisar URGENTE (muitos hotéis)
+4985,Bylakuppe,BR,IN,IN,Kushālnagar,12.429251,75.995346,5.1,10,OK,,MÉDIA,-,Nenhum,Usar como está
+4993,Åland,FI,AX,AX,Ytterby,60.151596,20.08803,4.3,4,OK,,ALTA,-,Nenhum,Usar como está
+5023,Ústí nad Orlicí District,PL,CZ,CZ,Letohrad,50.0,16.53333,4.7,1,OK,,ALTA,-,Nenhum,Usar como está
+5036,Świeradów-Zdrój,CZ,PL,PL,Gryfów Śląski,50.90934,15.333216,14.8,4,OK,,MÉDIA,-,Nenhum,Usar como está
+5038,Şirince,GB,TR,TR,Selçuk,37.942352,27.432835,5.7,2,OK,,MÉDIA,-,Nenhum,Usar como está
+5080,Cahokia Mounds State Historic Site,BR,US,US,Collinsville,38.652115,-90.064674,7.2,25,OK,,MÉDIA,-,Nenhum,Usar como está
+5108,Calais (Maine),US,CA,CA,Eastern Charlotte,45.18902,-67.27814,39.1,10,Revisar (distância alta),,BAIXA,MÉDIA,Distância elevada,Revisar (tem hotéis)
+5144,Calvert City,CN,US,US,Paducah,37.03339,-88.35004,22.9,7,Revisar (distância alta),,BAIXA,MÉDIA,Distância moderada,Revisar (tem hotéis)
+5169,Caminha,PT,ES,ES,O Rosal,41.87576,-8.838838,6.6,9,OK,,MÉDIA,-,Nenhum,Usar como está
+5170,French Way,ES,US,US,Tracy,37.703915,-121.44583,4.4,9,OK,,ALTA,-,Nenhum,Usar como está
+5179,Campeche (state),MX,VE,VE,Tocuyo de La Costa,10.962301,-68.46193,12.6,3,OK,,MÉDIA,-,Nenhum,Usar como está
+5185,Campobello Island,US,CA,CA,Eastern Charlotte,44.89385,-66.91937,25.2,15,Revisar (distância alta),,BAIXA,ALTA,Distância moderada,Revisar URGENTE (muitos hotéis)
+5195,Canadian,BR,US,US,Perryton,35.91201,-100.3839,66.0,11,Revisar (distância alta),,BAIXA,ALTA,Distância muito alta,Revisar URGENTE (muitos hotéis)
+5224,Canowindra,AU,GB,GB,Fort William,57.3886,-6.1938,91.2,16,Revisar (distância alta),,BAIXA,ALTA,Distância muito alta,Revisar URGENTE (muitos hotéis)
+5232,Cantonment,US,IN,IN,Mānegaon,23.172075,80.01837,3.8,2,OK,,ALTA,-,Nenhum,Usar como está
+5235,Canyon de Guadalupe,MX,GP,GP,Le Gosier,16.208658,-61.439903,5.7,1,OK,,MÉDIA,-,Nenhum,Usar como está
+5240,Cao Bang,CN,VN,VN,Thị Trấn Nước Hai,22.742693,106.106094,4.8,9,OK,,ALTA,-,Nenhum,Usar como está
+5255,Cape Elizabeth,BR,US,US,South Portland,43.59644,-70.22848,5.1,8,OK,,MÉDIA,-,Nenhum,Usar como está
+5278,Caprock Canyons State Park,TR,US,US,Plainview,34.410244,-101.05322,65.1,8,Revisar (distância alta),,BAIXA,MÉDIA,Distância muito alta,Revisar (tem hotéis)
+5280,Captiva Island,MX,US,US,Sanibel,26.527578,-82.19482,19.3,7,Revisar (distância alta),,BAIXA,MÉDIA,Distância moderada,Revisar (tem hotéis)
+5281,Capurganá,CO,PA,PA,Unión Chocó,8.6366,-77.34719,64.8,10,Revisar (distância alta),,BAIXA,MÉDIA,Distância muito alta,Revisar (tem hotéis)
+5292,Carbonear,PT,CA,CA,Bay Roberts,47.733124,-53.23662,15.0,20,Revisar (distância alta),,BAIXA,ALTA,Distância moderada,Revisar URGENTE (muitos hotéis)
+5296,Cardenás,MX,ES,ES,Nájera,42.37384,-2.76604,5.8,1,OK,,MÉDIA,-,Nenhum,Usar como está
+5300,Cardston,US,CA,CA,Lethbridge,49.200115,-113.316574,66.2,12,Revisar (distância alta),,BAIXA,ALTA,Distância muito alta,Revisar URGENTE (muitos hotéis)
+5373,Cassis,FR,HT,HT,Thomazeau,18.61571,-72.07461,4.6,24,OK,,ALTA,-,Nenhum,Usar como está
+5391,Castile and León,PT,ES,ES,Tordesillas,41.55005,-5.13874,12.6,1,OK,,MÉDIA,-,Nenhum,Usar como está
+5423,Catron County,MX,US,US,Silver City,33.902695,-108.38008,126.3,8,Corrigido,"Novo México, EUA",MÉDIA (manual),-,Coordenadas muito deslocadas,Descartar ou geocodificar novamente
+5428,Cave City,NZ,US,US,Richlands,37.18962,-82.06933,26.7,39,Revisar (distância alta),,BAIXA,ALTA,Distância moderada,Revisar URGENTE (muitos hotéis)
+5454,Cedar Point,BR,US,US,Peru,41.263092,-89.12564,7.2,5,OK,,MÉDIA,-,Nenhum,Usar como está
+5462,Center (North Dakota),BR,US,US,Mandan,47.116386,-101.29959,44.8,6,Revisar (distância alta),,BAIXA,MÉDIA,Distância elevada,Revisar (tem hotéis)
+5500,Central Slovakia,PL,SK,SK,Brezno,48.833565,19.47251,12.4,7,OK,,MÉDIA,-,Nenhum,Usar como está
+5512,Cerbère,ES,FR,FR,Banyuls de la Marenda,42.441296,3.164695,5.6,7,OK,,MÉDIA,-,Nenhum,Usar como está
+5574,Changle,GB,CN,CN,Houyu,25.96604,119.51856,10.5,11,OK,,MÉDIA,-,Nenhum,Usar como está
+5603,Charleville,AU,IE,IE,Mallow,52.354645,-8.682883,24.8,11,Revisar (distância alta),,BAIXA,ALTA,Distância moderada,Revisar URGENTE (muitos hotéis)
+5604,Charlevoix,CA,US,US,Bay Harbor,45.31765,-85.25835,14.7,6,OK,,MÉDIA,-,Nenhum,Usar como está
+5631,Chatham Islands,NZ,SD,SD,Wadi Halfa,22.42446,31.82595,84.1,40,Revisar (distância alta),,BAIXA,ALTA,Distância muito alta,Revisar URGENTE (muitos hotéis)
+5780,Chiloé National Park,CL,ES,ES,Calp,38.6783,0.08935,5.4,1,OK,,MÉDIA,-,Nenhum,Usar como está
+5812,Chiran,JP,IN,IN,Nagrota Bagwān,32.026634,76.39148,9.1,4,OK,,MÉDIA,-,Nenhum,Usar como está
+5825,Chiusi,IT,SM,SM,Poggio di Chiesanuova,43.76798,12.293714,18.3,6,Revisar (distância alta),,BAIXA,MÉDIA,Distância moderada,Revisar (tem hotéis)
+5853,Christmas Island,GB,CX,CX,Flying Fish Cove,-10.483777,105.64723,7.7,27,OK,,MÉDIA,-,Nenhum,Usar como está
+5869,Chuuk,JP,FM,FM,Weno,8.606235,151.83275,129.0,7,Corrigido,Estado Federado da Micronésia,MÉDIA (manual),-,Coordenadas muito deslocadas,Descartar ou geocodificar novamente
+5977,Cloudcroft,MX,US,US,Alamogordo,32.957664,-105.74272,21.3,24,Revisar (distância alta),,BAIXA,ALTA,Distância moderada,Revisar URGENTE (muitos hotéis)
+5987,Coal Region,CH,GB,GB,Burngreave,53.414238,-1.413782,3.8,15,OK,,ALTA,-,Nenhum,Usar como está
+5991,Coastal Georgia,BR,US,US,Dalton,34.696815,-84.738976,22.6,1,Revisar (distância alta),,BAIXA,MÉDIA,Distância moderada,Revisar (tem hotéis)
+6004,Cochamó Valley,CL,AR,AR,San Carlos de Bariloche,-41.380802,-72.07148,68.9,6,Revisar (distância alta),,BAIXA,MÉDIA,Distância muito alta,Revisar (tem hotéis)
+6021,Cojedes,PT,VE,VE,Las Vegas,9.333664,-68.350365,38.1,1,Revisar (distância alta),,BAIXA,MÉDIA,Distância elevada,Revisar (tem hotéis)
+6046,Collingwood (New Zealand),NZ,GB,GB,Pembroke,51.670963,-4.702831,14.5,5,OK,,MÉDIA,-,Nenhum,Usar como está
+6231,Costa Brava,ES,AR,AR,Mercedes,-34.774414,-59.69925,28.1,17,Revisar (distância alta),,BAIXA,ALTA,Distância moderada,Revisar URGENTE (muitos hotéis)
+6253,Courmayeur,IT,FR,FR,Chamonix-Mont-Blanc,45.831654,6.946156,11.8,6,OK,,MÉDIA,-,Nenhum,Usar como está
+6306,Croatia,HR,SI,SI,Osilnica,45.471962,14.706504,6.4,2,OK,,MÉDIA,-,Nenhum,Usar como está
+6371,Cut Bank,US,US,CA,Coaldale,48.63304,-112.326164,122.4,17,Revisar (distância alta),"Montana, EUA",BAIXA,ALTA,Coordenadas muito deslocadas,Revisar URGENTE (muitos hotéis)
+6375,Cuyahoga County,TR,US,US,Brooklyn,41.430134,-81.69056,3.9,13,OK,,ALTA,-,Nenhum,Usar como está
+6382,Cygnet,AU,US,US,Bowling Green,41.24005,-83.64326,15.0,21,Revisar (distância alta),,BAIXA,ALTA,Distância moderada,Revisar URGENTE (muitos hotéis)
+6384,Cyprus,TR,CY,CY,Léfka,34.917416,32.889904,21.9,3,Revisar (distância alta),,BAIXA,MÉDIA,Distância moderada,Revisar (tem hotéis)
+6429,Dalsland,RU,NO,NO,Førde,61.056698,5.560067,46.8,12,Revisar (distância alta),,BAIXA,ALTA,Distância elevada,Revisar URGENTE (muitos hotéis)
+6521,D-Day beaches,FR,CA,CA,Bonnyville,54.83909,-111.96596,101.7,40,Corrigido,,MÉDIA (manual),-,Coordenadas muito deslocadas,Descartar ou geocodificar novamente
+6580,Demirköy,GB,TR,TR,Vize,41.82415,27.765146,27.6,9,Revisar (distância alta),,BAIXA,MÉDIA,Distância moderada,Revisar (tem hotéis)
+6592,Denmark (Western Australia),AU,DK,DK,Vejen,55.378426,9.131806,11.4,3,OK,,MÉDIA,-,Nenhum,Usar como está
+6599,Deokjeok Island,KR,IS,IS,Akureyri,65.0,-18.0,76.1,3,Revisar (distância alta),,BAIXA,MÉDIA,Distância muito alta,Revisar (tem hotéis)
+6616,Desaru,CN,MY,MY,Bandar Penawar,1.541002,104.264305,4.4,40,OK,,ALTA,-,Nenhum,Usar como está
+6709,Diving Aliwal Shoal,ZA,CY,CY,Protaras,34.96361,34.072933,5.6,9,OK,,MÉDIA,-,Nenhum,Usar como está
+6710,Diving in Chuuk,JP,FM,FM,Weno,7.454,151.805,4.1,10,OK,Estado Federado da Micronésia,ALTA,-,Nenhum,Usar como está
+6717,Diving in the Philippines,PH,ES,ES,Los Llanos de Aridane,28.71144,-17.95556,6.9,7,OK,,MÉDIA,-,Nenhum,Usar como está
+6718,Diving the Cape Peninsula and False Bay,ZA,CA,CA,Qualicum Beach,49.49128,-124.35006,17.3,40,Revisar (distância alta),,BAIXA,ALTA,Distância moderada,Revisar URGENTE (muitos hotéis)
+6719,Diving the Cape Peninsula and False Bay/Duiker Island,ZA,NL,NL,Enkhuizen,52.69036,5.231231,4.3,1,OK,,ALTA,-,Nenhum,Usar como está
+6749,Dolores (Colorado),US,ES,ES,Calp,38.67553,0.07775,4.5,2,OK,,ALTA,-,Nenhum,Usar como está
+6754,Dona Paula,IN,BR,BR,Lontras,-27.237986,-49.494507,9.3,6,OK,,MÉDIA,-,Nenhum,Usar como está
+6870,Dunseith,CA,US,US,Minot Air Force Base,48.813057,-100.06097,103.6,7,Corrigido,,MÉDIA (manual),-,Coordenadas muito deslocadas,Descartar ou geocodificar novamente
+6921,Eastern Cuba,GB,ZA,ZA,Butterworth,-32.319443,28.199722,4.9,1,OK,,ALTA,-,Nenhum,Usar como está
+6931,Eastern Slovakia,PL,SK,SK,Sobrance,48.717014,22.273935,7.4,15,OK,,MÉDIA,-,Nenhum,Usar como está
+6932,Eastern Slovenia,HR,SI,SI,Zagorje ob Savi,46.08333,15.0,5.4,3,OK,,MÉDIA,-,Nenhum,Usar como está
+6949,East Jutland,DK,US,US,Northridge,34.249733,-118.51642,3.0,3,OK,,ALTA,-,Nenhum,Usar como está
+6952,East Kootenays,CA,ID,ID,Sumberpucung,-8.086424,112.5,8.2,1,OK,,MÉDIA,-,Nenhum,Usar como está
+6995,Eckerö,SE,AX,AX,Yomala,60.2325,19.5392,23.0,10,Corrigido,,MÉDIA (manual),-,Distância moderada,Verificar coordenadas
+7064,Elba,IT,US,US,Enterprise,31.41461,-86.067726,23.0,12,Revisar (distância alta),,BAIXA,ALTA,Distância moderada,Revisar URGENTE (muitos hotéis)
+7070,El Castaño,MX,VE,VE,La Victoria,10.188661,-67.363945,5.5,1,OK,,MÉDIA,-,Nenhum,Usar como está
+7107,Beaver Hills,CA,US,US,New Haven,41.324505,-72.94609,2.4,15,OK,,ALTA,-,Nenhum,Usar como está
+7150,Elsinore,SE,US,US,Richfield,38.683083,-112.14828,11.4,46,OK,,MÉDIA,-,Nenhum,Usar como está
+7203,Ephesus,GB,US,US,Carrollton,33.406178,-85.24925,25.1,16,Revisar (distância alta),,BAIXA,ALTA,Distância moderada,Revisar URGENTE (muitos hotéis)
+7259,Esso,CH,UG,UG,Kapchorwa,1.295578,34.749863,35.3,1,Revisar (distância alta),,BAIXA,MÉDIA,Distância elevada,Revisar (tem hotéis)
+7282,European route E39,NO,TR,TR,Kırklareli,41.910603,27.129932,21.1,14,Revisar (distância alta),,BAIXA,ALTA,Distância moderada,Revisar URGENTE (muitos hotéis)
+7296,Evian,CH,IT,IT,Aosta,45.710827,7.200502,9.5,1,OK,,MÉDIA,-,Nenhum,Usar como está
+7347,Falcon Lake,CA,US,US,Zapata,26.782078,-99.24472,14.2,4,OK,,MÉDIA,-,Nenhum,Usar como está
+7364,Falmouth (Maine),BR,US,US,Portland,43.721985,-70.232704,7.5,7,OK,,MÉDIA,-,Nenhum,Usar como está
+7384,Faroe Islands,DK,FO,FO,Tórshavn,62.028236,-6.881926,6.1,1,OK,,MÉDIA,-,Nenhum,Usar como está
+7415,Ferdinand,AT,US,US,Lyndon,44.722713,-71.774956,29.8,7,Revisar (distância alta),,BAIXA,MÉDIA,Distância moderada,Revisar (tem hotéis)
+7436,Fiji,NZ,FJ,FJ,Levuka,-18.12397,179.01227,32.8,3,Revisar (distância alta),,BAIXA,MÉDIA,Distância elevada,Revisar (tem hotéis)
+7457,Fishguard,IE,GB,GB,Haverfordwest,51.993835,-4.97681,21.4,12,Revisar (distância alta),,BAIXA,ALTA,Distância moderada,Revisar URGENTE (muitos hotéis)
+7524,Foppolo,IT,ES,ES,Calp,38.6783,0.08935,5.4,5,OK,,MÉDIA,-,Nenhum,Usar como está
+7531,Forestville,CA,UA,UA,Volovets,48.65811,23.28091,9.2,10,OK,,MÉDIA,-,Nenhum,Usar como está
+7570,Fort Sumner,MX,US,US,Portales,34.47167,-104.24551,89.5,1,Revisar (distância alta),,BAIXA,MÉDIA,Distância muito alta,Revisar (tem hotéis)
+7632,Frederick County,CA,US,US,Winchester,39.212704,-78.27917,10.4,3,OK,,MÉDIA,-,Nenhum,Usar como está
+7674,Frombork,DE,PL,PL,Braniewo,54.358364,19.68237,9.2,5,OK,,MÉDIA,-,Nenhum,Usar como está
+7683,Fugging,AT,DE,DE,Tittmoning,48.06741,12.862345,7.1,1,OK,,MÉDIA,-,Nenhum,Usar como está
+7761,Gangwon,JP,KR,KR,Jumunjin,37.772526,128.38208,41.2,12,Revisar (distância alta),,BAIXA,ALTA,Distância elevada,Revisar URGENTE (muitos hotéis)
+7776,Garden City (Michigan),BR,US,US,Escanaba,45.7747,-86.5507,40.0,3,Revisar (distância alta),,BAIXA,MÉDIA,Distância elevada,Revisar (tem hotéis)
+7795,Garner State Park,TR,US,US,Uvalde,29.58826,-99.737274,42.4,7,Revisar (distância alta),,BAIXA,MÉDIA,Distância elevada,Revisar (tem hotéis)
+7819,Gaza Strip,EG,PS,PS,Az Zuwāydah,31.443224,34.36001,2.0,27,OK,,ALTA,-,Nenhum,Usar como está
+7829,Güssing,AT,HU,HU,Szentgotthárd,47.058765,16.324337,12.4,6,OK,,MÉDIA,-,Nenhum,Usar como está
+7837,Gedser,DE,DK,DK,Alholm,54.577045,11.931356,16.6,7,Revisar (distância alta),,BAIXA,MÉDIA,Distância moderada,Revisar (tem hotéis)
+7895,Giant's Causeway,CA,AU,AU,Albany,-34.68333,118.73333,86.4,1,Revisar (distância alta),,BAIXA,MÉDIA,Distância muito alta,Revisar (tem hotéis)
+7927,Gir Forest National Park,IN,CN,CN,Wulingyuan,29.297308,110.43844,11.8,2,OK,,MÉDIA,-,Nenhum,Usar como está
+7942,Glacier National Park (Montana),CA,US,US,Columbia Falls,48.617485,-113.76089,41.3,34,Revisar (distância alta),,BAIXA,ALTA,Distância elevada,Revisar URGENTE (muitos hotéis)
+7969,Glenfinnan,GB,CA,CA,Stratford,46.293476,-62.969925,11.9,8,OK,,MÉDIA,-,Nenhum,Usar como está
+8010,Goldendale,BR,US,US,The Dalles,45.82068,-120.82173,37.4,10,Revisar (distância alta),,BAIXA,MÉDIA,Distância elevada,Revisar (tem hotéis)
+8079,GR 10,ES,IT,IT,Grosseto,42.77511,11.287805,14.6,1,OK,,MÉDIA,-,Nenhum,Usar como está
+8115,Grand Isle (Louisiana),MX,US,US,Galliano,29.236618,-89.9873,37.9,3,Revisar (distância alta),,BAIXA,MÉDIA,Distância elevada,Revisar (tem hotéis)
+8192,Green Kalahari,ZA,US,US,Hobart,44.513603,-88.1184,3.0,1,OK,,ALTA,-,Nenhum,Usar como está
+8195,Green Mountains,CA,US,US,Minot Air Force Base,49.13227,-101.50633,80.0,11,Revisar (distância alta),,BAIXA,ALTA,Distância muito alta,Revisar URGENTE (muitos hotéis)
+8268,Guadeloupe,MX,GP,GP,Baie-Mahault,16.252882,-61.568684,2.4,6,OK,,ALTA,-,Nenhum,Usar como está
+8271,Guamote,ES,EC,EC,Alausí,-2.049332,-78.64267,28.4,1,Revisar (distância alta),,BAIXA,MÉDIA,Distância moderada,Revisar (tem hotéis)
+8311,Guinsa,CN,KR,KR,Neietsu,37.03129,128.47966,17.1,7,Revisar (distância alta),,BAIXA,MÉDIA,Distância moderada,Revisar (tem hotéis)
+8320,Gulf Coast (Mississippi),MX,US,US,Fort Myers Beach,26.40447,-81.88712,8.3,1,OK,,MÉDIA,-,Nenhum,Usar como está
+8575,Havelock Island,TH,IN,IN,Bamboo Flat,11.965196,92.99562,42.3,38,Revisar (distância alta),,BAIXA,ALTA,Distância elevada,Revisar URGENTE (muitos hotéis)
+8589,Hawley,BR,US,US,Abilene,32.613373,-99.813034,19.8,9,Revisar (distância alta),,BAIXA,MÉDIA,Distância moderada,Revisar (tem hotéis)
+8659,Helvetia (West Virginia),CH,US,US,Buckhannon,38.706005,-80.201035,32.1,14,Revisar (distância alta),,BAIXA,ALTA,Distância elevada,Revisar URGENTE (muitos hotéis)
+8678,Herculaneum,IT,US,US,Pevely,38.268387,-90.38012,2.1,24,OK,,ALTA,-,Nenhum,Usar como está
+8726,High Plains,MX,US,US,Vine Grove,37.77312,-86.21108,20.6,2,Revisar (distância alta),,BAIXA,MÉDIA,Distância moderada,Revisar (tem hotéis)
+8746,Hillswick,IN,GB,GB,Lerwick,60.476532,-1.487589,40.6,4,Revisar (distância alta),,BAIXA,MÉDIA,Distância elevada,Revisar (tem hotéis)
+8774,Hiva Oa,FR,PF,PF,Taiohae,-9.779326,-139.00679,154.0,23,Corrigido,Ilha na Polinésia Francesa,MÉDIA (manual),-,Coordenadas muito deslocadas,Descartar ou geocodificar novamente
+8778,Hluhluwe-iMfolozi Park,ZA,ES,ES,Calp,38.6783,0.08935,5.4,5,OK,,MÉDIA,-,Nenhum,Usar como está
+8826,Holy Island (near Arran),IE,US,US,Bay Harbor,45.23195,-85.16673,16.1,3,Revisar (distância alta),,BAIXA,MÉDIA,Distância moderada,Revisar (tem hotéis)
+9004,Hydra,GR,DZ,DZ,Birkhadem,36.747425,3.040183,3.7,19,OK,,ALTA,-,Nenhum,Usar como está
+9032,Idyllwild,MX,US,US,Valle Vista,33.740276,-116.71894,16.1,52,Revisar (distância alta),,BAIXA,ALTA,Distância moderada,Revisar URGENTE (muitos hotéis)
+9119,Interior (Iceland),IS,US,US,Ronkonkoma,40.80501,-73.171104,3.0,5,OK,,ALTA,-,Nenhum,Usar como está
+9120,Interlake,CA,ES,ES,Arona,28.05203,-16.71774,6.4,9,OK,,MÉDIA,-,Nenhum,Usar como está
+9171,Ischgl,CH,IT,IT,Domodossola,46.325768,8.40917,24.9,11,Revisar (distância alta),,BAIXA,ALTA,Distância moderada,Revisar URGENTE (muitos hotéis)
+9231,Italian Lake District,IT,CA,CA,Courtenay,49.476173,-125.205315,27.9,9,Revisar (distância alta),,BAIXA,MÉDIA,Distância moderada,Revisar (tem hotéis)
+9318,Jamestown (California),MX,US,US,Oakdale,37.95326,-120.4227,42.7,15,Revisar (distância alta),,BAIXA,ALTA,Distância elevada,Revisar URGENTE (muitos hotéis)
+9332,Jan Mayen,NO,SJ,SJ,Olonkinbyen,70.99517,-8.465656,12.3,1,OK,,MÉDIA,-,Nenhum,Usar como está
+9368,Jelling,DK,DE,DE,Tönning,54.33045,8.7737,10.9,11,OK,,MÉDIA,-,Nenhum,Usar como está
+9458,John o'Groats,DK,GB,GB,Wick,58.637302,-3.068968,22.1,8,Revisar (distância alta),,BAIXA,MÉDIA,Distância moderada,Revisar (tem hotéis)
+9518,Kabardino-Balkaria,DE,RU,RU,Kenzhe,43.44283,43.420483,12.4,1,OK,,MÉDIA,-,Nenhum,Usar como está
+9542,Lower Northland,NZ,AT,AT,Gerasdorf bei Wien,48.34208,16.462408,5.3,9,OK,,MÉDIA,-,Nenhum,Usar como está
+9595,Kamen Bryag,RO,BG,BG,Kavarna,43.45486,28.550821,17.2,6,Revisar (distância alta),,BAIXA,MÉDIA,Distância moderada,Revisar (tem hotéis)
+9630,Kanha National Park,IN,US,US,Shady Hollow,30.154978,-97.789696,7.1,15,OK,,MÉDIA,-,Nenhum,Usar como está
+9664,Karakol Lake,CN,ES,ES,Arona,28.05203,-16.71774,6.4,9,OK,,MÉDIA,-,Nenhum,Usar como está
+9719,Kaslo,CH,CA,CA,Nelson,49.912155,-116.90489,53.4,27,Revisar (distância alta),,BAIXA,ALTA,Distância muito alta,Revisar URGENTE (muitos hotéis)
+9801,Kelabit Highlands,ID,US,US,Rumson,40.40372,-73.99153,3.6,14,OK,,ALTA,-,Nenhum,Usar como está
+9908,Khatse,ZA,IN,IN,Joshīmath,31.488207,79.44202,104.4,2,Corrigido,,MÉDIA (manual),-,Coordenadas muito deslocadas,Descartar ou geocodificar novamente
+9965,Kilpisjärvi,FI,NO,NO,Tromsdalen,69.04836,20.79846,96.7,30,Revisar (distância alta),,BAIXA,ALTA,Distância muito alta,Revisar URGENTE (muitos hotéis)
+10016,Kirkenes,NO,RU,RU,Nikel,69.72715,30.044897,35.6,16,Revisar (distância alta),,BAIXA,ALTA,Distância elevada,Revisar URGENTE (muitos hotéis)
+10044,Kitsap Peninsula,NO,US,US,Macedonia,41.24117,-81.55262,8.9,11,OK,,MÉDIA,-,Nenhum,Usar como está
+10131,Ko Lipe,TH,MY,MY,Padang Mat Sirat,6.487591,99.30247,49.9,39,Revisar (distância alta),,BAIXA,ALTA,Distância elevada,Revisar URGENTE (muitos hotéis)
+10403,Ladakh,CN,IN,IN,Choglamsar,33.94564,77.65686,19.5,8,Revisar (distância alta),,BAIXA,MÉDIA,Distância moderada,Revisar (tem hotéis)
+10422,Lago Puelo,AR,ES,ES,Calp,38.6783,0.08935,5.4,2,OK,,MÉDIA,-,Nenhum,Usar como está
+10451,Lake Biwa,JP,ES,ES,Arona,28.05203,-16.71774,6.4,3,OK,,MÉDIA,-,Nenhum,Usar como está
+10460,Lake Constance,CH,ES,ES,Arona,28.05203,-16.71774,6.4,10,OK,,MÉDIA,-,Nenhum,Usar como está
+10512,Lamai,TH,TZ,TZ,Matongo,-1.561758,34.70204,22.5,32,Revisar (distância alta),,BAIXA,ALTA,Distância moderada,Revisar URGENTE (muitos hotéis)
+10522,La Merced,PE,CO,CO,Salamina,5.399067,-75.547806,6.7,13,OK,,MÉDIA,-,Nenhum,Usar como está
+10553,Lăng Cô,VN,VN,IN,Shi Yomi,29.018532,93.11629,134.0,12,Revisar (distância alta),Vietname,BAIXA,ALTA,Coordenadas muito deslocadas,Revisar URGENTE (muitos hotéis)
+10556,Langeland,DK,DE,DE,Altenbeken,51.78241,8.997726,4.3,26,OK,,ALTA,-,Nenhum,Usar como está
+10564,Langport,NL,GB,GB,Street,51.03757,-2.828008,11.5,11,OK,,MÉDIA,-,Nenhum,Usar como está
+10567,Lang Tengah,MY,MY,ID,Banjarbaru,-4.363592,115.79957,148.1,5,Revisar (distância alta),Malásia,BAIXA,MÉDIA,Coordenadas muito deslocadas,Revisar (tem hotéis)
+10577,Lanzarote,ES,MX,MX,Nicolás Romero,19.66995,-99.32385,3.6,22,OK,,ALTA,-,Nenhum,Usar como está
+10582,Laos,TH,LA,LA,Muang Phônsavan,20.01711,103.37825,66.1,8,Revisar (distância alta),,BAIXA,MÉDIA,Distância muito alta,Revisar (tem hotéis)
+10603,Laren,NL,ID,ID,Paciran,-6.978376,112.2951,14.4,7,OK,,MÉDIA,-,Nenhum,Usar como está
+10643,Laurentians,CA,US,US,Naples,26.161524,-81.8098,2.5,4,OK,,ALTA,-,Nenhum,Usar como está
+10669,Lüderitz,PT,ES,ES,Teulada,38.67878,0.09787,5.7,25,OK,,MÉDIA,-,Nenhum,Usar como está
+10740,Lenzerheide,CH,IT,IT,Chiavenna,46.444736,9.373384,13.9,14,OK,,MÉDIA,-,Nenhum,Usar como está
+10755,Lesotho,ZA,LS,LS,Mantsonyane,-29.603928,28.33502,10.1,3,OK,,MÉDIA,-,Nenhum,Usar como está
+10845,Limestone (Maine),CA,US,US,Caribou,46.911186,-67.825645,15.2,6,Revisar (distância alta),,BAIXA,MÉDIA,Distância moderada,Revisar (tem hotéis)
+10893,Listvyanka,CN,RU,RU,Rechka-Vydrino,51.85693,104.86058,41.1,31,Revisar (distância alta),,BAIXA,ALTA,Distância elevada,Revisar URGENTE (muitos hotéis)
+10979,Loleygaon,IN,ES,ES,Calp,38.6783,0.08935,5.4,2,OK,,MÉDIA,-,Nenhum,Usar como está
+11048,Longzhou,VN,ES,ES,Calp,38.6783,0.08935,5.4,9,OK,,MÉDIA,-,Nenhum,Usar como está
+11054,Lorain County,BR,US,US,Oberlin,41.263355,-82.17348,5.0,6,OK,,MÉDIA,-,Nenhum,Usar como está
+11060,Lorne,AU,ES,ES,Calp,38.6783,0.08935,5.4,3,OK,,MÉDIA,-,Nenhum,Usar como está
+11076,Los Chiles (Costa Rica),CR,NI,NI,San Carlos,10.857036,-84.71502,30.8,4,Revisar (distância alta),,BAIXA,MÉDIA,Distância elevada,Revisar (tem hotéis)
+11110,Lower Galilee,BR,US,US,Church Hill,36.62898,-83.11573,37.8,17,Revisar (distância alta),,BAIXA,ALTA,Distância elevada,Revisar URGENTE (muitos hotéis)
+11111,Lower Mainland,CA,US,US,Kulpsville,40.255936,-75.360176,2.5,26,OK,,ALTA,-,Nenhum,Usar como está
+11122,Lubec,US,CA,CA,Eastern Charlotte,44.86117,-66.9835,30.7,40,Revisar (distância alta),,BAIXA,ALTA,Distância elevada,Revisar URGENTE (muitos hotéis)
+11153,Lumbarda,HR,ES,ES,Teulada,38.67878,0.09787,5.7,5,OK,,MÉDIA,-,Nenhum,Usar como está
+11155,Lumbini,IN,NP,NP,Deukhurī,27.980713,82.953186,27.7,11,Revisar (distância alta),,BAIXA,ALTA,Distância moderada,Revisar URGENTE (muitos hotéis)
+11162,Lunenburg,CA,ES,ES,Teulada,38.67878,0.09787,5.7,14,OK,,MÉDIA,-,Nenhum,Usar como está
+11164,Luosto,GB,FI,FI,Pyhäjärvi,67.158264,26.918337,16.2,22,Revisar (distância alta),,BAIXA,ALTA,Distância moderada,Revisar URGENTE (muitos hotéis)
+11170,Lurgan,IE,GB,GB,Craigavon,54.460823,-6.329249,4.0,7,OK,,ALTA,-,Nenhum,Usar como está
+11221,Macau/Peninsula,CN,MO,MO,Luhuan,22.115894,113.5717,2.0,44,OK,,ALTA,-,Nenhum,Usar como está
+11252,Madeira Beach,PT,US,US,Treasure Island,27.798082,-82.797325,4.3,7,OK,,ALTA,-,Nenhum,Usar como está
+11257,Madidi National Park,PE,BO,BO,Ixiamas,-13.46425,-68.70335,70.7,6,Revisar (distância alta),,BAIXA,MÉDIA,Distância muito alta,Revisar (tem hotéis)
+11560,Marken,NL,IT,IT,San Severino Marche,43.34584,13.141587,13.2,16,OK,,MÉDIA,-,Nenhum,Usar como está
+11594,Mars Hill (Maine),CA,US,US,Presque Isle,46.514988,-67.86688,21.7,9,Revisar (distância alta),,BAIXA,MÉDIA,Distância moderada,Revisar (tem hotéis)
+11600,Martinique,FR,MQ,MQ,Le Lamentin,14.611373,-60.96208,4.0,21,OK,,ALTA,-,Nenhum,Usar como está
+11614,Masada,IL,IN,IN,Kantabamsuguda,18.18817,82.75098,20.4,5,Revisar (distância alta),,BAIXA,MÉDIA,Distância moderada,Revisar (tem hotéis)
+11686,Mayrhofen,AT,IT,IT,Valle Aurina - Ahrntal,47.167217,11.863867,20.9,18,Revisar (distância alta),,BAIXA,ALTA,Distância moderada,Revisar URGENTE (muitos hotéis)
+11706,Älvdalen,NO,SE,SE,Orsa,61.2299,14.037395,33.3,4,Revisar (distância alta),,BAIXA,MÉDIA,Distância elevada,Revisar (tem hotéis)
+11738,Međugorje,HR,BA,BA,Čitluk,43.190533,17.677532,4.6,6,OK,,ALTA,-,Nenhum,Usar como está
+11754,Medicine Park,BR,US,US,Lawton,34.727478,-98.501366,16.7,42,Revisar (distância alta),,BAIXA,ALTA,Distância moderada,Revisar URGENTE (muitos hotéis)
+11764,Meghri,IR,AZ,AZ,Ordubad,38.85165,46.201675,16.8,9,Revisar (distância alta),,BAIXA,MÉDIA,Distância moderada,Revisar (tem hotéis)
+11777,Babeldaob,JP,PW,PW,Imeong Hamlet,7.539963,134.5674,4.5,10,OK,,ALTA,-,Nenhum,Usar como está
+11828,Merseyside,IE,GB,GB,Maghull,53.49536,-2.973938,3.2,6,OK,,ALTA,-,Nenhum,Usar como está
+11837,Mesoamerican Barrier Reef,AU,US,US,Greenacres City,26.5689,-80.15109,6.6,2,OK,,MÉDIA,-,Nenhum,Usar como está
+11842,Mestia,GE,RU,RU,Tyrnyauz,43.043762,42.724453,40.8,55,Revisar (distância alta),,BAIXA,ALTA,Distância elevada,Revisar URGENTE (muitos hotéis)
+11966,Millinocket,CA,US,US,Old Town,45.656506,-68.70914,80.5,5,Revisar (distância alta),,BAIXA,MÉDIA,Distância muito alta,Revisar (tem hotéis)
+12185,Monticello (Utah),MX,US,US,Moab,37.875057,-109.34032,79.8,6,Revisar (distância alta),,BAIXA,MÉDIA,Distância muito alta,Revisar (tem hotéis)
+12256,Moriarty,MX,US,US,Albuquerque,34.997204,-106.049484,55.6,8,Revisar (distância alta),,BAIXA,MÉDIA,Distância muito alta,Revisar (tem hotéis)
+12303,Mountainair,MX,US,US,Belen,34.520355,-106.24077,51.5,6,Revisar (distância alta),,BAIXA,MÉDIA,Distância muito alta,Revisar (tem hotéis)
+12323,Mount Etna,IT,US,US,Huntington,40.742546,-85.56192,16.5,15,Revisar (distância alta),,BAIXA,ALTA,Distância moderada,Revisar URGENTE (muitos hotéis)
+12342,Mountmellick,IE,DE,DE,Tönning,54.33045,8.7737,10.9,3,OK,,MÉDIA,-,Nenhum,Usar como está
+12612,Nanton,CA,FR,FR,Tournus,46.61981,4.815444,9.0,28,OK,,MÉDIA,-,Nenhum,Usar como está
+12647,Narva,DK,FI,FI,Lempäälä,61.295197,23.502483,13.4,26,OK,,MÉDIA,-,Nenhum,Usar como está
+12673,Natuna Islands,CN,ID,ID,Ranai Kota,3.930516,108.19015,20.8,40,Revisar (distância alta),,BAIXA,ALTA,Distância moderada,Revisar URGENTE (muitos hotéis)
+12941,Niue,NZ,NU,NU,Alofi,-19.053642,-169.86134,6.1,34,OK,,MÉDIA,-,Nenhum,Usar como está
+12985,Norfolk Island,AU,NF,NF,Kingston,-29.032804,167.94832,3.0,41,OK,,ALTA,-,Nenhum,Usar como está
+12999,North America,GB,CA,CA,Swift Current,51.0,-109.0,116.2,8,Revisar (distância alta),Canadá,BAIXA,MÉDIA,Coordenadas muito deslocadas,Revisar (tem hotéis)
+13018,North Cascades,CA,US,US,Pflugerville,30.461832,-97.61802,2.5,14,OK,,ALTA,-,Nenhum,Usar como está
+13044,Northern Cape,DE,ZA,ZA,Kakamas,-29.573402,21.205135,105.8,1,Corrigido,,MÉDIA (manual),-,Coordenadas muito deslocadas,Descartar ou geocodificar novamente
+13054,Northern Laos,TH,LA,LA,Luang Prabang,19.986212,102.24413,14.1,6,OK,,MÉDIA,-,Nenhum,Usar como está
+13057,Northern Myanmar,CN,MM,MM,Tangyan,22.62344,98.83084,47.2,2,Revisar (distância alta),,BAIXA,MÉDIA,Distância elevada,Revisar (tem hotéis)
+13081,North Korea,KR,GR,GR,Rethymno,35.36973,24.54263,5.5,3,OK,,MÉDIA,-,Nenhum,Usar como está
+13109,Northumberland Shore,CA,GB,GB,Blackpool,53.836956,-3.052627,2.3,11,OK,,ALTA,-,Nenhum,Usar como está
+13129,Norway (Maine),NO,US,US,Paris,44.213623,-70.542336,6.1,14,OK,,MÉDIA,-,Nenhum,Usar como está
+13148,Novalja,FR,HR,HR,Mali Lošinj,44.556118,14.884472,33.1,2,Revisar (distância alta),,BAIXA,MÉDIA,Distância elevada,Revisar (tem hotéis)
+13287,Ohakune,AU,NZ,NZ,Whanganui,-39.416946,175.39961,64.7,15,Revisar (distância alta),,BAIXA,ALTA,Distância muito alta,Revisar URGENTE (muitos hotéis)
+13379,Onslow,AU,CA,CA,Truro,45.391884,-63.30065,3.9,5,OK,,ALTA,-,Nenhum,Usar como está
+13417,Orcas Island,ES,US,US,Anacortes,48.651558,-122.81793,21.6,7,Revisar (distância alta),,BAIXA,MÉDIA,Distância moderada,Revisar (tem hotéis)
+13419,Orchid Island,PH,TW,TW,Hengchun,22.051199,121.54695,82.9,19,Revisar (distância alta),,BAIXA,ALTA,Distância muito alta,Revisar URGENTE (muitos hotéis)
+13551,Oze National Park,JP,US,US,Shady Hollow,30.154978,-97.789696,7.1,12,OK,,MÉDIA,-,Nenhum,Usar como está
+13552,Ozona,TR,ES,ES,Ciutadella,39.92609,3.83064,8.4,8,OK,,MÉDIA,-,Nenhum,Usar como está
+13569,Padang Besar (Malaysia),TH,MY,MY,Kampung Titi Tinggi,6.659877,100.31645,6.4,3,OK,,MÉDIA,-,Nenhum,Usar como está
+13570,Padang Besar (Thailand),TH,MY,MY,Kampung Titi Tinggi,6.666866,100.31942,7.1,1,OK,,MÉDIA,-,Nenhum,Usar como está
+13591,Pai,TH,ID,ID,Bima,-8.441723,119.00121,30.3,40,Revisar (distância alta),,BAIXA,ALTA,Distância elevada,Revisar URGENTE (muitos hotéis)
+13596,Painted Monasteries,RO,US,US,Bennington,43.03432,-73.30232,19.4,2,Revisar (distância alta),,BAIXA,MÉDIA,Distância moderada,Revisar (tem hotéis)
+13600,Pajala,SE,FI,FI,Kittilä,67.20904,23.364729,82.6,5,Revisar (distância alta),,BAIXA,MÉDIA,Distância muito alta,Revisar (tem hotéis)
+13607,Pakse,JP,CM,CM,Poli,8.69625,12.90522,44.3,34,Revisar (distância alta),,BAIXA,ALTA,Distância elevada,Revisar URGENTE (muitos hotéis)
+13619,Palau,PH,IT,IT,La Maddalena,41.176216,9.377231,5.0,2,OK,,MÉDIA,-,Nenhum,Usar como está
+13658,Palos Verdes,PT,MX,MX,Guasave,25.37955,-108.45858,21.0,23,Revisar (distância alta),,BAIXA,ALTA,Distância moderada,Revisar URGENTE (muitos hotéis)
+13675,Panama City Beach,ES,CH,CH,Pregassona,46.031765,9.123382,11.6,41,OK,,MÉDIA,-,Nenhum,Usar como está
+13698,Panmunjeom,KR,KP,KP,Kaesŏng,37.955868,126.67701,10.9,13,OK,,MÉDIA,-,Nenhum,Usar como está
+13701,Pantanal,BR,MX,MX,Xalisco,21.4281,-104.86065,4.5,4,OK,,ALTA,-,Nenhum,Usar como está
+13775,Pharping,IN,NP,NP,Ki̇̄rtipur,27.611635,85.26701,7.5,7,OK,,MÉDIA,-,Nenhum,Usar como está
+13829,Paynesville (Victoria),CA,CC,CC,West Island,-12.89708,95.62626,153.7,8,Corrigido,,MÉDIA (manual),-,Coordenadas muito deslocadas,Descartar ou geocodificar novamente
+13870,Pelister National Park,GR,MK,MK,Bitola,40.96385,21.23829,11.2,29,OK,,MÉDIA,-,Nenhum,Usar como está
+13877,Pembina,US,CA,CA,Winkler,48.75308,-97.55328,55.4,1,Revisar (distância alta),,BAIXA,MÉDIA,Distância muito alta,Revisar (tem hotéis)
+13882,Penang,SG,MY,MY,Ayer Itam,5.406501,100.255905,2.5,10,OK,,ALTA,-,Nenhum,Usar como está
+13886,Pender Island,CA,US,US,Merrill,45.65297,-90.53012,84.4,21,Revisar (distância alta),,BAIXA,ALTA,Distância muito alta,Revisar URGENTE (muitos hotéis)
+13891,Pengerang,SG,MY,MY,Felda Gugusan Adela,1.394423,104.21549,10.3,26,OK,,MÉDIA,-,Nenhum,Usar como está
+13892,Penghu,CN,TW,TW,Magong,23.569695,119.56645,2.1,7,OK,,ALTA,-,Nenhum,Usar como está
+13900,Penns Grove,IT,US,US,Carneys Point,39.729557,-75.46797,2.0,7,OK,,ALTA,-,Nenhum,Usar como está
+13912,Peora,IN,US,US,Clarksburg,39.421474,-80.34481,15.7,1,Revisar (distância alta),,BAIXA,MÉDIA,Distância moderada,Revisar (tem hotéis)
+13948,Peru (Maine),PE,US,US,Paris,44.526524,-70.463875,29.8,6,Revisar (distância alta),,BAIXA,MÉDIA,Distância moderada,Revisar (tem hotéis)
+13960,Petawawa,DE,BG,BG,Pomorie,42.56351,27.604511,2.1,18,OK,,ALTA,-,Nenhum,Usar como está
+14022,Khao Phra Thaeo Non-Hunting Area,TH,IT,IT,Solaro,44.83141,9.41722,20.0,12,Revisar (distância alta),,BAIXA,ALTA,Distância moderada,Revisar URGENTE (muitos hotéis)
+14031,Pichilemu,CL,IT,IT,Rimini,44.055504,12.592457,2.2,19,OK,,ALTA,-,Nenhum,Usar como está
+14034,Pico,PT,IT,IT,Pontecorvo,41.450935,13.559382,8.9,14,OK,,MÉDIA,-,Nenhum,Usar como está
+14125,Plain of Jars,CN,LA,LA,Muang Phônsavan,19.425125,103.15932,4.3,2,OK,,ALTA,-,Nenhum,Usar como está
+14133,Plaquemines Parish,MX,US,US,Belle Chasse,29.429115,-89.51235,66.2,5,Revisar (distância alta),,BAIXA,MÉDIA,Distância muito alta,Revisar (tem hotéis)
+14165,Ploče,HR,ES,ES,Calp,38.6783,0.08935,5.4,4,OK,,MÉDIA,-,Nenhum,Usar como está
+14207,Poland (Ohio),PL,US,US,Struthers,41.024227,-80.61479,3.2,13,OK,,ALTA,-,Nenhum,Usar como está
+14233,Ponta d'Ouro,ZA,ES,ES,Port de Pollença,39.87362,3.06484,4.0,14,OK,,ALTA,-,Nenhum,Usar como está
+14271,Port Aransas,MX,US,US,Aransas Pass,27.833218,-97.06183,12.1,16,OK,,MÉDIA,-,Nenhum,Usar como está
+14311,Portillo,AR,BO,BO,Tarija,-21.563011,-64.66617,7.2,3,OK,,MÉDIA,-,Nenhum,Usar como está
+14359,Portstewart,IE,GB,GB,Omagh,54.436966,-7.112488,21.8,15,Revisar (distância alta),,BAIXA,ALTA,Distância moderada,Revisar URGENTE (muitos hotéis)
+14370,Port Vincent,AU,HT,HT,Saint-Louis du Nord,20.007448,-72.733025,8.3,7,OK,,MÉDIA,-,Nenhum,Usar como está
+14371,Port Wakefield,AU,ES,ES,Arona,28.05203,-16.71774,6.4,9,OK,,MÉDIA,-,Nenhum,Usar como está
+14433,Prespa (Greece),GR,AL,AL,Bilisht,40.74355,21.112316,16.5,15,Revisar (distância alta),,BAIXA,ALTA,Distância moderada,Revisar URGENTE (muitos hotéis)
+14443,Primorsko,TR,BG,BG,Tsarevo,42.269867,27.750618,13.6,3,OK,,MÉDIA,-,Nenhum,Usar como está
+14444,Primorsky Krai,CN,RU,RU,Dalnegorsk,45.081947,134.72664,91.5,3,Revisar (distância alta),,BAIXA,MÉDIA,Distância muito alta,Revisar (tem hotéis)
+14520,Puerto Montt,AR,ES,ES,Arroyo de la Miel,36.59844,-4.5104,2.2,11,OK,,ALTA,-,Nenhum,Usar como está
+14524,Puerto Obaldia,CO,PA,PA,Unión Chocó,8.667056,-77.419624,66.1,4,Revisar (distância alta),,BAIXA,MÉDIA,Distância muito alta,Revisar (tem hotéis)
+14543,Punakaiki,NZ,IT,IT,Modena,44.63799,10.89211,2.9,28,OK,,ALTA,-,Nenhum,Usar como está
+14588,Pyongan,CN,KP,KP,Sunch’ŏn,39.54165,126.064766,16.7,11,Revisar (distância alta),,BAIXA,ALTA,Distância moderada,Revisar URGENTE (muitos hotéis)
+14591,Pyrénées-Orientales,ES,FR,FR,Prades,42.625893,2.506509,7.0,1,OK,,MÉDIA,-,Nenhum,Usar como está
+14754,Rannoch Moor,IE,GB,GB,Fort William,56.674007,-4.694606,30.0,13,Revisar (distância alta),,BAIXA,ALTA,Distância moderada,Revisar URGENTE (muitos hotéis)
+14794,Rødby,DE,DK,DK,Maribo,54.694065,11.390221,11.6,12,OK,,MÉDIA,-,Nenhum,Usar como está
+14805,Reñaca,AR,CL,CL,Viña del Mar,-32.971535,-71.54372,5.9,1,OK,,MÉDIA,-,Nenhum,Usar como está
+14810,Redang,MY,ID,ID,Kuala Cenaku,-0.336079,102.4337,31.5,11,Revisar (distância alta),,BAIXA,ALTA,Distância elevada,Revisar URGENTE (muitos hotéis)
+14862,Republic of the Congo,FR,CG,CG,Owando,-0.726433,15.641915,39.5,1,Revisar (distância alta),,BAIXA,MÉDIA,Distância elevada,Revisar (tem hotéis)
+14872,Retzer Land,AT,DE,DE,Eisenhüttenstadt,52.092873,14.646842,6.4,8,OK,,MÉDIA,-,Nenhum,Usar como está
+14908,Richland,JP,US,US,Olney,38.706047,-88.09493,2.9,28,OK,,ALTA,-,Nenhum,Usar como está
+14990,Riverside County,CA,US,US,Coachella,33.722,-116.03725,13.5,1,OK,,MÉDIA,-,Nenhum,Usar como está
+15112,Rosslare,ES,IE,IE,Wexford,52.273567,-6.386903,8.3,14,OK,,MÉDIA,-,Nenhum,Usar como está
+15143,Roxbury (Maine),MX,US,US,Paris,44.669617,-70.59371,46.2,3,Revisar (distância alta),,BAIXA,MÉDIA,Distância elevada,Revisar (tem hotéis)
+15145,Royal Natal National Park,ZA,AU,AU,Helensburgh,-34.170338,151.0524,5.3,14,OK,,MÉDIA,-,Nenhum,Usar como está
+15173,Russell (New Zealand),AU,NZ,NZ,Kerikeri,-35.26179,174.12154,16.3,14,Revisar (distância alta),,BAIXA,ALTA,Distância moderada,Revisar URGENTE (muitos hotéis)
+15179,Rust,AT,DE,DE,Ettenheim,48.265934,7.726321,6.5,8,OK,,MÉDIA,-,Nenhum,Usar como está
+15205,Sabah,ID,MY,MY,Ranau,5.425736,117.03264,71.5,4,Revisar (distância alta),,BAIXA,MÉDIA,Distância muito alta,Revisar (tem hotéis)
+15213,Sabine Hills,IT,US,US,Jasper,31.27352,-93.78046,44.4,1,Revisar (distância alta),,BAIXA,MÉDIA,Distância elevada,Revisar (tem hotéis)
+15234,Sagay,US,PH,PH,Lopez Jaena,10.896069,123.41546,5.4,5,OK,,MÉDIA,-,Nenhum,Usar como está
+15278,Saint John (U.S. Virgin Islands),ES,VI,VI,Cruz Bay,18.335602,-64.75504,4.1,11,OK,,ALTA,-,Nenhum,Usar como está
+15287,Saint-Louis-du-Ha! Ha!,CA,ES,ES,Calp,38.6783,0.08935,5.4,7,OK,,MÉDIA,-,Nenhum,Usar como está
+15321,Sakhalin,JP,RU,RU,Smirnykh,50.159477,143.02644,48.0,8,Revisar (distância alta),,BAIXA,MÉDIA,Distância elevada,Revisar (tem hotéis)
+15396,Samnaun,IT,AT,AT,Landeck,46.94364,10.35961,26.8,7,Revisar (distância alta),,BAIXA,MÉDIA,Distância moderada,Revisar (tem hotéis)
+15403,Samothrace,GR,TR,TR,Gökçeada,40.474434,25.524815,44.5,35,Revisar (distância alta),,BAIXA,ALTA,Distância elevada,Revisar URGENTE (muitos hotéis)
+15412,Samye,IN,CN,CN,Lhoka,29.326038,91.5078,27.3,7,Revisar (distância alta),,BAIXA,MÉDIA,Distância moderada,Revisar (tem hotéis)
+15464,Sandspit,CA,NZ,NZ,Warkworth,-36.39308,174.72758,5.5,14,OK,,MÉDIA,-,Nenhum,Usar como está
+15515,San Jon,MX,US,US,Tucumcari,35.106434,-103.33094,36.7,22,Revisar (distância alta),,BAIXA,ALTA,Distância elevada,Revisar URGENTE (muitos hotéis)
+15683,Sark,GB,GG,GG,Saint Peter Port,49.435165,-2.359599,13.0,11,OK,,MÉDIA,-,Nenhum,Usar como está
+15711,Saugerties,BR,US,US,Kingston,42.07759,-73.95291,17.1,5,Revisar (distância alta),,BAIXA,MÉDIA,Distância moderada,Revisar (tem hotéis)
+15767,Sälen,NO,SE,SE,Mora,61.155724,13.269409,70.5,12,Revisar (distância alta),,BAIXA,ALTA,Distância muito alta,Revisar URGENTE (muitos hotéis)
+15775,Súðavík,GB,IS,IS,Ísafjörður,65.90362,-22.995558,20.0,2,Revisar (distância alta),,BAIXA,MÉDIA,Distância moderada,Revisar (tem hotéis)
+15776,Sühbaatar,RU,MN,MN,Baruun-Urt,46.209343,113.50772,55.2,8,Revisar (distância alta),,BAIXA,MÉDIA,Distância muito alta,Revisar (tem hotéis)
+15783,Nordic countries,NO,SE,SE,Örnsköldsvik,62.918262,18.720287,41.4,8,Revisar (distância alta),,BAIXA,MÉDIA,Distância elevada,Revisar (tem hotéis)
+15784,Scania,SE,HR,HR,Zadar,44.324646,15.207169,23.3,1,Revisar (distância alta),,BAIXA,MÉDIA,Distância moderada,Revisar (tem hotéis)
+15801,Schinoussa,GR,TR,TR,Datça,36.68284,27.747335,8.3,5,OK,,MÉDIA,-,Nenhum,Usar como está
+15818,Scotts Bluff National Monument,ES,US,US,Gering,41.83388,-103.705666,3.8,6,OK,,ALTA,-,Nenhum,Usar como está
+15861,Seda (Latvia),RU,LV,LV,Valka,57.650288,25.75095,20.7,4,Revisar (distância alta),,BAIXA,MÉDIA,Distância moderada,Revisar (tem hotéis)
+15885,Selçuk,GB,TR,TR,Tekirdağ,40.99126,27.221922,24.3,26,Revisar (distância alta),,BAIXA,ALTA,Distância moderada,Revisar URGENTE (muitos hotéis)
+15950,Seward,RU,US,US,Liberal,37.18503,-100.892845,16.0,40,Revisar (distância alta),,BAIXA,ALTA,Distância moderada,Revisar URGENTE (muitos hotéis)
+15959,Shades State Park,TR,US,US,Crawfordsville,39.93918,-87.08177,21.0,6,Revisar (distância alta),,BAIXA,MÉDIA,Distância moderada,Revisar (tem hotéis)
+15969,Shamrock,BR,US,US,Pampa,35.21422,-100.24901,73.7,22,Revisar (distância alta),,BAIXA,ALTA,Distância muito alta,Revisar URGENTE (muitos hotéis)
+16107,Shrewsbury (Pennsylvania),DE,US,US,Red Lion,39.768757,-76.67965,16.0,12,Revisar (distância alta),,BAIXA,ALTA,Distância moderada,Revisar URGENTE (muitos hotéis)
+16109,Sringeri,IN,AU,AU,Bairnsdale,-37.02301,147.2396,94.8,13,Revisar (distância alta),,BAIXA,ALTA,Distância muito alta,Revisar URGENTE (muitos hotéis)
+16149,Sigiriya,IN,LK,LK,Dambulla,7.94981,80.746346,14.4,25,OK,,MÉDIA,-,Nenhum,Usar como está
+16260,Skåneleden,DE,SE,SE,Södra Sandby,55.736164,13.557117,13.4,1,OK,,MÉDIA,-,Nenhum,Usar como está
+16270,Skibotn,FI,NO,NO,Tromsdalen,69.3908,20.267845,56.6,4,Revisar (distância alta),,BAIXA,MÉDIA,Distância muito alta,Revisar (tem hotéis)
+16292,Slobozia,GB,RO,RO,Răchitoasa,46.474945,27.311106,6.3,7,OK,,MÉDIA,-,Nenhum,Usar como está
+16299,Småland,SE,NO,NO,Stjørdal,63.597675,10.706141,17.8,5,Revisar (distância alta),,BAIXA,MÉDIA,Distância moderada,Revisar (tem hotéis)
+16333,Road 55 (Norway),NO,US,US,Paris,44.231377,-70.544044,4.7,18,OK,,ALTA,-,Nenhum,Usar como está
+16345,Soldeu,FR,AD,AD,Canillo,42.576893,1.668269,5.9,6,OK,,MÉDIA,-,Nenhum,Usar como está
+16430,Southeast Arizona,MX,CZ,CZ,Bystřice nad Pernštejnem,49.4763,16.16517,8.7,39,OK,,MÉDIA,-,Nenhum,Usar como está
+16447,Southern Bukovina,RO,CZ,CZ,Líšeň,49.29737,16.7732,11.5,8,OK,,MÉDIA,-,Nenhum,Usar como está
+16479,South Moravia,CZ,US,US,Centerville,40.890663,-92.82049,18.0,1,Revisar (distância alta),,BAIXA,MÉDIA,Distância moderada,Revisar (tem hotéis)
+16499,Southwest Florida,MX,ES,ES,Calp,38.6783,0.08935,5.4,4,OK,,MÉDIA,-,Nenhum,Usar como está
+16514,Sozopol,TR,BG,BG,Pomorie,42.418156,27.694313,17.0,2,Revisar (distância alta),,BAIXA,MÉDIA,Distância moderada,Revisar (tem hotéis)
+16538,Spillville,CZ,US,US,Decorah,43.205177,-91.95113,17.3,1,Revisar (distância alta),,BAIXA,MÉDIA,Distância moderada,Revisar (tem hotéis)
+16560,Spring Grove (Minnesota),NO,US,US,Decorah,43.561016,-91.63595,31.1,10,Revisar (distância alta),,BAIXA,MÉDIA,Distância elevada,Revisar (tem hotéis)
+16600,Stanstead,CA,GB,GB,Sudbury,52.106323,0.690961,8.0,10,OK,,MÉDIA,-,Nenhum,Usar como está
+16603,St. Anton,US,CH,CH,Altstätten,47.409943,9.535172,3.7,6,OK,,ALTA,-,Nenhum,Usar como está
+16631,Stein am Rhein,CH,DE,DE,Rielasingen-Worblingen,47.659733,8.859682,8.5,15,OK,,MÉDIA,-,Nenhum,Usar como está
+16650,Stevns,MX,DK,DK,Køge,55.281,12.43741,25.4,11,Revisar (distância alta),,BAIXA,ALTA,Distância moderada,Revisar URGENTE (muitos hotéis)
+16651,Stewart,CA,US,US,Cusseta,32.073273,-84.84831,26.8,16,Revisar (distância alta),,BAIXA,ALTA,Distância moderada,Revisar URGENTE (muitos hotéis)
+16666,St. Ignace,US,CA,CA,Beaurivage,46.69754,-65.0789,9.2,6,OK,,MÉDIA,-,Nenhum,Usar como está
+16678,St. Joseph Island,CA,US,US,Sault Ste. Marie,46.189407,-83.931114,46.6,26,Revisar (distância alta),,BAIXA,ALTA,Distância elevada,Revisar URGENTE (muitos hotéis)
+16726,Storm Lake,MX,ES,ES,Arona,28.05203,-16.71774,6.4,4,OK,,MÉDIA,-,Nenhum,Usar como está
+16760,Stromboli,IS,IT,IT,Tropea,38.80435,15.236799,58.9,16,Revisar (distância alta),,BAIXA,ALTA,Distância muito alta,Revisar URGENTE (muitos hotéis)
+16772,Stubaier Gletscher,AT,IT,IT,Vipiteno,46.991886,11.117223,26.1,4,Revisar (distância alta),,BAIXA,MÉDIA,Distância moderada,Revisar (tem hotéis)
+16811,Sulemania,TR,IN,IN,Patna,25.6,85.210785,7.6,18,OK,,MÉDIA,-,Nenhum,Usar como está
+16832,Sundarbans (Bangladesh),IN,BD,BD,Sarankhola,22.023989,89.31361,58.6,2,Revisar (distância alta),,BAIXA,MÉDIA,Distância muito alta,Revisar (tem hotéis)
+16833,Sundarbans National Park,IN,US,US,Shady Hollow,30.154978,-97.789696,7.1,26,OK,,MÉDIA,-,Nenhum,Usar como está
+16861,Sur,CN,IT,IT,Chiavenna,46.521122,9.631054,28.6,33,Revisar (distância alta),,BAIXA,ALTA,Distância moderada,Revisar URGENTE (muitos hotéis)
+16866,Surfside (Texas),MX,US,US,Freeport,28.950706,-95.28743,7.0,20,OK,,MÉDIA,-,Nenhum,Usar como está
+16909,Eswatini,ZA,SZ,SZ,Manzini,-26.56248,31.399132,7.3,2,OK,,MÉDIA,-,Nenhum,Usar como está
+16911,Swedesboro,SE,US,US,Paulsboro,39.747612,-75.31046,11.0,10,OK,,MÉDIA,-,Nenhum,Usar como está
+16917,Switzerland,CH,US,US,Big Bear City,34.240845,-116.8652,2.9,1,OK,,ALTA,-,Nenhum,Usar como está
+16952,Syrian Coast and Mountains,TR,US,US,Belfast,44.486412,-69.02453,6.9,6,OK,,MÉDIA,-,Nenhum,Usar como está
+16970,Taba Heights,EG,SA,SA,Ḩaql,29.386496,34.799706,18.1,18,Revisar (distância alta),,BAIXA,ALTA,Distância moderada,Revisar URGENTE (muitos hotéis)
+17040,Takengon,ID,ES,ES,Arona,28.05203,-16.71774,6.4,2,OK,,MÉDIA,-,Nenhum,Usar como está
+17073,Tamchy,RU,KG,KG,Cholpon-Ata,42.564697,76.6606,35.8,2,Revisar (distância alta),,BAIXA,MÉDIA,Distância elevada,Revisar (tem hotéis)
+17088,Tanegashima,PT,JP,JP,Nōkan,30.591848,130.9959,4.3,15,OK,,ALTA,-,Nenhum,Usar como está
+17180,Târgoviște,GB,RO,RO,Lugoj,45.815544,21.825483,15.3,4,Revisar (distância alta),,BAIXA,MÉDIA,Distância moderada,Revisar (tem hotéis)
+17211,Tel Aviv/South and East,CN,JM,JM,Bull Savannah,17.901588,-77.74622,16.6,31,Revisar (distância alta),,BAIXA,ALTA,Distância moderada,Revisar URGENTE (muitos hotéis)
+17257,Alandroal,PT,ES,ES,Valencia de Alcántara,39.58429,-7.335982,20.8,5,Revisar (distância alta),,BAIXA,MÉDIA,Distância moderada,Revisar (tem hotéis)
+17266,Terra Nova National Park,PT,CA,CA,Clarenville,48.53323,-53.89194,41.1,24,Revisar (distância alta),,BAIXA,ALTA,Distância elevada,Revisar URGENTE (muitos hotéis)
+17443,Tobago,ES,TT,TT,Scarborough,11.240461,-60.672005,9.5,4,OK,,MÉDIA,-,Nenhum,Usar como está
+17456,Toila,RU,EE,EE,Jõhvi,59.420876,27.511683,8.6,8,OK,,MÉDIA,-,Nenhum,Usar como está
+17525,Top End,AU,IE,IE,Portlaoise,52.89117,-7.480308,20.0,8,Revisar (distância alta),,BAIXA,MÉDIA,Distância moderada,Revisar (tem hotéis)
+17562,Torres Strait Islands,AU,AU,PG,Daru,-10.285107,142.2409,171.1,8,Revisar (distância alta),Austrália,BAIXA,MÉDIA,Coordenadas muito deslocadas,Revisar (tem hotéis)
+17619,Transylvania,RO,US,US,Brevard,35.198223,-82.77249,5.2,9,OK,,MÉDIA,-,Nenhum,Usar como está
+17652,Triglav National Park,IT,SI,SI,Bohinjska Bistrica,46.336044,13.813872,12.9,50,OK,,MÉDIA,-,Nenhum,Usar como está
+17663,Trinidad and Tobago,PT,TT,TT,Sangre Grande,10.746691,-61.084007,18.5,1,Revisar (distância alta),,BAIXA,MÉDIA,Distância moderada,Revisar (tem hotéis)
+17743,Tully,AU,FR,FR,Eu,50.085747,1.516022,8.1,11,OK,,MÉDIA,-,Nenhum,Usar como está
+17765,Turkey (Texas),TR,US,US,Childress,34.393917,-100.89408,63.4,7,Revisar (distância alta),,BAIXA,MÉDIA,Distância muito alta,Revisar (tem hotéis)
+17766,Turkey Run State Park,CA,US,US,Crawfordsville,39.89424,-87.20396,32.5,9,Revisar (distância alta),,BAIXA,MÉDIA,Distância elevada,Revisar (tem hotéis)
+17767,Turkmenbashi,RU,TM,TM,Türkmenbaşy,40.00554,52.993282,3.7,11,OK,,ALTA,-,Nenhum,Usar como está
+17840,Ujung Kulon National Park,ID,ES,ES,Calp,38.6783,0.08935,5.4,2,OK,,MÉDIA,-,Nenhum,Usar como está
+17844,Ukraine,RU,UA,UA,Korsun-Shevchenkivskyi,49.487198,31.271832,7.8,28,OK,,MÉDIA,-,Nenhum,Usar como está
+17857,Uludağ,GR,ES,ES,Teulada,38.67878,0.09787,5.7,6,OK,,MÉDIA,-,Nenhum,Usar como está
+17868,Umphang,TH,MM,MM,Myawaddy,16.019138,98.8633,83.5,2,Revisar (distância alta),,BAIXA,MÉDIA,Distância muito alta,Revisar (tem hotéis)
+17943,Uyuni,AR,BO,BO,Llallagua,-18.28925,-66.477264,18.4,14,Revisar (distância alta),,BAIXA,ALTA,Distância moderada,Revisar URGENTE (muitos hotéis)
+17965,Valdres,BE,NO,NO,Råholt,60.514748,11.174451,26.6,18,Revisar (distância alta),,BAIXA,ALTA,Distância moderada,Revisar URGENTE (muitos hotéis)
+18040,Vardø,NO,RU,RU,Zapolyarnyy,70.370186,31.10772,105.6,6,Corrigido,,MÉDIA (manual),-,Coordenadas muito deslocadas,Descartar ou geocodificar novamente
+18144,Vieng Xai,VN,LA,LA,Xam Nua,20.41094,104.227715,19.1,5,Revisar (distância alta),,BAIXA,MÉDIA,Distância moderada,Revisar (tem hotéis)
+18215,Visegrád,PL,HU,HU,Vác,47.78458,18.970337,12.4,49,OK,,MÉDIA,-,Nenhum,Usar como está
+18321,Wallace (Nebraska),RU,US,US,North Platte,40.838337,-101.164955,46.2,9,Revisar (distância alta),,BAIXA,MÉDIA,Distância elevada,Revisar (tem hotéis)
+18326,Wallis and Futuna,FR,WF,WF,Mata-Utu,-13.289402,-176.20422,3.3,5,OK,,ALTA,-,Nenhum,Usar como está
+18343,Wamego,NL,US,US,Manhattan,39.201942,-96.305,23.1,4,Revisar (distância alta),,BAIXA,MÉDIA,Distância moderada,Revisar (tem hotéis)
+18352,Ward,NZ,US,US,Monahans,31.50076,-103.07812,20.4,9,Revisar (distância alta),,BAIXA,MÉDIA,Distância moderada,Revisar (tem hotéis)
+18372,Warroad,BR,US,US,Thief River Falls,48.905266,-95.31441,108.2,15,Corrigido,"Minnesota, EUA",MÉDIA (manual),-,Coordenadas muito deslocadas,Descartar ou geocodificar novamente
+18408,Washington Crossing Historical Park,BR,CA,CA,Strathmore,50.78305,-112.8459,48.1,3,Revisar (distância alta),,BAIXA,MÉDIA,Distância elevada,Revisar (tem hotéis)
+18415,Waterfalls,BR,BF,BF,Mangodara,10.307181,-4.435189,45.8,18,Revisar (distância alta),,BAIXA,ALTA,Distância elevada,Revisar URGENTE (muitos hotéis)
+18418,Waterfront City,ID,ID,LK,Devinuwara,4.4458,81.04486,172.4,9,Revisar (distância alta),Indonésia,BAIXA,MÉDIA,Coordenadas muito deslocadas,Revisar (tem hotéis)
+18448,Wayne National Forest,TR,US,US,Nelsonville,39.56257,-82.18737,12.2,15,OK,,MÉDIA,-,Nenhum,Usar como está
+18470,Weimar (Texas),CZ,US,US,Giddings,29.70301,-96.78054,55.4,5,Revisar (distância alta),,BAIXA,MÉDIA,Distância muito alta,Revisar (tem hotéis)
+18480,Wellfleet,BR,US,US,Eastham,41.937607,-70.0328,12.9,41,OK,,MÉDIA,-,Nenhum,Usar como está
+18482,Wellingborough,FR,DE,DE,Tönning,54.33045,8.7737,10.9,7,OK,,MÉDIA,-,Nenhum,Usar como está
+18484,Wellington (Ohio),CA,US,US,Oberlin,41.168587,-82.21757,13.9,16,OK,,MÉDIA,-,Nenhum,Usar como está
+18497,Wenchang,TH,CN,CN,Jiangyou,31.634853,105.16022,44.4,21,Revisar (distância alta),,BAIXA,ALTA,Distância elevada,Revisar URGENTE (muitos hotéis)
+18539,Westfjords,IS,GR,GR,Orchomenós,38.80404,23.23432,41.1,3,Revisar (distância alta),,BAIXA,MÉDIA,Distância elevada,Revisar (tem hotéis)
+18543,West Frisian Islands,DE,NL,NL,Stiens,53.448326,5.739961,20.7,4,Revisar (distância alta),,BAIXA,MÉDIA,Distância moderada,Revisar (tem hotéis)
+18581,Westport (New York),US,NZ,NZ,Greymouth,-41.75777,171.57617,84.7,19,Revisar (distância alta),,BAIXA,ALTA,Distância muito alta,Revisar URGENTE (muitos hotéis)
+18592,West Valley City,MX,US,US,Boston,42.408127,-78.61074,26.7,27,Revisar (distância alta),,BAIXA,ALTA,Distância moderada,Revisar URGENTE (muitos hotéis)
+18720,Winkler,RU,US,US,Kermit,31.80059,-103.07623,6.5,17,OK,,MÉDIA,-,Nenhum,Usar como está
+18795,Woodstown,IT,US,US,Carneys Point,39.651505,-75.32825,13.8,6,OK,,MÉDIA,-,Nenhum,Usar como está
+18806,Working abroad,SG,EG,EG,Al-'Ubūr,30.267574,31.485502,4.3,6,OK,,ALTA,-,Nenhum,Usar como está
+18842,Xcalak,MX,BZ,BZ,San Pedro,18.270376,-87.83596,41.7,11,Revisar (distância alta),,BAIXA,ALTA,Distância elevada,Revisar URGENTE (muitos hotéis)
+18861,Xora,ZA,BT,BT,Lhuentse,28.447882,91.37802,88.8,15,Revisar (distância alta),,BAIXA,ALTA,Distância muito alta,Revisar URGENTE (muitos hotéis)
+18973,Yonghe,PH,CN,CN,Wayaobu,36.759502,110.62649,95.6,50,Revisar (distância alta),,BAIXA,ALTA,Distância muito alta,Revisar URGENTE (muitos hotéis)
+18981,Yorke Peninsula and Clare Valley,AU,VC,VC,Kingstown,13.16667,-61.25,2.8,5,OK,,ALTA,-,Nenhum,Usar como está
+19003,Yucatán and the South,MX,GB,GB,Hungerford,51.33333,-1.5,9.2,5,OK,,MÉDIA,-,Nenhum,Usar como está
+19068,Zealand,SE,DK,DK,Ringsted,55.545597,11.697374,12.9,3,OK,,MÉDIA,-,Nenhum,Usar como está
+19155,Ascona,CH,IT,IT,Domodossola,46.340363,8.384806,25.9,10,Revisar (distância alta),,BAIXA,MÉDIA,Distância moderada,Revisar (tem hotéis)
+19211,Morrisburg,CA,US,US,Massena,44.897705,-75.18295,23.2,16,Revisar (distância alta),,BAIXA,ALTA,Distância moderada,Revisar URGENTE (muitos hotéis)
+19224,Prescott (Ontario),CA,US,US,Ogdensburg,44.71042,-75.5129,2.8,29,OK,,ALTA,-,Nenhum,Usar como está
+19249,Christianity,PH,US,US,Sedona,34.82919,-111.75673,4.5,40,OK,,ALTA,-,Nenhum,Usar como está
+19251,Archaeological sites,CN,US,US,Murrells Inlet,33.521786,-79.09165,5.7,1,OK,,MÉDIA,-,Nenhum,Usar como está
+19253,Norrbotten County,PT,SE,SE,Gällivare,66.98121,19.999165,33.0,2,Revisar (distância alta),,BAIXA,MÉDIA,Distância elevada,Revisar (tem hotéis)
+19283,Chiltern Hills,GB,ZA,ZA,Pinetown,-29.814722,30.9275,4.0,4,OK,,ALTA,-,Nenhum,Usar como está
+19287,Goliad,BR,US,US,Victoria,28.66891,-97.39111,40.7,4,Revisar (distância alta),,BAIXA,MÉDIA,Distância elevada,Revisar (tem hotéis)
+19338,Cushendall,IE,GB,GB,Ballycastle,55.08082,-6.064064,17.8,6,Revisar (distância alta),,BAIXA,MÉDIA,Distância moderada,Revisar (tem hotéis)
+19472,Prehistoric Wessex Trail,GB,US,US,Eagle Point,42.64846,-122.8106,19.6,11,Revisar (distância alta),,BAIXA,ALTA,Distância moderada,Revisar URGENTE (muitos hotéis)
+19496,Putre,CL,PE,PE,Tacna,-18.196383,-69.55923,76.1,9,Revisar (distância alta),,BAIXA,MÉDIA,Distância muito alta,Revisar (tem hotéis)
+19565,Koroni,GR,BF,BF,Nouna,13.311343,-3.928605,65.1,27,Revisar (distância alta),,BAIXA,ALTA,Distância muito alta,Revisar URGENTE (muitos hotéis)
+19591,Diving the Hen and Chicken Islands,NZ,US,US,Saranac Lake,43.84451,-74.66239,68.6,10,Revisar (distância alta),,BAIXA,MÉDIA,Distância muito alta,Revisar (tem hotéis)
+19825,Lummi Island,CA,US,US,Bellingham,48.694572,-122.66998,15.2,2,Revisar (distância alta),,BAIXA,MÉDIA,Distância moderada,Revisar (tem hotéis)
+19902,Blakely Island,BR,ES,ES,Arona,28.05203,-16.71774,6.4,2,OK,,MÉDIA,-,Nenhum,Usar como está
+19905,Lake Tai,AU,TH,TH,Hat Yai,6.973029,100.436066,6.0,2,OK,,MÉDIA,-,Nenhum,Usar como está
+19908,Blake Island,BR,US,US,Manchester,47.537434,-122.49303,4.4,4,OK,,ALTA,-,Nenhum,Usar como está
+20076,Sami culture,RU,DZ,DZ,Bir el Djir,35.696297,-0.575305,3.8,20,OK,,ALTA,-,Nenhum,Usar como está
+20089,Storlien,DE,NO,NO,Verdal,63.316605,12.100724,61.2,27,Revisar (distância alta),,BAIXA,ALTA,Distância muito alta,Revisar URGENTE (muitos hotéis)
+20145,Swedish Classic Circuit,SE,DE,DE,Isernhagen Farster Bauerschaft,52.52413,9.756553,8.3,27,OK,,MÉDIA,-,Nenhum,Usar como está
+20164,Fichtelgebirge,CZ,DE,DE,Wunsiedel,49.97592,11.977594,7.3,3,OK,,MÉDIA,-,Nenhum,Usar como está
+20175,Olympic Games,GR,DE,DE,Eppingen,49.103832,8.857037,5.4,7,OK,,MÉDIA,-,Nenhum,Usar como está
+20205,Benson (Arizona),MX,US,US,Vail,31.967989,-110.294334,40.4,34,Revisar (distância alta),,BAIXA,ALTA,Distância elevada,Revisar URGENTE (muitos hotéis)
+20207,Mazeri,RU,IN,IN,Birvādi,18.124725,73.596596,9.7,3,OK,,MÉDIA,-,Nenhum,Usar como está
+20220,Lordsburg,MX,ES,ES,Calp,38.6783,0.08935,5.4,11,OK,,MÉDIA,-,Nenhum,Usar como está
+20290,Biesbosch National Park,NL,FR,FR,Rethel,49.56906,4.357,6.6,12,OK,,MÉDIA,-,Nenhum,Usar como está
+20415,New Quay,GB,US,US,Ocean Pines,38.41553,-75.05652,8.9,3,OK,,MÉDIA,-,Nenhum,Usar como está
+20490,DMZ (Korea),JP,GR,GR,Rethymno,35.36973,24.54263,5.5,23,OK,,MÉDIA,-,Nenhum,Usar como está
+20516,Puerto Rio Tranquilo,AR,AR,CL,Coyhaique,-46.623924,-72.676285,125.7,7,Revisar (distância alta),Argentina,BAIXA,MÉDIA,Coordenadas muito deslocadas,Revisar (tem hotéis)
+20547,Minca,CO,HR,HR,Makarska,43.19491,17.1394,15.0,13,Revisar (distância alta),,BAIXA,ALTA,Distância moderada,Revisar URGENTE (muitos hotéis)
+20603,Lemmenjoki National Park,NO,FI,FI,Kittilä,68.58333,25.66667,107.0,12,Corrigido,Finlândia,MÉDIA (manual),-,Coordenadas muito deslocadas,Descartar ou geocodificar novamente
+20651,Vardzia,TR,GE,GE,Akhalkalaki,41.38092,43.283337,17.1,12,Revisar (distância alta),,BAIXA,ALTA,Distância moderada,Revisar URGENTE (muitos hotéis)
+20654,Sammanthurai,PT,LK,LK,Kalmunai,7.370331,81.81247,5.0,16,OK,,MÉDIA,-,Nenhum,Usar como está
+20674,Luoding,CN,ES,ES,Teulada,38.67878,0.09787,5.7,3,OK,,MÉDIA,-,Nenhum,Usar como está
+20751,Baengnyeong Island,KR,KP,KP,Changyŏn,37.938976,124.70337,48.8,30,Revisar (distância alta),,BAIXA,ALTA,Distância elevada,Revisar URGENTE (muitos hotéis)
+20775,Punta Gallinas,BR,CO,CO,Uribia,12.458525,-71.668495,105.1,5,Corrigido,,MÉDIA (manual),-,Coordenadas muito deslocadas,Descartar ou geocodificar novamente
+20806,Ko Poda,TH,BA,BA,Stolac,43.057983,17.890474,6.3,3,OK,,MÉDIA,-,Nenhum,Usar como está
+20838,Persian Empire,IN,US,US,Hughson,37.63826,-120.90215,5.6,18,OK,,MÉDIA,-,Nenhum,Usar como está
+20897,Storuman,RU,SE,SE,Lycksele,65.09508,17.117971,92.2,6,Revisar (distância alta),,BAIXA,MÉDIA,Distância muito alta,Revisar (tem hotéis)
+21032,Aconcagua,AR,CL,CL,San Esteban,-32.65315,-70.01196,55.6,7,Revisar (distância alta),,BAIXA,MÉDIA,Distância muito alta,Revisar (tem hotéis)
+21046,Brielle (Netherlands),ES,NL,NL,Rozenburg,51.90166,4.162629,5.9,14,OK,,MÉDIA,-,Nenhum,Usar como está
+21057,Semenic-Caraș Gorge National Park,RO,IT,IT,Montevarchi,43.44217,11.53255,9.8,33,OK,,MÉDIA,-,Nenhum,Usar como está
+21201,Käsivarsi Wilderness Area,NO,IT,IT,Solaro,44.83141,9.41722,20.0,33,Revisar (distância alta),,BAIXA,ALTA,Distância moderada,Revisar URGENTE (muitos hotéis)
+21326,Mapungubwe National Park,ZA,ZW,ZW,Beitbridge,-22.24078,29.48048,53.5,6,Revisar (distância alta),,BAIXA,MÉDIA,Distância muito alta,Revisar (tem hotéis)
+21353,Eretria,IT,ER,ER,Ak’ordat,15.950032,37.999966,46.4,10,Revisar (distância alta),,BAIXA,MÉDIA,Distância elevada,Revisar (tem hotéis)
+21375,Bamfield,AU,CA,CA,Port Alberni,48.833084,-125.14114,51.7,12,Revisar (distância alta),,BAIXA,ALTA,Distância muito alta,Revisar URGENTE (muitos hotéis)
+21399,Padasjoki,FI,IT,IT,Quartu Sant'Elena,39.25546,9.57326,28.0,12,Revisar (distância alta),,BAIXA,ALTA,Distância moderada,Revisar URGENTE (muitos hotéis)
+21452,Oecussi,PT,TL,TL,Pante Makasar,-9.334919,124.25107,20.9,2,Revisar (distância alta),,BAIXA,MÉDIA,Distância moderada,Revisar (tem hotéis)
+21455,Breaking Bad Tour,MX,FR,FR,Vineuil,47.54007,1.50525,10.8,12,OK,,MÉDIA,-,Nenhum,Usar como está
+21479,Peillon,FR,ES,ES,Calp,38.6783,0.08935,5.4,6,OK,,MÉDIA,-,Nenhum,Usar como está
+21505,Amrum,DK,DE,DE,Westerland,54.68058,8.33043,25.3,11,Revisar (distância alta),,BAIXA,ALTA,Distância moderada,Revisar URGENTE (muitos hotéis)
+21522,Old West,FR,IT,IT,San Prisco,41.13871,14.313234,6.6,35,OK,,MÉDIA,-,Nenhum,Usar como está
+21528,Farook College Township,IN,US,US,Cedar Rapids,41.88836,-91.63552,13.4,26,OK,,MÉDIA,-,Nenhum,Usar como está
+21548,Bakel,SN,ES,ES,Arona,28.05203,-16.71774,6.4,15,OK,,MÉDIA,-,Nenhum,Usar como está
+21553,Nordic history,NO,SE,SE,Mora,60.98312,14.73651,10.8,20,OK,,MÉDIA,-,Nenhum,Usar como está
+21557,War of 1812,US,CA,CA,Eastern Charlotte,44.65221,-66.8393,50.2,17,Revisar (distância alta),,BAIXA,ALTA,Distância muito alta,Revisar URGENTE (muitos hotéis)
+21597,Indigenous cultures of South America,PT,BR,BR,Tangará da Serra,-14.60485,-57.65625,18.4,11,Revisar (distância alta),,BAIXA,ALTA,Distância moderada,Revisar URGENTE (muitos hotéis)
+21601,Mettlach,FR,DE,DE,Merzig,49.490387,6.59418,6.1,12,OK,,MÉDIA,-,Nenhum,Usar como está
+21621,Assassin's Creed Tour,IT,FR,FR,Vineuil,47.54007,1.50525,10.8,41,OK,,MÉDIA,-,Nenhum,Usar como está
+21624,Motorcities Tour,CA,FR,FR,Vineuil,47.54007,1.50525,10.8,9,OK,,MÉDIA,-,Nenhum,Usar como está
+21628,Mughal Empire,IN,US,US,Hughson,37.63826,-120.90215,5.6,9,OK,,MÉDIA,-,Nenhum,Usar como está
+21666,Cavendish (Victoria),AU,US,US,Claremont,43.38202,-72.60815,21.1,6,Revisar (distância alta),,BAIXA,MÉDIA,Distância moderada,Revisar (tem hotéis)
+21699,Machias Seal Island,BR,CA,CA,Eastern Charlotte,44.502304,-67.1018,71.1,5,Revisar (distância alta),,BAIXA,MÉDIA,Distância muito alta,Revisar (tem hotéis)
+21724,Ancient Egypt,EG,SG,SG,Telok Blangah,1.253673,103.82284,2.6,39,OK,,ALTA,-,Nenhum,Usar como está
+21727,Surfing,PE,VN,VN,Mui Ne,10.950278,108.254456,3.7,28,OK,,ALTA,-,Nenhum,Usar como está
+21755,Austro-Hungarian Empire,IT,US,US,Hughson,37.63826,-120.90215,5.6,40,OK,,MÉDIA,-,Nenhum,Usar como está
+21756,Ottoman Empire,GR,US,US,Hughson,37.63826,-120.90215,5.6,40,OK,,MÉDIA,-,Nenhum,Usar como está
+21790,Industrial Britain,GB,US,US,New Britain,41.663143,-72.75435,2.1,32,OK,,ALTA,-,Nenhum,Usar como está
+21814,Astrid Lindgren tourism,SE,DE,DE,Bremen,53.099888,8.822442,2.9,20,OK,,ALTA,-,Nenhum,Usar como está
+21835,E6 through Sweden and Norway,RU,NO,NO,Røros,62.0,10.0,95.9,30,Revisar (distância alta),,BAIXA,ALTA,Distância muito alta,Revisar URGENTE (muitos hotéis)
+21863,Cedar Crest,MX,US,US,North Valley,35.10755,-106.37343,23.9,9,Revisar (distância alta),,BAIXA,MÉDIA,Distância moderada,Revisar (tem hotéis)
+21933,Juist,DE,NL,NL,Musselkanaal,52.944424,6.991317,2.1,24,OK,,ALTA,-,Nenhum,Usar como está
+22032,Riva del Garda,AT,IT,IT,Valle Aurina - Ahrntal,46.9953,12.189409,15.9,22,Revisar (distância alta),,BAIXA,ALTA,Distância moderada,Revisar URGENTE (muitos hotéis)
+22081,Veria,GR,NL,NL,Arnemuiden,51.547516,3.666088,5.1,22,OK,,MÉDIA,-,Nenhum,Usar como está
+22096,Mullumbimby,JP,AU,AU,Ocean Shores,-28.548334,153.50111,5.6,11,OK,,MÉDIA,-,Nenhum,Usar como está
+22139,Union Island,VC,GD,GD,Hillsborough,12.597242,-61.433537,12.9,3,OK,,MÉDIA,-,Nenhum,Usar como está
+22162,Chipilo,IT,ES,ES,Calp,38.6783,0.08935,5.4,4,OK,,MÉDIA,-,Nenhum,Usar como está
+22163,Labyrinths,EG,US,US,Calistoga,38.650368,-122.58181,8.0,6,OK,,MÉDIA,-,Nenhum,Usar como está
+22168,Sankt Ulrich,AT,FR,FR,Altkirch,47.595215,7.118228,9.6,10,OK,,MÉDIA,-,Nenhum,Usar como está
+22213,Philippi,GR,US,US,Grafton,39.152348,-80.03949,21.0,17,Revisar (distância alta),,BAIXA,ALTA,Distância moderada,Revisar URGENTE (muitos hotéis)
+22217,Hindeloopen,DE,NL,NL,Bolsward,52.94262,5.400482,16.2,17,Revisar (distância alta),,BAIXA,ALTA,Distância moderada,Revisar URGENTE (muitos hotéis)
+22242,Oldambt,DE,NL,NL,Winschoten,53.22234,7.068983,9.0,26,OK,,MÉDIA,-,Nenhum,Usar como está
+22254,Veenkoloniën,NL,FR,FR,Yzeure,46.6224,3.48446,11.7,20,OK,,MÉDIA,-,Nenhum,Usar como está
+22269,Westerwolde,DE,NL,NL,Musselkanaal,52.999466,7.140459,11.2,23,OK,,MÉDIA,-,Nenhum,Usar como está
+22273,Hogeland,NL,US,US,Havre,48.85424,-108.65713,82.6,27,Revisar (distância alta),,BAIXA,ALTA,Distância muito alta,Revisar URGENTE (muitos hotéis)
+22292,Prespa (North Macedonia),GR,MK,MK,Resen,40.885864,21.035168,22.8,40,Revisar (distância alta),,BAIXA,ALTA,Distância moderada,Revisar URGENTE (muitos hotéis)
+22357,Aviation history,FR,US,US,Tallahassee,30.394962,-84.34503,7.8,42,OK,,MÉDIA,-,Nenhum,Usar como está
+22435,Kysuce,PL,SK,SK,Bytča,49.310364,18.414398,14.2,6,OK,,MÉDIA,-,Nenhum,Usar como está
+22441,City of Hawkesbury,AU,GB,GB,Bristol,51.489357,-2.588691,3.8,14,OK,,ALTA,-,Nenhum,Usar como está
+22442,Byzantine Empire,RO,US,US,Hughson,37.63826,-120.90215,5.6,40,OK,,MÉDIA,-,Nenhum,Usar como está
+22458,Kastellorizo,GR,TR,TR,Kaş,36.148563,29.58971,7.3,12,OK,,MÉDIA,-,Nenhum,Usar como está
+22524,George Bush Intercontinental Airport,MX,US,US,Humble,29.984142,-95.332985,7.0,37,OK,,MÉDIA,-,Nenhum,Usar como está
+22526,Hahei,NZ,PG,PG,Lorengau,-2.08333,147.63333,40.6,17,Revisar (distância alta),,BAIXA,ALTA,Distância elevada,Revisar URGENTE (muitos hotéis)
+22541,Albufera Natural Park,ES,AU,AU,Albion Park,-34.5902,150.6012,16.1,41,Revisar (distância alta),,BAIXA,ALTA,Distância moderada,Revisar URGENTE (muitos hotéis)
+22567,Trepassey and the Irish Loop,PT,US,US,Seminole,32.91537,-102.41602,30.6,13,Revisar (distância alta),,BAIXA,ALTA,Distância elevada,Revisar URGENTE (muitos hotéis)
+22579,Marker,NO,IN,IN,Sunabeda,18.600409,82.90463,16.3,4,Revisar (distância alta),,BAIXA,MÉDIA,Distância moderada,Revisar (tem hotéis)
+22582,Pushpagiri Wildlife Sanctuary,IN,US,US,Azle,32.90874,-97.58419,3.9,6,OK,,ALTA,-,Nenhum,Usar como está
+22624,Södra Kungsleden,NO,SE,SE,Kumla,59.09184,15.158297,4.1,41,OK,,ALTA,-,Nenhum,Usar como está
+22645,Tubac,ES,US,US,Rio Rico,31.61259,-111.04592,17.0,26,Revisar (distância alta),,BAIXA,ALTA,Distância moderada,Revisar URGENTE (muitos hotéis)
+22711,Elgol,FR,GB,GB,Fort William,57.149235,-6.10143,70.4,2,Revisar (distância alta),,BAIXA,MÉDIA,Distância muito alta,Revisar (tem hotéis)
+22747,L'Estartit,FR,ES,ES,Torroella de Montgrí,42.051216,3.199082,6.0,42,OK,,MÉDIA,-,Nenhum,Usar como está
+22762,Cerro Colorado,US,PE,PE,Cono Norte,-16.297998,-71.57395,3.0,2,OK,,ALTA,-,Nenhum,Usar como está
+22779,Hemavan,SE,NO,NO,Mo i Rana,65.807,15.046,69.5,13,Revisar (distância alta),,BAIXA,ALTA,Distância muito alta,Revisar URGENTE (muitos hotéis)
+22785,Deserts,AU,FR,FR,Saint-Alban-Leysse,45.620956,6.011391,6.3,15,OK,,MÉDIA,-,Nenhum,Usar como está
+22830,Mariscal Estigarribia,AR,PY,PY,Filadelfia,-22.029793,-60.59845,67.8,7,Revisar (distância alta),,BAIXA,MÉDIA,Distância muito alta,Revisar (tem hotéis)
+22846,Troisvierges,PT,LU,LU,Wiltz,50.121265,6.002074,18.0,9,Revisar (distância alta),,BAIXA,MÉDIA,Distância moderada,Revisar (tem hotéis)
+22854,Oulx,IT,FR,FR,Briançon,45.0289,6.832311,20.7,15,Revisar (distância alta),,BAIXA,ALTA,Distância moderada,Revisar URGENTE (muitos hotéis)
+22861,Lion's Head,CA,ZA,ZA,Cape Town,-33.93504,18.389141,3.3,22,OK,,ALTA,-,Nenhum,Usar como está
+22901,Mustvee,RU,EE,EE,Jõgeva,58.8484,26.934782,33.1,11,Revisar (distância alta),,BAIXA,ALTA,Distância elevada,Revisar URGENTE (muitos hotéis)
+22921,Novo Selo,GR,BA,BA,Šturlić,45.094227,15.592689,14.9,13,OK,,MÉDIA,-,Nenhum,Usar como está
+22996,Söğüt,CN,TR,TR,Bozüyük,40.015553,30.181427,17.2,8,Revisar (distância alta),,BAIXA,MÉDIA,Distância moderada,Revisar (tem hotéis)
+23055,Prehistoric Pile Dwellings around the Alps,CH,JM,JM,Duncans,18.33333,-77.51667,15.1,41,Revisar (distância alta),,BAIXA,ALTA,Distância moderada,Revisar URGENTE (muitos hotéis)
+23066,Kremnica,HU,SK,SK,Handlová,48.704212,18.917484,11.8,37,OK,,MÉDIA,-,Nenhum,Usar como está
+23103,Friesach,IT,AT,AT,Sankt Veit an der Glan,46.952065,14.405227,20.7,6,Revisar (distância alta),,BAIXA,MÉDIA,Distância moderada,Revisar (tem hotéis)
+23132,Keflavík International Airport,DK,IS,IS,Reykjanesbær,63.985012,-22.626696,3.5,23,OK,,ALTA,-,Nenhum,Usar como está
+23160,Puhoi,CZ,NZ,NZ,Orewa,-36.512093,174.66112,7.8,8,OK,,MÉDIA,-,Nenhum,Usar como está
+23194,Rainier (Oregon),CO,US,US,Longview,46.088917,-122.93602,5.5,7,OK,,MÉDIA,-,Nenhum,Usar como está
+23228,Red Lake (Ontario),CA,ES,ES,Arona,28.05203,-16.71774,6.4,10,OK,,MÉDIA,-,Nenhum,Usar como está
+23284,Streymoy,DK,FO,FO,Miðvágur,62.12372,-7.015883,12.3,9,OK,,MÉDIA,-,Nenhum,Usar como está
+23308,Eymet,PT,FR,FR,Bergerac,44.66812,0.39848,21.4,7,Revisar (distância alta),,BAIXA,MÉDIA,Distância moderada,Revisar (tem hotéis)
+23312,Dublin Airport,GB,IE,IE,Kinsealy-Drinan,53.42829,-6.247274,3.4,39,OK,,ALTA,-,Nenhum,Usar como está
+23317,Pangaion Hills,GR,US,US,Iowa City,41.55419,-91.53489,11.9,38,OK,,MÉDIA,-,Nenhum,Usar como está
+23356,Sikhism,GB,IN,IN,Gil,30.87504,75.840126,3.8,13,OK,,ALTA,-,Nenhum,Usar como está
+23375,Tidore,ES,ID,ID,Sofifi,0.67868,127.44832,13.9,12,OK,,MÉDIA,-,Nenhum,Usar como está
+23529,Alona Beach,PH,VN,VN,Sông Cầu,13.51396,109.34533,14.7,29,OK,,MÉDIA,-,Nenhum,Usar como está
+23590,Khmer Empire,TH,KH,KH,Chŏng Kal,13.904355,103.53183,7.3,22,OK,,MÉDIA,-,Nenhum,Usar como está
+23598,Begur,GB,ES,ES,Palafrugell,41.954193,3.208835,5.6,26,OK,,MÉDIA,-,Nenhum,Usar como está
+23607,Helsinki Airport,JP,FI,FI,Pakkala,60.321815,24.947361,4.0,12,OK,,ALTA,-,Nenhum,Usar como está
+23610,Hluboká nad Vltavou,CZ,ES,ES,Teulada,38.67878,0.09787,5.7,14,OK,,MÉDIA,-,Nenhum,Usar como está
+23613,Crown Point (Trinidad and Tobago),ES,TT,TT,Scarborough,11.158897,-60.834625,11.1,5,OK,,MÉDIA,-,Nenhum,Usar como está
+23629,Istanbul Airport,RU,TR,TR,İmrahor,41.274868,28.732275,6.5,5,OK,,MÉDIA,-,Nenhum,Usar como está
+23632,Říp,CZ,SY,SY,Jayrūd,33.519497,37.076073,44.7,12,Revisar (distância alta),,BAIXA,ALTA,Distância elevada,Revisar URGENTE (muitos hotéis)
+23638,Chocolate,CH,MX,MX,Colonia Rincón Viejo,16.932926,-95.090576,6.9,21,OK,,MÉDIA,-,Nenhum,Usar como está
+23666,Cuispes,BR,PE,PE,Pedro Ruiz Gallo,-5.909203,-77.914314,8.3,6,OK,,MÉDIA,-,Nenhum,Usar como está
+23733,Jurmo,SE,FI,FI,Uusikaupunki,60.51694,21.076616,36.3,12,Revisar (distância alta),,BAIXA,ALTA,Distância elevada,Revisar URGENTE (muitos hotéis)
+23748,Pello,SE,FI,FI,Kittilä,66.804085,23.977188,103.5,13,Corrigido,,MÉDIA (manual),-,Coordenadas muito deslocadas,Descartar ou geocodificar novamente
+23754,Ebor,AU,NG,NG,Ughelli,5.475014,6.05976,6.4,7,OK,,MÉDIA,-,Nenhum,Usar como está
+23788,Noordoewer,ZA,,,Aussenkehr,-28.721968,17.617977,44.7,2,Corrigido,,MÉDIA (manual),-,Distância elevada,Verificar coordenadas
+23830,Baudette,CA,US,US,International Falls,48.71244,-94.600174,88.2,8,Revisar (distância alta),,BAIXA,MÉDIA,Distância muito alta,Revisar (tem hotéis)
+23846,Deo,JP,IN,IN,Aurangābād,24.657434,84.43719,12.3,4,OK,,MÉDIA,-,Nenhum,Usar como está
+23868,Fort Liberté,FR,BE,BE,Leuze,50.627563,3.603425,3.1,3,OK,,ALTA,-,Nenhum,Usar como está
+23921,Lal-lo,ES,PH,PH,Magapit,18.20005,121.661995,7.0,15,OK,,MÉDIA,-,Nenhum,Usar como está
+23928,High Coast,SE,GB,GB,Caernarfon,52.925762,-4.129158,25.8,19,Revisar (distância alta),,BAIXA,ALTA,Distância moderada,Revisar URGENTE (muitos hotéis)
+23978,The Wayfarer's Path of Leonardo da Vinci,CH,GB,GB,Ventnor,50.582893,-1.270857,4.7,3,OK,,ALTA,-,Nenhum,Usar como está
+23990,Saho,IN,BF,BF,Dédougou,12.261606,-3.008191,54.0,1,Revisar (distância alta),,BAIXA,MÉDIA,Distância muito alta,Revisar (tem hotéis)
+24038,Age of Discovery,CN,US,US,Jenison,42.917824,-85.84917,4.8,14,OK,,ALTA,-,Nenhum,Usar como está
+24115,Ashburnham,CA,GB,GB,Battle,50.908596,0.391475,6.6,5,OK,,MÉDIA,-,Nenhum,Usar como está
+24117,Salla,RU,AT,AT,Voitsberg,47.108597,14.972965,15.4,39,Revisar (distância alta),,BAIXA,ALTA,Distância moderada,Revisar URGENTE (muitos hotéis)
+24128,Field hockey,AR,US,US,Winchester,35.204113,-85.910194,18.5,3,Revisar (distância alta),,BAIXA,MÉDIA,Distância moderada,Revisar (tem hotéis)
+24142,Muonio,SE,FI,FI,Kittilä,67.95934,23.677404,60.7,31,Revisar (distância alta),,BAIXA,ALTA,Distância muito alta,Revisar URGENTE (muitos hotéis)
+24185,Via Pontica,RO,IT,IT,Granarolo dell'Emilia e Viadagola,44.57433,11.470535,3.2,39,OK,,ALTA,-,Nenhum,Usar como está
+24194,Functionalist architecture in Finland,FI,ES,ES,Gamonal,42.30664,-3.50125,15.2,43,Revisar (distância alta),,BAIXA,ALTA,Distância moderada,Revisar URGENTE (muitos hotéis)
+24252,Záhony,AT,UA,UA,Chop,48.402905,22.178768,3.7,31,OK,,ALTA,-,Nenhum,Usar como está
+24271,Speakeasies,US,MX,MX,Santiago,25.12444,-100.47639,46.6,27,Revisar (distância alta),,BAIXA,ALTA,Distância elevada,Revisar URGENTE (muitos hotéis)
+24416,Gold River (British Columbia),CA,FR,FR,Briançon,45.070683,6.69503,19.5,14,Revisar (distância alta),,BAIXA,ALTA,Distância moderada,Revisar URGENTE (muitos hotéis)
+24443,Oeste,PT,BR,BR,Serafina Corrêa,-28.753176,-52.015285,9.1,15,OK,,MÉDIA,-,Nenhum,Usar como está
+24479,Athenry,AU,IE,IE,Loughrea,53.29919,-8.74683,16.5,11,Revisar (distância alta),,BAIXA,ALTA,Distância moderada,Revisar URGENTE (muitos hotéis)
+24481,Huxi,TW,CN,CN,Ānwén,29.179052,120.387146,14.2,31,OK,,MÉDIA,-,Nenhum,Usar como está
+24490,Masset,CA,CA,US,Ketchikan,54.012447,-132.14522,151.2,23,Revisar (distância alta),"Ilha Haida Gwaii, Canadá",BAIXA,ALTA,Coordenadas muito deslocadas,Revisar URGENTE (muitos hotéis)
+24555,On the trail of Alexander the Great,GR,ZA,ZA,Johannesburg,-26.262312,27.996586,8.2,29,OK,,MÉDIA,-,Nenhum,Usar como está
+24667,Marjayoun,FR,LB,LB,Kfar Kila,33.359253,35.590214,9.8,6,OK,,MÉDIA,-,Nenhum,Usar como está
+24880,Quirindi,AU,TZ,TZ,Madimba,-10.613341,40.56546,34.7,38,Revisar (distância alta),,BAIXA,ALTA,Distância elevada,Revisar URGENTE (muitos hotéis)
+24908,West Interlake,CA,ES,ES,Arona,28.05203,-16.71774,6.4,14,OK,,MÉDIA,-,Nenhum,Usar como está
+24943,Dracula,AT,UA,UA,Shevchenkove,45.524536,29.494045,12.9,2,OK,,MÉDIA,-,Nenhum,Usar como está
+25153,Philosophy tourism,CH,ES,ES,Calp,38.6783,0.08935,5.4,10,OK,,MÉDIA,-,Nenhum,Usar como está
+25171,Redwater,CA,US,US,Wake Village,33.35818,-94.254364,15.7,11,Revisar (distância alta),,BAIXA,ALTA,Distância moderada,Revisar URGENTE (muitos hotéis)
+25227,Campo Maior,PT,ES,ES,Valencia de Alcántara,39.38598,-7.109162,12.0,9,OK,,MÉDIA,-,Nenhum,Usar como está
+25252,Norrbotten Megasystem,NO,PL,PL,Przemków,51.60964,15.8428,10.0,9,OK,,MÉDIA,-,Nenhum,Usar como está
+25363,Florida West Coast,MX,US,US,Key West,24.558796,-81.80706,2.6,5,OK,,ALTA,-,Nenhum,Usar como está
+25443,Modhera,IN,EG,EG,Marsa Alam,25.1625,34.26176,64.2,21,Revisar (distância alta),,BAIXA,ALTA,Distância muito alta,Revisar URGENTE (muitos hotéis)
+25478,Louiseville,CA,AT,AT,Zell am See,47.36746,12.7149,8.0,38,OK,,MÉDIA,-,Nenhum,Usar como está
+25490,Mastigouche Wildlife Reserve,CA,US,US,Ellsworth,43.83981,-67.73278,95.5,14,Revisar (distância alta),,BAIXA,ALTA,Distância muito alta,Revisar URGENTE (muitos hotéis)
+25757,Mistaken Point Ecological Reserve,CA,ES,ES,Arona,28.05203,-16.71774,6.4,1,OK,,MÉDIA,-,Nenhum,Usar como está
+25884,Merikarvia,FI,FR,FR,Gourdon,44.88349,1.64342,26.4,19,Revisar (distância alta),,BAIXA,ALTA,Distância moderada,Revisar URGENTE (muitos hotéis)
+26056,Voyages of Matthew Flinders,FR,ES,ES,San Ildefonso,40.90781,-3.86213,12.2,8,OK,,MÉDIA,-,Nenhum,Usar como está
+26073,Springbrook,AU,AU,SO,Bosaso,10.22323,48.88367,122.4,8,Revisar (distância alta),Austrália,BAIXA,MÉDIA,Coordenadas muito deslocadas,Revisar (tem hotéis)
+26076,San Fili,IT,FR,FR,Borgo,42.27808,9.77354,41.9,27,Revisar (distância alta),,BAIXA,ALTA,Distância elevada,Revisar URGENTE (muitos hotéis)
+26107,Turkish TV series tourism,TR,IT,IT,Palmi,38.34854,15.89304,3.8,40,OK,,ALTA,-,Nenhum,Usar como está
+26126,Taman Mini Indonesia Indah,ID,DZ,DZ,’Aïn Boucif,36.01159,3.08254,15.0,40,Revisar (distância alta),,BAIXA,ALTA,Distância moderada,Revisar URGENTE (muitos hotéis)
+26221,Vimpeli,FI,ES,ES,Cuenca,40.34025,-1.76244,43.8,21,Revisar (distância alta),,BAIXA,ALTA,Distância elevada,Revisar URGENTE (muitos hotéis)
+26230,Kitee,FI,IT,IT,Toscolano Maderno,45.66677,10.63721,3.8,6,OK,,ALTA,-,Nenhum,Usar como está
+26235,Adaminaby,AU,IN,IN,Arachchalūr,11.17206,77.66062,4.5,4,OK,,ALTA,-,Nenhum,Usar como está
+26238,Karwendel Nature Park,AT,ES,ES,Vielha,42.8238,0.47658,29.4,6,Revisar (distância alta),,BAIXA,MÉDIA,Distância moderada,Revisar (tem hotéis)
+26326,Goths,ES,MA,MA,Mehdya,34.59258,-6.77622,38.6,7,Revisar (distância alta),,BAIXA,MÉDIA,Distância elevada,Revisar (tem hotéis)
+26357,Longue-Rive,CA,ES,ES,Calp,38.6783,0.08935,5.4,23,OK,,MÉDIA,-,Nenhum,Usar como está
+26369,Arctic wildlife,RU,TR,TR,İnebolu,42.93859,33.70214,106.8,12,Corrigido,,MÉDIA (manual),-,Coordenadas muito deslocadas,Descartar ou geocodificar novamente
+26389,Swedish Grace tour,SE,ES,ES,Trujillo,39.36046,-5.9071,11.0,27,OK,,MÉDIA,-,Nenhum,Usar como está
+26460,Voyages of Ibn Battuta,CN,AF,AF,Chahār Burj,34.21105,61.94619,22.9,42,Revisar (distância alta),,BAIXA,ALTA,Distância moderada,Revisar URGENTE (muitos hotéis)
+26484,Tzoumerka National Park,GR,ES,ES,Son Ferrer,39.0379,2.54596,51.2,35,Revisar (distância alta),,BAIXA,ALTA,Distância muito alta,Revisar URGENTE (muitos hotéis)
+26532,Monk's Cowl Nature Reserve,ZA,NE,NE,Bankilaré,14.52517,0.48702,26.4,12,Revisar (distância alta),,BAIXA,ALTA,Distância moderada,Revisar URGENTE (muitos hotéis)
+26578,Marktl,DE,FR,FR,La Tour-du-Pin,45.50639,5.58649,12.9,12,OK,,MÉDIA,-,Nenhum,Usar como está
+26697,Ingonish,CA,US,US,Minot Air Force Base,48.46446,-101.05609,21.4,8,Revisar (distância alta),,BAIXA,MÉDIA,Distância moderada,Revisar (tem hotéis)
+26713,Maydena,AU,ES,ES,Meaño,42.45544,-8.80825,2.4,4,OK,,ALTA,-,Nenhum,Usar como está
+26862,Hartola,SE,FR,FR,Sens,48.34148,3.23705,16.4,9,Revisar (distância alta),,BAIXA,MÉDIA,Distância moderada,Revisar (tem hotéis)
+26899,Föglö,FI,US,US,Nashville,36.13732,-86.69992,8.2,9,OK,,MÉDIA,-,Nenhum,Usar como está
+26901,Lemland,FI,AX,AX,Mariehamn,60.07,20.085,8.9,12,OK,,MÉDIA,-,Nenhum,Usar como está
+27079,Palizada,FR,IT,IT,Quartu Sant'Elena,39.25546,9.57326,28.0,10,Revisar (distância alta),,BAIXA,MÉDIA,Distância moderada,Revisar (tem hotéis)
+27088,Václav Havel Airport Prague,TR,IT,IT,Trapani,38.45095,11.98581,68.1,23,Revisar (distância alta),,BAIXA,ALTA,Distância muito alta,Revisar URGENTE (muitos hotéis)
+27122,Vikersund,NO,IT,IT,Sondrio,46.47501,9.80798,34.4,5,Revisar (distância alta),,BAIXA,MÉDIA,Distância elevada,Revisar (tem hotéis)
+27123,Waipoua Forest,NZ,UA,UA,Volovets,48.65811,23.28091,9.2,7,OK,,MÉDIA,-,Nenhum,Usar como está
+27180,Board games,DE,ES,ES,Santoña,44.35734,-3.2859,102.5,7,Corrigido,,MÉDIA (manual),-,Coordenadas muito deslocadas,Descartar ou geocodificar novamente
+27190,Mikulov,CZ,ES,ES,Calp,38.6783,0.08935,5.4,19,OK,,MÉDIA,-,Nenhum,Usar como está
+27350,Sauris,IT,ES,ES,Sant Antoni de Portmany,38.9521,0.77396,45.9,7,Revisar (distância alta),,BAIXA,MÉDIA,Distância elevada,Revisar (tem hotéis)
+27362,Penryn,PT,GB,GB,Bude,50.86161,-4.453217,7.4,9,OK,,MÉDIA,-,Nenhum,Usar como está
+27456,Šilutė,DE,ES,ES,Teulada,38.67878,0.09787,5.7,3,OK,,MÉDIA,-,Nenhum,Usar como está
+27470,Atlasov Island,RU,IT,IT,Sala Consilina,40.34533,15.79876,18.6,4,Revisar (distância alta),,BAIXA,MÉDIA,Distância moderada,Revisar (tem hotéis)
+27614,Fort Fairfield,CA,ES,ES,O Rosal,41.91677,-8.77634,5.4,9,OK,,MÉDIA,-,Nenhum,Usar como está
+27751,Figari,FR,IT,IT,Dronero,44.26076,6.98466,37.6,14,Revisar (distância alta),,BAIXA,ALTA,Distância elevada,Revisar URGENTE (muitos hotéis)
+27901,Theatre,GR,ES,ES,Guareña,38.81738,-6.04939,6.4,10,OK,,MÉDIA,-,Nenhum,Usar como está
+27952,Frómista,ES,MA,MA,Casablanca,33.53189,-7.5999,6.4,3,OK,,MÉDIA,-,Nenhum,Usar como está
+27963,Temora,AU,AU,SA,Afif,22.71872,43.92875,167.7,7,Revisar (distância alta),Austrália,BAIXA,MÉDIA,Coordenadas muito deslocadas,Revisar (tem hotéis)
+28100,Northeast Tyrol,AT,IT,IT,Valle Aurina - Ahrntal,47.211445,11.97688,23.9,6,Revisar (distância alta),,BAIXA,MÉDIA,Distância moderada,Revisar (tem hotéis)
+28117,Swedish canon,SE,DE,DE,Schwedt (Oder),53.13897,14.2816,8.8,25,OK,,MÉDIA,-,Nenhum,Usar como está
+28122,Hapcheon,KR,ES,ES,Ibiza,38.56288,1.68172,44.1,40,Revisar (distância alta),,BAIXA,ALTA,Distância elevada,Revisar URGENTE (muitos hotéis)
+28147,Goheung,KR,AF,AF,Dasht-e Archī,36.99697,69.12402,15.6,22,Revisar (distância alta),,BAIXA,ALTA,Distância moderada,Revisar URGENTE (muitos hotéis)
+28286,Thessalon,CA,US,US,Devils Lake,48.71274,-99.57111,84.6,5,Revisar (distância alta),,BAIXA,MÉDIA,Distância muito alta,Revisar (tem hotéis)
+28361,Lovell,VC,US,US,Powell,44.83698,-108.38125,31.1,15,Revisar (distância alta),,BAIXA,ALTA,Distância elevada,Revisar URGENTE (muitos hotéis)
+28432,Heuvelland (Belgium),BE,FR,FR,Bailleul,50.767,2.817,6.7,13,OK,,MÉDIA,-,Nenhum,Usar como está
+28446,Pelluhue,CL,ES,ES,Teulada,38.67878,0.09787,5.7,7,OK,,MÉDIA,-,Nenhum,Usar como está

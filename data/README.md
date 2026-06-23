@@ -215,3 +215,180 @@ Ordem no script **`images-map`**: **Pexels → Pixabay (cache local) → Unsplas
 ## Licença na app
 
 Os resultados incluem link **Guia Wikivoyage** (CC BY-SA 3.0) em cada cartão quando aplicável.
+
+---
+
+## Enriquecimento de Hotéis (sem custos)
+
+O projeto tem **382k hotéis** na base de dados Neon (`wv_hotels`), extraídos do Wikivoyage.
+A maioria tem nome e destino mas falta coordenadas GPS, imagens e preços reais.
+Os scripts abaixo melhoram a qualidade sem custo nenhum.
+
+### Estado atual da BD
+
+| Métrica | Valor |
+|---------|-------|
+| Total `wv_hotels` | ~382k |
+| Com coordenadas GPS | ~5.5k (1.5%) |
+| Com Google Place ID | 0 |
+| Com imagem | 0 |
+| Total `wv_destinations` | ~28.5k |
+
+### Ver estado do pipeline
+
+```bash
+# Resumo geral: destinos com/sem hotel, Wikipedia, imagens
+npm run travel:wiki:status
+
+# Estado das imagens por destino
+npm run travel:images:status
+
+# Exportar lista de destinos ainda sem hotel para CSV
+npm run travel:export:destinos-sem-hotel-snapshot
+```
+
+### Fase 1 — Coordenadas GPS (100% gratuito, dados locais)
+
+Usa o índice local `data/hotels/hotel-index.json` (367 MB) e Nominatim/OpenStreetMap.
+Não precisa de nenhuma chave de API.
+
+```bash
+# Constrói o índice local a partir de Hotels.geojson
+npm run travel:demo:build-hotel-index
+
+# 1. Patch do índice com coordenadas de communes francesas (melhora hotéis FR)
+node scripts/patch-french-hotels-geo.mjs
+
+# 2. Preenche lat/lon nos hotéis da BD a partir do índice local (matching fuzzy melhorado)
+npm run travel:catalog:backfill-geo
+
+# Preenche lat/lon nos destinos sem coordenadas
+npm run travel:catalog:backfill-dest-geo
+
+# Adiciona código IATA aos destinos
+npm run travel:catalog:backfill-iata
+
+# 3. Verifica qualidade — marca hotéis com coords geograficamente erradas
+#    (requer acesso à internet: photon.komoot.io)
+npm run travel:catalog:verify-hotels-geo -- --dry-run --limit 500
+npm run travel:catalog:verify-hotels-geo -- --limit 500
+npm run travel:catalog:verify-hotels-geo   # todos (demora mais)
+```
+
+### Fase 1b — Geocoding via Nominatim/Python (gratuito, retoma onde parou)
+
+Para hotéis sem coordenadas que o índice local não cobre, o script Python usa o
+Nominatim (OpenStreetMap) com validação de país — se o resultado ficar num país
+diferente do destino (ex: hotel BR mas coords em PT), é automaticamente rejeitado.
+
+```bash
+# Instalar dependências (uma vez)
+npm run travel:catalog:geocode-hotels:install
+
+# Ver progresso atual (não corre nada)
+npm run travel:catalog:geocode-hotels -- --status
+
+# Testar com 20 hotéis sem escrever na BD
+npm run travel:catalog:geocode-hotels -- --dry-run --limit 20
+
+# Correr lote de 500 (retoma automaticamente onde parou)
+npm run travel:catalog:geocode-hotels -- --limit 500
+
+# Só hotéis portugueses
+npm run travel:catalog:geocode-hotels -- --country PT --limit 200
+
+# Nova tentativa para hotéis marcados como "não encontrado"
+npm run travel:catalog:geocode-hotels -- --retry-not-found --limit 200
+```
+
+Marcadores usados no campo `fonte` da BD para controlo de estado:
+
+| Valor `fonte` | Significado |
+|---------------|-------------|
+| `geo_found` | Coordenadas encontradas e validadas |
+| `geo_not_found` | Tentado mas Nominatim não encontrou — ignorado na próxima vez |
+| `geo_wrong_country` | Nominatim devolveu coords noutro país — rejeitado |
+| `rejected_geo` | Rejeitado pelo `verify-hotels-geo` (coords claramente erradas) |
+
+### Fase 2 — Hotéis via Wikipedia (gratuito, sem chave)
+
+Pesquisa a Wikipedia para encontrar hotéis em destinos que ainda não têm nenhum.
+
+```bash
+# Pipeline completo (pesquisa → aplica ao bundle → sincroniza BD)
+npm run travel:wiki:pipeline
+
+# Ou passo a passo:
+npm run travel:search:destinos-sem-hotel-wiki -- --extracts --limit=50 --delay=400
+npm run travel:demo:apply-wiki-to-bundle
+npm run travel:catalog:sync-wiki
+```
+
+### Fase 3 — Hotéis via Wikidata (gratuito, sem chave)
+
+Wikidata SPARQL tem milhares de hotéis com coordenadas verificadas.
+
+```bash
+npm run travel:fetch:wikidata-hotels
+```
+
+### Fase 4 — Hotéis para destinos ainda vazios (gratuito)
+
+Para destinos que após as fases anteriores continuam sem hotel, usa o índice local
+e opcionalmente a LiteAPI (chave sandbox gratuita em `.env.local`).
+
+```bash
+# Só índice local (sem API)
+npm run travel:demo:enrich-hotels-remaining
+
+# Com LiteAPI sandbox (chave LITEAPI_API_KEY em .env.local)
+npm run travel:demo:enrich-hotels-remaining -- --liteapi --liteapi-limit=500
+```
+
+### Fase 5 — Imagens dos destinos (gratuito com rate limits)
+
+Não são imagens dos hotéis mas dos destinos — aparece nos cartões de resultado.
+Precisa de pelo menos uma chave em `.env.local`: `PEXELS_API_KEY`, `PIXABAY_API_KEY` ou `UNSPLASH_ACCESS_KEY`.
+
+```bash
+npm run travel:images:enrich
+```
+
+### Fase 6 — Resumos Wikipedia para destinos (gratuito)
+
+```bash
+# Só Wikipedia (sem OpenWeather)
+npm run travel:demo:enrich-external -- --only wikipedia
+
+# Com limite (para testar)
+npm run travel:demo:enrich-external -- --limit 100 --only wikipedia
+```
+
+### Ordem recomendada (tudo gratuito)
+
+```bash
+npm run travel:wiki:status                               # 1. ver estado atual
+npm run travel:demo:build-hotel-index                    # 2. construir índice local
+node scripts/patch-french-hotels-geo.mjs                 # 3. patch coordenadas FR
+npm run travel:catalog:backfill-geo                      # 4. coords hotéis (índice local)
+npm run travel:catalog:backfill-dest-geo                 # 5. coords destinos
+npm run travel:catalog:verify-hotels-geo -- --dry-run --limit 500  # 6. verificar qualidade
+npm run travel:catalog:verify-hotels-geo -- --limit 500  # 7. marcar coords erradas
+npm run travel:catalog:geocode-hotels -- --limit 500     # 8. geocoding Nominatim/Python
+npm run travel:wiki:pipeline                             # 9. hotéis via Wikipedia
+npm run travel:fetch:wikidata-hotels                     # 10. hotéis via Wikidata
+npm run travel:demo:enrich-hotels-remaining              # 11. destinos ainda vazios
+npm run travel:demo:enrich-external -- --only wikipedia  # 12. resumos Wikipedia
+npm run travel:images:enrich                             # 13. imagens (Pexels/Unsplash)
+npm run travel:catalog:geocode-hotels -- --status        # 14. ver estado final geocoding
+npm run travel:wiki:status                               # 15. ver estado final geral
+```
+
+### Scripts com custo (referência)
+
+| Script | API | Custo estimado |
+|--------|-----|----------------|
+| `travel:google-hotels:*` | Crawlbase (`CRAWLBASE_JS_TOKEN`) | Pago por request |
+| `travel:demo:enrich-weather` | OpenWeather (`OPENWEATHER_API_KEY`) | Pago além do free tier |
+| `travel:demo:enrich-hotels-remaining -- --liteapi` | LiteAPI | Grátis (sandbox) / Pago (prod) |
+| `travel:import:protected-planet` | Protected Planet | Grátis com registo |

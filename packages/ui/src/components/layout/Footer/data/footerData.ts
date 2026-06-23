@@ -96,7 +96,7 @@ export const legalLinks: NavLinkItem[] = [
     { nameKey: 'legal:hero.privacy', href: '/privacy' },
     { nameKey: 'legal:hero.cookies', href: '/cookies' },
     { nameKey: 'legal:hero.gdpr', href: '/gdpr' },
-    { nameKey: 'legal:hero.cancellation', href: '/cancelation' },
+    { nameKey: 'legal:hero.cancellation', href: '/cancellations' },
 ];
 
 export const resourceLinks: NavLinkItem[] = [

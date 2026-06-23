@@ -1,12 +1,12 @@
 'use client';
 
-import { useMemo } from 'react';
 import { Controller } from 'react-hook-form';
 import { Wallet, Globe, ChevronRight } from 'lucide-react';
 import { Label } from '../../ui/label';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '../../ui/select';
 import { Slider } from '../../ui/slider';
 import { Badge } from '../../ui/badge';
+import { OpenMoji } from '../../ui/openmoji';
 import type { PreferencesSectionProps } from './types';
 import { CURRENCY_CODES, CABIN_CLASS_IDS } from '../../../../lib/i18n/preferences-form-options';
 import { TravelBudgetProfileSelector } from '../../travel/TravelBudgetProfileSelector';
@@ -179,7 +179,7 @@ export function BudgetSection({
                     }
                   `}
                 >
-                  <div className="text-2xl mb-2">{cabinClassEmoji(cabin.value)}</div>
+                  <OpenMoji emoji={cabinClassEmoji(cabin.value)} size={28} className="mx-auto mb-2" />
                   <div className="text-sm font-semibold">{(CABIN_CLASS_IDS as readonly string[]).includes(cabin.value)
                       ? t(`options.cabinClass.${cabin.value}`)
                       : cabin.label}</div>
