@@ -105,7 +105,7 @@ export function TravelStyleSection({
       <div className="space-y-3">
         <Label htmlFor="travelFrequency" className="text-base font-semibold">{t('travelFrequency')}</Label>
         <Controller name="travelFrequency" control={control} render={({ field }) => (
-          <>
+          <Select value={field.value} onValueChange={field.onChange}>
             <SelectTrigger className="h-11">
               <SelectValue placeholder={t('howOftenTravel')} />
             </SelectTrigger>
@@ -116,7 +116,7 @@ export function TravelStyleSection({
                 </SelectItem>
               ))}
             </SelectContent>
-          </>
+          </Select>
         )} />
         {errors.travelFrequency && <p className="text-red-500 text-xs mt-1">{errors.travelFrequency.message}</p>}
       </div>
@@ -124,7 +124,7 @@ export function TravelStyleSection({
       <div className="space-y-3">
         <Label htmlFor="nationality" className="text-base font-semibold">{t('nationality')}</Label>
         <Controller name="nationality" control={control} render={({ field }) => (
-          <>
+          <Select value={field.value} onValueChange={field.onChange}>
             <SelectTrigger className="h-11">
               <SelectValue placeholder={t('selectNationality')} />
             </SelectTrigger>
@@ -133,7 +133,7 @@ export function TravelStyleSection({
                 <SelectItem key={c.name} value={c.name}>{c.name}</SelectItem>
               ))}
             </SelectContent>
-          </>
+          </Select>
         )} />
         {errors.nationality && <p className="text-red-500 text-xs mt-1">{errors.nationality.message}</p>}
       </div>
