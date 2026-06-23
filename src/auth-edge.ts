@@ -13,3 +13,8 @@ export const { auth } = NextAuth({
   // Empty providers array required by NextAuth type — auth() only verifies JWT
   providers: [],
 });
+
+// Ensure AUTH_SECRET is defined for Edge Runtime
+if (!process.env.AUTH_SECRET) {
+  throw new Error('AUTH_SECRET is required for auth-edge.ts');
+}

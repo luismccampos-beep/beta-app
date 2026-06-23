@@ -84,7 +84,7 @@ export function BudgetSection({
             </Label>
           </div>
           <Controller name="currency" control={control} render={({ field }) => (
-            <>
+            <Select value={field.value} onValueChange={field.onChange}>
               <SelectTrigger className="h-12 text-base">
                 <SelectValue placeholder={t('preferredCurrency')} />
               </SelectTrigger>
@@ -93,7 +93,7 @@ export function BudgetSection({
                   <SelectItem key={code} value={code}>
                     <span className="flex items-center gap-2">
                       <span className="text-lg">{t(`options.currencyFlags.${code}`)}</span>
-                      <span {...field}>
+                      <span>
                         {CURRENCY_SYMBOLS[code]} {code}
                       </span>
                       <span className="text-gray-500">- {t(`options.currencies.${code}`)}</span>
@@ -101,7 +101,7 @@ export function BudgetSection({
                   </SelectItem>
                 ))}
               </SelectContent>
-            </>
+            </Select>
           )} />
           {errors.currency && <p className="text-red-500 text-xs mt-1">{errors.currency.message}</p>}
         </div>

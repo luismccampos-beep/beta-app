@@ -43,26 +43,29 @@ jobs:
           fi
           echo "DATABASE_URL length: ${#DATABASE_URL}"
           if [ -z "${DATABASE_URL_UNPOOLED:-}" ]; then
-            echo "::warning::DATABASE_URL_UNPOOLED empty — job-level fallback now routes prisma steps through the pooled URL. That's fine for schema validation but unreliable for migrate status / deploy under PgBouncer, so those steps have an explicit env block below without fallback."
+            echo "::warning::DATABASE_URL_UNPOOLED empty — 'migrate status' and 'migrate deploy' will use the pooled URL, which fails on advisory locks. Add DATABASE_URL_UNPOOLED to GitHub secrets using the Neon direct (non-pooler) URL."
+          elif echo "$DATABASE_URL_UNPOOLED" | grep -q "\-pooler\."; then
+            echo "::error::DATABASE_URL_UNPOOLED contains '-pooler.' in the hostname. It must be the DIRECT Neon URL (without -pooler). Update the secret in GitHub Settings → Secrets and variables → Actions."
+            exit 1
           fi
 
       - run: npm install --legacy-peer-deps
 
       - name: Check migration status
-        # Step-level env WITHOUT fallback: PgBouncer in transaction mode (Neon)
+        # Step-level env with fallback: PgBouncer in transaction mode (Neon)
         # blocks the advisory locks Prisma uses for migrate status, so we MUST
-        # hit the unpooled URL. A missing unpooled secret aborts loudly here.
+        # hit the unpooled URL. Falls back to DATABASE_URL if unpooled secret missing.
         run: npx prisma migrate status
         continue-on-error: true
         env:
           DATABASE_URL: ${{ secrets.DATABASE_URL }}
-          DATABASE_URL_UNPOOLED: ${{ secrets.DATABASE_URL_UNPOOLED }}
+          DATABASE_URL_UNPOOLED: ${{ secrets.DATABASE_URL_UNPOOLED || secrets.DATABASE_URL }}
 
       - name: Apply migrations
         run: npx prisma migrate deploy
         env:
           DATABASE_URL: ${{ secrets.DATABASE_URL }}
-          DATABASE_URL_UNPOOLED: ${{ secrets.DATABASE_URL_UNPOOLED }}
+          DATABASE_URL_UNPOOLED: ${{ secrets.DATABASE_URL_UNPOOLED || secrets.DATABASE_URL }}
 
       - name: Generate Prisma Client
         run: npx prisma generate
