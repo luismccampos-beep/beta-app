@@ -1,93 +1,33 @@
 'use client';
 
-import { useMemo } from 'react';
-import { useForm, Controller } from 'react-hook-form';
-import { Check, ChevronRight, Sparkles, Globe } from 'lucide-react';
+import { Controller } from 'react-hook-form';
+import { Check, Sparkles, MapPin } from 'lucide-react';
 import { Badge } from '../../ui/badge';
 import { Button } from '../../ui/button';
-import { Input } from '../../ui/input';
 import { Label } from '../../ui/label';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '../../ui/select';
 import { Command, CommandEmpty, CommandGroup, CommandInput, CommandItem, CommandList } from '../../ui/command';
 import { Popover, PopoverContent, PopoverTrigger } from '../../ui/popover';
+import { OpenMoji } from '../../ui/openmoji';
 import type { PreferencesSectionProps } from './types';
-import {
-  ACCESSIBILITY_IDS,
-  ACTIVITY_TYPE_IDS,
-  CABIN_CLASS_IDS,
-  CURRENCY_CODES,
-  DIETARY_IDS,
-  ECO_PREFERENCE_IDS,
-  EXPERIENCE_TYPE_IDS,
-  LANGUAGE_IDS,
-  MEAL_PREFERENCE_IDS,
-  NOTIFICATION_IDS,
-  PACE_PREFERENCE_IDS,
-  PRIVACY_LEVEL_IDS,
-  ROOM_TYPE_IDS,
-  SEAT_PREFERENCE_IDS,
-  SUSTAINABILITY_LEVEL_IDS,
-  TRAVEL_FREQUENCY_IDS,
-  CRUISE_DESTINATION_IDS,
-  CRUISE_DURATION_IDS,
-  CRUISE_SHIP_TYPE_IDS,
-  CRUISE_TIER_IDS,
-} from '../../../../lib/i18n/preferences-form-options';
-import { Star, Mountain, Camera, Sunrise, Briefcase, Heart, Leaf, Utensils, MapPin, Palmtree, Users, Waves, Moon, ShoppingBag, Flag, Shield, Zap, Brain, Award, Lock, Bell, ArrowLeft, TrendingUp, Plane, Hotel, Ship } from 'lucide-react';
-
-const CURRENCY_SYMBOLS: Record<string, string> = {
-  USD: '$',
-  EUR: '€',
-  GBP: '£',
-  BRL: 'R$',
-  JPY: '¥',
-  CNY: '¥',
-  AUD: '$',
-  CAD: '$',
-  CHF: 'Fr',
-  INR: '₹',
-  SGD: '$',
-  MXN: '$',
-};
+import { TRAVEL_FREQUENCY_IDS } from '../../../../lib/i18n/preferences-form-options';
 
 const getTravelStylesData = (t: (key: string) => string) => [
-  { id: 'luxury', label: t('luxury'), icon: Star, color: 'from-yellow-500 to-amber-600' },
-  { id: 'adventure', label: t('adventure'), icon: Mountain, color: 'from-green-500 to-emerald-600' },
-  { id: 'cultural', label: t('cultural'), icon: Camera, color: 'from-teal-500 to-cyan-600' },
-  { id: 'relaxation', label: t('relaxation'), icon: Sunrise, color: 'from-orange-500 to-red-600' },
-  { id: 'business', label: t('business'), icon: Briefcase, color: 'from-teal-600 to-blue-600' },
-  { id: 'family', label: t('family'), icon: Heart, color: 'from-pink-500 to-rose-600' },
-  { id: 'ecotourism', label: t('ecoTourism'), icon: Leaf, color: 'from-lime-500 to-green-600' },
-  { id: 'foodie', label: t('foodie'), icon: Utensils, color: 'from-orange-600 to-amber-600' },
+  { id: 'luxury', label: t('luxury'), emoji: '👑', color: 'from-yellow-500 to-amber-600' },
+  { id: 'adventure', label: t('adventure'), emoji: '🎒', color: 'from-green-500 to-emerald-600' },
+  { id: 'cultural', label: t('cultural'), emoji: '🏛️', color: 'from-teal-500 to-cyan-600' },
+  { id: 'relaxation', label: t('relaxation'), emoji: '🌴', color: 'from-orange-500 to-red-600' },
+  { id: 'business', label: t('business'), emoji: '💼', color: 'from-teal-600 to-blue-600' },
+  { id: 'family', label: t('family'), emoji: '👨‍👩‍👧', color: 'from-pink-500 to-rose-600' },
+  { id: 'ecotourism', label: t('ecoTourism'), emoji: '🌿', color: 'from-lime-500 to-green-600' },
+  { id: 'foodie', label: t('foodie'), emoji: '🍽️', color: 'from-orange-600 to-amber-600' },
 ];
 
-const ACTIVITY_TYPE_ICONS: Record<string, typeof Mountain> = {
-  adventure: Mountain,
-  cultural: Camera,
-  beach: Waves,
-  city: MapPin,
-  hiking: Mountain,
-  wildlife: Palmtree,
-  food: Utensils,
-  shopping: ShoppingBag,
-  historical: Flag,
-  photography: Camera,
-  water: Waves,
-  nightlife: Moon,
-};
-
-const getActivityTypesData = (t: (key: string) => string) =>
-  ACTIVITY_TYPE_IDS.map((activityId: string) => ({
-    id: activityId,
-    label: t(`options.activityTypes.${activityId}`),
-    icon: ACTIVITY_TYPE_ICONS[activityId] ?? MapPin,
-  }));
-
 const getTravelPurposeData = (t: (key: string) => string) => [
-  { id: 'business', label: t('options.travelPurpose.business'), icon: Briefcase },
-  { id: 'leisure', label: t('options.travelPurpose.leisure'), icon: Palmtree },
-  { id: 'conference', label: t('options.travelPurpose.conference'), icon: Users },
-  { id: 'family', label: t('options.travelPurpose.family'), icon: Heart },
+  { id: 'business', label: t('options.travelPurpose.business'), emoji: '💼' },
+  { id: 'leisure', label: t('options.travelPurpose.leisure'), emoji: '🌴' },
+  { id: 'conference', label: t('options.travelPurpose.conference'), emoji: '🤝' },
+  { id: 'family', label: t('options.travelPurpose.family'), emoji: '👨‍👩‍👧' },
 ];
 
 export function TravelStyleSection({
@@ -128,7 +68,6 @@ export function TravelStyleSection({
         <Label className="text-base font-semibold">{t('whatsYourTravelStyle')}</Label>
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3 sm:gap-4">
           {getTravelStylesData(t).map((style) => {
-            const Icon = style.icon;
             const isSelected = watchedPreferences.travelStyles.includes(style.id);
 
             return (
@@ -149,7 +88,7 @@ export function TravelStyleSection({
                   <div className={`absolute inset-0 bg-gradient-to-br ${style.color} opacity-90 pointer-events-none`} />
                 )}
                 <div className="relative z-10 flex flex-col items-center gap-2">
-                  <Icon className={`w-8 h-8 ${isSelected ? 'text-white' : 'text-gray-600'}`} />
+                  <OpenMoji emoji={style.emoji} size={32} />
                   <span className={`text-sm font-semibold ${isSelected ? 'text-white' : 'text-gray-900'}`}>
                     {style.label}
                   </span>
@@ -335,7 +274,6 @@ export function TravelStyleSection({
         <Label className="text-base font-semibold">{t('travelPurpose')}</Label>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3">
           {getTravelPurposeData(t).map(purpose => {
-            const Icon = purpose.icon;
             const isSelected = watchedPreferences.travelPurpose.includes(purpose.id);
             
             return (
@@ -353,7 +291,7 @@ export function TravelStyleSection({
                   }
                 `}
               >
-                <Icon className={`w-5 h-5 ${isSelected ? 'text-teal-600' : 'text-gray-600'}`} />
+                <OpenMoji emoji={purpose.emoji} size={20} />
                 <span className="text-sm font-medium">{purpose.label}</span>
               </button>
             );

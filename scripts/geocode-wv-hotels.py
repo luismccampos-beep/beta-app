@@ -48,20 +48,14 @@ import json
 import os
 import sys
 import time
-import logging
 import urllib.request
 import urllib.parse
 import urllib.error
 from pathlib import Path
 
-logging.getLogger("geopy").setLevel(logging.ERROR)
-
 import psycopg2
 import psycopg2.extras
 from dotenv import load_dotenv
-from geopy.geocoders import Nominatim
-from geopy.extra.rate_limiter import RateLimiter
-from geopy.exc import GeocoderRateLimited, GeocoderTimedOut, GeocoderServiceError
 
 # ---------------------------------------------------------------------------
 # Config
@@ -100,6 +94,8 @@ parser.add_argument("--retry-not-found", action="store_true",
                     help="Retry hotels previously marked as geo_not_found")
 parser.add_argument("--no-gmaps", action="store_true",
                     help="Skip Google Maps Scraper API (strategy 5)")
+parser.add_argument("--photon", action="store_true",
+                    help="Enable Photon API (strategy 3+4, disabled by default — times out on this network)")
 parser.add_argument("--check-country", action="store_true",
                     help="Validate country of hotels with coordinates via reverse geocoding")
 parser.add_argument("--check-country-limit", type=int, default=0,
@@ -113,12 +109,7 @@ LIMIT = args.limit
 DRY_RUN = args.dry_run
 COUNTRY = args.country.upper()
 
-# ---------------------------------------------------------------------------
-# Geocoder setup
-# ---------------------------------------------------------------------------
-geolocator = Nominatim(user_agent=USER_AGENT)
-geocode = RateLimiter(geolocator.geocode, min_delay_seconds=DELAY, max_retries=0, error_wait_seconds=DELAY)
-reverse_geocode = RateLimiter(geolocator.reverse, min_delay_seconds=DELAY, max_retries=0, error_wait_seconds=DELAY)
+# (geocoders instantiated per-call — using urllib directly)
 
 
 # ---------------------------------------------------------------------------
@@ -415,33 +406,41 @@ def make_viewbox(dest_lat, dest_lon, size_deg=VIEWBOX_SIZE):
 
 
 def try_geocode_nominatim(query: str, viewbox: str = None) -> tuple | None:
-    """Try Nominatim (geopy). Supports viewbox for location bias."""
-    max_attempts = 3
-    kwargs = {"language": "en", "timeout": 10}
+    """Try Nominatim via raw urllib (avoids geopy RateLimiter swallowing 429s)."""
+    params = {
+        "q": query,
+        "format": "json",
+        "limit": 1,
+        "addressdetails": 1,
+        "language": "en",
+    }
     if viewbox:
-        kwargs["viewbox"] = viewbox
-        # Note: not using bounded=1, because some destinations have inaccurate
-        # lat/lon (e.g. country centroid) which would exclude valid results
+        params["viewbox"] = viewbox
 
-    for attempt in range(max_attempts):
+    url = f"https://nominatim.openstreetmap.org/search?{urllib.parse.urlencode(params)}"
+
+    for attempt in range(3):
         try:
-            location = geocode(query, **kwargs)
-            if location:
-                return (location.latitude, location.longitude)
+            req = urllib.request.Request(url, headers={"User-Agent": USER_AGENT})
+            with urllib.request.urlopen(req, timeout=10) as resp:
+                data = json.loads(resp.read())
+            if data and len(data) > 0:
+                return (float(data[0]["lat"]), float(data[0]["lon"]))
             return None
-        except GeocoderRateLimited:
-            wait = 60 * (attempt + 1)
-            print(f"    [Nominatim 429] waiting {wait}s... ({attempt+1}/{max_attempts})")
-            time.sleep(wait)
-        except GeocoderTimedOut:
+        except urllib.error.HTTPError as e:
+            if e.code == 429:
+                wait = 30 * (attempt + 1)
+                print(f"    [Nominatim 429] waiting {wait}s... ({attempt+1}/3)")
+                time.sleep(wait)
+            else:
+                print(f"    [Nominatim HTTP {e.code}]")
+                return None
+        except (urllib.error.URLError, OSError) as e:
             wait = 5 * (attempt + 1)
             print(f"    [Nominatim timeout] waiting {wait}s...")
             time.sleep(wait)
-        except GeocoderServiceError as e:
-            print(f"    [Nominatim error] {e}")
-            return None
         except Exception as e:
-            print(f"    [Nominatim exception] {e}")
+            print(f"    [Nominatim error] {e}")
             return None
     return None
 
@@ -465,7 +464,7 @@ def try_geocode_photon(query: str, lat: float = None, lon: float = None) -> tupl
     req = urllib.request.Request(url, headers={"User-Agent": USER_AGENT})
 
     try:
-        with urllib.request.urlopen(req, timeout=15) as resp:
+        with urllib.request.urlopen(req, timeout=3) as resp:
             data = json.loads(resp.read().decode("utf-8"))
     except Exception as e:
         print(f"    [Photon error] {e}")
@@ -492,21 +491,31 @@ def try_reverse_geocode(lat: float, lon: float) -> str | None:
     """
     if lat is None or lon is None:
         return None
-    try:
-        location = reverse_geocode((lat, lon), language='en')
-        if location and location.raw:
-            address = location.raw.get('address', {})
-            country_code = address.get('country_code', '').upper()
+    url = f"https://nominatim.openstreetmap.org/reverse?lat={lat}&lon={lon}&format=json&language=en"
+    for attempt in range(3):
+        try:
+            req = urllib.request.Request(url, headers={"User-Agent": USER_AGENT})
+            with urllib.request.urlopen(req, timeout=10) as resp:
+                data = json.loads(resp.read())
+            address = data.get("address", {}) if data else {}
+            country_code = address.get("country_code", "").upper()
             if country_code:
                 return country_code
-    except GeocoderRateLimited:
-        print(f"    [Reverse 429] waiting 60s...")
-        time.sleep(60)
-    except GeocoderTimedOut:
-        print(f"    [Reverse timeout] waiting 5s...")
-        time.sleep(5)
-    except Exception as e:
-        print(f"    [Reverse error] {e}")
+            return None
+        except urllib.error.HTTPError as e:
+            if e.code == 429:
+                wait = 30 * (attempt + 1)
+                print(f"    [Reverse 429] waiting {wait}s...")
+                time.sleep(wait)
+            else:
+                return None
+        except (urllib.error.URLError, OSError):
+            wait = 5 * (attempt + 1)
+            print(f"    [Reverse timeout] waiting {wait}s...")
+            time.sleep(wait)
+        except Exception as e:
+            print(f"    [Reverse error] {e}")
+            return None
     return None
 
 
@@ -608,15 +617,15 @@ def geocode_hotel(
         if result:
             return result
 
-    # Strategy 3: Photon "Hotel, City" + lat/lon bias
-    # Small delay before Photon calls (light rate limiting)
-    time.sleep(0.5)
-    result = try_geocode_photon(query_hotel, dest_lat, dest_lon)
-    if result:
-        return result
+    # Strategy 3: Photon "Hotel, City" + lat/lon bias (disabled by default — blocked on this network)
+    if args.photon:
+        time.sleep(0.5)
+        result = try_geocode_photon(query_hotel, dest_lat, dest_lon)
+        if result:
+            return result
 
     # Strategy 4: Photon "City" only
-    if dest_name:
+    if args.photon and dest_name:
         time.sleep(0.5)
         result = try_geocode_photon(query_city, dest_lat, dest_lon)
         if result:
@@ -657,7 +666,8 @@ def main():
     print(f"  mode={mode}  dry-run={DRY_RUN}  limit={LIMIT or 'ALL'}  "
           f"country={COUNTRY or 'ALL'}  delay={DELAY}s")
     print(f"  Strategy: 1.Nominatim(Hotel+City) 2.Nominatim(City) "
-          f"3.Photon(Hotel+City) 4.Photon(City) 5.GoogleMapsScraper")
+           f"3.Photon(Hotel+City) 4.Photon(City) [{'ON' if args.photon else 'OFF'}] "
+           f"5.GoogleMapsScraper [{'ON' if not args.no_gmaps else 'OFF'}]")
     print()
 
     conn = ensure_connection(conn)

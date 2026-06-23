@@ -1,12 +1,11 @@
 'use client';
 
-import { useMemo } from 'react';
 import { Controller } from 'react-hook-form';
 import { Check, Palmtree, Globe } from 'lucide-react';
 import { Label } from '../../ui/label';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '../../ui/select';
 import { Checkbox } from '../../ui/checkbox';
-import { Badge } from '../../ui/badge';
+import { OpenMoji } from '../../ui/openmoji';
 import type { PreferencesSectionProps } from './types';
 import {
   ACTIVITY_TYPE_IDS,
@@ -14,28 +13,27 @@ import {
   EXPERIENCE_TYPE_IDS,
   LANGUAGE_IDS,
 } from '../../../../lib/i18n/preferences-form-options';
-import { Mountain, Camera, Waves, MapPin, Utensils, ShoppingBag, Flag, Moon } from 'lucide-react';
 
-const ACTIVITY_TYPE_ICONS: Record<string, typeof Mountain> = {
-  adventure: Mountain,
-  cultural: Camera,
-  beach: Waves,
-  city: MapPin,
-  hiking: Mountain,
-  wildlife: Palmtree,
-  food: Utensils,
-  shopping: ShoppingBag,
-  historical: Flag,
-  photography: Camera,
-  water: Waves,
-  nightlife: Moon,
+const ACTIVITY_TYPE_EMOJIS: Record<string, string> = {
+  adventure: '🎒',
+  cultural: '🏛️',
+  beach: '🏖️',
+  city: '🏙️',
+  hiking: '⛰️',
+  wildlife: '🦁',
+  food: '🍽️',
+  shopping: '🛍️',
+  historical: '🏛️',
+  photography: '📸',
+  water: '🌊',
+  nightlife: '🌙',
 };
 
 const getActivityTypesData = (t: (key: string) => string) =>
   ACTIVITY_TYPE_IDS.map((activityId: string) => ({
     id: activityId,
     label: t(`options.activityTypes.${activityId}`),
-    icon: ACTIVITY_TYPE_ICONS[activityId] ?? MapPin,
+    emoji: ACTIVITY_TYPE_EMOJIS[activityId] ?? '📍',
   }));
 
 export function ActivitiesSection({
@@ -76,7 +74,6 @@ export function ActivitiesSection({
         <Label className="text-base font-semibold">{t('preferredActivities')}</Label>
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3 sm:gap-4">
           {getActivityTypesData(t).map((activity) => {
-            const Icon = activity.icon;
             const isSelected = watchedPreferences.activityTypes.includes(activity.id);
             
             return (
@@ -94,7 +91,7 @@ export function ActivitiesSection({
                   }
                 `}
               >
-                <Icon className={`w-6 h-6 mb-2 mx-auto ${isSelected ? 'text-green-600' : 'text-gray-600'}`} />
+                <OpenMoji emoji={activity.emoji} size={28} className="block mb-2 mx-auto" />
                 <span className={`text-xs font-semibold block ${isSelected ? 'text-green-900' : 'text-gray-900'}`}>
                   {activity.label}
                 </span>

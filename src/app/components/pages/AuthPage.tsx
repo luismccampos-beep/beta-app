@@ -9,7 +9,6 @@ import { Checkbox } from '../ui/checkbox';
 import { useLocale, useTranslations } from 'next-intl';
 import { AppHeader } from '../AppHeader';
 import { AppFooter } from '../AppFooter';
-
 type CheckedState = boolean | 'indeterminate';
 import {
   Mail,
@@ -38,7 +37,8 @@ export function AuthPage({ onLoginSuccess, onBackToHome, onNavigateToLegal }: Au
   const locale = useLocale();
   const t = useTranslations('auth');
   const [activeTab, setActiveTab] = useState<'login' | 'register'>('login');
-  const [showPassword, setShowPassword] = useState(false);
+  const [showLoginPassword, setShowLoginPassword] = useState(false);
+  const [showRegisterPassword, setShowRegisterPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
@@ -192,6 +192,22 @@ export function AuthPage({ onLoginSuccess, onBackToHome, onNavigateToLegal }: Au
           </div>
         </div>
 
+        {/* Mobile feature badges */}
+        <div className="flex md:hidden flex-wrap items-center justify-center gap-2 mb-2">
+          <div className="inline-flex items-center gap-1.5 bg-white dark:bg-gray-800 border border-teal-200 dark:border-gray-600 rounded-full px-3 py-1.5 shadow-sm">
+            <Shield className="w-3.5 h-3.5 text-teal-600 dark:text-teal-400" />
+            <span className="text-xs font-medium text-gray-700 dark:text-gray-300">{t('enterpriseSecurity')}</span>
+          </div>
+          <div className="inline-flex items-center gap-1.5 bg-white dark:bg-gray-800 border border-teal-200 dark:border-gray-600 rounded-full px-3 py-1.5 shadow-sm">
+            <Globe className="w-3.5 h-3.5 text-teal-600 dark:text-teal-400" />
+            <span className="text-xs font-medium text-gray-700 dark:text-gray-300">{t('countriesSupported')}</span>
+          </div>
+          <div className="inline-flex items-center gap-1.5 bg-white dark:bg-gray-800 border border-teal-200 dark:border-gray-600 rounded-full px-3 py-1.5 shadow-sm">
+            <Sparkles className="w-3.5 h-3.5 text-orange-500" />
+            <span className="text-xs font-medium text-gray-700 dark:text-gray-300">{t('aiRecommendations')}</span>
+          </div>
+        </div>
+
         {/* Right Side - Auth Forms */}
         <Card className="border-2 border-gray-200 dark:border-gray-700 shadow-2xl dark:bg-gray-800">
           <CardHeader>
@@ -234,6 +250,7 @@ export function AuthPage({ onLoginSuccess, onBackToHome, onNavigateToLegal }: Au
                         value={loginEmail}
                         onChange={(e) => setLoginEmail(e.target.value)}
                         className="pl-10 h-12 dark:bg-gray-700 dark:border-gray-600 dark:text-white"
+                        autoComplete="email"
                       />
                     </div>
                   </div>
@@ -244,18 +261,20 @@ export function AuthPage({ onLoginSuccess, onBackToHome, onNavigateToLegal }: Au
                       <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
                       <Input
                         id="login-password"
-                        type={showPassword ? 'text' : 'password'}
+                        type={showLoginPassword ? 'text' : 'password'}
                         placeholder={t('passwordPlaceholder')}
                         value={loginPassword}
                         onChange={(e) => setLoginPassword(e.target.value)}
                         className="pl-10 pr-10 h-12 dark:bg-gray-700 dark:border-gray-600 dark:text-white"
+                        autoComplete="current-password"
                       />
                       <button
                         type="button"
-                        onClick={() => setShowPassword(!showPassword)}
+                        onClick={() => setShowLoginPassword(!showLoginPassword)}
                         className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-600 dark:hover:text-gray-300"
+                        aria-label={showLoginPassword ? 'Hide password' : 'Show password'}
                       >
-                        {showPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
+                        {showLoginPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
                       </button>
                     </div>
                   </div>
@@ -271,7 +290,11 @@ export function AuthPage({ onLoginSuccess, onBackToHome, onNavigateToLegal }: Au
                         {t('rememberMe')}
                       </Label>
                     </div>
-                    <button type="button" className="text-sm text-teal-600 dark:text-teal-400 hover:text-teal-700 dark:hover:text-teal-300 font-medium">
+                    <button
+                      type="button"
+                      onClick={() => toast.info('Password reset will be available soon. Contact support for assistance.')}
+                      className="text-sm text-teal-600 dark:text-teal-400 hover:text-teal-700 dark:hover:text-teal-300 font-medium"
+                    >
                       {t('forgotPassword')}
                     </button>
                   </div>
@@ -305,7 +328,12 @@ export function AuthPage({ onLoginSuccess, onBackToHome, onNavigateToLegal }: Au
                 </div>
 
                 <div className="grid grid-cols-2 gap-4">
-                  <Button type="button" variant="outline" className="h-11 dark:border-gray-600 dark:text-gray-300 dark:hover:bg-gray-700">
+                  <Button
+                    type="button"
+                    variant="outline"
+                    className="h-11 dark:border-gray-600 dark:text-gray-300 dark:hover:bg-gray-700"
+                    onClick={() => signIn('google', { redirect: false }).catch(() => toast.error('Google login failed'))}
+                  >
                     <svg className="w-5 h-5 mr-2" viewBox="0 0 24 24">
                       <path fill="currentColor" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
                       <path fill="currentColor" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
@@ -314,7 +342,12 @@ export function AuthPage({ onLoginSuccess, onBackToHome, onNavigateToLegal }: Au
                     </svg>
                     Google
                   </Button>
-                  <Button type="button" variant="outline" className="h-11 dark:border-gray-600 dark:text-gray-300 dark:hover:bg-gray-700">
+                  <Button
+                    type="button"
+                    variant="outline"
+                    className="h-11 dark:border-gray-600 dark:text-gray-300 dark:hover:bg-gray-700"
+                    onClick={() => signIn('facebook', { redirect: false }).catch(() => toast.error('Facebook login failed'))}
+                  >
                     <svg className="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24">
                       <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
                     </svg>
@@ -352,6 +385,7 @@ export function AuthPage({ onLoginSuccess, onBackToHome, onNavigateToLegal }: Au
                         value={registerName}
                         onChange={(e) => setRegisterName(e.target.value)}
                         className="pl-10 h-12 dark:bg-gray-700 dark:border-gray-600 dark:text-white"
+                        autoComplete="name"
                       />
                     </div>
                   </div>
@@ -367,6 +401,7 @@ export function AuthPage({ onLoginSuccess, onBackToHome, onNavigateToLegal }: Au
                         value={registerEmail}
                         onChange={(e) => setRegisterEmail(e.target.value)}
                         className="pl-10 h-12 dark:bg-gray-700 dark:border-gray-600 dark:text-white"
+                        autoComplete="email"
                       />
                     </div>
                   </div>
@@ -382,6 +417,7 @@ export function AuthPage({ onLoginSuccess, onBackToHome, onNavigateToLegal }: Au
                         value={registerPhone}
                         onChange={(e) => setRegisterPhone(e.target.value)}
                         className="pl-10 h-12 dark:bg-gray-700 dark:border-gray-600 dark:text-white"
+                        autoComplete="tel"
                       />
                     </div>
                   </div>
@@ -407,18 +443,20 @@ export function AuthPage({ onLoginSuccess, onBackToHome, onNavigateToLegal }: Au
                       <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
                       <Input
                         id="register-password"
-                        type={showPassword ? 'text' : 'password'}
+                        type={showRegisterPassword ? 'text' : 'password'}
                         placeholder={t('passwordPlaceholder')}
                         value={registerPassword}
                         onChange={(e) => setRegisterPassword(e.target.value)}
                         className="pl-10 pr-10 h-12 dark:bg-gray-700 dark:border-gray-600 dark:text-white"
+                        autoComplete="new-password"
                       />
                       <button
                         type="button"
-                        onClick={() => setShowPassword(!showPassword)}
+                        onClick={() => setShowRegisterPassword(!showRegisterPassword)}
                         className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-600 dark:hover:text-gray-300"
+                        aria-label={showRegisterPassword ? 'Hide password' : 'Show password'}
                       >
-                        {showPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
+                        {showRegisterPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
                       </button>
                     </div>
                   </div>
@@ -434,11 +472,13 @@ export function AuthPage({ onLoginSuccess, onBackToHome, onNavigateToLegal }: Au
                         value={registerConfirmPassword}
                         onChange={(e) => setRegisterConfirmPassword(e.target.value)}
                         className="pl-10 pr-10 h-12 dark:bg-gray-700 dark:border-gray-600 dark:text-white"
+                        autoComplete="new-password"
                       />
                       <button
                         type="button"
                         onClick={() => setShowConfirmPassword(!showConfirmPassword)}
                         className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-600 dark:hover:text-gray-300"
+                        aria-label={showConfirmPassword ? 'Hide password' : 'Show password'}
                       >
                         {showConfirmPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
                       </button>
@@ -453,27 +493,25 @@ export function AuthPage({ onLoginSuccess, onBackToHome, onNavigateToLegal }: Au
                       className="mt-1"
                     />
                     <Label htmlFor="terms" className="text-sm cursor-pointer dark:text-gray-300 leading-relaxed">
-                      I agree to the{' '}
-                      {onNavigateToLegal ? (
-                        <>
-                          <button
+                      <span>{t('agreeToTerms')}</span>
+                      {onNavigateToLegal && (
+                        <span className="ml-1 text-xs">
+                          (<button
                             type="button"
                             onClick={() => onNavigateToLegal('terms')}
                             className="text-teal-600 dark:text-teal-400 hover:underline"
                           >
-                            Terms of Service
+                            {t('legalTerms') || 'Terms'}
                           </button>
-                          {' '}and{' '}
+                          {' & '}
                           <button
                             type="button"
                             onClick={() => onNavigateToLegal('privacy')}
                             className="text-teal-600 dark:text-teal-400 hover:underline"
                           >
-                            Privacy Policy
-                          </button>
-                        </>
-                      ) : (
-                        t('agreeToTerms')
+                            {t('legalPrivacy') || 'Privacy'}
+                          </button>)
+                        </span>
                       )}
                     </Label>
                   </div>

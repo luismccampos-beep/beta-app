@@ -13,7 +13,7 @@ type WvHotelRow = {
   destinoId: number;
   nome: string;
   estrelas: number;
-  precoPorNoite: number;
+  precoPorNoite: any;
   comodidades: unknown;
   fonte: string | null;
   latitude: number | null;
@@ -22,6 +22,7 @@ type WvHotelRow = {
   imageUrl: string | null;
   googlePlaceId: string | null;
   wikidataId: string | null;
+  tipoAlojamento: string | null;
 };
 
 function rowToHotel(h: WvHotelRow, extra?: { distance_km?: number }): MockHotel {
@@ -30,7 +31,7 @@ function rowToHotel(h: WvHotelRow, extra?: { distance_km?: number }): MockHotel 
     destino_id: h.destinoId,
     nome: h.nome,
     estrelas: h.estrelas,
-    preco_por_noite: h.precoPorNoite,
+    preco_por_noite: typeof h.precoPorNoite === 'number' ? h.precoPorNoite : Number(h.precoPorNoite),
     comodidades: (h.comodidades as string[]) ?? [],
     latitude: h.latitude,
     longitude: h.longitude,
@@ -39,6 +40,7 @@ function rowToHotel(h: WvHotelRow, extra?: { distance_km?: number }): MockHotel 
     google_place_id: h.googlePlaceId,
     wikidata_id: h.wikidataId,
     fonte: h.fonte,
+    tipo_alojamento: h.tipoAlojamento,
     ...extra,
   };
 }
@@ -57,7 +59,52 @@ const hotelSelect = {
   imageUrl: true,
   googlePlaceId: true,
   wikidataId: true,
+  tipoAlojamento: true,
 } as const;
+
+/** Aggregates avg stars and hotel type breakdown for a list of destination IDs. */
+export async function getHotelStatsForDestinations(
+  destinoIds: number[],
+): Promise<Map<number, { avgStars: number | null; hotelTypes: Record<string, number> | null }>> {
+  if (destinoIds.length === 0) return new Map();
+
+  const grouped = await prisma.wvHotel.groupBy({
+    by: ['destinoId', 'tipoAlojamento'],
+    where: {
+      destinoId: { in: destinoIds },
+      NOT: { fonte: 'rejected_geo' },
+    },
+    _count: { _all: true },
+    _avg: { estrelas: true },
+  });
+
+  const map = new Map<number, { avgStars: number | null; hotelTypes: Record<string, number> }>();
+  for (const row of grouped) {
+    const existing = map.get(row.destinoId) ?? { avgStars: null, hotelTypes: {} };
+    const tipo = row.tipoAlojamento ?? 'hotel';
+    existing.hotelTypes[tipo] = (existing.hotelTypes[tipo] ?? 0) + row._count._all;
+    // Weighted avg will be computed after
+    map.set(row.destinoId, existing);
+  }
+
+  // Compute proper avg stars per destination
+  const avgRows = await prisma.wvHotel.groupBy({
+    by: ['destinoId'],
+    where: {
+      destinoId: { in: destinoIds },
+      NOT: { fonte: 'rejected_geo' },
+    },
+    _avg: { estrelas: true },
+  });
+  for (const row of avgRows) {
+    const existing = map.get(row.destinoId);
+    if (existing) {
+      existing.avgStars = row._avg.estrelas ? Math.round(row._avg.estrelas * 10) / 10 : null;
+    }
+  }
+
+  return map;
+}
 
 export function isTravelCatalogDbEnabled(): boolean {
   const v = process.env.TRAVEL_CATALOG_SOURCE?.trim().toLowerCase();
@@ -92,6 +139,7 @@ export function rowToDestination(row: {
   longitude: number | null;
   imagemUrl: string | null;
   imagemQuery: string | null;
+  categorias?: any;
 }): MockDestination {
   return {
     id: row.id,
@@ -119,6 +167,7 @@ export function rowToDestination(row: {
     transporte: row.transporte as MockDestination['transporte'],
     latitude: row.latitude ?? undefined,
     longitude: row.longitude ?? undefined,
+    categorias: (row.categorias as string[]) ?? undefined,
     imagem_url: row.imagemUrl ?? '',
     imagem_query: row.imagemQuery ?? undefined,
   };
@@ -142,10 +191,12 @@ export async function searchDestinationsDb(opts: {
   lang?: string;
   limit?: number;
   offset?: number;
+  hotelTypes?: string[];
 }) {
   const limit = Math.min(opts.limit ?? 24, 100);
   const offset = opts.offset ?? 0;
   const where: {
+    id?: { in: number[] };
     nome?: { contains: string; mode: 'insensitive' };
     pais?: { equals: string; mode: 'insensitive' };
     continente?: { equals: string; mode: 'insensitive' };
@@ -163,6 +214,25 @@ export async function searchDestinationsDb(opts: {
   }
   if (opts.lang?.trim()) {
     where.lang = opts.lang.trim();
+  }
+
+  // If filtering by accommodation type(s), find destination IDs that have hotels matching any of the types
+  const types = opts.hotelTypes?.filter(Boolean);
+  if (types && types.length > 0) {
+    const matchingDestIds = await prisma.wvHotel.findMany({
+      where: {
+        tipoAlojamento: { in: types },
+        NOT: { fonte: 'rejected_geo' },
+      },
+      select: { destinoId: true },
+      distinct: ['destinoId'],
+    });
+    const ids = matchingDestIds.map((r) => r.destinoId);
+    if (ids.length === 0) {
+      // No destinations with these hotel types — return empty immediately
+      return { total: 0, items: [] };
+    }
+    where.id = { in: ids };
   }
 
   const [rows, total] = await Promise.all([
@@ -194,24 +264,33 @@ export async function searchDestinationsDb(opts: {
     prisma.wvDestination.count({ where }),
   ]);
 
+  // Aggregate hotel stats (avg stars, type breakdown) for all visible destinations
+  const destIds = rows.map((r) => r.id);
+  const hotelStatsMap = await getHotelStatsForDestinations(destIds);
+
   return {
     total,
-    items: rows.map((r) => ({
-      ...r,
-      slug: r.slug,
-      iata: resolveDestinationIata({ iata: r.iata, transporte: r.transporte as MockDestination['transporte'] }),
-      imageUrl: resolveDestinationImageFromFields({
-        id: r.id,
-        lang: r.lang,
-        nome: r.nome,
-        pais: r.pais,
-        paisCode: r.paisCode,
-        tipo: r.tipo,
-        continente: r.continente,
-        imagem_url: r.imagemUrl,
-        imagem_query: r.imagemQuery,
-      }),
-    })),
+    items: rows.map((r) => {
+      const stats = hotelStatsMap.get(r.id);
+      return {
+        ...r,
+        slug: r.slug,
+        iata: resolveDestinationIata({ iata: r.iata, transporte: r.transporte as MockDestination['transporte'] }),
+        imageUrl: resolveDestinationImageFromFields({
+          id: r.id,
+          lang: r.lang,
+          nome: r.nome,
+          pais: r.pais,
+          paisCode: r.paisCode,
+          tipo: r.tipo,
+          continente: r.continente,
+          imagem_url: r.imagemUrl,
+          imagem_query: r.imagemQuery,
+        }),
+        avgStars: stats?.avgStars ?? null,
+        hotelTypes: stats?.hotelTypes ?? null,
+      };
+    }),
   };
 }
 
@@ -537,6 +616,7 @@ const destinationSelectForLookup = {
   transporte: true,
   latitude: true,
   longitude: true,
+  categorias: true,
   imagemUrl: true,
   imagemQuery: true,
   hotelCount: true,

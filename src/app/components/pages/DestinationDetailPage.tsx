@@ -58,6 +58,7 @@ import {
   DESTINATION_PLACEHOLDER,
   onDestinationImageError,
 } from '../travel/destination-image-fallback';
+import { HotelTypeBadge } from '../travel/HotelTypeBadge';
 
 // ── Types ──────────────────────────────────────────────────────────────────────
 
@@ -88,6 +89,7 @@ export type DestinationDetailData = {
     preco_por_noite: number;
     comodidades: string[];
   }[];
+  hotelTypes?: Record<string, number> | null;
   dicas?: DestinationTipsMap;
   wikipedia_resumo?: string;
   wikipedia_url?: string;
@@ -1165,7 +1167,7 @@ export function DestinationDetailPage({
         )}
 
         {/* ── Hotels ──────────────────────────────────────────────────────── */}
-        {data.hotels.length > 0 && (
+        {(data.hotels.length > 0 || (data.hotelTypes && Object.keys(data.hotelTypes).length > 0)) && (
           <motion.div
             variants={staggerContainer}
             initial="hidden"
@@ -1176,6 +1178,22 @@ export function DestinationDetailPage({
               <Hotel className="h-5 w-5 text-teal-600 dark:text-teal-400" />
               {t('hotels')}
             </h2>
+            {/* Hotel type breakdown */}
+            {data.hotelTypes && Object.keys(data.hotelTypes).length > 0 && (
+              <div className="flex flex-wrap gap-2 mb-4">
+                {Object.entries(data.hotelTypes)
+                  .sort((a, b) => b[1] - a[1])
+                  .slice(0, 5)
+                  .map(([tipo, count]) => (
+                    <HotelTypeBadge
+                      key={tipo}
+                      tipo={tipo}
+                      count={count}
+                      label={t(`accommodationTypes.${tipo}`) ?? tipo}
+                    />
+                  ))}
+              </div>
+            )}
             <div className="grid sm:grid-cols-2 gap-4">
               {data.hotels.map((h, i) => (
                 <motion.div

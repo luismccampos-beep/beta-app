@@ -1,8 +1,8 @@
 {
-  "exportedAt": "2026-05-19T14:27:10.328Z",
+  "exportedAt": "2026-06-20T21:24:44.894Z",
   "source": "wikivoyage",
-  "count": 12000,
-  "withIata": 234,
+  "count": 28474,
+  "withIata": 1444,
   "csv": "C:\\Users\\luism\\Documents\\beta-app\\ml-service\\app\\data\\wikivoyage_destinations.csv",
   "jsonl": "C:\\Users\\luism\\Documents\\beta-app\\ml-service\\app\\data\\wikivoyage_destinations.jsonl"
 }

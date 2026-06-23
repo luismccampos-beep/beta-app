@@ -5,6 +5,8 @@ import { Prisma } from '@prisma/client';
 import { prisma } from '../../../../lib/prisma';
 import { signIn } from '@/auth';
 import { isNonEmptyString } from '../../../../lib/auth';
+import { sendVerificationEmail } from '../../../../lib/email';
+import crypto from 'crypto';
 
 function registerErrorResponse(err: unknown): { message: string; status: number } {
   console.error('[POST /api/auth/register]', err);
@@ -117,6 +119,18 @@ export async function POST(req: Request) {
       password: body.password as string,
       redirect: false,
     });
+
+    // Auto-send verification email (non-blocking, don't fail registration if email fails)
+    const baseUrl = process.env.NEXT_PUBLIC_SITE_URL ?? process.env.NEXTAUTH_URL ?? 'http://localhost:3000';
+    const verificationToken = crypto.randomBytes(32).toString('hex');
+    void prisma.emailVerificationToken.create({
+      data: {
+        userId: user.id,
+        token: verificationToken,
+        email: user.email,
+        expiresAt: new Date(Date.now() + 24 * 60 * 60 * 1000),
+      },
+    }).then(() => sendVerificationEmail({ to: user.email, token: verificationToken, baseUrl }));
 
     return NextResponse.json({ success: true, user });
   } catch (err) {

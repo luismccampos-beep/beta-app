@@ -1,0 +1,2427 @@
+id,nome,pais_code,latitude,longitude,nearest_city,nearest_cc,dist_km,auto_fixable
+117,"Arábia Saudita",SA,38.70191,-9.216298,"Restelo",PT,0.3,YES
+120,"Aracati",PT,-5.3109975,-35.66412,"Santa Luzia",BR,20.9,YES
+135,"Araripina",PT,-7.576858,-40.50385,"Araripina",BR,0.6,YES
+140,"Argel",DZ,40.09767,-8.773622,"Figueira da Foz",PT,9.5,YES
+145,"Arquipélago de Anavilhanas",BR,37.81899,-25.528994,"Rabo de Peixe",PT,4.8,YES
+150,"Artigas",BR,-30.256035,-57.58985,"Bella Unión",UY,1,YES
+152,"Arua",PT,44.06039,-0.3508658,"Mont-de-Marsan",FR,22.2,YES
+154,"Aruba",NL,12.50136,-69.96185,"Santa Cruz",AW,2.3,YES
+156,"Ashikaga",PT,36.340034,139.44884,"Ashikaga",JP,0.8,YES
+163,"Assunção",ES,39.086224,-7.250328,"Campo Maior",PT,17.7,YES
+165,"Atar",PT,9.33746,31.407885,"Malakal",SS,35.2,YES
+166,"Atenas",GR,45.63453,12.6868,"Ceggia",IT,6.8,YES
+168,"Ática",GR,41.266388,-8.611874,"Santa Maria de Avioso",PT,0.5,YES
+169,"Atlanta",GE,33.75447,-84.38982,"Atlanta",US,0.6,YES
+172,"Auschwitz",PL,50.92685,8.406086,"Bad Laasphe",DE,1.4,YES
+175,"Áustria",AT,43.7604,11.30066,"Bagno a Ripoli",IT,2,YES
+181,"Avinhão",PT,43.94925,4.805901,"Avignon",FR,0.3,YES
+182,"Ayorou",PT,14.733516,0.9194517,"Ayorou",NE,0.4,YES
+185,"Bagan",PT,21.131712,94.862366,"Nyaung-U",MM,9,YES
+188,"Bahariyya",GB,28.357203,28.862965,"Al Bawīţī",EG,1.2,YES
+192,"Baie Ste. Anne",PT,47.04726,-64.96257,"Beaurivage",CA,40.6,YES
+195,"Baleyara",PT,13.784102,2.951507,"Baléyara",NE,0.1,YES
+215,"Barbados",VE,51.49022,0.2953782,"Chafford Hundred",GB,0.1,YES
+216,"Barbalha",PT,-7.3121066,-39.303642,"Barbalha",BR,0.1,YES
+229,"Barra do Quaraí",BR,-30.208946,-57.550514,"Bella Unión",UY,7.3,YES
+233,"Barroquinha",PT,-4.6423273,-44.952866,"Igarapé Grande",BR,11,YES
+234,"Bartsam",PT,27.37254,91.598755,"Trashigang",BT,6.2,YES
+244,"Beberibe",PT,-4.181047,-38.12981,"Beberibe",BR,0.2,YES
+251,"Bella Unión",BR,-30.25603,-57.58985,"Bella Unión",UY,1,YES
+253,"Bengasi",PT,32.120018,20.081217,"Benghazi",LY,1.3,YES
+258,"Bermudas",GB,32.304028,-64.75631,"Devonshire Parish",BM,0.2,YES
+260,"Bernardo de Irigoyen",BR,-26.2548,-53.64488,"Bernardo de Irigoyen",AR,0.2,YES
+264,"Bielorrússia",RU,53.42506,27.697136,"Druzhny",BY,25.8,YES
+269,"Bloomington-Normal",PT,40.50875,-88.9845,"Normal",US,0.8,YES
+271,"Boa Esperança do Sul",PT,-21.993021,-48.39174,"Boa Esperança do Sul",BR,0.1,YES
+287,"Borda da Mata",PT,-22.274166,-46.16528,"Borda da Mata",BR,0,YES
+288,"Bordéus",PT,44.841225,-0.5800364,"Bordeaux",FR,0,YES
+289,"Borger",PT,35.668976,-101.391945,"Borger",US,0.5,YES
+294,"Brabante do Norte",PT,51.66667,5,"Waspik",NL,4.4,YES
+310,"Brod",PT,43.486576,18.746937,"Foča",BA,3.4,YES
+313,"Brunei",PT,4.4137154,114.56539,"Liang",BN,30.3,YES
+315,"Bucerias",PT,20.755589,-105.33435,"Bucerías",MX,0.3,YES
+320,"Caacupé",PT,-25.385689,-57.140476,"Caacupé",PY,0.2,YES
+322,"Cabo Canaveral",PT,28.451355,-80.528305,"Cape Canaveral",US,9,YES
+327,"Cabo San Lucas",PT,22.893888,-109.92006,"Cabo San Lucas",MX,0.9,YES
+338,"Cafayate",PT,-26.072916,-65.97603,"Cafayate",AR,0.2,YES
+340,"Caiena",FR,4.9381,-52.33455,"Cayenne",GF,0,YES
+349,"Cajueiro da Praia",PT,-2.9289603,-41.33816,"Cajueiro da Praia",BR,0.3,YES
+350,"Calama",PT,-22.46239,-68.927216,"Calama",CL,0.7,YES
+351,"Calcutá",PT,22.572645,88.36389,"Kolkata",IN,1.1,YES
+356,"Calheta",PT,15.184203,-23.5915,"Calheta de São Miguel",CV,0.2,YES
+366,"Camocim",PT,-4.1311183,-40.874928,"Carnaubal",BR,8.5,YES
+371,"Campo Limpo Paulista",PT,-23.20779,-46.788918,"Campo Limpo Paulista",BR,0.6,YES
+381,"Canindé",PT,-4.403578,-39.423615,"Canindé",BR,13.4,YES
+386,"Cantão de Isabela",PT,17,122,"San Mariano",PH,2.4,YES
+387,"Cantão de São Cristóvão",PT,-22.9,-43.23333,"Santo Cristo",BR,3.3,YES
+390,"Capanema",AR,-25.601997,-53.970333,"Capanema",BR,18,YES
+393,"Capital (Venezuela)",VE,-31.54493,-68.56254,"San Juan",AR,3.6,YES
+402,"Carlinville (Illinois)",PT,39.27977,-89.88177,"Carlinville",US,0,YES
+406,"Cartagena das Índias",US,10.39972,-75.51444,"Cartagena",CO,2.3,YES
+420,"Castro Laboreiro",PT,42.030533,-8.159337,"Celanova",ES,21.7,YES
+426,"Cataratas do Iguaçu",BR,-25.693905,-54.43654,"Puerto Iguazú",AR,17.3,YES
+427,"Catemaco",PT,18.421394,-95.11178,"Catemaco",MX,0.2,YES
+436,"Chacala",PT,-20.172693,-66.86354,"Colchani",BO,15.9,YES
+437,"Champotón",PT,19.343966,-90.72427,"Champotón",MX,0.6,YES
+445,"Chhumey",PT,27.493576,90.699425,"Jakar",BT,8.1,YES
+449,"Chichén-Itzá",PT,20.682852,-88.56872,"Chichén-Itzá",MX,1.8,YES
+451,"Childress",PT,34.519657,-100.206764,"Childress",US,10.4,YES
+453,"China",CN,22.17576,113.551414,"Zhuojiacun",MO,1.7,YES
+454,"Chinguetti",PT,20.463434,-12.366484,"Atar",MR,71.1,NO (review)
+457,"Chuy",ES,-33.69111,-53.45667,"Chuí",BR,0,YES
+460,"Cidade do Kuwait",PT,-25.532696,-54.600166,"Foz do Iguaçu",BR,2.1,YES
+462,"Cidade do Panamá",BR,19.462324,-99.177246,"Azcapotzalco",MX,2.9,YES
+471,"Clarendon",PT,34.935936,-100.89058,"Pampa",US,67,NO (review)
+475,"Cobija",BO,-11.018461,-68.753815,"Brasiléia",BR,0.7,YES
+478,"Cocoa Beach",PT,28.31841,-80.6095,"Cocoa Beach",US,0.2,YES
+485,"Colón",PT,9.355301,-79.89741,"Colón",PA,0.6,YES
+487,"Colônia do Sacramento",PT,-34.46986,-57.84337,"Colonia del Sacramento",UY,0.9,YES
+491,"Comitán",PT,16.252361,-92.13542,"Comitán",MX,1.4,YES
+498,"Congonhas",PT,-20.501516,-43.856457,"Congonhas",BR,0.5,YES
+502,"Cordeirópolis",PT,-22.476833,-47.455055,"Cordeirópolis",BR,0.6,YES
+506,"Coreia do Norte",KR,40.37366,127.08704,"Yŏch’im-dong",KP,36.3,YES
+513,"Cosmópolis",PT,-22.64374,-47.19721,"Cosmópolis",BR,0.3,YES
+514,"Costa do Marfim",PT,7.989737,-5.567946,"Bodokro",CI,17.4,YES
+518,"Cracóvia/Stare Miasto",PT,50.06141,19.935678,"Kraków",PL,0.1,YES
+525,"Cuba",CU,42.21757,-78.27529,"Olean",US,20.1,YES
+532,"Curaçao",PT,12.117649,-68.93092,"Willemstad",CW,4.9,YES
+535,"Dahab",PT,28.496363,34.514565,"Dahab",EG,2.5,YES
+539,"Dalhart",PT,36.061607,-102.522224,"Dalhart",US,0.8,YES
+545,"Deli",PT,28.632803,77.21977,"New Delhi",IN,1.4,YES
+549,"Deothang",GB,26.86258,91.47308,"Samdrup Jongkhar",BT,7.6,YES
+550,"De Philae a Abu Simbel",EG,22.3457,31.61624,"Wadi Halfa",SD,66.2,NO (review)
+557,"Diffa",PT,13.313075,12.613661,"Diffa",NE,0.4,YES
+562,"Disneyland Resort Paris",US,48.86785,2.77863,"Lagny-sur-Marne",FR,4.5,YES
+563,"Disneyland Resort Paris/Disneyland Paris",PT,48.86785,2.77863,"Lagny-sur-Marne",FR,4.5,YES
+564,"Disneyland Resort Paris/Disney Village",PT,48.87042,2.79082,"Esbly",FR,4.2,YES
+565,"Disneyland Resort Paris/Walt Disney Studios Paris",PT,48.85341,2.3488,"Paris",FR,0,YES
+566,"Divinolândia",PT,-21.660458,-46.737114,"Divinolândia",BR,0.2,YES
+568,"Djenné",PT,13.905163,-4.554858,"Djenné",ML,0.2,YES
+569,"Dobrada",PT,-21.518091,-48.39389,"Dobrada",BR,0.2,YES
+571,"Dolores Hidalgo",PT,21.157503,-100.9342,"Dolores Hidalgo",MX,0.2,YES
+573,"Dosso",PT,13.049637,3.1944647,"Dosso",NE,0.1,YES
+574,"Dourado",PT,-27.428738,-52.230484,"Aratiba",BR,7.9,YES
+593,"El Alto",PT,-16.504824,-68.16244,"La Paz",BO,1.4,YES
+596,"El Fuerte",PT,26.415554,-108.617256,"El Fuerte",MX,0.2,YES
+597,"Elias Fausto",PT,-23.041655,-47.3718,"Elias Fausto",BR,0.2,YES
+602,"El Tajín",PT,20.430176,-97.381256,"Papantla de Olarte",MX,6.1,YES
+607,"Entebbe",PT,0.0611715,32.469856,"Entebbe",UG,1.2,YES
+610,"Erongaricuaro",PT,19.588808,-101.72131,"Pátzcuaro",MX,14.4,YES
+611,"Escandinávia",NO,40.29083,-3.806781,"Fuenlabrada",ES,1.3,YES
+612,"Escárcega",PT,18.579693,-90.76087,"Escárcega",MX,3.6,YES
+621,"Estados Federados da Micronésia",AU,8.606235,151.83275,"Weno",FM,129,NO (review)
+623,"Estiva Gerbi",PT,-22.274271,-46.95233,"Estiva Gerbi",BR,0.8,YES
+625,"Estrada Austral",AR,-33.002216,-71.51905,"Viña del Mar",CL,3.9,YES
+632,"Extremo Oriente",JP,-40.5732,-73.110306,"Osorno",CL,2,YES
+635,"Fatehpur Sikri",PT,27.091166,77.6624,"Fatehpur Sīkri",IN,0.4,YES
+659,"Fortim",PT,-4.451256,-37.798058,"Fortim",BR,0.1,YES
+673,"Fuerteventura",PT,28.400377,-14.004869,"Antigua",ES,2.7,YES
+674,"Fujino",PT,42.9365,141.29509,"Sapporo",JP,15.1,YES
+682,"Gadamés",PT,30.125841,9.490066,"Ghadames",LY,1.3,YES
+683,"Galveston",PT,29.387226,-94.99274,"La Marque",US,2.9,YES
+684,"Gao",EG,16.278812,-0.0412392,"Gao",ML,0.9,YES
+685,"Gaoua",PT,10.330335,-3.179568,"Gaoua",BF,0.3,YES
+687,"Garapan",PT,15.207085,145.72086,"Saipan",MP,3.7,YES
+692,"Gavião Peixoto",PT,-21.837753,-48.49285,"Nova Europa",BR,9.6,YES
+696,"Ghanzi",PT,-21.696812,21.645706,"Ghanzi",BW,0.1,YES
+697,"Gharyan",PT,32.17159,13.021145,"Gharyan",LY,0.1,YES
+698,"Ghat",PT,24.96263,10.179717,"Ghat",LY,0.1,YES
+701,"Goa",PT,15.300454,74.08551,"Curchorem",IN,4.8,YES
+716,"Gray Summit",PT,38.490177,-90.81618,"Pacific",US,6.6,YES
+720,"Guaíra",PT,-24.085192,-54.256752,"Guaíra",BR,1.1,YES
+722,"Gualeguaychú",PT,-33.007893,-58.510986,"Gualeguaychú",AR,0.7,YES
+725,"Guaramiranga",PT,-4.261523,-38.93397,"Guaramiranga",BR,0.2,YES
+736,"Guayaramerín",BR,-10.818915,-65.35505,"Guayaramerín",BO,0.8,YES
+741,"Hakone",PT,35.232365,139.10689,"Odawara",JP,5.4,YES
+747,"Hanga-Roa",PT,-27.148117,-109.427345,"Hanga Roa",CL,0.6,YES
+761,"Hortolândia",PT,-22.862017,-47.216423,"Hortolândia",BR,0.5,YES
+763,"Huatajata",PT,-16.208857,-68.700485,"San Pedro",BO,16.3,YES
+764,"Humahuaca",PT,-23.204027,-65.34878,"Humahuaca",AR,0.3,YES
+770,"Ibitinga",PT,-21.75623,-48.8319,"Ibitinga",BR,0.4,YES
+772,"Icapuí",PT,-4.7158475,-37.353535,"Icapuí",BR,0.4,YES
+773,"Icaraí",PT,-22.9042,-43.1057,"Niterói",BR,2.3,YES
+779,"Iguatu",PT,-24.71704,-53.086555,"Ubiratã",BR,21.6,YES
+781,"Ilha Brava",PT,-18.938555,-42.039837,"Alpercata",BR,7.8,YES
+783,"Ilha da Boa Vista",PT,-8.653101,-39.22397,"Abaré",BR,14.2,YES
+784,"Ilha das Mulheres",MX,-20.115147,-48.34772,"Conceição das Alagoas",BR,22.7,YES
+786,"Ilha de Páscoa",ES,-27.12593,-109.34959,"Hanga Roa",CL,8,YES
+790,"Ilha do Fogo",PT,-17.233202,38.87909,"Micolene",MZ,67.1,NO (review)
+791,"Ilha do Maio",PT,15.139574,-23.21182,"Vila do Maio",CV,0.2,YES
+792,"Ilha do Mel",PT,-25.53453,-48.310745,"Paranaguá",BR,21.6,YES
+793,"Ilha dos Cocos",FR,-23.200516,-44.58118,"Paraty",BR,13.6,YES
+795,"Ilha Kish",PT,26.55778,54.01944,"Kīsh",IR,0,YES
+796,"Ilhas Colombianas",CO,28.136677,-15.43334,"Centro",ES,1.1,YES
+797,"Ilhas de Kerama",PT,48.023914,-4.095044,"Quimper",FR,3.1,YES
+800,"Ilhas Salomão",GB,-8.705394,159.10707,"Buala",SB,82,NO (review)
+819,"Iráklio",PT,35.33908,25.133284,"Irákleion",GR,1.5,YES
+821,"Ischgl",PT,47.012024,10.291317,"Landeck",AT,25.2,YES
+822,"Isfahan",PT,32.670788,51.665,"Isfahan",IR,2.2,YES
+839,"Itapipoca",PT,-3.482383,-39.56556,"Itapipoca",BR,2,YES
+840,"Itapira",PT,-22.436111,-46.821667,"Itapira",BR,0,YES
+843,"Itarema",PT,-2.9224684,-39.91522,"Itarema",BR,0.2,YES
+847,"Itatiba",PT,-23.005554,-46.83977,"Itatiba",BR,0.1,YES
+849,"Itaúna",PT,-20.075556,-44.57639,"Itaúna",BR,0,YES
+852,"Itobi",PT,-21.730852,-46.9743,"Itobi",BR,0.7,YES
+856,"Itupeva",PT,-17.486542,-40.471535,"Medeiros Neto",BR,29.4,YES
+857,"Ituzaingó",PT,-34.65833,-58.667145,"Castelar",AR,2.5,YES
+865,"Jaguariaíva",PT,-24.25897,-49.72015,"Jaguariaíva",BR,2,YES
+867,"Jakar",PT,2.0436838,111.49383,"Sarikei",MY,8.5,YES
+877,"Jarinu",PT,-23.094965,-46.714855,"Jarinu",BR,1.6,YES
+882,"Jijoca de Jericoacoara",PT,-2.8986278,-40.450607,"Jijoca de Jericoacoara",BR,0.4,YES
+884,"Jinja",PT,0.5751567,33.28053,"Kakira",UG,7.5,YES
+891,"Joliet",PT,41.52636,-88.08402,"Joliet",US,0.1,YES
+893,"Jordânia",PT,31.166704,36.941628,"Qurayyat",SA,42.3,YES
+899,"Junín de los Andes",PT,-39.950867,-71.070885,"Junín de los Andes",AR,0.4,YES
+903,"Kabale",PT,-1.3359666,30.036886,"Kabale",UG,11,YES
+904,"Tóquio/Kabukicho",PT,35.694542,139.70271,"Shinjuku",JP,0.6,YES
+907,"Kandahar",PT,31.620573,65.71576,"Kandahār",AF,1,YES
+910,"Kashan",PT,33.98765,51.442886,"Kashan",IR,1.5,YES
+911,"Katmandu",PT,27.708317,85.32058,"Kathmandu",NP,0.7,YES
+914,"Khaling",PT,34.333897,76.97767,"Leh",IN,58.8,NO (review)
+921,"Kolonia",PT,50.938362,6.959974,"Altstadt Nord",DE,0.2,YES
+924,"Koror",PT,7.343275,134.47667,"Koror Town",PW,0.3,YES
+926,"Koure",PT,13.310915,2.57563,"Kollo",NE,25.6,YES
+927,"Kourou",PT,14.485037,-4.9621453,"Ténenkou",ML,5.8,YES
+940,"Laguna Yema",PT,-24.25395,-61.242302,"Ingeniero Guillermo N. Juárez",AR,73.7,NO (review)
+942,"La Libertad",PT,-8,-78.5,"Otuzco",PE,14.4,YES
+945,"Laos",TH,20.345524,100.0838,"Ban Khoan",LA,0.8,YES
+948,"La Peñita de Jaltemba",PT,21.040699,-105.25026,"La Peñita de Jaltemba",MX,0.3,YES
+950,"La Quiaca",PT,-22.104462,-65.596695,"La Quiaca",AR,0,YES
+952,"Las Colimas",PT,34.144413,-117.75502,"La Verne",US,5,YES
+958,"Lázaro Cardenas",PT,17.959476,-102.19866,"Ciudad Lázaro Cárdenas",MX,0.3,YES
+967,"Lethem",BR,3.3749988,-59.795868,"Lethem",GY,0.5,YES
+969,"Lhuentse",PT,27.66453,91.18831,"Lhuentse",BT,0.6,YES
+976,"Linden",PT,33.012352,-94.36547,"Atlanta",US,21.9,YES
+977,"Lindóia",PT,-2.90796,-59.05347,"Itacoatiara",BR,72.5,NO (review)
+986,"Loncopué",PT,-38.073177,-70.61441,"Chos Malal",AR,83,NO (review)
+990,"Loreto",PT,26.00979,-111.34525,"Loreto",MX,0.4,YES
+997,"Louveira",PT,-23.08639,-46.95056,"Louveira",BR,0,YES
+1004,"Luís Correia",PT,-2.8818164,-41.665844,"Luís Correia",BR,0.3,YES
+1028,"Mahebourg",FR,-20.40806,57.7,"Mahébourg",MU,0,YES
+1033,"Malargüe",PT,-35.46838,-69.58473,"San Rafael",AR,148.3,NO (review)
+1039,"Mambucaba",PT,-23.025,-44.5175,"Angra dos Reis",BR,20.5,YES
+1043,"Mandalay (cidade)",PT,21.959682,96.09487,"Mandalay",MM,2,YES
+1052,"Maracanaú",PT,-3.8779438,-38.62477,"Maracanaú",BR,0.2,YES
+1053,"Maradi",PT,13.501206,7.102534,"Maradi",NE,0.2,YES
+1054,"Maranguape",PT,-3.9872894,-38.74877,"Maranguape",BR,12.8,YES
+1057,"Marcote",CH,39.964516,-3.379113,"Ocaña",ES,10.2,YES
+1070,"Mata-Utu",PT,-13.282042,-176.17403,"Mata-Utu",WF,0.1,YES
+1072,"Matina Franca",PT,4.9284043,-52.332,"Cayenne",GF,1.1,YES
+1073,"Matinhos",FR,-25.83219,-48.53966,"Matinhos",BR,0,YES
+1084,"Melekeok",PT,7.4726014,134.75487,"Melekeok Village",PW,13.3,YES
+1085,"Melgaço",PT,42.039192,-8.19663,"Celanova",ES,23.6,YES
+1090,"Meruoca",PT,-3.539021,-40.45461,"Meruoca",BR,0.3,YES
+1093,"Miami Beach",PT,25.79292,-80.1353,"Miami Beach",US,0.6,YES
+1100,"Mingun",PT,22.041794,96.01882,"Mandalay",MM,10,YES
+1110,"Mojave",PT,35.05247,-118.173965,"California City",US,19,YES
+1115,"Mongar",PT,27.2763,91.23753,"Mongar",BT,0.3,YES
+1122,"Monte Mor",PT,-22.945044,-47.312183,"Monte Mor",BR,0.4,YES
+1126,"Monte Saint-Michel",PT,48.635525,-1.5102571,"Avranches",FR,12.5,YES
+1130,"Monywa",PT,22.118217,95.13248,"Monywa",MM,1.1,YES
+1132,"Morretes",PT,-25.47685,-48.83225,"Morretes",BR,0.2,YES
+1135,"Morungaba",PT,-22.88,-46.79167,"Morungaba",BR,0.4,YES
+1138,"Motuca",PT,-21.509586,-48.150383,"Rincão",BR,11.9,YES
+1139,"Mount Olive (Illinois)",PT,39.07222,-89.72717,"Staunton",US,8.7,YES
+1143,"Múrcia (cidade)",PT,37.99238,-1.1305431,"Murcia",ES,0.6,YES
+1152,"Nalut",PT,31.863787,10.98279,"Nālūt",LY,0.5,YES
+1167,"Nay Pyi Taw",PT,19.77533,96.10326,"Nay Pyi Taw",MM,4.4,YES
+1169,"Nazaré Paulista",PT,-23.18193,-46.3993,"Nazaré Paulista",BR,0.4,YES
+1178,"Nicósia (Norte)",PT,35.21165,33.33119,"Ágios Dométios",CY,4.3,YES
+1184,"Nouadhibou",PT,20.912704,-17.05031,"Nouadhibou",MR,3.5,YES
+1188,"Nova Erechim",PT,-26.90277,-52.907127,"Nova Erechim",BR,0.1,YES
+1190,"Nova Odessa",PT,47.310997,31.773973,"Nova Odesa",UA,0.4,YES
+1203,"Novo Laredo",PT,-19.80238,-44.00698,"Ribeirão das Neves",BR,9.2,YES
+1204,"Nuevo Vallarta",PT,20.702757,-105.28851,"Las Jarretaderas",MX,1.9,YES
+1214,"Ocara",PT,-4.4910655,-38.59648,"Ocara",BR,0,YES
+1224,"Oriente Médio",PT,2.5224605,-76.39219,"Silvia",CO,10.4,YES
+1225,"Orizaba",PT,18.849737,-97.106,"Orizaba",MX,0.7,YES
+1236,"Otacílio Costa",PT,-27.48323,-50.119522,"Otacílio Costa",BR,0.2,YES
+1239,"Oualata",PT,17.300474,-7.0258083,"Oualata",MR,0.4,YES
+1261,"Países Bálticos",PT,56.917202,24.225681,"Dreiliņi",LV,3.1,YES
+1262,"Pakwach",PT,2.460898,31.498716,"Pakwach",UG,0.3,YES
+1263,"Palenque",PT,17.453161,-91.812126,"Palenque",MX,19,YES
+1265,"Palestina",DE,-1.631898,-79.92733,"Colimes",EC,13.4,YES
+1267,"Palikir",PT,6.920744,158.16272,"Palikir",FM,0.5,YES
+1268,"Palma de Mallorca",PT,39.56958,2.6500745,"Palma",ES,0,YES
+1273,"Panmunjeom",KR,37.955868,126.67701,"Kaesŏng",KP,10.9,YES
+1275,"Pantanal",BR,-17.675068,-57.455338,"Puerto Quijarro",BO,35.1,YES
+1276,"Papantla",PT,20.44675,-97.32279,"Papantla de Olarte",MX,0.2,YES
+1278,"Paracuru",PT,-3.41436,-39.03003,"Paracuru",BR,0.5,YES
+1279,"Paraguarí",PT,-25.62035,-57.150513,"Paraguarí",PY,0.3,YES
+1281,"Paraipaba",PT,-3.437987,-39.14787,"Paraipaba",BR,0.2,YES
+1289,"Paraúna",PT,-16.949594,-50.4473,"Paraúna",BR,0.2,YES
+1301,"Parque de uKhahlamba Drakensberg",PT,-28.200449,30.15621,"Glencoe",ZA,2.6,YES
+1302,"Parque Estadual da Serra do Tabuleiro",PT,-27.962252,-48.82168,"Paulo Lopes",BR,13.6,YES
+1304,"Parque Estadual de Vila Velha",PT,-25.232994,-50.0117,"Ponta Grossa",BR,21.5,YES
+1312,"Parque Nacional da Floresta de Kibale",PT,0.8,31.06667,"Kibale",UG,0,YES
+1320,"Parque Nacional de Comoé",PT,5.1477404,-3.1658762,"Assinie-Mafia",CI,13.9,YES
+1321,"Parque Nacional de Garamba",PT,12.104069,-86.2905,"Managua",NI,5.4,YES
+1322,"Parque Nacional de Gorilas de Mgahinga",PT,54.84213,-5.11632,"Stranraer",GB,8.8,YES
+1323,"Parque Nacional de Kahuzi-Biega",PT,54.84213,-5.11632,"Stranraer",GB,8.8,YES
+1324,"Parque Nacional de Kakum",PT,12.104069,-86.2905,"Managua",NI,5.4,YES
+1325,"Parque Nacional de Luangwa Sul",PT,54.84213,-5.11632,"Stranraer",GB,8.8,YES
+1326,"Parque Nacional de Manovo-Gounda St. Floris",PT,50.62824,2.57045,"Merville",FR,5.3,YES
+1328,"Parque Nacional de Mole",PT,45.15673,7.16957,"Bussoleno",IT,2.7,YES
+1329,"Parque Nacional de Murchison Falls",PT,2.27653,31.68908,"Pakwach",UG,29.7,YES
+1330,"Parque Nacional de Nahanni",PT,12.104069,-86.2905,"Managua",NI,5.4,YES
+1331,"Parque Nacional de Niokolo-Koba",PT,13.07712,-12.72712,"Youkounkoun",GN,74.3,NO (review)
+1332,"Parque Nacional dos Lagos de Plitvice",HR,46.67196,15.92369,"Apače",SI,3.1,YES
+1333,"Parque Nacional de Queen Elizabeth",PT,52.10377,-106.65574,"Nutana Sector",CA,1.3,YES
+1334,"Parque Nacional de Rwenzori",PT,12.104069,-86.2905,"Managua",NI,5.4,YES
+1335,"Parque Nacional de Salonga",PT,12.104069,-86.2905,"Managua",NI,5.4,YES
+1336,"Parque Nacional de Sete Cidades",PT,-4.0981245,-41.715492,"Piracuruca",BR,18.9,YES
+1337,"Parque Nacional de Simien",PT,12.104069,-86.2905,"Managua",NI,5.4,YES
+1338,"Parque Nacional de Taï",PT,42.57127,0.9599368,"Vielha",ES,19.8,YES
+1339,"Parque Nacional de Tassili n'Ajjer",PT,54.84213,-5.11632,"Stranraer",GB,8.8,YES
+1340,"Parque Nacional de Ubajara",PT,-3.7693393,-40.8879,"Frecheirinha",BR,8,YES
+1341,"Parque Nacional de Virunga",PT,-0.3470599,29.5388,"Lubero",CD,39.4,YES
+1344,"Parque Nacional do Banco de Arguim",PT,54.84213,-5.11632,"Stranraer",GB,8.8,YES
+1347,"Parque Nacional do Lago Malawi",PT,-14.059423,34.887222,"Monkey Bay",MW,4.1,YES
+1348,"Parque Nacional dos Everglades",PT,-23.35102,-51.210014,"Londrina",BR,6.6,YES
+1349,"Parque Nacional do Vale de Kidepo",PT,-22.467604,-44.584522,"Itatiaia",BR,3.8,YES
+1350,"Parque Nacional Impenetrável de Bwindi",PT,-1.08056,29.66139,"Kanungu",UG,19.8,YES
+1351,"Parque Nacional Marinho de St. Anne",PT,41.02503,-87.71392,"Kankakee",US,16.2,YES
+1353,"Parque Nacional W",PT,-28.019934,-58.07309,"Mburucuyá",AR,15.5,YES
+1368,"Parque Provincial dos Dinossauros",PT,-25.336777,-49.442375,"Campo Magro",BR,3.7,YES
+1369,"Parque Transfronteiriço de Ai-Ais/Richtersveld",PT,-28.76823,17.05955,"Aussenkehr",NA,56.8,NO (review)
+1370,"Paso de los Libres",PT,-29.713657,-57.086136,"Paso de los Libres",AR,0.2,YES
+1374,"Pato Branco",PT,-26.229599,-52.671246,"Pato Branco",BR,0.1,YES
+1376,"Patzcuaro",PT,19.51368,-101.60996,"Pátzcuaro",MX,0.1,YES
+1381,"Pedra de Lume (Ilha do Sal)",PT,16.76376,-22.89349,"Espargos",CV,5.5,YES
+1387,"Penha",PT,-26.775417,-48.646526,"Penha",BR,0.7,YES
+1391,"Perito Moreno",US,-46.591587,-70.92552,"Sarmiento",AR,181.6,NO (review)
+1393,"Pérouges",PT,45.903427,5.1794605,"Meximieux",FR,1.6,YES
+1400,"Phuentsholing",PT,26.86396,89.383736,"Phuntsholing",BT,1.4,YES
+1403,"Picos",PT,-10.631535,-39.900948,"Itiúba",BR,8.5,YES
+1404,"Piedade",PT,15.523768,73.898674,"Chimbel",IN,4.3,YES
+1409,"Pinhalzinho",PT,-22.782434,-46.59017,"Pinhalzinho",BR,0.3,YES
+1417,"Pirassununga",PT,-21.998047,-47.428085,"Pirassununga",BR,0.3,YES
+1442,"Port Louis",AU,-20.16194,57.49889,"Port Louis",MU,0,YES
+1476,"Puerto Baquerizo Moreno",PT,-0.902599,-89.61019,"Puerto Baquerizo Moreno",EC,0.1,YES
+1482,"Puerto Montt",PT,-41.471798,-72.93959,"Puerto Montt",CL,0.4,YES
+1483,"Puerto Peñasco",PT,31.317087,-113.53182,"Puerto Peñasco",MX,0.6,YES
+1487,"Puerto Velasco Ibarra",PT,-1.2751142,-90.48654,"Puerto Ayora",EC,62.5,NO (review)
+1488,"Puerto Villamil",PT,-0.9561112,-90.96558,"Puerto Ayora",EC,76.3,NO (review)
+1499,"Quellón",PT,-43.12003,-73.6203,"Quellón",CL,0.4,YES
+1503,"Puerto Quijarro",PT,-19.004408,-57.71571,"Corumbá",BR,6.6,YES
+1507,"Quixadá",PT,-4.965481,-39.01094,"Quixadá",BR,0.8,YES
+1508,"Quixelô",PT,-6.251124,-39.199547,"Quixelô",BR,0.5,YES
+1509,"Quixeramobim",PT,-5.2028627,-39.32996,"Quixeramobim",BR,4.1,YES
+1512,"Rarotonga",PT,-21.236832,-159.77748,"Avarua",CK,3.3,YES
+1518,"Reconquista",PT,-29.144348,-59.643772,"Reconquista",AR,0.9,YES
+1520,"Região Floral do Cabo",PT,-8.28333,-35.03333,"Cabo de Santo Agostinho",BR,0.7,YES
+1527,"Reserva da Natureza do Vallée de Mai",PT,-4.332,55.74007,"Baie Sainte Anne",SC,2,YES
+1528,"Reserva de Caça Ajai",PT,-38.96681,-71.64653,"Cunco",CL,33.5,YES
+1530,"Reserva de Fauna dos Ocapis",PT,1.720928,28.523476,"Wamba",CD,75.6,NO (review)
+1531,"Reserva de Shai Hills",PT,5.90838,0.06144,"Akropong",GH,17.8,YES
+1537,"Reserva Natural das Lagoas de Santo André e de Santa Sancha",PT,45.60634,9.30797,"Villasanta",IT,0,YES
+1538,"Reserva Natural de Aïr e Ténéré",PT,-38.96681,-71.64653,"Cunco",CL,33.5,YES
+1542,"Reserva Natural do Paul de Boquilobo",PT,-24.65379,-50.85033,"Reserva",BR,0.4,YES
+1546,"Reserva Natural Integral do Tsingy de Bemaraha",PT,-18.6667,44.75,"Antsalova",MG,14,YES
+1548,"Resort Disney Tóquio",US,35.6895,139.69171,"Tokyo",JP,0,YES
+1560,"Rinconada",PT,19.354921,-96.567474,"Rinconada",MX,0.2,YES
+1589,"Rota da Seda",CN,57.65,25.75,"Valka",LV,20.8,YES
+1590,"Rota Via da Prata",ES,-19.30722,-48.92417,"Prata",BR,0,YES
+1594,"Rurrenabaque",PE,-14.443749,-67.53118,"Rurrenabaque",BO,0.5,YES
+1596,"Rustemburgo",PT,-25.665655,27.241447,"Rustenburg",ZA,0.2,YES
+1601,"Sagaing (cidade)",PT,21.877422,95.98399,"Sagaing",MM,0.5,YES
+1604,"Saint Martin",BR,30.43798,-88.86809,"Saint Martin",US,0,YES
+1605,"Saipan",PT,15.190983,145.74675,"Saipan",MP,2.5,YES
+1612,"Salto del Guaira",BR,-24.056639,-54.334206,"Salto del Guairá",PY,2.8,YES
+1615,"Salvaterra",PT,39.880413,-6.9120345,"Moraleja",ES,29.9,YES
+1616,"Salzburgo",DE,47.798134,13.04648,"Salzburg",AT,0.2,YES
+1617,"Samdrup Jongkhar",PT,26.79799,91.50423,"Samdrup Jongkhar",BT,0.3,YES
+1619,"San Andrés e Providência",BR,12.583011,-81.69757,"San Andrés",CO,0.5,YES
+1623,"San Antonio de los Cobres",PT,-24.217674,-66.31787,"San Salvador de Jujuy",AR,103.9,NO (review)
+1625,"San Cristóbal de las Casas",PT,16.735376,-92.63873,"San Cristóbal de las Casas",MX,0.6,YES
+1627,"San Fernando del Valle de Catamarca",PT,-28.46888,-65.77907,"Catamarca",AR,0.6,YES
+1629,"San Gimignano",PT,43.4678,11.043212,"Poggibonsi",IT,8.5,YES
+1632,"San José de Mayo",PT,-34.339653,-56.714317,"San José de Mayo",UY,0.1,YES
+1648,"San Marino",IT,43.94586,12.458306,"Valdragone",SM,0.7,YES
+1655,"San Salvador de Jujuy",PT,-24.185257,-65.29948,"San Salvador de Jujuy",AR,1,YES
+1657,"Santa Ana (El Salvador)",PT,13.972109,-89.56053,"Santa Ana",SV,1.8,YES
+1658,"Santa Barbara",PT,-19.959444,-43.41528,"Santa Bárbara",BR,0,YES
+1661,"Santa Cruz das Palmeiras",PT,-21.823475,-47.248024,"Santa Cruz das Palmeiras",BR,0.4,YES
+1691,"Santiago de los Caballeros",PT,19.450848,-70.69474,"Santiago de los Caballeros",DO,0.4,YES
+1697,"Santo Antônio de Posse",PT,-22.60533,-46.919727,"Santo Antônio de Posse",BR,0.1,YES
+1698,"Santo Antônio do Jardim",PT,-22.115854,-46.683952,"Santo Antônio do Jardim",BR,0.1,YES
+1702,"Santo Tomé",PT,0.3389242,6.731303,"São Tomé",ST,0.2,YES
+1703,"Santuário de Fauna de de Agumatsa",PT,-32.97977,-71.26713,"Limache",CL,3.8,YES
+1708,"São Bonifácio",PT,-27.900908,-48.93261,"Paulo Lopes",BR,25.4,YES
+1717,"São Francisco de Itabapoana",PT,-21.453743,-41.145298,"São João da Barra",BR,22.9,YES
+1722,"São Gonçalo do Amarante (Ceará)",PT,-3.6099756,-38.96872,"São Gonçalo do Amarante",BR,0.3,YES
+1731,"São José",PT,-27.615774,-48.627647,"São José",BR,0.1,YES
+1736,"São José do Rio Pardo",PT,-21.595287,-46.887302,"São José do Rio Pardo",BR,0.1,YES
+1747,"São Miguel do Oeste",PT,-26.727898,-53.51767,"São Miguel d'Oeste",BR,0.3,YES
+1762,"São Raimundo Nonato",PT,-1.7079997,-47.50408,"São Miguel do Guamá",BR,9.3,YES
+1765,"São Sebastião da Grama",PT,-21.711885,-46.828415,"São Sebastião da Grama",BR,0.8,YES
+1778,"Sayulita",PT,20.868925,-105.440704,"Bucerías",MX,16.4,YES
+1783,"Seligman",PT,36.5208,-93.939064,"Pea Ridge",US,17.4,YES
+1793,"Seul",PT,37.56668,126.978294,"Seoul",KR,0.1,YES
+1795,"Shahhat",PT,32.808216,21.869684,"Shahhat",LY,0.6,YES
+1796,"Sharm el-Sheikh",PT,27.864443,34.29545,"Sharm el-Sheikh",EG,6.6,YES
+1801,"Sierra Colorada",PT,-40.587585,-67.75685,"Cervantes",AR,173.3,NO (review)
+1802,"Sigave",PT,-14.274337,-178.15456,"Leava",WF,2.2,YES
+1809,"Síria",PT,34.640186,39.04941,"Tadmur",SY,70.6,NO (review)
+1822,"Sombrerete",PT,23.635431,-103.641014,"Sombrerete",MX,0.5,YES
+1825,"Souillac",PT,-20.518724,57.522503,"Souillac",MU,0.6,YES
+1829,"Sri Lanka",PT,7.5554943,80.71378,"Matale",LK,13.9,YES
+1831,"St. Clair",PT,38.059296,-93.79455,"Clinton",US,34.4,YES
+1832,"St. James",PT,48.5232,-1.32375,"Avranches",FR,18.1,YES
+1835,"St. Robert",PT,45.25494,1.2935658,"Terrasson-Lavilledieu",FR,13.9,YES
+1839,"Sul da Ásia",PT,37.46331,126.95012,"Siheungdong",KR,3.7,YES
+1841,"Sumaré",PT,-14.89869,-44.268127,"Itacarambi",BR,29.5,YES
+1844,"Surt",PT,31.205963,16.58362,"Sirte",LY,0.6,YES
+1852,"Tafí del Valle",PT,-26.851974,-65.710815,"Famaillá",AR,38,YES
+1853,"Tafi Viejo",PT,-26.734314,-65.259224,"Tafí Viejo",AR,0.2,YES
+1854,"Tahoua",PT,16.157675,5.328265,"Tchin Tabaradèn",NE,58,NO (review)
+1856,"Taipei",CN,22.279984,114.17371,"Wan Chai",HK,0.2,YES
+1860,"Tambaú",PT,-21.70292,-47.270344,"Tambaú",BR,0.5,YES
+1863,"Tanegashima",PT,30.591848,130.9959,"Nōkan",JP,4.3,YES
+1864,"Tang",PT,38.744743,114.97305,"Dingzhou",CN,25.6,YES
+1865,"Tangamandapio",PT,19.890148,-102.46566,"Tarecuato",MX,5.2,YES
+1871,"Tapiratiba",PT,-21.46824,-46.74932,"Tapiratiba",BR,0.1,YES
+1875,"Tarawa",PT,11.589992,3.9702916,"Dakingari",NG,11.9,YES
+1881,"Tatuí",PT,-23.348986,-47.84902,"Tatuí",BR,1.1,YES
+1888,"Tecuala",PT,22.397861,-105.45724,"Tecuala",MX,0,YES
+1904,"Termas de Rio Hondo",PT,-27.495926,-64.864075,"Termas de Río Hondo",AR,0.5,YES
+1905,"Terra do Fogo",ES,-54.381523,-67.5679,"Río Grande",AR,66.7,NO (review)
+1911,"Tianguá",PT,-3.6583045,-40.960724,"Tianguá",BR,8.9,YES
+1916,"Timbuktu",PT,16.77191,-3.0087273,"Timbuktu",ML,0.2,YES
+1923,"Tobacco Caye",PT,16.898266,-88.061676,"Dangriga",BZ,19.9,YES
+1925,"Tobuna",BR,-26.469713,-53.891476,"San Pedro",AR,27.5,YES
+1926,"Tocuaro",PT,19.53889,-101.69416,"Pátzcuaro",MX,9.3,YES
+1929,"Tolhuin",PT,-54.51135,-67.195404,"Ushuaia",AR,79.4,NO (review)
+1932,"Tongatapu",PT,-21.166706,-175.1982,"Nuku‘alofa",TO,3.3,YES
+1934,"Tóquio/Adachi",PT,35.774605,139.80452,"Umejima",JP,0.6,YES
+1935,"Tóquio/Akasaka",PT,35.67168,139.73563,"Akasaka",JP,0.1,YES
+1936,"Tóquio/Akihabara",PT,35.701893,139.77437,"Akihabara",JP,0.4,YES
+1937,"Tóquio/Arakawa",PT,35.73753,139.78131,"Arakawa",JP,0.1,YES
+1938,"Tóquio/Asakusa",PT,35.717598,139.79756,"Asakusa",JP,0.2,YES
+1939,"Tóquio/Bunkyo",PT,35.708027,139.7523,"Yushima",JP,1.3,YES
+1941,"Tóquio/Chuo",PT,35.670643,139.77199,"Chūō",JP,0.3,YES
+1942,"Tóquio/Ebisu",PT,35.646294,139.71439,"Ebisu",JP,0.1,YES
+1943,"Tóquio/Edogawa",PT,35.70663,139.86868,"Edogawe",JP,1.6,YES
+1944,"Tóquio/Ginza",PT,35.672012,139.76472,"Tsukiji",JP,0.9,YES
+1945,"Tóquio/Harajuku",PT,35.668705,139.70534,"Sendagaya",JP,1,YES
+1946,"Tóquio/Ikebukuro",PT,35.729797,139.71024,"Ikebukuro",JP,0.8,YES
+1947,"Tóquio/Itabashi",PT,35.75128,139.70879,"Ōyama-higashichō",JP,0.3,YES
+1948,"Tóquio/Katsushika",PT,35.743393,139.84735,"Aoto",JP,0.9,YES
+1949,"Tóquio/Kita",PT,35.752884,139.73383,"Kita",JP,0,YES
+1950,"Tóquio/Koto",PT,35.672775,139.81696,"Tōyō",JP,0.4,YES
+1951,"Tóquio/Meguro",PT,35.640835,139.69853,"Nakameguro",JP,0.3,YES
+1952,"Tóquio/Minato",PT,35.65801,139.75151,"Minato City",JP,0,YES
+1953,"Tóquio/Nakano",PT,35.70862,139.66293,"Nakano",JP,0.7,YES
+1954,"Tóquio/Nerima",PT,35.735783,139.65213,"Sakuradai",JP,1.2,YES
+1955,"Tóquio/Odaiba",PT,35.627533,139.77147,"Daiba",JP,0.2,YES
+1956,"Tóquio/Ota",PT,35.561207,139.71584,"Ōta",JP,0,YES
+1957,"Tóquio/Roppongi",PT,35.662457,139.7335,"Roppongi",JP,0.1,YES
+1958,"Tóquio/Ryogoku",PT,35.693657,139.79353,"Higashi-nihombashi",JP,0.7,YES
+1960,"Tóquio/Shibuya",PT,35.663372,139.6965,"Shibuya",JP,1,YES
+1961,"Tóquio/Shimokitazawa",PT,35.66168,139.66634,"Umegaoka",JP,1.3,YES
+1962,"Tóquio/Shinagawa",PT,35.6092,139.7302,"Futaba",JP,0.9,YES
+1964,"Tóquio/Shiodome",PT,35.661438,139.75894,"Minato City",JP,0.8,YES
+1965,"Tóquio/Suginami",PT,35.699493,139.63629,"Asagaya-minami",JP,0.3,YES
+1966,"Tóquio/Sumida",PT,35.71042,139.80174,"Asakusa",JP,0.9,YES
+1967,"Tóquio/Taito",PT,35.71258,139.78008,"Taito",JP,0.6,YES
+1968,"Tóquio/Toshima",PT,35.725914,139.71663,"Zōshigaya",JP,0.7,YES
+1969,"Tóquio/Tsukiji",PT,35.665092,139.77083,"Tsukiji",JP,0.1,YES
+1976,"Tottori",PT,35.355507,133.86786,"Misasa",JP,6.5,YES
+1980,"Trairi",PT,-6.151376,-35.69024,"Serra Caiada",BR,5.8,YES
+1982,"Trashigang",PT,27.331284,91.55206,"Trashigang",BT,0.3,YES
+1983,"Trashi Yangtse",PT,27.6116,91.498,"Trashi Yangtse",BT,0,YES
+1990,"Trilha Inca",PT,-13.184423,-72.588776,"Quillabamba",PE,37.4,YES
+1992,"Trinidad e Tobago",PT,10.746691,-61.084007,"Sangre Grande",TT,18.5,YES
+1993,"Triolet",PT,-20.057438,57.552124,"Triolet",MU,0.2,YES
+1996,"Trongsa",PT,27.501614,90.50759,"Trongsa",BT,0.1,YES
+1997,"Tsodilo",PT,-18.790106,21.747517,"Shakawe",BW,48.3,YES
+1999,"Tuiuti",PT,-22.812975,-46.693645,"Tuiuti",BR,0.4,YES
+2002,"Tupungato",PT,-33.372765,-69.14757,"Mendoza",AR,60.6,NO (review)
+2004,"Tuxtla Gutiérrez",PT,16.753801,-93.11596,"Tuxtla",MX,0,YES
+2010,"Upolu",PT,20.265102,-155.85962,"Waimea",US,33.2,YES
+2012,"Ura",PT,56.4537,50.463,"Malmyzh",RU,15.3,YES
+2014,"Urmia",PT,37.54834,45.06671,"Orūmīyeh",IR,1,YES
+2027,"Vitória (Canadá)",PT,-24.940636,-53.458305,"Cascavel",BR,1.7,YES
+2029,"Vale dos Dinossauros",BR,-25.592503,-54.516903,"Puerto Iguazú",AR,5.7,YES
+2048,"Wamrong",PT,27.136993,91.57124,"Pemagatshel",BT,20,YES
+2053,"Vargem Grande do Sul",PT,-21.831064,-46.893303,"Vargem Grande do Sul",BR,0.1,YES
+2058,"Várzea Paulista",PT,-23.21139,-46.828335,"Várzea Paulista",BR,0,YES
+2060,"Vava'u",PT,-18.623146,-174.00214,"Neiafu",TO,3.7,YES
+2063,"Williamsville",PT,42.963783,-78.737724,"Williamsville",US,0,YES
+2070,"Xanxerê",PT,-26.87486,-52.403595,"Xanxerê",BR,0.2,YES
+2072,"Xcalak",PT,18.270376,-87.83596,"San Pedro",BZ,41.7,YES
+2078,"Vespasiano",PT,-19.694096,-43.91865,"Vespasiano",BR,0.5,YES
+2079,"Viagens de moto",PT,-8.819996,13.244936,"Ingombota",AO,1.8,YES
+2080,"Viajar ecologicamente",PT,44.222813,12.042808,"Forlì",IT,0.2,YES
+2081,"Viajar economicamente",BE,37.369076,-5.999419,"Sevilla",ES,2.8,YES
+2083,"Yacuíba",AR,-22.013683,-63.678112,"Yacuiba",BO,0.3,YES
+2084,"Yadi",PT,13.902016,7.007051,"Tibiri",NE,38,YES
+2085,"Yangon (cidade)",PT,16.80528,96.15611,"Yangon",MM,0,YES
+2092,"Zâmbia",GB,-14.518912,27.558989,"Mumbwa",ZM,74.3,NO (review)
+2094,"Zinacantán",PT,16.760412,-92.721794,"San Cristóbal de las Casas",MX,9.5,YES
+2095,"Zinder",PT,13.806342,8.989166,"Zinder",NE,0.1,YES
+2105,"Vila Nova de Gaia",PT,-10.08248,17.556812,"Cambundi Catembo",AO,1,YES
+2106,"Vila Nova Sintra",PT,11.678638,-15.366787,"Bolama",GW,16.4,YES
+2107,"Vila Real",PT,39.937263,-0.1004465,"Vila-real",ES,0.1,YES
+2113,"Villa Gesell",PT,-37.25566,-56.96794,"Villa Gesell",AR,1,YES
+2115,"Villa La Angostura",PT,-40.76207,-71.64723,"Villa La Angostura",AR,0.1,YES
+2116,"Villa Maria",PT,-32.410625,-63.24358,"Villa María",AR,0.5,YES
+2117,"Villa Mercedes",PT,9.047259,-70.716095,"Timotes",VE,7.7,YES
+2118,"Villazón",US,-22.090727,-65.595695,"Villazón",BO,0.5,YES
+2124,"Victoria",AR,-36.59861,144.67801,"Strathfieldsaye",AU,36.9,YES
+2125,"Viedma",PT,-40.808426,-62.99472,"Viedma",AR,0.9,YES
+2127,"Vietnã",TH,15.926665,107.96509,"Bà Nà",VN,6.6,YES
+2135,"Barra do Chuí",BR,-33.736626,-53.372322,"Chui",UY,9.1,YES
+2155,"Furnas",PT,40.179127,-99.8981,"Holdrege",US,53.4,NO (review)
+2166,"Ulan Bator",PT,47.940975,106.91796,"Ulan Bator",MN,4.5,YES
+2170,"Enviken",US,60.810234,15.754437,"Falun",SE,24,YES
+2171,"Falun",PT,60.607006,15.632306,"Falun",SE,0.5,YES
+2181,"Gaza",PT,31.512867,34.458138,"Gaza",PS,1.5,YES
+2182,"Asten",PT,48.097786,12.723793,"Tittmoning",DE,5.2,YES
+2198,"Lukla",PT,27.688972,86.730675,"Lobuche",NP,29.9,YES
+2199,"Namche Bazaar",PT,27.804167,86.70979,"Lobuche",NP,18.8,YES
+2203,"Berchtesgaden",FR,47.63236,13.00187,"Berchtesgaden",DE,0,YES
+2216,"Caminho da Iluminação",PT,-28.236574,-52.4363,"Passo Fundo",BR,4.1,YES
+2218,"Phong Nha-Ke Bang",PT,17.555265,106.112305,"Xuân Sơn",VN,22.7,YES
+2219,"Zamora",PT,19.982895,-102.28363,"Zamora de Hidalgo",MX,0.3,YES
+2220,"Ávila",PT,40.65648,-4.7002172,"Ávila",ES,0.1,YES
+2225,"Assis (Itália)",IT,-22.66167,-50.41222,"Assis",BR,0,YES
+2227,"Mostardas",PT,-31.10538,-50.91669,"Mostardas",BR,0.2,YES
+2228,"Palmares do Sul",PT,-30.258024,-50.509796,"Palmares do Sul",BR,0,YES
+2234,"Serguiev Possad",PT,56.315327,38.13599,"Sergiyev Posad",RU,0.4,YES
+2237,"Tel Aviv",PT,32.0853,34.781807,"Tel Aviv",IL,0.5,YES
+2243,"Cidades Históricas",PT,38.96727,-5.960276,"Don Benito",ES,8.6,YES
+2245,"Dengue",PT,-14.811026,20.756878,"Lumbala",AO,107.5,NO (review)
+2248,"Nazaré",PT,-13.034558,-39.006252,"Nazaré",BR,0.9,YES
+2249,"Baixa Galileia",PT,-9.103291,-45.410294,"Santa Filomena",BR,56.2,NO (review)
+2255,"Đồng Hới",CN,17.46885,106.62226,"Đồng Hới",VN,0,YES
+2261,"Parque Arqueológico de Angkor",PT,43.566677,-5.705379,"Natahoyo",ES,3.5,YES
+2262,"Lida",PT,31.94976,34.88804,"Lod",IL,0.4,YES
+2264,"Akko",BR,10.28899,10.9732,"Akko",NG,0,YES
+2270,"Alvito",PT,41.688465,13.743264,"Sora",IT,11.3,YES
+2276,"Soure",PT,-0.7275759,-48.51898,"Soure",BR,1.3,YES
+2278,"Alcobaça",PT,-17.521587,-39.19655,"Alcobaça",BR,0.3,YES
+2284,"Lua",PT,44.23073,-0.98509,"Mimizan",FR,19.7,YES
+2286,"Castel Goffredo",PT,45.295277,10.472981,"Castel Goffredo",IT,0.1,YES
+2289,"Cazã",PT,55.794647,49.111504,"Kazan",RU,0.9,YES
+2290,"Jaguaribe",PT,-5.8854585,-38.621296,"Jaguaribe",BR,0.6,YES
+2295,"Roma/Roma Velha",PT,-20.43607,-40.342926,"Vila Velha",BR,12.9,YES
+2301,"Neeritter",NL,51.162827,5.8028293,"Kinrooi",BE,4.7,YES
+2320,"Moxico",PT,-12.72872,21.273764,"Cameia",AO,124.7,NO (review)
+2327,"Belmonte",PT,39.559284,-2.7038116,"Las Pedroñeras",ES,12.4,YES
+2332,"Hoi An",CN,15.87944,108.335,"Hoi An",VN,0,YES
+2333,"Da Nang",CN,16.06778,108.22083,"Da Nang",VN,0,YES
+2337,"Da Lat",FR,11.94646,108.44193,"Ðà Lạt",VN,0,YES
+2340,"Baía de Ha Long",PT,20.908438,107.068275,"Hạ Long",VN,4.7,YES
+2344,"Sa Pa",CN,22.333368,103.84266,"Sa Pa",VN,0.8,YES
+2348,"Necochea",PT,-38.55455,-58.73926,"Necochea",AR,0,YES
+2351,"Vale do Kathmandu",PT,27.70169,85.3206,"Kathmandu",NP,0,YES
+2355,"Tsabong",PT,-26.021746,22.401007,"Tshabong",BW,5.8,YES
+2357,"Francistown",PT,-21.16636,27.502516,"Francistown",BW,0.7,YES
+2358,"Bhaktapur",PT,27.671114,85.42617,"Madhyapur Thimi",NP,4,YES
+2359,"Patan",PT,27.676563,85.316605,"Pātan",NP,0.2,YES
+2370,"Siracusa",US,18.391949,-66.02987,"Eleanor Roosevelt",PR,4.5,YES
+2371,"Sombrio",IT,-29.11389,-49.61667,"Sombrio",BR,0,YES
+2390,"Winchester",PT,51.061275,-1.3131692,"Winchester",GB,0.6,YES
+2403,"Ko Chang",TH,9.832075,98.45298,"Kawthoung",MM,19.8,YES
+2405,"Ko Lipe",TH,6.487591,99.30247,"Padang Mat Sirat",MY,49.9,YES
+2406,"Paro",BT,-4.3840647,138.23149,"Kenyam",ID,29.4,YES
+2411,"Pai",TH,61.207226,34.441944,"Podporozh’ye",RU,36.3,YES
+2412,"Mae Sai",TH,20.439772,99.88297,"Tachilek",MM,0.9,YES
+2423,"Vinh",VN,29.44574,104.414764,"Zigong",CN,36.9,YES
+2427,"Chukhung",PT,27.904665,86.87137,"Lobuche",NP,7.7,YES
+2429,"Praia do Rosa",PT,-28.129454,-48.641697,"Garopaba",BR,12.1,YES
+2447,"Djibuti (cidade)",PT,11.83333,42.5,"Tadjoura",DJ,41.9,YES
+2449,"Adamstown",PT,39.310913,-77.475235,"Ballenger Creek",US,7.7,YES
+2450,"Óbidos (Pará)",PY,-1.901072,-55.520813,"Óbidos",BR,1.9,YES
+2455,"Baucau",PT,-8.478938,126.4527,"Baukau",TL,0.5,YES
+2458,"Vaduz",CH,47.139286,9.522797,"Vaduz",LI,0.3,YES
+2463,"Viana",PT,42.515472,-2.3713436,"Logroño",ES,8.5,YES
+2464,"Rangel",PT,8.254102,-74.497246,"Montecristo",CO,5.5,YES
+2468,"Sri Jayawardenapura Kotte",PT,6.902814,79.907555,"Battaramulla South",LK,1.4,YES
+2473,"Cracóvia/Kazimierz",PT,50.051853,19.944946,"Kraków",PL,1.2,YES
+2482,"Londres/Camden",US,51.539253,-0.142757,"Camden Town",GB,0.2,YES
+2484,"Londres/City of London",PT,51.515617,-0.0919983,"City of London",GB,0.3,YES
+2488,"Disneylândia",PT,-20.18048,-43.9669,"Itabirito",BR,19.1,YES
+2504,"Luang Prabang",PT,19.888744,102.135895,"Luang Prabang",LA,1.8,YES
+2508,"Biguaçu",PT,-27.496107,-48.65411,"Biguaçu",BR,0.3,YES
+2509,"Tijucas",PT,-27.239405,-48.63537,"Tijucas",BR,0.3,YES
+2512,"Macau/Península",CN,22.17576,113.551414,"Zhuojiacun",MO,1.7,YES
+2516,"Pilões",PT,-6.868269,-35.612972,"Pilões",BR,0.4,YES
+2529,"Tourist Drive 33",AU,31.217564,-81.522415,"Dock Junction",US,1.8,YES
+2531,"Telêmaco Borba",PT,-24.328295,-50.6318,"Telêmaco Borba",BR,1.7,YES
+2532,"Sapopema",FR,-23.91083,-50.58028,"Sapopema",BR,0,YES
+2534,"Ribeirão Claro",PT,-23.196049,-49.756832,"Ribeirão Claro",BR,0.2,YES
+2537,"Crawford (Nebraska)",DE,42.686726,-103.41332,"Chadron",US,37.3,YES
+2538,"Khumbu",PT,27.9693,86.82854,"Lobuche",NP,3,YES
+2539,"Thompson",PT,55.743347,-97.863464,"Thompson",CA,0.5,YES
+2542,"Ticino",IT,46.33519,8.75259,"Biasca",CH,16.9,YES
+2543,"Rota Turística Sabor & Aventura",PT,25.95648,-80.13921,"Aventura",US,0,YES
+2544,"Point Roberts",US,48.984703,-123.0678,"Tsawwassen",CA,3.7,YES
+2546,"Loma Plata",PT,-22.38485,-59.83822,"Loma Plata",PY,0.4,YES
+2548,"La Macarena",PT,2.1833827,-73.78579,"Puerto Lleras",CO,102.4,NO (review)
+2582,"Bergen",NO,50.454956,3.951958,"Mons",BE,0.1,YES
+2585,"Kent",US,51.207073,0.7210362,"Ashford",GB,12.6,YES
+2598,"Canton",US,23.128845,113.259,"Guangzhou",CN,1.6,YES
+2618,"Lynn",US,52.75387,0.3954774,"King's Lynn",GB,0.2,YES
+2653,"Birmingham",US,52.4949,-1.851844,"Washwood Heath",GB,1.8,YES
+2664,"Hastings",US,50.8551,0.5821779,"Hastings",GB,0.2,YES
+2711,"Matala",GR,-14.738359,15.028931,"Matala",AO,0.9,YES
+2728,"Cuangar",AO,-17.609768,18.622328,"Nkurenkuru",NA,3.6,YES
+2731,"Dirico",AO,-17.984703,20.776932,"Ndiyona",NA,10.1,YES
+2733,"Rivungo",AO,-16.328007,22.024546,"Senanga",ZM,134.7,NO (review)
+2737,"Cazengo",PT,-9.30815,14.79858,"N'dalatando",AO,12.5,YES
+2751,"Namacunde",AO,-17.304886,15.84221,"Helao Nafidi",NA,11.1,YES
+2771,"Villach",TR,46.61673,13.850027,"Villach-Innere Stadt",AT,0.5,YES
+2772,"Alishan",PT,23.515036,120.80975,"Lugu",TW,26.4,YES
+2773,"Alta Galileia",PT,33,35.5,"Safed",IL,3.9,YES
+2774,"Galileia Ocidental",PT,54.066517,12.119124,"Kröpeliner-Tor-Vorstadt",DE,2.5,YES
+2775,"Mar da Galileia",PT,32.800846,35.588974,"Tiberias",IL,5.4,YES
+2783,"Pakse",TH,15.120146,105.8044,"Pakse",LA,0.6,YES
+2797,"Queimados",PT,-22.715698,-43.555756,"Queimados",BR,0.1,YES
+2806,"Seguro para Viagem",PT,-5.118632,-39.736034,"Boa Viagem",BR,1.1,YES
+2810,"Tour de 2 dias em Melilha",ES,-11.603222,-38.57937,"Sátiro Dias",BR,0.4,YES
+2811,"Alto Jequitibá",PT,-20.423668,-41.966095,"Alto Jequitibá",BR,0.5,YES
+2815,"Ako",JP,32.928173,35.075638,"Acre",IL,0.1,YES
+2817,"Parque Nacional Coiba",PT,7.3727164,-81.71668,"Soná",PA,83.3,NO (review)
+2818,"Aracoiaba",PT,-4.374011,-38.809,"Aracoiaba",BR,0.7,YES
+2819,"Colônia Pimentel",PT,19.21667,-70.16667,"Las Guáranas",DO,5.1,YES
+2823,"Lilongué",PT,-13.987511,33.768143,"Lilongwe",MW,3.1,YES
+2828,"Weston (Florida)",PT,26.10034,-80.39951,"Weston",US,0,YES
+2829,"Parkland (Flórida)",PT,26.31008,-80.23727,"Parkland",US,0,YES
+2830,"Nogales (México)",MX,31.328506,-110.945045,"Nogales",US,1.7,YES
+2831,"Davie",PT,35.937515,-80.54649,"Mocksville",US,5,YES
+2834,"Rfnmgf",PT,-25.605476,-54.576057,"Puerto Iguazú",AR,0.8,YES
+2876,"Abkhazia",RU,43.150024,41.22998,"Sokhumi",GE,25.2,YES
+2882,"Abu Simbel",EG,22.360964,31.617912,"Wadi Halfa",SD,67.8,NO (review)
+2884,"Abydos",EG,40.194298,26.411268,"Çanakkale",TR,4.3,YES
+2909,"Ad Dakhla",MA,23.694067,-15.943128,"Dakhla",EH,1.8,YES
+2938,"Agios Ioannis",GR,35.074825,33.17812,"Tséri",CY,13.2,YES
+2946,"Agua Prieta",US,31.326748,-109.54635,"Agua Prieta",MX,0.6,YES
+2948,"Aguas Calientes",PE,-24.584251,-64.92321,"San Pedro de Jujuy",AR,39.7,YES
+2957,"Ai-Ais Richtersveld Transfrontier Park",ZA,39.11251,-100.35875,"Colby",US,67.5,NO (review)
+2980,"Oslo region",NO,-27.237926,31.64171,"Hluti",SZ,5.7,YES
+2985,"Ako",JP,32.928173,35.075638,"Acre",IL,0.1,YES
+2995,"Akyaka",TR,40.740013,43.62381,"Azatan",AM,17.3,YES
+3016,"Alba County",RO,32.792942,-95.63441,"Lindale",US,37.3,YES
+3024,"Albany (Western Australia)",US,-34.55003,117.55918,"Albany",AU,60.7,NO (review)
+3045,"Alderney",FR,49.716892,-2.1971693,"St Anne",GG,0.8,YES
+3049,"Alençon",CN,48.43476,0.09311,"Alençon",FR,0,YES
+3050,"Aleppo",SY,39.823967,-80.44618,"Moundsville",US,27.5,YES
+3054,"Alexander Bay",ZA,-28.594788,16.482647,"Oranjemund",NA,7.2,YES
+3056,"Alexandria",RO,38.80511,-77.04702,"Alexandria",US,0,YES
+3107,"Mukalla",IN,14.54248,49.12424,"Mukalla",YE,0,YES
+3113,"Along the Grand Canal",CN,33.60669,-117.88922,"Newport Beach",US,3.9,YES
+3126,"Skiing and snowboarding",AU,44.509754,-87.94832,"Green Bay",US,5.8,YES
+3129,"Alsace",FR,33.982155,-118.41228,"Ladera Heights",US,3.7,YES
+3132,"Alta",NO,42.67369,-95.30399,"Storm Lake",US,8.5,YES
+3151,"Alushta",US,44.677113,34.40954,"Alushta",UA,0,YES
+3160,"Amalfi",IT,6.91016,-75.07764,"Amalfi",CO,0,YES
+3161,"Amalfi Coast",IT,-31.912083,141.46983,"Broken Hill",AU,6.2,YES
+3178,"Ambato",EC,-18.598822,47.49461,"Sadabe",MG,22,YES
+3180,"Amber Road",IT,37.008892,-81.27254,"Wytheville",US,18,YES
+3191,"Amelia Island",ES,30.607738,-81.46009,"Fernandina Beach",US,6.9,YES
+3194,"American Samoa",US,-14.297124,-170.71315,"Pago Pago",AS,2.4,YES
+3220,"Amsterdam/Canal District",NL,44.79532,7.99373,"Alba",IT,11.1,YES
+3227,"Amsterdam/West",NL,5.5,10.66667,"Foumbot",CM,3.9,YES
+3228,"Amur Oblast",JP,18.79284,78.27666,"Āmūr",IN,0,YES
+3230,"Anaconda",BR,46.12854,-112.94226,"Anaconda",US,0,YES
+3252,"Andalusia",ES,31.30808,-86.48243,"Andalusia",US,0,YES
+3268,"Aner Dam Wildlife Sanctuary",IN,32.90874,-97.58419,"Azle",US,3.9,YES
+3271,"Angeles",KR,-37.46973,-72.35366,"Los Ángeles",CL,0,YES
+3273,"Angel Fire",MX,36.39309,-105.28501,"Taos",US,25.8,YES
+3277,"Angle Inlet",US,49.34302,-95.06367,"Kenora",CA,62.8,NO (review)
+3279,"Angola (Indiana)",US,-8.810851,13.233977,"Ingombota",AO,1,YES
+3291,"Anlong Veng",TH,14.233174,104.0812,"Anlong Veaeng",KH,0.1,YES
+3300,"Annobón",PT,-1.434384,5.6374235,"Aual",GQ,1.7,YES
+3318,"Antioquia",CO,36.203655,36.163765,"Antakya",TR,0.7,YES
+3359,"Apure",CO,7.0473175,-68.798294,"Elorza",VE,77.2,NO (review)
+3397,"Arctic",US,44.87482,25.513878,"Văcăreşti",RO,3.7,YES
+3422,"Arisaig",GB,45.760136,-62.162556,"Antigonish",CA,20.4,YES
+3424,"Arizona",MX,34.395344,-111.763275,"Camp Verde",US,20.5,YES
+3437,"Armagh",IE,54.348198,-6.654043,"Armagh",GB,0.8,YES
+3459,"Artigas",BR,-30.40431,-56.46926,"Artigas",UY,0,YES
+3462,"Aruba",NL,12.501363,-69.961845,"Santa Cruz",AW,2.3,YES
+3475,"Ascension",PT,-7.942,-14.357895,"Georgetown",SH,6.1,YES
+3492,"Ashkelon",MA,31.66532,34.565044,"Ashkelon",IL,0.8,YES
+3511,"Asmat",ID,16.16879,38.0741,"Keren",ER,59.3,NO (review)
+3520,"Astana",KZ,1.5636353,110.34605,"Kuching",MY,2.1,YES
+3530,"Atar",FR,20.51875,-13.04637,"Atar",MR,0,YES
+3532,"A Taste of Coastal Texas",MX,31.25044,-99.25061,"Brady",US,15.1,YES
+3548,"Atlanta/East",US,19.448778,72.811295,"Virār",IN,0.8,YES
+3550,"Atlanta/South",US,11.578307,-84.01396,"Nueva Guinea",NI,49.7,YES
+3551,"Atlanta/West",US,19.448778,72.811295,"Virār",IN,0.8,YES
+3559,"Atsugi",US,35.442966,139.36252,"Atsugi",JP,0.6,YES
+3582,"Auli",IN,48.54324,34.45467,"Dniprovske",UA,6,YES
+3584,"Aure",NO,49.27385,4.634843,"Mourmelon-le-Grand",FR,25.2,YES
+3593,"Auschwitz-Birkenau",PL,49.5625,8.70694,"Birkenau",DE,0,YES
+3604,"Austin/UT and the Drag",US,47.01667,23.4,"Baciu",RO,25.7,YES
+3624,"Avon (Connecticut)",IT,48.40219,2.72022,"Avon",FR,0,YES
+3641,"Ayia Napa",ES,34.989323,33.996204,"Paralímni",CY,5.7,YES
+3658,"Babakale",TR,39.479736,26.064867,"Kalloní",GR,30,YES
+3668,"Bac Ha",CN,22.537756,104.29156,"Si Ma Cai",VN,17.5,YES
+3677,"Bad Bentheim",NL,52.307034,7.1161823,"Bad Bentheim",DE,2.9,YES
+3703,"Baekdu Mountains",CN,36.280052,128.04341,"Sangju",KR,18.3,YES
+3722,"Bahawalpur",PK,31.029535,75.00919,"Zira",IN,7,YES
+3739,"Hamilton Parish",CA,32.34221,-64.73019,"Hamilton Parish",BM,0,YES
+3744,"Baiona",ES,43.494514,-1.4736657,"Bayonne",FR,0.2,YES
+3750,"Baja Peninsula",MX,-13.89214,-38.951336,"Camamu",BR,17.4,YES
+3752,"Baja California Sur",US,25.5818,-111.57062,"Ciudad Insurgentes",MX,40.9,YES
+3754,"Bajgiran",IR,37.621933,58.41827,"Änew",TM,30.8,YES
+3761,"Bakhchysarai",TR,44.745197,33.84873,"Bakhchysaray",UA,1.3,YES
+3766,"Baku Region",TR,4.970179,-2.5014594,"Esim",GH,31,YES
+3772,"Balboa",US,42.71017,-6.9147205,"Cacabelos",ES,19.8,YES
+3776,"Balestrand",DE,61.209618,6.536083,"Hermansverk",NO,17.1,YES
+3780,"Bali District",CN,25.14569,121.40351,"Danshui",TW,4.9,YES
+3786,"Balkans",RO,41.778503,23.814676,"Gotse Delchev",BG,24.5,YES
+3795,"Ballycastle",IE,55.200687,-6.250282,"Ballycastle",GB,0.6,YES
+3796,"Ballymena",IE,54.866295,-6.2760158,"Ballymena",GB,0.3,YES
+3799,"Ballyshannon",GB,54.50198,-8.189766,"Sligo",IE,31.5,YES
+3803,"Balta",UA,60.75019,-0.7888873,"Lerwick",GB,69.2,NO (review)
+3826,"Banat",RO,45.517746,-87.69762,"Kingsford",US,42.4,YES
+3841,"Bandel",PT,22.922638,88.38774,"Hugli",IN,1.8,YES
+3842,"Bandelier National Monument",MX,35.7789,-106.33176,"Los Alamos",US,12.3,YES
+3852,"Banff National Park",US,51.488132,-115.93805,"Banff",CA,43.1,YES
+3861,"Bangkok/Khao San Road",TH,53.35222,-7.20167,"Edenderry",IE,10.3,YES
+3873,"Bangkok to Ho Chi Minh City overland",JP,38.70116,-90.36234,"Overland",US,0,YES
+3875,"Bangor (Northern Ireland)",IE,54.662594,-5.6679125,"Bangor",GB,0.2,YES
+3883,"Bangui",CF,4.3635116,18.583591,"Zongo",CD,2.6,YES
+3891,"Banlung",VN,13.741475,106.987366,"Banlung",KH,0.2,YES
+3892,"Ban Nahin",VN,18.242395,104.2128,"Seka",TH,44.3,YES
+3938,"Barelang Islands",ID,22.26382,113.96038,"San Tung Chung Hang",HK,2.4,YES
+3939,"Barentsburg",NO,78.06536,14.2172365,"Longyearbyen",SJ,37.1,YES
+3944,"Barkly West",GB,-28.53537,24.52151,"Barkly West",ZA,0,YES
+3950,"Barnesville (Ohio)",BR,33.05457,-84.15575,"Barnesville",US,0,YES
+3956,"Barra",GB,-11.08944,-43.14167,"Barra",BR,0,YES
+3975,"Basaseachic Falls National Park",MX,-44.791634,167.7542,"Queenstown",NZ,76.3,NO (review)
+3983,"Basra",IQ,17.395979,43.10557,"Fayfā’",SA,13.3,YES
+3990,"Bataan",CN,14.643603,120.46576,"Balanga",PH,8.4,YES
+4003,"Bathurst (Eastern Cape)",ZA,47.61814,-65.65112,"Bathurst",CA,0,YES
+4004,"Bathurst (New Brunswick)",GB,-33.41665,149.5806,"Bathurst",AU,0,YES
+4005,"Bathurst (New South Wales)",GB,-33.41665,149.5806,"Bathurst",AU,0,YES
+4066,"Beaudry Provincial Park",BR,49.86169,-97.477196,"Winnipeg",CA,23.8,YES
+4080,"Beaver Creek",CA,39.70923,-84.06327,"Beavercreek",US,0,YES
+4085,"Bechar",MA,31.616312,-2.21841,"Béchar",DZ,0.2,YES
+4091,"Bedford (Indiana)",US,52.13638,-0.4675041,"Bedford",GB,0.2,YES
+4112,"Beijing/Northern Suburbs",CN,-33.84133,151.1705,"Greenwich",AU,1.2,YES
+4116,"Beijing/Southern Suburbs",CN,-33.98333,18.475,"Claremont",ZA,0.9,YES
+4124,"Beirut/Downtown",LB,-27.59608,-48.553425,"Florianópolis",BR,0.4,YES
+4129,"Beirut/Verdun",LB,49.16667,5.38333,"Verdun",FR,0.8,YES
+4136,"Belcoo",IE,54.29667,-7.871408,"Enniskillen",GB,15.9,YES
+4138,"Belek",TR,39.938534,53.847305,"Jebel",TM,47.1,YES
+4139,"Belen",MX,52.517387,13.395131,"Mitte",DE,0.7,YES
+4148,"Belgrave",AU,52.65,-1.11667,"Belgrave",GB,0,YES
+4174,"Belogorsk",RU,45.058437,34.59496,"Bilohirsk",UA,0.7,YES
+4176,"Belo Horizonte",BR,-11.916575,16.905655,"Cunhinga",AO,37.6,YES
+4179,"Belturbet",GB,54.10074,-7.4440417,"Cavan",IE,13.4,YES
+4190,"Bendery",UA,46.82182,29.48192,"Bender",MD,1.2,YES
+4230,"Bergen",NO,50.454956,3.951958,"Mons",BE,0.1,YES
+4250,"Berlin/East Central",DE,1.305873,103.77463,"Dover",SG,0.6,YES
+4253,"Bermuda",IE,32.304028,-64.75631,"Devonshire Parish",BM,0.2,YES
+4254,"Bernal",MX,-34.711445,-58.28128,"Quilmes",AR,2.6,YES
+4260,"Beroun",DE,49.964027,14.073391,"Beroun",CZ,0.1,YES
+4285,"Bethlehem (Pennsylvania)",DE,40.617893,-75.378654,"Bethlehem",US,1.1,YES
+4287,"Bethuadahari Wildlife Sanctuary",IN,32.90874,-97.58419,"Azle",US,3.9,YES
+4288,"Betong",TH,1.4115918,111.5281,"Betong",MY,1.8,YES
+4290,"Bettendorf",US,47.585247,7.277087,"Altkirch",FR,5.2,YES
+4301,"Beypore Beach",IN,46.91807,-104.00437,"Glendive",US,57.6,NO (review)
+4324,"Bhutan",IN,27.549511,90.511925,"Trongsa",BT,5.2,YES
+4331,"Bicaz",GB,46.91123,26.090347,"Bicaz",RO,1.9,YES
+4352,"Big Pine Key",BR,24.692642,-81.37258,"Marathon",US,28.6,YES
+4360,"Australia's big things",AU,52.224327,20.949629,"Wola",PL,1.4,YES
+4361,"Bigul",IN,-6.9153614,107.59824,"Bandung",ID,1.2,YES
+4363,"Big White",CA,45.764645,4.8281016,"Lyon 05",FR,0.4,YES
+4391,"Bintan Resorts",SG,-4.518894,140.55768,"Tabubil",PG,112.2,NO (review)
+4396,"Bioko",FR,-5.875043,143.40898,"Mendi",PG,40.8,YES
+4400,"Birgunj",IN,27.01352,84.87638,"Birgañj",NP,0.6,YES
+4403,"Birmingham",US,52.4949,-1.851844,"Washwood Heath",GB,1.8,YES
+4406,"Birr",IE,47.61396,6.78557,"Héricourt",FR,4.9,YES
+4437,"Black Point and Pine Point",AU,46.97774,-95.38364,"Detroit Lakes",US,39.4,YES
+4449,"Blaine",CA,45.160797,-93.23495,"Blaine",US,0,YES
+4493,"Blueskin Bay",NZ,38.41409,14.04068,"Cefalù",IT,41.8,YES
+4497,"Blumenau",BR,54.19367,19.58983,"Elbląg",PL,12.7,YES
+4519,"Bodh Gaya",JP,24.69794,84.99213,"Bodh Gaya",IN,0.5,YES
+4532,"Bohemian Paradise",CZ,11.932606,-85.94911,"Granada",NI,0.5,YES
+4534,"Bohuslän",NO,58.23333,11.8,"Uddevalla",SE,15.2,YES
+4537,"Boise City",MX,43.616615,-116.20089,"Boise",US,0.4,YES
+4541,"Bokaro Steel City",IN,40.62788,-75.32768,"Middletown",US,1.8,YES
+4543,"Bol",HR,-17.740334,-62.93384,"San Julian",BO,8.6,YES
+4560,"Bonaire",NL,32.543842,-83.59602,"Warner Robins",US,8.5,YES
+4590,"Boring",BR,45.432663,-122.36951,"Damascus",US,7.2,YES
+4602,"Bosanska Krajina",HR,45.05972,17.050463,"Gradiška",BA,18.6,YES
+4608,"Boston (England)",US,52.977657,-0.0237985,"Boston",GB,0.2,YES
+4616,"Boston/North End",US,52.9556,-0.1677266,"Boston",GB,9.7,YES
+4627,"Kathmandu/East",NP,-34.831726,138.68472,"Modbury",AU,0.2,YES
+4628,"Bougainville",AU,49.869915,2.043234,"Amiens",FR,18.7,YES
+4642,"Bovec",IT,46.338585,13.552419,"Bovec",SI,0.1,YES
+4655,"Boyle",IE,54.59083,-112.809166,"Fort Saskatchewan",CA,102.7,NO (review)
+4657,"Bozel",IT,45.442383,6.64694,"Bourg-Saint-Maurice",FR,21.4,YES
+4659,"Bra",IT,-15.793987,-47.8828,"Plano Piloto",BR,0,YES
+4660,"Brač",HR,43.472027,5.9534993,"Saint-Maximin-la-Sainte-Baume",FR,7.9,YES
+4687,"Brandenburg",DE,37.99896,-86.16941,"Fort Knox",US,21.7,YES
+4739,"Briarcliff Manor",IE,41.145653,-73.823746,"Briarcliff Manor",US,0,YES
+4766,"Brighton Seminole Indian Reservation",US,45.26545,-67.61208,"Eastern Charlotte",CA,66.5,NO (review)
+4777,"Bristol-Norfolk",GB,36.84681,-76.28522,"Norfolk",US,0,YES
+4794,"Brockville",US,44.60392,-75.70168,"Brockville",CA,1.8,YES
+4828,"Brown County State Park",TR,39.145573,-86.22602,"Bloomington",US,26,YES
+4829,"Brownfield",MX,33.181168,-102.27424,"Brownfield",US,0,YES
+4843,"Brunei",CN,4.4137154,114.56539,"Liang",BN,30.3,YES
+4883,"Buenos Aires (province)",AR,-9.122116,-78.530975,"Chimbote",PE,8.7,YES
+4894,"Bukit Merah",BR,1.2820143,103.81859,"Bukit Merah Estate",SG,0.6,YES
+4896,"Bukit Peninsula",ID,41.24117,-81.55262,"Macedonia",US,8.9,YES
+4898,"Bukit Tinggi",MY,-0.2436511,112.70704,"Sintang",ID,138.6,NO (review)
+4910,"Bundang",KR,9.13333,12.95,"Tchéboa",CM,28.3,YES
+4932,"Burley (England)",FR,50.8266,-1.70164,"Ringwood",GB,6.5,YES
+4942,"Burlington County",BR,39.93254,-74.722664,"Vincentown",US,2.2,YES
+4943,"Burma Road",CN,-28.954975,115.03724,"Geraldton",AU,45.6,YES
+4957,"Buru Island",IN,-3.4591432,126.65623,"Namrole",ID,43.7,YES
+4985,"Bylakuppe",BR,12.429251,75.995346,"Kushālnagar",IN,5.1,YES
+4993,"Åland",FI,60.151596,20.08803,"Ytterby",AX,4.3,YES
+4996,"Åndalsnes and Romsdal valley",NO,32.81874,-85.17939,"Valley",US,0,YES
+5014,"Ölgii",CN,48.96816,89.962105,"Ölgii",MN,0,YES
+5023,"Ústí nad Orlicí District",PL,50,16.53333,"Letohrad",CZ,4.7,YES
+5036,"Świeradów-Zdrój",CZ,50.90934,15.333216,"Gryfów Śląski",PL,14.8,YES
+5038,"Şirince",GB,37.942352,27.432835,"Selçuk",TR,5.7,YES
+5062,"Cacheu",PT,12.274246,-16.16489,"Cacheu",GW,0,YES
+5080,"Cahokia Mounds State Historic Site",BR,38.652115,-90.064674,"Collinsville",US,7.2,YES
+5081,"Songo",ZA,-7.3530135,14.847362,"Songo",AO,0.2,YES
+5086,"Cairo",EG,30.877333,-84.20794,"Cairo",US,0.6,YES
+5091,"Cairo/Garden City",EG,40.72677,-73.6343,"Garden City",US,0,YES
+5094,"Cairo/East",EG,27.9532,-82.44859,"Tampa",US,1.2,YES
+5098,"Cai Rong",VN,22.327127,114.21912,"Choi Wan Estate (I & II)",HK,0.9,YES
+5108,"Calais (Maine)",US,45.18902,-67.27814,"Eastern Charlotte",CA,39.1,YES
+5128,"Calexico",MX,32.671314,-115.492714,"Calexico",US,1,YES
+5144,"Calvert City",CN,37.03339,-88.35004,"Paducah",US,22.9,YES
+5169,"Caminha",PT,41.87576,-8.838838,"O Rosal",ES,6.6,YES
+5170,"French Way",ES,37.703915,-121.44583,"Tracy",US,4.4,YES
+5174,"Campbellsville",BR,37.3434,-85.3419,"Campbellsville",US,0,YES
+5179,"Campeche (state)",MX,10.962301,-68.46193,"Tocuyo de La Costa",VE,12.6,YES
+5185,"Campobello Island",US,44.89385,-66.91937,"Eastern Charlotte",CA,25.2,YES
+5187,"Campo Largo",BR,-26.800362,-60.83908,"Campo Largo",AR,0,YES
+5195,"Canadian",BR,35.91201,-100.3839,"Perryton",US,66,NO (review)
+5210,"Canillo",FR,42.56683,1.5977647,"Canillo",AD,0.1,YES
+5214,"Canna",GB,43.55152,7.0134416,"Cannes",FR,0.1,YES
+5224,"Canowindra",AU,57.3886,-6.1938,"Fort William",GB,91.2,NO (review)
+5232,"Cantonment",US,23.172075,80.01837,"Mānegaon",IN,3.8,YES
+5233,"Canyon",MX,34.978985,-101.92819,"Canyon",US,0.9,YES
+5235,"Canyon de Guadalupe",MX,16.208658,-61.439903,"Le Gosier",GP,5.7,YES
+5240,"Cao Bang",CN,22.742693,106.106094,"Thị Trấn Nước Hai",VN,4.8,YES
+5255,"Cape Elizabeth",BR,43.59644,-70.22848,"South Portland",US,5.1,YES
+5278,"Caprock Canyons State Park",TR,34.410244,-101.05322,"Plainview",US,65.1,NO (review)
+5280,"Captiva Island",MX,26.527578,-82.19482,"Sanibel",US,19.3,YES
+5281,"Capurganá",CO,8.6366,-77.34719,"Unión Chocó",PA,64.8,NO (review)
+5292,"Carbonear",PT,47.733124,-53.23662,"Bay Roberts",CA,15,YES
+5296,"Cardenás",MX,42.37384,-2.7660403,"Nájera",ES,5.8,YES
+5300,"Cardston",US,49.200115,-113.316574,"Lethbridge",CA,66.2,NO (review)
+5325,"Carnarvon",AU,53.139435,-4.276975,"Caernarfon",GB,0.5,YES
+5327,"Carneys Point",IT,39.71082,-75.46755,"Carneys Point",US,0.2,YES
+5334,"Carpinteria",ES,34.398884,-119.518456,"Carpinteria",US,0,YES
+5339,"Carrickfergus",IE,54.713615,-5.807311,"Carrickfergus",GB,0.3,YES
+5367,"Casino",AU,-0.2544862,35.738647,"Molo",KE,1,YES
+5373,"Cassis",FR,18.61571,-72.07461,"Thomazeau",HT,4.6,YES
+5391,"Castile and León",PT,41.55005,-5.13874,"Tordesillas",ES,12.6,YES
+5401,"Castletownshend",IE,37.151215,-8.228189,"Ferreiras",PT,2.6,YES
+5422,"Catoosa",MX,38.680935,-9.330173,"Carcavelos",PT,1.3,YES
+5423,"Catron County",MX,33.902695,-108.38008,"Silver City",US,126.3,NO (review)
+5428,"Cave City",NZ,37.18962,-82.06933,"Richlands",US,26.7,YES
+5445,"Călărași",GB,44.20203,27.333817,"Călăraşi",RO,1.7,YES
+5454,"Cedar Point",BR,41.263092,-89.12564,"Peru",US,7.2,YES
+5462,"Center (North Dakota)",BR,47.116386,-101.29959,"Mandan",US,44.8,YES
+5491,"Central Laos",TH,37.0903,-8.249084,"Albufeira",PT,0.3,YES
+5494,"Central Newfoundland",CA,37.098404,-8.369872,"Armação de Pêra",PT,1.2,YES
+5500,"Central Slovakia",PL,48.833565,19.47251,"Brezno",SK,12.4,YES
+5504,"Central Ukraine",UA,37.08862,-8.234216,"Albufeira",PT,1.4,YES
+5512,"Cerbère",ES,42.441296,3.1646953,"Banyuls de la Marenda",FR,5.6,YES
+5527,"Chałupy",PL,41.726814,-8.162931,"Póvoa de Lanhoso",PT,19,YES
+5554,"Chambers Pillar Historical Reserve",AU,41.75703,-8.58207,"Ponte de Lima",PT,1.1,YES
+5558,"Chàm Islands",VN,41.75703,-8.58207,"Ponte de Lima",PT,1.1,YES
+5574,"Changle",GB,25.96604,119.51856,"Houyu",CN,10.5,YES
+5603,"Charleville",AU,52.354645,-8.682883,"Mallow",IE,24.8,YES
+5604,"Charlevoix",CA,45.31765,-85.25835,"Bay Harbor",US,14.7,YES
+5623,"Charm",MX,41.16341,-8.63174,"Senhora do Porto",PT,0.4,YES
+5631,"Chatham Islands",NZ,22.42446,31.82595,"Wadi Halfa",SD,84.1,NO (review)
+5655,"Chedworth",GB,37.09014,-8.678213,"Porto de Mós",PT,0.7,YES
+5686,"Cherry",PE,29.006622,-13.484461,"Costa Teguise",ES,1.7,YES
+5780,"Chiloé National Park",CL,38.6783,0.08935,"Calp",ES,5.4,YES
+5784,"Chimayó",MX,40.343895,-8.595845,"Cantanhede",PT,0.3,YES
+5807,"Chi Phat",TH,38.680935,-9.330173,"Carcavelos",PT,1.3,YES
+5812,"Chiran",JP,32.026634,76.39148,"Nagrota Bagwān",IN,9.1,YES
+5825,"Chiusi",IT,43.76798,12.293714,"Poggio di Chiesanuova",SM,18.3,YES
+5839,"Chongjin",KR,41.78325,129.82066,"Chongjin",KP,4,YES
+5843,"Choquequirao",PE,37.0903,-8.249084,"Albufeira",PT,0.3,YES
+5853,"Christmas Island",GB,-10.483777,105.64723,"Flying Fish Cove",CX,7.7,YES
+5856,"Chugoku 33 Kannon Temple Pilgrimage",JP,38.47411,-8.819812,"Setúbal",PT,8.2,YES
+5869,"Chuuk",JP,8.606235,151.83275,"Weno",FM,129,NO (review)
+5871,"Chuy",PT,-33.693794,-53.456112,"Chuí",BR,0.3,YES
+5893,"City of Commerce",AU,34.00057,-118.15979,"Commerce",US,0,YES
+5975,"Clonmacnoise",IE,37.90133,-8.686923,"Santiago do Cacém",PT,12.9,YES
+5977,"Cloudcroft",MX,32.957664,-105.74272,"Alamogordo",US,21.3,YES
+5987,"Coal Region",CH,53.414238,-1.4137819,"Burngreave",GB,3.8,YES
+5991,"Coastal Georgia",BR,34.696815,-84.738976,"Dalton",US,22.6,YES
+6004,"Cochamó Valley",CL,-41.380802,-72.07148,"San Carlos de Bariloche",AR,68.9,NO (review)
+6015,"Coffin Bay",AU,41.79211,-6.7673373,"Bragança",PT,1.8,YES
+6021,"Cojedes",PT,9.333664,-68.350365,"Las Vegas",VE,38.1,YES
+6046,"Collingwood (New Zealand)",NZ,51.670963,-4.702831,"Pembroke",GB,14.5,YES
+6060,"Nueva Helvecia",CH,-34.28497,-57.233673,"Nueva Helvecia",UY,1.7,YES
+6102,"Comoros",FR,-12.204517,44.283295,"Sima",KM,1.2,YES
+6141,"Cookstown",IE,54.643673,-6.741601,"Cookstown",GB,0.3,YES
+6154,"Copacabana",BR,6.3461046,-75.508026,"Copacabana",CO,0.1,YES
+6155,"Copán Ruinas",MX,14.838634,-89.156006,"Copán Ruinas",HN,0.1,YES
+6179,"Jim Corbett National Park",IN,37.63574,-8.893514,"Odemira",PT,22.7,YES
+6207,"Coromandel",NZ,-18.47333,-47.20028,"Coromandel",BR,0,YES
+6231,"Costa Brava",ES,-34.774414,-59.69925,"Mercedes",AR,28.1,YES
+6253,"Courmayeur",IT,45.831654,6.9461565,"Chamonix-Mont-Blanc",FR,11.8,YES
+6271,"Cradle of Humankind",ZA,41.15097,-8.621186,"Porto",PT,0.9,YES
+6306,"Croatia",HR,45.471962,14.706504,"Osilnica",SI,6.4,YES
+6344,"Cuero",TR,29.093803,-97.290054,"Cuero",US,0.1,YES
+6346,"Culebra",PR,37.089146,-8.248596,"Albufeira",PT,0.2,YES
+6371,"Cut Bank",US,48.63304,-112.326164,"Coaldale",CA,122.4,NO (review)
+6375,"Cuyahoga County",TR,41.430134,-81.69056,"Brooklyn",US,3.9,YES
+6377,"Cuyahoga Valley National Park",MX,37.209328,-8.435604,"Silves",PT,2.2,YES
+6382,"Cygnet",AU,41.24005,-83.64326,"Bowling Green",US,15,YES
+6384,"Cyprus",TR,34.917416,32.889904,"Léfka",CY,21.9,YES
+6391,"Dabu",CN,5.323999,-4.3722982,"Dabou",CI,0.5,YES
+6394,"Dachstein",AT,37.092358,-8.241854,"Albufeira",PT,0.9,YES
+6415,"Dalhart",MX,36.061607,-102.522224,"Dalhart",US,0.8,YES
+6429,"Dalsland",RU,61.056698,5.5600667,"Førde",NO,46.8,YES
+6456,"Danube Delta",RO,48.723995,10.778538,"Donauwörth",DE,0.7,YES
+6481,"Daru",AU,-9.069901,143.21002,"Daru",PG,0.9,YES
+6506,"Dawson City",CA,32.741077,-101.9576,"Lamesa",US,0.7,YES
+6521,"D-Day beaches",FR,54.83909,-111.96596,"Bonnyville",CA,101.7,NO (review)
+6568,"Delphi",GR,52.011402,4.35839,"Delft",NL,0.6,YES
+6577,"Delta Works",NL,37.079464,-8.117972,"Quarteira",PT,1.9,YES
+6580,"Demirköy",GB,41.82415,27.765146,"Vize",TR,27.6,YES
+6586,"Dengue fever",AU,7.211537,79.84901,"Negombo",LK,1.5,YES
+6592,"Denmark (Western Australia)",AU,55.378426,9.131806,"Vejen",DK,11.4,YES
+6599,"Deokjeok Island",KR,65,-18,"Akureyri",IS,76.1,NO (review)
+6609,"Derby (Western Australia)",AU,52.914223,-1.4719886,"Derby",GB,1,YES
+6616,"Desaru",CN,1.5410016,104.264305,"Bandar Penawar",MY,4.4,YES
+6684,"Dilijan",CH,40.741714,44.872223,"Dilijan",AM,0.8,YES
+6700,"Disabled travel in South Africa",ZA,38.45608,-9.245649,"Sesimbra",PT,12.6,YES
+6705,"Diu",PT,20.713778,70.98537,"Diu",IN,0.3,YES
+6706,"Divača",IT,45.68279,13.968574,"Divača",SI,0.3,YES
+6707,"Diving in Saipan",JP,15.1378,145.73094,"Saipan",MP,8.7,YES
+6709,"Diving Aliwal Shoal",ZA,34.96361,34.072933,"Protaras",CY,5.6,YES
+6710,"Diving in Chuuk",JP,7.454,151.805,"Weno",FM,4.1,YES
+6716,"Diving in Thailand",TH,37.60612,-8.211184,"Almodôvar",PT,16.9,YES
+6717,"Diving in the Philippines",PH,28.71144,-17.95556,"Los Llanos de Aridane",ES,6.9,YES
+6718,"Diving the Cape Peninsula and False Bay",ZA,49.49128,-124.35006,"Qualicum Beach",CA,17.3,YES
+6719,"Diving the Cape Peninsula and False Bay/Duiker Island",ZA,52.69036,5.231231,"Enkhuizen",NL,4.3,YES
+6732,"DMZ (Vietnam)",VN,41.75703,-8.58207,"Ponte de Lima",PT,1.1,YES
+6735,"Doboj",HR,44.732456,18.085016,"Doboj",BA,0.2,YES
+6742,"Doi Inthanon National Park",TH,37.575035,-8.404337,"Odemira",PT,20.9,YES
+6749,"Dolores (Colorado)",US,38.67553,0.07775,"Calp",ES,4.5,YES
+6754,"Dona Paula",IN,-27.237986,-49.494507,"Lontras",BR,9.3,YES
+6763,"Dong Hoi",CN,17.45985,106.612236,"Đồng Hới",VN,1.5,YES
+6783,"Douglas (Arizona)",MX,31.349482,-109.55017,"Douglas",US,0.7,YES
+6794,"Downers Grove",CA,41.793682,-88.01023,"Downers Grove",US,1.7,YES
+6802,"Draper",MX,40.524776,-111.8628,"Draper",US,0.1,YES
+6862,"Dungannon",IE,54.50391,-6.7703624,"Dungannon",GB,0.2,YES
+6870,"Dunseith",CA,48.813057,-100.06097,"Minot Air Force Base",US,103.6,NO (review)
+6905,"Eagle Nest",MX,23.25031,69.67496,"Bhuj",IN,0.7,YES
+6906,"Eagle Pass",MX,28.709211,-100.49929,"Eagle Pass",US,0,YES
+6908,"East Bohemia",CZ,50.861385,0.5669632,"Hastings",GB,1.1,YES
+6915,"East Coulee",CA,37.151215,-8.228189,"Ferreiras",PT,2.6,YES
+6921,"Eastern Cuba",GB,-32.319443,28.199722,"Butterworth",ZA,4.9,YES
+6931,"Eastern Slovakia",PL,48.717014,22.273935,"Sobrance",SK,7.4,YES
+6932,"Eastern Slovenia",HR,46.08333,15,"Zagorje ob Savi",SI,5.4,YES
+6934,"East Estonia",RU,59.44028,24.781435,"Kesklinn",EE,1.5,YES
+6949,"East Jutland",DK,34.249733,-118.51642,"Northridge",US,3,YES
+6952,"East Kootenays",CA,-8.086424,112.5,"Sumberpucung",ID,8.2,YES
+6971,"Eastport (Newfoundland)",CA,37.121124,-8.222702,"Ferreiras",PT,1.6,YES
+6995,"Eckerö",SE,60.2325,19.5392,"Yomala",AX,23,YES
+7014,"Edinburgh (Indiana)",US,55.953346,-3.188375,"Edinburgh",GB,0.5,YES
+7061,"El Aaiún",MA,27.154512,-13.195392,"Laayoune",EH,1.6,YES
+7064,"Elba",IT,31.41461,-86.067726,"Enterprise",US,23,YES
+7070,"El Castaño",MX,10.188661,-67.363945,"La Victoria",VE,5.5,YES
+7107,"Beaver Hills",CA,41.324505,-72.94609,"New Haven",US,2.4,YES
+7122,"El Malpais National Monument",MX,37.9129,-8.771126,"Sines",PT,9.9,YES
+7125,"Elmina",PT,5.085879,-1.350578,"Elmina",GH,0.1,YES
+7128,"Elmira (Ontario)",DE,38.38364,-7.34584,"Reguengos de Monsaraz",PT,17.1,YES
+7131,"El Morro",MX,28.65189,-17.88013,"El Paso",ES,0.3,YES
+7148,"El Salvador",CL,13.800038,-88.91407,"San Martín",SV,1.9,YES
+7150,"Elsinore",SE,38.683083,-112.14828,"Richfield",US,11.4,YES
+7151,"Elsthorpe",NZ,37.102108,-7.660355,"Tavira",PT,3,YES
+7186,"Englewood (Florida)",MX,37.02419,-7.92627,"Faro",PT,0.6,YES
+7203,"Ephesus",GB,33.406178,-85.24925,"Carrollton",US,25.1,YES
+7204,"Ephraim (Utah)",DK,39.359684,-111.5863,"Ephraim",US,0,YES
+7216,"Erg Chebbi",MA,37.09014,-8.678213,"Porto de Mós",PT,0.7,YES
+7259,"Esso",CH,1.2955775,34.749863,"Kapchorwa",UG,35.3,YES
+7282,"European route E39",NO,41.910603,27.129932,"Kırklareli",TR,21.1,YES
+7296,"Evian",CH,45.710827,7.2005024,"Aosta",IT,9.5,YES
+7340,"Fairport (New York)",EG,43.0993,-77.443016,"Fairport",US,0.1,YES
+7347,"Falcon Lake",CA,26.782078,-99.24472,"Zapata",US,14.2,YES
+7364,"Falmouth (Maine)",BR,43.721985,-70.232704,"Portland",US,7.5,YES
+7371,"Fanø",DK,43.84242,13.014663,"Fano",IT,0.3,YES
+7384,"Faroe Islands",DK,62.028236,-6.8819256,"Tórshavn",FO,6.1,YES
+7400,"Făgăraș",GB,37.116653,-8.161401,"Olhos de Água",PT,4,YES
+7415,"Ferdinand",AT,44.722713,-71.774956,"Lyndon",US,29.8,YES
+7416,"Ferghana",CN,40.376488,71.79132,"Fergana",UZ,1,YES
+7436,"Fiji",NZ,-18.12397,179.01227,"Levuka",FJ,32.8,YES
+7445,"Finland in ten days by car",FI,46.8606,-68.01197,"Caribou",US,0,YES
+7448,"Fiordland National Park",NZ,37.10855,-8.492792,"Carvoeiro",PT,2.5,YES
+7457,"Fishguard",IE,51.993835,-4.97681,"Haverfordwest",GB,21.4,YES
+7465,"Fitzgerald River National Park",AU,37.106255,-8.401596,"Armação de Pêra",PT,4,YES
+7476,"Flaxmere",NZ,38.713737,-9.156497,"Principe Real",PT,0.6,YES
+7500,"Florida Panhandle",MX,41.726814,-8.162931,"Póvoa de Lanhoso",PT,19,YES
+7507,"Foča",PE,43.505856,18.774393,"Foča",BA,0.3,YES
+7519,"Fond du Lac",CA,43.75334,-88.44938,"Fond du Lac",US,2.6,YES
+7524,"Foppolo",IT,38.6783,0.08935,"Calp",ES,5.4,YES
+7528,"Forest Lake",TR,45.286625,-92.9962,"Forest Lake",US,1.2,YES
+7531,"Forestville",CA,48.65811,23.28091,"Volovets",UA,9.2,YES
+7570,"Fort Sumner",MX,34.47167,-104.24551,"Portales",US,89.5,NO (review)
+7572,"La Fortuna",CR,41.18032,-8.62922,"Bairro Silva Braga",PT,0.6,YES
+7588,"Four Corners",MX,28.33287,-81.64738,"Four Corners",US,0,YES
+7600,"Francistown",ZA,-21.16636,27.502516,"Francistown",BW,0.7,YES
+7627,"Fraser Valley",CA,37.52195,-8.677637,"Odemira",PT,9.1,YES
+7632,"Frederick County",CA,39.212704,-78.27917,"Winchester",US,10.4,YES
+7674,"Frombork",DE,54.358364,19.68237,"Braniewo",PL,9.2,YES
+7683,"Fugging",AT,48.06741,12.862345,"Tittmoning",DE,7.1,YES
+7758,"Gangneung",JP,37.752533,128.87595,"Gangneung",KR,0.3,YES
+7761,"Gangwon",JP,37.772526,128.38208,"Jumunjin",KR,41.2,YES
+7776,"Garden City (Michigan)",BR,45.7747,-86.5507,"Escanaba",US,40,YES
+7790,"Gariep Dam",ZA,41.75703,-8.58207,"Ponte de Lima",PT,1.1,YES
+7795,"Garner State Park",TR,29.58826,-99.737274,"Uvalde",US,42.4,YES
+7796,"Garni",RU,40.12233,44.74202,"Garni",AM,0.7,YES
+7801,"Garut",CH,-7.194868,107.872055,"Garut",ID,7.8,YES
+7819,"Gaza Strip",EG,31.443224,34.36001,"Az Zuwāydah",PS,2,YES
+7821,"Gällivare",NO,67.13525,20.660484,"Gällivare",SE,0.4,YES
+7829,"Güssing",AT,47.058765,16.324337,"Szentgotthárd",HU,12.4,YES
+7835,"Geauga County",BR,51.1246,1.3164,"Dover",GB,0.3,YES
+7837,"Gedser",DE,54.577045,11.931356,"Alholm",DK,16.6,YES
+7849,"Gemas",TH,2.5797486,102.613846,"Gemas",MY,0.5,YES
+7888,"Ghangaria",IN,37.095203,-8.172611,"Olhos de Água",PT,1.8,YES
+7890,"Ghat (Libya)",IT,38.680935,-9.330173,"Carcavelos",PT,1.3,YES
+7895,"Giant's Causeway",CA,-34.68333,118.73333,"Albany",AU,86.4,NO (review)
+7897,"Giant Mountains National Park",PL,37.102116,-8.297088,"Albufeira",PT,4.4,YES
+7927,"Gir Forest National Park",IN,29.297308,110.43844,"Wulingyuan",CN,11.8,YES
+7942,"Glacier National Park (Montana)",CA,48.617485,-113.76089,"Columbia Falls",US,41.3,YES
+7958,"Glencoe",GB,42.135025,-87.75812,"Glencoe",US,0,YES
+7960,"Glencolmcille",IE,40.38388,-7.942915,"Carregal do Sal",PT,7.3,YES
+7969,"Glenfinnan",GB,46.293476,-62.969925,"Stratford",CA,11.9,YES
+7973,"Glenorchy",NZ,38.732525,-9.162881,"Campolide",PT,0.4,YES
+7979,"Glenview",BR,42.070065,-87.8114,"Glenview",US,1.9,YES
+7994,"Gobabis",ZA,-22.449528,18.972467,"Gobabis",NA,0.4,YES
+8010,"Goldendale",BR,45.82068,-120.82173,"The Dalles",US,37.4,YES
+8013,"Golden Triangle (Thailand)",TH,38.636295,-8.1991205,"Montemor-o-Novo",PT,1.9,YES
+8079,"GR 10",ES,42.77511,11.287805,"Grosseto",IT,14.6,YES
+8102,"Grand Case",MF,37.277637,-8.320077,"São Bartolomeu de Messines",PT,3.8,YES
+8110,"Grand Falls",DK,37.507915,-8.569121,"Odemira",PT,11.8,YES
+8115,"Grand Isle (Louisiana)",MX,29.236618,-89.9873,"Galliano",US,37.9,YES
+8149,"Grasslands National Park",CA,37.10209,-8.446199,"Carvoeiro",PT,2,YES
+8158,"Gröbming",AT,38.38364,-7.34584,"Reguengos de Monsaraz",PT,17.1,YES
+8192,"Green Kalahari",ZA,44.513603,-88.1184,"Hobart",US,3,YES
+8195,"Green Mountains",CA,49.13227,-101.50633,"Minot Air Force Base",US,80,NO (review)
+8239,"Grodno",PL,38.713024,-9.144274,"São Mamede",PT,0.1,YES
+8268,"Guadeloupe",MX,16.252882,-61.568684,"Baie-Mahault",GP,2.4,YES
+8270,"Guam",US,13.449994,144.76517,"Chalan Pago-Ordot Village",GU,0.7,YES
+8271,"Guamote",ES,-2.0493321,-78.64267,"Alausí",EC,28.4,YES
+8311,"Guinsa",CN,37.03129,128.47966,"Neietsu",KR,17.1,YES
+8320,"Gulf Coast (Mississippi)",MX,26.40447,-81.88712,"Fort Myers Beach",US,8.3,YES
+8345,"Gustavia",FR,17.895704,-62.850838,"Gustavia",BL,0.1,YES
+8354,"Gwadar",CN,25.147982,62.325455,"Gwadar",PK,2.9,YES
+8355,"Gwaii Haanas National Park Reserve",CA,37.095203,-8.172611,"Olhos de Água",PT,1.8,YES
+8362,"Gweta",CH,-20.209,25.258,"Gweta",BW,3.8,YES
+8389,"Hafjell",NO,39.705387,-8.916848,"Maceira",PT,2.7,YES
+8394,"Hagfors",SE,41.726814,-8.162931,"Póvoa de Lanhoso",PT,19,YES
+8440,"Haman County",KR,40.55,-8.4853735,"Oliveira do Bairro",PT,4,YES
+8447,"Hamelin",NL,52.103992,9.356157,"Hameln",DE,0,YES
+8462,"Hammerfest",RU,70.64134,23.83608,"Hammerfest",NO,6.2,YES
+8495,"Haparanda",RU,65.83567,24.135721,"Haparanda",SE,0.1,YES
+8501,"Harau Valley",ID,32.81874,-85.17939,"Valley",US,0,YES
+8530,"Hartberg",AT,40.801327,-8.155947,"São Pedro do Sul",PT,8.7,YES
+8548,"Hasle",DK,37.151215,-8.228189,"Ferreiras",PT,2.6,YES
+8550,"Rossendale",BR,53.68488,-2.2614398,"Rossendale",GB,1,YES
+8575,"Havelock Island",TH,11.965196,92.99562,"Bamboo Flat",IN,42.3,YES
+8580,"Havre",CA,48.553696,-109.6778,"Havre",US,0.6,YES
+8589,"Hawley",BR,32.613373,-99.813034,"Abilene",US,19.8,YES
+8612,"Höfn",IS,51.43955,5.46638,"Eindhoven",NL,0.8,YES
+8651,"Hellvik",NO,37.09014,-8.678213,"Porto de Mós",PT,0.7,YES
+8659,"Helvetia (West Virginia)",CH,38.706005,-80.201035,"Buckhannon",US,32.1,YES
+8663,"Hendaye",ES,43.36415,-1.7616498,"Hendaye",FR,1.2,YES
+8667,"Hendersonville (Tennessee)",VN,36.304916,-86.621445,"Hendersonville",US,0.1,YES
+8678,"Herculaneum",IT,38.268387,-90.38012,"Pevely",US,2.1,YES
+8726,"High Plains",MX,37.77312,-86.21108,"Vine Grove",US,20.6,YES
+8734,"Hiking in South Africa",ZA,37.087322,-8.251937,"Albufeira",PT,0.2,YES
+8744,"Hillsborough (Northern Ireland)",IE,37.09642,-8.015618,"Almancil",PT,1.7,YES
+8746,"Hillswick",IN,60.476532,-1.4875894,"Lerwick",GB,40.6,YES
+8767,"Hirtshals",DE,57.5867,9.9614,"Hirtshals",DK,0.2,YES
+8774,"Hiva Oa",FR,-9.7793255,-139.00679,"Taiohae",PF,154,NO (review)
+8778,"Hluhluwe-iMfolozi Park",ZA,38.6783,0.08935,"Calp",ES,5.4,YES
+8789,"Hoedspruit",ZA,38.7773,-9.10081,"Moscavide e Portela",PT,0.3,YES
+8826,"Holy Island (near Arran)",IE,45.23195,-85.16673,"Bay Harbor",US,16.1,YES
+8834,"Hondo (Texas)",BR,29.347412,-99.141205,"Hondo",US,0,YES
+8878,"Hornsea",GB,38.7103,-9.131992,"Baixa",PT,0.5,YES
+8885,"Hortobágy",HU,40.100895,-7.4234586,"Fundão",PT,7.9,YES
+8892,"Huay Xai",TH,20.279308,100.41222,"Ban Houayxay",LA,1.2,YES
+8896,"Houlton",CA,46.140217,-67.84259,"Houlton",US,1.6,YES
+8916,"Hpa-an",TH,16.890263,97.63628,"Hpa-An",MM,0.2,YES
+8929,"Huanchaco",PE,38.250477,-8.212884,"Alcácer do Sal",PT,29.6,YES
+8937,"Huaquillas",PE,-3.474716,-80.22555,"Huaquillas",EC,0.6,YES
+8938,"Huayna Potosí",CL,37.14127,-8.571671,"Alvor",PT,2.2,YES
+8971,"Hungerford (Queensland)",AU,51.41513,-1.51556,"Hungerford",GB,0,YES
+9004,"Hydra",GR,36.747425,3.0401833,"Birkhadem",DZ,3.7,YES
+9016,"Ibarra",CO,43.131645,-2.0622573,"Tolosa",ES,1.3,YES
+9023,"Icefields Parkway",CA,38.49602,-121.45884,"Parkway",US,0,YES
+9032,"Idyllwild",MX,33.740276,-116.71894,"Valle Vista",US,16.1,YES
+9054,"Ilgaz National Park",TR,37.897038,-9.002678,"Sines",PT,13.4,YES
+9119,"Interior (Iceland)",IS,40.80501,-73.171104,"Ronkonkoma",US,3,YES
+9120,"Interlake",CA,28.05203,-16.71774,"Arona",ES,6.4,YES
+9171,"Ischgl",CH,46.325768,8.40917,"Domodossola",IT,24.9,YES
+9181,"ISimangaliso Wetland Park",ZA,37.105965,-8.474155,"Carvoeiro",PT,1.1,YES
+9210,"Isperih",RO,43.716873,26.830141,"Isperih",BG,0.3,YES
+9231,"Italian Lake District",IT,49.476173,-125.205315,"Courtenay",CA,27.9,YES
+9318,"Jamestown (California)",MX,37.95326,-120.4227,"Oakdale",US,42.7,YES
+9332,"Jan Mayen",NO,70.99517,-8.465656,"Olonkinbyen",SJ,12.3,YES
+9334,"Japan's Top 3",JP,26.91667,87.91667,"Ilām",NP,1.4,YES
+9353,"Jökulsárlón",IS,37.06195,-8.542358,"Carvoeiro",PT,7.6,YES
+9368,"Jelling",DK,54.33045,8.7737,"Tönning",DE,10.9,YES
+9401,"Jezreel Valley",RU,32.81874,-85.17939,"Valley",US,0,YES
+9458,"John o'Groats",DK,58.637302,-3.0689678,"Wick",GB,22.1,YES
+9470,"Jonava",RU,55.073708,24.275696,"Jonava",LT,0.7,YES
+9518,"Kabardino-Balkaria",DE,43.44283,43.420483,"Kenzhe",RU,12.4,YES
+9542,"Lower Northland",NZ,48.34208,16.462408,"Gerasdorf bei Wien",AT,5.3,YES
+9590,"Kamala",BR,8.437192,-2.721342,"Kamala",CI,0.3,YES
+9595,"Kamen Bryag",RO,43.45486,28.550821,"Kavarna",BG,17.2,YES
+9606,"Kampinos National Park",PL,37.880238,-8.386077,"Aljustrel",PT,19.4,YES
+9623,"Kangar",TH,6.438931,100.19448,"Kangar",MY,0.5,YES
+9630,"Kanha National Park",IN,30.154978,-97.789696,"Shady Hollow",US,7.1,YES
+9655,"Kappil",IN,37.111916,-8.672683,"Lagos",PT,1.1,YES
+9664,"Karakol Lake",CN,28.05203,-16.71774,"Arona",ES,6.4,YES
+9671,"Karawaci",ID,37.098206,-8.146981,"Olhos de Água",PT,4.1,YES
+9719,"Kaslo",CH,49.912155,-116.90489,"Nelson",CA,53.4,NO (review)
+9747,"Kavieng",IE,-2.573474,150.79523,"Kavieng",PG,0,YES
+9750,"Kawarthas",CA,37.151215,-8.228189,"Ferreiras",PT,2.6,YES
+9772,"Königslutter",NL,52.2257,10.7891035,"Königslutter am Elm",DE,3.4,YES
+9795,"Keetmanshoop",ZA,37.741608,-8.292941,"Aljustrel",PT,18.8,YES
+9801,"Kelabit Highlands",ID,40.40372,-73.99153,"Rumson",US,3.6,YES
+9809,"Kemaman",MY,41.285984,-8.586662,"Coronado",PT,2,YES
+9866,"Kerkrade",ES,50.865494,6.0632024,"Kerkrade",NL,0.1,YES
+9888,"Kgalagadi Transfrontier Park",ZA,37.10509,-8.44298,"Carvoeiro",PT,2.4,YES
+9906,"Khasab",PT,26.18413,56.24698,"Khasab",OM,0.5,YES
+9908,"Khatse",ZA,31.488207,79.44202,"Joshīmath",IN,104.4,NO (review)
+9910,"Bolshekhekhtsirsky Nature Reserve",RU,38.695618,-9.231083,"Algés",PT,0.8,YES
+9963,"Kilmarnock",IE,55.610058,-4.496465,"Kilmarnock",GB,0.2,YES
+9965,"Kilpisjärvi",FI,69.04836,20.79846,"Tromsdalen",NO,96.7,NO (review)
+9974,"Kincardine (Ontario)",CA,37.464317,-8.107441,"Almodôvar",PT,6.8,YES
+9977,"King's Highway",FI,37.087322,-8.251937,"Albufeira",PT,0.2,YES
+9980,"Kingaroy",AU,37.092144,-8.202365,"Olhos de Água",PT,1,YES
+10016,"Kirkenes",NO,69.72715,30.044897,"Nikel",RU,35.6,YES
+10029,"Kisangani",ES,0.5184021,25.205729,"Kisangani",CD,1.7,YES
+10044,"Kitsap Peninsula",NO,41.24117,-81.55262,"Macedonia",US,8.9,YES
+10083,"Ko Bulon Leh",TH,49.4938,0.10767,"Le Havre",FR,0,YES
+10107,"Kohoku",JP,-22.911514,-43.17674,"Rio de Janeiro",BR,0.8,YES
+10131,"Ko Lipe",TH,6.487591,99.30247,"Padang Mat Sirat",MY,49.9,YES
+10192,"Ko Sichang",TH,38.415543,-8.201706,"Montemor-o-Novo",PT,25.9,YES
+10213,"Kourou",FR,5.1579833,-52.64242,"Kourou",GF,0.5,YES
+10257,"Krutyń",PL,37.08862,-8.234216,"Albufeira",PT,1.4,YES
+10277,"Kuala Perlis",TH,6.4032927,100.13455,"Kuala Perlis",MY,0.4,YES
+10281,"Kūaotunu",NZ,37.0903,-8.249084,"Albufeira",PT,0.3,YES
+10282,"Kubah National Park",MY,38.680935,-9.330173,"Carcavelos",PT,1.3,YES
+10378,"Kyrenia",GR,35.33963,33.32053,"Kyrenia",CY,0.5,YES
+10393,"La Cañada Flintridge",CA,34.19983,-118.20052,"La Cañada Flintridge",US,1.2,YES
+10403,"Ladakh",CN,33.94564,77.65686,"Choglamsar",IN,19.5,YES
+10422,"Lago Puelo",AR,38.6783,0.08935,"Calp",ES,5.4,YES
+10437,"Lahemaa National Park",FI,38.132317,-8.591618,"Grândola",PT,5.4,YES
+10451,"Lake Biwa",JP,28.05203,-16.71774,"Arona",ES,6.4,YES
+10460,"Lake Constance",CH,28.05203,-16.71774,"Arona",ES,6.4,YES
+10512,"Lamai",TH,-1.5617577,34.70204,"Matongo",TZ,22.5,YES
+10518,"La Massana",FR,42.5442,1.5163754,"la Massana",AD,0.2,YES
+10519,"Lamayuru",IN,41.75703,-8.58207,"Ponte de Lima",PT,1.1,YES
+10522,"La Merced",PE,5.399067,-75.547806,"Salamina",CO,6.7,YES
+10553,"Lăng Cô",VN,29.018532,93.11629,"Shi Yomi",IN,134,NO (review)
+10556,"Langeland",DK,51.78241,8.997726,"Altenbeken",DE,4.3,YES
+10563,"Langmusi",AT,34.09229,102.63691,"Langmusi",CN,1,YES
+10564,"Langport",NL,51.03757,-2.8280084,"Street",GB,11.5,YES
+10567,"Lang Tengah",MY,-4.363592,115.79957,"Banjarbaru",ID,148.1,NO (review)
+10577,"Lanzarote",ES,19.66995,-99.32385,"Nicolás Romero",MX,3.6,YES
+10580,"Lao Cai",CN,37.0903,-8.249084,"Albufeira",PT,0.3,YES
+10582,"Laos",TH,20.01711,103.37825,"Muang Phônsavan",LA,66.1,NO (review)
+10583,"La Palma",PT,33.846405,-118.04673,"La Palma",US,0,YES
+10594,"Lappajärvi",SE,38.42855,-8.096081,"Évora",PT,22.6,YES
+10603,"Laren",NL,-6.9783764,112.2951,"Paciran",ID,14.4,YES
+10619,"Lashio",CN,37.151215,-8.228189,"Ferreiras",PT,2.6,YES
+10632,"Latrobe (Pennsylvania)",CA,40.317287,-79.38403,"Latrobe",US,0.6,YES
+10643,"Laurentians",CA,26.161524,-81.8098,"Naples",US,2.5,YES
+10665,"Lötschental",CH,37.10164,-8.676699,"Lagos",PT,0.2,YES
+10669,"Lüderitz",PT,38.67878,0.09787,"Teulada",ES,5.7,YES
+10691,"Lednice–Valtice Cultural Landscape",CZ,37.42403,-8.585315,"Monchique",PT,12.1,YES
+10740,"Lenzerheide",CH,46.444736,9.3733835,"Chiavenna",IT,13.9,YES
+10755,"Lesotho",ZA,-29.603928,28.33502,"Mantsonyane",LS,10.1,YES
+10772,"Levoča",HU,49.025085,20.588709,"Levoča",SK,0.4,YES
+10800,"Liberal",MX,37.04308,-100.921,"Liberal",US,0,YES
+10802,"Liberia (Costa Rica)",ES,10.631978,-85.439316,"Liberia",CR,0.4,YES
+10845,"Limestone (Maine)",CA,46.911186,-67.825645,"Caribou",US,15.2,YES
+10863,"Linden (New Jersey)",PL,38.7103,-9.131992,"Baixa",PT,0.5,YES
+10870,"Linlithgow",FR,55.977165,-3.6006234,"Linlithgow",GB,0.2,YES
+10893,"Listvyanka",CN,51.85693,104.86058,"Rechka-Vydrino",RU,41.1,YES
+10907,"Little Falls (Minnesota)",BR,45.976353,-94.3625,"Little Falls",US,0,YES
+10979,"Loleygaon",IN,38.6783,0.08935,"Calp",ES,5.4,YES
+11025,"Long Bay",NZ,41.79211,-6.7673373,"Bragança",PT,1.8,YES
+11047,"Longyearbyen",NO,78.22315,15.646365,"Longyearbyen",SJ,0,YES
+11048,"Longzhou",VN,38.6783,0.08935,"Calp",ES,5.4,YES
+11054,"Lorain County",BR,41.263355,-82.17348,"Oberlin",US,5,YES
+11060,"Lorne",AU,38.6783,0.08935,"Calp",ES,5.4,YES
+11076,"Los Chiles (Costa Rica)",CR,10.857036,-84.71502,"San Carlos",NI,30.8,YES
+11082,"Los Lunas",MX,34.81421,-106.76131,"Los Lunas",US,2.7,YES
+11084,"Los Nevados National Park",CO,39.25696,-9.32909,"Lourinhã",PT,2.2,YES
+11110,"Lower Galilee",BR,36.62898,-83.11573,"Church Hill",US,37.8,YES
+11111,"Lower Mainland",CA,40.255936,-75.360176,"Kulpsville",US,2.5,YES
+11118,"Luang Namtha",TH,21.007221,101.40764,"Luang Namtha",LA,6.5,YES
+11122,"Lubec",US,44.86117,-66.9835,"Eastern Charlotte",CA,30.7,YES
+11142,"Luhansk",RU,49.272457,38.915047,"Starobilsk",UA,0.9,YES
+11143,"Luganville",AU,-15.512111,167.17844,"Luganville",VU,1.9,YES
+11153,"Lumbarda",HR,38.67878,0.09787,"Teulada",ES,5.7,YES
+11155,"Lumbini",IN,27.980713,82.953186,"Deukhurī",NP,27.7,YES
+11162,"Lunenburg",CA,38.67878,0.09787,"Teulada",ES,5.7,YES
+11164,"Luosto",GB,67.158264,26.918337,"Pyhäjärvi",FI,16.2,YES
+11170,"Lurgan",IE,54.460823,-6.329249,"Craigavon",GB,4,YES
+11196,"Lyndhurst",GB,40.812294,-74.124725,"Lyndhurst",US,0,YES
+11219,"Macau/Coloane",PT,22.153265,113.555405,"Taipa",MO,0.3,YES
+11220,"Macau/Cotai",CN,22.141838,113.564766,"Taipa",MO,1.8,YES
+11221,"Macau/Peninsula",CN,22.115894,113.5717,"Luhuan",MO,2,YES
+11229,"Machadodorp",ZA,41.035355,-8.379389,"Moreira",PT,2.4,YES
+11230,"Machala",PE,-3.3148937,-79.95128,"Machala",EC,6.3,YES
+11252,"Madeira Beach",PT,27.798082,-82.797325,"Treasure Island",US,4.3,YES
+11257,"Madidi National Park",PE,-13.46425,-68.70335,"Ixiamas",BO,70.7,NO (review)
+11293,"Magnolia (Arkansas)",US,37.748276,-8.221575,"Aljustrel",PT,15.2,YES
+11295,"Magnolia (Texas)",US,40.343895,-8.595845,"Cantanhede",PT,0.3,YES
+11324,"Makarska",HR,37.910503,-8.2449665,"Aljustrel",PT,7.9,YES
+11332,"Maku",TR,39.290962,44.452137,"Maku",IR,0.7,YES
+11340,"Malakal",GB,9.538849,31.658417,"Malakal",SS,0.6,YES
+11392,"Manawatu",NZ,39.512413,-8.963009,"Alcobaça",PT,4.6,YES
+11508,"Maramureș",RO,39.4282,-8.355039,"Vila Nova da Barquinha",PT,7.8,YES
+11510,"Maras",PE,37.151215,-8.228189,"Ferreiras",PT,2.6,YES
+11511,"Marathon (Florida)",MX,24.713753,-81.090355,"Marathon",US,0,YES
+11524,"Maremma",IT,39.530804,2.7346408,"Can Pastilla",ES,1.6,YES
+11526,"Margao",PT,15.272923,73.95831,"Madgaon",IN,0.2,YES
+11537,"Mariánské Lázně",CZ,37.74494,-8.257258,"Aljustrel",PT,16.8,YES
+11554,"Marion (Illinois)",EG,37.730606,-88.93313,"Marion",US,0,YES
+11558,"Marion Bay",AU,37.640125,-8.20598,"Almodôvar",PT,19.1,YES
+11560,"Marken",NL,43.34584,13.141587,"San Severino Marche",IT,13.2,YES
+11567,"Marlinton",TR,37.11334,-8.275895,"Albufeira",PT,3.6,YES
+11589,"Marshall Islands",AU,37.106255,-8.401596,"Armação de Pêra",PT,4,YES
+11594,"Mars Hill (Maine)",CA,46.514988,-67.86688,"Presque Isle",US,21.7,YES
+11596,"Marstrand",SE,37.092422,-8.202348,"Olhos de Água",PT,1,YES
+11600,"Martinique",FR,14.611373,-60.96208,"Le Lamentin",MQ,4,YES
+11614,"Masada",IL,18.18817,82.75098,"Kantabamsuguda",IN,20.4,YES
+11644,"Matawai",NZ,39.235256,-9.085397,"Cadaval",PT,1.8,YES
+11650,"Matinhos",PT,-25.81871,-48.534203,"Matinhos",BR,1.6,YES
+11668,"Mauricie",CA,40.343895,-8.595845,"Cantanhede",PT,0.3,YES
+11673,"Mawlamyine",TH,16.490803,97.62848,"Mawlamyine",MM,0,YES
+11680,"Maybee",DE,40.343895,-8.595845,"Cantanhede",PT,0.3,YES
+11686,"Mayrhofen",AT,47.167217,11.863867,"Valle Aurina - Ahrntal",IT,20.9,YES
+11706,"Älvdalen",NO,61.2299,14.037395,"Orsa",SE,33.3,YES
+11714,"Mývatn",IS,38.680935,-9.330173,"Carcavelos",PT,1.3,YES
+11738,"Međugorje",HR,43.190533,17.677532,"Čitluk",BA,4.6,YES
+11754,"Medicine Park",BR,34.727478,-98.501366,"Lawton",US,16.7,YES
+11764,"Meghri",IR,38.85165,46.201675,"Ordubad",AZ,16.8,YES
+11777,"Babeldaob",JP,7.539963,134.5674,"Imeong Hamlet",PW,4.5,YES
+11778,"Melilla",MA,38.73837,-9.12263,"Chelas",PT,0.4,YES
+11784,"Melnik",GR,50.352077,14.474828,"Mělník",CZ,0.2,YES
+11811,"Merced County",CA,37.09523,-8.66987,"Lagos",PT,0.8,YES
+11818,"Meriden (Connecticut)",MX,37.09523,-8.66987,"Lagos",PT,0.8,YES
+11828,"Merseyside",IE,53.49536,-2.973938,"Maghull",GB,3.2,YES
+11837,"Mesoamerican Barrier Reef",AU,26.5689,-80.15109,"Greenacres City",US,6.6,YES
+11842,"Mestia",GE,43.043762,42.724453,"Tyrnyauz",RU,40.8,YES
+11893,"Miami-Dade County",AU,41.75703,-8.58207,"Ponte de Lima",PT,1.1,YES
+11956,"Milford Sound",NZ,38.38364,-7.34584,"Reguengos de Monsaraz",PT,17.1,YES
+11966,"Millinocket",CA,45.656506,-68.70914,"Old Town",US,80.5,NO (review)
+11999,"Minlaton",AU,37.911102,-8.950922,"Sines",PT,8.7,YES
+12099,"Monaco",FR,43.73235,7.4276834,"La Condamine",MC,0.6,YES
+12107,"Monett",BR,36.921555,-93.92319,"Monett",US,0.9,YES
+12130,"Mons",CZ,50.45076,3.95167,"Mons",BE,0.4,YES
+12147,"Monte Albán",MX,37.107613,-8.560692,"Alvor",PT,3.7,YES
+12152,"Montego Bay",BR,18.47246,-77.92174,"Montego Bay",JM,0.3,YES
+12185,"Monticello (Utah)",MX,37.875057,-109.34032,"Moab",US,79.8,NO (review)
+12256,"Moriarty",MX,34.997204,-106.049484,"Albuquerque",US,55.6,NO (review)
+12303,"Mountainair",MX,34.520355,-106.24077,"Belen",US,51.5,NO (review)
+12313,"Mount Aspiring National Park",NZ,37.436745,-8.617366,"Monchique",PT,14.3,YES
+12317,"Mount Bandai",JP,41.79211,-6.7673373,"Bragança",PT,1.8,YES
+12320,"Mount Datuk",ID,38.680935,-9.330173,"Carcavelos",PT,1.3,YES
+12323,"Mount Etna",IT,40.742546,-85.56192,"Huntington",US,16.5,YES
+12342,"Mountmellick",IE,54.33045,8.7737,"Tönning",DE,10.9,YES
+12398,"Muang Ngeun",TH,19.253708,101.70585,"Sainyabuli",LA,0.6,YES
+12400,"Muang Sing",CN,21.188887,101.148575,"Muang Sing",LA,0.4,YES
+12401,"Muang Xay",CN,20.693014,101.98537,"Muang Xay",LA,0.2,YES
+12479,"Murwillumbah",JP,-28.326761,153.39716,"Murwillumbah",AU,0.4,YES
+12491,"Mutěnice Wine Region",CZ,37.85229,-8.79292,"Sines",PT,13.4,YES
+12509,"Mysen",NO,38.7103,-9.131992,"Baixa",PT,0.5,YES
+12550,"Nahanni National Park Reserve",CA,37.086384,-8.245443,"Albufeira",PT,0.5,YES
+12580,"Namaqua National Park",ZA,41.75703,-8.58207,"Ponte de Lima",PT,1.1,YES
+12585,"Namhae",KR,39.454124,-8.40513,"Vila Nova da Barquinha",PT,2.7,YES
+12600,"Nandi Hills",IN,0.1063314,35.185593,"Nandi Hills",KE,0.3,YES
+12612,"Nanton",CA,46.61981,4.8154435,"Tournus",FR,9,YES
+12647,"Narva",DK,61.295197,23.502483,"Lempäälä",FI,13.4,YES
+12658,"Nassau (Germany)",DE,37.121124,-8.222702,"Ferreiras",PT,1.6,YES
+12673,"Natuna Islands",CN,3.9305165,108.19015,"Ranai Kota",ID,20.8,YES
+12680,"Nausori",FJ,41.382915,-8.74382,"Póvoa de Varzim",PT,1.7,YES
+12683,"Navajo Nation",US,40.209946,-8.400881,"Santo António dos Olivais",PT,1,YES
+12705,"Neath",BR,51.66284,-3.8039117,"Neath",GB,0.1,YES
+12728,"Mbombela",PT,-25.47291,30.977272,"Mbombela",ZA,0.8,YES
+12746,"Neupré",DE,38.7773,-9.10081,"Moscavide e Portela",PT,0.3,YES
+12766,"New Bedford",PT,41.636215,-70.934204,"New Bedford",US,0.6,YES
+12856,"New Rochelle",FR,40.911537,-73.78264,"New Rochelle",US,0,YES
+12874,"New Ulm (Minnesota)",US,38.38364,-7.34584,"Reguengos de Monsaraz",PT,17.1,YES
+12899,"Güzelyurt (Northern Cyprus)",TR,35.198425,32.99285,"Mórfou",CY,0.1,YES
+12913,"Nikel",NO,37.821926,15.274035,"Giardini-Naxos",IT,0.9,YES
+12941,"Niue",NZ,-19.053642,-169.86134,"Alofi",NU,6.1,YES
+12977,"Nordkapp",NO,37.111916,-8.672683,"Lagos",PT,1.1,YES
+12979,"Nördlingen",IT,48.851658,10.488587,"Nördlingen",DE,0,YES
+12985,"Norfolk Island",AU,-29.032804,167.94832,"Kingston",NF,3,YES
+12992,"Norrtälje",FI,59.759174,18.703747,"Norrtälje",SE,0.1,YES
+12999,"North America",GB,51,-109,"Swift Current",CA,116.2,NO (review)
+13002,"North Coast-Nechako",CA,13.372418,-16.695337,"Old Yundum",GM,1.5,YES
+13018,"North Cascades",CA,30.461832,-97.61802,"Pflugerville",US,2.5,YES
+13026,"North Coast (Zealand)",FI,37.11003,-8.281204,"Albufeira",PT,3.7,YES
+13032,"North-Eastern India",CN,37.151215,-8.228189,"Ferreiras",PT,2.6,YES
+13044,"Northern Cape",DE,-29.573402,21.205135,"Kakamas",ZA,105.8,NO (review)
+13051,"Northern Isaan",TH,-2.931922,-48.945183,"Tailândia",BR,1.9,YES
+13054,"Northern Laos",TH,19.986212,102.24413,"Luang Prabang",LA,14.1,YES
+13057,"Northern Myanmar",CN,22.62344,98.83084,"Tangyan",MM,47.2,YES
+13063,"Northern Quebec",TR,37.09014,-8.678213,"Porto de Mós",PT,0.7,YES
+13068,"North Estonia",FI,59.440414,24.780804,"Kesklinn",EE,1.4,YES
+13079,"North Jutland",DK,51.43622,5.614365,"Mierlo",NL,0.5,YES
+13081,"North Korea",KR,35.36973,24.54263,"Rethymno",GR,5.5,YES
+13086,"North Lombok",ID,52.28243,4.7798467,"Oosteinde",NL,1.1,YES
+13109,"Northumberland Shore",CA,53.836956,-3.052627,"Blackpool",GB,2.3,YES
+13113,"Northwest Washington",CA,45.66399,-122.68272,"Hazel Dell",US,1.8,YES
+13129,"Norway (Maine)",NO,44.213623,-70.542336,"Paris",US,6.1,YES
+13139,"Notodden",NO,41.9049,12.50002,"Castro Pretorio",IT,0.4,YES
+13148,"Novalja",FR,44.556118,14.884472,"Mali Lošinj",HR,33.1,YES
+13155,"Nové Město pod Smrkem",PL,37.728104,-8.777947,"Odemira",PT,18.9,YES
+13187,"Nurpur",ES,32.29974,75.883965,"Nūrpur",IN,0.2,YES
+13204,"Nykøbing Falster",DE,54.764614,11.870992,"Nykøbing Falster",DK,0.5,YES
+13217,"Oak Harbor",NO,48.293156,-122.64323,"Oak Harbor",US,0,YES
+13273,"Odsherred",DK,37.09014,-8.678213,"Porto de Mós",PT,0.7,YES
+13287,"Ohakune",AU,-39.416946,175.39961,"Whanganui",NZ,64.7,NO (review)
+13298,"Ojców National Park",PL,37.63115,-8.711122,"Odemira",PT,7.3,YES
+13321,"Okotoks",BR,50.72537,-113.97508,"Okotoks",CA,0.7,YES
+13347,"Ollantaytambo",PE,39.636124,-8.416227,"Tomar",PT,3.8,YES
+13352,"Oltrepò Pavese",IT,57.153942,24.850689,"Sigulda",LV,0.5,YES
+13361,"Omagh",IE,54.599247,-7.302991,"Omagh",GB,0.2,YES
+13364,"Omarama",NZ,41.75703,-8.58207,"Ponte de Lima",PT,1.1,YES
+13379,"Onslow",AU,45.391884,-63.30065,"Truro",CA,3.9,YES
+13384,"Onuma Quasi-National Park",JP,38.714245,-8.871095,"Montijo",PT,9,YES
+13387,"Opatija",HR,38.680935,-9.330173,"Carcavelos",PT,1.3,YES
+13412,"Oranjemund",ZA,-28.551931,16.428415,"Oranjemund",NA,0.1,YES
+13414,"Orăștie",PL,45.836765,23.195845,"Orăştie",RO,0.5,YES
+13417,"Orcas Island",ES,48.651558,-122.81793,"Anacortes",US,21.6,YES
+13419,"Orchid Island",PH,22.051199,121.54695,"Hengchun",TW,82.9,NO (review)
+13420,"Ordino",FR,42.55615,1.5334945,"Ordino",AD,0,YES
+13450,"Oryol",UA,52.968018,36.0995,"Orël",RU,1.4,YES
+13465,"Oshakati",ZA,-17.782652,15.6986,"Oshakati",NA,0.9,YES
+13478,"Ostend",GB,51.225857,2.919496,"Ostend",BE,1.3,YES
+13511,"Ouidah",TR,37.084522,-8.256735,"Albufeira",PT,0.7,YES
+13516,"Ouray",CH,37.09002,-8.224675,"Albufeira",PT,2.3,YES
+13536,"Oxapampa",PE,38.95784,-8.704649,"Benavente",PT,9.2,YES
+13542,"Oxley Wild Rivers National Park",AU,37.101875,-8.227493,"Albufeira",PT,2.5,YES
+13551,"Oze National Park",JP,30.154978,-97.789696,"Shady Hollow",US,7.1,YES
+13552,"Ozona",TR,39.92609,3.83064,"Ciutadella",ES,8.4,YES
+13569,"Padang Besar (Malaysia)",TH,6.6598773,100.31645,"Kampung Titi Tinggi",MY,6.4,YES
+13570,"Padang Besar (Thailand)",TH,6.666866,100.31942,"Kampung Titi Tinggi",MY,7.1,YES
+13591,"Pai",TH,-8.441723,119.00121,"Bima",ID,30.3,YES
+13596,"Painted Monasteries",RO,43.03432,-73.30232,"Bennington",US,19.4,YES
+13599,"Paisley",TR,55.84558,-4.4239645,"Paisley",GB,1.6,YES
+13600,"Pajala",SE,67.20904,23.364729,"Kittilä",FI,82.6,NO (review)
+13602,"Paju",KR,-7.881496,111.45599,"Ponorogo",ID,1.6,YES
+13606,"Paksan",VN,37.068867,-8.463714,"Carvoeiro",PT,3.2,YES
+13607,"Pakse",JP,8.69625,12.90522,"Poli",CM,44.3,YES
+13619,"Palau",PH,41.176216,9.377231,"La Maddalena",IT,5,YES
+13630,"Palić",HU,46.102283,19.763454,"Palić",RS,0.7,YES
+13640,"Palm Beach (Aruba)",NL,12.570441,-70.03941,"Palm Beach",AW,0.2,YES
+13658,"Palos Verdes",PT,25.37955,-108.45858,"Guasave",MX,21,YES
+13661,"Pamirs",CN,56.62286,23.259445,"Dobele",LV,1,YES
+13664,"Pampas",AR,38.072376,-8.298965,"Aljustrel",PT,24.6,YES
+13674,"Panama City (Florida)",MX,30.158651,-85.66029,"Panama City",US,0.1,YES
+13675,"Panama City Beach",ES,46.031765,9.123382,"Pregassona",CH,11.6,YES
+13698,"Panmunjeom",KR,37.955868,126.67701,"Kaesŏng",KP,10.9,YES
+13701,"Pantanal",BR,21.4281,-104.86065,"Xalisco",MX,4.5,YES
+13775,"Pharping",IN,27.611635,85.26701,"Ki̇̄rtipur",NP,7.5,YES
+13781,"Partizánske",NL,48.626522,18.371761,"Partizánske",SK,1,YES
+13793,"Passu",CN,37.151215,-8.228189,"Ferreiras",PT,2.6,YES
+13812,"Patras",IT,38.246243,21.735085,"Pátra",GR,0,YES
+13829,"Paynesville (Victoria)",CA,-12.89708,95.62626,"West Island",CC,153.7,NO (review)
+13842,"Peace River (Alberta)",CA,37.099693,-8.3947935,"Armação de Pêra",PT,3.4,YES
+13843,"Peace Country",CA,43.18573,-89.46119,"Waunakee",US,0.8,YES
+13853,"Pedasi",PA,37.151215,-8.228189,"Ferreiras",PT,2.6,YES
+13870,"Pelister National Park",GR,40.96385,21.23829,"Bitola",MK,11.2,YES
+13873,"Pelorus Bridge",NZ,37.089146,-8.248596,"Albufeira",PT,0.2,YES
+13877,"Pembina",US,48.75308,-97.55328,"Winkler",CA,55.4,NO (review)
+13882,"Penang",SG,5.4065013,100.255905,"Ayer Itam",MY,2.5,YES
+13886,"Pender Island",CA,45.65297,-90.53012,"Merrill",US,84.4,NO (review)
+13891,"Pengerang",SG,1.3944227,104.21549,"Felda Gugusan Adela",MY,10.3,YES
+13892,"Penghu",CN,23.569695,119.56645,"Magong",TW,2.1,YES
+13900,"Penns Grove",IT,39.729557,-75.46797,"Carneys Point",US,2,YES
+13912,"Peora",IN,39.421474,-80.34481,"Clarksburg",US,15.7,YES
+13919,"Perechyn",CA,48.73707,22.48764,"Perechyn",UA,0.8,YES
+13922,"Perhentian Islands",MY,37.090908,-8.283072,"Albufeira",PT,2.9,YES
+13948,"Peru (Maine)",PE,44.526524,-70.463875,"Paris",US,29.8,YES
+13951,"LaSalle-Peru",PE,41.327293,-89.12876,"Peru",US,0,YES
+13960,"Petawawa",DE,42.56351,27.604511,"Pomorie",BG,2.1,YES
+14012,"Phimai",TH,40.343895,-8.595845,"Cantanhede",PT,0.3,YES
+14022,"Khao Phra Thaeo Non-Hunting Area",TH,44.83141,9.41722,"Solaro",IT,20,YES
+14026,"Phu Quoc",TH,10.217092,103.95905,"Dương Đông",VN,0,YES
+14031,"Pichilemu",CL,44.055504,12.592457,"Rimini",IT,2.2,YES
+14034,"Pico",PT,41.450935,13.559382,"Pontecorvo",IT,8.9,YES
+14049,"Piha",NZ,41.726814,-8.162931,"Póvoa de Lanhoso",PT,19,YES
+14057,"Pilsen",DE,49.74774,13.377525,"Pilsen",CZ,0,YES
+14095,"Pisac",PE,37.041485,-8.777995,"Porto de Mós",PT,9.7,YES
+14120,"Placencia",US,45.053474,9.694746,"Piacenza",IT,0.2,YES
+14122,"Placentia (Newfoundland)",CA,37.091698,-8.229534,"Albufeira",PT,1.9,YES
+14125,"Plain of Jars",CN,19.425125,103.15932,"Muang Phônsavan",LA,4.3,YES
+14132,"Plant City",IE,35.60474,-82.55284,"Asheville",US,0.4,YES
+14133,"Plaquemines Parish",MX,29.429115,-89.51235,"Belle Chasse",US,66.2,NO (review)
+14157,"Pleasant Point",NZ,37.121124,-8.222702,"Ferreiras",PT,1.6,YES
+14164,"Plitvice Lakes National Park",HR,37.367554,-8.51076,"Monchique",PT,6.8,YES
+14165,"Ploče",HR,38.6783,0.08935,"Calp",ES,5.4,YES
+14206,"Poland (Maine)",PL,44.061634,-70.39447,"Poland",US,0.1,YES
+14207,"Poland (Ohio)",PL,41.024227,-80.61479,"Struthers",US,3.2,YES
+14233,"Ponta d'Ouro",ZA,39.87362,3.06484,"Port de Pollença",ES,4,YES
+14258,"Poring Hot Spring",MY,41.382915,-8.74382,"Póvoa de Varzim",PT,1.7,YES
+14260,"Porlamar",ES,10.963584,-63.84645,"Porlamar",VE,2.6,YES
+14271,"Port Aransas",MX,27.833218,-97.06183,"Aransas Pass",US,12.1,YES
+14297,"Port Germein",AU,37.21752,-7.445482,"Castro Marim",PT,0.4,YES
+14310,"Port Huron",CA,42.976086,-82.43337,"Port Huron",US,0.9,YES
+14311,"Portillo",AR,-21.563011,-64.66617,"Tarija",BO,7.2,YES
+14314,"Port Klang",ID,3.0027626,101.396675,"Pelabuhan Klang",MY,0.6,YES
+14359,"Portstewart",IE,54.436966,-7.1124883,"Omagh",GB,21.8,YES
+14370,"Port Vincent",AU,20.007448,-72.733025,"Saint-Louis du Nord",HT,8.3,YES
+14371,"Port Wakefield",AU,28.05203,-16.71774,"Arona",ES,6.4,YES
+14375,"Posadas",BR,-27.366482,-55.894295,"Posadas",AR,4.1,YES
+14391,"Poulsbo",NO,37.102108,-7.660355,"Tavira",PT,3,YES
+14416,"Prairies",FR,38.7773,-9.10081,"Moscavide e Portela",PT,0.3,YES
+14424,"Predeal",AT,45.50898,25.56581,"Predeal",RO,1,YES
+14433,"Prespa (Greece)",GR,40.74355,21.112316,"Bilisht",AL,16.5,YES
+14437,"Prestwick",IE,55.49828,-4.611302,"Prestwick",GB,1.7,YES
+14443,"Primorsko",TR,42.269867,27.750618,"Tsarevo",BG,13.6,YES
+14444,"Primorsky Krai",CN,45.081947,134.72664,"Dalnegorsk",RU,91.5,NO (review)
+14458,"Princeton (British Columbia)",CA,39.724934,-8.004051,"Sertã",PT,11.6,YES
+14520,"Puerto Montt",AR,36.59844,-4.5104,"Arroyo de la Miel",ES,2.2,YES
+14524,"Puerto Obaldia",CO,8.667056,-77.419624,"Unión Chocó",PA,66.1,NO (review)
+14532,"Puerto Varas",DE,37.12011,-8.16808,"Olhos de Água",PT,3.9,YES
+14543,"Punakaiki",NZ,44.63799,10.89211,"Modena",IT,2.9,YES
+14554,"Punta del Este",AR,-34.963234,-54.943996,"Punta del Este",UY,2,YES
+14556,"Punta Gorda (Florida)",CA,26.935152,-82.05121,"Punta Gorda",US,0.8,YES
+14586,"Pyin U Lwin",CN,22.033136,96.466736,"Pyin Oo Lwin",MM,1,YES
+14588,"Pyongan",CN,39.54165,126.064766,"Sunch’ŏn",KP,16.7,YES
+14591,"Pyrénées-Orientales",ES,42.625893,2.506509,"Prades",FR,7,YES
+14633,"Quechua phrasebook",AR,-22.91327,-68.19601,"San Pedro de Atacama",CL,0.6,YES
+14656,"Queyras",FR,37.151215,-8.228189,"Ferreiras",PT,2.6,YES
+14669,"Quintay",CL,38.508926,-8.987782,"Azeitão",PT,2.5,YES
+14676,"Raahe",RU,64.68453,24.481634,"Raahe",FI,0.2,YES
+14682,"Rabwah",IN,31.758,72.90606,"Rabwah",PK,0.8,YES
+14687,"Radal Siete Tazas National Park",CL,37.120754,-8.585785,"Alvor",PT,1.1,YES
+14707,"Rainbow Beach (Queensland)",AU,37.092358,-8.241854,"Albufeira",PT,0.9,YES
+14754,"Rannoch Moor",IE,56.674007,-4.694606,"Fort William",GB,30,YES
+14794,"Rødby",DE,54.694065,11.390221,"Maribo",DK,11.6,YES
+14795,"Rømø",DK,41.893322,12.482932,"Monti",IT,1.4,YES
+14805,"Reñaca",AR,-32.971535,-71.54372,"Viña del Mar",CL,5.9,YES
+14807,"Recaș",RO,37.151215,-8.228189,"Ferreiras",PT,2.6,YES
+14810,"Redang",MY,-0.3360793,102.4337,"Kuala Cenaku",ID,31.5,YES
+14812,"Red Bluff",AU,40.17843,-122.23592,"Red Bluff",US,0,YES
+14826,"Red Rock (Ontario)",CA,37.419216,-8.386893,"Monchique",PT,18.7,YES
+14862,"Republic of the Congo",FR,-0.7264327,15.641915,"Owando",CG,39.5,YES
+14872,"Retzer Land",AT,52.092873,14.646842,"Eisenhüttenstadt",DE,6.4,YES
+14876,"Reutte",DE,47.48911,10.718796,"Reutte",AT,0.7,YES
+14881,"Rewari",US,28.195646,76.616516,"Rewāri",IN,0.4,YES
+14908,"Richland",JP,38.706047,-88.09493,"Olney",US,2.9,YES
+14928,"Ridgefield (Connecticut)",CA,41.281483,-73.49818,"Ridgefield",US,0,YES
+14935,"Riederalp-Bettmeralp",CH,37.09523,-8.66987,"Lagos",PT,0.8,YES
+14940,"Rifle",US,38.713737,-9.156497,"Principe Real",PT,0.6,YES
+14990,"Riverside County",CA,33.722,-116.03725,"Coachella",US,13.5,YES
+15005,"Robe",AU,7.1242676,40.0081,"Bale Robe",ET,0.5,YES
+15042,"Rockport (Texas)",MX,28.020573,-97.054436,"Rockport",US,0.2,YES
+15112,"Rosslare",ES,52.273567,-6.3869033,"Wexford",IE,8.3,YES
+15138,"Routeburn Track",NZ,37.092358,-8.241854,"Albufeira",PT,0.9,YES
+15143,"Roxbury (Maine)",MX,44.669617,-70.59371,"Paris",US,46.2,YES
+15145,"Royal Natal National Park",ZA,-34.170338,151.0524,"Helensburgh",AU,5.3,YES
+15160,"Ruidoso",MX,33.33158,-105.673096,"Ruidoso",US,0,YES
+15171,"Rurrenabaque",BO,41.79211,-6.7673373,"Bragança",PT,1.8,YES
+15173,"Russell (New Zealand)",AU,-35.26179,174.12154,"Kerikeri",NZ,16.3,YES
+15178,"Russia to Japan via Sakhalin",JP,37.127205,-8.623427,"Alvor",PT,2.8,YES
+15179,"Rust",AT,48.265934,7.726321,"Ettenheim",DE,6.5,YES
+15200,"Saaremaa",DE,37.64411,-8.425553,"Odemira",PT,19.5,YES
+15205,"Sabah",ID,5.425736,117.03264,"Ranau",MY,71.5,NO (review)
+15210,"Sabha",TR,41.726814,-8.162931,"Póvoa de Lanhoso",PT,19,YES
+15213,"Sabine Hills",IT,31.27352,-93.78046,"Jasper",US,44.4,YES
+15216,"Sackets Harbor",CA,37.095364,-8.193062,"Olhos de Água",PT,0.6,YES
+15219,"Sacramento County",MX,38.602028,-8.831829,"Palmela",PT,7.1,YES
+15224,"Safiental",CH,37.64032,-8.881392,"Odemira",PT,21.8,YES
+15234,"Sagay",US,10.896069,123.41546,"Lopez Jaena",PH,5.4,YES
+15241,"Saharan Morocco",MA,41.726814,-8.162931,"Póvoa de Lanhoso",PT,19,YES
+15247,"Saimaa",FI,39.79067,-8.655989,"Caranguejeira",PT,6.6,YES
+15261,"Sainte-Anne-des-Lacs",CA,37.091698,-8.229534,"Albufeira",PT,1.9,YES
+15267,"Saint George (Florida)",MX,38.145725,-9.247721,"Sesimbra",PT,35.6,YES
+15278,"Saint John (U.S. Virgin Islands)",ES,18.335602,-64.75504,"Cruz Bay",VI,4.1,YES
+15285,"St. Lawrence",CA,38.149506,-7.872725,"Vidigueira",PT,9.2,YES
+15287,"Saint-Louis-du-Ha! Ha!",CA,38.6783,0.08935,"Calp",ES,5.4,YES
+15290,"Saint-Malo",CA,48.649517,-2.0260408,"Saint-Malo",FR,1.3,YES
+15321,"Sakhalin",JP,50.159477,143.02644,"Smirnykh",RU,48,YES
+15330,"Salamanca",CL,20.575006,-101.19498,"Salamanca",MX,0.6,YES
+15345,"Salento",CO,37.534225,-8.618377,"Odemira",PT,7.3,YES
+15386,"Samar Province",PH,41.231197,-8.623697,"Maia",PT,0.6,YES
+15396,"Samnaun",IT,46.94364,10.35961,"Landeck",AT,26.8,YES
+15397,"Sam Neua",VN,41.75703,-8.58207,"Ponte de Lima",PT,1.1,YES
+15403,"Samothrace",GR,40.474434,25.524815,"Gökçeada",TR,44.5,YES
+15404,"Samraong",TH,14.175806,103.50923,"Samraong",KH,1.1,YES
+15405,"Samsø",DK,41.12603,-8.632022,"Canidelo",PT,1.3,YES
+15412,"Samye",IN,29.326038,91.5078,"Lhoka",CN,27.3,YES
+15438,"San Cristóbal (Venezuela)",CO,7.775666,-72.22141,"San Cristóbal",VE,1.9,YES
+15464,"Sandspit",CA,-36.39308,174.72758,"Warkworth",NZ,5.5,YES
+15515,"San Jon",MX,35.106434,-103.33094,"Tucumcari",US,36.7,YES
+15558,"San Patricio-Melaque",BR,19.2232,-104.704605,"San Patricio",MX,0.2,YES
+15561,"San Pedro de Atacama",CL,37.98833,-8.623254,"Santiago do Cacém",PT,7,YES
+15571,"San Salvador",BS,13.697629,-89.191154,"San Salvador",SV,1,YES
+15594,"Santa Cruz de Mompox",CO,37.05778,-8.586962,"Alvor",PT,8,YES
+15657,"Sa Pa",CN,22.335917,103.84237,"Sa Pa",VN,0.5,YES
+15683,"Sark",GB,49.435165,-2.3595986,"Saint Peter Port",GG,13,YES
+15696,"Satakunta",FI,38.680935,-9.330173,"Carcavelos",PT,1.3,YES
+15699,"Sathing Phra",TH,38.680935,-9.330173,"Carcavelos",PT,1.3,YES
+15706,"Saturna Island",CA,37.48851,-8.495455,"Odemira",PT,17.6,YES
+15708,"Sauce",PE,-34.649666,-56.064964,"Sauce",UY,0.3,YES
+15711,"Saugerties",BR,42.07759,-73.95291,"Kingston",US,17.1,YES
+15731,"Saxon Elbland",CH,37.068867,-8.463714,"Carvoeiro",PT,3.2,YES
+15739,"Sânnicolau Mare",RO,37.09786,-8.144227,"Olhos de Água",PT,4.3,YES
+15743,"São Filipe",CV,37.044666,-8.381093,"Armação de Pêra",PT,6.8,YES
+15767,"Sälen",NO,61.155724,13.269409,"Mora",SE,70.5,NO (review)
+15775,"Súðavík",GB,65.90362,-22.995558,"Ísafjörður",IS,20,YES
+15776,"Sühbaatar",RU,46.209343,113.50772,"Baruun-Urt",MN,55.2,NO (review)
+15777,"Słubice",DE,52.355747,14.5662365,"Słubice",PL,0.7,YES
+15783,"Nordic countries",NO,62.918262,18.720287,"Örnsköldsvik",SE,41.4,YES
+15784,"Scania",SE,44.324646,15.207169,"Zadar",HR,23.3,YES
+15795,"Schengen",FR,49.4716,6.365901,"Schengen",LU,0.3,YES
+15801,"Schinoussa",GR,36.68284,27.747335,"Datça",TR,8.3,YES
+15818,"Scotts Bluff National Monument",ES,41.83388,-103.705666,"Gering",US,3.8,YES
+15842,"Sea to Sky",CA,22.293772,114.26766,"LOHAS Park",HK,0.5,YES
+15861,"Seda (Latvia)",RU,57.650288,25.75095,"Valka",LV,20.7,YES
+15870,"Seekonk",CA,41.808434,-71.337,"Seekonk",US,0,YES
+15881,"Sekupang",SG,38.087505,-8.780155,"Santo André",PT,3,YES
+15885,"Selçuk",GB,40.99126,27.221922,"Tekirdağ",TR,24.3,YES
+15891,"Selkirk (Manitoba)",CA,38.446392,-8.374978,"Alcácer do Sal",PT,14.6,YES
+15912,"Senmonorom",VN,38.7103,-9.131992,"Baixa",PT,0.5,YES
+15941,"Sevastopol",RU,44.605442,33.522083,"Sevastopol",UA,0.3,YES
+15950,"Seward",RU,37.18503,-100.892845,"Liberal",US,16,YES
+15952,"Seyðisfjörður",DK,38.7103,-9.131992,"Baixa",PT,0.5,YES
+15953,"Seychelles",SC,37.09014,-8.678213,"Porto de Mós",PT,0.7,YES
+15957,"Sfântu Gheorghe (Covasna)",HU,45.865993,25.786537,"Sfântu Gheorghe",RO,0.3,YES
+15959,"Shades State Park",TR,39.93918,-87.08177,"Crawfordsville",US,21,YES
+15969,"Shamrock",BR,35.21422,-100.24901,"Pampa",US,73.7,NO (review)
+16107,"Shrewsbury (Pennsylvania)",DE,39.768757,-76.67965,"Red Lion",US,16,YES
+16109,"Sringeri",IN,-37.02301,147.2396,"Bairnsdale",AU,94.8,NO (review)
+16116,"Shuswap",CA,37.111916,-8.672683,"Lagos",PT,1.1,YES
+16119,"Siargao",PH,37.094837,-8.188545,"Olhos de Água",PT,0.6,YES
+16120,"Siaton",AU,9.06275,123.0338,"Siaton",PH,0.2,YES
+16147,"Sighișoara",HU,46.220203,24.793447,"Sighișoara",RO,0.1,YES
+16149,"Sigiriya",IN,7.9498096,80.746346,"Dambulla",LK,14.4,YES
+16152,"Sigulda",CH,37.10161,-7.65946,"Tavira",PT,3,YES
+16170,"Sillamäe",FI,40.115498,-8.489314,"Condeixa-a-Nova",PT,0.8,YES
+16180,"Silverton (Colorado)",US,37.132553,-8.452594,"Lagoa",PT,0.3,YES
+16234,"Sisophon",VN,13.588401,102.970024,"Sisophon",KH,0.5,YES
+16253,"Skagen",SE,57.72597,10.58446,"Skagen",DK,0.6,YES
+16256,"Skanderborg",DE,56.035187,9.9317875,"Skanderborg",DK,0.1,YES
+16260,"Skåneleden",DE,55.736164,13.557117,"Södra Sandby",SE,13.4,YES
+16270,"Skibotn",FI,69.3908,20.267845,"Tromsdalen",NO,56.6,NO (review)
+16292,"Slobozia",GB,46.474945,27.311106,"Răchitoasa",RO,6.3,YES
+16299,"Småland",SE,63.597675,10.706141,"Stjørdal",NO,17.8,YES
+16308,"Snæfellsjökull National Park",IS,37.62656,-8.5287285,"Odemira",PT,10.3,YES
+16328,"Sodwana Bay",ZA,37.518406,-8.085408,"Almodôvar",PT,2.3,YES
+16333,"Road 55 (Norway)",NO,44.231377,-70.544044,"Paris",US,4.7,YES
+16345,"Soldeu",FR,42.576893,1.6682694,"Canillo",AD,5.9,YES
+16415,"South Atlantic Coast (Morocco)",MA,37.885986,-8.773694,"Sines",PT,11.5,YES
+16422,"South Caicos",TC,51.49049,0.2955922,"Chafford Hundred",GB,0.2,YES
+16430,"Southeast Arizona",MX,49.4763,16.16517,"Bystřice nad Pernštejnem",CZ,8.7,YES
+16431,"Southeastern Alaska",CA,37.13218,-8.451687,"Lagoa",PT,0.4,YES
+16439,"South East Queensland",AU,37.131153,-8.224531,"Ferreiras",PT,1.2,YES
+16447,"Southern Bukovina",RO,49.29737,16.7732,"Líšeň",CZ,11.5,YES
+16449,"Southern Coast (Peru)",PE,37.151215,-8.228189,"Ferreiras",PT,2.6,YES
+16479,"South Moravia",CZ,40.890663,-92.82049,"Centerville",US,18,YES
+16491,"South Texas Plains",MX,33.58079,-101.86868,"Lubbock",US,1.3,YES
+16499,"Southwest Florida",MX,38.6783,0.08935,"Calp",ES,5.4,YES
+16506,"Southwest Washington",CA,38.86824,-77.025444,"The Wharf",US,1.2,YES
+16514,"Sozopol",TR,42.418156,27.694313,"Pomorie",BG,17,YES
+16529,"Spencer (West Virginia)",US,39.99163,-8.506672,"Soure",PT,12.7,YES
+16537,"Spiez",IT,46.691948,7.6774654,"Spiez",CH,1.3,YES
+16538,"Spillville",CZ,43.205177,-91.95113,"Decorah",US,17.3,YES
+16560,"Spring Grove (Minnesota)",NO,43.561016,-91.63595,"Decorah",US,31.1,YES
+16600,"Stanstead",CA,52.106323,0.6909612,"Sudbury",GB,8,YES
+16603,"St. Anton",US,47.409943,9.5351715,"Altstätten",CH,3.7,YES
+16631,"Stein am Rhein",CH,47.659733,8.859682,"Rielasingen-Worblingen",DE,8.5,YES
+16650,"Stevns",MX,55.281,12.43741,"Køge",DK,25.4,YES
+16651,"Stewart",CA,32.073273,-84.84831,"Cusseta",US,26.8,YES
+16658,"St George (Queensland)",AU,38.167896,-9.001223,"Santo André",PT,22.6,YES
+16664,"St Helens (Tasmania)",AU,37.10608,-8.219959,"Ferreiras",PT,3,YES
+16666,"St. Ignace",US,46.69754,-65.0789,"Beaurivage",CA,9.2,YES
+16672,"St. Jacobs (Ontario)",CA,37.09436,-8.209326,"Olhos de Água",PT,1.6,YES
+16675,"St. Johann in Tirol",DE,47.522415,12.428681,"Sankt Johann in Tirol",AT,0.4,YES
+16678,"St. Joseph Island",CA,46.189407,-83.931114,"Sault Ste. Marie",US,46.6,YES
+16693,"Stołowe Mountains National Park",ZA,37.110947,-8.384343,"Armação de Pêra",PT,2.6,YES
+16721,"Stonewall (Texas)",US,37.127205,-8.623427,"Alvor",PT,2.8,YES
+16726,"Storm Lake",MX,28.05203,-16.71774,"Arona",ES,6.4,YES
+16736,"St. Pete Beach",MX,37.092358,-8.241854,"Albufeira",PT,0.9,YES
+16737,"Strabane",IE,54.826115,-7.462799,"Strabane",GB,0.5,YES
+16760,"Stromboli",IS,38.80435,15.236799,"Tropea",IT,58.9,NO (review)
+16768,"Strynø",DK,61.90122,6.71598,"Stryn",NO,0.2,YES
+16772,"Stubaier Gletscher",AT,46.991886,11.117223,"Vipiteno",IT,26.1,YES
+16786,"New Zealand Subantarctic Islands",NZ,37.0927,-8.199374,"Olhos de Água",PT,0.7,YES
+16788,"Subic",ES,14.87748,120.23447,"Subic",PH,0.3,YES
+16811,"Sulemania",TR,25.6,85.210785,"Patna",IN,7.6,YES
+16812,"Sulina",RO,37.145054,-7.6075416,"Tavira",PT,4.1,YES
+16832,"Sundarbans (Bangladesh)",IN,22.023989,89.31361,"Sarankhola",BD,58.6,NO (review)
+16833,"Sundarbans National Park",IN,30.154978,-97.789696,"Shady Hollow",US,7.1,YES
+16859,"Supraśl",PL,37.151215,-8.228189,"Ferreiras",PT,2.6,YES
+16861,"Sur",CN,46.521122,9.631054,"Chiavenna",IT,28.6,YES
+16866,"Surfside (Texas)",MX,28.950706,-95.28743,"Freeport",US,7,YES
+16873,"Suriname",BR,41.75703,-8.58207,"Ponte de Lima",PT,1.1,YES
+16880,"Sussex (New Brunswick)",CA,38.44011,-8.984759,"Azeitão",PT,9.2,YES
+16909,"Eswatini",ZA,-26.56248,31.399132,"Manzini",SZ,7.3,YES
+16910,"Sweden",SE,37.13355,-8.573062,"Alvor",PT,1.7,YES
+16911,"Swedesboro",SE,39.747612,-75.31046,"Paulsboro",US,11,YES
+16917,"Switzerland",CH,34.240845,-116.8652,"Big Bear City",US,2.9,YES
+16919,"Sydfynske Øhav",DK,41.726814,-8.162931,"Póvoa de Lanhoso",PT,19,YES
+16952,"Syrian Coast and Mountains",TR,44.486412,-69.02453,"Belfast",US,6.9,YES
+16970,"Taba Heights",EG,29.386496,34.799706,"Ḩaql",SA,18.1,YES
+16975,"Taberg",SE,49.642605,8.460677,"Bürstadt",DE,0.1,YES
+16976,"Table Mountain National Park",ZA,37.10855,-8.492792,"Carvoeiro",PT,2.5,YES
+16981,"Tachileik",TH,20.44908,99.88422,"Tachilek",MM,0.4,YES
+16999,"Taguig",SG,14.527054,121.07449,"Taguig",PH,0.6,YES
+17039,"Tak Bai",MY,6.2597804,102.0534,"Tak Bai",TH,0.1,YES
+17040,"Takengon",ID,28.05203,-16.71774,"Arona",ES,6.4,YES
+17065,"Taman Negara",MY,38.258923,-8.293561,"Alcácer do Sal",PT,23.1,YES
+17073,"Tamchy",RU,42.564697,76.6606,"Cholpon-Ata",KG,35.8,YES
+17084,"Tana",FI,-18.910011,47.52558,"Antananarivo",MG,1.2,YES
+17088,"Tanegashima",PT,30.591848,130.9959,"Nōkan",JP,4.3,YES
+17104,"Tansen",IN,27.866365,83.546906,"Tānsen",NP,0.1,YES
+17108,"Taos",MX,36.407238,-105.57328,"Taos",US,0,YES
+17118,"Tarapoto",PE,37.103554,-8.309566,"Armação de Pêra",PT,4.2,YES
+17146,"Tasiilaq",IS,37.151215,-8.228189,"Ferreiras",PT,2.6,YES
+17180,"Târgoviște",GB,45.815544,21.825483,"Lugoj",RO,15.3,YES
+17194,"Tecate",US,32.58337,-116.628525,"Tecate",MX,2,YES
+17211,"Tel Aviv/South and East",CN,17.901588,-77.74622,"Bull Savannah",JM,16.6,YES
+17213,"Telšiai",RU,55.984615,22.249075,"Telsiai",LT,0.4,YES
+17248,"Tepelene",GR,40.298225,20.020874,"Tepelenë",AL,0.3,YES
+17257,"Alandroal",PT,39.58429,-7.3359823,"Valencia de Alcántara",ES,20.8,YES
+17266,"Terra Nova National Park",PT,48.53323,-53.89194,"Clarenville",CA,41.1,YES
+17288,"Thakhek",TH,17.394619,104.80645,"Thakhèk",LA,3.1,YES
+17298,"Thanlyin",PT,16.764812,96.250946,"Thanlyin",MM,0.8,YES
+17301,"Thaton (Thailand)",TH,37.409016,-8.439807,"Monchique",PT,14.4,YES
+17303,"The Catlins",NZ,38.10246,-9.0931,"Sines",PT,25.4,YES
+17307,"The Forest Way",GB,-33.711674,151.01297,"Glenhaven",AU,1.8,YES
+17315,"Thenmala",IN,37.10739,-8.675941,"Lagos",PT,0.6,YES
+17430,"Tissamaharama",LK,37.056606,-8.601551,"Porto de Mós",PT,8,YES
+17436,"Tivat",ME,38.680935,-9.330173,"Carcavelos",PT,1.3,YES
+17443,"Tobago",ES,11.240461,-60.672005,"Scarborough",TT,9.5,YES
+17456,"Toila",RU,59.420876,27.511683,"Jõhvi",EE,8.6,YES
+17511,"Tongariro National Park",NZ,37.65449,-8.8245,"Odemira",PT,17.4,YES
+17525,"Top End",AU,52.89117,-7.4803085,"Portlaoise",IE,20,YES
+17532,"Topslip",IN,37.14127,-8.571671,"Alvor",PT,2.2,YES
+17534,"Torbay",NZ,38.47008,-8.056147,"Évora",PT,17,YES
+17538,"Tornio",SE,37.14127,-8.571671,"Alvor",PT,2.2,YES
+17562,"Torres Strait Islands",AU,-10.285107,142.2409,"Daru",PG,171.1,NO (review)
+17573,"Tory Island",IE,37.117825,-8.406259,"Lagoa",PT,4.6,YES
+17591,"Town Krk",HR,37.14127,-8.571671,"Alvor",PT,2.2,YES
+17609,"Rail travel in New Zealand",NZ,37.09472,-8.293544,"Albufeira",PT,3.9,YES
+17619,"Transylvania",RO,35.198223,-82.77249,"Brevard",US,5.2,YES
+17639,"Trelleborg",DE,55.37592,13.1461525,"Trelleborg",SE,0.7,YES
+17652,"Triglav National Park",IT,46.336044,13.813872,"Bohinjska Bistrica",SI,12.9,YES
+17663,"Trinidad and Tobago",PT,10.746691,-61.084007,"Sangre Grande",TT,18.5,YES
+17706,"Tsitsikamma National Park",ZA,39.766792,-8.621976,"Caranguejeira",PT,7.7,YES
+17743,"Tully",AU,50.085747,1.5160218,"Eu",FR,8.1,YES
+17757,"Tunku Abdul Rahman National Park",MY,37.347668,-8.177719,"São Bartolomeu de Messines",PT,14,YES
+17765,"Turkey (Texas)",TR,34.393917,-100.89408,"Childress",US,63.4,NO (review)
+17766,"Turkey Run State Park",CA,39.89424,-87.20396,"Crawfordsville",US,32.5,YES
+17767,"Turkmenbashi",RU,40.00554,52.993282,"Türkmenbaşy",TM,3.7,YES
+17786,"Tui",PT,42.050137,-8.646641,"Tui",ES,0.4,YES
+17840,"Ujung Kulon National Park",ID,38.6783,0.08935,"Calp",ES,5.4,YES
+17844,"Ukraine",RU,49.487198,31.271832,"Korsun-Shevchenkivskyi",UA,7.8,YES
+17846,"Ulaangom",RU,49.980034,92.06885,"Ulaangom",MN,0.2,YES
+17849,"Uliastai",RU,47.741554,96.84748,"Uliastay",MN,0.2,YES
+17857,"Uludağ",GR,38.67878,0.09787,"Teulada",ES,5.7,YES
+17868,"Umphang",TH,16.019138,98.8633,"Myawaddy",MM,83.5,NO (review)
+17884,"Upcountry Árnessýsla",IS,46.578205,-90.87357,"Ashland",US,1.8,YES
+17902,"Urban camping in Japan",JP,39.683254,-8.419912,"Tomar",PT,9.1,YES
+17909,"Urmia",TR,37.54834,45.06671,"Orūmīyeh",IR,1,YES
+17913,"Urubamba",PE,41.77262,-7.775522,"Boticas",PT,12.8,YES
+17917,"Ushuaia",CL,-54.807304,-68.30841,"Ushuaia",AR,0.6,YES
+17919,"Ussuriysk",CN,43.797245,131.95207,"Ussuriysk",RU,0.9,YES
+17932,"Utsjoki",NO,-22.911514,-43.17674,"Rio de Janeiro",BR,0.8,YES
+17943,"Uyuni",AR,-18.28925,-66.477264,"Llallagua",BO,18.4,YES
+17947,"Vaals",DE,50.778103,5.9810696,"Vaals",NL,2.7,YES
+17952,"Vadstena and Ödeshög",SE,53.2542,-1.914,"Buxton",GB,0.5,YES
+17957,"Valaam",RU,40.823986,-8.510108,"Oliveira de Azemeis",PT,3.5,YES
+17962,"Valdez",US,1.24917,-78.98306,"Valdez",EC,0,YES
+17965,"Valdres",BE,60.514748,11.174451,"Råholt",NO,26.6,YES
+17993,"Valles Calchaquíes",AR,37.882088,-8.589808,"Santiago do Cacém",PT,17.6,YES
+18030,"Vanimo",CN,-2.6847646,141.30092,"Vanimo",PG,0.2,YES
+18040,"Vardø",NO,70.370186,31.10772,"Zapolyarnyy",RU,105.6,NO (review)
+18050,"Vasco da Gama",PT,15.398416,73.81288,"Vasco da Gama",IN,0.4,YES
+18078,"Vence",IT,43.722416,7.1116843,"Vence",FR,0,YES
+18113,"Verviers",DE,50.59324,5.867828,"Verviers",BE,0.6,YES
+18144,"Vieng Xai",VN,20.41094,104.227715,"Xam Nua",LA,19.1,YES
+18154,"Vietnam",VN,41.75703,-8.58207,"Ponte de Lima",PT,1.1,YES
+18165,"Vilcabamba",PE,41.78042,-7.372248,"Chaves",PT,9.2,YES
+18169,"Villach",TR,46.61673,13.850027,"Villach-Innere Stadt",AT,0.5,YES
+18172,"Village at Blue Mountain",CA,47.26403,11.3656645,"Hötting",AT,0.5,YES
+18215,"Visegrád",PL,47.78458,18.970337,"Vác",HU,12.4,YES
+18219,"Vitebsk",RU,55.19302,30.207045,"Vitebsk",BY,0.3,YES
+18252,"Voyageurs National Park",CA,38.680935,-9.330173,"Carcavelos",PT,1.3,YES
+18268,"Wa",US,10.062326,-2.5054274,"Wa",GH,0.4,YES
+18273,"Wadden Sea National Park",DE,37.986073,-8.707558,"Santiago do Cacém",PT,3.6,YES
+18277,"Wadi Halfa",EG,21.792852,31.3713,"Wadi Halfa",SD,0.3,YES
+18296,"Waipukurau",NZ,49.963806,14.070909,"Beroun",CZ,0.1,YES
+18297,"Wairarapa",NZ,37.10251,-8.264175,"Albufeira",PT,2,YES
+18300,"Waitomo",NZ,37.14127,-8.57167,"Alvor",PT,2.2,YES
+18308,"Wakefield (New Zealand)",NZ,53.72855,-1.49638,"Lofthouse",GB,0.1,YES
+18321,"Wallace (Nebraska)",RU,40.838337,-101.164955,"North Platte",US,46.2,YES
+18326,"Wallis and Futuna",FR,-13.289402,-176.20422,"Mata-Utu",WF,3.3,YES
+18343,"Wamego",NL,39.201942,-96.305,"Manhattan",US,23.1,YES
+18352,"Ward",NZ,31.50076,-103.07812,"Monahans",US,20.4,YES
+18372,"Warroad",BR,48.905266,-95.31441,"Thief River Falls",US,108.2,NO (review)
+18373,"Warrumbungle National Park",AU,37.498207,-8.565343,"Odemira",PT,12.9,YES
+18380,"Wartrail and New England",ZA,37.098446,-8.137919,"Quarteira",PT,4.6,YES
+18408,"Washington Crossing Historical Park",BR,50.78305,-112.8459,"Strathmore",CA,48.1,YES
+18415,"Waterfalls",BR,10.307181,-4.4351892,"Mangodara",BF,45.8,YES
+18418,"Waterfront City",ID,4.4458,81.04486,"Devinuwara",LK,172.4,NO (review)
+18448,"Wayne National Forest",TR,39.56257,-82.18737,"Nelsonville",US,12.2,YES
+18470,"Weimar (Texas)",CZ,29.70301,-96.78054,"Giddings",US,55.4,NO (review)
+18480,"Wellfleet",BR,41.937607,-70.0328,"Eastham",US,12.9,YES
+18482,"Wellingborough",FR,54.33045,8.7737,"Tönning",DE,10.9,YES
+18484,"Wellington (Ohio)",CA,41.168587,-82.21757,"Oberlin",US,13.9,YES
+18497,"Wenchang",TH,31.634853,105.16022,"Jiangyou",CN,44.4,YES
+18509,"West Bohemia",CZ,38.38364,-7.34584,"Reguengos de Monsaraz",PT,17.1,YES
+18519,"Western Arizona",MX,33.40634,-111.56229,"Apache Junction",US,1.5,YES
+18539,"Westfjords",IS,38.80404,23.23432,"Orchomenós",GR,41.1,YES
+18543,"West Frisian Islands",DE,53.448326,5.739961,"Stiens",NL,20.7,YES
+18545,"West Greenwich",BR,41.62262,-71.66579,"West Greenwich",US,1.7,YES
+18553,"West Iceland",IS,51.40564,-0.1649995,"Mitcham",GB,0.4,YES
+18562,"West Lombok",ID,52.091225,5.099599,"Utrecht",NL,1.5,YES
+18581,"Westport (New York)",US,-41.75777,171.57617,"Greymouth",NZ,84.7,NO (review)
+18589,"West Sumatra",ID,40.343895,-8.595845,"Cantanhede",PT,0.3,YES
+18592,"West Valley City",MX,42.408127,-78.61074,"Boston",US,26.7,YES
+18599,"West Zealand",DK,37.10998,-8.60976,"Alvor",PT,2.7,YES
+18614,"Whangaroa",NZ,38.01819,-8.206359,"Aljustrel",PT,16,YES
+18630,"White Island",NZ,39.11735,-8.414642,"Fazendas de Almeirim",PT,14.8,YES
+18639,"White Sands National Park",MX,37.42228,-8.714588,"Aljezur",PT,14,YES
+18665,"Wildwood (New Jersey)",IE,38.984196,-74.81425,"Wildwood",US,0.8,YES
+18678,"Williamstown (New Jersey)",IE,41.75703,-8.58207,"Ponte de Lima",PT,1.1,YES
+18720,"Winkler",RU,31.80059,-103.07623,"Kermit",US,6.5,YES
+18775,"Wonsan",JP,37.07995,-8.340465,"Armação de Pêra",PT,2.9,YES
+18778,"Wood Buffalo National Park",CA,37.106255,-8.401596,"Armação de Pêra",PT,4,YES
+18795,"Woodstown",IT,39.651505,-75.32825,"Carneys Point",US,13.8,YES
+18806,"Working abroad",SG,30.267574,31.485502,"Al-'Ubūr",EG,4.3,YES
+18810,"Worthington (Minnesota)",US,37.14127,-8.571671,"Alvor",PT,2.2,YES
+18830,"Wyckoff",NL,41.00954,-74.17292,"Wyckoff",US,0,YES
+18842,"Xcalak",MX,18.270376,-87.83596,"San Pedro",BZ,41.7,YES
+18861,"Xora",ZA,28.447882,91.37802,"Lhuentse",BT,88.8,NO (review)
+18887,"Yamba",AU,41.768723,-7.9771595,"Boticas",PT,27,YES
+18901,"Yanji",KR,42.90474,129.50438,"Yanji",CN,1.8,YES
+18959,"Yiwu",IN,29.3093,120.07038,"Yiwu",CN,0.9,YES
+18973,"Yonghe",PH,36.759502,110.62649,"Wayaobu",CN,95.6,NO (review)
+18981,"Yorke Peninsula and Clare Valley",AU,13.16667,-61.25,"Kingstown",VC,2.8,YES
+19003,"Yucatán and the South",MX,51.33333,-1.5,"Hungerford",GB,9.2,YES
+19033,"Zabaykalsk",CN,49.644653,117.329025,"Zabaykal’sk",RU,0.8,YES
+19052,"Zamyn-Üüd",CN,41.75703,-8.58207,"Ponte de Lima",PT,1.1,YES
+19059,"Zanskar",IN,37.095203,-8.172611,"Olhos de Água",PT,1.8,YES
+19068,"Zealand",SE,55.545597,11.697374,"Ringsted",DK,12.9,YES
+19155,"Ascona",CH,46.340363,8.384806,"Domodossola",IT,25.9,YES
+19165,"Muurame",FI,41.75703,-8.58207,"Ponte de Lima",PT,1.1,YES
+19180,"Roncesvalles",ES,4.011132,-75.605194,"Roncesvalles",CO,0,YES
+19211,"Morrisburg",CA,44.897705,-75.18295,"Massena",US,23.2,YES
+19224,"Prescott (Ontario)",CA,44.71042,-75.5129,"Ogdensburg",US,2.8,YES
+19249,"Christianity",PH,34.82919,-111.75673,"Sedona",US,4.5,YES
+19251,"Archaeological sites",CN,33.521786,-79.09165,"Murrells Inlet",US,5.7,YES
+19253,"Norrbotten County",PT,66.98121,19.999165,"Gällivare",SE,33,YES
+19259,"Diving at Three Kings Islands",NZ,38.680935,-9.330173,"Carcavelos",PT,1.3,YES
+19283,"Chiltern Hills",GB,-29.814722,30.9275,"Pinetown",ZA,4,YES
+19287,"Goliad",BR,28.66891,-97.39111,"Victoria",US,40.7,YES
+19290,"Nackawic",CA,37.092358,-8.241854,"Albufeira",PT,0.9,YES
+19338,"Cushendall",IE,55.08082,-6.0640645,"Ballycastle",GB,17.8,YES
+19359,"Rutherglen (Victoria)",AU,37.09014,-8.678213,"Porto de Mós",PT,0.7,YES
+19363,"Waihi Beach",NZ,37.09236,-8.24185,"Albufeira",PT,0.9,YES
+19368,"Lawrenceburg",TR,38.037136,-84.896255,"Lawrenceburg",US,0,YES
+19377,"LGBT Stockholm",CA,59.33258,18.0649,"Stockholm",SE,0.4,YES
+19390,"Bhimashankar",IN,39.530678,-8.501188,"Torres Novas",PT,7.1,YES
+19438,"Rathlin Island",IE,37.68725,-8.634575,"Odemira",PT,9.9,YES
+19449,"Akşehir",CN,38.35885,31.420197,"Akşehir",TR,0.4,YES
+19454,"Marakele National Park",ZA,37.106255,-8.401596,"Armação de Pêra",PT,4,YES
+19455,"Empuriabrava",FR,42.24701,3.1206872,"Empuriabrava",ES,0,YES
+19472,"Prehistoric Wessex Trail",GB,42.64846,-122.8106,"Eagle Point",US,19.6,YES
+19474,"Moose Lake (Minnesota)",US,38.7103,-9.131992,"Baixa",PT,0.5,YES
+19492,"Dalkeith",IE,55.894337,-3.0700445,"Dalkeith",GB,0.2,YES
+19496,"Putre",CL,-18.196383,-69.55923,"Tacna",PE,76.1,NO (review)
+19498,"Laguna San Rafael National Park",CL,37.1097,-8.53839,"Portimão",PT,3.2,YES
+19499,"Lauca National Park",CL,37.421192,-8.587311,"Monchique",PT,11.8,YES
+19514,"Merowe",SD,37.09523,-8.66987,"Lagos",PT,0.8,YES
+19534,"Sandys Parish",IE,32.300514,-64.86974,"Sandys Parish",BM,0.5,YES
+19560,"Saint Petersburg/Center",FI,59.932186,30.345984,"Centralniy",RU,0.8,YES
+19565,"Koroni",GR,13.311343,-3.9286046,"Nouna",BF,65.1,NO (review)
+19591,"Diving the Hen and Chicken Islands",NZ,43.84451,-74.66239,"Saranac Lake",US,68.6,NO (review)
+19615,"Kronstadt",FI,37.08862,-8.234216,"Albufeira",PT,1.4,YES
+19627,"Kati Thanda-Lake Eyre National Park",AU,37.897038,-9.002678,"Sines",PT,13.4,YES
+19658,"Hveragerði",IS,43.5585,7.02888,"Cannes",FR,1.5,YES
+19665,"Taipa-Mangonui",NZ,38.48512,-8.379485,"Alcácer do Sal",PT,17.1,YES
+19750,"Booneville (Mississippi)",VN,34.65552,-88.56344,"Booneville",US,0.4,YES
+19758,"Toubkal National Park",MA,37.106255,-8.401596,"Armação de Pêra",PT,4,YES
+19773,"Samoeng Loop",TH,40.066853,-8.71587,"Louriçal",PT,7.2,YES
+19787,"Nankana Sahib",IN,37.087776,-8.236975,"Albufeira",PT,1.2,YES
+19797,"Yeonpyeong Island",KR,37.384724,-8.431036,"Monchique",PT,13.3,YES
+19806,"Gasan",PH,37.08153,-8.322858,"Armação de Pêra",PT,3.8,YES
+19825,"Lummi Island",CA,48.694572,-122.66998,"Bellingham",US,15.2,YES
+19861,"Crewe (Virginia)",US,41.15097,-8.621186,"Porto",PT,0.9,YES
+19898,"Stuart Island",CA,37.094368,-8.181532,"Olhos de Água",PT,1,YES
+19902,"Blakely Island",BR,28.05203,-16.71774,"Arona",ES,6.4,YES
+19905,"Lake Tai",AU,6.973029,100.436066,"Hat Yai",TH,6,YES
+19908,"Blake Island",BR,47.537434,-122.49303,"Manchester",US,4.4,YES
+19937,"Arau",TH,47.392715,8.044445,"Aarau",CH,0,YES
+19967,"Uusimaa",FI,40.343895,-8.595845,"Cantanhede",PT,0.3,YES
+19972,"Nurmes",RU,63.542137,29.140741,"Nurmes",FI,0.1,YES
+19987,"Lockhart",AU,40.569954,-8.154201,"Tondela",PT,8.6,YES
+19988,"Copenhagen Airport",SE,41.73442,-8.221588,"Sande",PT,14.6,YES
+20013,"Judaism",EG,44.835464,11.613404,"Ferrara",IT,0.6,YES
+20037,"Laponia",NO,37.111916,-8.672683,"Lagos",PT,1.1,YES
+20076,"Sami culture",RU,35.696297,-0.5753054,"Bir el Djir",DZ,3.8,YES
+20089,"Storlien",DE,63.316605,12.100724,"Verdal",NO,61.2,NO (review)
+20091,"Båstad",SE,37.151215,-8.228189,"Ferreiras",PT,2.6,YES
+20123,"Tuchan",FR,40.56787,-8.176502,"Tondela",PT,9.9,YES
+20141,"Gibraleón",PT,37.374634,-6.9690747,"Gibraleón",ES,0.2,YES
+20145,"Swedish Classic Circuit",SE,52.52413,9.756553,"Isernhagen Farster Bauerschaft",DE,8.3,YES
+20164,"Fichtelgebirge",CZ,49.97592,11.977594,"Wunsiedel",DE,7.3,YES
+20175,"Olympic Games",GR,49.103832,8.857037,"Eppingen",DE,5.4,YES
+20205,"Benson (Arizona)",MX,31.967989,-110.294334,"Vail",US,40.4,YES
+20207,"Mazeri",RU,18.124725,73.596596,"Birvādi",IN,9.7,YES
+20220,"Lordsburg",MX,38.6783,0.08935,"Calp",ES,5.4,YES
+20241,"Bayham (Ontario)",CA,39.4282,-8.355039,"Vila Nova da Barquinha",PT,7.8,YES
+20247,"Naracoorte",AU,37.092358,-8.241854,"Albufeira",PT,0.9,YES
+20257,"Cimaja",ID,40.901917,-8.146143,"Arouca",PT,8.9,YES
+20259,"Vikings and the Old Norse",CA,37.480362,-8.483627,"Odemira",PT,19,YES
+20279,"Kalajoki",SE,39.42605,-8.073387,"Abrantes",PT,11.8,YES
+20289,"Mollepata",PE,38.680935,-9.330173,"Carcavelos",PT,1.3,YES
+20290,"Biesbosch National Park",NL,49.56906,4.357,"Rethel",FR,6.6,YES
+20291,"Bize Minervois",FR,38.38364,-7.34584,"Reguengos de Monsaraz",PT,17.1,YES
+20301,"Cheektowaga",CA,42.903393,-78.75475,"Cheektowaga",US,0,YES
+20304,"West Seneca",CA,42.839584,-78.75415,"West Seneca",US,3.9,YES
+20311,"Safford (Arizona)",MX,32.833225,-109.71318,"Safford",US,0.5,YES
+20316,"Minerve",FR,38.38364,-7.34584,"Reguengos de Monsaraz",PT,17.1,YES
+20364,"Mataura",NZ,38.680935,-9.330173,"Carcavelos",PT,1.3,YES
+20366,"Innisfail (Queensland)",AU,40.308193,-8.589966,"Cantanhede",PT,4.3,YES
+20396,"Clinton (Ontario)",CA,37.135826,-8.248751,"Ferreiras",PT,1.2,YES
+20397,"Loviisa",RU,60.457012,26.225645,"Lovisa",FI,0.1,YES
+20415,"New Quay",GB,38.41553,-75.05652,"Ocean Pines",US,8.9,YES
+20428,"Jasmund National Park",DE,37.501648,-8.702137,"Odemira",PT,12,YES
+20433,"Riksgränsen",NO,37.900665,-8.674604,"Santiago do Cacém",PT,13,YES
+20448,"Trois-Ilets",FR,14.539,-61.03608,"Les Trois-Îlets",MQ,0.3,YES
+20449,"Downpatrick",IE,54.327934,-5.71649,"Downpatrick",GB,0.1,YES
+20490,"DMZ (Korea)",JP,35.36973,24.54263,"Rethymno",GR,5.5,YES
+20513,"La Grange (Texas)",CZ,37.121124,-8.222702,"Ferreiras",PT,1.6,YES
+20516,"Puerto Rio Tranquilo",AR,-46.623924,-72.676285,"Coyhaique",CL,125.7,NO (review)
+20547,"Minca",CO,43.19491,17.1394,"Makarska",HR,15,YES
+20562,"Weert",BE,51.27424,5.70424,"Weert",NL,2.5,YES
+20566,"Niepołomice",PL,38.38364,-7.34584,"Reguengos de Monsaraz",PT,17.1,YES
+20603,"Lemmenjoki National Park",NO,68.58333,25.66667,"Kittilä",FI,107,NO (review)
+20604,"Marado Island",KR,37.095203,-8.172611,"Olhos de Água",PT,1.8,YES
+20626,"Youngstown (New York)",CA,41.09978,-80.64952,"Youngstown",US,0,YES
+20635,"Military museums and sites in Australia",FR,37.260845,-8.451804,"Silves",PT,8.1,YES
+20643,"Zruč nad Sázavou",CZ,37.02453,-8.956709,"Vila do Bispo",PT,7.7,YES
+20651,"Vardzia",TR,41.38092,43.283337,"Akhalkalaki",GE,17.1,YES
+20654,"Sammanthurai",PT,7.3703313,81.81247,"Kalmunai",LK,5,YES
+20674,"Luoding",CN,38.67878,0.09787,"Teulada",ES,5.7,YES
+20679,"Hamhung",KR,39.916546,127.53843,"Hamhŭng",KP,0.3,YES
+20680,"Abington (Scotland)",GB,37.11615,-8.3944435,"Armação de Pêra",PT,3.7,YES
+20713,"Pyeongchang",KR,37.66042,-8.509279,"Odemira",PT,13.4,YES
+20729,"Nampho",KR,38.736744,125.41153,"Namp’o",KP,0.3,YES
+20744,"Calgary (Scotland)",GB,51.05011,-114.08529,"Calgary",CA,0,YES
+20745,"Kehl",FR,48.5734,7.8114004,"Kehl",DE,0.3,YES
+20751,"Baengnyeong Island",KR,37.938976,124.70337,"Changyŏn",KP,48.8,YES
+20761,"Balbriggan",RU,53.609833,-6.1861963,"Balbriggan",IE,0.3,YES
+20775,"Punta Gallinas",BR,12.458525,-71.668495,"Uribia",CO,105.1,NO (review)
+20793,"Thumrait",OM,37.728104,-8.777947,"Odemira",PT,18.9,YES
+20799,"Hengelo",DE,52.265873,6.792405,"Hengelo",NL,0,YES
+20802,"Champlain and Rouses Point",CA,39.963787,-8.704569,"Louriçal",PT,5.3,YES
+20806,"Ko Poda",TH,43.057983,17.890474,"Stolac",BA,6.3,YES
+20820,"Castletownbere",IE,37.14127,-8.571671,"Alvor",PT,2.2,YES
+20838,"Persian Empire",IN,37.63826,-120.90215,"Hughson",US,5.6,YES
+20854,"Massena",CA,44.93008,-74.89224,"Massena",US,0.2,YES
+20897,"Storuman",RU,65.09508,17.117971,"Lycksele",SE,92.2,NO (review)
+20914,"Haĺšany",PL,40.573395,-8.290995,"Águeda",PT,13,YES
+20925,"Saint-Claude",FR,37.318104,-8.852471,"Aljezur",PT,4.5,YES
+20963,"Kimitoön",FI,37.969517,-7.7544503,"Beja",PT,10.7,YES
+21032,"Aconcagua",AR,-32.65315,-70.01196,"San Esteban",CL,55.6,NO (review)
+21036,"Nera Gorge-Beușnița National Park",RO,37.11008,-8.553589,"Portimão",PT,3.5,YES
+21042,"Ghost towns",IT,34.81875,-102.39898,"Hereford",US,0.4,YES
+21046,"Brielle (Netherlands)",ES,51.90166,4.162629,"Rozenburg",NL,5.9,YES
+21057,"Semenic-Caraș Gorge National Park",RO,43.44217,11.53255,"Montevarchi",IT,9.8,YES
+21084,"Turgutreis",IT,37.00577,27.257833,"Turgutreis",TR,1.4,YES
+21085,"Râu de Mori",RO,41.382915,-8.74382,"Póvoa de Varzim",PT,1.7,YES
+21091,"San Giorgio su Legnano",CH,45.573772,8.913739,"San Giorgio Su Legnano",IT,0,YES
+21096,"Iron Gates Natural Park",RO,38.00902,-9.049463,"Sines",PT,16.8,YES
+21098,"Bavarian Forest National Park",CZ,37.09656,-8.331708,"Armação de Pêra",PT,2.3,YES
+21104,"Myrhorod",GB,49.96583,33.61139,"Myrhorod",UA,0.2,YES
+21201,"Käsivarsi Wilderness Area",NO,44.83141,9.41722,"Solaro",IT,20,YES
+21212,"Curacautín",CL,37.092358,-8.241854,"Albufeira",PT,0.9,YES
+21235,"Hell-Ville",TH,37.09014,-8.678213,"Porto de Mós",PT,0.7,YES
+21246,"Liquiçá",PT,-8.589756,125.3409,"Likisá",TL,0.3,YES
+21248,"Suai",PT,-9.314899,125.2555,"Suai",TL,0.3,YES
+21280,"Aberffraw",GB,45.94481,13.62415,"Gorizia",IT,0.5,YES
+21297,"Knokke-Heist",NL,37.09014,-8.678213,"Porto de Mós",PT,0.7,YES
+21310,"Wallachian Plain",RO,37.10577,-8.522528,"Parchal",PT,3.6,YES
+21318,"Boac",PH,37.092358,-8.241854,"Albufeira",PT,0.9,YES
+21326,"Mapungubwe National Park",ZA,-22.24078,29.48048,"Beitbridge",ZW,53.5,NO (review)
+21352,"Huascarán National Park",PE,37.0927,-8.199374,"Olhos de Água",PT,0.7,YES
+21353,"Eretria",IT,15.950032,37.999966,"Ak’ordat",ER,46.4,YES
+21357,"Romney Marsh",FR,37.338886,-8.276579,"São Bartolomeu de Messines",PT,9.2,YES
+21374,"Hampyeong",KR,41.734367,-8.267716,"Sande",PT,11,YES
+21375,"Bamfield",AU,48.833084,-125.14114,"Port Alberni",CA,51.7,NO (review)
+21392,"Road 63 (Norway)",NO,39.549156,-8.980356,"Alcobaça",PT,0.4,YES
+21399,"Padasjoki",FI,39.25546,9.57326,"Quartu Sant'Elena",IT,28,YES
+21449,"Montebello (Quebec)",MX,52.41443,0.746705,"Thetford",GB,0.3,YES
+21452,"Oecussi",PT,-9.334919,124.25107,"Pante Makasar",TL,20.9,YES
+21455,"Breaking Bad Tour",MX,47.54007,1.50525,"Vineuil",FR,10.8,YES
+21479,"Peillon",FR,38.6783,0.08935,"Calp",ES,5.4,YES
+21488,"Vacation camp",FR,10.276294,-61.46143,"San Fernando",TT,0.8,YES
+21497,"World War II in Europe",DE,52.191734,-1.705447,"Stratford-upon-Avon",GB,0.1,YES
+21498,"Pacific War",JP,47.255337,-122.257904,"Pacific",US,1.2,YES
+21505,"Amrum",DK,54.68058,8.33043,"Westerland",DE,25.3,YES
+21516,"World War II",DE,38.889397,-77.040306,"Washington",US,0.7,YES
+21519,"Streaky Bay",AU,41.79211,-6.7673373,"Bragança",PT,1.8,YES
+21522,"Old West",FR,41.13871,14.313234,"San Prisco",IT,6.6,YES
+21523,"Tenhippalam",BR,38.661102,-8.644146,"Vendas Novas",PT,16.3,YES
+21528,"Farook College Township",IN,41.88836,-91.63552,"Cedar Rapids",US,13.4,YES
+21548,"Bakel",SN,28.05203,-16.71774,"Arona",ES,6.4,YES
+21553,"Nordic history",NO,60.98312,14.73651,"Mora",SE,10.8,YES
+21555,"Lendang Nangka",ID,9.4023,122.8244,"Nangka",PH,0,YES
+21557,"War of 1812",US,44.65221,-66.8393,"Eastern Charlotte",CA,50.2,NO (review)
+21572,"Albenga",FR,43.7981,7.6224747,"Ventimiglia",IT,1.5,YES
+21597,"Indigenous cultures of South America",PT,-14.60485,-57.65625,"Tangará da Serra",BR,18.4,YES
+21601,"Mettlach",FR,49.490387,6.5941796,"Merzig",DE,6.1,YES
+21615,"Prehistoric Europe",GR,39.60015,-110.80806,"Price",US,0.2,YES
+21618,"Ba Be National Park",VN,41.79211,-6.7673373,"Bragança",PT,1.8,YES
+21619,"Bai Tu Long Bay",VN,41.79211,-6.7673373,"Bragança",PT,1.8,YES
+21621,"Assassin's Creed Tour",IT,47.54007,1.50525,"Vineuil",FR,10.8,YES
+21624,"Motorcities Tour",CA,47.54007,1.50525,"Vineuil",FR,10.8,YES
+21628,"Mughal Empire",IN,37.63826,-120.90215,"Hughson",US,5.6,YES
+21643,"Trebinje",HR,42.70983,18.345726,"Trebinje",BA,0.3,YES
+21661,"Raetihi",NZ,37.151215,-8.228189,"Ferreiras",PT,2.6,YES
+21663,"Krapinske Toplice",HR,37.111916,-8.672683,"Lagos",PT,1.1,YES
+21666,"Cavendish (Victoria)",AU,43.38202,-72.60815,"Claremont",US,21.1,YES
+21681,"Fray Bentos",AR,-33.116516,-58.3131,"Fray Bentos",UY,0.2,YES
+21699,"Machias Seal Island",BR,44.502304,-67.1018,"Eastern Charlotte",CA,71.1,NO (review)
+21713,"Soroca",RU,48.154266,28.288347,"Soroca",MD,0.4,YES
+21720,"Signs",ES,43.686584,-79.43866,"Oakwood Village",CA,0.4,YES
+21724,"Ancient Egypt",EG,1.2536728,103.82284,"Telok Blangah",SG,2.6,YES
+21725,"Berrima",AU,40.343895,-8.595845,"Cantanhede",PT,0.3,YES
+21727,"Surfing",PE,10.950278,108.254456,"Mui Ne",VN,3.7,YES
+21747,"20th-century South Africa",ZA,38.694675,-9.293806,"Paço de Arcos",PT,0.2,YES
+21750,"Sariwon",KR,37.074425,-8.404241,"Armação de Pêra",PT,5.2,YES
+21755,"Austro-Hungarian Empire",IT,37.63826,-120.90215,"Hughson",US,5.6,YES
+21756,"Ottoman Empire",GR,37.63826,-120.90215,"Hughson",US,5.6,YES
+21758,"Campbell Town",AU,40.21844,-8.5786,"Ribeira de Frades",PT,8.6,YES
+21761,"Sacheon",KR,37.285625,-8.475132,"Monchique",PT,7.9,YES
+21790,"Industrial Britain",GB,41.663143,-72.75435,"New Britain",US,2.1,YES
+21799,"Pasir Gudang",SG,37.105362,-8.219829,"Olhos de Água",PT,3,YES
+21805,"Acadia",FR,37.092358,-8.241854,"Albufeira",PT,0.9,YES
+21814,"Astrid Lindgren tourism",SE,53.099888,8.822442,"Bremen",DE,2.9,YES
+21818,"Smara",ES,40.343895,-8.595845,"Cantanhede",PT,0.3,YES
+21828,"Central Bohemian Uplands",CZ,37.419712,-8.113864,"Almodôvar",PT,11.4,YES
+21829,"Bohemian Switzerland National Park",DE,37.093815,-8.187479,"Olhos de Água",PT,0.5,YES
+21834,"Karesuando",SE,37.09604,-8.163691,"Olhos de Água",PT,2.6,YES
+21835,"E6 through Sweden and Norway",RU,62,10,"Røros",NO,95.9,NO (review)
+21863,"Cedar Crest",MX,35.10755,-106.37343,"North Valley",US,23.9,YES
+21864,"Mettmann",FR,51.252777,6.977778,"Mettmann",DE,0.3,YES
+21886,"Mining tourism",EG,38.135166,-7.5910063,"Moura",PT,12.5,YES
+21933,"Juist",DE,52.944424,6.9913173,"Musselkanaal",NL,2.1,YES
+21979,"Wheaton (Illinois)",BR,38.424324,-9.203755,"Sesimbra",PT,9.2,YES
+21986,"Cumilla",IN,23.460983,91.18122,"Comilla",BD,0.4,YES
+21991,"Lendava",HR,46.563965,16.452646,"Lendava",SI,0.2,YES
+22002,"Reinhardswald",DE,38.646442,-8.322041,"Montemor-o-Novo",PT,9.3,YES
+22032,"Riva del Garda",AT,46.9953,12.189409,"Valle Aurina - Ahrntal",IT,15.9,YES
+22034,"Igoumenitsa",IT,39.5045,20.263916,"Igoumenítsa",GR,0.3,YES
+22081,"Veria",GR,51.547516,3.666088,"Arnemuiden",NL,5.1,YES
+22096,"Mullumbimby",JP,-28.548334,153.50111,"Ocean Shores",AU,5.6,YES
+22115,"Grenå",SE,56.41344,10.879313,"Grenaa",DK,0.3,YES
+22123,"Dong Van Karst Plateau Geopark",CN,37.356018,-8.402708,"Monchique",PT,14.1,YES
+22137,"Holašovice",CZ,37.151215,-8.228189,"Ferreiras",PT,2.6,YES
+22139,"Union Island",VC,12.597242,-61.433537,"Hillsborough",GD,12.9,YES
+22143,"Mongol Empire",KR,38.897224,-9.045706,"Vialonga",PT,4,YES
+22158,"Anambas",CN,41.75703,-8.58207,"Ponte de Lima",PT,1.1,YES
+22162,"Chipilo",IT,38.6783,0.08935,"Calp",ES,5.4,YES
+22163,"Labyrinths",EG,38.650368,-122.58181,"Calistoga",US,8,YES
+22168,"Sankt Ulrich",AT,47.595215,7.1182275,"Altkirch",FR,9.6,YES
+22169,"Lighthouses",EG,40.222736,-8.631355,"Arazede",PT,7.2,YES
+22171,"Karesuvanto",IT,37.095203,-8.172611,"Olhos de Água",PT,1.8,YES
+22192,"Cycling in the Achterhoek",NL,37.09088,-8.53276,"Portimão",PT,5.3,YES
+22213,"Philippi",GR,39.152348,-80.03949,"Grafton",US,21,YES
+22217,"Hindeloopen",DE,52.94262,5.400482,"Bolsward",NL,16.2,YES
+22240,"Lüdinghausen",NL,41.726814,-8.162931,"Póvoa de Lanhoso",PT,19,YES
+22242,"Oldambt",DE,53.22234,7.0689826,"Winschoten",NL,9,YES
+22254,"Veenkoloniën",NL,46.6224,3.48446,"Yzeure",FR,11.7,YES
+22269,"Westerwolde",DE,52.999466,7.140459,"Musselkanaal",NL,11.2,YES
+22273,"Hogeland",NL,48.85424,-108.65713,"Havre",US,82.6,NO (review)
+22292,"Prespa (North Macedonia)",GR,40.885864,21.035168,"Resen",MK,22.8,YES
+22318,"Banten (town)",ID,37.099407,-8.276291,"Albufeira",PT,2.6,YES
+22320,"Saeftinghe",NL,37.102356,-8.588208,"Alvor",PT,3.1,YES
+22357,"Aviation history",FR,30.394962,-84.34503,"Tallahassee",US,7.8,YES
+22363,"Rengasdengklok",JP,37.151215,-8.228189,"Ferreiras",PT,2.6,YES
+22368,"Grave",ES,51.75965,5.7411127,"Grave",NL,0.2,YES
+22382,"Dugi Otok",HR,-22.911514,-43.17674,"Rio de Janeiro",BR,0.8,YES
+22385,"Kornati National Park",HR,37.106255,-8.401596,"Armação de Pêra",PT,4,YES
+22393,"Neston",BR,53.290516,-3.063792,"Neston",GB,1.2,YES
+22396,"Greater Columbus",BR,39.96226,-83.00071,"Columbus",US,0.2,YES
+22435,"Kysuce",PL,49.310364,18.414398,"Bytča",SK,14.2,YES
+22441,"City of Hawkesbury",AU,51.489357,-2.588691,"Bristol",GB,3.8,YES
+22442,"Byzantine Empire",RO,37.63826,-120.90215,"Hughson",US,5.6,YES
+22458,"Kastellorizo",GR,36.148563,29.58971,"Kaş",TR,7.3,YES
+22462,"Flores (Azores)",PT,-5.09417,-42.83667,"Timon",BR,0,YES
+22482,"Songnisan National Park",KR,37.09099,-8.745565,"Porto de Mós",PT,5.5,YES
+22501,"Irvinestown",IE,37.14127,-8.571671,"Alvor",PT,2.2,YES
+22507,"Torngat Mountains National Park",CA,37.890152,-8.72909,"Sines",PT,14.4,YES
+22509,"Măcin Mountains National Park",RO,37.696743,-8.798242,"Odemira",PT,17.8,YES
+22524,"George Bush Intercontinental Airport",MX,29.984142,-95.332985,"Humble",US,7,YES
+22526,"Hahei",NZ,-2.08333,147.63333,"Lorengau",PG,40.6,YES
+22528,"Steam power",GB,41.75703,-8.58207,"Ponte de Lima",PT,1.1,YES
+22536,"Vâlsan Valley",RO,32.81874,-85.17939,"Valley",US,0,YES
+22537,"European art",JP,37.098263,-8.139901,"Olhos de Água",PT,4.7,YES
+22541,"Albufera Natural Park",ES,-34.5902,150.6012,"Albion Park",AU,16.1,YES
+22543,"Newtownards",IE,54.593376,-5.6960936,"Newtownards",GB,0.4,YES
+22547,"Trece Martires",PH,38.02638,-8.261675,"Aljustrel",PT,18.6,YES
+22549,"Banbridge",IE,54.351418,-6.2714624,"Banbridge",GB,0.8,YES
+22567,"Trepassey and the Irish Loop",PT,32.91537,-102.41602,"Seminole",US,30.6,YES
+22578,"Kilbirnie",NZ,41.36247,-8.202569,"Margaride",PT,0.3,YES
+22579,"Marker",NO,18.600409,82.90463,"Sunabeda",IN,16.3,YES
+22582,"Pushpagiri Wildlife Sanctuary",IN,32.90874,-97.58419,"Azle",US,3.9,YES
+22598,"Iskandar Puteri",SG,37.094124,-8.1841755,"Olhos de Água",PT,0.8,YES
+22601,"Lord of the Rings tourism",NZ,37.14127,-8.57167,"Alvor",PT,2.2,YES
+22624,"Södra Kungsleden",NO,59.09184,15.158297,"Kumla",SE,4.1,YES
+22630,"Addington Highlands",CA,37.103592,-8.305829,"Armação de Pêra",PT,4.5,YES
+22636,"Arnside and Silverdale",GB,47.64454,-122.69487,"Silverdale",US,0,YES
+22645,"Tubac",ES,31.61259,-111.04592,"Rio Rico",US,17,YES
+22659,"Ialomița Valley",RO,32.81874,-85.17939,"Valley",US,0,YES
+22665,"Chablis",FR,41.726814,-8.162931,"Póvoa de Lanhoso",PT,19,YES
+22669,"Thanbyuzayat",TH,15.969079,97.727806,"Thanbyuzayat",MM,0,YES
+22671,"Western Xia",CN,43.54594,-80.25599,"Guelph",CA,0,YES
+22681,"Stein bei Nürnberg",BR,49.425278,11.017674,"Stein",DE,1.1,YES
+22688,"Brenner Pass",IT,37.089146,-8.248596,"Albufeira",PT,0.2,YES
+22701,"Savinja and Šalek Valley",AT,37.094166,-8.584554,"Alvor",PT,4,YES
+22711,"Elgol",FR,57.149235,-6.10143,"Fort William",GB,70.4,NO (review)
+22725,"Great Otway National Park",AU,37.335144,-8.690586,"Aljezur",PT,10,YES
+22744,"Kebnekaise",SE,38.7103,-9.131992,"Baixa",PT,0.5,YES
+22747,"L'Estartit",FR,42.051216,3.1990824,"Torroella de Montgrí",ES,6,YES
+22762,"Cerro Colorado",US,-16.297998,-71.57395,"Cono Norte",PE,3,YES
+22779,"Hemavan",SE,65.807,15.046,"Mo i Rana",NO,69.5,NO (review)
+22780,"Tåsinge",DK,37.151215,-8.228189,"Ferreiras",PT,2.6,YES
+22785,"Deserts",AU,45.620956,6.0113907,"Saint-Alban-Leysse",FR,6.3,YES
+22795,"Pyramiden",SE,41.75703,-8.58207,"Ponte de Lima",PT,1.1,YES
+22797,"Pottenstein",DE,49.96508,33.59959,"Myrhorod",UA,0.6,YES
+22798,"History of justice",GR,41.74448,-87.83783,"Justice",US,0,YES
+22809,"Moselle Valley (Luxembourg)",DE,32.81874,-85.17939,"Valley",US,0,YES
+22815,"Kaechon",KR,37.151215,-8.228189,"Ferreiras",PT,2.6,YES
+22830,"Mariscal Estigarribia",AR,-22.029793,-60.59845,"Filadelfia",PY,67.8,NO (review)
+22831,"Sulitjelma",NO,40.343895,-8.595845,"Cantanhede",PT,0.3,YES
+22835,"Los Alerces National Park",AR,37.4267,-8.806182,"Aljezur",PT,12.2,YES
+22846,"Troisvierges",PT,50.121265,6.002074,"Wiltz",LU,18,YES
+22854,"Oulx",IT,45.0289,6.8323107,"Briançon",FR,20.7,YES
+22861,"Lion's Head",CA,-33.93504,18.389141,"Cape Town",ZA,3.3,YES
+22897,"Maamigili",MV,37.091812,-8.2222595,"Albufeira",PT,2.5,YES
+22901,"Mustvee",RU,58.8484,26.934782,"Jõgeva",EE,33.1,YES
+22921,"Novo Selo",GR,45.094227,15.592689,"Šturlić",BA,14.9,YES
+22937,"Oldenzaal",DE,52.31166,6.9241614,"Oldenzaal",NL,0.4,YES
+22941,"Occitanie",ES,37.002846,-7.6154165,"Fuzeta",PT,13,YES
+22945,"Manazuru",FR,38.310856,-8.359201,"Alcácer do Sal",PT,15.2,YES
+22954,"Cambron-Casteau",BE,41.75703,-8.58207,"Ponte de Lima",PT,1.1,YES
+22967,"Celts",ES,35.680706,139.77107,"Chūō",JP,1.2,YES
+22989,"Swiss National Park",IT,37.10763,-8.456313,"Carvoeiro",PT,1.6,YES
+22996,"Söğüt",CN,40.015553,30.181427,"Bozüyük",TR,17.2,YES
+23003,"Chaitén",CL,41.726814,-8.162931,"Póvoa de Lanhoso",PT,19,YES
+23027,"Dawlish",AU,50.57974,-3.468931,"Dawlish",GB,0.2,YES
+23037,"Australian Convict Sites",AU,37.099876,-8.400403,"Armação de Pêra",PT,3.9,YES
+23045,"Stećci Medieval Tombstones Graveyards",HR,37.114635,-8.490328,"Carvoeiro",PT,2.7,YES
+23055,"Prehistoric Pile Dwellings around the Alps",CH,18.33333,-77.51667,"Duncans",JM,15.1,YES
+23065,"Wooden tserkvas of the Carpathian region",PL,37.2656,-8.369134,"São Bartolomeu de Messines",PT,7.4,YES
+23066,"Kremnica",HU,48.704212,18.917484,"Handlová",SK,11.8,YES
+23084,"Hajdú-Bihar County",HU,40.811035,-7.602873,"Aguiar da Beira",PT,5,YES
+23087,"Le Locle",CH,38.06441,-9.149535,"Sines",PT,27.3,YES
+23103,"Friesach",IT,46.952065,14.405227,"Sankt Veit an der Glan",AT,20.7,YES
+23124,"Ramkhamhaeng National Park",TH,40.645542,-8.58249,"Eixo",PT,2.3,YES
+23132,"Keflavík International Airport",DK,63.985012,-22.626696,"Reykjanesbær",IS,3.5,YES
+23139,"Payathonzu",TH,15.3040495,98.38186,"Payathonzu",MM,1.7,YES
+23154,"Rehoboth (Namibia)",ZA,-23.315105,17.0817,"Rehoboth",NA,0.9,YES
+23156,"Spies and secrets",GB,48.201035,16.394379,"Landstraße",AT,0.5,YES
+23160,"Puhoi",CZ,-36.512093,174.66112,"Orewa",NZ,7.8,YES
+23173,"Paekākāriki",NZ,37.12011,-8.16808,"Olhos de Água",PT,3.9,YES
+23189,"Carl Linnaeus tourism",NL,37.140846,-8.208153,"Ferreiras",PT,2.9,YES
+23194,"Rainier (Oregon)",CO,46.088917,-122.93602,"Longview",US,5.5,YES
+23213,"Botanical tourism in Singapore",IT,1.28967,103.85007,"Singapore",SG,0,YES
+23216,"Longlac",CA,37.092358,-8.241854,"Albufeira",PT,0.9,YES
+23221,"Karamea",NZ,38.030903,-8.21882,"Aljustrel",PT,17.7,YES
+23228,"Red Lake (Ontario)",CA,28.05203,-16.71774,"Arona",ES,6.4,YES
+23230,"Qamishli",TR,39.22699,-7.6548977,"Vale da Amoreira",PT,17.9,YES
+23237,"Gulf Islands National Park Reserve",CA,37.10855,-8.492792,"Carvoeiro",PT,2.5,YES
+23243,"Pacific Rim National Park Reserve",CA,30.05381,-90.55175,"Reserve",US,0,YES
+23249,"Thaidene Nene National Park Reserve",CA,30.05381,-90.55175,"Reserve",US,0,YES
+23265,"Jementah",MY,37.084522,-8.256735,"Albufeira",PT,0.7,YES
+23283,"Jasin",MY,37.151215,-8.228189,"Ferreiras",PT,2.6,YES
+23284,"Streymoy",DK,62.12372,-7.015883,"Miðvágur",FO,12.3,YES
+23286,"Előszállás",HU,37.13218,-8.451687,"Lagoa",PT,0.4,YES
+23308,"Eymet",PT,44.66812,0.3984795,"Bergerac",FR,21.4,YES
+23310,"Kawit",ES,14.444269,120.903534,"Kawit",PH,0.2,YES
+23312,"Dublin Airport",GB,53.42829,-6.247274,"Kinsealy-Drinan",IE,3.4,YES
+23317,"Pangaion Hills",GR,41.55419,-91.53489,"Iowa City",US,11.9,YES
+23318,"Textiles",PE,51.007847,3.7108831,"Zwijnaarde",BE,0.8,YES
+23340,"Nasugbu",CN,14.073626,120.63207,"Nasugbu",PH,0.7,YES
+23356,"Sikhism",GB,30.87504,75.840126,"Gil",IN,3.8,YES
+23368,"Fortifications",CN,46.132812,3.453374,"Cusset",FR,0.3,YES
+23369,"Grand houses",JP,51.499386,-0.1244812,"City of Westminster",GB,0.8,YES
+23375,"Tidore",ES,0.6786796,127.44832,"Sofifi",ID,13.9,YES
+23386,"Tabant",MA,50.06916,8.84128,"Obertshausen",DE,0.8,YES
+23401,"Schleswig",FR,54.51851,9.565329,"Schleswig",DE,0.3,YES
+23417,"Geraldton (Ontario)",CA,37.122517,-8.640679,"Lagos",PT,3.7,YES
+23453,"Bilwi",IE,14.028401,-83.382256,"Puerto Cabezas",NI,1,YES
+23494,"South Central Louisiana",FR,30.55435,-91.03677,"Central",US,0,YES
+23500,"Biomes and ecosystems",AU,41.16708,-7.554765,"Tabuaço",PT,5.8,YES
+23503,"Climbing Mount Semeru",ID,37.09523,-8.66987,"Lagos",PT,0.8,YES
+23529,"Alona Beach",PH,13.51396,109.34533,"Sông Cầu",VN,14.7,YES
+23536,"Tibasosa",CO,37.151215,-8.228189,"Ferreiras",PT,2.6,YES
+23579,"Camrose",US,53.01313,-112.840576,"Camrose",CA,0.5,YES
+23584,"Kamenice nad Lipou",CZ,41.75703,-8.58207,"Ponte de Lima",PT,1.1,YES
+23590,"Khmer Empire",TH,13.904355,103.53183,"Chŏng Kal",KH,7.3,YES
+23595,"Červená Lhota",CZ,38.72939,-9.147725,"Lisbon",PT,0.5,YES
+23598,"Begur",GB,41.954193,3.208835,"Palafrugell",ES,5.6,YES
+23607,"Helsinki Airport",JP,60.321815,24.947361,"Pakkala",FI,4,YES
+23610,"Hluboká nad Vltavou",CZ,38.67878,0.09787,"Teulada",ES,5.7,YES
+23613,"Crown Point (Trinidad and Tobago)",ES,11.158897,-60.834625,"Scarborough",TT,11.1,YES
+23626,"Weather records",AU,38.680935,-9.330173,"Carcavelos",PT,1.3,YES
+23629,"Istanbul Airport",RU,41.274868,28.732275,"İmrahor",TR,6.5,YES
+23632,"Říp",CZ,33.519497,37.076073,"Jayrūd",SY,44.7,YES
+23638,"Chocolate",CH,16.932926,-95.090576,"Colonia Rincón Viejo",MX,6.9,YES
+23641,"Chess",IN,40.37737,-3.629716,"Palomeras Sureste",ES,1.1,YES
+23643,"Vulcan (Alberta)",CA,37.10577,-8.522528,"Parchal",PT,3.6,YES
+23644,"Moravian Karst",CZ,37.093815,-8.187479,"Olhos de Água",PT,0.5,YES
+23654,"Letenye",HR,53.2542,-1.914,"Buxton",GB,0.5,YES
+23666,"Cuispes",BR,-5.909203,-77.914314,"Pedro Ruiz Gallo",PE,8.3,YES
+23669,"Travel literature",JP,38.680935,-9.330173,"Carcavelos",PT,1.3,YES
+23682,"Pacsa",HU,37.399227,-8.72694,"Aljezur",PT,11.2,YES
+23696,"Reefton",NZ,37.08807,-8.07685,"Quarteira",PT,3,YES
+23730,"Utö (Finland)",SE,37.118084,-8.408076,"Lagoa",PT,4.4,YES
+23733,"Jurmo",SE,60.51694,21.076616,"Uusikaupunki",FI,36.3,YES
+23744,"ǁKaras",ZA,37.112335,-8.153052,"Olhos de Água",PT,4.2,YES
+23748,"Pello",SE,66.804085,23.977188,"Kittilä",FI,103.5,NO (review)
+23749,"Southern Great Plain",HU,37.885536,-9.004192,"Sines",PT,14.2,YES
+23754,"Ebor",AU,5.475014,6.05976,"Ughelli",NG,6.4,YES
+23757,"Prussia",DE,40.090813,-75.38325,"King of Prussia",US,1.1,YES
+23780,"James Joyce's Dublin",CH,53.337234,-6.260038,"Dublin",IE,0.9,YES
+23788,"Noordoewer",ZA,-28.721968,17.617977,"Aussenkehr",NA,44.7,YES
+23830,"Baudette",CA,48.71244,-94.600174,"International Falls",US,88.2,NO (review)
+23846,"Deo",JP,24.657434,84.43719,"Aurangābād",IN,12.3,YES
+23856,"Fortune",PT,29.56413,34.95125,"Eilat",IL,0.7,YES
+23858,"Waterford (Ontario)",CA,37.53071,-8.455871,"Odemira",PT,17.8,YES
+23868,"Fort Liberté",FR,50.627563,3.603425,"Leuze",BE,3.1,YES
+23917,"Diving in Saba",NL,41.79211,-6.7673373,"Bragança",PT,1.8,YES
+23921,"Lal-lo",ES,18.20005,121.661995,"Magapit",PH,7,YES
+23928,"High Coast",SE,52.925762,-4.1291585,"Caernarfon",GB,25.8,YES
+23931,"Horse racing",AU,37.27213,-8.340758,"São Bartolomeu de Messines",PT,5.1,YES
+23938,"Tamu",TH,41.75703,-8.58207,"Ponte de Lima",PT,1.1,YES
+23950,"Amposta",FR,40.70799,0.5827636,"Amposta",ES,0.4,YES
+23978,"The Wayfarer's Path of Leonardo da Vinci",CH,50.582893,-1.270857,"Ventnor",GB,4.7,YES
+23990,"Saho",IN,12.261606,-3.008191,"Dédougou",BF,54,NO (review)
+23993,"Stokmarknes",NO,38.721634,-8.361926,"Vendas Novas",PT,9.7,YES
+23997,"Indonesian cuisine",ID,-37.83145,144.96117,"South Melbourne",AU,0.5,YES
+24019,"Arts in Japan",JP,37.094368,-8.181532,"Olhos de Água",PT,1,YES
+24038,"Age of Discovery",CN,42.917824,-85.84917,"Jenison",US,4.8,YES
+24058,"Shenkeng",JP,37.09014,-8.678213,"Porto de Mós",PT,0.7,YES
+24066,"Via Egnatia",GR,41.1185,16.886164,"Bari",IT,1.4,YES
+24077,"Jezersko",CZ,46.39354,14.497879,"Zgornje Jezersko",SI,0.7,YES
+24081,"Zaouiat Ahansal",MA,37.10209,-8.446199,"Carvoeiro",PT,2,YES
+24115,"Ashburnham",CA,50.908596,0.3914751,"Battle",GB,6.6,YES
+24117,"Salla",RU,47.108597,14.972965,"Voitsberg",AT,15.4,YES
+24128,"Field hockey",AR,35.204113,-85.910194,"Winchester",US,18.5,YES
+24138,"Didsbury and Carstairs",CA,37.59213,-8.441578,"Odemira",PT,17.5,YES
+24142,"Muonio",SE,67.95934,23.677404,"Kittilä",FI,60.7,NO (review)
+24150,"Montalto delle Marche",IT,37.10164,-8.676699,"Lagos",PT,0.2,YES
+24158,"Göygöl",DE,40.530674,46.32189,"Göygöl",AZ,6.1,YES
+24182,"Hanna (Alberta)",CA,37.09656,-8.331708,"Armação de Pêra",PT,2.3,YES
+24185,"Via Pontica",RO,44.57433,11.470535,"Granarolo dell'Emilia e Viadagola",IT,3.2,YES
+24194,"Functionalist architecture in Finland",FI,42.30664,-3.50125,"Gamonal",ES,15.2,YES
+24209,"Svetogorsk",FI,61.111256,28.870104,"Svetogorsk",RU,0.4,YES
+24210,"Pelkosenniemi",SE,38.514305,-8.060301,"Évora",PT,14.7,YES
+24211,"Zsámbék",DE,47.548313,18.717434,"Zsámbék",HU,0.2,YES
+24224,"Bothnian Sea National Park",FI,37.41989,-8.346645,"São Bartolomeu de Messines",PT,18.9,YES
+24241,"Smilavičy",US,53.751785,28.009455,"Smilavičy",BY,0.3,YES
+24248,"Csenger",RO,47.83637,22.679464,"Csenger",HU,0.1,YES
+24252,"Záhony",AT,48.402905,22.178768,"Chop",UA,3.7,YES
+24264,"Utrechtse Heuvelrug",DE,37.738205,-8.859725,"Sines",PT,24.3,YES
+24271,"Speakeasies",US,25.12444,-100.47639,"Santiago",MX,46.6,YES
+24281,"Valandovo",GR,41.31734,22.561977,"Valandovo",MK,0.1,YES
+24287,"West Bohemian Spa Triangle",CZ,37.100582,-8.413172,"Carvoeiro",PT,4.9,YES
+24299,"Sakura",NL,50.64573,5.57678,"Liège",BE,1.5,YES
+24308,"Trevelin",CL,-43.079163,-71.46408,"Trevelin",AR,0.7,YES
+24329,"Capas",KR,15.336035,120.589584,"Capas",PH,0.5,YES
+24335,"Bus travel in the Philippines",PH,37.09014,-8.678213,"Porto de Mós",PT,0.7,YES
+24351,"Shlisselburg",RU,38.7103,-9.131992,"Baixa",PT,0.5,YES
+24364,"Japanese colonial empire",JP,37.21225,-8.552982,"Portimão",PT,8.3,YES
+24365,"Puerto Williams",AR,39.44915,-8.57687,"Torres Novas",PT,4.1,YES
+24369,"Prairie Mountain",CA,38.7773,-9.10081,"Moscavide e Portela",PT,0.3,YES
+24381,"Go",JP,-15.932366,-50.139294,"Goiás",BR,0.3,YES
+24383,"Sandvika",NO,37.05778,-8.586962,"Alvor",PT,8,YES
+24394,"In the footsteps of explorers",TR,61.21847,-149.88972,"Anchorage",US,0.6,YES
+24401,"Pechora",SE,65.11429,57.16074,"Pechora",RU,4.7,YES
+24416,"Gold River (British Columbia)",CA,45.070683,6.69503,"Briançon",FR,19.5,YES
+24443,"Oeste",PT,-28.753176,-52.015285,"Serafina Corrêa",BR,9.1,YES
+24448,"Friedrichstadt",NL,38.6456,-9.235317,"Costa de Caparica",PT,0.1,YES
+24449,"Glückstadt",DK,48.70596,9.509898,"Ebersbach an der Fils",DE,1.5,YES
+24453,"Kızılırmak Delta Bird Reserve",TR,37.079464,-8.117972,"Quarteira",PT,1.9,YES
+24479,"Athenry",AU,53.29919,-8.74683,"Loughrea",IE,16.5,YES
+24481,"Huxi",TW,29.179052,120.387146,"Ānwén",CN,14.2,YES
+24490,"Masset",CA,54.012447,-132.14522,"Ketchikan",US,151.2,NO (review)
+24492,"New Administrative Capital (Egypt)",EG,37.28734,-8.747961,"Aljezur",PT,5.8,YES
+24527,"Guanajay",ES,39.414993,-7.8444023,"Nisa",PT,20.1,YES
+24528,"Orivesi",FI,41.382915,-8.74382,"Póvoa de Varzim",PT,1.7,YES
+24543,"Kushtia",IN,23.898796,89.129555,"Kushtia",BD,1.1,YES
+24555,"On the trail of Alexander the Great",GR,-26.262312,27.996586,"Johannesburg",ZA,8.2,YES
+24557,"Axim",PT,4.865362,-2.242169,"Esim",GH,0.1,YES
+24589,"Nobel tourism",NO,49.048515,-1.442806,"Coutances",FR,0.4,YES
+24602,"Wadi El Natrun",EG,38.680935,-9.330173,"Carcavelos",PT,1.3,YES
+24609,"Cumaná",ES,10.449571,-64.15781,"Cumaná",VE,2.8,YES
+24613,"Porrentruy",CH,45.86465,6.62561,"Megève",FR,1.1,YES
+24626,"Mismaloya",MX,37.6516,-8.661961,"Odemira",PT,6.3,YES
+24629,"San Miniato",FR,43.67975,10.850095,"San Miniato",IT,0,YES
+24642,"Myakka River State Park",US,38.680935,-9.330173,"Carcavelos",PT,1.3,YES
+24659,"Whataroa",NZ,37.890152,-8.72909,"Sines",PT,14.4,YES
+24667,"Marjayoun",FR,33.359253,35.590214,"Kfar Kila",LB,9.8,YES
+24683,"Des Grèves Regional Park",CA,31.10232,77.17737,"Shimla",IN,1,YES
+24688,"Finike",PT,36.304615,30.144533,"Finike",TR,1.1,YES
+24693,"Lusatian Lake District",NZ,38.01794,-7.29518,"Moura",PT,19.1,YES
+24699,"Patara",TR,24.416582,80.03576,"Amānganj",IN,1.1,YES
+24701,"Haytor Vale",GB,39.434044,-8.367301,"Vila Nova da Barquinha",PT,6.6,YES
+24738,"Encs",HU,38.191433,-8.746101,"Santo André",PT,14.9,YES
+24757,"Islamic Golden Age",ES,39.750187,-105.2137,"Golden",US,0.9,YES
+24773,"Juupajoki",FI,41.738953,-7.4715896,"Chaves",PT,0.3,YES
+24774,"Hämeenkyrö",FI,41.74696,-8.442357,"Sande",PT,6.5,YES
+24776,"Parkano",NO,37.09196,-8.207303,"Olhos de Água",PT,1.4,YES
+24789,"LaGuardia Airport",CA,40.775715,-73.87337,"East Elmhurst",US,1.8,YES
+24795,"Tourist Drive 33",AU,31.218494,-81.52152,"Dock Junction",US,1.8,YES
+24853,"Souris (Manitoba)",CA,37.891293,-8.09372,"Aljustrel",PT,6.5,YES
+24860,"Carman (Manitoba)",CA,37.094368,-8.181532,"Olhos de Água",PT,1,YES
+24880,"Quirindi",AU,-10.613341,40.56546,"Madimba",TZ,34.7,YES
+24884,"Gelephu",SG,26.870365,90.48558,"Geylegphug",BT,0.3,YES
+24896,"Zhoukou",GB,33.63063,114.642365,"Zhoukou",CN,0.9,YES
+24908,"West Interlake",CA,28.05203,-16.71774,"Arona",ES,6.4,YES
+24923,"Hill stations in Pakistan",IN,37.621002,-8.5882015,"Odemira",PT,5.2,YES
+24943,"Dracula",AT,45.524536,29.494045,"Shevchenkove",UA,12.9,YES
+24948,"Kuhmoinen",FI,38.77113,-9.1173,"Olivais",PT,0.9,YES
+24958,"Huittinen",SE,61.17709,22.69905,"Huittinen",FI,0.7,YES
+24960,"Somero",FI,37.09523,-8.66987,"Lagos",PT,0.8,YES
+24961,"Sauvo",FI,37.02453,-8.956709,"Vila do Bispo",PT,7.7,YES
+24962,"Paimio",FI,38.38364,-7.34584,"Reguengos de Monsaraz",PT,17.1,YES
+24964,"Rymättylä",FI,39.928154,-8.779427,"Louriçal",PT,9.2,YES
+24966,"Vakka-Suomi countryside",FI,38.38364,-7.34584,"Reguengos de Monsaraz",PT,17.1,YES
+24973,"Bentley",CA,53.54707,-1.1454686,"Bentley",GB,1.6,YES
+25013,"Rail travel in Cuba",FR,22.408678,-79.96585,"Santa Clara",CU,0.2,YES
+25094,"Ritsem",SE,38.7103,-9.131992,"Baixa",PT,0.5,YES
+25137,"Sotenäs",SE,37.151215,-8.228189,"Ferreiras",PT,2.6,YES
+25147,"RFDS tourism",AU,37.14127,-8.571671,"Alvor",PT,2.2,YES
+25150,"Braveheart tourism",IE,55.941624,-3.206647,"Edinburgh",GB,1.3,YES
+25153,"Philosophy tourism",CH,38.6783,0.08935,"Calp",ES,5.4,YES
+25157,"Protected areas of the Nullarbor",AU,37.097065,-8.265558,"Albufeira",PT,1.7,YES
+25171,"Redwater",CA,33.35818,-94.254364,"Wake Village",US,15.7,YES
+25179,"Buddhist Circuit",IN,-35.39667,149.0695,"Kambah",AU,1.6,YES
+25205,"Jomon Prehistoric Sites in Northern Japan",JP,38.067112,-8.491775,"Grândola",PT,13.9,YES
+25227,"Campo Maior",PT,39.38598,-7.1091623,"Valencia de Alcántara",ES,12,YES
+25241,"Tiszafüred",HU,38.694675,-9.293806,"Paço de Arcos",PT,0.2,YES
+25252,"Norrbotten Megasystem",NO,51.60964,15.8428,"Przemków",PL,10,YES
+25263,"Dharug National Park",AU,38.153748,-8.929451,"Santo André",PT,16.5,YES
+25267,"Hunter Wetlands National Park",AU,37.10118,-8.340136,"Armação de Pêra",PT,1.5,YES
+25352,"Stronsay",GB,37.02453,-8.956709,"Vila do Bispo",PT,7.7,YES
+25356,"Budderoo National Park",AU,37.103504,-8.29216,"Albufeira",PT,4.1,YES
+25363,"Florida West Coast",MX,24.558796,-81.80706,"Key West",US,2.6,YES
+25382,"Adjuntas",CH,37.151215,-8.228189,"Ferreiras",PT,2.6,YES
+25389,"Ceiba",PR,41.79211,-6.7673373,"Bragança",PT,1.8,YES
+25392,"Comerío",ES,18.21853,-66.22642,"Comerío",PR,0.1,YES
+25443,"Modhera",IN,25.1625,34.26176,"Marsa Alam",EG,64.2,NO (review)
+25459,"Zec du Gros-Brochet",CA,37.09014,-8.678213,"Porto de Mós",PT,0.7,YES
+25468,"Cattai National Park",AU,38.680935,-9.330173,"Carcavelos",PT,1.3,YES
+25471,"Délegyháza",HU,41.726814,-8.162931,"Póvoa de Lanhoso",PT,19,YES
+25478,"Louiseville",CA,47.36746,12.7149,"Zell am See",AT,8,YES
+25483,"Japanese gardens",JP,37.09493,-8.26605,"Albufeira",PT,1.6,YES
+25486,"Cape Byron State Conservation Area",TR,37.37622,-8.658455,"Monchique",PT,11.2,YES
+25490,"Mastigouche Wildlife Reserve",CA,43.83981,-67.73278,"Ellsworth",US,95.5,NO (review)
+25550,"Sainte-Ursule",CA,38.53646,-9.019442,"Azeitão",PT,2,YES
+25552,"Zirc",HU,38.732525,-9.162881,"Campolide",PT,0.4,YES
+25564,"Judith-De Brésoles Ecological Reserve",CA,38.7103,-9.131992,"Baixa",PT,0.5,YES
+25597,"Kiskunmajsa",HU,41.041424,-8.033717,"Valadares",PT,12.6,YES
+25632,"Altar Valley",MX,37.103962,-8.310399,"Armação de Pêra",PT,4.1,YES
+25731,"Nilpena Ediacara National Park",AU,37.10724,-8.44068,"Carvoeiro",PT,2.7,YES
+25748,"Munga-Thirri–Simpson Desert National Park",AU,38.702957,-9.181538,"Alcântara",PT,0.9,YES
+25757,"Mistaken Point Ecological Reserve",CA,28.05203,-16.71774,"Arona",ES,6.4,YES
+25832,"Weslaco (Texas)",MX,37.111977,-8.237299,"Ferreiras",PT,1.9,YES
+25858,"Bonham (Texas)",US,41.75703,-8.58207,"Ponte de Lima",PT,1.1,YES
+25884,"Merikarvia",FI,44.88349,1.64342,"Gourdon",FR,26.4,YES
+25906,"Murujuga National Park",AU,37.106255,-8.401596,"Armação de Pêra",PT,4,YES
+25919,"Sprague",CA,38.7773,-9.10081,"Moscavide e Portela",PT,0.3,YES
+25950,"Karijini National Park",AU,37.106255,-8.401596,"Armação de Pêra",PT,4,YES
+25958,"Saint-Aimé-des-Lacs",CA,37.06692,-8.509924,"Carvoeiro",PT,5,YES
+25964,"North Sea Trail",DE,38.7103,-9.131992,"Baixa",PT,0.5,YES
+25985,"Sprengisandur",IS,37.02453,-8.956709,"Vila do Bispo",PT,7.7,YES
+25991,"Cap Tourmente National Wildlife Reserve",CA,37.21752,-7.445482,"Castro Marim",PT,0.4,YES
+25994,"Pertunmaa",FI,40.343895,-8.595845,"Cantanhede",PT,0.3,YES
+25998,"Askola",FI,37.151215,-8.228189,"Ferreiras",PT,2.6,YES
+26029,"Viitasaari",NO,37.125294,-8.178099,"Olhos de Água",PT,4.1,YES
+26040,"Alpine National Park",AU,37.1097,-8.53839,"Portimão",PT,3.2,YES
+26042,"Vulkathunha-Gammon Ranges National Park",AU,37.10118,-8.340136,"Armação de Pêra",PT,1.5,YES
+26052,"Kaskinen",FI,37.151215,-8.228189,"Ferreiras",PT,2.6,YES
+26056,"Voyages of Matthew Flinders",FR,40.90781,-3.86213,"San Ildefonso",ES,12.2,YES
+26073,"Springbrook",AU,10.22323,48.88367,"Bosaso",SO,122.4,NO (review)
+26076,"San Fili",IT,42.27808,9.77354,"Borgo",FR,41.9,YES
+26107,"Turkish TV series tourism",TR,38.34854,15.89304,"Palmi",IT,3.8,YES
+26123,"Kent Group National Park",AU,37.102814,-8.264801,"Albufeira",PT,2.1,YES
+26124,"Glass House Mountains",AU,37.46303,-8.40895,"Monchique",PT,20.7,YES
+26126,"Taman Mini Indonesia Indah",ID,36.01159,3.08254,"’Aïn Boucif",DZ,15,YES
+26178,"Jorgucat",GR,38.680935,-9.330173,"Carcavelos",PT,1.3,YES
+26184,"Nightcap National Park",AU,37.25567,-8.734729,"Aljezur",PT,9.1,YES
+26188,"Saint-Amable",CA,41.75703,-8.58207,"Ponte de Lima",PT,1.1,YES
+26206,"Viking (Alberta)",NO,37.0947,-8.372865,"Armação de Pêra",PT,1.7,YES
+26209,"Nusantara",ID,37.09461,-8.178984,"Olhos de Água",PT,1.2,YES
+26219,"Vuolijoki",FI,-22.911514,-43.17674,"Rio de Janeiro",BR,0.8,YES
+26221,"Vimpeli",FI,40.34025,-1.76244,"Cuenca",ES,43.8,YES
+26224,"Myrskylä",SE,38.53646,-9.019442,"Azeitão",PT,2,YES
+26226,"Jacobabad",IN,37.092358,-8.241854,"Albufeira",PT,0.9,YES
+26230,"Kitee",FI,45.66677,10.63721,"Toscolano Maderno",IT,3.8,YES
+26235,"Adaminaby",AU,11.17206,77.66062,"Arachchalūr",IN,4.5,YES
+26238,"Karwendel Nature Park",AT,42.8238,0.47658,"Vielha",ES,29.4,YES
+26278,"Ilmajoki",FI,41.39019,-7.7526536,"Vila Real",PT,10,YES
+26290,"Bella Coola",CA,52.41443,0.746705,"Thetford",GB,0.3,YES
+26301,"Bad Staffelstein",CH,40.243393,-8.030572,"Arganil",PT,3.4,YES
+26302,"Tweedsmuir Provincial Park",CA,37.103962,-8.310399,"Armação de Pêra",PT,4.1,YES
+26305,"Nastola",FI,37.148727,-8.31406,"Tunes",PT,5.2,YES
+26326,"Goths",ES,34.59258,-6.77622,"Mehdya",MA,38.6,YES
+26347,"Commerce (Georgia)",US,37.09523,-8.66987,"Lagos",PT,0.8,YES
+26357,"Longue-Rive",CA,38.6783,0.08935,"Calp",ES,5.4,YES
+26363,"Military and police ceremonies",CA,37.095203,-8.172611,"Olhos de Água",PT,1.8,YES
+26369,"Arctic wildlife",RU,42.93859,33.70214,"İnebolu",TR,106.8,NO (review)
+26389,"Swedish Grace tour",SE,39.36046,-5.9071,"Trujillo",ES,11,YES
+26391,"Maurya Empire",CN,22.5338,114.11752,"Sheung Shui",HK,1.9,YES
+26420,"Ausgram",IN,41.75703,-8.58207,"Ponte de Lima",PT,1.1,YES
+26457,"Pudasjärvi",FI,37.112335,-8.153052,"Olhos de Água",PT,4.2,YES
+26460,"Voyages of Ibn Battuta",CN,34.21105,61.94619,"Chahār Burj",AF,22.9,YES
+26471,"Tombstone Territorial Park",CA,38.011875,-8.868385,"Sines",PT,6.2,YES
+26484,"Tzoumerka National Park",GR,39.0379,2.54596,"Son Ferrer",ES,51.2,NO (review)
+26504,"Kosi Bay Nature Reserve",ZA,38.680935,-9.330173,"Carcavelos",PT,1.3,YES
+26518,"Tambrauw Regency",ID,41.75703,-8.58207,"Ponte de Lima",PT,1.1,YES
+26528,"Toivakka",FI,37.14127,-8.571671,"Alvor",PT,2.2,YES
+26532,"Monk's Cowl Nature Reserve",ZA,14.52517,0.48702,"Bankilaré",NE,26.4,YES
+26553,"Bonampak",MX,41.75703,-8.58207,"Ponte de Lima",PT,1.1,YES
+26565,"Tohmajärvi",FI,39.42335,-7.844165,"Nisa",PT,19.6,YES
+26566,"Amatikulu Nature Reserve",ZA,40.741455,-8.765378,"Murtosa",PT,10.8,YES
+26567,"Oribi Gorge Nature Reserve",ZA,40.482254,-8.939271,"Mira",PT,18.1,YES
+26572,"Mkuze Game Reserve",ZA,40.741455,-8.765378,"Murtosa",PT,10.8,YES
+26574,"Oripää",FI,41.382915,-8.74382,"Póvoa de Varzim",PT,1.7,YES
+26578,"Marktl",DE,45.50639,5.58649,"La Tour-du-Pin",FR,12.9,YES
+26592,"Glenholme Nature Reserve",ZA,38.7103,-9.131992,"Baixa",PT,0.5,YES
+26619,"Utajärvi",FI,40.579056,-7.635694,"Mangualde",PT,11,YES
+26659,"Franklin (Tasmania)",AU,38.17532,-8.343426,"Grândola",PT,19.5,YES
+26677,"Glenridding",GB,37.06708,-8.10084,"Quarteira",PT,0.3,YES
+26681,"St. Christoph",AT,45.00997,7.68788,"Moncalieri",IT,1.3,YES
+26697,"Ingonish",CA,48.46446,-101.05609,"Minot Air Force Base",US,21.4,YES
+26701,"Paanajärvi National Park",FI,39.41868,-7.9207306,"Ponte de Sôr",PT,20.3,YES
+26704,"Kärsämäki",FI,40.20448,-8.430716,"Coimbra",PT,1,YES
+26713,"Maydena",AU,42.45544,-8.80825,"Meaño",ES,2.4,YES
+26723,"Neom",EG,38.706326,-9.393227,"Estoril",PT,0.4,YES
+26724,"Micronations",AU,38.680935,-9.330173,"Carcavelos",PT,1.3,YES
+26771,"Beaconsfield (Tasmania)",AU,37.121788,-8.235022,"Ferreiras",PT,0.9,YES
+26839,"Cuetzalan",MX,37.104298,-8.491997,"Carvoeiro",PT,2.2,YES
+26840,"Pomarkku",FI,37.640125,-8.20598,"Almodôvar",PT,19.1,YES
+26841,"Mexican artesanias",MX,37.100098,-8.167023,"Olhos de Água",PT,2.4,YES
+26845,"Tablas",PH,37.151215,-8.228189,"Ferreiras",PT,2.6,YES
+26848,"Kragerø",NO,37.08862,-8.234216,"Albufeira",PT,1.4,YES
+26862,"Hartola",SE,48.34148,3.23705,"Sens",FR,16.4,YES
+26870,"Haapajärvi",FI,38.262405,-8.100072,"Vidigueira",PT,26.8,YES
+26871,"Haapavesi",FI,37.111916,-8.672683,"Lagos",PT,1.1,YES
+26877,"Tuusniemi",FI,38.38364,-7.34584,"Reguengos de Monsaraz",PT,17.1,YES
+26884,"Joutsa",FI,49.38925,8.57895,"Schwetzingen",DE,0.8,YES
+26885,"Pihtipudas",FI,37.151215,-8.228189,"Ferreiras",PT,2.6,YES
+26886,"Ilomantsi",FI,38.17532,-8.343426,"Grândola",PT,19.5,YES
+26899,"Föglö",FI,36.13732,-86.69992,"Nashville",US,8.2,YES
+26901,"Lemland",FI,60.07,20.085,"Mariehamn",AX,8.9,YES
+26911,"Inland Central Ostrobothnia",FI,37.10577,-8.522528,"Parchal",PT,3.6,YES
+26921,"Pyhäjoki",FI,41.738953,-7.4715896,"Chaves",PT,0.3,YES
+26951,"Marttila",FI,37.459877,-8.179989,"Almodôvar",PT,12.1,YES
+26954,"Linnanmäki",FI,38.717464,-8.40653,"Vendas Novas",PT,6.3,YES
+26959,"Montseny Natural Park",ES,37.36712,-8.413606,"Monchique",PT,13.7,YES
+27016,"Maritime history",NZ,37.202072,-8.156491,"Tunes",PT,9.9,YES
+27027,"Uiryeong",KR,38.706326,-9.393227,"Estoril",PT,0.4,YES
+27079,"Palizada",FR,39.25546,9.57326,"Quartu Sant'Elena",IT,28,YES
+27088,"Václav Havel Airport Prague",TR,38.45095,11.98581,"Trapani",IT,68.1,NO (review)
+27101,"Savonranta",FI,37.054085,-8.628045,"Porto de Mós",PT,6,YES
+27122,"Vikersund",NO,46.47501,9.80798,"Sondrio",IT,34.4,YES
+27123,"Waipoua Forest",NZ,48.65811,23.28091,"Volovets",UA,9.2,YES
+27124,"Cap Skirring",SN,37.111916,-8.672683,"Lagos",PT,1.1,YES
+27126,"Woodland Park",BR,37.095203,-8.172611,"Olhos de Água",PT,1.8,YES
+27159,"Castellnou de Seana",ES,37.10608,-8.219959,"Ferreiras",PT,3,YES
+27180,"Board games",DE,44.35734,-3.2859,"Santoña",ES,102.5,NO (review)
+27189,"Regimental Museums",GB,37.703953,-8.714856,"Odemira",PT,13.5,YES
+27190,"Mikulov",CZ,38.6783,0.08935,"Calp",ES,5.4,YES
+27204,"Maxcanú",MX,38.310856,-8.359201,"Alcácer do Sal",PT,15.2,YES
+27206,"Kabah",MX,37.084522,-8.256735,"Albufeira",PT,0.7,YES
+27208,"Baja Whale Trail",MX,40.0094,-7.921324,"Oleiros",PT,10.1,YES
+27211,"Mariental",ZA,37.10855,-8.492792,"Carvoeiro",PT,2.5,YES
+27232,"Aš",CZ,37.151215,-8.228189,"Ferreiras",PT,2.6,YES
+27243,"Skiing on Mt Ruapehu",AU,37.111916,-8.672683,"Lagos",PT,1.1,YES
+27253,"Ice cream",CN,41.75703,-8.58207,"Ponte de Lima",PT,1.1,YES
+27298,"Concepción de Ataco",MX,37.092358,-8.241854,"Albufeira",PT,0.9,YES
+27305,"Jökulsárgljúfur",IS,37.10074,-7.8941813,"Estói",PT,0.6,YES
+27308,"Border Ranges National Park",AU,37.329243,-8.456081,"Monchique",PT,8.9,YES
+27327,"Legacy food markets",JP,37.79413,-8.23639,"Aljustrel",PT,11.2,YES
+27343,"Las Leñas",AR,37.151215,-8.228189,"Ferreiras",PT,2.6,YES
+27350,"Sauris",IT,38.9521,0.77396,"Sant Antoni de Portmany",ES,45.9,YES
+27362,"Penryn",PT,50.86161,-4.453217,"Bude",GB,7.4,YES
+27371,"Tamsahelte",MA,37.09014,-8.678213,"Porto de Mós",PT,0.7,YES
+27380,"Haciendas",ES,37.092358,-8.241854,"Albufeira",PT,0.9,YES
+27427,"Wadi al-Dawasir",SA,37.12583,-8.526186,"Parchal",PT,1.6,YES
+27443,"Bieszczady National Park",PL,37.36526,-8.419564,"Monchique",PT,13.1,YES
+27454,"Licheń Stary",PL,37.09322,-8.494811,"Carvoeiro",PT,2.4,YES
+27456,"Šilutė",DE,38.67878,0.09787,"Teulada",ES,5.7,YES
+27470,"Atlasov Island",RU,40.34533,15.79876,"Sala Consilina",IT,18.6,YES
+27489,"Bréhat",FR,41.73377,-6.13918,"Miranda do Douro",PT,28.6,YES
+27499,"Pocheon",KR,38.52675,-9.313781,"Costa da Caparica",PT,14.6,YES
+27520,"Cerro Castor",AR,37.14269,-8.522602,"Parchal",PT,0.7,YES
+27614,"Fort Fairfield",CA,41.91677,-8.7763405,"O Rosal",ES,5.4,YES
+27628,"Tonatico",MX,38.065067,-9.026772,"Sines",PT,18.3,YES
+27641,"Hatoma",JP,40.965343,-8.4547415,"Lobão",PT,3.5,YES
+27682,"Amatlán de Cañas",MX,39.28745,-8.587944,"Alpiarça",PT,3.4,YES
+27685,"Idlib",TR,37.087006,-8.256173,"Albufeira",PT,0.5,YES
+27722,"Lago Puelo National Park",AR,37.10763,-8.456313,"Carvoeiro",PT,1.6,YES
+27728,"San Mauro Mare",IT,37.09833,-8.139158,"Quarteira",PT,4.7,YES
+27751,"Figari",FR,44.26076,6.98466,"Dronero",IT,37.6,YES
+27786,"Höga Kustenleden",SE,53.2542,-1.914,"Buxton",GB,0.5,YES
+27901,"Theatre",GR,38.81738,-6.04939,"Guareña",ES,6.4,YES
+27905,"Sahagún",ES,37.084522,-8.256735,"Albufeira",PT,0.7,YES
+27952,"Frómista",ES,33.53189,-7.5999,"Casablanca",MA,6.4,YES
+27961,"Ihuatzio",MX,38.680935,-9.330173,"Carcavelos",PT,1.3,YES
+27963,"Temora",AU,22.71872,43.92875,"Afif",SA,167.7,NO (review)
+27966,"Bamanpukur",IN,41.764046,-8.219124,"Sande",PT,16,YES
+27984,"Zingaro Nature Reserve",IT,38.501595,-9.056039,"Azeitão",PT,4.2,YES
+28006,"Hồ Tràm",VN,41.75703,-8.58207,"Ponte de Lima",PT,1.1,YES
+28018,"Tatehuarí Huajuyé",MX,37.777184,-8.643221,"Odemira",PT,19.9,YES
+28035,"Enfidha",TN,41.726814,-8.162931,"Póvoa de Lanhoso",PT,19,YES
+28040,"General Terán",MX,37.098404,-8.369872,"Armação de Pêra",PT,1.2,YES
+28091,"Phu Toei National Park",TH,37.63574,-8.893514,"Odemira",PT,22.7,YES
+28092,"Thong Pha Phum National Park",TH,40.80408,-8.265382,"Macieira de Cambra",PT,11,YES
+28094,"Namtok Chet Sao Noi National Park",TH,41.399807,-8.589233,"Ribeirão",PT,4.7,YES
+28096,"Mae Ping National Park",TH,37.138523,-8.377188,"Armação de Pêra",PT,4.4,YES
+28100,"Northeast Tyrol",AT,47.211445,11.97688,"Valle Aurina - Ahrntal",IT,23.9,YES
+28117,"Swedish canon",SE,53.13897,14.2816,"Schwedt (Oder)",DE,8.8,YES
+28122,"Hapcheon",KR,38.56288,1.68172,"Ibiza",ES,44.1,YES
+28132,"Reisa National Park",NO,37.04668,-8.886328,"Vila do Bispo",PT,4.6,YES
+28135,"Hadong",CN,41.726814,-8.162931,"Póvoa de Lanhoso",PT,19,YES
+28147,"Goheung",KR,36.99697,69.12402,"Dasht-e Archī",AF,15.6,YES
+28169,"Yuseong-gu",KR,38.706326,-9.393227,"Estoril",PT,0.4,YES
+28258,"Mahjong",GB,37.084522,-8.256735,"Albufeira",PT,0.7,YES
+28274,"Hinsdale (Massachusetts)",PE,37.352184,-8.61273,"Monchique",PT,6.4,YES
+28286,"Thessalon",CA,48.71274,-99.57111,"Devils Lake",US,84.6,NO (review)
+28288,"Chapleau",CA,37.111916,-8.672683,"Lagos",PT,1.1,YES
+28345,"Dačice",CZ,37.092358,-8.241854,"Albufeira",PT,0.9,YES
+28350,"Fountains",NZ,41.144665,-8.602892,"Porto",PT,0.8,YES
+28361,"Lovell",VC,44.83698,-108.38125,"Powell",US,31.1,YES
+28364,"Krnov",PL,37.08862,-8.234216,"Albufeira",PT,1.4,YES
+28369,"Lake Waikaremoana Great Walk",NZ,37.10118,-8.340136,"Armação de Pêra",PT,1.5,YES
+28432,"Heuvelland (Belgium)",BE,50.767,2.817,"Bailleul",FR,6.7,YES
+28446,"Pelluhue",CL,38.67878,0.09787,"Teulada",ES,5.7,YES

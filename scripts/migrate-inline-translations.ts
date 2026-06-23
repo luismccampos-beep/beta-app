@@ -149,7 +149,6 @@ async function main() {
     resultsPerInput.push({ file: input.file, namespace: input.namespace, count: keys.length });
   }
 
-  // eslint-disable-next-line no-console
   console.log(
     resultsPerInput
       .map((r) => `${r.namespace}: ${r.count} keys (${r.file})`)
@@ -158,7 +157,6 @@ async function main() {
 }
 
 main().catch((err) => {
-  // eslint-disable-next-line no-console
   console.error(err);
   process.exitCode = 1;
 });

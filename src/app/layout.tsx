@@ -8,6 +8,7 @@ import '../styles/index.css';
 import { Toaster } from './components/ui/sonner';
 import { Providers } from './components/Providers';
 import { AppBottomNav } from './components/BottomNav';
+import { CookieBanner } from './components/ui/CookieBanner';
 
 const inter = Inter({
   subsets: ['latin'],
@@ -55,6 +56,7 @@ export default async function RootLayout({ children }: { children: ReactNode }) 
               {children}
             </div>
             <AppBottomNav />
+            <CookieBanner />
           </NextIntlClientProvider>
           <Toaster richColors closeButton />
         </Providers>

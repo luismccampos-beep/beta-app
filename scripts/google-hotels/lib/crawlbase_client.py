@@ -25,7 +25,10 @@ def fetch_html(
             options["css_click_selector"] = css_click_selector
             options["ajax_wait"] = "true"
 
-        response = api.get(url, options or None)
+        if options:
+            response = api.get(url, options)
+        else:
+            response = api.get(url)
         headers = response.get("headers") or {}
         status = str(headers.get("pc_status", ""))
         if status != "200":

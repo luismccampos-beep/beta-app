@@ -2,6 +2,7 @@ import {
   getDestinationByIataFromDb,
   getFlightsFromDb,
   getHotelsFromDb,
+  getHotelStatsForDestinations,
   listTopDestinationIatasFromDb,
 } from '../catalog-db';
 import { rankResultsWithMlAndPreferences } from '../ml-ranking';
@@ -73,6 +74,22 @@ export async function searchDbTravelResults(input: MockSearchInput): Promise<Moc
       iataHints.set(result.id, resolvedIata);
     } else {
       errors.push({ destination: destIata, message: 'Não foi possível montar o pacote' });
+    }
+  }
+
+  // Enrich results with hotel type breakdown per destination
+  if (results.length > 0) {
+    const destIdToResult = new Map<number, (typeof results)[number]>();
+    for (const r of results) {
+      const m = r.destinationSlug?.match(/^(?:pt|en|es|fr)-(\d+)$/);
+      if (m) destIdToResult.set(parseInt(m[1], 10), r);
+    }
+    if (destIdToResult.size > 0) {
+      const statsMap = await getHotelStatsForDestinations([...destIdToResult.keys()]);
+      for (const [destId, r] of destIdToResult) {
+        const stats = statsMap.get(destId);
+        if (stats?.hotelTypes) r.hotelTypes = stats.hotelTypes;
+      }
     }
   }
 

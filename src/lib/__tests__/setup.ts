@@ -1,6 +1,9 @@
 import '@testing-library/jest-dom';
+import { vi } from 'vitest';
 
-// Mock do next/navigation
+// Map jest to vi for compatibility with Vitest
+// @ts-ignore
+globalThis.jest = vi;
 const mockPush = jest.fn();
 const mockReplace = jest.fn();
 const mockBack = jest.fn();

@@ -100,7 +100,6 @@ const config = defineConfig({
     "i18next",
     "zod",
     "zustand",
-    "react-router-dom",
     "clsx",
     "tailwind-merge",
     "next-intl",
