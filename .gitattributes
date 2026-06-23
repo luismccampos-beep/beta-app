@@ -1,0 +1,2 @@
+data/hotels/tbo-hotels.csv filter=lfs diff=lfs merge=lfs -text
+data/geonames-cache/*.zip filter=lfs diff=lfs merge=lfs -text
