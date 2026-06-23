@@ -8,7 +8,7 @@ import { motion } from 'framer-motion';
 
 const LANGUAGES = [
   { code: 'en', flag: '🇺🇸', name: 'English' },
-  { code: 'pt', flag: '🇧🇷', name: 'Português' },
+  { code: 'pt', flag: '🇵🇹', name: 'Português' },
   { code: 'es', flag: '🇪🇸', name: 'Español' },
   { code: 'fr', flag: '🇫🇷', name: 'Français' },
 ] as const;
