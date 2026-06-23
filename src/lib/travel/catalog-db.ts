@@ -139,7 +139,6 @@ export function rowToDestination(row: {
   longitude: number | null;
   imagemUrl: string | null;
   imagemQuery: string | null;
-  categorias?: any;
 }): MockDestination {
   return {
     id: row.id,
@@ -167,7 +166,7 @@ export function rowToDestination(row: {
     transporte: row.transporte as MockDestination['transporte'],
     latitude: row.latitude ?? undefined,
     longitude: row.longitude ?? undefined,
-    categorias: (row.categorias as string[]) ?? undefined,
+
     imagem_url: row.imagemUrl ?? '',
     imagem_query: row.imagemQuery ?? undefined,
   };
@@ -616,7 +615,6 @@ const destinationSelectForLookup = {
   transporte: true,
   latitude: true,
   longitude: true,
-  categorias: true,
   imagemUrl: true,
   imagemQuery: true,
   hotelCount: true,

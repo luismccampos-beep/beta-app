@@ -389,38 +389,46 @@ export function EnhancedTravelPreferencesForm({ onComplete, onBack }: EnhancedTr
     };
   }, [locale]);
 
+  const aiInsightsTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   useEffect(() => {
     if (!aiInsightsEnabled) {
       setAiInsightsText(null);
       setAiInsightsError(null);
+      setAiInsightsLoading(false);
       return;
     }
+
+    if (aiInsightsTimerRef.current) clearTimeout(aiInsightsTimerRef.current);
 
     let cancelled = false;
     setAiInsightsLoading(true);
     setAiInsightsError(null);
-    fetch('/api/ai/preferences-insights', {
-      method: 'POST',
-      headers: { 'content-type': 'application/json' },
-      body: JSON.stringify({ preferences, locale }),
-    })
-      .then(async (res) => {
-        const data = (await res.json().catch(() => ({}))) as { ok?: boolean; answer?: string; message?: string };
-        if (!res.ok || data.ok === false) throw new Error(data.message || 'Failed to generate AI insights');
-        return data.answer ?? '';
+
+    aiInsightsTimerRef.current = setTimeout(() => {
+      fetch('/api/ai/preferences-insights', {
+        method: 'POST',
+        headers: { 'content-type': 'application/json' },
+        body: JSON.stringify({ preferences, locale }),
       })
-      .then((answer) => {
-        if (!cancelled) setAiInsightsText(answer || null);
-      })
-      .catch((e: unknown) => {
-        if (!cancelled) setAiInsightsError(e instanceof Error ? e.message : 'Failed to generate AI insights');
-      })
-      .finally(() => {
-        if (!cancelled) setAiInsightsLoading(false);
-      });
+        .then(async (res) => {
+          const data = (await res.json().catch(() => ({}))) as { ok?: boolean; answer?: string; message?: string };
+          if (!res.ok || data.ok === false) throw new Error(data.message || 'Failed to generate AI insights');
+          return data.answer ?? '';
+        })
+        .then((answer) => {
+          if (!cancelled) setAiInsightsText(answer || null);
+        })
+        .catch((e: unknown) => {
+          if (!cancelled) setAiInsightsError(e instanceof Error ? e.message : 'Failed to generate AI insights');
+        })
+        .finally(() => {
+          if (!cancelled) setAiInsightsLoading(false);
+        });
+    }, 1500);
 
     return () => {
       cancelled = true;
+      if (aiInsightsTimerRef.current) clearTimeout(aiInsightsTimerRef.current);
     };
   }, [aiInsightsEnabled, locale, preferences]);
 

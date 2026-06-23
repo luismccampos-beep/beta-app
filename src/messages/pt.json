@@ -1042,6 +1042,9 @@
   },
   "results": {
     "aiPoweredResults": "Resultados com IA",
+    "noResults": "Nenhum resultado encontrado",
+    "noResultsDesc": "Tente ajustar os filtros para ver mais opções",
+    "clearFilters": "Limpar Filtros",
     "title": "As Suas Recomendações de Viagem Personalizadas",
     "subtitle": "Destinos selecionados por IA com base nas suas preferências",
     "resultsFound": "resultados encontrados",
@@ -1078,7 +1081,7 @@
     "noHotelResults": "Sem hotéis. Verifique credenciais Hotelbeds e datas.",
     "sortBy": "Ordenar por",
     "filters": "Filtros",
-    "clearFilters": "Limpar Tudo",
+    "clearAll": "Limpar Tudo",
     "priceRange": "Faixa de Preço",
     "continent": "Continente",
     "duration": "Duração",

@@ -266,6 +266,7 @@
     "autoprefixer": "^10.4.16",
     "cross-env": "^7.0.3",
     "eslint": "^9.0.0",
+    "eslint-plugin-react-hooks": "^7.1.1",
     "jsdom": "^29.1.0",
     "msw": "^2.12.7",
     "postcss": "^8.4.33",

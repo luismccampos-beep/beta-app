@@ -43,7 +43,6 @@ export type MockDestination = {
     fonte?: string;
     licenca?: string;
   };
-  categorias?: string[];
   wikivoyageUrl?: string;
   lang?: string;
   latitude?: number;

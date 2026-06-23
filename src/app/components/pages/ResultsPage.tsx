@@ -297,7 +297,7 @@ export function ResultsPage({ onLogout, onNavigateToDashboard }: ResultsPageProp
               </Button>
               <Button variant="ghost" onClick={clearFilters} className="gap-2 text-red-600 dark:text-red-400">
                 <X className="w-4 h-4" />
-                {t('clearFilters')}
+                {t('clearAll')}
               </Button>
             </div>
             {showFilters && (

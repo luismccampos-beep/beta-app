@@ -1024,6 +1024,9 @@
   },
   "results": {
     "aiPoweredResults": "Résultats Propulsés par IA",
+    "noResults": "Aucun résultat trouvé",
+    "noResultsDesc": "Essayez d'ajuster les filtres pour voir plus d'options",
+    "clearFilters": "Effacer les Filtres",
     "title": "Vos Recommandations de Voyage Personnalisées",
     "subtitle": "Destinations sélectionnées par IA selon vos préférences",
     "resultsFound": "résultats trouvés",
@@ -1060,7 +1063,7 @@
     "noHotelResults": "Aucun hôtel. Vérifiez Hotelbeds et les dates.",
     "sortBy": "Trier par",
     "filters": "Filtres",
-    "clearFilters": "Tout Effacer",
+    "clearAll": "Tout Effacer",
     "priceRange": "Fourchette de Prix",
     "continent": "Continent",
     "duration": "Durée",

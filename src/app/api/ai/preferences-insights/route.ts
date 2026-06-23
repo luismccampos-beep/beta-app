@@ -8,10 +8,11 @@ export async function POST(req: Request) {
   const baseUrl = process.env.ML_SERVICE_BASE_URL?.trim();
   const apiKey = process.env.ML_SERVICE_API_KEY?.trim();
   if (!baseUrl) {
-    return NextResponse.json(
-      { ok: false, message: 'ML service is not configured (ML_SERVICE_BASE_URL).' },
-      { status: 503 },
-    );
+    return NextResponse.json({
+      ok: true,
+      answer: null,
+      confidence: null,
+    });
   }
 
   const body = (await req.json().catch(() => ({}))) as {
