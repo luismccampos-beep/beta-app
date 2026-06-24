@@ -1149,6 +1149,7 @@
     "clearFilters": "Effacer les filtres",
     "loading": "Chargement des destinations…",
     "loadError": "Impossible de charger les destinations.",
+    "retry": "Réessayer",
     "resultsCount": "{count} destinations trouvées",
     "pageOf": "Page {page} sur {total}",
     "prevPage": "Précédent",

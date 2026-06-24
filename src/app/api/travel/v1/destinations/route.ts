@@ -6,6 +6,7 @@ import {
 } from '../../../../../lib/travel/catalog-db';
 import { resolveDestinationImageUrl } from '../../../../../lib/travel/destination-image';
 import { loadMockTravelBundle } from '../../../../../lib/travel/mock-travel/load';
+import type { MockDestination } from '../../../../../lib/travel/mock-travel/types';
 import { buildDestinationSlug } from '../../../../../lib/travel/destination-slug';
 
 export const dynamic = 'force-dynamic';
@@ -30,8 +31,13 @@ export async function GET(req: Request) {
     }
   }
 
-  const bundle = loadMockTravelBundle();
-  let items = bundle.destinos;
+  let items: MockDestination[];
+  try {
+    const bundle = loadMockTravelBundle();
+    items = bundle.destinos;
+  } catch {
+    return NextResponse.json({ ok: true, source: 'bundle', total: 0, items: [] });
+  }
 
   if (q) {
     const ql = q.toLowerCase();

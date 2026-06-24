@@ -227,7 +227,7 @@ export function DestinationsBrowsePage({ onBack }: DestinationsBrowsePageProps) 
         setItems(data.destinations);
         setTotal(data.total);
       } catch {
-        setError(t('errorLoading'));
+        setError(t('loadError'));
       } finally {
         setLoading(false);
       }
@@ -639,7 +639,7 @@ export function DestinationsBrowsePage({ onBack }: DestinationsBrowsePageProps) 
                 {t('loading')}
               </span>
             ) : (
-              <>{t('results', { count: total })}</>
+              <>{t('resultsCount', { count: total })}</>
             )}
           </p>
           {totalPages > 1 && (

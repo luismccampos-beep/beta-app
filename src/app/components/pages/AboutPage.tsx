@@ -334,8 +334,9 @@ export function AboutPage({ onBack }: AboutPageProps) {
           </Card>
         </section>
 
-        <AppFooter />
       </div>
+
+      <AppFooter />
 
       {/* CEO Bio Modal */}
       {showCEOModal && (

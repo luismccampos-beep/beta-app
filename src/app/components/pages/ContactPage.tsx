@@ -313,8 +313,9 @@ ${formData.message}`)}`;
           </CardContent>
         </Card>
 
-        <AppFooter />
       </div>
+
+      <AppFooter />
     </div>
   );
 }
