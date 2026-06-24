@@ -32,11 +32,17 @@ function localTravelImageExists(publicPath: string): boolean {
   return existsSync(resolve(process.cwd(), 'public', relative));
 }
 
+function normalizeCacheValue(v: unknown): string | undefined {
+  if (typeof v === 'string') return v;
+  if (v && typeof v === 'object' && 'url' in v) return String((v as Record<string, unknown>).url);
+  return undefined;
+}
+
 function lookupCachedUrl(dest: MockDestination): string | undefined {
   const cache = loadImageCache();
   const idKey = destCacheKey(dest);
   const queryKey = (dest.imagem_query ?? buildDestinationImageQuery(dest)).toLowerCase();
-  const hit = cache[idKey] ?? cache[queryKey];
+  const hit = normalizeCacheValue(cache[idKey]) ?? normalizeCacheValue(cache[queryKey]);
   if (!hit?.trim() || isGenericDestinationImage(hit)) return undefined;
   return hit;
 }

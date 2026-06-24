@@ -1158,6 +1158,7 @@
     "clearFilters": "Clear filters",
     "loading": "Loading destinations…",
     "loadError": "Could not load destinations.",
+    "retry": "Retry",
     "resultsCount": "{count} destinations found",
     "pageOf": "Page {page} of {total}",
     "prevPage": "Previous",

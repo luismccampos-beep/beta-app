@@ -1167,6 +1167,7 @@
     "clearFilters": "Limpar filtros",
     "loading": "A carregar destinos…",
     "loadError": "Não foi possível carregar os destinos.",
+    "retry": "Tentar novamente",
     "resultsCount": "{count} destinos encontrados",
     "pageOf": "Página {page} de {total}",
     "prevPage": "Anterior",
