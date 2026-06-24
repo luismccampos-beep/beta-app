@@ -544,27 +544,27 @@ export function EnhancedTravelPreferencesForm({ onComplete, onBack }: EnhancedTr
           </Button>
           <LanguageSwitcher />
         </div>
-        <p className="text-base sm:text-xl text-gray-700 px-1">
+        <p className="text-base sm:text-xl text-gray-700 dark:text-gray-300 px-1">
           {t('appSubtitle')}
         </p>
-        <p className="text-xs sm:text-sm text-gray-600 max-w-2xl mx-auto px-1">
+        <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-400 max-w-2xl mx-auto px-1">
           {t('appFeatures')}
         </p>
 
         <div className="flex items-center justify-center gap-2 sm:gap-3 flex-wrap px-1">
-          <Badge variant="outline" className="gap-1.5 py-1.5 px-3 border-teal-300 text-teal-700">
+          <Badge variant="outline" className="gap-1.5 py-1.5 px-3 border-teal-300 dark:border-teal-600 text-teal-700 dark:text-teal-300">
             <Sparkles className="w-3.5 h-3.5" /> {t('aiEnhanced')}
           </Badge>
-          <Badge variant="outline" className="gap-1.5 py-1.5 px-3 border-teal-300 text-teal-700">
+          <Badge variant="outline" className="gap-1.5 py-1.5 px-3 border-teal-300 dark:border-teal-600 text-teal-700 dark:text-teal-300">
             <Globe className="w-3.5 h-3.5" /> {t('multiCurrency')}
           </Badge>
-          <Badge variant="outline" className="gap-1.5 py-1.5 px-3 border-orange-300 text-orange-700">
+          <Badge variant="outline" className="gap-1.5 py-1.5 px-3 border-orange-300 dark:border-orange-600 text-orange-700 dark:text-orange-300">
             <TrendingUp className="w-3.5 h-3.5" /> {t('predictiveAnalytics')}
           </Badge>
-          <Badge variant="outline" className="gap-1.5 py-1.5 px-3 border-orange-300 text-orange-700">
+          <Badge variant="outline" className="gap-1.5 py-1.5 px-3 border-orange-300 dark:border-orange-600 text-orange-700 dark:text-orange-300">
             <Shield className="w-3.5 h-3.5" /> {t('enterpriseSecurity')}
           </Badge>
-          <Badge variant="outline" className="gap-1.5 py-1.5 px-3 border-teal-300 text-teal-700">
+          <Badge variant="outline" className="gap-1.5 py-1.5 px-3 border-teal-300 dark:border-teal-600 text-teal-700 dark:text-teal-300">
             <Zap className="w-3.5 h-3.5" /> {t('realTimeProcessing')}
           </Badge>
         </div>
@@ -572,52 +572,52 @@ export function EnhancedTravelPreferencesForm({ onComplete, onBack }: EnhancedTr
 
       {/* AI Intelligence Dashboard */}
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 sm:gap-4">
-        <Card className="border-2 border-teal-200 bg-gradient-to-br from-teal-50 to-cyan-50">
+        <Card className="border-2 border-teal-200 dark:border-teal-800 bg-gradient-to-br from-teal-50 dark:from-gray-800 to-cyan-50 dark:to-gray-700">
           <CardContent className="pt-6">
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-2">
-                <Brain className="w-5 h-5 text-teal-700" />
+                <Brain className="w-5 h-5 text-teal-700 dark:text-teal-300" />
                 <span className="text-base font-semibold">{t('aiIntelligenceScore')}</span>
               </div>
-              <span className="text-2xl font-bold text-teal-700">{Math.round(aiScore)}%</span>
+              <span className="text-2xl font-bold text-teal-700 dark:text-teal-300">{Math.round(aiScore)}%</span>
             </div>
             <Progress value={aiScore} className="h-2 mt-2" />
-            <p className="text-xs text-gray-600 mt-2">{t('profileCompletion')}</p>
+            <p className="text-xs text-gray-600 dark:text-gray-400 mt-2">{t('profileCompletion')}</p>
           </CardContent>
         </Card>
 
-        <Card className="border-2 border-orange-200 bg-gradient-to-br from-orange-50 to-amber-50">
+        <Card className="border-2 border-orange-200 dark:border-orange-800 bg-gradient-to-br from-orange-50 dark:from-gray-800 to-amber-50 dark:to-gray-700">
           <CardContent className="pt-6">
             <div className="flex items-center gap-2">
-              <Award className="w-5 h-5 text-orange-600" />
+              <Award className="w-5 h-5 text-orange-600 dark:text-orange-400" />
               <span className="text-base font-semibold">{t('travelerProfile')}</span>
             </div>
-            <p className="text-lg font-semibold text-orange-900 mt-2">{getTravelerType()}</p>
-            <p className="text-xs text-gray-600 mt-1">{t('aiGeneratedClassification')}</p>
+            <p className="text-lg font-semibold text-orange-900 dark:text-orange-200 mt-2">{getTravelerType()}</p>
+            <p className="text-xs text-gray-600 dark:text-gray-400 mt-1">{t('aiGeneratedClassification')}</p>
           </CardContent>
         </Card>
 
-        <Card className="border-2 border-green-200 bg-gradient-to-br from-green-50 to-emerald-50">
+        <Card className="border-2 border-green-200 dark:border-green-800 bg-gradient-to-br from-green-50 dark:from-gray-800 to-emerald-50 dark:to-gray-700">
           <CardContent className="pt-6">
             <div className="flex items-center gap-2">
-              <Leaf className="w-5 h-5 text-green-600" />
+              <Leaf className="w-5 h-5 text-green-600 dark:text-green-400" />
               <span className="text-base font-semibold">{t('sustainabilityScore')}</span>
             </div>
             <div className="flex items-center gap-2 mt-2">
               <Progress value={getSustainabilityScore()} className="h-2 flex-1" />
-              <span className="text-sm font-semibold text-green-600">{getSustainabilityScore()}%</span>
+              <span className="text-sm font-semibold text-green-600 dark:text-green-400">{getSustainabilityScore()}%</span>
             </div>
-            <p className="text-xs text-gray-600 mt-2">{t('ecoImpactRating')}</p>
+            <p className="text-xs text-gray-600 dark:text-gray-400 mt-2">{t('ecoImpactRating')}</p>
           </CardContent>
         </Card>
       </div>
 
       {/* Progress Steps */}
-      <Card className="bg-white shadow-sm overflow-hidden">
+      <Card className="bg-white dark:bg-gray-800 shadow-sm overflow-hidden">
         <CardContent className="p-4 sm:p-6">
           <div className="-mx-1 overflow-x-auto overscroll-x-contain pb-1 sm:overflow-visible sm:mx-0">
             <div className="flex justify-between items-start relative mb-2 min-w-[min(100%,22rem)] sm:min-w-0 px-2 sm:px-0 gap-0.5">
-              <div className="absolute top-4 sm:top-5 left-6 right-6 sm:left-0 sm:right-0 h-0.5 sm:h-1 bg-gray-200 -z-10 rounded-full">
+              <div className="absolute top-4 sm:top-5 left-6 right-6 sm:left-0 sm:right-0 h-0.5 sm:h-1 bg-gray-200 dark:bg-gray-600 -z-10 rounded-full">
                 <div
                   className="h-full bg-gradient-to-r from-teal-600 to-orange-500 transition-all duration-500 rounded-full"
                   style={{ width: `${progress}%` }}
@@ -643,7 +643,7 @@ export function EnhancedTravelPreferencesForm({ onComplete, onBack }: EnhancedTr
                         w-8 h-8 sm:w-10 sm:h-10 rounded-full flex items-center justify-center transition-all duration-300 relative shrink-0
                         ${isCompleted ? 'bg-gradient-to-br from-green-500 to-emerald-600 text-white shadow-lg' :
                           isActive ? 'bg-gradient-to-br from-teal-600 to-orange-500 text-white sm:scale-110 shadow-xl' :
-                          'bg-gray-200 text-gray-400 group-hover:bg-gray-300 group-active:bg-gray-300'}
+                          'bg-gray-200 dark:bg-gray-600 text-gray-400 dark:text-gray-300 group-hover:bg-gray-300 dark:group-hover:bg-gray-500 group-active:bg-gray-300'}
                       `}
                     >
                       {isCompleted ? (
@@ -655,10 +655,10 @@ export function EnhancedTravelPreferencesForm({ onComplete, onBack }: EnhancedTr
                     <span
                       className={`text-[10px] sm:text-xs leading-tight text-center max-w-[4.5rem] sm:max-w-none sm:whitespace-nowrap hidden sm:block ${
                         isActive
-                          ? 'font-semibold text-teal-700'
+                          ? 'font-semibold text-teal-700 dark:text-teal-300'
                           : isCompleted
-                            ? 'font-medium text-green-600'
-                            : 'text-gray-500'
+                            ? 'font-medium text-green-600 dark:text-green-400'
+                            : 'text-gray-500 dark:text-gray-400'
                       }`}
                     >
                       {step.label}
@@ -669,9 +669,9 @@ export function EnhancedTravelPreferencesForm({ onComplete, onBack }: EnhancedTr
             </div>
           </div>
           <div className="text-center mt-3 sm:mt-4 px-1">
-            <p className="text-sm text-gray-600">
+            <p className="text-sm text-gray-600 dark:text-gray-400">
               {t('stepLabel')} {currentStep + 1} {t('of')} {totalSteps}:{' '}
-              <span className="font-semibold text-gray-900 block sm:inline mt-0.5 sm:mt-0">
+              <span className="font-semibold text-gray-900 dark:text-white block sm:inline mt-0.5 sm:mt-0">
                 {steps[currentStep].label}
               </span>
             </p>
@@ -680,7 +680,7 @@ export function EnhancedTravelPreferencesForm({ onComplete, onBack }: EnhancedTr
       </Card>
 
       {/* Form Content - Render the appropriate section */}
-      <Card className="shadow-lg">
+      <Card className="shadow-lg dark:bg-gray-800 dark:border-gray-700">
         <CardContent className="p-4 sm:p-6 md:p-8">
           {currentStep === 0 && <TravelStyleSection {...sectionProps} />}
           {currentStep === 1 && <BudgetSection {...sectionProps} />}
@@ -692,7 +692,7 @@ export function EnhancedTravelPreferencesForm({ onComplete, onBack }: EnhancedTr
       </Card>
 
       {/* Navigation - sticky no telemóvel */}
-      <div className="mt-6 sm:mt-8 pt-4 sm:pt-6 border-t md:border-t">
+      <div className="mt-6 sm:mt-8 pt-4 sm:pt-6 border-t dark:border-gray-700 md:border-t">
         <div className="hidden md:flex justify-between gap-4">
           <Button
             type="button"
@@ -739,7 +739,7 @@ export function EnhancedTravelPreferencesForm({ onComplete, onBack }: EnhancedTr
 
       {/* Mobile Navigation */}
       <div
-        className="fixed bottom-0 left-0 right-0 z-50 border-t border-gray-200 bg-white/95 backdrop-blur-md p-3 pb-[max(0.75rem,env(safe-area-inset-bottom))] shadow-[0_-4px_20px_rgba(0,0,0,0.08)] md:hidden"
+        className="fixed bottom-0 left-0 right-0 z-50 border-t border-gray-200 dark:border-gray-700 bg-white/95 dark:bg-gray-900/95 backdrop-blur-md p-3 pb-[max(0.75rem,env(safe-area-inset-bottom))] shadow-[0_-4px_20px_rgba(0,0,0,0.08)] md:hidden"
         role="navigation"
         aria-label={t('stepLabel')}
       >
@@ -788,50 +788,50 @@ export function EnhancedTravelPreferencesForm({ onComplete, onBack }: EnhancedTr
       </div>
 
       {/* AI Insights Panel */}
-      <Card className="border-2 border-teal-300 bg-gradient-to-br from-teal-50 via-cyan-50 to-orange-50 shadow-xl">
+      <Card className="border-2 border-teal-300 dark:border-teal-800 bg-gradient-to-br from-teal-50 dark:from-teal-900/30 via-cyan-50 dark:via-cyan-900/30 to-orange-50 dark:to-orange-900/30 shadow-xl">
         <CardContent className="pt-6">
           <div className="flex items-center gap-2 text-xl mb-4">
-            <Sparkles className="w-6 h-6 text-orange-600" />
+            <Sparkles className="w-6 h-6 text-orange-600 dark:text-orange-400" />
             <span className="font-bold">{t('aiGeneratedInsights')}</span>
           </div>
           
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4">
-            <div className="bg-white rounded-lg p-4 shadow-sm">
-              <p className="text-sm text-gray-600 mb-1">{t('travelerType.label')}</p>
-              <p className="font-bold text-lg text-teal-900">{getTravelerType()}</p>
+            <div className="bg-white dark:bg-gray-800 rounded-lg p-4 shadow-sm">
+              <p className="text-sm text-gray-600 dark:text-gray-400 mb-1">{t('travelerType.label')}</p>
+              <p className="font-bold text-lg text-teal-900 dark:text-teal-200">{getTravelerType()}</p>
             </div>
-            <div className="bg-white rounded-lg p-4 shadow-sm">
-              <p className="text-sm text-gray-600 mb-1">{t('budgetCategory.label')}</p>
-              <p className="font-bold text-lg text-orange-900">{getBudgetCategory()}</p>
+            <div className="bg-white dark:bg-gray-800 rounded-lg p-4 shadow-sm">
+              <p className="text-sm text-gray-600 dark:text-gray-400 mb-1">{t('budgetCategory.label')}</p>
+              <p className="font-bold text-lg text-orange-900 dark:text-orange-200">{getBudgetCategory()}</p>
             </div>
-            <div className="bg-white rounded-lg p-4 shadow-sm">
-              <p className="text-sm text-gray-600 mb-1">{t('travelStyle')}</p>
-              <p className="font-bold text-lg text-teal-900">
+            <div className="bg-white dark:bg-gray-800 rounded-lg p-4 shadow-sm">
+              <p className="text-sm text-gray-600 dark:text-gray-400 mb-1">{t('travelStyle')}</p>
+              <p className="font-bold text-lg text-teal-900 dark:text-teal-200">
                 {preferences.travelStyles.length > 0
                   ? getTravelerType()
                   : 'Not Set'}
               </p>
             </div>
-            <div className="bg-white rounded-lg p-4 shadow-sm">
-              <p className="text-sm text-gray-600 mb-1">{t('ecoScore')}</p>
-              <p className="font-bold text-lg text-emerald-900">{getSustainabilityScore()}%</p>
+            <div className="bg-white dark:bg-gray-800 rounded-lg p-4 shadow-sm">
+              <p className="text-sm text-gray-600 dark:text-gray-400 mb-1">{t('ecoScore')}</p>
+              <p className="font-bold text-lg text-emerald-900 dark:text-emerald-200">{getSustainabilityScore()}%</p>
             </div>
           </div>
 
           {aiInsightsEnabled && (
-            <div className="mt-4 bg-gradient-to-r from-teal-100 via-cyan-100 to-orange-100 rounded-lg p-4">
+            <div className="mt-4 bg-gradient-to-r from-teal-100 dark:from-teal-900/50 via-cyan-100 dark:via-cyan-900/50 to-orange-100 dark:to-orange-900/50 rounded-lg p-4">
               <div className="flex items-start gap-3">
-                <TrendingUp className="w-6 h-6 text-teal-700 mt-1 flex-shrink-0" />
+                <TrendingUp className="w-6 h-6 text-teal-700 dark:text-teal-300 mt-1 flex-shrink-0" />
                 <div>
-                  <p className="font-bold text-teal-900 mb-2">{t('aiRecommendationsReady')}</p>
+                  <p className="font-bold text-teal-900 dark:text-teal-200 mb-2">{t('aiRecommendationsReady')}</p>
                   {aiInsightsLoading ? (
-                    <p className="text-sm text-teal-800">{t('processingWithAI')}</p>
+                    <p className="text-sm text-teal-800 dark:text-teal-200">{t('processingWithAI')}</p>
                   ) : aiInsightsError ? (
-                    <p className="text-sm text-red-700">{aiInsightsError}</p>
+                    <p className="text-sm text-red-700 dark:text-red-400">{aiInsightsError}</p>
                   ) : aiInsightsText ? (
-                    <p className="text-sm text-teal-800 whitespace-pre-line">{aiInsightsText}</p>
+                    <p className="text-sm text-teal-800 dark:text-teal-200 whitespace-pre-line">{aiInsightsText}</p>
                   ) : (
-                    <p className="text-sm text-teal-800">
+                    <p className="text-sm text-teal-800 dark:text-teal-200">
                       {t('basedOnProfile')} {preferences.preferredDestinations[0] || 'Europe'}.
                     </p>
                   )}
@@ -843,21 +843,21 @@ export function EnhancedTravelPreferencesForm({ onComplete, onBack }: EnhancedTr
       </Card>
 
       {/* Trust Indicators */}
-      <div className="flex items-center justify-center gap-4 sm:gap-8 flex-wrap text-xs sm:text-sm text-gray-600 px-2">
+      <div className="flex items-center justify-center gap-4 sm:gap-8 flex-wrap text-xs sm:text-sm text-gray-600 dark:text-gray-400 px-2">
         <div className="flex items-center gap-2">
-          <Shield className="w-4 h-4 text-green-600" />
+          <Shield className="w-4 h-4 text-green-600 dark:text-green-400" />
           <span>SOC 2 Certified</span>
         </div>
         <div className="flex items-center gap-2">
-          <Lock className="w-4 h-4 text-teal-700" />
+          <Lock className="w-4 h-4 text-teal-700 dark:text-teal-300" />
           <span>256-bit Encryption</span>
         </div>
         <div className="flex items-center gap-2">
-          <Globe className="w-4 h-4 text-teal-700" />
+          <Globe className="w-4 h-4 text-teal-700 dark:text-teal-300" />
           <span>GDPR Compliant</span>
         </div>
         <div className="flex items-center gap-2">
-          <Award className="w-4 h-4 text-orange-600" />
+          <Award className="w-4 h-4 text-orange-600 dark:text-orange-400" />
           <span>ISO 27001</span>
         </div>
       </div>

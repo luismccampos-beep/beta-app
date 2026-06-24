@@ -57,9 +57,9 @@ export function TravelStyleSection({
     <div className="space-y-6">
       <div className="border-b pb-4">
         <h3 className="text-xl sm:text-2xl font-bold mb-2 flex flex-wrap items-center gap-2">
-          <Sparkles className="w-6 h-6 text-orange-600" /> {t('travelStylePreferences')}
+          <Sparkles className="w-6 h-6 text-orange-600 dark:text-orange-400" /> {t('travelStylePreferences')}
         </h3>
-        <p className="text-sm text-gray-600">
+        <p className="text-sm text-gray-600 dark:text-gray-400">
           {t('travelStyleDesc')}
         </p>
       </div>
@@ -80,7 +80,7 @@ export function TravelStyleSection({
                   border-2 sm:hover:scale-105 sm:hover:shadow-xl
                   ${isSelected
                     ? 'border-transparent shadow-lg'
-                    : 'border-gray-200 bg-white hover:border-gray-300'
+                    : 'border-gray-200 dark:border-gray-600 bg-white dark:bg-gray-800 hover:border-gray-300 dark:hover:border-gray-500'
                   }
                 `}
               >
@@ -89,7 +89,7 @@ export function TravelStyleSection({
                 )}
                 <div className="relative z-10 flex flex-col items-center gap-2">
                   <OpenMoji emoji={style.emoji} size={32} />
-                  <span className={`text-sm font-semibold ${isSelected ? 'text-white' : 'text-gray-900'}`}>
+                  <span className={`text-sm font-semibold ${isSelected ? 'text-white' : 'text-gray-900 dark:text-white'}`}>
                     {style.label}
                   </span>
                 </div>
@@ -159,7 +159,7 @@ export function TravelStyleSection({
                       <CommandItem key={c.name} value={c.name} onSelect={() => {
                         toggleArrayValue('preferredCountries', c.name);
                       }}>
-                        <div className={`mr-2 flex h-4 w-4 items-center justify-center rounded-sm border ${watchedPreferences.preferredCountries.includes(c.name) ? 'bg-teal-600 border-teal-600' : 'border-gray-300'}`}>
+                        <div className={`mr-2 flex h-4 w-4 items-center justify-center rounded-sm border ${watchedPreferences.preferredCountries.includes(c.name) ? 'bg-teal-600 border-teal-600' : 'border-gray-300 dark:border-gray-500'}`}>
                           {watchedPreferences.preferredCountries.includes(c.name) && <Check className="h-3 w-3 text-white" />}
                         </div>
                         <span>{c.name}</span>
@@ -193,7 +193,7 @@ export function TravelStyleSection({
                       <CommandItem key={c.name} value={c.name} onSelect={() => {
                         toggleArrayValue('preferredContinents', c.name);
                       }}>
-                        <div className={`mr-2 flex h-4 w-4 items-center justify-center rounded-sm border ${watchedPreferences.preferredContinents.includes(c.name) ? 'bg-teal-600 border-teal-600' : 'border-gray-300'}`}>
+                        <div className={`mr-2 flex h-4 w-4 items-center justify-center rounded-sm border ${watchedPreferences.preferredContinents.includes(c.name) ? 'bg-teal-600 border-teal-600' : 'border-gray-300 dark:border-gray-500'}`}>
                           {watchedPreferences.preferredContinents.includes(c.name) && <Check className="h-3 w-3 text-white" />}
                         </div>
                         <span>{c.name}</span>
@@ -212,9 +212,9 @@ export function TravelStyleSection({
       <div className="space-y-3">
         <Label className="text-base font-semibold">{t('preferredDestinations')}</Label>
         {travelCatalogLoading ? (
-          <p className="text-sm text-gray-500">{t('catalogLoading')}</p>
+          <p className="text-sm text-gray-500 dark:text-gray-400">{t('catalogLoading')}</p>
         ) : (travelCatalog?.airports?.length ?? 0) === 0 ? (
-          <p className="text-sm text-amber-700">
+          <p className="text-sm text-amber-700 dark:text-amber-400">
             {travelCatalog?.configured?.duffel === false
               ? t('catalogDuffelMissing')
               : t('catalogAirportsEmpty')}
@@ -228,7 +228,7 @@ export function TravelStyleSection({
                   <button
                     type="button"
                     onClick={() => toggleArrayValue('preferredDestinations', dest)}
-                    className="ml-1 rounded-full hover:bg-gray-300 p-0.5"
+                    className="ml-1 rounded-full hover:bg-gray-300 dark:hover:bg-gray-600 p-0.5"
                     aria-label={`Remove ${dest}`}
                   >
                     <span className="text-xs">✕</span>
@@ -239,7 +239,7 @@ export function TravelStyleSection({
             <Popover>
               <PopoverTrigger asChild>
                 <Button type="button" variant="outline" className="w-full h-11 justify-start font-normal">
-                  <MapPin className="w-4 h-4 mr-2 text-gray-400" />
+                  <MapPin className="w-4 h-4 mr-2 text-gray-400 dark:text-gray-500" />
                   {t('searchDestinations')}
                 </Button>
               </PopoverTrigger>
@@ -253,11 +253,11 @@ export function TravelStyleSection({
                         <CommandItem key={a.iataCode} value={a.label} onSelect={() => {
                           toggleArrayValue('preferredDestinations', a.label);
                         }}>
-                          <div className={`mr-2 flex h-4 w-4 items-center justify-center rounded-sm border ${watchedPreferences.preferredDestinations.includes(a.label) ? 'bg-teal-600 border-teal-600' : 'border-gray-300'}`}>
+                          <div className={`mr-2 flex h-4 w-4 items-center justify-center rounded-sm border ${watchedPreferences.preferredDestinations.includes(a.label) ? 'bg-teal-600 border-teal-600' : 'border-gray-300 dark:border-gray-500'}`}>
                             {watchedPreferences.preferredDestinations.includes(a.label) && <Check className="h-3 w-3 text-white" />}
                           </div>
                           <span>{a.label}</span>
-                          {a.country && <span className="ml-auto text-xs text-gray-500">{a.country}</span>}
+                          {a.country && <span className="ml-auto text-xs text-gray-500 dark:text-gray-400">{a.country}</span>}
                         </CommandItem>
                       ))}
                     </CommandGroup>
@@ -286,8 +286,8 @@ export function TravelStyleSection({
                 className={`
                   flex items-center gap-3 p-3 rounded-lg border-2 transition-all
                   ${isSelected
-                    ? 'border-teal-600 bg-teal-50 text-teal-900'
-                    : 'border-gray-200 bg-white hover:border-gray-300'
+                    ? 'border-teal-600 dark:border-teal-500 bg-teal-50 dark:bg-teal-900/30 text-teal-900 dark:text-teal-200'
+                    : 'border-gray-200 dark:border-gray-600 bg-white dark:bg-gray-800 hover:border-gray-300 dark:hover:border-gray-500'
                   }
                 `}
               >

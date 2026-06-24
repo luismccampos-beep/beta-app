@@ -44,9 +44,9 @@ export function SpecialRequirementsSection({
     <div className="space-y-6">
       <div className="border-b pb-4">
         <h3 className="text-xl sm:text-2xl font-bold mb-2 flex flex-wrap items-center gap-2">
-          <Shield className="w-6 h-6 text-red-600" /> {t('specialRequirementsNeeds')}
+          <Shield className="w-6 h-6 text-red-600 dark:text-red-400" /> {t('specialRequirementsNeeds')}
         </h3>
-        <p className="text-sm text-gray-600">
+        <p className="text-sm text-gray-600 dark:text-gray-400">
           {t('ensureSafeComfortable')}
         </p>
       </div>
@@ -56,7 +56,7 @@ export function SpecialRequirementsSection({
           <Label className="text-base font-semibold">{t('dietaryRestrictions')}</Label>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3">
             {DIETARY_IDS.map((id) => (
-              <div key={id} className="flex items-center space-x-2 bg-gray-50 rounded-lg p-3 hover:bg-gray-100 transition-colors">
+              <div key={id} className="flex items-center space-x-2 bg-gray-50 dark:bg-gray-800 rounded-lg p-3 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">
                 <Checkbox
                   id={`diet-${id}`}
                   checked={watchedPreferences.dietaryRestrictions.includes(id)}
@@ -74,7 +74,7 @@ export function SpecialRequirementsSection({
           <Label className="text-base font-semibold">{t('accessibilityRequirements')}</Label>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
             {ACCESSIBILITY_IDS.map((id) => (
-              <div key={id} className="flex items-center space-x-2 bg-gray-50 rounded-lg p-3 hover:bg-gray-100 transition-colors">
+              <div key={id} className="flex items-center space-x-2 bg-gray-50 dark:bg-gray-800 rounded-lg p-3 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">
                 <Checkbox
                   id={`access-${id}`}
                   checked={watchedPreferences.accessibility.includes(id)}
@@ -100,13 +100,13 @@ export function SpecialRequirementsSection({
             rows={5}
             className="resize-none"
           />
-          <p className="text-xs text-gray-500">{t('confidentialEncrypted')}</p>
+          <p className="text-xs text-gray-500 dark:text-gray-400">{t('confidentialEncrypted')}</p>
         </div>
 
-        <Card className="border-green-200 bg-gradient-to-br from-green-50 to-emerald-50">
+        <Card className="border-green-200 dark:border-green-800 bg-gradient-to-br from-green-50 dark:from-gray-800 to-emerald-50 dark:to-gray-800">
           <CardHeader>
             <CardTitle className="text-lg flex items-center gap-2">
-              <Leaf className="w-5 h-5 text-green-600" />
+              <Leaf className="w-5 h-5 text-green-600 dark:text-green-400" />
               {t('sustainabilityPreferences')}
             </CardTitle>
             <CardDescription>{t('helpEnvironmentallyResponsible')}</CardDescription>
@@ -132,7 +132,7 @@ export function SpecialRequirementsSection({
               <Label className="text-base font-semibold">{t('ecoPreferences')}</Label>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 {ECO_PREFERENCE_IDS.map((id) => (
-                  <div key={id} className="flex items-center space-x-2 bg-white rounded-lg p-3 hover:bg-green-50 transition-colors">
+                  <div key={id} className="flex items-center space-x-2 bg-white dark:bg-gray-800 rounded-lg p-3 hover:bg-green-50 dark:hover:bg-gray-700 transition-colors">
                     <Checkbox
                       id={`eco-${id}`}
                       checked={watchedPreferences.ecoPreferences.includes(id)}
@@ -146,10 +146,10 @@ export function SpecialRequirementsSection({
               </div>
             </div>
 
-          <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between bg-white rounded-lg p-4">
+          <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between bg-white dark:bg-gray-800 rounded-lg p-4">
             <div className="space-y-0.5 flex-1 min-w-0">
               <Label htmlFor="carbonOffset" className="font-semibold">{t('automaticCarbonOffset')}</Label>
-                <p className="text-xs text-gray-600">{t('offsetCO2Flights')}</p>
+                <p className="text-xs text-gray-600 dark:text-gray-400">{t('offsetCO2Flights')}</p>
               </div>
               <Checkbox
                 id="carbonOffset"
