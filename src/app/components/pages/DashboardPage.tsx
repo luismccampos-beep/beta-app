@@ -68,6 +68,7 @@ interface DashboardPageProps {
   onBack: () => void;
   onNewBooking?: () => void;
   initialTab?: TabType;
+  onLogout?: () => void;
 }
 
 interface Booking {
@@ -149,7 +150,7 @@ const FormField = ({ label, icon: Icon, htmlFor, required, error, children }: { 
   </div>
 );
 
-export function DashboardPage({ onBack, onNewBooking, initialTab }: DashboardPageProps) {
+export function DashboardPage({ onBack, onNewBooking, initialTab, onLogout }: DashboardPageProps) {
   const locale = useLocale();
   const t = useTranslations('dashboard');
   const [activeTab, setActiveTab] = useState<TabType>(initialTab ?? 'bookings');
@@ -553,7 +554,7 @@ export function DashboardPage({ onBack, onNewBooking, initialTab }: DashboardPag
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 via-teal-50 to-orange-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 transition-colors">
-      <AppHeader showBack onBack={onBack} />
+      <AppHeader showBack onBack={onBack} showLogout={!!onLogout} onLogout={onLogout} />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-12 pb-24 sm:pb-12">
         {/* ── Hero ── */}

@@ -46,9 +46,9 @@ export function FlightAccommodationSection({
     <div className="space-y-6">
       <div className="border-b pb-4">
         <h3 className="text-xl sm:text-2xl font-bold mb-2 flex flex-wrap items-center gap-2">
-          <Heart className="w-6 h-6 text-pink-600" /> {t('flightAccommodationPreferences')}
+          <Heart className="w-6 h-6 text-pink-600 dark:text-pink-400" /> {t('flightAccommodationPreferences')}
         </h3>
-        <p className="text-sm text-gray-600">
+        <p className="text-sm text-gray-600 dark:text-gray-400">
           {t('fineTunePreferences')}
         </p>
       </div>
@@ -110,9 +110,9 @@ export function FlightAccommodationSection({
           <div className="space-y-3">
             <Label className="text-base font-semibold">{t('loyaltyPrograms')}</Label>
             {travelCatalogLoading ? (
-              <p className="text-sm text-gray-500">{t('catalogLoading')}</p>
+              <p className="text-sm text-gray-500 dark:text-gray-400">{t('catalogLoading')}</p>
             ) : (travelCatalog?.loyaltyProgrammes?.length ?? 0) === 0 ? (
-              <p className="text-sm text-amber-700">
+              <p className="text-sm text-amber-700 dark:text-amber-400">
                 {travelCatalog?.configured?.duffel === false
                   ? t('catalogDuffelMissing')
                   : t('catalogLoyaltyEmpty')}
@@ -122,7 +122,7 @@ export function FlightAccommodationSection({
                 {travelCatalog!.loyaltyProgrammes.map((program) => (
                   <div
                     key={program.id}
-                    className="flex items-center space-x-2 bg-gray-50 rounded-lg p-3 hover:bg-gray-100 transition-colors"
+                    className="flex items-center space-x-2 bg-gray-50 dark:bg-gray-800 rounded-lg p-3 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
                   >
                     <Controller name="loyaltyPrograms" control={control} render={({ field }) => (
                       <Checkbox
@@ -145,9 +145,9 @@ export function FlightAccommodationSection({
           <div className="space-y-3">
             <Label className="text-base font-semibold">{t('accommodationType')}</Label>
             {travelCatalogLoading ? (
-              <p className="text-sm text-gray-500">{t('catalogLoading')}</p>
+              <p className="text-sm text-gray-500 dark:text-gray-400">{t('catalogLoading')}</p>
             ) : (travelCatalog?.accommodations?.length ?? 0) === 0 ? (
-              <p className="text-sm text-amber-700">
+              <p className="text-sm text-amber-700 dark:text-amber-400">
                 {travelCatalog?.configured?.hotelbeds === false
                   ? t('catalogHotelbedsMissing')
                   : t('catalogHotelbedsEmpty')}
@@ -157,7 +157,7 @@ export function FlightAccommodationSection({
                 {travelCatalog!.accommodations.map((type) => (
                   <div
                     key={type.code}
-                    className="flex items-center space-x-2 bg-gray-50 rounded-lg p-3 hover:bg-gray-100 transition-colors"
+                    className="flex items-center space-x-2 bg-gray-50 dark:bg-gray-800 rounded-lg p-3 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
                   >
                     <Controller name="accommodationType" control={control} render={({ field }) => (
                       <Checkbox
@@ -197,11 +197,11 @@ export function FlightAccommodationSection({
 
           <div className="space-y-3">
             <Label className="text-base font-semibold">{t('requiredAmenities')}</Label>
-            <p className="text-xs text-gray-500">{t('amenitiesHotelbedsNote')}</p>
+            <p className="text-xs text-gray-500 dark:text-gray-400">{t('amenitiesHotelbedsNote')}</p>
             {travelCatalogLoading ? (
-              <p className="text-sm text-gray-500">{t('catalogLoading')}</p>
+              <p className="text-sm text-gray-500 dark:text-gray-400">{t('catalogLoading')}</p>
             ) : (travelCatalog?.facilities?.length ?? 0) === 0 ? (
-              <p className="text-sm text-amber-700">
+              <p className="text-sm text-amber-700 dark:text-amber-400">
                 {travelCatalog?.configured?.hotelbeds === false
                   ? t('catalogHotelbedsMissing')
                   : t('catalogHotelbedsEmpty')}
@@ -211,7 +211,7 @@ export function FlightAccommodationSection({
                 {travelCatalog!.facilities.map((amenity) => (
                   <div
                     key={amenity.code}
-                    className="flex items-center space-x-2 bg-gray-50 rounded-lg p-3 hover:bg-gray-100 transition-colors"
+                    className="flex items-center space-x-2 bg-gray-50 dark:bg-gray-800 rounded-lg p-3 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
                   >
                     <Controller name="amenities" control={control} render={({ field }) => (
                       <Checkbox
@@ -233,9 +233,9 @@ export function FlightAccommodationSection({
           <div className="space-y-3">
             <Label className="text-base font-semibold">{t('preferredHotelChains')}</Label>
             {travelCatalogLoading ? (
-              <p className="text-sm text-gray-500">{t('catalogLoading')}</p>
+              <p className="text-sm text-gray-500 dark:text-gray-400">{t('catalogLoading')}</p>
             ) : (travelCatalog?.chains?.length ?? 0) === 0 ? (
-              <p className="text-sm text-amber-700">
+              <p className="text-sm text-amber-700 dark:text-amber-400">
                 {travelCatalog?.configured?.hotelbeds === false
                   ? t('catalogHotelbedsMissing')
                   : t('catalogHotelbedsEmpty')}
@@ -245,7 +245,7 @@ export function FlightAccommodationSection({
                 {travelCatalog!.chains.map((chain) => (
                   <div
                     key={chain.code}
-                    className="flex items-center space-x-2 bg-gray-50 rounded-lg p-3 hover:bg-gray-100 transition-colors"
+                    className="flex items-center space-x-2 bg-gray-50 dark:bg-gray-800 rounded-lg p-3 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
                   >
                     <Checkbox
                       id={`chain-${chain.code}`}
@@ -264,10 +264,10 @@ export function FlightAccommodationSection({
         </TabsContent>
 
         <TabsContent value="cruise" className="space-y-6 mt-6">
-          <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between rounded-lg border border-teal-100 bg-teal-50/50 p-4">
+          <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between rounded-lg border border-teal-100 dark:border-teal-800 bg-teal-50/50 dark:bg-teal-900/30 p-4">
             <div className="flex-1 min-w-0">
               <Label className="text-base font-semibold">{t('cruiseIncludeToggle')}</Label>
-              <p className="text-sm text-gray-600 mt-1">{t('cruiseIncludeHint')}</p>
+              <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">{t('cruiseIncludeHint')}</p>
             </div>
             <Checkbox
               className="shrink-0 self-start sm:self-center"
@@ -277,7 +277,7 @@ export function FlightAccommodationSection({
           </div>
 
           {!watchedPreferences.cruiseEnabled ? (
-            <p className="text-sm text-gray-500">{t('cruiseCollapsedHint')}</p>
+            <p className="text-sm text-gray-500 dark:text-gray-400">{t('cruiseCollapsedHint')}</p>
           ) : (
             <>
               <div className="space-y-3">
@@ -286,7 +286,7 @@ export function FlightAccommodationSection({
                   {CRUISE_DESTINATION_IDS.map((id) => (
                     <div
                       key={id}
-                      className="flex items-center space-x-2 bg-gray-50 rounded-lg p-3 hover:bg-gray-100 transition-colors"
+                      className="flex items-center space-x-2 bg-gray-50 dark:bg-gray-800 rounded-lg p-3 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
                     >
                       <Checkbox
                         id={`cruise-dest-${id}`}
@@ -350,12 +350,12 @@ export function FlightAccommodationSection({
                       onClick={() => setValue('cruiseDuration', id)}
                       className={`p-4 rounded-lg border-2 text-left transition-all ${
                         watchedPreferences.cruiseDuration === id
-                          ? 'border-teal-600 bg-teal-50 shadow-md'
-                          : 'border-gray-200 hover:border-gray-300 bg-white'
+                          ? 'border-teal-600 dark:border-teal-500 bg-teal-50 dark:bg-teal-900/30 shadow-md'
+                          : 'border-gray-200 dark:border-gray-600 hover:border-gray-300 dark:hover:border-gray-500 bg-white dark:bg-gray-800'
                       }`}
                     >
                       <div className="font-semibold text-sm">{t(`options.cruise.duration.${id}.label`)}</div>
-                      <div className="text-xs text-gray-600">{t(`options.cruise.duration.${id}.days`)}</div>
+                      <div className="text-xs text-gray-600 dark:text-gray-400">{t(`options.cruise.duration.${id}.days`)}</div>
                     </button>
                   ))}
                 </div>
@@ -363,11 +363,11 @@ export function FlightAccommodationSection({
 
               <div className="space-y-3">
                 <Label className="text-base font-semibold">{t('cruiseBrands')}</Label>
-                <p className="text-xs text-gray-500">{t('cruiseBrandsNote')}</p>
+                <p className="text-xs text-gray-500 dark:text-gray-400">{t('cruiseBrandsNote')}</p>
                 {travelCatalogLoading ? (
-                  <p className="text-sm text-gray-500">{t('catalogLoading')}</p>
+                  <p className="text-sm text-gray-500 dark:text-gray-400">{t('catalogLoading')}</p>
                 ) : (travelCatalog?.cruiseBrands?.length ?? 0) === 0 ? (
-                  <p className="text-sm text-amber-700">
+                  <p className="text-sm text-amber-700 dark:text-amber-400">
                     {travelCatalog?.configured?.siloah === false
                       ? t('catalogSiloahMissing')
                       : t('catalogSiloahEmpty')}
@@ -377,7 +377,7 @@ export function FlightAccommodationSection({
                     {travelCatalog!.cruiseBrands!.map((brand) => (
                       <div
                         key={brand.name}
-                        className="flex items-center space-x-2 bg-gray-50 rounded-lg p-3 hover:bg-gray-100 transition-colors"
+                        className="flex items-center space-x-2 bg-gray-50 dark:bg-gray-800 rounded-lg p-3 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
                       >
                         <Checkbox
                           id={`cruise-brand-${brand.name}`}

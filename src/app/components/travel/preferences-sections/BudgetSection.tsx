@@ -68,9 +68,9 @@ export function BudgetSection({
     <div className="space-y-6">
       <div className="border-b pb-4">
         <h3 className="text-xl sm:text-2xl font-bold mb-2 flex flex-wrap items-center gap-2">
-          <Wallet className="w-6 h-6 text-teal-700" /> {t('budgetFinancialPreferences')}
+          <Wallet className="w-6 h-6 text-teal-700 dark:text-teal-300" /> {t('budgetFinancialPreferences')}
         </h3>
-        <p className="text-sm text-gray-600">
+        <p className="text-sm text-gray-600 dark:text-gray-400">
           {t('multiCurrencySupport')}
         </p>
       </div>
@@ -96,7 +96,7 @@ export function BudgetSection({
                       <span>
                         {CURRENCY_SYMBOLS[code]} {code}
                       </span>
-                      <span className="text-gray-500">- {t(`options.currencies.${code}`)}</span>
+                      <span className="text-gray-500 dark:text-gray-400">- {t(`options.currencies.${code}`)}</span>
                     </span>
                   </SelectItem>
                 ))}
@@ -120,7 +120,7 @@ export function BudgetSection({
 
         <div className="space-y-4">
           <Label className="text-base font-semibold">{t('budgetRangePerTrip')}</Label>
-          <div className="bg-gradient-to-br from-green-50 to-blue-50 rounded-xl p-4 sm:p-6 space-y-4">
+          <div className="bg-gradient-to-br from-green-50 dark:from-gray-800 to-blue-50 dark:to-gray-800 rounded-xl p-4 sm:p-6 space-y-4">
             <Controller name="budgetRange" control={control} render={({ field }) => (
               <Slider
                 min={1000}
@@ -133,17 +133,17 @@ export function BudgetSection({
             )} />
             {errors.budgetRange && <p className="text-red-500 text-xs mt-1">{errors.budgetRange.message}</p>}
             <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-3">
-              <div className="flex-1 text-center bg-white rounded-lg px-3 sm:px-4 py-3 shadow-sm">
-                <p className="text-xs text-gray-600 mb-1">{t('minimum')}</p>
-                <p className="text-lg sm:text-xl font-bold text-green-600 break-all">
+              <div className="flex-1 text-center bg-white dark:bg-gray-800 rounded-lg px-3 sm:px-4 py-3 shadow-sm">
+                <p className="text-xs text-gray-600 dark:text-gray-400 mb-1">{t('minimum')}</p>
+                <p className="text-lg sm:text-xl font-bold text-green-600 dark:text-green-400 break-all">
                   {CURRENCY_SYMBOLS[watchedPreferences.currency] ?? '$'}
                   {watchedPreferences.budgetRange[0].toLocaleString()}
                 </p>
               </div>
-              <ChevronRight className="w-5 h-5 text-gray-400 hidden sm:block shrink-0" />
-              <div className="flex-1 text-center bg-white rounded-lg px-3 sm:px-4 py-3 shadow-sm">
-                <p className="text-xs text-gray-600 mb-1">{t('maximum')}</p>
-                <p className="text-lg sm:text-xl font-bold text-blue-600 break-all">
+              <ChevronRight className="w-5 h-5 text-gray-400 dark:text-gray-500 hidden sm:block shrink-0" />
+              <div className="flex-1 text-center bg-white dark:bg-gray-800 rounded-lg px-3 sm:px-4 py-3 shadow-sm">
+                <p className="text-xs text-gray-600 dark:text-gray-400 mb-1">{t('maximum')}</p>
+                <p className="text-lg sm:text-xl font-bold text-blue-600 dark:text-blue-400 break-all">
                   {CURRENCY_SYMBOLS[watchedPreferences.currency] ?? '$'}
                   {watchedPreferences.budgetRange[1].toLocaleString()}
                 </p>
@@ -159,7 +159,7 @@ export function BudgetSection({
 
         <div className="space-y-3">
           <Label htmlFor="cabinClass" className="text-base font-semibold">{t('preferredFlightCabin')}</Label>
-          <p className="text-xs text-gray-500">{t('cabinDuffelNote')}</p>
+          <p className="text-xs text-gray-500 dark:text-gray-400">{t('cabinDuffelNote')}</p>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3">
             {(travelCatalog?.duffelCabinClasses?.length
               ? travelCatalog.duffelCabinClasses
@@ -174,8 +174,8 @@ export function BudgetSection({
                   className={`
                     p-4 rounded-lg border-2 transition-all text-center
                     ${isSelected
-                      ? 'border-teal-600 bg-teal-50 shadow-md'
-                      : 'border-gray-200 hover:border-gray-300 bg-white'
+                      ? 'border-teal-600 dark:border-teal-500 bg-teal-50 dark:bg-teal-900/30 shadow-md'
+                      : 'border-gray-200 dark:border-gray-600 hover:border-gray-300 dark:hover:border-gray-500 bg-white dark:bg-gray-800'
                     }
                   `}
                 >

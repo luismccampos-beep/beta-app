@@ -41,17 +41,17 @@ export function AdvancedSettingsSection({
     <div className="space-y-6">
       <div className="border-b pb-4">
         <h3 className="text-xl sm:text-2xl font-bold mb-2 flex flex-wrap items-center gap-2">
-          <Zap className="w-6 h-6 text-yellow-600" /> {t('advancedSettingsAI')}
+          <Zap className="w-6 h-6 text-yellow-600 dark:text-yellow-400" /> {t('advancedSettingsAI')}
         </h3>
-        <p className="text-sm text-gray-600">
+        <p className="text-sm text-gray-600 dark:text-gray-400">
           {t('customizeAIExperience')}
         </p>
       </div>
 
-      <Card className="border-2 border-teal-200 bg-gradient-to-br from-teal-50 via-cyan-50 to-orange-50">
+      <Card className="border-2 border-teal-200 dark:border-teal-800 bg-gradient-to-br from-teal-50 dark:from-gray-800 via-cyan-50 dark:via-gray-800 to-orange-50 dark:to-gray-800">
         <CardHeader>
           <CardTitle className="text-xl flex items-center gap-2">
-            <Brain className="w-6 h-6 text-teal-700" />
+            <Brain className="w-6 h-6 text-teal-700 dark:text-teal-300" />
             {t('aiPoweredFeatures')}
           </CardTitle>
           <CardDescription>
@@ -59,12 +59,12 @@ export function AdvancedSettingsSection({
           </CardDescription>
         </CardHeader>
         <CardContent className="space-y-6">
-          <div className="flex items-center justify-between bg-white rounded-lg p-4 shadow-sm">
+          <div className="flex items-center justify-between bg-white dark:bg-gray-800 rounded-lg p-4 shadow-sm">
             <div className="space-y-1 flex-1">
               <Label htmlFor="aiRecommendations" className="font-semibold text-base">
                 {t('enableAIRecommendations')}
               </Label>
-              <p className="text-sm text-gray-600">
+              <p className="text-sm text-gray-600 dark:text-gray-400">
                 {t('aiRecommendationsDesc')}
               </p>
               <div className="flex gap-2 pt-2">
@@ -83,15 +83,15 @@ export function AdvancedSettingsSection({
             )} />
           </div>
 
-          <div className="flex items-center justify-between bg-white rounded-lg p-4 shadow-sm">
+          <div className="flex items-center justify-between bg-white dark:bg-gray-800 rounded-lg p-4 shadow-sm">
             <div className="space-y-1 flex-1">
               <Label htmlFor="dataSharing" className="font-semibold text-base">
                 {t('enhancedDataAnalysis')}
               </Label>
-              <p className="text-sm text-gray-600">
+              <p className="text-sm text-gray-600 dark:text-gray-400">
                 {t('enhancedDataDesc')}
               </p>
-              <p className="text-xs text-gray-500 pt-1">
+              <p className="text-xs text-gray-500 dark:text-gray-400 pt-1">
                 {t('dataAnonymized')}
               </p>
             </div>
@@ -106,15 +106,15 @@ export function AdvancedSettingsSection({
           </div>
 
           {watchedPreferences.aiRecommendations && (
-            <div className="bg-gradient-to-r from-teal-100 to-orange-100 rounded-lg p-4 space-y-2">
+            <div className="bg-gradient-to-r from-teal-100 dark:from-teal-900/50 to-orange-100 dark:to-orange-900/50 rounded-lg p-4 space-y-2">
               <div className="flex items-start gap-2">
-                <Sparkles className="w-5 h-5 text-orange-600 mt-0.5 flex-shrink-0" />
+                <Sparkles className="w-5 h-5 text-orange-600 dark:text-orange-400 mt-0.5 flex-shrink-0" />
                 <div>
-                  <p className="font-semibold text-teal-900">{t('aiIntelligenceActivated')}</p>
-                  <p className="text-sm text-teal-800 mt-1">
+                  <p className="font-semibold text-teal-900 dark:text-teal-200">{t('aiIntelligenceActivated')}</p>
+                  <p className="text-sm text-teal-800 dark:text-teal-200 mt-1">
                     {t('profileAnalyzed')}
                   </p>
-                  <ul className="text-sm text-teal-800 mt-2 space-y-1 ml-4">
+                  <ul className="text-sm text-teal-800 dark:text-teal-200 mt-2 space-y-1 ml-4">
                     <li>• {t('personalizedDestinations')}</li>
                     <li>• {t('dynamicPricing')}</li>
                     <li>• {t('predictivePlanning')}</li>
@@ -127,16 +127,16 @@ export function AdvancedSettingsSection({
         </CardContent>
       </Card>
 
-      <Card className="border-orange-200">
+      <Card className="border-orange-200 dark:border-orange-800 dark:bg-gray-800">
         <CardHeader>
           <CardTitle className="text-lg flex items-center gap-2">
-            <Bell className="w-5 h-5 text-orange-600" />
+            <Bell className="w-5 h-5 text-orange-600 dark:text-orange-400" />
             {t('notificationPreferences')}
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-3">
           {NOTIFICATION_IDS.map((id) => (
-            <div key={id} className="flex items-center space-x-3 bg-gray-50 rounded-lg p-3">
+            <div key={id} className="flex items-center space-x-3 bg-gray-50 dark:bg-gray-800 rounded-lg p-3">
               <Controller name="notifications" control={control} render={({ field }) => (
                 <Checkbox
                   id={`notif-${id}`}
@@ -148,7 +148,7 @@ export function AdvancedSettingsSection({
                 <Label htmlFor={`notif-${id}`} className="cursor-pointer font-medium">
                   {t(`options.notifications.${id}`)}
                 </Label>
-                <p className="text-xs text-gray-600">{t(`options.notificationDesc.${id}`)}</p>
+                <p className="text-xs text-gray-600 dark:text-gray-400">{t(`options.notificationDesc.${id}`)}</p>
               </div>
             </div>
           ))}
@@ -156,10 +156,10 @@ export function AdvancedSettingsSection({
         </CardContent>
       </Card>
 
-      <Card className="border-gray-300">
+      <Card className="border-gray-300 dark:border-gray-600 dark:bg-gray-800">
         <CardHeader>
           <CardTitle className="text-lg flex items-center gap-2">
-            <Lock className="w-5 h-5 text-gray-600" />
+            <Lock className="w-5 h-5 text-gray-600 dark:text-gray-400" />
             {t('privacySecurity')}
           </CardTitle>
         </CardHeader>
@@ -183,9 +183,9 @@ export function AdvancedSettingsSection({
             {errors.privacyLevel && <p className="text-red-500 text-xs mt-1">{errors.privacyLevel.message}</p>}
           </div>
 
-          <div className="bg-gray-50 rounded-lg p-4 space-y-2">
-            <div className="flex items-center gap-2 text-gray-900 font-semibold">
-              <Shield className="w-4 h-4 text-green-600" />
+          <div className="bg-gray-50 dark:bg-gray-800 rounded-lg p-4 space-y-2">
+            <div className="flex items-center gap-2 text-gray-900 dark:text-white font-semibold">
+              <Shield className="w-4 h-4 text-green-600 dark:text-green-400" />
               {t('securityCertifications')}
             </div>
             <div className="flex flex-wrap gap-2">
@@ -193,7 +193,7 @@ export function AdvancedSettingsSection({
                 <Badge key={key} variant="outline">{t(`options.securityBadges.${key}`)}</Badge>
               ))}
             </div>
-            <p className="text-xs text-gray-600 pt-2">
+            <p className="text-xs text-gray-600 dark:text-gray-400 pt-2">
               {t('allDataEncrypted')}
             </p>
           </div>
