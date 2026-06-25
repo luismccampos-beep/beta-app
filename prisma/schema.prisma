@@ -4262,6 +4262,7 @@ model WvDestination {
   images   WvDestinationImage[]
   videos   WvDestinationVideo[]
   translations DestinationTranslation[]
+  reviews  WvDestinationReview[]
 
   @@index([pais, nome])
   @@index([slug])
@@ -4269,6 +4270,25 @@ model WvDestination {
   @@index([iata])
   @@index([iata, lang, hotelCount])
   @@map("wv_destinations")
+}
+
+/// Review / comentário de destino Wikivoyage
+model WvDestinationReview {
+  id             String   @id @default(uuid())
+  destinoId      Int      @map("destino_id")
+  authorName     String   @map("author_name") @db.VarChar(120)
+  authorEmail    String?  @map("author_email") @db.VarChar(255)
+  rating         Int      @db.SmallInt // 1-5
+  comment        String   @db.Text
+  isApproved     Boolean  @default(false) @map("is_approved")
+  helpfulCount   Int      @default(0) @map("helpful_count")
+  createdAt      DateTime @default(now()) @map("created_at")
+
+  destino WvDestination @relation(fields: [destinoId], references: [id], onDelete: Cascade)
+
+  @@index([destinoId])
+  @@index([destinoId, isApproved])
+  @@map("wv_destination_reviews")
 }
 
 model WvHotel {

@@ -20,6 +20,8 @@ import {
   ArrowRight,
   Palmtree,
   Lock,
+  Map,
+  Building2,
 } from 'lucide-react';
 import { AppHeader } from '../AppHeader';
 import { AppFooter } from '../AppFooter';
@@ -33,6 +35,11 @@ export function LandingPage({ onGetStarted }: LandingPageProps) {
   const t = useTranslations('landing');
   const goDashboard = useCallback(() => router.push('/dashboard'), [router]);
   const goForm = useCallback(() => router.push('/preferences/edit'), [router]);
+
+  function scrollToFeatures(e: React.MouseEvent) {
+    e.preventDefault();
+    document.getElementById('features')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
 
   return (
     <div className="min-h-screen">
@@ -74,7 +81,7 @@ export function LandingPage({ onGetStarted }: LandingPageProps) {
                 className="gap-2 text-lg px-8 py-6 h-auto border-teal-300 dark:border-gray-600 hover:bg-teal-50 dark:hover:bg-gray-800 dark:text-gray-200"
                 asChild
               >
-                <a href="#features">{t('learnMore')}</a>
+                <a href="#features" onClick={scrollToFeatures}>{t('learnMore')}</a>
               </Button>
             </div>
 
@@ -86,16 +93,16 @@ export function LandingPage({ onGetStarted }: LandingPageProps) {
             {/* Trust Badges */}
             <div className="flex items-center justify-center gap-6 flex-wrap pt-8">
               <Badge variant="outline" className="gap-1.5 py-2 px-4 border-teal-300 dark:border-teal-700 text-teal-700 dark:text-teal-400 dark:bg-gray-800">
-                <Sparkles className="w-4 h-4" /> {t('trustBadges.aiEnhanced')}
+                <Map className="w-4 h-4" /> 28K+ Destinos
               </Badge>
               <Badge variant="outline" className="gap-1.5 py-2 px-4 border-teal-300 dark:border-teal-700 text-teal-700 dark:text-teal-400 dark:bg-gray-800">
-                <Globe className="w-4 h-4" /> {t('trustBadges.countries')}
+                <Globe className="w-4 h-4" /> 190+ Países
               </Badge>
               <Badge variant="outline" className="gap-1.5 py-2 px-4 border-orange-300 dark:border-orange-700 text-orange-700 dark:text-orange-400 dark:bg-gray-800">
-                <Shield className="w-4 h-4" /> {t('trustBadges.soc2')}
+                <Building2 className="w-4 h-4" /> 415K+ Hotéis
               </Badge>
               <Badge variant="outline" className="gap-1.5 py-2 px-4 border-orange-300 dark:border-orange-700 text-orange-700 dark:text-orange-400 dark:bg-gray-800">
-                <TrendingUp className="w-4 h-4" /> {t('trustBadges.satisfaction')}
+                <Shield className="w-4 h-4" /> AES-256 · GDPR
               </Badge>
             </div>
           </div>
@@ -224,33 +231,38 @@ export function LandingPage({ onGetStarted }: LandingPageProps) {
         </div>
       </section>
 
-      {/* Stats Section - values come from translations */}
+      {/* Stats Section — valores baseados em dados reais */}
       <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-r from-teal-700 to-orange-600">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-12">
             <h3 className="text-4xl font-bold text-white mb-4">{t('stats')}</h3>
+            <p className="text-lg text-white/80">Baseado em dados reais do Wikivoyage, OpenStreetMap e GeoNames</p>
           </div>
 
           <div className="grid md:grid-cols-4 gap-8">
             <div className="text-center">
               <Globe className="w-12 h-12 text-white/80 mx-auto mb-4" />
-              <div className="text-5xl font-bold text-white mb-2">190+</div>
+              <div className="text-5xl font-bold text-white mb-2">28K+</div>
               <div className="text-lg text-white/90">{t('destinations')}</div>
+              <div className="text-sm text-white/60 mt-1">Wikivoyage + Wikidata</div>
             </div>
             <div className="text-center">
-              <Users className="w-12 h-12 text-white/80 mx-auto mb-4" />
-              <div className="text-5xl font-bold text-white mb-2">50K+</div>
-              <div className="text-lg text-white/90">{t('happyTravelers')}</div>
+              <Building2 className="w-12 h-12 text-white/80 mx-auto mb-4" />
+              <div className="text-5xl font-bold text-white mb-2">415K+</div>
+              <div className="text-lg text-white/90">Hotéis Georreferenciados</div>
+              <div className="text-sm text-white/60 mt-1">OpenStreetMap + GeoNames</div>
             </div>
             <div className="text-center">
-              <Award className="w-12 h-12 text-white/80 mx-auto mb-4" />
-              <div className="text-5xl font-bold text-white mb-2">98%</div>
-              <div className="text-lg text-white/90">{t('aiAccuracy')}</div>
+              <Map className="w-12 h-12 text-white/80 mx-auto mb-4" />
+              <div className="text-5xl font-bold text-white mb-2">190+</div>
+              <div className="text-lg text-white/90">Países e Territórios</div>
+              <div className="text-sm text-white/60 mt-1">Cobertura global</div>
             </div>
             <div className="text-center">
               <Shield className="w-12 h-12 text-white/80 mx-auto mb-4" />
               <div className="text-5xl font-bold text-white mb-2">{t('statsBadges.soc2Value')}</div>
               <div className="text-lg text-white/90">{t('statsBadges.soc2Label')}</div>
+              <div className="text-sm text-white/60 mt-1">AES-256 · GDPR</div>
             </div>
           </div>
         </div>
