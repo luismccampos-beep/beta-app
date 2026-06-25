@@ -6,7 +6,9 @@ import { resolveDestinationImageUrl } from '@/lib/travel/destination-image';
 import { resolveDestinationIata } from '@/lib/travel/destination-iata';
 import { summarizeCostOfLiving } from '@/lib/travel/cost-tier';
 import { resolveMapMarkersForDestination } from '@/lib/travel/travel-map-markers';
+import { getDestinationReviews } from '@/actions/submit-destination-review';
 import { DestinationHero } from './components/DestinationHero';
+import { DestinationReviews } from './components/DestinationReviews';
 
 const DestinationGallery = dynamic(() => import('./components/DestinationGallery'));
 
@@ -80,6 +82,8 @@ export default async function DestinationPage({ params }: Props) {
       const destStats = statsMap.get(row.dest.id);
       const data = buildDetailData(dest, hotels, destStats);
 
+      const reviews = await getDestinationReviews(dest.id);
+
       return (
         <div>
 
@@ -92,6 +96,10 @@ export default async function DestinationPage({ params }: Props) {
             <Suspense fallback={<div className="h-64 bg-gray-100 dark:bg-gray-800 animate-pulse rounded-xl" />}>
               <DestinationGallery images={[data.imageUrl]} title="Galeria" />
             </Suspense>
+
+            <div id="reviews">
+              <DestinationReviews destinoId={dest.id} initialReviews={reviews} />
+            </div>
           </div>
         </div>
       );
