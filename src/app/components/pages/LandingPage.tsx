@@ -38,7 +38,11 @@ export function LandingPage({ onGetStarted }: LandingPageProps) {
 
   function scrollToFeatures(e: React.MouseEvent) {
     e.preventDefault();
-    document.getElementById('features')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    const el = document.getElementById('features');
+    if (!el) return;
+    const headerOffset = 80;
+    const top = el.getBoundingClientRect().top + window.scrollY - headerOffset;
+    window.scrollTo({ top, behavior: 'smooth' });
   }
 
   return (
@@ -110,7 +114,7 @@ export function LandingPage({ onGetStarted }: LandingPageProps) {
       </section>
 
       {/* Features Section */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-white dark:bg-gray-900 transition-colors">
+      <section id="features" className="py-20 px-4 sm:px-6 lg:px-8 bg-white dark:bg-gray-900 transition-colors scroll-mt-20">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <h3 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">{t('features')}</h3>
