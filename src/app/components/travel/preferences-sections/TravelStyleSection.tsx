@@ -1,7 +1,7 @@
 'use client';
 
 import { Controller } from 'react-hook-form';
-import { Check, Sparkles, MapPin } from 'lucide-react';
+import { Check, MapPin } from 'lucide-react';
 import { Badge } from '../../ui/badge';
 import { Button } from '../../ui/button';
 import { Label } from '../../ui/label';
@@ -23,12 +23,10 @@ const getTravelStylesData = (t: (key: string) => string) => [
   { id: 'foodie', label: t('foodie'), emoji: '🍽️', color: 'from-orange-600 to-amber-600' },
 ];
 
-const getTravelPurposeData = (t: (key: string) => string) => [
-  { id: 'business', label: t('options.travelPurpose.business'), emoji: '💼' },
-  { id: 'leisure', label: t('options.travelPurpose.leisure'), emoji: '🌴' },
-  { id: 'conference', label: t('options.travelPurpose.conference'), emoji: '🤝' },
-  { id: 'family', label: t('options.travelPurpose.family'), emoji: '👨‍👩‍👧' },
-];
+const TRAVEL_PURPOSE_IDS = ['business', 'leisure', 'conference', 'family'] as const;
+const PURPOSE_EMOJIS: Record<string, string> = {
+  business: '💼', leisure: '🌴', conference: '🤝', family: '👨‍👩‍👧',
+};
 
 export function TravelStyleSection({
   form,
@@ -53,36 +51,28 @@ export function TravelStyleSection({
     }
   };
 
+  const totalLocations =
+    watchedPreferences.preferredCountries.length +
+    watchedPreferences.preferredContinents.length;
+
   return (
     <div className="space-y-6">
-      <div className="border-b pb-4">
-        <h3 className="text-xl sm:text-2xl font-bold mb-2 flex flex-wrap items-center gap-2">
-          <Sparkles className="w-6 h-6 text-orange-600 dark:text-orange-400" /> {t('travelStylePreferences')}
-        </h3>
-        <p className="text-sm text-gray-600 dark:text-gray-400">
-          {t('travelStyleDesc')}
-        </p>
-      </div>
-
+      {/* Travel Style Cards */}
       <div className="space-y-4">
         <Label className="text-base font-semibold">{t('whatsYourTravelStyle')}</Label>
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3 sm:gap-4">
           {getTravelStylesData(t).map((style) => {
             const isSelected = watchedPreferences.travelStyles.includes(style.id);
-
             return (
               <button
                 key={style.id}
                 type="button"
                 onClick={() => toggleArrayValue('travelStyles', style.id)}
-                className={`
-                  relative overflow-hidden rounded-xl p-3 sm:p-4 transition-all duration-300 touch-manipulation
-                  border-2 sm:hover:scale-105 sm:hover:shadow-xl
-                  ${isSelected
+                className={`relative overflow-hidden rounded-xl p-3 sm:p-4 transition-all duration-300 touch-manipulation border-2 sm:hover:scale-105 sm:hover:shadow-xl ${
+                  isSelected
                     ? 'border-transparent shadow-lg'
                     : 'border-gray-200 dark:border-gray-600 bg-white dark:bg-gray-800 hover:border-gray-300 dark:hover:border-gray-500'
-                  }
-                `}
+                }`}
               >
                 {isSelected && (
                   <div className={`absolute inset-0 bg-gradient-to-br ${style.color} opacity-90 pointer-events-none`} />
@@ -93,17 +83,21 @@ export function TravelStyleSection({
                     {style.label}
                   </span>
                 </div>
-                {isSelected && (
-                  <Check className="absolute top-2 right-2 w-5 h-5 text-white" />
-                )}
+                {isSelected && <Check className="absolute top-2 right-2 w-5 h-5 text-white" />}
               </button>
             );
           })}
         </div>
+        {errors.travelStyles && (
+          <p className="text-red-500 text-xs mt-1">{errors.travelStyles.message}</p>
+        )}
       </div>
 
+      {/* Travel Frequency */}
       <div className="space-y-3">
-        <Label htmlFor="travelFrequency" className="text-base font-semibold">{t('travelFrequency')}</Label>
+        <Label htmlFor="travelFrequency" className="text-base font-semibold">
+          {t('travelFrequency')}
+        </Label>
         <Controller name="travelFrequency" control={control} render={({ field }) => (
           <Select value={field.value} onValueChange={field.onChange}>
             <SelectTrigger className="h-11">
@@ -118,11 +112,16 @@ export function TravelStyleSection({
             </SelectContent>
           </Select>
         )} />
-        {errors.travelFrequency && <p className="text-red-500 text-xs mt-1">{errors.travelFrequency.message}</p>}
+        {errors.travelFrequency && (
+          <p className="text-red-500 text-xs mt-1">{errors.travelFrequency.message}</p>
+        )}
       </div>
 
+      {/* Nationality */}
       <div className="space-y-3">
-        <Label htmlFor="nationality" className="text-base font-semibold">{t('nationality')}</Label>
+        <Label htmlFor="nationality" className="text-base font-semibold">
+          {t('nationality')}
+        </Label>
         <Controller name="nationality" control={control} render={({ field }) => (
           <Select value={field.value} onValueChange={field.onChange}>
             <SelectTrigger className="h-11">
@@ -135,60 +134,29 @@ export function TravelStyleSection({
             </SelectContent>
           </Select>
         )} />
-        {errors.nationality && <p className="text-red-500 text-xs mt-1">{errors.nationality.message}</p>}
+        {errors.nationality && (
+          <p className="text-red-500 text-xs mt-1">{errors.nationality.message}</p>
+        )}
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-        <div className="space-y-3">
-          <Label className="text-base font-semibold">{t('preferredCountries')}</Label>
-          <Popover>
-            <PopoverTrigger asChild>
-              <Button type="button" variant="outline" className="w-full h-11 justify-start font-normal">
-                {watchedPreferences.preferredCountries.length > 0
-                  ? `${watchedPreferences.preferredCountries.length} ${t('selected')}`
-                  : t('selectCountries')}
-              </Button>
-            </PopoverTrigger>
-            <PopoverContent className="p-0 w-[--radix-popover-trigger-width]" align="start">
-              <Command>
-                <CommandInput placeholder={t('searchCountries')} />
-            <CommandList>
-              <CommandEmpty>{t('noCountriesFound')}</CommandEmpty>
-              <CommandGroup>
-                    {filterCountries.map((c) => (
-                      <CommandItem key={c.name} value={c.name} onSelect={() => {
-                        toggleArrayValue('preferredCountries', c.name);
-                      }}>
-                        <div className={`mr-2 flex h-4 w-4 items-center justify-center rounded-sm border ${watchedPreferences.preferredCountries.includes(c.name) ? 'bg-teal-600 border-teal-600' : 'border-gray-300 dark:border-gray-500'}`}>
-                          {watchedPreferences.preferredCountries.includes(c.name) && <Check className="h-3 w-3 text-white" />}
-                        </div>
-                        <span>{c.name}</span>
-                        <Badge variant="secondary" className="ml-auto text-xs">{c.count} {t('destinationsCount')}</Badge>
-                      </CommandItem>
-                    ))}
-                  </CommandGroup>
-                </CommandList>
-              </Command>
-            </PopoverContent>
-          </Popover>
-          {errors.preferredCountries && <p className="text-red-500 text-xs mt-1">{errors.preferredCountries.message}</p>}
-        </div>
-        <div className="space-y-3">
-          <Label className="text-base font-semibold">{t('preferredContinents')}</Label>
-          <Popover>
-            <PopoverTrigger asChild>
-              <Button type="button" variant="outline" className="w-full h-11 justify-start font-normal">
-                {watchedPreferences.preferredContinents.length > 0
-                  ? `${watchedPreferences.preferredContinents.length} ${t('selected')}`
-                  : t('selectContinents')}
-              </Button>
-            </PopoverTrigger>
-            <PopoverContent className="p-0 w-[--radix-popover-trigger-width]" align="start">
-              <Command>
-                <CommandInput placeholder={t('searchContinents')} />
-            <CommandList>
-              <CommandEmpty>{t('noContinentsFound')}</CommandEmpty>
-              <CommandGroup>
+      {/* Unified Countries + Continents picker */}
+      <div className="space-y-3">
+        <Label className="text-base font-semibold">{t('preferredCountries')}</Label>
+        <Popover>
+          <PopoverTrigger asChild>
+            <Button type="button" variant="outline" className="w-full h-11 justify-start font-normal">
+              {totalLocations > 0
+                ? `${totalLocations} ${t('selected')}`
+                : t('selectCountries')}
+            </Button>
+          </PopoverTrigger>
+          <PopoverContent className="p-0 w-[--radix-popover-trigger-width]" align="start">
+            <Command>
+              <CommandInput placeholder={t('searchCountries')} />
+              <CommandList>
+                <CommandEmpty>{t('noCountriesFound')}</CommandEmpty>
+                {filterContinents.length > 0 && (
+                  <CommandGroup heading={t('continents')}>
                     {filterContinents.map((c) => (
                       <CommandItem key={c.name} value={c.name} onSelect={() => {
                         toggleArrayValue('preferredContinents', c.name);
@@ -196,19 +164,32 @@ export function TravelStyleSection({
                         <div className={`mr-2 flex h-4 w-4 items-center justify-center rounded-sm border ${watchedPreferences.preferredContinents.includes(c.name) ? 'bg-teal-600 border-teal-600' : 'border-gray-300 dark:border-gray-500'}`}>
                           {watchedPreferences.preferredContinents.includes(c.name) && <Check className="h-3 w-3 text-white" />}
                         </div>
-                        <span>{c.name}</span>
+                        <span>🌍 {c.name}</span>
                         <Badge variant="secondary" className="ml-auto text-xs">{c.count} {t('destinationsCount')}</Badge>
                       </CommandItem>
                     ))}
                   </CommandGroup>
-                </CommandList>
-              </Command>
-            </PopoverContent>
-          </Popover>
-          {errors.preferredContinents && <p className="text-red-500 text-xs mt-1">{errors.preferredContinents.message}</p>}
-        </div>
+                )}
+                <CommandGroup heading={t('countries')}>
+                  {filterCountries.map((c) => (
+                    <CommandItem key={c.name} value={c.name} onSelect={() => {
+                      toggleArrayValue('preferredCountries', c.name);
+                    }}>
+                      <div className={`mr-2 flex h-4 w-4 items-center justify-center rounded-sm border ${watchedPreferences.preferredCountries.includes(c.name) ? 'bg-teal-600 border-teal-600' : 'border-gray-300 dark:border-gray-500'}`}>
+                        {watchedPreferences.preferredCountries.includes(c.name) && <Check className="h-3 w-3 text-white" />}
+                      </div>
+                      <span>{c.name}</span>
+                      <Badge variant="secondary" className="ml-auto text-xs">{c.count} {t('destinationsCount')}</Badge>
+                    </CommandItem>
+                  ))}
+                </CommandGroup>
+              </CommandList>
+            </Command>
+          </PopoverContent>
+        </Popover>
       </div>
 
+      {/* Destinations */}
       <div className="space-y-3">
         <Label className="text-base font-semibold">{t('preferredDestinations')}</Label>
         {travelCatalogLoading ? (
@@ -245,19 +226,27 @@ export function TravelStyleSection({
               </PopoverTrigger>
               <PopoverContent className="p-0 w-[--radix-popover-trigger-width]" align="start">
                 <Command>
-                  <CommandInput placeholder="Type an airport or city…" />
+                  <CommandInput placeholder={t('typeAnyCityOrAirport')} />
                   <CommandList>
-                    <CommandEmpty>No airports found.</CommandEmpty>
+                    <CommandEmpty>{t('noAirportsFound')}</CommandEmpty>
                     <CommandGroup>
                       {travelCatalog!.airports.map((a) => (
                         <CommandItem key={a.iataCode} value={a.label} onSelect={() => {
                           toggleArrayValue('preferredDestinations', a.label);
                         }}>
-                          <div className={`mr-2 flex h-4 w-4 items-center justify-center rounded-sm border ${watchedPreferences.preferredDestinations.includes(a.label) ? 'bg-teal-600 border-teal-600' : 'border-gray-300 dark:border-gray-500'}`}>
-                            {watchedPreferences.preferredDestinations.includes(a.label) && <Check className="h-3 w-3 text-white" />}
+                          <div className={`mr-2 flex h-4 w-4 items-center justify-center rounded-sm border ${
+                            watchedPreferences.preferredDestinations.includes(a.label)
+                              ? 'bg-teal-600 border-teal-600'
+                              : 'border-gray-300 dark:border-gray-500'
+                          }`}>
+                            {watchedPreferences.preferredDestinations.includes(a.label) && (
+                              <Check className="h-3 w-3 text-white" />
+                            )}
                           </div>
                           <span>{a.label}</span>
-                          {a.country && <span className="ml-auto text-xs text-gray-500 dark:text-gray-400">{a.country}</span>}
+                          {a.country && (
+                            <span className="ml-auto text-xs text-gray-500 dark:text-gray-400">{a.country}</span>
+                          )}
                         </CommandItem>
                       ))}
                     </CommandGroup>
@@ -265,39 +254,35 @@ export function TravelStyleSection({
                 </Command>
               </PopoverContent>
             </Popover>
-            {errors.preferredDestinations && <p className="text-red-500 text-xs mt-1">{errors.preferredDestinations.message}</p>}
           </>
+        )}
+        {errors.preferredDestinations && (
+          <p className="text-red-500 text-xs mt-1">{errors.preferredDestinations.message}</p>
         )}
       </div>
 
+      {/* Travel Purpose - Compact chips */}
       <div className="space-y-3">
         <Label className="text-base font-semibold">{t('travelPurpose')}</Label>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3">
-          {getTravelPurposeData(t).map(purpose => {
-            const isSelected = watchedPreferences.travelPurpose.includes(purpose.id);
-            
+        <div className="flex flex-wrap gap-2">
+          {TRAVEL_PURPOSE_IDS.map((id) => {
+            const isSelected = watchedPreferences.travelPurpose.includes(id);
             return (
               <button
-                key={purpose.id}
+                key={id}
                 type="button"
-                onClick={() => {
-                  toggleArrayValue('travelPurpose', purpose.id);
-                }}
-                className={`
-                  flex items-center gap-3 p-3 rounded-lg border-2 transition-all
-                  ${isSelected
-                    ? 'border-teal-600 dark:border-teal-500 bg-teal-50 dark:bg-teal-900/30 text-teal-900 dark:text-teal-200'
-                    : 'border-gray-200 dark:border-gray-600 bg-white dark:bg-gray-800 hover:border-gray-300 dark:hover:border-gray-500'
-                  }
-                `}
+                onClick={() => toggleArrayValue('travelPurpose', id)}
+                className={`px-3 py-1.5 rounded-full text-sm border transition-all touch-manipulation ${
+                  isSelected
+                    ? 'bg-teal-600 text-white border-teal-600'
+                    : 'bg-white dark:bg-gray-800 border-gray-300 dark:border-gray-600 hover:border-teal-400 dark:hover:border-teal-400'
+                }`}
               >
-                <OpenMoji emoji={purpose.emoji} size={20} />
-                <span className="text-sm font-medium">{purpose.label}</span>
+                {PURPOSE_EMOJIS[id]} {t(`options.travelPurpose.${id}`)}
               </button>
             );
           })}
         </div>
-        {errors.languages && <p className="text-red-500 text-xs mt-1">{errors.languages.message}</p>}
       </div>
     </div>
   );

@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
-
+import { z } from 'zod';
+import { apiHandler } from '@/lib/api/handler';
 import {
   fetchTransitousRouting,
   isTransitousConfigured,
@@ -7,65 +8,43 @@ import {
 
 export const dynamic = 'force-dynamic';
 
-function parseCoord(param: string | null): { lat: number; lon: number } | null {
-  if (!param) return null;
-  const parts = param.split(',').map((s) => parseFloat(s.trim()));
-  if (parts.length !== 2 || parts.some((n) => !Number.isFinite(n))) return null;
+const CoordSchema = z.string().transform((val, ctx) => {
+  const parts = val.split(',').map((s) => parseFloat(s.trim()));
+  if (parts.length !== 2 || parts.some((n) => !Number.isFinite(n))) {
+    ctx.addIssue({ code: z.ZodIssueCode.custom, message: 'Expected lat,lon' });
+    return z.NEVER;
+  }
   return { lat: parts[0]!, lon: parts[1]! };
-}
+});
 
-export async function GET(req: Request) {
+const TransitousQuerySchema = z.object({
+  from: CoordSchema,
+  to: CoordSchema,
+  departAfter: z.coerce.number().int().optional(),
+  locale: z.string().default('en'),
+});
+
+export const GET = apiHandler(async (req: Request) => {
   const url = new URL(req.url);
-  const from = parseCoord(url.searchParams.get('from'));
-  const to = parseCoord(url.searchParams.get('to'));
+  const params = TransitousQuerySchema.parse(Object.fromEntries(url.searchParams));
 
-  if (!from || !to) {
+  const result = await fetchTransitousRouting('', {
+    from: params.from,
+    to: params.to,
+    departAfter: Number.isFinite(params.departAfter) ? params.departAfter : undefined,
+    locale: params.locale,
+  });
+
+  if (result.error && !result.plans.length) {
     return NextResponse.json(
-      {
-        ok: false,
-        message: 'Query params required: from=lat,lon and to=lat,lon',
-        plans: [],
-      },
-      { status: 400 },
+      { ok: false, configured: true, message: result.error, plans: [] },
+      { status: 502 },
     );
   }
 
-  const departAfterParam = url.searchParams.get('departAfter');
-  const departAfter = departAfterParam ? parseInt(departAfterParam, 10) : undefined;
-  const locale = url.searchParams.get('locale')?.trim() || 'en';
-
-  try {
-    const result = await fetchTransitousRouting(
-      '', // Transitous doesn't need an API key
-      {
-        from,
-        to,
-        departAfter: Number.isFinite(departAfter) ? departAfter : undefined,
-        locale,
-      },
-    );
-
-    if (result.error && !result.plans.length) {
-      return NextResponse.json(
-        { ok: false, configured: true, message: result.error, plans: [] },
-        { status: 502 },
-      );
-    }
-
-    return NextResponse.json({
-      ok: true,
-      configured: true,
-      plans: result.plans,
-    });
-  } catch (e: unknown) {
-    return NextResponse.json(
-      {
-        ok: false,
-        configured: true,
-        message: e instanceof Error ? e.message : 'Transitous request failed',
-        plans: [],
-      },
-      { status: 500 },
-    );
-  }
-}
+  return NextResponse.json({
+    ok: true,
+    configured: true,
+    plans: result.plans,
+  });
+});

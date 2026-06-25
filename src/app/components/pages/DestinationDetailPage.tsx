@@ -23,14 +23,14 @@ import {
   Languages,
   Banknote,
   Camera,
-  Play,
   X,
   ChevronLeft,
   ChevronRight,
   Moon,
+  Share2,
   Sun,
 } from 'lucide-react';
-import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 
 import { useDarkMode } from '../../../lib/use-dark-mode';
 import { LanguageSwitcher } from '../../../components/LanguageSwitcher';
@@ -53,12 +53,14 @@ import { summarizeCostOfLiving } from '../../../lib/travel/cost-tier';
 import type { DestinationMapMarker } from '../../../lib/travel/destination-map';
 import { Badge } from '../ui/badge';
 import { Button } from '../ui/button';
+import { toast } from 'sonner';
 import { Card, CardContent, CardHeader, CardTitle } from '../ui/card';
 import {
   DESTINATION_PLACEHOLDER,
   onDestinationImageError,
 } from '../travel/destination-image-fallback';
 import { HotelTypeBadge } from '../travel/HotelTypeBadge';
+import { DestinationVideoHero } from '../travel/DestinationVideoHero';
 
 // ── Types ──────────────────────────────────────────────────────────────────────
 
@@ -71,6 +73,18 @@ export type DestinationDetailData = {
   tipo: string;
   clima: string;
   imageUrl: string;
+  videos?: {
+    url: string;
+    thumbUrl?: string | null;
+    posterUrl?: string | null;
+    width?: number | null;
+    height?: number | null;
+    durationSec?: number | null;
+    author?: string | null;
+    license: string;
+    sourceUrl?: string | null;
+    isVerified: boolean;
+  }[];
   resumo?: string;
   descricao?: string;
   descricaoCompleta?: string;
@@ -82,6 +96,10 @@ export type DestinationDetailData = {
   license?: string;
   videoUrl?: string;
   galleryImages?: string[];
+  localizedNome?: string;
+  localizedDescricao?: string;
+  localizedResumo?: string;
+  localizedFonte?: string;
   hotels: {
     id: number;
     nome: string;
@@ -439,19 +457,12 @@ export function DestinationDetailPage({
   const [data, setData] = useState<DestinationDetailData | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
-  const [showVideo, setShowVideo] = useState(false);
   const { isDark, toggle: toggleDark } = useDarkMode();
 
   const setLocaleCookie = (nextLocale: string) => {
     document.cookie = `NEXT_LOCALE=${nextLocale}; path=/; max-age=31536000; samesite=lax`;
     window.location.reload();
   };
-
-  // ── Parallax hero ──────────────────────────────────────────────────────
-  const heroRef = useRef<HTMLDivElement>(null);
-  const { scrollY } = useScroll();
-  const heroY = useTransform(scrollY, [0, 600], [0, 180]);
-  const heroOpacity = useTransform(scrollY, [0, 300], [1, 0.5]);
 
   const costSummary = data ? summarizeCostOfLiving(data.custo_de_vida) : null;
   const resultsHref = resultsListPath(locale, resultsSearchQuery);
@@ -464,7 +475,7 @@ export function DestinationDetailPage({
     let cancelled = false;
     setLoading(true);
     setError(null);
-    fetch(`/api/travel/destinations/${encodeURIComponent(slug)}`)
+    fetch(`/api/travel/destinations/${encodeURIComponent(slug)}?locale=${encodeURIComponent(locale)}`)
       .then(async (res) => {
         if (!res.ok) {
           const body = await res.json().catch(() => ({}));
@@ -514,10 +525,11 @@ export function DestinationDetailPage({
     );
   }
 
-  const summary = data.resumo ?? data.descricao ?? data.descricaoCompleta ?? '';
-  const hasVideo = Boolean(data.videoUrl);
+  const displayNome = data.localizedNome ?? data.nome;
+  const displayDescricao = data.localizedDescricao ?? data.descricao;
+  const displayResumo = data.localizedResumo ?? data.resumo;
+  const summary = displayResumo ?? displayDescricao ?? data.descricaoCompleta ?? '';
 
-  // ── Gallery images: explicit galleryImages or build from available ─────
   const galleryImages: string[] = data.galleryImages ?? [];
   if (
     galleryImages.length === 0 &&
@@ -529,61 +541,34 @@ export function DestinationDetailPage({
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-teal-50/20 to-orange-50/30 dark:from-gray-950 dark:via-gray-900 dark:to-gray-950 transition-colors duration-500">
+      {/* JSON-LD structured data */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'TouristDestination',
+            name: displayNome,
+            description: displayResumo ?? displayDescricao,
+            image: data.imageUrl || undefined,
+            address: {
+              '@type': 'PostalAddress',
+              addressCountry: data.pais,
+            },
+            url: typeof window !== 'undefined' ? window.location.href : undefined,
+          }),
+        }}
+      />
       {/* ── Hero ─────────────────────────────────────────────────────────── */}
-      <div
-        ref={heroRef}
-        className="relative h-[50vh] min-h-[320px] max-h-[520px] w-full overflow-hidden"
-      >
-        <motion.div
-          style={{ y: heroY, opacity: heroOpacity }}
-          className="absolute inset-0 will-change-transform"
-        >
-          {hasVideo && showVideo ? (
-            <video
-              src={data.videoUrl}
-              autoPlay
-              muted
-              loop
-              playsInline
-              className="h-full w-full object-cover"
-            />
-          ) : (
-            <img
-              src={data.imageUrl || DESTINATION_PLACEHOLDER}
-              alt={data.nome}
-              className="h-full w-full object-cover scale-105"
-              onError={onDestinationImageError}
-            />
-          )}
-        </motion.div>
+      <div className="relative h-[50vh] min-h-[320px] max-h-[520px] w-full">
+        <DestinationVideoHero
+          imageUrl={data.imageUrl || DESTINATION_PLACEHOLDER}
+          imageAlt={displayNome}
+          video={data.videos?.[0] ?? null}
+        />
 
         {/* Overlay gradient */}
         <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-black/10 pointer-events-none" />
-
-        {/* Video toggle (if video exists) */}
-        {hasVideo && (
-          <div className="absolute top-20 right-4 z-20">
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              type="button"
-              onClick={() => setShowVideo((v) => !v)}
-              className="flex items-center gap-2 px-3 py-2 rounded-full bg-white/15 backdrop-blur-md text-white text-sm hover:bg-white/25 transition-colors"
-            >
-              {showVideo ? (
-                <>
-                  <Camera className="h-4 w-4" />
-                  {t('showPhoto') ?? 'Photo'}
-                </>
-              ) : (
-                <>
-                  <Play className="h-4 w-4" />
-                  {t('showVideo') ?? 'Video'}
-                </>
-              )}
-            </motion.button>
-          </div>
-        )}
 
         {/* Top controls: Back button + Theme Toggle + Lang Selector */}
         <div className="absolute top-4 left-4 right-4 z-10 flex justify-between items-start">
@@ -637,7 +622,24 @@ export function DestinationDetailPage({
               {isDark ? <Sun className="h-4 w-4 text-orange-400" /> : <Moon className="h-4 w-4 text-gray-700" />}
             </motion.button>
 
-            {/* Language Selector */}
+            {/* Share button */}
+            <motion.button
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              type="button"
+              onClick={() => {
+                if (typeof navigator !== 'undefined' && navigator.share) {
+                  navigator.share({ title: displayNome, url: window.location.href }).catch(() => {});
+                } else {
+                  navigator.clipboard.writeText(window.location.href).then(() => toast.success(t('linkCopied'))).catch(() => {});
+                }
+              }}
+              className="p-2 rounded-lg bg-white/90 dark:bg-gray-900/90 backdrop-blur-md border-0 shadow-lg hover:shadow-xl transition-all duration-200"
+              title={t('share')}
+            >
+              <Share2 className="h-4 w-4 text-gray-700 dark:text-gray-300" />
+            </motion.button>
+
             {/* Language Selector */}
             <LanguageSwitcher variant="overlay" showIcon={false} />
           </div>
@@ -687,7 +689,7 @@ export function DestinationDetailPage({
             transition={{ duration: 0.6, delay: 0.1, ease: 'easeOut' }}
             className="text-3xl md:text-5xl font-bold text-white drop-shadow-lg"
           >
-            {data.nome}
+            {displayNome}
           </motion.h1>
           <motion.p
             initial={{ opacity: 0, y: 20 }}

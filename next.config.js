@@ -11,18 +11,25 @@ const withNextIntl = createNextIntlPlugin(
 );
 
 const baseImageConfig = {
-  domains: [
-    'www.akmleva.pt',
-    'akmleva.pt',
-    'beta.akmleva.pt',
-    'beta.admin.akmleva.pt',
-    'images.akmleva.pt',
-    'localhost',
-    '127.0.0.1',
-    'images.unsplash.com',
-    'plus.unsplash.com',
-    'images.pexels.com',
-    'ui-avatars.com',
+  remotePatterns: [
+    { protocol: 'https', hostname: 'www.akmleva.pt' },
+    { protocol: 'https', hostname: 'akmleva.pt' },
+    { protocol: 'https', hostname: 'beta.akmleva.pt' },
+    { protocol: 'https', hostname: 'beta.admin.akmleva.pt' },
+    { protocol: 'https', hostname: 'images.akmleva.pt' },
+    { protocol: 'http', hostname: 'localhost' },
+    { protocol: 'https', hostname: 'images.unsplash.com' },
+    { protocol: 'https', hostname: 'plus.unsplash.com' },
+    { protocol: 'https', hostname: 'images.pexels.com' },
+    { protocol: 'https', hostname: 'ui-avatars.com' },
+    { protocol: 'https', hostname: 'pixabay.com' },
+    { protocol: 'https', hostname: '**.wikivoyage.org' },
+    { protocol: 'https', hostname: 'commons.wikimedia.org' },
+    { protocol: 'https', hostname: 'upload.wikimedia.org' },
+    { protocol: 'https', hostname: '**.wikipedia.org' },
+    { protocol: 'https', hostname: 'images.openverse.org' },
+    { protocol: 'https', hostname: 'api.openverse.org' },
+    { protocol: 'https', hostname: 'live.staticflickr.com' },
   ],
   formats: ['image/webp', 'image/avif'],
   minimumCacheTTL: 60,
@@ -170,7 +177,7 @@ const nextConfig = {
   },
 
   images: {
-    domains: baseImageConfig.domains,
+    remotePatterns: baseImageConfig.remotePatterns,
     formats: baseImageConfig.formats,
     unoptimized: process.env.NODE_ENV === 'production' ? false : true,
   },

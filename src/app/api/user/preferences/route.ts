@@ -1,10 +1,22 @@
 import { NextResponse } from 'next/server';
+import { z } from 'zod';
 import { Prisma } from '@prisma/client';
 
 import { prisma } from '../../../../lib/prisma';
 import { auth } from '@/auth';
+import { apiHandler } from '@/lib/api/handler';
 
-type PreferencePayload = Record<string, unknown>;
+const UpdatePreferencesSchema = z.object({
+  preferences: z.object({
+    budgetRange: z.array(z.number()).length(2).optional(),
+    preferredDestinations: z.array(z.string()).optional(),
+    travelStyles: z.array(z.string()).optional(),
+    accommodationType: z.array(z.string()).optional(),
+    dietaryRestrictions: z.array(z.string()).optional(),
+    activityTypes: z.array(z.string()).optional(),
+    pacePreference: z.string().optional(),
+  }),
+});
 
 async function getAuthenticatedUserId(): Promise<string | null> {
   const session = await auth();
@@ -37,15 +49,11 @@ export async function GET() {
   return NextResponse.json({ authenticated: true, preference });
 }
 
-export async function PUT(req: Request) {
+export const PUT = apiHandler(async (req: Request) => {
   const userId = await getAuthenticatedUserId();
   if (!userId) return NextResponse.json({ authenticated: false }, { status: 401 });
 
-  const body = (await req.json().catch(() => ({}))) as { preferences?: PreferencePayload };
-  const prefs = body.preferences;
-  if (!prefs || typeof prefs !== 'object') {
-    return NextResponse.json({ success: false, message: 'Invalid preferences payload' }, { status: 400 });
-  }
+  const { preferences: prefs } = UpdatePreferencesSchema.parse(await req.json());
 
   const budgetRange = Array.isArray(prefs.budgetRange) ? prefs.budgetRange : null;
   const budgetMin = typeof budgetRange?.[0] === 'number' ? budgetRange[0] : null;
@@ -103,5 +111,5 @@ export async function PUT(req: Request) {
   });
 
   return NextResponse.json({ success: true, saved });
-}
+});
 

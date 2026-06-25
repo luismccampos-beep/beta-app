@@ -1,3 +1,5 @@
+'use client';
+
 import { useState } from 'react';
 import { Button } from '../ui/button';
 import { Card, CardContent } from '../ui/card';
@@ -35,19 +37,21 @@ export function ContactPage({ onBack }: ContactPageProps) {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Abre o cliente de email do utilizador com os dados preenchidos
-    const mailto = `mailto:info@akmleva.com?subject=${encodeURIComponent(formData.subject ? `[${formData.subject}] ${formData.name}` : `Contacto de ${formData.name}`)}&body=${encodeURIComponent(`Nome: ${formData.name}
-Email: ${formData.email}
-Telefone: ${formData.phone}
-Assunto: ${formData.subject}
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
+      });
 
-Mensagem:
-${formData.message}`)}`;
-    window.open(mailto, '_blank');
+      if (!res.ok) throw new Error('Erro ao enviar mensagem');
 
-    setIsSubmitting(false);
-    // Mostra mensagem informativa em vez de falso sucesso
-    setIsSubmitted(true);
+      setIsSubmitted(true);
+    } catch {
+      alert('Ocorreu um erro ao enviar a mensagem. Tenta novamente ou envia email para info@akmleva.com.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
@@ -131,15 +135,15 @@ ${formData.message}`)}`;
 
                 {isSubmitted ? (
                   <div className="text-center py-8 sm:py-12">
-                    <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center mx-auto mb-4">
-                      <Mail className="w-8 h-8 sm:w-10 sm:h-10 text-blue-600 dark:text-blue-400" />
+                    <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-green-100 dark:bg-green-900/30 flex items-center justify-center mx-auto mb-4">
+                      <CheckCircle2 className="w-8 h-8 sm:w-10 sm:h-10 text-green-600 dark:text-green-400" />
                     </div>
-                    <h3 className="text-lg sm:text-xl font-bold text-gray-900 dark:text-white mb-2">{t('emailOpenedTitle') || 'Abre o teu cliente de email'}</h3>
+                    <h3 className="text-lg sm:text-xl font-bold text-gray-900 dark:text-white mb-2">{t('successTitle') || 'Mensagem enviada com sucesso!'}</h3>
                     <p className="text-sm sm:text-base text-gray-600 dark:text-gray-400">
-                      {t('emailOpenedMessage') || 'O teu cliente de email foi aberto com a mensagem preenchida. Envia o email para concluirmos o teu pedido. Podes também enviar diretamente para info@akmleva.com.'}
+                      {t('successMessage') || 'Recebemos a tua mensagem e responderemos em breve. Obrigado pelo teu contacto!'}
                     </p>
                     <Button
-                      onClick={() => setIsSubmitted(false)}
+                      onClick={() => { setIsSubmitted(false); setFormData({ name: '', email: '', phone: '', subject: '', message: '' }); }}
                       variant="outline"
                       className="mt-6 border-teal-300 dark:border-teal-700"
                     >
@@ -307,9 +311,13 @@ ${formData.message}`)}`;
             <MapPin className="w-10 h-10 sm:w-12 sm:h-12 text-teal-600 dark:text-teal-400 mx-auto mb-3 sm:mb-4" />
             <h3 className="text-lg sm:text-xl font-bold text-gray-900 dark:text-white mb-2">{t('mapTitle')}</h3>
             <p className="text-sm sm:text-base text-gray-600 dark:text-gray-400 mb-4">{t('mapDescription')}</p>
-            <div className="w-full h-48 sm:h-64 rounded-xl bg-gray-200 dark:bg-gray-700 flex items-center justify-center">
-              <span className="text-gray-500 dark:text-gray-400 text-sm">{t('mapPlaceholder')}</span>
-            </div>
+            <iframe
+              title="Localização da AKMLeva"
+              src="https://www.openstreetmap.org/export/embed.html?bbox=-8.5%2C40.5%2C-8.0%2C41.0&amp;layer=mapnik&amp;marker=40.75%2C-8.25"
+              className="w-full h-48 sm:h-64 rounded-xl border-0"
+              loading="lazy"
+              referrerPolicy="no-referrer"
+            />
           </CardContent>
         </Card>
 

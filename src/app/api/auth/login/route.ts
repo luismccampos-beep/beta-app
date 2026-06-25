@@ -1,29 +1,28 @@
 import { NextResponse } from 'next/server';
 import { signIn } from '@/auth';
-import { isNonEmptyString } from '../../../../lib/auth';
+import { apiHandler } from '@/lib/api/handler';
+import { z } from 'zod';
 
-type LoginBody = {
-  email?: unknown;
-  password?: unknown;
-};
+const LoginSchema = z.object({
+  email: z.string().email(),
+  password: z.string().min(1),
+});
 
-export async function POST(req: Request) {
-  const body = (await req.json().catch(() => ({}))) as LoginBody;
-
-  if (!isNonEmptyString(body.email) || !isNonEmptyString(body.password)) {
-    return NextResponse.json({ success: false, message: 'Email and password are required' }, { status: 400 });
-  }
+export const POST = apiHandler(async (req: Request) => {
+  const body = LoginSchema.parse(await req.json());
 
   try {
-    const result = await signIn('credentials', {
+    await signIn('credentials', {
       email: body.email,
       password: body.password,
       redirect: false,
     });
-
-    return NextResponse.json({ success: true });
-  } catch (error) {
-    return NextResponse.json({ success: false, message: 'Invalid credentials' }, { status: 401 });
+    return NextResponse.json({ ok: true });
+  } catch {
+    return NextResponse.json(
+      { ok: false, error: 'Invalid credentials', code: 'INVALID_CREDENTIALS' },
+      { status: 401 },
+    );
   }
-}
+});
 

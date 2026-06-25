@@ -24,10 +24,21 @@ import {
   DestinationBrowseCard,
   type DestinationBrowseItem,
 } from '../travel/DestinationBrowseCard';
+import { motion } from 'framer-motion';
 import { Badge } from '../ui/badge';
 import { Card, CardContent } from '../ui/card';
 import { Button } from '../ui/button';
 import { AppHeader } from '../AppHeader';
+
+const fadeInUp = {
+  hidden: { opacity: 0, y: 30 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] } },
+};
+
+const staggerContainer = {
+  hidden: { opacity: 0 },
+  visible: { opacity: 1, transition: { staggerChildren: 0.08, delayChildren: 0.1 } },
+};
 import { AppFooter } from '../AppFooter';
 import {
   Command,
@@ -679,18 +690,18 @@ export function DestinationsBrowsePage({ onBack }: DestinationsBrowsePageProps) 
 
         {/* Loading skeleton */}
         {loading && !error && (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6">
+          <motion.div variants={staggerContainer} initial="hidden" animate="visible" className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6">
             {Array.from({ length: 8 }).map((_, i) => (
-              <div key={i} className="rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 overflow-hidden animate-pulse">
+              <motion.div key={i} variants={fadeInUp} className="rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 overflow-hidden animate-pulse">
                 <div className="h-40 bg-gray-200 dark:bg-gray-700" />
                 <div className="p-4 space-y-3">
                   <div className="h-4 w-3/4 bg-gray-200 dark:bg-gray-700 rounded" />
                   <div className="h-3 w-1/2 bg-gray-200 dark:bg-gray-700 rounded" />
                   <div className="h-3 w-1/3 bg-gray-200 dark:bg-gray-700 rounded" />
                 </div>
-              </div>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
         )}
 
         {/* Cards grid */}
@@ -710,10 +721,10 @@ export function DestinationsBrowsePage({ onBack }: DestinationsBrowsePageProps) 
                 )}
               </div>
             ) : (
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6">
+              <motion.div variants={staggerContainer} initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-40px' }} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6">
                 {items.map((item) => (
+                  <motion.div key={item.id} variants={fadeInUp}>
                   <DestinationBrowseCard
-                    key={item.id}
                     item={item}
                     href={destinationDetailPath(locale, item.slug)}
                     labels={{
@@ -733,8 +744,9 @@ export function DestinationsBrowsePage({ onBack }: DestinationsBrowsePageProps) 
                       },
                     }}
                   />
+                  </motion.div>
                 ))}
-              </div>
+              </motion.div>
             )}
 
             {/* Pagination */}

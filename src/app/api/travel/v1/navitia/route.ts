@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
-
+import { z } from 'zod';
+import { apiHandler } from '@/lib/api/handler';
 import {
   fetchNavitiaJourney,
   isNavitiaConfigured,
@@ -8,14 +9,24 @@ import {
 
 export const dynamic = 'force-dynamic';
 
-function parseCoord(param: string | null): { lat: number; lon: number } | null {
-  if (!param) return null;
-  const parts = param.split(',').map((s) => parseFloat(s.trim()));
-  if (parts.length !== 2 || parts.some((n) => !Number.isFinite(n))) return null;
+const CoordSchema = z.string().transform((val, ctx) => {
+  const parts = val.split(',').map((s) => parseFloat(s.trim()));
+  if (parts.length !== 2 || parts.some((n) => !Number.isFinite(n))) {
+    ctx.addIssue({ code: z.ZodIssueCode.custom, message: 'Expected lat,lon' });
+    return z.NEVER;
+  }
   return { lat: parts[0]!, lon: parts[1]! };
-}
+});
 
-export async function GET(req: Request) {
+const NavitiaQuerySchema = z.object({
+  from: CoordSchema,
+  to: CoordSchema,
+  datetime: z.string().optional(),
+  datetimeRep: z.enum(['departure', 'arrival']).optional(),
+  locale: z.string().default('en'),
+});
+
+export const GET = apiHandler(async (req: Request) => {
   if (!isNavitiaConfigured()) {
     return NextResponse.json(
       {
@@ -30,50 +41,28 @@ export async function GET(req: Request) {
   }
 
   const url = new URL(req.url);
-  const from = parseCoord(url.searchParams.get('from'));
-  const to = parseCoord(url.searchParams.get('to'));
+  const params = NavitiaQuerySchema.parse(Object.fromEntries(url.searchParams));
+  const apiKey = getNavitiaApiKey()!;
 
-  if (!from || !to) {
+  const result = await fetchNavitiaJourney(apiKey, {
+    from: params.from,
+    to: params.to,
+    datetime: params.datetime || undefined,
+    datetimeRepresents: params.datetimeRep,
+    locale: params.locale,
+  });
+
+  if (result.error && !result.plans.length) {
     return NextResponse.json(
-      {
-        ok: false,
-        message: 'Query params required: from=lat,lon and to=lat,lon',
-        plans: [],
-      },
-      { status: 400 },
+      { ok: false, configured: true, message: result.error, plans: [], region: result.region },
+      { status: 502 },
     );
   }
 
-  const datetime = url.searchParams.get('datetime') || undefined;
-  const datetimeRep = (url.searchParams.get('datetimeRep') as 'departure' | 'arrival') || undefined;
-  const locale = url.searchParams.get('locale')?.trim() || 'en';
-
-  try {
-    const apiKey = getNavitiaApiKey()!;
-    const result = await fetchNavitiaJourney(apiKey, { from, to, datetime, datetimeRepresents: datetimeRep, locale });
-
-    if (result.error && !result.plans.length) {
-      return NextResponse.json(
-        { ok: false, configured: true, message: result.error, plans: [], region: result.region },
-        { status: 502 },
-      );
-    }
-
-    return NextResponse.json({
-      ok: true,
-      configured: true,
-      region: result.region,
-      plans: result.plans,
-    });
-  } catch (e: unknown) {
-    return NextResponse.json(
-      {
-        ok: false,
-        configured: true,
-        message: e instanceof Error ? e.message : 'Navitia request failed',
-        plans: [],
-      },
-      { status: 500 },
-    );
-  }
-}
+  return NextResponse.json({
+    ok: true,
+    configured: true,
+    region: result.region,
+    plans: result.plans,
+  });
+});

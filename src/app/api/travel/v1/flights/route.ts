@@ -1,40 +1,35 @@
 import { NextResponse } from 'next/server';
-
+import { z } from 'zod';
+import { apiHandler } from '@/lib/api/handler';
 import { getFlightsFromDb, isTravelCatalogDbEnabled } from '../../../../../lib/travel/catalog-db';
 import { loadMockTravelBundle } from '../../../../../lib/travel/mock-travel/load';
 
 export const dynamic = 'force-dynamic';
 
-/** GET /api/travel/v1/flights?origin=LIS&destinoId=42 */
-export async function GET(req: Request) {
+const FlightsQuerySchema = z.object({
+  origin: z.string().min(1),
+  destinoId: z.coerce.number().int().positive().optional(),
+  destinoIata: z.string().optional(),
+  limit: z.coerce.number().int().min(1).max(100).default(20),
+});
+
+export const GET = apiHandler(async (req: Request) => {
   const url = new URL(req.url);
-  const origin = url.searchParams.get('origin')?.trim().toUpperCase();
-  const destinoIdParam = url.searchParams.get('destinoId');
-  const destinoIata = url.searchParams.get('destinoIata')?.trim().toUpperCase();
-  const limit = parseInt(url.searchParams.get('limit') ?? '20', 10);
-
-  if (!origin) {
-    return NextResponse.json({ ok: false, message: 'origin IATA required' }, { status: 400 });
-  }
-
-  const destinoId = destinoIdParam ? parseInt(destinoIdParam, 10) : undefined;
+  const params = FlightsQuerySchema.parse(Object.fromEntries(url.searchParams));
+  const origin = params.origin.trim().toUpperCase();
+  const destinoIata = params.destinoIata?.trim().toUpperCase();
 
   if (isTravelCatalogDbEnabled()) {
-    try {
-      const flights = await getFlightsFromDb({ origin, destinoId, destinoIata, limit });
-      return NextResponse.json({ ok: true, source: 'db', count: flights.length, flights });
-    } catch (e: unknown) {
-      const message = e instanceof Error ? e.message : 'Database error';
-      return NextResponse.json({ ok: false, message }, { status: 503 });
-    }
+    const flights = await getFlightsFromDb({ origin, destinoId: params.destinoId, destinoIata, limit: params.limit });
+    return NextResponse.json({ ok: true, source: 'db', count: flights.length, flights });
   }
 
   const bundle = loadMockTravelBundle();
   let flights = bundle.voos.filter((f) => f.origem === origin);
-  if (destinoId) flights = flights.filter((f) => f.destino_id === destinoId);
+  if (params.destinoId) flights = flights.filter((f) => f.destino_id === params.destinoId);
   if (destinoIata) flights = flights.filter((f) => f.destino_iata === destinoIata);
 
-  flights = flights.slice(0, Math.min(limit, 50));
+  flights = flights.slice(0, Math.min(params.limit, 50));
 
   return NextResponse.json({ ok: true, source: 'bundle', count: flights.length, flights });
-}
+});

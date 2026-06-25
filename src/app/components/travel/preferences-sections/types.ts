@@ -1,5 +1,5 @@
 import type { UseFormReturn } from 'react-hook-form';
-import type { TravelPreferences } from '../../../components/pages/EnhancedTravelPreferencesForm';
+import type { TravelPreferences } from '../../../../lib/travel/schemas/preferences.schema';
 import type { TravelCatalogResponse } from '../../../../lib/api-client';
 
 export interface PreferencesSectionProps {
@@ -16,5 +16,5 @@ export interface PreferencesSectionProps {
 
 export type FormErrors = Record<string, { message?: string } | undefined>;
 
-export type { TravelPreferences } from '../../../components/pages/EnhancedTravelPreferencesForm';
+export type { TravelPreferences } from '../../../../lib/travel/schemas/preferences.schema';
 export type { TravelCatalogResponse } from '../../../../lib/api-client';

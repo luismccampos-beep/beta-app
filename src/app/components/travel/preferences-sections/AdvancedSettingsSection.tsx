@@ -136,7 +136,7 @@ export function AdvancedSettingsSection({
         </CardHeader>
         <CardContent className="space-y-3">
           {NOTIFICATION_IDS.map((id) => (
-            <div key={id} className="flex items-center space-x-3 bg-gray-50 dark:bg-gray-800 rounded-lg p-3">
+            <div key={id} className="flex items-center space-x-3 bg-gray-50 dark:bg-gray-800 rounded-lg p-3 touch-manipulation">
               <Controller name="notifications" control={control} render={({ field }) => (
                 <Checkbox
                   id={`notif-${id}`}
