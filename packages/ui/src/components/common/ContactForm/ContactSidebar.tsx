@@ -50,7 +50,7 @@ export const ContactSidebar: React.FC = () => {
           {/* 7. Improved social links with better hover effects */}
           <div className='flex space-x-2'>
             <a
-              href='https://facebook.com/akmleva'
+              href='https://www.facebook.com/profile.php?id=61586650558724'
               target='_blank'
               rel='noopener noreferrer'
               className='flex h-10 w-10 items-center justify-center rounded-full bg-white/10 text-blue-200 transition-all duration-300 hover:scale-110 hover:bg-white/20 hover:text-white dark:bg-white/5 dark:text-blue-300 dark:hover:bg-white/10'
@@ -59,7 +59,7 @@ export const ContactSidebar: React.FC = () => {
               <Facebook className='h-5 w-5' />
             </a>
             <a
-              href='https://instagram.com/akmleva'
+              href='https://www.instagram.com/akmleva.ia?igsh=MTk1dWI3Ym5nMndjZQ=='
               target='_blank'
               rel='noopener noreferrer'
               className='flex h-10 w-10 items-center justify-center rounded-full bg-white/10 text-blue-200 transition-all duration-300 hover:scale-110 hover:bg-white/20 hover:text-white dark:bg-white/5 dark:text-blue-300 dark:hover:bg-white/10'

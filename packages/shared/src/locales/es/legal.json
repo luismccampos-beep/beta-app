@@ -366,7 +366,7 @@
       "intro": "Para ejercer sus derechos o aclarar dudas sobre el tratamiento de sus datos personales, contáctenos a través de los medios siguientes:",
       "defaults": {
         "email": "privacy@akmleva.pt",
-        "phone": "+351 256 123 456",
+        "phone": "+351 256 372 092",
         "dpoEmail": "dpo@akmleva.pt"
       },
       "labels": {
@@ -383,7 +383,7 @@
       "defaults": {
         "name": "AKMLEVA - Agência de Viagens e Turismo, Lda.",
         "email": "privacy@akmleva.pt",
-        "phone": "+351 256 123 456",
+        "phone": "+351 256 372 092",
         "address": "Rua São Nicolau 9, 4520-248 Santa Maria da Feira, Portugal"
       },
       "labels": {
@@ -427,7 +427,7 @@
         "contact": {
           "name": "AKMLEVA - Agência de Viagens e Turismo, Lda.",
           "email": "privacy@akmleva.pt",
-          "phone": "+351 256 123 456",
+          "phone": "+351 256 372 092",
           "address": "Rua São Nicolau 9, 4520-248 Santa Maria da Feira, Portugal"
         }
       },

@@ -215,7 +215,7 @@ export function LegalPage({ pageType, onBack }: LegalPageProps) {
                 <Mail className="w-4 h-4 sm:w-5 sm:h-5 text-teal-600 dark:text-teal-400 mt-0.5 flex-shrink-0" />
                 <div>
                   <p className="font-medium text-gray-900 dark:text-white text-sm">{t('emailLabel')}</p>
-                  <a href="mailto:privacy@akmleva.com" className="text-xs sm:text-sm text-teal-600 dark:text-teal-400 hover:underline">privacy@akmleva.com</a>
+                  <a href="mailto:privacy@akmleva.pt" className="text-xs sm:text-sm text-teal-600 dark:text-teal-400 hover:underline">privacy@akmleva.pt</a>
                 </div>
               </div>
               <div className="flex items-start gap-2 sm:gap-3">

@@ -21,6 +21,7 @@
     "prisma:studio": "prisma studio",
     "db:push": "node scripts/prisma-with-fallback.mjs db push",
     "db:migrate": "node scripts/prisma-with-fallback.mjs migrate deploy",
+    "db:resolve": "node scripts/resolve-failed-migrations.mjs",
     "db:seed": "npx tsx prisma/seed.ts",
     "db:reset": "node scripts/prisma-with-fallback.mjs migrate reset --force",
     "db:studio": "prisma studio",
