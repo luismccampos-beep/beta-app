@@ -19,7 +19,10 @@ CREATE TYPE "PaymentStatus_new" AS ENUM (
   'CANCELLED', 'PARTIALLY_REFUNDED', 'REQUIRES_ACTION'
 );
 
--- Step 3: Alter columns to use new type
+-- Step 3: Drop defaults before altering type (default references old enum)
+ALTER TABLE bookings ALTER COLUMN payment_status DROP DEFAULT;
+
+-- Step 4: Alter columns to use new type
 ALTER TABLE bookings ALTER COLUMN payment_status TYPE "PaymentStatus_new"
   USING (payment_status::text::"PaymentStatus_new");
 
@@ -35,6 +38,9 @@ ALTER TABLE refund_requests ALTER COLUMN status TYPE "PaymentStatus_new"
 ALTER TABLE admin_transactions ALTER COLUMN status TYPE "PaymentStatus_new"
   USING (status::text::"PaymentStatus_new");
 
--- Step 4: Drop old enum and rename new one
+-- Step 5: Drop old enum and rename new one
 DROP TYPE "PaymentStatus" CASCADE;
 ALTER TYPE "PaymentStatus_new" RENAME TO "PaymentStatus";
+
+-- Step 6: Restore default value for bookings.payment_status
+ALTER TABLE bookings ALTER COLUMN payment_status SET DEFAULT 'PENDING'::"PaymentStatus";

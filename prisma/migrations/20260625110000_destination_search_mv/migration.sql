@@ -21,7 +21,6 @@ SELECT
   d.tags,
   d.transporte,
   d.wikivoyage_url,
-  d.deleted_at,
   COALESCE(h.hotel_count, 0) AS hotel_count,
   COALESCE(h.avg_stars, 0) AS avg_hotel_stars,
   COALESCE(h.min_price, 0) AS min_hotel_price
