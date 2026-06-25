@@ -204,24 +204,6 @@ const nextConfig = {
     productionBrowserSourceMaps: false,
   }),
 
-  // Redirects
-  async redirects() {
-    return [
-      // Redirect www to non-www
-      {
-        source: '/:path*',
-        has: [
-          {
-            type: 'host',
-            value: 'www.akmleva.pt',
-          },
-        ],
-        destination: 'https://akmleva.pt/:path*',
-        permanent: true,
-      },
-    ];
-  },
-
   // Rewrites
   async rewrites() {
     return [
