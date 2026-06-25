@@ -204,6 +204,11 @@ const nextConfig = {
     productionBrowserSourceMaps: false,
   }),
 
+  // NOTE: Domain redirects (www ↔ non-www) are handled by the Vercel domain config,
+  // NOT here. Adding a redirect() rule for domain redirects will cause ERR_TOO_MANY_REDIRECTS
+  // because Vercel's infrastructure-level redirect and Next.js redirect fight each other.
+  // If you need to change domain redirect direction, do it in Vercel Dashboard > Settings > Domains.
+
   // Rewrites
   async rewrites() {
     return [
