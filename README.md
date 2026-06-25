@@ -1,394 +1,500 @@
-# 🌍 AKMLEVA - Enterprise AI Travel Ecosystem
+# AKMLEVA — Enterprise AI Travel Ecosystem
 
 ![Status](https://img.shields.io/badge/Status-Enterprise-blue)
 ![Year](https://img.shields.io/badge/Year-2026-gold)
 ![License](https://img.shields.io/badge/License-MIT-green)
-![Lines of Code](https://img.shields.io/badge/Code-3.5M%20SLOC-purple)
 
-**AKMLEVA** is a comprehensive enterprise-grade AI-powered travel ecosystem designed for global scale. Built with modern web technologies and powered by advanced artificial intelligence, the platform delivers intelligent travel solutions through logistical optimization, high-volume CRM management, and multi-currency financial processing.
+**AKMLEVA** is an enterprise-grade AI-powered travel platform with a rich destination catalog (28k+ destinations, 415k+ hotels), multi-tenancy for travel agencies, and a sophisticated data pipeline powered by Wikivoyage, Wikidata, GeoNames, and OpenStreetMap.
 
 **Owned and operated by AKMLEVA Viagens Lda.**
 
 ---
 
-## 🏗️ Project Scale & Metrics (2026)
+## Index
 
-As of 2026, AKMLEVA has reached significant technical maturity:
-
-
----
-
-## 🚀 Core Features
-
-### 🔐 Authentication & Security
-
-- **Zero-Trust Architecture**: Advanced JWT-based authentication
-- **RBAC**: Granular Role-Based Access Control
-- **Multi-factor Auth**: Enhanced security layers
-- **Session Management**: Redis-backed secure sessions
-
-### 🤖 AI-Powered Intelligence
-
-- **Smart Recommendations**: Predictive user behavior analysis
-- **Dynamic Itineraries**: Real-time travel planning optimization
-- **Neural Search**: Elasticsearch-powered instant results
-- **AI Concierge**: Automated customer assistance
-
-### 💳 Payment Processing
-
-- **Global Coverage**: Multi-currency support (EUR, USD, BRL, etc.)
-- **Multiple Methods**: Stripe, Pix, Credit Card, Bank Transfers
-- **Secure Transactions**: PCI-DSS compliant processing
-- **Real-time Validation**: Instant payment verification
-
-### 🏨 Travel Services Integration
-
-- **Amadeus API**: Real-time flight and hotel booking
-- **Inventory Management**: Live availability tracking
-- **Price Optimization**: Dynamic pricing algorithms
-- **Multi-provider Support**: Flexible service integration
-
-### 📊 CRM & Analytics
-
-- **Large-scale Customer Management**: Handle millions of records
-- **Lifecycle Tracking**: Complete customer journey mapping
-- **Behavioral Analytics**: Deep engagement insights
-- **Marketing Automation**: Targeted campaign management
-
-### 🌐 User Experience
-
-- **Responsive Design**: Mobile-first, adaptive interfaces
-- **Dark/Light Mode**: User preference support
-- **Multi-language**: i18n ready for global markets
-- **Real-time Updates**: WebSocket-based live data
-- **PWA Support**: Offline-capable progressive web app
+- [Stack Tecnológico](#stack-tecnológico)
+- [Quick Start](#quick-start)
+- [Project Structure](#project-structure)
+- [Documentation Index](#documentation-index)
+- [Scripts Reference](#scripts-reference)
+- [Data Pipeline](#data-pipeline)
+- [ML Service](#ml-service)
+- [Docker Services](#docker-services)
+- [CI/CD](#cicd)
+- [Testing](#testing)
 
 ---
 
-## 📦 Ecosystem Architecture
+## Stack Tecnológico
 
-AKMLEVA utilizes a **Turbo-optimized Monorepo** for maximum code reuse and consistency:
+### Frontend
 
+| Tecnologia | Versão | Propósito |
+|---|---|---|
+| React | ^19.0.0 | UI Framework |
+| Next.js | ^15.5.2 | SSR & App Router |
+| TypeScript | ^5.6.0 | Type Safety |
+| Tailwind CSS | ^4.1.8 | Styling |
+| shadcn/ui | via Radix UI | Component Library |
+| Framer Motion | ^11.18.2 | Animações |
+| next-intl | ^4.1.0 | i18n (pt, en, es, fr) |
+| React Query | ^5.90.12 | Server State |
+| React Hook Form | ^7.79.0 | Formulários |
+| Zod | ^4.1.12 | Validação |
+| Recharts | ^2.10.3 | Gráficos |
+| Leaflet | ^1.9.4 | Mapas |
+| Sonner / Toastify | | Notificações |
+
+### Backend / Database
+
+| Tecnologia | Versão | Propósito |
+|---|---|---|
+| Node.js | >=18 | Runtime |
+| Next.js API Routes | 15.5.2 | API endpoints |
+| Prisma ORM | 6.17.1 | Database ORM |
+| PostgreSQL (Neon) | 16 | Database principal |
+| Redis (Upstash) | ^1.35.6 | Cache / Rate Limiting |
+| next-auth | 5.0.0-beta.31 | Autenticação |
+| Stripe / Resend | | Pagamentos / Email |
+
+### ML Service
+
+| Tecnologia | Versão | Propósito |
+|---|---|---|
+| Python | 3.10+ | ML Runtime |
+| FastAPI | | API Server |
+| scikit-learn | | Modelos ML |
+| pandas | | Data Processing |
+| Gemini API | | LLM Integration |
+| TinyAya | | On-device LLM |
+
+### DevOps / Infra
+
+| Tecnologia | Propósito |
+|---|---|
+| Turborepo | Monorepo orchestration |
+| Docker | Postgres, Redis, Valhalla, OTP |
+| Vercel | Production deployment |
+| GitHub Actions | CI/CD |
+| Sentry | Error monitoring (client + server + edge) |
+| Playwright | E2E tests |
+| Vitest | Unit / integration tests |
+| Storybook | Component isolation |
 
 ---
 
-## 🛠️ Technology Stack
-
-### Frontend Layer
-
-| Technology     | Purpose          | Version              |
-| -------------- | ---------------- | -------------------- |
-| React          | UI Framework     | 18+ (19 recommended) |
-| Next.js        | SSR & App Router | 15+                  |
-| TypeScript     | Type Safety      | 5.0+                 |
-| Tailwind CSS   | Styling          | 3.0+                 |
-
-
-### Backend Layer
-
-| Technology | Purpose          | Version               |
-| ---------- | ---------------- | --------------------- |
-| Node.js    | Runtime          | 18+ (22+ recommended) |
-| TypeScript | Type Safety      | 5.0+                  |
-| Prisma     | ORM              | Latest                |
-| MySQL      | Primary Database | 8.0+                 |
-
-
-
-## 🚀 Quick Start
+## Quick Start
 
 ### Prerequisites
 
-Ensure you have the following installed:
-
 ```bash
-# Check Node.js version (18+ required, 22+ recommended)
-node --version
-
-# Check npm version (11.6.2+ required)
-npm --version
-
+node --version   # >=18
+npm --version    # >=10
+docker           # optional, for local Postgres/Redis
 ```
 
 ### Installation
 
 ```bash
-# Clone the repository
-git clone <repository-url>
-cd AKMLEVA
-
-# Install all dependencies (uses workspace configuration)
+git clone <repo-url>
+cd beta-app
 npm install
-
-# Copy environment template
 cp .env.example .env
-
-# Edit .env with your configuration
-# Required: DATABASE_URL, REDIS_URL, JWT_SECRET, STRIPE_KEY, etc.
+# Edit .env with DATABASE_URL, REDIS_URL, etc.
 ```
 
-### Development Mode
+### Development
 
 ```bash
-
-npm run dev:        # Next.js web app (http://localhost:3001)
-
-# Database operations
-npm run db:migrate      # Run Prisma migrations
-npm run db:seed         # Seed test data
-npm run db:studio       # Open Prisma Studio
+npm run dev            # Next.js web app (http://localhost:3001)
+npm run db:migrate     # Run Prisma migrations
+npm run db:seed        # Seed test data
+npm run db:studio      # Open Prisma Studio
 ```
 
 ### Production Build
 
 ```bash
-# Build the app (requires database to be running)
 npm run build
-
-# Start production server
 npm run start
 ```
 
 ---
 
-## 🏷️ Travel Catalog - Tagging de Categorias
-
-Scripts para aplicar tags de categorias aos destinos do catálogo de viagens.
-
-### Comandos Disponíveis
-
-```bash
-# Ver estatísticas (sem alterar nada)
-npm run travel:catalog:tag-categorias:stats
-
-# Aplicar tags ao bundle
-npm run travel:catalog:tag-categorias
-
-# Aplicar tags ao bundle + sincronizar DB
-npm run travel:catalog:tag-categorias:db
-
-# Testar com 100 destinos
-node scripts/tag-destinos-categorias.mjs --limit=100
-```
-
-### ⚠️ Próximos passos manuais (antes de correr com --db)
-
-Antes de executar o script com `--db`, precisas de:
-
-1. Adicionar campo ao schema Prisma:
-```bash
-node scripts/_add-categorias-schema.mjs
-```
-
-2. Gerar migração:
-```bash
-npx prisma migrate dev --name add_destino_categorias
-```
-
-3. Executar o auto-tagging:
-```bash
-npm run travel:catalog:tag-categorias
-```
-
-4. Sincronizar com a DB (depois da migração):
-```bash
-npm run travel:catalog:tag-categorias:db
-```
-
----
-
-## 🗺️ Geocoding de Hotéis Wikivoyage
-
-Scripts para geocodificar hotéis do Wikivoyage em paralelo com retoma automática.
-
-### Comandos Disponíveis
-
-```bash
-# Ver estado do processamento
-node scripts/geocode-wv-hotels-parallel.mjs --status
-
-# Testar (dry-run) com 100 hotéis
-node scripts/geocode-wv-hotels-parallel.mjs --dry-run --limit=100
-
-# Processar 5000 hotéis com 10 workers
-node scripts/geocode-wv-hotels-parallel.mjs --limit=5000 --workers=10
-
-# Processar todos os hotéis de Portugal
-node scripts/geocode-wv-hotels-parallel.mjs --country=PT --workers=8
-
-# Correr em background (retoma automaticamente)
-node scripts/geocode-wv-hotels-parallel.mjs --workers=10 --delay=0.1
-```
-
-### Funcionalidades
-
-- **Processamento paralelo**: Multi-threading com workers configuráveis
-- **Retoma automática**: Continua do ponto onde parou em caso de interrupção
-- **Filtros**: Por país, limite de registos, dry-run para testes
-- **Delay configurável**: Controlo de rate limiting entre requests
-
----
-
-## 🧪 Quality Assurance Strategy
-
-Given the scale of 3.5M+ SLOC, AKMLEVA follows a rigorous multi-layer testing approach:
-
-### Testing Layers
+## Project Structure
 
 ```
-┌─────────────────────────────────────┐
-│   E2E Tests (Playwright)            │  ← Complete user workflows
-├─────────────────────────────────────┤
-│   Unit & Integration Tests (Vitest) │  ← Components & services
-└─────────────────────────────────────┘
-```
-
-### Running Tests
-
-```bash
-# Run all tests
-npm test
-
-# Run tests on changed files only (fast!)
-npm run test:changed
-
-# E2E Tests
-npm run e2e               # Headless mode
-npm run e2e:ui            # Interactive UI mode
-```
-
-
----
-
-## 🔧 Development Workflow
-
-### Code Quality Tools
-
-```bash
-# Linting
-npm run lint              # Lint all workspaces
-
-# Type Checking
-npm run type-check        # TypeScript validation
-
-### Database Management
-
-```bash
-npm run db:migrate        # Create and run migrations
-npm run db:push           # Push schema changes (dev)
-npm run db:seed           # Seed database
-npm run db:reset          # Reset database (careful!)
-npm run db:studio         # Open Prisma Studio UI
-```
-
-### Monitoring & Debugging
-
-```bash
-# Monitoring via Sentry (configured in code)
+├── .github/workflows/       # CI/CD (deploy-migrations.yml)
+├── configs/                 # TypeScript shared configs
+├── data/                    # Data files, dumps, caches
+│   ├── cost-of-living/
+│   ├── geonames-cache/
+│   ├── google-hotels/
+│   ├── hotels/
+│   ├── opentripplanner/
+│   ├── pbf/
+│   ├── reports/
+│   ├── transportation/
+│   └── wikivoyage/
+├── docs/                    # Technical documentation
+│   └── lighthouse/          # Lighthouse audit reports
+├── e2e/                     # Playwright E2E tests
+├── google-maps-scraper/     # Google Maps scraping service
+├── ml-service/              # Python ML microservice
+│   ├── app/
+│   │   ├── api/routes/      # Recommendations, chat, RAG, etc.
+│   │   ├── ml/              # ML models & services
+│   │   ├── models/          # Model definitions
+│   │   └── pipelines/       # Training pipelines
+│   ├── Dockerfile
+│   └── pyproject.toml
+├── packages/
+│   ├── auth/                # @akmleva/auth (auth module)
+│   ├── shared/              # @akmleva/shared (types, utils, i18n)
+│   └── ui/                  # @akmleva/ui (components, design tokens)
+├── prisma/
+│   ├── migrations/          # DB migration history
+│   └── schema.prisma        # Full schema (200+ models)
+├── public/                  # Static assets
+│   └── videos/
+├── scripts/                 # 150+ automation scripts
+│   ├── google-hotels/
+│   └── __tests__/
+├── src/
+│   ├── app/                 # Next.js App Router
+│   │   ├── [locale]/        # i18n routes
+│   │   ├── api/             # API routes
+│   │   ├── dashboard/
+│   │   ├── destinations/
+│   │   └── ...
+│   ├── components/          # Shared components
+│   ├── lib/                 # Core libraries
+│   │   ├── api/
+│   │   ├── i18n/
+│   │   ├── payment/
+│   │   ├── travel/
+│   │   └── user/
+│   └── messages/            # i18n translations
+├── docker-compose.yml
+├── next.config.js
+├── turbo.json
+├── vitest.config.ts
+├── playwright.config.ts
+├── sentry.client.config.ts
+├── sentry.server.config.ts
+├── sentry.edge.config.ts
+└── vercel.json
 ```
 
 ---
 
-## 🌐 Deployment Environments
+## Documentation Index
+
+| Document | Description |
+|---|---|
+| `docs/AUDIT-AKMLEVA.md` | Technical audit: architecture, DB, services, roadmap |
+| `docs/Auditoria-2.md` | Second audit: security, stack, improvements plan |
+| `docs/CULTURAL_DATA_ARCHITECTURE.md` | Cultural data ingestion (museums, UNESCO, OSM) |
+| `docs/DESTINATION-CARD-MELHORIAS.md` | Destination card/media improvements |
+| `docs/ENHANCED_TRAVEL_PREFERENCES_REFACTORING.md` | Refactor plan for 2k-line form component |
+| `docs/ENRICHMENT-SUMMARY.md` | Travel bundle enrichment results |
+| `docs/FORMULARIO-MELHORIAS.md` | UX/conversion audit for preferences form |
+| `docs/GEOCODING-SUMMARY.md` | Geocoding final state (95.3% hotels geocoded) |
+| `docs/NEON_BRANCHING_VERCEL.md` | Neon DB branching with Vercel + Prisma |
+| `docs/OSM_HOTELS.md` | OpenStreetMap hotel integration |
+| `docs/SCHEMA_MIGRATION_PLAN.md` | Planned DB migrations |
+| `docs/SCHEMA_REFACTORING_PHASE2.md` | Phase 2 schema refactoring |
+| `docs/TRAVEL_CATALOG_API.md` | Internal Wikivoyage catalog API |
+| `docs/TRIP_RECOMMENDATION.md` | Smart trip recommendations MVP |
+| `docs/VIDEOS-DESTINO-IMPLEMENTACAO.md` | Video on destination cards |
+| `docs/wikivoyage_links.md` | Wikivoyage links reference |
+| `docs/lighthouse/` | Lighthouse audit reports (home, about, destinations) |
+
+---
+
+## Scripts Reference
 
 ### Development
 
 ```bash
-# Local development with hot reload
-npm run dev
-
-# Uses:
-# - Local PostgreSQL/Redis
-# - Mock payment providers
-# - Debug logging enabled
+npm run dev                   # Start Next.js dev server
+npm run build                 # Build for production
+npm run start                 # Start production server
+npm run lint                  # ESLint (zero warnings)
+npm run type-check            # TypeScript validation
 ```
 
-### Staging
+### Database (Prisma)
 
 ```bash
-# Pre-production environment
-npm run deploy:staging
-
-# Uses:
-# - Staging database
-# - Test payment providers
-# - Sentry monitoring
+npm run db:migrate            # Deploy migrations to database
+npm run db:push               # Push schema changes (dev only)
+npm run db:seed               # Seed database
+npm run db:reset              # Reset database (destructive)
+npm run db:studio             # Open Prisma Studio
+npm run db:resolve            # Resolve failed migrations
 ```
 
-### Production
+### Wikivoyage Extraction
 
 ```bash
-# Production deployment
-npm run deploy:production
+npm run wikivoyage:extract         # Parse both PT + EN dumps
+npm run wikivoyage:extract:pt      # Parse Portuguese dump only
+npm run wikivoyage:extract:en      # Parse English dump only
+```
 
-# Uses:
-# - Production PostgreSQL clusters
-# - Live payment processors
-# - Full monitoring stack
-# - CDN integration
+### Travel Bundle Pipeline
+
+Build and enrich the destination catalog from Wikivoyage + external sources:
+
+```bash
+npm run travel:demo:build           # Build bundle from parsed Wikivoyage
+npm run travel:demo:cards           # Enrich destination cards
+npm run travel:demo:enrich-external # Enrich with external data
+npm run travel:demo:enrich-budget   # Enrich cost-of-living data
+npm run travel:demo:enrich-transport # Enrich transport data
+npm run travel:demo:rebuild-flights # Rebuild flight routes
+npm run travel:demo:enrich-weather  # Enrich weather data
+npm run travel:demo:enrich-hotels   # Enrich hotels from data files
+npm run travel:demo:enrich-hotels-from-db # Enrich hotels from database
+npm run travel:demo:enrich-cultural-pois  # Enrich cultural POIs
+npm run travel:demo:enrich-hospitals-police # Enrich hospitals & police
+npm run travel:demo:enrich-rental-cars     # Enrich rental car data
+npm run travel:demo:enrich-overture        # Enrich Overture Maps POIs
+npm run travel:demo:enrich-wikidata-pois   # Enrich Wikidata POIs
+npm run travel:demo:enrich-unsplash        # Enrich Unsplash images
+npm run travel:demo:enrich-pipeline        # Run full enrichment pipeline
+npm run travel:demo:patch-countries        # Patch country data
+```
+
+### Catalog & Database Import
+
+```bash
+npm run travel:catalog:import          # Import bundle to database
+npm run travel:catalog:sync-images     # Sync images to DB
+npm run travel:catalog:tag-categorias  # Tag destination categories
+npm run travel:catalog:classify-hotels # Classify hotel types
+npm run travel:catalog:verify-hotels-geo    # Verify hotel geocoding
+npm run travel:catalog:validate-hotels-coords # Validate coordinates
+```
+
+### Geocoding
+
+```bash
+npm run travel:catalog:geocode-hotels:parallel  # Parallel geocoding (Node)
+npm run travel:catalog:geocode-hotels:gmaps     # Via Google Maps API
+npm run travel:catalog:geocode-hotels:combined  # Combined (multi-provider)
+npm run travel:catalog:geocode-from-geonames    # Via GeoNames
+npm run travel:catalog:geocode-dest-geonames    # Destinations via GeoNames
+npm run travel:catalog:geocode-dest-centroid    # Via hotel centroid
+```
+
+### External Data Fetching
+
+```bash
+npm run travel:fetch:wikidata-cultural      # UNESCO / cultural data
+npm run travel:fetch:overpass-destinations  # OpenStreetMap POIs
+npm run travel:fetch:wikipedia-airports     # Airport data
+npm run travel:fetch:wikipedia-hotels       # Hotel data
+npm run travel:fetch:wikipedia-hotel-chains # Hotel chains
+npm run travel:import:pop-france            # France population data
+npm run travel:import:cultural-all          # All cultural data
+```
+
+### Wiki Pipeline (destinations without hotel wiki)
+
+```bash
+npm run travel:wiki:pipeline   # Full pipeline: search → apply → sync DB
+npm run travel:wiki:status     # Check pipeline status
+```
+
+### Google Hotels Scraper
+
+```bash
+npm run travel:google-hotels:pipeline   # Run full scraper
+npm run travel:google-hotels:listings   # Scrape listings
+npm run travel:google-hotels:details    # Scrape details
+```
+
+### Google Maps Scraper
+
+```bash
+npm run travel:gmaps-scraper:start   # Start API server
+npm run travel:gmaps-scraper:docker  # Start Docker container
+```
+
+### ML Service
+
+```bash
+npm run travel:ml:export  # Export features from bundle
+npm run travel:ml:train   # Train destination embeddings
+npm run travel:ml:build   # Export + train (full pipeline)
+```
+
+### Images
+
+```bash
+npm run travel:images:enrich          # Enrich Unsplash images
+npm run travel:images:dedupe          # Deduplicate images
+npm run travel:images:status          # Check enrichment status
+```
+
+### Routing Engines
+
+```bash
+npm run valhalla:up   # Start Valhalla (OSM routing)
+npm run otp:up        # Start OpenTripPlanner (transit routing)
+```
+
+### Testing
+
+```bash
+npm test                  # Run all unit/integration tests
+npm run test:changed      # Run tests on changed files only
+npm run test:watch        # Watch mode
+npm run e2e               # Playwright E2E tests
+npm run e2e:ui            # Playwright interactive UI
 ```
 
 ---
 
-## 📊 Project Statistics
+## Data Pipeline
 
+The destination catalog is built through a multi-stage data pipeline:
 
-
----
-
-## 🤝 Contributing
-
-
-### Development Process
-
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
-
-### Code Standards
-
-- Follow TypeScript best practices
-- Write tests for new features
-- Document API changes
-- Maintain > 80% test coverage
-- Follow conventional commits
-
----
-
-## 📄 License
-
-**MIT License**
-
-Copyright (c) 2025-2026 AKMLEVA Viagens Lda.
-
-Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+```
+Wikivoyage XML Dumps (PT + EN)
+    │
+    ▼
+  parse-wikivoyage-dump.py    → JSONL listings
+    │
+    ▼
+  build-travel-bundle          → bundle.json (28k+ destinations)
+    │
+    ▼
+  Enrichment Pipeline:
+  ├── GeoNames (coordinates, populations)
+  ├── Wikidata (cultural POIs, UNESCO sites)
+  ├── OpenStreetMap / Overpass (hospitals, police, amenities)
+  ├── Overture Maps (global POI data)
+  ├── Unsplash (destination images)
+  ├── Weather data
+  ├── Cost-of-living data
+  ├── Transport data (flight routes)
+  └── Hotel data (Wikivoyage, MakeMyTrip, Google Hotels)
+    │
+    ▼
+  Import to PostgreSQL (Neon) via Prisma
+    │
+    ▼
+  Geocoding pipeline:
+  ├── GeoNames
+  ├── Google Maps API
+  ├── Photon (OpenStreetMap)
+  └── LocationIQ
+```
 
 ---
 
-## 🙏 Acknowledgments
+## ML Service
 
-- **Development Team**: AKMLEVA Engineering Team
-- **UI/UX Design**: AKMLEVA Design Studio
-- **Infrastructure**: Railway, Vercel
-- **Open Source**: Built on amazing open-source technologies
+The Python microservice (`ml-service/`) provides:
+
+- **Destination embeddings** — scikit-learn based semantic similarity
+- **Travel recommendations** — preference-based ranking
+- **Personalization** — user preference prediction
+- **Conversational AI** — TinyAya / Gemini integration
+- **RAG** — Retrieval-Augmented Generation for travel queries
+- **Sustainability scoring** — carbon/sustainability prediction
+- **Explainable AI** — feature importance for recommendations
+
+Start the service:
+
+```bash
+cd ml-service
+pip install -r requirements/requirements.txt
+uvicorn app.main:app --port 8000
+```
+
+Or via Docker:
+
+```bash
+docker compose up ml-service -d
+```
 
 ---
 
-## 📞 Contact & Support
+## Docker Services
 
-- **Website**: [akmleva.com](https://akmleva.com)
-- **Email**: luismccampos@gmail.com
-- **Documentation**: [docs.akmleva.com](https://docs.akmleva.com)
-- **Status Page**: [status.akmleva.com](https://status.akmleva.com)
+| Service | Image | Port | Purpose |
+|---|---|---|---|
+| `postgres` | postgres:16-alpine | 5433 | Main database |
+| `redis` | redis:7-alpine | 6379 | Caching / sessions |
+| `valhalla` | gis-ops/docker-valhalla | 8002 | OSM routing engine |
+| `otp` | opentripplanner/opentripplanner | 8080 | Transit routing (GTFS) |
+
+```bash
+docker compose up -d                    # Start all services
+docker compose up postgres redis -d     # Start only DB + cache
+```
 
 ---
 
-**Built with ❤️ by AKMLEVA Viagens Lda.**
+## CI/CD
 
-_Transforming travel logistics through cutting-edge technology and artificial intelligence._
+**Workflow**: `.github/workflows/deploy-migrations.yml`
+
+- **Trigger**: Push to `main` (excluding docs) + manual dispatch
+- **Environment**: Ubuntu latest, Node 24, PostgreSQL
+- **Steps**:
+  1. Validate database env vars
+  2. `npm ci` (triggers Prisma generation)
+  3. Resolve failed migrations automatically
+  4. `prisma migrate deploy`
+  5. Optional: `prisma db seed`
+
+---
+
+## Testing
+
+| Layer | Tool | Command |
+|---|---|---|
+| Unit / Integration | Vitest | `npm test` |
+| Changed-only | Vitest | `npm run test:changed` |
+| E2E | Playwright | `npm run e2e` |
+| Component | Storybook | `npx storybook dev` |
+
+Coverage target: >80%. Run `npm run test:changed:coverage` to check.
+
+---
+
+## Environment Variables
+
+Key variables (see `.env.example` for full list):
+
+| Variable | Description |
+|---|---|
+| `DATABASE_URL` | PostgreSQL connection string (Neon) |
+| `DATABASE_URL_UNPOOLED` | Direct connection (bypasses PgBouncer) |
+| `REDIS_URL` | Upstash Redis URL |
+| `NEXTAUTH_SECRET` | Auth.js encryption secret |
+| `NEXTAUTH_URL` | App URL for auth callbacks |
+| `SENTRY_DSN` | Sentry error tracking |
+| `RESEND_API_KEY` | Email sending |
+| `UNSPLASH_ACCESS_KEY` | Destination images |
+| `GOOGLE_MAPS_API_KEY` | Geocoding / Maps |
+| `STRIPE_SECRET_KEY` | Payment processing |
+
+---
+
+## License
+
+MIT License — Copyright (c) 2025-2026 AKMLEVA Viagens Lda.
+
+---
+
+## Contact
+
+- Website: [akmleva.com](https://akmleva.com)
+- Email: luismccampos@gmail.com
+- GitHub: [luismccampos-beep/beta-app](https://github.com/luismccampos-beep/beta-app)
