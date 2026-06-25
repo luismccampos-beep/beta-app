@@ -1,5 +1,18 @@
 import { PrismaClient } from '@prisma/client';
 
+// NOTE: If you ever hit Neon IP restriction issues on Vercel (e.g. connection
+// refused from unknown IPs), switch to the Neon Serverless Driver:
+//   1. npm install @neondatabase/serverless @prisma/adapter-neon
+//   2. Replace the PrismaClient constructor below with the Neon HTTP adapter:
+//
+//      import { Pool, neonConfig } from '@neondatabase/serverless';
+//      import { PrismaNeon } from '@prisma/adapter-neon';
+//      const pool = new Pool({ connectionString: process.env.DATABASE_URL });
+//      const adapter = new PrismaNeon(pool);
+//      const client = new PrismaClient({ adapter });
+//
+// See: https://www.prisma.io/docs/orm/prisma-client/deployment/edge/deploy-to-vercel-edge
+
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const globalForPrisma = globalThis as unknown as { prisma?: any };
 
