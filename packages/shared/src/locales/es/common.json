@@ -3,8 +3,8 @@
   "close": "Cerrar",
   "actions": "Acciones",
   "slogan": "Su socio de confianza para viajes inolvidables.",
-  "phone": "+351 123 456 789",
-  "email": "info@akmleva.com",
+  "phone": "+351 256 372 092",
+  "email": "geral@akmleva.pt",
   "address": {
     "city": "Santa Maria da Feira",
     "street": "R. São Nicolau n.º 9, 4520-248"
@@ -125,14 +125,14 @@
     "slogan": "Tu socio de confianza para viajes inolvidables.",
     "name": "AKMLEVA",
     "address": "R. São Nicolau n.º 9, 4520-248 Santa Maria da Feira",
-    "phone": "+351 123 456 789",
+    "phone": "+351 256 372 092",
     "email": "info@akmleva.com"
   },
   "companyInfo": {
     "name": "AKMLEVA",
     "slogan": "Tu socio de confianza para viajes inolvidable.",
     "address": "R. São Nicolau n.º 9, 4520-248 Santa Maria da Feira",
-    "phone": "+351 123 456 789"
+    "phone": "+351 256 372 092"
   },
   "delete": "Eliminar",
   "dismiss": "Cerrar",
@@ -343,7 +343,7 @@
       "travelType": "Seleccione tipo de viaje",
       "budget": "Seleccione presupuesto",
       "name": "Su nombre completo",
-      "phone": "+351 123 456 789",
+      "phone": "+351 256 372 092",
       "email": "su@email.com",
       "message": "Detalles adicionales sobre su viaje..."
     },

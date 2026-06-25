@@ -51,12 +51,19 @@ jobs:
 
       - run: npm install --legacy-peer-deps
 
-      - name: Check migration status
-        # Step-level env with fallback: PgBouncer in transaction mode (Neon)
-        # blocks the advisory locks Prisma uses for migrate status, so we MUST
-        # hit the unpooled URL. Falls back to DATABASE_URL if unpooled secret missing.
-        run: npx prisma migrate status
-        continue-on-error: true
+      - name: Install PostgreSQL client
+        # The resolve-failed-migrations.mjs script uses psql to query
+        # _prisma_migrations directly. ubuntu-latest does not ship with psql
+        # pre-installed.
+        run: sudo apt-get update -qq && sudo apt-get install -y --no-install-recommends postgresql-client
+
+      - name: Resolve failed migrations
+        # Auto-detect and resolve failed Prisma migrations (P3009) so they don't
+        # block subsequent `migrate deploy` calls. The script queries
+        # _prisma_migrations for failed entries via psql, checks if the SQL
+        # objects exist in the database, and runs
+        # `prisma migrate resolve --applied|--rolled-back` accordingly.
+        run: node scripts/resolve-failed-migrations.mjs
         env:
           DATABASE_URL: ${{ secrets.DATABASE_URL }}
           DATABASE_URL_UNPOOLED: ${{ secrets.DATABASE_URL_UNPOOLED || secrets.DATABASE_URL }}

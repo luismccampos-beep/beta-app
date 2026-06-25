@@ -4,7 +4,7 @@
   "close": "Fechar",
   "actions": "Ações",
   "slogan": "O seu parceiro de confiança para viagens inesquecíveis.",
-  "phone": "+351 123 456 789",
+  "phone": "+351 256 372 092",
   "email": "contato@akmleva.com",
   "address": {
     "city": "Santa Maria da Feira",
@@ -160,7 +160,7 @@
   "company": {
     "name": "AKMLEVA",
     "slogan": "Descubra destinos únicos com itinerários criados especialmente para si",
-    "phone": "+351 123 456 789",
+    "phone": "+351 256 372 092",
     "email": "contato@akmleva.com",
     "address": {
       "city": "Santa Maria da Feira",
@@ -171,7 +171,7 @@
     "name": "AKMLEVA",
     "slogan": "O seu parceiro de confiança para viagens inesquecíveis.",
     "address": "R. São Nicolau n.º 9, 4520-248 Santa Maria da Feira",
-    "phone": "+351 123 456 789"
+    "phone": "+351 256 372 092"
   },
   "contact": {
     "info": {
@@ -574,7 +574,7 @@
       "travelType": "Selecione o tipo de viagem",
       "budget": "Selecione o orçamento",
       "name": "Seu nome completo",
-      "phone": "+351 123 456 789",
+      "phone": "+351 256 372 092",
       "email": "seu@email.com",
       "message": "Detalhes adicionais sobre sua viagem..."
     },

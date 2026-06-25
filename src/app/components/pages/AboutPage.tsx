@@ -334,7 +334,7 @@ export function AboutPage({ onBack }: AboutPageProps) {
                 </div>
                 <div className="flex items-center gap-2 text-gray-700 dark:text-gray-300">
                   <Mail className="w-4 h-4 sm:w-5 sm:h-5 text-teal-600 dark:text-teal-400 flex-shrink-0" />
-                  <a href="mailto:info@akmleva.com" className="text-xs sm:text-sm hover:text-teal-600 dark:hover:text-teal-400 transition-colors">info@akmleva.com</a>
+                  <a href="mailto:geral@akmleva.pt" className="text-xs sm:text-sm hover:text-teal-600 dark:hover:text-teal-400 transition-colors">geral@akmleva.pt</a>
                 </div>
               </div>
 

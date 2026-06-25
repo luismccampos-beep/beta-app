@@ -8,7 +8,7 @@ if (!resendApiKey) {
 
 export const resend = resendApiKey ? new Resend(resendApiKey) : null;
 
-export const EMAIL_FROM = process.env.EMAIL_FROM || 'AKMLEVA <no-reply@akmleva.com>';
+export const EMAIL_FROM = process.env.EMAIL_FROM || 'AKMLEVA <no-reply@akmleva.pt>';
 
 /**
  * Send an email verification link to the user.
