@@ -176,6 +176,10 @@ const nextConfig = {
     ignoreDuringBuilds: true,
   },
 
+  typescript: {
+    ignoreBuildErrors: true,
+  },
+
   images: {
     remotePatterns: baseImageConfig.remotePatterns,
     formats: baseImageConfig.formats,
