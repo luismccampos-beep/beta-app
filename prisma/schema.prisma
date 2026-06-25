@@ -1,7 +1,6 @@
 // ============================================
-// NOTE: Table naming is inconsistent — some models use @map("created_at") and others
-// @map("createdat"). New models should use snake_case with underscores for consistency.
-// A future migration should standardize all tables to one convention.
+// NOTE: All @map annotations normalized to snake_case (e.g. created_at, meta_title).
+// Keep snake_case for all new field and table mappings.
 // ============================================
 
 // ============================================
@@ -137,6 +136,8 @@ model User {
   phoneVerified          Boolean    @default(false) @map("phone_verified")
   emailVerifiedAt        DateTime?  @map("email_verified_at") @db.Timestamp(3)
   emailVerificationToken String?    @map("email_verification_token") @db.VarChar(255)
+  passwordResetToken     String?    @map("password_reset_token") @db.VarChar(255)
+  passwordResetExpires   DateTime?  @map("password_reset_expires") @db.Timestamp(3)
   passwordChangedAt      DateTime?  @map("password_changed_at") @db.Timestamp(3)
 
   // Security & 2FA
@@ -193,7 +194,6 @@ model User {
   trips                Trip[]
   bookings             Booking[]
   payments             PaymentTransaction[]
-  paymentRecords       Payment[]
   reviews              Review[]
   favorites            Favorite[]
   destinationFavorites UserFavorite[]       @relation("UserDestinationFavorites")
@@ -879,14 +879,13 @@ model Destination {
   bookings    Booking[]
   reviews     Review[]     @relation("DestinationReviews")
 
-  activities      Activity[]
   accommodations  Accommodation[]
+  services        Service[]
   transportations Transportation[]
 
   articles         Article[]
   blogPosts        ArticleDestination[]
   savedItineraries SavedItinerary[]
-  services         Service[]
   userFavorites    UserFavorite[]
   tripDestinations TripDestination[]
 
@@ -990,23 +989,23 @@ model Package {
   description  String?     @db.Text
   type         PackageType
   destination  String      @db.VarChar(255)
-  durationDays Int         @default(7) @map("durationdays")
+  durationDays Int         @default(7) @map("duration_days")
   agencyId     String?     @map("agency_id") 
 
   // Pricing
-  priceOriginal Decimal? @map("priceoriginal") @db.Decimal(10, 2)
-  priceCurrent  Decimal? @map("pricecurrent") @db.Decimal(10, 2)
+  priceOriginal Decimal? @map("price_original") @db.Decimal(10, 2)
+  priceCurrent  Decimal? @map("price_current") @db.Decimal(10, 2)
   currency      Currency @default(EUR)
 
   // Media & Meta
-  imageUrl  String?  @map("imageurl") @db.Text
+  imageUrl  String?  @map("image_url") @db.Text
   images    Json?    @db.JsonB
   itinerary Json?    @db.JsonB
   tags      Json
 
   // Ratings
   rating       Float? @default(0) @db.Real
-  reviewsCount Int    @default(0) @map("reviewscount")
+  reviewsCount Int    @default(0) @map("reviews_count")
 
   // Status
   published Boolean @default(true)
@@ -1015,12 +1014,12 @@ model Package {
 
   // Provider & SEO
   provider        String? @db.VarChar(255)
-  metaTitle       String? @map("metatitle") @db.VarChar(60)
-  metaDescription String? @map("metadescription") @db.VarChar(160)
+  metaTitle       String? @map("meta_title") @db.VarChar(60)
+  metaDescription String? @map("meta_description") @db.VarChar(160)
 
-  createdAt DateTime  @default(now()) @map("createdat") @db.Timestamp(0)
-  updatedAt DateTime  @updatedAt @map("updatedat") @db.Timestamp(0)
-  deletedAt DateTime? @map("deletedat") @db.Timestamp(3)
+  createdAt DateTime  @default(now()) @map("created_at") @db.Timestamp(0)
+  updatedAt DateTime  @updatedAt @map("updated_at") @db.Timestamp(0)
+  deletedAt DateTime? @map("deleted_at") @db.Timestamp(3)
 
   // Relationships
   agency Agency? @relation(fields: [agencyId], references: [id], onDelete: Cascade)
@@ -1054,7 +1053,7 @@ model Airline {
   rating    Float?  @default(0) @db.Real
   published Boolean @default(true)
 
-  createdAt DateTime @default(now()) @map("createdat") @db.Timestamp(0)
+  createdAt DateTime @default(now()) @map("created_at") @db.Timestamp(0)
 
   flights Flight[]
 
@@ -1070,7 +1069,7 @@ model Airport {
   country          String   @db.VarChar(100)
   latitude         Float?   @db.Real
   longitude        Float?   @db.Real
-  createdAt        DateTime @default(now()) @map("createdat") @db.Timestamp(0)
+  createdAt        DateTime @default(now()) @map("created_at") @db.Timestamp(0)
   loungeAvailable  Boolean  @default(false) @map("lounge_available")
   loungeDetails    Json?    @map("lounge_details") @db.JsonB
   priorityServices Json?    @map("priority_services") @db.JsonB
@@ -1111,8 +1110,8 @@ model Flight {
   published Boolean  @default(true)
   metadata  Json?    @db.JsonB
 
-  createdAt DateTime @default(now()) @map("createdat") @db.Timestamp(0)
-  updatedAt DateTime @updatedAt @map("updatedat") @db.Timestamp(0)
+  createdAt DateTime @default(now()) @map("created_at") @db.Timestamp(0)
+  updatedAt DateTime @updatedAt @map("updated_at") @db.Timestamp(0)
 
   // Relationships
   agency          Agency?          @relation(fields: [agencyId], references: [id], onDelete: Cascade)
@@ -1136,8 +1135,8 @@ model FlightDetail {
   pricing   Json?    @db.JsonB
   fareTiers Json?    @map("fare_tiers") @db.JsonB
   baggage   Json?    @db.JsonB
-  createdAt DateTime @default(now()) @map("createdat") @db.Timestamp(0)
-  updatedAt DateTime @updatedAt @map("updatedat") @db.Timestamp(0)
+  createdAt DateTime @default(now()) @map("created_at") @db.Timestamp(0)
+  updatedAt DateTime @updatedAt @map("updated_at") @db.Timestamp(0)
 
   flight Flight @relation(fields: [flightId], references: [id], onDelete: Cascade)
 
@@ -1207,8 +1206,8 @@ model ServiceDetail {
   excluded     Json?    @db.JsonB
   images       Json?    @db.JsonB
   ratings      Float?   @db.Real
-  createdAt    DateTime @default(now()) @map("createdat") @db.Timestamp(0)
-  updatedAt    DateTime @updatedAt @map("updatedat") @db.Timestamp(0)
+  createdAt    DateTime @default(now()) @map("created_at") @db.Timestamp(0)
+  updatedAt    DateTime @updatedAt @map("updated_at") @db.Timestamp(0)
 
   service Service @relation(fields: [serviceId], references: [id], onDelete: Cascade)
 
@@ -1256,8 +1255,8 @@ model Cruise {
   published    Boolean @default(true)
   featured     Boolean @default(false)
 
-  createdAt DateTime @default(now()) @map("createdat") @db.Timestamp(0)
-  updatedAt DateTime @updatedAt @map("updatedat") @db.Timestamp(0)
+  createdAt DateTime @default(now()) @map("created_at") @db.Timestamp(0)
+  updatedAt DateTime @updatedAt @map("updated_at") @db.Timestamp(0)
 
   // Relationships
   agency   Agency?        @relation(fields: [agencyId], references: [id], onDelete: Cascade)
@@ -1343,8 +1342,8 @@ model Accommodation {
   sustainabilityScore Decimal? @map("sustainability_score") @db.Decimal(4, 1)
   bookingUrl          String?  @map("booking_url") @db.Text
   published           Boolean  @default(true)
-  createdAt           DateTime @default(now()) @map("createdat") @db.Timestamp(0)
-  updatedAt           DateTime @updatedAt @map("updatedat") @db.Timestamp(0)
+  createdAt           DateTime @default(now()) @map("created_at") @db.Timestamp(0)
+  updatedAt           DateTime @updatedAt @map("updated_at") @db.Timestamp(0)
 
   destination Destination? @relation(fields: [destinationId], references: [id])
 
@@ -1371,8 +1370,8 @@ model Hotel {
   published     Boolean? @default(true)
   featured      Boolean? @default(false)
   agencyId      String?  @map("agency_id") 
-  createdAt     DateTime @default(now()) @map("createdat") @db.Timestamp(0)
-  updatedAt     DateTime @updatedAt @map("updatedat") @db.Timestamp(0)
+  createdAt     DateTime @default(now()) @map("created_at") @db.Timestamp(0)
+  updatedAt     DateTime @updatedAt @map("updated_at") @db.Timestamp(0)
 
   // Relations
   amenityItems  HotelAmenity[] @relation("HotelAmenities")
@@ -1414,8 +1413,8 @@ model HotelDetail {
   pricing      Json?    @db.JsonB
   availability Json?    @db.JsonB
   policies     Json?    @db.JsonB
-  createdAt    DateTime @default(now()) @map("createdat") @db.Timestamp(0)
-  updatedAt    DateTime @updatedAt @map("updatedat") @db.Timestamp(0)
+  createdAt    DateTime @default(now()) @map("created_at") @db.Timestamp(0)
+  updatedAt    DateTime @updatedAt @map("updated_at") @db.Timestamp(0)
 
   hotel Hotel @relation("HotelDetail", fields: [hotelId], references: [id], onDelete: Cascade)
 
@@ -1464,28 +1463,7 @@ model HotelProvider {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  hotels HotelProperty[]
-
   @@map("hotel_providers")
-}
-
-// Hotel properties
-model HotelProperty {
-  id           String   @id @default(cuid())
-  providerId   String
-  propertyName String
-  location     String
-  starRating   Int
-  basePrice    Float
-  imageUrl     String?
-  features     Json // Array of feature strings
-  isActive     Boolean  @default(true)
-  createdAt    DateTime @default(now())
-  updatedAt    DateTime @updatedAt
-
-  provider HotelProvider @relation(fields: [providerId], references: [id], onDelete: Cascade)
-
-  @@map("hotel_properties")
 }
 
 /// Hotel rooms
@@ -1510,8 +1488,8 @@ model HotelRoom {
   // Inventory
   totalRooms Int @db.SmallInt
 
-  createdAt DateTime @default(now()) @map("createdat") @db.Timestamp(0)
-  updatedAt DateTime @updatedAt @map("updatedat") @db.Timestamp(0)
+  createdAt DateTime @default(now()) @map("created_at") @db.Timestamp(0)
+  updatedAt DateTime @updatedAt @map("updated_at") @db.Timestamp(0)
 
   hotel    Hotel          @relation(fields: [hotelId], references: [id], onDelete: Cascade)
   bookings HotelBooking[]
@@ -1523,30 +1501,6 @@ model HotelRoom {
 // ============================================
 // ACTIVITIES & SERVICES
 // ============================================
-
-/// Generic activity model from schema_extra.sql
-model Activity {
-  id                  String   @id @default(uuid()) 
-  destinationId       String?  @map("destination_id") 
-  name                String   @db.Text
-  slug                String   @unique @db.VarChar(500)
-  description         String?  @db.Text
-  price               Decimal? @db.Decimal(10, 2)
-  currency            String?  @db.Text
-  durationText        String?  @map("duration_text") @db.Text
-  image               String?  @db.Text
-  rating              Decimal? @db.Decimal(3, 1)
-  categories          Json?    @db.JsonB
-  location            String?  @db.Text
-  bookingUrl          String?  @map("booking_url") @db.Text
-  sustainabilityScore Decimal? @map("sustainability_score") @db.Decimal(4, 1)
-  published           Boolean  @default(true)
-  createdAt           DateTime @default(now()) @map("createdat") @db.Timestamp(0)
-
-  destination Destination? @relation(fields: [destinationId], references: [id])
-
-  @@map("activities")
-}
 
 /// Servic providers
 model Provider {
@@ -1566,8 +1520,8 @@ model Provider {
   partnership String? @db.VarChar(50)
   active      Boolean @default(true)
 
-  createdAt DateTime   @default(now()) @map("createdat") @db.Timestamp(0)
-  updatedAt DateTime   @updatedAt @map("updatedat") @db.Timestamp(0)
+  createdAt DateTime   @default(now()) @map("created_at") @db.Timestamp(0)
+  updatedAt DateTime   @updatedAt @map("updated_at") @db.Timestamp(0)
   deletedAt DateTime?  @db.Timestamp(3)
   services  Service[]
   transfers Transfer[]
@@ -1621,8 +1575,8 @@ model Service {
   published   Boolean   @default(false)
   publishedAt DateTime? @db.Timestamp(3)
 
-  createdAt DateTime  @default(now()) @map("createdat") @db.Timestamp(0)
-  updatedAt DateTime  @updatedAt @map("updatedat") @db.Timestamp(0)
+  createdAt DateTime  @default(now()) @map("created_at") @db.Timestamp(0)
+  updatedAt DateTime  @updatedAt @map("updated_at") @db.Timestamp(0)
   deletedAt DateTime? @db.Timestamp(3)
 
   provider    Provider?        @relation(fields: [providerId], references: [id])
@@ -1678,29 +1632,7 @@ model ActivityProvider {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  activities ActivityOffering[]
-
   @@map("activity_providers")
-}
-
-// Activity offerings
-model ActivityOffering {
-  id           String   @id @default(cuid())
-  providerId   String
-  activityName String
-  category     String // 'tour', 'adventure', 'cultural'
-  basePrice    Float
-  participants Int
-  duration     String // e.g., '3 hours'
-  imageUrl     String?
-  features     Json // Array of feature strings
-  isActive     Boolean  @default(true)
-  createdAt    DateTime @default(now())
-  updatedAt    DateTime @updatedAt
-
-  provider ActivityProvider @relation(fields: [providerId], references: [id], onDelete: Cascade)
-
-  @@map("activity_offerings")
 }
 
 // Gastronomy service steps (how it works)
@@ -1913,7 +1845,7 @@ model ServiceImage {
   title     String? @db.VarChar(255)
   order     Int     @default(0) @db.SmallInt
 
-  createdAt DateTime @default(now()) @map("createdat") @db.Timestamp(0)
+  createdAt DateTime @default(now()) @map("created_at") @db.Timestamp(0)
   service   Service  @relation(fields: [serviceId], references: [id], onDelete: Cascade)
 
   @@index([serviceId])
@@ -1938,7 +1870,7 @@ model Transfer {
 
   available Boolean @default(true)
 
-  createdAt DateTime @default(now()) @map("createdat") @db.Timestamp(0)
+  createdAt DateTime @default(now()) @map("created_at") @db.Timestamp(0)
 
   provider Provider?         @relation(fields: [providerId], references: [id])
   bookings TransferBooking[]
@@ -2083,7 +2015,7 @@ model CartItem {
   // Metadata
   metadata Json? @db.JsonB
 
-  createdAt DateTime @default(now()) @map("createdat") @db.Timestamp(0)
+  createdAt DateTime @default(now()) @map("created_at") @db.Timestamp(0)
   expiresAt DateTime @db.Timestamp(3) // cart items expire
 
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
@@ -2162,10 +2094,11 @@ model Booking {
   reminderSentAt     DateTime? @map("reminder_sent_at") @db.Timestamp(3)
 
   // Timestamps
-  createdAt    DateTime  @default(now()) @map("createdat") @db.Timestamp(0)
-  updatedAt    DateTime  @updatedAt @map("updatedat") @db.Timestamp(0)
+  createdAt    DateTime  @default(now()) @map("created_at") @db.Timestamp(0)
+  updatedAt    DateTime  @updatedAt @map("updated_at") @db.Timestamp(0)
   checkedInAt  DateTime? @map("checked_in_at") @db.Timestamp(3)
   checkedOutAt DateTime? @map("checked_out_at") @db.Timestamp
+  deletedAt    DateTime? @map("deleted_at") @db.Timestamp(3)
 
   // Relationships
   user            User              @relation(fields: [userId], references: [id], onDelete: Cascade)
@@ -2175,7 +2108,6 @@ model Booking {
   trip            Trip?             @relation(fields: [tripId], references: [id])
   tripDestination TripDestination?  @relation("TripDestinationBookings", fields: [tripDestinationId], references: [id])
   payments        PaymentTransaction[]
-  paymentRecords  Payment[]
   reviews         Review[]           @relation("ReviewBooking")
   flightBookings  FlightBooking[]
   hotelBookings   HotelBooking[]
@@ -2184,13 +2116,14 @@ model Booking {
   bookingHistory  BookingHistory[]
   serviceBookings ServiceBooking[]
 
-  @@index([userId])
-  @@index([agencyId])
+  @@index([userId, bookingStatus, startDate])
+  @@index([agencyId, bookingStatus])
   @@index([clientId])
-  @@index([destinationId])
+  @@index([destinationId, startDate])
   @@index([tripId])
   @@index([bookingStatus, paymentStatus])
   @@index([tripDestinationId])
+  @@index([deletedAt])
   @@map("bookings")
 }
 
@@ -2202,7 +2135,7 @@ model FlightBooking {
   seats     Json // seat numbers: ["12A", "12B"]
   price     Decimal  @db.Decimal(10, 2)
 
-  createdAt DateTime @default(now()) @map("createdat") @db.Timestamp(0)
+  createdAt DateTime @default(now()) @map("created_at") @db.Timestamp(0)
 
   booking Booking @relation(fields: [bookingId], references: [id], onDelete: Cascade)
   flight  Flight? @relation(fields: [flightId], references: [id])
@@ -2219,7 +2152,7 @@ model HotelBooking {
   nights    Int     @db.SmallInt
   price     Decimal @db.Decimal(10, 2)
 
-  createdAt DateTime @default(now()) @map("createdat") @db.Timestamp(0)
+  createdAt DateTime @default(now()) @map("created_at") @db.Timestamp(0)
 
   booking Booking    @relation(fields: [bookingId], references: [id], onDelete: Cascade)
   hotel   Hotel      @relation(fields: [hotelId], references: [id], onDelete: Cascade)
@@ -2242,7 +2175,7 @@ model ServiceBooking {
   timeSlot String?   @db.VarChar(50)
   options  Json?     @db.JsonB
 
-  createdAt DateTime @default(now()) @map("createdat") @db.Timestamp(0)
+  createdAt DateTime @default(now()) @map("created_at") @db.Timestamp(0)
 
   booking Booking @relation(fields: [bookingId], references: [id], onDelete: Cascade)
   service Service @relation(fields: [serviceId], references: [id])
@@ -2259,7 +2192,7 @@ model CruiseBooking {
   cabinNumber String? @db.VarChar(50)
   price       Decimal @db.Decimal(10, 2)
 
-  createdAt DateTime @default(now()) @map("createdat") @db.Timestamp(0)
+  createdAt DateTime @default(now()) @map("created_at") @db.Timestamp(0)
 
   booking Booking @relation(fields: [bookingId], references: [id], onDelete: Cascade)
   cruise  Cruise  @relation(fields: [cruiseId], references: [id])
@@ -2275,7 +2208,7 @@ model TransferBooking {
   pickupTime DateTime @db.Timestamp(3)
   price      Decimal  @db.Decimal(10, 2)
 
-  createdAt DateTime @default(now()) @map("createdat") @db.Timestamp(0)
+  createdAt DateTime @default(now()) @map("created_at") @db.Timestamp(0)
 
   booking  Booking  @relation(fields: [bookingId], references: [id], onDelete: Cascade)
   transfer Transfer @relation(fields: [transferId], references: [id])
@@ -2291,7 +2224,7 @@ model BookingHistory {
   status    String   @db.VarChar(50)
   reason    String?  @db.Text
   changes   Json?    @db.JsonB // what changed
-  createdAt DateTime @default(now()) @map("createdat") @db.Timestamp(0)
+  createdAt DateTime @default(now()) @map("created_at") @db.Timestamp(0)
 
   booking Booking @relation(fields: [bookingId], references: [id], onDelete: Cascade)
 
@@ -2335,10 +2268,11 @@ model PaymentTransaction {
   providerData Json? @map("provider_data") @db.JsonB
 
   // Timestamps
-  createdAt   DateTime  @default(now()) @map("createdat") @db.Timestamp(0)
+  createdAt   DateTime  @default(now()) @map("created_at") @db.Timestamp(0)
   processedAt DateTime? @map("processed_at") @db.Timestamp(3)
   refundedAt  DateTime? @map("refunded_at") @db.Timestamp(3)
-  updatedAt   DateTime  @updatedAt @map("updatedat") @db.Timestamp(0)
+  updatedAt   DateTime  @updatedAt @map("updated_at") @db.Timestamp(0)
+  deletedAt   DateTime? @map("deleted_at") @db.Timestamp(3)
 
   booking Booking @relation(fields: [bookingId], references: [id], onDelete: Cascade)
   user    User    @relation(fields: [userId], references: [id], onDelete: Cascade)
@@ -2347,54 +2281,8 @@ model PaymentTransaction {
   @@index([userId])
   @@index([status])
   @@index([transactionId])
+  @@index([deletedAt])
   @@map("payment_transactions")
-}
-
-/// Payment model (mirror of PaymentTransaction for legacy code — consider migrating to PaymentTransaction)
-model Payment {
-  id        String @id @default(uuid()) 
-  bookingId String @map("booking_id") 
-  userId    String @map("user_id") 
-
-  // Transaction info
-  transactionId        String        @unique @map("transaction_id") @db.VarChar(100)
-  gatewayTransactionId String?       @map("gateway_transaction_id") @db.VarChar(255)
-  amount               Decimal       @db.Decimal(12, 2)
-  currency             Currency      @default(BRL)
-  paymentMethod        PaymentMethod @map("payment_method")
-
-  // Status
-  status        PaymentStatus @map("status")
-  failureReason String?       @map("failure_reason") @db.VarChar(255)
-  errorCode     String?       @map("error_code") @db.VarChar(100)
-  errorMessage  String?       @map("error_message") @db.Text
-
-  // Card info (if applicable)
-  cardLastFour String? @map("card_last_four") @db.VarChar(4)
-  cardBrand    String? @map("card_brand") @db.VarChar(50)
-
-  // Refund info
-  refundable   Boolean @default(false) 
-  refundAmount String? @map("refund_amount") @db.VarChar(20)
-  refundReason String? @map("refund_reason") @db.VarChar(255)
-
-  // Provider data
-  providerData Json? @map("provider_data") @db.JsonB
-
-  // Timestamps
-  createdAt   DateTime  @default(now()) @map("createdat") @db.Timestamp(0)
-  processedAt DateTime? @map("processed_at") @db.Timestamp(3)
-  refundedAt  DateTime? @map("refunded_at") @db.Timestamp(3)
-  updatedAt   DateTime  @updatedAt @map("updatedat") @db.Timestamp(0)
-
-  booking Booking @relation(fields: [bookingId], references: [id], onDelete: Cascade)
-  user    User    @relation(fields: [userId], references: [id], onDelete: Cascade)
-
-  @@index([bookingId])
-  @@index([userId])
-  @@index([status])
-  @@index([transactionId])
-  @@map("payments")
 }
 
 /// Vouchers and promotional codes
@@ -2424,7 +2312,7 @@ model Voucher {
   // Status
   active Boolean @default(true)
 
-  createdAt DateTime @default(now()) @map("createdat") @db.Timestamp(0)
+  createdAt DateTime @default(now()) @map("created_at") @db.Timestamp(0)
 
   user User? @relation(fields: [userId], references: [id], onDelete: SetNull)
 
@@ -2450,8 +2338,8 @@ model Promotion {
   usedCount   Int       @default(0) 
   minPurchase Float?    @db.Real
   packageIds  Json  @default("[]") // Array of package IDs this applies to
-  createdAt   DateTime  @default(now()) @map("createdat") @db.Timestamp(0)
-  updatedAt   DateTime  @updatedAt @map("updatedat") @db.Timestamp(0)
+  createdAt   DateTime  @default(now()) @map("created_at") @db.Timestamp(0)
+  updatedAt   DateTime  @updatedAt @map("updated_at") @db.Timestamp(0)
   deletedAt   DateTime? @db.Timestamp(3)
 
   @@index([active, expiresAt])
@@ -2485,8 +2373,8 @@ model SystemPaymentMethod {
   priority             Int      @default(0)
   isDefault            Boolean  @default(false)
   isTestMode           Boolean  @default(false)
-  createdAt            DateTime @default(now()) @map("createdat") @db.Timestamp(0)
-  updatedAt            DateTime @updatedAt @map("updatedat") @db.Timestamp(0)
+  createdAt            DateTime @default(now()) @map("created_at") @db.Timestamp(0)
+  updatedAt            DateTime @updatedAt @map("updated_at") @db.Timestamp(0)
 
   @@map("system_payment_methods")
 }
@@ -2496,7 +2384,7 @@ model VoucherUsage {
   id        String   @id @default(uuid()) 
   voucherId String   
   userId    String   
-  usedAt    DateTime @default(now()) @map("usedat") @db.Timestamp(0)
+  usedAt    DateTime @default(now()) @map("used_at") @db.Timestamp(0)
 
   voucher Voucher @relation(fields: [voucherId], references: [id], onDelete: Cascade)
   user    User    @relation(fields: [userId], references: [id], onDelete: Cascade)
@@ -2525,13 +2413,10 @@ enum PaymentStatus {
   PENDING
   PAID
   PROCESSING
-  COMPLETED
   FAILED
   REFUNDED
   CANCELLED
   PARTIALLY_REFUNDED
-  SUCCEEDED
-  CANCELED
   REQUIRES_ACTION
 }
 
@@ -3435,78 +3320,6 @@ model CrmEvent {
   @@map("crm_events")
 }
 
-/// CRM Customer management
-model CrmCustomer {
-  id        String   @id @default(uuid()) 
-  name      String   @db.VarChar(100)
-  email     String   @unique @db.VarChar(100)
-  phone     String?  @db.VarChar(20)
-  cpfCnpj   String   @db.VarChar(20) // CPF or CNPJ
-  birthDate DateTime @db.Timestamp(3)
-
-  // Address
-  street       String  @db.VarChar(255)
-  number       String  @db.VarChar(10)
-  complement   String? @db.VarChar(50)
-  neighborhood String? @db.VarChar(50)
-  city         String  @db.VarChar(100)
-  state        String  @db.VarChar(2)
-  zipCode      String  @db.VarChar(10)
-  country      String  @db.VarChar(3)
-
-  // Additional info
-  documents        Json?   @db.JsonB // Array of document objects
-  notes            String? @db.Text
-  marketingConsent Boolean @default(false)
-
-  // Status
-  createdAt DateTime  @default(now()) @db.Timestamp(0)
-  updatedAt DateTime  @updatedAt @db.Timestamp(0)
-  deletedAt DateTime? @db.Timestamp(3)
-
-  // Relationships
-  bookings CrmBooking[]
-
-  @@index([email])
-  @@index([cpfCnpj])
-  @@index([city, state])
-  @@map("crm_customers")
-}
-
-/// CRM Booking management
-model CrmBooking {
-  id            String @id @default(uuid()) 
-  reference     String @unique @db.VarChar(20) // BK-XXXXX-XXXXX format
-  customerId    String 
-  destinationId String 
-
-  // Booking details
-  type          String   @db.VarChar(20) // 'flight', 'hotel', 'package', 'car'
-  startDate     DateTime @db.Timestamp(3)
-  endDate       DateTime @db.Timestamp(3)
-  totalPrice    Decimal  @db.Decimal(10, 2)
-  status        String   @default("pending") @db.VarChar(20) // 'confirmed', 'pending', 'cancelled'
-  paymentMethod String?  @db.VarChar(20)
-  paymentProof  String?  @db.Text
-
-  // Additional info
-  notes String? @db.Text
-
-  // Status
-  createdAt DateTime  @default(now()) @db.Timestamp(0)
-  updatedAt DateTime  @updatedAt @db.Timestamp(0)
-  deletedAt DateTime? @db.Timestamp(3)
-
-  // Relationships
-  customer CrmCustomer @relation(fields: [customerId], references: [id], onDelete: Cascade)
-
-  @@index([customerId])
-  @@index([reference])
-  @@index([status])
-  @@index([startDate, endDate])
-  @@map("crm_bookings")
-}
-
 /// CRM Product Category
 model CrmCategory {
   id          String  @id @default(uuid()) 
@@ -3745,72 +3558,72 @@ model InsuranceProduct {
 
 /// Billing invoices
 model Invoice {
-  id               String    @id @default(uuid()) 
-  number           String    @unique @db.VarChar(100)
-  bookingId        String?   @map("booking_id")
-  status           String?   @db.VarChar(50)
-  issueDate        DateTime? @map("issue_date") @db.Date
-  dueDate          DateTime? @map("due_date") @db.Date
-  paidDate         DateTime? @map("paid_date") @db.Date
-  customer         Json?     @db.JsonB
-  company          Json?     @db.JsonB
-  items            Json?     @db.JsonB
-  subtotal         Decimal?  @db.Decimal(10, 2)
-  taxes            Decimal?  @db.Decimal(10, 2)
-  discounts        Decimal?  @db.Decimal(10, 2)
-  total            Decimal?  @db.Decimal(10, 2)
-  currency         String?   @db.VarChar(10)
-  paymentMethod    String?   @map("payment_method") @db.VarChar(50)
-  paymentReference String?   @map("payment_reference") @db.VarChar(255)
-  notes            String?   @db.Text
-  terms            String?   @db.Text
-  createdAt        DateTime  @default(now()) @db.Timestamp(0)
-  updatedAt        DateTime  @updatedAt @db.Timestamp(0)
+  id               String        @id @default(uuid())
+  number           String        @unique @db.VarChar(100)
+  bookingId        String?       @map("booking_id")
+  status           PaymentStatus?
+  issueDate        DateTime?     @map("issue_date") @db.Date
+  dueDate          DateTime?     @map("due_date") @db.Date
+  paidDate         DateTime?     @map("paid_date") @db.Date
+  customer         Json?         @db.JsonB
+  company          Json?         @db.JsonB
+  items            Json?         @db.JsonB
+  subtotal         Decimal?      @db.Decimal(10, 2)
+  taxes            Decimal?      @db.Decimal(10, 2)
+  discounts        Decimal?      @db.Decimal(10, 2)
+  total            Decimal?      @db.Decimal(10, 2)
+  currency         String?       @db.VarChar(10)
+  paymentMethod    String?       @map("payment_method") @db.VarChar(50)
+  paymentReference String?       @map("payment_reference") @db.VarChar(255)
+  notes            String?       @db.Text
+  terms            String?       @db.Text
+  createdAt        DateTime      @default(now()) @db.Timestamp(0)
+  updatedAt        DateTime      @updatedAt @db.Timestamp(0)
 
   @@map("invoices")
 }
 
 /// Refund requests
 model RefundRequest {
-  id              String    @id @default(uuid()) 
-  bookingId       String?   @map("booking_id")
-  invoiceId       String?   @map("invoice_id")
-  status          String?   @db.VarChar(50)
-  type            String?   @db.VarChar(50)
-  reason          String?   @db.Text
-  requestDate     DateTime? @map("request_date") @db.Timestamp(3)
-  processedDate   DateTime? @map("processed_date") @db.Timestamp(3)
-  completedDate   DateTime? @map("completed_date") @db.Timestamp(3)
-  customer        Json?     @db.JsonB
-  booking         Json?     @db.JsonB
-  refund          Json?     @db.JsonB
-  originalPayment Json?     @map("original_payment") @db.JsonB
-  notes           String?   @db.Text
-  internalNotes   String?   @map("internal_notes") @db.Text
-  customerMessage String?   @map("customer_message") @db.Text
-  attachments     Json?     @db.JsonB
-  processedBy     String?   @map("processed_by")
-  approvedBy      String?   @map("approved_by")
-  createdAt       DateTime  @default(now()) @db.Timestamp(0)
-  updatedAt       DateTime  @updatedAt @db.Timestamp(0)
+  id              String        @id @default(uuid())
+  bookingId       String?       @map("booking_id")
+  invoiceId       String?       @map("invoice_id")
+  status          PaymentStatus?
+  type            String?       @db.VarChar(50)
+  reason          String?       @db.Text
+  requestDate     DateTime?     @map("request_date") @db.Timestamp(3)
+  processedDate   DateTime?     @map("processed_date") @db.Timestamp(3)
+  completedDate   DateTime?     @map("completed_date") @db.Timestamp(3)
+  customer        Json?         @db.JsonB
+  booking         Json?         @db.JsonB
+  refund          Json?         @db.JsonB
+  originalPayment Json?         @map("original_payment") @db.JsonB
+  notes           String?       @db.Text
+  internalNotes   String?       @map("internal_notes") @db.Text
+  customerMessage String?       @map("customer_message") @db.Text
+  attachments     Json?         @db.JsonB
+  processedBy     String?       @map("processed_by")
+  approvedBy      String?       @map("approved_by")
+  createdAt       DateTime      @default(now()) @db.Timestamp(0)
+  updatedAt       DateTime      @updatedAt @db.Timestamp(0)
 
   @@map("refund_requests")
 }
 
 /// Administrative transactions
 model AdminTransaction {
-  id            String    @id @default(uuid()) 
-  date          DateTime? @db.Timestamp(3)
-  name          String?   @db.VarChar(255)
-  email         String?   @db.VarChar(255)
-  amount        Decimal?  @db.Decimal(10, 2)
-  type          String?   @db.VarChar(50)
-  status        String?   @db.VarChar(50)
-  description   String?   @db.Text
-  paymentMethod String?   @map("payment_method") @db.VarChar(50)
-  invoiceId     String?   @map("invoice_id")
-  customer      Json?     @db.JsonB
-  createdAt     DateTime  @default(now()) @db.Timestamp(0)
+  id            String        @id @default(uuid())
+  date          DateTime?     @db.Timestamp(3)
+  name          String?       @db.VarChar(255)
+  email         String?       @db.VarChar(255)
+  amount        Decimal?      @db.Decimal(10, 2)
+  type          String?       @db.VarChar(50)
+  status        PaymentStatus?
+  description   String?       @db.Text
+  paymentMethod String?       @map("payment_method") @db.VarChar(50)
+  invoiceId     String?       @map("invoice_id")
+  customer      Json?         @db.JsonB
+  createdAt     DateTime      @default(now()) @db.Timestamp(0)
 
   @@map("admin_transactions")
 }
@@ -4418,6 +4231,7 @@ model WvDestination {
   dicas             Json?    @db.JsonB
   tags              Json?    @db.JsonB
   wikivoyageUrl     String?  @map("wikivoyage_url") @db.VarChar(500)
+  wikidataId        String?  @map("wikidata_id") @db.VarChar(32)
   wikipediaResumo   String?  @map("wikipedia_resumo") @db.Text
   wikipediaUrl      String?  @map("wikipedia_url") @db.VarChar(500)
   climaTempo        Json?    @map("clima_tempo") @db.JsonB
@@ -4427,6 +4241,17 @@ model WvDestination {
   longitude         Float?   @db.Real
   imagemUrl         String?  @map("imagem_url") @db.VarChar(500)
   imagemQuery       String?  @map("imagem_query") @db.VarChar(255)
+
+  // Attribution da imagem principal
+  imagemFonte       String?  @map("imagem_fonte") @db.VarChar(32)
+  imagemAutor       String?  @map("imagem_autor") @db.VarChar(255)
+  imagemLicenca     String?  @map("imagem_licenca") @db.VarChar(100)
+  imagemSourceUrl   String?  @map("imagem_source_url") @db.VarChar(500)
+  imagemVerificada  Boolean  @default(false) @map("imagem_verificada")
+  imagemWikidataId  String?  @map("imagem_wikidata_id") @db.VarChar(32)
+  imagemLargura     Int?     @map("imagem_largura")
+  imagemAltura      Int?     @map("imagem_altura")
+
   hotelCount        Int      @default(0) @map("hotel_count")
   createdAt         DateTime @default(now()) @map("created_at")
   updatedAt         DateTime @updatedAt @map("updated_at")
@@ -4434,6 +4259,9 @@ model WvDestination {
   hotels   WvHotel[]
   flights  WvFlight[]
   listings WvListing[]
+  images   WvDestinationImage[]
+  videos   WvDestinationVideo[]
+  translations DestinationTranslation[]
 
   @@index([pais, nome])
   @@index([slug])
@@ -4574,7 +4402,7 @@ model CarRentalCompany {
   name      String      @db.VarChar(100)
   slug      String      @unique @db.VarChar(100)
   logoUrl   String?     @db.Text
-  createdAt DateTime    @default(now()) @map("createdat") @db.Timestamp(0)
+  createdAt DateTime    @default(now()) @map("created_at") @db.Timestamp(0)
 
   cars      RentalCar[]
 
@@ -4601,6 +4429,72 @@ model RentalCar {
   @@index([category])
   @@index([companyId])
   @@map("rental_cars")
+}
+
+// ========== Destination Media & i18n ==========
+
+/// Galeria de imagens do destino (Wikimedia Commons, Openverse, etc.)
+model WvDestinationImage {
+  id          String  @id @default(cuid())
+  destinoId   Int     @map("destino_id")
+  url         String  @db.Text
+  thumbUrl    String? @map("thumb_url") @db.Text
+  blurDataUrl String? @map("blur_data_url") @db.Text
+  width       Int?
+  height      Int?
+  author      String? @db.VarChar(255)
+  license     String  @db.VarChar(100)
+  source      String  @db.VarChar(32)
+  sourceUrl   String? @map("source_url") @db.Text
+  sortOrder   Int     @default(0) @map("sort_order")
+  isPrimary   Boolean @default(false) @map("is_primary")
+
+  destino WvDestination @relation(fields: [destinoId], references: [id], onDelete: Cascade)
+
+  @@index([destinoId, sortOrder])
+  @@map("wv_destination_images")
+}
+
+/// Vídeos do destino (Wikimedia Commons, só verificado)
+model WvDestinationVideo {
+  id          String   @id @default(cuid())
+  destinoId   Int      @map("destino_id")
+  url         String   @db.Text
+  thumbUrl    String?  @map("thumb_url") @db.Text
+  posterUrl   String?  @map("poster_url") @db.Text
+  width       Int?
+  height      Int?
+  durationSec Int?     @map("duration_sec")
+  fileSizeKb  Int?     @map("file_size_kb")
+  author      String?  @db.VarChar(255)
+  license     String   @db.VarChar(100)
+  source      String   @db.VarChar(32)
+  sourceUrl   String?  @map("source_url") @db.Text
+  isVerified  Boolean  @default(false) @map("is_verified")
+  sortOrder   Int      @default(0) @map("sort_order")
+  createdAt   DateTime @default(now()) @map("created_at")
+
+  destino WvDestination @relation(fields: [destinoId], references: [id], onDelete: Cascade)
+
+  @@index([destinoId, sortOrder])
+  @@index([isVerified, sortOrder])
+  @@map("wv_destination_videos")
+}
+
+/// Traduções de nome/descrição/resumo por idioma
+model DestinationTranslation {
+  destinoId  Int
+  lang       String   @db.VarChar(8)
+  nome       String?  @db.VarChar(255)
+  descricao  String?  @db.Text
+  resumo     String?  @db.Text
+  fonte      String   @db.VarChar(32)
+  verificado Boolean  @default(false)
+
+  destino WvDestination @relation(fields: [destinoId], references: [id], onDelete: Cascade)
+
+  @@id([destinoId, lang])
+  @@map("wv_destination_translations")
 }
 
 // ============================================

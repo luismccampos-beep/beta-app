@@ -1,17 +1,20 @@
 import { NextResponse } from 'next/server';
-
+import { z } from 'zod';
+import { apiHandler } from '@/lib/api/handler';
 import { getListingsFromDb, isTravelCatalogDbEnabled } from '../../../../../lib/travel/catalog-db';
 
 export const dynamic = 'force-dynamic';
 
-/** GET /api/travel/v1/listings?slug=pt-42&type=sleep */
-export async function GET(req: Request) {
+const ListingsQuerySchema = z.object({
+  slug: z.string().optional(),
+  destinoId: z.coerce.number().int().positive().optional(),
+  type: z.string().optional(),
+  limit: z.coerce.number().int().min(1).max(200).default(30),
+});
+
+export const GET = apiHandler(async (req: Request) => {
   const url = new URL(req.url);
-  const slug = url.searchParams.get('slug')?.trim() || undefined;
-  const destinoIdParam = url.searchParams.get('destinoId');
-  const type = url.searchParams.get('type')?.trim() || undefined;
-  const limit = parseInt(url.searchParams.get('limit') ?? '30', 10);
-  const destinoId = destinoIdParam ? parseInt(destinoIdParam, 10) : undefined;
+  const params = ListingsQuerySchema.parse(Object.fromEntries(url.searchParams));
 
   if (!isTravelCatalogDbEnabled()) {
     return NextResponse.json(
@@ -23,11 +26,6 @@ export async function GET(req: Request) {
     );
   }
 
-  try {
-    const listings = await getListingsFromDb({ slug, destinoId, type, limit });
-    return NextResponse.json({ ok: true, source: 'db', count: listings.length, listings });
-  } catch (e: unknown) {
-    const message = e instanceof Error ? e.message : 'Database error';
-    return NextResponse.json({ ok: false, message }, { status: 503 });
-  }
-}
+  const listings = await getListingsFromDb({ slug: params.slug, destinoId: params.destinoId, type: params.type, limit: params.limit });
+  return NextResponse.json({ ok: true, source: 'db', count: listings.length, listings });
+});

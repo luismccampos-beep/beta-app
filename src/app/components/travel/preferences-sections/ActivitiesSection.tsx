@@ -128,7 +128,7 @@ export function ActivitiesSection({
         <Label className="text-base font-semibold">{t('experienceTypes')}</Label>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
           {EXPERIENCE_TYPE_IDS.map((id) => (
-            <div key={id} className="flex items-center space-x-2 bg-gray-50 dark:bg-gray-800 rounded-lg p-3 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">
+            <div key={id} className="flex items-center space-x-2 bg-gray-50 dark:bg-gray-800 rounded-lg p-3 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors touch-manipulation">
               <Controller name="experienceTypes" control={control} render={({ field }) => (
                 <Checkbox
                   id={`experience-${id}`}
@@ -172,7 +172,7 @@ export function ActivitiesSection({
                   }
                 }}
                 className={`
-                  p-3 rounded-lg border-2 transition-all text-sm font-medium
+                  p-3 rounded-lg border-2 transition-all text-sm font-medium touch-manipulation
                   ${isSelected
                     ? 'border-teal-600 dark:border-teal-500 bg-teal-50 dark:bg-teal-900/30'
                     : 'border-gray-200 dark:border-gray-600 bg-white dark:bg-gray-800 hover:border-gray-300 dark:hover:border-gray-500'

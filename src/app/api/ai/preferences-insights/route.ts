@@ -1,10 +1,15 @@
 import { NextResponse } from 'next/server';
+import { z } from 'zod';
+import { apiHandler } from '@/lib/api/handler';
 
 export const dynamic = 'force-dynamic';
 
-type PreferencesPayload = Record<string, unknown>;
+const PreferencesInsightsSchema = z.object({
+  preferences: z.record(z.string(), z.unknown()).default({}),
+  locale: z.string().optional().default('pt'),
+});
 
-export async function POST(req: Request) {
+export const POST = apiHandler(async (req: Request) => {
   const baseUrl = process.env.ML_SERVICE_BASE_URL?.trim();
   const apiKey = process.env.ML_SERVICE_API_KEY?.trim();
   if (!baseUrl) {
@@ -15,13 +20,7 @@ export async function POST(req: Request) {
     });
   }
 
-  const body = (await req.json().catch(() => ({}))) as {
-    preferences?: PreferencesPayload;
-    locale?: string;
-  };
-
-  const preferences = body.preferences ?? {};
-  const locale = (body.locale ?? 'pt').toString();
+  const { preferences, locale } = PreferencesInsightsSchema.parse(await req.json());
 
   const query = `Generate short travel insights and recommended next steps based on these preferences:\n\n${JSON.stringify(
     preferences,
@@ -70,5 +69,5 @@ export async function POST(req: Request) {
     answer: data.data?.answer ?? '',
     confidence: data.data?.confidence ?? null,
   });
-}
+});
 

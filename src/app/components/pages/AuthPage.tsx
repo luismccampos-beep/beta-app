@@ -1,4 +1,7 @@
+'use client';
+
 import { useState, useMemo } from 'react';
+import Link from 'next/link';
 import { signIn } from 'next-auth/react';
 import { Button } from '../ui/button';
 import { Input } from '../ui/input';
@@ -290,13 +293,12 @@ export function AuthPage({ onLoginSuccess, onBackToHome, onNavigateToLegal }: Au
                         {t('rememberMe')}
                       </Label>
                     </div>
-                    <button
-                      type="button"
-                      onClick={() => toast.info('Password reset will be available soon. Contact support for assistance.')}
+                    <Link
+                      href="/forgot-password"
                       className="text-sm text-teal-600 dark:text-teal-400 hover:text-teal-700 dark:hover:text-teal-300 font-medium"
                     >
                       {t('forgotPassword')}
-                    </button>
+                    </Link>
                   </div>
                 </div>
 

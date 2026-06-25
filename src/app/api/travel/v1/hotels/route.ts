@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
-
+import { z } from 'zod';
+import { apiHandler } from '@/lib/api/handler';
 import { getHotelsFromDb, isTravelCatalogDbEnabled } from '../../../../../lib/travel/catalog-db';
 import {
   getMockDestinationBySlug,
@@ -9,22 +10,19 @@ import { parseDestinationSlug } from '../../../../../lib/travel/destination-slug
 
 export const dynamic = 'force-dynamic';
 
-/** GET /api/travel/v1/hotels?slug=pt-42 | ?destinoId=42 */
-export async function GET(req: Request) {
+const HotelsQuerySchema = z.object({
+  slug: z.string().optional(),
+  destinoId: z.coerce.number().int().positive().optional(),
+  limit: z.coerce.number().int().min(1).max(100).default(24),
+});
+
+export const GET = apiHandler(async (req: Request) => {
   const url = new URL(req.url);
-  const slug = url.searchParams.get('slug')?.trim() || undefined;
-  const destinoIdParam = url.searchParams.get('destinoId');
-  const destinoId = destinoIdParam ? parseInt(destinoIdParam, 10) : undefined;
-  const limit = parseInt(url.searchParams.get('limit') ?? '24', 10);
+  const { slug, destinoId, limit } = HotelsQuerySchema.parse(Object.fromEntries(url.searchParams));
 
   if (isTravelCatalogDbEnabled()) {
-    try {
-      const hotels = await getHotelsFromDb({ slug, destinoId, limit });
-      return NextResponse.json({ ok: true, source: 'db', count: hotels.length, hotels });
-    } catch (e: unknown) {
-      const message = e instanceof Error ? e.message : 'Database error';
-      return NextResponse.json({ ok: false, message }, { status: 503 });
-    }
+    const hotels = await getHotelsFromDb({ slug, destinoId, limit });
+    return NextResponse.json({ ok: true, source: 'db', count: hotels.length, hotels });
   }
 
   let id = destinoId;
@@ -41,4 +39,4 @@ export async function GET(req: Request) {
 
   const hotels = getMockHotelsForDestination(id).slice(0, Math.min(limit, 50));
   return NextResponse.json({ ok: true, source: 'bundle', count: hotels.length, hotels });
-}
+});

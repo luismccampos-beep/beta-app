@@ -1,3 +1,5 @@
+'use client';
+
 import { useState, useEffect, useMemo, useCallback } from 'react';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import { addDaysIso, defaultDepartureIso } from '../../../lib/travel/buildResultsQuery';
@@ -22,8 +24,19 @@ import {
   Search,
   SlidersHorizontal,
 } from 'lucide-react';
+import { motion } from 'framer-motion';
 import { AppHeader } from '../AppHeader';
 import { AppFooter } from '../AppFooter';
+
+const fadeInUp = {
+  hidden: { opacity: 0, y: 30 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] } },
+};
+
+const staggerContainer = {
+  hidden: { opacity: 0 },
+  visible: { opacity: 1, transition: { staggerChildren: 0.08, delayChildren: 0.1 } },
+};
 import { filterOptions, TravelResult } from '../data/mockResults';
 import { DestinationResultCard } from '../travel/DestinationResultCard';
 import { DestinationAirportBadge } from '../travel/DestinationAirportBadge';
@@ -374,15 +387,28 @@ export function ResultsPage({ onLogout, onNavigateToDashboard }: ResultsPageProp
             </div>
 
             {resultsLoading && (
-              <div className="text-center py-16">
-                <div className="inline-block animate-spin rounded-full h-8 w-8 border-4 border-teal-500 border-t-transparent mb-4" />
-                <p className="text-gray-600 dark:text-gray-400">{(mode === 'cruises' || mode === 'cruise') ? t('loadingCruiseResults') : t('loadingLiveResults')}</p>
-              </div>
+              <motion.div variants={staggerContainer} initial="hidden" animate="visible" className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8" aria-label="Loading results">
+                {Array.from({ length: 6 }).map((_, i) => (
+                  <motion.div key={i} variants={fadeInUp} className="rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 overflow-hidden animate-pulse">
+                    <div className="aspect-[4/3] bg-gray-200 dark:bg-gray-700" />
+                    <div className="p-4 space-y-3">
+                      <div className="h-4 bg-gray-200 dark:bg-gray-700 rounded w-3/4" />
+                      <div className="h-3 bg-gray-200 dark:bg-gray-700 rounded w-1/2" />
+                      <div className="flex gap-2">
+                        <div className="h-6 bg-gray-200 dark:bg-gray-700 rounded-full w-16" />
+                        <div className="h-6 bg-gray-200 dark:bg-gray-700 rounded-full w-20" />
+                      </div>
+                      <div className="h-3 bg-gray-200 dark:bg-gray-700 rounded w-full" />
+                      <div className="h-3 bg-gray-200 dark:bg-gray-700 rounded w-2/3" />
+                    </div>
+                  </motion.div>
+                ))}
+              </motion.div>
             )}
 
             {!resultsLoading && (
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
-                {filteredResults.map((result) => {
+              <motion.div variants={staggerContainer} initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-40px' }} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
+                {filteredResults.map((result, idx) => {
                   const prefsQ = searchParams.get('prefs');
                   const detailHref = result.destinationSlug
                     ? `${destinationDetailPath(result.destinationSlug, locale)}?rq=${encodeURIComponent(resultsQuery)}${prefsQ ? `&prefs=${encodeURIComponent(prefsQ)}` : ''}`
@@ -413,10 +439,11 @@ export function ResultsPage({ onLogout, onNavigateToDashboard }: ResultsPageProp
                     },
                   };
                   if (detailHref) {
-                    return <DestinationResultCard key={result.id} result={result} href={detailHref} labels={cardLabels} tipPreviews={tipPreviews} />;
+                    return <motion.div key={result.id} variants={fadeInUp} layout><DestinationResultCard result={result} href={detailHref} labels={cardLabels} tipPreviews={tipPreviews} /></motion.div>;
                   }
                   return (
-                    <Card key={result.id} className="group relative overflow-hidden border-0 bg-white dark:bg-gray-800 shadow-md hover:shadow-xl ring-1 ring-gray-200/60 dark:ring-gray-700/60 transition-all duration-300">
+                    <motion.div key={result.id} variants={fadeInUp} layout>
+                    <Card className="group relative overflow-hidden border-0 bg-white dark:bg-gray-800 shadow-md hover:shadow-xl ring-1 ring-gray-200/60 dark:ring-gray-700/60 transition-all duration-300">
                       {/* Hero image */}
                       <div className="relative aspect-video overflow-hidden">
                         <img src={result.imageUrl} alt={result.destination} className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110" />
@@ -462,9 +489,10 @@ export function ResultsPage({ onLogout, onNavigateToDashboard }: ResultsPageProp
                         </div>
                       </CardContent>
                     </Card>
+                    </motion.div>
                   );
                 })}
-              </div>
+              </motion.div>
             )}
 
             {/* Empty state */}

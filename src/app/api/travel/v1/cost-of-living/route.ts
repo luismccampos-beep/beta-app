@@ -1,35 +1,27 @@
 import { NextResponse } from 'next/server';
-
+import { z } from 'zod';
+import { apiHandler } from '@/lib/api/handler';
 import { isTravelCatalogDbEnabled, lookupCostOfLivingDb } from '../../../../../lib/travel/catalog-db';
 import { summarizeCostOfLiving } from '../../../../../lib/travel/cost-tier';
 import { loadMockTravelBundle } from '../../../../../lib/travel/mock-travel/load';
 
 export const dynamic = 'force-dynamic';
 
-/** GET /api/travel/v1/cost-of-living?city=Lisboa&country=Portugal */
-export async function GET(req: Request) {
-  const url = new URL(req.url);
-  const city = url.searchParams.get('city')?.trim();
-  const country = url.searchParams.get('country')?.trim();
+const CostOfLivingQuerySchema = z.object({
+  city: z.string().min(1),
+  country: z.string().min(1),
+});
 
-  if (!city || !country) {
-    return NextResponse.json(
-      { ok: false, message: 'Provide city and country' },
-      { status: 400 },
-    );
-  }
+export const GET = apiHandler(async (req: Request) => {
+  const url = new URL(req.url);
+  const { city, country } = CostOfLivingQuerySchema.parse(Object.fromEntries(url.searchParams));
 
   if (isTravelCatalogDbEnabled()) {
-    try {
-      const result = await lookupCostOfLivingDb(city, country);
-      if (!result) {
-        return NextResponse.json({ ok: false, message: 'Not found' }, { status: 404 });
-      }
-      return NextResponse.json({ ok: true, source: 'db', ...result });
-    } catch (e: unknown) {
-      const message = e instanceof Error ? e.message : 'Database error';
-      return NextResponse.json({ ok: false, message }, { status: 503 });
+    const result = await lookupCostOfLivingDb(city, country);
+    if (!result) {
+      return NextResponse.json({ ok: false, message: 'Not found' }, { status: 404 });
     }
+    return NextResponse.json({ ok: true, source: 'db', ...result });
   }
 
   const bundle = loadMockTravelBundle();
@@ -57,4 +49,4 @@ export async function GET(req: Request) {
     custo: dest.custo_de_vida,
     summary: summarizeCostOfLiving(dest.custo_de_vida),
   });
-}
+});

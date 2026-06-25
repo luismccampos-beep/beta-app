@@ -1,60 +1,31 @@
 import { NextResponse } from 'next/server';
-
+import { z } from 'zod';
+import { apiHandler } from '@/lib/api/handler';
 import { estimateFlightPrice, scoreFlight } from '../../../../../../lib/travel/flight-price-estimator';
 import { isTravelCatalogDbEnabled } from '../../../../../../lib/travel/catalog-db';
 
 export const dynamic = 'force-dynamic';
 export const maxDuration = 15;
 
-/**
- * GET /api/travel/v1/flights/estimate
- *
- * Query params:
- *   origin      (obrigatório) IATA do aeroporto de origem, ex: "LIS"
- *   dest        (obrigatório) IATA do destino, ex: "FCO"
- *   month       (opcional) Mês da viagem 1-12. Default: mês corrente
- *   distanceKm  (opcional) Distância em km para fallback heurístico
- *   passengers  (opcional) Nº de passageiros. Default: 1
- *   budget      (opcional) Orçamento total em EUR
- *   tripNights  (opcional) Nº de noites da viagem (para scoring)
- */
-export async function GET(req: Request) {
+const FlightEstimateQuerySchema = z.object({
+  origin: z.string().min(1),
+  dest: z.string().min(1),
+  month: z.coerce.number().int().min(1).max(12).optional(),
+  distanceKm: z.coerce.number().positive().optional(),
+  passengers: z.coerce.number().int().min(1).default(1),
+  budget: z.coerce.number().positive().optional(),
+  tripNights: z.coerce.number().int().min(1).default(7),
+}).refine((data) => data.origin.toUpperCase() !== data.dest.toUpperCase(), {
+  message: 'origin and dest must be different',
+  path: ['dest'],
+});
+
+export const GET = apiHandler(async (req: Request) => {
   const url = new URL(req.url);
-  const origin = url.searchParams.get('origin')?.trim().toUpperCase();
-  const dest = url.searchParams.get('dest')?.trim().toUpperCase();
-  const monthParam = url.searchParams.get('month');
-  const distanceKmParam = url.searchParams.get('distanceKm');
-  const passengersParam = url.searchParams.get('passengers');
-  const budgetParam = url.searchParams.get('budget');
-  const tripNightsParam = url.searchParams.get('tripNights');
+  const params = FlightEstimateQuerySchema.parse(Object.fromEntries(url.searchParams));
+  const origin = params.origin.trim().toUpperCase();
+  const dest = params.dest.trim().toUpperCase();
 
-  // ── Validation ──────────────────────────────────────────────────
-  if (!origin || !dest) {
-    return NextResponse.json(
-      { ok: false, message: 'origin and dest IATA codes required' },
-      { status: 400 },
-    );
-  }
-
-  if (origin === dest) {
-    return NextResponse.json(
-      { ok: false, message: 'origin and dest must be different' },
-      { status: 400 },
-    );
-  }
-
-  const monthRaw = monthParam ? parseInt(monthParam, 10) : NaN;
-  const month = !isNaN(monthRaw) ? Math.max(1, Math.min(12, monthRaw)) : undefined;
-  const distanceKmRaw = distanceKmParam ? parseFloat(distanceKmParam) : NaN;
-  const distanceKm = !isNaN(distanceKmRaw) ? distanceKmRaw : undefined;
-  const passengersRaw = passengersParam ? parseInt(passengersParam, 10) : NaN;
-  const passengers = !isNaN(passengersRaw) ? Math.max(1, passengersRaw) : undefined;
-  const budgetRaw = budgetParam ? parseFloat(budgetParam) : NaN;
-  const budget = !isNaN(budgetRaw) ? budgetRaw : undefined;
-  const tripNightsRaw = tripNightsParam ? parseInt(tripNightsParam, 10) : NaN;
-  const tripNights = !isNaN(tripNightsRaw) ? Math.max(1, tripNightsRaw) : 7;
-
-  // ── DB lookup (se configurado) ──────────────────────────────────
   let dbStats = null;
   if (isTravelCatalogDbEnabled()) {
     try {
@@ -65,7 +36,7 @@ export async function GET(req: Request) {
             origin: { code: origin },
             dest: { code: dest },
           },
-          mes: month ?? undefined,
+          mes: params.month ?? undefined,
         },
         orderBy: { ano: 'desc' },
         take: 12,
@@ -75,27 +46,24 @@ export async function GET(req: Request) {
     }
   }
 
-  // ── Estimate ────────────────────────────────────────────────────
   const estimate = estimateFlightPrice({
     originIata: origin,
     destIata: dest,
-    month,
-    distanceKm,
-    passengers,
+    month: params.month,
+    distanceKm: params.distanceKm,
+    passengers: params.passengers,
   });
 
-  // ── Score (se budget fornecido) ─────────────────────────────────
   let score: number | null = null;
-  if (budget != null && budget > 0) {
-    score = scoreFlight(estimate.estimatedPricePerTraveler, budget, tripNights);
+  if (params.budget != null && params.budget > 0) {
+    score = scoreFlight(estimate.estimatedPricePerTraveler, params.budget, params.tripNights);
   }
 
-  // ── Response ────────────────────────────────────────────────────
   return NextResponse.json({
     ok: true,
     origin,
     dest,
-    month: month ?? new Date().getMonth() + 1,
+    month: params.month ?? new Date().getMonth() + 1,
     estimate,
     score,
     dbStatsCount: dbStats?.length ?? 0,
@@ -103,4 +71,4 @@ export async function GET(req: Request) {
       ? 'Preço médio estimado baseado em dados históricos — não é preço garantido'
       : 'Preço em tempo real (live)',
   });
-}
+});

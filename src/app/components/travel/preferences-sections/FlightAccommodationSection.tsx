@@ -7,9 +7,10 @@ import { Label } from '../../ui/label';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '../../ui/select';
 import { Checkbox } from '../../ui/checkbox';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '../../ui/tabs';
-import { Badge } from '../../ui/badge';
+import { OpenMoji } from '../../ui/openmoji';
 import type { PreferencesSectionProps } from './types';
 import {
+  CABIN_CLASS_IDS,
   SEAT_PREFERENCE_IDS,
   MEAL_PREFERENCE_IDS,
   ROOM_TYPE_IDS,
@@ -18,6 +19,16 @@ import {
   CRUISE_SHIP_TYPE_IDS,
   CRUISE_TIER_IDS,
 } from '../../../../lib/i18n/preferences-form-options';
+
+function cabinClassEmoji(value: string): string {
+  switch (value) {
+    case 'economy': return '💺';
+    case 'premium_economy': return '✈️';
+    case 'business': return '🥂';
+    case 'first': return '👑';
+    default: return '✈️';
+  }
+}
 
 export function FlightAccommodationSection({
   form,
@@ -54,22 +65,56 @@ export function FlightAccommodationSection({
       </div>
 
       <Tabs defaultValue="flight" className="w-full">
-        <TabsList className="flex flex-col h-auto w-full gap-1 p-1 sm:grid sm:grid-cols-3 sm:h-12">
-          <TabsTrigger value="flight" className="gap-2 justify-start sm:justify-center min-h-11 text-xs sm:text-sm px-2">
+        <TabsList className="flex overflow-x-auto snap-x scrollbar-none gap-1 p-1 sm:grid sm:grid-cols-3 sm:h-12 sm:overflow-visible">
+          <TabsTrigger value="flight" className="gap-2 justify-start sm:justify-center min-h-11 text-xs sm:text-sm px-3 snap-start shrink-0">
             <Plane className="w-4 h-4 shrink-0" />
             <span className="truncate">✈️ {t('flightPreferences')}</span>
           </TabsTrigger>
-          <TabsTrigger value="accommodation" className="gap-2 justify-start sm:justify-center min-h-11 text-xs sm:text-sm px-2">
+          <TabsTrigger value="accommodation" className="gap-2 justify-start sm:justify-center min-h-11 text-xs sm:text-sm px-3 snap-start shrink-0">
             <Hotel className="w-4 h-4 shrink-0" />
             <span className="truncate">🏨 {t('accommodation')}</span>
           </TabsTrigger>
-          <TabsTrigger value="cruise" className="gap-2 justify-start sm:justify-center min-h-11 text-xs sm:text-sm px-2">
+          <TabsTrigger value="cruise" className="gap-2 justify-start sm:justify-center min-h-11 text-xs sm:text-sm px-3 snap-start shrink-0">
             <Ship className="w-4 h-4 shrink-0" />
             <span className="truncate">🚢 {t('cruisePreferences')}</span>
           </TabsTrigger>
         </TabsList>
 
         <TabsContent value="flight" className="space-y-6 mt-6">
+          {/* Cabin Class (moved from BudgetSection) */}
+          <div className="space-y-3">
+            <Label className="text-base font-semibold">{t('preferredFlightCabin')}</Label>
+            <p className="text-xs text-gray-500 dark:text-gray-400">{t('cabinDuffelNote')}</p>
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+              {(travelCatalog?.duffelCabinClasses?.length
+                ? travelCatalog.duffelCabinClasses
+                : CABIN_CLASS_IDS.map((value) => ({ value, label: '' }))
+              ).map((cabin) => {
+                const isSelected = watchedPreferences.cabinClass === cabin.value;
+                return (
+                  <button
+                    key={cabin.value}
+                    type="button"
+                    onClick={() => setValue('cabinClass', cabin.value)}
+                    className={`p-4 rounded-lg border-2 transition-all text-center touch-manipulation ${
+                      isSelected
+                        ? 'border-teal-600 dark:border-teal-500 bg-teal-50 dark:bg-teal-900/30 shadow-md'
+                        : 'border-gray-200 dark:border-gray-600 hover:border-gray-300 dark:hover:border-gray-500 bg-white dark:bg-gray-800'
+                    }`}
+                  >
+                    <OpenMoji emoji={cabinClassEmoji(cabin.value)} size={28} className="mx-auto mb-2" />
+                    <div className="text-sm font-semibold">
+                      {(CABIN_CLASS_IDS as readonly string[]).includes(cabin.value)
+                        ? t(`options.cabinClass.${cabin.value}`)
+                        : cabin.label}
+                    </div>
+                  </button>
+                );
+              })}
+            </div>
+            {errors.cabinClass && <p className="text-red-500 text-xs mt-1">{errors.cabinClass.message}</p>}
+          </div>
+
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
             <div className="space-y-3">
               <Label htmlFor="seatPreference" className="text-base font-semibold">{t('seatPreference')}</Label>
@@ -122,7 +167,7 @@ export function FlightAccommodationSection({
                 {travelCatalog!.loyaltyProgrammes.map((program) => (
                   <div
                     key={program.id}
-                    className="flex items-center space-x-2 bg-gray-50 dark:bg-gray-800 rounded-lg p-3 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
+                    className="flex items-center space-x-2 bg-gray-50 dark:bg-gray-800 rounded-lg p-3 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors touch-manipulation"
                   >
                     <Controller name="loyaltyPrograms" control={control} render={({ field }) => (
                       <Checkbox
@@ -157,7 +202,7 @@ export function FlightAccommodationSection({
                 {travelCatalog!.accommodations.map((type) => (
                   <div
                     key={type.code}
-                    className="flex items-center space-x-2 bg-gray-50 dark:bg-gray-800 rounded-lg p-3 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
+                    className="flex items-center space-x-2 bg-gray-50 dark:bg-gray-800 rounded-lg p-3 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors touch-manipulation"
                   >
                     <Controller name="accommodationType" control={control} render={({ field }) => (
                       <Checkbox
@@ -211,7 +256,7 @@ export function FlightAccommodationSection({
                 {travelCatalog!.facilities.map((amenity) => (
                   <div
                     key={amenity.code}
-                    className="flex items-center space-x-2 bg-gray-50 dark:bg-gray-800 rounded-lg p-3 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
+                    className="flex items-center space-x-2 bg-gray-50 dark:bg-gray-800 rounded-lg p-3 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors touch-manipulation"
                   >
                     <Controller name="amenities" control={control} render={({ field }) => (
                       <Checkbox
@@ -245,7 +290,7 @@ export function FlightAccommodationSection({
                 {travelCatalog!.chains.map((chain) => (
                   <div
                     key={chain.code}
-                    className="flex items-center space-x-2 bg-gray-50 dark:bg-gray-800 rounded-lg p-3 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
+                    className="flex items-center space-x-2 bg-gray-50 dark:bg-gray-800 rounded-lg p-3 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors touch-manipulation"
                   >
                     <Checkbox
                       id={`chain-${chain.code}`}
@@ -286,14 +331,14 @@ export function FlightAccommodationSection({
                   {CRUISE_DESTINATION_IDS.map((id) => (
                     <div
                       key={id}
-                      className="flex items-center space-x-2 bg-gray-50 dark:bg-gray-800 rounded-lg p-3 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
-                    >
-                      <Checkbox
-                        id={`cruise-dest-${id}`}
-                        checked={watchedPreferences.cruiseDestinations.includes(id)}
-                        onCheckedChange={() => toggleArrayValue('cruiseDestinations', id)}
-                      />
-                      <Label htmlFor={`cruise-dest-${id}`} className="cursor-pointer text-sm font-medium">
+                    className="flex items-center space-x-2 bg-gray-50 dark:bg-gray-800 rounded-lg p-3 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors touch-manipulation"
+                  >
+                    <Checkbox
+                      id={`cruise-dest-${id}`}
+                      checked={watchedPreferences.cruiseDestinations.includes(id)}
+                      onCheckedChange={() => toggleArrayValue('cruiseDestinations', id)}
+                    />
+                    <Label htmlFor={`cruise-dest-${id}`} className="cursor-pointer text-sm font-medium">
                         {t(`options.cruise.destinations.${id}`)}
                       </Label>
                     </div>
@@ -348,7 +393,7 @@ export function FlightAccommodationSection({
                       key={id}
                       type="button"
                       onClick={() => setValue('cruiseDuration', id)}
-                      className={`p-4 rounded-lg border-2 text-left transition-all ${
+                      className={`p-4 rounded-lg border-2 text-left transition-all touch-manipulation ${
                         watchedPreferences.cruiseDuration === id
                           ? 'border-teal-600 dark:border-teal-500 bg-teal-50 dark:bg-teal-900/30 shadow-md'
                           : 'border-gray-200 dark:border-gray-600 hover:border-gray-300 dark:hover:border-gray-500 bg-white dark:bg-gray-800'
@@ -377,7 +422,7 @@ export function FlightAccommodationSection({
                     {travelCatalog!.cruiseBrands!.map((brand) => (
                       <div
                         key={brand.name}
-                        className="flex items-center space-x-2 bg-gray-50 dark:bg-gray-800 rounded-lg p-3 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
+                        className="flex items-center space-x-2 bg-gray-50 dark:bg-gray-800 rounded-lg p-3 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors touch-manipulation"
                       >
                         <Checkbox
                           id={`cruise-brand-${brand.name}`}

@@ -1,25 +1,16 @@
-'use client';
-
-import { useCallback } from 'react';
-import { useRouter } from 'next/navigation';
-import { useSession } from 'next-auth/react';
-
+import { auth } from '@/auth';
+import { redirect } from 'next/navigation';
 import { LandingPage } from './components/pages/LandingPage';
 
-export default function Page() {
-  const router = useRouter();
-  const { data: session, status } = useSession();
+export default async function Page() {
+  const session = await auth();
 
-  const onGetStarted = useCallback(() => {
-    if (status === 'loading') return;
-    
-    if (session) {
-      router.push('/preferences/edit');
-    } else {
-      router.push('/auth');
-    }
-  }, [router, session, status]);
+  async function handleGetStarted() {
+    'use server';
+    const s = await auth();
+    redirect(s ? '/preferences/edit' : '/auth');
+  }
 
-  return <LandingPage onGetStarted={onGetStarted} />;
+  return <LandingPage onGetStarted={handleGetStarted} />;
 }
 

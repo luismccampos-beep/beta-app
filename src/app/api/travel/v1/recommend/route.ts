@@ -1,31 +1,37 @@
 import { NextResponse } from 'next/server';
-
+import { z } from 'zod';
+import { apiHandler } from '@/lib/api/handler';
 import { recommendDestinations } from '../../../../../lib/travel/trip-recommendation';
 import type { CompactTravelPreferences } from '../../../../../lib/travel/preference-match';
 import { decodeTravelPreferencesCompact } from '../../../../../lib/travel/travel-preferences-query';
 
 export const dynamic = 'force-dynamic';
 
-/**
- * Recomendação MVP: regras + custo diário estimado (não previsão ML de preços).
- *
- * GET /api/travel/v1/recommend?nights=5&travelers=2&origin=LIS&prefs=...&budgetFilter=1
- * POST { preferences, nights, travelers, originIata, limit, budgetFilter }
- */
-export async function GET(req: Request) {
-  const url = new URL(req.url);
-  const prefs =
-    decodeTravelPreferencesCompact(url.searchParams.get('prefs')) ??
-    ({} as CompactTravelPreferences);
+const RecommendQuerySchema = z.object({
+  prefs: z.string().optional(),
+  nights: z.coerce.number().int().min(1).default(5),
+  travelers: z.coerce.number().int().min(1).default(1),
+  origin: z.string().optional(),
+  limit: z.coerce.number().int().min(1).max(100).default(12),
+  budgetFilter: z.enum(['0', '1', 'true', 'false']).default('1'),
+  lang: z.string().default('pt'),
+});
 
-  const nights = parseInt(url.searchParams.get('nights') ?? '5', 10);
-  const travelers = parseInt(url.searchParams.get('travelers') ?? '1', 10);
-  const originIata = url.searchParams.get('origin')?.trim() || undefined;
-  const limit = parseInt(url.searchParams.get('limit') ?? '12', 10);
-  const budgetFilter =
-    url.searchParams.get('budgetFilter') === '1' ||
-    url.searchParams.get('budgetFilter') === 'true';
-  const lang = url.searchParams.get('lang')?.trim() || 'pt';
+const RecommendBodySchema = z.object({
+  preferences: z.record(z.string(), z.unknown()),
+  nights: z.number().int().min(1).optional().default(5),
+  travelers: z.number().int().min(1).optional().default(1),
+  originIata: z.string().optional(),
+  limit: z.number().int().min(1).max(100).optional().default(12),
+  budgetFilter: z.boolean().optional().default(true),
+  lang: z.string().optional().default('pt'),
+});
+
+export const GET = apiHandler(async (req: Request) => {
+  const url = new URL(req.url);
+  const params = RecommendQuerySchema.parse(Object.fromEntries(url.searchParams));
+
+  const prefs = decodeTravelPreferencesCompact(params.prefs) ?? ({} as CompactTravelPreferences);
 
   if (!prefs.budgetRange && !prefs.activityTypes?.length && !prefs.travelStyles?.length) {
     return NextResponse.json(
@@ -38,74 +44,45 @@ export async function GET(req: Request) {
     );
   }
 
-  try {
-    const { source, destinations } = await recommendDestinations({
-      preferences: prefs,
-      nights: Number.isFinite(nights) ? nights : 5,
-      travelers: Number.isFinite(travelers) ? travelers : 1,
-      originIata,
-      limit: Number.isFinite(limit) ? limit : 12,
-      budgetFilter,
-      lang,
-    });
+  const { source, destinations } = await recommendDestinations({
+    preferences: prefs,
+    nights: params.nights,
+    travelers: params.travelers,
+    originIata: params.origin?.trim() || undefined,
+    limit: params.limit,
+    budgetFilter: params.budgetFilter === '1' || params.budgetFilter === 'true',
+    lang: params.lang,
+  });
 
-    return NextResponse.json({
-      ok: true,
-      source,
-      disclaimer:
-        'Preços de voo e hotéis são estimativas do catálogo (não garantia de preço em tempo real).',
-      count: destinations.length,
-      destinations,
-    });
-  } catch (e: unknown) {
-    const message = e instanceof Error ? e.message : 'Recommendation failed';
-    return NextResponse.json({ ok: false, message }, { status: 503 });
-  }
-}
+  return NextResponse.json({
+    ok: true,
+    source,
+    disclaimer:
+      'Preços de voo e hotéis são estimativas do catálogo (não garantia de preço em tempo real).',
+    count: destinations.length,
+    destinations,
+  });
+});
 
-export async function POST(req: Request) {
-  let body: {
-    preferences?: CompactTravelPreferences;
-    nights?: number;
-    travelers?: number;
-    originIata?: string;
-    limit?: number;
-    budgetFilter?: boolean;
-    lang?: string;
-  };
+export const POST = apiHandler(async (req: Request) => {
+  const body = RecommendBodySchema.parse(await req.json());
 
-  try {
-    body = (await req.json()) as typeof body;
-  } catch {
-    return NextResponse.json({ ok: false, message: 'Invalid JSON' }, { status: 400 });
-  }
+  const { source, destinations } = await recommendDestinations({
+    preferences: body.preferences as CompactTravelPreferences,
+    nights: body.nights,
+    travelers: body.travelers,
+    originIata: body.originIata,
+    limit: body.limit,
+    budgetFilter: body.budgetFilter,
+    lang: body.lang,
+  });
 
-  const prefs = body.preferences;
-  if (!prefs) {
-    return NextResponse.json({ ok: false, message: 'preferences required' }, { status: 400 });
-  }
-
-  try {
-    const { source, destinations } = await recommendDestinations({
-      preferences: prefs,
-      nights: body.nights ?? 5,
-      travelers: body.travelers ?? 1,
-      originIata: body.originIata,
-      limit: body.limit ?? 12,
-      budgetFilter: body.budgetFilter ?? true,
-      lang: body.lang ?? 'pt',
-    });
-
-    return NextResponse.json({
-      ok: true,
-      source,
-      disclaimer:
-        'Preços de voo e hotéis são estimativas do catálogo (não garantia de preço em tempo real).',
-      count: destinations.length,
-      destinations,
-    });
-  } catch (e: unknown) {
-    const message = e instanceof Error ? e.message : 'Recommendation failed';
-    return NextResponse.json({ ok: false, message }, { status: 503 });
-  }
-}
+  return NextResponse.json({
+    ok: true,
+    source,
+    disclaimer:
+      'Preços de voo e hotéis são estimativas do catálogo (não garantia de preço em tempo real).',
+    count: destinations.length,
+    destinations,
+  });
+});

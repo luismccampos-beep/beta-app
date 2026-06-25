@@ -71,7 +71,7 @@ export function AppBottomNav() {
             <li key={item.key} className="flex-1">
               <button
                 type="button"
-                className={`relative mx-auto flex w-full max-w-[90px] flex-col items-center justify-center gap-0.5 rounded-full px-2 py-1 text-[11px] font-medium transition-colors ${
+                className={`relative mx-auto flex w-full max-w-[90px] min-h-11 flex-col items-center justify-center gap-0.5 rounded-full px-2 py-1.5 text-[11px] font-medium transition-colors ${
                   isActive
                     ? 'text-teal-600 dark:text-orange-400 bg-teal-50 dark:bg-gray-800'
                     : 'text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800'

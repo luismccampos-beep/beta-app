@@ -1,18 +1,26 @@
 import { NextResponse } from 'next/server';
-
+import { z } from 'zod';
+import { apiHandler } from '@/lib/api/handler';
 import { isTravelCatalogDbEnabled } from '../../../../../../../lib/travel/catalog-db';
 import { prisma } from '../../../../../../../lib/prisma';
 
 export const dynamic = 'force-dynamic';
 
-type RouteCtx = { params: Promise<{ id: string }> };
+const CreateReviewSchema = z.object({
+  rating: z.number().int().min(1).max(5),
+  comment: z.string().max(2000).optional(),
+  authorName: z.string().max(120).optional(),
+});
 
-/** GET / POST avaliações MVP por hotel */
-export async function GET(_req: Request, ctx: RouteCtx) {
+async function parseHotelId(ctx: { params: Promise<Record<string, string>> }): Promise<number> {
   const id = parseInt((await ctx.params).id, 10);
-  if (!Number.isFinite(id) || id <= 0) {
-    return NextResponse.json({ ok: false, message: 'Invalid hotel id' }, { status: 400 });
-  }
+  if (!Number.isFinite(id) || id <= 0) throw new z.ZodError([{ code: 'custom', path: ['id'], message: 'Invalid hotel id' }]);
+  return id;
+}
+
+/** GET avaliações MVP por hotel */
+export const GET = apiHandler(async (_req: Request, ctx) => {
+  const id = await parseHotelId(ctx);
   if (!isTravelCatalogDbEnabled()) {
     return NextResponse.json({ ok: false, message: 'TRAVEL_CATALOG_SOURCE=db required' }, { status: 503 });
   }
@@ -37,13 +45,11 @@ export async function GET(_req: Request, ctx: RouteCtx) {
     totalReviews: agg._count.rating,
     reviews,
   });
-}
+});
 
-export async function POST(req: Request, ctx: RouteCtx) {
-  const id = parseInt((await ctx.params).id, 10);
-  if (!Number.isFinite(id) || id <= 0) {
-    return NextResponse.json({ ok: false, message: 'Invalid hotel id' }, { status: 400 });
-  }
+/** POST avaliação */
+export const POST = apiHandler(async (req: Request, ctx) => {
+  const id = await parseHotelId(ctx);
   if (!isTravelCatalogDbEnabled()) {
     return NextResponse.json({ ok: false, message: 'TRAVEL_CATALOG_SOURCE=db required' }, { status: 503 });
   }
@@ -53,29 +59,16 @@ export async function POST(req: Request, ctx: RouteCtx) {
     return NextResponse.json({ ok: false, message: 'Hotel not found' }, { status: 404 });
   }
 
-  let body: { rating?: number; comment?: string; authorName?: string };
-  try {
-    body = (await req.json()) as typeof body;
-  } catch {
-    return NextResponse.json({ ok: false, message: 'Invalid JSON' }, { status: 400 });
-  }
-
-  const rating = body.rating;
-  if (rating == null || !Number.isInteger(rating) || rating < 1 || rating > 5) {
-    return NextResponse.json(
-      { ok: false, message: 'rating must be integer 1–5' },
-      { status: 400 },
-    );
-  }
+  const { rating, comment, authorName } = CreateReviewSchema.parse(await req.json());
 
   const review = await prisma.wvHotelReview.create({
     data: {
       hotelId: id,
       rating,
-      comment: body.comment?.trim().slice(0, 2000) || null,
-      authorName: body.authorName?.trim().slice(0, 120) || null,
+      comment: comment?.trim().slice(0, 2000) || null,
+      authorName: authorName?.trim().slice(0, 120) || null,
     },
   });
 
   return NextResponse.json({ ok: true, review }, { status: 201 });
-}
+});

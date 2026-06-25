@@ -1,6 +1,12 @@
 import { NextResponse } from 'next/server';
+import { z } from 'zod';
 import { auth } from '@/auth';
 import { prisma } from '../../../../../lib/prisma';
+import { apiHandler } from '@/lib/api/handler';
+
+const RevokeSessionSchema = z.object({
+  sessionId: z.string().optional(),
+});
 
 // GET /api/auth/me/sessions — list all active sessions for the current user
 export async function GET() {
@@ -49,79 +55,67 @@ export async function GET() {
 
 // DELETE /api/auth/me/sessions — revoke sessions
 // Body: { sessionId?: string } — if provided, revoke that session; otherwise revoke ALL except current
-export async function DELETE(request: Request) {
+export const DELETE = apiHandler(async (req: Request) => {
   const session = await auth();
 
   if (!session?.user?.id) {
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
   }
 
-  try {
-    const body = await request.json() as { sessionId?: string };
-    const { sessionId } = body;
+  const { sessionId } = RevokeSessionSchema.parse(await req.json());
 
-    if (sessionId) {
-      // Revoke a specific session
-      const targetSession = await prisma.session.findFirst({
-        where: {
-          id: sessionId,
-          userId: session.user.id,
-        },
-      });
-
-      if (!targetSession) {
-        return NextResponse.json(
-          { error: 'Session not found' },
-          { status: 404 },
-        );
-      }
-
-      await prisma.session.update({
-        where: { id: sessionId },
-        data: {
-          isRevoked: true,
-          revokedAt: new Date(),
-        },
-      });
-
-      return NextResponse.json({ success: true, revoked: [sessionId] });
-    }
-
-    // Revoke ALL sessions except the most recent (current)
-    const userId = session.user.id;
-    const sessions = await prisma.session.findMany({
-      where: { userId, isRevoked: false },
-      select: { id: true },
-      orderBy: { lastActivityAt: 'desc' },
+  if (sessionId) {
+    const targetSession = await prisma.session.findFirst({
+      where: {
+        id: sessionId,
+        userId: session.user.id,
+      },
     });
 
-    if (sessions.length === 0) {
-      return NextResponse.json({ success: true, revokedCount: 0 });
+    if (!targetSession) {
+      return NextResponse.json(
+        { error: 'Session not found' },
+        { status: 404 },
+      );
     }
 
-    // Keep the most recent session active, revoke all others
-    const currentSessionId = sessions[0].id;
-    const result = await prisma.session.updateMany({
-      where: {
-        userId,
-        isRevoked: false,
-        NOT: { id: currentSessionId },
-      },
+    await prisma.session.update({
+      where: { id: sessionId },
       data: {
         isRevoked: true,
         revokedAt: new Date(),
       },
     });
 
-    return NextResponse.json({
-      success: true,
-      revokedCount: result.count,
-    });
-  } catch (error) {
-    console.error('Session revoke failed:', error);
-    return NextResponse.json(
-      { error: 'Failed to revoke sessions' },
-      { status: 500 },
-    );
+    return NextResponse.json({ success: true, revoked: [sessionId] });
   }
-}
+
+  const userId = session.user.id;
+  const sessions = await prisma.session.findMany({
+    where: { userId, isRevoked: false },
+    select: { id: true },
+    orderBy: { lastActivityAt: 'desc' },
+  });
+
+  if (sessions.length === 0) {
+    return NextResponse.json({ success: true, revokedCount: 0 });
+  }
+
+  const currentSessionId = sessions[0].id;
+  const result = await prisma.session.updateMany({
+    where: {
+      userId,
+      isRevoked: false,
+      NOT: { id: currentSessionId },
+    },
+    data: {
+      isRevoked: true,
+      revokedAt: new Date(),
+    },
+  });
+
+  return NextResponse.json({
+    success: true,
+    revokedCount: result.count,
+  });
+});

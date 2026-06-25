@@ -1,4 +1,6 @@
-import { useMemo, useState } from 'react';
+'use client';
+
+import { useMemo, useRef, useState } from 'react';
 import { Button } from '../ui/button';
 import { Card, CardContent } from '../ui/card';
 import { useTranslations } from 'next-intl';
@@ -37,6 +39,8 @@ export function FAQPage({ onBack }: FAQPageProps) {
   const [activeCategory, setActiveCategory] = useState<string>('all');
   const [openFAQs, setOpenFAQs] = useState<Set<string>>(new Set());
 
+  const faqRefs = useRef<Map<string, HTMLDivElement>>(new Map());
+
   const toggleFAQ = (id: string) => {
     const newOpenFAQs = new Set(openFAQs);
     if (newOpenFAQs.has(id)) {
@@ -45,6 +49,30 @@ export function FAQPage({ onBack }: FAQPageProps) {
       newOpenFAQs.add(id);
     }
     setOpenFAQs(newOpenFAQs);
+  };
+
+  const handleFAQKeyDown = (e: React.KeyboardEvent, faqId: string, index: number, total: number) => {
+    switch (e.key) {
+      case 'ArrowDown': {
+        e.preventDefault();
+        const next = Math.min(index + 1, total - 1);
+        const nextEl = faqRefs.current.get(`${faqId.split('-')[0]}-${next}`);
+        nextEl?.focus();
+        break;
+      }
+      case 'ArrowUp': {
+        e.preventDefault();
+        const prev = Math.max(index - 1, 0);
+        const prevEl = faqRefs.current.get(`${faqId.split('-')[0]}-${prev}`);
+        prevEl?.focus();
+        break;
+      }
+      case 'Enter':
+      case ' ':
+        e.preventDefault();
+        toggleFAQ(faqId);
+        break;
+    }
   };
 
   const categories = useMemo(() => {
@@ -167,12 +195,17 @@ export function FAQPage({ onBack }: FAQPageProps) {
                       return (
                         <Card
                           key={faqId}
-                          className={`border-2 transition-all cursor-pointer ${
+                          ref={(el) => { if (el) faqRefs.current.set(faqId, el); }}
+                          role="button"
+                          tabIndex={0}
+                          aria-expanded={isOpen}
+                          className={`border-2 transition-all cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 ${
                             isOpen
                               ? 'border-teal-400 dark:border-teal-500 shadow-lg'
                               : 'border-gray-200 dark:border-gray-700 hover:border-teal-300 dark:hover:border-teal-600'
                           } dark:bg-gray-800`}
                           onClick={() => toggleFAQ(faqId)}
+                          onKeyDown={(e) => handleFAQKeyDown(e, faqId, index, category.faqs.length)}
                         >
                           <CardContent className="p-4 sm:p-6">
                             <div className="flex items-start justify-between gap-3 sm:gap-4">

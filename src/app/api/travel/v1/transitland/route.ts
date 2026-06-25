@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
-
+import { z } from 'zod';
+import { apiHandler } from '@/lib/api/handler';
 import {
   fetchTransitLandRouting,
   fetchTransitLandOperators,
@@ -10,14 +11,29 @@ import {
 
 export const dynamic = 'force-dynamic';
 
-function parseCoord(param: string | null): { lat: number; lon: number } | null {
-  if (!param) return null;
-  const parts = param.split(',').map((s) => parseFloat(s.trim()));
-  if (parts.length !== 2 || parts.some((n) => !Number.isFinite(n))) return null;
+const CoordSchema = z.string().transform((val, ctx) => {
+  const parts = val.split(',').map((s) => parseFloat(s.trim()));
+  if (parts.length !== 2 || parts.some((n) => !Number.isFinite(n))) {
+    ctx.addIssue({ code: z.ZodIssueCode.custom, message: 'Expected lat,lon' });
+    return z.NEVER;
+  }
   return { lat: parts[0]!, lon: parts[1]! };
-}
+});
 
-export async function GET(req: Request) {
+const TransitLandQuerySchema = z.object({
+  action: z.enum(['routing', 'operators', 'stops']).default('routing'),
+  from: CoordSchema.optional(),
+  to: CoordSchema.optional(),
+  near: CoordSchema.optional(),
+  departAfter: z.coerce.number().int().optional(),
+  modes: z.string().optional(),
+  locale: z.string().default('en'),
+  maxItineraries: z.coerce.number().int().min(1).optional(),
+  limit: z.coerce.number().int().min(1).max(200).default(20),
+  radius: z.coerce.number().min(0.1).default(1),
+});
+
+export const GET = apiHandler(async (req: Request) => {
   if (!isTransitLandConfigured()) {
     return NextResponse.json(
       {
@@ -32,106 +48,61 @@ export async function GET(req: Request) {
   }
 
   const url = new URL(req.url);
-  const action = url.searchParams.get('action') || 'routing';
+  const params = TransitLandQuerySchema.parse(Object.fromEntries(url.searchParams));
   const apiKey = getTransitLandApiKey()!;
 
-  switch (action) {
-    // ── Routing ──────────────────────────────────────────────────────
+  switch (params.action) {
     case 'routing': {
-      const from = parseCoord(url.searchParams.get('from'));
-      const to = parseCoord(url.searchParams.get('to'));
-
-      if (!from || !to) {
+      if (!params.from || !params.to) {
         return NextResponse.json(
-          {
-            ok: false,
-            message: 'Routing requires: from=lat,lon and to=lat,lon',
-            plans: [],
-          },
+          { ok: false, message: 'Routing requires: from=lat,lon and to=lat,lon', plans: [] },
           { status: 400 },
         );
       }
 
-      const departAfterParam = url.searchParams.get('departAfter');
-      const departAfter = departAfterParam ? parseInt(departAfterParam, 10) : undefined;
-      const modes = url.searchParams.get('modes')?.trim() || undefined;
-      const locale = url.searchParams.get('locale')?.trim() || 'en';
-      const maxParam = url.searchParams.get('maxItineraries');
-      const maxItineraries = maxParam ? parseInt(maxParam, 10) : undefined;
+      const result = await fetchTransitLandRouting(apiKey, {
+        from: params.from,
+        to: params.to,
+        departAfter: Number.isFinite(params.departAfter) ? params.departAfter : undefined,
+        modes: params.modes?.trim() || undefined,
+        locale: params.locale,
+        maxItineraries: params.maxItineraries,
+      });
 
-      try {
-        const result = await fetchTransitLandRouting(apiKey, {
-          from,
-          to,
-          departAfter: Number.isFinite(departAfter) ? departAfter : undefined,
-          modes,
-          locale,
-          maxItineraries: Number.isFinite(maxItineraries) ? maxItineraries : undefined,
-        });
-
-        if (result.error && !result.plans.length) {
-          return NextResponse.json(
-            { ok: false, configured: true, message: result.error, plans: [] },
-            { status: 502 },
-          );
-        }
-
-        return NextResponse.json({ ok: true, configured: true, plans: result.plans });
-      } catch (e: unknown) {
+      if (result.error && !result.plans.length) {
         return NextResponse.json(
-          {
-            ok: false,
-            configured: true,
-            message: e instanceof Error ? e.message : 'Transit.land request failed',
-            plans: [],
-          },
-          { status: 500 },
+          { ok: false, configured: true, message: result.error, plans: [] },
+          { status: 502 },
         );
       }
+
+      return NextResponse.json({ ok: true, configured: true, plans: result.plans });
     }
 
-    // ── Operators ────────────────────────────────────────────────────
     case 'operators': {
-      const nearParam = url.searchParams.get('near');
-      const limit = parseInt(url.searchParams.get('limit') || '20', 10);
-      const near = nearParam ? parseCoord(nearParam) : undefined;
-
       const operators = await fetchTransitLandOperators(
         apiKey,
-        near ?? undefined,
-        Number.isFinite(limit) ? limit : 20,
+        params.near ?? undefined,
+        params.limit,
       );
-
       return NextResponse.json({ ok: true, configured: true, operators });
     }
 
-    // ── Stops ────────────────────────────────────────────────────────
     case 'stops': {
-      const nearCoord = parseCoord(url.searchParams.get('near'));
-      if (!nearCoord) {
+      if (!params.near) {
         return NextResponse.json(
           { ok: false, message: 'Stops requires: near=lat,lon' },
           { status: 400 },
         );
       }
 
-      const radius = parseFloat(url.searchParams.get('radius') || '1');
-      const stopLimit = parseInt(url.searchParams.get('limit') || '20', 10);
-
       const stops = await fetchTransitLandStops(
         apiKey,
-        nearCoord,
-        Number.isFinite(radius) ? radius : 1,
-        Number.isFinite(stopLimit) ? stopLimit : 20,
+        params.near,
+        params.radius,
+        params.limit,
       );
-
       return NextResponse.json({ ok: true, configured: true, stops });
     }
-
-    default:
-      return NextResponse.json(
-        { ok: false, message: `Unknown action: ${action}. Use: routing, operators, stops` },
-        { status: 400 },
-      );
   }
-}
+});

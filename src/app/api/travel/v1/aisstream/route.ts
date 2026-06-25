@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
-
+import { z } from 'zod';
+import { apiHandler } from '@/lib/api/handler';
 import {
   isAisConfigured,
   getAisApiKey,
@@ -12,28 +13,26 @@ import {
 } from '../../../../../lib/travel/aisstream';
 
 export const dynamic = 'force-dynamic';
-export const maxDuration = 30; // allow up to 30s for WebSocket sampling
+export const maxDuration = 30;
 
-/**
- * AISstream REST proxy.
- *
- * Since Next.js serverless functions are short-lived, we expose:
- * 1. `GET /api/travel/v1/aisstream?action=config` — Get WebSocket URL + subscription template
- * 2. `GET /api/travel/v1/aisstream?action=vessels&box=minLat,minLon,maxLat,maxLon&listenSeconds=6`
- *    — Opens a WebSocket, samples data for N seconds, returns vessels.
- *    ⚠ Works only on runtimes that support WebSocket (Node 18+, serverful).
- *
- * For production, use a persistent service (e.g. cron) to cache vessel positions.
- */
+const BoxSchema = z.string().transform((val, ctx) => {
+  const parts = val.split(',').map((s) => parseFloat(s.trim()));
+  if (parts.length !== 4 || parts.some((n) => !Number.isFinite(n))) {
+    ctx.addIssue({ code: z.ZodIssueCode.custom, message: 'Expected minLat,minLon,maxLat,maxLon' });
+    return z.NEVER;
+  }
+  return { box: [parts[0]!, parts[1]!, parts[2]!, parts[3]!] } as AisBoundingBox;
+});
 
-function parseBoxParam(param: string | null): AisBoundingBox | null {
-  if (!param) return null;
-  const parts = param.split(',').map((s) => parseFloat(s.trim()));
-  if (parts.length !== 4 || parts.some((n) => !Number.isFinite(n))) return null;
-  return { box: [parts[0]!, parts[1]!, parts[2]!, parts[3]!] };
-}
+const AisQuerySchema = z.object({
+  action: z.enum(['config', 'vessels']).default('config'),
+  box: BoxSchema.optional(),
+  listenSeconds: z.coerce.number().int().min(1).max(20).default(6),
+  ferriesOnly: z.enum(['true', 'false']).default('true'),
+  types: z.string().optional(),
+});
 
-export async function GET(req: Request) {
+export const GET = apiHandler(async (req: Request) => {
   if (!isAisConfigured()) {
     return NextResponse.json(
       {
@@ -48,27 +47,24 @@ export async function GET(req: Request) {
   }
 
   const url = new URL(req.url);
-  const action = url.searchParams.get('action') || 'config';
+  const params = AisQuerySchema.parse(Object.fromEntries(url.searchParams));
   const apiKey = getAisApiKey()!;
 
-  switch (action) {
-    // ── Config: return WebSocket URL and subscription template ────────
+  switch (params.action) {
     case 'config': {
       return NextResponse.json({
         ok: true,
         configured: true,
         webSocketUrl: getAisWebSocketUrl(),
         subscriptionTemplate: buildAisSubscription(apiKey, [
-          { box: [-90, -180, 90, 180] }, // example: global
+          { box: [-90, -180, 90, 180] },
         ]),
         note: 'Use WebSocket directly for continuous streaming. The REST proxy endpoint (action=vessels) is for occasional ferry queries.',
       });
     }
 
-    // ── Vessels: short WebSocket sample ──────────────────────────────
     case 'vessels': {
-      const box = parseBoxParam(url.searchParams.get('box'));
-      if (!box) {
+      if (!params.box) {
         return NextResponse.json(
           {
             ok: false,
@@ -80,53 +76,26 @@ export async function GET(req: Request) {
         );
       }
 
-      const listenSeconds = Math.min(
-        parseInt(url.searchParams.get('listenSeconds') || '6', 10),
-        20,
-      );
-      const ferriesOnly = url.searchParams.get('ferriesOnly') !== 'false';
-      const typesFilter = url.searchParams.get('types'); // optional comma-separated type numbers
+      const typesFilter = params.types
+        ? params.types.split(',').map((s) => parseInt(s.trim(), 10)).filter(Number.isFinite)
+        : undefined;
 
-      try {
-        const vessels = await sampleAisStream(apiKey, box, listenSeconds, {
-          ferriesOnly,
-          typesFilter: typesFilter
-            ? typesFilter.split(',').map((s) => parseInt(s.trim(), 10)).filter(Number.isFinite)
-            : undefined,
-        });
+      const vessels = await sampleAisStream(apiKey, params.box, params.listenSeconds, {
+        ferriesOnly: params.ferriesOnly !== 'false',
+        typesFilter,
+      });
 
-        return NextResponse.json({
-          ok: true,
-          configured: true,
-          vessels,
-          sampleSeconds: listenSeconds,
-          sampledAt: new Date().toISOString(),
-          note: 'Snapshot from short WebSocket sample. Not a complete view of the area.',
-        });
-      } catch (e: unknown) {
-        return NextResponse.json(
-          {
-            ok: false,
-            configured: true,
-            message: e instanceof Error ? e.message : 'AIS stream sample failed',
-            vessels: [],
-          },
-          { status: 502 },
-        );
-      }
+      return NextResponse.json({
+        ok: true,
+        configured: true,
+        vessels,
+        sampleSeconds: params.listenSeconds,
+        sampledAt: new Date().toISOString(),
+        note: 'Snapshot from short WebSocket sample. Not a complete view of the area.',
+      });
     }
-
-    default:
-      return NextResponse.json(
-        {
-          ok: false,
-          message: `Unknown action: ${action}. Use: config, vessels`,
-          vessels: [],
-        },
-        { status: 400 },
-      );
   }
-}
+});
 
 // ── WebSocket sampler ────────────────────────────────────────────────────
 

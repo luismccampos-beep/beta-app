@@ -1,4 +1,4 @@
-import type { TravelPreferences } from '../../app/components/pages/EnhancedTravelPreferencesForm';
+import type { TravelPreferences } from './schemas/preferences.schema';
 import type { CompactTravelPreferences } from './preference-match';
 
 export const TRAVEL_PREFS_STORAGE_KEY = 'akmleva:travelPrefsCompact';

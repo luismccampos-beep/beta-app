@@ -61,7 +61,7 @@ export function TravelBudgetProfileSelector({
               key={id}
               type="button"
               onClick={() => onChange(id)}
-              className={`text-left rounded-xl border-2 p-4 transition-all ${
+              className={`text-left rounded-xl border-2 p-4 transition-all touch-manipulation ${
                 selected
                   ? 'border-teal-600 bg-teal-50 dark:bg-teal-950/40 shadow-md'
                   : 'border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 hover:border-gray-300'
@@ -91,7 +91,42 @@ export function TravelBudgetProfileSelector({
             </Badge>
           </div>
 
-          <div className="overflow-x-auto">
+          {/* Mobile: stacked card rows */}
+          <div className="sm:hidden space-y-1">
+            {estimate.lines.map((line) => (
+              <div
+                key={line.id}
+                className="flex items-center justify-between py-2 border-b border-gray-100 dark:border-gray-800 last:border-0"
+              >
+                <span className="text-sm text-gray-800 dark:text-gray-200 flex items-center gap-1.5">
+                  {line.id.includes('transport') ? (
+                    <Bus className="h-3.5 w-3.5 text-teal-600 shrink-0" />
+                  ) : line.id.includes('attractions') ? (
+                    <UtensilsCrossed className="h-3.5 w-3.5 text-orange-500 shrink-0" />
+                  ) : (
+                    <Utensils className="h-3.5 w-3.5 text-amber-600 shrink-0" />
+                  )}
+                  {t(`lines.${line.id}`)}
+                  <span className="text-xs text-gray-400 ml-1">×{line.quantity}</span>
+                </span>
+                <span className="text-sm font-medium tabular-nums">
+                  {currencySymbol}
+                  {line.subtotal.toLocaleString(undefined, { minimumFractionDigits: 2 })}
+                </span>
+              </div>
+            ))}
+            <div className="flex items-center justify-between pt-3">
+              <span className="font-semibold text-gray-700 dark:text-gray-300">{t('dailyTotal')}</span>
+              <span className="text-lg font-bold text-teal-700 dark:text-teal-400 tabular-nums">
+                {currencySymbol}
+                {estimate.total.toLocaleString(undefined, { minimumFractionDigits: 2 })}
+                <span className="text-xs font-normal text-gray-500">/{t('perDay')}</span>
+              </span>
+            </div>
+          </div>
+
+          {/* Desktop: table */}
+          <div className="hidden sm:block overflow-x-auto">
             <table className="w-full text-sm">
               <thead>
                 <tr className="text-left text-xs text-gray-500 border-b border-gray-200 dark:border-gray-700">

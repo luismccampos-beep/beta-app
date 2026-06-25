@@ -1,50 +1,38 @@
 import { NextResponse } from 'next/server';
+import { z } from 'zod';
+import { apiHandler } from '@/lib/api/handler';
 import { searchAccommodations } from '../../../../../../lib/travel/accommodation-search';
 
 export const dynamic = 'force-dynamic';
 
-/**
- * GET /api/travel/v1/accommodations/search
- *
- * Aggregates accommodation results from all three sources:
- * - wv_hotel   (Wikivoyage catalog)
- * - hotel      (agency-managed)
- * - accommodation (trip planning)
- *
- * Query params:
- *   q        – full-text search on name
- *   slug     – destination slug (e.g. "pt-42-lisboa")
- *   destinoId – numeric destination ID
- *   sources  – comma-separated: wv_hotel,hotel,accommodation (default: all)
- *   limit    – max results (default: 20, max: 100)
- *   offset   – pagination offset
- */
-export async function GET(req: Request) {
-  const url = new URL(req.url);
-  const q = url.searchParams.get('q')?.trim() || undefined;
-  const slug = url.searchParams.get('slug')?.trim() || undefined;
-  const destinoIdParam = url.searchParams.get('destinoId');
-  const destinoId = destinoIdParam ? parseInt(destinoIdParam, 10) : undefined;
-  const limit = parseInt(url.searchParams.get('limit') ?? '20', 10);
-  const offset = parseInt(url.searchParams.get('offset') ?? '0', 10);
+const AccommodationSearchSchema = z.object({
+  q: z.string().optional(),
+  slug: z.string().optional(),
+  destinoId: z.coerce.number().int().positive().optional(),
+  sources: z.string().optional(),
+  limit: z.coerce.number().int().min(1).max(100).default(20),
+  offset: z.coerce.number().int().min(0).default(0),
+}).refine((data) => data.q || data.slug || data.destinoId, {
+  message: 'Provide at least one of: q, slug, destinoId',
+  path: ['q'],
+});
 
-  const sourcesRaw = url.searchParams.get('sources')?.trim();
-  const sources = sourcesRaw
-    ? (sourcesRaw.split(',').map((s) => s.trim()) as ('wv_hotel' | 'hotel' | 'accommodation')[])
+export const GET = apiHandler(async (req: Request) => {
+  const url = new URL(req.url);
+  const params = AccommodationSearchSchema.parse(Object.fromEntries(url.searchParams));
+
+  const sources = params.sources
+    ? params.sources.split(',').map((s) => s.trim()) as ('wv_hotel' | 'hotel' | 'accommodation')[]
     : undefined;
 
-  if (!q && !slug && !destinoId) {
-    return NextResponse.json(
-      { ok: false, message: 'Provide at least one of: q, slug, destinoId' },
-      { status: 400 },
-    );
-  }
+  const result = await searchAccommodations({
+    q: params.q,
+    slug: params.slug,
+    destinoId: params.destinoId,
+    sources,
+    limit: params.limit,
+    offset: params.offset,
+  });
 
-  try {
-    const result = await searchAccommodations({ q, slug, destinoId, sources, limit, offset });
-    return NextResponse.json(result);
-  } catch (e: unknown) {
-    const message = e instanceof Error ? e.message : 'Search failed';
-    return NextResponse.json({ ok: false, message }, { status: 503 });
-  }
-}
+  return NextResponse.json(result);
+});

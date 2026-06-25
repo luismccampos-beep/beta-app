@@ -1,45 +1,37 @@
 import { NextResponse } from 'next/server';
-
+import { z } from 'zod';
+import { apiHandler } from '@/lib/api/handler';
 import { searchPlacesViaPhoton } from '../../../../../../lib/travel/osm';
 
 export const dynamic = 'force-dynamic';
 
-/**
- * Pesquisa por nome / morada (Photon).
- * GET /api/travel/v1/hotels/geocode?q=Hotel Mundial Lisboa&hotelsOnly=1&limit=8
- */
-export async function GET(req: Request) {
+const GeocodeQuerySchema = z.object({
+  q: z.string().min(1),
+  limit: z.coerce.number().int().min(1).max(50).default(8),
+  hotelsOnly: z.enum(['0', '1', 'true', 'false']).optional(),
+  lat: z.coerce.number().min(-90).max(90).optional(),
+  lon: z.coerce.number().min(-180).max(180).optional(),
+  lng: z.coerce.number().min(-180).max(180).optional(),
+});
+
+export const GET = apiHandler(async (req: Request) => {
   const url = new URL(req.url);
-  const q = url.searchParams.get('q')?.trim();
-  if (!q) {
-    return NextResponse.json({ ok: false, message: 'Provide q' }, { status: 400 });
-  }
+  const params = GeocodeQuerySchema.parse(Object.fromEntries(url.searchParams));
+  const lon = params.lon ?? params.lng;
 
-  const limit = parseInt(url.searchParams.get('limit') ?? '8', 10);
-  const hotelsOnly =
-    url.searchParams.get('hotelsOnly') === '1' ||
-    url.searchParams.get('hotelsOnly') === 'true';
-  const lat = parseFloat(url.searchParams.get('lat') ?? '');
-  const lon = parseFloat(url.searchParams.get('lon') ?? url.searchParams.get('lng') ?? '');
+  const places = await searchPlacesViaPhoton({
+    q: params.q,
+    limit: params.limit,
+    hotelsOnly: params.hotelsOnly === '1' || params.hotelsOnly === 'true',
+    lat: params.lat,
+    lon: Number.isFinite(lon!) ? lon : undefined,
+  });
 
-  try {
-    const places = await searchPlacesViaPhoton({
-      q,
-      limit: Number.isFinite(limit) ? limit : 8,
-      hotelsOnly,
-      lat: Number.isFinite(lat) ? lat : undefined,
-      lon: Number.isFinite(lon) ? lon : undefined,
-    });
-
-    return NextResponse.json({
-      ok: true,
-      source: 'photon',
-      q,
-      count: places.length,
-      results: places,
-    });
-  } catch (e: unknown) {
-    const message = e instanceof Error ? e.message : 'Photon request failed';
-    return NextResponse.json({ ok: false, message }, { status: 502 });
-  }
-}
+  return NextResponse.json({
+    ok: true,
+    source: 'photon',
+    q: params.q,
+    count: places.length,
+    results: places,
+  });
+});

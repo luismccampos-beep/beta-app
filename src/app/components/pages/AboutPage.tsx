@@ -1,4 +1,6 @@
-import { useState } from 'react';
+'use client';
+
+import { useEffect, useState } from 'react';
 import { Button } from '../ui/button';
 import { Card, CardContent } from '../ui/card';
 import { Badge } from '../ui/badge';
@@ -31,6 +33,15 @@ interface AboutPageProps {
 export function AboutPage({ onBack }: AboutPageProps) {
   const t = useTranslations('about');
   const [showCEOModal, setShowCEOModal] = useState(false);
+
+  useEffect(() => {
+    if (showCEOModal) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => { document.body.style.overflow = ''; };
+  }, [showCEOModal]);
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 via-teal-50 to-orange-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 transition-colors overflow-x-hidden">

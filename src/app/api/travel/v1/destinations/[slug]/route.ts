@@ -1,5 +1,8 @@
 import { NextResponse } from 'next/server';
-
+import { z } from 'zod';
+import { apiHandler } from '@/lib/api/handler';
+import { withRateLimit } from '@/lib/api/rate-limit-guard';
+import { prisma } from '@/lib/prisma';
 import { summarizeCostOfLiving } from '../../../../../../lib/travel/cost-tier';
 import {
   getDestinationBySlugFromDb,
@@ -20,16 +23,15 @@ import {
   isDemoSlug,
   buildDemoDestinationDetail,
 } from '../../../../../../lib/travel/demo-perfect-path';
+import { getDestinationLocalized } from '../../../../../../lib/travel/destination-i18n';
 
 export const dynamic = 'force-dynamic';
 
-type RouteCtx = { params: Promise<{ slug: string }> };
+export const GET = apiHandler(withRateLimit(async (req: Request, ctx) => {
+  const slug = z.string().min(1).max(100).parse((await ctx.params).slug);
+  const { searchParams } = new URL(req.url);
+  const locale = searchParams.get('locale') ?? undefined;
 
-/** GET /api/travel/v1/destinations/pt-42 */
-export async function GET(_req: Request, ctx: RouteCtx) {
-  const { slug } = await ctx.params;
-
-  // ── Demo Perfect Path ─────────────────────────────────────────────
   if (isDemoPerfectEnabled() && isDemoSlug(slug)) {
     const demoData = buildDemoDestinationDetail(slug);
     if (demoData) {
@@ -43,65 +45,83 @@ export async function GET(_req: Request, ctx: RouteCtx) {
   }
 
   if (isTravelCatalogDbEnabled()) {
-    try {
-      const row = await getDestinationBySlugFromDb(slug);
-      if (!row) {
-        return NextResponse.json({ error: 'Destino não encontrado' }, { status: 404 });
-      }
-
-      const { dest, hotels } = row;
-
-      // Fetch hotel type breakdown for this destination
-      const statsMap = await getHotelStatsForDestinations([row.dest.id]);
-      const destStats = statsMap.get(row.dest.id);
-
-      return NextResponse.json({
-        ok: true,
-        source: 'db',
-        slug: row.slug,
-        id: dest.id,
-        lang: dest.lang ?? 'pt',
-        nome: dest.nome,
-        pais: dest.pais,
-        paisCode: dest.paisCode,
-        continente: dest.continente,
-        iata: resolveDestinationIata(dest),
-        tipo: dest.tipo,
-        clima: dest.clima,
-        imageUrl: resolveDestinationImageUrl(dest),
-        descricao: dest.descricao,
-        descricaoCompleta: dest.descricaoCompleta,
-        resumo: dest.resumo,
-        veja: dest.veja ?? [],
-        faca: dest.faca ?? [],
-        coma: dest.coma ?? [],
-        dicas: dest.dicas ?? {},
-        tags: dest.tags ?? [dest.tipo, dest.clima].filter(Boolean),
-        wikipedia_resumo: dest.wikipedia_resumo,
-        wikipedia_url: dest.wikipedia_url,
-        clima_tempo: dest.clima_tempo,
-        custo_de_vida: dest.custo_de_vida,
-        costOfLiving: summarizeCostOfLiving(dest.custo_de_vida),
-        transporte: dest.transporte,
-        latitude: dest.latitude,
-        longitude: dest.longitude,
-        wikivoyageUrl: dest.wikivoyageUrl,
-        license: 'CC BY-SA 3.0',
-        videoUrl: (dest as Record<string, unknown>).videoUrl ?? null,
-        galleryImages: (dest as Record<string, unknown>).galleryImages ?? null,
-        imageAttribution: dest.imagem_attribuicao ?? null,
-        hotels,
-        hotelTypes: destStats?.hotelTypes ?? null,
-        mapMarkers: (() => {
-          const fromDb = mapMarkersFromDbHotels(dest, hotels);
-          return fromDb.length > 0 ? fromDb : resolveMapMarkersForDestination(dest);
-        })(),
-        mock: false,
-      });
-    } catch (e: unknown) {
-      const message = e instanceof Error ? e.message : 'Database error';
-      return NextResponse.json({ ok: false, source: 'db', message }, { status: 503 });
+    const row = await getDestinationBySlugFromDb(slug);
+    if (!row) {
+      return NextResponse.json({ error: 'Destino não encontrado' }, { status: 404 });
     }
+
+    const { dest, hotels } = row;
+    const statsMap = await getHotelStatsForDestinations([row.dest.id]);
+    const destStats = statsMap.get(row.dest.id);
+
+    const localized = locale && locale !== (dest.lang ?? 'pt')
+      ? await getDestinationLocalized(row.dest.id, locale)
+      : null;
+
+    const videos = await prisma.wvDestinationVideo.findMany({
+      where: { destinoId: row.dest.id, isVerified: true },
+      orderBy: { sortOrder: 'asc' },
+      take: 5,
+    });
+
+    return NextResponse.json({
+      ok: true,
+      source: 'db',
+      slug: row.slug,
+      id: dest.id,
+      lang: dest.lang ?? 'pt',
+      localizedNome: localized?.nome,
+      localizedDescricao: localized?.descricao,
+      localizedResumo: localized?.resumo,
+      localizedFonte: localized?.fonte,
+      nome: dest.nome,
+      pais: dest.pais,
+      paisCode: dest.paisCode,
+      continente: dest.continente,
+      iata: resolveDestinationIata(dest),
+      tipo: dest.tipo,
+      clima: dest.clima,
+      imageUrl: resolveDestinationImageUrl(dest),
+      descricao: dest.descricao,
+      descricaoCompleta: dest.descricaoCompleta,
+      resumo: dest.resumo,
+      veja: dest.veja ?? [],
+      faca: dest.faca ?? [],
+      coma: dest.coma ?? [],
+      dicas: dest.dicas ?? {},
+      tags: dest.tags ?? [dest.tipo, dest.clima].filter(Boolean),
+      wikipedia_resumo: dest.wikipedia_resumo,
+      wikipedia_url: dest.wikipedia_url,
+      clima_tempo: dest.clima_tempo,
+      custo_de_vida: dest.custo_de_vida,
+      costOfLiving: summarizeCostOfLiving(dest.custo_de_vida),
+      transporte: dest.transporte,
+      latitude: dest.latitude,
+      longitude: dest.longitude,
+      wikivoyageUrl: dest.wikivoyageUrl,
+      license: 'CC BY-SA 3.0',
+      galleryImages: (dest as Record<string, unknown>).galleryImages ?? null,
+      imageAttribution: dest.imagem_attribuicao ?? null,
+      videos: videos.map(v => ({
+        url: v.url,
+        thumbUrl: v.thumbUrl,
+        posterUrl: v.posterUrl,
+        width: v.width,
+        height: v.height,
+        durationSec: v.durationSec,
+        author: v.author,
+        license: v.license,
+        sourceUrl: v.sourceUrl,
+        isVerified: v.isVerified,
+      })),
+      hotels,
+      hotelTypes: destStats?.hotelTypes ?? null,
+      mapMarkers: (() => {
+        const fromDb = mapMarkersFromDbHotels(dest, hotels);
+        return fromDb.length > 0 ? fromDb : resolveMapMarkersForDestination(dest);
+      })(),
+      mock: false,
+    });
   }
 
   const dest = getMockDestinationBySlug(slug);
@@ -156,4 +176,4 @@ export async function GET(_req: Request, ctx: RouteCtx) {
     mapMarkers: resolveMapMarkersForDestination(dest),
     mock: isTravelMockEnabled(),
   });
-}
+}));
