@@ -51,7 +51,7 @@ LANGUAGES = {
     "hi": "hi.wikivoyage.org",
 }
 
-CACHE_FILE = "wikivoyage_cache.json"
+CACHE_FILE = "data/wikivoyage_cache.json"
 
 # Mapeamento de nomes problemáticos (OSM → Wikidata)
 NAME_MAPPINGS = {
@@ -510,10 +510,10 @@ def main():
         countries_files = {c: None for c in UN_COUNTRIES}
         use_osm = False
 
-    output_csv = "wikivoyage_links.csv"
-    output_md = "wikivoyage_links.md"
-    output_html = "wikivoyage_links.html"
-    output_json = "wikivoyage_links.json"
+    output_csv = "data/wikivoyage_links.csv"
+    output_md = "data/wikivoyage_links.md"
+    output_html = "data/wikivoyage_links.html"
+    output_json = "data/wikivoyage_links.json"
 
     lang_columns = list(LANGUAGES.keys())
     fieldnames = ["en_name", "wikidata_id", "filename"] + lang_columns

@@ -24,7 +24,7 @@ function wordsMatch(a, b) {
   return common.length >= Math.min(wa.length, wb.length);
 }
 
-const csv = readFileSync(resolve(ROOT, 'export_paiscode_mismatches.csv'), 'utf-8');
+const csv = readFileSync(resolve(ROOT, 'data/export_paiscode_mismatches.csv'), 'utf-8');
 const lines = csv.trim().split('\n').slice(1);
 console.log(`Total CSV entries: ${lines.length}`);
 
@@ -104,8 +104,8 @@ for (const e of review) {
   const row = await p.wvDestination.findUnique({ where: { id: e.id }, select: { paisCode: true } });
   csvLines.push(`${e.id},"${e.nome}",${e.originalPais},${row?.paisCode||'?'},${e.lat},${e.lon},"${e.nearestCity}",${e.nearestCc},${e.distKm}`);
 }
-writeFileSync(resolve(ROOT, 'export_hybrid_review.csv'), csvLines.join('\n'), 'utf-8');
-console.log(`\nReview list exported: export_hybrid_review.csv (${review.length} entries)`);
+writeFileSync(resolve(ROOT, 'data/export_hybrid_review.csv'), csvLines.join('\n'), 'utf-8');
+console.log(`\nReview list exported: data/export_hybrid_review.csv (${review.length} entries)`);
 
 // Final summary
 const [d] = await p.$queryRaw`SELECT COUNT(*)::int AS t, COUNT(*) FILTER (WHERE pais_code!='XX' AND latitude IS NOT NULL)::int AS ok, COUNT(*) FILTER (WHERE pais_code!='XX' AND latitude IS NULL)::int AS no FROM wv_destinations`;
