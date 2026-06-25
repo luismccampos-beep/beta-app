@@ -26,6 +26,8 @@
       "lightMode": "Modo claro",
       "darkMode": "Modo escuro"
     },
+    "metaTitle": "AKMLEVA - Agência de Viagens com Inteligência Artificial",
+    "metaDescription": "Descubra a sua viagem perfeita com IA. Recomendações personalizadas, roteiros inteligentes e destinos em todo o mundo com a AKMLEVA.",
     "heroBadge": "Planeamento de Viagens com IA",
     "hero": "Descubra a Sua Viagem Perfeita com IA",
     "heroDesc": "Experimente recomendações de viagem personalizadas com inteligência artificial",
@@ -97,6 +99,8 @@
       "darkMode": "Modo escuro",
       "back": "Voltar"
     },
+    "metaTitle": "Sobre Nós | AKMLEVA",
+    "metaDescription": "Conheça a história da AKMLEVA, a nossa equipa, valores, certificações e parceiros. Uma agência de viagens portuguesa com inteligência artificial.",
     "pageTitle": "Sobre Nós",
     "ourStoryTitle": "A Nossa História",
     "ourStory": "A AKMLEVA nasceu da paixão por explorar o mundo e da crença de que cada viagem deve ser uma experiência transformadora. Fundada com o objetivo de ir além do turismo convencional, procuramos criar itinerários que não só mostram os destinos, mas que também conectam os viajantes com a cultura local e a essência de cada lugar.",
@@ -172,6 +176,8 @@
       "darkMode": "Modo escuro",
       "back": "Voltar"
     },
+    "metaTitle": "Contacte-nos | AKMLEVA",
+    "metaDescription": "Entre em contacto com a AKMLEVA. Estamos aqui para ajudar a planear a sua viagem perfeita. Respondemos em até 24 horas.",
     "pageTitle": "Contacte-nos",
     "pageSubtitle": "Estamos aqui para ajudá-lo a planear a sua viagem perfeita",
     "formTitle": "Envie-nos uma mensagem",
@@ -236,6 +242,8 @@
       "darkMode": "Modo escuro",
       "back": "Voltar"
     },
+    "metaTitle": "Perguntas Frequentes | AKMLEVA",
+    "metaDescription": "Encontre respostas para perguntas frequentes sobre os serviços, reservas e funcionalidades da AKMLEVA.",
     "pageTitle": "Perguntas Frequentes",
     "pageSubtitle": "Encontre respostas para questões comuns sobre os nossos serviços",
     "searchPlaceholder": "Procurar perguntas...",
@@ -501,6 +509,8 @@
     "verificationSendFailed": "Falha ao enviar email de verificação"
   },
   "legal": {
+    "metaTitle": "{pageType} | AKMLEVA",
+    "metaDescription": "Documentos legais e políticas da AKMLEVA. Consulte os nossos termos de serviço, política de privacidade e muito mais.",
     "header": {
       "lightMode": "Modo Claro",
       "darkMode": "Modo Escuro"
@@ -1033,6 +1043,12 @@
     }
   },
   "auth": {
+    "metaTitleLogin": "Entrar | AKMLEVA",
+    "metaDescriptionLogin": "Entre na sua conta AKMLEVA e aceda ao seu painel de viagens personalizado com recomendações de IA.",
+    "metaTitleRegister": "Criar Conta | AKMLEVA",
+    "metaDescriptionRegister": "Crie uma conta gratuita na AKMLEVA e descubra recomendações de viagem personalizadas com inteligência artificial.",
+    "metaTitleForgot": "Recuperar Palavra-passe | AKMLEVA",
+    "metaDescriptionForgot": "Recupere o acesso à sua conta AKMLEVA. Enviaremos um link de redefinição de palavra-passe para o seu email.",
     "hero": "Descubra a Sua Viagem Perfeita com IA",
     "heroDesc": "Experimente recomendações de viagem personalizadas com inteligência artificial",
     "welcomeBack": "Bem-vindo de Volta",
@@ -1087,6 +1103,8 @@
     }
   },
   "results": {
+    "metaTitle": "Recomendações de Viagem | AKMLEVA",
+    "metaDescription": "Resultados personalizados de viagem com IA. Descubra destinos, voos e hotéis recomendados para si pela AKMLEVA.",
     "aiPoweredResults": "Resultados com IA",
     "noResults": "Nenhum resultado encontrado",
     "noResultsDesc": "Tente ajustar os filtros para ver mais opções",
@@ -1198,6 +1216,8 @@
     }
   },
   "destinationsBrowse": {
+    "metaTitle": "Explorar Destinos Turísticos | AKMLEVA",
+    "metaDescription": "Pesquise e explore milhares de destinos turísticos em todo o mundo. Encontre hotéis, atrações e informações de viagem com a AKMLEVA.",
     "title": "Explorar destinos",
     "subtitle": "Pesquise e filtre milhares de destinos do nosso catálogo Wikivoyage.",
     "back": "Voltar",
@@ -1249,6 +1269,7 @@
     ]
   },
   "destination": {
+    "metaDescription": "Descubra {name} com a AKMLEVA. Informações de viagem, hotéis, atrações e dicas para a sua viagem.",
     "loading": "A carregar destino…",
     "notFound": "Destino não encontrado",
     "backToResults": "Voltar aos resultados",

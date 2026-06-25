@@ -26,6 +26,8 @@
       "darkMode": "Modo oscuro"
     },
     "heroBadge": "Planificación de Viajes con IA",
+    "metaTitle": "AKMLEVA - Agencia de Viajes con Inteligencia Artificial",
+    "metaDescription": "Descubra su viaje perfecto con IA. Recomendaciones personalizadas, itinerarios inteligentes y destinos en todo el mundo con AKMLEVA.",
     "hero": "Descubre Tu Viaje Perfecto con IA",
     "heroDesc": "Experimenta recomendaciones de viaje personalizadas con inteligencia artificial",
     "heroSubDesc": "Nuestra IA avanzada analiza tus preferencias, presupuesto e intereses para crear el itinerario de viaje perfecto, hecho a tu medida.",
@@ -97,6 +99,8 @@
       "back": "Volver"
     },
     "pageTitle": "Sobre Nosotros",
+    "metaTitle": "Sobre Nosotros | AKMLEVA",
+    "metaDescription": "Conozca la historia de AKMLEVA, nuestro equipo, valores, certificaciones y socios. Una agencia de viajes portuguesa con inteligencia artificial.",
     "ourStoryTitle": "Nuestra Historia",
     "ourStory": "AKMLEVA nació de la pasión por explorar el mundo y la creencia de que cada viaje debe ser una experiencia transformadora. Fundada con el objetivo de ir más allá del turismo convencional, buscamos crear itinerarios que no solo muestren los destinos, sino que también conecten a los viajeros con la cultura local y la esencia de cada lugar.",
     "ourStory2": "Creemos que la verdadera riqueza de un viaje reside en los recuerdos creados, las personas conocidas y las perspectivas ampliadas. Por eso, cada detalle se planifica cuidadosamente para superar las expectativas, desde la elección de los alojamientos hasta las actividades más auténticas.",
@@ -172,6 +176,8 @@
       "back": "Volver"
     },
     "pageTitle": "Contáctenos",
+    "metaTitle": "Contáctenos | AKMLEVA",
+    "metaDescription": "Póngase en contacto con AKMLEVA. Estamos aquí para ayudarle a planificar su viaje perfecto. Respondemos en 24 horas.",
     "pageSubtitle": "Estamos aquí para ayudarte a planificar tu viaje perfecto",
     "formTitle": "Envíanos un mensaje",
     "formSubtitle": "Completa el formulario y te responderemos en 24 horas",
@@ -236,6 +242,8 @@
       "back": "Volver"
     },
     "pageTitle": "Preguntas Frecuentes",
+    "metaTitle": "Preguntas Frecuentes | AKMLEVA",
+    "metaDescription": "Encuentre respuestas a preguntas frecuentes sobre los servicios, reservas y funciones de AKMLEVA.",
     "pageSubtitle": "Encuentre respuestas a preguntas comunes sobre nuestros servicios",
     "searchPlaceholder": "Buscar preguntas...",
     "allCategories": "Todas las Categorías",
@@ -500,6 +508,8 @@
     "verificationSendFailed": "Error al enviar email de verificación"
   },
   "legal": {
+    "metaTitle": "{pageType} | AKMLEVA",
+    "metaDescription": "Documentos legales y políticas de AKMLEVA. Consulte nuestros términos de servicio, política de privacidad y más.",
     "header": {
       "lightMode": "Modo Claro",
       "darkMode": "Modo Oscuro"
@@ -971,6 +981,12 @@
   "auth": {
     "hero": "Descubre Tu Viaje Perfecto con IA",
     "heroDesc": "Experimenta recomendaciones de viaje personalizadas con inteligencia artificial",
+    "metaTitleLogin": "Iniciar Sesión | AKMLEVA",
+    "metaDescriptionLogin": "Inicie sesión en su cuenta AKMLEVA y acceda a su panel de viajes personalizado con recomendaciones de IA.",
+    "metaTitleRegister": "Crear Cuenta | AKMLEVA",
+    "metaDescriptionRegister": "Cree una cuenta gratuita en AKMLEVA y descubra recomendaciones de viaje personalizadas con inteligencia artificial.",
+    "metaTitleForgot": "Recuperar Contraseña | AKMLEVA",
+    "metaDescriptionForgot": "Recupere el acceso a su cuenta AKMLEVA. Le enviaremos un enlace de restablecimiento de contraseña a su correo electrónico.",
     "welcomeBack": "Bienvenido de Nuevo",
     "loginDesc": "Inicia sesión para acceder a tu panel de viajes personalizado",
     "createAccount": "Crear Cuenta",
@@ -1023,6 +1039,8 @@
     }
   },
   "results": {
+    "metaTitle": "Recomendaciones de Viaje | AKMLEVA",
+    "metaDescription": "Resultados personalizados de viaje con IA. Descubra destinos, vuelos y hoteles recomendados para usted por AKMLEVA.",
     "aiPoweredResults": "Resultados con IA",
     "noResults": "No se encontraron resultados",
     "noResultsDesc": "Intente ajustar los filtros para ver más opciones",
@@ -1135,6 +1153,8 @@
   },
   "destinationsBrowse": {
     "title": "Explorar destinos",
+    "metaTitle": "Explorar Destinos Turísticos | AKMLEVA",
+    "metaDescription": "Busque y explore miles de destinos turísticos en todo el mundo. Encuentre hoteles, atracciones e información de viaje con AKMLEVA.",
     "subtitle": "Busque y filtre miles de destinos de nuestro catálogo Wikivoyage.",
     "back": "Volver",
     "searchLabel": "Nombre del destino",
@@ -1186,6 +1206,7 @@
     ]
   },
   "destination": {
+    "metaDescription": "Descubra {name} con AKMLEVA. Información de viaje, hoteles, atracciones y consejos para su viaje.",
     "loading": "Cargando destino…",
     "notFound": "Destino no encontrado",
     "backToResults": "Volver a resultados",

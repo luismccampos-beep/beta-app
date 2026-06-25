@@ -1,32 +1,64 @@
 import { notFound } from 'next/navigation';
-import dynamic from 'next/dynamic';
+import type { Metadata } from 'next';
+import nextDynamic from 'next/dynamic';
 import { Suspense } from 'react';
+import { getLocale, getTranslations } from 'next-intl/server';
 import { getDestinationBySlugFromDb, getHotelStatsForDestinations, isTravelCatalogDbEnabled, mapMarkersFromDbHotels } from '@/lib/travel/catalog-db';
 import { resolveDestinationImageUrl } from '@/lib/travel/destination-image';
 import { resolveDestinationIata } from '@/lib/travel/destination-iata';
 import { summarizeCostOfLiving } from '@/lib/travel/cost-tier';
 import { resolveMapMarkersForDestination } from '@/lib/travel/travel-map-markers';
 import { getDestinationReviews } from '@/actions/submit-destination-review';
+import { locales } from '@/i18n.config';
 import { DestinationHero } from './components/DestinationHero';
 import { DestinationReviews } from './components/DestinationReviews';
 
-const DestinationGallery = dynamic(() => import('./components/DestinationGallery'));
+const DestinationGallery = nextDynamic(() => import('./components/DestinationGallery'));
 
-export const revalidate = 3600;
+export const dynamic = 'force-dynamic';
 
 type Props = {
   params: Promise<{ slug: string }>;
 };
 
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const locale = await getLocale();
+  const { slug } = await params;
+  const siteUrl = 'https://www.akmleva.pt';
+  const name = slug
+    .split('-')
+    .map((w) => w.charAt(0).toUpperCase() + w.slice(1))
+    .join(' ');
+  const t = await getTranslations({ locale, namespace: 'destination' });
+  const title = `${name} | AKMLEVA`;
+  const description = t('metaDescription', { name });
+  return {
+    title,
+    description,
+    alternates: {
+      canonical: `${siteUrl}/destinations/${slug}`,
+      languages: Object.fromEntries(
+        locales.map((l) => [l, `${siteUrl}/destinations/${slug}`]),
+      ),
+    },
+    openGraph: {
+      title,
+      description,
+      url: `${siteUrl}/destinations/${slug}`,
+      siteName: 'AKMLEVA',
+      locale: locale === 'pt' ? 'pt_PT' : locale,
+      type: 'website',
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title,
+      description,
+    },
+  };
+}
+
 export async function generateStaticParams() {
-  if (!isTravelCatalogDbEnabled()) return [];
-  const { prisma } = await import('@/lib/prisma');
-  const top = await prisma.wvDestination.findMany({
-    take: 100,
-    orderBy: { hotelCount: 'desc' },
-    select: { slug: true },
-  });
-  return top.map((d: { slug: string }) => ({ slug: d.slug }));
+  return [];
 }
 
 function buildDetailData(dest: any, hotels: any[], statsMap: any) {
