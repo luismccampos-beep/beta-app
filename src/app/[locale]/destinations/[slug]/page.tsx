@@ -8,7 +8,7 @@ import { summarizeCostOfLiving } from '@/lib/travel/cost-tier';
 import { resolveMapMarkersForDestination } from '@/lib/travel/travel-map-markers';
 import { DestinationHero } from './components/DestinationHero';
 
-const DestinationGallery = dynamic(() => import('./components/DestinationGallery'), { ssr: false });
+const DestinationGallery = dynamic(() => import('./components/DestinationGallery'));
 
 export const revalidate = 3600;
 
