@@ -24,7 +24,7 @@ export async function generateStaticParams() {
     orderBy: { hotelCount: 'desc' },
     select: { slug: true },
   });
-  return top.map((d) => ({ slug: d.slug }));
+  return top.map((d: { slug: string }) => ({ slug: d.slug }));
 }
 
 function buildDetailData(dest: any, hotels: any[], statsMap: any) {

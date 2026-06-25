@@ -7,3 +7,10 @@ export const travelRatelimit = new Ratelimit({
   analytics: true,
   prefix: 'ratelimit:travel',
 });
+
+export async function checkRateLimit(req: Request) {
+  const ip = req.headers.get('x-forwarded-for')?.split(',')[0]?.trim()
+    ?? req.headers.get('x-real-ip')
+    ?? 'anonymous';
+  return await travelRatelimit.limit(ip);
+}
