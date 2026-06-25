@@ -10,7 +10,13 @@ out/
 
 # Env (secrets — never commit)
 .env
+.env.local
 .env.*.local
+.env.prod
+.env.prod2
+.env.production
+.env.staging
+.env.development
 .env.vercel
 .env.vercel.*
 .env.localdev.bak
@@ -41,6 +47,22 @@ Thumbs.db
 !.vscode/extensions.json
 __pycache__/
 *.py[cod]
+
+# Data exports (artefactos temporários — manter em data/ ou storage externo)
+export_*.csv
+export_*.json
+lugares_reais_*.csv
+wikivoyage_links.csv
+wikivoyage_links.json
+wikivoyage_links.html
+wikivoyage_links.md
+wikivoyage_cache.json
+
+# Analysis artefacts
+lighthouse-*.json
+ENRICHMENT-SUMMARY.md
+GEOCODING-SUMMARY.md
+COMMIT_MSG.md
 
 # Prisma (optional local DB dumps)
 *.db

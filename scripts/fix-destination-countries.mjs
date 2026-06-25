@@ -4,8 +4,8 @@ import https from 'https';
 
 // Configuração
 const INPUT_FILES = [
-  'export_hybrid_review.csv',
-  'export_final_review.csv'
+  'data/export_hybrid_review.csv',
+  'data/export_final_review.csv'
 ];
 
 const OUTPUT_DIR = 'data/country-fixes';

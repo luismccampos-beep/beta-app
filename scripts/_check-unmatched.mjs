@@ -14,7 +14,7 @@ const p = new PrismaClient({
 
 async function main() {
   // Read CSV hotels that weren't matched
-  const csv = readFileSync(resolve(ROOT, 'lugares_reais_final.csv'), 'utf-8');
+  const csv = readFileSync(resolve(ROOT, 'data/lugares_reais_final.csv'), 'utf-8');
   const lines = csv.trim().split('\n').slice(1);
   const hotels = [];
   for (const line of lines) {

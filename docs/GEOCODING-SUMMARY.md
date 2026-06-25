@@ -67,7 +67,7 @@
 |------|-------------|
 | `data/export_towns_for_geocode.csv` | 649 town candidates |
 | `data/export_dests_sem_coords.csv` | All 1,186 non-XX dests without coords |
-| `export_paiscode_mismatches.csv` | 2,426 paisCode mismatches |
+| `data/export_paiscode_mismatches.csv` | 2,426 paisCode mismatches |
 | `data/geonames-cache/cities5000-cities.json` | 69k GeoNames cities |
 | `scripts/geocode-hotels-combined.mjs` | Pipeline: local index → dest copy → Photon |
 | `scripts/geocode-wv-hotels-parallel.mjs` | Parallel Photon/Nominatim geocoder |

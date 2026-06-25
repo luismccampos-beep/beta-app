@@ -34,7 +34,7 @@ function parseCSV(text) {
 }
 
 async function main() {
-  const csv = readFileSync(resolve(ROOT, 'lugares_reais_final.csv'), 'utf-8');
+  const csv = readFileSync(resolve(ROOT, 'data/lugares_reais_final.csv'), 'utf-8');
   const rows = parseCSV(csv);
   console.log(`CSV: ${rows.length} entries`);
 
