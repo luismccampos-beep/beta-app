@@ -26,6 +26,8 @@
       "darkMode": "Dark Mode"
     },
     "heroBadge": "AI-Powered Travel Planning",
+    "metaTitle": "AKMLEVA - AI Travel Agency & Personalized Trip Planning",
+    "metaDescription": "Discover your perfect trip with AI. Personalized recommendations, smart itineraries and destinations worldwide with AKMLEVA.",
     "hero": "Discover Your Perfect Trip with AI",
     "heroDesc": "Experience personalized travel recommendations with artificial intelligence",
     "heroSubDesc": "Our advanced AI analyzes your preferences, budget and interests to create the perfect travel itinerary, tailored just for you.",
@@ -97,6 +99,8 @@
       "back": "Back"
     },
     "pageTitle": "About Us",
+    "metaTitle": "About Us | AKMLEVA",
+    "metaDescription": "Learn about AKMLEVA's story, team, values, certifications and partners. A Portuguese travel agency powered by artificial intelligence.",
     "ourStoryTitle": "Our Story",
     "ourStory": "AKMLEVA was born from a passion for exploring the world and the belief that every journey should be a transformative experience. Founded with the goal of going beyond conventional tourism, we seek to create itineraries that not only showcase destinations but also connect travelers with local culture and the essence of each place.",
     "ourStory2": "We believe that the true richness of a journey lies in the memories created, the people met, and the broadened perspectives. That's why every detail is carefully planned to exceed expectations, from the choice of accommodations to the most authentic activities.",
@@ -172,6 +176,8 @@
       "back": "Back"
     },
     "pageTitle": "Contact Us",
+    "metaTitle": "Contact Us | AKMLEVA",
+    "metaDescription": "Get in touch with AKMLEVA. We're here to help plan your perfect trip. We respond within 24 hours.",
     "pageSubtitle": "We're here to help you plan your perfect trip",
     "formTitle": "Send us a message",
     "formSubtitle": "Fill out the form and we'll get back to you within 24 hours",
@@ -236,6 +242,8 @@
       "back": "Back"
     },
     "pageTitle": "Frequently Asked Questions",
+    "metaTitle": "FAQ | AKMLEVA",
+    "metaDescription": "Find answers to frequently asked questions about AKMLEVA's services, bookings and features.",
     "pageSubtitle": "Find answers to common questions about our services",
     "searchPlaceholder": "Search for questions...",
     "allCategories": "All Categories",
@@ -500,6 +508,8 @@
     "verificationSendFailed": "Failed to send verification email"
   },
   "legal": {
+    "metaTitle": "{pageType} | AKMLEVA",
+    "metaDescription": "Legal documents and policies for AKMLEVA. View our terms of service, privacy policy and more.",
     "header": {
       "lightMode": "Light Mode",
       "darkMode": "Dark Mode"
@@ -1025,6 +1035,12 @@
   "auth": {
     "hero": "Discover Your Perfect Trip with AI",
     "heroDesc": "Experience personalized travel recommendations with artificial intelligence",
+    "metaTitleLogin": "Sign In | AKMLEVA",
+    "metaDescriptionLogin": "Sign in to your AKMLEVA account and access your personalized travel dashboard with AI recommendations.",
+    "metaTitleRegister": "Create Account | AKMLEVA",
+    "metaDescriptionRegister": "Create a free AKMLEVA account and discover personalized travel recommendations powered by artificial intelligence.",
+    "metaTitleForgot": "Reset Password | AKMLEVA",
+    "metaDescriptionForgot": "Regain access to your AKMLEVA account. We'll send a password reset link to your email.",
     "welcomeBack": "Welcome Back",
     "loginDesc": "Sign in to access your personalized travel dashboard",
     "createAccount": "Create Account",
@@ -1077,6 +1093,8 @@
     }
   },
   "results": {
+    "metaTitle": "Travel Recommendations | AKMLEVA",
+    "metaDescription": "Personalized AI travel results. Discover destinations, flights and hotels recommended for you by AKMLEVA.",
     "aiPoweredResults": "AI-Powered Results",
     "noResults": "No results found",
     "noResultsDesc": "Try adjusting your filters to see more options",
@@ -1189,6 +1207,8 @@
   },
   "destinationsBrowse": {
     "title": "Explore destinations",
+    "metaTitle": "Explore Travel Destinations | AKMLEVA",
+    "metaDescription": "Search and explore thousands of travel destinations worldwide. Find hotels, attractions and travel info with AKMLEVA.",
     "subtitle": "Search and filter thousands of destinations from our Wikivoyage catalog.",
     "back": "Back",
     "searchLabel": "Destination name",
@@ -1240,6 +1260,7 @@
     ]
   },
   "destination": {
+    "metaDescription": "Discover {name} with AKMLEVA. Travel information, hotels, attractions and tips for your trip.",
     "loading": "Loading destination…",
     "notFound": "Destination not found",
     "backToResults": "Back to results",
