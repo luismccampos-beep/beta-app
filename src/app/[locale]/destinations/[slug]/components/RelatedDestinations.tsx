@@ -1,12 +1,10 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { searchDestinationsDb } from '@/lib/travel/catalog-db';
-import { buildDestinationSlug } from '@/lib/travel/destination-slug';
 import { resolveDestinationImageFromFields } from '@/lib/travel/destination-image';
 import { resolveDestinationIata } from '@/lib/travel/destination-iata';
 import { Button } from '@/app/components/ui/button';
 import { ArrowRight, MapPin } from 'lucide-react';
-import type { MockDestination } from '@/lib/travel/mock-travel/types';
 
 type Props = {
   currentDestId: number;
@@ -18,6 +16,17 @@ type Props = {
     relatedDestinationsTitle: string;
     viewDestination: string;
   };
+};
+
+type SearchItem = {
+  id: number;
+  slug: string;
+  nome: string;
+  pais: string;
+  lang: string;
+  tipo: string | null;
+  continente: string | null;
+  iata: string | null;
 };
 
 export async function RelatedDestinations({
@@ -45,9 +54,9 @@ export async function RelatedDestinations({
     });
 
     items = result.items
-      .filter((r) => String(r.id) !== String(currentDestId))
+      .filter((r: { id: number }) => String(r.id) !== String(currentDestId))
       .slice(0, 3)
-      .map((r) => ({
+      .map((r: SearchItem) => ({
         id: String(r.id),
         slug: r.slug,
         nome: r.nome,
@@ -62,8 +71,7 @@ export async function RelatedDestinations({
         }),
         iata: resolveDestinationIata({
           iata: r.iata,
-          transporte: null,
-        } as MockDestination),
+        }),
       }));
   } catch {
     return null;
@@ -77,9 +85,9 @@ export async function RelatedDestinations({
         limit: 5,
       });
       items = result.items
-        .filter((r) => String(r.id) !== String(currentDestId))
+        .filter((r: { id: number }) => String(r.id) !== String(currentDestId))
         .slice(0, 3)
-        .map((r) => ({
+        .map((r: SearchItem) => ({
           id: String(r.id),
           slug: r.slug,
           nome: r.nome,
@@ -94,8 +102,7 @@ export async function RelatedDestinations({
           }),
           iata: resolveDestinationIata({
             iata: r.iata,
-            transporte: null,
-          } as MockDestination),
+          }),
         }));
     } catch {
       return null;
