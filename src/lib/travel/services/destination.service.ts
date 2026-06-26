@@ -12,7 +12,11 @@ export async function searchDestinations(input: unknown) {
   const validated = SearchDestinationsSchema.parse(input);
 
   if (isTravelCatalogDbEnabled()) {
-    return searchDestinationsFromDb(validated);
+    try {
+      return await searchDestinationsFromDb(validated);
+    } catch (err) {
+      console.error('[searchDestinations] DB query failed, falling back to bundle:', err);
+    }
   }
 
   return searchDestinationsFromBundle(validated);
