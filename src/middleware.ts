@@ -2,6 +2,7 @@ import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
 import createIntlMiddleware from 'next-intl/middleware';
 import { auth } from '@/auth-edge';
+import { checkRateLimit, detectTier } from '@/lib/rate-limit';
 
 const intlMiddleware = createIntlMiddleware({
   locales: ['pt', 'en', 'es', 'fr'],
@@ -169,13 +170,46 @@ export async function middleware(request: NextRequest) {
     return NextResponse.redirect(new URL('/dashboard', request.url));
   }
   
-  // Skip API routes, static files, and _next internal paths
+  // Skip static files and _next internal paths
   if (
-    pathname.startsWith('/api/') ||
     pathname.startsWith('/_next/') ||
     pathname.startsWith('/static/') ||
-    pathname.includes('.') // Skip files with extensions
+    pathname.includes('.')
   ) {
+    const response = NextResponse.next();
+    response.headers.set('x-tenant-kind', tenant.kind);
+    if (tenant.agencySlug) response.headers.set('x-agency-slug', tenant.agencySlug);
+    return response;
+  }
+
+  // Rate limiting for API routes
+  if (pathname.startsWith('/api/')) {
+    const isTravelOrAdmin = pathname.startsWith('/api/travel/') || pathname.startsWith('/api/admin/');
+    if (isTravelOrAdmin) {
+      const { limiter, tier } = detectTier(request);
+      const result = await checkRateLimit(request, limiter);
+      const response = NextResponse.next();
+      response.headers.set('X-RateLimit-Limit', String(result.limit));
+      response.headers.set('X-RateLimit-Remaining', String(result.remaining));
+      response.headers.set('X-RateLimit-Tier', tier);
+      response.headers.set('x-tenant-kind', tenant.kind);
+      if (tenant.agencySlug) response.headers.set('x-agency-slug', tenant.agencySlug);
+      if (!result.success) {
+        return NextResponse.json(
+          { ok: false, error: 'Too many requests', code: 'RATE_LIMITED' },
+          {
+            status: 429,
+            headers: {
+              'Retry-After': String(Math.ceil((result.reset - Date.now()) / 1000)),
+              'X-RateLimit-Limit': String(result.limit),
+              'X-RateLimit-Remaining': '0',
+              'X-RateLimit-Tier': tier,
+            },
+          }
+        );
+      }
+      return response;
+    }
     const response = NextResponse.next();
     response.headers.set('x-tenant-kind', tenant.kind);
     if (tenant.agencySlug) response.headers.set('x-agency-slug', tenant.agencySlug);
@@ -233,12 +267,11 @@ export const config = {
   matcher: [
     /*
      * Match all request paths except for:
-     * - api (API routes)
      * - _next/static (static files)
      * - _next/image (image optimization files)
      * - favicon.ico (favicon file)
      * - public folder files
      */
-    '/((?!api|_next/static|_next/image|favicon.ico|.*\\..*$).*)',
+    '/((?!_next/static|_next/image|favicon.ico|.*\\..*$).*)',
   ],
 };
