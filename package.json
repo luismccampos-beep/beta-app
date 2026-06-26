@@ -3,9 +3,6 @@
   "name": "@akmleva/web",
   "version": "0.1.0",
   "private": true,
-  "workspaces": [
-    "packages/*"
-  ],
   "type": "module",
   "scripts": {
     "dev": "next dev",
@@ -166,9 +163,6 @@
     "travel:catalog:classify-hotels:dry-run": "node scripts/classify-hotel-types.mjs --dry-run --limit=100"
   },
   "dependencies": {
-    "@akmleva/auth": "1.0.0",
-    "@akmleva/shared": "1.0.0",
-    "@akmleva/ui": "0.1.0",
     "@auth/prisma-adapter": "^2.11.2",
     "@hookform/resolvers": "^5.2.2",
     "@prisma/client": "6.17.1",

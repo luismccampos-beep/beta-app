@@ -1,1 +1,0 @@
-{"version":3,"file":"LinkRegistry.js","sourceRoot":"","sources":["../../../src/components/common/LinkRegistry.ts"],"names":[],"mappings":"AAAA,OAAO,KAAK,MAAM,OAAO,CAAC;AAkB1B,IAAI,uBAAuB,GAAyB,IAAI,CAAC;AAEzD,MAAM,CAAC,MAAM,qBAAqB,GAAG,CAAC,SAAwB,EAAE,EAAE;IAChE,uBAAuB,GAAG,SAAS,CAAC;AACtC,CAAC,CAAC;AAEF,MAAM,CAAC,MAAM,0BAA0B,GAAG,GAAG,EAAE,CAAC,uBAAuB,CAAC"}

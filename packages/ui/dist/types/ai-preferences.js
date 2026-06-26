@@ -1,3 +1,0 @@
-// Re-export AI preferences types from @akmleva/shared
-export * from '@akmleva/shared/types/ai-preferences';
-//# sourceMappingURL=ai-preferences.js.map
