@@ -1,7 +1,0 @@
-"use client";
-import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
-import { Calculator } from 'lucide-react';
-
-import { formatPrice } from '../utils';
-export const CalculationBreakdown = ({ subtotal, discounts, taxes, fees, extras, total, currency, locale }) => (_jsxs("div", { className: "mt-4 p-3 bg-muted/30 rounded-lg", children: [_jsxs("h4", { className: "font-medium mb-2 flex items-center gap-2", children: [_jsx(Calculator, { className: "h-4 w-4" }), "C\u00E1lculo"] }), _jsxs("div", { className: "text-xs space-y-1 font-mono", children: [_jsxs("div", { children: ["Base: ", formatPrice(subtotal, currency, locale)] }), discounts > 0 && (_jsxs("div", { className: "text-green-600", children: ["- Descontos: ", formatPrice(discounts, currency, locale)] })), taxes > 0 && (_jsxs("div", { className: "text-blue-600", children: ["+ Impostos: ", formatPrice(taxes, currency, locale)] })), fees > 0 && (_jsxs("div", { className: "text-orange-600", children: ["+ Taxas: ", formatPrice(fees, currency, locale)] })), extras > 0 && (_jsxs("div", { className: "text-purple-600", children: ["+ Extras: ", formatPrice(extras, currency, locale)] })), _jsxs("div", { className: "font-bold pt-1 border-t", children: ["= Total: ", formatPrice(total, currency, locale)] })] })] }));
-//# sourceMappingURL=CalculationBreakdown.js.map

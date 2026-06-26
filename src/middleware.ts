@@ -4,6 +4,13 @@ import createIntlMiddleware from 'next-intl/middleware';
 import { auth } from '@/auth-edge';
 import { checkRateLimit, detectTier } from '@/lib/rate-limit';
 
+const ALLOWED_ORIGINS = [
+  'https://www.akmleva.pt',
+  'https://beta.akmleva.pt',
+  'http://localhost:3000',
+  'http://localhost:3001',
+];
+
 const intlMiddleware = createIntlMiddleware({
   locales: ['pt', 'en', 'es', 'fr'],
   defaultLocale: 'pt',
@@ -182,18 +189,15 @@ export async function middleware(request: NextRequest) {
     return response;
   }
 
-  // Rate limiting for API routes
+  // API routes: rate limiting + CORS
   if (pathname.startsWith('/api/')) {
     const isTravelOrAdmin = pathname.startsWith('/api/travel/') || pathname.startsWith('/api/admin/');
+
+    // Rate limiting (travel/admin only)
     if (isTravelOrAdmin) {
       const { limiter, tier } = detectTier(request);
       const result = await checkRateLimit(request, limiter);
-      const response = NextResponse.next();
-      response.headers.set('X-RateLimit-Limit', String(result.limit));
-      response.headers.set('X-RateLimit-Remaining', String(result.remaining));
-      response.headers.set('X-RateLimit-Tier', tier);
-      response.headers.set('x-tenant-kind', tenant.kind);
-      if (tenant.agencySlug) response.headers.set('x-agency-slug', tenant.agencySlug);
+
       if (!result.success) {
         return NextResponse.json(
           { ok: false, error: 'Too many requests', code: 'RATE_LIMITED' },
@@ -208,9 +212,42 @@ export async function middleware(request: NextRequest) {
           }
         );
       }
-      return response;
     }
+
+    // CORS preflight
+    if (request.method === 'OPTIONS') {
+      const origin = request.headers.get('origin') || '';
+      if (origin && ALLOWED_ORIGINS.includes(origin)) {
+        return new NextResponse(null, {
+          status: 204,
+          headers: {
+            'Access-Control-Allow-Origin': origin,
+            'Vary': 'Origin',
+            'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
+            'Access-Control-Allow-Headers': 'Content-Type, Authorization, X-Requested-With, X-Correlation-Id, X-Request-Id, X-API-Key, Cache-Control',
+            'Access-Control-Allow-Credentials': 'true',
+            'Access-Control-Max-Age': '86400',
+          },
+        });
+      }
+      return new NextResponse(null, { status: 204 });
+    }
+
+    // CORS: only for non-admin, non-auth API routes
+    const isPublicApi = !pathname.startsWith('/api/admin/') && !pathname.startsWith('/api/auth/');
+    const origin = request.headers.get('origin') || '';
     const response = NextResponse.next();
+
+    if (isPublicApi && origin) {
+      if (ALLOWED_ORIGINS.includes(origin)) {
+        response.headers.set('Access-Control-Allow-Origin', origin);
+        response.headers.set('Vary', 'Origin');
+        response.headers.set('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
+        response.headers.set('Access-Control-Allow-Headers', 'Content-Type, Authorization, X-Requested-With, X-Correlation-Id, X-Request-Id, X-API-Key, Cache-Control');
+        response.headers.set('Access-Control-Allow-Credentials', 'true');
+      }
+    }
+
     response.headers.set('x-tenant-kind', tenant.kind);
     if (tenant.agencySlug) response.headers.set('x-agency-slug', tenant.agencySlug);
     return response;

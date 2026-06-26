@@ -42,7 +42,7 @@ const nextConfig = {
   output: 'standalone',
   // Avoid Next.js picking an incorrect monorepo root when multiple lockfiles exist.
   outputFileTracingRoot: __dirname,
-  transpilePackages: ['@akmleva/shared', '@akmleva/auth', '@akmleva/ui', '@akmleva/frontend'],
+  transpilePackages: [],
   experimental: {
     optimizePackageImports: [
       'lucide-react',
@@ -146,28 +146,7 @@ const nextConfig = {
         ]
       },
 
-      // API routes specific headers
-      {
-        source: '/api/(.*)',
-        headers: [
-          {
-            key: 'Access-Control-Allow-Origin',
-            value: process.env.NEXT_PUBLIC_APP_URL || 'https://www.akmleva.pt'
-          },
-          {
-            key: 'Access-Control-Allow-Methods',
-            value: 'GET, POST, PUT, DELETE, OPTIONS'
-          },
-          {
-            key: 'Access-Control-Allow-Headers',
-            value: 'Content-Type, Authorization, X-Requested-With, X-Correlation-Id, X-Request-Id, X-API-Key, Cache-Control'
-          },
-          {
-            key: 'Access-Control-Allow-Credentials',
-            value: 'true'
-          }
-        ]
-      }
+      // CORS handled in middleware.ts (dynamic origin check against whitelist)
     ];
   },
 
