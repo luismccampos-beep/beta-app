@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import {
   ArrowRight,
   Bed,
@@ -60,11 +61,14 @@ export function RecommendedDestinationCard({
   return (
     <Card className="overflow-hidden border-0 shadow-lg ring-1 ring-teal-200/70 dark:ring-teal-900/50 dark:bg-gray-800">
       <div className="relative aspect-video overflow-hidden">
-        <img
+        <Image
           src={item.imageUrl || DESTINATION_PLACEHOLDER}
           alt={item.nome}
-          className="h-full w-full object-cover"
+          fill
+          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+          className="object-cover"
           onError={onDestinationImageError}
+          loading="lazy"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent pointer-events-none" />
         <div className="absolute top-2 right-2 flex flex-wrap gap-1 justify-end">

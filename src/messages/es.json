@@ -1314,6 +1314,12 @@
     "type": "Tipo",
     "budget": "Presupuesto",
     "gallery": "Galería",
+    "breadcrumbHome": "Inicio",
+    "breadcrumbDestinations": "Destinos",
+    "reservationCtaTitle": "¿Listo para reservar?",
+    "reservationCtaDesc": "Encuentra los mejores vuelos y hoteles para {name} con AKMLEVA.",
+    "reservationCtaButton": "Reservar Ahora",
+    "relatedDestinationsTitle": "Destinos Relacionados",
     "showVideo": "Video",
     "showPhoto": "Foto",
     "enrich": {
@@ -1346,3 +1352,4 @@
     }
   }
 }
+
