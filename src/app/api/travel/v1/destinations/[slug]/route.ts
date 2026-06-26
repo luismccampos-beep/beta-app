@@ -27,6 +27,15 @@ import { getDestinationLocalized } from '../../../../../../lib/travel/destinatio
 
 export const dynamic = 'force-dynamic';
 
+async function safeAsync<T>(fn: () => Promise<T>, fallback: T, label?: string): Promise<T> {
+  try {
+    return await fn();
+  } catch (err) {
+    if (label) console.error(`[api/destinations] ${label} failed:`, err);
+    return fallback;
+  }
+}
+
 export const GET = apiHandler(withRateLimit(async (req: Request, ctx) => {
   const slug = z.string().min(1).max(100).parse((await ctx.params).slug);
   const { searchParams } = new URL(req.url);
@@ -51,18 +60,22 @@ export const GET = apiHandler(withRateLimit(async (req: Request, ctx) => {
     }
 
     const { dest, hotels } = row;
-    const statsMap = await getHotelStatsForDestinations([row.dest.id]);
-    const destStats = statsMap.get(row.dest.id);
+    const statsMap = await safeAsync(() => getHotelStatsForDestinations([row.dest.id]), null, 'getHotelStatsForDestinations');
+    const destStats = statsMap?.get(row.dest.id) ?? null;
 
     const localized = locale && locale !== (dest.lang ?? 'pt')
-      ? await getDestinationLocalized(row.dest.id, locale)
+      ? await safeAsync(() => getDestinationLocalized(row.dest.id, locale), null, 'getDestinationLocalized')
       : null;
 
-    const videos = await prisma.wvDestinationVideo.findMany({
-      where: { destinoId: row.dest.id, isVerified: true },
-      orderBy: { sortOrder: 'asc' },
-      take: 5,
-    });
+    const videos = await safeAsync(
+      () => prisma.wvDestinationVideo.findMany({
+        where: { destinoId: row.dest.id, isVerified: true },
+        orderBy: { sortOrder: 'asc' },
+        take: 5,
+      }),
+      [],
+      'wvDestinationVideo.findMany',
+    );
 
     return NextResponse.json({
       ok: true,
@@ -116,10 +129,10 @@ export const GET = apiHandler(withRateLimit(async (req: Request, ctx) => {
       })),
       hotels,
       hotelTypes: destStats?.hotelTypes ?? null,
-      mapMarkers: (() => {
+      mapMarkers: await safeAsync(async () => {
         const fromDb = mapMarkersFromDbHotels(dest, hotels);
         return fromDb.length > 0 ? fromDb : resolveMapMarkersForDestination(dest);
-      })(),
+      }, [], 'mapMarkers'),
       mock: false,
     });
   }
