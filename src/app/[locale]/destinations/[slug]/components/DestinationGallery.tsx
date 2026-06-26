@@ -1,6 +1,7 @@
 'use client';
 
 import { useCallback, useState } from 'react';
+import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, ChevronLeft, ChevronRight } from 'lucide-react';
 
@@ -35,7 +36,7 @@ export function DestinationGallery({
             onClick={() => { setCurrentIndex(i); setLightboxOpen(true); }}
             className="relative w-20 h-20 rounded-lg overflow-hidden hover:ring-2 hover:ring-teal-500 transition-all"
           >
-            <img src={img} alt="" className="object-cover w-full h-full" />
+            <Image src={img} alt="" fill sizes="80px" className="object-cover" loading="lazy" />
           </button>
         ))}
       </div>

@@ -27,8 +27,33 @@
  */
 
 import { spawnSync } from 'node:child_process';
+import { readFileSync, existsSync } from 'node:fs';
+import { resolve, dirname } from 'node:path';
+import { fileURLToPath } from 'node:url';
+
+const __dirname = dirname(fileURLToPath(import.meta.url));
+const rootDir = resolve(__dirname, '..');
 
 const env = { ...process.env };
+
+// Load .env into env if not already set (avoids masking pre-existing env vars
+// while still working when .env is the only source).
+const envPath = resolve(rootDir, '.env');
+if (existsSync(envPath)) {
+  const dotenvRaw = readFileSync(envPath, 'utf-8');
+  for (const line of dotenvRaw.split('\n')) {
+    const trimmed = line.trim();
+    if (!trimmed || trimmed.startsWith('#')) continue;
+    const eqIdx = trimmed.indexOf('=');
+    if (eqIdx === -1) continue;
+    const key = trimmed.slice(0, eqIdx).trim();
+    let val = trimmed.slice(eqIdx + 1).trim();
+    if ((val.startsWith('"') && val.endsWith('"')) || (val.startsWith("'") && val.endsWith("'"))) {
+      val = val.slice(1, -1);
+    }
+    if (!env[key]) env[key] = val;
+  }
+}
 
 // Hard fail early when BOTH URLs are empty — better than forwarding "" to
 // Prisma which would surface a generic P1012 the user then has to decode.

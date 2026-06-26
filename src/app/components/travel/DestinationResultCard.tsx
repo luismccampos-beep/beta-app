@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import {
   ArrowRight,
   ChevronDown,
@@ -73,11 +74,14 @@ export function DestinationResultCard({ result, href, labels, tipPreviews = [] }
     <Card className="group relative overflow-hidden border-0 bg-white dark:bg-gray-800 shadow-md hover:shadow-xl ring-1 ring-gray-200/60 dark:ring-gray-700/60 transition-all duration-300">
       {/* ── Hero Image ── */}
       <Link href={href} className="block relative aspect-video overflow-hidden">
-        <img
+        <Image
           src={result.imageUrl || DESTINATION_PLACEHOLDER}
           alt={result.destination}
-          className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-110"
+          fill
+          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+          className="object-cover transition-transform duration-700 ease-out group-hover:scale-110"
           onError={onDestinationImageError}
+          loading="lazy"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
 

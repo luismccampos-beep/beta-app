@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { ArrowRight, Hotel, MapPin, Plane, Star } from 'lucide-react';
 
 import { Badge } from '../ui/badge';
@@ -71,11 +72,14 @@ export function DestinationBrowseCard({ item, href, labels }: DestinationBrowseC
     <Card className="group relative overflow-hidden border-0 bg-white dark:bg-gray-800 shadow-md hover:shadow-xl ring-1 ring-gray-200/60 dark:ring-gray-700/60 transition-all duration-300 h-full flex flex-col">
       {/* Hero image */}
       <Link href={href} className="block relative aspect-video overflow-hidden shrink-0">
-        <img
+        <Image
           src={item.imageUrl || DESTINATION_PLACEHOLDER}
           alt={item.nome}
-          className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-110"
+          fill
+          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+          className="object-cover transition-transform duration-700 ease-out group-hover:scale-110"
           onError={onDestinationImageError}
+          loading="lazy"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/15 to-transparent" />
 
