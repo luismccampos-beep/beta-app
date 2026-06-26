@@ -3,7 +3,7 @@
 import { Suspense, useCallback } from 'react';
 import { useParams, useRouter, useSearchParams } from 'next/navigation';
 
-import { DestinationDetailPage } from '../../components/pages/DestinationDetailPage';
+import { DestinationDetailPage } from '../../components/travel/destination-detail';
 import { resultsListPath } from '../../../lib/travel/destination-path';
 import { decodeTravelPreferencesCompact } from '../../../lib/travel/travel-preferences-query';
 
