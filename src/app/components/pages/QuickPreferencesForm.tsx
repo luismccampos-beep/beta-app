@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { useRouter } from 'next/navigation';
@@ -30,7 +30,7 @@ import { createFormTracker } from '../../../lib/travel/analytics-tracker';
 
 import { TravelStyleSection } from '../travel/preferences-sections/TravelStyleSection';
 import { BudgetSection } from '../travel/preferences-sections/BudgetSection';
-import type { FilterOption } from '../../../types';
+type FilterOption = { name: string; count: number };
 import type { TravelCatalogResponse } from '../../../lib/api-client';
 
 // ── Constants ──────────────────────────────────────────────────────
@@ -119,7 +119,6 @@ export function QuickPreferencesForm() {
         if (chip) setValue('budgetRange', chip.range as [number, number]);
       }
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [preferences.travelStyles, setValue, getValues]);
 
   // ── Save draft to localStorage ──────────────────────────────────
@@ -270,7 +269,7 @@ export function QuickPreferencesForm() {
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
-      className="w-full max-w-3xl mx-auto px-3 sm:px-4 pt-4 pb-32 md:pb-6 space-y-4"
+      className="w-full max-w-3xl mx-auto px-3 sm:px-4 pt-4 pb-[max(8rem,env(safe-area-inset-bottom)+4rem)] md:pb-6 space-y-4"
       noValidate
     >
       {/* Header */}
@@ -294,7 +293,7 @@ export function QuickPreferencesForm() {
             <div className="flex justify-between items-start relative mb-2">
               <div className="absolute top-5 left-6 right-6 h-1 bg-gray-200 dark:bg-gray-600 -z-10 rounded-full">
                 <div
-                  className="h-full bg-gradient-to-r from-teal-600 to-orange-500 transition-all duration-500 rounded-full"
+                  className="h-full bg-gradient-to-r from-primary to-accent transition-all duration-500 rounded-full"
                   style={{ width: `${progress}%` }}
                 />
               </div>
@@ -302,13 +301,13 @@ export function QuickPreferencesForm() {
                 const isActive = index === currentStep;
                 const isCompleted = index < currentStep;
                 return (
-                  <div key={index} className="flex flex-col items-center gap-2 flex-1">
+                  <div key={index} className="flex flex-col items-center gap-2 flex-1" aria-current={isActive ? 'step' : undefined}>
                     <div
                       className={`w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300 ${
                         isCompleted
                           ? 'bg-gradient-to-br from-green-500 to-emerald-600 text-white'
                           : isActive
-                            ? 'bg-gradient-to-br from-teal-600 to-orange-500 text-white scale-110'
+                            ? 'bg-gradient-to-br from-primary to-accent text-white scale-110'
                             : 'bg-gray-200 dark:bg-gray-600 text-gray-400'
                       }`}
                     >
@@ -316,7 +315,7 @@ export function QuickPreferencesForm() {
                     </div>
                     <span
                       className={`text-xs whitespace-nowrap ${
-                        isActive ? 'font-semibold text-teal-700 dark:text-teal-300' : 'text-gray-500 dark:text-gray-400'
+                        isActive ? 'font-semibold text-primary dark:text-primary-200' : 'text-gray-500 dark:text-gray-400'
                       }`}
                     >
                       {t(STEP_LABELS[index])}
@@ -332,7 +331,7 @@ export function QuickPreferencesForm() {
               {remainingMinutes > 0 ? ` · ~${remainingMinutes} min` : ''}
             </span>
             {currentStep < TOTAL_STEPS - 1 && (
-              <button type="button" onClick={goNext} className="text-teal-600 hover:underline touch-manipulation">
+              <button type="button" onClick={goNext} className="text-primary hover:underline touch-manipulation">
                 {t('skipThisStep')} →
               </button>
             )}
@@ -347,7 +346,7 @@ export function QuickPreferencesForm() {
             <div className="space-y-6">
               <div className="border-b pb-4">
                 <h3 className="text-xl font-bold mb-2 flex items-center gap-2">
-                  <MapPin className="w-6 h-6 text-teal-600" />
+                  <MapPin className="w-6 h-6 text-primary" />
                   {t('whereDoYouWantToGo')}
                 </h3>
                 <p className="text-sm text-gray-600 dark:text-gray-400">
@@ -362,7 +361,7 @@ export function QuickPreferencesForm() {
             <div className="space-y-6">
               <div className="border-b pb-4">
                 <h3 className="text-xl font-bold mb-2 flex items-center gap-2">
-                  <Wallet className="w-6 h-6 text-teal-600" />
+                  <Wallet className="w-6 h-6 text-primary" />
                   {t('whatsYourBudget')}
                 </h3>
                 <p className="text-sm text-gray-600 dark:text-gray-400">
@@ -384,8 +383,8 @@ export function QuickPreferencesForm() {
                         onClick={() => setValue('budgetRange', [...chip.range] as [number, number])}
                         className={`p-4 rounded-xl border-2 text-center transition-all touch-manipulation ${
                           selected
-                            ? 'border-teal-600 bg-teal-50 dark:bg-teal-900/30 shadow-md'
-                            : 'border-gray-200 dark:border-gray-600 bg-white dark:bg-gray-800 hover:border-teal-400'
+                            ? 'border-primary bg-primary-50 dark:bg-primary-900/30 shadow-md'
+                            : 'border-gray-200 dark:border-gray-600 bg-white dark:bg-gray-800 hover:border-primary'
                         }`}
                       >
                         <div className="text-2xl mb-1">{chip.emoji}</div>
@@ -405,13 +404,13 @@ export function QuickPreferencesForm() {
             <div className="space-y-6 text-center">
               <div className="border-b pb-4">
                 <h3 className="text-xl font-bold mb-2 flex items-center justify-center gap-2">
-                  <Sparkles className="w-6 h-6 text-orange-600" />
+                  <Sparkles className="w-6 h-6 text-accent" />
                   {t('readyToSeeResults')}
                 </h3>
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 text-left">
-                <Card className="border-teal-200 bg-teal-50/50 dark:bg-teal-900/20">
+                <Card className="border-primary-200 bg-primary-50/50 dark:bg-primary-900/20">
                   <CardContent className="pt-4">
                     <p className="text-xs text-gray-500 mb-1">{t('travelStyle')}</p>
                     <p className="font-semibold">
@@ -421,7 +420,7 @@ export function QuickPreferencesForm() {
                     </p>
                   </CardContent>
                 </Card>
-                <Card className="border-teal-200 bg-teal-50/50 dark:bg-teal-900/20">
+                <Card className="border-primary-200 bg-primary-50/50 dark:bg-primary-900/20">
                   <CardContent className="pt-4">
                     <p className="text-xs text-gray-500 mb-1">{t('destinations')}</p>
                     <p className="font-semibold">
@@ -434,7 +433,7 @@ export function QuickPreferencesForm() {
                     </p>
                   </CardContent>
                 </Card>
-                <Card className="border-teal-200 bg-teal-50/50 dark:bg-teal-900/20">
+                <Card className="border-primary-200 bg-primary-50/50 dark:bg-primary-900/20">
                   <CardContent className="pt-4">
                     <p className="text-xs text-gray-500 mb-1">{t('budget')}</p>
                     <p className="font-semibold">
@@ -450,11 +449,11 @@ export function QuickPreferencesForm() {
                   type="submit"
                   disabled={isProcessing}
                   size="lg"
-                  className="gap-2 min-h-12 bg-gradient-to-r from-teal-600 to-orange-500 hover:from-teal-700 hover:to-orange-600"
+                  className="gap-2 min-h-12 bg-gradient-to-r from-primary to-accent hover:from-primary-700 hover:to-accent-600"
                 >
                   {isProcessing ? (
                     <>
-                      <span className="animate-spin">✨</span>
+                      <svg className="animate-spin h-4 w-4" viewBox="0 0 24 24" fill="none"><circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" /><path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" /></svg>
                       {t('preparingYourTrips')}
                     </>
                   ) : (
@@ -483,7 +482,7 @@ export function QuickPreferencesForm() {
           ← {t('previous')}
         </Button>
         {currentStep < TOTAL_STEPS - 1 ? (
-          <Button type="button" onClick={goNext} size="lg" className="gap-2 bg-gradient-to-r from-teal-600 to-orange-500">
+          <Button type="button" onClick={goNext} size="lg" className="gap-2 bg-gradient-to-r from-primary to-accent">
             {t('nextStep')} →
           </Button>
         ) : (
@@ -491,11 +490,11 @@ export function QuickPreferencesForm() {
             type="submit"
             disabled={isProcessing}
             size="lg"
-            className="gap-2 min-h-12 bg-gradient-to-r from-teal-600 to-orange-500"
+            className="gap-2 min-h-12 bg-gradient-to-r from-primary to-accent"
           >
             {isProcessing ? (
               <>
-                <span className="animate-spin">✨</span>
+                <svg className="animate-spin h-4 w-4" viewBox="0 0 24 24" fill="none"><circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" /><path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" /></svg>
                 {t('preparingYourTrips')}
               </>
             ) : (
@@ -516,7 +515,7 @@ export function QuickPreferencesForm() {
       >
         <div className="flex flex-col-reverse gap-2 max-w-7xl mx-auto">
           {currentStep < TOTAL_STEPS - 1 ? (
-            <Button type="button" onClick={goNext} size="lg" className="w-full min-h-12 gap-2 bg-gradient-to-r from-teal-600 to-orange-500 touch-manipulation">
+            <Button type="button" onClick={goNext} size="lg" className="w-full min-h-12 gap-2 bg-gradient-to-r from-primary to-accent touch-manipulation">
               {t('nextStep')} →
             </Button>
           ) : (
@@ -524,11 +523,11 @@ export function QuickPreferencesForm() {
               type="submit"
               disabled={isProcessing}
               size="lg"
-              className="w-full min-h-12 gap-2 bg-gradient-to-r from-teal-600 to-orange-500 touch-manipulation"
+              className="w-full min-h-12 gap-2 bg-gradient-to-r from-primary to-accent touch-manipulation"
             >
               {isProcessing ? (
                 <>
-                  <span className="animate-spin">✨</span>
+                  <svg className="animate-spin h-4 w-4" viewBox="0 0 24 24" fill="none"><circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" /><path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" /></svg>
                   {t('preparingYourTrips')}
                 </>
               ) : (

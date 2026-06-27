@@ -33,16 +33,16 @@ function TermsContent() {
   const t = useTranslations('legal.terms');
   return (
     <div className="space-y-6 sm:space-y-8">
-      <Card className="border-2 border-teal-200 dark:border-teal-700 shadow-xl dark:bg-gray-800">
+      <Card className="border-2 border-primary-200 dark:border-primary-700 shadow-xl dark:bg-gray-800">
         <CardHeader>
           <CardTitle className="flex items-center gap-2 text-xl sm:text-2xl dark:text-white">
-            <FileText className="w-5 h-5 sm:w-6 sm:h-6 text-teal-600 dark:text-teal-400" />
+            <FileText className="w-5 h-5 sm:w-6 sm:h-6 text-primary dark:text-primary-300" />
             {t('title')}
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-4 text-sm sm:text-base text-gray-700 dark:text-gray-300">
           <div className="flex items-center gap-2 mb-4">
-            <Calendar className="w-4 h-4 text-teal-600 dark:text-teal-400" />
+            <Calendar className="w-4 h-4 text-primary dark:text-primary-300" />
             <span className="font-medium">{t('lastUpdated')}</span>
           </div>
           <p>{t('intro')}</p>
@@ -170,13 +170,13 @@ export function LegalPage({ pageType, onBack }: LegalPageProps) {
   const PageIcon = getPageIcon();
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 via-teal-50 to-orange-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 transition-colors">
+    <div className="min-h-screen bg-gradient-to-br from-gray-50 via-primary-50 to-accent-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 transition-colors">
       <AppHeader showBack onBack={onBack} />
 
       {/* Scroll Progress Bar */}
       <div className="sticky top-0 left-0 w-full h-1 bg-gray-200 dark:bg-gray-700 z-50">
         <div
-          className="h-full bg-gradient-to-r from-teal-600 to-orange-500 transition-all duration-150"
+          className="h-full bg-gradient-to-r from-primary to-accent transition-all duration-150"
           style={{ width: `${scrollProgress}%` }}
         />
       </div>
@@ -185,26 +185,26 @@ export function LegalPage({ pageType, onBack }: LegalPageProps) {
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-12">
         {/* Hero */}
         <div className="relative mb-8 sm:mb-12 overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-r from-teal-500/10 to-orange-500/10 dark:from-teal-500/5 dark:to-orange-500/5 rounded-2xl sm:rounded-3xl"></div>
+          <div className="absolute inset-0 bg-gradient-to-r from-primary/10 to-accent-500/10 dark:from-primary/5 dark:to-accent-500/5 rounded-2xl sm:rounded-3xl"></div>
           <div className="relative p-6 sm:p-8 md:p-12 text-center">
-            <div className="w-14 h-14 sm:w-20 sm:h-20 rounded-full bg-gradient-to-br from-teal-600 to-orange-500 flex items-center justify-center mx-auto mb-3 sm:mb-4 shadow-xl">
+            <div className="w-14 h-14 sm:w-20 sm:h-20 rounded-full bg-gradient-to-br from-primary to-accent flex items-center justify-center mx-auto mb-3 sm:mb-4 shadow-xl">
               <PageIcon className="w-7 h-7 sm:w-10 sm:h-10 text-white" />
             </div>
             <h1 className="text-3xl sm:text-5xl md:text-6xl font-bold text-gray-900 dark:text-white mb-3 sm:mb-4">
               {getPageTitle()}
             </h1>
-            <div className="w-16 sm:w-24 h-1 bg-gradient-to-r from-teal-600 to-orange-500 mx-auto"></div>
+            <div className="w-16 sm:w-24 h-1 bg-gradient-to-r from-primary to-accent mx-auto"></div>
           </div>
         </div>
 
         {getPageContent()}
 
         {/* Contact Section */}
-        <Card className="border-2 border-orange-200 dark:border-orange-700 shadow-2xl dark:bg-gray-800 overflow-hidden mt-8 sm:mt-12">
-          <div className="bg-gradient-to-r from-teal-600 to-orange-500 h-2"></div>
+        <Card className="border-2 border-accent-200 dark:border-accent-700 shadow-2xl dark:bg-gray-800 overflow-hidden mt-8 sm:mt-12">
+          <div className="bg-gradient-to-r from-primary to-accent h-2"></div>
           <CardContent className="p-4 sm:p-8">
             <h2 className="text-lg sm:text-2xl font-bold text-gray-900 dark:text-white mb-4 sm:mb-6 flex items-center gap-2">
-              <AlertCircle className="w-5 h-5 sm:w-6 sm:h-6 text-orange-600 dark:text-orange-400" />
+              <AlertCircle className="w-5 h-5 sm:w-6 sm:h-6 text-accent dark:text-accent-500" />
               {t('questionsTitle')}
             </h2>
             <p className="text-sm sm:text-base text-gray-700 dark:text-gray-300 mb-4 sm:mb-6">
@@ -212,21 +212,21 @@ export function LegalPage({ pageType, onBack }: LegalPageProps) {
             </p>
             <div className="grid sm:grid-cols-2 gap-4 sm:gap-6">
               <div className="flex items-start gap-2 sm:gap-3">
-                <Mail className="w-4 h-4 sm:w-5 sm:h-5 text-teal-600 dark:text-teal-400 mt-0.5 flex-shrink-0" />
+                <Mail className="w-4 h-4 sm:w-5 sm:h-5 text-primary dark:text-primary-300 mt-0.5 flex-shrink-0" />
                 <div>
                   <p className="font-medium text-gray-900 dark:text-white text-sm">{t('emailLabel')}</p>
-                  <a href="mailto:privacy@akmleva.pt" className="text-xs sm:text-sm text-teal-600 dark:text-teal-400 hover:underline">privacy@akmleva.pt</a>
+                  <a href="mailto:privacy@akmleva.pt" className="text-xs sm:text-sm text-primary dark:text-primary-300 hover:underline">privacy@akmleva.pt</a>
                 </div>
               </div>
               <div className="flex items-start gap-2 sm:gap-3">
-                <Phone className="w-4 h-4 sm:w-5 sm:h-5 text-teal-600 dark:text-teal-400 mt-0.5 flex-shrink-0" />
+                <Phone className="w-4 h-4 sm:w-5 sm:h-5 text-primary dark:text-primary-300 mt-0.5 flex-shrink-0" />
                 <div>
                   <p className="font-medium text-gray-900 dark:text-white text-sm">{t('phoneLabel')}</p>
-                  <a href="tel:+351256372092" className="text-xs sm:text-sm text-teal-600 dark:text-teal-400 hover:underline">+351 256 372 092</a>
+                  <a href="tel:+351256372092" className="text-xs sm:text-sm text-primary dark:text-primary-300 hover:underline">+351 256 372 092</a>
                 </div>
               </div>
               <div className="sm:col-span-2 flex items-start gap-2 sm:gap-3">
-                <MapPin className="w-4 h-4 sm:w-5 sm:h-5 text-teal-600 dark:text-teal-400 mt-0.5 flex-shrink-0" />
+                <MapPin className="w-4 h-4 sm:w-5 sm:h-5 text-primary dark:text-primary-300 mt-0.5 flex-shrink-0" />
                 <div>
                   <p className="font-medium text-gray-900 dark:text-white text-sm">{t('addressLabel')}</p>
                   <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-400">{t('address')}</p>
@@ -238,9 +238,9 @@ export function LegalPage({ pageType, onBack }: LegalPageProps) {
       </div>
 
       {showBackToTop && (
-        <button
+        <button type="button"
           onClick={scrollToTop}
-          className="fixed bottom-6 right-6 z-50 p-3 rounded-full bg-gradient-to-r from-teal-600 to-orange-500 text-white shadow-xl hover:from-teal-700 hover:to-orange-600 transition-all"
+          className="fixed bottom-6 right-6 z-50 p-3 rounded-full bg-gradient-to-r from-primary to-accent text-white shadow-xl hover:from-primary-700 hover:to-accent-600 transition-all"
           aria-label="Back to top"
         >
           <ArrowUp className="w-5 h-5" />

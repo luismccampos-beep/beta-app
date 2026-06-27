@@ -1,9 +1,10 @@
 'use client';
 
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
+import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Camera, X, ChevronLeft, ChevronRight } from 'lucide-react';
-import { DESTINATION_PLACEHOLDER, onDestinationImageError } from '../../../travel/destination-image-fallback';
+import { DESTINATION_PLACEHOLDER } from '../../../travel/destination-image-fallback';
 
 export function DestinationGallery({
   images,
@@ -14,6 +15,23 @@ export function DestinationGallery({
 }) {
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [failedImages, setFailedImages] = useState<Set<string>>(() => new Set());
+  const closeButtonRef = useRef<HTMLButtonElement>(null);
+
+  const safeSrc = useCallback((url: string) => {
+    if (failedImages.has(url)) return DESTINATION_PLACEHOLDER;
+    return url;
+  }, [failedImages]);
+
+  const handleImageError = useCallback((url: string) => {
+    if (url === DESTINATION_PLACEHOLDER) return;
+    setFailedImages((prev) => {
+      if (prev.has(url)) return prev;
+      const next = new Set(prev);
+      next.add(url);
+      return next;
+    });
+  }, []);
 
   const prev = useCallback(
     () => setCurrentIndex((i) => (i - 1 + images.length) % images.length),
@@ -27,6 +45,7 @@ export function DestinationGallery({
 
   useEffect(() => {
     if (!lightboxOpen) return;
+    closeButtonRef.current?.focus();
     const handleKey = (e: KeyboardEvent) => {
       if (e.key === 'Escape') close();
       else if (e.key === 'ArrowLeft') prev();
@@ -56,19 +75,16 @@ export function DestinationGallery({
                 setLightboxOpen(true);
               }}
               aria-label={`${title} ${i + 1} of ${images.length}`}
-              className="relative shrink-0 w-40 aspect-video rounded-xl overflow-hidden snap-start cursor-pointer ring-1 ring-gray-200/60 dark:ring-gray-700/60 hover:ring-teal-400 dark:hover:ring-teal-500 transition-all duration-200"
+              className="relative shrink-0 w-40 aspect-video rounded-xl overflow-hidden snap-start cursor-pointer ring-1 ring-gray-200/60 dark:ring-gray-700/60 hover:ring-primary dark:hover:ring-primary transition-all duration-200"
             >
-              <img
-                src={url}
+              <Image
+                src={safeSrc(url)}
                 alt={`${title} ${i + 1}`}
-                className="w-full h-full object-cover"
-                loading="lazy"
-                onError={(e) => {
-                  const img = e.currentTarget;
-                  if (!img.src.endsWith(DESTINATION_PLACEHOLDER)) {
-                    img.src = DESTINATION_PLACEHOLDER;
-                  }
-                }}
+                fill
+                sizes="160px"
+                className="object-cover"
+                unoptimized
+                onError={() => handleImageError(url)}
               />
               <div className="absolute inset-0 bg-black/0 hover:bg-black/10 transition-colors duration-200" />
             </motion.button>
@@ -79,6 +95,13 @@ export function DestinationGallery({
       <AnimatePresence>
         {lightboxOpen && (
           <motion.div
+            ref={(ref) => {
+              if (ref) {
+                ref.setAttribute('role', 'dialog');
+                ref.setAttribute('aria-modal', 'true');
+                ref.setAttribute('aria-label', `${title} - image ${currentIndex + 1} of ${images.length}`);
+              }
+            }}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -86,6 +109,7 @@ export function DestinationGallery({
             onClick={() => setLightboxOpen(false)}
           >
             <button
+              ref={closeButtonRef}
               type="button"
               aria-label="Close gallery"
               className="absolute top-4 right-4 p-2 rounded-full bg-white/10 text-white hover:bg-white/20 transition-colors"
@@ -107,16 +131,11 @@ export function DestinationGallery({
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.9 }}
               transition={{ duration: 0.25 }}
-              src={images[currentIndex]}
+              src={safeSrc(images[currentIndex])}
               alt={`${title} ${currentIndex + 1}`}
               className="max-h-[85vh] max-w-[90vw] object-contain rounded-lg"
               onClick={(e) => e.stopPropagation()}
-              onError={(e) => {
-                const img = e.currentTarget;
-                if (!img.src.endsWith(DESTINATION_PLACEHOLDER)) {
-                  img.src = DESTINATION_PLACEHOLDER;
-                }
-              }}
+              onError={() => handleImageError(images[currentIndex])}
             />
             <button
               type="button"

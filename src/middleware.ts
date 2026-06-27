@@ -55,6 +55,17 @@ const CACHE_TTL = 60000; // 1 minute
 // Helpers
 // =============================================================================
 
+async function fetchWithTimeout(url: string, options: RequestInit = {}, timeout = 5000): Promise<Response> {
+  const controller = new AbortController();
+  const id = setTimeout(() => controller.abort(), timeout);
+  try {
+    const response = await fetch(url, { ...options, signal: controller.signal });
+    return response;
+  } finally {
+    clearTimeout(id);
+  }
+}
+
 async function fetchRedirects(): Promise<Map<string, UrlRedirect>> {
   const now = Date.now();
   
@@ -67,8 +78,7 @@ async function fetchRedirects(): Promise<Map<string, UrlRedirect>> {
     const baseUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 
       (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : 'http://localhost:3000');
     
-    const response = await fetch(`${baseUrl}/api/admin/url-redirects?activeOnly=true&limit=500`, {
-      next: { revalidate: 60 },
+    const response = await fetchWithTimeout(`${baseUrl}/api/admin/url-redirects?activeOnly=true&limit=500`, {
       headers: {
         // Add internal API key for server-side requests
         'x-api-key': process.env.INTERNAL_API_KEY || '',
@@ -134,25 +144,56 @@ function isDynamicRoute(pathname: string): boolean {
   return dynamicPatterns.some(pattern => pattern.test(pathname));
 }
 
-async function log404(url: string, referer?: string | null) {
+// =============================================================================
+// 404 Logging — batched to reduce API calls
+// =============================================================================
+
+interface PendingLogEntry {
+  url: string;
+  referer?: string | null;
+}
+
+let pendingLogs: PendingLogEntry[] = [];
+let logFlushTimeout: ReturnType<typeof setTimeout> | null = null;
+
+async function flushLogs() {
+  const batch = pendingLogs.splice(0, pendingLogs.length);
+  if (batch.length === 0) return;
+  
   try {
     const baseUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 
       (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : 'http://localhost:3000');
     
-    await fetch(`${baseUrl}/api/admin/404-log`, {
+    await fetchWithTimeout(`${baseUrl}/api/admin/404-log`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
         'x-api-key': process.env.INTERNAL_API_KEY || '',
       },
-      body: JSON.stringify({
-        url,
-        referer,
-      }),
+      body: JSON.stringify({ entries: batch }),
     });
-  } catch (error) {
-    // Silently fail - 404 logging shouldn't break the page
-    console.error('Error logging 404:', error);
+  } catch {
+    // Silently fail
+  }
+}
+
+function log404(url: string, referer?: string | null) {
+  pendingLogs.push({ url, referer });
+  
+  if (!logFlushTimeout) {
+    logFlushTimeout = setTimeout(() => {
+      logFlushTimeout = null;
+      flushLogs();
+    }, 2000); // Flush after 2s of inactivity
+  }
+  
+  // Also flush immediately if we've accumulated more than 20 entries
+  if (pendingLogs.length >= 20) {
+    if (logFlushTimeout) {
+      clearTimeout(logFlushTimeout);
+      logFlushTimeout = null;
+    }
+    flushLogs();
   }
 }
 
@@ -191,27 +232,23 @@ export async function middleware(request: NextRequest) {
 
   // API routes: rate limiting + CORS
   if (pathname.startsWith('/api/')) {
-    const isTravelOrAdmin = pathname.startsWith('/api/travel/') || pathname.startsWith('/api/admin/');
+    // Rate limiting for all API routes
+    const { limiter, tier } = detectTier(request);
+    const result = await checkRateLimit(request, limiter);
 
-    // Rate limiting (travel/admin only)
-    if (isTravelOrAdmin) {
-      const { limiter, tier } = detectTier(request);
-      const result = await checkRateLimit(request, limiter);
-
-      if (!result.success) {
-        return NextResponse.json(
-          { ok: false, error: 'Too many requests', code: 'RATE_LIMITED' },
-          {
-            status: 429,
-            headers: {
-              'Retry-After': String(Math.ceil((result.reset - Date.now()) / 1000)),
-              'X-RateLimit-Limit': String(result.limit),
-              'X-RateLimit-Remaining': '0',
-              'X-RateLimit-Tier': tier,
-            },
-          }
-        );
-      }
+    if (!result.success) {
+      return NextResponse.json(
+        { ok: false, error: 'Too many requests', code: 'RATE_LIMITED' },
+        {
+          status: 429,
+          headers: {
+            'Retry-After': String(Math.ceil((result.reset - Date.now()) / 1000)),
+            'X-RateLimit-Limit': String(result.limit),
+            'X-RateLimit-Remaining': '0',
+            'X-RateLimit-Tier': tier,
+          },
+        }
+      );
     }
 
     // CORS preflight
@@ -287,7 +324,7 @@ export async function middleware(request: NextRequest) {
   // Log 404s for dynamic routes (for analytics)
   if (isDynamicRoute(pathname)) {
     // Fire and forget - don't block the request
-    log404(pathname, request.headers.get('referer')).catch(() => {});
+    log404(pathname, request.headers.get('referer'));
   }
   
   const response = intlResponse;

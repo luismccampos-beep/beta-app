@@ -144,7 +144,7 @@ export async function RelatedDestinations({
               <Button
                 variant="ghost"
                 size="sm"
-                className="w-full gap-1 text-teal-600 dark:text-teal-400 hover:text-teal-700"
+                className="w-full gap-1 text-primary dark:text-primary-300 hover:text-primary"
                 asChild
               >
                 <span>

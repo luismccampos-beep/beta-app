@@ -71,7 +71,7 @@ export function AppHeader({
           {/* Left side: Logo or Back button */}
           <div className="flex items-center gap-2">
             {showBack ? (
-              <Button
+              <Button type="button"
                 variant="ghost"
                 size="sm"
                 onClick={handleBack}
@@ -84,7 +84,7 @@ export function AppHeader({
               <Link
                 href="/"
                 aria-label="AKMLEVA - Voltar à página inicial"
-                className="text-xl sm:text-2xl font-bold bg-gradient-to-r from-teal-700 via-teal-600 to-orange-500 bg-clip-text text-transparent hover:opacity-80 transition-opacity shrink-0"
+                className="text-xl sm:text-2xl font-bold bg-gradient-to-r from-primary-700 via-primary to-accent-500 bg-clip-text text-transparent hover:opacity-80 transition-opacity shrink-0"
               >
                 AKMLEVA
               </Link>
@@ -95,10 +95,10 @@ export function AppHeader({
           <div className="flex items-center gap-2 sm:gap-3">
             {/* User avatar / dashboard link */}
             {session?.user && initials && showDashboard && (
-              <button
+              <button type="button"
                 onClick={onDashboard}
                 title={t('dashboard')}
-                className="min-w-11 min-h-11 rounded-full bg-gradient-to-r from-teal-600 to-orange-500 text-white font-semibold text-sm shadow-md hover:opacity-90 transition-opacity flex items-center justify-center"
+                className="min-w-11 min-h-11 rounded-full bg-gradient-to-r from-primary to-accent text-white font-semibold text-sm shadow-md hover:opacity-90 transition-opacity flex items-center justify-center"
               >
                 <LayoutDashboard className="h-4 w-4 sm:hidden" />
                 <span className="hidden sm:inline">{initials}</span>
@@ -107,27 +107,27 @@ export function AppHeader({
 
             {/* Preferences button */}
             {session?.user && showPreferences && (
-              <Button
+              <Button type="button"
                 variant="outline"
                 size="sm"
                 onClick={() => router.push('/preferences/edit')}
-                className="border-teal-300 dark:border-gray-600 dark:text-gray-200"
+                className="border-primary-300 dark:border-gray-600 dark:text-gray-200"
               >
                 {t('preferences')}
               </Button>
             )}
 
             {/* Theme Toggle */}
-            <button
+            <button type="button"
               onClick={toggleTheme}
               className="p-2.5 rounded-lg border border-gray-200 dark:border-gray-600 bg-white dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors min-h-11 min-w-11 flex items-center justify-center"
               title={isDark ? t('lightMode') : t('darkMode')}
               aria-label={isDark ? t('lightMode') : t('darkMode')}
             >
               {isDark ? (
-                <Sun className="h-4 w-4 text-orange-500" />
+                <Sun className="h-4 w-4 text-accent" />
               ) : (
-                <Moon className="h-4 w-4 text-teal-700" />
+                <Moon className="h-4 w-4 text-primary" />
               )}
             </button>
 
@@ -136,7 +136,7 @@ export function AppHeader({
 
             {/* Logout */}
             {showLogout && onLogout && (
-              <Button
+              <Button type="button"
                 variant="outline"
                 onClick={onLogout}
                 size="sm"

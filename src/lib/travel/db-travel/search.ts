@@ -7,6 +7,7 @@ import {
 } from '../catalog-db';
 import { rankResultsWithMlAndPreferences } from '../ml-ranking';
 import type { MockSearchInput, MockSearchOutput } from '../mock-travel/search';
+import type { MockHotel } from '../mock-travel/types';
 import { pickBestAccommodationHotel } from '../hotel-filter';
 import {
   buildCatalogTravelResult,
@@ -45,7 +46,7 @@ export async function searchDbTravelResults(input: MockSearchInput): Promise<Moc
     const flight = input.mode === 'hotels' ? null : pickCheapestFlight(flights, input.cabinClass);
     const hotels =
       input.mode === 'flights' ? [] : await getHotelsFromDb({ destinoId: dest.id, limit: 24 });
-    const hotel = input.mode === 'flights' ? null : pickBestAccommodationHotel(hotels);
+    const hotel = (input.mode === 'flights' ? null : pickBestAccommodationHotel(hotels)) as MockHotel | null;
 
     if (input.mode === 'flights' && !flight) {
       errors.push({ destination: destIata, message: 'Sem voos na base para esta rota' });

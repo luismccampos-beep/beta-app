@@ -31,9 +31,9 @@ const SECTION_META: Record<
   beba: { icon: Droplets, accent: 'text-cyan-600 dark:text-cyan-400' },
   dinheiro: { icon: Banknote, accent: 'text-emerald-600 dark:text-emerald-400' },
   saude: { icon: HeartPulse, accent: 'text-rose-600 dark:text-rose-400' },
-  transporte: { icon: Train, accent: 'text-teal-600 dark:text-teal-400' },
+  transporte: { icon: Train, accent: 'text-primary dark:text-primary-300' },
   horarios: { icon: Clock, accent: 'text-gray-600 dark:text-gray-400' },
-  compre: { icon: ShoppingBag, accent: 'text-orange-600 dark:text-orange-400' },
+  compre: { icon: ShoppingBag, accent: 'text-accent dark:text-accent-500' },
   clima: { icon: Sun, accent: 'text-yellow-600 dark:text-yellow-400' },
 };
 
@@ -69,7 +69,7 @@ export function DestinationTipsPanel({
   return (
     <div className="space-y-3">
       <h2 className="text-xl font-bold dark:text-white flex items-center gap-2">
-        <Shield className="h-5 w-5 text-teal-600" />
+        <Shield className="h-5 w-5 text-primary" />
         {labels.panelTitle}
       </h2>
       <div className={cn('space-y-2', compact && 'space-y-1.5')}>
@@ -119,7 +119,7 @@ export function DestinationTipsPanel({
                       key={tip.slice(0, 48)}
                       className="text-sm text-gray-700 dark:text-gray-300 flex gap-2 leading-snug"
                     >
-                      <span className="text-teal-500 font-bold shrink-0">•</span>
+                      <span className="text-primary font-bold shrink-0">•</span>
                       <span>{tip}</span>
                     </li>
                   ))}

@@ -152,11 +152,11 @@ const nextConfig = {
 
   eslint: {
     // Keep `next build` working even if the monorepo/root eslint config isn't present.
-    ignoreDuringBuilds: true,
+    // ignoreDuringBuilds: true, // Removed — lint passing
   },
 
   typescript: {
-    ignoreBuildErrors: true,
+    // ignoreBuildErrors: true, // Removed — tsc --noEmit clean
   },
 
   images: {

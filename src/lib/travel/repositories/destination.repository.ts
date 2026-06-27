@@ -80,7 +80,7 @@ export async function searchDestinations(opts: SearchDestinationsInput) {
       select: { destinoId: true },
       distinct: ['destinoId'],
     });
-    const ids = matchingDestIds.map((r) => r.destinoId);
+    const ids = matchingDestIds.map((r: any) => r.destinoId);
     if (ids.length === 0) {
       return { items: [], total: 0 };
     }
@@ -218,14 +218,14 @@ export async function getHotelsNearby(opts: {
   });
 
   return rows
-    .filter((h) => h.latitude != null && h.longitude != null)
-    .map((h) => ({
+    .filter((h: any) => h.latitude != null && h.longitude != null)
+    .map((h: any) => ({
       ...h,
       distance_km: Math.round(haversineKm(opts.lat, opts.lng, h.latitude!, h.longitude!) * 100) / 100,
       city: h.destino?.nome,
       country: h.destino?.pais,
     }))
-    .filter((h) => h.distance_km <= radiusKm)
-    .sort((a, b) => a.distance_km - b.distance_km)
+    .filter((h: any) => h.distance_km <= radiusKm)
+    .sort((a: any, b: any) => a.distance_km - b.distance_km)
     .slice(0, limit);
 }

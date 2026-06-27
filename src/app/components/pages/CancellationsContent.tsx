@@ -7,8 +7,8 @@ export function CancellationsContent() {
   const content = {
     en: (
       <>
-        <div className="mb-8 p-6 bg-orange-50 dark:bg-orange-900/20 border-l-4 border-orange-600 rounded-lg">
-          <p className="font-semibold text-lg text-orange-900 dark:text-orange-300 mb-2">IMPORTANT INFORMATION</p>
+        <div className="mb-8 p-6 bg-accent-50 dark:bg-accent-700/20 border-l-4 border-accent rounded-lg">
+          <p className="font-semibold text-lg text-accent-700 dark:text-accent-200 mb-2">IMPORTANT INFORMATION</p>
           <p className="text-gray-800 dark:text-gray-200 leading-relaxed">
             To ensure transparency, we detail the applicable conditions. We recommend careful reading.
           </p>
@@ -17,15 +17,15 @@ export function CancellationsContent() {
         <h2>1. General Conditions</h2>
         <ul className="space-y-2 my-4">
           <li className="flex items-start gap-2">
-            <CheckCircle2 className="w-4 h-4 text-teal-600 dark:text-teal-400 mt-0.5 flex-shrink-0" />
+            <CheckCircle2 className="w-4 h-4 text-primary dark:text-primary-300 mt-0.5 flex-shrink-0" />
             <span>All requests must be made in writing via email.</span>
           </li>
           <li className="flex items-start gap-2">
-            <CheckCircle2 className="w-4 h-4 text-teal-600 dark:text-teal-400 mt-0.5 flex-shrink-0" />
+            <CheckCircle2 className="w-4 h-4 text-primary dark:text-primary-300 mt-0.5 flex-shrink-0" />
             <span>Calculation is based on the date of receipt of the request.</span>
           </li>
           <li className="flex items-start gap-2">
-            <CheckCircle2 className="w-4 h-4 text-teal-600 dark:text-teal-400 mt-0.5 flex-shrink-0" />
+            <CheckCircle2 className="w-4 h-4 text-primary dark:text-primary-300 mt-0.5 flex-shrink-0" />
             <span>Service and administrative fees are non-refundable.</span>
           </li>
         </ul>
@@ -46,7 +46,7 @@ export function CancellationsContent() {
               </tr>
               <tr className="bg-gray-50 dark:bg-gray-900/50">
                 <td className="border border-gray-300 dark:border-gray-600 p-3">Between 29 and 15 days before</td>
-                <td className="border border-gray-300 dark:border-gray-600 p-3 font-semibold text-orange-700 dark:text-orange-400">50% retention fee</td>
+                <td className="border border-gray-300 dark:border-gray-600 p-3 font-semibold text-accent-700 dark:text-accent-500">50% retention fee</td>
               </tr>
               <tr>
                 <td className="border border-gray-300 dark:border-gray-600 p-3">Less than 14 days before</td>
@@ -61,7 +61,7 @@ export function CancellationsContent() {
             <p className="font-semibold">Cancellation more than 30 days in advance:</p>
             <p className="text-sm mt-1">20% retention fee.</p>
           </div>
-          <div className="p-4 border-l-4 border-orange-500 bg-orange-50 dark:bg-orange-900/20 rounded-r">
+          <div className="p-4 border-l-4 border-accent bg-accent-50 dark:bg-accent-700/20 rounded-r">
             <p className="font-semibold">Cancellation between 29 and 15 days:</p>
             <p className="text-sm mt-1">50% retention fee.</p>
           </div>
@@ -89,7 +89,7 @@ export function CancellationsContent() {
 
         <div className="space-y-4 my-6">
           <div className="flex items-start gap-4 p-4 bg-gray-50 dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700">
-            <div className="w-10 h-10 rounded-full bg-gradient-to-br from-teal-600 to-orange-500 flex items-center justify-center text-white font-bold flex-shrink-0">
+            <div className="w-10 h-10 rounded-full bg-gradient-to-br from-primary to-accent flex items-center justify-center text-white font-bold flex-shrink-0">
               1
             </div>
             <div className="flex-1">
@@ -101,7 +101,7 @@ export function CancellationsContent() {
           </div>
 
           <div className="flex items-start gap-4 p-4 bg-gray-50 dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700">
-            <div className="w-10 h-10 rounded-full bg-gradient-to-br from-teal-600 to-orange-500 flex items-center justify-center text-white font-bold flex-shrink-0">
+            <div className="w-10 h-10 rounded-full bg-gradient-to-br from-primary to-accent flex items-center justify-center text-white font-bold flex-shrink-0">
               2
             </div>
             <div className="flex-1">
@@ -113,7 +113,7 @@ export function CancellationsContent() {
           </div>
 
           <div className="flex items-start gap-4 p-4 bg-gray-50 dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700">
-            <div className="w-10 h-10 rounded-full bg-gradient-to-br from-teal-600 to-orange-500 flex items-center justify-center text-white font-bold flex-shrink-0">
+            <div className="w-10 h-10 rounded-full bg-gradient-to-br from-primary to-accent flex items-center justify-center text-white font-bold flex-shrink-0">
               3
             </div>
             <div className="flex-1">
@@ -125,10 +125,10 @@ export function CancellationsContent() {
           </div>
         </div>
 
-        <div className="my-6 p-6 bg-teal-50 dark:bg-teal-900/20 border-2 border-teal-300 dark:border-teal-700 rounded-lg text-center">
-          <Mail className="w-8 h-8 text-teal-600 dark:text-teal-400 mx-auto mb-3" />
-          <p className="font-semibold text-lg text-teal-900 dark:text-teal-300">Need additional help?</p>
-          <p className="text-sm text-teal-800 dark:text-teal-400 mt-1">Our team is here to help</p>
+        <div className="my-6 p-6 bg-primary-50 dark:bg-primary-900/20 border-2 border-primary-300 dark:border-primary-700 rounded-lg text-center">
+          <Mail className="w-8 h-8 text-primary dark:text-primary-300 mx-auto mb-3" />
+          <p className="font-semibold text-lg text-primary-900 dark:text-primary-200">Need additional help?</p>
+          <p className="text-sm text-primary-700 dark:text-primary-300 mt-1">Our team is here to help</p>
         </div>
 
         <h2>5. Frequently Asked Questions</h2>
@@ -137,7 +137,7 @@ export function CancellationsContent() {
         <div className="space-y-4 my-4">
           <details className="p-4 bg-gray-50 dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700">
             <summary className="font-semibold cursor-pointer flex items-center gap-2">
-              <span className="text-teal-600 dark:text-teal-400">1.</span> Can I cancel my booking online?
+              <span className="text-primary dark:text-primary-300">1.</span> Can I cancel my booking online?
             </summary>
             <p className="text-sm mt-3 text-gray-700 dark:text-gray-300 pl-6">
               Yes, you can initiate the cancellation process through your customer area or by contacting our support team via email.
@@ -146,7 +146,7 @@ export function CancellationsContent() {
 
           <details className="p-4 bg-gray-50 dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700">
             <summary className="font-semibold cursor-pointer flex items-center gap-2">
-              <span className="text-teal-600 dark:text-teal-400">2.</span> How long does the refund take?
+              <span className="text-primary dark:text-primary-300">2.</span> How long does the refund take?
             </summary>
             <p className="text-sm mt-3 text-gray-700 dark:text-gray-300 pl-6">
               Refunds are typically processed within 14-30 business days after approval, depending on your payment method and financial institution.
@@ -155,7 +155,7 @@ export function CancellationsContent() {
 
           <details className="p-4 bg-gray-50 dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700">
             <summary className="font-semibold cursor-pointer flex items-center gap-2">
-              <span className="text-teal-600 dark:text-teal-400">3.</span> Can I modify instead of cancel?
+              <span className="text-primary dark:text-primary-300">3.</span> Can I modify instead of cancel?
             </summary>
             <p className="text-sm mt-3 text-gray-700 dark:text-gray-300 pl-6">
               Yes! Modifications may be available depending on your booking conditions. Contact us to explore your options before canceling.
@@ -178,8 +178,8 @@ export function CancellationsContent() {
     ),
     pt: (
       <>
-        <div className="mb-8 p-6 bg-orange-50 dark:bg-orange-900/20 border-l-4 border-orange-600 rounded-lg">
-          <p className="font-semibold text-lg text-orange-900 dark:text-orange-300 mb-2">INFORMAÇÃO IMPORTANTE</p>
+        <div className="mb-8 p-6 bg-accent-50 dark:bg-accent-700/20 border-l-4 border-accent rounded-lg">
+          <p className="font-semibold text-lg text-accent-700 dark:text-accent-200 mb-2">INFORMAÇÃO IMPORTANTE</p>
           <p className="text-gray-800 dark:text-gray-200 leading-relaxed">
             Para garantir transparência, detalhamos as condições aplicáveis. Recomendamos uma leitura atenta.
           </p>
@@ -188,15 +188,15 @@ export function CancellationsContent() {
         <h2>1. Condições Gerais</h2>
         <ul className="space-y-2 my-4">
           <li className="flex items-start gap-2">
-            <CheckCircle2 className="w-4 h-4 text-teal-600 dark:text-teal-400 mt-0.5 flex-shrink-0" />
+            <CheckCircle2 className="w-4 h-4 text-primary dark:text-primary-300 mt-0.5 flex-shrink-0" />
             <span>Todos os pedidos devem ser feitos por escrito via email.</span>
           </li>
           <li className="flex items-start gap-2">
-            <CheckCircle2 className="w-4 h-4 text-teal-600 dark:text-teal-400 mt-0.5 flex-shrink-0" />
+            <CheckCircle2 className="w-4 h-4 text-primary dark:text-primary-300 mt-0.5 flex-shrink-0" />
             <span>O cálculo é baseado na data de receção do pedido.</span>
           </li>
           <li className="flex items-start gap-2">
-            <CheckCircle2 className="w-4 h-4 text-teal-600 dark:text-teal-400 mt-0.5 flex-shrink-0" />
+            <CheckCircle2 className="w-4 h-4 text-primary dark:text-primary-300 mt-0.5 flex-shrink-0" />
             <span>Taxas de serviço e administrativas são não reembolsáveis.</span>
           </li>
         </ul>
@@ -217,7 +217,7 @@ export function CancellationsContent() {
               </tr>
               <tr className="bg-gray-50 dark:bg-gray-900/50">
                 <td className="border border-gray-300 dark:border-gray-600 p-3">Entre 29 e 15 dias antes</td>
-                <td className="border border-gray-300 dark:border-gray-600 p-3 font-semibold text-orange-700 dark:text-orange-400">Taxa de retenção de 50%</td>
+                <td className="border border-gray-300 dark:border-gray-600 p-3 font-semibold text-accent-700 dark:text-accent-500">Taxa de retenção de 50%</td>
               </tr>
               <tr>
                 <td className="border border-gray-300 dark:border-gray-600 p-3">Menos de 14 dias antes</td>
@@ -232,7 +232,7 @@ export function CancellationsContent() {
             <p className="font-semibold">Cancelamento com mais de 30 dias de antecedência:</p>
             <p className="text-sm mt-1">Taxa de retenção de 20%.</p>
           </div>
-          <div className="p-4 border-l-4 border-orange-500 bg-orange-50 dark:bg-orange-900/20 rounded-r">
+          <div className="p-4 border-l-4 border-accent bg-accent-50 dark:bg-accent-700/20 rounded-r">
             <p className="font-semibold">Cancelamento entre 29 e 15 dias:</p>
             <p className="text-sm mt-1">Taxa de retenção de 50%.</p>
           </div>
@@ -260,7 +260,7 @@ export function CancellationsContent() {
 
         <div className="space-y-4 my-6">
           <div className="flex items-start gap-4 p-4 bg-gray-50 dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700">
-            <div className="w-10 h-10 rounded-full bg-gradient-to-br from-teal-600 to-orange-500 flex items-center justify-center text-white font-bold flex-shrink-0">
+            <div className="w-10 h-10 rounded-full bg-gradient-to-br from-primary to-accent flex items-center justify-center text-white font-bold flex-shrink-0">
               1
             </div>
             <div className="flex-1">
@@ -272,7 +272,7 @@ export function CancellationsContent() {
           </div>
 
           <div className="flex items-start gap-4 p-4 bg-gray-50 dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700">
-            <div className="w-10 h-10 rounded-full bg-gradient-to-br from-teal-600 to-orange-500 flex items-center justify-center text-white font-bold flex-shrink-0">
+            <div className="w-10 h-10 rounded-full bg-gradient-to-br from-primary to-accent flex items-center justify-center text-white font-bold flex-shrink-0">
               2
             </div>
             <div className="flex-1">
@@ -284,7 +284,7 @@ export function CancellationsContent() {
           </div>
 
           <div className="flex items-start gap-4 p-4 bg-gray-50 dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700">
-            <div className="w-10 h-10 rounded-full bg-gradient-to-br from-teal-600 to-orange-500 flex items-center justify-center text-white font-bold flex-shrink-0">
+            <div className="w-10 h-10 rounded-full bg-gradient-to-br from-primary to-accent flex items-center justify-center text-white font-bold flex-shrink-0">
               3
             </div>
             <div className="flex-1">
@@ -296,10 +296,10 @@ export function CancellationsContent() {
           </div>
         </div>
 
-        <div className="my-6 p-6 bg-teal-50 dark:bg-teal-900/20 border-2 border-teal-300 dark:border-teal-700 rounded-lg text-center">
-          <Mail className="w-8 h-8 text-teal-600 dark:text-teal-400 mx-auto mb-3" />
-          <p className="font-semibold text-lg text-teal-900 dark:text-teal-300">Precisa de ajuda adicional?</p>
-          <p className="text-sm text-teal-800 dark:text-teal-400 mt-1">A nossa equipa está aqui para ajudar</p>
+        <div className="my-6 p-6 bg-primary-50 dark:bg-primary-900/20 border-2 border-primary-300 dark:border-primary-700 rounded-lg text-center">
+          <Mail className="w-8 h-8 text-primary dark:text-primary-300 mx-auto mb-3" />
+          <p className="font-semibold text-lg text-primary-900 dark:text-primary-200">Precisa de ajuda adicional?</p>
+          <p className="text-sm text-primary-700 dark:text-primary-300 mt-1">A nossa equipa está aqui para ajudar</p>
         </div>
 
         <h2>5. Perguntas Frequentes</h2>
@@ -308,7 +308,7 @@ export function CancellationsContent() {
         <div className="space-y-4 my-4">
           <details className="p-4 bg-gray-50 dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700">
             <summary className="font-semibold cursor-pointer flex items-center gap-2">
-              <span className="text-teal-600 dark:text-teal-400">1.</span> Posso cancelar a minha reserva online?
+              <span className="text-primary dark:text-primary-300">1.</span> Posso cancelar a minha reserva online?
             </summary>
             <p className="text-sm mt-3 text-gray-700 dark:text-gray-300 pl-6">
               Sim, pode iniciar o processo de cancelamento através da sua área de cliente ou contactando a nossa equipa de suporte por email.
@@ -317,7 +317,7 @@ export function CancellationsContent() {
 
           <details className="p-4 bg-gray-50 dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700">
             <summary className="font-semibold cursor-pointer flex items-center gap-2">
-              <span className="text-teal-600 dark:text-teal-400">2.</span> Quanto tempo demora o reembolso?
+              <span className="text-primary dark:text-primary-300">2.</span> Quanto tempo demora o reembolso?
             </summary>
             <p className="text-sm mt-3 text-gray-700 dark:text-gray-300 pl-6">
               Os reembolsos são normalmente processados dentro de 14-30 dias úteis após aprovação, dependendo do seu método de pagamento e instituição financeira.
@@ -326,7 +326,7 @@ export function CancellationsContent() {
 
           <details className="p-4 bg-gray-50 dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700">
             <summary className="font-semibold cursor-pointer flex items-center gap-2">
-              <span className="text-teal-600 dark:text-teal-400">3.</span> Posso alterar em vez de cancelar?
+              <span className="text-primary dark:text-primary-300">3.</span> Posso alterar em vez de cancelar?
             </summary>
             <p className="text-sm mt-3 text-gray-700 dark:text-gray-300 pl-6">
               Sim! As alterações podem estar disponíveis dependendo das condições da sua reserva. Contacte-nos para explorar as suas opções antes de cancelar.
@@ -349,8 +349,8 @@ export function CancellationsContent() {
     ),
     es: (
       <>
-        <div className="mb-8 p-6 bg-orange-50 dark:bg-orange-900/20 border-l-4 border-orange-600 rounded-lg">
-          <p className="font-semibold text-lg text-orange-900 dark:text-orange-300 mb-2">INFORMACIÓN IMPORTANTE</p>
+        <div className="mb-8 p-6 bg-accent-50 dark:bg-accent-700/20 border-l-4 border-accent rounded-lg">
+          <p className="font-semibold text-lg text-accent-700 dark:text-accent-200 mb-2">INFORMACIÓN IMPORTANTE</p>
           <p className="text-gray-800 dark:text-gray-200 leading-relaxed">
             Para garantizar transparencia, detallamos las condiciones aplicables. Recomendamos una lectura atenta.
           </p>
@@ -359,15 +359,15 @@ export function CancellationsContent() {
         <h2>1. Condiciones Generales</h2>
         <ul className="space-y-2 my-4">
           <li className="flex items-start gap-2">
-            <CheckCircle2 className="w-4 h-4 text-teal-600 dark:text-teal-400 mt-0.5 flex-shrink-0" />
+            <CheckCircle2 className="w-4 h-4 text-primary dark:text-primary-300 mt-0.5 flex-shrink-0" />
             <span>Todas las solicitudes deben realizarse por escrito por correo electrónico.</span>
           </li>
           <li className="flex items-start gap-2">
-            <CheckCircle2 className="w-4 h-4 text-teal-600 dark:text-teal-400 mt-0.5 flex-shrink-0" />
+            <CheckCircle2 className="w-4 h-4 text-primary dark:text-primary-300 mt-0.5 flex-shrink-0" />
             <span>El cálculo se basa en la fecha de recepción de la solicitud.</span>
           </li>
           <li className="flex items-start gap-2">
-            <CheckCircle2 className="w-4 h-4 text-teal-600 dark:text-teal-400 mt-0.5 flex-shrink-0" />
+            <CheckCircle2 className="w-4 h-4 text-primary dark:text-primary-300 mt-0.5 flex-shrink-0" />
             <span>Las tarifas de servicio y administrativas no son reembolsables.</span>
           </li>
         </ul>
@@ -388,7 +388,7 @@ export function CancellationsContent() {
               </tr>
               <tr className="bg-gray-50 dark:bg-gray-900/50">
                 <td className="border border-gray-300 dark:border-gray-600 p-3">Entre 29 y 15 días antes</td>
-                <td className="border border-gray-300 dark:border-gray-600 p-3 font-semibold text-orange-700 dark:text-orange-400">Tarifa de retención del 50%</td>
+                <td className="border border-gray-300 dark:border-gray-600 p-3 font-semibold text-accent-700 dark:text-accent-500">Tarifa de retención del 50%</td>
               </tr>
               <tr>
                 <td className="border border-gray-300 dark:border-gray-600 p-3">Menos de 14 días antes</td>
@@ -403,7 +403,7 @@ export function CancellationsContent() {
             <p className="font-semibold">Cancelación con más de 30 días de antelación:</p>
             <p className="text-sm mt-1">Tarifa de retención del 20%.</p>
           </div>
-          <div className="p-4 border-l-4 border-orange-500 bg-orange-50 dark:bg-orange-900/20 rounded-r">
+          <div className="p-4 border-l-4 border-accent bg-accent-50 dark:bg-accent-700/20 rounded-r">
             <p className="font-semibold">Cancelación entre 29 y 15 días:</p>
             <p className="text-sm mt-1">Tarifa de retención del 50%.</p>
           </div>
@@ -431,7 +431,7 @@ export function CancellationsContent() {
 
         <div className="space-y-4 my-6">
           <div className="flex items-start gap-4 p-4 bg-gray-50 dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700">
-            <div className="w-10 h-10 rounded-full bg-gradient-to-br from-teal-600 to-orange-500 flex items-center justify-center text-white font-bold flex-shrink-0">
+            <div className="w-10 h-10 rounded-full bg-gradient-to-br from-primary to-accent flex items-center justify-center text-white font-bold flex-shrink-0">
               1
             </div>
             <div className="flex-1">
@@ -443,7 +443,7 @@ export function CancellationsContent() {
           </div>
 
           <div className="flex items-start gap-4 p-4 bg-gray-50 dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700">
-            <div className="w-10 h-10 rounded-full bg-gradient-to-br from-teal-600 to-orange-500 flex items-center justify-center text-white font-bold flex-shrink-0">
+            <div className="w-10 h-10 rounded-full bg-gradient-to-br from-primary to-accent flex items-center justify-center text-white font-bold flex-shrink-0">
               2
             </div>
             <div className="flex-1">
@@ -455,7 +455,7 @@ export function CancellationsContent() {
           </div>
 
           <div className="flex items-start gap-4 p-4 bg-gray-50 dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700">
-            <div className="w-10 h-10 rounded-full bg-gradient-to-br from-teal-600 to-orange-500 flex items-center justify-center text-white font-bold flex-shrink-0">
+            <div className="w-10 h-10 rounded-full bg-gradient-to-br from-primary to-accent flex items-center justify-center text-white font-bold flex-shrink-0">
               3
             </div>
             <div className="flex-1">
@@ -467,10 +467,10 @@ export function CancellationsContent() {
           </div>
         </div>
 
-        <div className="my-6 p-6 bg-teal-50 dark:bg-teal-900/20 border-2 border-teal-300 dark:border-teal-700 rounded-lg text-center">
-          <Mail className="w-8 h-8 text-teal-600 dark:text-teal-400 mx-auto mb-3" />
-          <p className="font-semibold text-lg text-teal-900 dark:text-teal-300">¿Necesita ayuda adicional?</p>
-          <p className="text-sm text-teal-800 dark:text-teal-400 mt-1">Nuestro equipo está aquí para ayudarle</p>
+        <div className="my-6 p-6 bg-primary-50 dark:bg-primary-900/20 border-2 border-primary-300 dark:border-primary-700 rounded-lg text-center">
+          <Mail className="w-8 h-8 text-primary dark:text-primary-300 mx-auto mb-3" />
+          <p className="font-semibold text-lg text-primary-900 dark:text-primary-200">¿Necesita ayuda adicional?</p>
+          <p className="text-sm text-primary-700 dark:text-primary-300 mt-1">Nuestro equipo está aquí para ayudarle</p>
         </div>
 
         <h2>5. Preguntas Frecuentes</h2>
@@ -479,7 +479,7 @@ export function CancellationsContent() {
         <div className="space-y-4 my-4">
           <details className="p-4 bg-gray-50 dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700">
             <summary className="font-semibold cursor-pointer flex items-center gap-2">
-              <span className="text-teal-600 dark:text-teal-400">1.</span> ¿Puedo cancelar mi reserva en línea?
+              <span className="text-primary dark:text-primary-300">1.</span> ¿Puedo cancelar mi reserva en línea?
             </summary>
             <p className="text-sm mt-3 text-gray-700 dark:text-gray-300 pl-6">
               Sí, puede iniciar el proceso de cancelación a través de su área de cliente o contactando a nuestro equipo de soporte por correo electrónico.
@@ -488,7 +488,7 @@ export function CancellationsContent() {
 
           <details className="p-4 bg-gray-50 dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700">
             <summary className="font-semibold cursor-pointer flex items-center gap-2">
-              <span className="text-teal-600 dark:text-teal-400">2.</span> ¿Cuánto tiempo tarda el reembolso?
+              <span className="text-primary dark:text-primary-300">2.</span> ¿Cuánto tiempo tarda el reembolso?
             </summary>
             <p className="text-sm mt-3 text-gray-700 dark:text-gray-300 pl-6">
               Los reembolsos se procesan normalmente dentro de 14-30 días hábiles después de la aprobación, dependiendo de su método de pago y entidad financiera.
@@ -497,7 +497,7 @@ export function CancellationsContent() {
 
           <details className="p-4 bg-gray-50 dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700">
             <summary className="font-semibold cursor-pointer flex items-center gap-2">
-              <span className="text-teal-600 dark:text-teal-400">3.</span> ¿Puedo modificar en lugar de cancelar?
+              <span className="text-primary dark:text-primary-300">3.</span> ¿Puedo modificar en lugar de cancelar?
             </summary>
             <p className="text-sm mt-3 text-gray-700 dark:text-gray-300 pl-6">
               ¡Sí! Las modificaciones pueden estar disponibles dependiendo de las condiciones de su reserva. Contáctenos para explorar sus opciones antes de cancelar.
@@ -520,8 +520,8 @@ export function CancellationsContent() {
     ),
     fr: (
       <>
-        <div className="mb-8 p-6 bg-orange-50 dark:bg-orange-900/20 border-l-4 border-orange-600 rounded-lg">
-          <p className="font-semibold text-lg text-orange-900 dark:text-orange-300 mb-2">INFORMATION IMPORTANTE</p>
+        <div className="mb-8 p-6 bg-accent-50 dark:bg-accent-700/20 border-l-4 border-accent rounded-lg">
+          <p className="font-semibold text-lg text-accent-700 dark:text-accent-200 mb-2">INFORMATION IMPORTANTE</p>
           <p className="text-gray-800 dark:text-gray-200 leading-relaxed">
             Pour garantir la transparence, nous détaillons les conditions applicables. Nous recommandons une lecture attentive.
           </p>
@@ -530,15 +530,15 @@ export function CancellationsContent() {
         <h2>1. Conditions Générales</h2>
         <ul className="space-y-2 my-4">
           <li className="flex items-start gap-2">
-            <CheckCircle2 className="w-4 h-4 text-teal-600 dark:text-teal-400 mt-0.5 flex-shrink-0" />
+            <CheckCircle2 className="w-4 h-4 text-primary dark:text-primary-300 mt-0.5 flex-shrink-0" />
             <span>Toutes les demandes doivent être faites par écrit par e-mail.</span>
           </li>
           <li className="flex items-start gap-2">
-            <CheckCircle2 className="w-4 h-4 text-teal-600 dark:text-teal-400 mt-0.5 flex-shrink-0" />
+            <CheckCircle2 className="w-4 h-4 text-primary dark:text-primary-300 mt-0.5 flex-shrink-0" />
             <span>Le calcul est basé sur la date de réception de la demande.</span>
           </li>
           <li className="flex items-start gap-2">
-            <CheckCircle2 className="w-4 h-4 text-teal-600 dark:text-teal-400 mt-0.5 flex-shrink-0" />
+            <CheckCircle2 className="w-4 h-4 text-primary dark:text-primary-300 mt-0.5 flex-shrink-0" />
             <span>Les frais de service et administratifs ne sont pas remboursables.</span>
           </li>
         </ul>
@@ -559,7 +559,7 @@ export function CancellationsContent() {
               </tr>
               <tr className="bg-gray-50 dark:bg-gray-900/50">
                 <td className="border border-gray-300 dark:border-gray-600 p-3">Entre 29 et 15 jours avant</td>
-                <td className="border border-gray-300 dark:border-gray-600 p-3 font-semibold text-orange-700 dark:text-orange-400">Frais de rétention de 50%</td>
+                <td className="border border-gray-300 dark:border-gray-600 p-3 font-semibold text-accent-700 dark:text-accent-500">Frais de rétention de 50%</td>
               </tr>
               <tr>
                 <td className="border border-gray-300 dark:border-gray-600 p-3">Moins de 14 jours avant</td>
@@ -574,7 +574,7 @@ export function CancellationsContent() {
             <p className="font-semibold">Annulation plus de 30 jours à l'avance :</p>
             <p className="text-sm mt-1">Frais de rétention de 20%.</p>
           </div>
-          <div className="p-4 border-l-4 border-orange-500 bg-orange-50 dark:bg-orange-900/20 rounded-r">
+          <div className="p-4 border-l-4 border-accent bg-accent-50 dark:bg-accent-700/20 rounded-r">
             <p className="font-semibold">Annulation entre 29 et 15 jours :</p>
             <p className="text-sm mt-1">Frais de rétention de 50%.</p>
           </div>
@@ -602,7 +602,7 @@ export function CancellationsContent() {
 
         <div className="space-y-4 my-6">
           <div className="flex items-start gap-4 p-4 bg-gray-50 dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700">
-            <div className="w-10 h-10 rounded-full bg-gradient-to-br from-teal-600 to-orange-500 flex items-center justify-center text-white font-bold flex-shrink-0">
+            <div className="w-10 h-10 rounded-full bg-gradient-to-br from-primary to-accent flex items-center justify-center text-white font-bold flex-shrink-0">
               1
             </div>
             <div className="flex-1">
@@ -614,7 +614,7 @@ export function CancellationsContent() {
           </div>
 
           <div className="flex items-start gap-4 p-4 bg-gray-50 dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700">
-            <div className="w-10 h-10 rounded-full bg-gradient-to-br from-teal-600 to-orange-500 flex items-center justify-center text-white font-bold flex-shrink-0">
+            <div className="w-10 h-10 rounded-full bg-gradient-to-br from-primary to-accent flex items-center justify-center text-white font-bold flex-shrink-0">
               2
             </div>
             <div className="flex-1">
@@ -626,7 +626,7 @@ export function CancellationsContent() {
           </div>
 
           <div className="flex items-start gap-4 p-4 bg-gray-50 dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700">
-            <div className="w-10 h-10 rounded-full bg-gradient-to-br from-teal-600 to-orange-500 flex items-center justify-center text-white font-bold flex-shrink-0">
+            <div className="w-10 h-10 rounded-full bg-gradient-to-br from-primary to-accent flex items-center justify-center text-white font-bold flex-shrink-0">
               3
             </div>
             <div className="flex-1">
@@ -638,10 +638,10 @@ export function CancellationsContent() {
           </div>
         </div>
 
-        <div className="my-6 p-6 bg-teal-50 dark:bg-teal-900/20 border-2 border-teal-300 dark:border-teal-700 rounded-lg text-center">
-          <Mail className="w-8 h-8 text-teal-600 dark:text-teal-400 mx-auto mb-3" />
-          <p className="font-semibold text-lg text-teal-900 dark:text-teal-300">Besoin d'aide supplémentaire ?</p>
-          <p className="text-sm text-teal-800 dark:text-teal-400 mt-1">Notre équipe est là pour vous aider</p>
+        <div className="my-6 p-6 bg-primary-50 dark:bg-primary-900/20 border-2 border-primary-300 dark:border-primary-700 rounded-lg text-center">
+          <Mail className="w-8 h-8 text-primary dark:text-primary-300 mx-auto mb-3" />
+          <p className="font-semibold text-lg text-primary-900 dark:text-primary-200">Besoin d'aide supplémentaire ?</p>
+          <p className="text-sm text-primary-700 dark:text-primary-300 mt-1">Notre équipe est là pour vous aider</p>
         </div>
 
         <h2>5. Questions Fréquentes</h2>
@@ -650,7 +650,7 @@ export function CancellationsContent() {
         <div className="space-y-4 my-4">
           <details className="p-4 bg-gray-50 dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700">
             <summary className="font-semibold cursor-pointer flex items-center gap-2">
-              <span className="text-teal-600 dark:text-teal-400">1.</span> Puis-je annuler ma réservation en ligne ?
+              <span className="text-primary dark:text-primary-300">1.</span> Puis-je annuler ma réservation en ligne ?
             </summary>
             <p className="text-sm mt-3 text-gray-700 dark:text-gray-300 pl-6">
               Oui, vous pouvez initier le processus d'annulation via votre espace client ou en contactant notre équipe de support par email.
@@ -659,7 +659,7 @@ export function CancellationsContent() {
 
           <details className="p-4 bg-gray-50 dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700">
             <summary className="font-semibold cursor-pointer flex items-center gap-2">
-              <span className="text-teal-600 dark:text-teal-400">2.</span> Combien de temps prend le remboursement ?
+              <span className="text-primary dark:text-primary-300">2.</span> Combien de temps prend le remboursement ?
             </summary>
             <p className="text-sm mt-3 text-gray-700 dark:text-gray-300 pl-6">
               Les remboursements sont généralement traités dans un délai de 14 à 30 jours ouvrables après approbation, selon votre mode de paiement et votre institution financière.
@@ -668,7 +668,7 @@ export function CancellationsContent() {
 
           <details className="p-4 bg-gray-50 dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700">
             <summary className="font-semibold cursor-pointer flex items-center gap-2">
-              <span className="text-teal-600 dark:text-teal-400">3.</span> Puis-je modifier au lieu d'annuler ?
+              <span className="text-primary dark:text-primary-300">3.</span> Puis-je modifier au lieu d'annuler ?
             </summary>
             <p className="text-sm mt-3 text-gray-700 dark:text-gray-300 pl-6">
               Oui ! Les modifications peuvent être disponibles selon les conditions de votre réservation. Contactez-nous pour explorer vos options avant d'annuler.

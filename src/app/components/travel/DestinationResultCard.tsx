@@ -91,7 +91,7 @@ export function DestinationResultCard({ result, href, labels, tipPreviews = [] }
             className="border-0 bg-black/60 backdrop-blur-sm text-white text-xs shadow-sm hover:bg-black/70 transition-colors"
             title={labels.matchExplain}
           >
-            <Sparkles className="mr-1 h-3 w-3 text-orange-400" />
+            <Sparkles className="mr-1 h-3 w-3 text-accent-500" />
             {result.aiMatchScore}% {labels.aiMatch}
           </Badge>
         </div>
@@ -183,7 +183,7 @@ export function DestinationResultCard({ result, href, labels, tipPreviews = [] }
             {card?.veja?.slice(0, 2).map((item, idx) => (
               <span
                 key={`see-${idx}`}
-                className="inline-flex items-center gap-1 rounded-full bg-teal-50 dark:bg-teal-950/30 text-teal-700 dark:text-teal-300 px-2 py-0.5 text-xs border border-teal-100/80 dark:border-teal-900/40"
+                className="inline-flex items-center gap-1 rounded-full bg-primary-50 dark:bg-primary-900/30 text-primary dark:text-primary-200 px-2 py-0.5 text-xs border border-primary-100/80 dark:border-primary-900/40"
               >
                 <Eye className="h-3 w-3" />
                 <span className="truncate max-w-[160px]">{item}</span>
@@ -192,7 +192,7 @@ export function DestinationResultCard({ result, href, labels, tipPreviews = [] }
             {card?.faca?.slice(0, 2).map((item, idx) => (
               <span
                 key={`do-${idx}`}
-                className="inline-flex items-center gap-1 rounded-full bg-orange-50 dark:bg-orange-950/20 text-orange-700 dark:text-orange-300 px-2 py-0.5 text-xs border border-orange-100/80 dark:border-orange-900/30"
+                className="inline-flex items-center gap-1 rounded-full bg-accent-50 dark:bg-accent-700/20 text-accent-700 dark:text-accent-200 px-2 py-0.5 text-xs border border-accent-100/80 dark:border-accent-700/30"
               >
                 <Compass className="h-3 w-3" />
                 <span className="truncate max-w-[160px]">{item}</span>
@@ -228,8 +228,8 @@ export function DestinationResultCard({ result, href, labels, tipPreviews = [] }
               className={cn(
                 'flex items-center gap-1.5 text-xs font-medium transition-colors',
                 isMapOpen
-                  ? 'text-teal-600 dark:text-teal-400'
-                  : 'text-gray-400 dark:text-gray-500 hover:text-teal-600 dark:hover:text-teal-400'
+                  ? 'text-primary dark:text-primary-300'
+                  : 'text-gray-400 dark:text-gray-500 hover:text-primary dark:hover:text-primary-300'
               )}
             >
               <Map className="h-3.5 w-3.5" />
@@ -289,7 +289,7 @@ export function DestinationResultCard({ result, href, labels, tipPreviews = [] }
             e.preventDefault();
             setIsExpanded(true);
           }}
-          className="rounded-full p-2 backdrop-blur-sm bg-black/40 text-white/90 hover:bg-teal-500 hover:text-white transition-all duration-200 shadow-sm"
+          className="rounded-full p-2 backdrop-blur-sm bg-black/40 text-white/90 hover:bg-primary-500 hover:text-white transition-all duration-200 shadow-sm"
           aria-label="View details"
         >
           <Expand className="h-4 w-4" />
@@ -313,7 +313,7 @@ export function DestinationResultCard({ result, href, labels, tipPreviews = [] }
                 {card.veja && card.veja.length > 0 && (
                   <div className="rounded-lg bg-gray-50 dark:bg-gray-900/50 p-3">
                     <p className="font-semibold text-gray-700 dark:text-gray-300 flex items-center gap-1.5 mb-1.5">
-                      <Eye className="h-4 w-4 text-teal-600" />
+                      <Eye className="h-4 w-4 text-primary" />
                       {labels.cardSee}
                     </p>
                     <ul className="text-sm text-gray-600 dark:text-gray-400 space-y-1">
@@ -324,7 +324,7 @@ export function DestinationResultCard({ result, href, labels, tipPreviews = [] }
                 {card.faca && card.faca.length > 0 && (
                   <div className="rounded-lg bg-gray-50 dark:bg-gray-900/50 p-3">
                     <p className="font-semibold text-gray-700 dark:text-gray-300 flex items-center gap-1.5 mb-1.5">
-                      <Compass className="h-4 w-4 text-orange-500" />
+                      <Compass className="h-4 w-4 text-accent" />
                       {labels.cardDo}
                     </p>
                     <ul className="text-sm text-gray-600 dark:text-gray-400 space-y-1">

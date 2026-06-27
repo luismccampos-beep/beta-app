@@ -92,7 +92,7 @@ export function DestinationBrowseCard({ item, href, labels }: DestinationBrowseC
             </Badge>
           )}
           {item.hotelCount != null && item.hotelCount > 0 && (
-            <Badge className="border-0 bg-teal-600/90 backdrop-blur-sm text-white text-xs shadow-sm">
+            <Badge className="border-0 bg-primary/90 backdrop-blur-sm text-white text-xs shadow-sm">
               <Hotel className="mr-1 h-3 w-3" />
               {item.hotelCount} {labels.hotels}
             </Badge>

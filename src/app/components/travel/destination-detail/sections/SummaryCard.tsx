@@ -13,7 +13,7 @@ export function SummaryCard({
   if (!summary) return null;
   return (
     <AnimatedSection>
-      <Card className="border-teal-200/50 dark:border-teal-800/50 bg-white/70 dark:bg-gray-800/60 backdrop-blur-md shadow-lg hover:shadow-xl transition-all duration-300">
+      <Card className="border-primary-200/50 dark:border-primary-700/50 bg-white/70 dark:bg-gray-800/60 backdrop-blur-md shadow-lg hover:shadow-xl transition-all duration-300">
         <CardHeader>
           <CardTitle className="text-xl dark:text-white">{t('cardSummary')}</CardTitle>
         </CardHeader>

@@ -12,7 +12,7 @@ export function AttributionFooter({
 }: {
   wikivoyageUrl?: string;
   license?: string;
-  t: (key: string) => string;
+  t: (key: string, values?: Record<string, string>) => string;
 }) {
   if (!wikivoyageUrl) return null;
   return (
@@ -26,7 +26,7 @@ export function AttributionFooter({
       <p className="text-xs text-gray-500 dark:text-gray-400">
         {t('attribution', { license: license ?? 'CC BY-SA 3.0' })}
       </p>
-      <Button asChild variant="outline" className="gap-2 min-h-11 shrink-0 touch-manipulation hover:bg-teal-50 dark:hover:bg-teal-950/30 transition-colors">
+      <Button asChild variant="outline" className="gap-2 min-h-11 shrink-0 touch-manipulation hover:bg-primary-50 dark:hover:bg-primary-900/30 transition-colors">
         <a href={wikivoyageUrl} target="_blank" rel="noopener noreferrer">
           {t('viewFullArticle')}
           <ExternalLink className="h-4 w-4" />

@@ -32,6 +32,7 @@ export function ContactPage({ onBack }: ContactPageProps) {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [submitError, setSubmitError] = useState('');
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -47,8 +48,9 @@ export function ContactPage({ onBack }: ContactPageProps) {
       if (!res.ok) throw new Error('Erro ao enviar mensagem');
 
       setIsSubmitted(true);
+      setSubmitError('');
     } catch {
-      alert('Ocorreu um erro ao enviar a mensagem. Tenta novamente ou envia email para geral@akmleva.pt.');
+      setSubmitError('Ocorreu um erro ao enviar a mensagem. Tenta novamente ou envia email para geral@akmleva.pt.');
     } finally {
       setIsSubmitting(false);
     }
@@ -61,14 +63,14 @@ export function ContactPage({ onBack }: ContactPageProps) {
     }));
   };
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 via-teal-50 to-orange-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 transition-colors">
+    <div className="min-h-screen bg-gradient-to-br from-gray-50 via-primary-50 to-accent-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 transition-colors">
       <AppHeader showBack onBack={onBack} />
 
       {/* Content */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-12">
         {/* Hero Section */}
         <div className="relative mb-8 sm:mb-16 overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-r from-teal-500/10 to-orange-500/10 dark:from-teal-500/5 dark:to-orange-500/5 rounded-2xl sm:rounded-3xl"></div>
+          <div className="absolute inset-0 bg-gradient-to-r from-primary/10 to-accent-500/10 dark:from-primary/5 dark:to-accent-500/5 rounded-2xl sm:rounded-3xl"></div>
           <div className="relative p-6 sm:p-8 md:p-12 text-center">
             <h1 className="text-3xl sm:text-5xl md:text-6xl font-bold text-gray-900 dark:text-white mb-3 sm:mb-4">
               {t('pageTitle')}
@@ -81,9 +83,9 @@ export function ContactPage({ onBack }: ContactPageProps) {
 
         {/* Contact Info Cards */}
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mb-8 sm:mb-16">
-          <Card className="border-2 border-teal-200 dark:border-teal-700 shadow-xl dark:bg-gray-800 hover:scale-105 transition-transform">
+          <Card className="border-2 border-primary-200 dark:border-primary-700 shadow-xl dark:bg-gray-800 hover:scale-105 transition-transform">
             <CardContent className="p-4 sm:p-6 text-center">
-              <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-lg bg-gradient-to-br from-teal-600 to-teal-500 flex items-center justify-center mx-auto mb-3 sm:mb-4">
+              <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-lg bg-gradient-to-br from-primary to-primary flex items-center justify-center mx-auto mb-3 sm:mb-4">
                 <MapPin className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
               </div>
               <h3 className="text-base sm:text-lg font-bold text-gray-900 dark:text-white mb-2">{t('addressTitle')}</h3>
@@ -97,7 +99,7 @@ export function ContactPage({ onBack }: ContactPageProps) {
                 <Phone className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
               </div>
               <h3 className="text-base sm:text-lg font-bold text-gray-900 dark:text-white mb-2">{t('phoneTitle')}</h3>
-              <a href="tel:+351256372092" className="text-xs sm:text-sm text-teal-600 dark:text-teal-400 hover:underline">+351 256 372 092</a>
+              <a href="tel:+351256372092" className="text-xs sm:text-sm text-primary dark:text-primary-300 hover:underline">+351 256 372 092</a>
             </CardContent>
           </Card>
 
@@ -107,13 +109,13 @@ export function ContactPage({ onBack }: ContactPageProps) {
                 <Mail className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
               </div>
               <h3 className="text-base sm:text-lg font-bold text-gray-900 dark:text-white mb-2">{t('emailTitle')}</h3>
-              <a href="mailto:geral@akmleva.pt" className="text-xs sm:text-sm text-teal-600 dark:text-teal-400 hover:underline">geral@akmleva.pt</a>
+              <a href="mailto:geral@akmleva.pt" className="text-xs sm:text-sm text-primary dark:text-primary-300 hover:underline">geral@akmleva.pt</a>
             </CardContent>
           </Card>
 
-          <Card className="border-2 border-orange-200 dark:border-orange-700 shadow-xl dark:bg-gray-800 hover:scale-105 transition-transform">
+          <Card className="border-2 border-accent-200 dark:border-accent-700 shadow-xl dark:bg-gray-800 hover:scale-105 transition-transform">
             <CardContent className="p-4 sm:p-6 text-center">
-              <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-lg bg-gradient-to-br from-orange-600 to-orange-500 flex items-center justify-center mx-auto mb-3 sm:mb-4">
+              <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-lg bg-gradient-to-br from-accent to-accent-500 flex items-center justify-center mx-auto mb-3 sm:mb-4">
                 <Clock className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
               </div>
               <h3 className="text-base sm:text-lg font-bold text-gray-900 dark:text-white mb-2">{t('hoursTitle')}</h3>
@@ -129,7 +131,7 @@ export function ContactPage({ onBack }: ContactPageProps) {
             <Card className="border-2 border-gray-200 dark:border-gray-700 shadow-xl dark:bg-gray-800">
               <CardContent className="p-4 sm:p-8">
                 <div className="flex items-center gap-2 sm:gap-3 mb-4 sm:mb-6">
-                  <MessageSquare className="w-5 h-5 sm:w-6 sm:h-6 text-teal-600 dark:text-teal-400" />
+                  <MessageSquare className="w-5 h-5 sm:w-6 sm:h-6 text-primary dark:text-primary-300" />
                   <h2 className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white">{t('formTitle')}</h2>
                 </div>
 
@@ -145,39 +147,46 @@ export function ContactPage({ onBack }: ContactPageProps) {
                     <Button
                       onClick={() => { setIsSubmitted(false); setFormData({ name: '', email: '', phone: '', subject: '', message: '' }); }}
                       variant="outline"
-                      className="mt-6 border-teal-300 dark:border-teal-700"
+                      className="mt-6 border-primary-300 dark:border-primary-700"
                     >
                       {t('sendAnother') || 'Enviar outra mensagem'}
                     </Button>
                   </div>
                 ) : (
                   <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
+                    {submitError && (
+                      <div role="alert" className="rounded-lg bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 p-4 text-sm text-red-700 dark:text-red-300">
+                        {submitError}
+                      </div>
+                    )}
                     <div className="grid sm:grid-cols-2 gap-4 sm:gap-6">
                       <div>
-                        <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1.5">
+                        <label htmlFor="contact-name" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1.5">
                           {t('formName')} *
                         </label>
                         <input
+                          id="contact-name"
                           type="text"
                           name="name"
                           value={formData.name}
                           onChange={handleChange}
                           required
-                          className="w-full px-3 sm:px-4 py-2.5 sm:py-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-teal-500 focus:border-transparent transition-all text-sm sm:text-base"
+                          className="w-full px-3 sm:px-4 py-2.5 sm:py-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-primary focus:border-transparent transition-all text-sm sm:text-base"
                           placeholder={t('formNamePlaceholder')}
                         />
                       </div>
                       <div>
-                        <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1.5">
+                        <label htmlFor="contact-email" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1.5">
                           {t('formEmail')} *
                         </label>
                         <input
+                          id="contact-email"
                           type="email"
                           name="email"
                           value={formData.email}
                           onChange={handleChange}
                           required
-                          className="w-full px-3 sm:px-4 py-2.5 sm:py-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-teal-500 focus:border-transparent transition-all text-sm sm:text-base"
+                          className="w-full px-3 sm:px-4 py-2.5 sm:py-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-primary focus:border-transparent transition-all text-sm sm:text-base"
                           placeholder={t('formEmailPlaceholder')}
                         />
                       </div>
@@ -185,28 +194,30 @@ export function ContactPage({ onBack }: ContactPageProps) {
 
                     <div className="grid sm:grid-cols-2 gap-4 sm:gap-6">
                       <div>
-                        <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1.5">
+                        <label htmlFor="contact-phone" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1.5">
                           {t('formPhone')}
                         </label>
                         <input
+                          id="contact-phone"
                           type="tel"
                           name="phone"
                           value={formData.phone}
                           onChange={handleChange}
-                          className="w-full px-3 sm:px-4 py-2.5 sm:py-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-teal-500 focus:border-transparent transition-all text-sm sm:text-base"
+                          className="w-full px-3 sm:px-4 py-2.5 sm:py-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-primary focus:border-transparent transition-all text-sm sm:text-base"
                           placeholder={t('formPhonePlaceholder')}
                         />
                       </div>
                       <div>
-                        <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1.5">
+                        <label htmlFor="contact-subject" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1.5">
                           {t('formSubject')} *
                         </label>
                         <select
+                          id="contact-subject"
                           name="subject"
                           value={formData.subject}
                           onChange={handleChange}
                           required
-                          className="w-full px-3 sm:px-4 py-2.5 sm:py-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-teal-500 focus:border-transparent transition-all text-sm sm:text-base"
+                          className="w-full px-3 sm:px-4 py-2.5 sm:py-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-primary focus:border-transparent transition-all text-sm sm:text-base"
                         >
                           <option value="">{t('formSubjectPlaceholder')}</option>
                           <option value="booking">{t('subjectBooking')}</option>
@@ -219,16 +230,17 @@ export function ContactPage({ onBack }: ContactPageProps) {
                     </div>
 
                     <div>
-                      <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1.5">
+                      <label htmlFor="contact-message" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1.5">
                         {t('formMessage')} *
                       </label>
                       <textarea
+                        id="contact-message"
                         name="message"
                         value={formData.message}
                         onChange={handleChange}
                         required
                         rows={5}
-                        className="w-full px-3 sm:px-4 py-2.5 sm:py-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-teal-500 focus:border-transparent transition-all text-sm sm:text-base resize-none"
+                        className="w-full px-3 sm:px-4 py-2.5 sm:py-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-primary focus:border-transparent transition-all text-sm sm:text-base resize-none"
                         placeholder={t('formMessagePlaceholder')}
                       />
                     </div>
@@ -236,7 +248,7 @@ export function ContactPage({ onBack }: ContactPageProps) {
                     <Button
                       type="submit"
                       disabled={isSubmitting}
-                      className="w-full bg-gradient-to-r from-teal-600 to-orange-500 hover:from-teal-700 hover:to-orange-600 active:scale-[0.98] text-white py-3 sm:py-4 text-base sm:text-lg shadow-lg transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+                      className="w-full bg-gradient-to-r from-primary to-accent hover:from-primary-700 hover:to-accent-600 active:scale-[0.98] text-white py-3 sm:py-4 text-base sm:text-lg shadow-lg transition-all disabled:opacity-50 disabled:cursor-not-allowed"
                     >
                       {isSubmitting ? (
                         <span className="flex items-center justify-center gap-2">
@@ -306,9 +318,9 @@ export function ContactPage({ onBack }: ContactPageProps) {
 
         {/* Map Placeholder */}
         <Card className="border-2 border-gray-200 dark:border-gray-700 shadow-xl dark:bg-gray-800 overflow-hidden mb-6 sm:mb-8">
-          <div className="bg-gradient-to-r from-teal-600 to-orange-500 h-2"></div>
+          <div className="bg-gradient-to-r from-primary to-accent h-2"></div>
           <CardContent className="p-4 sm:p-8 text-center">
-            <MapPin className="w-10 h-10 sm:w-12 sm:h-12 text-teal-600 dark:text-teal-400 mx-auto mb-3 sm:mb-4" />
+            <MapPin className="w-10 h-10 sm:w-12 sm:h-12 text-primary dark:text-primary-300 mx-auto mb-3 sm:mb-4" />
             <h3 className="text-lg sm:text-xl font-bold text-gray-900 dark:text-white mb-2">{t('mapTitle')}</h3>
             <p className="text-sm sm:text-base text-gray-600 dark:text-gray-400 mb-4">{t('mapDescription')}</p>
             <iframe

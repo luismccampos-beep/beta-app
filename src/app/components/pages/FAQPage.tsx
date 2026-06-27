@@ -82,9 +82,9 @@ export function FAQPage({ onBack }: FAQPageProps) {
 
   const categoryMeta = useMemo(() => {
     return {
-      booking: { icon: Plane, bgClass: 'from-teal-600 to-teal-500' },
+      booking: { icon: Plane, bgClass: 'from-primary to-primary' },
       payment: { icon: CreditCard, bgClass: 'from-blue-600 to-blue-500' },
-      cancellation: { icon: XCircle, bgClass: 'from-orange-600 to-orange-500' },
+      cancellation: { icon: XCircle, bgClass: 'from-accent to-accent-500' },
       safety: { icon: Shield, bgClass: 'from-green-600 to-green-500' },
       travel: { icon: Globe, bgClass: 'from-purple-600 to-purple-500' },
       general: { icon: FileText, bgClass: 'from-gray-700 to-gray-600' }
@@ -111,7 +111,7 @@ export function FAQPage({ onBack }: FAQPageProps) {
   }, [categories, searchQuery, activeCategory, searchTerms]);
 
   const allCategories = useMemo(() => [
-    { id: 'all', title: t('allCategories'), icon: HelpCircle, bgClass: 'from-teal-600 to-orange-500' },
+    { id: 'all', title: t('allCategories'), icon: HelpCircle, bgClass: 'from-primary to-accent' },
     ...categories.map(cat => ({
       id: cat.id,
       title: cat.title,
@@ -121,14 +121,14 @@ export function FAQPage({ onBack }: FAQPageProps) {
   ], [categories, categoryMeta, t]);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 via-teal-50 to-orange-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 transition-colors">
+    <div className="min-h-screen bg-gradient-to-br from-gray-50 via-primary-50 to-accent-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 transition-colors">
       <AppHeader showBack onBack={onBack} />
 
       {/* Content */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-12">
         {/* Hero Section */}
         <div className="relative mb-8 sm:mb-16 overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-r from-teal-500/10 to-orange-500/10 dark:from-teal-500/5 dark:to-orange-500/5 rounded-2xl sm:rounded-3xl"></div>
+          <div className="absolute inset-0 bg-gradient-to-r from-primary/10 to-accent-500/10 dark:from-primary/5 dark:to-accent-500/5 rounded-2xl sm:rounded-3xl"></div>
           <div className="relative p-6 sm:p-8 md:p-12 text-center">
             <h1 className="text-3xl sm:text-5xl md:text-6xl font-bold text-gray-900 dark:text-white mb-3 sm:mb-4">
               {t('pageTitle')}
@@ -147,7 +147,7 @@ export function FAQPage({ onBack }: FAQPageProps) {
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             placeholder={t('searchPlaceholder')}
-            className="w-full pl-10 sm:pl-12 pr-4 py-3 sm:py-4 rounded-xl border-2 border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-teal-500 focus:border-transparent transition-all text-sm sm:text-base shadow-lg"
+            className="w-full pl-10 sm:pl-12 pr-4 py-3 sm:py-4 rounded-xl border-2 border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-primary focus:border-transparent transition-all text-sm sm:text-base shadow-lg"
           />
         </div>
 
@@ -156,13 +156,13 @@ export function FAQPage({ onBack }: FAQPageProps) {
           {allCategories.map(cat => {
             const Icon = cat.icon;
             return (
-              <button
+              <button type="button"
                 key={cat.id}
                 onClick={() => setActiveCategory(cat.id)}
                 className={`flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-2 sm:py-2.5 rounded-full text-xs sm:text-sm font-medium transition-all ${
                   activeCategory === cat.id
                     ? `bg-gradient-to-r ${cat.bgClass} text-white shadow-lg scale-105`
-                    : 'bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 border border-gray-200 dark:border-gray-700 hover:border-teal-400 dark:hover:border-teal-500'
+                    : 'bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 border border-gray-200 dark:border-gray-700 hover:border-primary dark:hover:border-primary'
                 }`}
               >
                 <Icon className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
@@ -199,10 +199,10 @@ export function FAQPage({ onBack }: FAQPageProps) {
                           role="button"
                           tabIndex={0}
                           aria-expanded={isOpen}
-                          className={`border-2 transition-all cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 ${
+                          className={`border-2 transition-all cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary ${
                             isOpen
-                              ? 'border-teal-400 dark:border-teal-500 shadow-lg'
-                              : 'border-gray-200 dark:border-gray-700 hover:border-teal-300 dark:hover:border-teal-600'
+                              ? 'border-primary-300 dark:border-primary shadow-lg'
+                              : 'border-gray-200 dark:border-gray-700 hover:border-primary-300 dark:hover:border-primary'
                           } dark:bg-gray-800`}
                           onClick={() => toggleFAQ(faqId)}
                           onKeyDown={(e) => handleFAQKeyDown(e, faqId, index, category.faqs.length)}
@@ -213,7 +213,7 @@ export function FAQPage({ onBack }: FAQPageProps) {
                                 {faq.question}
                               </h3>
                               <ChevronDown
-                                className={`w-4 h-4 sm:w-5 sm:h-5 text-teal-600 dark:text-teal-400 flex-shrink-0 mt-0.5 transition-transform ${
+                                className={`w-4 h-4 sm:w-5 sm:h-5 text-primary dark:text-primary-300 flex-shrink-0 mt-0.5 transition-transform ${
                                   isOpen ? 'rotate-180' : ''
                                 }`}
                               />
@@ -244,11 +244,11 @@ export function FAQPage({ onBack }: FAQPageProps) {
         )}
 
         {/* Still have questions? */}
-        <Card className="border-2 border-orange-200 dark:border-orange-700 shadow-2xl dark:bg-gray-800 overflow-hidden mt-8 sm:mt-16">
-          <div className="bg-gradient-to-r from-teal-600 to-orange-500 h-2"></div>
+        <Card className="border-2 border-accent-200 dark:border-accent-700 shadow-2xl dark:bg-gray-800 overflow-hidden mt-8 sm:mt-16">
+          <div className="bg-gradient-to-r from-primary to-accent h-2"></div>
           <CardContent className="p-6 sm:p-8 md:p-12 text-center">
             <h2 className="text-xl sm:text-3xl font-bold text-gray-900 dark:text-white mb-3 sm:mb-4">{t('stillHaveQuestions')}</h2>
-            <Button className="bg-gradient-to-r from-teal-600 to-orange-500 hover:from-teal-700 hover:to-orange-600 active:scale-[0.98] text-white px-6 sm:px-8 py-4 sm:py-6 text-base sm:text-lg shadow-lg w-full sm:w-auto transition-transform">
+            <Button type="button" className="bg-gradient-to-r from-primary to-accent hover:from-primary-700 hover:to-accent-600 active:scale-[0.98] text-white px-6 sm:px-8 py-4 sm:py-6 text-base sm:text-lg shadow-lg w-full sm:w-auto transition-transform">
               {t('contactUs')}
             </Button>
           </CardContent>

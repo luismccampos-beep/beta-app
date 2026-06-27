@@ -132,10 +132,11 @@ export function DestinationReviews({
 
         <div className="grid sm:grid-cols-2 gap-4">
           <div>
-            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+            <label htmlFor="review-name" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
               Nome *
             </label>
             <Input
+              id="review-name"
               value={authorName}
               onChange={(e) => setAuthorName(e.target.value)}
               placeholder="O teu nome"
@@ -145,10 +146,11 @@ export function DestinationReviews({
             />
           </div>
           <div>
-            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+            <label htmlFor="review-email" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
               Email (opcional)
             </label>
             <Input
+              id="review-email"
               type="email"
               value={authorEmail}
               onChange={(e) => setAuthorEmail(e.target.value)}
@@ -157,10 +159,7 @@ export function DestinationReviews({
           </div>
         </div>
 
-        <div>
-          <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
-            Classificação
-          </label>
+        <div role="radiogroup" aria-label="Classificação">
           <div className="flex items-center gap-1">
             {Array.from({ length: 5 }).map((_, i) => {
               const star = i + 1;
@@ -168,6 +167,9 @@ export function DestinationReviews({
                 <button
                   key={i}
                   type="button"
+                  role="radio"
+                  aria-checked={star === rating}
+                  aria-label={`${star} estrela${star > 1 ? 's' : ''}`}
                   onClick={() => setRating(star)}
                   onMouseEnter={() => setHoveredStar(star)}
                   onMouseLeave={() => setHoveredStar(0)}
@@ -187,10 +189,11 @@ export function DestinationReviews({
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+          <label htmlFor="review-comment" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
             Comentário *
           </label>
           <Textarea
+            id="review-comment"
             value={comment}
             onChange={(e) => setComment(e.target.value)}
             placeholder="Partilha a tua experiência neste destino..."
@@ -204,7 +207,7 @@ export function DestinationReviews({
         <Button
           type="submit"
           disabled={submitting}
-          className="gap-2 bg-gradient-to-r from-teal-600 to-orange-500 hover:from-teal-700 hover:to-orange-600"
+          className="gap-2 bg-gradient-to-r from-primary to-accent hover:from-primary-700 hover:to-accent-600"
         >
           <Send className="w-4 h-4" />
           {submitting ? 'A enviar...' : 'Enviar Avaliação'}

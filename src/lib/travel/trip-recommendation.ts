@@ -75,7 +75,7 @@ async function recommendFromDb(input: RecommendDestinationsInput): Promise<Recom
 
   if (!rows.length) return [];
 
-  const destIds = rows.map((r) => r.id);
+  const destIds = rows.map((r: any) => r.id);
   const origin = input.originIata?.toUpperCase();
 
   const [allHotels, flightRows] = await Promise.all([
@@ -110,9 +110,9 @@ async function recommendFromDb(input: RecommendDestinationsInput): Promise<Recom
     if (!isAccommodationHotel(h)) continue;
     if (!hotelByDest.has(h.destinoId)) hotelByDest.set(h.destinoId, h);
   }
-  const flightByDest = new Map(flightRows.map((f) => [f.destinoId, f.preco]));
+  const flightByDest = new Map(flightRows.map((f: any) => [f.destinoId, f.preco]));
   const flightIataByDest = new Map(
-    flightRows.map((f) => [f.destinoId, f.destinoIata?.trim().toUpperCase() || null] as const),
+    flightRows.map((f: any) => [f.destinoId, f.destinoIata?.trim().toUpperCase() || null] as const),
   );
 
   const candidates: RecommendedDestination[] = [];
@@ -133,7 +133,7 @@ async function recommendFromDb(input: RecommendDestinationsInput): Promise<Recom
         }
       : null;
 
-    const flight = flightByDest.get(row.id) ?? null;
+    const flight = (flightByDest.get(row.id) as number | undefined) ?? null;
     const cost = estimateTripCost(dest, input, {
       hotel,
       flightPrice: flight,
@@ -155,7 +155,7 @@ async function recommendFromDb(input: RecommendDestinationsInput): Promise<Recom
       slug: row.slug,
       nome: dest.nome,
       pais: displayCountryFromCode(dest.paisCode, lang) ?? dest.pais,
-      iata: resolveDestinationIata(dest, flightIataByDest.get(row.id)),
+      iata: resolveDestinationIata(dest, flightIataByDest.get(row.id) as string | null | undefined),
       tipo: dest.tipo,
       matchScore: combined,
       matchPercent: 0,

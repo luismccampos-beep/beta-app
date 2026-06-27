@@ -41,7 +41,7 @@ export default function ForgotPasswordPage() {
 
   if (sent) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-50 via-teal-50 to-orange-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 p-4">
+      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-50 via-primary-50 to-accent-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 p-4">
         <Card className="w-full max-w-md border-0 shadow-xl bg-white dark:bg-gray-800">
           <CardContent className="p-8 text-center">
             <CheckCircle2 className="w-16 h-16 text-emerald-500 mx-auto mb-4" />
@@ -57,7 +57,7 @@ export default function ForgotPasswordPage() {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-50 via-teal-50 to-orange-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 p-4">
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-50 via-primary-50 to-accent-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 p-4">
       <Card className="w-full max-w-md border-0 shadow-xl bg-white dark:bg-gray-800">
         <CardHeader className="text-center pb-2">
           <CardTitle className="text-2xl font-bold text-gray-900 dark:text-white">{t('forgotPassword')}</CardTitle>
@@ -80,18 +80,18 @@ export default function ForgotPasswordPage() {
                 />
               </div>
             </div>
-            {error && <p className="text-sm text-red-500 dark:text-red-400">{error}</p>}
+            {error && <p className="text-sm text-red-500 dark:text-red-400" role="alert">{error}</p>}
             <Button
               type="submit"
               disabled={isSubmitting || !email}
-              className="w-full h-12 bg-gradient-to-r from-teal-600 to-orange-500 hover:from-teal-700 hover:to-orange-600 text-base gap-2"
+              className="w-full h-12 bg-gradient-to-r from-primary to-accent hover:from-primary-700 hover:to-accent-600 text-base gap-2"
             >
               {isSubmitting ? <Loader2 className="w-5 h-5 animate-spin" /> : null}
               {isSubmitting ? t('sending') : t('sendResetLink')}
             </Button>
           </form>
           <div className="mt-6 text-center">
-            <Link href="/auth" className="text-sm text-teal-600 dark:text-teal-400 hover:underline inline-flex items-center gap-1">
+            <Link href="/auth" className="text-sm text-primary dark:text-primary-300 hover:underline inline-flex items-center gap-1">
               <ArrowLeft className="w-3.5 h-3.5" />{t('backToSignIn')}
             </Link>
           </div>

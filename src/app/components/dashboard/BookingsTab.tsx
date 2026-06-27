@@ -25,7 +25,7 @@ type BookingsTabProps = {
 function getStatusColor(status: string) {
   switch (status) {
     case 'confirmed': return 'bg-green-50 dark:bg-green-950/30 text-green-700 dark:text-green-400 border border-green-200 dark:border-green-800';
-    case 'pending': return 'bg-orange-50 dark:bg-orange-950/30 text-orange-700 dark:text-orange-400 border border-orange-200 dark:border-orange-800';
+    case 'pending': return 'bg-accent-50 dark:bg-accent-700/30 text-accent-700 dark:text-accent-500 border border-accent-200 dark:border-accent-700';
     case 'cancelled': return 'bg-red-50 dark:bg-red-950/30 text-red-700 dark:text-red-400 border border-red-200 dark:border-red-800';
     default: return 'bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300';
   }
@@ -68,7 +68,7 @@ export function BookingsTab({ bookings, onNewBooking, t }: BookingsTabProps) {
               <div className="flex items-start justify-between gap-4">
                 <div className="flex-1">
                   <div className="flex items-center gap-2 mb-1">
-                    <MapPin className="w-4 h-4 text-teal-600 dark:text-teal-400" />
+                    <MapPin className="w-4 h-4 text-primary dark:text-primary-300" />
                     <h3 className="font-semibold text-gray-900 dark:text-white">{booking.destination}</h3>
                   </div>
                   <p className="text-sm text-gray-500 dark:text-gray-400 flex items-center gap-1.5">

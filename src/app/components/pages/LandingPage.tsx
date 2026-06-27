@@ -22,6 +22,8 @@ import {
   Lock,
   Map,
   Building2,
+  Star,
+  ChevronRight,
 } from 'lucide-react';
 import { AppHeader } from '../AppHeader';
 import { AppFooter } from '../AppFooter';
@@ -50,62 +52,80 @@ export function LandingPage({ onGetStarted }: LandingPageProps) {
       <AppHeader showDashboard showPreferences onDashboard={goDashboard} />
 
       {/* Hero Section */}
-      <section className="pt-28 pb-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-teal-50 via-cyan-50 to-orange-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 transition-colors">
-        <div className="max-w-7xl mx-auto">
+      <section className="relative pt-28 pb-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-primary-50 via-cyan-50 to-accent-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 transition-colors overflow-hidden">
+        {/* Background decorative elements */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          <div className="absolute -top-40 -right-40 w-80 h-80 rounded-full bg-cyan-200/20 dark:bg-cyan-500/5 blur-3xl animate-float-slow" />
+          <div className="absolute -bottom-40 -left-40 w-80 h-80 rounded-full bg-primary-200/20 dark:bg-primary-500/5 blur-3xl animate-float" />
+        </div>
+
+        <div className="max-w-7xl mx-auto relative z-10">
           <div className="text-center space-y-8">
-            <div className="inline-flex items-center gap-2 bg-white dark:bg-gray-800 border border-teal-200 dark:border-gray-600 rounded-full px-4 py-2 shadow-sm">
-              <Sparkles className="w-4 h-4 text-orange-500" />
-              <span className="text-sm font-medium text-teal-900 dark:text-teal-300">{t('heroBadge')}</span>
+            <div className="inline-flex items-center gap-2 bg-white dark:bg-gray-800 border border-primary-200 dark:border-gray-600 rounded-full px-4 py-2 shadow-sm animate-fade-in-up">
+              <Sparkles className="w-4 h-4 text-accent" />
+              <span className="text-sm font-medium text-primary-900 dark:text-primary-200">{t('heroBadge')}</span>
             </div>
 
-            <h2 className="text-5xl md:text-7xl font-bold text-gray-900 dark:text-white leading-tight">
+            <h2 className="text-5xl md:text-7xl font-bold text-gray-900 dark:text-white leading-tight animate-fade-in-up delay-100">
               {t('hero')}
             </h2>
 
-            <p className="text-xl md:text-2xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed">
+            <p className="text-xl md:text-2xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed animate-fade-in-up delay-200">
               {t('heroDesc')}
             </p>
 
-            <p className="text-lg md:text-xl text-gray-500 dark:text-gray-400 max-w-3xl mx-auto">
+            <p className="text-lg md:text-xl text-gray-500 dark:text-gray-400 max-w-3xl mx-auto animate-fade-in-up delay-300">
               {t('heroSubDesc')}
             </p>
 
-            <div className="flex items-center justify-center gap-4 flex-wrap">
+            <div className="flex items-center justify-center gap-4 flex-wrap animate-fade-in-up delay-400">
               <Button
                 onClick={onGetStarted}
+                variant="brand"
                 size="lg"
-                className="gap-2 bg-gradient-to-r from-teal-600 to-orange-500 hover:from-teal-700 hover:to-orange-600 text-lg px-8 py-6 h-auto shadow-lg"
+                className="gap-2 text-lg px-8 py-6 h-auto shadow-lg animate-pulse-glow hover:animate-none group"
               >
                 {t('getStarted')}
-                <ArrowRight className="w-5 h-5" />
+                <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
               </Button>
               <Button
                 variant="outline"
                 size="lg"
-                className="gap-2 text-lg px-8 py-6 h-auto border-teal-300 dark:border-gray-600 hover:bg-teal-50 dark:hover:bg-gray-800 dark:text-gray-200"
+                className="gap-2 text-lg px-8 py-6 h-auto border-primary-300 dark:border-gray-600 hover:bg-primary-50 dark:hover:bg-gray-800 dark:text-gray-200 group"
                 asChild
               >
-                <a href="#features" onClick={scrollToFeatures}>{t('learnMore')}</a>
+                <a href="#features" onClick={scrollToFeatures}>
+                  {t('learnMore')}
+                  <ChevronRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5" />
+                </a>
               </Button>
             </div>
 
-            <div className="flex items-center justify-center gap-2 text-sm text-gray-600 dark:text-gray-400">
+            <div className="flex items-center justify-center gap-2 text-sm text-gray-600 dark:text-gray-400 animate-fade-in-up delay-500">
               <CheckCircle2 className="w-4 h-4 text-green-600 dark:text-green-500" />
               <span>{t('trustedBy')}</span>
+              <div className="flex items-center gap-1 ml-1">
+                <Star className="w-3.5 h-3.5 fill-yellow-400 text-yellow-400" />
+                <Star className="w-3.5 h-3.5 fill-yellow-400 text-yellow-400" />
+                <Star className="w-3.5 h-3.5 fill-yellow-400 text-yellow-400" />
+                <Star className="w-3.5 h-3.5 fill-yellow-400 text-yellow-400" />
+                <Star className="w-3.5 h-3.5 fill-yellow-400 text-yellow-400" />
+                <span className="ml-1 font-medium text-gray-700 dark:text-gray-300">4.9</span>
+              </div>
             </div>
 
             {/* Trust Badges */}
-            <div className="flex items-center justify-center gap-6 flex-wrap pt-8">
-              <Badge variant="outline" className="gap-1.5 py-2 px-4 border-teal-300 dark:border-teal-700 text-teal-700 dark:text-teal-400 dark:bg-gray-800">
+            <div className="flex items-center justify-center gap-6 flex-wrap pt-8 animate-scale-in delay-500">
+              <Badge variant="outline" className="gap-1.5 py-2 px-4 border-primary-300 dark:border-primary-700 text-primary dark:text-primary-300 dark:bg-gray-800">
                 <Map className="w-4 h-4" /> 28K+ Destinos
               </Badge>
-              <Badge variant="outline" className="gap-1.5 py-2 px-4 border-teal-300 dark:border-teal-700 text-teal-700 dark:text-teal-400 dark:bg-gray-800">
+              <Badge variant="outline" className="gap-1.5 py-2 px-4 border-primary-300 dark:border-primary-700 text-primary dark:text-primary-300 dark:bg-gray-800">
                 <Globe className="w-4 h-4" /> 190+ Países
               </Badge>
-              <Badge variant="outline" className="gap-1.5 py-2 px-4 border-orange-300 dark:border-orange-700 text-orange-700 dark:text-orange-400 dark:bg-gray-800">
+              <Badge variant="outline" className="gap-1.5 py-2 px-4 border-accent-300 dark:border-accent-700 text-accent-700 dark:text-accent-500 dark:bg-gray-800">
                 <Building2 className="w-4 h-4" /> 415K+ Hotéis
               </Badge>
-              <Badge variant="outline" className="gap-1.5 py-2 px-4 border-orange-300 dark:border-orange-700 text-orange-700 dark:text-orange-400 dark:bg-gray-800">
+              <Badge variant="outline" className="gap-1.5 py-2 px-4 border-accent-300 dark:border-accent-700 text-accent-700 dark:text-accent-500 dark:bg-gray-800">
                 <Shield className="w-4 h-4" /> AES-256 · GDPR
               </Badge>
             </div>
@@ -127,7 +147,7 @@ export function LandingPage({ onGetStarted }: LandingPageProps) {
                 icon: Brain,
                 title: t('aiPersonalization'),
                 description: t('aiPersonalizationDesc'),
-                color: 'from-teal-500 to-cyan-600'
+                color: 'from-primary to-cyan-600'
               },
               {
                 icon: Globe,
@@ -145,7 +165,7 @@ export function LandingPage({ onGetStarted }: LandingPageProps) {
                 icon: TrendingUp,
                 title: t('smartRecommendations'),
                 description: t('smartRecommendationsDesc'),
-                color: 'from-orange-500 to-red-600'
+                color: 'from-accent to-red-600'
               },
               {
                 icon: Zap,
@@ -162,7 +182,7 @@ export function LandingPage({ onGetStarted }: LandingPageProps) {
             ].map((feature, index) => {
               const Icon = feature.icon;
               return (
-                <Card key={index} className="border-2 border-gray-200 dark:border-gray-700 hover:border-teal-300 dark:hover:border-teal-600 transition-all hover:shadow-xl dark:bg-gray-800">
+                <Card key={index} className="border-2 border-gray-200 dark:border-gray-700 hover:border-primary-300 dark:hover:border-primary transition-all hover:shadow-xl dark:bg-gray-800">
                   <CardHeader>
                     <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${feature.color} flex items-center justify-center mb-4`}>
                       <Icon className="w-6 h-6 text-white" />
@@ -180,7 +200,7 @@ export function LandingPage({ onGetStarted }: LandingPageProps) {
       </section>
 
       {/* How It Works */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-gray-50 to-teal-50 dark:from-gray-800 dark:to-gray-900 transition-colors">
+      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-gray-50 to-primary-50 dark:from-gray-800 dark:to-gray-900 transition-colors">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <h3 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">{t('howItWorks')}</h3>
@@ -211,13 +231,13 @@ export function LandingPage({ onGetStarted }: LandingPageProps) {
               const Icon = step.icon;
               return (
                 <div key={index} className="relative">
-                  <Card className="h-full border-2 border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 hover:border-teal-300 dark:hover:border-teal-600 transition-all">
+                  <Card className="h-full border-2 border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 hover:border-primary-300 dark:hover:border-primary transition-all">
                     <CardHeader>
                       <div className="flex items-start justify-between mb-4">
-                        <div className="w-14 h-14 rounded-full bg-gradient-to-br from-teal-600 to-orange-500 flex items-center justify-center">
+                        <div className="w-14 h-14 rounded-full bg-gradient-to-br from-primary to-accent flex items-center justify-center">
                           <Icon className="w-7 h-7 text-white" />
                         </div>
-                        <span className="text-6xl font-bold text-teal-100 dark:text-gray-700">{step.number}</span>
+                        <span className="text-6xl font-bold text-primary-600 dark:text-gray-600">{step.number}</span>
                       </div>
                       <CardTitle className="text-2xl dark:text-white">{step.title}</CardTitle>
                     </CardHeader>
@@ -226,7 +246,7 @@ export function LandingPage({ onGetStarted }: LandingPageProps) {
                     </CardContent>
                   </Card>
                   {index < 2 && (
-                    <ArrowRight className="hidden md:block absolute top-1/2 -right-4 transform -translate-y-1/2 w-8 h-8 text-teal-300 dark:text-teal-700" />
+                    <ArrowRight className="hidden md:block absolute top-1/2 -right-4 transform -translate-y-1/2 w-8 h-8 text-primary-200 dark:text-primary" />
                   )}
                 </div>
               );
@@ -236,7 +256,7 @@ export function LandingPage({ onGetStarted }: LandingPageProps) {
       </section>
 
       {/* Stats Section — valores baseados em dados reais */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-r from-teal-700 to-orange-600">
+      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-r from-primary-700 to-accent">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-12">
             <h3 className="text-4xl font-bold text-white mb-4">{t('stats')}</h3>
@@ -272,24 +292,89 @@ export function LandingPage({ onGetStarted }: LandingPageProps) {
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-teal-50 via-cyan-50 to-orange-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 transition-colors">
-        <div className="max-w-4xl mx-auto text-center space-y-8">
-          <h3 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white">
+      {/* Final CTA Section */}
+      <section className="relative py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-primary-50 via-cyan-50 to-accent-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 transition-colors overflow-hidden">
+        {/* Background decorative pattern */}
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute inset-0 opacity-[0.03] dark:opacity-[0.05]"
+            style={{
+              backgroundImage: `radial-gradient(circle at 25px 25px, currentColor 1px, transparent 0)`,
+              backgroundSize: '50px 50px',
+            }}
+          />
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-gradient-to-r from-cyan-200/20 to-primary-200/20 dark:from-cyan-500/5 dark:to-primary-500/5 blur-3xl" />
+        </div>
+
+        <div className="max-w-4xl mx-auto text-center space-y-8 relative z-10">
+          <div className="inline-flex items-center gap-2 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm border border-primary-200 dark:border-gray-600 rounded-full px-5 py-2 shadow-sm">
+            <Award className="w-4 h-4 text-accent" />
+            <span className="text-sm font-semibold text-primary-900 dark:text-primary-200">98% Satisfação dos Viajantes</span>
+          </div>
+
+          <h3 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white leading-tight">
             {t('cta')}
           </h3>
-          <p className="text-xl text-gray-600 dark:text-gray-300">
+          <p className="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
             {t('ctaDesc')}
           </p>
-          <Button
-            onClick={onGetStarted}
-            size="lg"
-            className="gap-2 bg-gradient-to-r from-teal-600 to-orange-500 hover:from-teal-700 hover:to-orange-600 text-xl px-12 py-8 h-auto shadow-xl hover:shadow-2xl transition-all"
-          >
-            <Sparkles className="w-6 h-6" />
-            {t('startYourJourney')}
-            <ArrowRight className="w-6 h-6" />
-          </Button>
+
+          <div className="flex flex-col items-center gap-6">
+            <Button
+              onClick={onGetStarted}
+              variant="brand"
+              size="lg"
+              className="gap-3 text-xl px-12 py-8 h-auto shadow-xl hover:shadow-2xl transition-all animate-pulse-glow hover:animate-none group"
+            >
+              <Sparkles className="w-6 h-6 animate-float" />
+              {t('startYourJourney')}
+              <ArrowRight className="w-6 h-6 transition-transform group-hover:translate-x-1" />
+            </Button>
+
+            {/* Trust badges below CTA button */}
+            <div className="flex items-center justify-center gap-6 flex-wrap">
+              <div className="flex items-center gap-2 text-sm text-gray-500 dark:text-gray-400">
+                <Shield className="w-4 h-4 text-green-600 dark:text-green-500" />
+                <span>AES-256 · GDPR</span>
+              </div>
+              <div className="flex items-center gap-2 text-sm text-gray-500 dark:text-gray-400">
+                <Globe className="w-4 h-4 text-green-600 dark:text-green-500" />
+                <span>190+ Países</span>
+              </div>
+              <div className="flex items-center gap-2 text-sm text-gray-500 dark:text-gray-400">
+                <Users className="w-4 h-4 text-green-600 dark:text-green-500" />
+                <span>10K+ Viajantes</span>
+              </div>
+              <div className="flex items-center gap-2 text-sm text-gray-500 dark:text-gray-400">
+                <Award className="w-4 h-4 text-green-600 dark:text-green-500" />
+                <span>Suporte 24/7</span>
+              </div>
+            </div>
+
+            {/* Social proof bar */}
+            <div className="flex items-center gap-4 pt-2">
+              <div className="flex -space-x-2">
+                {[1, 2, 3, 4].map((i) => (
+                  <div
+                    key={i}
+                    className="w-8 h-8 rounded-full bg-gradient-to-br from-primary-300 to-accent-300 dark:from-primary-600 dark:to-accent-600 border-2 border-white dark:border-gray-800"
+                  />
+                ))}
+                <div className="w-8 h-8 rounded-full bg-gray-200 dark:bg-gray-700 border-2 border-white dark:border-gray-800 flex items-center justify-center text-xs font-semibold text-gray-600 dark:text-gray-300">
+                  +99
+                </div>
+              </div>
+              <div className="text-left">
+                <div className="flex items-center gap-1">
+                  <Star className="w-3.5 h-3.5 fill-yellow-400 text-yellow-400" />
+                  <Star className="w-3.5 h-3.5 fill-yellow-400 text-yellow-400" />
+                  <Star className="w-3.5 h-3.5 fill-yellow-400 text-yellow-400" />
+                  <Star className="w-3.5 h-3.5 fill-yellow-400 text-yellow-400" />
+                  <Star className="w-3.5 h-3.5 fill-yellow-400 text-yellow-400" />
+                </div>
+                <p className="text-sm text-gray-600 dark:text-gray-400">de +2.000 avaliações</p>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 

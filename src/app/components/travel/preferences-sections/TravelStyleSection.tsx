@@ -15,12 +15,12 @@ import { TRAVEL_FREQUENCY_IDS } from '../../../../lib/i18n/preferences-form-opti
 const getTravelStylesData = (t: (key: string) => string) => [
   { id: 'luxury', label: t('luxury'), emoji: '👑', color: 'from-yellow-500 to-amber-600' },
   { id: 'adventure', label: t('adventure'), emoji: '🎒', color: 'from-green-500 to-emerald-600' },
-  { id: 'cultural', label: t('cultural'), emoji: '🏛️', color: 'from-teal-500 to-cyan-600' },
-  { id: 'relaxation', label: t('relaxation'), emoji: '🌴', color: 'from-orange-500 to-red-600' },
-  { id: 'business', label: t('business'), emoji: '💼', color: 'from-teal-600 to-blue-600' },
+  { id: 'cultural', label: t('cultural'), emoji: '🏛️', color: 'from-primary to-cyan-600' },
+  { id: 'relaxation', label: t('relaxation'), emoji: '🌴', color: 'from-accent to-red-600' },
+  { id: 'business', label: t('business'), emoji: '💼', color: 'from-primary to-blue-600' },
   { id: 'family', label: t('family'), emoji: '👨‍👩‍👧', color: 'from-pink-500 to-rose-600' },
   { id: 'ecotourism', label: t('ecoTourism'), emoji: '🌿', color: 'from-lime-500 to-green-600' },
-  { id: 'foodie', label: t('foodie'), emoji: '🍽️', color: 'from-orange-600 to-amber-600' },
+  { id: 'foodie', label: t('foodie'), emoji: '🍽️', color: 'from-accent to-amber-600' },
 ];
 
 const TRAVEL_PURPOSE_IDS = ['business', 'leisure', 'conference', 'family'] as const;
@@ -89,7 +89,7 @@ export function TravelStyleSection({
           })}
         </div>
         {errors.travelStyles && (
-          <p className="text-red-500 text-xs mt-1">{errors.travelStyles.message}</p>
+          <p className="text-red-500 text-xs mt-1" role="alert">{errors.travelStyles.message}</p>
         )}
       </div>
 
@@ -113,7 +113,7 @@ export function TravelStyleSection({
           </Select>
         )} />
         {errors.travelFrequency && (
-          <p className="text-red-500 text-xs mt-1">{errors.travelFrequency.message}</p>
+          <p className="text-red-500 text-xs mt-1" role="alert">{errors.travelFrequency.message}</p>
         )}
       </div>
 
@@ -135,7 +135,7 @@ export function TravelStyleSection({
           </Select>
         )} />
         {errors.nationality && (
-          <p className="text-red-500 text-xs mt-1">{errors.nationality.message}</p>
+          <p className="text-red-500 text-xs mt-1" role="alert">{errors.nationality.message}</p>
         )}
       </div>
 
@@ -161,7 +161,7 @@ export function TravelStyleSection({
                       <CommandItem key={c.name} value={c.name} onSelect={() => {
                         toggleArrayValue('preferredContinents', c.name);
                       }}>
-                        <div className={`mr-2 flex h-4 w-4 items-center justify-center rounded-sm border ${watchedPreferences.preferredContinents.includes(c.name) ? 'bg-teal-600 border-teal-600' : 'border-gray-300 dark:border-gray-500'}`}>
+                        <div className={`mr-2 flex h-4 w-4 items-center justify-center rounded-sm border ${watchedPreferences.preferredContinents.includes(c.name) ? 'bg-primary border-primary' : 'border-gray-300 dark:border-gray-500'}`}>
                           {watchedPreferences.preferredContinents.includes(c.name) && <Check className="h-3 w-3 text-white" />}
                         </div>
                         <span>🌍 {c.name}</span>
@@ -175,7 +175,7 @@ export function TravelStyleSection({
                     <CommandItem key={c.name} value={c.name} onSelect={() => {
                       toggleArrayValue('preferredCountries', c.name);
                     }}>
-                      <div className={`mr-2 flex h-4 w-4 items-center justify-center rounded-sm border ${watchedPreferences.preferredCountries.includes(c.name) ? 'bg-teal-600 border-teal-600' : 'border-gray-300 dark:border-gray-500'}`}>
+                      <div className={`mr-2 flex h-4 w-4 items-center justify-center rounded-sm border ${watchedPreferences.preferredCountries.includes(c.name) ? 'bg-primary border-primary' : 'border-gray-300 dark:border-gray-500'}`}>
                         {watchedPreferences.preferredCountries.includes(c.name) && <Check className="h-3 w-3 text-white" />}
                       </div>
                       <span>{c.name}</span>
@@ -236,7 +236,7 @@ export function TravelStyleSection({
                         }}>
                           <div className={`mr-2 flex h-4 w-4 items-center justify-center rounded-sm border ${
                             watchedPreferences.preferredDestinations.includes(a.label)
-                              ? 'bg-teal-600 border-teal-600'
+                              ? 'bg-primary border-primary'
                               : 'border-gray-300 dark:border-gray-500'
                           }`}>
                             {watchedPreferences.preferredDestinations.includes(a.label) && (
@@ -257,7 +257,7 @@ export function TravelStyleSection({
           </>
         )}
         {errors.preferredDestinations && (
-          <p className="text-red-500 text-xs mt-1">{errors.preferredDestinations.message}</p>
+          <p className="text-red-500 text-xs mt-1" role="alert">{errors.preferredDestinations.message}</p>
         )}
       </div>
 
@@ -274,8 +274,8 @@ export function TravelStyleSection({
                 onClick={() => toggleArrayValue('travelPurpose', id)}
                 className={`px-3 py-1.5 rounded-full text-sm border transition-all touch-manipulation ${
                   isSelected
-                    ? 'bg-teal-600 text-white border-teal-600'
-                    : 'bg-white dark:bg-gray-800 border-gray-300 dark:border-gray-600 hover:border-teal-400 dark:hover:border-teal-400'
+                    ? 'bg-primary text-white border-primary'
+                    : 'bg-white dark:bg-gray-800 border-gray-300 dark:border-gray-600 hover:border-primary dark:hover:border-primary'
                 }`}
               >
                 {PURPOSE_EMOJIS[id]} {t(`options.travelPurpose.${id}`)}

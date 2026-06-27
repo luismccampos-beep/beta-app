@@ -60,7 +60,7 @@ export function BudgetSection({
           </Select>
         )} />
         {errors.currency && (
-          <p className="text-red-500 text-xs mt-1">{errors.currency.message}</p>
+          <p className="text-red-500 text-xs mt-1" role="alert">{errors.currency.message}</p>
         )}
       </div>
 
@@ -75,10 +75,10 @@ export function BudgetSection({
         }}
       />
       {errors.dailyBudgetProfile && (
-        <p className="text-red-500 text-xs mt-1">{errors.dailyBudgetProfile.message}</p>
+        <p className="text-red-500 text-xs mt-1" role="alert">{errors.dailyBudgetProfile.message}</p>
       )}
       {errors.budgetPriority && (
-        <p className="text-red-500 text-xs mt-1">{errors.budgetPriority.message}</p>
+        <p className="text-red-500 text-xs mt-1" role="alert">{errors.budgetPriority.message}</p>
       )}
     </div>
   );

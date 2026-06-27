@@ -24,6 +24,7 @@ import {
   buildDemoDestinationDetail,
 } from '../../../../../../lib/travel/demo-perfect-path';
 import { getDestinationLocalized } from '../../../../../../lib/travel/destination-i18n';
+import type { WvDestinationVideo } from '@prisma/client';
 
 export const dynamic = 'force-dynamic';
 
@@ -67,7 +68,7 @@ export const GET = apiHandler(withRateLimit(async (req: Request, ctx) => {
       ? await safeAsync(() => getDestinationLocalized(row.dest.id, locale), null, 'getDestinationLocalized')
       : null;
 
-    const videos = await safeAsync(
+    const videos: WvDestinationVideo[] = await safeAsync(
       () => prisma.wvDestinationVideo.findMany({
         where: { destinoId: row.dest.id, isVerified: true },
         orderBy: { sortOrder: 'asc' },

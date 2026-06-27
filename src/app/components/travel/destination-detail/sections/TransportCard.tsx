@@ -13,7 +13,7 @@ export function TransportCard({
   t,
 }: {
   transporte: NonNullable<DestinationDetailData['transporte']>;
-  originIata: string | undefined;
+  originIata: string;
   t: (key: string) => string;
 }) {
   if (!transporte.aeroporto) return null;

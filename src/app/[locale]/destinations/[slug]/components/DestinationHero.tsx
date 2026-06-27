@@ -7,8 +7,8 @@ import { ArrowLeft } from 'lucide-react';
 
 type HeroData = {
   nome: string;
-  pais: string;
-  continente: string;
+  pais: string | null;
+  continente: string | null;
   iata: string | null;
   tipo: string;
   clima: string;

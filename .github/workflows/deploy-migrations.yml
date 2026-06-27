@@ -5,6 +5,11 @@ on:
     paths-ignore:
       - 'docs/**'
       - '*.md'
+  pull_request:
+    branches: [main]
+    paths-ignore:
+      - 'docs/**'
+      - '*.md'
   workflow_dispatch:
 
 # GitHub Actions injects "" (empty string) when a secret is missing — it does NOT
@@ -19,8 +24,38 @@ env:
   DATABASE_URL_UNPOOLED: ${{ secrets.DATABASE_URL_UNPOOLED || secrets.DATABASE_URL }}
 
 jobs:
+  ci:
+    name: CI Checks
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      - run: npm ci
+
+      - name: Generate Prisma Client
+        run: npx prisma generate
+
+      - name: TypeScript check
+        run: npx tsc --noEmit
+
+      - name: Lint
+        run: npx next lint
+
+      - name: Run tests
+        run: npx vitest run --passWithNoTests
+
   migrate:
     name: Apply Prisma Migrations
+    if: github.event_name == 'push'
+    needs: ci
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
@@ -30,7 +65,7 @@ jobs:
 
       - uses: actions/setup-node@v5
         with:
-          node-version: 24
+          node-version: 20
           cache: 'npm'
 
       - name: Validate database env vars
@@ -49,7 +84,7 @@ jobs:
             exit 1
           fi
 
-      - run: npm install --legacy-peer-deps
+      - run: npm ci
 
       - name: Install PostgreSQL client
         # The resolve-failed-migrations.mjs script uses psql to query
@@ -121,6 +156,7 @@ jobs:
 
   deploy:
     name: Deploy to Vercel
+    if: github.event_name == 'push'
     needs: migrate
     runs-on: ubuntu-latest
     timeout-minutes: 10

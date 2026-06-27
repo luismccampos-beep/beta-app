@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
@@ -30,16 +30,11 @@ import { Card, CardContent } from '../ui/card';
 import { Button } from '../ui/button';
 import { AppHeader } from '../AppHeader';
 
-const fadeInUp = {
-  hidden: { opacity: 0, y: 30 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] } },
-};
-
-const staggerContainer = {
-  hidden: { opacity: 0 },
-  visible: { opacity: 1, transition: { staggerChildren: 0.08, delayChildren: 0.1 } },
-};
+import { fadeInUp, staggerContainer } from '../travel/destination-detail/constants/animations';
 import { AppFooter } from '../AppFooter';
+import { EmptyState } from '../ui/EmptyState';
+import { useDestinations, useCountries } from '@/lib/api/use-api';
+import { useQuery } from '@tanstack/react-query';
 import {
   Command,
   CommandEmpty,
@@ -84,8 +79,8 @@ const FAMOUS_DESTINATIONS = [
 /** Continent / region chips with emoji and gradient colours. */
 const CONTINENT_CHIPS: { value: string; emoji: string; gradient: string }[] = [
   { value: 'Europa', emoji: '🏰', gradient: 'from-blue-500 to-indigo-600' },
-  { value: 'Ásia', emoji: '⛩️', gradient: 'from-red-500 to-orange-500' },
-  { value: 'América', emoji: '🗽', gradient: 'from-emerald-500 to-teal-600' },
+  { value: 'Ásia', emoji: '⛩️', gradient: 'from-red-500 to-accent-500' },
+  { value: 'América', emoji: '🗽', gradient: 'from-emerald-500 to-primary' },
   { value: 'África', emoji: '🌍', gradient: 'from-amber-500 to-yellow-600' },
   { value: 'Oceânia', emoji: '🏝️', gradient: 'from-cyan-500 to-sky-600' },
 ];
@@ -112,10 +107,6 @@ export function DestinationsBrowsePage({ onBack }: DestinationsBrowsePageProps) 
   const t = useTranslations('destinationsBrowse');
 
   // ---- state ---------------------------------------------------------------
-  const [items, setItems] = useState<DestinationBrowseItem[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
-  const [total, setTotal] = useState(0);
 
   // Filter & pagination state (synced to URL search params)
   const [query, setQuery] = useState(searchParams.get('q') ?? '');
@@ -130,62 +121,51 @@ export function DestinationsBrowsePage({ onBack }: DestinationsBrowsePageProps) 
   );
   const [page, setPage] = useState(Number(searchParams.get('page') ?? '1'));
 
-  // Country autocomplete state
-  const [countries, setCountries] = useState<CountryOption[]>([]);
   const [countryOpen, setCountryOpen] = useState(false);
-  const [countriesLoading, setCountriesLoading] = useState(true);
-
-  // Famous destinations
-  const [famousItems, setFamousItems] = useState<DestinationBrowseItem[]>([]);
-  const [famousLoading, setFamousLoading] = useState(true);
   const scrollRef = useRef<HTMLDivElement>(null);
   const [canScrollLeft, setCanScrollLeft] = useState(false);
   const [canScrollRight, setCanScrollRight] = useState(false);
   const selectAllCooldown = useRef<ReturnType<typeof setTimeout> | null>(null);
 
-  // ---- data fetching -------------------------------------------------------
+  // ---- data fetching via React Query ----------------------------------------
 
-  // Fetch countries + continents on mount
-  useEffect(() => {
-    setCountriesLoading(true);
-    fetch('/api/travel/v1/destinations/countries')
-      .then((r) => r.json())
-      .then((data: { countries?: CountryOption[]; continents?: CountryOption[] }) => {
-        if (data.countries?.length) setCountries(data.countries);
-      })
-      .catch(() => {})
-      .finally(() => setCountriesLoading(false));
-  }, []);
+  const queryParams = useMemo(() => {
+    const p: Record<string, string> = { page: String(page), pageSize: String(ITEMS_PER_PAGE), locale };
+    if (query) p.q = query;
+    if (continentFilter) p.continent = continentFilter;
+    if (countryFilter) p.country = countryFilter;
+    if (hotelTypeFilter.length > 0) p.hotelType = hotelTypeFilter.join(',');
+    return p;
+  }, [query, continentFilter, countryFilter, hotelTypeFilter, page, locale]);
 
-  // Fetch famous tourist destinations on mount
-  useEffect(() => {
-    setFamousLoading(true);
-    const qp = new URLSearchParams();
-    qp.set('limit', '16');
-    qp.set('lang', locale);
-    fetch(`/api/travel/v1/destinations?${qp.toString()}`)
-      .then((r) => r.json())
-      .then((data: { items?: DestinationBrowseItem[] }) => {
-        const allItems = data.items ?? [];
-        if (allItems.length) {
-          // Try to put famous ones first, then fill with the rest
-          const famous = FAMOUS_DESTINATIONS.map((f) =>
-            allItems.find((item: DestinationBrowseItem) => {
-              const slug = item.slug?.toLowerCase() ?? '';
-              const nome = item.nome?.toLowerCase() ?? '';
-              return slug.includes(f.key) || nome.includes(f.key.replace(/-/g, ' '));
-            }),
-          ).filter(Boolean) as DestinationBrowseItem[];
+  const { data: searchData, isLoading: loading, error, refetch } = useDestinations(queryParams);
+  const items: DestinationBrowseItem[] = (searchData?.data as DestinationBrowseItem[]) ?? [];
+  const total: number = searchData?.pagination?.total ?? 0;
 
-          // Fill remaining slots
-          const famousIds = new Set(famous.map((f) => f.id));
-          const remaining = allItems.filter((i: DestinationBrowseItem) => !famousIds.has(i.id));
-          setFamousItems([...famous, ...remaining].slice(0, 16));
-        }
-      })
-      .catch(() => {})
-      .finally(() => setFamousLoading(false));
-  }, [locale]);
+  const { data: countriesData, isLoading: countriesLoading } = useCountries();
+  const countries: CountryOption[] = (countriesData as { countries?: CountryOption[] })?.countries ?? [];
+
+  const { data: famousRaw, isLoading: famousLoading } = useQuery({
+    queryKey: ['famous-destinations', locale],
+    queryFn: async () => {
+      const qp = new URLSearchParams({ limit: '16', lang: locale });
+      const res = await fetch(`/api/travel/v1/destinations?${qp}`);
+      const data = await res.json();
+      const allItems: DestinationBrowseItem[] = data.items ?? [];
+      const famous = FAMOUS_DESTINATIONS.map((f) =>
+        allItems.find((item) => {
+          const slug = item.slug?.toLowerCase() ?? '';
+          const nome = item.nome?.toLowerCase() ?? '';
+          return slug.includes(f.key) || nome.includes(f.key.replace(/-/g, ' '));
+        }),
+      ).filter(Boolean) as DestinationBrowseItem[];
+      const famousIds = new Set(famous.map((f) => f.id));
+      const remaining = allItems.filter((i) => !famousIds.has(i.id));
+      return [...famous, ...remaining].slice(0, 16);
+    },
+    staleTime: 5 * 60_000,
+  });
+  const famousItems: DestinationBrowseItem[] = useMemo(() => famousRaw ?? [], [famousRaw]);
 
   // ---- derived data --------------------------------------------------------
 
@@ -216,36 +196,6 @@ export function DestinationsBrowsePage({ onBack }: DestinationsBrowsePageProps) 
     [pathname, router, searchParams],
   );
 
-  const fetchItems = useCallback(
-    async (q: string, continent: string, country: string, hotelTypes: string[], p: number) => {
-      setLoading(true);
-      setError(null);
-      try {
-        const qp = new URLSearchParams();
-        if (q) qp.set('q', q);
-        if (continent) qp.set('continent', continent);
-        if (country) qp.set('country', country);
-        if (hotelTypes.length > 0) qp.set('hotelType', hotelTypes.join(','));
-        qp.set('page', String(p));
-        qp.set('pageSize', String(ITEMS_PER_PAGE));
-        qp.set('locale', locale);
-        const res = await fetch(`/api/travel/destinations?${qp.toString()}`);
-        if (!res.ok) throw new Error(`HTTP ${res.status}`);
-        const data = (await res.json()) as {
-          destinations: DestinationBrowseItem[];
-          total: number;
-        };
-        setItems(data.destinations);
-        setTotal(data.total);
-      } catch {
-        setError(t('loadError'));
-      } finally {
-        setLoading(false);
-      }
-    },
-    [locale, t],
-  );
-
   /** All available accommodation types for the filter chips. */
   const ACCOMMODATION_TYPES = [
     'hotel', 'resort', 'apartamento', 'guest_house', 'hostel',
@@ -262,6 +212,7 @@ export function DestinationsBrowsePage({ onBack }: DestinationsBrowsePageProps) 
     return () => clearTimeout(timer);
   }, [inputValue]);
 
+  // Sync filter changes to URL
   useEffect(() => {
     updateUrl({
       q: query || undefined,
@@ -270,8 +221,7 @@ export function DestinationsBrowsePage({ onBack }: DestinationsBrowsePageProps) 
       hotelType: hotelTypeFilter.length > 0 ? hotelTypeFilter.join(',') : undefined,
       page: page > 1 ? String(page) : undefined,
     });
-    fetchItems(query, continentFilter, countryFilter, hotelTypeFilter, page);
-  }, [query, continentFilter, countryFilter, hotelTypeFilter, page, fetchItems, updateUrl]);
+  }, [query, continentFilter, countryFilter, hotelTypeFilter, page, updateUrl]);
 
   // ---- carousel scroll helpers ---------------------------------------------
 
@@ -310,14 +260,14 @@ export function DestinationsBrowsePage({ onBack }: DestinationsBrowsePageProps) 
 
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 via-teal-50 to-orange-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 transition-colors">
+    <div className="min-h-screen bg-gradient-to-br from-gray-50 via-primary-50 to-accent-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 transition-colors">
       <AppHeader showBack onBack={onBack} />
 
       {/* Main content */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-12">
         {/* ─── Hero Section with Search ─── */}
         <div className="relative mb-8 sm:mb-12 overflow-hidden rounded-2xl sm:rounded-3xl">
-          <div className="absolute inset-0 bg-gradient-to-br from-teal-600 via-cyan-600 to-orange-500 opacity-90 dark:opacity-80" />
+          <div className="absolute inset-0 bg-gradient-to-br from-primary via-cyan-600 to-accent-500 opacity-90 dark:opacity-80" />
           <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiNmZmYiIGZpbGwtb3BhY2l0eT0iMC4wNSI+PHBhdGggZD0iTTM2IDE0YzEuNjU3IDAgMy0xLjM0MyAzLTNzLTEuMzQzLTMtMy0zLTMgMS4zNDMtMyAzIDEuMzQzIDMgMyAzeiIvPjwvZz48L2c+PC9zdmc+')] opacity-30" />
           <div className="relative p-8 sm:p-12 md:p-16 text-center">
             <div className="inline-flex items-center gap-2 bg-white/15 backdrop-blur-sm rounded-full px-4 py-1.5 mb-4 sm:mb-6">
@@ -341,7 +291,7 @@ export function DestinationsBrowsePage({ onBack }: DestinationsBrowsePageProps) 
                   className="flex-1 px-3 py-3 sm:py-3.5 bg-transparent text-gray-900 dark:text-white placeholder:text-gray-400 focus:outline-none text-sm sm:text-base"
                 />
                 {inputValue && (
-                  <button
+                  <button type="button"
                     onClick={() => { setInputValue(''); setQuery(''); }}
                     className="p-2 text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 transition-colors"
                   >
@@ -352,11 +302,11 @@ export function DestinationsBrowsePage({ onBack }: DestinationsBrowsePageProps) 
                 {/* Country picker */}
                 <Popover open={countryOpen} onOpenChange={setCountryOpen}>
                   <PopoverTrigger asChild>
-                    <button
+                    <button type="button"
                       className={cn(
                         'flex items-center gap-1.5 px-3 py-2 sm:py-2.5 rounded-xl text-sm font-medium transition-colors shrink-0',
                         countryFilter
-                          ? 'bg-teal-100 dark:bg-teal-900/40 text-teal-700 dark:text-teal-300'
+                          ? 'bg-primary-100 dark:bg-primary-900/40 text-primary dark:text-primary-200'
                           : 'text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700',
                       )}
                     >
@@ -424,19 +374,19 @@ export function DestinationsBrowsePage({ onBack }: DestinationsBrowsePageProps) 
         {/* ─── Continent / Region Chips ─── */}
         <div className="mb-8">
           <div className="flex items-center gap-2 mb-4">
-            <Globe className="w-4 h-4 text-teal-600 dark:text-teal-400" />
+            <Globe className="w-4 h-4 text-primary dark:text-primary-300" />
             <h2 className="text-sm font-semibold text-gray-700 dark:text-gray-300 uppercase tracking-wider">
               {t('continentLabel')}
             </h2>
           </div>
           <div className="flex flex-wrap gap-2 sm:gap-3">
-            <button
+            <button type="button"
               onClick={() => { setContinentFilter(''); setPage(1); }}
               className={cn(
                 'group flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-medium transition-all duration-200',
                 !continentFilter
-                  ? 'bg-gradient-to-r from-teal-600 to-orange-500 text-white shadow-lg shadow-teal-500/25 scale-[1.02]'
-                  : 'bg-white dark:bg-gray-800 text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 ring-1 ring-gray-200 dark:ring-gray-700 hover:ring-teal-300 dark:hover:ring-teal-700',
+                  ? 'bg-gradient-to-r from-primary to-accent text-white shadow-lg shadow-primary/25 scale-[1.02]'
+                  : 'bg-white dark:bg-gray-800 text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 ring-1 ring-gray-200 dark:ring-gray-700 hover:ring-primary-200 dark:hover:ring-primary-700',
               )}
             >
               <Compass className="w-4 h-4" />
@@ -445,14 +395,14 @@ export function DestinationsBrowsePage({ onBack }: DestinationsBrowsePageProps) 
             {CONTINENT_CHIPS.map((chip) => {
               const isActive = continentFilter === chip.value;
               return (
-                <button
+                <button type="button"
                   key={chip.value}
                   onClick={() => { setContinentFilter(isActive ? '' : chip.value); setPage(1); }}
                   className={cn(
                     'flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-medium transition-all duration-200',
                     isActive
                       ? `bg-gradient-to-r ${chip.gradient} text-white shadow-lg scale-[1.02]`
-                      : 'bg-white dark:bg-gray-800 text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 ring-1 ring-gray-200 dark:ring-gray-700 hover:ring-teal-300 dark:hover:ring-teal-700',
+                      : 'bg-white dark:bg-gray-800 text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 ring-1 ring-gray-200 dark:ring-gray-700 hover:ring-primary-200 dark:hover:ring-primary-700',
                   )}
                 >
                   <span className="text-base">{chip.emoji}</span>
@@ -466,11 +416,11 @@ export function DestinationsBrowsePage({ onBack }: DestinationsBrowsePageProps) 
         {/* ─── Accommodation Type Filter ─── */}
         <div className="mb-6">
           <div className="flex items-center gap-2 mb-3">
-            <Hotel className="w-4 h-4 text-teal-600 dark:text-teal-400" />
+            <Hotel className="w-4 h-4 text-primary dark:text-primary-300" />
             <h2 className="text-sm font-semibold text-gray-700 dark:text-gray-300 uppercase tracking-wider">
               {t('accommodationTypeLabel') ?? 'Accommodation Type'}
             </h2>
-            <button
+            <button type="button"
               onClick={() => {
                 if (selectAllCooldown.current) return;
                 selectAllCooldown.current = setTimeout(() => { selectAllCooldown.current = null; }, 500);
@@ -479,7 +429,7 @@ export function DestinationsBrowsePage({ onBack }: DestinationsBrowsePageProps) 
                 );
                 setPage(1);
               }}
-              className="text-xs text-teal-600 dark:text-teal-400 hover:text-teal-700 dark:hover:text-teal-300 font-medium underline underline-offset-2 transition-colors"
+              className="text-xs text-primary dark:text-primary-300 hover:text-primary dark:hover:text-primary-200 font-medium underline underline-offset-2 transition-colors"
             >
               {hotelTypeFilter.length > 0 ? t('clearAll') : t('selectAll')}
             </button>
@@ -492,7 +442,7 @@ export function DestinationsBrowsePage({ onBack }: DestinationsBrowsePageProps) 
                 ? ACCOMMODATION_COLORS[tipo] ?? ACCOMMODATION_COLORS.hotel
                 : 'bg-white dark:bg-gray-800 text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 ring-1 ring-gray-200 dark:ring-gray-700';
               return (
-                <button
+                <button type="button"
                   key={tipo}
                   onClick={() => {
                     setHotelTypeFilter((prev) => {
@@ -504,7 +454,7 @@ export function DestinationsBrowsePage({ onBack }: DestinationsBrowsePageProps) 
                   className={cn(
                     'flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-medium transition-all duration-200 border-0',
                     colorClass,
-                    isActive && 'ring-2 ring-teal-400 dark:ring-teal-500 shadow-sm scale-[1.02]',
+                    isActive && 'ring-2 ring-primary dark:ring-primary shadow-sm scale-[1.02]',
                   )}
                 >
                   <Icon className="h-3 w-3" />
@@ -522,36 +472,36 @@ export function DestinationsBrowsePage({ onBack }: DestinationsBrowsePageProps) 
             {query && (
               <Badge variant="secondary" className="flex items-center gap-1.5 pl-2 pr-1 py-1 text-xs">
                 <Search className="w-3 h-3" />{query}
-                <button onClick={() => { setInputValue(''); setQuery(''); }} className="p-0.5 rounded hover:bg-gray-200 dark:hover:bg-gray-600">
-                  <X className="w-3 h-3" />
+                <button type="button" onClick={() => { setInputValue(''); setQuery(''); }} className="p-1.5 sm:p-0.5 rounded focus-visible:ring-2 focus-visible:ring-primary focus-visible:outline-none hover:bg-gray-200 dark:hover:bg-gray-600">
+                  <X className="w-4 h-4" />
                 </button>
               </Badge>
             )}
             {continentFilter && (
               <Badge variant="secondary" className="flex items-center gap-1.5 pl-2 pr-1 py-1 text-xs">
                 <Globe className="w-3 h-3" />{getContinentLabel(continentFilter)}
-                <button onClick={() => { setContinentFilter(''); setPage(1); }} className="p-0.5 rounded hover:bg-gray-200 dark:hover:bg-gray-600">
-                  <X className="w-3 h-3" />
+                <button type="button" onClick={() => { setContinentFilter(''); setPage(1); }} className="p-1.5 sm:p-0.5 rounded focus-visible:ring-2 focus-visible:ring-primary focus-visible:outline-none hover:bg-gray-200 dark:hover:bg-gray-600">
+                  <X className="w-4 h-4" />
                 </button>
               </Badge>
             )}
             {countryFilter && (
-              <Badge variant="secondary" className="flex items-center gap-1.5 pl-2 pr-1 py-1 text-xs bg-teal-100 dark:bg-teal-900/30 text-teal-700 dark:text-teal-300">
+              <Badge variant="secondary" className="flex items-center gap-1.5 pl-2 pr-1 py-1 text-xs bg-primary-100 dark:bg-primary-900/30 text-primary dark:text-primary-200">
                 <MapPin className="w-3 h-3" />{countryFilter}
-                <button onClick={() => { setCountryFilter(''); setPage(1); }} className="p-0.5 rounded hover:bg-teal-200 dark:hover:bg-teal-800">
-                  <X className="w-3 h-3" />
+                <button type="button" onClick={() => { setCountryFilter(''); setPage(1); }} className="p-0.5 rounded focus-visible:ring-2 focus-visible:ring-primary focus-visible:outline-none hover:bg-primary-200 dark:hover:bg-primary-700">
+                  <X className="w-4 h-4" />
                 </button>
               </Badge>
             )}
             {hotelTypeFilter.map((tipo) => (
               <Badge key={tipo} variant="secondary" className="flex items-center gap-1.5 pl-2 pr-1 py-1 text-xs">
                 <Hotel className="w-3 h-3" />{t(`accommodationTypes.${tipo}`) ?? tipo}
-                <button onClick={() => { setHotelTypeFilter((prev) => prev.filter((t) => t !== tipo)); setPage(1); }} className="p-0.5 rounded hover:bg-gray-200 dark:hover:bg-gray-600">
-                  <X className="w-3 h-3" />
+                <button type="button" onClick={() => { setHotelTypeFilter((prev) => prev.filter((t) => t !== tipo)); setPage(1); }} className="p-1.5 sm:p-0.5 rounded focus-visible:ring-2 focus-visible:ring-primary focus-visible:outline-none hover:bg-gray-200 dark:hover:bg-gray-600">
+                  <X className="w-4 h-4" />
                 </button>
               </Badge>
             ))}
-            <button
+            <button type="button"
               onClick={() => { setInputValue(''); setQuery(''); setContinentFilter(''); setCountryFilter(''); setHotelTypeFilter([]); setPage(1); }}
               className="text-xs text-red-500 hover:text-red-600 dark:text-red-400 dark:hover:text-red-300 font-medium ml-1 underline underline-offset-2"
             >
@@ -564,7 +514,7 @@ export function DestinationsBrowsePage({ onBack }: DestinationsBrowsePageProps) 
         {!hasActiveFilters && (
           <div className="mb-10">
             <div className="flex items-center gap-2 mb-4">
-              <TrendingUp className="w-4 h-4 text-orange-500" />
+              <TrendingUp className="w-4 h-4 text-accent" />
               <h2 className="text-sm font-semibold text-gray-700 dark:text-gray-300 uppercase tracking-wider">
                 {t('famousDestinations')}
               </h2>
@@ -580,9 +530,9 @@ export function DestinationsBrowsePage({ onBack }: DestinationsBrowsePageProps) 
               <div className="relative group/carousel">
                 {/* Left arrow */}
                 {canScrollLeft && (
-                  <button
+                  <button type="button"
                     onClick={() => scrollCarousel('left')}
-                    className="absolute left-0 top-1/2 -translate-y-1/2 z-10 w-9 h-9 flex items-center justify-center rounded-full bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm shadow-lg ring-1 ring-black/5 dark:ring-white/10 text-gray-700 dark:text-gray-200 opacity-0 group-hover/carousel:opacity-100 transition-opacity duration-200 hover:bg-white dark:hover:bg-gray-700 hover:scale-110"
+                    className="absolute left-0 top-1/2 -translate-y-1/2 z-10 w-9 h-9 flex items-center justify-center rounded-full bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm shadow-lg ring-1 ring-black/5 dark:ring-white/10 text-gray-700 dark:text-gray-200 opacity-100 md:opacity-0 md:group-hover/carousel:opacity-100 focus-visible:ring-2 focus-visible:ring-primary focus-visible:outline-none transition-opacity duration-200 hover:bg-white dark:hover:bg-gray-700 hover:scale-110"
                     aria-label="Scroll left"
                   >
                     <ChevronLeft className="w-5 h-5" />
@@ -590,9 +540,9 @@ export function DestinationsBrowsePage({ onBack }: DestinationsBrowsePageProps) 
                 )}
                 {/* Right arrow */}
                 {canScrollRight && (
-                  <button
+                  <button type="button"
                     onClick={() => scrollCarousel('right')}
-                    className="absolute right-0 top-1/2 -translate-y-1/2 z-10 w-9 h-9 flex items-center justify-center rounded-full bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm shadow-lg ring-1 ring-black/5 dark:ring-white/10 text-gray-700 dark:text-gray-200 opacity-0 group-hover/carousel:opacity-100 transition-opacity duration-200 hover:bg-white dark:hover:bg-gray-700 hover:scale-110"
+                    className="absolute right-0 top-1/2 -translate-y-1/2 z-10 w-9 h-9 flex items-center justify-center rounded-full bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm shadow-lg ring-1 ring-black/5 dark:ring-white/10 text-gray-700 dark:text-gray-200 opacity-100 md:opacity-0 md:group-hover/carousel:opacity-100 focus-visible:ring-2 focus-visible:ring-primary focus-visible:outline-none transition-opacity duration-200 hover:bg-white dark:hover:bg-gray-700 hover:scale-110"
                     aria-label="Scroll right"
                   >
                     <ChevronRight className="w-5 h-5" />
@@ -643,7 +593,7 @@ export function DestinationsBrowsePage({ onBack }: DestinationsBrowsePageProps) 
         {/* ─── Results info ─── */}
         <Separator className="mb-6" />
         <div className="flex items-center justify-between mb-4">
-          <p className="text-sm text-gray-500 dark:text-gray-400">
+          <p className="text-sm text-gray-500 dark:text-gray-400">aria-live="polite" 
             {loading ? (
               <span className="flex items-center gap-2">
                 <Loader2 className="w-4 h-4 animate-spin" />
@@ -655,7 +605,7 @@ export function DestinationsBrowsePage({ onBack }: DestinationsBrowsePageProps) 
           </p>
           {totalPages > 1 && (
             <div className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400">
-              <button
+              <button type="button"
                 onClick={() => setPage((p) => Math.max(1, p - 1))}
                 disabled={page <= 1}
                 className="p-1 rounded hover:bg-gray-200 dark:hover:bg-gray-700 disabled:opacity-30"
@@ -665,7 +615,7 @@ export function DestinationsBrowsePage({ onBack }: DestinationsBrowsePageProps) 
               <span>
                 {page} / {totalPages}
               </span>
-              <button
+              <button type="button"
                 onClick={() => setPage((p) => Math.min(totalPages, p + 1))}
                 disabled={page >= totalPages}
                 className="p-1 rounded hover:bg-gray-200 dark:hover:bg-gray-700 disabled:opacity-30"
@@ -680,8 +630,8 @@ export function DestinationsBrowsePage({ onBack }: DestinationsBrowsePageProps) 
         {error && (
           <Card className="border-2 border-red-200 dark:border-red-700 mb-6">
             <CardContent className="p-6 text-center">
-              <p className="text-red-600 dark:text-red-400">{error}</p>
-              <Button onClick={() => fetchItems(query, continentFilter, countryFilter, hotelTypeFilter, page)} variant="outline" className="mt-4">
+              <p className="text-red-600 dark:text-red-400" role="alert">{error?.message ?? t('loadError')}</p>
+              <Button type="button" onClick={() => refetch()} variant="outline" className="mt-4">
                 {t('retry')}
               </Button>
             </CardContent>
@@ -708,18 +658,16 @@ export function DestinationsBrowsePage({ onBack }: DestinationsBrowsePageProps) 
         {!loading && !error && (
           <>
             {items.length === 0 ? (
-              <div className="text-center py-12 sm:py-16">
-                <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center mx-auto mb-4">
-                  <Globe className="w-8 h-8 sm:w-10 sm:h-10 text-gray-400" />
-                </div>
-                <p className="text-base sm:text-lg text-gray-500 dark:text-gray-400 mb-1">{t('emptyTitle')}</p>
-                <p className="text-sm text-gray-400 dark:text-gray-500">{t('emptyHint')}</p>
-                {hasActiveFilters && (
-                  <Button variant="outline" className="mt-4" onClick={() => { setInputValue(''); setQuery(''); setContinentFilter(''); setCountryFilter(''); setHotelTypeFilter([]); setPage(1); }}>
-                    {t('clearFilters')}
-                  </Button>
-                )}
-              </div>
+                <EmptyState
+                  icon={Globe}
+                  title={t('emptyTitle')}
+                  description={t('emptyHint')}
+                  action={hasActiveFilters ? (
+                    <Button type="button" variant="outline" onClick={() => { setInputValue(''); setQuery(''); setContinentFilter(''); setCountryFilter(''); setHotelTypeFilter([]); setPage(1); }}>
+                      {t('clearFilters')}
+                    </Button>
+                  ) : undefined}
+                />
             ) : (
               <motion.div variants={staggerContainer} initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-40px' }} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6">
                 {items.map((item) => (
@@ -752,10 +700,11 @@ export function DestinationsBrowsePage({ onBack }: DestinationsBrowsePageProps) 
             {/* Pagination */}
             {totalPages > 1 && (
               <div className="flex items-center justify-center gap-2 mt-8 sm:mt-12">
-                <button
+                <button type="button"
                   onClick={() => { setPage((p) => Math.max(1, p - 1)); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
                   disabled={page <= 1}
                   className="flex items-center gap-1 px-4 py-2 rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 text-sm font-medium disabled:opacity-30 hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors"
+                  aria-label={t('prevPage')}
                 >
                   <ChevronLeft className="w-4 h-4" />
                   {t('prevPage')}
@@ -765,24 +714,26 @@ export function DestinationsBrowsePage({ onBack }: DestinationsBrowsePageProps) 
                   const p = start + i;
                   if (p > totalPages) return null;
                   return (
-                    <button
+                    <button type="button"
                       key={p}
                       onClick={() => { setPage(p); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
                       className={cn(
                         'w-10 h-10 rounded-lg text-sm font-medium transition-all duration-200',
                         p === page
-                          ? 'bg-gradient-to-r from-teal-600 to-orange-500 text-white shadow-md scale-110'
+                          ? 'bg-gradient-to-r from-primary to-accent text-white shadow-md scale-110'
                           : 'border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700',
                       )}
+                      aria-label={t('pageOf', { page: p, total: totalPages })}
                     >
                       {p}
                     </button>
                   );
                 })}
-                <button
+                <button type="button"
                   onClick={() => { setPage((p) => Math.min(totalPages, p + 1)); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
                   disabled={page >= totalPages}
                   className="flex items-center gap-1 px-4 py-2 rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 text-sm font-medium disabled:opacity-30 hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors"
+                  aria-label={t('nextPage')}
                 >
                   {t('nextPage')}
                   <ChevronRight className="w-4 h-4" />

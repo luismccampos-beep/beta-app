@@ -143,7 +143,7 @@ export function PreferencesTab() {
           <Card key={i} className="border-0 bg-white dark:bg-gray-800 shadow-md ring-1 ring-gray-200/60 dark:ring-gray-700/60">
             <CardContent className="p-5">
               <div className="flex items-center gap-2 mb-3">
-                <Icon className="w-4 h-4 text-teal-600 dark:text-teal-400" />
+                <Icon className="w-4 h-4 text-primary dark:text-primary-300" />
                 <h3 className="text-sm font-semibold text-gray-900 dark:text-white">{title}</h3>
               </div>
               {content}

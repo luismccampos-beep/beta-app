@@ -207,6 +207,8 @@ npm run start
 | `docs/TRAVEL_CATALOG_API.md` | Internal Wikivoyage catalog API |
 | `docs/TRIP_RECOMMENDATION.md` | Smart trip recommendations MVP |
 | `docs/VIDEOS-DESTINO-IMPLEMENTACAO.md` | Video on destination cards |
+| `ACCESSIBILITY.md` | Accessibility statement, goals, and reporting guide |
+| `CONTRIBUTING.md` | Contribution guidelines, accessibility requirements, and PR process |
 | `docs/wikivoyage_links.md` | Wikivoyage links reference |
 | `docs/lighthouse/` | Lighthouse audit reports (home, about, destinations) |
 

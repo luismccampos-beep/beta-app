@@ -64,7 +64,7 @@ export class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundarySt
             <CardContent className="flex justify-center pb-6">
               <Button
                 onClick={this.handleRetry}
-                className="bg-gradient-to-r from-teal-600 to-orange-500 hover:from-teal-700 hover:to-orange-600 gap-2"
+                className="bg-gradient-to-r from-primary to-accent hover:from-primary-700 hover:to-accent-600 gap-2"
               >
                 <RefreshCw className="w-4 h-4" />
                 Try Again
