@@ -28,11 +28,11 @@ export async function getCommonsGallery(
   ).then(r => r.json());
 
   const files = (cat.query?.categorymembers ?? [])
-    .filter((f: any) => /\.(jpe?g)$/i.test(f.title))
-    .filter((f: any) => !/(map|flag|coat|logo|icon|symbol)/i.test(f.title))
+    .filter((f: { title: string }) => /\.(jpe?g)$/i.test(f.title))
+    .filter((f: { title: string }) => !/(map|flag|coat|logo|icon|symbol)/i.test(f.title))
     .slice(0, limit);
 
-  return files.map((f: any) => {
+  return files.map((f: { title: string }) => {
     const filename = f.title.replace(/^File:/, '');
     return {
       url: `https://commons.wikimedia.org/wiki/Special:FilePath/${encodeURIComponent(filename)}?width=1200`,

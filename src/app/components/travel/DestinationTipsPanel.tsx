@@ -67,12 +67,14 @@ export function DestinationTipsPanel({
   if (!ordered.length) return null;
 
   return (
-    <div className="space-y-3">
-      <h2 className="text-xl font-bold dark:text-white flex items-center gap-2">
-        <Shield className="h-5 w-5 text-primary" />
+    <div className="space-y-8">
+      <h2 className="text-4xl font-black text-gray-950 dark:text-white tracking-tighter uppercase italic flex items-center gap-3">
+        <div className="p-2 rounded-lg bg-primary/10 text-primary dark:text-primary-300">
+          <Shield className="h-6 w-6" />
+        </div>
         {labels.panelTitle}
       </h2>
-      <div className={cn('space-y-2', compact && 'space-y-1.5')}>
+      <div className={cn('grid sm:grid-cols-2 gap-4', compact && 'space-y-1.5')}>
         {ordered.map((key) => {
           const tips = dicas[key];
           if (!tips?.length) return null;
@@ -93,33 +95,35 @@ export function DestinationTipsPanel({
                   return next;
                 });
               }}
-              className="rounded-xl border border-gray-200/80 dark:border-gray-700 bg-white/80 dark:bg-gray-800/60 overflow-hidden"
+              className="rounded-2xl border border-gray-100 dark:border-gray-800 bg-white/50 dark:bg-gray-900/50 backdrop-blur-md overflow-hidden hover:shadow-xl transition-all duration-300 group"
             >
-              <CollapsibleTrigger className="flex w-full items-center justify-between gap-2 px-4 py-3 text-left hover:bg-gray-50/80 dark:hover:bg-gray-800/80 transition-colors">
-                <span className="flex items-center gap-2 font-semibold text-sm dark:text-white">
-                  <Icon className={cn('h-4 w-4 shrink-0', meta.accent)} />
+              <CollapsibleTrigger className="flex w-full items-center justify-between gap-3 px-6 py-4 text-left hover:bg-gray-50/50 dark:hover:bg-gray-800/50 transition-colors">
+                <span className="flex items-center gap-3 font-black text-base uppercase tracking-tighter text-gray-950 dark:text-white italic">
+                  <div className={cn('p-2 rounded-lg bg-white/80 dark:bg-black/20 group-hover:scale-110 transition-transform', meta.accent)}>
+                    <Icon className="h-5 w-5 shrink-0" />
+                  </div>
                   {title}
                   {key === 'seguranca' && (
-                    <span className="text-xs font-normal text-amber-700 dark:text-amber-300 ml-1">
+                    <span className="text-xs font-bold text-amber-700 dark:text-amber-400 ml-1">
                       ⚠️
                     </span>
                   )}
                 </span>
                 <ChevronDown
                   className={cn(
-                    'h-4 w-4 text-gray-500 transition-transform',
+                    'h-5 w-5 text-gray-400 transition-transform',
                     isOpen && 'rotate-180',
                   )}
                 />
               </CollapsibleTrigger>
-              <CollapsibleContent className="px-4 pb-3">
-                <ul className="space-y-2">
+              <CollapsibleContent className="px-6 pb-6">
+                <ul className="space-y-3 pt-2 border-t border-gray-100 dark:border-gray-800">
                   {tips.map((tip) => (
                     <li
                       key={tip.slice(0, 48)}
-                      className="text-sm text-gray-700 dark:text-gray-300 flex gap-2 leading-snug"
+                      className="text-base font-medium text-gray-700 dark:text-gray-300 flex gap-3 leading-relaxed"
                     >
-                      <span className="text-primary font-bold shrink-0">•</span>
+                      <span className="text-orange font-black shrink-0">•</span>
                       <span>{tip}</span>
                     </li>
                   ))}

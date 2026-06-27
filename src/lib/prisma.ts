@@ -13,8 +13,7 @@ import { PrismaClient } from '@prisma/client';
 //
 // See: https://www.prisma.io/docs/orm/prisma-client/deployment/edge/deploy-to-vercel-edge
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-const globalForPrisma = globalThis as unknown as { prisma?: any };
+const globalForPrisma = globalThis as unknown as { prisma?: PrismaClient };
 
 // Bug fix: Next.js sets NEXT_PHASE to phase-production-build (not build).
 // Old condition `NEXT_PHASE === 'build'` never matched on Vercel, so the
@@ -40,6 +39,7 @@ const throwOnMutation = (prop: string | symbol) => () => {
 // Recursive Proxy stub: any property access returns another stub; method
 // calls resolve to Promise<[]> so .map()/.length run safely during SSG
 // without the build ever opening a TCP connection to Postgres.
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const createStub = (): any => {
   const fn = function () {
     return Promise.resolve([]);
@@ -96,8 +96,7 @@ function createPrismaClient() {
   const extended = client.$extends({
     query: {
       $allModels: {
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        async $allOperations({ model, operation, args, query }: any) {
+        async $allOperations({ model, operation, args, query }: { model: string; operation: string; args: Record<string, unknown>; query: (args: Record<string, unknown>) => Promise<unknown> }) {
           const modelName: string | undefined = model;
           if (!modelName || !SOFT_DELETE_MODELS.has(modelName)) {
             return query(args);
@@ -107,40 +106,40 @@ function createPrismaClient() {
 
           // Soft delete: convert delete → update on the raw client
           if (operation === 'delete') {
-            return (client as any)[lower].update({
-              where: args.where ?? {},
+            return (client as unknown as Record<string, { update: (args: Record<string, unknown>) => Promise<unknown> }>)[lower].update({
+              where: (args.where ?? {}) as Record<string, unknown>,
               data: { deletedAt: new Date() },
             });
           }
           if (operation === 'deleteMany') {
-            return (client as any)[lower].updateMany({
-              where: args.where ?? {},
+            return (client as unknown as Record<string, { updateMany: (args: Record<string, unknown>) => Promise<{ count: number }> }>)[lower].updateMany({
+              where: (args.where ?? {}) as Record<string, unknown>,
               data: { deletedAt: new Date() },
             });
           }
 
           // findUnique can't have extra where clauses → fall through to findFirst
           if (operation === 'findUnique') {
-            return (client as any)[lower].findFirst({
+            return (client as unknown as Record<string, { findFirst: (args: Record<string, unknown>) => Promise<unknown> }>)[lower].findFirst({
               ...args,
-              where: { ...(args.where ?? {}), deletedAt: null },
+              where: { ...(args.where ?? {}) as Record<string, unknown>, deletedAt: null },
             });
           }
 
           // Read queries: auto-filter deleted rows
           if (operation === 'findFirst' || operation === 'findMany' || operation === 'count') {
-            const where = args.where ?? {};
+            const where = (args.where ?? {}) as Record<string, unknown>;
             if (where.deletedAt === undefined) {
-              args.where = { ...where, deletedAt: null };
+              (args as Record<string, unknown>).where = { ...where, deletedAt: null };
             }
             return query(args);
           }
 
           // Update queries: only operate on non-deleted rows
           if (operation === 'update' || operation === 'updateMany' || operation === 'upsert') {
-            const where = args.where;
-            if (where && where.deletedAt === undefined) {
-              args.where = { ...where, deletedAt: null };
+            const where = (args.where ?? {}) as Record<string, unknown>;
+            if (where.deletedAt === undefined) {
+              (args as Record<string, unknown>).where = { ...where, deletedAt: null };
             }
             return query(args);
           }
@@ -155,9 +154,9 @@ function createPrismaClient() {
 }
 
 export const prisma = isStubMode
-  ? (createStub() as PrismaClient)
+  ? (createStub() as unknown as PrismaClient)
   : (globalForPrisma.prisma ?? createPrismaClient());
 
 if (process.env.NODE_ENV !== 'production' && !isStubMode) {
-  globalForPrisma.prisma = prisma;
+  globalForPrisma.prisma = prisma as unknown as PrismaClient;
 }

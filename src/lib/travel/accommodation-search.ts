@@ -225,7 +225,7 @@ export async function searchAccommodations(
             destino: { select: { nome: true, slug: true } },
           },
         })
-        .then((rows: any) => rows.map(wvHotelToUnified)),
+        .then((rows: { id: number; destinoId: number; nome: string; estrelas: number; precoPorNoite: unknown; comodidades: unknown; latitude: number | null; longitude: number | null; description: string | null; imageUrl: string | null; destino: { nome: string; slug: string } | null }[]) => rows.map(wvHotelToUnified)),
     );
   }
 
@@ -255,7 +255,7 @@ export async function searchAccommodations(
             amenities: true,
           },
         })
-        .then((rows: any) => rows.map(hotelToUnified)),
+        .then((rows: { id: string; name: string; slug: string; description: string | null; image: string | null; city: string | null; country: string | null; starRating: number | null; pricePerNight: unknown; currency: string | null; rating: unknown; amenities: unknown }[]) => rows.map(hotelToUnified)),
     );
   }
 
@@ -287,7 +287,7 @@ export async function searchAccommodations(
             destination: { select: { id: true, name: true } },
           },
         })
-        .then((rows: any) => rows.map(accommodationToUnified)),
+        .then((rows: { id: string; name: string; slug: string; type: string | null; description: string | null; image: string | null; pricePerNight: unknown; currency: string | null; rating: unknown; latitude: unknown; longitude: unknown; amenities: unknown; address: string | null; destination: { id: string; name: string } | null }[]) => rows.map(accommodationToUnified)),
     );
   }
 

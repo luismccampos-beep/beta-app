@@ -50,12 +50,15 @@ function getDbUrl() {
 function run(args, opts = {}) {
   const isWin = process.platform === 'win32';
   const cmd = isWin ? 'npx.cmd' : 'npx';
+  const dbUrl = getDbUrl();
   const result = spawnSync(cmd, args, {
-    stdio: 'inherit',
-    env: { ...process.env, DATABASE_URL_UNPOOLED: getDbUrl() },
+    stdio: 'pipe',
+    env: { ...process.env, DATABASE_URL: dbUrl, DATABASE_URL_UNPOOLED: dbUrl },
     shell: isWin,
     ...opts,
   });
+  if (result.stdout) process.stdout.write(result.stdout);
+  if (result.stderr) process.stderr.write(result.stderr);
   return result.status ?? (result.signal ? 128 + result.signal : 1);
 }
 

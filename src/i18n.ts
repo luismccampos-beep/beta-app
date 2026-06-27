@@ -18,8 +18,8 @@ export default getRequestConfig(async ({requestLocale}) => {
     locale,
     // One JSON file per locale.
     messages: (await import(`./messages/${locale}.json`)).default,
-    onError: (error: any) => {
-      if (error?.code === 'MISSING_MESSAGE') return;
+    onError: (error: unknown) => {
+      if ((error as { code?: string })?.code === 'MISSING_MESSAGE') return;
       throw error;
     },
   };

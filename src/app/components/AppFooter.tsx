@@ -8,30 +8,39 @@ export function AppFooter() {
   const t = useTranslations('landing');
 
   return (
-    <footer className="bg-gray-900 dark:bg-black text-white py-12 px-4 sm:px-6 lg:px-8 border-t border-gray-800 dark:border-gray-900 transition-colors">
+    <footer className="bg-gray-950 text-white py-20 px-4 sm:px-6 lg:px-8 border-t border-white/5 transition-colors">
       <div className="max-w-7xl mx-auto">
-        {/* Badges */}
-        <div className="flex items-center justify-center gap-8 flex-wrap text-sm text-gray-400 dark:text-gray-500 mb-6">
-          <div className="flex items-center gap-2">
-            <Shield className="w-4 h-4 text-green-500" />
-            <span>{t('footerBadges.soc2Certified')}</span>
+        <div className="flex flex-col md:flex-row justify-between items-center gap-12 mb-16">
+          <div className="space-y-4 text-center md:text-left">
+            <div className="text-3xl font-black bg-gradient-to-r from-primary-400 to-accent-400 bg-clip-text text-transparent">
+              AKMLEVA
+            </div>
+            <p className="text-gray-400 max-w-sm font-medium">
+              Transformando a forma como planeias as tuas viagens com inteligência artificial e dados reais.
+            </p>
           </div>
-          <div className="flex items-center gap-2">
-            <Lock className="w-4 h-4 text-primary dark:text-primary-300" />
-            <span>{t('footerBadges.encryption256')}</span>
-          </div>
-          <div className="flex items-center gap-2">
-            <Globe className="w-4 h-4 text-primary dark:text-primary-300" />
-            <span>{t('footerBadges.gdprCompliant')}</span>
-          </div>
-          <div className="flex items-center gap-2">
-            <Award className="w-4 h-4 text-accent dark:text-accent-500" />
-            <span>{t('footerBadges.iso27001')}</span>
+          
+          <div className="flex items-center gap-8 flex-wrap justify-center">
+            {[
+              { icon: Shield, label: t('footerBadges.soc2Certified'), color: 'text-green-500' },
+              { icon: Lock, label: t('footerBadges.encryption256'), color: 'text-primary-400' },
+              { icon: Globe, label: t('footerBadges.gdprCompliant'), color: 'text-primary-400' },
+              { icon: Award, label: t('footerBadges.iso27001'), color: 'text-accent-400' },
+            ].map((badge, i) => (
+              <div key={i} className="flex flex-col items-center gap-2 group cursor-help">
+                <div className="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center border border-white/10 group-hover:bg-white/10 transition-colors">
+                  <badge.icon className={`w-6 h-6 ${badge.color}`} />
+                </div>
+                <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-gray-500">{badge.label}</span>
+              </div>
+            ))}
           </div>
         </div>
 
+        <div className="h-px w-full bg-gradient-to-r from-transparent via-white/10 to-transparent mb-12" />
+
         {/* Navigation Links */}
-        <div className="flex items-center justify-center gap-6 flex-wrap text-sm mb-6">
+        <div className="flex items-center justify-center gap-x-8 gap-y-4 flex-wrap text-sm font-bold uppercase tracking-widest mb-12">
           <Link
             href="/destinations"
             className="text-gray-400 hover:text-primary-300 transition-colors font-medium"

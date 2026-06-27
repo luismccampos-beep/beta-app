@@ -498,5 +498,5 @@ MIT License — Copyright (c) 2025-2026 AKMLEVA Viagens Lda.
 ## Contact
 
 - Website: [akmleva.com](https://akmleva.com)
-- Email: luismccampos@gmail.com
+- Email: luismccampos@gmail.com/ geral@akmleva.pt
 - GitHub: [luismccampos-beep/beta-app](https://github.com/luismccampos-beep/beta-app)

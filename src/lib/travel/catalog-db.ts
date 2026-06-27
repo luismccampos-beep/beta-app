@@ -13,7 +13,7 @@ type WvHotelRow = {
   destinoId: number;
   nome: string;
   estrelas: number;
-  precoPorNoite: any;
+  precoPorNoite: number | string | null;
   comodidades: unknown;
   fonte: string | null;
   latitude: number | null;
@@ -68,7 +68,8 @@ export async function getHotelStatsForDestinations(
 ): Promise<Map<number, { avgStars: number | null; hotelTypes: Record<string, number> | null }>> {
   if (destinoIds.length === 0) return new Map();
 
-  const grouped = await prisma.wvHotel.groupBy({
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const grouped = await (prisma.wvHotel.groupBy as any)({
     by: ['destinoId', 'tipoAlojamento'],
     where: {
       destinoId: { in: destinoIds },
@@ -88,7 +89,8 @@ export async function getHotelStatsForDestinations(
   }
 
   // Compute proper avg stars per destination
-  const avgRows = await prisma.wvHotel.groupBy({
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const avgRows = await (prisma.wvHotel.groupBy as any)({
     by: ['destinoId'],
     where: {
       destinoId: { in: destinoIds },
@@ -226,7 +228,7 @@ export async function searchDestinationsDb(opts: {
       select: { destinoId: true },
       distinct: ['destinoId'],
     });
-    const ids = matchingDestIds.map((r: any) => r.destinoId);
+    const ids = matchingDestIds.map((r: { destinoId: number }) => r.destinoId);
     if (ids.length === 0) {
       // No destinations with these hotel types — return empty immediately
       return { total: 0, items: [] };
@@ -264,12 +266,12 @@ export async function searchDestinationsDb(opts: {
   ]);
 
   // Aggregate hotel stats (avg stars, type breakdown) for all visible destinations
-  const destIds = rows.map((r: any) => r.id);
+  const destIds = rows.map((r: { id: number }) => r.id);
   const hotelStatsMap = await getHotelStatsForDestinations(destIds);
 
   return {
     total,
-    items: rows.map((r: any) => {
+    items: rows.map((r: { id: number; slug: string; lang: string; nome: string; pais: string; paisCode: string; continente: string | null; iata: string | null; tipo: string | null; clima: string | null; descricao: string | null; imagemUrl: string | null; imagemQuery: string | null; transporte: unknown; hotelCount: number | null; latitude: number | null; longitude: number | null }) => {
       const stats = hotelStatsMap.get(r.id);
       return {
         ...r,
@@ -313,7 +315,7 @@ export async function getDestinationBySlugFromDb(slug: string) {
   return {
     dest,
     slug: buildDestinationSlug(dest),
-    hotels: hotels.map((h: any) => rowToHotel(h)),
+    hotels: hotels.map((h: WvHotelRow) => rowToHotel(h)),
   };
 }
 
@@ -405,7 +407,9 @@ export async function getHotelsNearbyFromDb(opts: {
   });
 
   return rows
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     .filter((h: any) => h.latitude != null && h.longitude != null)
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     .map((h: any) => ({
       ...rowToHotel(h, {
         distance_km: Math.round(haversineKm(lat, lng, h.latitude!, h.longitude!) * 100) / 100,
@@ -413,8 +417,8 @@ export async function getHotelsNearbyFromDb(opts: {
       city: h.destino?.nome,
       country: h.destino?.pais,
     }))
-    .filter((h: any) => (h.distance_km ?? 0) <= radiusKm)
-    .sort((a: any, b: any) => (a.distance_km ?? 0) - (b.distance_km ?? 0))
+    .filter((h: { distance_km?: number }) => (h.distance_km ?? 0) <= radiusKm)
+    .sort((a: { distance_km?: number }, b: { distance_km?: number }) => (a.distance_km ?? 0) - (b.distance_km ?? 0))
     .slice(0, limit);
 }
 
@@ -446,7 +450,7 @@ export async function getHotelsFromDb(opts: {
 
   const filtered = rows.filter(isAccommodationHotel).slice(0, limit);
   if (filtered.length > 0) {
-    return filtered.map((h: any) => rowToHotel(h));
+    return filtered.map((h: WvHotelRow) => rowToHotel(h));
   }
 
   const sleepListings = await prisma.wvListing.findMany({
@@ -455,7 +459,7 @@ export async function getHotelsFromDb(opts: {
     take: limit,
   });
 
-  return sleepListings.map((listing: any, index: any) => ({
+  return sleepListings.map((listing: { title: string; latitude: number | null; longitude: number | null }, index: number) => ({
     id: destinoId * 10_000 + index + 1,
     destino_id: destinoId,
     nome: listing.title.trim(),
@@ -492,17 +496,18 @@ export async function getFlightsFromDb(opts: {
     take: limit,
   });
 
-  return rows.map(
-    (f: any): MockFlight => ({
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  return (rows as any[]).map(
+    (f): MockFlight => ({
       id: f.id,
       origem: f.origem,
       destino_id: f.destinoId,
       destino_iata: f.destinoIata,
       preco: f.preco,
-      duracao_minutos: f.duracaoMinutos,
-      companhia: f.companhia,
-      cabin_class: f.cabinClass,
-      escalas: f.escalas,
+      duracao_minutos: f.duracaoMinutos ?? 0,
+      companhia: f.companhia ?? '',
+      cabin_class: f.cabinClass ?? '',
+      escalas: f.escalas ?? 0,
     }),
   );
 }
@@ -714,23 +719,25 @@ export async function listTopDestinationIatasFromDb(limit = 6, lang = 'pt'): Pro
 
 /** Lista de países distintos com contagem de destinos (ordenados por popularidade decrescente). */
 export async function listDistinctCountriesFromDb(): Promise<{ name: string; count: number }[]> {
-  const rows = await prisma.wvDestination.groupBy({
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const rows = await (prisma.wvDestination.groupBy as any)({
     by: ['pais'],
     _count: { pais: true },
     orderBy: { _count: { pais: 'desc' } },
   });
-  return rows
-    .filter((r: any) => r.pais)
-    .map((r: any) => ({ name: r.pais, count: r._count.pais }));
+  return (rows as Array<{ pais: string | null; _count: { pais: number } }>)
+    .filter((r) => r.pais != null)
+    .map((r) => ({ name: r.pais!, count: r._count.pais }));
 }
 
 /** Lista de continentes distintos com contagem de destinos (ordenados por popularidade decrescente). */
 export async function listDistinctContinentsFromDb(): Promise<{ name: string; count: number }[]> {
-  const rows = await prisma.wvDestination.groupBy({
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const rows = await (prisma.wvDestination.groupBy as any)({
     by: ['continente'],
     _count: { continente: true },
     orderBy: { _count: { continente: 'desc' } },
     where: { continente: { not: null } },
   });
-  return rows.map((r: any) => ({ name: r.continente!, count: r._count.continente }));
+  return rows.map((r: { continente: string | null; _count: { continente: number } }) => ({ name: r.continente!, count: r._count.continente }));
 }

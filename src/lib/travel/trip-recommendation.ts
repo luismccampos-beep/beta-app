@@ -75,7 +75,7 @@ async function recommendFromDb(input: RecommendDestinationsInput): Promise<Recom
 
   if (!rows.length) return [];
 
-  const destIds = rows.map((r: any) => r.id);
+  const destIds = rows.map((r: { id: number }) => r.id);
   const origin = input.originIata?.toUpperCase();
 
   const [allHotels, flightRows] = await Promise.all([
@@ -110,9 +110,9 @@ async function recommendFromDb(input: RecommendDestinationsInput): Promise<Recom
     if (!isAccommodationHotel(h)) continue;
     if (!hotelByDest.has(h.destinoId)) hotelByDest.set(h.destinoId, h);
   }
-  const flightByDest = new Map(flightRows.map((f: any) => [f.destinoId, f.preco]));
+  const flightByDest = new Map(flightRows.map((f: { destinoId: number; preco: number }) => [f.destinoId, f.preco]));
   const flightIataByDest = new Map(
-    flightRows.map((f: any) => [f.destinoId, f.destinoIata?.trim().toUpperCase() || null] as const),
+    flightRows.map((f: { destinoId: number; destinoIata: string | null }) => [f.destinoId, f.destinoIata?.trim().toUpperCase() || null] as const),
   );
 
   const candidates: RecommendedDestination[] = [];

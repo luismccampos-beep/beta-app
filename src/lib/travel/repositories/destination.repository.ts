@@ -80,7 +80,7 @@ export async function searchDestinations(opts: SearchDestinationsInput) {
       select: { destinoId: true },
       distinct: ['destinoId'],
     });
-    const ids = matchingDestIds.map((r: any) => r.destinoId);
+    const ids = matchingDestIds.map((r: { destinoId: number }) => r.destinoId);
     if (ids.length === 0) {
       return { items: [], total: 0 };
     }
@@ -89,13 +89,13 @@ export async function searchDestinations(opts: SearchDestinationsInput) {
 
   const [rows, total] = await Promise.all([
     prisma.wvDestination.findMany({
-      where: where as any,
+      where: where as Record<string, unknown>,
       orderBy: { nome: 'asc' },
       skip: offset,
       take: limit,
       select: destinationSelect,
     }),
-    prisma.wvDestination.count({ where: where as any }),
+    prisma.wvDestination.count({ where: where as Record<string, unknown> }),
   ]);
 
   return { items: rows as unknown as typeof destinationSelect[], total };
@@ -104,7 +104,8 @@ export async function searchDestinations(opts: SearchDestinationsInput) {
 export async function getHotelStatsForDestinations(destinoIds: number[]) {
   if (destinoIds.length === 0) return new Map<number, { avgStars: number | null; hotelTypes: Record<string, number> | null }>();
 
-  const grouped = await prisma.wvHotel.groupBy({
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const grouped = await (prisma.wvHotel.groupBy as any)({
     by: ['destinoId', 'tipoAlojamento'],
     where: {
       destinoId: { in: destinoIds },
@@ -122,7 +123,8 @@ export async function getHotelStatsForDestinations(destinoIds: number[]) {
     map.set(row.destinoId, existing);
   }
 
-  const avgRows = await prisma.wvHotel.groupBy({
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const avgRows = await (prisma.wvHotel.groupBy as any)({
     by: ['destinoId'],
     where: {
       destinoId: { in: destinoIds },
@@ -218,14 +220,16 @@ export async function getHotelsNearby(opts: {
   });
 
   return rows
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     .filter((h: any) => h.latitude != null && h.longitude != null)
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     .map((h: any) => ({
       ...h,
       distance_km: Math.round(haversineKm(opts.lat, opts.lng, h.latitude!, h.longitude!) * 100) / 100,
       city: h.destino?.nome,
       country: h.destino?.pais,
     }))
-    .filter((h: any) => h.distance_km <= radiusKm)
-    .sort((a: any, b: any) => a.distance_km - b.distance_km)
+    .filter((h: { distance_km?: number }) => h.distance_km! <= radiusKm)
+    .sort((a: { distance_km?: number }, b: { distance_km?: number }) => a.distance_km! - b.distance_km!)
     .slice(0, limit);
 }

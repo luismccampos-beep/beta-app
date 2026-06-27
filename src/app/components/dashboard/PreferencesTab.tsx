@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import { motion } from 'framer-motion';
 import { Badge } from '../ui/badge';
 import { Button } from '../ui/button';
 import { Card, CardContent } from '../ui/card';
@@ -125,12 +126,16 @@ export function PreferencesTab() {
   ];
 
   return (
-    <div>
-      <div className="flex items-center justify-between gap-4 mb-6">
-        <h2 className="text-2xl font-bold text-gray-900 dark:text-white">{t('travelPreferences')}</h2>
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+    >
+      <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-8">
+        <h2 className="text-4xl font-black text-gray-950 dark:text-white tracking-tighter uppercase italic">{t('travelPreferences')}</h2>
         <Button
           onClick={() => (window.location.href = '/preferences/edit')}
-          className="bg-gray-900 dark:bg-white dark:text-gray-900 hover:bg-gray-800 dark:hover:bg-gray-100 text-white gap-2"
+          variant="brand"
+          className="gap-2 font-bold shadow-glow-primary"
           size="sm"
         >
           <Edit className="w-4 h-4" />
@@ -138,19 +143,30 @@ export function PreferencesTab() {
         </Button>
       </div>
 
-      <div className="grid sm:grid-cols-2 gap-4">
+      <div className="grid sm:grid-cols-2 gap-6">
         {cards.map(({ icon: Icon, title, content }, i) => (
-          <Card key={i} className="border-0 bg-white dark:bg-gray-800 shadow-md ring-1 ring-gray-200/60 dark:ring-gray-700/60">
-            <CardContent className="p-5">
-              <div className="flex items-center gap-2 mb-3">
-                <Icon className="w-4 h-4 text-primary dark:text-primary-300" />
-                <h3 className="text-sm font-semibold text-gray-900 dark:text-white">{title}</h3>
-              </div>
-              {content}
-            </CardContent>
-          </Card>
+          <motion.div
+            key={i}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: i * 0.05 }}
+          >
+            <Card className="card-premium dark:bg-gray-900 group h-full">
+              <CardContent className="p-6">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="p-2 rounded-lg bg-primary/10 text-primary dark:text-primary-300 group-hover:scale-110 transition-transform">
+                    <Icon className="w-5 h-5" />
+                  </div>
+                  <h3 className="text-base font-black text-gray-950 dark:text-white uppercase tracking-tighter">{title}</h3>
+                </div>
+                <div className="pl-12">
+                  {content}
+                </div>
+              </CardContent>
+            </Card>
+          </motion.div>
         ))}
       </div>
-    </div>
+    </motion.div>
   );
 }

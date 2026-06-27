@@ -24,7 +24,7 @@ export const GET = apiHandler(withRateLimit(async (_req: Request, ctx) => {
     return NextResponse.json({ ok: false, error: 'Destino não encontrado' }, { status: 404 });
   }
 
-  const videos = dest.videos.map((v: any) => ({
+  const videos = dest.videos.map((v: { url: string | null; thumbUrl: string | null; posterUrl: string | null; width: number | null; height: number | null; durationSec: number | null; author: string | null; license: string | null; sourceUrl: string | null; isVerified: boolean }) => ({
     url: v.url,
     thumbUrl: v.thumbUrl,
     posterUrl: v.posterUrl,

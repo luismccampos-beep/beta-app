@@ -51,6 +51,7 @@ const mockBooking = {
   updatedAt: new Date(),
   checkedInAt: null,
   checkedOutAt: null,
+  deletedAt: null,
 };
 
 vi.mock('@/lib/prisma', () => ({
@@ -80,8 +81,8 @@ describe('Travel Results API', () => {
     it('deve retornar resultados de viagem com filtros válidos', async () => {
       const { prisma } = await import('@/lib/prisma');
       
-      vi.mocked(prisma.booking.findMany).mockResolvedValue([mockBooking] as any);
-      vi.mocked(prisma.booking.count).mockResolvedValue(1);
+      (prisma.booking.findMany as ReturnType<typeof vi.fn>).mockResolvedValue([mockBooking]);
+      (prisma.booking.count as ReturnType<typeof vi.fn>).mockResolvedValue(1);
 
       const request = new NextRequest('http://localhost:3000/api/travel/results?destination=Paris&startDate=2026-12-01&endDate=2026-12-07&adults=2');
       
@@ -152,7 +153,7 @@ describe('Booking Model Validation', () => {
       guestEmail: 'test@example.com',
     };
 
-    vi.mocked(prisma.booking.create).mockResolvedValue(mockBooking as any);
+    (prisma.booking.create as ReturnType<typeof vi.fn>).mockResolvedValue(mockBooking);
 
     expect(validBooking.userId).toBeDefined();
     expect(validBooking.bookingReference).toBeDefined();
@@ -167,6 +168,7 @@ describe('Booking Model Validation', () => {
       ...mockBooking,
       destinationId: null,
       tripId: null,
+      deletedAt: null,
     };
 
     expect(flightOnlyBooking.destinationId).toBeNull();

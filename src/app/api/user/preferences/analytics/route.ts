@@ -37,8 +37,8 @@ export async function POST(request: NextRequest) {
         action,
         newValue: JSON.parse(JSON.stringify(newValue ?? {})),
         context: JSON.parse(JSON.stringify(context ?? {})),
-      },
-    } as any);
+      } as Record<string, unknown>,
+    });
 
     return NextResponse.json({ success: true });
   } catch (error) {

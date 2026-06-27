@@ -19,7 +19,16 @@ export default defineConfig({
         '**/*.config.*',
         '**/mock*/**',
         'src/messages/**',
+        'scripts/**',
+        'e2e/**',
+        '.storybook/**',
       ],
+      thresholds: {
+        statements: 10,
+        branches: 8,
+        functions: 10,
+        lines: 10,
+      },
     },
   },
   resolve: {

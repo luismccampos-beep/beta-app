@@ -215,37 +215,46 @@ export function ResultsPage({ onLogout, onNavigateToDashboard }: ResultsPageProp
 
       <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-6 sm:py-12 overflow-x-hidden">
         {/* Hero Section */}
-        <div className="text-center space-y-3 sm:space-y-4 mb-6 sm:mb-8">
-          <div className="inline-flex items-center gap-2 bg-white dark:bg-gray-800 border border-primary-200 dark:border-gray-600 rounded-full px-4 py-2 shadow-sm">
-            <Sparkles className="w-4 h-4 text-accent animate-pulse" />
-            <span className="text-sm font-medium text-primary-900 dark:text-primary-200">{t('aiPoweredResults')}</span>
+        <motion.div 
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="text-center space-y-4 sm:space-y-6 mb-12 sm:mb-16"
+        >
+          <div className="inline-flex items-center gap-2 glass dark:bg-gray-800/50 border border-primary-200 dark:border-gray-700 rounded-full px-5 py-2.5 shadow-lg">
+            <Sparkles className="w-5 h-5 text-accent animate-pulse" />
+            <span className="text-sm font-bold text-primary-900 dark:text-primary-100 uppercase tracking-[0.2em]">{t('aiPoweredResults')}</span>
           </div>
-          <h1 className="text-2xl sm:text-4xl md:text-5xl font-bold text-gray-900 dark:text-white leading-tight px-1">
+          <h1 className="text-4xl sm:text-6xl md:text-7xl font-black text-gray-950 dark:text-white leading-[1] tracking-tighter text-balance">
             {t('title')}
           </h1>
-          <p className="text-base sm:text-xl text-gray-600 dark:text-gray-300 px-1">
+          <p className="text-xl sm:text-2xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto leading-relaxed font-medium">
             {t('subtitle')}
           </p>
           {resultsError && (
-            <p className="text-sm text-amber-700 dark:text-amber-300 max-w-2xl mx-auto">{resultsError}</p>
+            <div className="bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-800 p-3 rounded-xl inline-block">
+              <p className="text-sm font-bold text-amber-800 dark:text-amber-300">{resultsError}</p>
+            </div>
           )}
+        </motion.div>
+
+        <div className="mb-12">
+          <RecommendationsSection
+            preferences={travelPrefs}
+            nights={nightsParam}
+            travelers={adultsParam}
+            originIata={originParam}
+            resultsQuery={resultsQuery}
+            locale={locale}
+            onFocusLiveSearch={handleFocusLiveSearch}
+            enabled={!isCruiseMode && !!travelPrefs}
+          />
         </div>
 
-        <RecommendationsSection
-          preferences={travelPrefs}
-          nights={nightsParam}
-          travelers={adultsParam}
-          originIata={originParam}
-          resultsQuery={resultsQuery}
-          locale={locale}
-          onFocusLiveSearch={handleFocusLiveSearch}
-          enabled={!isCruiseMode && !!travelPrefs}
-        />
-
-        <Card className="mb-8 border-2 border-primary-100 dark:border-gray-700 dark:bg-gray-800/90 shadow-md">
-          <CardHeader className="pb-2">
-            <CardTitle className="text-lg dark:text-white">{t('searchOptionsTitle')}</CardTitle>
-            <CardDescription>{t('searchOptionsDesc')}</CardDescription>
+        <Card className="mb-12 glass dark:bg-gray-900/60 border-primary-100/50 dark:border-gray-800 shadow-xl overflow-hidden relative">
+          <div className="absolute top-0 left-0 w-1 h-full bg-gradient-to-b from-brand-gray via-orange to-green" />
+          <CardHeader className="pb-4">
+            <CardTitle className="text-xl font-black dark:text-white uppercase tracking-tighter italic">{t('searchOptionsTitle')}</CardTitle>
+            <CardDescription className="font-medium">{t('searchOptionsDesc')}</CardDescription>
           </CardHeader>
           <CardContent>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 items-end">
@@ -307,41 +316,43 @@ export function ResultsPage({ onLogout, onNavigateToDashboard }: ResultsPageProp
               </Button>
             </div>
             {showFilters && (
-              <Card className="border-2 border-primary-200 dark:border-gray-700 dark:bg-gray-800">
-                <CardContent className="pt-6">
-                  <div className="space-y-6">
-                    <div className="space-y-2">
-                      <label className="text-sm font-semibold dark:text-gray-200">{t('continent')}</label>
+              <Card className="glass dark:bg-gray-900 shadow-2xl border-primary-100/50 dark:border-gray-800">
+                <CardContent className="pt-8">
+                  <div className="space-y-8">
+                    <div className="space-y-3">
+                      <label className="text-sm font-black text-gray-950 dark:text-white uppercase tracking-widest">{t('continent')}</label>
                       <Select value={selectedContinent} onValueChange={setSelectedContinent}>
-                        <SelectTrigger className="dark:bg-gray-700 dark:border-gray-600"><SelectValue /></SelectTrigger>
+                        <SelectTrigger className="dark:bg-gray-800 dark:border-gray-700 min-h-12 font-medium"><SelectValue /></SelectTrigger>
                         <SelectContent>
                           {filterOptions.continents.map(c => <SelectItem key={c} value={c}>{c}</SelectItem>)}
                         </SelectContent>
                       </Select>
                     </div>
-                    <div className="space-y-2">
-                      <label className="text-sm font-semibold dark:text-gray-200">{t('duration')}</label>
+                    <div className="space-y-3">
+                      <label className="text-sm font-black text-gray-950 dark:text-white uppercase tracking-widest">{t('duration')}</label>
                       <Select value={selectedDuration} onValueChange={setSelectedDuration}>
-                        <SelectTrigger className="dark:bg-gray-700 dark:border-gray-600"><SelectValue /></SelectTrigger>
+                        <SelectTrigger className="dark:bg-gray-800 dark:border-gray-700 min-h-12 font-medium"><SelectValue /></SelectTrigger>
                         <SelectContent>
                           <SelectItem value="all">All Durations</SelectItem>
                           {filterOptions.durations.map(d => <SelectItem key={d.label} value={d.label}>{d.label}</SelectItem>)}
                         </SelectContent>
                       </Select>
                     </div>
-                    <div className="space-y-2">
-                      <label className="text-sm font-semibold dark:text-gray-200">{t('priceRange')}</label>
-                      <Slider min={0} max={Math.max(5000, priceRange[1])} step={100} value={priceRange} onValueChange={setPriceRange} />
-                      <div className="flex justify-between text-xs text-gray-600 dark:text-gray-400">
-                        <span>{(results[0]?.priceCurrency ?? 'EUR')} {priceRange[0].toLocaleString()}</span>
-                        <span>{(results[0]?.priceCurrency ?? 'EUR')} {priceRange[1].toLocaleString()}</span>
+                    <div className="space-y-4">
+                      <label className="text-sm font-black text-gray-950 dark:text-white uppercase tracking-widest">{t('priceRange')}</label>
+                      <Slider min={0} max={Math.max(5000, priceRange[1])} step={100} value={priceRange} onValueChange={setPriceRange} className="py-4" />
+                      <div className="flex justify-between text-xs font-bold text-primary-900 dark:text-primary-300">
+                        <span className="glass px-2 py-1 rounded">{(results[0]?.priceCurrency ?? 'EUR')} {priceRange[0].toLocaleString()}</span>
+                        <span className="glass px-2 py-1 rounded">{(results[0]?.priceCurrency ?? 'EUR')} {priceRange[1].toLocaleString()}</span>
                       </div>
                     </div>
-                    <div className="space-y-2">
-                      <label className="text-sm font-semibold dark:text-gray-200">{t('sustainableOnly')}</label>
+                    <div className="space-y-3">
+                      <label className="text-sm font-black text-gray-950 dark:text-white uppercase tracking-widest">{t('sustainableOnly')}</label>
                       <button type="button" onClick={() => setSustainableOnly(!sustainableOnly)}
-                        className={`w-full h-10 rounded-md border-2 flex items-center justify-center gap-2 ${sustainableOnly ? 'border-green-600 bg-green-50 dark:bg-green-900/20 text-green-900' : 'border-gray-300 dark:border-gray-600 hover:border-green-400'}`}>
-                        <Leaf className="w-4 h-4" />{sustainableOnly && <Check className="w-4 h-4" />}
+                        className={`w-full h-12 rounded-xl border-2 flex items-center justify-center gap-2 transition-all font-bold ${sustainableOnly ? 'border-green-600 bg-green-500/10 text-green-700 dark:text-green-400' : 'border-gray-200 dark:border-gray-800 text-gray-500 hover:border-green-400'}`}>
+                        <Leaf className="w-5 h-5" />
+                        <span className="uppercase tracking-tighter">{t('sustainableOnly')}</span>
+                        {sustainableOnly && <Check className="w-4 h-4 ml-1" />}
                       </button>
                     </div>
                   </div>

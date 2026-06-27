@@ -40,7 +40,7 @@ export async function GET() {
   const mostRecentId = sessions.length > 0 ? sessions[0].id : null;
 
   return NextResponse.json({
-    sessions: sessions.map((s: any) => ({
+    sessions: sessions.map((s) => ({
       id: s.id,
       device: s.deviceInfo ?? {},
       ipAddress: s.ipAddress,

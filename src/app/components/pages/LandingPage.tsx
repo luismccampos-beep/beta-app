@@ -3,9 +3,11 @@
 import { useCallback } from 'react';
 import { useRouter } from 'next/navigation';
 import { useTranslations } from 'next-intl';
+import { motion } from 'framer-motion';
 import { Button } from '../ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../ui/card';
 import { Badge } from '../ui/badge';
+import { Counter } from '../ui/counter';
 import {
   Sparkles,
   Globe,
@@ -32,11 +34,33 @@ interface LandingPageProps {
   onGetStarted: () => void;
 }
 
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.15,
+      delayChildren: 0.2,
+    },
+  },
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 30 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.8,
+      ease: [0.21, 0.47, 0.32, 0.98],
+    },
+  },
+};
+
 export function LandingPage({ onGetStarted }: LandingPageProps) {
   const router = useRouter();
   const t = useTranslations('landing');
   const goDashboard = useCallback(() => router.push('/dashboard'), [router]);
-  const goForm = useCallback(() => router.push('/preferences/edit'), [router]);
 
   function scrollToFeatures(e: React.MouseEvent) {
     e.preventDefault();
@@ -48,334 +72,260 @@ export function LandingPage({ onGetStarted }: LandingPageProps) {
   }
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen selection:bg-primary/20">
       <AppHeader showDashboard showPreferences onDashboard={goDashboard} />
 
       {/* Hero Section */}
-      <section className="relative pt-28 pb-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-primary-50 via-cyan-50 to-accent-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 transition-colors overflow-hidden">
+      <section className="relative pt-32 pb-28 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-primary-50 via-cyan-50 to-accent-50 dark:from-gray-950 dark:via-gray-900 dark:to-gray-950 transition-colors overflow-hidden">
         {/* Background decorative elements */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div className="absolute -top-40 -right-40 w-80 h-80 rounded-full bg-cyan-200/20 dark:bg-cyan-500/5 blur-3xl animate-float-slow" />
-          <div className="absolute -bottom-40 -left-40 w-80 h-80 rounded-full bg-primary-200/20 dark:bg-primary-500/5 blur-3xl animate-float" />
+          {/* Mesh Gradient blobs */}
+          <div className="absolute -top-[10%] -right-[10%] w-[60%] h-[60%] rounded-full bg-cyan-200/40 dark:bg-cyan-500/10 blur-[120px] animate-float-slow" />
+          <div className="absolute -bottom-[10%] -left-[10%] w-[60%] h-[60%] rounded-full bg-primary-200/40 dark:bg-primary-500/10 blur-[120px] animate-float" />
+          
+          {/* Decorative floating icons */}
+          <motion.div 
+            animate={{ y: [0, -20, 0], rotate: [0, 5, 0] }}
+            transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+            className="absolute top-[20%] left-[10%] text-primary-200 dark:text-primary-900/40 opacity-50 hidden lg:block"
+          >
+            <Plane size={120} />
+          </motion.div>
+          
+          <motion.div 
+            animate={{ y: [0, 20, 0], rotate: [0, -5, 0] }}
+            transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+            className="absolute bottom-[20%] right-[10%] text-accent-200 dark:text-accent-900/40 opacity-50 hidden lg:block"
+          >
+            <Map size={140} />
+          </motion.div>
+
+          {/* Grid pattern */}
+          <div 
+            className="absolute inset-0 opacity-[0.05] dark:opacity-[0.03]" 
+            style={{ 
+              backgroundImage: 'radial-gradient(circle at 2px 2px, currentColor 1px, transparent 0)',
+              backgroundSize: '40px 40px'
+            }} 
+          />
         </div>
 
-        <div className="max-w-7xl mx-auto relative z-10">
-          <div className="text-center space-y-8">
-            <div className="inline-flex items-center gap-2 bg-white dark:bg-gray-800 border border-primary-200 dark:border-gray-600 rounded-full px-4 py-2 shadow-sm animate-fade-in-up">
-              <Sparkles className="w-4 h-4 text-accent" />
-              <span className="text-sm font-medium text-primary-900 dark:text-primary-200">{t('heroBadge')}</span>
-            </div>
+        <motion.div 
+          initial="hidden"
+          animate="visible"
+          variants={containerVariants}
+          className="max-w-7xl mx-auto relative z-10"
+        >
+          <div className="text-center space-y-12">
+            <motion.div variants={itemVariants} className="inline-flex items-center gap-2 glass dark:bg-gray-800/50 border border-primary-200 dark:border-gray-700 rounded-full px-6 py-3 shadow-lg">
+              <Sparkles className="w-5 h-5 text-accent animate-pulse" />
+              <span className="text-sm font-bold text-primary-900 dark:text-primary-100 uppercase tracking-[0.2em]">{t('heroBadge')}</span>
+            </motion.div>
 
-            <h2 className="text-5xl md:text-7xl font-bold text-gray-900 dark:text-white leading-tight animate-fade-in-up delay-100">
+            <motion.h2 variants={itemVariants} className="text-6xl md:text-8xl lg:text-9xl font-black text-gray-900 dark:text-white leading-[1] tracking-tighter text-balance">
               {t('hero')}
-            </h2>
+            </motion.h2>
 
-            <p className="text-xl md:text-2xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed animate-fade-in-up delay-200">
+            <motion.p variants={itemVariants} className="text-xl md:text-2xl lg:text-3xl text-gray-600 dark:text-gray-300 max-w-4xl mx-auto leading-relaxed text-pretty font-medium">
               {t('heroDesc')}
-            </p>
+            </motion.p>
 
-            <p className="text-lg md:text-xl text-gray-500 dark:text-gray-400 max-w-3xl mx-auto animate-fade-in-up delay-300">
-              {t('heroSubDesc')}
-            </p>
-
-            <div className="flex items-center justify-center gap-4 flex-wrap animate-fade-in-up delay-400">
+            <motion.div variants={itemVariants} className="flex items-center justify-center gap-6 flex-wrap">
               <Button
                 onClick={onGetStarted}
                 variant="brand"
                 size="lg"
-                className="gap-2 text-lg px-8 py-6 h-auto shadow-lg animate-pulse-glow hover:animate-none group"
+                className="gap-4 text-2xl px-12 py-10 h-auto shadow-glow-primary hover:shadow-glow-accent transition-all group hover:scale-105"
               >
                 {t('getStarted')}
-                <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
+                <ArrowRight className="w-8 h-8 transition-transform group-hover:translate-x-2" />
               </Button>
               <Button
                 variant="outline"
                 size="lg"
-                className="gap-2 text-lg px-8 py-6 h-auto border-primary-300 dark:border-gray-600 hover:bg-primary-50 dark:hover:bg-gray-800 dark:text-gray-200 group"
+                className="gap-3 text-2xl px-12 py-10 h-auto border-primary-300 dark:border-gray-700 hover:bg-primary-50 dark:hover:bg-gray-800 dark:text-gray-100 group glass hover:scale-105"
                 asChild
               >
                 <a href="#features" onClick={scrollToFeatures}>
                   {t('learnMore')}
-                  <ChevronRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5" />
+                  <ChevronRight className="w-6 h-6 transition-transform group-hover:translate-x-1" />
                 </a>
               </Button>
-            </div>
+            </motion.div>
 
-            <div className="flex items-center justify-center gap-2 text-sm text-gray-600 dark:text-gray-400 animate-fade-in-up delay-500">
-              <CheckCircle2 className="w-4 h-4 text-green-600 dark:text-green-500" />
-              <span>{t('trustedBy')}</span>
-              <div className="flex items-center gap-1 ml-1">
-                <Star className="w-3.5 h-3.5 fill-yellow-400 text-yellow-400" />
-                <Star className="w-3.5 h-3.5 fill-yellow-400 text-yellow-400" />
-                <Star className="w-3.5 h-3.5 fill-yellow-400 text-yellow-400" />
-                <Star className="w-3.5 h-3.5 fill-yellow-400 text-yellow-400" />
-                <Star className="w-3.5 h-3.5 fill-yellow-400 text-yellow-400" />
-                <span className="ml-1 font-medium text-gray-700 dark:text-gray-300">4.9</span>
+            <motion.div variants={itemVariants} className="flex items-center justify-center gap-4 text-lg text-gray-600 dark:text-gray-400">
+              <div className="flex -space-x-2">
+                {[1, 2, 3, 4, 5].map((i) => (
+                  <div key={i} className="w-8 h-8 rounded-full bg-gradient-to-br from-primary-400 to-accent-400 border-2 border-white dark:border-gray-900" />
+                ))}
               </div>
-            </div>
+              <span className="font-semibold">{t('trustedBy')}</span>
+              <div className="flex items-center gap-1.5 bg-yellow-400/20 dark:bg-yellow-400/10 px-3 py-1 rounded-full border border-yellow-400/30">
+                <Star className="w-5 h-5 fill-yellow-400 text-yellow-400" />
+                <span className="font-bold text-gray-900 dark:text-gray-100">4.9</span>
+              </div>
+            </motion.div>
 
             {/* Trust Badges */}
-            <div className="flex items-center justify-center gap-6 flex-wrap pt-8 animate-scale-in delay-500">
-              <Badge variant="outline" className="gap-1.5 py-2 px-4 border-primary-300 dark:border-primary-700 text-primary dark:text-primary-300 dark:bg-gray-800">
-                <Map className="w-4 h-4" /> 28K+ Destinos
-              </Badge>
-              <Badge variant="outline" className="gap-1.5 py-2 px-4 border-primary-300 dark:border-primary-700 text-primary dark:text-primary-300 dark:bg-gray-800">
-                <Globe className="w-4 h-4" /> 190+ Países
-              </Badge>
-              <Badge variant="outline" className="gap-1.5 py-2 px-4 border-accent-300 dark:border-accent-700 text-accent-700 dark:text-accent-500 dark:bg-gray-800">
-                <Building2 className="w-4 h-4" /> 415K+ Hotéis
-              </Badge>
-              <Badge variant="outline" className="gap-1.5 py-2 px-4 border-accent-300 dark:border-accent-700 text-accent-700 dark:text-accent-500 dark:bg-gray-800">
-                <Shield className="w-4 h-4" /> AES-256 · GDPR
-              </Badge>
-            </div>
+            <motion.div variants={itemVariants} className="flex items-center justify-center gap-6 flex-wrap pt-12">
+              {[
+                { icon: Map, label: '28K+ Destinos', color: 'primary' },
+                { icon: Globe, label: '190+ Países', color: 'primary' },
+                { icon: Building2, label: '415K+ Hotéis', color: 'accent' },
+                { icon: Shield, label: 'AES-256 · GDPR', color: 'accent' },
+              ].map((badge, i) => (
+                <Badge key={i} variant="outline" className={`gap-2.5 py-4 px-8 border-${badge.color}-200 dark:border-${badge.color}-800 text-${badge.color}-950 dark:text-${badge.color}-100 glass dark:bg-${badge.color}-900/10 text-base font-bold shadow-sm hover:shadow-md transition-shadow`}>
+                  <badge.icon className={`w-6 h-6 text-${badge.color}`} /> {badge.label}
+                </Badge>
+              ))}
+            </motion.div>
           </div>
-        </div>
+        </motion.div>
       </section>
 
       {/* Features Section */}
-      <section id="features" className="py-20 px-4 sm:px-6 lg:px-8 bg-white dark:bg-gray-900 transition-colors scroll-mt-20">
+      <section id="features" className="py-32 px-4 sm:px-6 lg:px-8 bg-white dark:bg-gray-950 transition-colors scroll-mt-20">
         <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <h3 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">{t('features')}</h3>
-            <p className="text-xl text-gray-600 dark:text-gray-300">{t('featuresDesc')}</p>
-          </div>
+          <motion.div 
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.8 }}
+            className="text-center mb-24"
+          >
+            <h3 className="text-5xl md:text-6xl font-black text-gray-900 dark:text-white mb-8 tracking-tighter uppercase italic">{t('features')}</h3>
+            <p className="text-2xl lg:text-3xl text-gray-500 dark:text-gray-400 max-w-3xl mx-auto font-medium leading-relaxed">{t('featuresDesc')}</p>
+          </motion.div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-12">
             {[
-              {
-                icon: Brain,
-                title: t('aiPersonalization'),
-                description: t('aiPersonalizationDesc'),
-                color: 'from-primary to-cyan-600'
-              },
-              {
-                icon: Globe,
-                title: t('globalCoverage'),
-                description: t('globalCoverageDesc'),
-                color: 'from-blue-500 to-indigo-600'
-              },
-              {
-                icon: Lock,
-                title: t('enterpriseSecurity'),
-                description: t('enterpriseSecurityDesc'),
-                color: 'from-green-500 to-emerald-600'
-              },
-              {
-                icon: TrendingUp,
-                title: t('smartRecommendations'),
-                description: t('smartRecommendationsDesc'),
-                color: 'from-accent to-red-600'
-              },
-              {
-                icon: Zap,
-                title: t('seamlessBooking'),
-                description: t('seamlessBookingDesc'),
-                color: 'from-yellow-500 to-amber-600'
-              },
-              {
-                icon: Palmtree,
-                title: t('sustainableTravel'),
-                description: t('sustainableTravelDesc'),
-                color: 'from-lime-500 to-green-600'
-              }
+              { icon: Brain, title: t('aiPersonalization'), description: t('aiPersonalizationDesc'), color: 'from-primary to-cyan-600' },
+              { icon: Globe, title: t('globalCoverage'), description: t('globalCoverageDesc'), color: 'from-blue-500 to-indigo-600' },
+              { icon: Lock, title: t('enterpriseSecurity'), description: t('enterpriseSecurityDesc'), color: 'from-green-500 to-emerald-600' },
+              { icon: TrendingUp, title: t('smartRecommendations'), description: t('smartRecommendationsDesc'), color: 'from-accent to-red-600' },
+              { icon: Zap, title: t('seamlessBooking'), description: t('seamlessBookingDesc'), color: 'from-yellow-500 to-amber-600' },
+              { icon: Palmtree, title: t('sustainableTravel'), description: t('sustainableTravelDesc'), color: 'from-lime-500 to-green-600' }
             ].map((feature, index) => {
               const Icon = feature.icon;
               return (
-                <Card key={index} className="border-2 border-gray-200 dark:border-gray-700 hover:border-primary-300 dark:hover:border-primary transition-all hover:shadow-xl dark:bg-gray-800">
-                  <CardHeader>
-                    <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${feature.color} flex items-center justify-center mb-4`}>
-                      <Icon className="w-6 h-6 text-white" />
-                    </div>
-                    <CardTitle className="text-xl dark:text-white">{feature.title}</CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <CardDescription className="text-base dark:text-gray-300">{feature.description}</CardDescription>
-                  </CardContent>
-                </Card>
-              );
-            })}
-          </div>
-        </div>
-      </section>
-
-      {/* How It Works */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-gray-50 to-primary-50 dark:from-gray-800 dark:to-gray-900 transition-colors">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <h3 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">{t('howItWorks')}</h3>
-            <p className="text-xl text-gray-600 dark:text-gray-300">{t('howItWorksDesc')}</p>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-8">
-            {[
-              {
-                icon: Users,
-                number: '01',
-                title: t('step1'),
-                description: t('step1Desc')
-              },
-              {
-                icon: Brain,
-                number: '02',
-                title: t('step2'),
-                description: t('step2Desc')
-              },
-              {
-                icon: Plane,
-                number: '03',
-                title: t('step3'),
-                description: t('step3Desc')
-              }
-            ].map((step, index) => {
-              const Icon = step.icon;
-              return (
-                <div key={index} className="relative">
-                  <Card className="h-full border-2 border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 hover:border-primary-300 dark:hover:border-primary transition-all">
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 40 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.1, duration: 0.6 }}
+                >
+                  <Card className="h-full card-premium dark:bg-gray-900 group p-2">
                     <CardHeader>
-                      <div className="flex items-start justify-between mb-4">
-                        <div className="w-14 h-14 rounded-full bg-gradient-to-br from-primary to-accent flex items-center justify-center">
-                          <Icon className="w-7 h-7 text-white" />
-                        </div>
-                        <span className="text-6xl font-bold text-primary-600 dark:text-gray-600">{step.number}</span>
+                      <div className={`w-16 h-16 rounded-2xl bg-gradient-to-br ${feature.color} flex items-center justify-center mb-8 shadow-xl group-hover:rotate-6 transition-transform`}>
+                        <Icon className="w-8 h-8 text-white" />
                       </div>
-                      <CardTitle className="text-2xl dark:text-white">{step.title}</CardTitle>
+                      <CardTitle className="text-2xl font-black dark:text-white group-hover:text-primary transition-colors tracking-tight">{feature.title}</CardTitle>
                     </CardHeader>
                     <CardContent>
-                      <p className="text-gray-600 dark:text-gray-300 text-base">{step.description}</p>
+                      <CardDescription className="text-xl leading-relaxed dark:text-gray-400 font-medium">{feature.description}</CardDescription>
                     </CardContent>
                   </Card>
-                  {index < 2 && (
-                    <ArrowRight className="hidden md:block absolute top-1/2 -right-4 transform -translate-y-1/2 w-8 h-8 text-primary-200 dark:text-primary" />
-                  )}
-                </div>
+                </motion.div>
               );
             })}
           </div>
         </div>
       </section>
 
-      {/* Stats Section — valores baseados em dados reais */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-r from-primary-700 to-accent">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-12">
-            <h3 className="text-4xl font-bold text-white mb-4">{t('stats')}</h3>
-            <p className="text-lg text-white/80">Baseado em dados reais do Wikivoyage, OpenStreetMap e GeoNames</p>
+      {/* Stats Section */}
+      <section className="py-32 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-primary-800 to-accent-800 relative overflow-hidden">
+        <div className="absolute inset-0 opacity-[0.07] pointer-events-none" 
+          style={{ 
+            backgroundImage: 'radial-gradient(circle at 2px 2px, white 1px, transparent 0)',
+            backgroundSize: '40px 40px'
+          }} 
+        />
+        
+        <div className="max-w-7xl mx-auto relative z-10">
+          <div className="text-center mb-20">
+            <h3 className="text-5xl md:text-6xl font-black text-white mb-8 tracking-tighter italic uppercase">{t('stats')}</h3>
+            <p className="text-2xl text-white/80 max-w-2xl mx-auto font-medium italic">Baseado em dados reais e atualizados</p>
           </div>
 
-          <div className="grid md:grid-cols-4 gap-8">
-            <div className="text-center">
-              <Globe className="w-12 h-12 text-white/80 mx-auto mb-4" />
-              <div className="text-5xl font-bold text-white mb-2">28K+</div>
-              <div className="text-lg text-white/90">{t('destinations')}</div>
-              <div className="text-sm text-white/60 mt-1">Wikivoyage + Wikidata</div>
-            </div>
-            <div className="text-center">
-              <Building2 className="w-12 h-12 text-white/80 mx-auto mb-4" />
-              <div className="text-5xl font-bold text-white mb-2">415K+</div>
-              <div className="text-lg text-white/90">Hotéis Georreferenciados</div>
-              <div className="text-sm text-white/60 mt-1">OpenStreetMap + GeoNames</div>
-            </div>
-            <div className="text-center">
-              <Map className="w-12 h-12 text-white/80 mx-auto mb-4" />
-              <div className="text-5xl font-bold text-white mb-2">190+</div>
-              <div className="text-lg text-white/90">Países e Territórios</div>
-              <div className="text-sm text-white/60 mt-1">Cobertura global</div>
-            </div>
-            <div className="text-center">
-              <Shield className="w-12 h-12 text-white/80 mx-auto mb-4" />
-              <div className="text-5xl font-bold text-white mb-2">{t('statsBadges.soc2Value')}</div>
-              <div className="text-lg text-white/90">{t('statsBadges.soc2Label')}</div>
-              <div className="text-sm text-white/60 mt-1">AES-256 · GDPR</div>
-            </div>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-16">
+            {[
+              { icon: Globe, value: 28, label: t('destinations'), suffix: 'K+', sub: 'Wikivoyage + Wikidata' },
+              { icon: Building2, value: 415, label: 'Hotéis', suffix: 'K+', sub: 'OSM + GeoNames' },
+              { icon: Map, value: 190, label: 'Países', suffix: '+', sub: 'Cobertura global' },
+              { icon: Shield, value: 99, label: 'Satisfação', suffix: '%', sub: 'AES-256 · GDPR' },
+            ].map((stat, i) => (
+              <motion.div 
+                key={i}
+                initial={{ opacity: 0, scale: 0.8 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.1, type: "spring", stiffness: 100 }}
+                className="text-center group p-8 glass bg-white/5 border-white/10 rounded-3xl hover:bg-white/10 transition-colors"
+              >
+                <stat.icon className="w-16 h-16 text-white/50 mx-auto mb-8 group-hover:scale-110 group-hover:text-white transition-all duration-500" />
+                <div className="text-7xl font-black text-white mb-4 tracking-tighter">
+                  <Counter end={stat.value} suffix={stat.suffix} duration={3} />
+                </div>
+                <div className="text-2xl font-bold text-white mb-2">{stat.label}</div>
+                <div className="text-sm text-white/60 font-medium uppercase tracking-widest">{stat.sub}</div>
+              </motion.div>
+            ))}
           </div>
         </div>
       </section>
 
       {/* Final CTA Section */}
-      <section className="relative py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-primary-50 via-cyan-50 to-accent-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 transition-colors overflow-hidden">
-        {/* Background decorative pattern */}
+      <section className="relative py-40 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-primary-50 via-cyan-50 to-accent-50 dark:from-gray-950 dark:via-gray-900 dark:to-gray-950 transition-colors overflow-hidden">
         <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute inset-0 opacity-[0.03] dark:opacity-[0.05]"
-            style={{
-              backgroundImage: `radial-gradient(circle at 25px 25px, currentColor 1px, transparent 0)`,
-              backgroundSize: '50px 50px',
-            }}
-          />
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-gradient-to-r from-cyan-200/20 to-primary-200/20 dark:from-cyan-500/5 dark:to-primary-500/5 blur-3xl" />
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1000px] h-[1000px] rounded-full bg-gradient-to-r from-cyan-200/20 to-primary-200/20 dark:from-cyan-500/5 dark:to-primary-500/5 blur-[160px]" />
         </div>
 
-        <div className="max-w-4xl mx-auto text-center space-y-8 relative z-10">
-          <div className="inline-flex items-center gap-2 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm border border-primary-200 dark:border-gray-600 rounded-full px-5 py-2 shadow-sm">
-            <Award className="w-4 h-4 text-accent" />
-            <span className="text-sm font-semibold text-primary-900 dark:text-primary-200">98% Satisfação dos Viajantes</span>
+        <motion.div 
+          initial={{ opacity: 0, scale: 0.95 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true }}
+          className="max-w-5xl mx-auto text-center space-y-16 relative z-10"
+        >
+          <div className="inline-flex items-center gap-3 glass dark:bg-gray-800/80 border border-primary-200 dark:border-gray-700 rounded-full px-8 py-3.5 shadow-xl hover:scale-105 transition-transform">
+            <Award className="w-6 h-6 text-accent animate-bounce" />
+            <span className="text-base font-black text-primary-950 dark:text-primary-50 uppercase tracking-widest">98% Satisfação Garantida</span>
           </div>
 
-          <h3 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white leading-tight">
+          <h3 className="text-6xl md:text-8xl lg:text-9xl font-black text-gray-900 dark:text-white leading-[0.95] tracking-[ -0.05em] text-balance italic">
             {t('cta')}
           </h3>
-          <p className="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+          
+          <p className="text-2xl md:text-3xl text-gray-500 dark:text-gray-400 max-w-3xl mx-auto leading-relaxed font-semibold">
             {t('ctaDesc')}
           </p>
 
-          <div className="flex flex-col items-center gap-6">
+          <div className="flex flex-col items-center gap-12">
             <Button
               onClick={onGetStarted}
               variant="brand"
               size="lg"
-              className="gap-3 text-xl px-12 py-8 h-auto shadow-xl hover:shadow-2xl transition-all animate-pulse-glow hover:animate-none group"
+              className="gap-5 text-3xl px-20 py-12 h-auto shadow-glow-primary hover:shadow-glow-accent hover:scale-110 transition-all group font-black italic rounded-2xl"
             >
-              <Sparkles className="w-6 h-6 animate-float" />
+              <Sparkles className="w-10 h-10 animate-float" />
               {t('startYourJourney')}
-              <ArrowRight className="w-6 h-6 transition-transform group-hover:translate-x-1" />
+              <ArrowRight className="w-10 h-10 transition-transform group-hover:translate-x-4" />
             </Button>
 
-            {/* Trust badges below CTA button */}
-            <div className="flex items-center justify-center gap-6 flex-wrap">
-              <div className="flex items-center gap-2 text-sm text-gray-500 dark:text-gray-400">
-                <Shield className="w-4 h-4 text-green-600 dark:text-green-500" />
-                <span>AES-256 · GDPR</span>
-              </div>
-              <div className="flex items-center gap-2 text-sm text-gray-500 dark:text-gray-400">
-                <Globe className="w-4 h-4 text-green-600 dark:text-green-500" />
-                <span>190+ Países</span>
-              </div>
-              <div className="flex items-center gap-2 text-sm text-gray-500 dark:text-gray-400">
-                <Users className="w-4 h-4 text-green-600 dark:text-green-500" />
-                <span>10K+ Viajantes</span>
-              </div>
-              <div className="flex items-center gap-2 text-sm text-gray-500 dark:text-gray-400">
-                <Award className="w-4 h-4 text-green-600 dark:text-green-500" />
-                <span>Suporte 24/7</span>
-              </div>
-            </div>
-
-            {/* Social proof bar */}
-            <div className="flex items-center gap-4 pt-2">
-              <div className="flex -space-x-2">
-                {[1, 2, 3, 4].map((i) => (
-                  <div
-                    key={i}
-                    className="w-8 h-8 rounded-full bg-gradient-to-br from-primary-300 to-accent-300 dark:from-primary-600 dark:to-accent-600 border-2 border-white dark:border-gray-800"
-                  />
-                ))}
-                <div className="w-8 h-8 rounded-full bg-gray-200 dark:bg-gray-700 border-2 border-white dark:border-gray-800 flex items-center justify-center text-xs font-semibold text-gray-600 dark:text-gray-300">
-                  +99
+            <div className="flex items-center justify-center gap-12 flex-wrap opacity-60 dark:opacity-40">
+              {[
+                { icon: Shield, label: 'AES-256 · GDPR' },
+                { icon: Globe, label: '190+ Países' },
+                { icon: Users, label: '10K+ Viajantes' },
+              ].map((item, i) => (
+                <div key={i} className="flex items-center gap-3 text-base font-black uppercase tracking-tighter text-gray-950 dark:text-white">
+                  <item.icon className="w-6 h-6" />
+                  <span>{item.label}</span>
                 </div>
-              </div>
-              <div className="text-left">
-                <div className="flex items-center gap-1">
-                  <Star className="w-3.5 h-3.5 fill-yellow-400 text-yellow-400" />
-                  <Star className="w-3.5 h-3.5 fill-yellow-400 text-yellow-400" />
-                  <Star className="w-3.5 h-3.5 fill-yellow-400 text-yellow-400" />
-                  <Star className="w-3.5 h-3.5 fill-yellow-400 text-yellow-400" />
-                  <Star className="w-3.5 h-3.5 fill-yellow-400 text-yellow-400" />
-                </div>
-                <p className="text-sm text-gray-600 dark:text-gray-400">de +2.000 avaliações</p>
-              </div>
+              ))}
             </div>
           </div>
-        </div>
+        </motion.div>
       </section>
 
       <AppFooter />

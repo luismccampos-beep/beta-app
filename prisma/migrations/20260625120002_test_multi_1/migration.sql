@@ -1,3 +1,0 @@
-CREATE TABLE IF NOT EXISTS "multi_1_table" (
-  id SERIAL PRIMARY KEY
-);

@@ -71,7 +71,7 @@ export function DestinationResultCard({ result, href, labels, tipPreviews = [] }
   const showSecondaryInfo = !!(result.airport || result.costOfLiving);
 
   return (
-    <Card className="group relative overflow-hidden border-0 bg-white dark:bg-gray-800 shadow-md hover:shadow-xl ring-1 ring-gray-200/60 dark:ring-gray-700/60 transition-all duration-300">
+    <Card className="card-premium dark:bg-gray-900 group">
       {/* ── Hero Image ── */}
       <Link href={href} className="block relative aspect-video overflow-hidden">
         <Image
@@ -88,10 +88,10 @@ export function DestinationResultCard({ result, href, labels, tipPreviews = [] }
         {/* Primary badge — top right */}
         <div className="absolute top-3 right-3">
           <Badge
-            className="border-0 bg-black/60 backdrop-blur-sm text-white text-xs shadow-sm hover:bg-black/70 transition-colors"
+            className="border-0 bg-black/60 backdrop-blur-md text-white text-xs font-bold shadow-lg ring-1 ring-white/20 hover:bg-black/80 transition-colors"
             title={labels.matchExplain}
           >
-            <Sparkles className="mr-1 h-3 w-3 text-accent-500" />
+            <Sparkles className="mr-1 h-3 w-3 text-accent" />
             {result.aiMatchScore}% {labels.aiMatch}
           </Badge>
         </div>
@@ -99,7 +99,7 @@ export function DestinationResultCard({ result, href, labels, tipPreviews = [] }
         {/* Sustainable tag — top left */}
         {result.sustainable && (
           <div className="absolute top-3 left-3">
-            <Badge className="border-0 bg-emerald-500/90 backdrop-blur-sm text-white text-xs shadow-sm">
+            <Badge className="border-0 bg-emerald-500/90 backdrop-blur-md text-white text-xs font-bold shadow-lg ring-1 ring-white/20">
               <Leaf className="mr-1 h-3 w-3" />
               {labels.sustainable}
             </Badge>
@@ -107,10 +107,10 @@ export function DestinationResultCard({ result, href, labels, tipPreviews = [] }
         )}
 
         {/* Destination name overlay */}
-        <div className="absolute bottom-0 left-0 right-0 p-4">
-          <h3 className="text-xl font-bold leading-tight text-white drop-shadow-md">{result.destination}</h3>
-          <p className="mt-1 flex items-center gap-1 text-sm text-white/85">
-            <MapPin className="h-3.5 w-3.5 shrink-0" />
+        <div className="absolute bottom-0 left-0 right-0 p-5">
+          <h3 className="text-2xl font-black leading-tight text-white tracking-tighter uppercase italic drop-shadow-2xl">{result.destination}</h3>
+          <p className="mt-1 flex items-center gap-1.5 text-sm text-white/90 font-bold uppercase tracking-wider">
+            <MapPin className="h-4 w-4 text-orange shrink-0" />
             {result.country}, {result.continent}
           </p>
         </div>
@@ -245,21 +245,22 @@ export function DestinationResultCard({ result, href, labels, tipPreviews = [] }
         )}
 
         {/* ── Price + CTA bar ── */}
-        <div className="flex items-end justify-between gap-3 pt-2 border-t border-gray-100 dark:border-gray-700/60">
+        <div className="flex items-end justify-between gap-3 pt-4 border-t border-gray-100 dark:border-gray-800">
           <div className="min-w-0">
-            <p className="text-xs text-gray-400 dark:text-gray-500 leading-none mb-0.5">{labels.from}</p>
-            <p className="text-2xl font-bold text-gray-900 dark:text-white tabular-nums leading-tight">
+            <p className="text-[10px] text-gray-400 dark:text-gray-500 font-black uppercase tracking-[0.2em] mb-1">{labels.from}</p>
+            <p className="text-2xl font-black text-gray-950 dark:text-white tabular-nums leading-tight tracking-tighter">
               {result.priceCurrency ?? 'EUR'} {result.price.toLocaleString()}
-              <span className="ml-1 text-xs font-normal text-gray-400 dark:text-gray-500">{labels.perPerson}</span>
+              <span className="ml-1 text-xs font-bold text-gray-400 dark:text-gray-600 italic">/pess.</span>
             </p>
           </div>
           <Button
             asChild
-            className="shrink-0 gap-1.5 min-h-10 px-5 bg-gray-900 dark:bg-white dark:text-gray-900 hover:bg-gray-800 dark:hover:bg-gray-100 text-white text-sm font-medium shadow-sm transition-all hover:shadow-md"
+            variant="brand"
+            className="shrink-0 gap-2 h-12 px-6 shadow-glow-primary rounded-xl"
           >
             <Link href={href}>
-              {labels.viewDestination}
-              <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+              <span className="font-black italic uppercase tracking-tighter text-xs">{labels.viewDestination}</span>
+              <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
             </Link>
           </Button>
         </div>

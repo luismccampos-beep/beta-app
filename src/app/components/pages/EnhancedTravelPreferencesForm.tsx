@@ -111,7 +111,7 @@ export function EnhancedTravelPreferencesForm({
     getValues,
     reset,
   } = useForm<TravelPreferences>({
-    resolver: zodResolver(travelPreferencesSchema) as any,
+    resolver: zodResolver(travelPreferencesSchema) as never,
     defaultValues: DEFAULT_TRAVEL_PREFERENCES,
   });
 
@@ -448,10 +448,11 @@ export function EnhancedTravelPreferencesForm({
     control, watch, setValue, trigger, getValues, reset,
   }), [control, watch, setValue, trigger, getValues, reset]);
 
-  const sectionProps = useMemo(() => ({
-    form: sectionForm as any,
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const sectionProps: any = useMemo(() => ({
+    form: sectionForm,
     preferences,
-    errors: errors as any,
+    errors,
     t,
     travelCatalog,
     travelCatalogLoading,

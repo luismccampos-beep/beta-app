@@ -52,6 +52,13 @@
   --sidebar-accent-foreground: oklch(0.35 0.08 185);
   --sidebar-border: oklch(0.922 0 0);
   --sidebar-ring: oklch(0.55 0.15 175 / <alpha-value>);
+  --glass-background: rgba(255, 255, 255, 0.4);
+  --glass-border: rgba(255, 255, 255, 0.2);
+  --glow-primary: 0 0 20px oklch(0.50 0.18 175 / 0.3);
+  --glow-accent: 0 0 20px oklch(0.68 0.18 38 / 0.3);
+  --orange: oklch(0.70 0.20 45);
+  --green: oklch(0.72 0.18 145);
+  --brand-gray: oklch(0.45 0 0);
 }
 
 .dark {
@@ -104,6 +111,13 @@
   --sidebar-accent-foreground: oklch(0.95 0.015 185);
   --sidebar-border: oklch(0.269 0 0);
   --sidebar-ring: oklch(0.65 0.12 185 / <alpha-value>);
+  --glass-background: rgba(15, 23, 42, 0.4);
+  --glass-border: rgba(255, 255, 255, 0.1);
+  --glow-primary: 0 0 25px oklch(0.65 0.12 185 / 0.2);
+  --glow-accent: 0 0 25px oklch(0.70 0.17 45 / 0.2);
+  --orange: oklch(0.75 0.20 50);
+  --green: oklch(0.78 0.18 150);
+  --brand-gray: oklch(0.60 0 0);
 }
 
 @theme inline {
@@ -161,6 +175,54 @@
   --font-weight-normal: var(--font-weight-normal);
   --font-weight-medium: var(--font-weight-medium);
   --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+  --shadow-glow-primary: var(--glow-primary);
+  --shadow-glow-accent: var(--glow-accent);
+  --color-orange: var(--orange);
+  --color-green: var(--green);
+  --color-brand-gray: var(--brand-gray);
+}
+
+@utility glass {
+  background-color: var(--glass-background);
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--glass-border);
+}
+
+@utility glow-primary {
+  box-shadow: var(--glow-primary);
+}
+
+@utility glow-accent {
+  box-shadow: var(--glow-accent);
+}
+
+@utility card-premium {
+  @apply relative overflow-hidden transition-all duration-300;
+  border: 1px solid var(--border);
+  
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      45deg,
+      transparent,
+      rgba(255, 255, 255, 0.1),
+      transparent
+    );
+    transform: translateX(-100%);
+    transition: transform 0.6s;
+  }
+
+  &:hover {
+    @apply -translate-y-2;
+    border-color: var(--primary);
+    box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.1);
+    
+    &::before {
+      transform: translateX(100%);
+    }
+  }
 }
 
 * {
