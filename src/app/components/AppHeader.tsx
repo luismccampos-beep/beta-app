@@ -5,7 +5,7 @@ import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { useSession } from 'next-auth/react';
 import { useTranslations } from 'next-intl';
-import { Sun, Moon, LogOut, ArrowLeft, LayoutDashboard } from 'lucide-react';
+import { Sun, Moon, LogOut, ArrowLeft, LayoutDashboard, Plane } from 'lucide-react';
 import { Button } from './ui/button';
 import { LanguageSwitcher } from '../../components/LanguageSwitcher';
 import { useTheme } from './ThemeProvider';
@@ -84,9 +84,14 @@ export function AppHeader({
               <Link
                 href="/"
                 aria-label="AKMLEVA - Voltar à página inicial"
-                className="text-xl sm:text-2xl font-bold bg-gradient-to-r from-primary-700 via-primary to-accent-500 bg-clip-text text-transparent hover:opacity-80 transition-opacity shrink-0"
+                className="group flex items-center gap-2"
               >
-                AKMLEVA
+                <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-brand-gray via-orange to-green flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
+                  <Plane className="w-5 h-5 text-white -rotate-12 group-hover:rotate-0 transition-transform" />
+                </div>
+                <span className="text-xl sm:text-2xl font-black bg-gradient-to-r from-brand-gray via-orange to-green bg-clip-text text-transparent tracking-tighter">
+                  AKMLEVA
+                </span>
               </Link>
             )}
           </div>

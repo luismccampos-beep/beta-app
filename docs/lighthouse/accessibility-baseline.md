@@ -56,17 +56,26 @@ The 15 jsx-a11y violations detected when the rules were first activated have all
 | Keyboard tab order | ✅ Pass | Logical focus order |
 | Skip-to-content link | ✅ Pass | Present and functional |
 
-### Last production run
+### Production audit (post-deployment)
 
-When run against `https://www.akmleva.pt`, the production site shows different violations not present in local code (pre-deployment issues):
+All **7 tests pass** against `https://www.akmleva.pt`. Zero critical or serious violations across all pages.
 
-| Violation | Page | Impact | Note |
-|---|---|---|---|
-| `color-contrast` (footer, buttons, badges) | Homepage, Auth, About, Contact | Serious | Deployed site hasn't received local fixes |
-| `html-has-lang` | Destinations | Serious | Pre-deployment — error page shown |
-| `aria-valid-attr-value` | Auth | Critical | Pre-deployment — tabs fix not yet deployed |
+| Page | Result | Violations |
+|---|---|---|
+| Homepage | ✅ Pass | None |
+| Destinations browse | ✅ Pass | None |
+| Auth page | ✅ Pass | None |
+| About page | ✅ Pass | None |
+| Contact page | ✅ Pass | None |
+| Keyboard tab order | ✅ Pass | Logical focus order |
+| Skip-to-content link | ✅ Pass | Present and functional |
 
-Once the local fixes are deployed, re-run the production audit to confirm resolution.
+**All previously reported violations resolved:**
+- `document-title` — root layout metadata template ✅
+- `color-contrast` (step numbers, footer, primary button) — CSS fixes ✅
+- `aria-valid-attr-value` (auth tabs) — single `<Tabs>` restructure ✅
+- `html-has-lang` (error page) — `global-error.tsx` boundary ✅
+- `select-name` (contact page) — resolved/transient ✅
 
 ---
 
@@ -122,10 +131,10 @@ BASE_URL=https://www.akmleva.pt npm run e2e:a11y
 
 ## Next Steps
 
-1. Deploy all fixes to production and re-run the axe-core audit to confirm 0 violations
-2. Escalate `jsx-a11y` rules from `warn` → `error` as confidence grows
-3. Re-run Lighthouse audit and compare scores against baseline
+1. Escalate `jsx-a11y` rules from `warn` → `error` now that all violations are fixed
+2. Re-run Lighthouse audit and compare scores against baseline (~80 target → ≥95)
+3. Monitor future PRs — the CI workflow `.github/workflows/accessibility.yml` will catch regressions
 
 ---
 
-*Generated from local + production axe-core audits. Updated June 27, 2026.*
+*Generated from local + production axe-core audits. Updated June 27, 2026. Production audit: 7/7 passed — zero violations.*

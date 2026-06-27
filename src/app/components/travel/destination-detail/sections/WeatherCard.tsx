@@ -15,25 +15,29 @@ export function WeatherCard({
   if (clima_tempo.temperatura_c == null) return null;
   return (
     <AnimatedSection>
-      <Card className="bg-white/70 dark:bg-gray-800/60 backdrop-blur-md border-sky-200/40 dark:border-sky-900/40 hover:shadow-lg transition-all duration-300">
+      <Card className="card-premium dark:bg-gray-900 group">
         <CardHeader>
-          <CardTitle className="flex items-center gap-2 text-lg dark:text-white">
-            <CloudSun className="h-5 w-5 text-sky-500" />
+          <CardTitle className="flex items-center gap-3 text-xl font-black text-gray-950 dark:text-white uppercase tracking-tighter italic">
+            <div className="p-2 rounded-lg bg-sky-500/10 text-sky-500">
+              <CloudSun className="h-5 w-5" />
+            </div>
             {t('weatherTitle')}
           </CardTitle>
         </CardHeader>
-        <CardContent className="flex flex-wrap gap-4 text-sm">
-          <div>
-            <p className="text-4xl font-bold text-sky-600 dark:text-sky-400">{Math.round(clima_tempo.temperatura_c)}°C</p>
-            <p className="text-gray-500 dark:text-gray-400 capitalize mt-1">{clima_tempo.descricao}</p>
+        <CardContent className="flex flex-wrap gap-6 text-sm">
+          <div className="flex items-end gap-2">
+            <p className="text-6xl font-black text-sky-600 dark:text-sky-400 tracking-tighter">{Math.round(clima_tempo.temperatura_c)}°C</p>
+            <p className="text-lg font-bold text-gray-500 dark:text-gray-400 capitalize mb-1">{clima_tempo.descricao}</p>
           </div>
-          {clima_tempo.sensacao_c != null && (
-            <p className="text-gray-600 dark:text-gray-400 self-end">{t('feelsLike')}: {Math.round(clima_tempo.sensacao_c)}°C</p>
-          )}
-          {clima_tempo.humidade_pct != null && (
-            <p className="text-gray-600 dark:text-gray-400 self-end">{t('humidity')}: {clima_tempo.humidade_pct}%</p>
-          )}
-          <p className="text-xs text-gray-400 dark:text-gray-500 w-full">{t('weatherSnapshot')}</p>
+          <div className="flex flex-wrap gap-4 w-full pt-2 border-t border-gray-100 dark:border-gray-800">
+            {clima_tempo.sensacao_c != null && (
+              <p className="text-sm font-bold text-gray-700 dark:text-gray-300">{t('feelsLike')}: <span className="text-sky-600 dark:text-sky-400">{Math.round(clima_tempo.sensacao_c)}°C</span></p>
+            )}
+            {clima_tempo.humidade_pct != null && (
+              <p className="text-sm font-bold text-gray-700 dark:text-gray-300">{t('humidity')}: <span className="text-sky-600 dark:text-sky-400">{clima_tempo.humidade_pct}%</span></p>
+            )}
+          </div>
+          <p className="text-[10px] font-black uppercase tracking-widest text-gray-400 dark:text-gray-600">{t('weatherSnapshot')}</p>
         </CardContent>
       </Card>
     </AnimatedSection>

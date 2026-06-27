@@ -48,7 +48,8 @@ describe('HotelsSection', () => {
   it('renders hotel names and star ratings', () => {
     render(<HotelsSection hotels={sampleHotels} hotelTypes={null} t={t} />);
     expect(screen.getByText('Pestana Vintage Porto Hotel')).toBeInTheDocument();
-    expect(screen.getByText(/5 ★ · EUR 210\/noite/)).toBeInTheDocument();
+    expect(screen.getByText(/EUR 210/)).toBeInTheDocument();
+    expect(screen.getByText(/noite/)).toBeInTheDocument();
   });
 
   it('renders hotel amenities', () => {

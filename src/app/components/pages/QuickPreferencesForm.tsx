@@ -76,7 +76,7 @@ export function QuickPreferencesForm() {
     getValues,
     reset,
   } = useForm<QuickStartPreferences>({
-    resolver: zodResolver(quickStartSchema) as any,
+    resolver: zodResolver(quickStartSchema) as never,
     defaultValues: QUICK_DEFAULTS,
   });
 
@@ -252,9 +252,13 @@ export function QuickPreferencesForm() {
 
   const sectionProps = useMemo(
     () => ({
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       form: sectionForm as any,
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       preferences: fullPreferences as any,
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       errors: errors as any,
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       t: t as any,
       travelCatalog,
       travelCatalogLoading,

@@ -1,5 +1,6 @@
 'use client';
 
+import { BookOpen } from 'lucide-react';
 import { Card, CardHeader, CardTitle, CardContent } from '../../../ui/card';
 import { AnimatedSection } from '../components/AnimatedSection';
 
@@ -13,12 +14,17 @@ export function SummaryCard({
   if (!summary) return null;
   return (
     <AnimatedSection>
-      <Card className="border-primary-200/50 dark:border-primary-700/50 bg-white/70 dark:bg-gray-800/60 backdrop-blur-md shadow-lg hover:shadow-xl transition-all duration-300">
+      <Card className="card-premium dark:bg-gray-900 group">
         <CardHeader>
-          <CardTitle className="text-xl dark:text-white">{t('cardSummary')}</CardTitle>
+          <CardTitle className="text-2xl font-black text-gray-950 dark:text-white uppercase tracking-tighter italic flex items-center gap-3">
+            <div className="p-2 rounded-lg bg-primary/10 text-primary dark:text-primary-300">
+              <BookOpen className="h-5 w-5" />
+            </div>
+            {t('cardSummary')}
+          </CardTitle>
         </CardHeader>
         <CardContent>
-          <p className="text-gray-700 dark:text-gray-300 leading-relaxed text-base">{summary}</p>
+          <p className="text-gray-700 dark:text-gray-300 leading-relaxed text-lg font-medium">{summary}</p>
         </CardContent>
       </Card>
     </AnimatedSection>

@@ -19,7 +19,7 @@ const limit = flags.limit ? parseInt(flags.limit as string, 10) : undefined;
 const country = flags.country as string | undefined;
 
 async function main() {
-  const where: any = {};
+  const where: Record<string, unknown> = {};
   if (onlyMissing) where.imagemVerificada = false;
   if (country) where.paisCode = country;
 
@@ -48,7 +48,7 @@ async function main() {
   await prisma.$disconnect();
 }
 
-async function enrichOne(dest: any) {
+async function enrichOne(dest: { id: number; nome: string; wikidataId: string | null; wikipediaUrl: string | null; paisCode: string | null }) {
   if (source === 'all' || source === 'wikidata') {
     if (!dest.wikidataId) {
       console.log(`Dest ${dest.id} (${dest.nome}): no wikidataId, skipping wikidata`);
@@ -63,7 +63,7 @@ async function enrichOne(dest: any) {
 
         if (p18) {
           const filename = p18.replace(/ /g, '_');
-          const data: any = {
+          const data: Record<string, unknown> = {
             imagemUrl: `https://commons.wikimedia.org/wiki/Special:FilePath/${encodeURIComponent(filename)}?width=1600`,
             imagemFonte: 'wikidata',
             imagemSourceUrl: `https://commons.wikimedia.org/wiki/File:${filename}`,
@@ -97,7 +97,7 @@ async function enrichOne(dest: any) {
           ).then(r => r.json()).catch(() => null);
 
           if (sum?.thumbnail?.source) {
-            const data: any = {
+            const data: Record<string, unknown> = {
               imagemUrl: sum.thumbnail.source.replace(/\/\d+px-/, '/1200px-'),
               imagemFonte: 'wikipedia',
               imagemSourceUrl: sum.content_urls?.desktop?.page ?? dest.wikipediaUrl,
@@ -135,7 +135,7 @@ async function enrichOne(dest: any) {
 
       if (ov?.results?.[0]) {
         const img = ov.results[0];
-        const data: any = {
+        const data: Record<string, unknown> = {
           imagemUrl: img.url,
           imagemFonte: 'openverse',
           imagemAutor: img.creator,

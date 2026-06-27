@@ -1,7 +1,11 @@
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
+import { requireAdmin } from '@/lib/auth-helpers';
 
 export async function POST(request: NextRequest) {
+  const forbidden = await requireAdmin();
+  if (forbidden) return forbidden;
+
   try {
     const body = await request.json();
 

@@ -49,6 +49,10 @@ Thumbs.db
 __pycache__/
 *.py[cod]
 
+# Large data directories (versioned datasets should move to object storage)
+data/
+src/data/
+
 # Data exports (artefactos temporários — manter em data/ ou storage externo)
 export_*.csv
 export_*.json
@@ -81,6 +85,9 @@ public/travel-images/*
 !public/travel-images/.gitkeep
 !public/travel-images/placeholder.svg
 data/hotels/tbo-hotels.csv
+
+# Internal work notes (may contain secrets)
+.summary.md
 
 # Orphaned submodules (local only)
 Zoo-Code/

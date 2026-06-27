@@ -2,6 +2,7 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { Button } from '../ui/button';
 import { Card, CardContent } from '../ui/card';
 import { Badge } from '../ui/badge';
@@ -68,46 +69,65 @@ export function AboutPage({ onBack }: AboutPageProps) {
   }, [showCEOModal]);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 via-primary-50 to-accent-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 transition-colors overflow-x-hidden">
+    <div className="min-h-screen bg-gradient-to-br from-gray-50 via-primary-50 to-accent-50 dark:from-gray-950 dark:via-gray-900 dark:to-gray-950 transition-colors relative overflow-hidden">
+      {/* Background decorative elements */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute -top-[10%] -right-[10%] w-[50%] h-[50%] rounded-full bg-cyan-200/30 dark:bg-cyan-500/10 blur-[120px]" />
+        <div className="absolute -bottom-[10%] -left-[10%] w-[50%] h-[50%] rounded-full bg-primary-200/30 dark:bg-primary-500/10 blur-[120px]" />
+        <div className="absolute inset-0 opacity-[0.05] dark:opacity-[0.03]" style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, currentColor 1px, transparent 0)', backgroundSize: '40px 40px' }} />
+      </div>
+
       <AppHeader showBack onBack={onBack} />
 
-      {/* Content */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-12">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-20 relative z-10">
         {/* Hero Section */}
-        <div className="relative mb-8 sm:mb-16 overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-r from-primary/10 to-accent-500/10 dark:from-primary/5 dark:to-accent-500/5 rounded-2xl sm:rounded-3xl"></div>
-          <div className="relative p-6 sm:p-8 md:p-12 text-center">
-            <h1 className="text-3xl sm:text-5xl md:text-6xl font-bold text-gray-900 dark:text-white mb-3 sm:mb-4">
-              {t('pageTitle')}
-            </h1>
-            <div className="w-16 sm:w-24 h-1 bg-gradient-to-r from-primary to-accent mx-auto"></div>
+        <motion.div 
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="text-center mb-16 sm:mb-24"
+        >
+          <div className="inline-flex items-center gap-2 glass dark:bg-gray-800/50 border border-primary-200 dark:border-gray-700 rounded-full px-5 py-2.5 shadow-lg mb-6">
+            <Rocket className="w-5 h-5 text-accent animate-pulse" />
+            <span className="text-sm font-bold text-primary-900 dark:text-primary-100 uppercase tracking-[0.2em]">{t('pageTitle')}</span>
           </div>
-        </div>
+          <h1 className="text-5xl sm:text-7xl md:text-8xl font-black text-gray-950 dark:text-white leading-[1] tracking-tighter uppercase italic text-balance mb-8">
+            Nossa Missão é <span className="bg-gradient-to-r from-brand-gray via-orange to-green bg-clip-text text-transparent">Inspirar</span>
+          </h1>
+          <div className="h-1.5 w-32 bg-gradient-to-r from-brand-gray via-orange to-green mx-auto rounded-full shadow-glow-primary" />
+        </motion.div>
 
         {/* Our Story */}
-        <section className="mb-8 sm:mb-16">
-          <div className="flex items-center gap-2 sm:gap-3 mb-4 sm:mb-6">
-            <Heart className="w-6 h-6 sm:w-8 sm:h-8 text-primary dark:text-primary-300 flex-shrink-0" />
-            <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white">{t('ourStoryTitle')}</h2>
-          </div>
-          <Card className="border-2 border-primary-200 dark:border-primary-700 shadow-xl dark:bg-gray-800 overflow-hidden">
+        <section className="mb-16 sm:mb-24">
+          <motion.div 
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            className="flex items-center gap-3 mb-8"
+          >
+            <div className="p-3 rounded-2xl bg-primary/10 text-primary dark:text-primary-300">
+              <Heart className="w-8 h-8" />
+            </div>
+            <h2 className="text-4xl sm:text-5xl font-black text-gray-950 dark:text-white tracking-tighter uppercase italic">{t('ourStoryTitle')}</h2>
+          </motion.div>
+          
+          <Card className="card-premium dark:bg-gray-900 group">
             <CardContent className="p-0">
-              <div className="flex flex-col md:flex-row">
+              <div className="flex flex-col lg:flex-row min-h-[500px]">
                 {/* Castle Image */}
-                <div className="md:w-2/5 w-full relative min-h-[200px] sm:min-h-[280px] md:min-h-full bg-gradient-to-br from-primary-100 to-accent-100 dark:from-primary-900/30 dark:to-accent-700/30">
+                <div className="lg:w-1/2 relative min-h-[300px] overflow-hidden">
                   <img
                     src="/Assets/castelo.png"
                     alt={t('ourStoryTitle')}
-                    className="w-full h-full object-cover absolute inset-0"
+                    className="w-full h-full object-cover absolute inset-0 group-hover:scale-110 transition-transform duration-1000"
                     loading="lazy"
-                    onError={(e) => { e.currentTarget.style.display = 'none'; }}
                   />
+                  <div className="absolute inset-0 bg-gradient-to-r from-black/20 to-transparent" />
                 </div>
                 {/* Story Text */}
-                <div className="md:w-3/5 w-full p-4 sm:p-8 space-y-3 sm:space-y-4">
-                  <p className="text-sm sm:text-lg text-gray-700 dark:text-gray-300 leading-relaxed">{t('ourStory')}</p>
-                  <p className="text-sm sm:text-lg text-gray-700 dark:text-gray-300 leading-relaxed">{t('ourStory2')}</p>
-                  <p className="text-sm sm:text-lg font-semibold text-primary dark:text-primary-300">{t('ourStory3')}</p>
+                <div className="lg:w-1/2 p-8 sm:p-12 flex flex-col justify-center space-y-6">
+                  <p className="text-lg sm:text-xl text-gray-700 dark:text-gray-300 leading-relaxed font-medium">{t('ourStory')}</p>
+                  <p className="text-lg sm:text-xl text-gray-700 dark:text-gray-300 leading-relaxed font-medium">{t('ourStory2')}</p>
+                  <p className="text-xl sm:text-2xl font-black text-primary dark:text-primary-300 tracking-tight uppercase italic">{t('ourStory3')}</p>
                 </div>
               </div>
             </CardContent>
@@ -115,76 +135,37 @@ export function AboutPage({ onBack }: AboutPageProps) {
         </section>
 
         {/* Where We're From */}
-        <section className="mb-8 sm:mb-16">
-          <div className="flex items-center gap-2 sm:gap-3 mb-4 sm:mb-6">
-            <MapPin className="w-6 h-6 sm:w-8 sm:h-8 text-accent dark:text-accent-500 flex-shrink-0" />
-            <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white">{t('whereWereFromTitle')}</h2>
-          </div>
-          <p className="text-sm sm:text-base text-gray-600 dark:text-gray-400 mb-4 sm:mb-8">{t('whereWereFromSubtitle')}</p>
-
-          <Card className="border-2 border-accent-200 dark:border-accent-700 shadow-xl dark:bg-gray-800 overflow-hidden">
+        <section className="mb-16 sm:mb-24">
+          <motion.div 
+            initial={{ opacity: 0, x: 20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            className="flex items-center justify-end gap-3 mb-8 text-right"
+          >
+            <h2 className="text-4xl sm:text-5xl font-black text-gray-950 dark:text-white tracking-tighter uppercase italic">{t('whereWereFromTitle')}</h2>
+            <div className="p-3 rounded-2xl bg-accent/10 text-accent dark:text-accent-500">
+              <MapPin className="w-8 h-8" />
+            </div>
+          </motion.div>
+          
+          <Card className="card-premium dark:bg-gray-900 group">
             <CardContent className="p-0">
-              <div className="flex flex-col md:flex-row">
+              <div className="flex flex-col-reverse lg:flex-row min-h-[500px]">
                 {/* Text */}
-                <div className="md:w-3/5 w-full p-4 sm:p-8 space-y-3 sm:space-y-4">
-                  <p className="text-sm sm:text-lg text-gray-700 dark:text-gray-300 leading-relaxed">{t('whereWereFromText1')}</p>
-                  <p className="text-sm sm:text-lg text-gray-700 dark:text-gray-300 leading-relaxed">{t('whereWereFromText2')}</p>
-                  <p className="text-sm sm:text-lg font-semibold text-accent-700 dark:text-accent-500">{t('whereWereFromText3')}</p>
+                <div className="lg:w-1/2 p-8 sm:p-12 flex flex-col justify-center space-y-6">
+                  <p className="text-lg sm:text-xl text-gray-700 dark:text-gray-300 leading-relaxed font-medium">{t('whereWereFromText1')}</p>
+                  <p className="text-lg sm:text-xl text-gray-700 dark:text-gray-300 leading-relaxed font-medium">{t('whereWereFromText2')}</p>
+                  <p className="text-xl sm:text-2xl font-black text-accent-700 dark:text-accent-500 tracking-tight uppercase italic">{t('whereWereFromText3')}</p>
                 </div>
                 {/* Castle Image */}
-                <div className="md:w-2/5 w-full relative min-h-[200px] sm:min-h-[280px] md:min-h-full bg-gradient-to-br from-accent-100 to-amber-100 dark:from-accent-700/30 dark:to-amber-900/30">
+                <div className="lg:w-1/2 relative min-h-[300px] overflow-hidden">
                   <img
                     src="/Assets/realcastelo.png"
                     alt={t('whereWereFromTitle')}
-                    className="w-full h-full object-cover absolute inset-0"
-                    loading="lazy"
-                    onError={(e) => { e.currentTarget.style.display = 'none'; }}
-                  />
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-        </section>
-
-        {/* Leadership */}
-        <section className="mb-8 sm:mb-16">
-          <div className="flex items-center gap-2 sm:gap-3 mb-4 sm:mb-6">
-            <Users className="w-6 h-6 sm:w-8 sm:h-8 text-accent dark:text-accent-500 flex-shrink-0" />
-            <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white">{t('leadershipTitle')}</h2>
-          </div>
-          <p className="text-sm sm:text-base text-gray-600 dark:text-gray-400 mb-4 sm:mb-8">{t('leadershipSubtitle')}</p>
-
-          <Card className="border-2 border-accent-200 dark:border-accent-700 shadow-xl dark:bg-gray-800 max-w-2xl">
-            <CardContent className="p-4 sm:p-8">
-              <div className="flex flex-col sm:flex-row items-start gap-4 sm:gap-6">
-                <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-full bg-gradient-to-br from-primary to-accent flex items-center justify-center flex-shrink-0 mx-auto sm:mx-0 overflow-hidden">
-                  <img
-                    src="/about/luiscampos.webp"
-                    alt={t('ceoName')}
-                    className="w-full h-full object-cover"
+                    className="w-full h-full object-cover absolute inset-0 group-hover:scale-110 transition-transform duration-1000"
                     loading="lazy"
                   />
-                </div>
-                <div className="flex-1 w-full">
-                  <h3 className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white mb-1 text-center sm:text-left">{t('ceoName')}</h3>
-                  <p className="text-primary dark:text-primary-300 font-semibold mb-3 flex items-center gap-2 justify-center sm:justify-start text-sm sm:text-base">
-                    <Briefcase className="w-3 h-3 sm:w-4 sm:h-4" />
-                    {t('ceoTitle')}
-                  </p>
-                  <p className="text-sm sm:text-base text-gray-700 dark:text-gray-300 mb-4">{t('ceoBio')}</p>
-                  <div className="flex flex-col sm:flex-row items-center gap-2 sm:gap-3">
-                    <Badge className="bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200 border-0 text-xs sm:text-sm">
-                      <CheckCircle2 className="w-3 h-3 mr-1" />
-                      {t('ceoAvailable')}
-                    </Badge>
-                    <button type="button"
-                      ref={ceoTriggerRef}
-                      onClick={() => setShowCEOModal(true)}
-                      className="text-primary dark:text-primary-300 hover:underline text-xs sm:text-sm font-medium"
-                    >
-                      {t('ceoLearnMore')} →
-                    </button>
-                  </div>
+                  <div className="absolute inset-0 bg-gradient-to-l from-black/20 to-transparent" />
                 </div>
               </div>
             </CardContent>
@@ -192,184 +173,174 @@ export function AboutPage({ onBack }: AboutPageProps) {
         </section>
 
         {/* Core Values */}
-        <section className="mb-8 sm:mb-16">
-          <div className="flex items-center gap-2 sm:gap-3 mb-4 sm:mb-6">
-            <Target className="w-6 h-6 sm:w-8 sm:h-8 text-primary dark:text-primary-300 flex-shrink-0" />
-            <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white">{t('valuesTitle')}</h2>
+        <section className="mb-16 sm:mb-24">
+          <div className="text-center mb-12 sm:mb-16">
+            <h2 className="text-4xl sm:text-6xl font-black text-gray-950 dark:text-white tracking-tighter uppercase italic mb-4">{t('valuesTitle')}</h2>
+            <p className="text-xl text-gray-600 dark:text-gray-400 font-medium max-w-2xl mx-auto">{t('valuesSubtitle')}</p>
           </div>
-          <p className="text-sm sm:text-base text-gray-600 dark:text-gray-400 mb-4 sm:mb-8">{t('valuesSubtitle')}</p>
 
-          <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6">
-            <Card className="border-2 border-primary-200 dark:border-primary-700 shadow-xl dark:bg-gray-800 hover:scale-105 transition-transform">
-              <CardContent className="p-4 sm:p-6">
-                <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-lg bg-gradient-to-br from-primary to-primary flex items-center justify-center mb-3 sm:mb-4">
-                  <Heart className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
-                </div>
-                <h3 className="text-lg sm:text-xl font-bold text-gray-900 dark:text-white mb-2">{t('value1Title')}</h3>
-                <p className="text-sm sm:text-base text-gray-700 dark:text-gray-300">{t('value1Desc')}</p>
-              </CardContent>
-            </Card>
-
-            <Card className="border-2 border-green-200 dark:border-green-700 shadow-xl dark:bg-gray-800 hover:scale-105 transition-transform">
-              <CardContent className="p-4 sm:p-6">
-                <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-lg bg-gradient-to-br from-green-600 to-green-500 flex items-center justify-center mb-3 sm:mb-4">
-                  <Leaf className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
-                </div>
-                <h3 className="text-lg sm:text-xl font-bold text-gray-900 dark:text-white mb-2">{t('value2Title')}</h3>
-                <p className="text-sm sm:text-base text-gray-700 dark:text-gray-300">{t('value2Desc')}</p>
-              </CardContent>
-            </Card>
-
-            <Card className="border-2 border-accent-200 dark:border-accent-700 shadow-xl dark:bg-gray-800 hover:scale-105 transition-transform sm:col-span-2 md:col-span-1">
-              <CardContent className="p-4 sm:p-6">
-                <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-lg bg-gradient-to-br from-accent to-accent-500 flex items-center justify-center mb-3 sm:mb-4">
-                  <Shield className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
-                </div>
-                <h3 className="text-lg sm:text-xl font-bold text-gray-900 dark:text-white mb-2">{t('value3Title')}</h3>
-                <p className="text-sm sm:text-base text-gray-700 dark:text-gray-300">{t('value3Desc')}</p>
-              </CardContent>
-            </Card>
-          </div>
-        </section>
-
-        {/* Certifications */}
-        <section className="mb-8 sm:mb-16">
-          <div className="flex items-center gap-2 sm:gap-3 mb-4 sm:mb-6">
-            <Award className="w-6 h-6 sm:w-8 sm:h-8 text-accent dark:text-accent-500 flex-shrink-0" />
-            <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white">{t('certificationsTitle')}</h2>
-          </div>
-          <p className="text-sm sm:text-base text-gray-600 dark:text-gray-400 mb-4 sm:mb-8">{t('certificationsSubtitle')}</p>
-
-          <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6">
-            <Card className="border-2 border-blue-200 dark:border-blue-700 shadow-xl dark:bg-gray-800">
-              <CardContent className="p-4 sm:p-6">
-                <Badge className="bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 border-0 mb-2 sm:mb-3 text-xs sm:text-sm">
-                  {t('cert1Title')}
-                </Badge>
-                <h3 className="text-base sm:text-lg font-bold text-gray-900 dark:text-white mb-2">{t('cert1Name')}</h3>
-                <p className="text-xs sm:text-sm text-gray-700 dark:text-gray-300 mb-3 sm:mb-4">{t('cert1Desc')}</p>
-                <div className="flex items-center gap-2 flex-wrap">
-                  <Badge className="bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200 border-0 text-xs">
-                    <CheckCircle2 className="w-3 h-3 mr-1" />
-                      {t('verified')}
-                  </Badge>
-                  <Badge className="bg-primary-100 dark:bg-primary-900 text-primary-700 dark:text-primary-200 border-0 text-xs">
-                      {t('active')}
-                  </Badge>
-                </div>
-              </CardContent>
-            </Card>
-
-            <Card className="border-2 border-purple-200 dark:border-purple-700 shadow-xl dark:bg-gray-800">
-              <CardContent className="p-4 sm:p-6">
-                <Badge className="bg-purple-100 dark:bg-purple-900 text-purple-800 dark:text-purple-200 border-0 mb-2 sm:mb-3 text-xs sm:text-sm">
-                  {t('cert2Title')}
-                </Badge>
-                <h3 className="text-base sm:text-lg font-bold text-gray-900 dark:text-white mb-2">{t('cert2Name')}</h3>
-                <p className="text-xs sm:text-sm text-gray-700 dark:text-gray-300 mb-3 sm:mb-4">{t('cert2Desc')}</p>
-                <div className="flex items-center gap-2 flex-wrap">
-                  <Badge className="bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200 border-0 text-xs">
-                    <CheckCircle2 className="w-3 h-3 mr-1" />
-                      {t('verified')}
-                  </Badge>
-                  <Badge className="bg-primary-100 dark:bg-primary-900 text-primary-700 dark:text-primary-200 border-0 text-xs">
-                      {t('active')}
-                  </Badge>
-                </div>
-              </CardContent>
-            </Card>
-
-            <Card className="border-2 border-amber-200 dark:border-amber-700 shadow-xl dark:bg-gray-800 sm:col-span-2 md:col-span-1">
-              <CardContent className="p-4 sm:p-6">
-                <Badge className="bg-amber-100 dark:bg-amber-900 text-amber-800 dark:text-amber-200 border-0 mb-2 sm:mb-3 text-xs sm:text-sm">
-                  {t('cert3Title')}
-                </Badge>
-                <h3 className="text-base sm:text-lg font-bold text-gray-900 dark:text-white mb-2">{t('cert3Name')}</h3>
-                <p className="text-xs sm:text-sm text-gray-700 dark:text-gray-300 mb-3 sm:mb-4">{t('cert3Desc')}</p>
-                <div className="flex items-center gap-2 flex-wrap">
-                  <Badge className="bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200 border-0 text-xs">
-                    <CheckCircle2 className="w-3 h-3 mr-1" />
-                      {t('verified')}
-                  </Badge>
-                  <Badge className="bg-primary-100 dark:bg-primary-900 text-primary-700 dark:text-primary-200 border-0 text-xs">
-                      {t('active')}
-                  </Badge>
-                </div>
-              </CardContent>
-            </Card>
-          </div>
-        </section>
-
-        {/* Strategic Partnerships */}
-        <section className="mb-8 sm:mb-16">
-          <div className="flex items-center gap-2 sm:gap-3 mb-4 sm:mb-6">
-            <Globe className="w-6 h-6 sm:w-8 sm:h-8 text-primary dark:text-primary-300 flex-shrink-0" />
-            <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white">{t('partnershipsTitle')}</h2>
-          </div>
-          <p className="text-sm sm:text-base text-gray-600 dark:text-gray-400 mb-4 sm:mb-8">{t('partnershipsSubtitle')}</p>
-
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
-              { name: t('partner1Name'), desc: t('partner1Desc'), img: '/about/partners/gea.png' },
-              { name: t('partner2Name'), desc: t('partner2Desc'), img: '/about/partners/iapmei.svg' },
-              { name: t('partner3Name'), desc: t('partner3Desc'), img: '/about/partners/sanjotec.png' },
-              { name: t('partner4Name'), desc: t('partner4Desc'), img: '/about/partners/turismodeportugal.png' },
-              { name: t('partner5Name'), desc: t('partner5Desc'), img: '/about/partners/dgconsulting.png' },
-              { name: t('partner6Name'), desc: t('partner6Desc'), img: '/about/partners/startupportugal.svg' }
-            ].map((partner, index) => (
-              <Card key={index} className="border-2 border-gray-200 dark:border-gray-700 shadow-xl dark:bg-gray-800 hover:border-primary dark:hover:border-primary transition-all">
-                <CardContent className="p-4 sm:p-6">
-                  <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-lg bg-gradient-to-br from-primary to-accent flex items-center justify-center text-white font-bold text-base sm:text-lg mb-3 sm:mb-4 overflow-hidden relative">
-                    <img
-                      src={partner.img}
-                      alt={partner.name}
-                      className="absolute inset-0 w-full h-full object-cover"
-                      loading="lazy"
-                      onError={(e) => { e.currentTarget.style.display = 'none'; }}
-                    />
-                    {partner.name.substring(0, 2)}
-                  </div>
-                  <h3 className="text-base sm:text-lg font-bold text-gray-900 dark:text-white mb-2">{partner.name}</h3>
-                  <p className="text-xs sm:text-sm text-gray-700 dark:text-gray-300 mb-3 sm:mb-4 line-clamp-3">{partner.desc}</p>
-                  <Badge className="bg-primary-100 dark:bg-primary-900 text-primary-700 dark:text-primary-200 border-0 text-xs sm:text-sm">
-                    {t('officialPartner')}
-                  </Badge>
-                </CardContent>
-              </Card>
+              { icon: Heart, title: t('value1Title'), desc: t('value1Desc'), color: 'from-primary to-primary-700' },
+              { icon: Leaf, title: t('value2Title'), desc: t('value2Desc'), color: 'from-green to-green-700' },
+              { icon: Shield, title: t('value3Title'), desc: t('value3Desc'), color: 'from-accent to-accent-700' }
+            ].map((v, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: i * 0.1 }}
+                viewport={{ once: true }}
+              >
+                <Card className="card-premium dark:bg-gray-900 group h-full">
+                  <CardContent className="p-8">
+                    <div className={`w-16 h-16 rounded-2xl bg-gradient-to-br ${v.color} flex items-center justify-center mb-8 shadow-xl group-hover:rotate-6 transition-transform`}>
+                      <v.icon className="w-8 h-8 text-white" />
+                    </div>
+                    <h3 className="text-2xl font-black text-gray-950 dark:text-white uppercase tracking-tighter mb-4">{v.title}</h3>
+                    <p className="text-lg text-gray-600 dark:text-gray-400 font-medium leading-relaxed">{v.desc}</p>
+                  </CardContent>
+                </Card>
+              </motion.div>
             ))}
           </div>
         </section>
 
-        {/* Contact CTA */}
-        <section className="mb-6 sm:mb-8">
-          <Card className="border-2 border-accent-200 dark:border-accent-700 shadow-2xl dark:bg-gray-800 overflow-hidden">
-            <div className="bg-gradient-to-r from-primary to-accent h-2"></div>
-            <CardContent className="p-6 sm:p-8 md:p-12 text-center">
-              <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white mb-3 sm:mb-4">{t('contactTitle')}</h2>
-              <p className="text-sm sm:text-lg text-gray-700 dark:text-gray-300 mb-6 sm:mb-8 max-w-2xl mx-auto">{t('contactSubtitle')}</p>
+        {/* Leadership */}
+        <section className="mb-16 sm:mb-24">
+          <div className="flex flex-col lg:flex-row items-center gap-12 sm:gap-20">
+            <div className="lg:w-1/2 space-y-8">
+              <div className="space-y-4">
+                <div className="p-3 rounded-2xl bg-orange/10 text-orange w-fit">
+                  <Users className="w-8 h-8" />
+                </div>
+                <h2 className="text-4xl sm:text-6xl font-black text-gray-950 dark:text-white tracking-tighter uppercase italic">{t('leadershipTitle')}</h2>
+                <p className="text-xl text-gray-600 dark:text-gray-400 font-medium leading-relaxed">{t('leadershipSubtitle')}</p>
+              </div>
+              
+              <Card className="card-premium dark:bg-gray-900 group">
+                <CardContent className="p-8 sm:p-12">
+                  <div className="flex flex-col sm:flex-row items-start gap-8">
+                    <div className="w-24 h-24 sm:w-32 sm:h-32 rounded-3xl bg-gradient-to-br from-primary to-accent overflow-hidden shadow-2xl group-hover:scale-105 transition-transform flex-shrink-0 mx-auto sm:mx-0 ring-4 ring-white dark:ring-gray-800">
+                      <img
+                        src="/about/luiscampos.webp"
+                        alt={t('ceoName')}
+                        className="w-full h-full object-cover"
+                        loading="lazy"
+                      />
+                    </div>
+                    <div className="space-y-4 flex-1">
+                      <div>
+                        <h3 className="text-2xl sm:text-3xl font-black text-gray-950 dark:text-white tracking-tighter uppercase italic mb-1">{t('ceoName')}</h3>
+                        <p className="text-lg font-black bg-gradient-to-r from-brand-gray via-orange to-green bg-clip-text text-transparent uppercase tracking-widest flex items-center gap-2">
+                          <Briefcase className="w-4 h-4 text-orange" />
+                          {t('ceoTitle')}
+                        </p>
+                      </div>
+                      <p className="text-lg text-gray-600 dark:text-gray-300 leading-relaxed font-medium">{t('ceoBio')}</p>
+                      <div className="flex flex-wrap items-center gap-4">
+                        <Badge className="bg-green-500/10 text-green-700 dark:text-green-400 border border-green-500/20 px-4 py-2 font-black uppercase tracking-tighter italic">
+                          <CheckCircle2 className="w-4 h-4 mr-2" />
+                          {t('ceoAvailable')}
+                        </Badge>
+                        <button type="button"
+                          ref={ceoTriggerRef}
+                          onClick={() => setShowCEOModal(true)}
+                          className="text-primary dark:text-primary-300 font-black uppercase tracking-widest hover:translate-x-2 transition-all flex items-center gap-2"
+                        >
+                          {t('ceoLearnMore')} <Rocket className="w-4 h-4" />
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            </div>
+            
+            <div className="lg:w-1/2 grid grid-cols-2 gap-6">
+              {[1, 2, 3, 4].map((i) => (
+                <div key={i} className="aspect-square rounded-3xl bg-gray-100 dark:bg-gray-800 overflow-hidden shadow-inner border border-gray-200 dark:border-gray-700">
+                  <img src={`https://picsum.photos/400/400?random=${i}`} alt="Office life" className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700" />
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
 
-              <div className="flex flex-col items-center justify-center gap-3 sm:gap-6 mb-6 sm:mb-8">
-                <div className="flex items-start gap-2 text-gray-700 dark:text-gray-300 w-full sm:w-auto justify-center">
-                  <MapPin className="w-4 h-4 sm:w-5 sm:h-5 text-primary dark:text-primary-300 mt-0.5 flex-shrink-0" />
-                  <span className="text-xs sm:text-sm whitespace-pre-line text-left">{t('address')}</span>
-                </div>
-                <div className="flex items-center gap-2 text-gray-700 dark:text-gray-300">
-                  <Phone className="w-4 h-4 sm:w-5 sm:h-5 text-primary dark:text-primary-300 flex-shrink-0" />
-                  <a href="tel:+351256372092" className="text-xs sm:text-sm hover:text-primary dark:hover:text-primary-300 transition-colors">+351 256 372 092</a>
-                </div>
-                <div className="flex items-center gap-2 text-gray-700 dark:text-gray-300">
-                  <Mail className="w-4 h-4 sm:w-5 sm:h-5 text-primary dark:text-primary-300 flex-shrink-0" />
-                  <a href="mailto:geral@akmleva.pt" className="text-xs sm:text-sm hover:text-primary dark:hover:text-primary-300 transition-colors">geral@akmleva.pt</a>
-                </div>
+        {/* Certifications & Partners */}
+        <section className="mb-16 sm:mb-24 space-y-12">
+          <div className="text-center">
+            <h2 className="text-4xl sm:text-6xl font-black text-gray-950 dark:text-white tracking-tighter uppercase italic mb-4">Confiança & Excelência</h2>
+            <p className="text-xl text-gray-600 dark:text-gray-400 font-medium max-w-2xl mx-auto">Parcerias e certificações que garantem a melhor experiência para você.</p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8">
+            {[
+              { title: t('cert1Title'), name: t('cert1Name'), desc: t('cert1Desc'), color: 'from-blue-600 to-blue-800' },
+              { title: t('cert2Title'), name: t('cert2Name'), desc: t('cert2Desc'), color: 'from-purple-600 to-purple-800' },
+              { title: t('cert3Title'), name: t('cert3Name'), desc: t('cert3Desc'), color: 'from-orange to-red-700' }
+            ].map((c, i) => (
+              <motion.div key={i} initial={{ opacity: 0, scale: 0.9 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }}>
+                <Card className="card-premium dark:bg-gray-900 group h-full">
+                  <CardContent className="p-8">
+                    <div className={`px-4 py-1.5 rounded-full bg-gradient-to-r ${c.color} text-white text-[10px] font-black uppercase tracking-widest mb-4 w-fit shadow-lg`}>
+                      {c.title}
+                    </div>
+                    <h3 className="text-xl font-black text-gray-950 dark:text-white mb-3 tracking-tight">{c.name}</h3>
+                    <p className="text-base text-gray-600 dark:text-gray-400 font-medium mb-6 leading-relaxed">{c.desc}</p>
+                    <div className="flex items-center gap-3 pt-4 border-t border-gray-100 dark:border-gray-800">
+                      <div className="flex items-center gap-1.5 bg-green-500/10 text-green-700 dark:text-green-400 px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-tighter">
+                        <CheckCircle2 className="w-3.5 h-3.5" /> {t('verified')}
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+              </motion.div>
+            ))}
+          </div>
+
+          <div className="flex flex-wrap justify-center items-center gap-8 sm:gap-16 opacity-60 dark:opacity-40 grayscale hover:opacity-100 transition-all duration-700">
+            {[1, 2, 3, 4, 5, 6].map((i) => (
+              <div key={i} className="h-10 sm:h-12 w-32 sm:w-40 relative">
+                 <img src={`/about/partners/partner-${i}.png`} alt="Partner" className="w-full h-full object-contain" onError={(e) => { e.currentTarget.parentElement!.style.display = 'none'; }} />
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* Final CTA */}
+        <section className="mb-8">
+          <Card className="card-premium dark:bg-gray-950 group border-0 shadow-2xl overflow-hidden relative">
+            <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-brand-gray via-orange to-green" />
+            <CardContent className="p-12 sm:p-20 text-center space-y-10">
+              <h2 className="text-4xl sm:text-6xl md:text-7xl font-black text-gray-950 dark:text-white tracking-tighter uppercase italic leading-[1]">{t('contactTitle')}</h2>
+              <p className="text-xl sm:text-2xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto font-medium">{t('contactSubtitle')}</p>
+              
+              <div className="grid sm:grid-cols-3 gap-8 py-4">
+                {[
+                  { icon: MapPin, label: t('address'), val: null },
+                  { icon: Phone, label: '+351 256 372 092', val: 'tel:+351256372092' },
+                  { icon: Mail, label: 'geral@akmleva.pt', val: 'mailto:geral@akmleva.pt' }
+                ].map((item, i) => (
+                  <div key={i} className="space-y-3">
+                    <div className="w-12 h-12 rounded-2xl bg-primary/10 text-primary dark:text-primary-300 flex items-center justify-center mx-auto group-hover:scale-110 transition-transform">
+                      <item.icon className="w-6 h-6" />
+                    </div>
+                    {item.val ? (
+                      <a href={item.val} className="text-sm font-black uppercase tracking-tighter text-gray-950 dark:text-white hover:text-orange transition-colors">{item.label}</a>
+                    ) : (
+                      <p className="text-sm font-black uppercase tracking-tighter text-gray-950 dark:text-white whitespace-pre-line">{item.label}</p>
+                    )}
+                  </div>
+                ))}
               </div>
 
-              <Button type="button" className="bg-gradient-to-r from-primary to-accent hover:from-primary-700 hover:to-accent-600 active:scale-[0.98] text-white px-6 sm:px-8 py-4 sm:py-6 text-base sm:text-lg shadow-lg w-full sm:w-auto transition-transform">
+              <Button type="button" variant="brand" size="lg" className="px-16 py-10 text-2xl shadow-glow-primary hover:scale-110">
                 {t('contactButton')}
               </Button>
             </CardContent>
           </Card>
         </section>
-
       </div>
 
       <AppFooter />
@@ -381,18 +352,18 @@ export function AboutPage({ onBack }: AboutPageProps) {
           role="dialog"
           aria-modal="true"
           aria-labelledby="ceo-dialog-title"
-          className="fixed inset-0 bg-black/50 backdrop-blur-sm z-[100] flex items-end sm:items-center justify-center p-0 sm:p-4"
+          className="fixed inset-0 bg-black/60 backdrop-blur-md z-[100] flex items-end sm:items-center justify-center p-0 sm:p-4"
         >
           <div
-            className="bg-white dark:bg-gray-800 rounded-t-3xl sm:rounded-2xl max-w-3xl w-full max-h-[95vh] sm:max-h-[90vh] overflow-y-auto shadow-2xl"
+            className="bg-white dark:bg-gray-900 rounded-t-[2.5rem] sm:rounded-3xl max-w-3xl w-full max-h-[95vh] sm:max-h-[90vh] overflow-y-auto shadow-2xl border-t sm:border border-white/20 dark:border-gray-800"
             onClick={(e) => e.stopPropagation()}
             onKeyDown={() => {}}
             role="none"
           >
             {/* Modal Header */}
-            <div className="sticky top-0 bg-gradient-to-r from-primary to-accent p-4 sm:p-6 flex items-center justify-between rounded-t-3xl sm:rounded-t-2xl z-10">
-              <div className="flex items-center gap-3 sm:gap-4 flex-1 min-w-0">
-                <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center flex-shrink-0 overflow-hidden">
+            <div className="sticky top-0 bg-gradient-to-r from-brand-gray via-orange to-green p-6 sm:p-8 flex items-center justify-between z-10 shadow-xl">
+              <div className="flex items-center gap-4 sm:gap-6 flex-1 min-w-0">
+                <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl bg-white/20 backdrop-blur-md flex items-center justify-center flex-shrink-0 overflow-hidden ring-2 ring-white/30">
                   <img
                     src="/about/luiscampos.webp"
                     alt={t('ceoName')}
@@ -401,87 +372,53 @@ export function AboutPage({ onBack }: AboutPageProps) {
                   />
                 </div>
                 <div className="min-w-0 flex-1">
-                  <h2 id="ceo-dialog-title" className="text-lg sm:text-2xl font-bold text-white truncate">{t('ceoBioTitle')}</h2>
-                  <p className="text-white/90 text-xs sm:text-sm truncate">{t('ceoName')} - {t('ceoTitle')}</p>
+                  <h2 id="ceo-dialog-title" className="text-xl sm:text-3xl font-black text-white truncate tracking-tighter uppercase italic">{t('ceoBioTitle')}</h2>
+                  <p className="text-white/90 text-sm sm:text-base font-bold uppercase tracking-widest truncate">{t('ceoName')} · {t('ceoTitle')}</p>
                 </div>
               </div>
               <button type="button"
                 ref={ceoCloseRef}
                 onClick={() => setShowCEOModal(false)}
-                className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-white/20 hover:bg-white/30 active:bg-white/40 flex items-center justify-center text-white transition-colors flex-shrink-0 ml-2"
+                className="w-12 h-12 rounded-xl bg-white/10 hover:bg-white/20 active:bg-white/30 flex items-center justify-center text-white transition-all flex-shrink-0 ml-4 border border-white/20"
                 aria-label="Close dialog"
               >
-                <X className="w-5 h-5 sm:w-6 sm:h-6" />
+                <X className="w-6 h-6" />
               </button>
             </div>
 
             {/* Modal Content */}
-            <div className="p-4 sm:p-8 space-y-5 sm:space-y-6">
-              {/* Section 1 */}
-              <div className="space-y-2 sm:space-y-3">
-                <div className="flex items-center gap-2 sm:gap-3">
-                  <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-lg bg-gradient-to-br from-primary to-primary flex items-center justify-center flex-shrink-0">
-                    <GraduationCap className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
+            <div className="p-6 sm:p-12 space-y-8">
+              {[
+                { icon: GraduationCap, title: t('ceoBioSection1Title'), text: t('ceoBioSection1'), color: 'from-primary to-primary-700' },
+                { icon: Briefcase, title: t('ceoBioSection2Title'), text: t('ceoBioSection2'), color: 'from-blue-600 to-blue-800' },
+                { icon: Lightbulb, title: t('ceoBioSection3Title'), text: t('ceoBioSection3'), color: 'from-purple-600 to-purple-800' },
+                { icon: Rocket, title: t('ceoBioSection4Title'), text: t('ceoBioSection4'), color: 'from-accent to-accent-700' }
+              ].map((section, i) => (
+                <div key={i} className="space-y-4">
+                  <div className="flex items-center gap-3">
+                    <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${section.color} flex items-center justify-center flex-shrink-0 shadow-lg`}>
+                      <section.icon className="w-6 h-6 text-white" />
+                    </div>
+                    <h3 className="text-xl sm:text-2xl font-black text-gray-950 dark:text-white tracking-tighter uppercase italic">{section.title}</h3>
                   </div>
-                  <h3 className="text-base sm:text-xl font-bold text-gray-900 dark:text-white">{t('ceoBioSection1Title')}</h3>
+                  <p className="text-base sm:text-lg text-gray-700 dark:text-gray-300 leading-relaxed font-medium">
+                    {section.text}
+                  </p>
                 </div>
-                <p className="text-sm sm:text-base text-gray-700 dark:text-gray-300 leading-relaxed">
-                  {t('ceoBioSection1')}
-                </p>
-              </div>
-
-              {/* Section 2 */}
-              <div className="space-y-2 sm:space-y-3">
-                <div className="flex items-center gap-2 sm:gap-3">
-                  <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-lg bg-gradient-to-br from-blue-600 to-blue-500 flex items-center justify-center flex-shrink-0">
-                    <Briefcase className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
-                  </div>
-                  <h3 className="text-base sm:text-xl font-bold text-gray-900 dark:text-white">{t('ceoBioSection2Title')}</h3>
-                </div>
-                <p className="text-sm sm:text-base text-gray-700 dark:text-gray-300 leading-relaxed">
-                  {t('ceoBioSection2')}
-                </p>
-              </div>
-
-              {/* Section 3 */}
-              <div className="space-y-2 sm:space-y-3">
-                <div className="flex items-center gap-2 sm:gap-3">
-                  <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-lg bg-gradient-to-br from-purple-600 to-purple-500 flex items-center justify-center flex-shrink-0">
-                    <Lightbulb className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
-                  </div>
-                  <h3 className="text-base sm:text-xl font-bold text-gray-900 dark:text-white">{t('ceoBioSection3Title')}</h3>
-                </div>
-                <p className="text-sm sm:text-base text-gray-700 dark:text-gray-300 leading-relaxed">
-                  {t('ceoBioSection3')}
-                </p>
-              </div>
-
-              {/* Section 4 */}
-              <div className="space-y-2 sm:space-y-3">
-                <div className="flex items-center gap-2 sm:gap-3">
-                  <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-lg bg-gradient-to-br from-accent to-accent-500 flex items-center justify-center flex-shrink-0">
-                    <Rocket className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
-                  </div>
-                  <h3 className="text-base sm:text-xl font-bold text-gray-900 dark:text-white">{t('ceoBioSection4Title')}</h3>
-                </div>
-                <p className="text-sm sm:text-base text-gray-700 dark:text-gray-300 leading-relaxed">
-                  {t('ceoBioSection4')}
-                </p>
-              </div>
+              ))}
 
               {/* Contact Button */}
-              <div className="pt-4 sm:pt-6 border-t border-gray-200 dark:border-gray-700">
+              <div className="pt-8 border-t border-gray-100 dark:border-gray-800">
                 <Button type="button"
+                  variant="brand"
+                  size="lg"
                   onClick={() => setShowCEOModal(false)}
-                  className="w-full bg-gradient-to-r from-primary to-accent hover:from-primary-700 hover:to-accent-600 active:scale-[0.98] text-white py-4 sm:py-6 text-base sm:text-lg shadow-lg transition-transform"
+                  className="w-full h-16 text-xl shadow-glow-primary hover:scale-105"
                 >
-                  <Mail className="w-4 h-4 sm:w-5 sm:h-5 mr-2" />
+                  <Mail className="w-6 h-6 mr-3" />
                   {t('contactCTA')}
                 </Button>
               </div>
-
-              {/* Mobile Safe Area */}
-              <div className="h-4 sm:hidden" />
             </div>
           </div>
         </div>

@@ -15,6 +15,9 @@ function createSafeRatelimit(opts: {
       prefix: opts.prefix,
     });
   } catch {
+    if (process.env.NODE_ENV === 'production') {
+      console.error(`[rate-limit] Redis/Upstash not configured — rate limiting disabled for "${opts.prefix}". Set UPSTASH_REDIS_REST_URL and UPSTASH_REDIS_REST_TOKEN.`);
+    }
     return null;
   }
 }
@@ -37,8 +40,11 @@ export const adminRatelimit = createSafeRatelimit({
   prefix: 'ratelimit:admin',
 });
 
-export async function checkRateLimit(req: Request, limiter: Ratelimit | null) {
+export async function checkRateLimit(req: Request, limiter: Ratelimit | null, failClosed = false) {
   if (!limiter) {
+    if (failClosed && process.env.NODE_ENV === 'production') {
+      return { success: false as const, limit: 0, remaining: 0, reset: Date.now() + 60000 };
+    }
     return { success: true as const, limit: 999, remaining: 999, reset: 0 };
   }
 
@@ -49,6 +55,9 @@ export async function checkRateLimit(req: Request, limiter: Ratelimit | null) {
   try {
     return await limiter.limit(ip);
   } catch {
+    if (failClosed && process.env.NODE_ENV === 'production') {
+      return { success: false as const, limit: 0, remaining: 0, reset: Date.now() + 60000 };
+    }
     return { success: true as const, limit: 999, remaining: 999, reset: 0 };
   }
 }

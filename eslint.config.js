@@ -90,7 +90,7 @@ export default [
     },
   },
   {
-    files: ['next.config.cpanel.js', 'scripts/*.js', 'scripts/*.mjs'],
+    files: ['next.config.cpanel.js', 'scripts/*.js'],
     rules: {
       'security/detect-non-literal-fs-operation': 'off',
       'security/detect-non-literal-require': 'off',
@@ -99,6 +99,16 @@ export default [
       'no-process-exit': 'off',
       'node/no-unpublished-require': 'off',
       'node/no-missing-require': 'off',
+    },
+  },
+  {
+    files: ['scripts/*.mjs'],
+    languageOptions: {
+      parser: tsParser,
+    },
+    rules: {
+      'no-console': 'off',
+      'no-process-exit': 'off',
     },
   },
   {

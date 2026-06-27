@@ -263,30 +263,29 @@ export function CookieBanner() {
             initial={{ y: 100, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             exit={{ y: 100, opacity: 0 }}
-            transition={{ duration: 0.3, ease: 'easeOut' }}
-            className="fixed inset-x-0 bottom-0 z-50 border-t border-gray-200 dark:border-gray-700 bg-white/95 dark:bg-gray-900/95 backdrop-blur supports-[backdrop-filter]:bg-white/80 dark:supports-[backdrop-filter]:bg-gray-900/80"
+            transition={{ duration: 0.5, type: 'spring', damping: 25 }}
+            className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 w-[calc(100%-2rem)] max-w-4xl glass dark:bg-gray-900/90 rounded-2xl shadow-2xl p-1"
             role="dialog"
             aria-label={t.banner.title}
           >
-            <div className="mx-auto flex max-w-7xl flex-col items-start gap-4 px-4 py-4 sm:flex-row sm:items-center sm:gap-6 sm:py-3">
-              <div className="flex shrink-0 items-center gap-3">
-                <span className="flex h-10 w-10 items-center justify-center rounded-full bg-primary-100 dark:bg-primary-900/50 text-primary dark:text-primary-300" aria-hidden="true">
-                  <Cookie className="h-5 w-5" />
-                </span>
-                <div className="hidden sm:block">
-                  <p className="text-sm font-semibold text-gray-900 dark:text-gray-100">{t.banner.title}</p>
-                  <p className="text-xs text-gray-600 dark:text-gray-400">{t.banner.description}</p>
+            <div className="flex flex-col items-start gap-4 px-6 py-5 sm:flex-row sm:items-center sm:gap-8 sm:py-4">
+              <div className="flex shrink-0 items-center gap-4">
+                <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-primary to-accent text-white shadow-lg" aria-hidden="true">
+                  <Cookie className="h-6 w-6" />
+                </div>
+                <div>
+                  <p className="text-base font-black text-gray-950 dark:text-white uppercase tracking-tight">{t.banner.title}</p>
+                  <p className="text-sm text-gray-600 dark:text-gray-400 font-medium">{t.banner.description}</p>
                 </div>
               </div>
-              <p className="text-xs text-gray-600 dark:text-gray-400 sm:hidden">{t.banner.description}</p>
-              <div className="flex shrink-0 flex-wrap items-center gap-2 sm:ml-auto">
-                <Button variant="ghost" size="sm" onClick={handleRejectAll}>
+              <div className="flex shrink-0 flex-wrap items-center gap-3 sm:ml-auto">
+                <Button variant="ghost" size="sm" onClick={handleRejectAll} className="font-bold">
                   {t.banner.rejectAll}
                 </Button>
-                <Button variant="outline" size="sm" onClick={openDialog}>
+                <Button variant="outline" size="sm" onClick={openDialog} className="font-bold glass">
                   {t.banner.customize}
                 </Button>
-                <Button variant="default" size="sm" onClick={handleAcceptAll}>
+                <Button variant="brand" size="sm" onClick={handleAcceptAll} className="font-bold px-6 shadow-glow-primary">
                   {t.banner.acceptAll}
                 </Button>
               </div>

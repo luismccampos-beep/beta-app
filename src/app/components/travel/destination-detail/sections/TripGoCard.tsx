@@ -18,15 +18,17 @@ export function TripGoCard({
   if (!endpoints) return null;
   return (
     <AnimatedSection>
-      <Card className="bg-white/70 dark:bg-gray-800/60 backdrop-blur-md border-violet-200/40 dark:border-violet-900/40 hover:shadow-lg transition-all duration-300">
+      <Card className="card-premium dark:bg-gray-900 group">
         <CardHeader>
-          <CardTitle className="flex items-center gap-2 text-lg dark:text-white">
-            <Bus className="h-5 w-5 text-violet-600 dark:text-violet-400" />
+          <CardTitle className="flex items-center gap-3 text-xl font-black text-gray-950 dark:text-white uppercase tracking-tighter italic">
+            <div className="p-2 rounded-lg bg-violet-500/10 text-violet-600 dark:text-violet-400">
+              <Bus className="h-5 w-5" />
+            </div>
             {t('tripgo.title')}
           </CardTitle>
         </CardHeader>
         <CardContent>
-          <p className="text-xs text-gray-500 dark:text-gray-400 mb-4">{t('tripgo.subtitle')}</p>
+          <p className="text-xs font-bold uppercase tracking-widest text-gray-500 dark:text-gray-400 mb-6">{t('tripgo.subtitle')}</p>
           <LocalRoutePanel {...endpoints} />
         </CardContent>
       </Card>

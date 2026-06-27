@@ -209,6 +209,7 @@ export async function middleware(request: NextRequest) {
   const session = await auth();
   const isAuthPage = pathname === '/auth';
   const isProtectedRoute = pathname.startsWith('/dashboard') || pathname.startsWith('/preferences');
+  const isAdminRoute = pathname.startsWith('/api/admin');
 
   if (isProtectedRoute && !session) {
     return NextResponse.redirect(new URL('/auth', request.url));
@@ -216,6 +217,13 @@ export async function middleware(request: NextRequest) {
 
   if (isAuthPage && session) {
     return NextResponse.redirect(new URL('/dashboard', request.url));
+  }
+
+  if (isAdminRoute && session?.user?.role !== 'admin') {
+    return NextResponse.json(
+      { ok: false, error: 'Forbidden', code: 'FORBIDDEN' },
+      { status: 403 }
+    );
   }
   
   // Skip static files and _next internal paths
@@ -234,7 +242,7 @@ export async function middleware(request: NextRequest) {
   if (pathname.startsWith('/api/')) {
     // Rate limiting for all API routes
     const { limiter, tier } = detectTier(request);
-    const result = await checkRateLimit(request, limiter);
+    const result = await checkRateLimit(request, limiter, tier === 'auth' || tier === 'admin');
 
     if (!result.success) {
       return NextResponse.json(

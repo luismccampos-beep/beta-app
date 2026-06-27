@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect, useMemo, useCallback } from 'react';
+import { motion } from 'framer-motion';
 import { Button } from '../ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '../ui/card';
 import { Badge } from '../ui/badge';
@@ -50,14 +51,16 @@ function isValidPhone(value: string) {
 }
 
 const SectionCard = ({ icon: Icon, title, children, className }: { icon: typeof User; title: string; children: React.ReactNode; className?: string }) => (
-  <Card className={cn('group overflow-hidden border-0 bg-white dark:bg-gray-800 shadow-md hover:shadow-lg ring-1 ring-gray-200/60 dark:ring-gray-700/60 transition-all duration-300', className)}>
-    <CardHeader className="pb-2 pt-4 px-5">
-      <CardTitle className="text-sm font-semibold text-gray-900 dark:text-white flex items-center gap-2">
-        <Icon className="h-4 w-4 text-primary dark:text-primary-300" />
+  <Card className={cn('card-premium dark:bg-gray-900 group', className)}>
+    <CardHeader className="pb-2 pt-6 px-6">
+      <CardTitle className="text-base font-black text-gray-950 dark:text-white flex items-center gap-3 uppercase tracking-tighter italic">
+        <div className="p-2 rounded-lg bg-primary/10 text-primary dark:text-primary-300">
+          <Icon className="h-5 w-5" />
+        </div>
         {title}
       </CardTitle>
     </CardHeader>
-    <CardContent className="px-5 pb-5 pt-1">{children}</CardContent>
+    <CardContent className="px-6 pb-6 pt-2">{children}</CardContent>
   </Card>
 );
 
@@ -305,18 +308,22 @@ export function ProfileTab() {
   };
 
   return (
-    <div>
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      className="space-y-8"
+    >
       {/* Completeness indicator */}
-      <div className="mb-6">
-        <div className="flex items-center justify-between gap-4 mb-3">
-          <h2 className="text-2xl font-bold text-gray-900 dark:text-white">{t('personalInfo')}</h2>
-          <div className="flex gap-2">
+      <div>
+        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-4">
+          <h2 className="text-4xl font-black text-gray-950 dark:text-white tracking-tighter uppercase italic">{t('personalInfo')}</h2>
+          <div className="flex gap-3">
             {isEditingProfile ? (
               <>
-                <Button variant="outline" size="sm" onClick={() => setIsEditingProfile(false)} className="gap-1.5 border-gray-200 dark:border-gray-600">
-                  <X className="w-3.5 h-3.5" />{t('cancel')}
+                <Button variant="outline" size="sm" onClick={() => setIsEditingProfile(false)} className="gap-2 font-bold glass">
+                  <X className="w-4 h-4" />{t('cancel')}
                 </Button>
-                <Button size="sm" onClick={async () => {
+                <Button variant="brand" size="sm" onClick={async () => {
                   setIsSavingProfile(true);
                   try {
                     const res = await fetch('/api/auth/me', { method: 'PUT', credentials: 'include', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ user: profileData }) });
@@ -325,25 +332,40 @@ export function ProfileTab() {
                     setIsEditingProfile(false);
                   } catch (err) { toast.error(err instanceof Error ? err.message : 'Failed to save'); }
                   finally { setIsSavingProfile(false); }
-                }} disabled={isSavingProfile || isLoadingProfile} className="gap-1.5 bg-gray-900 dark:bg-white dark:text-gray-900 hover:bg-gray-800 dark:hover:bg-gray-100 text-white">
-                  {isSavingProfile ? <><svg className="animate-spin h-3.5 w-3.5" viewBox="0 0 24 24"><circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none" /><path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" /></svg>{t('saving')}</> : <><Save className="w-3.5 h-3.5" />{t('saveProfile')}</>}
+                }} disabled={isSavingProfile || isLoadingProfile} className="gap-2 font-bold px-6 shadow-glow-primary">
+                  {isSavingProfile ? <><svg className="animate-spin h-4 w-4" viewBox="0 0 24 24"><circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none" /><path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" /></svg>{t('saving')}</> : <><Save className="w-4 h-4" />{t('saveProfile')}</>}
                 </Button>
               </>
             ) : (
-              <Button variant="outline" size="sm" onClick={() => setIsEditingProfile(true)} className="gap-1.5 border-gray-200 dark:border-gray-600 hover:bg-gray-50 dark:hover:bg-gray-700">
-                <Edit className="w-3.5 h-3.5" />{t('editProfile')}
+              <Button variant="outline" size="sm" onClick={() => setIsEditingProfile(true)} className="gap-2 font-bold glass">
+                <Edit className="w-4 h-4" />{t('editProfile')}
               </Button>
             )}
           </div>
         </div>
 
-        <div className="flex items-center gap-3" aria-live="polite" role="status">
-          <div className="flex-1 h-2 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden">
-            <div className={cn('h-full rounded-full transition-all duration-500', completenessBarColor)} style={{ width: `${completeness}%` }} />
+        <div className="bg-white/50 dark:bg-gray-900/50 backdrop-blur-sm border border-gray-100 dark:border-gray-800 p-4 rounded-2xl shadow-sm">
+          <div className="flex items-center gap-4 mb-2" aria-live="polite" role="status">
+            <span className={cn('text-2xl font-black tabular-nums tracking-tighter', completenessColor)}>{completeness}%</span>
+            <div className="flex-1 h-3 bg-gray-200 dark:bg-gray-800 rounded-full overflow-hidden shadow-inner">
+              <motion.div 
+                initial={{ width: 0 }}
+                animate={{ width: `${completeness}%` }}
+                className={cn('h-full rounded-full transition-all duration-500 shadow-lg', completenessBarColor)} 
+              />
+            </div>
           </div>
-          <span className={cn('text-sm font-semibold tabular-nums', completenessColor)}>{completeness}%</span>
-          {completeness < 100 && <span className="text-xs text-gray-400 dark:text-gray-500">{completeness >= 80 ? t('almostComplete') : t('completeYourProfile')}</span>}
-          {completeness === 100 && <span className="text-xs text-emerald-600 dark:text-emerald-400 flex items-center gap-1"><Check className="w-3 h-3" /> {t('complete')}</span>}
+          <div className="flex justify-between items-center">
+            {completeness < 100 ? (
+              <span className="text-xs font-bold uppercase tracking-widest text-gray-500 dark:text-gray-400">
+                {completeness >= 80 ? t('almostComplete') : t('completeYourProfile')}
+              </span>
+            ) : (
+              <span className="text-xs font-bold uppercase tracking-widest text-emerald-600 dark:text-emerald-400 flex items-center gap-1.5">
+                <Check className="w-3.5 h-3.5" /> {t('complete')}
+              </span>
+            )}
+          </div>
         </div>
       </div>
 
@@ -581,6 +603,6 @@ export function ProfileTab() {
           </SectionCard>
         </div>
       )}
-    </div>
+    </motion.div>
   );
 }

@@ -28,7 +28,7 @@ export async function getDestinationLocalized(
   if (base?.wikipediaUrl) {
     try {
       const match = base.wikipediaUrl.match(/\/\/(\w+)\.wikipedia\.org\/wiki\/(.+)/);
-      if (match) {
+      if (match && base.wikidataId) {
         const [, lang] = match;
         const wd = await fetch(
           `https://www.wikidata.org/wiki/Special:EntityData/${base.wikidataId}.json`,
@@ -36,7 +36,8 @@ export async function getDestinationLocalized(
         ).then(r => r.json()).catch(() => null);
 
         if (wd) {
-          const siteLinks = wd.entities?.[base.wikidataId]?.sitelinks;
+          const entities = (wd as Record<string, Record<string, { sitelinks?: Record<string, { title?: string }> }>>).entities;
+          const siteLinks = entities?.[base.wikidataId as string]?.sitelinks;
           const target = siteLinks?.[`${locale}wiki`]?.title;
           if (target) {
             const sum = await fetch(

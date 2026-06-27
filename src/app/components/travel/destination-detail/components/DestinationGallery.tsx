@@ -59,23 +59,25 @@ export function DestinationGallery({
 
   return (
     <>
-      <div className="space-y-3">
-        <h3 className="text-sm font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400 flex items-center gap-2">
-          <Camera className="h-4 w-4" />
+      <div className="space-y-6">
+        <h3 className="text-4xl font-black text-gray-950 dark:text-white uppercase tracking-tighter italic flex items-center gap-3">
+          <div className="p-2 rounded-lg bg-primary/10 text-primary dark:text-primary-300">
+            <Camera className="h-6 w-6" />
+          </div>
           {title}
         </h3>
-        <div className="flex gap-3 overflow-x-auto pb-2 snap-x snap-mandatory scrollbar-thin scrollbar-thumb-gray-300 dark:scrollbar-thumb-gray-700">
+        <div className="flex gap-4 overflow-x-auto pb-6 snap-x snap-mandatory scrollbar-thin scrollbar-thumb-gray-300 dark:scrollbar-thumb-gray-700">
           {images.map((url, i) => (
             <motion.button
               key={url}
-              whileHover={{ scale: 1.03 }}
-              whileTap={{ scale: 0.97 }}
+              whileHover={{ scale: 1.05, y: -4 }}
+              whileTap={{ scale: 0.95 }}
               onClick={() => {
                 setCurrentIndex(i);
                 setLightboxOpen(true);
               }}
               aria-label={`${title} ${i + 1} of ${images.length}`}
-              className="relative shrink-0 w-40 aspect-video rounded-xl overflow-hidden snap-start cursor-pointer ring-1 ring-gray-200/60 dark:ring-gray-700/60 hover:ring-primary dark:hover:ring-primary transition-all duration-200"
+              className="relative shrink-0 w-64 aspect-[16/10] rounded-2xl overflow-hidden snap-start cursor-pointer border border-gray-100 dark:border-gray-800 shadow-lg hover:shadow-2xl transition-all duration-500"
             >
               <Image
                 src={safeSrc(url)}

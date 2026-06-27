@@ -25,7 +25,7 @@ async function getCommonsCategory(wikidataId: string): Promise<string | null> {
   } catch { return null; }
 }
 
-async function getCategoryImages(commonsCat: string, limit = 10): Promise<any[]> {
+async function getCategoryImages(commonsCat: string, limit = 10): Promise<Array<{ title: string }>> {
   const cat = await fetch(
     `https://commons.wikimedia.org/w/api.php?` +
     new URLSearchParams({
@@ -40,8 +40,8 @@ async function getCategoryImages(commonsCat: string, limit = 10): Promise<any[]>
   ).then(r => r.json());
 
   return (cat.query?.categorymembers ?? [])
-    .filter((f: any) => /\.(jpe?g)$/i.test(f.title))
-    .filter((f: any) => !/(map|flag|coat|logo|icon|symbol)/i.test(f.title))
+    .filter((f: { title: string }) => /\.(jpe?g)$/i.test(f.title))
+    .filter((f: { title: string }) => !/(map|flag|coat|logo|icon|symbol)/i.test(f.title))
     .slice(0, limit);
 }
 
