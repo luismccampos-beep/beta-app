@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { auth } from '../../../../../auth';
 import { prisma } from '../../../../../lib/prisma';
+import type { Prisma } from '@prisma/client';
 
 export async function POST(request: NextRequest) {
   try {
@@ -35,9 +36,10 @@ export async function POST(request: NextRequest) {
         sessionId: sessionId ?? 'unknown',
         preferenceType,
         action,
-        newValue: JSON.parse(JSON.stringify(newValue ?? {})),
-        context: JSON.parse(JSON.stringify(context ?? {})),
-      } as Record<string, unknown>,
+        timestamp: new Date(),
+        newValue: JSON.parse(JSON.stringify(newValue ?? {})) as Prisma.InputJsonValue,
+        context: JSON.parse(JSON.stringify(context ?? {})) as Prisma.InputJsonValue,
+      },
     });
 
     return NextResponse.json({ success: true });
