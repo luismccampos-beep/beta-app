@@ -10,7 +10,7 @@ const QUICK_FACTS = (
   t: (key: string) => string,
 ) => [
   { icon: Globe, label: t('continent') ?? 'Continente', value: data.continente, accent: 'text-blue-600 dark:text-blue-400', bg: 'bg-blue-50/80 dark:bg-blue-950/30', border: 'border-blue-100 dark:border-blue-900/40' },
-  { icon: Thermometer, label: t('climate') ?? 'Clima', value: data.clima, accent: 'text-orange-600 dark:text-orange-400', bg: 'bg-orange-50/80 dark:bg-orange-950/30', border: 'border-orange-100 dark:border-orange-900/40' },
+  { icon: Thermometer, label: t('climate') ?? 'Clima', value: data.clima, accent: 'text-accent dark:text-accent-500', bg: 'bg-accent-50/80 dark:bg-accent-700/30', border: 'border-accent-100 dark:border-accent-700/40' },
   { icon: Languages, label: t('type') ?? 'Tipo', value: data.tipo, accent: 'text-violet-600 dark:text-violet-400', bg: 'bg-violet-50/80 dark:bg-violet-950/30', border: 'border-violet-100 dark:border-violet-900/40' },
   {
     icon: Banknote, label: t('budget') ?? 'Orçamento', value: (() => {

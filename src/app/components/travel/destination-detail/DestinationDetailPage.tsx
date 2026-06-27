@@ -30,6 +30,8 @@ import { LoadingSkeleton } from './components/SkeletonCard';
 import { AnimatedSection } from './components/AnimatedSection';
 import { fadeInUp, staggerContainer, fadeIn } from './constants/animations';
 import type { CompactTravelPreferences } from '../../../../lib/travel/preference-match';
+import type { DestinationTipsMap, TipSectionKey } from '../../../../lib/travel/destination-tips';
+import type { DestinationMapMarker } from '../../../../lib/travel/destination-map';
 
 export type DestinationDetailData = {
   slug: string;
@@ -140,8 +142,6 @@ type DestinationDetailPageProps = {
   onBackToResults?: () => void;
 };
 
-type TipSectionKey = string;
-
 export function DestinationDetailPage({
   slug,
   resultsSearchQuery = '',
@@ -187,14 +187,20 @@ export function DestinationDetailPage({
 
   const tipLabels = {
     panelTitle: t('tipsTitle'),
-    ...(Object.fromEntries(
-      ['seguranca', 'respeite', 'comunique', 'beba', 'dinheiro', 'saude', 'transporte', 'horarios', 'compre', 'clima']
-        .map((k) => [k, t(k)]),
-    ) as Record<string, string>),
+    seguranca: t('seguranca'),
+    respeite: t('respeite'),
+    comunique: t('comunique'),
+    beba: t('beba'),
+    dinheiro: t('dinheiro'),
+    saude: t('saude'),
+    transporte: t('transporte'),
+    horarios: t('horarios'),
+    compre: t('compre'),
+    clima: t('clima'),
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-teal-50/20 to-orange-50/30 dark:from-gray-950 dark:via-gray-900 dark:to-gray-950 transition-colors duration-500">
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-primary-50/20 to-accent-50/30 dark:from-gray-950 dark:via-gray-900 dark:to-gray-950 transition-colors duration-500">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
@@ -261,11 +267,11 @@ export function DestinationDetailPage({
         <motion.div variants={fadeIn} initial="hidden" whileInView="visible" viewport={{ once: true }}
           className="flex flex-wrap gap-2"
         >
-          {data.tags.map((tag, i) => (
+          {(data.tags ?? []).map((tag, i) => (
             <motion.span key={tag} initial={{ opacity: 0, scale: 0.8 }}
               whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ delay: i * 0.05 }}
             >
-              <Badge className="bg-teal-100/90 text-teal-900 dark:bg-teal-900/60 dark:text-teal-100 border-0 px-3 py-1 text-sm hover:bg-teal-200 dark:hover:bg-teal-800/80 transition-colors">{tag}</Badge>
+              <Badge className="bg-primary-100/90 text-primary-900 dark:bg-primary-900/60 dark:text-primary-100 border-0 px-3 py-1 text-sm hover:bg-primary-200 dark:hover:bg-primary-700/80 transition-colors">{tag}</Badge>
             </motion.span>
           ))}
         </motion.div>

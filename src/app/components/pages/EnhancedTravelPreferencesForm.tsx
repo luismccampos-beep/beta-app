@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import { useCallback, useEffect, useMemo, useState, useRef } from 'react';
 import { useRouter } from 'next/navigation';
@@ -36,7 +36,7 @@ import {
   normalizePreferenceOptionIds,
 } from '../../../lib/i18n/preferences-form-options';
 import { LanguageSwitcher } from '../../../components/LanguageSwitcher';
-import type { FilterOption } from '../../../types';
+type FilterOption = { name: string; count: number };
 
 import type { TravelCatalogResponse } from '../../../lib/api-client';
 import {
@@ -463,7 +463,7 @@ export function EnhancedTravelPreferencesForm({
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
-      className="w-full max-w-7xl mx-auto px-3 sm:px-4 md:px-6 pt-3 sm:pt-4 md:pt-6 pb-32 md:pb-6 space-y-4 sm:space-y-6 overflow-x-hidden"
+      className="w-full max-w-7xl mx-auto px-3 sm:px-4 md:px-6 pt-3 sm:pt-4 md:pt-6 pb-[max(8rem,env(safe-area-inset-bottom)+4rem)] md:pb-6 space-y-4 sm:space-y-6 overflow-x-hidden"
       noValidate
     >
       {/* ── Catalog error banner ──────────────────────────────── */}
@@ -493,19 +493,19 @@ export function EnhancedTravelPreferencesForm({
           {t('appSubtitle')}
         </p>
         <div className="flex items-center justify-center gap-2 sm:gap-3 flex-wrap px-1">
-          <Badge variant="outline" className="gap-1.5 py-1.5 px-3 border-teal-300 dark:border-teal-600 text-teal-700 dark:text-teal-300">
+          <Badge variant="outline" className="gap-1.5 py-1.5 px-3 border-primary-300 dark:border-primary text-primary dark:text-primary-200">
             <Sparkles className="w-3.5 h-3.5" /> {t('aiEnhanced')}
           </Badge>
-          <Badge variant="outline" className="gap-1.5 py-1.5 px-3 border-teal-300 dark:border-teal-600 text-teal-700 dark:text-teal-300">
+          <Badge variant="outline" className="gap-1.5 py-1.5 px-3 border-primary-300 dark:border-primary text-primary dark:text-primary-200">
             <Globe className="w-3.5 h-3.5" /> {t('multiCurrency')}
           </Badge>
-          <Badge variant="outline" className="gap-1.5 py-1.5 px-3 border-orange-300 dark:border-orange-600 text-orange-700 dark:text-orange-300">
+          <Badge variant="outline" className="gap-1.5 py-1.5 px-3 border-accent-300 dark:border-accent text-accent-700 dark:text-accent-200">
             <TrendingUp className="w-3.5 h-3.5" /> {t('predictiveAnalytics')}
           </Badge>
-          <Badge variant="outline" className="gap-1.5 py-1.5 px-3 border-orange-300 dark:border-orange-600 text-orange-700 dark:text-orange-300">
+          <Badge variant="outline" className="gap-1.5 py-1.5 px-3 border-accent-300 dark:border-accent text-accent-700 dark:text-accent-200">
             <Shield className="w-3.5 h-3.5" /> {t('enterpriseSecurity')}
           </Badge>
-          <Badge variant="outline" className="gap-1.5 py-1.5 px-3 border-teal-300 dark:border-teal-600 text-teal-700 dark:text-teal-300">
+          <Badge variant="outline" className="gap-1.5 py-1.5 px-3 border-primary-300 dark:border-primary text-primary dark:text-primary-200">
             <Zap className="w-3.5 h-3.5" /> {t('realTimeProcessing')}
           </Badge>
         </div>
@@ -530,7 +530,7 @@ export function EnhancedTravelPreferencesForm({
             <div className="flex justify-between items-start relative mb-2 px-2 sm:px-0">
               <div className="absolute top-5 left-6 right-6 h-1 bg-gray-200 dark:bg-gray-600 -z-10 rounded-full">
                 <div
-                  className="h-full bg-gradient-to-r from-teal-600 to-orange-500 transition-all duration-500 rounded-full"
+                  className="h-full bg-gradient-to-r from-primary to-accent transition-all duration-500 rounded-full"
                   style={{ width: `${progress}%` }}
                 />
               </div>
@@ -541,13 +541,14 @@ export function EnhancedTravelPreferencesForm({
                   <div
                     key={index}
                     className="flex flex-col items-center gap-2 flex-1"
+                    aria-current={isActive ? 'step' : undefined}
                   >
                     <div
                       className={`w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300 ${
                         isCompleted
                           ? 'bg-gradient-to-br from-green-500 to-emerald-600 text-white'
                           : isActive
-                            ? 'bg-gradient-to-br from-teal-600 to-orange-500 text-white scale-110'
+                            ? 'bg-gradient-to-br from-primary to-accent text-white scale-110'
                             : 'bg-gray-200 dark:bg-gray-600 text-gray-400 dark:text-gray-300'
                       }`}
                     >
@@ -560,7 +561,7 @@ export function EnhancedTravelPreferencesForm({
                     <span
                       className={`text-xs whitespace-nowrap ${
                         isActive
-                          ? 'font-semibold text-teal-700 dark:text-teal-300'
+                          ? 'font-semibold text-primary dark:text-primary-200'
                           : isCompleted
                             ? 'font-medium text-green-600 dark:text-green-400'
                             : 'text-gray-500 dark:text-gray-400'
@@ -584,7 +585,7 @@ export function EnhancedTravelPreferencesForm({
               <button
                 type="button"
                 onClick={goNext}
-                className="text-teal-600 hover:underline"
+                className="text-primary hover:underline"
               >
                 {t('skipThisStep')} →
               </button>
@@ -601,7 +602,7 @@ export function EnhancedTravelPreferencesForm({
             <div className="space-y-6">
               <div className="border-b pb-4">
                 <h3 className="text-xl sm:text-2xl font-bold mb-2 flex items-center gap-2">
-                  <MapPin className="w-6 h-6 text-teal-600" />
+                  <MapPin className="w-6 h-6 text-primary" />
                   {t('whereDoYouWantToGo')}
                 </h3>
                 <p className="text-sm text-gray-600 dark:text-gray-400">
@@ -617,7 +618,7 @@ export function EnhancedTravelPreferencesForm({
             <div className="space-y-6">
               <div className="border-b pb-4">
                 <h3 className="text-xl sm:text-2xl font-bold mb-2 flex items-center gap-2">
-                  <Wallet className="w-6 h-6 text-teal-600" />
+                  <Wallet className="w-6 h-6 text-primary" />
                   {t('whatsYourBudget')}
                 </h3>
                 <p className="text-sm text-gray-600 dark:text-gray-400">
@@ -643,8 +644,8 @@ export function EnhancedTravelPreferencesForm({
                         onClick={() => setValue('budgetRange', chip.range)}
                         className={`p-4 rounded-xl border-2 text-center transition-all touch-manipulation ${
                           selected
-                            ? 'border-teal-600 bg-teal-50 dark:bg-teal-900/30 shadow-md'
-                            : 'border-gray-200 dark:border-gray-600 bg-white dark:bg-gray-800 hover:border-teal-400'
+                            ? 'border-primary bg-primary-50 dark:bg-primary-900/30 shadow-md'
+                            : 'border-gray-200 dark:border-gray-600 bg-white dark:bg-gray-800 hover:border-primary'
                         }`}
                       >
                         <div className="text-2xl mb-1">{chip.emoji}</div>
@@ -670,7 +671,7 @@ export function EnhancedTravelPreferencesForm({
             <div className="space-y-6">
               <div className="border-b pb-4">
                 <h3 className="text-xl sm:text-2xl font-bold mb-2 flex items-center gap-2">
-                  <Sparkles className="w-6 h-6 text-orange-600" />
+                  <Sparkles className="w-6 h-6 text-accent" />
                   {t('readyToSeeResults')}
                 </h3>
                 <p className="text-sm text-gray-600 dark:text-gray-400">
@@ -680,7 +681,7 @@ export function EnhancedTravelPreferencesForm({
 
               {/* Summary cards */}
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                <Card className="border-teal-200 dark:border-teal-800 bg-teal-50/50 dark:bg-teal-900/20">
+                <Card className="border-primary-200 dark:border-primary-700 bg-primary-50/50 dark:bg-primary-900/20">
                   <CardContent className="pt-4">
                     <p className="text-xs text-gray-500 mb-1">{t('travelStyle')}</p>
                     <p className="font-semibold">
@@ -692,7 +693,7 @@ export function EnhancedTravelPreferencesForm({
                     </p>
                   </CardContent>
                 </Card>
-                <Card className="border-teal-200 dark:border-teal-800 bg-teal-50/50 dark:bg-teal-900/20">
+                <Card className="border-primary-200 dark:border-primary-700 bg-primary-50/50 dark:bg-primary-900/20">
                   <CardContent className="pt-4">
                     <p className="text-xs text-gray-500 mb-1">{t('destinations')}</p>
                     <p className="font-semibold">
@@ -705,7 +706,7 @@ export function EnhancedTravelPreferencesForm({
                     </p>
                   </CardContent>
                 </Card>
-                <Card className="border-teal-200 dark:border-teal-800 bg-teal-50/50 dark:bg-teal-900/20">
+                <Card className="border-primary-200 dark:border-primary-700 bg-primary-50/50 dark:bg-primary-900/20">
                   <CardContent className="pt-4">
                     <p className="text-xs text-gray-500 mb-1">{t('budget')}</p>
                     <p className="font-semibold">
@@ -719,25 +720,25 @@ export function EnhancedTravelPreferencesForm({
               </div>
 
               {/* AI Insights button */}
-              <div className="bg-gradient-to-r from-teal-50 to-orange-50 dark:from-teal-900/20 dark:to-orange-900/20 rounded-xl p-4 sm:p-6">
+              <div className="bg-gradient-to-r from-primary-50 to-accent-50 dark:from-primary-900/20 dark:to-accent-700/20 rounded-xl p-4 sm:p-6">
                 <div className="flex items-start gap-3">
-                  <Sparkles className="w-6 h-6 text-orange-600 mt-1 shrink-0" />
+                  <Sparkles className="w-6 h-6 text-accent mt-1 shrink-0" />
                   <div className="flex-1 min-w-0">
-                    <p className="font-semibold text-teal-900 dark:text-teal-200 mb-2">
+                    <p className="font-semibold text-primary-900 dark:text-primary-200 mb-2">
                       {t('aiInsightsTitle')}
                     </p>
                     {aiInsightsLoading ? (
-                      <p className="text-sm text-teal-700 dark:text-teal-300 animate-pulse">
+                      <p className="text-sm text-primary dark:text-primary-200 animate-pulse">
                         {t('generatingInsights')}…
                       </p>
                     ) : aiInsightsError ? (
                       <p className="text-sm text-red-600">{aiInsightsError}</p>
                     ) : aiInsightsText ? (
-                      <p className="text-sm text-teal-800 dark:text-teal-200 whitespace-pre-line">
+                      <p className="text-sm text-primary-700 dark:text-primary-200 whitespace-pre-line">
                         {aiInsightsText}
                       </p>
                     ) : (
-                      <p className="text-sm text-teal-700 dark:text-teal-300">
+                      <p className="text-sm text-primary dark:text-primary-200">
                         {t('aiInsightsHint')}
                       </p>
                     )}
@@ -885,7 +886,7 @@ export function EnhancedTravelPreferencesForm({
             type="button"
             onClick={goNext}
             size="lg"
-            className="gap-2 min-h-11 bg-gradient-to-r from-teal-600 to-orange-500 hover:from-teal-700 hover:to-orange-600"
+            className="gap-2 min-h-11 bg-gradient-to-r from-primary to-accent hover:from-primary-700 hover:to-accent-600"
           >
             {t('nextStep')} →
           </Button>
@@ -894,11 +895,11 @@ export function EnhancedTravelPreferencesForm({
             type="submit"
             disabled={isProcessing}
             size="lg"
-            className="gap-2 min-h-12 bg-gradient-to-r from-teal-600 to-orange-500 hover:from-teal-700 hover:to-orange-600"
+            className="gap-2 min-h-12 bg-gradient-to-r from-primary to-accent hover:from-primary-700 hover:to-accent-600"
           >
             {isProcessing ? (
               <>
-                <span className="animate-spin">✨</span>
+                <svg className="animate-spin h-4 w-4" viewBox="0 0 24 24" fill="none"><circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" /><path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" /></svg>
                 {t('preparingYourTrips')}
               </>
             ) : (
@@ -923,7 +924,7 @@ export function EnhancedTravelPreferencesForm({
               onClick={goNext}
               size="lg"
               type="button"
-              className="w-full min-h-12 gap-2 bg-gradient-to-r from-teal-600 to-orange-500 touch-manipulation"
+              className="w-full min-h-12 gap-2 bg-gradient-to-r from-primary to-accent touch-manipulation"
             >
               {t('nextStep')} →
             </Button>
@@ -932,11 +933,11 @@ export function EnhancedTravelPreferencesForm({
               type="submit"
               disabled={isProcessing}
               size="lg"
-              className="w-full min-h-12 gap-2 bg-gradient-to-r from-teal-600 to-orange-500 touch-manipulation"
+              className="w-full min-h-12 gap-2 bg-gradient-to-r from-primary to-accent touch-manipulation"
             >
               {isProcessing ? (
                 <>
-                  <span className="animate-spin">✨</span>
+                  <svg className="animate-spin h-4 w-4" viewBox="0 0 24 24" fill="none"><circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" /><path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" /></svg>
                   {t('preparingYourTrips')}
                 </>
               ) : (
@@ -967,7 +968,7 @@ export function EnhancedTravelPreferencesForm({
           <span>SOC 2 Certified</span>
         </div>
         <div className="flex items-center gap-2">
-          <Globe className="w-4 h-4 text-teal-700 dark:text-teal-300" />
+          <Globe className="w-4 h-4 text-primary dark:text-primary-200" />
           <span>GDPR Compliant</span>
         </div>
       </div>

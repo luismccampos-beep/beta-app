@@ -78,7 +78,9 @@ export function VideoPlayer({
         className="h-full w-full object-cover"
         onError={handleError}
         onEnded={handleEnded}
-      />
+      >
+        <track kind="captions" src="" label="Captions" />
+      </video>
 
       {controls && !hasError && (
         <div className="absolute inset-0 z-10 flex items-center justify-center">

@@ -81,8 +81,8 @@ export default function VerifyEmailPage() {
       case 'loading':
         return (
           <div className="text-center space-y-4">
-            <div className="w-16 h-16 mx-auto rounded-full bg-teal-100 dark:bg-teal-900/30 flex items-center justify-center">
-              <Loader2 className="w-8 h-8 text-teal-600 dark:text-teal-400 animate-spin" />
+            <div className="w-16 h-16 mx-auto rounded-full bg-primary-100 dark:bg-primary-900/30 flex items-center justify-center">
+              <Loader2 className="w-8 h-8 text-primary dark:text-primary-300 animate-spin" />
             </div>
             <h2 className="text-2xl font-bold text-gray-900 dark:text-white">
               Verifying your email...
@@ -108,7 +108,7 @@ export default function VerifyEmailPage() {
             </p>
             <Button
               onClick={() => router.push('/dashboard')}
-              className="bg-gradient-to-r from-teal-600 to-orange-500 hover:from-teal-700 hover:to-orange-600 text-white gap-2"
+              className="bg-gradient-to-r from-primary to-accent hover:from-primary-700 hover:to-accent-600 text-white gap-2"
             >
               Go to Dashboard
               <ArrowRight className="w-4 h-4" />
@@ -231,7 +231,7 @@ export default function VerifyEmailPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-teal-50 via-cyan-50 to-orange-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 transition-colors flex flex-col">
+    <div className="min-h-screen bg-gradient-to-br from-primary-50 via-cyan-50 to-accent-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 transition-colors flex flex-col">
       <AppHeader showBack={true} onBack={() => router.push('/')} />
 
       <div className="flex-1 flex items-center justify-center px-4 py-12">

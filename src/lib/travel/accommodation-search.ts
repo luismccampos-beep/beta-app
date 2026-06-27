@@ -225,7 +225,7 @@ export async function searchAccommodations(
             destino: { select: { nome: true, slug: true } },
           },
         })
-        .then((rows) => rows.map(wvHotelToUnified)),
+        .then((rows: any) => rows.map(wvHotelToUnified)),
     );
   }
 
@@ -255,7 +255,7 @@ export async function searchAccommodations(
             amenities: true,
           },
         })
-        .then((rows) => rows.map(hotelToUnified)),
+        .then((rows: any) => rows.map(hotelToUnified)),
     );
   }
 
@@ -287,7 +287,7 @@ export async function searchAccommodations(
             destination: { select: { id: true, name: true } },
           },
         })
-        .then((rows) => rows.map(accommodationToUnified)),
+        .then((rows: any) => rows.map(accommodationToUnified)),
     );
   }
 

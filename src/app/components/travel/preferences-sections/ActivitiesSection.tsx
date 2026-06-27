@@ -102,7 +102,7 @@ export function ActivitiesSection({
             );
           })}
         </div>
-        {errors.activityTypes && <p className="text-red-500 text-xs mt-1">{errors.activityTypes.message}</p>}
+        {errors.activityTypes && <p className="text-red-500 text-xs mt-1" role="alert">{errors.activityTypes.message}</p>}
       </div>
 
       <div className="space-y-3">
@@ -121,7 +121,7 @@ export function ActivitiesSection({
             </SelectContent>
           </Select>
         )} />
-        {errors.pacePreference && <p className="text-red-500 text-xs mt-1">{errors.pacePreference.message}</p>}
+        {errors.pacePreference && <p className="text-red-500 text-xs mt-1" role="alert">{errors.pacePreference.message}</p>}
       </div>
 
       <div className="space-y-3">
@@ -143,7 +143,7 @@ export function ActivitiesSection({
           ))}
         </div>
       </div>
-      {errors.experienceTypes && <p className="text-red-500 text-xs mt-1">{errors.experienceTypes.message}</p>}
+      {errors.experienceTypes && <p className="text-red-500 text-xs mt-1" role="alert">{errors.experienceTypes.message}</p>}
 
       <div className="space-y-3">
         <Label className="text-base font-semibold flex items-center gap-2">
@@ -174,7 +174,7 @@ export function ActivitiesSection({
                 className={`
                   p-3 rounded-lg border-2 transition-all text-sm font-medium touch-manipulation
                   ${isSelected
-                    ? 'border-teal-600 dark:border-teal-500 bg-teal-50 dark:bg-teal-900/30'
+                    ? 'border-primary dark:border-primary bg-primary-50 dark:bg-primary-900/30'
                     : 'border-gray-200 dark:border-gray-600 bg-white dark:bg-gray-800 hover:border-gray-300 dark:hover:border-gray-500'
                   }
                 `}
@@ -184,7 +184,7 @@ export function ActivitiesSection({
             );
           })}
         </div>
-        {errors.travelPurpose && <p className="text-red-500 text-xs mt-1">{errors.travelPurpose.message}</p>}
+        {errors.travelPurpose && <p className="text-red-500 text-xs mt-1" role="alert">{errors.travelPurpose.message}</p>}
       </div>
     </div>
   );

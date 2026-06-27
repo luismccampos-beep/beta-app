@@ -7,7 +7,7 @@ export function GDPRContent() {
   const content = {
     en: (
       <>
-        <div className="mb-8 p-6 bg-teal-50 dark:bg-teal-900/20 border-l-4 border-teal-600 rounded-lg">
+        <div className="mb-8 p-6 bg-primary-50 dark:bg-primary-900/20 border-l-4 border-primary rounded-lg">
           <p className="text-gray-800 dark:text-gray-200 leading-relaxed">
             AKMLEVA is committed to protecting your privacy and personal data in compliance with the General Data Protection Regulation (GDPR). This document explains how we collect, use, store, and protect your personal information.
           </p>
@@ -74,7 +74,7 @@ export function GDPRContent() {
         <h2>3. Processing Purposes</h2>
         <p>We process your personal data only for specific, explicit, and legitimate purposes in compliance with GDPR.</p>
         <div className="space-y-4 my-4">
-          <div className="p-4 border-l-4 border-teal-500 bg-teal-50 dark:bg-teal-900/20 rounded-r">
+          <div className="p-4 border-l-4 border-primary bg-primary-50 dark:bg-primary-900/20 rounded-r">
             <p className="font-semibold text-lg">Tourism Services</p>
             <p className="text-sm mt-1">Processing bookings, client communication, travel and tourism services.</p>
             <p className="text-xs mt-2 text-gray-600 dark:text-gray-400"><strong>Legal Basis:</strong> Contract execution</p>
@@ -89,7 +89,7 @@ export function GDPRContent() {
             <p className="text-sm mt-1">Tax, accounting, and regulatory compliance in tourism sector.</p>
             <p className="text-xs mt-2 text-gray-600 dark:text-gray-400"><strong>Legal Basis:</strong> Legal obligation</p>
           </div>
-          <div className="p-4 border-l-4 border-orange-500 bg-orange-50 dark:bg-orange-900/20 rounded-r">
+          <div className="p-4 border-l-4 border-accent bg-accent-50 dark:bg-accent-700/20 rounded-r">
             <p className="font-semibold text-lg">Legitimate Interests</p>
             <p className="text-sm mt-1">Service improvement, data analysis for customer experience optimization.</p>
             <p className="text-xs mt-2 text-gray-600 dark:text-gray-400"><strong>Legal Basis:</strong> Legitimate interest</p>
@@ -163,31 +163,31 @@ export function GDPRContent() {
         <p>We adopt adequate and updated technical and organizational measures to ensure a level of security proportional to the risk, in compliance with Article 32 of GDPR.</p>
         <ul className="space-y-2 my-4">
           <li className="flex items-start gap-2">
-            <CheckCircle2 className="w-4 h-4 text-teal-600 dark:text-teal-400 mt-0.5 flex-shrink-0" />
+            <CheckCircle2 className="w-4 h-4 text-primary dark:text-primary-300 mt-0.5 flex-shrink-0" />
             <span>Encryption of data in transit and at rest (SSL/TLS)</span>
           </li>
           <li className="flex items-start gap-2">
-            <CheckCircle2 className="w-4 h-4 text-teal-600 dark:text-teal-400 mt-0.5 flex-shrink-0" />
+            <CheckCircle2 className="w-4 h-4 text-primary dark:text-primary-300 mt-0.5 flex-shrink-0" />
             <span>Role-based access control and multi-factor authentication</span>
           </li>
           <li className="flex items-start gap-2">
-            <CheckCircle2 className="w-4 h-4 text-teal-600 dark:text-teal-400 mt-0.5 flex-shrink-0" />
+            <CheckCircle2 className="w-4 h-4 text-primary dark:text-primary-300 mt-0.5 flex-shrink-0" />
             <span>Continuous security monitoring and intrusion detection</span>
           </li>
           <li className="flex items-start gap-2">
-            <CheckCircle2 className="w-4 h-4 text-teal-600 dark:text-teal-400 mt-0.5 flex-shrink-0" />
+            <CheckCircle2 className="w-4 h-4 text-primary dark:text-primary-300 mt-0.5 flex-shrink-0" />
             <span>Regular employee training in data protection</span>
           </li>
           <li className="flex items-start gap-2">
-            <CheckCircle2 className="w-4 h-4 text-teal-600 dark:text-teal-400 mt-0.5 flex-shrink-0" />
+            <CheckCircle2 className="w-4 h-4 text-primary dark:text-primary-300 mt-0.5 flex-shrink-0" />
             <span>Periodic security audits and impact assessments</span>
           </li>
           <li className="flex items-start gap-2">
-            <CheckCircle2 className="w-4 h-4 text-teal-600 dark:text-teal-400 mt-0.5 flex-shrink-0" />
+            <CheckCircle2 className="w-4 h-4 text-primary dark:text-primary-300 mt-0.5 flex-shrink-0" />
             <span>Secure backup and disaster recovery plans</span>
           </li>
           <li className="flex items-start gap-2">
-            <CheckCircle2 className="w-4 h-4 text-teal-600 dark:text-teal-400 mt-0.5 flex-shrink-0" />
+            <CheckCircle2 className="w-4 h-4 text-primary dark:text-primary-300 mt-0.5 flex-shrink-0" />
             <span>Pseudonymization and data minimization whenever possible</span>
           </li>
         </ul>
@@ -215,7 +215,7 @@ export function GDPRContent() {
     ),
     pt: (
       <>
-        <div className="mb-8 p-6 bg-teal-50 dark:bg-teal-900/20 border-l-4 border-teal-600 rounded-lg">
+        <div className="mb-8 p-6 bg-primary-50 dark:bg-primary-900/20 border-l-4 border-primary rounded-lg">
           <p className="text-gray-800 dark:text-gray-200 leading-relaxed">
             A AKMLEVA está comprometida com a proteção da sua privacidade e dos seus dados pessoais, em conformidade com o Regulamento Geral sobre a Proteção de Dados (RGPD). Este documento explica como recolhemos, utilizamos, armazenamos e protegemos as suas informações pessoais.
           </p>
@@ -282,7 +282,7 @@ export function GDPRContent() {
         <h2>3. Finalidades do Tratamento de Dados</h2>
         <p>Tratamos os seus dados pessoais apenas para finalidades específicas, explícitas e legítimas, em conformidade com o Regulamento Geral de Proteção de Dados (RGPD).</p>
         <div className="space-y-4 my-4">
-          <div className="p-4 border-l-4 border-teal-500 bg-teal-50 dark:bg-teal-900/20 rounded-r">
+          <div className="p-4 border-l-4 border-primary bg-primary-50 dark:bg-primary-900/20 rounded-r">
             <p className="font-semibold text-lg">Prestação de Serviços Turísticos</p>
             <p className="text-sm mt-1">Processamento de reservas, comunicação com clientes, prestação de serviços de viagem e turismo.</p>
             <p className="text-xs mt-2 text-gray-600 dark:text-gray-400"><strong>Base Legal:</strong> Execução de contrato</p>
@@ -297,7 +297,7 @@ export function GDPRContent() {
             <p className="text-sm mt-1">Cumprimento de obrigações fiscais, contabilísticas e regulamentares do setor turístico.</p>
             <p className="text-xs mt-2 text-gray-600 dark:text-gray-400"><strong>Base Legal:</strong> Obrigação legal</p>
           </div>
-          <div className="p-4 border-l-4 border-orange-500 bg-orange-50 dark:bg-orange-900/20 rounded-r">
+          <div className="p-4 border-l-4 border-accent bg-accent-50 dark:bg-accent-700/20 rounded-r">
             <p className="font-semibold text-lg">Interesses Legítimos</p>
             <p className="text-sm mt-1">Melhoria dos nossos serviços, análise de dados para otimização da experiência do cliente.</p>
             <p className="text-xs mt-2 text-gray-600 dark:text-gray-400"><strong>Base Legal:</strong> Interesse legítimo</p>
@@ -371,31 +371,31 @@ export function GDPRContent() {
         <p>Adotamos medidas técnicas e organizacionais adequadas e atualizadas para garantir um nível de segurança proporcional ao risco, em conformidade com o artigo 32.º do RGPD.</p>
         <ul className="space-y-2 my-4">
           <li className="flex items-start gap-2">
-            <CheckCircle2 className="w-4 h-4 text-teal-600 dark:text-teal-400 mt-0.5 flex-shrink-0" />
+            <CheckCircle2 className="w-4 h-4 text-primary dark:text-primary-300 mt-0.5 flex-shrink-0" />
             <span>Encriptação de dados em trânsito e em repouso (SSL/TLS)</span>
           </li>
           <li className="flex items-start gap-2">
-            <CheckCircle2 className="w-4 h-4 text-teal-600 dark:text-teal-400 mt-0.5 flex-shrink-0" />
+            <CheckCircle2 className="w-4 h-4 text-primary dark:text-primary-300 mt-0.5 flex-shrink-0" />
             <span>Controlo de acesso baseado em funções e autenticação multi-fator</span>
           </li>
           <li className="flex items-start gap-2">
-            <CheckCircle2 className="w-4 h-4 text-teal-600 dark:text-teal-400 mt-0.5 flex-shrink-0" />
+            <CheckCircle2 className="w-4 h-4 text-primary dark:text-primary-300 mt-0.5 flex-shrink-0" />
             <span>Monitorização contínua de segurança e deteção de intrusões</span>
           </li>
           <li className="flex items-start gap-2">
-            <CheckCircle2 className="w-4 h-4 text-teal-600 dark:text-teal-400 mt-0.5 flex-shrink-0" />
+            <CheckCircle2 className="w-4 h-4 text-primary dark:text-primary-300 mt-0.5 flex-shrink-0" />
             <span>Formação regular dos colaboradores em proteção de dados</span>
           </li>
           <li className="flex items-start gap-2">
-            <CheckCircle2 className="w-4 h-4 text-teal-600 dark:text-teal-400 mt-0.5 flex-shrink-0" />
+            <CheckCircle2 className="w-4 h-4 text-primary dark:text-primary-300 mt-0.5 flex-shrink-0" />
             <span>Auditorias de segurança e avaliações de impacto periódicas</span>
           </li>
           <li className="flex items-start gap-2">
-            <CheckCircle2 className="w-4 h-4 text-teal-600 dark:text-teal-400 mt-0.5 flex-shrink-0" />
+            <CheckCircle2 className="w-4 h-4 text-primary dark:text-primary-300 mt-0.5 flex-shrink-0" />
             <span>Backup seguro e planos de recuperação de desastres</span>
           </li>
           <li className="flex items-start gap-2">
-            <CheckCircle2 className="w-4 h-4 text-teal-600 dark:text-teal-400 mt-0.5 flex-shrink-0" />
+            <CheckCircle2 className="w-4 h-4 text-primary dark:text-primary-300 mt-0.5 flex-shrink-0" />
             <span>Pseudonimização e minimização de dados sempre que possível</span>
           </li>
         </ul>
@@ -423,7 +423,7 @@ export function GDPRContent() {
     ),
     es: (
       <>
-        <div className="mb-8 p-6 bg-teal-50 dark:bg-teal-900/20 border-l-4 border-teal-600 rounded-lg">
+        <div className="mb-8 p-6 bg-primary-50 dark:bg-primary-900/20 border-l-4 border-primary rounded-lg">
           <p className="text-gray-800 dark:text-gray-200 leading-relaxed">
             AKMLEVA está comprometida con la protección de su privacidad y datos personales en cumplimiento del Reglamento General de Protección de Datos (RGPD). Este documento explica cómo recopilamos, utilizamos, almacenamos y protegemos su información personal.
           </p>
@@ -490,7 +490,7 @@ export function GDPRContent() {
         <h2>3. Finalidades del Tratamiento</h2>
         <p>Tratamos sus datos personales solo para fines específicos, explícitos y legítimos en cumplimiento del RGPD.</p>
         <div className="space-y-4 my-4">
-          <div className="p-4 border-l-4 border-teal-500 bg-teal-50 dark:bg-teal-900/20 rounded-r">
+          <div className="p-4 border-l-4 border-primary bg-primary-50 dark:bg-primary-900/20 rounded-r">
             <p className="font-semibold text-lg">Servicios Turísticos</p>
             <p className="text-sm mt-1">Procesamiento de reservas, comunicación con clientes, prestación de servicios de viaje y turismo.</p>
             <p className="text-xs mt-2 text-gray-600 dark:text-gray-400"><strong>Base Legal:</strong> Ejecución de contrato</p>
@@ -505,7 +505,7 @@ export function GDPRContent() {
             <p className="text-sm mt-1">Cumplimiento de obligaciones fiscales, contables y regulatorias del sector turístico.</p>
             <p className="text-xs mt-2 text-gray-600 dark:text-gray-400"><strong>Base Legal:</strong> Obligación legal</p>
           </div>
-          <div className="p-4 border-l-4 border-orange-500 bg-orange-50 dark:bg-orange-900/20 rounded-r">
+          <div className="p-4 border-l-4 border-accent bg-accent-50 dark:bg-accent-700/20 rounded-r">
             <p className="font-semibold text-lg">Intereses Legítimos</p>
             <p className="text-sm mt-1">Mejora de nuestros servicios, análisis de datos para optimización de la experiencia del cliente.</p>
             <p className="text-xs mt-2 text-gray-600 dark:text-gray-400"><strong>Base Legal:</strong> Interés legítimo</p>
@@ -579,31 +579,31 @@ export function GDPRContent() {
         <p>Adoptamos medidas técnicas y organizativas adecuadas y actualizadas para garantizar un nivel de seguridad proporcional al riesgo, en cumplimiento del artículo 32 del RGPD.</p>
         <ul className="space-y-2 my-4">
           <li className="flex items-start gap-2">
-            <CheckCircle2 className="w-4 h-4 text-teal-600 dark:text-teal-400 mt-0.5 flex-shrink-0" />
+            <CheckCircle2 className="w-4 h-4 text-primary dark:text-primary-300 mt-0.5 flex-shrink-0" />
             <span>Cifrado de datos en tránsito y en reposo (SSL/TLS)</span>
           </li>
           <li className="flex items-start gap-2">
-            <CheckCircle2 className="w-4 h-4 text-teal-600 dark:text-teal-400 mt-0.5 flex-shrink-0" />
+            <CheckCircle2 className="w-4 h-4 text-primary dark:text-primary-300 mt-0.5 flex-shrink-0" />
             <span>Control de acceso basado en roles y autenticación multifactor</span>
           </li>
           <li className="flex items-start gap-2">
-            <CheckCircle2 className="w-4 h-4 text-teal-600 dark:text-teal-400 mt-0.5 flex-shrink-0" />
+            <CheckCircle2 className="w-4 h-4 text-primary dark:text-primary-300 mt-0.5 flex-shrink-0" />
             <span>Monitorización continua de seguridad y detección de intrusiones</span>
           </li>
           <li className="flex items-start gap-2">
-            <CheckCircle2 className="w-4 h-4 text-teal-600 dark:text-teal-400 mt-0.5 flex-shrink-0" />
+            <CheckCircle2 className="w-4 h-4 text-primary dark:text-primary-300 mt-0.5 flex-shrink-0" />
             <span>Formación regular de empleados en protección de datos</span>
           </li>
           <li className="flex items-start gap-2">
-            <CheckCircle2 className="w-4 h-4 text-teal-600 dark:text-teal-400 mt-0.5 flex-shrink-0" />
+            <CheckCircle2 className="w-4 h-4 text-primary dark:text-primary-300 mt-0.5 flex-shrink-0" />
             <span>Auditorías de seguridad y evaluaciones de impacto periódicas</span>
           </li>
           <li className="flex items-start gap-2">
-            <CheckCircle2 className="w-4 h-4 text-teal-600 dark:text-teal-400 mt-0.5 flex-shrink-0" />
+            <CheckCircle2 className="w-4 h-4 text-primary dark:text-primary-300 mt-0.5 flex-shrink-0" />
             <span>Copia de seguridad segura y planes de recuperación ante desastres</span>
           </li>
           <li className="flex items-start gap-2">
-            <CheckCircle2 className="w-4 h-4 text-teal-600 dark:text-teal-400 mt-0.5 flex-shrink-0" />
+            <CheckCircle2 className="w-4 h-4 text-primary dark:text-primary-300 mt-0.5 flex-shrink-0" />
             <span>Seudonimización y minimización de datos siempre que sea posible</span>
           </li>
         </ul>
@@ -630,7 +630,7 @@ export function GDPRContent() {
     ),
     fr: (
       <>
-        <div className="mb-8 p-6 bg-teal-50 dark:bg-teal-900/20 border-l-4 border-teal-600 rounded-lg">
+        <div className="mb-8 p-6 bg-primary-50 dark:bg-primary-900/20 border-l-4 border-primary rounded-lg">
           <p className="text-gray-800 dark:text-gray-200 leading-relaxed">
             AKMLEVA s'engage à protéger votre vie privée et vos données personnelles conformément au Règlement Général sur la Protection des Données (RGPD). Ce document explique comment nous collectons, utilisons, stockons et protégeons vos informations personnelles.
           </p>
@@ -697,7 +697,7 @@ export function GDPRContent() {
         <h2>3. Finalités du Traitement</h2>
         <p>Nous traitons vos données personnelles uniquement à des fins spécifiques, explicites et légitimes conformément au RGPD.</p>
         <div className="space-y-4 my-4">
-          <div className="p-4 border-l-4 border-teal-500 bg-teal-50 dark:bg-teal-900/20 rounded-r">
+          <div className="p-4 border-l-4 border-primary bg-primary-50 dark:bg-primary-900/20 rounded-r">
             <p className="font-semibold text-lg">Services Touristiques</p>
             <p className="text-sm mt-1">Traitement des réservations, communication avec les clients, prestation de services de voyage et de tourisme.</p>
             <p className="text-xs mt-2 text-gray-600 dark:text-gray-400"><strong>Base Légale:</strong> Exécution du contrat</p>
@@ -712,7 +712,7 @@ export function GDPRContent() {
             <p className="text-sm mt-1">Respect des obligations fiscales, comptables et réglementaires du secteur touristique.</p>
             <p className="text-xs mt-2 text-gray-600 dark:text-gray-400"><strong>Base Légale:</strong> Obligation légale</p>
           </div>
-          <div className="p-4 border-l-4 border-orange-500 bg-orange-50 dark:bg-orange-900/20 rounded-r">
+          <div className="p-4 border-l-4 border-accent bg-accent-50 dark:bg-accent-700/20 rounded-r">
             <p className="font-semibold text-lg">Intérêts Légitimes</p>
             <p className="text-sm mt-1">Amélioration de nos services, analyse de données pour l'optimisation de l'expérience client.</p>
             <p className="text-xs mt-2 text-gray-600 dark:text-gray-400"><strong>Base Légale:</strong> Intérêt légitime</p>
@@ -786,31 +786,31 @@ export function GDPRContent() {
         <p>Nous adoptons des mesures techniques et organisationnelles appropriées et actualisées pour garantir un niveau de sécurité proportionné au risque, conformément à l'article 32 du RGPD.</p>
         <ul className="space-y-2 my-4">
           <li className="flex items-start gap-2">
-            <CheckCircle2 className="w-4 h-4 text-teal-600 dark:text-teal-400 mt-0.5 flex-shrink-0" />
+            <CheckCircle2 className="w-4 h-4 text-primary dark:text-primary-300 mt-0.5 flex-shrink-0" />
             <span>Chiffrement des données en transit et au repos (SSL/TLS)</span>
           </li>
           <li className="flex items-start gap-2">
-            <CheckCircle2 className="w-4 h-4 text-teal-600 dark:text-teal-400 mt-0.5 flex-shrink-0" />
+            <CheckCircle2 className="w-4 h-4 text-primary dark:text-primary-300 mt-0.5 flex-shrink-0" />
             <span>Contrôle d'accès basé sur les rôles et authentification multifacteur</span>
           </li>
           <li className="flex items-start gap-2">
-            <CheckCircle2 className="w-4 h-4 text-teal-600 dark:text-teal-400 mt-0.5 flex-shrink-0" />
+            <CheckCircle2 className="w-4 h-4 text-primary dark:text-primary-300 mt-0.5 flex-shrink-0" />
             <span>Surveillance continue de la sécurité et détection d'intrusions</span>
           </li>
           <li className="flex items-start gap-2">
-            <CheckCircle2 className="w-4 h-4 text-teal-600 dark:text-teal-400 mt-0.5 flex-shrink-0" />
+            <CheckCircle2 className="w-4 h-4 text-primary dark:text-primary-300 mt-0.5 flex-shrink-0" />
             <span>Formation régulière des employés à la protection des données</span>
           </li>
           <li className="flex items-start gap-2">
-            <CheckCircle2 className="w-4 h-4 text-teal-600 dark:text-teal-400 mt-0.5 flex-shrink-0" />
+            <CheckCircle2 className="w-4 h-4 text-primary dark:text-primary-300 mt-0.5 flex-shrink-0" />
             <span>Audits de sécurité et analyses d'impact périodiques</span>
           </li>
           <li className="flex items-start gap-2">
-            <CheckCircle2 className="w-4 h-4 text-teal-600 dark:text-teal-400 mt-0.5 flex-shrink-0" />
+            <CheckCircle2 className="w-4 h-4 text-primary dark:text-primary-300 mt-0.5 flex-shrink-0" />
             <span>Sauvegarde sécurisée et plans de reprise après sinistre</span>
           </li>
           <li className="flex items-start gap-2">
-            <CheckCircle2 className="w-4 h-4 text-teal-600 dark:text-teal-400 mt-0.5 flex-shrink-0" />
+            <CheckCircle2 className="w-4 h-4 text-primary dark:text-primary-300 mt-0.5 flex-shrink-0" />
             <span>Pseudonymisation et minimisation des données chaque fois que possible</span>
           </li>
         </ul>

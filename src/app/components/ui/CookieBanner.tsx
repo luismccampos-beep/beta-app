@@ -267,11 +267,10 @@ export function CookieBanner() {
             className="fixed inset-x-0 bottom-0 z-50 border-t border-gray-200 dark:border-gray-700 bg-white/95 dark:bg-gray-900/95 backdrop-blur supports-[backdrop-filter]:bg-white/80 dark:supports-[backdrop-filter]:bg-gray-900/80"
             role="dialog"
             aria-label={t.banner.title}
-            aria-live="polite"
           >
             <div className="mx-auto flex max-w-7xl flex-col items-start gap-4 px-4 py-4 sm:flex-row sm:items-center sm:gap-6 sm:py-3">
               <div className="flex shrink-0 items-center gap-3">
-                <span className="flex h-10 w-10 items-center justify-center rounded-full bg-teal-100 dark:bg-teal-900/50 text-teal-600 dark:text-teal-400" aria-hidden="true">
+                <span className="flex h-10 w-10 items-center justify-center rounded-full bg-primary-100 dark:bg-primary-900/50 text-primary dark:text-primary-300" aria-hidden="true">
                   <Cookie className="h-5 w-5" />
                 </span>
                 <div className="hidden sm:block">
@@ -309,13 +308,13 @@ export function CookieBanner() {
                 key={key}
                 className={cn(
                   'flex items-center justify-between rounded-lg border border-gray-200 dark:border-gray-700 p-3 transition-colors',
-                  prefs[key] ? 'bg-teal-50 dark:bg-teal-950/30 border-teal-200 dark:border-teal-800' : 'bg-gray-50 dark:bg-gray-800/50'
+                  prefs[key] ? 'bg-primary-50 dark:bg-primary-900/30 border-primary-200 dark:border-primary-700' : 'bg-gray-50 dark:bg-gray-800/50'
                 )}
               >
                 <div className="flex items-center gap-3">
                   <span className={cn(
                     'flex h-8 w-8 items-center justify-center rounded-full',
-                    prefs[key] ? 'bg-teal-100 dark:bg-teal-900/50 text-teal-600 dark:text-teal-400' : 'bg-gray-200 dark:bg-gray-700 text-gray-500 dark:text-gray-400'
+                    prefs[key] ? 'bg-primary-100 dark:bg-primary-900/50 text-primary dark:text-primary-300' : 'bg-gray-200 dark:bg-gray-700 text-gray-500 dark:text-gray-400'
                   )}>
                     <Icon className="h-4 w-4" />
                   </span>

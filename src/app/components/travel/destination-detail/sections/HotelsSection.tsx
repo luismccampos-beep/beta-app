@@ -9,11 +9,11 @@ import { fadeInUp, staggerContainer } from '../constants/animations';
 import type { DestinationDetailData } from '../DestinationDetailPage';
 
 export function HotelsSection({
-  hotels,
+  hotels = [],
   hotelTypes,
   t,
 }: {
-  hotels: DestinationDetailData['hotels'];
+  hotels?: DestinationDetailData['hotels'];
   hotelTypes: DestinationDetailData['hotelTypes'];
   t: (key: string) => string;
 }) {
@@ -21,7 +21,7 @@ export function HotelsSection({
   return (
     <motion.div variants={staggerContainer} initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-80px' }}>
       <h2 className="text-xl font-bold mb-4 flex items-center gap-2 dark:text-white">
-        <Hotel className="h-5 w-5 text-teal-600 dark:text-teal-400" />
+        <Hotel className="h-5 w-5 text-primary dark:text-primary-300" />
         {t('hotels')}
       </h2>
       {hotelTypes && Object.keys(hotelTypes).length > 0 && (
@@ -37,7 +37,7 @@ export function HotelsSection({
       <div className="grid sm:grid-cols-2 gap-4">
         {hotels.map((h) => (
           <motion.div key={h.id} variants={fadeInUp} whileHover={{ y: -2 }} className="h-full">
-            <Card className="bg-white/70 dark:bg-gray-800/60 backdrop-blur-sm hover:shadow-md hover:border-teal-200/50 dark:hover:border-teal-700/50 transition-all duration-200 h-full">
+            <Card className="bg-white/70 dark:bg-gray-800/60 backdrop-blur-sm hover:shadow-md hover:border-primary-200/50 dark:hover:border-primary-700/50 transition-all duration-200 h-full">
               <CardContent className="pt-4">
                 <p className="font-semibold dark:text-white">{h.nome}</p>
                 <p className="text-sm text-gray-500 dark:text-gray-400 mt-1 flex items-center gap-1">

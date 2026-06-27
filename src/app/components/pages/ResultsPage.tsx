@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import { useState, useEffect, useMemo, useCallback } from 'react';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
@@ -28,15 +28,8 @@ import { motion } from 'framer-motion';
 import { AppHeader } from '../AppHeader';
 import { AppFooter } from '../AppFooter';
 
-const fadeInUp = {
-  hidden: { opacity: 0, y: 30 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] } },
-};
-
-const staggerContainer = {
-  hidden: { opacity: 0 },
-  visible: { opacity: 1, transition: { staggerChildren: 0.08, delayChildren: 0.1 } },
-};
+import { fadeInUp, staggerContainer } from '../travel/destination-detail/constants/animations';
+import { EmptyState } from '../ui/EmptyState';
 import { filterOptions, TravelResult } from '../data/mockResults';
 import { DestinationResultCard } from '../travel/DestinationResultCard';
 import { DestinationAirportBadge } from '../travel/DestinationAirportBadge';
@@ -217,15 +210,15 @@ export function ResultsPage({ onLogout, onNavigateToDashboard }: ResultsPageProp
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 via-teal-50 to-orange-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 transition-colors">
+    <div className="min-h-screen bg-gradient-to-br from-gray-50 via-primary-50 to-accent-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 transition-colors">
       <AppHeader showLogout onLogout={onLogout} showDashboard={!!onNavigateToDashboard} onDashboard={onNavigateToDashboard} />
 
       <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-6 sm:py-12 overflow-x-hidden">
         {/* Hero Section */}
         <div className="text-center space-y-3 sm:space-y-4 mb-6 sm:mb-8">
-          <div className="inline-flex items-center gap-2 bg-white dark:bg-gray-800 border border-teal-200 dark:border-gray-600 rounded-full px-4 py-2 shadow-sm">
-            <Sparkles className="w-4 h-4 text-orange-500 animate-pulse" />
-            <span className="text-sm font-medium text-teal-900 dark:text-teal-300">{t('aiPoweredResults')}</span>
+          <div className="inline-flex items-center gap-2 bg-white dark:bg-gray-800 border border-primary-200 dark:border-gray-600 rounded-full px-4 py-2 shadow-sm">
+            <Sparkles className="w-4 h-4 text-accent animate-pulse" />
+            <span className="text-sm font-medium text-primary-900 dark:text-primary-200">{t('aiPoweredResults')}</span>
           </div>
           <h1 className="text-2xl sm:text-4xl md:text-5xl font-bold text-gray-900 dark:text-white leading-tight px-1">
             {t('title')}
@@ -249,7 +242,7 @@ export function ResultsPage({ onLogout, onNavigateToDashboard }: ResultsPageProp
           enabled={!isCruiseMode && !!travelPrefs}
         />
 
-        <Card className="mb-8 border-2 border-teal-100 dark:border-gray-700 dark:bg-gray-800/90 shadow-md">
+        <Card className="mb-8 border-2 border-primary-100 dark:border-gray-700 dark:bg-gray-800/90 shadow-md">
           <CardHeader className="pb-2">
             <CardTitle className="text-lg dark:text-white">{t('searchOptionsTitle')}</CardTitle>
             <CardDescription>{t('searchOptionsDesc')}</CardDescription>
@@ -299,22 +292,22 @@ export function ResultsPage({ onLogout, onNavigateToDashboard }: ResultsPageProp
           {/* Filters sidebar */}
           <div className="w-full lg:w-72 shrink-0">
             <div className="flex flex-wrap gap-2 mb-4">
-              <Button variant="outline" onClick={() => setShowFilters(!showFilters)} className="gap-2 lg:hidden dark:border-gray-600 dark:text-gray-300">
+              <Button type="button" variant="outline" onClick={() => setShowFilters(!showFilters)} className="gap-2 lg:hidden dark:border-gray-600 dark:text-gray-300">
                 <SlidersHorizontal className="w-4 h-4" />
                 {t('filters')}
                 {(selectedContinent !== 'All' || sustainableOnly || selectedDuration !== 'all') && (
-                  <Badge className="ml-1 bg-teal-600">
+                  <Badge className="ml-1 bg-primary">
                     {[selectedContinent !== 'All', sustainableOnly, selectedDuration !== 'all'].filter(Boolean).length}
                   </Badge>
                 )}
               </Button>
-              <Button variant="ghost" onClick={clearFilters} className="gap-2 text-red-600 dark:text-red-400">
+              <Button type="button" variant="ghost" onClick={clearFilters} className="gap-2 text-red-600 dark:text-red-400">
                 <X className="w-4 h-4" />
                 {t('clearAll')}
               </Button>
             </div>
             {showFilters && (
-              <Card className="border-2 border-teal-200 dark:border-gray-700 dark:bg-gray-800">
+              <Card className="border-2 border-primary-200 dark:border-gray-700 dark:bg-gray-800">
                 <CardContent className="pt-6">
                   <div className="space-y-6">
                     <div className="space-y-2">
@@ -346,7 +339,7 @@ export function ResultsPage({ onLogout, onNavigateToDashboard }: ResultsPageProp
                     </div>
                     <div className="space-y-2">
                       <label className="text-sm font-semibold dark:text-gray-200">{t('sustainableOnly')}</label>
-                      <button onClick={() => setSustainableOnly(!sustainableOnly)}
+                      <button type="button" onClick={() => setSustainableOnly(!sustainableOnly)}
                         className={`w-full h-10 rounded-md border-2 flex items-center justify-center gap-2 ${sustainableOnly ? 'border-green-600 bg-green-50 dark:bg-green-900/20 text-green-900' : 'border-gray-300 dark:border-gray-600 hover:border-green-400'}`}>
                         <Leaf className="w-4 h-4" />{sustainableOnly && <Check className="w-4 h-4" />}
                       </button>
@@ -360,7 +353,7 @@ export function ResultsPage({ onLogout, onNavigateToDashboard }: ResultsPageProp
           {/* Results area */}
           <div className="flex-1 min-w-0">
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4">
-              <div className="flex items-center gap-2">
+              <div className="flex items-center gap-2" aria-live="polite">
                 <Search className="w-4 h-4 text-gray-500" />
                 <span className="text-sm text-gray-600 dark:text-gray-400">
                   <span className="font-semibold">{resultsLoading ? '…' : filteredResults.length}</span> {t('resultsFound')}
@@ -381,7 +374,7 @@ export function ResultsPage({ onLogout, onNavigateToDashboard }: ResultsPageProp
               </div>
             </div>
 
-            <div id="live-offers" className="mb-4 scroll-mt-24 pt-2 border-t border-teal-100/80 dark:border-gray-700/80">
+            <div id="live-offers" className="mb-4 scroll-mt-24 pt-2 border-t border-primary-100/80 dark:border-gray-700/80">
               <h2 className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white">{t('liveOffersTitle')}</h2>
               <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-400 mt-1">{t('liveOffersSubtitle')}</p>
             </div>
@@ -450,7 +443,7 @@ export function ResultsPage({ onLogout, onNavigateToDashboard }: ResultsPageProp
                         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
                         <div className="absolute top-3 right-3">
                           <Badge className="border-0 bg-black/60 backdrop-blur-sm text-white text-xs shadow-sm" title={t('matchExplain')}>
-                            <Sparkles className="mr-1 h-3 w-3 text-orange-400" />{result.aiMatchScore}% {t('aiMatch')}
+                            <Sparkles className="mr-1 h-3 w-3 text-accent-500" />{result.aiMatchScore}% {t('aiMatch')}
                           </Badge>
                         </div>
                         {result.sustainable && (
@@ -483,7 +476,7 @@ export function ResultsPage({ onLogout, onNavigateToDashboard }: ResultsPageProp
                               <span className="ml-1 text-xs font-normal text-gray-400 dark:text-gray-500">{t('perPerson')}</span>
                             </p>
                           </div>
-                          <span className="text-xs text-teal-600 dark:text-teal-400 font-medium">
+                          <span className="text-xs text-primary dark:text-primary-300 font-medium">
                             {t('viewDestination')} →
                           </span>
                         </div>
@@ -498,10 +491,12 @@ export function ResultsPage({ onLogout, onNavigateToDashboard }: ResultsPageProp
             {/* Empty state */}
             {!resultsLoading && filteredResults.length === 0 && (
               <Card className="p-12 text-center dark:bg-gray-800 dark:border-gray-700">
-                <Globe className="w-16 h-16 text-gray-400 mx-auto mb-4" />
-                <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">{t('noResults')}</h3>
-                <p className="text-gray-600 dark:text-gray-400 mb-4">{t('noResultsDesc')}</p>
-                <Button onClick={clearFilters} className="bg-gradient-to-r from-teal-600 to-orange-500">{t('clearFilters')}</Button>
+                <EmptyState
+                  icon={Globe}
+                  title={t('noResults')}
+                  description={t('noResultsDesc')}
+                  action={<Button type="button" onClick={clearFilters} className="bg-gradient-to-r from-primary to-accent">{t('clearFilters')}</Button>}
+                />
               </Card>
             )}
           </div>

@@ -1,23 +1,21 @@
+import React from 'react';
 import '@testing-library/jest-dom';
-import { vi } from 'vitest';
+import { vi, beforeEach } from 'vitest';
 
-// Map jest to vi for compatibility with Vitest
-// @ts-ignore
-globalThis.jest = vi;
-const mockPush = jest.fn();
-const mockReplace = jest.fn();
-const mockBack = jest.fn();
-const mockForward = jest.fn();
-const mockRefresh = jest.fn();
+const mockPush = vi.fn();
+const mockReplace = vi.fn();
+const mockBack = vi.fn();
+const mockForward = vi.fn();
+const mockRefresh = vi.fn();
 
-jest.mock('next/navigation', () => ({
+vi.mock('next/navigation', () => ({
   useRouter: () => ({
     push: mockPush,
     replace: mockReplace,
     back: mockBack,
     forward: mockForward,
     refresh: mockRefresh,
-    prefetch: jest.fn(),
+    prefetch: vi.fn(),
   }),
   usePathname: () => '/',
   useSearchParams: () => new URLSearchParams(),
@@ -25,16 +23,14 @@ jest.mock('next/navigation', () => ({
   useSegments: () => [],
 }));
 
-// Mock do next-auth
-jest.mock('next-auth/react', () => ({
+vi.mock('next-auth/react', () => ({
   useSession: () => ({ data: null, status: 'unauthenticated' }),
   getSession: () => Promise.resolve(null),
-  signIn: jest.fn(),
-  signOut: jest.fn(),
+  signIn: vi.fn(),
+  signOut: vi.fn(),
 }));
 
-// Mock do next-intl
-jest.mock('next-intl', () => ({
+vi.mock('next-intl', () => ({
   useTranslations: () => (key: string) => key,
   useLocale: () => 'pt',
   getLocale: () => 'pt',
@@ -42,21 +38,19 @@ jest.mock('next-intl', () => ({
   NextIntlClientProvider: ({ children }: { children: React.ReactNode }) => children,
 }));
 
-// Mock do @tanstack/react-query
-jest.mock('@tanstack/react-query', () => ({
+vi.mock('@tanstack/react-query', () => ({
   useQuery: () => ({ data: null, isLoading: false, error: null }),
-  useMutation: () => ({ mutate: jest.fn(), isLoading: false }),
+  useMutation: () => ({ mutate: vi.fn(), isLoading: false }),
   useQueryClient: () => ({
-    invalidateQueries: jest.fn(),
-    setQueryData: jest.fn(),
-    getQueryData: jest.fn(),
+    invalidateQueries: vi.fn(),
+    setQueryData: vi.fn(),
+    getQueryData: vi.fn(),
   }),
-  QueryClient: jest.fn(),
+  QueryClient: vi.fn(),
   QueryClientProvider: ({ children }: { children: React.ReactNode }) => children,
 }));
 
-// Mock do fetch global
-global.fetch = jest.fn(() =>
+global.fetch = vi.fn(() =>
   Promise.resolve({
     ok: true,
     status: 200,
@@ -65,31 +59,76 @@ global.fetch = jest.fn(() =>
   } as Response)
 );
 
-// Mock do localStorage
 const localStorageMock = {
-  getItem: jest.fn(),
-  setItem: jest.fn(),
-  removeItem: jest.fn(),
-  clear: jest.fn(),
+  getItem: vi.fn(),
+  setItem: vi.fn(),
+  removeItem: vi.fn(),
+  clear: vi.fn(),
 };
 Object.defineProperty(window, 'localStorage', { value: localStorageMock });
 
-// Mock do matchMedia
 Object.defineProperty(window, 'matchMedia', {
   writable: true,
-  value: jest.fn().mockImplementation((query) => ({
+  value: vi.fn().mockImplementation((query) => ({
     matches: false,
     media: query,
     onchange: null,
-    addListener: jest.fn(),
-    removeListener: jest.fn(),
-    addEventListener: jest.fn(),
-    removeEventListener: jest.fn(),
-    dispatchEvent: jest.fn(),
+    addListener: vi.fn(),
+    removeListener: vi.fn(),
+    addEventListener: vi.fn(),
+    removeEventListener: vi.fn(),
+    dispatchEvent: vi.fn(),
   })),
 });
 
-// Limpar mocks entre testes
+// Strip framer-motion animation props and render plain DOM elements
+vi.mock('framer-motion', () => {
+  const motionProxy: Record<string, React.FC<Record<string, unknown>>> = {};
+  const tags = ['div', 'button', 'ul', 'li', 'img', 'span', 'p', 'h1', 'h2', 'h3', 'section', 'a'];
+  for (const tag of tags) {
+    motionProxy[tag] = ({
+      children,
+      whileHover,
+      whileTap,
+      whileInView,
+      whileFocus,
+      exit,
+      animate,
+      initial,
+      transition,
+      viewport,
+      variants,
+      ...props
+    }: Record<string, unknown>) =>
+      React.createElement(tag, props, children as React.ReactNode);
+  }
+  return {
+    motion: new Proxy(motionProxy, {
+      get: (target, tag: string) => {
+        if (target[tag]) return target[tag];
+        const component = ({
+          children,
+          whileHover,
+          whileTap,
+          whileInView,
+          whileFocus,
+          exit,
+          animate,
+          initial,
+          transition,
+          viewport,
+          variants,
+          ...props
+        }: Record<string, unknown>) =>
+          React.createElement(tag, props, children as React.ReactNode);
+        component.displayName = `motion.${tag}`;
+        return component;
+      },
+    }),
+    AnimatePresence: ({ children }: { children: React.ReactNode }) => children,
+  };
+});
+
 beforeEach(() => {
-  jest.clearAllMocks();
+  vi.clearAllMocks();
 });

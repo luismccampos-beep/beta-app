@@ -14,7 +14,7 @@ interface InfoCardProps {
   children?: ReactNode;
   /** Badge labels to show at the bottom (e.g. "Verified", "Active") */
   badges?: Array<{ label: string; variant?: 'default' | 'secondary' | 'outline' | 'destructive'; icon?: boolean }>;
-  /** Border color class (e.g. 'border-teal-200') */
+  /** Border color class (e.g. 'border-primary-200') */
   borderColor?: string;
   /** Hover effect class */
   hoverEffect?: string;
@@ -35,7 +35,7 @@ export function InfoCard({
   children,
   badges,
   borderColor = 'border-gray-200 dark:border-gray-700',
-  hoverEffect = 'hover:border-teal-400 dark:hover:border-teal-500 transition-all',
+  hoverEffect = 'hover:border-primary dark:hover:border-primary transition-all',
   className = '',
   onClick,
 }: InfoCardProps) {
@@ -48,7 +48,7 @@ export function InfoCard({
     >
       <CardContent className="p-4 sm:p-6">
         {icon && (
-          <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-lg bg-gradient-to-br from-teal-600 to-orange-500 flex items-center justify-center mb-3 sm:mb-4">
+          <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-lg bg-gradient-to-br from-primary to-accent flex items-center justify-center mb-3 sm:mb-4">
             {icon}
           </div>
         )}
@@ -63,7 +63,7 @@ export function InfoCard({
               <Badge
                 key={i}
                 variant={badge.variant ?? 'secondary'}
-                className={`${badge.variant ? '' : 'bg-teal-100 dark:bg-teal-900 text-teal-800 dark:text-teal-200 border-0 text-xs sm:text-sm'}`}
+                className={`${badge.variant ? '' : 'bg-primary-100 dark:bg-primary-900 text-primary-700 dark:text-primary-200 border-0 text-xs sm:text-sm'}`}
               >
                 {badge.icon && <CheckCircle2 className="w-3 h-3 mr-1" />}
                 {badge.label}
@@ -86,7 +86,7 @@ interface SectionHeaderProps {
   iconColor?: string;
 }
 
-export function SectionHeader({ icon, title, subtitle, iconColor = 'text-teal-600 dark:text-teal-400' }: SectionHeaderProps) {
+export function SectionHeader({ icon, title, subtitle, iconColor = 'text-primary dark:text-primary-300' }: SectionHeaderProps) {
   return (
     <div className="mb-4 sm:mb-6">
       <div className="flex items-center gap-2 sm:gap-3 mb-2">

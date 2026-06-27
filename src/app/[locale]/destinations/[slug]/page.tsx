@@ -10,11 +10,13 @@ import { resolveDestinationImageUrl, TRAVEL_PLACEHOLDER_IMAGE } from '@/lib/trav
 import { resolveDestinationIata } from '@/lib/travel/destination-iata';
 import { summarizeCostOfLiving } from '@/lib/travel/cost-tier';
 import { resolveMapMarkersForDestination } from '@/lib/travel/travel-map-markers';
+import type { DestinationMapMarker } from '@/lib/travel/destination-map';
 import { getDestinationReviews } from '@/actions/submit-destination-review';
 import { locales } from '@/i18n.config';
-import { DestinationJsonLd } from './components/DestinationJsonLd';
+import type { MockDestination, MockHotel } from '@/lib/travel/mock-travel/types';
 import { DestinationHero } from './components/DestinationHero';
 import { DestinationReviews } from './components/DestinationReviews';
+import { DestinationJsonLd } from './components/DestinationJsonLd';
 import { DestinationHotels } from './components/DestinationHotels';
 import { RelatedDestinations } from './components/RelatedDestinations';
 import { DestinationMap } from '@/app/components/travel/DestinationMap';
@@ -25,7 +27,7 @@ import { Skeleton } from '@/app/components/ui/skeleton';
 import { Calendar } from 'lucide-react';
 import Link from 'next/link';
 
-const DestinationGallery = nextDynamic(() => import('./components/DestinationGallery'));
+const DestinationGallery = nextDynamic(() => import('./components/DestinationGallery').then((mod) => mod.DestinationGallery));
 
 export const revalidate = 3600;
 
@@ -114,40 +116,45 @@ type DetailData = {
   id: number;
   lang: string;
   nome: string;
-  pais: string | null;
-  paisCode: string | null;
-  continente: string | null;
+  pais: string;
+  paisCode: string;
+  continente: string;
   iata: string | null;
   tipo: string;
   clima: string;
   imageUrl: string;
-  descricao: string | null;
-  descricaoCompleta: string | null;
-  resumo: string | null;
+  descricao?: string;
+  descricaoCompleta?: string;
+  resumo?: string;
   veja: string[];
   faca: string[];
   coma: string[];
   dicas: Record<string, unknown>;
   tags: string[];
-  wikipedia_resumo: string | null;
-  wikipedia_url: string | null;
-  clima_tempo: unknown;
-  custo_de_vida: unknown;
+  wikipedia_resumo?: string;
+  wikipedia_url?: string;
+  clima_tempo: MockDestination['clima_tempo'];
+  custo_de_vida: MockDestination['custo_de_vida'];
   costOfLiving: ReturnType<typeof summarizeCostOfLiving>;
-  transporte: unknown;
-  latitude: number | null;
-  longitude: number | null;
-  wikivoyageUrl: string | null;
+  transporte: MockDestination['transporte'];
+  latitude?: number;
+  longitude?: number;
+  wikivoyageUrl?: string;
   license: string;
-  imageAttribution: string | null;
-  hotels: unknown[];
+  imageAttribution: MockDestination['imagem_attribuicao'];
+  hotels: MockHotel[];
   hotelTypes: Record<string, number> | null;
-  mapMarkers: unknown[];
+  mapMarkers: DestinationMapMarker[];
 };
 
-function buildDetailData(dest: Record<string, unknown>, hotels: unknown[], statsMap: Record<string, unknown> | null): DetailData {
+function buildDetailData(
+  dest: MockDestination,
+  hotels: MockHotel[],
+  statsMap: { avgStars: number | null; hotelTypes: Record<string, number> | null } | null,
+  slug: string,
+): DetailData {
   return {
-    slug: dest.slug,
+    slug,
     id: dest.id,
     lang: dest.lang ?? 'pt',
     nome: dest.nome,
@@ -176,7 +183,7 @@ function buildDetailData(dest: Record<string, unknown>, hotels: unknown[], stats
     longitude: dest.longitude,
     wikivoyageUrl: dest.wikivoyageUrl,
     license: 'CC BY-SA 3.0',
-    imageAttribution: dest.imagem_attribuicao ?? null,
+    imageAttribution: dest.imagem_attribuicao ?? undefined,
     hotels,
     hotelTypes: statsMap?.hotelTypes ?? null,
     mapMarkers: (() => {
@@ -197,7 +204,7 @@ export default async function DestinationPage({ params }: Props) {
     const { dest, hotels } = row;
     const statsMap = await safeFetch(() => getHotelStatsForDestinations([row.dest.id]), null);
     const destStats = statsMap?.get(row.dest.id) ?? null;
-    const data = buildDetailData(dest, hotels, destStats);
+    const data = buildDetailData(dest, hotels, destStats, slug);
     const reviews = await safeFetch(() => getDestinationReviews(dest.id), []);
 
     const t = await getTranslations('destination');
@@ -236,7 +243,7 @@ export default async function DestinationPage({ params }: Props) {
             <DestinationGallery images={[data.imageUrl]} title="Galeria" />
           </Suspense>
 
-          <section className="rounded-xl bg-gradient-to-r from-teal-600 to-orange-500 p-8 text-white text-center">
+          <section className="rounded-xl bg-gradient-to-r from-primary to-accent p-8 text-white text-center">
             <h2 className="text-2xl font-bold mb-2">{t('reservationCtaTitle')}</h2>
             <p className="mb-6 text-white/90 max-w-lg mx-auto">
               {t('reservationCtaDesc', { name: data.nome })}
@@ -245,7 +252,7 @@ export default async function DestinationPage({ params }: Props) {
               asChild
               variant="secondary"
               size="lg"
-              className="gap-2 bg-white text-teal-700 hover:bg-white/90 font-semibold"
+              className="gap-2 bg-white text-primary hover:bg-white/90 font-semibold"
             >
               <Link href={`/${locale}/destinations?q=${encodeURIComponent(data.nome)}`}>
                 <Calendar className="h-5 w-5" />
@@ -304,8 +311,8 @@ export default async function DestinationPage({ params }: Props) {
             <RelatedDestinations
               currentDestId={dest.id}
               lang={data.lang}
-              pais={data.pais}
-              continente={data.continente}
+              pais={data.pais ?? undefined}
+              continente={data.continente ?? undefined}
               locale={locale}
               labels={{
                 relatedDestinationsTitle: t('relatedDestinationsTitle'),
@@ -322,7 +329,7 @@ export default async function DestinationPage({ params }: Props) {
   const dest = getMockDestinationBySlug(slug);
   if (!dest) notFound();
   const hotels = getMockHotelsForDestination(dest.id).slice(0, 24);
-  const mockData = buildDetailData(dest, hotels, null);
+  const mockData = buildDetailData(dest, hotels, null, slug);
   const t = await getTranslations('destination');
 
   return (
@@ -354,12 +361,12 @@ export default async function DestinationPage({ params }: Props) {
           <DestinationGallery images={[mockData.imageUrl]} title="Galeria" />
         </Suspense>
 
-        <section className="rounded-xl bg-gradient-to-r from-teal-600 to-orange-500 p-8 text-white text-center">
+        <section className="rounded-xl bg-gradient-to-r from-primary to-accent p-8 text-white text-center">
           <h2 className="text-2xl font-bold mb-2">{t('reservationCtaTitle')}</h2>
           <p className="mb-6 text-white/90 max-w-lg mx-auto">
             {t('reservationCtaDesc', { name: mockData.nome })}
           </p>
-          <Button asChild variant="secondary" size="lg" className="gap-2 bg-white text-teal-700 hover:bg-white/90 font-semibold">
+          <Button asChild variant="secondary" size="lg" className="gap-2 bg-white text-primary hover:bg-white/90 font-semibold">
             <Link href={`/${locale}/destinations?q=${encodeURIComponent(mockData.nome)}`}>
               <Calendar className="h-5 w-5" />
               {t('reservationCtaButton')}
@@ -372,7 +379,7 @@ export default async function DestinationPage({ params }: Props) {
             hotels={mockData.hotels}
             labels={{
               hotels: t('hotels'),
-              perNight: t('perNight', {}, { fallback: 'noite' }),
+              perNight: t('perNight', { fallback: 'noite' }),
               viewDetails: t('moreInfo'),
             }}
             accommodationTypes={t.raw('accommodationTypes')}
@@ -411,8 +418,8 @@ export default async function DestinationPage({ params }: Props) {
           <RelatedDestinations
             currentDestId={mockData.id}
             lang={mockData.lang}
-            pais={mockData.pais}
-            continente={mockData.continente}
+            pais={mockData.pais ?? undefined}
+            continente={mockData.continente ?? undefined}
             locale={locale}
             labels={{
               relatedDestinationsTitle: t('relatedDestinationsTitle'),

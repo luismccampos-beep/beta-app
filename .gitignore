@@ -38,6 +38,7 @@ yarn-error.log*
 coverage/
 .playwright/
 test-results/
+playwright-report/
 
 # OS / IDE
 .DS_Store

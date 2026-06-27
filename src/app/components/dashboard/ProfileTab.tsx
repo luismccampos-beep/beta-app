@@ -53,7 +53,7 @@ const SectionCard = ({ icon: Icon, title, children, className }: { icon: typeof 
   <Card className={cn('group overflow-hidden border-0 bg-white dark:bg-gray-800 shadow-md hover:shadow-lg ring-1 ring-gray-200/60 dark:ring-gray-700/60 transition-all duration-300', className)}>
     <CardHeader className="pb-2 pt-4 px-5">
       <CardTitle className="text-sm font-semibold text-gray-900 dark:text-white flex items-center gap-2">
-        <Icon className="h-4 w-4 text-teal-600 dark:text-teal-400" />
+        <Icon className="h-4 w-4 text-primary dark:text-primary-300" />
         {title}
       </CardTitle>
     </CardHeader>
@@ -71,7 +71,7 @@ const FormField = ({ label, icon: Icon, htmlFor, required, error, children }: { 
       <Icon className="w-3.5 h-3.5 absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 dark:text-gray-500" />
       {children}
     </div>
-    {error && <p className="text-xs text-red-500 dark:text-red-400">{error}</p>}
+    {error && <p className="text-xs text-red-500 dark:text-red-400" role="alert">{error}</p>}
   </div>
 );
 
@@ -342,7 +342,7 @@ export function ProfileTab() {
             <div className={cn('h-full rounded-full transition-all duration-500', completenessBarColor)} style={{ width: `${completeness}%` }} />
           </div>
           <span className={cn('text-sm font-semibold tabular-nums', completenessColor)}>{completeness}%</span>
-          {completeness < 100 && <span className="text-xs text-gray-400 dark:text-gray-500 hidden sm:inline">{completeness >= 80 ? t('almostComplete') : t('completeYourProfile')}</span>}
+          {completeness < 100 && <span className="text-xs text-gray-400 dark:text-gray-500">{completeness >= 80 ? t('almostComplete') : t('completeYourProfile')}</span>}
           {completeness === 100 && <span className="text-xs text-emerald-600 dark:text-emerald-400 flex items-center gap-1"><Check className="w-3 h-3" /> {t('complete')}</span>}
         </div>
       </div>
@@ -388,9 +388,9 @@ export function ProfileTab() {
                   <Mail className="w-3.5 h-3.5 absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 dark:text-gray-500" />
                   <Input id="profile-email" type="email" value={profileData.email} onChange={(e) => setProfileData({ ...profileData, email: e.target.value })} disabled={!isEditingProfile} className={cn('pl-9 text-sm h-10', fieldErrors.email && 'border-red-400 dark:border-red-500')} />
                 </div>
-                {fieldErrors.email && <p className="text-xs text-red-500 dark:text-red-400">{fieldErrors.email}</p>}
+                {fieldErrors.email && <p className="text-xs text-red-500 dark:text-red-400" role="alert">{fieldErrors.email}</p>}
                 {!emailVerified && !isEditingProfile && (
-                  <Button variant="ghost" size="sm" onClick={handleResendVerification} disabled={isSendingVerification} className="gap-1.5 text-xs text-teal-600 dark:text-teal-400 hover:bg-teal-50 dark:hover:bg-teal-950/30 p-0 h-auto -mt-0.5">
+                  <Button variant="ghost" size="sm" onClick={handleResendVerification} disabled={isSendingVerification} className="gap-1.5 text-xs text-primary dark:text-primary-300 hover:bg-primary-50 dark:hover:bg-primary-900/30 p-0 h-auto -mt-0.5">
                     {isSendingVerification ? <svg className="animate-spin h-3 w-3" viewBox="0 0 24 24"><circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none" /><path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" /></svg> : <Send className="w-3 h-3" />}{t('resendVerification')}
                   </Button>
                 )}

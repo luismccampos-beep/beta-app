@@ -4,23 +4,52 @@ import type { ReactNode, ComponentType } from 'react';
 import { motion } from 'framer-motion';
 import { Card, CardHeader, CardTitle, CardContent } from '../../../ui/card';
 import { fadeInUp, staggerContainer } from '../constants/animations';
+import { useReducedMotion } from '@/lib/use-reduced-motion';
 
 export function SectionBlock({
   title,
   icon: Icon,
-  items,
+  items = [],
 }: {
   title: string;
   icon: ComponentType<{ className?: string }>;
-  items: string[];
+  items?: string[];
 }) {
+  const prefersReduced = useReducedMotion();
+
   if (!items.length) return null;
-  return (
-    <motion.div variants={fadeInUp}>
-      <Card className="group border-gray-200/60 dark:border-gray-700/60 bg-white/80 dark:bg-gray-800/60 backdrop-blur-sm hover:border-teal-300/60 dark:hover:border-teal-700/60 hover:shadow-md transition-all duration-300">
+
+  if (prefersReduced) {
+    return (
+      <Card className="group border-gray-200/60 dark:border-gray-700/60 bg-white/80 dark:bg-gray-800/60 backdrop-blur-sm hover:border-primary-300/60 dark:hover:border-primary-700/60 hover:shadow-md transition-all duration-300">
         <CardHeader className="pb-2">
           <CardTitle className="flex items-center gap-2 text-lg dark:text-white">
-            <Icon className="h-5 w-5 text-teal-600 dark:text-teal-400 group-hover:scale-110 transition-transform duration-300" />
+            <Icon className="h-5 w-5 text-primary dark:text-primary-300 group-hover:scale-110 transition-transform duration-300" />
+            {title}
+          </CardTitle>
+        </CardHeader>
+        <CardContent>
+          <ul className="space-y-2">
+            {items.map((item) => (
+              <li
+                key={item}
+                className="flex gap-2 text-sm text-gray-700 dark:text-gray-300 before:content-['•'] before:text-primary dark:before:text-primary-300 before:font-bold"
+              >
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
+        </CardContent>
+      </Card>
+    );
+  }
+
+  return (
+    <motion.div variants={fadeInUp}>
+      <Card className="group border-gray-200/60 dark:border-gray-700/60 bg-white/80 dark:bg-gray-800/60 backdrop-blur-sm hover:border-primary-300/60 dark:hover:border-primary-700/60 hover:shadow-md transition-all duration-300">
+        <CardHeader className="pb-2">
+          <CardTitle className="flex items-center gap-2 text-lg dark:text-white">
+            <Icon className="h-5 w-5 text-primary dark:text-primary-300 group-hover:scale-110 transition-transform duration-300" />
             {title}
           </CardTitle>
         </CardHeader>
@@ -36,7 +65,7 @@ export function SectionBlock({
               <motion.li
                 key={item}
                 variants={fadeInUp}
-                className="flex gap-2 text-sm text-gray-700 dark:text-gray-300 before:content-['•'] before:text-teal-500 dark:before:text-teal-400 before:font-bold"
+                className="flex gap-2 text-sm text-gray-700 dark:text-gray-300 before:content-['•'] before:text-primary dark:before:text-primary-300 before:font-bold"
               >
                 <span>{item}</span>
               </motion.li>

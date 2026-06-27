@@ -63,12 +63,12 @@ export function TravelBudgetProfileSelector({
               onClick={() => onChange(id)}
               className={`text-left rounded-xl border-2 p-4 transition-all touch-manipulation ${
                 selected
-                  ? 'border-teal-600 bg-teal-50 dark:bg-teal-950/40 shadow-md'
+                  ? 'border-primary bg-primary-50 dark:bg-primary-900/40 shadow-md'
                   : 'border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 hover:border-gray-300'
               }`}
             >
               <div className="flex items-center gap-2 mb-2">
-                <Icon className={`h-5 w-5 ${selected ? 'text-teal-600' : 'text-gray-500'}`} />
+                <Icon className={`h-5 w-5 ${selected ? 'text-primary' : 'text-gray-500'}`} />
                 <span className="font-semibold text-sm dark:text-white">{t(`profiles.${id}.title`)}</span>
               </div>
               <p className="text-xs text-gray-600 dark:text-gray-400 line-clamp-3">
@@ -79,7 +79,7 @@ export function TravelBudgetProfileSelector({
         })}
       </div>
 
-      <Card className="border-teal-100 dark:border-teal-900/50 bg-gradient-to-br from-slate-50 to-teal-50/30 dark:from-gray-900 dark:to-teal-950/20">
+      <Card className="border-primary-100 dark:border-primary-900/50 bg-gradient-to-br from-slate-50 to-primary-50/30 dark:from-gray-900 dark:to-primary-900/20">
         <CardContent className="pt-5 space-y-4">
           <div className="flex flex-wrap items-center justify-between gap-2">
             <div>
@@ -100,9 +100,9 @@ export function TravelBudgetProfileSelector({
               >
                 <span className="text-sm text-gray-800 dark:text-gray-200 flex items-center gap-1.5">
                   {line.id.includes('transport') ? (
-                    <Bus className="h-3.5 w-3.5 text-teal-600 shrink-0" />
+                    <Bus className="h-3.5 w-3.5 text-primary shrink-0" />
                   ) : line.id.includes('attractions') ? (
-                    <UtensilsCrossed className="h-3.5 w-3.5 text-orange-500 shrink-0" />
+                    <UtensilsCrossed className="h-3.5 w-3.5 text-accent shrink-0" />
                   ) : (
                     <Utensils className="h-3.5 w-3.5 text-amber-600 shrink-0" />
                   )}
@@ -117,7 +117,7 @@ export function TravelBudgetProfileSelector({
             ))}
             <div className="flex items-center justify-between pt-3">
               <span className="font-semibold text-gray-700 dark:text-gray-300">{t('dailyTotal')}</span>
-              <span className="text-lg font-bold text-teal-700 dark:text-teal-400 tabular-nums">
+              <span className="text-lg font-bold text-primary dark:text-primary-300 tabular-nums">
                 {currencySymbol}
                 {estimate.total.toLocaleString(undefined, { minimumFractionDigits: 2 })}
                 <span className="text-xs font-normal text-gray-500">/{t('perDay')}</span>
@@ -145,9 +145,9 @@ export function TravelBudgetProfileSelector({
                     <td className="py-2 pr-2 text-gray-800 dark:text-gray-200">
                       <span className="inline-flex items-center gap-1.5">
                         {line.id.includes('transport') ? (
-                          <Bus className="h-3.5 w-3.5 text-teal-600 shrink-0" />
+                          <Bus className="h-3.5 w-3.5 text-primary shrink-0" />
                         ) : line.id.includes('attractions') ? (
-                          <UtensilsCrossed className="h-3.5 w-3.5 text-orange-500 shrink-0" />
+                          <UtensilsCrossed className="h-3.5 w-3.5 text-accent shrink-0" />
                         ) : (
                           <Utensils className="h-3.5 w-3.5 text-amber-600 shrink-0" />
                         )}
@@ -171,7 +171,7 @@ export function TravelBudgetProfileSelector({
                   <td colSpan={3} className="pt-3 text-right font-semibold text-gray-700 dark:text-gray-300">
                     {t('dailyTotal')}
                   </td>
-                  <td className="pt-3 pl-2 text-right text-lg font-bold text-teal-700 dark:text-teal-400 tabular-nums">
+                  <td className="pt-3 pl-2 text-right text-lg font-bold text-primary dark:text-primary-300 tabular-nums">
                     {currencySymbol}
                     {estimate.total.toLocaleString(undefined, { minimumFractionDigits: 2 })}
                     <span className="text-xs font-normal text-gray-500">/{t('perDay')}</span>

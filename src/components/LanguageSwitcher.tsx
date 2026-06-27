@@ -70,12 +70,12 @@ export function LanguageSwitcher({
             isOverlay
               ? `px-2 sm:px-2.5 py-1.5 sm:py-2 min-h-11 text-lg sm:text-xl leading-none rounded-lg transition-all shrink-0
                 ${locale === lang.code
-                  ? 'bg-gradient-to-br from-teal-500 to-orange-500 text-white shadow-md scale-105 ring-2 ring-white/40 dark:ring-white/30'
+                  ? 'bg-gradient-to-br from-primary to-accent text-white shadow-md scale-105 ring-2 ring-white/40 dark:ring-white/30'
                   : 'text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 hover:text-gray-800 dark:hover:text-gray-200'
                 }`
               : `px-2 sm:px-2.5 py-1 sm:py-1.5 min-h-11 text-sm sm:text-base leading-none rounded-md transition-all shrink-0 font-medium
                 ${locale === lang.code
-                  ? 'bg-gradient-to-r from-teal-600 to-orange-500 text-white shadow-md scale-105'
+                  ? 'bg-gradient-to-r from-primary to-accent text-white shadow-md scale-105'
                   : 'text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 hover:text-gray-800 dark:hover:text-gray-200'
                 }`
           }
@@ -99,9 +99,9 @@ export function LanguageSwitcher({
   return (
     <div className={`flex items-center gap-2 ${className}`}>
       {showIcon && (
-        <Languages className="w-4 h-4 text-teal-700 dark:text-teal-400 shrink-0 hidden sm:block" />
+        <Languages className="w-4 h-4 text-primary dark:text-primary-300 shrink-0 hidden sm:block" />
       )}
-      <div className="inline-flex rounded-lg border border-teal-200 dark:border-gray-600 bg-white dark:bg-gray-800 p-0.5 shadow-sm">
+      <div className="inline-flex rounded-lg border border-primary-200 dark:border-gray-600 bg-white dark:bg-gray-800 p-0.5 shadow-sm">
         {buttons}
       </div>
     </div>

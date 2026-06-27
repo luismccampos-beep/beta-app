@@ -47,7 +47,7 @@ export function DashboardPage({ onBack, onNewBooking, initialTab, onLogout }: Da
   const mockHistory: TravelHistory[] = [];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 via-teal-50 to-orange-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 transition-colors">
+    <div className="min-h-screen bg-gradient-to-br from-gray-50 via-primary-50 to-accent-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 transition-colors">
       <AppHeader showBack onBack={onBack} showLogout={!!onLogout} onLogout={onLogout} />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-12 pb-24 sm:pb-12">
@@ -59,7 +59,7 @@ export function DashboardPage({ onBack, onNewBooking, initialTab, onLogout }: Da
               <p className="text-sm sm:text-base text-gray-600 dark:text-gray-400">{t('subtitle')}</p>
             </div>
             {onNewBooking && (
-              <Button
+              <Button type="button"
                 onClick={onNewBooking}
                 className="bg-gray-900 dark:bg-white dark:text-gray-900 hover:bg-gray-800 dark:hover:bg-gray-100 text-white gap-2 max-sm:hidden shadow-sm"
               >
@@ -81,13 +81,13 @@ export function DashboardPage({ onBack, onNewBooking, initialTab, onLogout }: Da
             ]).map((tab) => {
               const Icon = tab.icon;
               return (
-                <button
+                <button type="button"
                   key={tab.id}
                   onClick={() => setActiveTab(tab.id)}
                   className={cn(
                     'px-4 sm:px-5 py-3 font-medium transition-all flex items-center gap-2 whitespace-nowrap text-sm rounded-t-lg border-b-2',
                     activeTab === tab.id
-                      ? 'border-teal-600 dark:border-orange-500 text-teal-700 dark:text-orange-400 bg-white/60 dark:bg-gray-800/60'
+                      ? 'border-primary dark:border-accent text-primary dark:text-accent-500 bg-white/60 dark:bg-gray-800/60'
                       : 'border-transparent text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800/30'
                   )}
                 >

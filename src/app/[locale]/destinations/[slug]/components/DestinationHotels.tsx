@@ -47,7 +47,7 @@ export function DestinationHotels({ hotels, labels, accommodationTypes }: Props)
   return (
     <section>
       <h2 className="text-2xl font-bold mb-4 flex items-center gap-2">
-        <Bed className="h-6 w-6 text-teal-600" />
+        <Bed className="h-6 w-6 text-primary" />
         {labels.hotels}
       </h2>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -93,7 +93,7 @@ export function DestinationHotels({ hotels, labels, accommodationTypes }: Props)
             </div>
             <CardContent className="p-3 space-y-2">
               <h3 className="font-semibold text-sm leading-tight line-clamp-2">{hotel.nome}</h3>
-              <p className="text-lg font-bold text-teal-700 dark:text-teal-400">
+              <p className="text-lg font-bold text-primary dark:text-primary-300">
                 €{hotel.preco_por_noite?.toFixed(0) ?? '--'}
                 <span className="text-xs font-normal text-gray-500 dark:text-gray-400">
                   /{labels.perNight}

@@ -73,7 +73,7 @@ export function AppBottomNav() {
                 type="button"
                 className={`relative mx-auto flex w-full max-w-[90px] min-h-11 flex-col items-center justify-center gap-0.5 rounded-full px-2 py-1.5 text-[11px] font-medium transition-colors ${
                   isActive
-                    ? 'text-teal-600 dark:text-orange-400 bg-teal-50 dark:bg-gray-800'
+                    ? 'text-primary dark:text-accent-500 bg-primary-50 dark:bg-gray-800'
                     : 'text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800'
                 }`}
                 onClick={() => router.push(item.key)}
@@ -81,7 +81,7 @@ export function AppBottomNav() {
               >
                 <span
                   className={`flex h-6 w-6 items-center justify-center rounded-full text-[18px] ${
-                    isActive ? 'bg-teal-600 dark:bg-orange-500 text-white' : ''
+                    isActive ? 'bg-primary dark:bg-accent-500 text-white' : ''
                   }`}
                   aria-hidden="true"
                 >

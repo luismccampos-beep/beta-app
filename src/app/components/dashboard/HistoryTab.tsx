@@ -19,7 +19,7 @@ type HistoryTabProps = {
 
 function renderStars(rating: number) {
   return Array.from({ length: 5 }, (_, i) => (
-    <span key={i} className={i < rating ? 'text-orange-500' : 'text-gray-300 dark:text-gray-600'}>★</span>
+    <span key={i} className={i < rating ? 'text-accent' : 'text-gray-300 dark:text-gray-600'}>★</span>
   ));
 }
 
@@ -46,7 +46,7 @@ export function HistoryTab({ history, t }: HistoryTabProps) {
           <Card key={trip.id} className="group overflow-hidden border-0 bg-white dark:bg-gray-800 shadow-md hover:shadow-lg ring-1 ring-gray-200/60 dark:ring-gray-700/60 transition-all duration-300">
             <CardContent className="p-5">
               <div className="flex items-center gap-2 mb-2">
-                <MapPin className="w-4 h-4 text-teal-600 dark:text-teal-400" />
+                <MapPin className="w-4 h-4 text-primary dark:text-primary-300" />
                 <h3 className="font-semibold text-gray-900 dark:text-white">{trip.destination}</h3>
               </div>
               <p className="text-sm text-gray-500 dark:text-gray-400 mb-3">{trip.dates}</p>

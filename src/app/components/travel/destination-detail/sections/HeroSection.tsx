@@ -9,6 +9,7 @@ import { LanguageSwitcher } from '../../../../../components/LanguageSwitcher';
 import { CostOfLivingBadge } from '../../../travel/CostOfLivingBadge';
 import { DestinationVideoHero } from '../../../travel/DestinationVideoHero';
 import { DESTINATION_PLACEHOLDER } from '../../../travel/destination-image-fallback';
+import type { CostOfLivingSummary } from '../../../../../lib/travel/cost-tier';
 import type { DestinationDetailData } from '../DestinationDetailPage';
 
 export function HeroSection({
@@ -23,12 +24,12 @@ export function HeroSection({
 }: {
   data: DestinationDetailData;
   displayNome: string;
-  costSummary: { level: string; label: string } | null;
+  costSummary: CostOfLivingSummary | null;
   isDark: boolean;
   toggleDark: () => void;
   resultsHref: string;
   onBackToResults?: () => void;
-  t: (key: string) => string;
+  t: (key: string, values?: Record<string, string>) => string;
 }) {
   return (
     <div className="relative h-[50vh] min-h-[320px] max-h-[520px] w-full">
@@ -65,7 +66,7 @@ export function HeroSection({
             className="p-2 rounded-lg bg-white/90 dark:bg-gray-900/90 backdrop-blur-md border-0 shadow-lg hover:shadow-xl transition-all duration-200"
             title={isDark ? 'Light mode' : 'Dark mode'}
           >
-            {isDark ? <Sun className="h-4 w-4 text-orange-400" /> : <Moon className="h-4 w-4 text-gray-700" />}
+            {isDark ? <Sun className="h-4 w-4 text-accent-500" /> : <Moon className="h-4 w-4 text-gray-700" />}
           </motion.button>
 
           <motion.button whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}

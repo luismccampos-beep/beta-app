@@ -1,6 +1,7 @@
+
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Button } from '../ui/button';
 import { Card, CardContent } from '../ui/card';
 import { Badge } from '../ui/badge';
@@ -33,10 +34,33 @@ interface AboutPageProps {
 export function AboutPage({ onBack }: AboutPageProps) {
   const t = useTranslations('about');
   const [showCEOModal, setShowCEOModal] = useState(false);
+  const ceoTriggerRef = useRef<HTMLButtonElement>(null);
+  const ceoModalRef = useRef<HTMLDivElement>(null);
+  const ceoCloseRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
+    const triggerRef = ceoTriggerRef.current;
+    const closeRef = ceoCloseRef.current;
+    const modalRef = ceoModalRef.current;
     if (showCEOModal) {
       document.body.style.overflow = 'hidden';
+      closeRef?.focus();
+      const handleKeyDown = (e: KeyboardEvent) => {
+        if (e.key === 'Escape') setShowCEOModal(false);
+      };
+      const handleClickOutside = (e: MouseEvent) => {
+        if (modalRef && !modalRef.contains(e.target as Node)) {
+          setShowCEOModal(false);
+        }
+      };
+      document.addEventListener('keydown', handleKeyDown);
+      document.addEventListener('mousedown', handleClickOutside);
+      return () => {
+        document.body.style.overflow = '';
+        document.removeEventListener('keydown', handleKeyDown);
+        document.removeEventListener('mousedown', handleClickOutside);
+        triggerRef?.focus();
+      };
     } else {
       document.body.style.overflow = '';
     }
@@ -44,33 +68,33 @@ export function AboutPage({ onBack }: AboutPageProps) {
   }, [showCEOModal]);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 via-teal-50 to-orange-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 transition-colors overflow-x-hidden">
+    <div className="min-h-screen bg-gradient-to-br from-gray-50 via-primary-50 to-accent-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 transition-colors overflow-x-hidden">
       <AppHeader showBack onBack={onBack} />
 
       {/* Content */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-12">
         {/* Hero Section */}
         <div className="relative mb-8 sm:mb-16 overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-r from-teal-500/10 to-orange-500/10 dark:from-teal-500/5 dark:to-orange-500/5 rounded-2xl sm:rounded-3xl"></div>
+          <div className="absolute inset-0 bg-gradient-to-r from-primary/10 to-accent-500/10 dark:from-primary/5 dark:to-accent-500/5 rounded-2xl sm:rounded-3xl"></div>
           <div className="relative p-6 sm:p-8 md:p-12 text-center">
             <h1 className="text-3xl sm:text-5xl md:text-6xl font-bold text-gray-900 dark:text-white mb-3 sm:mb-4">
               {t('pageTitle')}
             </h1>
-            <div className="w-16 sm:w-24 h-1 bg-gradient-to-r from-teal-600 to-orange-500 mx-auto"></div>
+            <div className="w-16 sm:w-24 h-1 bg-gradient-to-r from-primary to-accent mx-auto"></div>
           </div>
         </div>
 
         {/* Our Story */}
         <section className="mb-8 sm:mb-16">
           <div className="flex items-center gap-2 sm:gap-3 mb-4 sm:mb-6">
-            <Heart className="w-6 h-6 sm:w-8 sm:h-8 text-teal-600 dark:text-teal-400 flex-shrink-0" />
+            <Heart className="w-6 h-6 sm:w-8 sm:h-8 text-primary dark:text-primary-300 flex-shrink-0" />
             <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white">{t('ourStoryTitle')}</h2>
           </div>
-          <Card className="border-2 border-teal-200 dark:border-teal-700 shadow-xl dark:bg-gray-800 overflow-hidden">
+          <Card className="border-2 border-primary-200 dark:border-primary-700 shadow-xl dark:bg-gray-800 overflow-hidden">
             <CardContent className="p-0">
               <div className="flex flex-col md:flex-row">
                 {/* Castle Image */}
-                <div className="md:w-2/5 w-full relative min-h-[200px] sm:min-h-[280px] md:min-h-full bg-gradient-to-br from-teal-100 to-orange-100 dark:from-teal-900/30 dark:to-orange-900/30">
+                <div className="md:w-2/5 w-full relative min-h-[200px] sm:min-h-[280px] md:min-h-full bg-gradient-to-br from-primary-100 to-accent-100 dark:from-primary-900/30 dark:to-accent-700/30">
                   <img
                     src="/Assets/castelo.png"
                     alt={t('ourStoryTitle')}
@@ -83,7 +107,7 @@ export function AboutPage({ onBack }: AboutPageProps) {
                 <div className="md:w-3/5 w-full p-4 sm:p-8 space-y-3 sm:space-y-4">
                   <p className="text-sm sm:text-lg text-gray-700 dark:text-gray-300 leading-relaxed">{t('ourStory')}</p>
                   <p className="text-sm sm:text-lg text-gray-700 dark:text-gray-300 leading-relaxed">{t('ourStory2')}</p>
-                  <p className="text-sm sm:text-lg font-semibold text-teal-700 dark:text-teal-400">{t('ourStory3')}</p>
+                  <p className="text-sm sm:text-lg font-semibold text-primary dark:text-primary-300">{t('ourStory3')}</p>
                 </div>
               </div>
             </CardContent>
@@ -93,22 +117,22 @@ export function AboutPage({ onBack }: AboutPageProps) {
         {/* Where We're From */}
         <section className="mb-8 sm:mb-16">
           <div className="flex items-center gap-2 sm:gap-3 mb-4 sm:mb-6">
-            <MapPin className="w-6 h-6 sm:w-8 sm:h-8 text-orange-600 dark:text-orange-400 flex-shrink-0" />
+            <MapPin className="w-6 h-6 sm:w-8 sm:h-8 text-accent dark:text-accent-500 flex-shrink-0" />
             <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white">{t('whereWereFromTitle')}</h2>
           </div>
           <p className="text-sm sm:text-base text-gray-600 dark:text-gray-400 mb-4 sm:mb-8">{t('whereWereFromSubtitle')}</p>
 
-          <Card className="border-2 border-orange-200 dark:border-orange-700 shadow-xl dark:bg-gray-800 overflow-hidden">
+          <Card className="border-2 border-accent-200 dark:border-accent-700 shadow-xl dark:bg-gray-800 overflow-hidden">
             <CardContent className="p-0">
               <div className="flex flex-col md:flex-row">
                 {/* Text */}
                 <div className="md:w-3/5 w-full p-4 sm:p-8 space-y-3 sm:space-y-4">
                   <p className="text-sm sm:text-lg text-gray-700 dark:text-gray-300 leading-relaxed">{t('whereWereFromText1')}</p>
                   <p className="text-sm sm:text-lg text-gray-700 dark:text-gray-300 leading-relaxed">{t('whereWereFromText2')}</p>
-                  <p className="text-sm sm:text-lg font-semibold text-orange-700 dark:text-orange-400">{t('whereWereFromText3')}</p>
+                  <p className="text-sm sm:text-lg font-semibold text-accent-700 dark:text-accent-500">{t('whereWereFromText3')}</p>
                 </div>
                 {/* Castle Image */}
-                <div className="md:w-2/5 w-full relative min-h-[200px] sm:min-h-[280px] md:min-h-full bg-gradient-to-br from-orange-100 to-amber-100 dark:from-orange-900/30 dark:to-amber-900/30">
+                <div className="md:w-2/5 w-full relative min-h-[200px] sm:min-h-[280px] md:min-h-full bg-gradient-to-br from-accent-100 to-amber-100 dark:from-accent-700/30 dark:to-amber-900/30">
                   <img
                     src="/Assets/realcastelo.png"
                     alt={t('whereWereFromTitle')}
@@ -125,15 +149,15 @@ export function AboutPage({ onBack }: AboutPageProps) {
         {/* Leadership */}
         <section className="mb-8 sm:mb-16">
           <div className="flex items-center gap-2 sm:gap-3 mb-4 sm:mb-6">
-            <Users className="w-6 h-6 sm:w-8 sm:h-8 text-orange-600 dark:text-orange-400 flex-shrink-0" />
+            <Users className="w-6 h-6 sm:w-8 sm:h-8 text-accent dark:text-accent-500 flex-shrink-0" />
             <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white">{t('leadershipTitle')}</h2>
           </div>
           <p className="text-sm sm:text-base text-gray-600 dark:text-gray-400 mb-4 sm:mb-8">{t('leadershipSubtitle')}</p>
 
-          <Card className="border-2 border-orange-200 dark:border-orange-700 shadow-xl dark:bg-gray-800 max-w-2xl">
+          <Card className="border-2 border-accent-200 dark:border-accent-700 shadow-xl dark:bg-gray-800 max-w-2xl">
             <CardContent className="p-4 sm:p-8">
               <div className="flex flex-col sm:flex-row items-start gap-4 sm:gap-6">
-                <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-full bg-gradient-to-br from-teal-600 to-orange-500 flex items-center justify-center flex-shrink-0 mx-auto sm:mx-0 overflow-hidden">
+                <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-full bg-gradient-to-br from-primary to-accent flex items-center justify-center flex-shrink-0 mx-auto sm:mx-0 overflow-hidden">
                   <img
                     src="/about/luiscampos.webp"
                     alt={t('ceoName')}
@@ -143,7 +167,7 @@ export function AboutPage({ onBack }: AboutPageProps) {
                 </div>
                 <div className="flex-1 w-full">
                   <h3 className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white mb-1 text-center sm:text-left">{t('ceoName')}</h3>
-                  <p className="text-teal-600 dark:text-teal-400 font-semibold mb-3 flex items-center gap-2 justify-center sm:justify-start text-sm sm:text-base">
+                  <p className="text-primary dark:text-primary-300 font-semibold mb-3 flex items-center gap-2 justify-center sm:justify-start text-sm sm:text-base">
                     <Briefcase className="w-3 h-3 sm:w-4 sm:h-4" />
                     {t('ceoTitle')}
                   </p>
@@ -153,9 +177,10 @@ export function AboutPage({ onBack }: AboutPageProps) {
                       <CheckCircle2 className="w-3 h-3 mr-1" />
                       {t('ceoAvailable')}
                     </Badge>
-                    <button
+                    <button type="button"
+                      ref={ceoTriggerRef}
                       onClick={() => setShowCEOModal(true)}
-                      className="text-teal-600 dark:text-teal-400 hover:underline text-xs sm:text-sm font-medium"
+                      className="text-primary dark:text-primary-300 hover:underline text-xs sm:text-sm font-medium"
                     >
                       {t('ceoLearnMore')} →
                     </button>
@@ -169,15 +194,15 @@ export function AboutPage({ onBack }: AboutPageProps) {
         {/* Core Values */}
         <section className="mb-8 sm:mb-16">
           <div className="flex items-center gap-2 sm:gap-3 mb-4 sm:mb-6">
-            <Target className="w-6 h-6 sm:w-8 sm:h-8 text-teal-600 dark:text-teal-400 flex-shrink-0" />
+            <Target className="w-6 h-6 sm:w-8 sm:h-8 text-primary dark:text-primary-300 flex-shrink-0" />
             <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white">{t('valuesTitle')}</h2>
           </div>
           <p className="text-sm sm:text-base text-gray-600 dark:text-gray-400 mb-4 sm:mb-8">{t('valuesSubtitle')}</p>
 
           <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6">
-            <Card className="border-2 border-teal-200 dark:border-teal-700 shadow-xl dark:bg-gray-800 hover:scale-105 transition-transform">
+            <Card className="border-2 border-primary-200 dark:border-primary-700 shadow-xl dark:bg-gray-800 hover:scale-105 transition-transform">
               <CardContent className="p-4 sm:p-6">
-                <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-lg bg-gradient-to-br from-teal-600 to-teal-500 flex items-center justify-center mb-3 sm:mb-4">
+                <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-lg bg-gradient-to-br from-primary to-primary flex items-center justify-center mb-3 sm:mb-4">
                   <Heart className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
                 </div>
                 <h3 className="text-lg sm:text-xl font-bold text-gray-900 dark:text-white mb-2">{t('value1Title')}</h3>
@@ -195,9 +220,9 @@ export function AboutPage({ onBack }: AboutPageProps) {
               </CardContent>
             </Card>
 
-            <Card className="border-2 border-orange-200 dark:border-orange-700 shadow-xl dark:bg-gray-800 hover:scale-105 transition-transform sm:col-span-2 md:col-span-1">
+            <Card className="border-2 border-accent-200 dark:border-accent-700 shadow-xl dark:bg-gray-800 hover:scale-105 transition-transform sm:col-span-2 md:col-span-1">
               <CardContent className="p-4 sm:p-6">
-                <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-lg bg-gradient-to-br from-orange-600 to-orange-500 flex items-center justify-center mb-3 sm:mb-4">
+                <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-lg bg-gradient-to-br from-accent to-accent-500 flex items-center justify-center mb-3 sm:mb-4">
                   <Shield className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
                 </div>
                 <h3 className="text-lg sm:text-xl font-bold text-gray-900 dark:text-white mb-2">{t('value3Title')}</h3>
@@ -210,7 +235,7 @@ export function AboutPage({ onBack }: AboutPageProps) {
         {/* Certifications */}
         <section className="mb-8 sm:mb-16">
           <div className="flex items-center gap-2 sm:gap-3 mb-4 sm:mb-6">
-            <Award className="w-6 h-6 sm:w-8 sm:h-8 text-orange-600 dark:text-orange-400 flex-shrink-0" />
+            <Award className="w-6 h-6 sm:w-8 sm:h-8 text-accent dark:text-accent-500 flex-shrink-0" />
             <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white">{t('certificationsTitle')}</h2>
           </div>
           <p className="text-sm sm:text-base text-gray-600 dark:text-gray-400 mb-4 sm:mb-8">{t('certificationsSubtitle')}</p>
@@ -228,7 +253,7 @@ export function AboutPage({ onBack }: AboutPageProps) {
                     <CheckCircle2 className="w-3 h-3 mr-1" />
                       {t('verified')}
                   </Badge>
-                  <Badge className="bg-teal-100 dark:bg-teal-900 text-teal-800 dark:text-teal-200 border-0 text-xs">
+                  <Badge className="bg-primary-100 dark:bg-primary-900 text-primary-700 dark:text-primary-200 border-0 text-xs">
                       {t('active')}
                   </Badge>
                 </div>
@@ -247,7 +272,7 @@ export function AboutPage({ onBack }: AboutPageProps) {
                     <CheckCircle2 className="w-3 h-3 mr-1" />
                       {t('verified')}
                   </Badge>
-                  <Badge className="bg-teal-100 dark:bg-teal-900 text-teal-800 dark:text-teal-200 border-0 text-xs">
+                  <Badge className="bg-primary-100 dark:bg-primary-900 text-primary-700 dark:text-primary-200 border-0 text-xs">
                       {t('active')}
                   </Badge>
                 </div>
@@ -266,7 +291,7 @@ export function AboutPage({ onBack }: AboutPageProps) {
                     <CheckCircle2 className="w-3 h-3 mr-1" />
                       {t('verified')}
                   </Badge>
-                  <Badge className="bg-teal-100 dark:bg-teal-900 text-teal-800 dark:text-teal-200 border-0 text-xs">
+                  <Badge className="bg-primary-100 dark:bg-primary-900 text-primary-700 dark:text-primary-200 border-0 text-xs">
                       {t('active')}
                   </Badge>
                 </div>
@@ -278,7 +303,7 @@ export function AboutPage({ onBack }: AboutPageProps) {
         {/* Strategic Partnerships */}
         <section className="mb-8 sm:mb-16">
           <div className="flex items-center gap-2 sm:gap-3 mb-4 sm:mb-6">
-            <Globe className="w-6 h-6 sm:w-8 sm:h-8 text-teal-600 dark:text-teal-400 flex-shrink-0" />
+            <Globe className="w-6 h-6 sm:w-8 sm:h-8 text-primary dark:text-primary-300 flex-shrink-0" />
             <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white">{t('partnershipsTitle')}</h2>
           </div>
           <p className="text-sm sm:text-base text-gray-600 dark:text-gray-400 mb-4 sm:mb-8">{t('partnershipsSubtitle')}</p>
@@ -292,9 +317,9 @@ export function AboutPage({ onBack }: AboutPageProps) {
               { name: t('partner5Name'), desc: t('partner5Desc'), img: '/about/partners/dgconsulting.png' },
               { name: t('partner6Name'), desc: t('partner6Desc'), img: '/about/partners/startupportugal.svg' }
             ].map((partner, index) => (
-              <Card key={index} className="border-2 border-gray-200 dark:border-gray-700 shadow-xl dark:bg-gray-800 hover:border-teal-400 dark:hover:border-teal-500 transition-all">
+              <Card key={index} className="border-2 border-gray-200 dark:border-gray-700 shadow-xl dark:bg-gray-800 hover:border-primary dark:hover:border-primary transition-all">
                 <CardContent className="p-4 sm:p-6">
-                  <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-lg bg-gradient-to-br from-teal-600 to-orange-500 flex items-center justify-center text-white font-bold text-base sm:text-lg mb-3 sm:mb-4 overflow-hidden relative">
+                  <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-lg bg-gradient-to-br from-primary to-accent flex items-center justify-center text-white font-bold text-base sm:text-lg mb-3 sm:mb-4 overflow-hidden relative">
                     <img
                       src={partner.img}
                       alt={partner.name}
@@ -306,7 +331,7 @@ export function AboutPage({ onBack }: AboutPageProps) {
                   </div>
                   <h3 className="text-base sm:text-lg font-bold text-gray-900 dark:text-white mb-2">{partner.name}</h3>
                   <p className="text-xs sm:text-sm text-gray-700 dark:text-gray-300 mb-3 sm:mb-4 line-clamp-3">{partner.desc}</p>
-                  <Badge className="bg-teal-100 dark:bg-teal-900 text-teal-800 dark:text-teal-200 border-0 text-xs sm:text-sm">
+                  <Badge className="bg-primary-100 dark:bg-primary-900 text-primary-700 dark:text-primary-200 border-0 text-xs sm:text-sm">
                     {t('officialPartner')}
                   </Badge>
                 </CardContent>
@@ -317,28 +342,28 @@ export function AboutPage({ onBack }: AboutPageProps) {
 
         {/* Contact CTA */}
         <section className="mb-6 sm:mb-8">
-          <Card className="border-2 border-orange-200 dark:border-orange-700 shadow-2xl dark:bg-gray-800 overflow-hidden">
-            <div className="bg-gradient-to-r from-teal-600 to-orange-500 h-2"></div>
+          <Card className="border-2 border-accent-200 dark:border-accent-700 shadow-2xl dark:bg-gray-800 overflow-hidden">
+            <div className="bg-gradient-to-r from-primary to-accent h-2"></div>
             <CardContent className="p-6 sm:p-8 md:p-12 text-center">
               <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white mb-3 sm:mb-4">{t('contactTitle')}</h2>
               <p className="text-sm sm:text-lg text-gray-700 dark:text-gray-300 mb-6 sm:mb-8 max-w-2xl mx-auto">{t('contactSubtitle')}</p>
 
               <div className="flex flex-col items-center justify-center gap-3 sm:gap-6 mb-6 sm:mb-8">
                 <div className="flex items-start gap-2 text-gray-700 dark:text-gray-300 w-full sm:w-auto justify-center">
-                  <MapPin className="w-4 h-4 sm:w-5 sm:h-5 text-teal-600 dark:text-teal-400 mt-0.5 flex-shrink-0" />
+                  <MapPin className="w-4 h-4 sm:w-5 sm:h-5 text-primary dark:text-primary-300 mt-0.5 flex-shrink-0" />
                   <span className="text-xs sm:text-sm whitespace-pre-line text-left">{t('address')}</span>
                 </div>
                 <div className="flex items-center gap-2 text-gray-700 dark:text-gray-300">
-                  <Phone className="w-4 h-4 sm:w-5 sm:h-5 text-teal-600 dark:text-teal-400 flex-shrink-0" />
-                  <a href="tel:+351256372092" className="text-xs sm:text-sm hover:text-teal-600 dark:hover:text-teal-400 transition-colors">+351 256 372 092</a>
+                  <Phone className="w-4 h-4 sm:w-5 sm:h-5 text-primary dark:text-primary-300 flex-shrink-0" />
+                  <a href="tel:+351256372092" className="text-xs sm:text-sm hover:text-primary dark:hover:text-primary-300 transition-colors">+351 256 372 092</a>
                 </div>
                 <div className="flex items-center gap-2 text-gray-700 dark:text-gray-300">
-                  <Mail className="w-4 h-4 sm:w-5 sm:h-5 text-teal-600 dark:text-teal-400 flex-shrink-0" />
-                  <a href="mailto:geral@akmleva.pt" className="text-xs sm:text-sm hover:text-teal-600 dark:hover:text-teal-400 transition-colors">geral@akmleva.pt</a>
+                  <Mail className="w-4 h-4 sm:w-5 sm:h-5 text-primary dark:text-primary-300 flex-shrink-0" />
+                  <a href="mailto:geral@akmleva.pt" className="text-xs sm:text-sm hover:text-primary dark:hover:text-primary-300 transition-colors">geral@akmleva.pt</a>
                 </div>
               </div>
 
-              <Button className="bg-gradient-to-r from-teal-600 to-orange-500 hover:from-teal-700 hover:to-orange-600 active:scale-[0.98] text-white px-6 sm:px-8 py-4 sm:py-6 text-base sm:text-lg shadow-lg w-full sm:w-auto transition-transform">
+              <Button type="button" className="bg-gradient-to-r from-primary to-accent hover:from-primary-700 hover:to-accent-600 active:scale-[0.98] text-white px-6 sm:px-8 py-4 sm:py-6 text-base sm:text-lg shadow-lg w-full sm:w-auto transition-transform">
                 {t('contactButton')}
               </Button>
             </CardContent>
@@ -351,10 +376,21 @@ export function AboutPage({ onBack }: AboutPageProps) {
 
       {/* CEO Bio Modal */}
       {showCEOModal && (
-        <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-[100] flex items-end sm:items-center justify-center p-0 sm:p-4" onClick={() => setShowCEOModal(false)}>
-          <div className="bg-white dark:bg-gray-800 rounded-t-3xl sm:rounded-2xl max-w-3xl w-full max-h-[95vh] sm:max-h-[90vh] overflow-y-auto shadow-2xl" onClick={(e) => e.stopPropagation()}>
+        <div
+          ref={ceoModalRef}
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="ceo-dialog-title"
+          className="fixed inset-0 bg-black/50 backdrop-blur-sm z-[100] flex items-end sm:items-center justify-center p-0 sm:p-4"
+        >
+          <div
+            className="bg-white dark:bg-gray-800 rounded-t-3xl sm:rounded-2xl max-w-3xl w-full max-h-[95vh] sm:max-h-[90vh] overflow-y-auto shadow-2xl"
+            onClick={(e) => e.stopPropagation()}
+            onKeyDown={() => {}}
+            role="none"
+          >
             {/* Modal Header */}
-            <div className="sticky top-0 bg-gradient-to-r from-teal-600 to-orange-500 p-4 sm:p-6 flex items-center justify-between rounded-t-3xl sm:rounded-t-2xl z-10">
+            <div className="sticky top-0 bg-gradient-to-r from-primary to-accent p-4 sm:p-6 flex items-center justify-between rounded-t-3xl sm:rounded-t-2xl z-10">
               <div className="flex items-center gap-3 sm:gap-4 flex-1 min-w-0">
                 <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center flex-shrink-0 overflow-hidden">
                   <img
@@ -365,13 +401,15 @@ export function AboutPage({ onBack }: AboutPageProps) {
                   />
                 </div>
                 <div className="min-w-0 flex-1">
-                  <h2 className="text-lg sm:text-2xl font-bold text-white truncate">{t('ceoBioTitle')}</h2>
+                  <h2 id="ceo-dialog-title" className="text-lg sm:text-2xl font-bold text-white truncate">{t('ceoBioTitle')}</h2>
                   <p className="text-white/90 text-xs sm:text-sm truncate">{t('ceoName')} - {t('ceoTitle')}</p>
                 </div>
               </div>
-              <button
+              <button type="button"
+                ref={ceoCloseRef}
                 onClick={() => setShowCEOModal(false)}
                 className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-white/20 hover:bg-white/30 active:bg-white/40 flex items-center justify-center text-white transition-colors flex-shrink-0 ml-2"
+                aria-label="Close dialog"
               >
                 <X className="w-5 h-5 sm:w-6 sm:h-6" />
               </button>
@@ -382,7 +420,7 @@ export function AboutPage({ onBack }: AboutPageProps) {
               {/* Section 1 */}
               <div className="space-y-2 sm:space-y-3">
                 <div className="flex items-center gap-2 sm:gap-3">
-                  <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-lg bg-gradient-to-br from-teal-600 to-teal-500 flex items-center justify-center flex-shrink-0">
+                  <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-lg bg-gradient-to-br from-primary to-primary flex items-center justify-center flex-shrink-0">
                     <GraduationCap className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
                   </div>
                   <h3 className="text-base sm:text-xl font-bold text-gray-900 dark:text-white">{t('ceoBioSection1Title')}</h3>
@@ -421,7 +459,7 @@ export function AboutPage({ onBack }: AboutPageProps) {
               {/* Section 4 */}
               <div className="space-y-2 sm:space-y-3">
                 <div className="flex items-center gap-2 sm:gap-3">
-                  <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-lg bg-gradient-to-br from-orange-600 to-orange-500 flex items-center justify-center flex-shrink-0">
+                  <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-lg bg-gradient-to-br from-accent to-accent-500 flex items-center justify-center flex-shrink-0">
                     <Rocket className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
                   </div>
                   <h3 className="text-base sm:text-xl font-bold text-gray-900 dark:text-white">{t('ceoBioSection4Title')}</h3>
@@ -433,9 +471,9 @@ export function AboutPage({ onBack }: AboutPageProps) {
 
               {/* Contact Button */}
               <div className="pt-4 sm:pt-6 border-t border-gray-200 dark:border-gray-700">
-                <Button
+                <Button type="button"
                   onClick={() => setShowCEOModal(false)}
-                  className="w-full bg-gradient-to-r from-teal-600 to-orange-500 hover:from-teal-700 hover:to-orange-600 active:scale-[0.98] text-white py-4 sm:py-6 text-base sm:text-lg shadow-lg transition-transform"
+                  className="w-full bg-gradient-to-r from-primary to-accent hover:from-primary-700 hover:to-accent-600 active:scale-[0.98] text-white py-4 sm:py-6 text-base sm:text-lg shadow-lg transition-transform"
                 >
                   <Mail className="w-4 h-4 sm:w-5 sm:h-5 mr-2" />
                   {t('contactCTA')}

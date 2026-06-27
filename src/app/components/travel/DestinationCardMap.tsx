@@ -10,7 +10,7 @@ const DestinationMapLeaflet = dynamic(
   {
     ssr: false,
     loading: () => (
-      <div className="h-full w-full animate-pulse bg-teal-100/40 dark:bg-teal-950/30" aria-hidden />
+      <div className="h-full w-full animate-pulse bg-primary-100/40 dark:bg-primary-900/30" aria-hidden />
     ),
   },
 );
@@ -29,7 +29,7 @@ export function DestinationCardMap({ markers, className }: DestinationCardMapPro
     <div
       className={
         className ??
-        'h-32 w-full overflow-hidden border-t border-teal-100/80 dark:border-teal-900/40 bg-teal-50/30 dark:bg-gray-900/40 [&_.leaflet-container]:pointer-events-none sm:[&_.leaflet-container]:pointer-events-auto'
+        'h-32 w-full overflow-hidden border-t border-primary-100/80 dark:border-primary-900/40 bg-primary-50/30 dark:bg-gray-900/40 [&_.leaflet-container]:pointer-events-none sm:[&_.leaflet-container]:pointer-events-auto'
       }
       aria-label={t('mapTitle')}
     >

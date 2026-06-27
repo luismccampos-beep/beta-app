@@ -226,7 +226,7 @@ export async function searchDestinationsDb(opts: {
       select: { destinoId: true },
       distinct: ['destinoId'],
     });
-    const ids = matchingDestIds.map((r) => r.destinoId);
+    const ids = matchingDestIds.map((r: any) => r.destinoId);
     if (ids.length === 0) {
       // No destinations with these hotel types — return empty immediately
       return { total: 0, items: [] };
@@ -264,12 +264,12 @@ export async function searchDestinationsDb(opts: {
   ]);
 
   // Aggregate hotel stats (avg stars, type breakdown) for all visible destinations
-  const destIds = rows.map((r) => r.id);
+  const destIds = rows.map((r: any) => r.id);
   const hotelStatsMap = await getHotelStatsForDestinations(destIds);
 
   return {
     total,
-    items: rows.map((r) => {
+    items: rows.map((r: any) => {
       const stats = hotelStatsMap.get(r.id);
       return {
         ...r,
@@ -313,7 +313,7 @@ export async function getDestinationBySlugFromDb(slug: string) {
   return {
     dest,
     slug: buildDestinationSlug(dest),
-    hotels: hotels.map((h) => rowToHotel(h)),
+    hotels: hotels.map((h: any) => rowToHotel(h)),
   };
 }
 
@@ -405,16 +405,16 @@ export async function getHotelsNearbyFromDb(opts: {
   });
 
   return rows
-    .filter((h) => h.latitude != null && h.longitude != null)
-    .map((h) => ({
+    .filter((h: any) => h.latitude != null && h.longitude != null)
+    .map((h: any) => ({
       ...rowToHotel(h, {
         distance_km: Math.round(haversineKm(lat, lng, h.latitude!, h.longitude!) * 100) / 100,
       }),
       city: h.destino?.nome,
       country: h.destino?.pais,
     }))
-    .filter((h) => (h.distance_km ?? 0) <= radiusKm)
-    .sort((a, b) => (a.distance_km ?? 0) - (b.distance_km ?? 0))
+    .filter((h: any) => (h.distance_km ?? 0) <= radiusKm)
+    .sort((a: any, b: any) => (a.distance_km ?? 0) - (b.distance_km ?? 0))
     .slice(0, limit);
 }
 
@@ -446,7 +446,7 @@ export async function getHotelsFromDb(opts: {
 
   const filtered = rows.filter(isAccommodationHotel).slice(0, limit);
   if (filtered.length > 0) {
-    return filtered.map((h) => rowToHotel(h));
+    return filtered.map((h: any) => rowToHotel(h));
   }
 
   const sleepListings = await prisma.wvListing.findMany({
@@ -455,7 +455,7 @@ export async function getHotelsFromDb(opts: {
     take: limit,
   });
 
-  return sleepListings.map((listing, index) => ({
+  return sleepListings.map((listing: any, index: any) => ({
     id: destinoId * 10_000 + index + 1,
     destino_id: destinoId,
     nome: listing.title.trim(),
@@ -493,7 +493,7 @@ export async function getFlightsFromDb(opts: {
   });
 
   return rows.map(
-    (f): MockFlight => ({
+    (f: any): MockFlight => ({
       id: f.id,
       origem: f.origem,
       destino_id: f.destinoId,
@@ -720,8 +720,8 @@ export async function listDistinctCountriesFromDb(): Promise<{ name: string; cou
     orderBy: { _count: { pais: 'desc' } },
   });
   return rows
-    .filter((r) => r.pais)
-    .map((r) => ({ name: r.pais, count: r._count.pais }));
+    .filter((r: any) => r.pais)
+    .map((r: any) => ({ name: r.pais, count: r._count.pais }));
 }
 
 /** Lista de continentes distintos com contagem de destinos (ordenados por popularidade decrescente). */
@@ -732,5 +732,5 @@ export async function listDistinctContinentsFromDb(): Promise<{ name: string; co
     orderBy: { _count: { continente: 'desc' } },
     where: { continente: { not: null } },
   });
-  return rows.map((r) => ({ name: r.continente!, count: r._count.continente }));
+  return rows.map((r: any) => ({ name: r.continente!, count: r._count.continente }));
 }

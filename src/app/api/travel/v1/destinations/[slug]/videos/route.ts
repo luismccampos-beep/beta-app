@@ -4,7 +4,6 @@ import { apiHandler } from '@/lib/api/handler';
 import { withRateLimit } from '@/lib/api/rate-limit-guard';
 import { prisma } from '@/lib/prisma';
 
-export const revalidate = 86400;
 export const dynamic = 'force-dynamic';
 
 export const GET = apiHandler(withRateLimit(async (_req: Request, ctx) => {
@@ -25,7 +24,7 @@ export const GET = apiHandler(withRateLimit(async (_req: Request, ctx) => {
     return NextResponse.json({ ok: false, error: 'Destino não encontrado' }, { status: 404 });
   }
 
-  const videos = dest.videos.map((v) => ({
+  const videos = dest.videos.map((v: any) => ({
     url: v.url,
     thumbUrl: v.thumbUrl,
     posterUrl: v.posterUrl,

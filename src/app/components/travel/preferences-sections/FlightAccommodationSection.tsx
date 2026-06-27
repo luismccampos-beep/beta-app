@@ -98,7 +98,7 @@ export function FlightAccommodationSection({
                     onClick={() => setValue('cabinClass', cabin.value)}
                     className={`p-4 rounded-lg border-2 transition-all text-center touch-manipulation ${
                       isSelected
-                        ? 'border-teal-600 dark:border-teal-500 bg-teal-50 dark:bg-teal-900/30 shadow-md'
+                        ? 'border-primary dark:border-primary bg-primary-50 dark:bg-primary-900/30 shadow-md'
                         : 'border-gray-200 dark:border-gray-600 hover:border-gray-300 dark:hover:border-gray-500 bg-white dark:bg-gray-800'
                     }`}
                   >
@@ -112,7 +112,7 @@ export function FlightAccommodationSection({
                 );
               })}
             </div>
-            {errors.cabinClass && <p className="text-red-500 text-xs mt-1">{errors.cabinClass.message}</p>}
+            {errors.cabinClass && <p className="text-red-500 text-xs mt-1" role="alert">{errors.cabinClass.message}</p>}
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
@@ -148,7 +148,7 @@ export function FlightAccommodationSection({
                   </SelectContent>
                 </Select>
               )} />
-              {errors.mealPreference && <p className="text-red-500 text-xs mt-1">{errors.mealPreference.message}</p>}
+              {errors.mealPreference && <p className="text-red-500 text-xs mt-1" role="alert">{errors.mealPreference.message}</p>}
             </div>
           </div>
 
@@ -218,7 +218,7 @@ export function FlightAccommodationSection({
                 ))}
               </div>
             )}
-            {errors.accommodationType && <p className="text-red-500 text-xs mt-1">{errors.accommodationType.message}</p>}
+            {errors.accommodationType && <p className="text-red-500 text-xs mt-1" role="alert">{errors.accommodationType.message}</p>}
           </div>
 
           <div className="space-y-3">
@@ -237,7 +237,7 @@ export function FlightAccommodationSection({
                 </SelectContent>
               </Select>
             )} />
-            {errors.roomType && <p className="text-red-500 text-xs mt-1">{errors.roomType.message}</p>}
+            {errors.roomType && <p className="text-red-500 text-xs mt-1" role="alert">{errors.roomType.message}</p>}
           </div>
 
           <div className="space-y-3">
@@ -272,7 +272,7 @@ export function FlightAccommodationSection({
                 ))}
               </div>
             )}
-            {errors.amenities && <p className="text-red-500 text-xs mt-1">{errors.amenities.message}</p>}
+            {errors.amenities && <p className="text-red-500 text-xs mt-1" role="alert">{errors.amenities.message}</p>}
           </div>
 
           <div className="space-y-3">
@@ -304,12 +304,12 @@ export function FlightAccommodationSection({
                 ))}
               </div>
             )}
-            {errors.loyaltyPrograms && <p className="text-red-500 text-xs mt-1">{errors.loyaltyPrograms.message}</p>}
+            {errors.loyaltyPrograms && <p className="text-red-500 text-xs mt-1" role="alert">{errors.loyaltyPrograms.message}</p>}
           </div>
         </TabsContent>
 
         <TabsContent value="cruise" className="space-y-6 mt-6">
-          <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between rounded-lg border border-teal-100 dark:border-teal-800 bg-teal-50/50 dark:bg-teal-900/30 p-4">
+          <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between rounded-lg border border-primary-100 dark:border-primary-700 bg-primary-50/50 dark:bg-primary-900/30 p-4">
             <div className="flex-1 min-w-0">
               <Label className="text-base font-semibold">{t('cruiseIncludeToggle')}</Label>
               <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">{t('cruiseIncludeHint')}</p>
@@ -395,7 +395,7 @@ export function FlightAccommodationSection({
                       onClick={() => setValue('cruiseDuration', id)}
                       className={`p-4 rounded-lg border-2 text-left transition-all touch-manipulation ${
                         watchedPreferences.cruiseDuration === id
-                          ? 'border-teal-600 dark:border-teal-500 bg-teal-50 dark:bg-teal-900/30 shadow-md'
+                          ? 'border-primary dark:border-primary bg-primary-50 dark:bg-primary-900/30 shadow-md'
                           : 'border-gray-200 dark:border-gray-600 hover:border-gray-300 dark:hover:border-gray-500 bg-white dark:bg-gray-800'
                       }`}
                     >

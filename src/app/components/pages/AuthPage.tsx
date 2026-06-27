@@ -154,7 +154,7 @@ export function AuthPage({ onLoginSuccess, onBackToHome, onNavigateToLegal }: Au
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-teal-50 via-cyan-50 to-orange-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 transition-colors flex flex-col">
+    <div className="min-h-screen bg-gradient-to-br from-primary-50 via-cyan-50 to-accent-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 transition-colors flex flex-col">
       <AppHeader showBack={false} onBack={onBackToHome} />
 
       {/* Main Content */}
@@ -162,9 +162,9 @@ export function AuthPage({ onLoginSuccess, onBackToHome, onNavigateToLegal }: Au
         {/* Left Side - Branding */}
         <div className="hidden md:block space-y-6">
           <div className="space-y-4">
-            <div className="inline-flex items-center gap-2 bg-white dark:bg-gray-800 border border-teal-200 dark:border-gray-600 rounded-full px-4 py-2 shadow-sm">
-              <Sparkles className="w-4 h-4 text-orange-500" />
-              <span className="text-sm font-medium text-teal-900 dark:text-teal-300">AI-Powered Travel</span>
+            <div className="inline-flex items-center gap-2 bg-white dark:bg-gray-800 border border-primary-200 dark:border-gray-600 rounded-full px-4 py-2 shadow-sm">
+              <Sparkles className="w-4 h-4 text-accent" />
+              <span className="text-sm font-medium text-primary-900 dark:text-primary-200">AI-Powered Travel</span>
             </div>
 
             <h1 className="text-5xl font-bold text-gray-900 dark:text-white leading-tight">
@@ -185,7 +185,7 @@ export function AuthPage({ onLoginSuccess, onBackToHome, onNavigateToLegal }: Au
               const Icon = item.icon;
               return (
                 <div key={index} className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-teal-600 to-orange-500 flex items-center justify-center">
+                  <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-primary to-accent flex items-center justify-center">
                     <Icon className="w-5 h-5 text-white" />
                   </div>
                   <span className="text-gray-700 dark:text-gray-300 font-medium">{t(item.key)}</span>
@@ -197,44 +197,42 @@ export function AuthPage({ onLoginSuccess, onBackToHome, onNavigateToLegal }: Au
 
         {/* Mobile feature badges */}
         <div className="flex md:hidden flex-wrap items-center justify-center gap-2 mb-2">
-          <div className="inline-flex items-center gap-1.5 bg-white dark:bg-gray-800 border border-teal-200 dark:border-gray-600 rounded-full px-3 py-1.5 shadow-sm">
-            <Shield className="w-3.5 h-3.5 text-teal-600 dark:text-teal-400" />
+          <div className="inline-flex items-center gap-1.5 bg-white dark:bg-gray-800 border border-primary-200 dark:border-gray-600 rounded-full px-3 py-1.5 shadow-sm">
+            <Shield className="w-3.5 h-3.5 text-primary dark:text-primary-300" />
             <span className="text-xs font-medium text-gray-700 dark:text-gray-300">{t('enterpriseSecurity')}</span>
           </div>
-          <div className="inline-flex items-center gap-1.5 bg-white dark:bg-gray-800 border border-teal-200 dark:border-gray-600 rounded-full px-3 py-1.5 shadow-sm">
-            <Globe className="w-3.5 h-3.5 text-teal-600 dark:text-teal-400" />
+          <div className="inline-flex items-center gap-1.5 bg-white dark:bg-gray-800 border border-primary-200 dark:border-gray-600 rounded-full px-3 py-1.5 shadow-sm">
+            <Globe className="w-3.5 h-3.5 text-primary dark:text-primary-300" />
             <span className="text-xs font-medium text-gray-700 dark:text-gray-300">{t('countriesSupported')}</span>
           </div>
-          <div className="inline-flex items-center gap-1.5 bg-white dark:bg-gray-800 border border-teal-200 dark:border-gray-600 rounded-full px-3 py-1.5 shadow-sm">
-            <Sparkles className="w-3.5 h-3.5 text-orange-500" />
+          <div className="inline-flex items-center gap-1.5 bg-white dark:bg-gray-800 border border-primary-200 dark:border-gray-600 rounded-full px-3 py-1.5 shadow-sm">
+            <Sparkles className="w-3.5 h-3.5 text-accent" />
             <span className="text-xs font-medium text-gray-700 dark:text-gray-300">{t('aiRecommendations')}</span>
           </div>
         </div>
 
         {/* Right Side - Auth Forms */}
+        <Tabs
+          value={activeTab}
+          onValueChange={(v: string) => {
+            if (v === 'login' || v === 'register') setActiveTab(v);
+          }}
+          className="w-full"
+        >
         <Card className="border-2 border-gray-200 dark:border-gray-700 shadow-2xl dark:bg-gray-800">
           <CardHeader>
-            <Tabs
-              value={activeTab}
-              onValueChange={(v: string) => {
-                if (v === 'login' || v === 'register') setActiveTab(v);
-              }}
-              className="w-full"
-            >
-              <TabsList className="grid w-full grid-cols-2 h-12">
-                <TabsTrigger value="login" className="text-base">
-                  {t('login')}
-                </TabsTrigger>
-                <TabsTrigger value="register" className="text-base">
-                  {t('register')}
-                </TabsTrigger>
-              </TabsList>
-            </Tabs>
+            <TabsList className="grid w-full grid-cols-2 h-12">
+              <TabsTrigger value="login" className="text-base">
+                {t('login')}
+              </TabsTrigger>
+              <TabsTrigger value="register" className="text-base">
+                {t('register')}
+              </TabsTrigger>
+            </TabsList>
           </CardHeader>
 
           <CardContent>
-            {/* Login Form */}
-            {activeTab === 'login' && (
+            <TabsContent value="login">
               <form onSubmit={handleLogin} className="space-y-6">
                 <div className="space-y-2 text-center pb-4">
                   <CardTitle className="text-2xl dark:text-white">{t('welcomeBack')}</CardTitle>
@@ -295,7 +293,7 @@ export function AuthPage({ onLoginSuccess, onBackToHome, onNavigateToLegal }: Au
                     </div>
                     <Link
                       href="/forgot-password"
-                      className="text-sm text-teal-600 dark:text-teal-400 hover:text-teal-700 dark:hover:text-teal-300 font-medium"
+                      className="text-sm text-primary dark:text-primary-300 hover:text-primary dark:hover:text-primary-200 font-medium"
                     >
                       {t('forgotPassword')}
                     </Link>
@@ -305,7 +303,7 @@ export function AuthPage({ onLoginSuccess, onBackToHome, onNavigateToLegal }: Au
                 <Button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full h-12 bg-gradient-to-r from-teal-600 to-orange-500 hover:from-teal-700 hover:to-orange-600 text-base gap-2"
+                  className="w-full h-12 bg-gradient-to-r from-primary to-accent hover:from-primary-700 hover:to-accent-600 text-base gap-2"
                 >
                   {isSubmitting ? (
                     <span className="flex items-center gap-2">
@@ -357,18 +355,16 @@ export function AuthPage({ onLoginSuccess, onBackToHome, onNavigateToLegal }: Au
                   </Button>
                 </div>
 
-                <div className="bg-teal-50 dark:bg-gray-700 border border-teal-200 dark:border-gray-600 rounded-lg p-3 flex items-start gap-2">
-                  <Shield className="w-5 h-5 text-teal-600 dark:text-teal-400 mt-0.5 flex-shrink-0" />
+                <div className="bg-primary-50 dark:bg-gray-700 border border-primary-200 dark:border-gray-600 rounded-lg p-3 flex items-start gap-2">
+                  <Shield className="w-5 h-5 text-primary dark:text-primary-300 mt-0.5 flex-shrink-0" />
                   <div>
-                    <p className="text-sm font-semibold text-teal-900 dark:text-teal-300">{t('secureLogin')}</p>
-                    <p className="text-xs text-teal-700 dark:text-teal-400">{t('encryptedConnection')}</p>
+                    <p className="text-sm font-semibold text-primary-900 dark:text-primary-200">{t('secureLogin')}</p>
+                    <p className="text-xs text-primary dark:text-primary-300">{t('encryptedConnection')}</p>
                   </div>
                 </div>
               </form>
-            )}
-
-            {/* Register Form */}
-            {activeTab === 'register' && (
+            </TabsContent>
+            <TabsContent value="register">
               <form onSubmit={handleRegister} className="space-y-6">
                 <div className="space-y-2 text-center pb-4">
                   <CardTitle className="text-2xl dark:text-white">{t('createAccount')}</CardTitle>
@@ -501,7 +497,7 @@ export function AuthPage({ onLoginSuccess, onBackToHome, onNavigateToLegal }: Au
                           (<button
                             type="button"
                             onClick={() => onNavigateToLegal('terms')}
-                            className="text-teal-600 dark:text-teal-400 hover:underline"
+                            className="text-primary dark:text-primary-300 hover:underline"
                           >
                             {t('legalTerms') || 'Terms'}
                           </button>
@@ -509,7 +505,7 @@ export function AuthPage({ onLoginSuccess, onBackToHome, onNavigateToLegal }: Au
                           <button
                             type="button"
                             onClick={() => onNavigateToLegal('privacy')}
-                            className="text-teal-600 dark:text-teal-400 hover:underline"
+                            className="text-primary dark:text-primary-300 hover:underline"
                           >
                             {t('legalPrivacy') || 'Privacy'}
                           </button>)
@@ -522,7 +518,7 @@ export function AuthPage({ onLoginSuccess, onBackToHome, onNavigateToLegal }: Au
                 <Button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full h-12 bg-gradient-to-r from-teal-600 to-orange-500 hover:from-teal-700 hover:to-orange-600 text-base gap-2"
+                  className="w-full h-12 bg-gradient-to-r from-primary to-accent hover:from-primary-700 hover:to-accent-600 text-base gap-2"
                 >
                   {isSubmitting ? (
                     <span className="flex items-center gap-2">
@@ -537,7 +533,7 @@ export function AuthPage({ onLoginSuccess, onBackToHome, onNavigateToLegal }: Au
                   )}
                 </Button>
 
-                <div className="bg-teal-50 dark:bg-gray-700 border border-teal-200 dark:border-gray-600 rounded-lg p-3 flex items-start gap-2">
+                <div className="bg-primary-50 dark:bg-gray-700 border border-primary-200 dark:border-gray-600 rounded-lg p-3 flex items-start gap-2">
                   <CheckCircle2 className="w-5 h-5 text-green-600 dark:text-green-400 mt-0.5 flex-shrink-0" />
                   <div className="space-y-1">
                     <p className="text-xs text-gray-700 dark:text-gray-300">✓ {t('freeAccount')}</p>
@@ -546,9 +542,10 @@ export function AuthPage({ onLoginSuccess, onBackToHome, onNavigateToLegal }: Au
                   </div>
                 </div>
               </form>
-            )}
+            </TabsContent>
           </CardContent>
         </Card>
+        </Tabs>
       </div>
 
       <AppFooter />

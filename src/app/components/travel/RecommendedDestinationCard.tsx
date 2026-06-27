@@ -59,7 +59,7 @@ export function RecommendedDestinationCard({
   const detailHref = `${destinationDetailPath(item.slug, locale)}?${detailQuery}`;
 
   return (
-    <Card className="overflow-hidden border-0 shadow-lg ring-1 ring-teal-200/70 dark:ring-teal-900/50 dark:bg-gray-800">
+    <Card className="overflow-hidden border-0 shadow-lg ring-1 ring-primary-200/70 dark:ring-primary-900/50 dark:bg-gray-800">
       <div className="relative aspect-video overflow-hidden">
         <Image
           src={item.imageUrl || DESTINATION_PLACEHOLDER}
@@ -72,7 +72,7 @@ export function RecommendedDestinationCard({
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent pointer-events-none" />
         <div className="absolute top-2 right-2 flex flex-wrap gap-1 justify-end">
-          <Badge className="border-0 bg-gradient-to-r from-teal-500 to-orange-500 text-white">
+          <Badge className="border-0 bg-gradient-to-r from-primary to-accent text-white">
             <Sparkles className="mr-1 h-3 w-3" />
             {item.matchPercent}% {labels.match}
           </Badge>
@@ -140,7 +140,7 @@ export function RecommendedDestinationCard({
               </span>
             </div>
           )}
-          <div className="flex justify-between gap-2 border-t border-gray-200 dark:border-gray-700 pt-2 font-semibold text-teal-800 dark:text-teal-300">
+          <div className="flex justify-between gap-2 border-t border-gray-200 dark:border-gray-700 pt-2 font-semibold text-primary-700 dark:text-primary-200">
             <span>{labels.total}</span>
             <span className="shrink-0 text-right tabular-nums">
               {currency} {cost.tripTotal.toLocaleString()}
@@ -164,7 +164,7 @@ export function RecommendedDestinationCard({
           {item.iata && onSearchLive && (
             <Button
               type="button"
-              className="w-full min-h-11 gap-1 bg-gradient-to-r from-teal-600 to-orange-500 touch-manipulation"
+              className="w-full min-h-11 gap-1 bg-gradient-to-r from-primary to-accent touch-manipulation"
               onClick={onSearchLive}
             >
               <Search className="h-4 w-4" />

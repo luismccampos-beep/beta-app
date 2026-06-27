@@ -107,8 +107,8 @@ export function CookiesContent() {
             </div>
           </div>
 
-          <div className="p-5 bg-teal-50 dark:bg-teal-900/20 border-l-4 border-teal-600 rounded-lg">
-            <h3 className="text-lg font-semibold text-teal-900 dark:text-teal-300 mb-3 flex items-center gap-2">
+          <div className="p-5 bg-primary-50 dark:bg-primary-900/20 border-l-4 border-primary rounded-lg">
+            <h3 className="text-lg font-semibold text-primary-900 dark:text-primary-200 mb-3 flex items-center gap-2">
               <CheckCircle2 className="w-5 h-5" />
               Analytics Cookies
             </h3>
@@ -118,14 +118,14 @@ export function CookiesContent() {
             <div className="overflow-x-auto">
               <table className="w-full text-sm border-collapse">
                 <thead>
-                  <tr className="border-b-2 border-teal-600 dark:border-teal-400">
-                    <th className="text-left py-2 pr-4 font-semibold text-teal-900 dark:text-teal-200">Service</th>
-                    <th className="text-left py-2 pr-4 font-semibold text-teal-900 dark:text-teal-200">Purpose</th>
-                    <th className="text-left py-2 font-semibold text-teal-900 dark:text-teal-200">Duration</th>
+                  <tr className="border-b-2 border-primary dark:border-primary-300">
+                    <th className="text-left py-2 pr-4 font-semibold text-primary-900 dark:text-primary-200">Service</th>
+                    <th className="text-left py-2 pr-4 font-semibold text-primary-900 dark:text-primary-200">Purpose</th>
+                    <th className="text-left py-2 font-semibold text-primary-900 dark:text-primary-200">Duration</th>
                   </tr>
                 </thead>
                 <tbody className="text-gray-700 dark:text-gray-300">
-                  <tr className="border-b border-teal-200 dark:border-teal-800">
+                  <tr className="border-b border-primary-200 dark:border-primary-700">
                     <td className="py-2 pr-4 font-medium">Google Analytics</td>
                     <td className="py-2 pr-4">Website usage statistics</td>
                     <td className="py-2">2 years</td>
@@ -140,8 +140,8 @@ export function CookiesContent() {
             </div>
           </div>
 
-          <div className="p-5 bg-orange-50 dark:bg-orange-900/20 border-l-4 border-orange-600 rounded-lg">
-            <h3 className="text-lg font-semibold text-orange-900 dark:text-orange-300 mb-3 flex items-center gap-2">
+          <div className="p-5 bg-accent-50 dark:bg-accent-700/20 border-l-4 border-accent rounded-lg">
+            <h3 className="text-lg font-semibold text-accent-700 dark:text-accent-200 mb-3 flex items-center gap-2">
               <AlertTriangle className="w-5 h-5" />
               Marketing Cookies
             </h3>
@@ -151,19 +151,19 @@ export function CookiesContent() {
             <div className="overflow-x-auto">
               <table className="w-full text-sm border-collapse">
                 <thead>
-                  <tr className="border-b-2 border-orange-600 dark:border-orange-400">
-                    <th className="text-left py-2 pr-4 font-semibold text-orange-900 dark:text-orange-200">Service</th>
-                    <th className="text-left py-2 pr-4 font-semibold text-orange-900 dark:text-orange-200">Purpose</th>
-                    <th className="text-left py-2 font-semibold text-orange-900 dark:text-orange-200">Duration</th>
+                  <tr className="border-b-2 border-accent dark:border-accent-200">
+                    <th className="text-left py-2 pr-4 font-semibold text-accent-700 dark:text-accent-200">Service</th>
+                    <th className="text-left py-2 pr-4 font-semibold text-accent-700 dark:text-accent-200">Purpose</th>
+                    <th className="text-left py-2 font-semibold text-accent-700 dark:text-accent-200">Duration</th>
                   </tr>
                 </thead>
                 <tbody className="text-gray-700 dark:text-gray-300">
-                  <tr className="border-b border-orange-200 dark:border-orange-800">
+                  <tr className="border-b border-accent-200 dark:border-accent-700">
                     <td className="py-2 pr-4 font-medium">Google Ads</td>
                     <td className="py-2 pr-4">Targeted advertising</td>
                     <td className="py-2">2 years</td>
                   </tr>
-                  <tr className="border-b border-orange-200 dark:border-orange-800">
+                  <tr className="border-b border-accent-200 dark:border-accent-700">
                     <td className="py-2 pr-4 font-medium">Facebook Pixel</td>
                     <td className="py-2 pr-4">Remarketing and analytics</td>
                     <td className="py-2">2 years</td>
@@ -203,9 +203,9 @@ export function CookiesContent() {
             <p className="font-semibold text-gray-900 dark:text-white mb-2">Third-Party Opt-Out</p>
             <p className="text-gray-700 dark:text-gray-300">You can opt out of third-party cookies through:</p>
             <ul className="mt-2 ml-4">
-              <li>Your Online Choices: <a href="https://www.youronlinechoices.com/" className="text-teal-600 dark:text-teal-400 hover:underline" target="_blank" rel="noopener noreferrer">www.youronlinechoices.com</a></li>
-              <li>Network Advertising Initiative: <a href="https://optout.networkadvertising.org/" className="text-teal-600 dark:text-teal-400 hover:underline" target="_blank" rel="noopener noreferrer">optout.networkadvertising.org</a></li>
-              <li>Digital Advertising Alliance: <a href="https://optout.aboutads.info/" className="text-teal-600 dark:text-teal-400 hover:underline" target="_blank" rel="noopener noreferrer">optout.aboutads.info</a></li>
+              <li>Your Online Choices: <a href="https://www.youronlinechoices.com/" className="text-primary dark:text-primary-300 hover:underline" target="_blank" rel="noopener noreferrer">www.youronlinechoices.com</a></li>
+              <li>Network Advertising Initiative: <a href="https://optout.networkadvertising.org/" className="text-primary dark:text-primary-300 hover:underline" target="_blank" rel="noopener noreferrer">optout.networkadvertising.org</a></li>
+              <li>Digital Advertising Alliance: <a href="https://optout.aboutads.info/" className="text-primary dark:text-primary-300 hover:underline" target="_blank" rel="noopener noreferrer">optout.aboutads.info</a></li>
             </ul>
           </div>
         </div>
@@ -218,7 +218,7 @@ export function CookiesContent() {
             <strong>Last updated:</strong> April 29, 2026
           </p>
           <p className="text-sm text-gray-700 dark:text-gray-300 mt-2">
-            For questions about our use of cookies, please contact us at: <a href="mailto:privacy@akmleva.pt" className="text-teal-600 dark:text-teal-400 hover:underline">privacy@akmleva.pt</a>
+            For questions about our use of cookies, please contact us at: <a href="mailto:privacy@akmleva.pt" className="text-primary dark:text-primary-300 hover:underline">privacy@akmleva.pt</a>
           </p>
         </div>
       </>
@@ -326,8 +326,8 @@ export function CookiesContent() {
             </div>
           </div>
 
-          <div className="p-5 bg-teal-50 dark:bg-teal-900/20 border-l-4 border-teal-600 rounded-lg">
-            <h3 className="text-lg font-semibold text-teal-900 dark:text-teal-300 mb-3 flex items-center gap-2">
+          <div className="p-5 bg-primary-50 dark:bg-primary-900/20 border-l-4 border-primary rounded-lg">
+            <h3 className="text-lg font-semibold text-primary-900 dark:text-primary-200 mb-3 flex items-center gap-2">
               <CheckCircle2 className="w-5 h-5" />
               Cookies Analíticos
             </h3>
@@ -337,14 +337,14 @@ export function CookiesContent() {
             <div className="overflow-x-auto">
               <table className="w-full text-sm border-collapse">
                 <thead>
-                  <tr className="border-b-2 border-teal-600 dark:border-teal-400">
-                    <th className="text-left py-2 pr-4 font-semibold text-teal-900 dark:text-teal-200">Serviço</th>
-                    <th className="text-left py-2 pr-4 font-semibold text-teal-900 dark:text-teal-200">Finalidade</th>
-                    <th className="text-left py-2 font-semibold text-teal-900 dark:text-teal-200">Duração</th>
+                  <tr className="border-b-2 border-primary dark:border-primary-300">
+                    <th className="text-left py-2 pr-4 font-semibold text-primary-900 dark:text-primary-200">Serviço</th>
+                    <th className="text-left py-2 pr-4 font-semibold text-primary-900 dark:text-primary-200">Finalidade</th>
+                    <th className="text-left py-2 font-semibold text-primary-900 dark:text-primary-200">Duração</th>
                   </tr>
                 </thead>
                 <tbody className="text-gray-700 dark:text-gray-300">
-                  <tr className="border-b border-teal-200 dark:border-teal-800">
+                  <tr className="border-b border-primary-200 dark:border-primary-700">
                     <td className="py-2 pr-4 font-medium">Google Analytics</td>
                     <td className="py-2 pr-4">Estatísticas de uso do website</td>
                     <td className="py-2">2 anos</td>
@@ -359,8 +359,8 @@ export function CookiesContent() {
             </div>
           </div>
 
-          <div className="p-5 bg-orange-50 dark:bg-orange-900/20 border-l-4 border-orange-600 rounded-lg">
-            <h3 className="text-lg font-semibold text-orange-900 dark:text-orange-300 mb-3 flex items-center gap-2">
+          <div className="p-5 bg-accent-50 dark:bg-accent-700/20 border-l-4 border-accent rounded-lg">
+            <h3 className="text-lg font-semibold text-accent-700 dark:text-accent-200 mb-3 flex items-center gap-2">
               <AlertTriangle className="w-5 h-5" />
               Cookies de Marketing
             </h3>
@@ -370,19 +370,19 @@ export function CookiesContent() {
             <div className="overflow-x-auto">
               <table className="w-full text-sm border-collapse">
                 <thead>
-                  <tr className="border-b-2 border-orange-600 dark:border-orange-400">
-                    <th className="text-left py-2 pr-4 font-semibold text-orange-900 dark:text-orange-200">Serviço</th>
-                    <th className="text-left py-2 pr-4 font-semibold text-orange-900 dark:text-orange-200">Finalidade</th>
-                    <th className="text-left py-2 font-semibold text-orange-900 dark:text-orange-200">Duração</th>
+                  <tr className="border-b-2 border-accent dark:border-accent-200">
+                    <th className="text-left py-2 pr-4 font-semibold text-accent-700 dark:text-accent-200">Serviço</th>
+                    <th className="text-left py-2 pr-4 font-semibold text-accent-700 dark:text-accent-200">Finalidade</th>
+                    <th className="text-left py-2 font-semibold text-accent-700 dark:text-accent-200">Duração</th>
                   </tr>
                 </thead>
                 <tbody className="text-gray-700 dark:text-gray-300">
-                  <tr className="border-b border-orange-200 dark:border-orange-800">
+                  <tr className="border-b border-accent-200 dark:border-accent-700">
                     <td className="py-2 pr-4 font-medium">Google Ads</td>
                     <td className="py-2 pr-4">Publicidade direcionada</td>
                     <td className="py-2">2 anos</td>
                   </tr>
-                  <tr className="border-b border-orange-200 dark:border-orange-800">
+                  <tr className="border-b border-accent-200 dark:border-accent-700">
                     <td className="py-2 pr-4 font-medium">Facebook Pixel</td>
                     <td className="py-2 pr-4">Remarketing e análise</td>
                     <td className="py-2">2 anos</td>
@@ -422,9 +422,9 @@ export function CookiesContent() {
             <p className="font-semibold text-gray-900 dark:text-white mb-2">Exclusão de Terceiros</p>
             <p className="text-gray-700 dark:text-gray-300">Pode optar por não receber cookies de terceiros através de:</p>
             <ul className="mt-2 ml-4">
-              <li>Your Online Choices: <a href="https://www.youronlinechoices.com/" className="text-teal-600 dark:text-teal-400 hover:underline" target="_blank" rel="noopener noreferrer">www.youronlinechoices.com</a></li>
-              <li>Network Advertising Initiative: <a href="https://optout.networkadvertising.org/" className="text-teal-600 dark:text-teal-400 hover:underline" target="_blank" rel="noopener noreferrer">optout.networkadvertising.org</a></li>
-              <li>Digital Advertising Alliance: <a href="https://optout.aboutads.info/" className="text-teal-600 dark:text-teal-400 hover:underline" target="_blank" rel="noopener noreferrer">optout.aboutads.info</a></li>
+              <li>Your Online Choices: <a href="https://www.youronlinechoices.com/" className="text-primary dark:text-primary-300 hover:underline" target="_blank" rel="noopener noreferrer">www.youronlinechoices.com</a></li>
+              <li>Network Advertising Initiative: <a href="https://optout.networkadvertising.org/" className="text-primary dark:text-primary-300 hover:underline" target="_blank" rel="noopener noreferrer">optout.networkadvertising.org</a></li>
+              <li>Digital Advertising Alliance: <a href="https://optout.aboutads.info/" className="text-primary dark:text-primary-300 hover:underline" target="_blank" rel="noopener noreferrer">optout.aboutads.info</a></li>
             </ul>
           </div>
         </div>
@@ -437,7 +437,7 @@ export function CookiesContent() {
             <strong>Última atualização:</strong> 29 de Abril de 2026
           </p>
           <p className="text-sm text-gray-700 dark:text-gray-300 mt-2">
-            Para questões sobre o nosso uso de cookies, por favor contacte-nos em: <a href="mailto:privacy@akmleva.pt" className="text-teal-600 dark:text-teal-400 hover:underline">privacy@akmleva.pt</a>
+            Para questões sobre o nosso uso de cookies, por favor contacte-nos em: <a href="mailto:privacy@akmleva.pt" className="text-primary dark:text-primary-300 hover:underline">privacy@akmleva.pt</a>
           </p>
         </div>
       </>
@@ -545,8 +545,8 @@ export function CookiesContent() {
             </div>
           </div>
 
-          <div className="p-5 bg-teal-50 dark:bg-teal-900/20 border-l-4 border-teal-600 rounded-lg">
-            <h3 className="text-lg font-semibold text-teal-900 dark:text-teal-300 mb-3 flex items-center gap-2">
+          <div className="p-5 bg-primary-50 dark:bg-primary-900/20 border-l-4 border-primary rounded-lg">
+            <h3 className="text-lg font-semibold text-primary-900 dark:text-primary-200 mb-3 flex items-center gap-2">
               <CheckCircle2 className="w-5 h-5" />
               Cookies Analíticas
             </h3>
@@ -556,14 +556,14 @@ export function CookiesContent() {
             <div className="overflow-x-auto">
               <table className="w-full text-sm border-collapse">
                 <thead>
-                  <tr className="border-b-2 border-teal-600 dark:border-teal-400">
-                    <th className="text-left py-2 pr-4 font-semibold text-teal-900 dark:text-teal-200">Servicio</th>
-                    <th className="text-left py-2 pr-4 font-semibold text-teal-900 dark:text-teal-200">Propósito</th>
-                    <th className="text-left py-2 font-semibold text-teal-900 dark:text-teal-200">Duración</th>
+                  <tr className="border-b-2 border-primary dark:border-primary-300">
+                    <th className="text-left py-2 pr-4 font-semibold text-primary-900 dark:text-primary-200">Servicio</th>
+                    <th className="text-left py-2 pr-4 font-semibold text-primary-900 dark:text-primary-200">Propósito</th>
+                    <th className="text-left py-2 font-semibold text-primary-900 dark:text-primary-200">Duración</th>
                   </tr>
                 </thead>
                 <tbody className="text-gray-700 dark:text-gray-300">
-                  <tr className="border-b border-teal-200 dark:border-teal-800">
+                  <tr className="border-b border-primary-200 dark:border-primary-700">
                     <td className="py-2 pr-4 font-medium">Google Analytics</td>
                     <td className="py-2 pr-4">Estadísticas de uso del sitio web</td>
                     <td className="py-2">2 años</td>
@@ -578,8 +578,8 @@ export function CookiesContent() {
             </div>
           </div>
 
-          <div className="p-5 bg-orange-50 dark:bg-orange-900/20 border-l-4 border-orange-600 rounded-lg">
-            <h3 className="text-lg font-semibold text-orange-900 dark:text-orange-300 mb-3 flex items-center gap-2">
+          <div className="p-5 bg-accent-50 dark:bg-accent-700/20 border-l-4 border-accent rounded-lg">
+            <h3 className="text-lg font-semibold text-accent-700 dark:text-accent-200 mb-3 flex items-center gap-2">
               <AlertTriangle className="w-5 h-5" />
               Cookies de Marketing
             </h3>
@@ -589,19 +589,19 @@ export function CookiesContent() {
             <div className="overflow-x-auto">
               <table className="w-full text-sm border-collapse">
                 <thead>
-                  <tr className="border-b-2 border-orange-600 dark:border-orange-400">
-                    <th className="text-left py-2 pr-4 font-semibold text-orange-900 dark:text-orange-200">Servicio</th>
-                    <th className="text-left py-2 pr-4 font-semibold text-orange-900 dark:text-orange-200">Propósito</th>
-                    <th className="text-left py-2 font-semibold text-orange-900 dark:text-orange-200">Duración</th>
+                  <tr className="border-b-2 border-accent dark:border-accent-200">
+                    <th className="text-left py-2 pr-4 font-semibold text-accent-700 dark:text-accent-200">Servicio</th>
+                    <th className="text-left py-2 pr-4 font-semibold text-accent-700 dark:text-accent-200">Propósito</th>
+                    <th className="text-left py-2 font-semibold text-accent-700 dark:text-accent-200">Duración</th>
                   </tr>
                 </thead>
                 <tbody className="text-gray-700 dark:text-gray-300">
-                  <tr className="border-b border-orange-200 dark:border-orange-800">
+                  <tr className="border-b border-accent-200 dark:border-accent-700">
                     <td className="py-2 pr-4 font-medium">Google Ads</td>
                     <td className="py-2 pr-4">Publicidad dirigida</td>
                     <td className="py-2">2 años</td>
                   </tr>
-                  <tr className="border-b border-orange-200 dark:border-orange-800">
+                  <tr className="border-b border-accent-200 dark:border-accent-700">
                     <td className="py-2 pr-4 font-medium">Facebook Pixel</td>
                     <td className="py-2 pr-4">Remarketing y análisis</td>
                     <td className="py-2">2 años</td>
@@ -641,9 +641,9 @@ export function CookiesContent() {
             <p className="font-semibold text-gray-900 dark:text-white mb-2">Exclusión de Terceros</p>
             <p className="text-gray-700 dark:text-gray-300">Puede optar por no recibir cookies de terceros a través de:</p>
             <ul className="mt-2 ml-4">
-              <li>Your Online Choices: <a href="https://www.youronlinechoices.com/" className="text-teal-600 dark:text-teal-400 hover:underline" target="_blank" rel="noopener noreferrer">www.youronlinechoices.com</a></li>
-              <li>Network Advertising Initiative: <a href="https://optout.networkadvertising.org/" className="text-teal-600 dark:text-teal-400 hover:underline" target="_blank" rel="noopener noreferrer">optout.networkadvertising.org</a></li>
-              <li>Digital Advertising Alliance: <a href="https://optout.aboutads.info/" className="text-teal-600 dark:text-teal-400 hover:underline" target="_blank" rel="noopener noreferrer">optout.aboutads.info</a></li>
+              <li>Your Online Choices: <a href="https://www.youronlinechoices.com/" className="text-primary dark:text-primary-300 hover:underline" target="_blank" rel="noopener noreferrer">www.youronlinechoices.com</a></li>
+              <li>Network Advertising Initiative: <a href="https://optout.networkadvertising.org/" className="text-primary dark:text-primary-300 hover:underline" target="_blank" rel="noopener noreferrer">optout.networkadvertising.org</a></li>
+              <li>Digital Advertising Alliance: <a href="https://optout.aboutads.info/" className="text-primary dark:text-primary-300 hover:underline" target="_blank" rel="noopener noreferrer">optout.aboutads.info</a></li>
             </ul>
           </div>
         </div>
@@ -656,7 +656,7 @@ export function CookiesContent() {
             <strong>Última actualización:</strong> 29 de Abril de 2026
           </p>
           <p className="text-sm text-gray-700 dark:text-gray-300 mt-2">
-            Para preguntas sobre nuestro uso de cookies, contáctenos en: <a href="mailto:privacy@akmleva.pt" className="text-teal-600 dark:text-teal-400 hover:underline">privacy@akmleva.pt</a>
+            Para preguntas sobre nuestro uso de cookies, contáctenos en: <a href="mailto:privacy@akmleva.pt" className="text-primary dark:text-primary-300 hover:underline">privacy@akmleva.pt</a>
           </p>
         </div>
       </>
@@ -764,8 +764,8 @@ export function CookiesContent() {
             </div>
           </div>
 
-          <div className="p-5 bg-teal-50 dark:bg-teal-900/20 border-l-4 border-teal-600 rounded-lg">
-            <h3 className="text-lg font-semibold text-teal-900 dark:text-teal-300 mb-3 flex items-center gap-2">
+          <div className="p-5 bg-primary-50 dark:bg-primary-900/20 border-l-4 border-primary rounded-lg">
+            <h3 className="text-lg font-semibold text-primary-900 dark:text-primary-200 mb-3 flex items-center gap-2">
               <CheckCircle2 className="w-5 h-5" />
               Cookies Analytiques
             </h3>
@@ -775,14 +775,14 @@ export function CookiesContent() {
             <div className="overflow-x-auto">
               <table className="w-full text-sm border-collapse">
                 <thead>
-                  <tr className="border-b-2 border-teal-600 dark:border-teal-400">
-                    <th className="text-left py-2 pr-4 font-semibold text-teal-900 dark:text-teal-200">Service</th>
-                    <th className="text-left py-2 pr-4 font-semibold text-teal-900 dark:text-teal-200">Objectif</th>
-                    <th className="text-left py-2 font-semibold text-teal-900 dark:text-teal-200">Durée</th>
+                  <tr className="border-b-2 border-primary dark:border-primary-300">
+                    <th className="text-left py-2 pr-4 font-semibold text-primary-900 dark:text-primary-200">Service</th>
+                    <th className="text-left py-2 pr-4 font-semibold text-primary-900 dark:text-primary-200">Objectif</th>
+                    <th className="text-left py-2 font-semibold text-primary-900 dark:text-primary-200">Durée</th>
                   </tr>
                 </thead>
                 <tbody className="text-gray-700 dark:text-gray-300">
-                  <tr className="border-b border-teal-200 dark:border-teal-800">
+                  <tr className="border-b border-primary-200 dark:border-primary-700">
                     <td className="py-2 pr-4 font-medium">Google Analytics</td>
                     <td className="py-2 pr-4">Statistiques d'utilisation du site Web</td>
                     <td className="py-2">2 ans</td>
@@ -797,8 +797,8 @@ export function CookiesContent() {
             </div>
           </div>
 
-          <div className="p-5 bg-orange-50 dark:bg-orange-900/20 border-l-4 border-orange-600 rounded-lg">
-            <h3 className="text-lg font-semibold text-orange-900 dark:text-orange-300 mb-3 flex items-center gap-2">
+          <div className="p-5 bg-accent-50 dark:bg-accent-700/20 border-l-4 border-accent rounded-lg">
+            <h3 className="text-lg font-semibold text-accent-700 dark:text-accent-200 mb-3 flex items-center gap-2">
               <AlertTriangle className="w-5 h-5" />
               Cookies Marketing
             </h3>
@@ -808,19 +808,19 @@ export function CookiesContent() {
             <div className="overflow-x-auto">
               <table className="w-full text-sm border-collapse">
                 <thead>
-                  <tr className="border-b-2 border-orange-600 dark:border-orange-400">
-                    <th className="text-left py-2 pr-4 font-semibold text-orange-900 dark:text-orange-200">Service</th>
-                    <th className="text-left py-2 pr-4 font-semibold text-orange-900 dark:text-orange-200">Objectif</th>
-                    <th className="text-left py-2 font-semibold text-orange-900 dark:text-orange-200">Durée</th>
+                  <tr className="border-b-2 border-accent dark:border-accent-200">
+                    <th className="text-left py-2 pr-4 font-semibold text-accent-700 dark:text-accent-200">Service</th>
+                    <th className="text-left py-2 pr-4 font-semibold text-accent-700 dark:text-accent-200">Objectif</th>
+                    <th className="text-left py-2 font-semibold text-accent-700 dark:text-accent-200">Durée</th>
                   </tr>
                 </thead>
                 <tbody className="text-gray-700 dark:text-gray-300">
-                  <tr className="border-b border-orange-200 dark:border-orange-800">
+                  <tr className="border-b border-accent-200 dark:border-accent-700">
                     <td className="py-2 pr-4 font-medium">Google Ads</td>
                     <td className="py-2 pr-4">Publicité ciblée</td>
                     <td className="py-2">2 ans</td>
                   </tr>
-                  <tr className="border-b border-orange-200 dark:border-orange-800">
+                  <tr className="border-b border-accent-200 dark:border-accent-700">
                     <td className="py-2 pr-4 font-medium">Facebook Pixel</td>
                     <td className="py-2 pr-4">Remarketing et analyse</td>
                     <td className="py-2">2 ans</td>
@@ -860,9 +860,9 @@ export function CookiesContent() {
             <p className="font-semibold text-gray-900 dark:text-white mb-2">Désactivation des Tiers</p>
             <p className="text-gray-700 dark:text-gray-300">Vous pouvez refuser les cookies tiers via:</p>
             <ul className="mt-2 ml-4">
-              <li>Your Online Choices: <a href="https://www.youronlinechoices.com/" className="text-teal-600 dark:text-teal-400 hover:underline" target="_blank" rel="noopener noreferrer">www.youronlinechoices.com</a></li>
-              <li>Network Advertising Initiative: <a href="https://optout.networkadvertising.org/" className="text-teal-600 dark:text-teal-400 hover:underline" target="_blank" rel="noopener noreferrer">optout.networkadvertising.org</a></li>
-              <li>Digital Advertising Alliance: <a href="https://optout.aboutads.info/" className="text-teal-600 dark:text-teal-400 hover:underline" target="_blank" rel="noopener noreferrer">optout.aboutads.info</a></li>
+              <li>Your Online Choices: <a href="https://www.youronlinechoices.com/" className="text-primary dark:text-primary-300 hover:underline" target="_blank" rel="noopener noreferrer">www.youronlinechoices.com</a></li>
+              <li>Network Advertising Initiative: <a href="https://optout.networkadvertising.org/" className="text-primary dark:text-primary-300 hover:underline" target="_blank" rel="noopener noreferrer">optout.networkadvertising.org</a></li>
+              <li>Digital Advertising Alliance: <a href="https://optout.aboutads.info/" className="text-primary dark:text-primary-300 hover:underline" target="_blank" rel="noopener noreferrer">optout.aboutads.info</a></li>
             </ul>
           </div>
         </div>
@@ -875,7 +875,7 @@ export function CookiesContent() {
             <strong>Dernière mise à jour:</strong> 29 Avril 2026
           </p>
           <p className="text-sm text-gray-700 dark:text-gray-300 mt-2">
-            Pour des questions sur notre utilisation des cookies, veuillez nous contacter à: <a href="mailto:privacy@akmleva.pt" className="text-teal-600 dark:text-teal-400 hover:underline">privacy@akmleva.pt</a>
+            Pour des questions sur notre utilisation des cookies, veuillez nous contacter à: <a href="mailto:privacy@akmleva.pt" className="text-primary dark:text-primary-300 hover:underline">privacy@akmleva.pt</a>
           </p>
         </div>
       </>
