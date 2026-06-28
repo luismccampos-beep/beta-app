@@ -213,4 +213,155 @@ test.describe('Accessibility — axe-core automated audits', () => {
       }
     }
   });
+
+  test('legal page has no critical or serious violations', async ({ page }) => {
+    await page.goto('/legal');
+    await page.waitForLoadState('networkidle');
+
+    const results = await new AxeBuilder({ page })
+      .withTags(['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa', 'best-practice'])
+      .analyze();
+
+    const criticalSerious = results.violations.filter(
+      (v) => v.impact === 'critical' || v.impact === 'serious'
+    );
+
+    if (criticalSerious.length > 0) {
+      console.log(
+        'Legal page a11y issues:',
+        JSON.stringify(
+          criticalSerious.map((v) => ({
+            id: v.id,
+            impact: v.impact,
+            count: v.nodes.length,
+          })),
+          null,
+          2
+        )
+      );
+    }
+
+    expect(criticalSerious).toEqual([]);
+  });
+
+  test('faq page has no critical or serious violations', async ({ page }) => {
+    await page.goto('/faq');
+    await page.waitForLoadState('networkidle');
+
+    const results = await new AxeBuilder({ page })
+      .withTags(['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa', 'best-practice'])
+      .analyze();
+
+    const criticalSerious = results.violations.filter(
+      (v) => v.impact === 'critical' || v.impact === 'serious'
+    );
+
+    if (criticalSerious.length > 0) {
+      console.log(
+        'FAQ page a11y issues:',
+        JSON.stringify(
+          criticalSerious.map((v) => ({
+            id: v.id,
+            impact: v.impact,
+            count: v.nodes.length,
+          })),
+          null,
+          2
+        )
+      );
+    }
+
+    expect(criticalSerious).toEqual([]);
+  });
+
+  test('forgot-password page has no critical or serious violations', async ({ page }) => {
+    await page.goto('/forgot-password');
+    await page.waitForLoadState('networkidle');
+
+    const results = await new AxeBuilder({ page })
+      .withTags(['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa', 'best-practice'])
+      .analyze();
+
+    const criticalSerious = results.violations.filter(
+      (v) => v.impact === 'critical' || v.impact === 'serious'
+    );
+
+    if (criticalSerious.length > 0) {
+      console.log(
+        'Forgot-password page a11y issues:',
+        JSON.stringify(
+          criticalSerious.map((v) => ({
+            id: v.id,
+            impact: v.impact,
+            count: v.nodes.length,
+          })),
+          null,
+          2
+        )
+      );
+    }
+
+    expect(criticalSerious).toEqual([]);
+  });
+
+  test('respects prefers-reduced-motion on homepage', async ({ page }) => {
+    await page.emulateMedia({ reducedMotion: 'reduce' });
+    await page.goto('/');
+    await page.waitForLoadState('networkidle');
+
+    const results = await new AxeBuilder({ page })
+      .withTags(['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa', 'best-practice'])
+      .analyze();
+
+    const criticalSerious = results.violations.filter(
+      (v) => v.impact === 'critical' || v.impact === 'serious'
+    );
+
+    if (criticalSerious.length > 0) {
+      console.log(
+        'Homepage with reduced-motion a11y issues:',
+        JSON.stringify(
+          criticalSerious.map((v) => ({
+            id: v.id,
+            impact: v.impact,
+            count: v.nodes.length,
+          })),
+          null,
+          2
+        )
+      );
+    }
+
+    expect(criticalSerious).toEqual([]);
+  });
+
+  test('not-found page has no critical or serious violations', async ({ page }) => {
+    await page.goto('/this-path-does-not-exist-12345');
+    await page.waitForLoadState('networkidle');
+
+    const results = await new AxeBuilder({ page })
+      .withTags(['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa', 'best-practice'])
+      .analyze();
+
+    const criticalSerious = results.violations.filter(
+      (v) => v.impact === 'critical' || v.impact === 'serious'
+    );
+
+    if (criticalSerious.length > 0) {
+      console.log(
+        'Not-found page a11y issues:',
+        JSON.stringify(
+          criticalSerious.map((v) => ({
+            id: v.id,
+            impact: v.impact,
+            count: v.nodes.length,
+          })),
+          null,
+          2
+        )
+      );
+    }
+
+    expect(criticalSerious).toEqual([]);
+  });
 });

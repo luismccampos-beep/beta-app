@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
+import { motion } from 'framer-motion';
 import {
   ArrowRight,
   Bed,
@@ -20,6 +21,7 @@ import { Badge } from '../ui/badge';
 import { Button } from '../ui/button';
 import { Card, CardContent } from '../ui/card';
 import { DESTINATION_PLACEHOLDER, onDestinationImageError } from './destination-image-fallback';
+import { useTilt } from '../../../hooks/useTilt';
 
 export type RecommendedDestinationCardLabels = {
   match: string;
@@ -58,7 +60,13 @@ export function RecommendedDestinationCard({
   const currency = cost.currency;
   const detailHref = `${destinationDetailPath(item.slug, locale)}?${detailQuery}`;
 
+  const { ref, rotateX, rotateY, scale, glareX, glareY, glareOpacity } = useTilt({ maxTilt: 4 });
+
   return (
+    <motion.div
+      ref={ref}
+      style={{ rotateX, rotateY, scale, transformStyle: 'preserve-3d' }}
+    >
     <Card className="overflow-hidden border-0 shadow-lg ring-1 ring-primary-200/70 dark:ring-primary-900/50 dark:bg-gray-800">
       <div className="relative aspect-video overflow-hidden">
         <Image
@@ -174,5 +182,6 @@ export function RecommendedDestinationCard({
         </div>
       </CardContent>
     </Card>
+    </motion.div>
   );
 }

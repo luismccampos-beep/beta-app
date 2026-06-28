@@ -63,7 +63,7 @@ export function ActivitiesSection({
     <div className="space-y-6">
       <div className="border-b pb-4">
         <h3 className="text-xl sm:text-2xl font-bold mb-2 flex flex-wrap items-center gap-2">
-          <Palmtree className="w-6 h-6 text-green-600 dark:text-green-400" /> {t('activitiesExperiences')}
+          <Palmtree className="w-6 h-6 text-green-700 dark:text-green-400" /> {t('activitiesExperiences')}
         </h3>
         <p className="text-sm text-gray-600 dark:text-gray-400">
           {t('aiCurateExperiences')}
@@ -92,11 +92,11 @@ export function ActivitiesSection({
                 `}
               >
                 <OpenMoji emoji={activity.emoji} size={28} className="block mb-2 mx-auto" />
-                <span className={`text-xs font-semibold block ${isSelected ? 'text-green-900 dark:text-green-200' : 'text-gray-900 dark:text-white'}`}>
+                <span className={`text-xs font-semibold block ${isSelected ? 'text-green-900 dark:text-green-200' : 'text-gray-900 dark:text-gray-100'}`}>
                   {activity.label}
                 </span>
                 {isSelected && (
-                  <Check className="w-4 h-4 text-green-600 dark:text-green-400 mx-auto mt-1" />
+                  <Check className="w-4 h-4 text-green-700 dark:text-green-400 mx-auto mt-1" />
                 )}
               </button>
             );

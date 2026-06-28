@@ -41,7 +41,7 @@ export function AdvancedSettingsSection({
     <div className="space-y-6">
       <div className="border-b pb-4">
         <h3 className="text-xl sm:text-2xl font-bold mb-2 flex flex-wrap items-center gap-2">
-          <Zap className="w-6 h-6 text-yellow-600 dark:text-yellow-400" /> {t('advancedSettingsAI')}
+          <Zap className="w-6 h-6 text-yellow-700 dark:text-yellow-400" /> {t('advancedSettingsAI')}
         </h3>
         <p className="text-sm text-gray-600 dark:text-gray-400">
           {t('customizeAIExperience')}
@@ -51,7 +51,7 @@ export function AdvancedSettingsSection({
       <Card className="border-2 border-primary-200 dark:border-primary-700 bg-gradient-to-br from-primary-50 dark:from-gray-800 via-cyan-50 dark:via-gray-800 to-accent-50 dark:to-gray-800">
         <CardHeader>
           <CardTitle className="text-xl flex items-center gap-2">
-            <Brain className="w-6 h-6 text-primary dark:text-primary-200" />
+            <Brain className="w-6 h-6 text-primary-700 dark:text-primary-200" />
             {t('aiPoweredFeatures')}
           </CardTitle>
           <CardDescription>
@@ -108,7 +108,7 @@ export function AdvancedSettingsSection({
           {watchedPreferences.aiRecommendations && (
             <div className="bg-gradient-to-r from-primary-100 dark:from-primary-900/50 to-accent-100 dark:to-accent-700/50 rounded-lg p-4 space-y-2">
               <div className="flex items-start gap-2">
-                <Sparkles className="w-5 h-5 text-accent dark:text-accent-500 mt-0.5 flex-shrink-0" />
+                <Sparkles className="w-5 h-5 text-accent-700 dark:text-accent-500 mt-0.5 flex-shrink-0" />
                 <div>
                   <p className="font-semibold text-primary-900 dark:text-primary-200">{t('aiIntelligenceActivated')}</p>
                   <p className="text-sm text-primary-700 dark:text-primary-200 mt-1">

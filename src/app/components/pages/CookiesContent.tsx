@@ -52,21 +52,21 @@ export function CookiesContent() {
         </div>
         <h2 className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white">{t('section2Title')}</h2>
       </motion.div>
-      <motion.ul variants={staggerContainer} className="my-4 space-y-2">
+        <motion.ul variants={staggerContainer} className="my-4 space-y-2">
         <motion.li variants={fadeInUp} whileHover={{ x: 3 }} className="flex items-start gap-2">
-          <CheckCircle2 className="w-4 h-4 text-primary dark:text-primary-300 mt-0.5 flex-shrink-0" />
+          <CheckCircle2 className="w-4 h-4 text-primary-700 dark:text-primary-300 mt-0.5 flex-shrink-0" />
           <span>{t('section2Essential')}</span>
         </motion.li>
         <motion.li variants={fadeInUp} whileHover={{ x: 3 }} className="flex items-start gap-2">
-          <CheckCircle2 className="w-4 h-4 text-primary dark:text-primary-300 mt-0.5 flex-shrink-0" />
+          <CheckCircle2 className="w-4 h-4 text-primary-700 dark:text-primary-300 mt-0.5 flex-shrink-0" />
           <span>{t('section2Functional')}</span>
         </motion.li>
         <motion.li variants={fadeInUp} whileHover={{ x: 3 }} className="flex items-start gap-2">
-          <CheckCircle2 className="w-4 h-4 text-primary dark:text-primary-300 mt-0.5 flex-shrink-0" />
+          <CheckCircle2 className="w-4 h-4 text-primary-700 dark:text-primary-300 mt-0.5 flex-shrink-0" />
           <span>{t('section2Analytics')}</span>
         </motion.li>
         <motion.li variants={fadeInUp} whileHover={{ x: 3 }} className="flex items-start gap-2">
-          <CheckCircle2 className="w-4 h-4 text-primary dark:text-primary-300 mt-0.5 flex-shrink-0" />
+          <CheckCircle2 className="w-4 h-4 text-primary-700 dark:text-primary-300 mt-0.5 flex-shrink-0" />
           <span>{t('section2Marketing')}</span>
         </motion.li>
       </motion.ul>

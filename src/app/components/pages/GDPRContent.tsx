@@ -174,7 +174,7 @@ export function GDPRContent() {
       <motion.ul variants={staggerContainer} className="space-y-2 my-4">
         {[1,2,3,4,5,6,7].map((i) => (
           <motion.li key={i} variants={fadeInUp} whileHover={{ x: 3 }} className="flex items-start gap-2">
-            <CheckCircle2 className="w-4 h-4 text-primary dark:text-primary-300 mt-0.5 flex-shrink-0" />
+            <CheckCircle2 className="w-4 h-4 text-primary-700 dark:text-primary-300 mt-0.5 flex-shrink-0" />
             <span>{t(`security${i}`)}</span>
           </motion.li>
         ))}

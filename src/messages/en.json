@@ -1479,6 +1479,7 @@
     "continentLabel": "Continent",
     "allContinents": "All continents",
     "searchButton": "Search",
+    "removeFilter": "Remove {value}",
     "clearFilters": "Clear filters",
     "loading": "Loading destinations…",
     "loadError": "Could not load destinations.",

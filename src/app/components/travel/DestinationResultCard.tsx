@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import { motion } from 'framer-motion';
 import {
   ArrowRight,
   ChevronDown,
@@ -37,6 +38,7 @@ import { Badge } from '../ui/badge';
 import { Button } from '../ui/button';
 import { Card, CardContent } from '../ui/card';
 import { DESTINATION_PLACEHOLDER, onDestinationImageError } from './destination-image-fallback';
+import { useTilt } from '../../../hooks/useTilt';
 
 export type DestinationResultCardProps = {
   result: TravelResult;
@@ -70,7 +72,13 @@ export function DestinationResultCard({ result, href, labels, tipPreviews = [] }
   const hasHighlights = (card?.veja?.length ?? 0) > 0 || (card?.faca?.length ?? 0) > 0;
   const showSecondaryInfo = !!(result.airport || result.costOfLiving);
 
+  const { ref, rotateX, rotateY, scale, glareX, glareY, glareOpacity } = useTilt({ maxTilt: 5 });
+
   return (
+    <motion.div
+      ref={ref}
+      style={{ rotateX, rotateY, scale, transformStyle: 'preserve-3d' }}
+    >
     <Card className="card-premium dark:bg-gray-900 group">
       {/* ── Hero Image ── */}
       <Link href={href} className="block relative aspect-video overflow-hidden">
@@ -359,5 +367,6 @@ export function DestinationResultCard({ result, href, labels, tipPreviews = [] }
         </DialogContent>
       </Dialog>
     </Card>
+    </motion.div>
   );
 }
