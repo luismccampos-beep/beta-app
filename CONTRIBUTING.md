@@ -23,7 +23,7 @@ Welcome! We're thrilled you're interested in contributing to AKMLEVA — an ente
 
 By participating in this project, you agree to uphold a respectful, inclusive environment for everyone. Harassment, discrimination, and other exclusionary behaviour will not be tolerated.
 
-If you witness or experience misconduct, please contact [luismccampos@gmail.com](mailto:luismccampos@gmail.com).
+If you witness or experience misconduct, please contact [support@akmleva.pt](mailto:support@akmleva.pt).
 
 ---
 
@@ -309,7 +309,7 @@ Open an issue with the `enhancement` label. Describe the feature, the problem it
 
 ## Questions?
 
-- **Email:** [luismccampos@gmail.com](mailto:luismccampos@gmail.com)
+- **Email:** [support@akmleva.pt](mailto:support@akmleva.pt)
 - **GitHub:** open a [discussion](https://github.com/luismccampos-beep/beta-app/discussions)
 
 We aim to respond within **3 business days**.

@@ -447,7 +447,7 @@ docker compose up postgres redis -d     # Start only DB + cache
 **Workflow**: `.github/workflows/deploy-migrations.yml`
 
 - **Trigger**: Push to `main` (excluding docs) + manual dispatch
-- **Environment**: Ubuntu latest, Node 24, PostgreSQL
+- **Environment**: Ubuntu latest, Node 20, PostgreSQL
 - **Steps**:
   1. Validate database env vars
   2. `npm ci` (triggers Prisma generation)
@@ -498,5 +498,5 @@ MIT License — Copyright (c) 2025-2026 AKMLEVA Viagens Lda.
 ## Contact
 
 - Website: [akmleva.com](https://akmleva.com)
-- Email: luismccampos@gmail.com/ geral@akmleva.pt
+- Email: [support@akmleva.pt](mailto:support@akmleva.pt)
 - GitHub: [luismccampos-beep/beta-app](https://github.com/luismccampos-beep/beta-app)

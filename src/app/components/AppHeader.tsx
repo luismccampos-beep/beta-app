@@ -103,7 +103,7 @@ export function AppHeader({
               <button type="button"
                 onClick={onDashboard}
                 title={t('dashboard')}
-                className="min-w-11 min-h-11 rounded-full bg-gradient-to-r from-primary to-accent text-white font-semibold text-sm shadow-md hover:opacity-90 transition-opacity flex items-center justify-center"
+                className="min-w-11 min-h-11 rounded-full bg-gradient-to-r from-brand-gray to-orange text-white font-semibold text-sm shadow-md hover:opacity-90 transition-opacity flex items-center justify-center"
               >
                 <LayoutDashboard className="h-4 w-4 sm:hidden" />
                 <span className="hidden sm:inline">{initials}</span>

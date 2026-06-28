@@ -27,6 +27,10 @@ import {
   Star,
   ChevronRight,
 } from 'lucide-react';
+import {
+  fadeInUp,
+  staggerContainer,
+} from '../travel/destination-detail/constants/animations';
 import { AppHeader } from '../AppHeader';
 import { AppFooter } from '../AppFooter';
 
@@ -34,28 +38,7 @@ interface LandingPageProps {
   onGetStarted: () => void;
 }
 
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.15,
-      delayChildren: 0.2,
-    },
-  },
-};
 
-const itemVariants = {
-  hidden: { opacity: 0, y: 30 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: 0.8,
-      ease: [0.21, 0.47, 0.32, 0.98],
-    },
-  },
-};
 
 export function LandingPage({ onGetStarted }: LandingPageProps) {
   const router = useRouter();
@@ -113,61 +96,65 @@ export function LandingPage({ onGetStarted }: LandingPageProps) {
         <motion.div 
           initial="hidden"
           animate="visible"
-          variants={containerVariants}
+          variants={staggerContainer}
           className="max-w-7xl mx-auto relative z-10"
         >
           <div className="text-center space-y-12">
-            <motion.div variants={itemVariants} className="inline-flex items-center gap-2 glass dark:bg-gray-800/50 border border-primary-200 dark:border-gray-700 rounded-full px-6 py-3 shadow-lg">
+            <motion.div variants={fadeInUp} className="inline-flex items-center gap-2 glass dark:bg-gray-800/50 border border-primary-200 dark:border-gray-700 rounded-full px-6 py-3 shadow-lg">
               <Sparkles className="w-5 h-5 text-accent animate-pulse" />
               <span className="text-sm font-bold text-primary-900 dark:text-primary-100 uppercase tracking-[0.2em]">{t('heroBadge')}</span>
             </motion.div>
 
-            <motion.h2 variants={itemVariants} className="text-6xl md:text-8xl lg:text-9xl font-black text-gray-900 dark:text-white leading-[1] tracking-tighter text-balance">
+            <motion.h2 variants={fadeInUp} className="text-6xl md:text-8xl lg:text-9xl font-black text-gray-900 dark:text-white leading-[1] tracking-tighter text-balance">
               {t('hero')}
             </motion.h2>
 
-            <motion.p variants={itemVariants} className="text-xl md:text-2xl lg:text-3xl text-gray-600 dark:text-gray-300 max-w-4xl mx-auto leading-relaxed text-pretty font-medium">
+            <motion.p variants={fadeInUp} className="text-xl md:text-2xl lg:text-3xl text-gray-600 dark:text-gray-300 max-w-4xl mx-auto leading-relaxed text-pretty font-medium">
               {t('heroDesc')}
             </motion.p>
 
-            <motion.div variants={itemVariants} className="flex items-center justify-center gap-6 flex-wrap">
-              <Button
-                onClick={onGetStarted}
-                variant="brand"
-                size="lg"
-                className="gap-4 text-2xl px-12 py-10 h-auto shadow-glow-primary hover:shadow-glow-accent transition-all group hover:scale-105"
-              >
-                {t('getStarted')}
-                <ArrowRight className="w-8 h-8 transition-transform group-hover:translate-x-2" />
-              </Button>
-              <Button
-                variant="outline"
-                size="lg"
-                className="gap-3 text-2xl px-12 py-10 h-auto border-primary-300 dark:border-gray-700 hover:bg-primary-50 dark:hover:bg-gray-800 dark:text-gray-100 group glass hover:scale-105"
-                asChild
-              >
-                <a href="#features" onClick={scrollToFeatures}>
-                  {t('learnMore')}
-                  <ChevronRight className="w-6 h-6 transition-transform group-hover:translate-x-1" />
-                </a>
-              </Button>
+            <motion.div variants={fadeInUp} className="flex items-center justify-center gap-6 flex-wrap">
+              <motion.div whileHover={{ scale: 1.03 }}>
+                <Button
+                  onClick={onGetStarted}
+                  variant="brand"
+                  size="lg"
+                  className="gap-4 text-2xl px-12 py-10 h-auto shadow-glow-primary hover:shadow-glow-accent transition-all group"
+                >
+                  {t('getStarted')}
+                  <ArrowRight className="w-8 h-8 transition-transform group-hover:translate-x-2" />
+                </Button>
+              </motion.div>
+              <motion.div whileHover={{ scale: 1.03 }}>
+                <Button
+                  variant="outline"
+                  size="lg"
+                  className="gap-3 text-2xl px-12 py-10 h-auto border-primary-300 dark:border-gray-700 hover:bg-primary-50 dark:hover:bg-gray-800 dark:text-gray-100 group glass"
+                  asChild
+                >
+                  <a href="#features" onClick={scrollToFeatures}>
+                    {t('learnMore')}
+                    <ChevronRight className="w-6 h-6 transition-transform group-hover:translate-x-1" />
+                  </a>
+                </Button>
+              </motion.div>
             </motion.div>
 
-            <motion.div variants={itemVariants} className="flex items-center justify-center gap-4 text-lg text-gray-600 dark:text-gray-400">
+            <motion.div variants={fadeInUp} className="flex items-center justify-center gap-4 text-lg text-gray-600 dark:text-gray-400">
               <div className="flex -space-x-2">
                 {[1, 2, 3, 4, 5].map((i) => (
                   <div key={i} className="w-8 h-8 rounded-full bg-gradient-to-br from-primary-400 to-accent-400 border-2 border-white dark:border-gray-900" />
                 ))}
               </div>
               <span className="font-semibold">{t('trustedBy')}</span>
-              <div className="flex items-center gap-1.5 bg-yellow-400/20 dark:bg-yellow-400/10 px-3 py-1 rounded-full border border-yellow-400/30">
+              <motion.div whileHover={{ scale: 1.1 }} className="flex items-center gap-1.5 bg-yellow-400/20 dark:bg-yellow-400/10 px-3 py-1 rounded-full border border-yellow-400/30">
                 <Star className="w-5 h-5 fill-yellow-400 text-yellow-400" />
                 <span className="font-bold text-gray-900 dark:text-gray-100">4.9</span>
-              </div>
+              </motion.div>
             </motion.div>
 
             {/* Trust Badges */}
-            <motion.div variants={itemVariants} className="flex items-center justify-center gap-6 flex-wrap pt-12">
+            <motion.div variants={fadeInUp} className="flex items-center justify-center gap-6 flex-wrap pt-12">
               {[
                 { icon: Map, label: '28K+ Destinos', color: 'primary' },
                 { icon: Globe, label: '190+ Países', color: 'primary' },
@@ -197,7 +184,13 @@ export function LandingPage({ onGetStarted }: LandingPageProps) {
             <p className="text-2xl lg:text-3xl text-gray-500 dark:text-gray-400 max-w-3xl mx-auto font-medium leading-relaxed">{t('featuresDesc')}</p>
           </motion.div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-12">
+          <motion.div
+            variants={staggerContainer}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: '-60px' }}
+            className="grid md:grid-cols-2 lg:grid-cols-3 gap-12"
+          >
             {[
               { icon: Brain, title: t('aiPersonalization'), description: t('aiPersonalizationDesc'), color: 'from-primary to-cyan-600' },
               { icon: Globe, title: t('globalCoverage'), description: t('globalCoverageDesc'), color: 'from-blue-500 to-indigo-600' },
@@ -210,16 +203,18 @@ export function LandingPage({ onGetStarted }: LandingPageProps) {
               return (
                 <motion.div
                   key={index}
-                  initial={{ opacity: 0, y: 40 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: index * 0.1, duration: 0.6 }}
+                  variants={fadeInUp}
+                  whileHover={{ y: -4, boxShadow: '0 16px 32px rgba(0,0,0,0.1)' }}
+                  className="transition-shadow"
                 >
                   <Card className="h-full card-premium dark:bg-gray-900 group p-2">
                     <CardHeader>
-                      <div className={`w-16 h-16 rounded-2xl bg-gradient-to-br ${feature.color} flex items-center justify-center mb-8 shadow-xl group-hover:rotate-6 transition-transform`}>
+                      <motion.div
+                        whileHover={{ scale: 1.1, rotate: -5 }}
+                        className={`w-16 h-16 rounded-2xl bg-gradient-to-br ${feature.color} flex items-center justify-center mb-8 shadow-xl group-hover:rotate-6 transition-transform`}
+                      >
                         <Icon className="w-8 h-8 text-white" />
-                      </div>
+                      </motion.div>
                       <CardTitle className="text-2xl font-black dark:text-white group-hover:text-primary transition-colors tracking-tight">{feature.title}</CardTitle>
                     </CardHeader>
                     <CardContent>
@@ -229,12 +224,12 @@ export function LandingPage({ onGetStarted }: LandingPageProps) {
                 </motion.div>
               );
             })}
-          </div>
+          </motion.div>
         </div>
       </section>
 
       {/* Stats Section */}
-      <section className="py-32 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-primary-800 to-accent-800 relative overflow-hidden">
+      <section className="py-32 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-primary-800 to-accent-800 dark:from-gray-950 dark:via-gray-900 dark:to-gray-950 relative overflow-hidden">
         <div className="absolute inset-0 opacity-[0.07] pointer-events-none" 
           style={{ 
             backgroundImage: 'radial-gradient(circle at 2px 2px, white 1px, transparent 0)',
@@ -248,7 +243,13 @@ export function LandingPage({ onGetStarted }: LandingPageProps) {
             <p className="text-2xl text-white/80 max-w-2xl mx-auto font-medium italic">Baseado em dados reais e atualizados</p>
           </div>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-16">
+          <motion.div
+            variants={staggerContainer}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: '-60px' }}
+            className="grid sm:grid-cols-2 lg:grid-cols-4 gap-16"
+          >
             {[
               { icon: Globe, value: 28, label: t('destinations'), suffix: 'K+', sub: 'Wikivoyage + Wikidata' },
               { icon: Building2, value: 415, label: 'Hotéis', suffix: 'K+', sub: 'OSM + GeoNames' },
@@ -257,11 +258,9 @@ export function LandingPage({ onGetStarted }: LandingPageProps) {
             ].map((stat, i) => (
               <motion.div 
                 key={i}
-                initial={{ opacity: 0, scale: 0.8 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.1, type: "spring", stiffness: 100 }}
-                className="text-center group p-8 glass bg-white/5 border-white/10 rounded-3xl hover:bg-white/10 transition-colors"
+                variants={fadeInUp}
+                whileHover={{ scale: 1.05, y: -4 }}
+                className="text-center group p-8 glass bg-gradient-to-br from-green-600/30 to-orange-600/30 dark:from-green-500/20 dark:to-orange-500/20 border-white/10 dark:border-white/5 rounded-3xl hover:from-green-600/40 hover:to-orange-600/40 dark:hover:from-green-500/30 dark:hover:to-orange-500/30 transition-all duration-500"
               >
                 <stat.icon className="w-16 h-16 text-white/50 mx-auto mb-8 group-hover:scale-110 group-hover:text-white transition-all duration-500" />
                 <div className="text-7xl font-black text-white mb-4 tracking-tighter">
@@ -271,7 +270,7 @@ export function LandingPage({ onGetStarted }: LandingPageProps) {
                 <div className="text-sm text-white/60 font-medium uppercase tracking-widest">{stat.sub}</div>
               </motion.div>
             ))}
-          </div>
+          </motion.div>
         </div>
       </section>
 
@@ -282,15 +281,16 @@ export function LandingPage({ onGetStarted }: LandingPageProps) {
         </div>
 
         <motion.div 
-          initial={{ opacity: 0, scale: 0.95 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: true }}
+          variants={fadeInUp}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: '-60px' }}
           className="max-w-5xl mx-auto text-center space-y-16 relative z-10"
         >
-          <div className="inline-flex items-center gap-3 glass dark:bg-gray-800/80 border border-primary-200 dark:border-gray-700 rounded-full px-8 py-3.5 shadow-xl hover:scale-105 transition-transform">
+          <motion.div whileHover={{ scale: 1.05 }} className="inline-flex items-center gap-3 glass dark:bg-gray-800/80 border border-primary-200 dark:border-gray-700 rounded-full px-8 py-3.5 shadow-xl transition-transform">
             <Award className="w-6 h-6 text-accent animate-bounce" />
             <span className="text-base font-black text-primary-950 dark:text-primary-50 uppercase tracking-widest">98% Satisfação Garantida</span>
-          </div>
+          </motion.div>
 
           <h3 className="text-6xl md:text-8xl lg:text-9xl font-black text-gray-900 dark:text-white leading-[0.95] tracking-[ -0.05em] text-balance italic">
             {t('cta')}

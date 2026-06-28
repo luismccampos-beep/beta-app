@@ -250,6 +250,7 @@ export function ResultsPage({ onLogout, onNavigateToDashboard }: ResultsPageProp
           />
         </div>
 
+        <motion.div variants={fadeInUp} initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-60px' }}>
         <Card className="mb-12 glass dark:bg-gray-900/60 border-primary-100/50 dark:border-gray-800 shadow-xl overflow-hidden relative">
           <div className="absolute top-0 left-0 w-1 h-full bg-gradient-to-b from-brand-gray via-orange to-green" />
           <CardHeader className="pb-4">
@@ -292,10 +293,10 @@ export function ResultsPage({ onLogout, onNavigateToDashboard }: ResultsPageProp
                   <p className="text-xs text-gray-500 dark:text-gray-400">{t('returnDateHint')}</p>
                 </div>
               )}
-            </div>
-          </CardContent>
+            </div>          </CardContent>
         </Card>
-
+        </motion.div>
+        
         {/* Sidebar + Results layout */}
         <div className="flex flex-col lg:flex-row gap-6">
           {/* Filters sidebar */}
@@ -316,6 +317,7 @@ export function ResultsPage({ onLogout, onNavigateToDashboard }: ResultsPageProp
               </Button>
             </div>
             {showFilters && (
+              <motion.div variants={fadeInUp} initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-60px' }}>
               <Card className="glass dark:bg-gray-900 shadow-2xl border-primary-100/50 dark:border-gray-800">
                 <CardContent className="pt-8">
                   <div className="space-y-8">
@@ -358,6 +360,7 @@ export function ResultsPage({ onLogout, onNavigateToDashboard }: ResultsPageProp
                   </div>
                 </CardContent>
               </Card>
+              </motion.div>
             )}
           </div>
 
@@ -443,10 +446,10 @@ export function ResultsPage({ onLogout, onNavigateToDashboard }: ResultsPageProp
                     },
                   };
                   if (detailHref) {
-                    return <motion.div key={result.id} variants={fadeInUp} layout><DestinationResultCard result={result} href={detailHref} labels={cardLabels} tipPreviews={tipPreviews} /></motion.div>;
+                    return <motion.div key={result.id} variants={fadeInUp} whileHover={{ y: -3 }} layout><DestinationResultCard result={result} href={detailHref} labels={cardLabels} tipPreviews={tipPreviews} /></motion.div>;
                   }
                   return (
-                    <motion.div key={result.id} variants={fadeInUp} layout>
+                    <motion.div key={result.id} variants={fadeInUp} whileHover={{ y: -3 }} layout>
                     <Card className="group relative overflow-hidden border-0 bg-white dark:bg-gray-800 shadow-md hover:shadow-xl ring-1 ring-gray-200/60 dark:ring-gray-700/60 transition-all duration-300">
                       {/* Hero image */}
                       <div className="relative aspect-video overflow-hidden">
@@ -501,6 +504,7 @@ export function ResultsPage({ onLogout, onNavigateToDashboard }: ResultsPageProp
 
             {/* Empty state */}
             {!resultsLoading && filteredResults.length === 0 && (
+              <motion.div variants={fadeInUp} initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-60px' }}>
               <Card className="p-12 text-center dark:bg-gray-800 dark:border-gray-700">
                 <EmptyState
                   icon={Globe}
@@ -509,6 +513,7 @@ export function ResultsPage({ onLogout, onNavigateToDashboard }: ResultsPageProp
                   action={<Button type="button" onClick={clearFilters} className="bg-gradient-to-r from-primary to-accent">{t('clearFilters')}</Button>}
                 />
               </Card>
+              </motion.div>
             )}
           </div>
         </div>
