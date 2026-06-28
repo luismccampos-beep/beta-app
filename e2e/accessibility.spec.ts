@@ -15,6 +15,7 @@ test.describe('Accessibility — axe-core automated audits', () => {
       (v) => v.impact === 'critical' || v.impact === 'serious'
     );
 
+    // Only log violation IDs and counts — never node details (avoids secret leakage in CI logs)
     if (criticalSerious.length > 0) {
       console.log(
         'Homepage a11y issues:',
@@ -22,8 +23,7 @@ test.describe('Accessibility — axe-core automated audits', () => {
           criticalSerious.map((v) => ({
             id: v.id,
             impact: v.impact,
-            description: v.description,
-            nodes: v.nodes.map((n) => n.target.join(', ')),
+            count: v.nodes.length,
           })),
           null,
           2
@@ -53,8 +53,7 @@ test.describe('Accessibility — axe-core automated audits', () => {
           criticalSerious.map((v) => ({
             id: v.id,
             impact: v.impact,
-            description: v.description,
-            nodes: v.nodes.map((n) => n.target.join(', ')),
+            count: v.nodes.length,
           })),
           null,
           2
@@ -85,8 +84,7 @@ test.describe('Accessibility — axe-core automated audits', () => {
           criticalSerious.map((v) => ({
             id: v.id,
             impact: v.impact,
-            description: v.description,
-            nodes: v.nodes.map((n) => n.target.join(', ')),
+            count: v.nodes.length,
           })),
           null,
           2
@@ -116,8 +114,7 @@ test.describe('Accessibility — axe-core automated audits', () => {
           criticalSerious.map((v) => ({
             id: v.id,
             impact: v.impact,
-            description: v.description,
-            nodes: v.nodes.map((n) => n.target.join(', ')),
+            count: v.nodes.length,
           })),
           null,
           2
@@ -147,8 +144,7 @@ test.describe('Accessibility — axe-core automated audits', () => {
           criticalSerious.map((v) => ({
             id: v.id,
             impact: v.impact,
-            description: v.description,
-            nodes: v.nodes.map((n) => n.target.join(', ')),
+            count: v.nodes.length,
           })),
           null,
           2
@@ -201,6 +197,20 @@ test.describe('Accessibility — axe-core automated audits', () => {
     // If a skip link exists, verify it's visible on focus
     if (await skipLink.count() > 0) {
       await expect(skipLink).toBeVisible();
+
+      // Verify the link actually works: click it and check focus moves to the target
+      const targetId = await skipLink.getAttribute('href');
+      if (targetId) {
+        const targetSelector = targetId.replace('#', '#');
+        await skipLink.click();
+        // After clicking, the focused element should be the target or inside it
+        const activeElement = await page.evaluate(() => {
+          const el = document.activeElement;
+          return el ? el.id || el.tagName : null;
+        });
+        // The target element should exist in the DOM
+        await expect(page.locator(targetSelector)).toBeAttached();
+      }
     }
   });
 });

@@ -15,6 +15,10 @@ import {
   MessageSquare,
   CheckCircle2
 } from 'lucide-react';
+import {
+  fadeInUp,
+  staggerContainer,
+} from '@/app/components/travel/destination-detail/constants/animations';
 import { AppHeader } from '../AppHeader';
 import { AppFooter } from '../AppFooter';
 
@@ -95,19 +99,28 @@ export function ContactPage({ onBack }: ContactPageProps) {
         </motion.div>
 
         {/* Contact Info Cards */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-16 sm:mb-24">
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: '-60px' }}
+          className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-16 sm:mb-24"
+        >
           {[
             { icon: MapPin, title: t('addressTitle'), val: t('address'), color: 'from-primary to-primary-700' },
             { icon: Phone, title: t('phoneTitle'), val: '+351 256 372 092', valHref: 'tel:+351256372092', color: 'from-blue-600 to-blue-800' },
             { icon: Mail, title: t('emailTitle'), val: 'geral@akmleva.pt', valHref: 'mailto:geral@akmleva.pt', color: 'from-purple-600 to-purple-800' },
             { icon: Clock, title: t('hoursTitle'), val: t('hours'), color: 'from-accent to-accent-700' }
           ].map((item, i) => (
-            <motion.div key={i} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} transition={{ delay: i * 0.1 }} viewport={{ once: true }}>
-              <Card className="card-premium dark:bg-gray-900 group h-full text-center">
+            <motion.div key={i} variants={fadeInUp} whileHover={{ y: -4, boxShadow: '0 16px 32px rgba(0,0,0,0.1)' }}>
+              <Card className="card-premium dark:bg-gray-900 group h-full text-center transition-shadow">
                 <CardContent className="p-8">
-                  <div className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${item.color} flex items-center justify-center mx-auto mb-6 shadow-xl group-hover:scale-110 transition-transform`}>
+                  <motion.div
+                    whileHover={{ scale: 1.15, rotate: -5 }}
+                    className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${item.color} flex items-center justify-center mx-auto mb-6 shadow-xl group-hover:scale-110 transition-transform`}
+                  >
                     <item.icon className="w-7 h-7 text-white" />
-                  </div>
+                  </motion.div>
                   <h3 className="text-lg font-black text-gray-950 dark:text-white uppercase tracking-tighter mb-3">{item.title}</h3>
                   {item.valHref ? (
                     <a href={item.valHref} className="text-base font-bold text-primary dark:text-primary-300 hover:underline">{item.val}</a>
@@ -118,12 +131,18 @@ export function ContactPage({ onBack }: ContactPageProps) {
               </Card>
             </motion.div>
           ))}
-        </div>
+        </motion.div>
 
         {/* Contact Form & Social */}
-        <div className="grid lg:grid-cols-3 gap-8 mb-16 sm:mb-24">
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: '-60px' }}
+          className="grid lg:grid-cols-3 gap-8 mb-16 sm:mb-24"
+        >
           {/* Contact Form */}
-          <div className="lg:col-span-2">
+          <motion.div variants={fadeInUp} className="lg:col-span-2">
             <Card className="card-premium dark:bg-gray-950 group h-full relative overflow-hidden">
               <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-brand-gray via-orange to-green" />
               <CardContent className="p-8 sm:p-12">
@@ -271,10 +290,10 @@ export function ContactPage({ onBack }: ContactPageProps) {
                 )}
               </CardContent>
             </Card>
-          </div>
+          </motion.div>
 
           {/* Social & Additional Info */}
-          <div className="space-y-8">
+          <motion.div variants={fadeInUp} className="space-y-8">
             <Card className="card-premium dark:bg-gray-900 group">
               <CardContent className="p-8">
                 <h3 className="text-xl font-black text-gray-950 dark:text-white uppercase tracking-tighter mb-6">{t('socialTitle')}</h3>
@@ -314,29 +333,34 @@ export function ContactPage({ onBack }: ContactPageProps) {
                 </div>
               </CardContent>
             </Card>
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
 
         {/* Map Placeholder */}
-        <Card className="card-premium dark:bg-gray-950 group border-0 shadow-2xl overflow-hidden relative">
-          <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-brand-gray via-orange to-green" />
-          <CardContent className="p-8 sm:p-12 text-center">
-            <div className="w-16 h-16 rounded-2xl bg-primary/10 text-primary dark:text-primary-300 flex items-center justify-center mx-auto mb-8 group-hover:scale-110 transition-transform">
-              <MapPin className="w-8 h-8" />
-            </div>
-            <h3 className="text-3xl sm:text-4xl font-black text-gray-950 dark:text-white mb-4 tracking-tighter uppercase italic">{t('mapTitle')}</h3>
-            <p className="text-xl text-gray-600 dark:text-gray-400 mb-10 font-medium max-w-2xl mx-auto">{t('mapDescription')}</p>
-            <div className="rounded-3xl overflow-hidden border-4 border-white dark:border-gray-800 shadow-2xl">
-              <iframe
-                title="Localização da AKMLeva"
-                src="https://www.openstreetmap.org/export/embed.html?bbox=-8.5%2C40.5%2C-8.0%2C41.0&amp;layer=mapnik&amp;marker=40.75%2C-8.25"
-                className="w-full h-[400px] sm:h-[500px] border-0"
-                loading="lazy"
-                referrerPolicy="no-referrer"
-              />
-            </div>
-          </CardContent>
-        </Card>
+        <motion.div variants={fadeInUp} initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-60px' }}>
+          <Card className="card-premium dark:bg-gray-950 group border-0 shadow-2xl overflow-hidden relative">
+            <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-brand-gray via-orange to-green" />
+            <CardContent className="p-8 sm:p-12 text-center">
+              <motion.div
+                whileHover={{ scale: 1.1, rotate: -5 }}
+                className="w-16 h-16 rounded-2xl bg-primary/10 text-primary dark:text-primary-300 flex items-center justify-center mx-auto mb-8 group-hover:scale-110 transition-transform"
+              >
+                <MapPin className="w-8 h-8" />
+              </motion.div>
+              <h3 className="text-3xl sm:text-4xl font-black text-gray-950 dark:text-white mb-4 tracking-tighter uppercase italic">{t('mapTitle')}</h3>
+              <p className="text-xl text-gray-600 dark:text-gray-400 mb-10 font-medium max-w-2xl mx-auto">{t('mapDescription')}</p>
+              <motion.div whileHover={{ scale: 1.02 }} className="rounded-3xl overflow-hidden border-4 border-white dark:border-gray-800 shadow-2xl transition-transform">
+                <iframe
+                  title="Localização da AKMLeva"
+                  src="https://www.openstreetmap.org/export/embed.html?bbox=-8.5%2C40.5%2C-8.0%2C41.0&amp;layer=mapnik&amp;marker=40.75%2C-8.25"
+                  className="w-full h-[400px] sm:h-[500px] border-0"
+                  loading="lazy"
+                  referrerPolicy="no-referrer"
+                />
+              </motion.div>
+            </CardContent>
+          </Card>
+        </motion.div>
 
       </div>
 

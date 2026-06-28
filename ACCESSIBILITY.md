@@ -217,7 +217,7 @@ Our documentation is often the first interface users and contributors touch. We 
 
 If you have questions, feedback, or need assistance using AKMLEVA with assistive technology, reach out:
 
-- **Email:** [luismccampos@gmail.com](mailto:luismccampos@gmail.com)  
+- **Email:** [support@akmleva.pt](mailto:support@akmleva.pt)  
 - **GitHub:** [open an issue](https://github.com/luismccampos-beep/beta-app/issues/new)  
 
 We aim to respond to accessibility inquiries within **3 business days**.

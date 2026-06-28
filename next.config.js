@@ -150,14 +150,9 @@ const nextConfig = {
     ];
   },
 
-  eslint: {
-    // Keep `next build` working even if the monorepo/root eslint config isn't present.
-    // ignoreDuringBuilds: true, // Removed — lint passing
-  },
-
-  typescript: {
-    // ignoreBuildErrors: true, // Removed — tsc --noEmit clean
-  },
+  // ESLint and TypeScript errors are enforced during build — no ignores needed
+  eslint: {},
+  typescript: {},
 
   images: {
     remotePatterns: baseImageConfig.remotePatterns,
