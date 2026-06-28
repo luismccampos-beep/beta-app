@@ -105,7 +105,7 @@ export function LandingPage({ onGetStarted }: LandingPageProps) {
               <span className="text-sm font-bold text-primary-900 dark:text-primary-100 uppercase tracking-[0.2em]">{t('heroBadge')}</span>
             </motion.div>
 
-            <motion.h2 variants={fadeInUp} className="text-6xl md:text-8xl lg:text-9xl font-black text-gray-900 dark:text-white leading-[1] tracking-tighter text-balance">
+            <motion.h2 variants={fadeInUp} className="text-6xl md:text-8xl lg:text-9xl font-black text-gray-900 dark:text-white leading-[1.1] tracking-tighter text-balance overflow-visible">
               {t('hero')}
             </motion.h2>
 
@@ -180,7 +180,7 @@ export function LandingPage({ onGetStarted }: LandingPageProps) {
             transition={{ duration: 0.8 }}
             className="text-center mb-24"
           >
-            <h3 className="text-5xl md:text-6xl font-black text-gray-900 dark:text-white mb-8 tracking-tighter uppercase italic">{t('features')}</h3>
+            <h3 className="text-4xl sm:text-5xl md:text-6xl font-black text-gray-900 dark:text-white mb-8 tracking-tighter uppercase italic">{t('features')}</h3>
             <p className="text-2xl lg:text-3xl text-gray-500 dark:text-gray-400 max-w-3xl mx-auto font-medium leading-relaxed">{t('featuresDesc')}</p>
           </motion.div>
 
@@ -292,7 +292,7 @@ export function LandingPage({ onGetStarted }: LandingPageProps) {
             <span className="text-base font-black text-primary-950 dark:text-primary-50 uppercase tracking-widest">98% Satisfação Garantida</span>
           </motion.div>
 
-          <h3 className="text-6xl md:text-8xl lg:text-9xl font-black text-gray-900 dark:text-white leading-[0.95] tracking-[ -0.05em] text-balance italic">
+          <h3 className="text-5xl sm:text-6xl md:text-8xl lg:text-9xl font-black text-gray-900 dark:text-white leading-[1.1] tracking-[ -0.05em] text-balance italic overflow-visible">
             {t('cta')}
           </h3>
           

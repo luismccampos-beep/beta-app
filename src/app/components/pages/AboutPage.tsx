@@ -93,7 +93,7 @@ export function AboutPage({ onBack }: AboutPageProps) {
             <Rocket className="w-5 h-5 text-accent animate-pulse" />
             <span className="text-sm font-bold text-primary-900 dark:text-primary-100 uppercase tracking-[0.2em]">{t('pageTitle')}</span>
           </div>
-          <h1 className="text-5xl sm:text-7xl md:text-8xl font-black text-gray-950 dark:text-white leading-[1] tracking-tighter uppercase italic text-balance mb-8">
+          <h1 className="text-5xl sm:text-7xl md:text-8xl font-black text-gray-950 dark:text-white leading-[1.1] tracking-tighter uppercase italic text-balance mb-8 overflow-visible">
             Nossa Missão é <span className="bg-gradient-to-r from-brand-gray via-orange to-green bg-clip-text text-transparent">Inspirar</span>
           </h1>
           <div className="h-1.5 w-32 bg-gradient-to-r from-brand-gray via-orange to-green mx-auto rounded-full shadow-glow-primary" />
@@ -208,7 +208,7 @@ export function AboutPage({ onBack }: AboutPageProps) {
                       <v.icon className="w-8 h-8 text-white" />
                     </motion.div>
                     <h3 className="text-2xl font-black text-gray-950 dark:text-white uppercase tracking-tighter mb-4">{v.title}</h3>
-                    <p className="text-lg text-gray-600 dark:text-gray-400 font-medium leading-relaxed">{v.desc}</p>
+                    <p className="text-lg text-gray-700 dark:text-gray-400 font-medium leading-relaxed">{v.desc}</p>
                   </CardContent>
                 </Card>
               </motion.div>
@@ -352,7 +352,7 @@ export function AboutPage({ onBack }: AboutPageProps) {
           <Card className="card-premium dark:bg-gray-950 group border-0 shadow-2xl overflow-hidden relative">
             <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-brand-gray via-orange to-green" />
             <CardContent className="p-12 sm:p-20 text-center space-y-10">
-              <h2 className="text-4xl sm:text-6xl md:text-7xl font-black text-gray-950 dark:text-white tracking-tighter uppercase italic leading-[1]">{t('contactTitle')}</h2>
+              <h2 className="text-4xl sm:text-6xl md:text-7xl font-black text-gray-950 dark:text-white tracking-tighter uppercase italic leading-[1.1] overflow-visible">{t('contactTitle')}</h2>
               <p className="text-xl sm:text-2xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto font-medium">{t('contactSubtitle')}</p>
               
               <div className="grid sm:grid-cols-3 gap-8 py-4">

@@ -524,6 +524,12 @@
     "cookiesTitle": "Política de Cookies",
     "legallyBinding": "Juridicamente Vinculativo",
     "contactUs": "Entre em Contato",
+    "questionsTitle": "Tem Alguma Pergunta?",
+    "questionsSubtitle": "Estamos aqui para ajudar. Não hesite em entrar em contacto connosco.",
+    "emailLabel": "Email",
+    "phoneLabel": "Telefone",
+    "addressLabel": "Morada",
+    "address": "Rua São Nicolau, 9, 4520-248 Santa Maria da Feira, Portugal",
     "quickLinks": {
       "title": "Documentos Legais",
       "terms": "Termos de Serviço",

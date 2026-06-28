@@ -64,7 +64,7 @@ function TermsContent() {
         <div className="bg-gradient-to-r from-primary to-accent h-1.5" />
         <div className="p-5 sm:p-8">
           <div className="flex items-center gap-2 mb-4">
-            <FileText className="w-5 h-5 sm:w-6 sm:h-6 text-primary dark:text-primary-300" />
+            <FileText className="w-5 h-5 sm:w-6 sm:h-6 text-primary-700 dark:text-primary-300" />
             <h2 className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white">{t('title')}</h2>
           </div>
           <div className="flex flex-wrap items-center gap-3 mb-5">
@@ -82,7 +82,7 @@ function TermsContent() {
             </Badge>
           </div>
           <div className="p-4 sm:p-5 bg-primary-50 dark:bg-primary-900/20 border-l-4 border-primary rounded-lg">
-            <p className="text-sm sm:text-base text-gray-800 dark:text-gray-200 leading-relaxed">{t('intro')}</p>
+            <p className="text-sm sm:text-base text-gray-900 dark:text-gray-200 leading-relaxed">{t('intro')}</p>
           </div>
         </div>
       </div>
@@ -107,7 +107,7 @@ function TermsContent() {
                     <Icon className="w-4 h-4 sm:w-5 sm:h-5" />
                   </motion.span>
                   <span className="pt-1">
-                    <span className="text-primary dark:text-primary-300 mr-1.5">{index + 1}.</span>
+                    <span className="text-primary-700 dark:text-primary-300 mr-1.5">{index + 1}.</span>
                     {t(`${meta.key}Title`)}
                   </span>
                 </h3>
@@ -164,7 +164,7 @@ function PrivacyContent() {
             </Badge>
           </div>
           <div className="p-4 sm:p-5 bg-blue-50 dark:bg-blue-900/20 border-l-4 border-blue-600 rounded-lg">
-            <p className="text-sm sm:text-base text-gray-800 dark:text-gray-200 leading-relaxed">{t('intro')}</p>
+            <p className="text-sm sm:text-base text-gray-900 dark:text-gray-200 leading-relaxed">{t('intro')}</p>
           </div>
         </div>
       </div>
@@ -390,7 +390,7 @@ export function LegalPage({ pageType, onBack }: LegalPageProps) {
                   whileHover={{ x: 4 }}
                   className="flex items-start gap-2 sm:gap-3"
                 >
-                  <Mail className="w-4 h-4 sm:w-5 sm:h-5 text-primary dark:text-primary-300 mt-0.5 flex-shrink-0" />
+                  <Mail className="w-4 h-4 sm:w-5 sm:h-5 text-primary-700 dark:text-primary-300 mt-0.5 flex-shrink-0" />
                   <div>
                     <p className="font-medium text-gray-900 dark:text-white text-sm">{t('emailLabel')}</p>
                     <a href="mailto:privacy@akmleva.pt" className="text-xs sm:text-sm text-primary dark:text-primary-300 hover:underline">privacy@akmleva.pt</a>
@@ -400,7 +400,7 @@ export function LegalPage({ pageType, onBack }: LegalPageProps) {
                   whileHover={{ x: 4 }}
                   className="flex items-start gap-2 sm:gap-3"
                 >
-                  <Phone className="w-4 h-4 sm:w-5 sm:h-5 text-primary dark:text-primary-300 mt-0.5 flex-shrink-0" />
+                  <Phone className="w-4 h-4 sm:w-5 sm:h-5 text-primary-700 dark:text-primary-300 mt-0.5 flex-shrink-0" />
                   <div>
                     <p className="font-medium text-gray-900 dark:text-white text-sm">{t('phoneLabel')}</p>
                     <a href="tel:+351256372092" className="text-xs sm:text-sm text-primary dark:text-primary-300 hover:underline">+351 256 372 092</a>
@@ -410,7 +410,7 @@ export function LegalPage({ pageType, onBack }: LegalPageProps) {
                   whileHover={{ x: 4 }}
                   className="sm:col-span-2 flex items-start gap-2 sm:gap-3"
                 >
-                  <MapPin className="w-4 h-4 sm:w-5 sm:h-5 text-primary dark:text-primary-300 mt-0.5 flex-shrink-0" />
+                  <MapPin className="w-4 h-4 sm:w-5 sm:h-5 text-primary-700 dark:text-primary-300 mt-0.5 flex-shrink-0" />
                   <div>
                     <p className="font-medium text-gray-900 dark:text-white text-sm">{t('addressLabel')}</p>
                     <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-400">{t('address')}</p>
