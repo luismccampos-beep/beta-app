@@ -524,6 +524,12 @@
     "cookiesTitle": "Politique de Cookies",
     "legallyBinding": "Juridiquement Contraignant",
     "contactUs": "Contactez-Nous",
+    "questionsTitle": "Une Question ?",
+    "questionsSubtitle": "Nous sommes là pour vous aider. N'hésitez pas à nous contacter.",
+    "emailLabel": "E-mail",
+    "phoneLabel": "Téléphone",
+    "addressLabel": "Adresse",
+    "address": "R. São Nicolau, 9, 4520-248 Santa Maria da Feira, Portugal",
     "quickLinks": {
       "title": "Documents Légaux",
       "terms": "Conditions d'Utilisation",
