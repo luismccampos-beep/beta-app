@@ -92,3 +92,6 @@ data/hotels/tbo-hotels.csv
 # Orphaned submodules (local only)
 Zoo-Code/
 google-maps-scraper/
+
+# MCP configs (local tooling, not part of the app)
+.mcp/
