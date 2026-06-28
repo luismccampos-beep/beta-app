@@ -11,14 +11,7 @@ import {
 } from './preference-match';
 import { estimateTripCost, type TripCostBreakdown } from './trip-cost-estimator';
 import type { MockDestination, MockHotel } from './mock-travel/types';
-import {
-  getMockDestinationById,
-  getMockFlights,
-  getMockHotelsForDestination,
-  listMockDestinationsWithIata,
-  loadMockTravelBundle,
-} from './mock-travel/load';
-import { isTravelCatalogDbEnabled, rowToDestination } from './catalog-db';
+import { rowToDestination } from './catalog-db';
 
 function displayCountryFromCode(code: string | null | undefined, locale: string): string | null {
   const cc = (code ?? '').trim().toUpperCase();
@@ -180,107 +173,21 @@ async function recommendFromDb(input: RecommendDestinationsInput): Promise<Recom
     .slice(0, limit);
 }
 
-function pickBundleHotel(destId: number) {
-  const hotels = getMockHotelsForDestination(destId)
-    .filter((h) => h.fonte !== 'synthetic' && h.fonte !== 'rejected_geo')
-    .filter(isAccommodationHotel);
-  if (!hotels.length) return null;
-  return [...hotels].sort((a, b) => a.preco_por_noite - b.preco_por_noite)[0]!;
-}
-
-function recommendFromBundle(input: RecommendDestinationsInput): RecommendedDestination[] {
-  const limit = Math.min(input.limit ?? 24, 40);
-  const lang = input.lang ?? 'pt';
-  const destinos = listMockDestinationsWithIata().slice(0, limit * 3);
-  const origin = input.originIata?.toUpperCase();
-  const candidates: RecommendedDestination[] = [];
-  const rawScores: number[] = [];
-
-  for (const dest of destinos) {
-    if (!dest.paisCode || dest.paisCode === 'XX') continue;
-    const hotel = pickBundleHotel(dest.id);
-
-    let flight: number | null = null;
-    if (origin && dest.iata) {
-      const flights = getMockFlights(origin, dest.iata);
-      flight = flights.length ? Math.min(...flights.map((f) => f.preco)) : null;
-    }
-
-    const cost = estimateTripCost(dest, input, {
-      hotel,
-      flightPrice: flight,
-      flightIsEstimate: true,
-    });
-
-    if (input.budgetFilter && !cost.withinBudget) continue;
-
-    const wv = scoreWikivoyageInterests(dest, input.preferences.activityTypes);
-    const rule = scoreDestinationMatch(dest, input.preferences, {
-      hotel,
-      nights: input.nights,
-    });
-    const combined = 0.72 * rule + 0.28 * wv;
-    rawScores.push(combined);
-
-    candidates.push({
-      destinoId: dest.id,
-      slug: buildDestinationSlug(dest),
-      nome: dest.nome,
-      pais: displayCountryFromCode(dest.paisCode, lang) ?? dest.pais,
-      iata: resolveDestinationIata(dest),
-      tipo: dest.tipo,
-      matchScore: combined,
-      matchPercent: 0,
-      wikivoyageInterestScore: wv,
-      cost,
-      hotel: hotel
-        ? {
-            id: hotel.id,
-            nome: hotel.nome,
-            estrelas: hotel.estrelas,
-            preco_por_noite: hotel.preco_por_noite,
-          }
-        : null,
-      imageUrl: resolveDestinationImageUrl(dest),
-    });
-  }
-
-  const percents = softmaxToMatchPercents(rawScores);
-  return candidates
-    .map((c, i) => ({ ...c, matchPercent: percents[i] ?? 50 }))
-    .sort((a, b) => b.matchPercent - a.matchPercent)
-    .slice(0, limit);
-}
-
 export async function recommendDestinations(
   input: RecommendDestinationsInput,
-): Promise<{ source: 'db' | 'bundle'; destinations: RecommendedDestination[] }> {
-  if (isTravelCatalogDbEnabled()) {
-    try {
-      const destinations = await recommendFromDb(input);
-      return { source: 'db', destinations };
-    } catch {
-      /* fallback */
-    }
-  }
-
-  if (!loadMockTravelBundle().destinos.length) {
-    return { source: 'bundle', destinations: [] };
-  }
-
-  return { source: 'bundle', destinations: recommendFromBundle(input) };
+): Promise<{ source: 'db'; destinations: RecommendedDestination[] }> {
+  const destinations = await recommendFromDb(input);
+  return { source: 'db', destinations };
 }
 
-/** Resolve destino por id (bundle ou DB). */
+/** Resolve destino por id (DB). */
 export async function getDestinationForRecommend(
   destinoId: number,
   lang = 'pt',
 ): Promise<MockDestination | null> {
-  if (isTravelCatalogDbEnabled()) {
-    const row = await prisma.wvDestination.findFirst({
-      where: { id: destinoId, lang },
-    });
-    if (row) return rowToDestination(row);
-  }
-  return getMockDestinationById(destinoId) ?? null;
+  const row = await prisma.wvDestination.findFirst({
+    where: { id: destinoId, lang },
+  });
+  if (row) return rowToDestination(row);
+  return null;
 }

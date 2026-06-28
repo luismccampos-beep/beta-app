@@ -1,10 +1,7 @@
 import { NextResponse } from 'next/server';
 import { z } from 'zod';
 import { apiHandler } from '@/lib/api/handler';
-import {
-  getHotelByIdFromDb,
-  isTravelCatalogDbEnabled,
-} from '../../../../../../../lib/travel/catalog-db';
+import { getHotelByIdFromDb } from '../../../../../../../lib/travel/catalog-db';
 import { fetchCommonsImageUrlFromWikidata } from '../../../../../../../lib/travel/osm';
 import { prisma } from '../../../../../../../lib/prisma';
 
@@ -12,13 +9,6 @@ export const dynamic = 'force-dynamic';
 
 export const GET = apiHandler(async (_req: Request, ctx) => {
   const id = z.coerce.number().int().positive().parse((await ctx.params).id);
-
-  if (!isTravelCatalogDbEnabled()) {
-    return NextResponse.json(
-      { ok: false, message: 'TRAVEL_CATALOG_SOURCE=db required' },
-      { status: 503 },
-    );
-  }
 
   const row = await getHotelByIdFromDb(id);
   if (!row) {

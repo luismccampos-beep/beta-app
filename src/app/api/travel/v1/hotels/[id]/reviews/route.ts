@@ -1,7 +1,6 @@
 import { NextResponse } from 'next/server';
 import { z } from 'zod';
 import { apiHandler } from '@/lib/api/handler';
-import { isTravelCatalogDbEnabled } from '../../../../../../../lib/travel/catalog-db';
 import { prisma } from '../../../../../../../lib/prisma';
 
 export const dynamic = 'force-dynamic';
@@ -21,10 +20,6 @@ async function parseHotelId(ctx: { params: Promise<Record<string, string>> }): P
 /** GET avaliações MVP por hotel */
 export const GET = apiHandler(async (_req: Request, ctx) => {
   const id = await parseHotelId(ctx);
-  if (!isTravelCatalogDbEnabled()) {
-    return NextResponse.json({ ok: false, message: 'TRAVEL_CATALOG_SOURCE=db required' }, { status: 503 });
-  }
-
   const reviews = await prisma.wvHotelReview.findMany({
     where: { hotelId: id },
     orderBy: { createdAt: 'desc' },
@@ -50,10 +45,6 @@ export const GET = apiHandler(async (_req: Request, ctx) => {
 /** POST avaliação */
 export const POST = apiHandler(async (req: Request, ctx) => {
   const id = await parseHotelId(ctx);
-  if (!isTravelCatalogDbEnabled()) {
-    return NextResponse.json({ ok: false, message: 'TRAVEL_CATALOG_SOURCE=db required' }, { status: 503 });
-  }
-
   const hotel = await prisma.wvHotel.findUnique({ where: { id }, select: { id: true } });
   if (!hotel) {
     return NextResponse.json({ ok: false, message: 'Hotel not found' }, { status: 404 });
