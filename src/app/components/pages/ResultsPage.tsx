@@ -224,7 +224,7 @@ export function ResultsPage({ onLogout, onNavigateToDashboard }: ResultsPageProp
             <Sparkles className="w-5 h-5 text-accent animate-pulse" />
             <span className="text-sm font-bold text-primary-900 dark:text-primary-100 uppercase tracking-[0.2em]">{t('aiPoweredResults')}</span>
           </div>
-          <h1 className="text-4xl sm:text-6xl md:text-7xl font-black text-gray-950 dark:text-white leading-[1] tracking-tighter text-balance">
+          <h1 className="text-4xl sm:text-6xl md:text-7xl font-black text-gray-950 dark:text-white leading-[1.1] tracking-tighter text-balance overflow-visible">
             {t('title')}
           </h1>
           <p className="text-xl sm:text-2xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto leading-relaxed font-medium">
@@ -396,17 +396,25 @@ export function ResultsPage({ onLogout, onNavigateToDashboard }: ResultsPageProp
             {resultsLoading && (
               <motion.div variants={staggerContainer} initial="hidden" animate="visible" className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8" aria-label="Loading results">
                 {Array.from({ length: 6 }).map((_, i) => (
-                  <motion.div key={i} variants={fadeInUp} className="rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 overflow-hidden animate-pulse">
+                  <motion.div key={i} variants={fadeInUp} className="rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 overflow-hidden relative">
+                    <div className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/20 dark:via-white/5 to-transparent animate-[shimmer_1.5s_infinite] pointer-events-none z-10" />
                     <div className="aspect-[4/3] bg-gray-200 dark:bg-gray-700" />
                     <div className="p-4 space-y-3">
-                      <div className="h-4 bg-gray-200 dark:bg-gray-700 rounded w-3/4" />
-                      <div className="h-3 bg-gray-200 dark:bg-gray-700 rounded w-1/2" />
+                      <div className="h-5 bg-gray-200 dark:bg-gray-700 rounded w-3/4" />
+                      <div className="flex items-center gap-2">
+                        <div className="h-3 bg-gray-200 dark:bg-gray-700 rounded w-12" />
+                        <div className="h-3 bg-gray-200 dark:bg-gray-700 rounded w-16" />
+                      </div>
                       <div className="flex gap-2">
                         <div className="h-6 bg-gray-200 dark:bg-gray-700 rounded-full w-16" />
                         <div className="h-6 bg-gray-200 dark:bg-gray-700 rounded-full w-20" />
                       </div>
                       <div className="h-3 bg-gray-200 dark:bg-gray-700 rounded w-full" />
                       <div className="h-3 bg-gray-200 dark:bg-gray-700 rounded w-2/3" />
+                      <div className="flex items-center justify-between pt-1">
+                        <div className="h-4 bg-gray-200 dark:bg-gray-700 rounded w-20" />
+                        <div className="h-8 bg-gray-200 dark:bg-gray-700 rounded-lg w-24" />
+                      </div>
                     </div>
                   </motion.div>
                 ))}

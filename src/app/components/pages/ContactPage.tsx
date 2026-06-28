@@ -90,7 +90,7 @@ export function ContactPage({ onBack }: ContactPageProps) {
             <MessageSquare className="w-5 h-5 text-accent animate-pulse" />
             <span className="text-sm font-bold text-primary-900 dark:text-primary-100 uppercase tracking-[0.2em]">{t('pageTitle')}</span>
           </div>
-          <h1 className="text-5xl sm:text-7xl md:text-8xl font-black text-gray-950 dark:text-white leading-[1] tracking-tighter uppercase italic text-balance mb-6">
+          <h1 className="text-5xl sm:text-7xl md:text-8xl font-black text-gray-950 dark:text-white leading-[1.1] tracking-tighter uppercase italic text-balance mb-6 overflow-visible">
             Estamos <span className="bg-gradient-to-r from-brand-gray via-orange to-green bg-clip-text text-transparent">Próximos</span> de Ti
           </h1>
           <p className="text-xl sm:text-2xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto font-medium leading-relaxed">
