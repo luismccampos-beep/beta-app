@@ -21,7 +21,7 @@ Welcome! We're thrilled you're interested in contributing to AKMLEVA — an ente
 
 ## Code of Conduct
 
-By participating in this project, you agree to uphold a respectful, inclusive environment for everyone. Harassment, discrimination, and other exclusionary behaviour will not be tolerated.
+By participating in this project, you agree to uphold a respectful, inclusive environment for everyone. Harassment, discrimination, and other exclusionary behavior will not be tolerated.
 
 If you witness or experience misconduct, please contact [support@akmleva.pt](mailto:support@akmleva.pt).
 
@@ -151,7 +151,7 @@ npm run test:watch        # Watch mode
 **Writing tests:**
 
 - Place test files next to the module they test with `.test.ts` or `.test.tsx` extension.
-- Use `describe` / `it` blocks. Test behaviour, not implementation.
+- Use `describe` / `it` blocks. Test behavior, not implementation.
 - For React components, render with `@testing-library/react` and assert with `@testing-library/jest-dom` matchers.
 
 ```tsx
@@ -206,7 +206,7 @@ All new UI contributions must meet these requirements:
 | **WCAG 2.1 AA** conformance target | Design and code with AA criteria in mind |
 | **Keyboard operable** | Every interactive element must be reachable and operable via keyboard alone |
 | **Screen reader compatible** | Use semantic HTML and ARIA attributes where HTML semantics are insufficient |
-| **Colour contrast ≥ 4.5:1** | Text over background must pass AA contrast (use tools like the [WebAIM Contrast Checker](https://webaim.org/resources/contrastchecker/)) |
+| **Color contrast ≥ 4.5:1** | Text over background must pass AA contrast (use tools like the [WebAIM Contrast Checker](https://webaim.org/resources/contrastchecker/)) |
 | **Visible focus indicators** | Never set `outline: none` without providing an alternative focus style |
 | **Form labels** | Every form control must have an associated `<label>` with `htmlFor` / `id` pairing |
 | **Images** | Informative images need descriptive `alt` text; decorative images must use `alt=""` |
@@ -289,7 +289,7 @@ Open a [GitHub Issue](https://github.com/luismccampos-beep/beta-app/issues/new) 
 
 - A clear, descriptive title
 - Steps to reproduce
-- Expected vs actual behaviour
+- Expected vs actual behavior
 - Environment (OS, browser, device)
 - Screenshots or logs where helpful
 
