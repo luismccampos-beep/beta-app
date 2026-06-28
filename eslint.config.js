@@ -103,6 +103,9 @@ export default [
   },
   {
     files: ['scripts/*.mjs'],
+    languageOptions: {
+      parser: tsParser,
+    },
     rules: {
       'no-console': 'off',
       'no-process-exit': 'off',
