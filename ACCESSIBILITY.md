@@ -1,6 +1,6 @@
 # Accessibility Statement — AKMLEVA
 
-> **Last updated:** June 27, 2026,  
+> **Last updated:** June 27, 2026  
 > **Applies to:** [www.akmleva.com](https://www.akmleva.com) and related subdomains  
 > **Owner:** AKMLEVA Viagens Lda.
 
@@ -28,7 +28,7 @@ We aim to meet the **Web Content Accessibility Guidelines (WCAG) 2.1 Level AA** 
 | Lighthouse Accessibility score | ≥ 95 | ![Current: ~80](https://img.shields.io/badge/Current-%7E80-orange) |
 | axe-core audit (automated) | Zero critical/serious violations | ![In progress](https://img.shields.io/badge/Status-In%20Progress-yellow) |
 | Keyboard-only navigation | All interactive features reachable and operable | ![In progress](https://img.shields.io/badge/Status-In%20Progress-yellow) |
-| Screen reader testing | Voiceover (macOS), NVDA (Windows), TalkBack (Android) | ![Planned](https://img.shields.io/badge/Status-Planned-lightgrey) |
+| Screen reader testing | VoiceOver (macOS), NVDA (Windows), TalkBack (Android) | ![Planned](https://img.shields.io/badge/Status-Planned-lightgrey) |
 
 Progress is tracked in our internal audit (see [`docs/AUDIT-AKMLEVA.md`](docs/AUDIT-AKMLEVA.md), section UI-7).
 
@@ -51,7 +51,7 @@ Progress is tracked in our internal audit (see [`docs/AUDIT-AKMLEVA.md`](docs/AU
 - Our UI component library (shadcn/ui, built on Radix UI) is chosen for its built-in ARIA attributes, focus management, and keyboard support out of the box.
 - Form inputs, error messages, and validation states are associated programmatically (`aria-describedby`, `aria-invalid`, `aria-errormessage`).
 
-### Colorant Contrast
+### Color Contrast
 
 - All text meets or exceeds WCAG AA contrast ratios (4.5:1 for body text, 3:1 for large text).
 - Color is never used as the sole means of conveying information — we pair icons, labels, and text with color cues.
