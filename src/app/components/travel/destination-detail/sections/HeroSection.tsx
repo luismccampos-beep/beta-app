@@ -67,6 +67,7 @@ export function HeroSection({
             type="button" onClick={toggleDark}
             className="p-3 rounded-xl bg-white/10 dark:bg-black/20 backdrop-blur-xl border border-white/20 text-white shadow-2xl hover:bg-white/20 transition-all"
             title={isDark ? 'Light mode' : 'Dark mode'}
+            aria-label={isDark ? 'Light mode' : 'Dark mode'}
           >
             {isDark ? <Sun className="h-5 w-5 text-yellow-400" /> : <Moon className="h-5 w-5" />}
           </motion.button>
@@ -82,6 +83,7 @@ export function HeroSection({
             }}
             className="p-3 rounded-xl bg-white/10 dark:bg-black/20 backdrop-blur-xl border border-white/20 text-white shadow-2xl hover:bg-white/20 transition-all"
             title={t('share')}
+            aria-label={t('share')}
           >
             <Share2 className="h-5 w-5" />
           </motion.button>

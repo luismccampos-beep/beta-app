@@ -32,6 +32,7 @@ import { AppHeader } from '../AppHeader';
 
 import { fadeInUp, staggerContainer } from '../travel/destination-detail/constants/animations';
 import { AppFooter } from '../AppFooter';
+import { RippleButton } from '../ui/ripple-button';
 import { EmptyState } from '../ui/EmptyState';
 import { useDestinations, useCountries } from '@/lib/api/use-api';
 import { useQuery } from '@tanstack/react-query';
@@ -472,7 +473,7 @@ export function DestinationsBrowsePage({ onBack }: DestinationsBrowsePageProps) 
             {query && (
               <Badge variant="secondary" className="flex items-center gap-1.5 pl-2 pr-1 py-1 text-xs">
                 <Search className="w-3 h-3" />{query}
-                <button type="button" onClick={() => { setInputValue(''); setQuery(''); }} className="p-1.5 sm:p-0.5 rounded focus-visible:ring-2 focus-visible:ring-primary focus-visible:outline-none hover:bg-gray-200 dark:hover:bg-gray-600">
+                <button type="button" onClick={() => { setInputValue(''); setQuery(''); }} aria-label={t('removeFilter', { value: query })} className="p-1.5 sm:p-0.5 rounded focus-visible:ring-2 focus-visible:ring-primary focus-visible:outline-none hover:bg-gray-200 dark:hover:bg-gray-600">
                   <X className="w-4 h-4" />
                 </button>
               </Badge>
@@ -480,7 +481,7 @@ export function DestinationsBrowsePage({ onBack }: DestinationsBrowsePageProps) 
             {continentFilter && (
               <Badge variant="secondary" className="flex items-center gap-1.5 pl-2 pr-1 py-1 text-xs">
                 <Globe className="w-3 h-3" />{getContinentLabel(continentFilter)}
-                <button type="button" onClick={() => { setContinentFilter(''); setPage(1); }} className="p-1.5 sm:p-0.5 rounded focus-visible:ring-2 focus-visible:ring-primary focus-visible:outline-none hover:bg-gray-200 dark:hover:bg-gray-600">
+                <button type="button" onClick={() => { setContinentFilter(''); setPage(1); }} aria-label={t('removeFilter', { value: getContinentLabel(continentFilter) })} className="p-1.5 sm:p-0.5 rounded focus-visible:ring-2 focus-visible:ring-primary focus-visible:outline-none hover:bg-gray-200 dark:hover:bg-gray-600">
                   <X className="w-4 h-4" />
                 </button>
               </Badge>
@@ -488,7 +489,7 @@ export function DestinationsBrowsePage({ onBack }: DestinationsBrowsePageProps) 
             {countryFilter && (
               <Badge variant="secondary" className="flex items-center gap-1.5 pl-2 pr-1 py-1 text-xs bg-primary-100 dark:bg-primary-900/30 text-primary dark:text-primary-200">
                 <MapPin className="w-3 h-3" />{countryFilter}
-                <button type="button" onClick={() => { setCountryFilter(''); setPage(1); }} className="p-0.5 rounded focus-visible:ring-2 focus-visible:ring-primary focus-visible:outline-none hover:bg-primary-200 dark:hover:bg-primary-700">
+                <button type="button" onClick={() => { setCountryFilter(''); setPage(1); }} aria-label={t('removeFilter', { value: countryFilter })} className="p-0.5 rounded focus-visible:ring-2 focus-visible:ring-primary focus-visible:outline-none hover:bg-primary-200 dark:hover:bg-primary-700">
                   <X className="w-4 h-4" />
                 </button>
               </Badge>
@@ -496,7 +497,7 @@ export function DestinationsBrowsePage({ onBack }: DestinationsBrowsePageProps) 
             {hotelTypeFilter.map((tipo) => (
               <Badge key={tipo} variant="secondary" className="flex items-center gap-1.5 pl-2 pr-1 py-1 text-xs">
                 <Hotel className="w-3 h-3" />{t(`accommodationTypes.${tipo}`) ?? tipo}
-                <button type="button" onClick={() => { setHotelTypeFilter((prev) => prev.filter((t) => t !== tipo)); setPage(1); }} className="p-1.5 sm:p-0.5 rounded focus-visible:ring-2 focus-visible:ring-primary focus-visible:outline-none hover:bg-gray-200 dark:hover:bg-gray-600">
+                <button type="button" onClick={() => { setHotelTypeFilter((prev) => prev.filter((t) => t !== tipo)); setPage(1); }} aria-label={t('removeFilter', { value: t(`accommodationTypes.${tipo}`) ?? tipo })} className="p-1.5 sm:p-0.5 rounded focus-visible:ring-2 focus-visible:ring-primary focus-visible:outline-none hover:bg-gray-200 dark:hover:bg-gray-600">
                   <X className="w-4 h-4" />
                 </button>
               </Badge>
@@ -608,6 +609,7 @@ export function DestinationsBrowsePage({ onBack }: DestinationsBrowsePageProps) 
               <button type="button"
                 onClick={() => setPage((p) => Math.max(1, p - 1))}
                 disabled={page <= 1}
+                aria-label={t('prevPage')}
                 className="p-1 rounded hover:bg-gray-200 dark:hover:bg-gray-700 disabled:opacity-30"
               >
                 <ChevronLeft className="w-4 h-4" />
@@ -618,6 +620,7 @@ export function DestinationsBrowsePage({ onBack }: DestinationsBrowsePageProps) 
               <button type="button"
                 onClick={() => setPage((p) => Math.min(totalPages, p + 1))}
                 disabled={page >= totalPages}
+                aria-label={t('nextPage')}
                 className="p-1 rounded hover:bg-gray-200 dark:hover:bg-gray-700 disabled:opacity-30"
               >
                 <ChevronRight className="w-4 h-4" />
@@ -631,9 +634,9 @@ export function DestinationsBrowsePage({ onBack }: DestinationsBrowsePageProps) 
           <Card className="border-2 border-red-200 dark:border-red-700 mb-6">
             <CardContent className="p-6 text-center">
               <p className="text-red-600 dark:text-red-400" role="alert">{error?.message ?? t('loadError')}</p>
-              <Button type="button" onClick={() => refetch()} variant="outline" className="mt-4">
+              <RippleButton type="button" onClick={() => refetch()} variant="outline" magnetic={false} className="mt-4">
                 {t('retry')}
-              </Button>
+              </RippleButton>
             </CardContent>
           </Card>
         )}

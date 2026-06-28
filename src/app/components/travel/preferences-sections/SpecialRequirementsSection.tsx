@@ -44,7 +44,7 @@ export function SpecialRequirementsSection({
     <div className="space-y-6">
       <div className="border-b pb-4">
         <h3 className="text-xl sm:text-2xl font-bold mb-2 flex flex-wrap items-center gap-2">
-          <Shield className="w-6 h-6 text-red-600 dark:text-red-400" /> {t('specialRequirementsNeeds')}
+          <Shield className="w-6 h-6 text-red-700 dark:text-red-400" /> {t('specialRequirementsNeeds')}
         </h3>
         <p className="text-sm text-gray-600 dark:text-gray-400">
           {t('ensureSafeComfortable')}
@@ -106,7 +106,7 @@ export function SpecialRequirementsSection({
         <Card className="border-green-200 dark:border-green-800 bg-gradient-to-br from-green-50 dark:from-gray-800 to-emerald-50 dark:to-gray-800">
           <CardHeader>
             <CardTitle className="text-lg flex items-center gap-2">
-              <Leaf className="w-5 h-5 text-green-600 dark:text-green-400" />
+              <Leaf className="w-5 h-5 text-green-700 dark:text-green-400" />
               {t('sustainabilityPreferences')}
             </CardTitle>
             <CardDescription>{t('helpEnvironmentallyResponsible')}</CardDescription>

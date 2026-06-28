@@ -40,17 +40,17 @@ export function CancellationsContent() {
         </div>
         <h2 className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white">{t('section1Title')}</h2>
       </motion.div>
-      <motion.ul variants={staggerContainer} className="space-y-2 my-4">
+        <motion.ul variants={staggerContainer} className="space-y-2 my-4">
         <motion.li variants={fadeInUp} whileHover={{ x: 3 }} className="flex items-start gap-2">
-          <CheckCircle2 className="w-4 h-4 text-primary dark:text-primary-300 mt-0.5 flex-shrink-0" />
+          <CheckCircle2 className="w-4 h-4 text-primary-700 dark:text-primary-300 mt-0.5 flex-shrink-0" />
           <span>{t('section1a')}</span>
         </motion.li>
         <motion.li variants={fadeInUp} whileHover={{ x: 3 }} className="flex items-start gap-2">
-          <CheckCircle2 className="w-4 h-4 text-primary dark:text-primary-300 mt-0.5 flex-shrink-0" />
+          <CheckCircle2 className="w-4 h-4 text-primary-700 dark:text-primary-300 mt-0.5 flex-shrink-0" />
           <span>{t('section1b')}</span>
         </motion.li>
         <motion.li variants={fadeInUp} whileHover={{ x: 3 }} className="flex items-start gap-2">
-          <CheckCircle2 className="w-4 h-4 text-primary dark:text-primary-300 mt-0.5 flex-shrink-0" />
+          <CheckCircle2 className="w-4 h-4 text-primary-700 dark:text-primary-300 mt-0.5 flex-shrink-0" />
           <span>{t('section1c')}</span>
         </motion.li>
       </motion.ul>
@@ -142,7 +142,7 @@ export function CancellationsContent() {
       </motion.div>
 
       <motion.div variants={fadeInUp} className="my-6 p-6 bg-primary-50 dark:bg-primary-900/20 border-2 border-primary-300 dark:border-primary-700 rounded-lg text-center">
-        <Mail className="w-8 h-8 text-primary dark:text-primary-300 mx-auto mb-3" />
+        <Mail className="w-8 h-8 text-primary-700 dark:text-primary-300 mx-auto mb-3" />
         <p className="font-semibold text-lg text-primary-900 dark:text-primary-200">{t('ctaTitle')}</p>
         <p className="text-sm text-primary-700 dark:text-primary-300 mt-1">{t('ctaDesc')}</p>
       </motion.div>
@@ -160,7 +160,7 @@ export function CancellationsContent() {
         {[1, 2, 3].map((i) => (
           <motion.details key={i} variants={fadeInUp} className="p-4 bg-gray-50 dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700">
             <summary className="font-semibold cursor-pointer flex items-center gap-2">
-              <span className="text-primary dark:text-primary-300">{i}.</span> {t(`faq${i}Question`)}
+              <span className="text-primary-700 dark:text-primary-300">{i}.</span> {t(`faq${i}Question`)}
             </summary>
             <p className="text-sm mt-3 text-gray-700 dark:text-gray-300 pl-6">{t(`faq${i}Answer`)}</p>
           </motion.details>

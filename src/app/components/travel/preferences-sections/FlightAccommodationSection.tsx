@@ -57,7 +57,7 @@ export function FlightAccommodationSection({
     <div className="space-y-6">
       <div className="border-b pb-4">
         <h3 className="text-xl sm:text-2xl font-bold mb-2 flex flex-wrap items-center gap-2">
-          <Heart className="w-6 h-6 text-pink-600 dark:text-pink-400" /> {t('flightAccommodationPreferences')}
+          <Heart className="w-6 h-6 text-pink-700 dark:text-pink-400" /> {t('flightAccommodationPreferences')}
         </h3>
         <p className="text-sm text-gray-600 dark:text-gray-400">
           {t('fineTunePreferences')}

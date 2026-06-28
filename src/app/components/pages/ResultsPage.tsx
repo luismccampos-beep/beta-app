@@ -11,6 +11,7 @@ import { Badge } from '../ui/badge';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '../ui/select';
 import { Slider } from '../ui/slider';
 import { useLocale, useTranslations } from 'next-intl';
+import { RippleButton } from '../ui/ripple-button';
 import {
   Sparkles,
   Globe,
@@ -302,7 +303,7 @@ export function ResultsPage({ onLogout, onNavigateToDashboard }: ResultsPageProp
           {/* Filters sidebar */}
           <div className="w-full lg:w-72 shrink-0">
             <div className="flex flex-wrap gap-2 mb-4">
-              <Button type="button" variant="outline" onClick={() => setShowFilters(!showFilters)} className="gap-2 lg:hidden dark:border-gray-600 dark:text-gray-300">
+              <RippleButton type="button" variant="outline" onClick={() => setShowFilters(!showFilters)} magnetic={false} className="gap-2 lg:hidden dark:border-gray-600 dark:text-gray-300">
                 <SlidersHorizontal className="w-4 h-4" />
                 {t('filters')}
                 {(selectedContinent !== 'All' || sustainableOnly || selectedDuration !== 'all') && (
@@ -310,11 +311,11 @@ export function ResultsPage({ onLogout, onNavigateToDashboard }: ResultsPageProp
                     {[selectedContinent !== 'All', sustainableOnly, selectedDuration !== 'all'].filter(Boolean).length}
                   </Badge>
                 )}
-              </Button>
-              <Button type="button" variant="ghost" onClick={clearFilters} className="gap-2 text-red-600 dark:text-red-400">
+              </RippleButton>
+              <RippleButton type="button" variant="ghost" onClick={clearFilters} magnetic={false} className="gap-2 text-red-600 dark:text-red-400">
                 <X className="w-4 h-4" />
                 {t('clearAll')}
-              </Button>
+              </RippleButton>
             </div>
             {showFilters && (
               <motion.div variants={fadeInUp} initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-60px' }}>

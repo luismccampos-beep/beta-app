@@ -1406,6 +1406,7 @@
     "continentLabel": "Continent",
     "allContinents": "Tous les continents",
     "searchButton": "Rechercher",
+    "removeFilter": "Supprimer {value}",
     "clearFilters": "Effacer les filtres",
     "loading": "Chargement des destinations…",
     "loadError": "Impossible de charger les destinations.",

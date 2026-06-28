@@ -786,7 +786,7 @@ export function EnhancedTravelPreferencesForm({
                           openSections.flight ? 'rotate-0' : '-rotate-90'
                         }`}
                       />
-                      <Heart className="w-4 h-4 text-pink-600 dark:text-pink-400 shrink-0" />
+                      <Heart className="w-4 h-4 text-pink-700 dark:text-pink-400 shrink-0" />
                       <span className="font-semibold text-sm">{t('flightAccommodationPreferences')}</span>
                     </button>
                     {openSections.flight && (
@@ -808,7 +808,7 @@ export function EnhancedTravelPreferencesForm({
                           openSections.activities ? 'rotate-0' : '-rotate-90'
                         }`}
                       />
-                      <Palmtree className="w-4 h-4 text-green-600 dark:text-green-400 shrink-0" />
+                      <Palmtree className="w-4 h-4 text-green-700 dark:text-green-400 shrink-0" />
                       <span className="font-semibold text-sm">{t('activitiesExperiences')}</span>
                     </button>
                     {openSections.activities && (
@@ -830,7 +830,7 @@ export function EnhancedTravelPreferencesForm({
                           openSections.special ? 'rotate-0' : '-rotate-90'
                         }`}
                       />
-                      <Shield className="w-4 h-4 text-red-600 dark:text-red-400 shrink-0" />
+                      <Shield className="w-4 h-4 text-red-700 dark:text-red-400 shrink-0" />
                       <span className="font-semibold text-sm">{t('specialRequirementsNeeds')}</span>
                     </button>
                     {openSections.special && (
@@ -852,7 +852,7 @@ export function EnhancedTravelPreferencesForm({
                           openSections.advanced ? 'rotate-0' : '-rotate-90'
                         }`}
                       />
-                      <Zap className="w-4 h-4 text-yellow-600 dark:text-yellow-400 shrink-0" />
+                      <Zap className="w-4 h-4 text-yellow-700 dark:text-yellow-400 shrink-0" />
                       <span className="font-semibold text-sm">{t('advancedSettingsAI')}</span>
                     </button>
                     {openSections.advanced && (

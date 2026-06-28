@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
+import { motion } from 'framer-motion';
 import { ArrowRight, Hotel, MapPin, Plane, Star } from 'lucide-react';
 
 import { Badge } from '../ui/badge';
@@ -9,6 +10,7 @@ import { Button } from '../ui/button';
 import { Card, CardContent, CardDescription } from '../ui/card';
 import { DESTINATION_PLACEHOLDER, onDestinationImageError } from './destination-image-fallback';
 import { HotelTypeBadge } from './HotelTypeBadge';
+import { useTilt } from '../../../hooks/useTilt';
 
 export type HotelTypeBreakdown = Record<string, number>;
 
@@ -68,7 +70,14 @@ export function DestinationBrowseCard({ item, href, labels }: DestinationBrowseC
         .slice(0, 2)
     : [];
 
+  const { ref, rotateX, rotateY, scale, glareX, glareY, glareOpacity } = useTilt({ maxTilt: 5 });
+
   return (
+    <motion.div
+      ref={ref}
+      style={{ rotateX, rotateY, scale, transformStyle: 'preserve-3d' }}
+      className="h-full"
+    >
     <Card className="group relative overflow-hidden border-0 bg-white dark:bg-gray-800 shadow-md hover:shadow-xl ring-1 ring-gray-200/60 dark:ring-gray-700/60 transition-all duration-300 h-full flex flex-col">
       {/* Hero image */}
       <Link href={href} className="block relative aspect-video overflow-hidden shrink-0">
@@ -157,5 +166,6 @@ export function DestinationBrowseCard({ item, href, labels }: DestinationBrowseC
         </Button>
       </CardContent>
     </Card>
+    </motion.div>
   );
 }

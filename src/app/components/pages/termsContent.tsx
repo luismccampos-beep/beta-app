@@ -69,7 +69,7 @@ export function TermsContent() {
         <div className="bg-gradient-to-r from-primary to-accent h-1.5" />
         <div className="p-5 sm:p-8">
           <div className="flex items-center gap-2 mb-4">
-            <FileText className="w-5 h-5 sm:w-6 sm:h-6 text-primary dark:text-primary-300" />
+            <FileText className="w-5 h-5 sm:w-6 sm:h-6 text-primary-700 dark:text-primary-300" />
             <h2 className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white">
               {t('title')}
             </h2>
@@ -77,7 +77,7 @@ export function TermsContent() {
 
           <div className="flex flex-wrap items-center gap-3 mb-5">
             <span className="inline-flex items-center gap-1.5 text-sm text-gray-600 dark:text-gray-400">
-              <Calendar className="w-4 h-4 text-primary dark:text-primary-300" />
+              <Calendar className="w-4 h-4 text-primary-700 dark:text-primary-300" />
               <span className="font-medium">{t('lastUpdated')}</span>
             </span>
             <Badge className="bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200 border-0">
@@ -90,7 +90,7 @@ export function TermsContent() {
             </Badge>
           </div>
 
-          <div className="p-4 sm:p-5 bg-primary-50 dark:bg-primary-900/20 border-l-4 border-primary rounded-lg">
+          <div className="p-4 sm:p-5 bg-primary-50 dark:bg-primary-900/20 border-l-4 border-primary-700 rounded-lg">
             <p className="text-sm sm:text-base text-gray-800 dark:text-gray-200 leading-relaxed">
               {t('intro')}
             </p>
@@ -102,7 +102,7 @@ export function TermsContent() {
       {definitions.length > 0 && (
         <div className="rounded-2xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 shadow-lg p-5 sm:p-8">
           <h3 className="text-lg sm:text-xl font-bold text-gray-900 dark:text-white mb-4 flex items-center gap-2">
-            <Globe2 className="w-5 h-5 text-accent dark:text-accent-500" />
+            <Globe2 className="w-5 h-5 text-accent-700 dark:text-accent-500" />
             {t('definitions.title')}
           </h3>
           <dl className="grid sm:grid-cols-2 gap-3 sm:gap-4">
@@ -136,7 +136,7 @@ export function TermsContent() {
                     <Icon className="w-4 h-4 sm:w-5 sm:h-5" />
                   </span>
                   <span className="pt-1">
-                    <span className="text-primary dark:text-primary-300 mr-1.5">
+                  <span className="text-primary-700 dark:text-primary-300 mr-1.5">
                       {index + 1}.
                     </span>
                     {section.title}

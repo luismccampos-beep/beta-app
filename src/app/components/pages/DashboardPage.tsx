@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Button } from '../ui/button';
+import { RippleButton } from '../ui/ripple-button';
 import { useTranslations } from 'next-intl';
 import { AppHeader } from '../AppHeader';
 import { cn } from '../ui/utils';
@@ -75,7 +75,7 @@ export function DashboardPage({ onBack, onNewBooking, initialTab, onLogout }: Da
               <p className="text-lg md:text-xl text-gray-600 dark:text-gray-400 font-medium">{t('subtitle')}</p>
             </div>
             {onNewBooking && (
-              <Button type="button"
+              <RippleButton
                 onClick={onNewBooking}
                 variant="brand"
                 size="lg"
@@ -83,7 +83,7 @@ export function DashboardPage({ onBack, onNewBooking, initialTab, onLogout }: Da
               >
                 <Plane className="w-5 h-5" />
                 {t('newBooking')}
-              </Button>
+              </RippleButton>
             )}
           </div>
         </motion.div>

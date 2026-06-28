@@ -150,12 +150,12 @@ function PrivacyContent() {
         <div className="bg-gradient-to-r from-blue-600 to-accent h-1.5" />
         <div className="p-5 sm:p-8">
           <div className="flex items-center gap-2 mb-4">
-            <Shield className="w-5 h-5 sm:w-6 sm:h-6 text-blue-600 dark:text-blue-400" />
+            <Shield className="w-5 h-5 sm:w-6 sm:h-6 text-blue-700 dark:text-blue-400" />
             <h2 className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white">{t('title')}</h2>
           </div>
           <div className="flex flex-wrap items-center gap-3 mb-5">
             <span className="inline-flex items-center gap-1.5 text-sm text-gray-600 dark:text-gray-400">
-              <Calendar className="w-4 h-4 text-blue-600 dark:text-blue-400" />
+              <Calendar className="w-4 h-4 text-blue-700 dark:text-blue-400" />
               <span className="font-medium">{t('lastUpdated')}</span>
             </span>
             <Badge className="bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200 border-0">
@@ -189,7 +189,7 @@ function PrivacyContent() {
                     <Icon className="w-4 h-4 sm:w-5 sm:h-5" />
                   </motion.span>
                   <span className="pt-1">
-                    <span className="text-blue-600 dark:text-blue-400 mr-1.5">{index + 1}.</span>
+                    <span className="text-blue-700 dark:text-blue-400 mr-1.5">{index + 1}.</span>
                     {t(`${meta.key}Title`)}
                   </span>
                 </h3>
@@ -379,7 +379,7 @@ export function LegalPage({ pageType, onBack }: LegalPageProps) {
             <div className="bg-gradient-to-r from-primary to-accent h-2"></div>
             <CardContent className="p-4 sm:p-8">
               <h2 className="text-lg sm:text-2xl font-bold text-gray-900 dark:text-white mb-4 sm:mb-6 flex items-center gap-2">
-                <AlertCircle className="w-5 h-5 sm:w-6 sm:h-6 text-accent dark:text-accent-500" />
+                <AlertCircle className="w-5 h-5 sm:w-6 sm:h-6 text-accent-700 dark:text-accent-500" />
                 {t('questionsTitle')}
               </h2>
               <p className="text-sm sm:text-base text-gray-700 dark:text-gray-300 mb-4 sm:mb-6">

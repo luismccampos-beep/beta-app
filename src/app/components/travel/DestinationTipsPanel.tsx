@@ -25,16 +25,16 @@ const SECTION_META: Record<
   TipSectionKey,
   { icon: React.ComponentType<{ className?: string }>; accent: string }
 > = {
-  seguranca: { icon: Shield, accent: 'text-amber-600 dark:text-amber-400' },
-  respeite: { icon: Users, accent: 'text-violet-600 dark:text-violet-400' },
-  comunique: { icon: Languages, accent: 'text-blue-600 dark:text-blue-400' },
-  beba: { icon: Droplets, accent: 'text-cyan-600 dark:text-cyan-400' },
-  dinheiro: { icon: Banknote, accent: 'text-emerald-600 dark:text-emerald-400' },
-  saude: { icon: HeartPulse, accent: 'text-rose-600 dark:text-rose-400' },
+  seguranca: { icon: Shield, accent: 'text-amber-700 dark:text-amber-400' },
+  respeite: { icon: Users, accent: 'text-violet-700 dark:text-violet-400' },
+  comunique: { icon: Languages, accent: 'text-blue-700 dark:text-blue-400' },
+  beba: { icon: Droplets, accent: 'text-cyan-700 dark:text-cyan-400' },
+  dinheiro: { icon: Banknote, accent: 'text-emerald-700 dark:text-emerald-400' },
+  saude: { icon: HeartPulse, accent: 'text-rose-700 dark:text-rose-400' },
   transporte: { icon: Train, accent: 'text-primary dark:text-primary-300' },
   horarios: { icon: Clock, accent: 'text-gray-600 dark:text-gray-400' },
   compre: { icon: ShoppingBag, accent: 'text-accent dark:text-accent-500' },
-  clima: { icon: Sun, accent: 'text-yellow-600 dark:text-yellow-400' },
+  clima: { icon: Sun, accent: 'text-yellow-700 dark:text-yellow-400' },
 };
 
 export type DestinationTipsPanelProps = {
