@@ -1,6 +1,6 @@
 # Accessibility Statement — AKMLEVA
 
-> **Last updated:** June 27, 2026  
+> **Last updated:** June 27, 2026,  
 > **Applies to:** [www.akmleva.com](https://www.akmleva.com) and related subdomains  
 > **Owner:** AKMLEVA Viagens Lda.
 
@@ -16,7 +16,7 @@ We aim to meet the **Web Content Accessibility Guidelines (WCAG) 2.1 Level AA** 
 
 - **Travel is for everyone.** Booking a trip, researching a destination, or comparing hotels should never be blocked by a barrier in our interface.
 - **We serve a global audience.** Our platform supports 4 languages (Portuguese, English, Spanish, French) and reaches users across different devices, network conditions, and assistive technologies.
-- **We build with AI, not at the expense of inclusion.** Our destination recommendations, chat, and personalisation features are designed to work with assistive technology from day one.
+- **We build with AI, not at the expense of inclusion.** Our destination recommendations, chat, and personalization features are designed to work with assistive technology from day one.
 
 ---
 
@@ -28,7 +28,7 @@ We aim to meet the **Web Content Accessibility Guidelines (WCAG) 2.1 Level AA** 
 | Lighthouse Accessibility score | ≥ 95 | ![Current: ~80](https://img.shields.io/badge/Current-%7E80-orange) |
 | axe-core audit (automated) | Zero critical/serious violations | ![In progress](https://img.shields.io/badge/Status-In%20Progress-yellow) |
 | Keyboard-only navigation | All interactive features reachable and operable | ![In progress](https://img.shields.io/badge/Status-In%20Progress-yellow) |
-| Screen reader testing | VoiceOver (macOS), NVDA (Windows), TalkBack (Android) | ![Planned](https://img.shields.io/badge/Status-Planned-lightgrey) |
+| Screen reader testing | Voiceover (macOS), NVDA (Windows), TalkBack (Android) | ![Planned](https://img.shields.io/badge/Status-Planned-lightgrey) |
 
 Progress is tracked in our internal audit (see [`docs/AUDIT-AKMLEVA.md`](docs/AUDIT-AKMLEVA.md), section UI-7).
 
@@ -51,10 +51,10 @@ Progress is tracked in our internal audit (see [`docs/AUDIT-AKMLEVA.md`](docs/AU
 - Our UI component library (shadcn/ui, built on Radix UI) is chosen for its built-in ARIA attributes, focus management, and keyboard support out of the box.
 - Form inputs, error messages, and validation states are associated programmatically (`aria-describedby`, `aria-invalid`, `aria-errormessage`).
 
-### Colour and Contrast
+### Colorant Contrast
 
 - All text meets or exceeds WCAG AA contrast ratios (4.5:1 for body text, 3:1 for large text).
-- Colour is never used as the sole means of conveying information — we pair icons, labels, and text with colour cues.
+- Color is never used as the sole means of conveying information — we pair icons, labels, and text with color cues.
 - The platform supports system-wide dark mode without losing contrast or readability.
 - Gradient accents (e.g., the primary-to-accent hero banners) maintain sufficient contrast against overlaid text.
 
@@ -63,7 +63,7 @@ Progress is tracked in our internal audit (see [`docs/AUDIT-AKMLEVA.md`](docs/AU
 - Destination videos published on the platform are accompanied by:
   - **Captions** — human-edited where possible, auto-generated as a fallback.
   - **Transcripts** — full-text transcript linked below each video.
-- No media auto-plays on page load. Videos require a user gesture to start.
+- No media autoplays on page load. Videos require a user gesture to start.
 - Important visual actions in demo or tutorial videos are described verbally.
 
 ### Images and Icons
@@ -71,14 +71,14 @@ Progress is tracked in our internal audit (see [`docs/AUDIT-AKMLEVA.md`](docs/AU
 - Informative images carry meaningful `alt` text describing the content and purpose of the image (see the [W3C alt Decision Tree](https://www.w3.org/WAI/tutorials/images/decision-tree/)).
 - Decorative images use `alt=""` (empty alt) so screen readers ignore them.
 - Icons used as interactive controls have accessible labels (`aria-label` or visually hidden text).
-- Complex images (architecture diagrams, data visualisations) include a text alternative or a bullet-point summary adjacent to the image.
+- Complex images (architecture diagrams, data visualizations) include a text alternative or a bullet-point summary adjacent to the image.
 
 ### Forms and Inputs
 
 - Every form field has an associated `<label>`.
 - Required fields are marked visually (`*`) and programmatically (`aria-required="true"`).
 - Error messages are clear, specific, and placed inline near the field they describe.
-- Multi-step forms (e.g., travel preferences) provide step indicators and announce the current step via `aria-current="step"`.
+- Multistep forms (e.g., travel preferences) provide step indicators and announce the current step via `aria-current="step"`.
 
 ---
 
@@ -124,7 +124,7 @@ When adding new components, follow these documentation guidelines:
 - **SVGs / Icons:** Provide `aria-label` or `title` elements. Use `aria-hidden="true"` for purely decorative icons.
 - **Images:** Always include `alt` text. If the image conveys information, describe it. If it is decorative, use `alt=""`.
 - **Interactive elements:** Document keyboard interactions, focus management, and any `aria-*` attributes in the component’s Storybook story.
-- **Colour:** Do not rely on colour alone to convey meaning. Pair colour cues with text labels or icons.
+- **Color:** Do not rely on color alone to convey meaning. Pair color cues with text labels or icons.
 
 ### CI/CD
 
@@ -145,8 +145,8 @@ Pull requests will **fail** if they introduce accessibility violations detected 
 | **Web (desktop)** | ✅ Full | Windows, macOS, Linux — latest 2 major versions of Chrome, Firefox, Safari, Edge |
 | **Web (mobile)** | ✅ Full | iOS Safari, Android Chrome — responsive layout down to 320 px width |
 | **Terminal / CLI** | ❌ Not applicable | Data scripts are not user-facing |
-| **iOS app** | ⏳ Planned | |
-| **Android app** | ⏳ Planned | |
+| **iOS app** | ⏳ Planned |
+| **Android app** | ⏳ Planned |
 
 ---
 
@@ -161,7 +161,7 @@ We want to hear about barriers you encounter. Please use the **Accessibility Iss
    - **Assistive technology** used (screen reader, switch device, magnifier, etc.)
    - **Operating system** and **browser** versions
    - **Severity** — how much does this block you?
-   - **Description** — what happened and what did you expect?
+   - **Description** — what happened, and what did you expect?
    - **Steps to reproduce** — so we can reproduce the issue
 4. Submit the issue
 
@@ -171,7 +171,7 @@ We want to hear about barriers you encounter. Please use the **Accessibility Iss
 2. We acknowledge the report, provide an expected resolution timeline, or suggest a workaround.
 3. When a fix is deployed, we comment on the issue and close it.
 
-> **⚠️ Expectations:** Accessibility bugs are prioritised alongside critical production issues because they can block a user from using the platform entirely. If we can't resolve immediately, we will provide a documented workaround and track the fix in a publicly visible issue.
+> **⚠️ Expectations:** Accessibility bugs are prioritized alongside critical production issues because they can block a user from using the platform entirely. If we can't resolve immediately, we will provide a documented workaround and track the fix in a publicly visible issue.
 
 ---
 
@@ -196,7 +196,7 @@ Our documentation is often the first interface users and contributors touch. We 
 - Demo and tutorial videos provide:
   - **Captions** (human-edited when feasible)
   - **Transcripts** (linked below the video)
-  - No auto-playing audio or video
+  - No autoplaying audio or video
   - Verbal descriptions of important on-screen actions
 
 ### Tables

@@ -12,7 +12,7 @@
 
 ## Index
 
-- [Stack Tecnológico](#stack-tecnológico)
+- [Stack Technological](#stack-tecnológico)
 - [Quick Start](#quick-start)
 - [Project Structure](#project-structure)
 - [Documentation Index](#documentation-index)
@@ -25,52 +25,52 @@
 
 ---
 
-## Stack Tecnológico
+## Stack Technological
 
 ### Frontend
 
-| Tecnologia | Versão | Propósito |
+| Technology | Version | Proposition |
 |---|---|---|
 | React | ^19.0.0 | UI Framework |
 | Next.js | ^15.5.2 | SSR & App Router |
 | TypeScript | ^5.6.0 | Type Safety |
 | Tailwind CSS | ^4.1.8 | Styling |
 | shadcn/ui | via Radix UI | Component Library |
-| Framer Motion | ^11.18.2 | Animações |
+| Framer Motion | ^11.18.2 | Animations |
 | next-intl | ^4.1.0 | i18n (pt, en, es, fr) |
 | React Query | ^5.90.12 | Server State |
-| React Hook Form | ^7.79.0 | Formulários |
-| Zod | ^4.1.12 | Validação |
-| Recharts | ^2.10.3 | Gráficos |
-| Leaflet | ^1.9.4 | Mapas |
-| Sonner / Toastify | | Notificações |
+| React Hook Form | ^7.79.0 | Forms |
+| Zod | ^4.1.12 | Validations |
+| Recharts | ^2.10.3 | Graphics |
+| Leaflet | ^1.9.4 | Maps |
+| Sonner / Toastify / Notifications |
 
 ### Backend / Database
 
-| Tecnologia | Versão | Propósito |
+| Technology | Version | Purpose |
 |---|---|---|
 | Node.js | >=18 | Runtime |
 | Next.js API Routes | 15.5.2 | API endpoints |
 | Prisma ORM | 6.17.1 | Database ORM |
 | PostgreSQL (Neon) | 16 | Database principal |
 | Redis (Upstash) | ^1.35.6 | Cache / Rate Limiting |
-| next-auth | 5.0.0-beta.31 | Autenticação |
-| Stripe / Resend | | Pagamentos / Email |
+| next-auth | 5.0.0-beta.31 | Authentication |
+| Stripe / Resend |  Payments / Email |
 
 ### ML Service
 
-| Tecnologia | Versão | Propósito |
+| Technology | Version | Proposition |
 |---|---|---|
 | Python | 3.10+ | ML Runtime |
-| FastAPI | | API Server |
-| scikit-learn | | Modelos ML |
-| pandas | | Data Processing |
-| Gemini API | | LLM Integration |
-| TinyAya | | On-device LLM |
+| FastAPI API Server |
+| scikit-learn Models ML |
+| pandas Data Processing |
+| Gemini API LLM Integration |
+| TinyAya On-device LLM |
 
 ### DevOps / Infra
 
-| Tecnologia | Propósito |
+| Technology | Proposition |
 |---|---|
 | Turborepo | Monorepo orchestration |
 | Docker | Postgres, Redis, Valhalla, OTP |
@@ -477,7 +477,7 @@ Key variables (see `.env.example` for full list):
 | Variable | Description |
 |---|---|
 | `DATABASE_URL` | PostgreSQL connection string (Neon) |
-| `DATABASE_URL_UNPOOLED` | Direct connection (bypasses PgBouncer) |
+| `DATABASE_URL_UNPOOLED` | Direct connection (bypasses Pg Bouncer) |
 | `REDIS_URL` | Upstash Redis URL |
 | `NEXTAUTH_SECRET` | Auth.js encryption secret |
 | `NEXTAUTH_URL` | App URL for auth callbacks |

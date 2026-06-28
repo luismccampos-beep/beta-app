@@ -289,7 +289,13 @@
     "webpack-bundle-analyzer": "^4.10.1"
   },
   "overrides": {
-    "axios": "^1.18.0"
+    "axios": "^1.18.0",
+    "@storybook/addon-essentials": {
+      "storybook": "$storybook"
+    },
+    "@storybook/addon-interactions": {
+      "storybook": "$storybook"
+    }
   },
   "engines": {
     "node": ">=20.0.0",
