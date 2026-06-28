@@ -6,13 +6,13 @@ import {
   listTopDestinationIatasFromDb,
 } from '../catalog-db';
 import { rankResultsWithMlAndPreferences } from '../ml-ranking';
-import type { MockSearchInput, MockSearchOutput } from '../mock-travel/search';
+import type { MockSearchInput, MockSearchOutput } from '../search-result-builder';
 import type { MockHotel } from '../mock-travel/types';
 import { pickBestAccommodationHotel } from '../hotel-filter';
 import {
   buildCatalogTravelResult,
   pickCheapestFlight,
-} from '../mock-travel/search';
+} from '../search-result-builder';
 
 export async function searchDbTravelResults(input: MockSearchInput): Promise<MockSearchOutput> {
   const origin = input.origin.trim().toUpperCase();

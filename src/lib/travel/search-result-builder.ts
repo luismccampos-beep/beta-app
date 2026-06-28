@@ -1,22 +1,12 @@
-import type { TravelResult } from '../../../app/components/data/mockResults';
-import { continentFromCountryCode } from '../continent';
-import {
-  getMockDestinationByIata,
-  getMockDestinationById,
-  getMockFlights,
-  getMockHotelsForDestination,
-  listMockDestinationsWithIata,
-  loadMockTravelBundle,
-  resolveDestinationImageUrl,
-} from './load';
-import { pickBestAccommodationHotel } from '../hotel-filter';
-import type { CompactTravelPreferences } from '../preference-match';
-import { rankResultsWithMlAndPreferences } from '../ml-ranking';
-import { buildDestinationSlug } from '../destination-slug';
-import { summarizeCostOfLiving } from '../cost-tier';
-import { summarizeAirport } from '../transport-summary';
-import { resolveMapMarkersForDestination } from '../travel-map-markers';
-import type { MockDestination, MockFlight, MockHotel } from './types';
+import type { TravelResult } from '../../app/components/data/mockResults';
+import type { CompactTravelPreferences } from './preference-match';
+import { continentFromCountryCode } from './continent';
+import { buildDestinationSlug } from './destination-slug';
+import { resolveDestinationImageUrl } from './destination-image';
+import { summarizeCostOfLiving } from './cost-tier';
+import { summarizeAirport } from './transport-summary';
+import { resolveMapMarkersForDestination } from './travel-map-markers';
+import type { MockDestination, MockFlight, MockHotel } from './mock-travel/types';
 
 const CABIN_LABELS: Record<string, string> = {
   economy: 'Economy',
@@ -49,22 +39,6 @@ export function pickCheapestFlight(flights: MockFlight[], cabinClass?: string): 
     : flights;
   const list = filtered.length ? filtered : flights;
   return [...list].sort((a, b) => a.preco - b.preco)[0];
-}
-
-export function pickBestHotel(hotels: MockHotel[]): MockHotel | null {
-  if (!hotels.length) return null;
-  return [...hotels].sort((a, b) => a.preco_por_noite - b.preco_por_noite)[0];
-}
-
-function resolveDestinationForIata(iata: string): MockDestination | null {
-  const direct = getMockDestinationByIata(iata);
-  if (direct) return direct;
-  const bundle = loadMockTravelBundle();
-  const flight = bundle.voos.find((v) => v.destino_iata?.toUpperCase() === iata.toUpperCase());
-  if (flight) return getMockDestinationById(flight.destino_id) ?? null;
-  const withIata = listMockDestinationsWithIata();
-  if (withIata.length) return withIata[Math.abs(iata.charCodeAt(0)) % withIata.length];
-  return bundle.destinos[0] ?? null;
 }
 
 export type MockSearchInput = {
@@ -203,73 +177,4 @@ export function buildCatalogTravelResult(input: {
       return markers.length > 0 ? markers : undefined;
     })(),
   };
-}
-
-export async function searchMockTravelResults(input: MockSearchInput): Promise<MockSearchOutput> {
-  const origin = input.origin.trim().toUpperCase();
-  const iatas =
-    input.destinationIatas.length > 0
-      ? input.destinationIatas.map((s) => s.toUpperCase())
-      : listMockDestinationsWithIata()
-          .slice(0, 6)
-          .map((d) => d.iata!)
-          .filter(Boolean);
-
-  const results: TravelResult[] = [];
-  const errors: { destination: string; message: string }[] = [];
-  const iataHints = new Map<string, string>();
-
-  for (const destIata of iatas) {
-    if (destIata === origin) continue;
-
-    const dest = resolveDestinationForIata(destIata);
-    if (!dest) {
-      errors.push({ destination: destIata, message: 'Destino não encontrado nos dados mock' });
-      continue;
-    }
-
-    const flights = getMockFlights(origin, destIata);
-    const flight = input.mode === 'hotels' ? null : pickCheapestFlight(flights, input.cabinClass);
-    const hotels = getMockHotelsForDestination(dest.id);
-    const hotel = input.mode === 'flights' ? null : pickBestAccommodationHotel(hotels);
-
-    if (input.mode === 'flights' && !flight) {
-      errors.push({ destination: destIata, message: 'Sem voos mock para esta rota' });
-      continue;
-    }
-    if (input.mode === 'hotels' && !hotel) {
-      errors.push({ destination: destIata, message: 'Sem hotéis mock para este destino' });
-      continue;
-    }
-
-    const result = buildCatalogTravelResult({
-      dest,
-      destIata,
-      origin,
-      flight,
-      hotel,
-      mode: input.mode,
-      nights: input.nights,
-      tripType: input.tripType,
-      departureDate: input.departureDate,
-      returnDate: input.returnDate,
-    });
-
-    if (result) {
-      results.push(result);
-      iataHints.set(result.id, destIata);
-    } else errors.push({ destination: destIata, message: 'Não foi possível montar o pacote demo' });
-  }
-
-  const { results: ranked, mlUsed } = await rankResultsWithMlAndPreferences(
-    results,
-    input.preferences,
-    iataHints,
-    input.origin,
-  );
-  if (!mlUsed) {
-    ranked.sort((a, b) => b.aiMatchScore - a.aiMatchScore);
-  }
-
-  return { results: ranked, errors };
 }

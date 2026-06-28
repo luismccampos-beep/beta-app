@@ -140,8 +140,8 @@ export function DestinationsBrowsePage({ onBack }: DestinationsBrowsePageProps) 
   }, [query, continentFilter, countryFilter, hotelTypeFilter, page, locale]);
 
   const { data: searchData, isLoading: loading, error, refetch } = useDestinations(queryParams);
-  const items: DestinationBrowseItem[] = (searchData?.data as DestinationBrowseItem[]) ?? [];
-  const total: number = searchData?.pagination?.total ?? 0;
+  const items: DestinationBrowseItem[] = (searchData?.items as DestinationBrowseItem[]) ?? [];
+  const total: number = (searchData as { total?: number })?.total ?? 0;
 
   const { data: countriesData, isLoading: countriesLoading } = useCountries();
   const countries: CountryOption[] = (countriesData as { countries?: CountryOption[] })?.countries ?? [];

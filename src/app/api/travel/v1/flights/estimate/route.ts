@@ -2,7 +2,6 @@ import { NextResponse } from 'next/server';
 import { z } from 'zod';
 import { apiHandler } from '@/lib/api/handler';
 import { estimateFlightPrice, scoreFlight } from '../../../../../../lib/travel/flight-price-estimator';
-import { isTravelCatalogDbEnabled } from '../../../../../../lib/travel/catalog-db';
 
 export const dynamic = 'force-dynamic';
 export const maxDuration = 15;
@@ -27,23 +26,21 @@ export const GET = apiHandler(async (req: Request) => {
   const dest = params.dest.trim().toUpperCase();
 
   let dbStats = null;
-  if (isTravelCatalogDbEnabled()) {
-    try {
-      const { prisma } = await import('../../../../../../lib/prisma');
-      dbStats = await prisma.flightPriceStatistic.findMany({
-        where: {
-          route: {
-            origin: { code: origin },
-            dest: { code: dest },
-          },
-          mes: params.month ?? undefined,
+  try {
+    const { prisma } = await import('../../../../../../lib/prisma');
+    dbStats = await prisma.flightPriceStatistic.findMany({
+      where: {
+        route: {
+          origin: { code: origin },
+          dest: { code: dest },
         },
-        orderBy: { ano: 'desc' },
-        take: 12,
-      });
-    } catch {
-      // DB might not be available
-    }
+        mes: params.month ?? undefined,
+      },
+      orderBy: { ano: 'desc' },
+      take: 12,
+    });
+  } catch {
+    // DB might not be available
   }
 
   const estimate = estimateFlightPrice({

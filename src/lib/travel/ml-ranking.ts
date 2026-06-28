@@ -2,14 +2,13 @@ import type { TravelResult } from '../../app/components/data/mockResults';
 import {
   scoreDestinationMatch,
   softmaxToMatchPercents,
+  applyPreferenceMatchScores,
   type CompactTravelPreferences,
+  type DestinationLookup,
 } from './preference-match';
-import { getMockDestinationByIata } from './mock-travel/load';
-import {
-  iataFromMockResultId,
-  rankResultsByPreferences,
-  resolveMockDestinationForResult,
-} from './mock-travel/preference-lookup';
+import { getDestinationByIataFromDb } from './catalog-db';
+import { iataFromMockResultId } from './result-id-utils';
+import { resolveDestinationsForResults, type ResolvedResult } from './resolve-destination';
 import {
   fetchRoadDistanceBatch,
   proximityScoreFromKm,
@@ -37,19 +36,23 @@ function coordsFromDestination(dest: {
   return { lat, lon };
 }
 
-function coordsForOriginIata(originIata: string): LatLon | null {
-  const dest = getMockDestinationByIata(originIata);
+async function coordsForOriginIata(originIata: string): Promise<LatLon | null> {
+  const dest = await getDestinationByIataFromDb(originIata);
   if (!dest) return null;
   return coordsFromDestination(dest);
 }
 
 function coordsForResult(
   result: TravelResult,
+  resolvedMap: Map<string, ResolvedResult>,
   destIataHint?: string,
 ): LatLon | null {
-  const info = resolveMockDestinationForResult(result, destIataHint);
-  if (!info) return null;
-  return coordsFromDestination(info.dest);
+  const iata = destIataHint ?? iataFromMockResultId(result.id);
+  if (iata) {
+    const entry = resolvedMap.get(result.id);
+    if (entry) return coordsFromDestination(entry.dest);
+  }
+  return null;
 }
 
 function mlServiceBaseUrl(): string | null {
@@ -68,8 +71,10 @@ export async function fetchMlTravelRankScores(
   const out = new Map<string, MlRankScore>();
   if (!base || results.length === 0) return out;
 
+  const resolvedMap = await resolveDestinationsForResults(results);
+
   const candidates = results.map((r) => {
-    const info = resolveMockDestinationForResult(r);
+    const info = resolvedMap.get(r.id);
     return {
       destino_id: info?.dest.id,
       iata: info?.dest.iata ?? iataFromMockResultId(r.id) ?? undefined,
@@ -112,7 +117,7 @@ export async function fetchMlTravelRankScores(
 
     for (const r of results) {
       const iata = iataFromMockResultId(r.id);
-      const info = resolveMockDestinationForResult(r);
+      const info = resolvedMap.get(r.id);
       const destId = info?.dest.id;
       const match = data.rankings.find(
         (row) =>
@@ -145,16 +150,23 @@ export async function rankResultsWithMlAndPreferences(
     return { results, mlUsed: false, roadDistanceUsed: false };
   }
 
+  const resolvedMap = await resolveDestinationsForResults(results, destIataByResultId);
+
+  const syncLookup: DestinationLookup = (r) => {
+    const entry = resolvedMap.get(r.id);
+    return entry ?? null;
+  };
+
   const mlScores = await fetchMlTravelRankScores(results, preferences);
   const mlUsed = mlScores.size > 0;
 
   let roadByResultId = new Map<string, RoadDistanceResult>();
-  const originCoords = originIata ? coordsForOriginIata(originIata) : null;
+  const originCoords = originIata ? await coordsForOriginIata(originIata) : null;
   if (originCoords) {
     const destPoints: Array<{ id: string; lat: number; lon: number }> = [];
     for (const r of results) {
       const iata = destIataByResultId?.get(r.id) ?? iataFromMockResultId(r.id);
-      const c = coordsForResult(r, iata ?? undefined);
+      const c = coordsForResult(r, resolvedMap, iata ?? undefined);
       if (c) destPoints.push({ id: r.id, lat: c.lat, lon: c.lon });
     }
     if (destPoints.length) {
@@ -165,7 +177,7 @@ export async function rankResultsWithMlAndPreferences(
 
   if (!mlUsed && !roadDistanceUsed) {
     return {
-      results: rankResultsByPreferences(results, preferences, destIataByResultId),
+      results: applyPreferenceMatchScores(results, preferences, syncLookup),
       mlUsed: false,
       roadDistanceUsed: false,
     };
@@ -173,10 +185,10 @@ export async function rankResultsWithMlAndPreferences(
 
   const raw: number[] = [];
   for (const r of results) {
-    const info = resolveMockDestinationForResult(r, destIataByResultId?.get(r.id));
+    const info = resolvedMap.get(r.id);
     const ruleScore = info
       ? scoreDestinationMatch(info.dest, preferences, {
-          hotel: info.hotel,
+          hotel: info.hotel ?? undefined,
           nights: r.duration,
           sustainable: r.sustainable,
         })

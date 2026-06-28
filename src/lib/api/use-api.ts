@@ -12,9 +12,9 @@ async function fetcher<T>(url: string): Promise<T> {
 }
 
 type PaginatedResponse<T> = {
-  success: boolean;
-  data: T[];
-  pagination: { total: number; page: number; totalPages: number };
+  ok: boolean;
+  items: T[];
+  total: number;
 };
 
 type ApiResponse<T> = {
@@ -26,7 +26,7 @@ export function useDestinations(params: Record<string, string>) {
   const qs = new URLSearchParams(params).toString();
   return useQuery({
     queryKey: ['destinations', params],
-    queryFn: () => fetcher<PaginatedResponse<unknown>>(`${BASE}/travel/destinations?${qs}`),
+    queryFn: () => fetcher<PaginatedResponse<unknown>>(`${BASE}/travel/v1/destinations?${qs}`),
     placeholderData: (prev) => prev,
     staleTime: 30_000,
   });

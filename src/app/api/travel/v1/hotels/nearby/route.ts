@@ -1,10 +1,7 @@
 import { NextResponse } from 'next/server';
 import { z } from 'zod';
 import { apiHandler } from '@/lib/api/handler';
-import {
-  getHotelsNearbyFromDb,
-  isTravelCatalogDbEnabled,
-} from '../../../../../../lib/travel/catalog-db';
+import { getHotelsNearbyFromDb } from '../../../../../../lib/travel/catalog-db';
 
 export const dynamic = 'force-dynamic';
 
@@ -20,16 +17,6 @@ const NearbyHotelsQuerySchema = z.object({
 });
 
 export const GET = apiHandler(async (req: Request) => {
-  if (!isTravelCatalogDbEnabled()) {
-    return NextResponse.json(
-      {
-        ok: false,
-        message: 'Set TRAVEL_CATALOG_SOURCE=db and run travel:catalog:backfill-geo',
-      },
-      { status: 503 },
-    );
-  }
-
   const url = new URL(req.url);
   const params = NearbyHotelsQuerySchema.parse(Object.fromEntries(url.searchParams));
   const lng = params.lng ?? params.lon!;

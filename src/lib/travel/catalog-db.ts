@@ -108,11 +108,6 @@ export async function getHotelStatsForDestinations(
   return map;
 }
 
-export function isTravelCatalogDbEnabled(): boolean {
-  const v = process.env.TRAVEL_CATALOG_SOURCE?.trim().toLowerCase();
-  return v === 'db' || v === 'postgres' || v === 'prisma';
-}
-
 export function rowToDestination(row: {
   id: number;
   lang: string;

@@ -225,7 +225,7 @@ export function LandingPage({ onGetStarted }: LandingPageProps) {
       {/* ═══════════ Hero Section ═══════════ */}
       <section
         ref={sectionRef}
-        className="relative pt-32 pb-28 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-primary-50 via-cyan-50 to-accent-50 dark:from-gray-950 dark:via-gray-900 dark:to-gray-950 transition-colors overflow-hidden"
+        className="relative pt-32 pb-28 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-primary-50 via-cyan-50 to-accent-50 dark:from-gray-950 dark:via-gray-900 dark:to-gray-950 transition-colors"
       >
         {/* Background decorative elements */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
