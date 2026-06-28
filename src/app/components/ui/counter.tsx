@@ -36,7 +36,7 @@ export function Counter({
           useEasing={true}
         />
       ) : (
-        <span>{prefix}0{suffix}</span>
+        <span className="invisible" aria-hidden="true">{prefix}{end}{suffix}</span>
       )}
     </span>
   );
