@@ -12,7 +12,7 @@
 
 ## Index
 
-- [Stack Technological](#stack-tecnológico)
+- [Tech Stack](#tech-stack)
 - [Quick Start](#quick-start)
 - [Project Structure](#project-structure)
 - [Documentation Index](#documentation-index)
@@ -25,11 +25,11 @@
 
 ---
 
-## Stack Technological
+## Tech Stack
 
 ### Frontend
 
-| Technology | Version | Proposition |
+| Technology | Version | Purpose |
 |---|---|---|
 | React | ^19.0.0 | UI Framework |
 | Next.js | ^15.5.2 | SSR & App Router |
@@ -40,10 +40,11 @@
 | next-intl | ^4.1.0 | i18n (pt, en, es, fr) |
 | React Query | ^5.90.12 | Server State |
 | React Hook Form | ^7.79.0 | Forms |
-| Zod | ^4.1.12 | Validations |
-| Recharts | ^2.10.3 | Graphics |
+| Zod | ^4.1.12 | Validation |
+| Recharts | ^2.10.3 | Charts |
 | Leaflet | ^1.9.4 | Maps |
-| Sonner / Toastify / Notifications |
+| Sonner | ^2.0.7 | Toast Notifications |
+| React-Toastify | ^11.0.5 | Toast Notifications |
 
 ### Backend / Database
 
@@ -55,18 +56,19 @@
 | PostgreSQL (Neon) | 16 | Database principal |
 | Redis (Upstash) | ^1.35.6 | Cache / Rate Limiting |
 | next-auth | 5.0.0-beta.31 | Authentication |
-| Stripe / Resend |  Payments / Email |
+| Stripe | — | Payment processing |
+| Resend | ^6.14.0 | Email sending |
 
 ### ML Service
 
-| Technology | Version | Proposition |
+| Technology | Version | Purpose |
 |---|---|---|
 | Python | 3.10+ | ML Runtime |
-| FastAPI API Server |
-| scikit-learn Models ML |
-| pandas Data Processing |
-| Gemini API LLM Integration |
-| TinyAya On-device LLM |
+| FastAPI | — | API Server |
+| scikit-learn | — | ML Models |
+| pandas | — | Data Processing |
+| Gemini API | — | LLM Integration |
+| TinyAya | — | On-device LLM |
 
 ### DevOps / Infra
 
