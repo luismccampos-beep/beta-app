@@ -158,6 +158,8 @@
     "test:changed": "vitest run --changed",
     "test:changed:watch": "vitest watch --changed",
     "test:changed:coverage": "vitest run --changed --coverage",
+    "storybook:build": "storybook build",
+    "chromatic": "npx chromatic",
     "test:branch": "vitest run --changed HEAD~1",
     "test:staged": "vitest run --changed --staged",
     "travel:catalog:classify-hotels": "node scripts/classify-hotel-types.mjs",
@@ -248,6 +250,7 @@
   },
   "devDependencies": {
     "@axe-core/playwright": "^4.12.1",
+    "@chromatic-com/storybook": "^5.2.1",
     "@emotion/is-prop-valid": "^1.4.0",
     "@next/eslint-plugin-next": "^15.5.2",
     "@playwright/test": "^1.49.0",
