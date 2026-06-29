@@ -6,24 +6,8 @@ import { Button } from '../ui/button';
 import { Card, CardContent } from '../ui/card';
 import { Badge } from '../ui/badge';
 import { useTranslations } from 'next-intl';
-import {
-  Heart,
-  Leaf,
-  Shield,
-  CheckCircle2,
-  Award,
-  Users,
-  MapPin,
-  Phone,
-  Mail,
-  Briefcase,
-  Target,
-  Globe,
-  X,
-  GraduationCap,
-  Lightbulb,
-  Rocket
-} from 'lucide-react';
+import { Heart, Leaf, Shield, CheckCircle2, Award, Users, MapPin, Phone, Mail, Briefcase, Target, Globe, X, GraduationCap, Lightbulb, Rocket } from 'lucide-react';
+import { NatureIllustration, SecurityIllustration } from '../ui/FeatureIllustrations';
 import {
   fadeInUp,
   staggerContainer,
@@ -191,8 +175,8 @@ export function AboutPage({ onBack }: AboutPageProps) {
           >
             {[
               { icon: Heart, title: t('value1Title'), desc: t('value1Desc'), bg: 'bg-primary' },
-              { icon: Leaf, title: t('value2Title'), desc: t('value2Desc'), bg: 'bg-green' },
-              { icon: Shield, title: t('value3Title'), desc: t('value3Desc'), bg: 'bg-accent' }
+              { Illustration: NatureIllustration, title: t('value2Title'), desc: t('value2Desc'), bg: 'bg-green' },
+              { Illustration: SecurityIllustration, title: t('value3Title'), desc: t('value3Desc'), bg: 'bg-accent' }
             ].map((v, i) => (
               <motion.div
                 key={i}
@@ -203,9 +187,13 @@ export function AboutPage({ onBack }: AboutPageProps) {
                   <CardContent className="p-8">
                     <motion.div
                       whileHover={{ scale: 1.1, rotate: -5 }}
-                      className={`w-16 h-16 rounded-2xl ${v.bg} flex items-center justify-center mb-8 shadow-xl group-hover:rotate-6 transition-transform`}
+                      className={`w-16 h-16 rounded-2xl ${v.bg || 'bg-primary'} flex items-center justify-center mb-8 shadow-xl group-hover:rotate-6 transition-transform`}
                     >
-                      <v.icon className="w-8 h-8 text-white" />
+                      {v.Illustration ? (
+                        <v.Illustration className="w-full h-full p-2" />
+                      ) : (
+                        <v.icon className="w-8 h-8 text-white" />
+                      )}
                     </motion.div>
                     <h3 className="text-2xl font-black text-gray-950 dark:text-white uppercase tracking-tighter mb-4">{v.title}</h3>
                     <p className="text-lg text-gray-700 dark:text-gray-400 font-medium leading-relaxed">{v.desc}</p>
