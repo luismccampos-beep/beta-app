@@ -39,10 +39,10 @@ jobs:
         run: npm ci
 
       - name: Publish to Chromatic
-        if: ${{ secrets.CHROMATIC_PROJECT_TOKEN != '' }}
+        if: ${{ secrets.CHROMATIC_TOKEN != '' }}
         uses: chromaui/action@v1
         with:
-          projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
+          projectToken: ${{ secrets.CHROMATIC_TOKEN }}
           buildScriptName: 'storybook:build'
           exitZeroOnChanges: true
           exitOnceUploaded: true
