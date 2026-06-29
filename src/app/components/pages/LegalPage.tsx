@@ -50,7 +50,7 @@ const SECTION_ICONS: React.ComponentType<{ className?: string }>[] = [
 const SECTIONS_META = [
   { key: 'section1', color: 'from-primary to-primary-700' },
   { key: 'section2', color: 'from-blue-600 to-blue-800' },
-  { key: 'section3', color: 'from-accent to-accent-700' },
+  { key: 'section3', color: 'from-accent-600 to-accent-800' },
   { key: 'section4', color: 'from-purple-600 to-purple-800' },
   { key: 'section5', color: 'from-green-600 to-green-800' },
 ];
@@ -357,7 +357,7 @@ export function LegalPage({ pageType, onBack }: LegalPageProps) {
               transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' }}
               className="w-14 h-14 sm:w-20 sm:h-20 rounded-full bg-gradient-to-br from-primary to-accent flex items-center justify-center mx-auto mb-3 sm:mb-4 shadow-xl"
             >
-              <PageIcon className="w-7 h-7 sm:w-10 sm:h-10 text-white" />
+              <PageIcon className="w-7 h-7 sm:w-10 sm:h-10 text-gray-900" />
             </motion.div>
             <h1 className="text-3xl sm:text-5xl md:text-6xl font-bold text-gray-900 dark:text-white mb-3 sm:mb-4">
               {getPageTitle()}

@@ -226,7 +226,7 @@ export function CookiesContent() {
 
       {/* Section 4: How to Control */}
       <motion.div variants={fadeInUp} className="flex items-center gap-3 mb-4 mt-8">
-        <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-accent to-accent-700 flex items-center justify-center shadow-md flex-shrink-0">
+        <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-accent-600 to-accent-800 flex items-center justify-center shadow-md flex-shrink-0">
           <Sliders className="w-4 h-4 text-white" />
         </div>
         <h2 className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white">{t('section4Title')}</h2>

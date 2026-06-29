@@ -107,7 +107,7 @@ export function GDPRContent() {
 
       {/* Section 3: Processing Purposes */}
       <motion.div variants={fadeInUp} className="flex items-center gap-3 mb-4 mt-8">
-        <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-accent to-accent-700 flex items-center justify-center shadow-md flex-shrink-0">
+        <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-accent-600 to-accent-800 flex items-center justify-center shadow-md flex-shrink-0">
           <Target className="w-4 h-4 text-white" />
         </div>
         <h2 className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white">{t('section3Title')}</h2>
@@ -117,25 +117,25 @@ export function GDPRContent() {
         <motion.div variants={fadeInUp} whileHover={{ x: 4 }} className="p-4 border-l-4 border-primary bg-primary-50 dark:bg-primary-900/20 rounded-r">
           <p className="font-semibold text-lg">{t('purpose1Title')}</p>
           <p className="text-sm mt-1">{t('purpose1Desc')}</p>
-          <p className="text-xs mt-2 text-gray-600 dark:text-gray-400"><strong>{t('labelLegalBasis')}:</strong> {t('purpose1Basis')}</p>
+            <p className="text-xs mt-2 text-gray-700 dark:text-gray-400"><strong>{t('labelLegalBasis')}:</strong> {t('purpose1Basis')}</p>
         </motion.div>
         <motion.div variants={fadeInUp} whileHover={{ x: 4 }} className="p-4 border-l-4 border-blue-500 bg-blue-50 dark:bg-blue-900/20 rounded-r">
           <p className="font-semibold text-lg">{t('purpose2Title')}</p>
           <p className="text-sm mt-1">{t('purpose2Desc')}</p>
-          <p className="text-xs mt-2 text-gray-600 dark:text-gray-400"><strong>{t('labelLegalBasis')}:</strong> {t('purpose2Basis')}</p>
+          <p className="text-xs mt-2 text-gray-700 dark:text-gray-400"><strong>{t('labelLegalBasis')}:</strong> {t('purpose2Basis')}</p>
         </motion.div>
         <motion.div variants={fadeInUp} whileHover={{ x: 4 }} className="p-4 border-l-4 border-green-500 bg-green-50 dark:bg-green-900/20 rounded-r">
           <p className="font-semibold text-lg">{t('purpose3Title')}</p>
           <p className="text-sm mt-1">{t('purpose3Desc')}</p>
-          <p className="text-xs mt-2 text-gray-600 dark:text-gray-400"><strong>{t('labelLegalBasis')}:</strong> {t('purpose3Basis')}</p>
+          <p className="text-xs mt-2 text-gray-700 dark:text-gray-400"><strong>{t('labelLegalBasis')}:</strong> {t('purpose3Basis')}</p>
         </motion.div>
         <motion.div variants={fadeInUp} whileHover={{ x: 4 }} className="p-4 border-l-4 border-accent bg-accent-50 dark:bg-accent-700/20 rounded-r">
           <p className="font-semibold text-lg">{t('purpose4Title')}</p>
           <p className="text-sm mt-1">{t('purpose4Desc')}</p>
-          <p className="text-xs mt-2 text-gray-600 dark:text-gray-400"><strong>{t('labelLegalBasis')}:</strong> {t('purpose4Basis')}</p>
+          <p className="text-xs mt-2 text-gray-700 dark:text-gray-400"><strong>{t('labelLegalBasis')}:</strong> {t('purpose4Basis')}</p>
         </motion.div>
       </motion.div>
-      <motion.p variants={fadeInUp} className="text-sm text-gray-600 dark:text-gray-400">{t('purposeNote')}</motion.p>
+      <motion.p variants={fadeInUp} className="text-sm text-gray-700 dark:text-gray-400">{t('purposeNote')}</motion.p>
 
       {/* Section 4: GDPR Rights */}
       <motion.div variants={fadeInUp} className="flex items-center gap-3 mb-4 mt-8">
@@ -161,7 +161,7 @@ export function GDPRContent() {
           </motion.div>
         ))}
       </motion.div>
-      <motion.p variants={fadeInUp} className="text-sm text-gray-600 dark:text-gray-400">{t('rightsFooter')}</motion.p>
+      <motion.p variants={fadeInUp} className="text-sm text-gray-700 dark:text-gray-400">{t('rightsFooter')}</motion.p>
 
       {/* Section 5: Data Security */}
       <motion.div variants={fadeInUp} className="flex items-center gap-3 mb-4 mt-8">
@@ -201,7 +201,7 @@ export function GDPRContent() {
           <div><strong>{t('labelPhone')}:</strong> {t('contactPhone')}</div>
           <div className="md:col-span-2"><strong>{t('labelDpo')}:</strong> {t('contactDpo')}</div>
         </div>
-        <p className="text-xs text-gray-600 dark:text-gray-400">{t('contactResponse')}</p>
+        <p className="text-xs text-gray-700 dark:text-gray-400">{t('contactResponse')}</p>
       </motion.div>
 
       {/* Footer */}

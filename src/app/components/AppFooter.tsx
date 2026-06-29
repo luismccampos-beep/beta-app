@@ -17,7 +17,7 @@ export function AppFooter() {
               AKMLEVA
             </div>
             <p className="text-gray-400 max-w-sm font-medium">
-              Transformando a forma como planeias as tuas viagens com inteligência artificial e dados reais.
+              Viaje mais e planeie melhor com a nossa inteligência artificial: tecnologia de ponta para criar itinerários autênticos e personalizados.
             </p>
           </div>
           
