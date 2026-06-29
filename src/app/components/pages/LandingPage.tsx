@@ -94,26 +94,35 @@ interface LandingPageProps {
 
 /* ── Letter-by-letter reveal ── */
 function AnimatedTitle({ text }: { text: string }) {
-  const chars = text.split('');
+  const words = text.split(' ');
+  let charCounter = 0;
   return (
     <motion.h2
       className="text-6xl md:text-8xl lg:text-9xl font-black text-gray-900 dark:text-white leading-[1.1] tracking-tighter text-balance overflow-visible"
       aria-label={text}
     >
-      {chars.map((char, i) => (
-        <motion.span
-          key={`${char}-${i}`}
-          className="inline-block"
-          initial={{ opacity: 0, y: 40, rotateX: -90 }}
-          animate={{ opacity: 1, y: 0, rotateX: 0 }}
-          transition={{
-            duration: 0.5,
-            delay: 0.3 + i * 0.035,
-            ease: [0.21, 0.47, 0.32, 0.98],
-          }}
-        >
-          {char === ' ' ? '\u00A0' : char}
-        </motion.span>
+      {words.map((word, wi) => (
+        <span key={wi} className="inline-block whitespace-nowrap">
+          {word.split('').map((char) => {
+            const idx = charCounter++;
+            return (
+              <motion.span
+                key={`${char}-${idx}`}
+                className="inline-block"
+                initial={{ opacity: 0, y: 40, rotateX: -90 }}
+                animate={{ opacity: 1, y: 0, rotateX: 0 }}
+                transition={{
+                  duration: 0.5,
+                  delay: 0.3 + idx * 0.035,
+                  ease: [0.21, 0.47, 0.32, 0.98],
+                }}
+              >
+                {char}
+              </motion.span>
+            );
+          })}
+          {wi < words.length - 1 && '\u00A0'}
+        </span>
       ))}
     </motion.h2>
   );
