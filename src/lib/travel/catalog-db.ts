@@ -101,7 +101,7 @@ export async function getHotelStatsForDestinations(
   for (const row of avgRows) {
     const existing = map.get(row.destinoId);
     if (existing) {
-      existing.avgStars = row._avg.estrelas ? Math.round(row._avg.estrelas * 10) / 10 : null;
+      existing.avgStars = row._avg?.estrelas ? Math.round(row._avg.estrelas * 10) / 10 : null;
     }
   }
 
