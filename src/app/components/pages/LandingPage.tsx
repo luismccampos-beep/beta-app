@@ -12,14 +12,9 @@ import {
   Sparkles,
   Globe,
   Shield,
-  TrendingUp,
-  Zap,
-  Brain,
   Plane,
   Users,
   Award,
-  Palmtree,
-  Lock,
   Map,
   Building2,
   Star,
@@ -130,18 +125,14 @@ function AnimatedTitle({ text }: { text: string }) {
 
 /* ── Feature card with tilt + illustration ── */
 function FeatureCard({
-  icon: Icon,
   Illustration,
   title,
   description,
-  color,
   index,
 }: {
-  icon: React.ComponentType<React.SVGProps<SVGSVGElement>>;
   Illustration: React.ComponentType<React.SVGProps<SVGSVGElement>>;
   title: string;
   description: string;
-  color: string;
   index: number;
 }) {
   const { ref, rotateX, rotateY, scale, glareX, glareY, glareOpacity } = useTilt({ maxTilt: 6 });
@@ -167,32 +158,23 @@ function FeatureCard({
 
           <div className="relative z-[5]">
             <CardHeader>
-              <div className="flex items-center gap-6 mb-4">
-                {/* Illustration */}
-                <motion.div
-                  className="relative w-20 h-20 flex-shrink-0"
-                  style={{ transform: 'translateZ(30px)' }}
-                >
+              <motion.div
+                className="flex justify-center mb-6"
+                style={{ transform: 'translateZ(30px)' }}
+              >
+                <div className="relative w-24 h-24 flex-shrink-0">
                   <Illustration className="w-full h-full" />
-                </motion.div>
-                {/* Icon badge */}
-                <motion.div
-                  whileHover={{ scale: 1.1, rotate: -5 }}
-                  style={{ transform: 'translateZ(20px)' }}
-                  className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${color} flex items-center justify-center shadow-xl group-hover:rotate-6 transition-transform`}
-                >
-                  <Icon className="w-7 h-7 text-white" />
-                </motion.div>
-              </div>
+                </div>
+              </motion.div>
               <CardTitle
-                className="text-2xl font-black dark:text-white group-hover:text-primary transition-colors tracking-tight"
+                className="text-2xl font-black dark:text-white group-hover:text-primary transition-colors tracking-tight text-center"
                 style={{ transform: 'translateZ(15px)' }}
               >
                 {title}
               </CardTitle>
             </CardHeader>
             <CardContent style={{ transform: 'translateZ(10px)' }}>
-              <CardDescription className="text-xl leading-relaxed dark:text-gray-400 font-medium">
+              <CardDescription className="text-xl leading-relaxed dark:text-gray-400 font-medium text-center">
                 {description}
               </CardDescription>
             </CardContent>
@@ -440,51 +422,39 @@ export function LandingPage({ onGetStarted }: LandingPageProps) {
             className="grid md:grid-cols-2 lg:grid-cols-3 gap-12"
           >
             <FeatureCard
-              icon={Brain}
               Illustration={AIllustration}
               title={t('aiPersonalization')}
               description={t('aiPersonalizationDesc')}
-              color="from-primary to-cyan-600"
               index={0}
             />
             <FeatureCard
-              icon={Globe}
               Illustration={GlobeIllustration}
               title={t('globalCoverage')}
               description={t('globalCoverageDesc')}
-              color="from-blue-500 to-indigo-600"
               index={1}
             />
             <FeatureCard
-              icon={Lock}
               Illustration={SecurityIllustration}
               title={t('enterpriseSecurity')}
               description={t('enterpriseSecurityDesc')}
-              color="from-green-500 to-emerald-600"
               index={2}
             />
             <FeatureCard
-              icon={TrendingUp}
               Illustration={TrendingIllustration}
               title={t('smartRecommendations')}
               description={t('smartRecommendationsDesc')}
-              color="from-accent to-red-600"
               index={3}
             />
             <FeatureCard
-              icon={Zap}
               Illustration={ZapIllustration}
               title={t('seamlessBooking')}
               description={t('seamlessBookingDesc')}
-              color="from-yellow-500 to-amber-600"
               index={4}
             />
             <FeatureCard
-              icon={Palmtree}
               Illustration={NatureIllustration}
               title={t('sustainableTravel')}
               description={t('sustainableTravelDesc')}
-              color="from-lime-500 to-green-600"
               index={5}
             />
           </motion.div>
