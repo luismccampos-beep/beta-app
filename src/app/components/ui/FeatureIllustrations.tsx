@@ -246,3 +246,166 @@ export function NatureIllustration(props: SVGProps<SVGSVGElement>) {
     </IllustrationWrapper>
   );
 }
+
+/* ── Map / Destinations ── */
+export function MapIllustration(props: SVGProps<SVGSVGElement>) {
+  return (
+    <IllustrationWrapper {...props}>
+      <circle cx="100" cy="100" r="80" fill="url(#mapGrad1)" opacity="0.12" />
+      <path d="M50 60 L70 50 L95 65 L115 55 L140 70 L160 60 L170 80 L150 100 L160 120 L140 140 L120 150 L95 135 L75 145 L55 130 L45 110 L55 90 Z" stroke="url(#mapGrad2)" strokeWidth="2" opacity="0.4" fill="none" strokeLinejoin="round" />
+      <circle cx="100" cy="90" r="26" stroke="url(#mapGrad2)" strokeWidth="1.5" opacity="0.3" strokeDasharray="4 4" />
+      <circle cx="100" cy="90" r="6" fill="url(#mapGrad2)" opacity="0.8" />
+      <path d="M100 90 L100 130" stroke="url(#mapGrad2)" strokeWidth="2.5" opacity="0.5" strokeLinecap="round" />
+      <circle cx="100" cy="135" r="5" fill="url(#mapGrad2)" opacity="0.7" />
+      <circle cx="72" cy="70" r="4" fill="url(#mapGrad2)" opacity="0.6" />
+      <circle cx="135" cy="78" r="4" fill="url(#mapGrad2)" opacity="0.6" />
+      <circle cx="80" cy="120" r="3" fill="url(#mapGrad2)" opacity="0.5" />
+      <circle cx="125" cy="115" r="3" fill="url(#mapGrad2)" opacity="0.5" />
+      <defs>
+        <radialGradient id="mapGrad1" cx="50%" cy="50%" r="50%">
+          <stop stopColor="#8b5cf6" />
+          <stop offset="1" stopColor="#8b5cf6" stopOpacity="0" />
+        </radialGradient>
+        <linearGradient id="mapGrad2" x1="0" y1="0" x2="1" y2="1">
+          <stop stopColor="#8b5cf6" />
+          <stop offset="1" stopColor="#6d28d9" />
+        </linearGradient>
+      </defs>
+    </IllustrationWrapper>
+  );
+}
+
+/* ── Building / Hotels ── */
+export function BuildingIllustration(props: SVGProps<SVGSVGElement>) {
+  return (
+    <IllustrationWrapper {...props}>
+      <circle cx="100" cy="100" r="80" fill="url(#bldGrad1)" opacity="0.12" />
+      <rect x="55" y="60" width="35" height="90" rx="4" fill="url(#bldGrad2)" opacity="0.15" />
+      <rect x="55" y="60" width="35" height="90" rx="4" stroke="url(#bldGrad2)" strokeWidth="1.5" opacity="0.4" />
+      <rect x="65" y="75" width="15" height="15" rx="2" fill="url(#bldGrad2)" opacity="0.5" />
+      <rect x="65" y="100" width="15" height="15" rx="2" fill="url(#bldGrad2)" opacity="0.4" />
+      <rect x="110" y="40" width="35" height="110" rx="4" fill="url(#bldGrad2)" opacity="0.15" />
+      <rect x="110" y="40" width="35" height="110" rx="4" stroke="url(#bldGrad2)" strokeWidth="1.5" opacity="0.4" />
+      <rect x="120" y="55" width="15" height="15" rx="2" fill="url(#bldGrad2)" opacity="0.5" />
+      <rect x="120" y="80" width="15" height="15" rx="2" fill="url(#bldGrad2)" opacity="0.5" />
+      <rect x="120" y="105" width="15" height="15" rx="2" fill="url(#bldGrad2)" opacity="0.4" />
+      <rect x="55" y="148" width="90" height="6" rx="3" fill="url(#bldGrad2)" opacity="0.6" />
+      <rect x="45" y="154" width="110" height="4" rx="2" fill="url(#bldGrad2)" opacity="0.4" />
+      <defs>
+        <radialGradient id="bldGrad1" cx="50%" cy="50%" r="50%">
+          <stop stopColor="#f59e0b" />
+          <stop offset="1" stopColor="#f59e0b" stopOpacity="0" />
+        </radialGradient>
+        <linearGradient id="bldGrad2" x1="0" y1="0" x2="1" y2="1">
+          <stop stopColor="#f59e0b" />
+          <stop offset="1" stopColor="#e11d48" />
+        </linearGradient>
+      </defs>
+    </IllustrationWrapper>
+  );
+}
+
+/* ── Award / Satisfaction ── */
+export function AwardIllustration(props: SVGProps<SVGSVGElement>) {
+  return (
+    <IllustrationWrapper {...props}>
+      <circle cx="100" cy="100" r="80" fill="url(#awdGrad1)" opacity="0.12" />
+      <circle cx="100" cy="85" r="30" stroke="url(#awdGrad2)" strokeWidth="2.5" opacity="0.6" fill="url(#awdGrad1)" fillOpacity="0.08" />
+      <polygon points="100,60 107,78 127,80 111,94 116,114 100,103 84,114 89,94 73,80 93,78" fill="url(#awdGrad2)" opacity="0.8" />
+      <path d="M85 120 L75 155 L100 140 L125 155 L115 120" stroke="url(#awdGrad2)" strokeWidth="2" opacity="0.4" fill="none" strokeLinejoin="round" />
+      <line x1="100" y1="140" x2="100" y2="155" stroke="url(#awdGrad2)" strokeWidth="2" opacity="0.4" />
+      <circle cx="72" cy="102" r="2.5" fill="url(#awdGrad2)" opacity="0.5" />
+      <circle cx="128" cy="102" r="2.5" fill="url(#awdGrad2)" opacity="0.5" />
+      <defs>
+        <radialGradient id="awdGrad1" cx="50%" cy="50%" r="50%">
+          <stop stopColor="#fbbf24" />
+          <stop offset="1" stopColor="#fbbf24" stopOpacity="0" />
+        </radialGradient>
+        <linearGradient id="awdGrad2" x1="0" y1="0" x2="1" y2="1">
+          <stop stopColor="#fbbf24" />
+          <stop offset="1" stopColor="#f59e0b" />
+        </linearGradient>
+      </defs>
+    </IllustrationWrapper>
+  );
+}
+
+/* ── Users / Community ── */
+export function UsersIllustration(props: SVGProps<SVGSVGElement>) {
+  return (
+    <IllustrationWrapper {...props}>
+      <circle cx="100" cy="100" r="80" fill="url(#usrGrad1)" opacity="0.12" />
+      <circle cx="100" cy="65" r="20" stroke="url(#usrGrad2)" strokeWidth="2" opacity="0.5" fill="url(#usrGrad1)" fillOpacity="0.1" />
+      <circle cx="100" cy="65" r="8" fill="url(#usrGrad2)" opacity="0.8" />
+      <circle cx="70" cy="55" r="14" stroke="url(#usrGrad2)" strokeWidth="1.5" opacity="0.4" fill="url(#usrGrad1)" fillOpacity="0.08" />
+      <circle cx="70" cy="55" r="5" fill="url(#usrGrad2)" opacity="0.6" />
+      <circle cx="130" cy="55" r="14" stroke="url(#usrGrad2)" strokeWidth="1.5" opacity="0.4" fill="url(#usrGrad1)" fillOpacity="0.08" />
+      <circle cx="130" cy="55" r="5" fill="url(#usrGrad2)" opacity="0.6" />
+      <path d="M62 95 C62 80 138 80 138 95" stroke="url(#usrGrad2)" strokeWidth="2" opacity="0.35" fill="none" />
+      <path d="M52 105 C52 94 148 94 148 105" stroke="url(#usrGrad2)" strokeWidth="2" opacity="0.25" fill="none" strokeDasharray="4 4" />
+      <circle cx="45" cy="68" r="3" fill="url(#usrGrad2)" opacity="0.4" />
+      <circle cx="155" cy="68" r="3" fill="url(#usrGrad2)" opacity="0.4" />
+      <defs>
+        <radialGradient id="usrGrad1" cx="50%" cy="50%" r="50%">
+          <stop stopColor="#a855f7" />
+          <stop offset="1" stopColor="#a855f7" stopOpacity="0" />
+        </radialGradient>
+        <linearGradient id="usrGrad2" x1="0" y1="0" x2="1" y2="1">
+          <stop stopColor="#a855f7" />
+          <stop offset="1" stopColor="#db2777" />
+        </linearGradient>
+      </defs>
+    </IllustrationWrapper>
+  );
+}
+
+/* ── Plane / Flights ── */
+export function PlaneIllustration(props: SVGProps<SVGSVGElement>) {
+  return (
+    <IllustrationWrapper {...props}>
+      <circle cx="100" cy="100" r="80" fill="url(#plnGrad1)" opacity="0.12" />
+      <path d="M100 40 L110 80 L145 95 L155 100 L145 105 L110 120 L100 160 L90 120 L55 105 L45 100 L55 95 L90 80 Z" fill="url(#plnGrad2)" opacity="0.7" />
+      <path d="M70 100 L130 100" stroke="white" strokeWidth="1.5" opacity="0.3" />
+      <path d="M100 75 L100 125" stroke="white" strokeWidth="1.5" opacity="0.2" />
+      <circle cx="100" cy="100" r="50" stroke="url(#plnGrad2)" strokeWidth="1" opacity="0.2" strokeDasharray="6 8" />
+      <circle cx="72" cy="72" r="3" fill="url(#plnGrad2)" opacity="0.5" />
+      <circle cx="128" cy="72" r="3" fill="url(#plnGrad2)" opacity="0.5" />
+      <circle cx="72" cy="128" r="3" fill="url(#plnGrad2)" opacity="0.5" />
+      <circle cx="128" cy="128" r="3" fill="url(#plnGrad2)" opacity="0.5" />
+      <defs>
+        <radialGradient id="plnGrad1" cx="50%" cy="50%" r="50%">
+          <stop stopColor="#0ea5e9" />
+          <stop offset="1" stopColor="#0ea5e9" stopOpacity="0" />
+        </radialGradient>
+        <linearGradient id="plnGrad2" x1="0" y1="0" x2="1" y2="1">
+          <stop stopColor="#0ea5e9" />
+          <stop offset="1" stopColor="#3b82f6" />
+        </linearGradient>
+      </defs>
+    </IllustrationWrapper>
+  );
+}
+
+/* ── Star / Rating ── */
+export function StarIllustration(props: SVGProps<SVGSVGElement>) {
+  return (
+    <IllustrationWrapper {...props}>
+      <circle cx="100" cy="100" r="80" fill="url(#strGrad1)" opacity="0.12" />
+      <polygon points="100,35 113,70 150,73 120,98 130,135 100,114 70,135 80,98 50,73 87,70" fill="url(#strGrad2)" opacity="0.8" />
+      <polygon points="100,50 108,72 132,74 113,90 119,113 100,98 81,113 87,90 68,74 92,72" fill="url(#strGrad1)" opacity="0.2" />
+      <circle cx="100" cy="85" r="40" stroke="url(#strGrad2)" strokeWidth="1" opacity="0.2" strokeDasharray="4 6" />
+      <circle cx="70" cy="68" r="2.5" fill="url(#strGrad2)" opacity="0.4" />
+      <circle cx="130" cy="68" r="2.5" fill="url(#strGrad2)" opacity="0.4" />
+      <defs>
+        <radialGradient id="strGrad1" cx="50%" cy="50%" r="50%">
+          <stop stopColor="#facc15" />
+          <stop offset="1" stopColor="#facc15" stopOpacity="0" />
+        </radialGradient>
+        <linearGradient id="strGrad2" x1="0" y1="0" x2="1" y2="1">
+          <stop stopColor="#facc15" />
+          <stop offset="1" stopColor="#eab308" />
+        </linearGradient>
+      </defs>
+    </IllustrationWrapper>
+  );
+}

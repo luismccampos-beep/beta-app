@@ -1,8 +1,8 @@
 'use client';
 
-import { useCallback, useRef } from 'react';
+import { useCallback, useRef, useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { useTranslations } from 'next-intl';
+import { useTranslations, useLocale } from 'next-intl';
 import { motion } from 'framer-motion';
 import { Button } from '../ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../ui/card';
@@ -12,14 +12,13 @@ import {
   Sparkles,
   Globe,
   Shield,
-  Plane,
   Users,
-  Award,
   Map,
   Building2,
   Star,
   ArrowRight,
   ChevronRight,
+  Search,
 } from 'lucide-react';
 import {
   fadeInUp,
@@ -28,6 +27,7 @@ import {
 import { useTilt } from '../../../hooks/useTilt';
 import { useParallax } from '../../../hooks/useParallax';
 import { RippleButton } from '../ui/ripple-button';
+import { SandboxPreview } from '../ui/SandboxPreview';
 
 /* ── Stat card with tilt ── */
 function StatCard({
@@ -61,7 +61,7 @@ function StatCard({
           }}
         />
         <div className="text-center group p-8 glass bg-gradient-to-br from-green-600/30 to-orange-600/30 dark:from-green-500/20 dark:to-orange-500/20 border-white/10 dark:border-white/5 rounded-3xl hover:from-green-600/40 hover:to-orange-600/40 dark:hover:from-green-500/30 dark:hover:to-orange-500/30 transition-all duration-500">
-          <Icon className="w-16 h-16 text-white/50 mx-auto mb-8 group-hover:scale-110 group-hover:text-white transition-all duration-500" />
+          <Icon className="w-16 h-16 mx-auto mb-8 group-hover:scale-110 transition-all duration-500" />
           <div className="text-7xl font-black text-white mb-4 tracking-tighter">
             <Counter end={value} suffix={suffix} duration={3} />
           </div>
@@ -79,6 +79,10 @@ import {
   TrendingIllustration,
   ZapIllustration,
   NatureIllustration,
+  MapIllustration,
+  BuildingIllustration,
+  AwardIllustration,
+  PlaneIllustration,
 } from '../ui/FeatureIllustrations';
 import { AppHeader } from '../AppHeader';
 import { AppFooter } from '../AppFooter';
@@ -188,6 +192,7 @@ function FeatureCard({
 
 export function LandingPage({ onGetStarted }: LandingPageProps) {
   const router = useRouter();
+  const locale = useLocale();
   const t = useTranslations('landing');
   const goDashboard = useCallback(() => router.push('/dashboard'), [router]);
 
@@ -198,6 +203,9 @@ export function LandingPage({ onGetStarted }: LandingPageProps) {
   const orbAccentParallax = useParallax({ speed: 0.2, containerRef: sectionRef });
   const orbLightParallax = useParallax({ speed: -0.25, containerRef: sectionRef });
 
+  const [destination, setDestination] = useState('');
+  const [isGenerating, setIsGenerating] = useState(false);
+
   function scrollToFeatures(e: React.MouseEvent) {
     e.preventDefault();
     const el = document.getElementById('features');
@@ -205,6 +213,14 @@ export function LandingPage({ onGetStarted }: LandingPageProps) {
     const headerOffset = 80;
     const top = el.getBoundingClientRect().top + window.scrollY - headerOffset;
     window.scrollTo({ top, behavior: 'smooth' });
+  }
+
+  async function handleGenerateDraft() {
+    if (!destination.trim()) return;
+    setIsGenerating(true);
+    // Simulate AI processing
+    await new Promise(resolve => setTimeout(resolve, 2000));
+    onGetStarted();
   }
 
   /* ── Ripple + magnetic on CTAs via RippleButton ── */
@@ -260,17 +276,17 @@ export function LandingPage({ onGetStarted }: LandingPageProps) {
           <motion.div
             animate={{ y: [0, -20, 0], rotate: [0, 5, 0] }}
             transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
-            className="absolute top-[20%] left-[10%] text-primary-200 dark:text-primary-900/40 opacity-50 hidden lg:block"
+            className="absolute top-[15%] left-[5%] w-36 h-36 opacity-50 hidden lg:block"
           >
-            <Plane size={120} />
+            <PlaneIllustration className="w-full h-full" />
           </motion.div>
 
           <motion.div
             animate={{ y: [0, 20, 0], rotate: [0, -5, 0] }}
             transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut' }}
-            className="absolute bottom-[20%] right-[10%] text-accent-200 dark:text-accent-900/40 opacity-50 hidden lg:block"
+            className="absolute bottom-[20%] right-[5%] w-44 h-44 opacity-50 hidden lg:block"
           >
-            <Map size={140} />
+            <MapIllustration className="w-full h-full" />
           </motion.div>
 
           {/* Grid pattern */}
@@ -321,31 +337,63 @@ export function LandingPage({ onGetStarted }: LandingPageProps) {
               {t('heroDesc')}
             </motion.p>
 
-            {/* CTA Buttons with magnetic effect */}
-            <motion.div variants={fadeInUp} className="flex items-center justify-center gap-6 flex-wrap">
+            {/* Interactive CTA with destination input */}
+            <motion.div variants={fadeInUp} className="w-full max-w-3xl mx-auto space-y-6">
+              <div className="flex flex-col sm:flex-row gap-4">
+                <div className="relative flex-1">
+                  <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-6 h-6 text-gray-400" />
+                  <input
+                    type="text"
+                    value={destination}
+                    onChange={(e) => setDestination(e.target.value)}
+                    onKeyDown={(e) => e.key === 'Enter' && handleGenerateDraft()}
+                    placeholder={t('heroInteractivePlaceholder')}
+                    className="w-full pl-14 pr-6 py-5 text-xl rounded-2xl border-2 border-primary-200 dark:border-gray-700 bg-white dark:bg-gray-900 text-gray-900 dark:text-white placeholder:text-gray-400 focus:outline-none focus:ring-4 focus:ring-primary-500/20 focus:border-primary-500 transition-all shadow-lg"
+                  />
+                </div>
+                <RippleButton
+                  onClick={handleGenerateDraft}
+                  disabled={!destination.trim() || isGenerating}
+                  variant="brand"
+                  size="lg"
+                  magneticDistance={4}
+                  className="gap-3 text-2xl px-10 py-5 h-auto shadow-glow-primary hover:shadow-glow-accent transition-all group whitespace-nowrap disabled:opacity-50 disabled:cursor-not-allowed"
+                >
+                  {isGenerating ? (
+                    <>
+                      <motion.div
+                        animate={{ rotate: 360 }}
+                        transition={{ duration: 1, repeat: Infinity, ease: 'linear' }}
+                      >
+                        <Sparkles className="w-6 h-6" />
+                      </motion.div>
+                      {t('generatingDraft')}
+                    </>
+                  ) : (
+                    <>
+                      {t('generateDraft')}
+                      <ArrowRight className="w-6 h-6 transition-transform group-hover:translate-x-2" />
+                    </>
+                  )}
+                </RippleButton>
+              </div>
+              <p className="text-center text-lg text-gray-500 dark:text-gray-400 font-medium">
+                {t('heroInteractive')}
+              </p>
+            </motion.div>
+
+            {/* Traditional CTA Button */}
+            <motion.div variants={fadeInUp}>
               <RippleButton
                 onClick={onGetStarted}
-                variant="brand"
+                variant="outline"
                 size="lg"
                 magneticDistance={4}
-                className="gap-4 text-2xl px-12 py-10 h-auto shadow-glow-primary hover:shadow-glow-accent transition-all group"
+                className="gap-3 text-xl px-8 py-4 h-auto border-primary-300 dark:border-gray-700 hover:bg-primary-50 dark:hover:bg-gray-800 dark:text-gray-100 group glass"
               >
                 {t('getStarted')}
-                <ArrowRight className="w-8 h-8 transition-transform group-hover:translate-x-2" />
+                <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
               </RippleButton>
-              <motion.div whileHover={{ scale: 1.03 }}>
-                  <Button
-                    variant="outline"
-                    size="lg"
-                    className="gap-3 text-2xl px-12 py-10 h-auto border-primary-300 dark:border-gray-700 hover:bg-primary-50 dark:hover:bg-gray-800 dark:text-gray-100 group glass"
-                    asChild
-                  >
-                    <a href="#features" onClick={scrollToFeatures}>
-                      {t('learnMore')}
-                      <ChevronRight className="w-6 h-6 transition-transform group-hover:translate-x-1" />
-                    </a>
-                  </Button>
-                </motion.div>
             </motion.div>
 
             {/* Social proof */}
@@ -391,6 +439,67 @@ export function LandingPage({ onGetStarted }: LandingPageProps) {
             </motion.div>
           </div>
         </motion.div>
+      </section>
+
+      {/* ═══════════ Sandbox Preview Section ═══════════ */}
+      <section className="py-32 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-primary-50 via-cyan-50 to-accent-50 dark:from-gray-950 dark:via-gray-900 dark:to-gray-950 transition-colors overflow-hidden">
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute top-1/3 left-1/4 w-[600px] h-[600px] rounded-full bg-gradient-to-r from-cyan-200/10 to-primary-200/10 dark:from-cyan-500/5 dark:to-primary-500/5 blur-[120px]" />
+        </div>
+        <div className="max-w-7xl mx-auto relative z-10">
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '-100px' }}
+            transition={{ duration: 0.8 }}
+            className="text-center mb-16"
+          >
+            <div className="inline-flex items-center gap-2 bg-primary-100 dark:bg-primary-900/30 border border-primary-200 dark:border-primary-800 rounded-full px-6 py-2 mb-6">
+              <Sparkles className="w-5 h-5 text-accent" />
+              <span className="text-sm font-bold text-primary-800 dark:text-primary-200 uppercase tracking-widest">
+                {t('sandboxTitle') || 'Experimente grátis'}
+              </span>
+            </div>
+            <h3 className="text-4xl sm:text-5xl md:text-6xl font-black text-gray-900 dark:text-white mb-8 tracking-tighter uppercase italic">
+              {t('visualPreview')}
+            </h3>
+            <p className="text-2xl lg:text-3xl text-gray-500 dark:text-gray-400 max-w-3xl mx-auto font-medium leading-relaxed">
+              {t('visualPreviewDesc')}
+            </p>
+          </motion.div>
+
+          <SandboxPreview
+            onRegister={onGetStarted}
+            locale={locale}
+            texts={{
+              title: t('sandboxTitle'),
+              subtitle: t('sandboxSubtitle'),
+              destinationLabel: t('sandboxDestinationLabel'),
+              destinationPlaceholder: t('sandboxDestinationPlaceholder'),
+              checkInLabel: t('sandboxCheckInLabel'),
+              checkOutLabel: t('sandboxCheckOutLabel'),
+              budgetLabel: t('sandboxBudgetLabel'),
+              generateLabel: t('sandboxGenerateLabel'),
+              generatingLabel: t('sandboxGeneratingLabel'),
+              errorMessage: t('sandboxErrorMessage'),
+              tryAgainLabel: t('sandboxTryAgainLabel'),
+              newSearchLabel: t('sandboxNewSearchLabel'),
+              totalHotels: t('sandboxTotalHotels'),
+              cheapestHotel: t('sandboxCheapestHotel'),
+              estimatedCost: t('sandboxEstimatedCost'),
+              mealTip: t('sandboxMealTip'),
+              accommodation: t('sandboxAccommodation'),
+              mealsActivities: t('sandboxMealsActivities'),
+              totalDay: t('sandboxTotalDay'),
+              lockedTitle: t('sandboxLockedTitle'),
+              lockedDesc: t('sandboxLockedDesc'),
+              registerCta: t('sandboxRegisterCta'),
+              viewFullCta: t('sandboxViewFullCta'),
+              noAccountNote: t('sandboxNoAccountNote'),
+              errorTitle: t('sandboxErrorMessage'),
+            }}
+          />
+        </div>
       </section>
 
       {/* ═══════════ Features Section ═══════════ */}
@@ -457,6 +566,12 @@ export function LandingPage({ onGetStarted }: LandingPageProps) {
               description={t('sustainableTravelDesc')}
               index={5}
             />
+            <FeatureCard
+              Illustration={BuildingIllustration}
+              title={t('bookingIntegration')}
+              description={t('bookingIntegrationDesc')}
+              index={6}
+            />
           </motion.div>
         </div>
       </section>
@@ -489,10 +604,10 @@ export function LandingPage({ onGetStarted }: LandingPageProps) {
             className="grid sm:grid-cols-2 lg:grid-cols-4 gap-16"
           >
             {[
-              { icon: Globe, value: 28, label: t('destinations'), suffix: 'K+', sub: 'Wikivoyage + Wikidata' },
-              { icon: Building2, value: 415, label: 'Hotéis', suffix: 'K+', sub: 'OSM + GeoNames' },
-              { icon: Map, value: 190, label: 'Países', suffix: '+', sub: 'Cobertura global' },
-              { icon: Shield, value: 99, label: 'Satisfação', suffix: '%', sub: 'AES-256 · GDPR' },
+              { icon: GlobeIllustration, value: 28, label: t('destinations'), suffix: 'K+', sub: 'Wikivoyage + Wikidata' },
+              { icon: BuildingIllustration, value: 415, label: 'Hotéis', suffix: 'K+', sub: 'OSM + GeoNames' },
+              { icon: MapIllustration, value: 190, label: 'Países', suffix: '+', sub: 'Cobertura global' },
+              { icon: SecurityIllustration, value: 99, label: 'Satisfação', suffix: '%', sub: 'AES-256 · GDPR' },
             ].map((stat, i) => (
               <StatCard
                 key={i}
@@ -502,6 +617,76 @@ export function LandingPage({ onGetStarted }: LandingPageProps) {
                 label={stat.label}
                 sub={stat.sub}
               />
+            ))}
+          </motion.div>
+        </div>
+      </section>
+
+      {/* ═══════════ Testimonials Section ═══════════ */}
+      <section className="py-32 px-4 sm:px-6 lg:px-8 bg-white dark:bg-gray-950 transition-colors">
+        <div className="max-w-7xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '-100px' }}
+            transition={{ duration: 0.8 }}
+            className="text-center mb-20"
+          >
+            <h3 className="text-4xl sm:text-5xl md:text-6xl font-black text-gray-900 dark:text-white mb-8 tracking-tighter uppercase italic">
+              {t('testimonials')}
+            </h3>
+          </motion.div>
+
+          <motion.div
+            variants={staggerContainer}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: '-60px' }}
+            className="grid md:grid-cols-3 gap-8"
+          >
+            {[
+              {
+                text: t('testimonial1'),
+                author: t('testimonial1Author'),
+                role: t('testimonial1Role'),
+                gradient: 'from-primary-400 to-accent-400',
+              },
+              {
+                text: t('testimonial2'),
+                author: t('testimonial2Author'),
+                role: t('testimonial2Role'),
+                gradient: 'from-accent-400 to-primary-400',
+              },
+              {
+                text: t('testimonial3'),
+                author: t('testimonial3Author'),
+                role: t('testimonial3Role'),
+                gradient: 'from-primary-500 to-accent-500',
+              },
+            ].map((testimonial, i) => (
+              <motion.div key={i} variants={fadeInUp}>
+                <Card className="h-full card-premium dark:bg-gray-900 p-8 hover:shadow-2xl transition-shadow duration-500">
+                  <CardContent className="p-0 space-y-6">
+                    <div className="flex gap-1">
+                      {[1, 2, 3, 4, 5].map((star) => (
+                        <Star key={star} className="w-5 h-5 fill-yellow-400 text-yellow-400" />
+                      ))}
+                    </div>
+                    <p className="text-lg text-gray-700 dark:text-gray-300 leading-relaxed italic">
+                      "{testimonial.text}"
+                    </p>
+                    <div className="flex items-center gap-4 pt-4 border-t border-gray-200 dark:border-gray-700">
+                      <div className={`w-12 h-12 rounded-full bg-gradient-to-br ${testimonial.gradient} flex items-center justify-center text-white font-bold text-lg`}>
+                        {testimonial.author.charAt(0)}
+                      </div>
+                      <div>
+                        <p className="font-bold text-gray-900 dark:text-white">{testimonial.author}</p>
+                        <p className="text-sm text-gray-500 dark:text-gray-400">{testimonial.role}</p>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+              </motion.div>
             ))}
           </motion.div>
         </div>
@@ -524,7 +709,9 @@ export function LandingPage({ onGetStarted }: LandingPageProps) {
             whileHover={{ scale: 1.05 }}
             className="inline-flex items-center gap-3 glass dark:bg-gray-800/80 border border-primary-200 dark:border-gray-700 rounded-full px-8 py-3.5 shadow-xl transition-transform"
           >
-            <Award className="w-6 h-6 text-accent animate-bounce" />
+            <div className="w-14 h-14 flex-shrink-0">
+              <AwardIllustration className="w-full h-full" />
+            </div>
             <span className="text-base font-black text-primary-950 dark:text-primary-50 uppercase tracking-widest">
               98% Satisfação Garantida
             </span>

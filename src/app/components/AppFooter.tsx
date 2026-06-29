@@ -2,7 +2,8 @@
 
 import Link from 'next/link';
 import { useTranslations } from 'next-intl';
-import { Shield, Lock, Globe, Award } from 'lucide-react';
+import { Lock } from 'lucide-react';
+import { SecurityIllustration, GlobeIllustration, AwardIllustration } from './ui/FeatureIllustrations';
 
 export function AppFooter() {
   const t = useTranslations('landing');
@@ -22,14 +23,18 @@ export function AppFooter() {
           
           <div className="flex items-center gap-8 flex-wrap justify-center">
             {[
-              { icon: Shield, label: t('footerBadges.soc2Certified'), color: 'text-green-500' },
-              { icon: Lock, label: t('footerBadges.encryption256'), color: 'text-primary-400' },
-              { icon: Globe, label: t('footerBadges.gdprCompliant'), color: 'text-primary-400' },
-              { icon: Award, label: t('footerBadges.iso27001'), color: 'text-accent-400' },
+              { icon: SecurityIllustration, label: t('footerBadges.soc2Certified'), size: 'w-7 h-7' },
+              { icon: Lock, label: t('footerBadges.encryption256'), color: 'text-primary-400', lucide: true },
+              { icon: GlobeIllustration, label: t('footerBadges.gdprCompliant'), size: 'w-7 h-7' },
+              { icon: AwardIllustration, label: t('footerBadges.iso27001'), size: 'w-7 h-7' },
             ].map((badge, i) => (
               <div key={i} className="flex flex-col items-center gap-2 group cursor-help">
                 <div className="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center border border-white/10 group-hover:bg-white/10 transition-colors">
-                  <badge.icon className={`w-6 h-6 ${badge.color}`} />
+                  {badge.lucide ? (
+                    <badge.icon className={`w-6 h-6 ${badge.color}`} />
+                  ) : (
+                    <badge.icon className={badge.size || 'w-7 h-7'} />
+                  )}
                 </div>
                 <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-gray-500">{badge.label}</span>
               </div>
