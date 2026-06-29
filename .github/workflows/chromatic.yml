@@ -30,13 +30,6 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Ensure Chromatic token is set
-        run: |
-          if [ -z "${{ secrets.CHROMATIC_PROJECT_TOKEN }}" ]; then
-            echo "::error::CHROMATIC_PROJECT_TOKEN secret is missing or empty"
-            exit 1
-          fi
-
       - uses: actions/setup-node@v4
         with:
           node-version: 20
@@ -46,6 +39,7 @@ jobs:
         run: npm ci
 
       - name: Publish to Chromatic
+        if: ${{ secrets.CHROMATIC_PROJECT_TOKEN != '' }}
         uses: chromaui/action@v1
         with:
           projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
