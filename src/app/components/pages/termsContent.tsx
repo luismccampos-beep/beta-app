@@ -132,7 +132,7 @@ export function TermsContent() {
             >
               <div className="p-5 sm:p-7">
                 <h3 className="flex items-start gap-3 text-base sm:text-lg font-bold text-gray-900 dark:text-white mb-3">
-                  <span className="flex-shrink-0 w-8 h-8 sm:w-9 sm:h-9 rounded-lg bg-gradient-to-br from-primary to-accent text-white flex items-center justify-center shadow-md">
+                  <span className="flex-shrink-0 w-8 h-8 sm:w-9 sm:h-9 rounded-lg bg-gradient-to-br from-primary-600 to-accent-600 text-white flex items-center justify-center shadow-md">
                     <Icon className="w-4 h-4 sm:w-5 sm:h-5" />
                   </span>
                   <span className="pt-1">

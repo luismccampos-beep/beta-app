@@ -174,9 +174,9 @@ export function AboutPage({ onBack }: AboutPageProps) {
             className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8"
           >
             {[
-              { icon: Heart, title: t('value1Title'), desc: t('value1Desc'), bg: 'bg-primary' },
-              { Illustration: NatureIllustration, title: t('value2Title'), desc: t('value2Desc'), bg: 'bg-green' },
-              { Illustration: SecurityIllustration, title: t('value3Title'), desc: t('value3Desc'), bg: 'bg-accent' }
+              { icon: Heart, title: t('value1Title'), desc: t('value1Desc'), bg: 'bg-primary-600' },
+              { Illustration: NatureIllustration, title: t('value2Title'), desc: t('value2Desc'), bg: 'bg-green-600' },
+              { Illustration: SecurityIllustration, title: t('value3Title'), desc: t('value3Desc'), bg: 'bg-accent-600' }
             ].map((v, i) => (
               <motion.div
                 key={i}
@@ -287,28 +287,50 @@ export function AboutPage({ onBack }: AboutPageProps) {
             className="grid md:grid-cols-3 gap-8"
           >
             {[
-              { title: t('cert1Title'), name: t('cert1Name'), desc: t('cert1Desc'), color: 'from-blue-600 to-blue-800' },
-              { title: t('cert2Title'), name: t('cert2Name'), desc: t('cert2Desc'), color: 'from-purple-600 to-purple-800' },
-              { title: t('cert3Title'), name: t('cert3Name'), desc: t('cert3Desc'), color: 'from-orange to-red-700' }
+              { title: t('cert1Title'), name: t('cert1Name'), desc: t('cert1Desc'), color: 'from-blue-600 to-blue-800', href: null as string | null },
+              { title: t('cert2Title'), name: t('cert2Name'), desc: t('cert2Desc'), color: 'from-purple-600 to-purple-800', href: null as string | null },
+              { title: t('cert3Title'), name: t('cert3Name'), desc: t('cert3Desc'), color: 'from-orange to-red-700', href: 'https://www.livroreclamacoes.pt/inicio/' }
             ].map((c, i) => (
               <motion.div key={i} variants={fadeInUp} whileHover={{ y: -4, boxShadow: '0 16px 32px rgba(0,0,0,0.1)' }}>
-                <Card className="card-premium dark:bg-gray-900 group h-full transition-shadow">
-                  <CardContent className="p-8">
-                    <motion.div
-                      whileHover={{ scale: 1.05 }}
-                      className={`px-4 py-1.5 rounded-full bg-gradient-to-r ${c.color} text-white text-[10px] font-black uppercase tracking-widest mb-4 w-fit shadow-lg`}
-                    >
-                      {c.title}
-                    </motion.div>
-                    <h3 className="text-xl font-black text-gray-950 dark:text-white mb-3 tracking-tight">{c.name}</h3>
-                    <p className="text-base text-gray-600 dark:text-gray-400 font-medium mb-6 leading-relaxed">{c.desc}</p>
-                    <div className="flex items-center gap-3 pt-4 border-t border-gray-100 dark:border-gray-800">
-                      <div className="flex items-center gap-1.5 bg-green-500/10 text-green-700 dark:text-green-400 px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-tighter">
-                        <CheckCircle2 className="w-3.5 h-3.5" /> {t('verified')}
+                {c.href ? (
+                  <a href={c.href} target="_blank" rel="noopener noreferrer" className="block h-full">
+                    <Card className="card-premium dark:bg-gray-900 group h-full transition-shadow">
+                      <CardContent className="p-8">
+                        <motion.div
+                          whileHover={{ scale: 1.05 }}
+                          className={`px-4 py-1.5 rounded-full bg-gradient-to-r ${c.color} text-white text-[10px] font-black uppercase tracking-widest mb-4 w-fit shadow-lg`}
+                        >
+                          {c.title}
+                        </motion.div>
+                        <h3 className="text-xl font-black text-gray-950 dark:text-white mb-3 tracking-tight">{c.name}</h3>
+                        <p className="text-base text-gray-600 dark:text-gray-400 font-medium mb-6 leading-relaxed">{c.desc}</p>
+                        <div className="flex items-center gap-3 pt-4 border-t border-gray-100 dark:border-gray-800">
+                          <div className="flex items-center gap-1.5 bg-green-500/10 text-green-700 dark:text-green-400 px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-tighter">
+                            <CheckCircle2 className="w-3.5 h-3.5" /> {t('verified')}
+                          </div>
+                        </div>
+                      </CardContent>
+                    </Card>
+                  </a>
+                ) : (
+                  <Card className="card-premium dark:bg-gray-900 group h-full transition-shadow">
+                    <CardContent className="p-8">
+                      <motion.div
+                        whileHover={{ scale: 1.05 }}
+                        className={`px-4 py-1.5 rounded-full bg-gradient-to-r ${c.color} text-white text-[10px] font-black uppercase tracking-widest mb-4 w-fit shadow-lg`}
+                      >
+                        {c.title}
+                      </motion.div>
+                      <h3 className="text-xl font-black text-gray-950 dark:text-white mb-3 tracking-tight">{c.name}</h3>
+                      <p className="text-base text-gray-600 dark:text-gray-400 font-medium mb-6 leading-relaxed">{c.desc}</p>
+                      <div className="flex items-center gap-3 pt-4 border-t border-gray-100 dark:border-gray-800">
+                        <div className="flex items-center gap-1.5 bg-green-500/10 text-green-700 dark:text-green-400 px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-tighter">
+                          <CheckCircle2 className="w-3.5 h-3.5" /> {t('verified')}
+                        </div>
                       </div>
-                    </div>
-                  </CardContent>
-                </Card>
+                    </CardContent>
+                  </Card>
+                )}
               </motion.div>
             ))}
           </motion.div>

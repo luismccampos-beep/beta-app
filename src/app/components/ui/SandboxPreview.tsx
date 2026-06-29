@@ -201,10 +201,10 @@ export function SandboxPreview({ onRegister, locale = 'pt', texts }: SandboxPrev
                 AI Preview
               </span>
             </div>
-            <h3 className="text-3xl sm:text-4xl font-black text-white mb-2 tracking-tighter">
+            <h3 className="text-3xl sm:text-4xl font-black mb-2 tracking-tighter bg-gradient-to-r from-green-400 to-orange-400 bg-clip-text text-transparent">
               {t('title') || 'Experimente grátis'}
             </h3>
-            <p className="text-lg text-white/80 font-medium max-w-xl">
+            <p className="text-lg font-medium max-w-xl bg-gradient-to-r from-green-400/90 to-orange-400/90 bg-clip-text text-transparent">
               {t('subtitle') || 'Veja um roteiro de IA para o seu destino em segundos — sem registo.'}
             </p>
           </div>

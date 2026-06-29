@@ -87,9 +87,9 @@ export function FAQPage({ onBack }: FAQPageProps) {
 
   const categoryMeta = useMemo(() => {
     return {
-      booking: { icon: Plane, bgClass: 'from-primary to-primary' },
-      payment: { icon: CreditCard, bgClass: 'from-blue-600 to-blue-500' },
-      cancellation: { icon: XCircle, bgClass: 'from-accent to-accent-500' },
+      booking: { icon: Plane, bgClass: 'from-primary-600 to-primary-700' },
+      payment: { icon: CreditCard, bgClass: 'from-blue-600 to-blue-800' },
+      cancellation: { icon: XCircle, bgClass: 'from-accent-600 to-accent-700' },
       safety: { icon: Shield, bgClass: 'from-green-600 to-green-500' },
       travel: { icon: Globe, bgClass: 'from-purple-600 to-purple-500' },
       general: { icon: FileText, bgClass: 'from-gray-700 to-gray-600' }
@@ -116,7 +116,7 @@ export function FAQPage({ onBack }: FAQPageProps) {
   }, [categories, searchQuery, activeCategory, searchTerms]);
 
   const allCategories = useMemo(() => [
-    { id: 'all', title: t('allCategories'), icon: HelpCircle, bgClass: 'from-primary to-accent' },
+    { id: 'all', title: t('allCategories'), icon: HelpCircle, bgClass: 'from-primary-600 to-accent-600' },
     ...categories.map(cat => ({
       id: cat.id,
       title: cat.title,
@@ -280,7 +280,7 @@ export function FAQPage({ onBack }: FAQPageProps) {
             <div className="bg-gradient-to-r from-primary to-accent h-2"></div>
             <CardContent className="p-6 sm:p-8 md:p-12 text-center">
               <h2 className="text-xl sm:text-3xl font-bold text-gray-900 dark:text-white mb-3 sm:mb-4">{t('stillHaveQuestions')}</h2>
-              <Button type="button" className="bg-gradient-to-r from-primary to-accent hover:from-primary-700 hover:to-accent-600 active:scale-[0.98] text-white px-6 sm:px-8 py-4 sm:py-6 text-base sm:text-lg shadow-lg w-full sm:w-auto transition-transform">
+              <Button type="button" className="bg-gradient-to-r from-primary-600 to-accent-600 hover:from-primary-700 hover:to-accent-700 active:scale-[0.98] text-white px-6 sm:px-8 py-4 sm:py-6 text-base sm:text-lg shadow-lg w-full sm:w-auto transition-transform">
                 {t('contactUs')}
               </Button>
             </CardContent>

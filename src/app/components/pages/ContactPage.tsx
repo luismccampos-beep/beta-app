@@ -110,7 +110,7 @@ export function ContactPage({ onBack }: ContactPageProps) {
             { icon: MapPin, title: t('addressTitle'), val: t('address'), color: 'from-primary to-primary-700' },
             { icon: Phone, title: t('phoneTitle'), val: '+351 256 372 092', valHref: 'tel:+351256372092', color: 'from-blue-600 to-blue-800' },
             { icon: Mail, title: t('emailTitle'), val: 'geral@akmleva.pt', valHref: 'mailto:geral@akmleva.pt', color: 'from-purple-600 to-purple-800' },
-            { icon: Clock, title: t('hoursTitle'), val: t('hours'), color: 'from-accent to-accent-700' }
+            { icon: Clock, title: t('hoursTitle'), val: t('hours'), color: 'from-accent-600 to-accent-800' }
           ].map((item, i) => (
             <motion.div key={i} variants={fadeInUp} whileHover={{ y: -4, boxShadow: '0 16px 32px rgba(0,0,0,0.1)' }}>
               <Card className="card-premium dark:bg-gray-900 group h-full text-center transition-shadow">
