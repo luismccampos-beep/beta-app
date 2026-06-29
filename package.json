@@ -159,7 +159,7 @@
     "test:changed:watch": "vitest watch --changed",
     "test:changed:coverage": "vitest run --changed --coverage",
     "storybook:build": "storybook build",
-    "chromatic": "npx chromatic --build-script-name=storybook:build",
+    "chromatic": "chromatic --build-script-name=storybook:build",
     "test:branch": "vitest run --changed HEAD~1",
     "test:staged": "vitest run --changed --staged",
     "travel:catalog:classify-hotels": "node scripts/classify-hotel-types.mjs",
