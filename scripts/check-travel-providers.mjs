@@ -1,8 +1,7 @@
 /**
- * Diagnose Duffel + Hotelbeds env and API connectivity (does not print secrets).
+ * Diagnose Duffel + Scrape.do env and API connectivity (does not print secrets).
  * Run: node scripts/check-travel-providers.mjs
  */
-import { createHash } from 'node:crypto';
 import { readFileSync, existsSync } from 'node:fs';
 import { resolve, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -57,11 +56,7 @@ const vars = [
   'DUFFEL_ACCESS_TOKEN',
   'SCRAPE_DO_API_KEY',
   'SCRAPE_DO_TOKEN',
-  'HOTELBEDS_API_KEY',
-  'HOTELBEDS_API_SECRET',
-  'HOTELBEDS_API_BASE_URL',
   'LITEAPI_API_KEY',
-  'CRAWLBASE_JS_TOKEN',
 ];
 
 console.log('=== Environment variables ===\n');
@@ -74,10 +69,6 @@ for (const v of vars) {
 const duffelToken = process.env.DUFFEL_ACCESS_TOKEN?.trim();
 const scrapeDoToken =
   process.env.SCRAPE_DO_API_KEY?.trim() || process.env.SCRAPE_DO_TOKEN?.trim();
-const hbKey = process.env.HOTELBEDS_API_KEY?.trim();
-const hbSecret = process.env.HOTELBEDS_API_SECRET?.trim();
-const hbBase =
-  process.env.HOTELBEDS_API_BASE_URL?.trim() || 'https://api.test.hotelbeds.com';
 
 if (duffelToken) {
   const prefix = duffelToken.startsWith('duffel_') ? 'looks like Duffel token format' : 'unusual prefix (expected duffel_test_ or duffel_live_)';
@@ -86,13 +77,6 @@ if (duffelToken) {
 
 if (scrapeDoToken) {
   console.log('\nScrape.do: token set (Google Flights fallback when Duffel is missing or has no offers)');
-}
-
-if (hbKey && hbSecret) {
-  const prod = hbBase.includes('api.hotelbeds.com') && !hbBase.includes('test');
-  console.log(`\nHotelbeds base URL: ${hbBase} (${prod ? 'PRODUCTION' : 'test/sandbox'})`);
-  console.log('  Tip: test API keys only work with https://api.test.hotelbeds.com');
-  console.log('  Production keys need https://api.hotelbeds.com (uncomment HOTELBEDS_API_BASE_URL)');
 }
 
 async function testDuffel() {
@@ -125,59 +109,6 @@ async function testDuffel() {
   }
 }
 
-function hbSignature(apiKey, secret, ts) {
-  return createHash('sha256').update(apiKey + secret + ts).digest('hex');
-}
-
-async function testHotelbeds(label, baseUrl) {
-  if (!hbKey || !hbSecret) return;
-  const ts = Math.floor(Date.now() / 1000);
-  const url = `${baseUrl.replace(/\/$/, '')}/hotel-content-api/1.0/types/accommodations?from=1&to=5&language=ENG`;
-  const res = await fetch(url, {
-    headers: {
-      Accept: 'application/json',
-      'Api-key': hbKey,
-      'X-Signature': hbSignature(hbKey, hbSecret, ts),
-    },
-  });
-  const text = await res.text();
-  return { ok: res.ok, status: res.status, snippet: text.slice(0, 280).replace(/\s+/g, ' ') };
-}
-
-async function testHotelbedsAll() {
-  if (!hbKey || !hbSecret) {
-    console.log('\n=== Hotelbeds API: skipped (missing key or secret) ===');
-    return;
-  }
-  console.log('\n=== Hotelbeds API ===');
-  const testBase = 'https://api.test.hotelbeds.com';
-  const prodBase = 'https://api.hotelbeds.com';
-
-  for (const [label, base] of [
-    ['configured base', hbBase],
-    ['test host', testBase],
-    ['production host', prodBase],
-  ]) {
-    if (label === 'production host' && hbBase === testBase) {
-      // still test prod if user only has test URL set
-    }
-    try {
-      const r = await testHotelbeds(label, base);
-      if (r.ok) {
-        console.log(`✓ ${label} (${r.status}) — accommodations endpoint OK`);
-        if (label !== 'configured base' && hbBase !== base) {
-          console.log(`  → Your HOTELBEDS_API_BASE_URL may be wrong; this host works.`);
-        }
-        return;
-      }
-      console.log(`✗ ${base}: ${r.status} — ${r.snippet}`);
-    } catch (e) {
-      console.log(`✗ ${base}: ${e instanceof Error ? e.message : e}`);
-    }
-  }
-  console.log('  Common fixes: match base URL to key type; Api-key + secret from same Hotelbeds account');
-}
-
 async function testScrapeDo() {
   if (!scrapeDoToken) {
     console.log('\n=== Scrape.do API: skipped (no SCRAPE_DO_API_KEY) ===');
@@ -204,5 +135,4 @@ async function testScrapeDo() {
 
 await testDuffel();
 await testScrapeDo();
-await testHotelbedsAll();
 console.log('\nDone.');

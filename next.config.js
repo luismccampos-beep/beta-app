@@ -68,7 +68,7 @@ const nextConfig = {
             key: 'Content-Security-Policy',
             value: process.env.NODE_ENV === 'development'
               ? "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' *.googletagmanager.com *.google-analytics.com; style-src 'self' 'unsafe-inline' *.googleapis.com; img-src 'self' data: blob: https:; connect-src 'self' *.akmleva.pt *.google-analytics.com http://localhost:3001 http://127.0.0.1:3001 ws://localhost:3001 ws://127.0.0.1:3001; font-src 'self' *.googleapis.com *.gstatic.com; frame-src 'self' *.google.com openstreetmap.org; object-src 'none';"
-              : "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' *.googletagmanager.com *.google-analytics.com; style-src 'self' 'unsafe-inline' *.googleapis.com; img-src 'self' data: blob: https:; connect-src 'self' *.akmleva.pt *.google-analytics.com; font-src 'self' *.googleapis.com *.gstatic.com; frame-src 'self' *.google.com openstreetmap.org; object-src 'none';"
+              : "default-src 'self'; script-src 'self' 'strict-dynamic' *.googletagmanager.com *.google-analytics.com; style-src 'self' 'unsafe-inline' *.googleapis.com; img-src 'self' data: blob: https:; connect-src 'self' *.akmleva.pt *.google-analytics.com; font-src 'self' *.googleapis.com *.gstatic.com; frame-src 'self' *.google.com openstreetmap.org; object-src 'none';"
           },
 
           // X-Frame-Options
@@ -83,11 +83,7 @@ const nextConfig = {
             value: 'nosniff'
           },
 
-          // X-XSS-Protection
-          {
-            key: 'X-XSS-Protection',
-            value: '1; mode=block'
-          },
+          // X-XSS-Protection removed — modern browsers rely on CSP + React escaping
 
           // Referrer-Policy
           {
@@ -101,22 +97,22 @@ const nextConfig = {
             value: [
               'camera=()',
               'microphone=()',
-              'geolocation=()',
-              'payment=()',
+              'geolocation=(self)',
+              'payment=(self)',
               'usb=()',
               'magnetometer=()',
               'gyroscope=()',
               'accelerometer=()',
-              'autoplay=()',
-              'encrypted-media=()',
-              'fullscreen=()',
+              'autoplay=(self)',
+              'encrypted-media=(self)',
+              'fullscreen=(self)',
               'display-capture=()',
               'sync-xhr=()',
               'midi=()',
-              'picture-in-picture=()',
-              'publickey-credentials-get=()',
+              'picture-in-picture=(self)',
+              'publickey-credentials-get=(self)',
               'screen-wake-lock=()',
-              'web-share=()'
+              'web-share=(self)'
             ].join(', ')
           },
 
