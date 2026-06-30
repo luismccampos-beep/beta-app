@@ -20,7 +20,7 @@ export function HotelsSection({
   if (hotels.length === 0 && (!hotelTypes || Object.keys(hotelTypes).length === 0)) return null;
   return (
     <motion.div variants={staggerContainer} initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-80px' }} className="space-y-8">
-      <h2 className="text-4xl font-black text-gray-950 dark:text-white tracking-tighter uppercase italic flex items-center gap-3">
+      <h2 className="text-4xl font-black text-gray-950 dark:text-white tracking-tighter uppercase flex items-center gap-3">
         <div className="p-2 rounded-lg bg-primary/10 text-primary dark:text-primary-300">
           <Hotel className="h-6 w-6" />
         </div>

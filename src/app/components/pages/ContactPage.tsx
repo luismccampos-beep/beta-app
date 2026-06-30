@@ -89,7 +89,7 @@ export function ContactPage({ onBack }: ContactPageProps) {
             <MessageSquare className="w-5 h-5 text-accent animate-pulse" />
             <span className="text-sm font-bold text-primary-900 dark:text-primary-100 uppercase tracking-[0.2em]">{t('pageTitle')}</span>
           </div>
-          <h1 className="text-5xl sm:text-7xl md:text-8xl font-black text-gray-950 dark:text-white leading-[1.1] tracking-tighter uppercase italic text-balance mb-6 overflow-visible">
+          <h1 className="text-5xl sm:text-7xl md:text-8xl font-black text-gray-950 dark:text-white leading-[1.1] tracking-tighter uppercase text-balance mb-6 overflow-visible">
             Estamos <span className="bg-gradient-to-r from-brand-gray via-orange to-green bg-clip-text text-transparent">Próximos</span> de Ti
           </h1>
           <p className="text-xl sm:text-2xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto font-medium leading-relaxed">
@@ -149,7 +149,7 @@ export function ContactPage({ onBack }: ContactPageProps) {
                   <div className="p-3 rounded-2xl bg-primary/10 text-primary dark:text-primary-300">
                     <Send className="w-8 h-8" />
                   </div>
-                  <h2 className="text-3xl sm:text-4xl font-black text-gray-950 dark:text-white tracking-tighter uppercase italic">{t('formTitle')}</h2>
+                  <h2 className="text-3xl sm:text-4xl font-black text-gray-950 dark:text-white tracking-tighter uppercase">{t('formTitle')}</h2>
                 </div>
 
                 {isSubmitted ? (
@@ -271,7 +271,7 @@ export function ContactPage({ onBack }: ContactPageProps) {
                       className="w-full h-16 text-xl shadow-glow-primary hover:scale-105"
                     >
                       {isSubmitting ? (
-                        <span className="flex items-center justify-center gap-3 font-black uppercase tracking-widest italic">
+                        <span className="flex items-center justify-center gap-3 font-black uppercase tracking-widest">
                           <svg className="animate-spin h-6 w-6" viewBox="0 0 24 24">
                             <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none" />
                             <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
@@ -279,7 +279,7 @@ export function ContactPage({ onBack }: ContactPageProps) {
                           {t('sending')}
                         </span>
                       ) : (
-                        <span className="flex items-center justify-center gap-3 font-black uppercase tracking-widest italic">
+                        <span className="flex items-center justify-center gap-3 font-black uppercase tracking-widest">
                           <Send className="w-6 h-6" />
                           {t('sendMessage')}
                         </span>
@@ -308,7 +308,7 @@ export function ContactPage({ onBack }: ContactPageProps) {
                       href={social.url} 
                       target="_blank" 
                       rel="noopener noreferrer" 
-                      className={`flex items-center gap-4 p-4 rounded-2xl border ${social.color} hover:brightness-110 transition-all font-black uppercase tracking-tighter italic`}
+                      className={`flex items-center gap-4 p-4 rounded-2xl border ${social.color} hover:brightness-110 transition-all font-black uppercase tracking-tighter`}
                     >
                       <svg className="w-6 h-6 fill-current" viewBox="0 0 24 24"><path d={social.icon}/></svg>
                       {social.name}
@@ -322,7 +322,7 @@ export function ContactPage({ onBack }: ContactPageProps) {
               <CardContent className="p-8">
                 <h3 className="text-xl font-black text-gray-950 dark:text-white uppercase tracking-tighter mb-6">{t('responseTitle')}</h3>
                 <div className="space-y-4">
-                  <Badge className="bg-green-500/10 text-green-700 dark:text-green-400 border border-green-500/20 px-4 py-2 font-black uppercase tracking-tighter italic w-fit">
+                  <Badge className="bg-green-500/10 text-green-700 dark:text-green-400 border border-green-500/20 px-4 py-2 font-black uppercase tracking-tighter w-fit">
                     <CheckCircle2 className="w-4 h-4 mr-2" />
                     {t('responseTime')}
                   </Badge>
@@ -346,7 +346,7 @@ export function ContactPage({ onBack }: ContactPageProps) {
               >
                 <MapPin className="w-8 h-8" />
               </motion.div>
-              <h3 className="text-3xl sm:text-4xl font-black text-gray-950 dark:text-white mb-4 tracking-tighter uppercase italic">{t('mapTitle')}</h3>
+              <h3 className="text-3xl sm:text-4xl font-black text-gray-950 dark:text-white mb-4 tracking-tighter uppercase">{t('mapTitle')}</h3>
               <p className="text-xl text-gray-600 dark:text-gray-400 mb-10 font-medium max-w-2xl mx-auto">{t('mapDescription')}</p>
               <motion.div whileHover={{ scale: 1.02 }} className="rounded-3xl overflow-hidden border-4 border-white dark:border-gray-800 shadow-2xl transition-transform">
                 <iframe

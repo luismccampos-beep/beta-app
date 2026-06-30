@@ -20,7 +20,7 @@ export function TripGoCard({
     <AnimatedSection>
       <Card className="card-premium dark:bg-gray-900 group">
         <CardHeader>
-          <CardTitle className="flex items-center gap-3 text-xl font-black text-gray-950 dark:text-white uppercase tracking-tighter italic">
+          <CardTitle className="flex items-center gap-3 text-xl font-black text-gray-950 dark:text-white uppercase tracking-tighter">
             <div className="p-2 rounded-lg bg-violet-500/10 text-violet-600 dark:text-violet-400">
               <Bus className="h-5 w-5" />
             </div>

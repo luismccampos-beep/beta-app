@@ -16,7 +16,7 @@ export function SummaryCard({
     <AnimatedSection>
       <Card className="card-premium dark:bg-gray-900 group">
         <CardHeader>
-          <CardTitle className="text-2xl font-black text-gray-950 dark:text-white uppercase tracking-tighter italic flex items-center gap-3">
+          <CardTitle className="text-2xl font-black text-gray-950 dark:text-white uppercase tracking-tighter flex items-center gap-3">
             <div className="p-2 rounded-lg bg-primary/10 text-primary dark:text-primary-300">
               <BookOpen className="h-5 w-5" />
             </div>

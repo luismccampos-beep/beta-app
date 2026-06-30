@@ -254,7 +254,7 @@ export function ResultsPage({ onLogout, onNavigateToDashboard }: ResultsPageProp
         <Card className="mb-12 glass dark:bg-gray-900/60 border-primary-100/50 dark:border-gray-800 shadow-xl overflow-hidden relative">
           <div className="absolute top-0 left-0 w-1 h-full bg-gradient-to-b from-brand-gray via-orange to-green" />
           <CardHeader className="pb-4">
-            <CardTitle className="text-xl font-black dark:text-white uppercase tracking-tighter italic">{t('searchOptionsTitle')}</CardTitle>
+            <CardTitle className="text-xl font-black dark:text-white uppercase tracking-tighter">{t('searchOptionsTitle')}</CardTitle>
             <CardDescription className="font-medium">{t('searchOptionsDesc')}</CardDescription>
           </CardHeader>
           <CardContent>

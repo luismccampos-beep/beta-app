@@ -53,7 +53,7 @@ function isValidPhone(value: string) {
 const SectionCard = ({ icon: Icon, title, children, className }: { icon: typeof User; title: string; children: React.ReactNode; className?: string }) => (
   <Card className={cn('card-premium dark:bg-gray-900 group', className)}>
     <CardHeader className="pb-2 pt-6 px-6">
-      <CardTitle className="text-base font-black text-gray-950 dark:text-white flex items-center gap-3 uppercase tracking-tighter italic">
+      <CardTitle className="text-base font-black text-gray-950 dark:text-white flex items-center gap-3 uppercase tracking-tighter">
         <div className="p-2 rounded-lg bg-primary/10 text-primary dark:text-primary-300">
           <Icon className="h-5 w-5" />
         </div>
@@ -316,7 +316,7 @@ export function ProfileTab() {
       {/* Completeness indicator */}
       <div>
         <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-4">
-          <h2 className="text-4xl font-black text-gray-950 dark:text-white tracking-tighter uppercase italic">{t('personalInfo')}</h2>
+          <h2 className="text-4xl font-black text-gray-950 dark:text-white tracking-tighter uppercase">{t('personalInfo')}</h2>
           <div className="flex gap-3">
             {isEditingProfile ? (
               <>

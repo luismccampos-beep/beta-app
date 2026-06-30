@@ -46,7 +46,7 @@ export function QuickFactsBar({
             <fact.icon className={`h-5 w-5 ${fact.accent}`} />
           </div>
           <p className="text-[10px] font-black text-gray-500 dark:text-gray-400 uppercase tracking-[0.2em] mb-1">{fact.label}</p>
-          <p className="text-base font-black text-gray-950 dark:text-white capitalize line-clamp-1 tracking-tighter italic">{fact.value}</p>
+          <p className="text-base font-black text-gray-950 dark:text-white capitalize line-clamp-1 tracking-tighter">{fact.value}</p>
         </motion.div>
       ))}
     </motion.div>

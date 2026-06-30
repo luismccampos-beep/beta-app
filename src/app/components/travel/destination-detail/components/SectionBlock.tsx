@@ -23,7 +23,7 @@ export function SectionBlock({
     return (
       <Card className="card-premium dark:bg-gray-900 group">
         <CardHeader className="pb-2 pt-6 px-6">
-          <CardTitle className="flex items-center gap-3 text-xl font-black text-gray-950 dark:text-white uppercase tracking-tighter italic">
+          <CardTitle className="flex items-center gap-3 text-xl font-black text-gray-950 dark:text-white uppercase tracking-tighter">
             <div className="p-2 rounded-lg bg-primary/10 text-primary dark:text-primary-300">
               <Icon className="h-5 w-5" />
             </div>
@@ -50,7 +50,7 @@ export function SectionBlock({
     <motion.div variants={fadeInUp}>
       <Card className="card-premium dark:bg-gray-900 group">
         <CardHeader className="pb-2 pt-6 px-6">
-          <CardTitle className="flex items-center gap-3 text-xl font-black text-gray-950 dark:text-white uppercase tracking-tighter italic">
+          <CardTitle className="flex items-center gap-3 text-xl font-black text-gray-950 dark:text-white uppercase tracking-tighter">
             <div className="p-2 rounded-lg bg-primary/10 text-primary dark:text-primary-300 group-hover:scale-110 transition-transform">
               <Icon className="h-5 w-5" />
             </div>
