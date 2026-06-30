@@ -15,9 +15,10 @@ import {
 import { AppHeader } from '../AppHeader';
 
 interface AboutPageProps {
+  onBack?: () => void;
 }
 
-export function AboutPage({}: AboutPageProps) {
+export function AboutPage({ onBack }: AboutPageProps) {
   const t = useTranslations('about');
   const [showCEOModal, setShowCEOModal] = useState(false);
   const ceoTriggerRef = useRef<HTMLButtonElement>(null);
@@ -62,7 +63,7 @@ export function AboutPage({}: AboutPageProps) {
         <div className="absolute inset-0 opacity-[0.05] dark:opacity-[0.03]" style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, currentColor 1px, transparent 0)', backgroundSize: '40px 40px' }} />
       </div>
 
-      <AppHeader />
+      <AppHeader onBack={onBack} />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-20 relative z-10">
         {/* Hero Section */}

@@ -22,9 +22,10 @@ import {
 import { AppHeader } from '../AppHeader';
 
 interface ContactPageProps {
+  onBack?: () => void;
 }
 
-export function ContactPage({}: ContactPageProps) {
+export function ContactPage({ onBack }: ContactPageProps) {
   const t = useTranslations('contact');
   const [formData, setFormData] = useState({
     name: '',
