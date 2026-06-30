@@ -21,7 +21,7 @@
 
 ## Architecture
 
-- **Next.js 15.5 App Router** with `output: 'standalone'`. Monorepo with npm workspaces (`apps/*`, `packages/*`, `tools/*`).
+- **Next.js 15.5 App Router** with `output: 'standalone'`. Monorepo with npm workspaces (`tools/*`).
 - **i18n**: `next-intl`, locales `pt|en|es|fr`, `localePrefix: 'never'` (no path prefix). Config at `src/i18n.ts`.
 - **Auth**: `next-auth` v5 beta (`5.0.0-beta.31` — version pinned, not ranged). Two auth entrypoints:
   - `src/auth.ts` — full instance with PrismaAdapter (server components, API routes only)
