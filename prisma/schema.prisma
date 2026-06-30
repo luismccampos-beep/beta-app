@@ -234,6 +234,8 @@ model User {
   agency Agency? @relation(fields: [agencyId], references: [id], onDelete: Cascade)
 
   @@map("users")
+  @@index([phone])
+  @@index([taxId])
 }
 
 // ============================================
@@ -528,6 +530,7 @@ model Session {
   @@index([refreshTokenFamily])
   @@index([expiresAt])
   @@index([deviceFingerprint])
+  @@index([lastActivityAt])
   @@map("sessions")
 }
 
@@ -3065,6 +3068,9 @@ model Article {
   @@index([authorId])
   @@index([destinationId])
   @@index([moderatedBy])
+  @@index([status])
+  @@index([publishedAt])
+  @@index([category])
   @@map("articles")
 }
 

@@ -20,13 +20,11 @@ import {
   staggerContainer,
 } from '@/app/components/travel/destination-detail/constants/animations';
 import { AppHeader } from '../AppHeader';
-import { AppFooter } from '../AppFooter';
 
 interface ContactPageProps {
-  onBack: () => void;
 }
 
-export function ContactPage({ onBack }: ContactPageProps) {
+export function ContactPage({}: ContactPageProps) {
   const t = useTranslations('contact');
   const [formData, setFormData] = useState({
     name: '',
@@ -363,8 +361,6 @@ export function ContactPage({ onBack }: ContactPageProps) {
         </motion.div>
 
       </div>
-
-      <AppFooter />
     </div>
   );
 }

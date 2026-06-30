@@ -202,7 +202,6 @@
     "@upstash/ratelimit": "^2.0.7",
     "@upstash/redis": "^1.35.6",
     "adm-zip": "^0.5.17",
-    "axios": "^1.18.0",
     "bcryptjs": "^3.0.2",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
@@ -235,13 +234,11 @@
     "react-hook-form": "^7.79.0",
     "react-leaflet": "^5.0.0",
     "react-resizable-panels": "^4.11.0",
-    "react-toastify": "^11.0.5",
     "recharts": "^2.10.3",
     "resend": "^6.14.0",
     "sharp": "^0.34.5",
     "socket.io-client": "^4.8.3",
     "sonner": "^2.0.7",
-    "swr": "^2.4.2",
     "tailwind-merge": "^3.4.0",
     "tw-animate-css": "^1.3.8",
     "vaul": "^1.1.2",
@@ -290,9 +287,7 @@
     "vitest": "^4.0.15",
     "webpack-bundle-analyzer": "^4.10.1"
   },
-  "overrides": {
-    "axios": "^1.18.0"
-  },
+
   "engines": {
     "node": ">=20.0.0",
     "npm": ">=10.0.0"

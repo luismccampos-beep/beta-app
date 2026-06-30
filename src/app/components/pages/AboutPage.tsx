@@ -13,13 +13,11 @@ import {
   staggerContainer,
 } from '@/app/components/travel/destination-detail/constants/animations';
 import { AppHeader } from '../AppHeader';
-import { AppFooter } from '../AppFooter';
 
 interface AboutPageProps {
-  onBack: () => void;
 }
 
-export function AboutPage({ onBack }: AboutPageProps) {
+export function AboutPage({}: AboutPageProps) {
   const t = useTranslations('about');
   const [showCEOModal, setShowCEOModal] = useState(false);
   const ceoTriggerRef = useRef<HTMLButtonElement>(null);
@@ -64,7 +62,7 @@ export function AboutPage({ onBack }: AboutPageProps) {
         <div className="absolute inset-0 opacity-[0.05] dark:opacity-[0.03]" style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, currentColor 1px, transparent 0)', backgroundSize: '40px 40px' }} />
       </div>
 
-      <AppHeader showBack onBack={onBack} />
+      <AppHeader />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-20 relative z-10">
         {/* Hero Section */}
@@ -391,8 +389,6 @@ export function AboutPage({ onBack }: AboutPageProps) {
           </Card>
         </motion.section>
       </div>
-
-      <AppFooter />
 
       {/* CEO Bio Modal */}
       {showCEOModal && (

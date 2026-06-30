@@ -1,7 +1,6 @@
 import { NextResponse } from 'next/server';
 import { z } from 'zod';
 import { apiHandler } from '@/lib/api/handler';
-import { withRateLimit } from '@/lib/api/rate-limit-guard';
 import { prisma } from '@/lib/prisma';
 import { summarizeCostOfLiving } from '../../../../../../lib/travel/cost-tier';
 import {
@@ -31,7 +30,7 @@ async function safeAsync<T>(fn: () => Promise<T>, fallback: T, label?: string): 
   }
 }
 
-export const GET = apiHandler(withRateLimit(async (req: Request, ctx) => {
+export const GET = apiHandler(async (req: Request, ctx) => {
   const slug = z.string().min(1).max(100).parse((await ctx.params).slug);
   const { searchParams } = new URL(req.url);
   const locale = searchParams.get('locale') ?? undefined;
@@ -129,4 +128,4 @@ export const GET = apiHandler(withRateLimit(async (req: Request, ctx) => {
     }, [], 'mapMarkers'),
     mock: false,
   });
-}));
+});

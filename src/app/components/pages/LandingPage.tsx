@@ -757,7 +757,22 @@ export function LandingPage({ onGetStarted }: LandingPageProps) {
         </motion.div>
       </section>
 
-      <AppFooter />
+      <AppFooter footerBadges={{
+        soc2Certified: '',
+        encryption256: '',
+        gdprCompliant: '',
+        iso27001: ''
+      }} footerLinks={{
+        destinations: '',
+        about: '',
+        contact: '',
+        faq: '',
+        terms: '',
+        privacy: '',
+        gdpr: '',
+        cancellations: '',
+        cookies: ''
+      }} footerCopyright={''} />
     </div>
   );
 }
