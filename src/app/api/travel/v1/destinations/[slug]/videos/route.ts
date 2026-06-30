@@ -2,10 +2,19 @@ import { NextResponse } from 'next/server';
 import { z } from 'zod';
 import { apiHandler } from '@/lib/api/handler';
 import { prisma } from '@/lib/prisma';
+import { checkRateLimit, publicRatelimit } from '@/lib/rate-limit';
 
 export const dynamic = 'force-dynamic';
 
-export const GET = apiHandler(async (_req: Request, ctx) => {
+export const GET = apiHandler(async (req: Request, ctx) => {
+  const rateLimitResult = await checkRateLimit(req, publicRatelimit);
+  if (!rateLimitResult.success) {
+    return NextResponse.json(
+      { ok: false, error: 'Too many requests', code: 'RATE_LIMITED' },
+      { status: 429 },
+    );
+  }
+
   const slug = z.string().min(1).max(100).parse((await ctx.params).slug);
 
   const dest = await prisma.wvDestination.findFirst({

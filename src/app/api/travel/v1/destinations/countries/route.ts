@@ -1,4 +1,5 @@
 import { NextResponse } from 'next/server';
+import { checkRateLimit, publicRatelimit } from '@/lib/rate-limit';
 
 import {
   listDistinctContinentsFromDb,
@@ -8,7 +9,15 @@ import {
 export const dynamic = 'force-dynamic';
 
 /** GET /api/travel/v1/destinations/countries — also returns continents */
-export async function GET() {
+export async function GET(req: Request) {
+  const rateLimitResult = await checkRateLimit(req, publicRatelimit);
+  if (!rateLimitResult.success) {
+    return NextResponse.json(
+      { ok: false, error: 'Too many requests', code: 'RATE_LIMITED' },
+      { status: 429 },
+    );
+  }
+
   try {
     const [countries, continents] = await Promise.all([
       listDistinctCountriesFromDb(),

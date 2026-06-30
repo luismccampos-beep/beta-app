@@ -21,7 +21,6 @@ import {
   staggerContainer,
 } from '@/app/components/travel/destination-detail/constants/animations';
 import { AppHeader } from '../AppHeader';
-import { AppFooter } from '../AppFooter';
 
 interface FAQPageProps {
   onBack: () => void;
@@ -288,7 +287,6 @@ export function FAQPage({ onBack }: FAQPageProps) {
         </motion.div>
       </div>
 
-      <AppFooter />
     </div>
   );
 }

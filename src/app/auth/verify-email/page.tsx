@@ -5,7 +5,6 @@ import { useSearchParams, useRouter } from 'next/navigation';
 import { Card, CardContent } from '../../components/ui/card';
 import { Button } from '../../components/ui/button';
 import { AppHeader } from '../../components/AppHeader';
-import { AppFooter } from '../../components/AppFooter';
 import {
   CheckCircle2,
   XCircle,
@@ -240,7 +239,6 @@ export default function VerifyEmailPage() {
         </Card>
       </div>
 
-      <AppFooter />
     </div>
   );
 }

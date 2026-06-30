@@ -15,6 +15,7 @@ export interface AppHeaderProps {
   onLogout?: () => void;
   showDashboard?: boolean;
   onDashboard?: () => void;
+  showBack?: boolean;
   showPreferences?: boolean;
   onBack?: () => void;
   className?: string;
@@ -25,6 +26,7 @@ export function AppHeader({
   onLogout,
   showDashboard,
   onDashboard,
+  showBack: showBackProp,
   showPreferences,
   onBack,
   className = '',
@@ -36,6 +38,7 @@ export function AppHeader({
   const { data: session } = useSession();
 
   const showBack = (() => {
+    if (showBackProp !== undefined) return showBackProp;
     if (!pathname) return false;
     if (onBack !== undefined) return true;
     const staticPages = ['/about', '/contact', '/faq', '/legal', '/destinations'];
