@@ -2,6 +2,7 @@ import { NextResponse } from 'next/server';
 import { z } from 'zod';
 import { apiHandler } from '@/lib/api/handler';
 import { prisma } from '@/lib/prisma';
+import { checkRateLimit, publicRatelimit } from '@/lib/rate-limit';
 import { summarizeCostOfLiving } from '../../../../../../lib/travel/cost-tier';
 import {
   getDestinationBySlugFromDb,
@@ -31,6 +32,14 @@ async function safeAsync<T>(fn: () => Promise<T>, fallback: T, label?: string): 
 }
 
 export const GET = apiHandler(async (req: Request, ctx) => {
+  const rateLimitResult = await checkRateLimit(req, publicRatelimit);
+  if (!rateLimitResult.success) {
+    return NextResponse.json(
+      { ok: false, error: 'Too many requests', code: 'RATE_LIMITED' },
+      { status: 429 },
+    );
+  }
+
   const slug = z.string().min(1).max(100).parse((await ctx.params).slug);
   const { searchParams } = new URL(req.url);
   const locale = searchParams.get('locale') ?? undefined;

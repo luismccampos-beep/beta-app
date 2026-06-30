@@ -22,6 +22,7 @@
 import { readFileSync } from 'node:fs';
 import { resolve, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { createInterface } from 'node:readline';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = resolve(__dirname, '..');
@@ -39,6 +40,18 @@ for (const a of args) {
 const dryRun = !!flags['dry-run'];
 const limit = flags.limit ? parseInt(flags.limit, 10) : undefined;
 const verbose = !!flags.verbose;
+const force = !!flags.force;
+
+async function confirmWrite() {
+  if (force) return true;
+  const rl = createInterface({ input: process.stdin, output: process.stdout });
+  return new Promise((resolve) => {
+    rl.question('WARNING: This will WRITE to the database. Type "yes" to confirm: ', (answer) => {
+      rl.close();
+      resolve(answer.toLowerCase() === 'yes');
+    });
+  });
+}
 
 // --- CSV parsing ---
 function parseCSV(text) {
@@ -50,14 +63,20 @@ function parseCSV(text) {
     const line = lines[i].trim();
     if (!line) continue;
 
-    // Parse CSV respecting quoted fields
+    // Parse CSV respecting quoted fields and escaped quotes
     const fields = [];
     let current = '';
     let inQuotes = false;
     for (let j = 0; j < line.length; j++) {
       const ch = line[j];
       if (ch === '"') {
-        inQuotes = !inQuotes;
+        const next = line[j + 1];
+        if (inQuotes && next === '"') {
+          current += '"';
+          j++;
+        } else {
+          inQuotes = !inQuotes;
+        }
       } else if (ch === ',' && !inQuotes) {
         fields.push(current.trim());
         current = '';
@@ -242,6 +261,15 @@ async function main() {
   const prisma = new PrismaClient({
     datasources: { db: { url: process.env.DATABASE_URL_UNPOOLED ?? process.env.DATABASE_URL } },
   });
+
+  if (!dryRun) {
+    const ok = await confirmWrite();
+    if (!ok) {
+      console.log('Aborted. Use --force to skip confirmation.');
+      await prisma.$disconnect();
+      process.exit(0);
+    }
+  }
 
   try {
     // Fetch all destinations with coordinates

@@ -85,7 +85,6 @@ import {
   PlaneIllustration,
 } from '../ui/FeatureIllustrations';
 import { AppHeader } from '../AppHeader';
-import { AppFooter } from '../AppFooter';
 
 interface LandingPageProps {
   onGetStarted: () => void;
@@ -757,22 +756,6 @@ export function LandingPage({ onGetStarted }: LandingPageProps) {
         </motion.div>
       </section>
 
-      <AppFooter footerBadges={{
-        soc2Certified: '',
-        encryption256: '',
-        gdprCompliant: '',
-        iso27001: ''
-      }} footerLinks={{
-        destinations: '',
-        about: '',
-        contact: '',
-        faq: '',
-        terms: '',
-        privacy: '',
-        gdpr: '',
-        cancellations: '',
-        cookies: ''
-      }} footerCopyright={''} />
     </div>
   );
 }

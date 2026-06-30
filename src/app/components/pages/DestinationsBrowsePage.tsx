@@ -31,7 +31,7 @@ import { Button } from '../ui/button';
 import { AppHeader } from '../AppHeader';
 
 import { fadeInUp, staggerContainer } from '../travel/destination-detail/constants/animations';
-import { AppFooter } from '../AppFooter';
+
 import { RippleButton } from '../ui/ripple-button';
 import { EmptyState } from '../ui/EmptyState';
 import { useDestinations, useCountries } from '@/lib/api/use-api';
@@ -747,7 +747,6 @@ export function DestinationsBrowsePage({ onBack }: DestinationsBrowsePageProps) 
         )}
       </div>
 
-      <AppFooter />
     </div>
   );
 }

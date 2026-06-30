@@ -11,7 +11,6 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '../ui/tabs';
 import { Checkbox } from '../ui/checkbox';
 import { useLocale, useTranslations } from 'next-intl';
 import { AppHeader } from '../AppHeader';
-import { AppFooter } from '../AppFooter';
 type CheckedState = boolean | 'indeterminate';
 import {
   Mail,
@@ -548,7 +547,6 @@ export function AuthPage({ onLoginSuccess, onBackToHome, onNavigateToLegal }: Au
         </Tabs>
       </div>
 
-      <AppFooter />
     </div>
   );
 }

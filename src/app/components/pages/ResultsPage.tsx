@@ -27,7 +27,6 @@ import {
 } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { AppHeader } from '../AppHeader';
-import { AppFooter } from '../AppFooter';
 
 import { fadeInUp, staggerContainer } from '../travel/destination-detail/constants/animations';
 import { EmptyState } from '../ui/EmptyState';
@@ -528,7 +527,6 @@ export function ResultsPage({ onLogout, onNavigateToDashboard }: ResultsPageProp
         </div>
       </div>
 
-      <AppFooter />
     </div>
   );
 }

@@ -29,7 +29,6 @@ import {
 } from 'lucide-react';
 import { Badge } from '../ui/badge';
 import { AppHeader } from '../AppHeader';
-import { AppFooter } from '../AppFooter';
 import {
   fadeInUp,
   staggerContainer,
@@ -438,7 +437,6 @@ export function LegalPage({ pageType, onBack }: LegalPageProps) {
         </motion.button>
       )}
 
-      <AppFooter />
     </div>
   );
 }
