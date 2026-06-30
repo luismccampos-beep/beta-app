@@ -716,9 +716,7 @@ export function LandingPage({ onGetStarted }: LandingPageProps) {
             </span>
           </motion.div>
 
-          <h3 className="text-5xl sm:text-6xl md:text-8xl lg:text-9xl font-black text-gray-900 dark:text-white leading-[1.1] tracking-[-0.05em] text-balance italic overflow-visible">
-            {t('cta')}
-          </h3>
+          <AnimatedTitle text={t('cta')} />
 
           <p className="text-2xl md:text-3xl text-gray-500 dark:text-gray-400 max-w-3xl mx-auto leading-relaxed font-semibold">
             {t('ctaDesc')}
