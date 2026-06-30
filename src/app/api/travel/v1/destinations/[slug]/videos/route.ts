@@ -1,12 +1,11 @@
 import { NextResponse } from 'next/server';
 import { z } from 'zod';
 import { apiHandler } from '@/lib/api/handler';
-import { withRateLimit } from '@/lib/api/rate-limit-guard';
 import { prisma } from '@/lib/prisma';
 
 export const dynamic = 'force-dynamic';
 
-export const GET = apiHandler(withRateLimit(async (_req: Request, ctx) => {
+export const GET = apiHandler(async (_req: Request, ctx) => {
   const slug = z.string().min(1).max(100).parse((await ctx.params).slug);
 
   const dest = await prisma.wvDestination.findFirst({
@@ -38,4 +37,4 @@ export const GET = apiHandler(withRateLimit(async (_req: Request, ctx) => {
   }));
 
   return NextResponse.json({ ok: true, count: videos.length, videos });
-}));
+});

@@ -1,7 +1,7 @@
 'use client';
 
-import { useMemo, useCallback } from 'react';
-import { useRouter } from 'next/navigation';
+import { useMemo } from 'react';
+import { usePathname, useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { useSession } from 'next-auth/react';
 import { useTranslations } from 'next-intl';
@@ -11,46 +11,36 @@ import { LanguageSwitcher } from '../../components/LanguageSwitcher';
 import { useTheme } from './ThemeProvider';
 
 export interface AppHeaderProps {
-  /** If true, show a "Back" button instead of the logo as a link */
-  showBack?: boolean;
-  /** Override the back action (defaults to router.back()) */
-  onBack?: () => void;
-  /** Show the logout button */
   showLogout?: boolean;
-  /** Logout handler */
   onLogout?: () => void;
-  /** Show the dashboard link */
   showDashboard?: boolean;
-  /** Dashboard handler */
   onDashboard?: () => void;
-  /** Show the preferences form button (when user is logged in) */
   showPreferences?: boolean;
-  /** Extra CSS classes for the header element */
+  onBack?: () => void;
   className?: string;
 }
 
 export function AppHeader({
-  showBack,
-  onBack,
   showLogout,
   onLogout,
   showDashboard,
   onDashboard,
   showPreferences,
+  onBack,
   className = '',
 }: AppHeaderProps) {
   const router = useRouter();
+  const pathname = usePathname();
   const t = useTranslations('common');
   const { isDark, toggle: toggleTheme } = useTheme();
   const { data: session } = useSession();
 
-  const handleBack = useCallback(() => {
-    if (onBack) {
-      onBack();
-    } else {
-      router.back();
-    }
-  }, [onBack, router]);
+  const showBack = (() => {
+    if (!pathname) return false;
+    if (onBack !== undefined) return true;
+    const staticPages = ['/about', '/contact', '/faq', '/legal', '/destinations'];
+    return staticPages.some(p => pathname === p || pathname.startsWith(p + '/'));
+  })();
 
   const initials = useMemo(() => {
     if (!session?.user) return null;
@@ -61,6 +51,14 @@ export function AppHeader({
     const second = (parts.length > 1 ? parts[parts.length - 1]?.[0] : parts[0]?.[1]) ?? '';
     return (first + String(second).toUpperCase()).slice(0, 2);
   }, [session]);
+
+  const handleBack = () => {
+    if (onBack) {
+      onBack();
+    } else {
+      router.back();
+    }
+  };
 
   return (
     <header
@@ -98,7 +96,6 @@ export function AppHeader({
 
           {/* Right side: Actions */}
           <div className="flex items-center gap-2 sm:gap-3">
-            {/* User avatar / dashboard link */}
             {session?.user && initials && showDashboard && (
               <button type="button"
                 onClick={onDashboard}
@@ -110,7 +107,6 @@ export function AppHeader({
               </button>
             )}
 
-            {/* Preferences button */}
             {session?.user && showPreferences && (
               <Button type="button"
                 variant="outline"
@@ -122,7 +118,6 @@ export function AppHeader({
               </Button>
             )}
 
-            {/* Theme Toggle */}
             <button type="button"
               onClick={toggleTheme}
               className="p-2.5 rounded-lg border border-gray-200 dark:border-gray-600 bg-white dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors min-h-11 min-w-11 flex items-center justify-center"
@@ -136,10 +131,8 @@ export function AppHeader({
               )}
             </button>
 
-            {/* Language Switcher */}
             <LanguageSwitcher />
 
-            {/* Logout */}
             {showLogout && onLogout && (
               <Button type="button"
                 variant="outline"

@@ -2,13 +2,14 @@ import type { ReactNode } from 'react';
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import { NextIntlClientProvider } from 'next-intl';
-import { getLocale, getMessages } from 'next-intl/server';
+import { getLocale, getMessages, getTranslations } from 'next-intl/server';
 
 import '../styles/index.css';
 import { Toaster } from './components/ui/sonner';
 import { Providers } from './components/Providers';
 import { AppBottomNav } from './components/BottomNav';
 import { CookieBanner } from './components/ui/CookieBanner';
+import { AppFooter } from './components/AppFooter';
 
 const inter = Inter({
   subsets: ['latin'],
@@ -48,6 +49,7 @@ const themeScript = `
 export default async function RootLayout({ children }: { children: ReactNode }) {
   const locale = await getLocale();
   const messages = await getMessages();
+  const t = await getTranslations('landing');
 
   return (
     <html lang={locale} suppressHydrationWarning className={inter.variable}>
@@ -66,6 +68,26 @@ export default async function RootLayout({ children }: { children: ReactNode }) 
             <div id="main-content" className="pb-16 sm:pb-0">
               {children}
             </div>
+            <AppFooter
+              footerBadges={{
+                soc2Certified: t('footerBadges.soc2Certified'),
+                encryption256: t('footerBadges.encryption256'),
+                gdprCompliant: t('footerBadges.gdprCompliant'),
+                iso27001: t('footerBadges.iso27001'),
+              }}
+              footerLinks={{
+                destinations: t('footerLinks.destinations'),
+                about: t('footerLinks.about'),
+                contact: t('footerLinks.contact'),
+                faq: t('footerLinks.faq'),
+                terms: t('footerLinks.terms'),
+                privacy: t('footerLinks.privacy'),
+                gdpr: t('footerLinks.gdpr'),
+                cancellations: t('footerLinks.cancellations'),
+                cookies: t('footerLinks.cookies'),
+              }}
+              footerCopyright={t('footerCopyright')}
+            />
             <AppBottomNav />
             <CookieBanner />
           </NextIntlClientProvider>
