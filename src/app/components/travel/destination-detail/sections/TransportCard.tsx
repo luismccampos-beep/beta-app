@@ -21,7 +21,7 @@ export function TransportCard({
     <AnimatedSection>
       <Card className="card-premium dark:bg-gray-900 group">
         <CardHeader>
-          <CardTitle className="flex items-center gap-3 text-xl font-black text-gray-950 dark:text-white uppercase tracking-tighter italic">
+          <CardTitle className="flex items-center gap-3 text-xl font-black text-gray-950 dark:text-white uppercase tracking-tighter">
             <div className="p-2 rounded-lg bg-sky-500/10 text-sky-600 dark:text-sky-400">
               <Plane className="h-5 w-5" />
             </div>
@@ -32,7 +32,7 @@ export function TransportCard({
           <p className="text-xs font-bold uppercase tracking-widest text-gray-500 dark:text-gray-400">{t('transportHint')}</p>
           <div className="rounded-2xl bg-sky-50/50 dark:bg-sky-950/20 p-6 border border-sky-100 dark:border-sky-900/50 shadow-sm">
             <div className="flex flex-wrap items-baseline gap-3 mb-2">
-              <span className="text-4xl font-black text-sky-700 dark:text-sky-400 tracking-tighter uppercase italic">{transporte.aeroporto.iata}</span>
+              <span className="text-4xl font-black text-sky-700 dark:text-sky-400 tracking-tighter uppercase">{transporte.aeroporto.iata}</span>
               <span className="text-lg font-black text-gray-900 dark:text-gray-100 tracking-tight">{transporte.aeroporto.nome}</span>
             </div>
             {transporte.aeroporto.municipio && (

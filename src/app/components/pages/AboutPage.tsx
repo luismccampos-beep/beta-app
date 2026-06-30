@@ -76,7 +76,7 @@ export function AboutPage({ onBack }: AboutPageProps) {
             <Rocket className="w-5 h-5 text-accent animate-pulse" />
             <span className="text-sm font-bold text-primary-900 dark:text-primary-100 uppercase tracking-[0.2em]">{t('pageTitle')}</span>
           </div>
-          <h1 className="text-5xl sm:text-7xl md:text-8xl font-black text-gray-950 dark:text-white leading-[1.1] tracking-tighter uppercase italic text-balance mb-8 overflow-visible">
+          <h1 className="text-5xl sm:text-7xl md:text-8xl font-black text-gray-950 dark:text-white leading-[1.1] tracking-tighter uppercase text-balance mb-8 overflow-visible">
             Nossa Missão é <span className="bg-gradient-to-r from-brand-gray via-orange to-green bg-clip-text text-transparent">Inspirar</span>
           </h1>
           <div className="h-1.5 w-32 bg-gradient-to-r from-brand-gray via-orange to-green mx-auto rounded-full shadow-glow-primary" />
@@ -93,7 +93,7 @@ export function AboutPage({ onBack }: AboutPageProps) {
             <div className="p-3 rounded-2xl bg-primary/10 text-primary dark:text-primary-300">
               <Heart className="w-8 h-8" />
             </div>
-            <h2 className="text-4xl sm:text-5xl font-black text-gray-950 dark:text-white tracking-tighter uppercase italic">{t('ourStoryTitle')}</h2>
+            <h2 className="text-4xl sm:text-5xl font-black text-gray-950 dark:text-white tracking-tighter uppercase">{t('ourStoryTitle')}</h2>
           </motion.div>
           
           <Card className="card-premium dark:bg-gray-900 group">
@@ -113,7 +113,7 @@ export function AboutPage({ onBack }: AboutPageProps) {
                 <div className="lg:w-1/2 p-8 sm:p-12 flex flex-col justify-center space-y-6">
                   <p className="text-lg sm:text-xl text-gray-700 dark:text-gray-300 leading-relaxed font-medium">{t('ourStory')}</p>
                   <p className="text-lg sm:text-xl text-gray-700 dark:text-gray-300 leading-relaxed font-medium">{t('ourStory2')}</p>
-                  <p className="text-xl sm:text-2xl font-black text-primary dark:text-primary-300 tracking-tight uppercase italic">{t('ourStory3')}</p>
+                  <p className="text-xl sm:text-2xl font-black text-primary dark:text-primary-300 tracking-tight uppercase">{t('ourStory3')}</p>
                 </div>
               </div>
             </CardContent>
@@ -128,7 +128,7 @@ export function AboutPage({ onBack }: AboutPageProps) {
             viewport={{ once: true }}
             className="flex items-center justify-end gap-3 mb-8 text-right"
           >
-            <h2 className="text-4xl sm:text-5xl font-black text-gray-950 dark:text-white tracking-tighter uppercase italic">{t('whereWereFromTitle')}</h2>
+            <h2 className="text-4xl sm:text-5xl font-black text-gray-950 dark:text-white tracking-tighter uppercase">{t('whereWereFromTitle')}</h2>
             <div className="p-3 rounded-2xl bg-accent/10 text-accent dark:text-accent-500">
               <MapPin className="w-8 h-8" />
             </div>
@@ -141,7 +141,7 @@ export function AboutPage({ onBack }: AboutPageProps) {
                 <div className="lg:w-1/2 p-8 sm:p-12 flex flex-col justify-center space-y-6">
                   <p className="text-lg sm:text-xl text-gray-700 dark:text-gray-300 leading-relaxed font-medium">{t('whereWereFromText1')}</p>
                   <p className="text-lg sm:text-xl text-gray-700 dark:text-gray-300 leading-relaxed font-medium">{t('whereWereFromText2')}</p>
-                  <p className="text-xl sm:text-2xl font-black text-accent-700 dark:text-accent-500 tracking-tight uppercase italic">{t('whereWereFromText3')}</p>
+                  <p className="text-xl sm:text-2xl font-black text-accent-700 dark:text-accent-500 tracking-tight uppercase">{t('whereWereFromText3')}</p>
                 </div>
                 {/* Castle Image */}
                 <div className="lg:w-1/2 relative min-h-[300px] overflow-hidden">
@@ -161,7 +161,7 @@ export function AboutPage({ onBack }: AboutPageProps) {
         {/* Core Values */}
         <section className="mb-16 sm:mb-24">
           <div className="text-center mb-12 sm:mb-16">
-            <h2 className="text-4xl sm:text-6xl font-black text-gray-950 dark:text-white tracking-tighter uppercase italic mb-4">{t('valuesTitle')}</h2>
+            <h2 className="text-4xl sm:text-6xl font-black text-gray-950 dark:text-white tracking-tighter uppercase mb-4">{t('valuesTitle')}</h2>
             <p className="text-xl text-gray-600 dark:text-gray-400 font-medium max-w-2xl mx-auto">{t('valuesSubtitle')}</p>
           </div>
 
@@ -211,7 +211,7 @@ export function AboutPage({ onBack }: AboutPageProps) {
                 <div className="p-3 rounded-2xl bg-orange/10 text-orange w-fit">
                   <Users className="w-8 h-8" />
                 </div>
-                <h2 className="text-4xl sm:text-6xl font-black text-gray-950 dark:text-white tracking-tighter uppercase italic">{t('leadershipTitle')}</h2>
+                <h2 className="text-4xl sm:text-6xl font-black text-gray-950 dark:text-white tracking-tighter uppercase">{t('leadershipTitle')}</h2>
                 <p className="text-xl text-gray-600 dark:text-gray-400 font-medium leading-relaxed">{t('leadershipSubtitle')}</p>
               </div>
               
@@ -232,7 +232,7 @@ export function AboutPage({ onBack }: AboutPageProps) {
                       </motion.div>
                       <div className="space-y-4 flex-1">
                         <div>
-                          <h3 className="text-2xl sm:text-3xl font-black text-gray-950 dark:text-white tracking-tighter uppercase italic mb-1">{t('ceoName')}</h3>
+                          <h3 className="text-2xl sm:text-3xl font-black text-gray-950 dark:text-white tracking-tighter uppercase mb-1">{t('ceoName')}</h3>
                           <p className="text-lg font-black bg-gradient-to-r from-brand-gray via-orange to-green bg-clip-text text-transparent uppercase tracking-widest flex items-center gap-2">
                             <Briefcase className="w-4 h-4 text-orange" />
                             {t('ceoTitle')}
@@ -241,7 +241,7 @@ export function AboutPage({ onBack }: AboutPageProps) {
                         <p className="text-lg text-gray-600 dark:text-gray-300 leading-relaxed font-medium">{t('ceoBio')}</p>
                         <div className="flex flex-wrap items-center gap-4">
                           <motion.div whileHover={{ scale: 1.05 }}>
-                            <Badge className="bg-green-500/10 text-green-700 dark:text-green-400 border border-green-500/20 px-4 py-2 font-black uppercase tracking-tighter italic">
+                            <Badge className="bg-green-500/10 text-green-700 dark:text-green-400 border border-green-500/20 px-4 py-2 font-black uppercase tracking-tighter">
                               <CheckCircle2 className="w-4 h-4 mr-2" />
                               {t('ceoAvailable')}
                             </Badge>
@@ -274,7 +274,7 @@ export function AboutPage({ onBack }: AboutPageProps) {
         {/* Certifications & Partners */}
         <section className="mb-16 sm:mb-24 space-y-12">
           <div className="text-center">
-            <h2 className="text-4xl sm:text-6xl font-black text-gray-950 dark:text-white tracking-tighter uppercase italic mb-4">Confiança & Excelência</h2>
+            <h2 className="text-4xl sm:text-6xl font-black text-gray-950 dark:text-white tracking-tighter uppercase mb-4">Confiança & Excelência</h2>
             <p className="text-xl text-gray-600 dark:text-gray-400 font-medium max-w-2xl mx-auto">Parcerias e certificações que garantem a melhor experiência para você.</p>
           </div>
 
@@ -361,7 +361,7 @@ export function AboutPage({ onBack }: AboutPageProps) {
           <Card className="card-premium dark:bg-gray-950 group border-0 shadow-2xl overflow-hidden relative">
             <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-brand-gray via-orange to-green" />
             <CardContent className="p-12 sm:p-20 text-center space-y-10">
-              <h2 className="text-4xl sm:text-6xl md:text-7xl font-black text-gray-950 dark:text-white tracking-tighter uppercase italic leading-[1.1] overflow-visible">{t('contactTitle')}</h2>
+              <h2 className="text-4xl sm:text-6xl md:text-7xl font-black text-gray-950 dark:text-white tracking-tighter uppercase leading-[1.1] overflow-visible">{t('contactTitle')}</h2>
               <p className="text-xl sm:text-2xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto font-medium">{t('contactSubtitle')}</p>
               
               <div className="grid sm:grid-cols-3 gap-8 py-4">
@@ -418,7 +418,7 @@ export function AboutPage({ onBack }: AboutPageProps) {
                   />
                 </div>
                 <div className="min-w-0 flex-1">
-                  <h2 id="ceo-dialog-title" className="text-xl sm:text-3xl font-black text-white truncate tracking-tighter uppercase italic">{t('ceoBioTitle')}</h2>
+                  <h2 id="ceo-dialog-title" className="text-xl sm:text-3xl font-black text-white truncate tracking-tighter uppercase">{t('ceoBioTitle')}</h2>
                   <p className="text-white/90 text-sm sm:text-base font-bold uppercase tracking-widest truncate">{t('ceoName')} · {t('ceoTitle')}</p>
                 </div>
               </div>
@@ -445,7 +445,7 @@ export function AboutPage({ onBack }: AboutPageProps) {
                     <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${section.color} flex items-center justify-center flex-shrink-0 shadow-lg`}>
                       <section.icon className="w-6 h-6 text-white" />
                     </div>
-                    <h3 className="text-xl sm:text-2xl font-black text-gray-950 dark:text-white tracking-tighter uppercase italic">{section.title}</h3>
+                    <h3 className="text-xl sm:text-2xl font-black text-gray-950 dark:text-white tracking-tighter uppercase">{section.title}</h3>
                   </div>
                   <p className="text-base sm:text-lg text-gray-700 dark:text-gray-300 leading-relaxed font-medium">
                     {section.text}

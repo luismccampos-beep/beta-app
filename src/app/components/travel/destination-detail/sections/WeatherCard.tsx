@@ -17,7 +17,7 @@ export function WeatherCard({
     <AnimatedSection>
       <Card className="card-premium dark:bg-gray-900 group">
         <CardHeader>
-          <CardTitle className="flex items-center gap-3 text-xl font-black text-gray-950 dark:text-white uppercase tracking-tighter italic">
+          <CardTitle className="flex items-center gap-3 text-xl font-black text-gray-950 dark:text-white uppercase tracking-tighter">
             <div className="p-2 rounded-lg bg-sky-500/10 text-sky-500">
               <CloudSun className="h-5 w-5" />
             </div>

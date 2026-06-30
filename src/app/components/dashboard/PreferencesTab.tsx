@@ -131,7 +131,7 @@ export function PreferencesTab() {
       animate={{ opacity: 1, y: 0 }}
     >
       <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-8">
-        <h2 className="text-4xl font-black text-gray-950 dark:text-white tracking-tighter uppercase italic">{t('travelPreferences')}</h2>
+        <h2 className="text-4xl font-black text-gray-950 dark:text-white tracking-tighter uppercase">{t('travelPreferences')}</h2>
         <Button
           onClick={() => (window.location.href = '/preferences/edit')}
           variant="brand"

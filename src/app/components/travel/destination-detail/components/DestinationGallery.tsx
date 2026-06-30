@@ -60,7 +60,7 @@ export function DestinationGallery({
   return (
     <>
       <div className="space-y-6">
-        <h3 className="text-4xl font-black text-gray-950 dark:text-white uppercase tracking-tighter italic flex items-center gap-3">
+        <h3 className="text-4xl font-black text-gray-950 dark:text-white uppercase tracking-tighter flex items-center gap-3">
           <div className="p-2 rounded-lg bg-primary/10 text-primary dark:text-primary-300">
             <Camera className="h-6 w-6" />
           </div>

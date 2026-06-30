@@ -68,7 +68,7 @@ export function DestinationTipsPanel({
 
   return (
     <div className="space-y-8">
-      <h2 className="text-4xl font-black text-gray-950 dark:text-white tracking-tighter uppercase italic flex items-center gap-3">
+      <h2 className="text-4xl font-black text-gray-950 dark:text-white tracking-tighter uppercase flex items-center gap-3">
         <div className="p-2 rounded-lg bg-primary/10 text-primary dark:text-primary-300">
           <Shield className="h-6 w-6" />
         </div>
@@ -98,7 +98,7 @@ export function DestinationTipsPanel({
               className="rounded-2xl border border-gray-100 dark:border-gray-800 bg-white/50 dark:bg-gray-900/50 backdrop-blur-md overflow-hidden hover:shadow-xl transition-all duration-300 group"
             >
               <CollapsibleTrigger className="flex w-full items-center justify-between gap-3 px-6 py-4 text-left hover:bg-gray-50/50 dark:hover:bg-gray-800/50 transition-colors">
-                <span className="flex items-center gap-3 font-black text-base uppercase tracking-tighter text-gray-950 dark:text-white italic">
+                <span className="flex items-center gap-3 font-black text-base uppercase tracking-tighter text-gray-950 dark:text-white">
                   <div className={cn('p-2 rounded-lg bg-white/80 dark:bg-black/20 group-hover:scale-110 transition-transform', meta.accent)}>
                     <Icon className="h-5 w-5 shrink-0" />
                   </div>

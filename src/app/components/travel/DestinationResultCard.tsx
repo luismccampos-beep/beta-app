@@ -116,7 +116,7 @@ export function DestinationResultCard({ result, href, labels, tipPreviews = [] }
 
         {/* Destination name overlay */}
         <div className="absolute bottom-0 left-0 right-0 p-5">
-          <h3 className="text-2xl font-black leading-tight text-white tracking-tighter uppercase italic drop-shadow-2xl">{result.destination}</h3>
+          <h3 className="text-2xl font-black leading-tight text-white tracking-tighter uppercase drop-shadow-2xl">{result.destination}</h3>
           <p className="mt-1 flex items-center gap-1.5 text-sm text-white/90 font-bold uppercase tracking-wider">
             <MapPin className="h-4 w-4 text-orange shrink-0" />
             {result.country}, {result.continent}
@@ -267,7 +267,7 @@ export function DestinationResultCard({ result, href, labels, tipPreviews = [] }
             className="shrink-0 gap-2 h-12 px-6 shadow-glow-primary rounded-xl"
           >
             <Link href={href}>
-              <span className="font-black italic uppercase tracking-tighter text-xs">{labels.viewDestination}</span>
+              <span className="font-black uppercase tracking-tighter text-xs">{labels.viewDestination}</span>
               <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
             </Link>
           </Button>
