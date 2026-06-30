@@ -9,7 +9,7 @@ function addCacheHeaders(response: Response, req: Request): Response {
   if (response.headers.has('Cache-Control')) return response;
 
   const headers = new Headers(response.headers);
-  headers.set('Cache-Control', 'public, max-age=60, stale-while-revalidate=600');
+  headers.set('Cache-Control', 'private, no-store, max-age=0');
   headers.set('Vary', 'Accept-Encoding');
 
   return new Response(response.body, {

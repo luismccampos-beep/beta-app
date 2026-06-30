@@ -16,7 +16,8 @@
           "NEXT_PUBLIC_*",
           "DATABASE_URL",
           "NEXTAUTH_URL",
-          "NEXTAUTH_SECRET"
+          "AUTH_SECRET",
+          "AUTH_URL"
         ]
       },
       "dev": {

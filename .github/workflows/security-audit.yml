@@ -1,0 +1,74 @@
+name: Security Audit
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  schedule:
+    - cron: '0 6 * * 1' # Weekly on Monday at 06:00 UTC
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  security-events: write
+
+jobs:
+  npm-audit:
+    name: npm audit
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      - run: npm ci
+
+      - name: Run npm audit
+        run: npm audit --audit-level=moderate
+        continue-on-error: true
+
+      - name: Run npm audit (strict)
+        run: npm audit --audit-level=high
+        continue-on-error: true
+
+  osv-scanner:
+    name: OSV Scanner
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v5
+
+      - name: Install OSV Scanner
+        run: |
+          curl -sS https://raw.githubusercontent.com/google/osv-scanner/main/scripts/install.sh | sh
+          echo "./bin" >> $GITHUB_PATH
+
+      - name: Run OSV Scanner
+        run: osv-scanner --lockfile package-lock.json --format json > osv-report.json || true
+        continue-on-error: true
+
+      - name: Upload OSV report
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: osv-report
+          path: osv-report.json
+          retention-days: 30
+
+  dependency-review:
+    name: Dependency Review
+    runs-on: ubuntu-latest
+    if: github.event_name == 'pull_request'
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/dependency-review-action@v4
+        with:
+          fail-on-severity: high
+          comment-summary-in-pr: always

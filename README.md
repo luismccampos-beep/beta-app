@@ -50,7 +50,7 @@
 
 | Technology | Version | Purpose |
 |---|---|---|
-| Node.js | >=18 | Runtime |
+| Node.js | >=20 | Runtime |
 | Next.js API Routes | 15.5.2 | API endpoints |
 | Prisma ORM | 6.17.1 | Database ORM |
 | PostgreSQL (Neon) | 16 | Database principal |
@@ -90,7 +90,7 @@
 ### Prerequisites
 
 ```bash
-node --version   # >=18
+node --version   # >=20
 npm --version    # >=10
 docker           # optional, for local Postgres/Redis
 ```
@@ -126,57 +126,64 @@ npm run start
 ## Project Structure
 
 ```
-├── .github/workflows/       # CI/CD (deploy-migrations.yml)
-├── configs/                 # TypeScript shared configs
-├── data/                    # Data files, dumps, caches
+├── .github/workflows/         # CI/CD
+│   ├── ci.yml                 # Lint, type-check, test, build, e2e
+│   ├── deploy-migrations.yml  # Migrations + Vercel deploy
+│   ├── security-audit.yml     # npm audit, osv-scanner, dependency review
+│   ├── chromatic.yml          # Storybook visual regression
+│   └── accessibility.yml      # axe-core a11y audit
+├── apps/                      # Application packages (npm workspaces)
+│   └── web/                   # (placeholder for future monorepo split)
+├── configs/                   # TypeScript shared configs
+├── data/                      # Raw data: dumps, caches, exports
 │   ├── cost-of-living/
 │   ├── geonames-cache/
-│   ├── google-hotels/
 │   ├── hotels/
 │   ├── opentripplanner/
 │   ├── pbf/
 │   ├── reports/
 │   ├── transportation/
 │   └── wikivoyage/
-├── docs/                    # Technical documentation
-│   └── lighthouse/          # Lighthouse audit reports
-├── e2e/                     # Playwright E2E tests
-├── google-maps-scraper/     # Google Maps scraping service
-├── ml-service/              # Python ML microservice
+├── docs/                      # Technical documentation
+│   └── lighthouse/
+├── e2e/                       # Playwright E2E tests
+├── ml-service/                # Python FastAPI ML microservice
 │   ├── app/
-│   │   ├── api/routes/      # Recommendations, chat, RAG, etc.
-│   │   ├── ml/              # ML models & services
-│   │   ├── models/          # Model definitions
-│   │   └── pipelines/       # Training pipelines
+│   │   ├── api/routes/
+│   │   ├── ml/
+│   │   ├── models/
+│   │   └── pipelines/
 │   ├── Dockerfile
 │   └── pyproject.toml
-├── packages/
-│   ├── auth/                # @akmleva/auth (auth module)
-│   ├── shared/              # @akmleva/shared (types, utils, i18n)
-│   └── ui/                  # @akmleva/ui (components, design tokens)
-├── prisma/
-│   ├── migrations/          # DB migration history
-│   └── schema.prisma        # Full schema (200+ models)
-├── public/                  # Static assets
-│   └── videos/
-├── scripts/                 # 150+ automation scripts
-│   ├── google-hotels/
+├── packages/                  # Shared packages (npm workspaces)
+│   ├── db/                    # @akmleva/db — Prisma client
+│   ├── shared/                # @akmleva/shared — shared utilities
+│   └── ui/                    # @akmleva/ui — shared UI components
+├── prisma/                    # Prisma schema & migrations
+│   ├── migrations/
+│   └── schema.prisma          # 200+ models
+├── public/                    # Static assets
+├── scripts/                   # 150+ automation scripts (legacy location)
+│   ├── lib/                   # 23 shared utility modules
 │   └── __tests__/
-├── src/
-│   ├── app/                 # Next.js App Router
-│   │   ├── [locale]/        # i18n routes
-│   │   ├── api/             # API routes
+├── src/                       # Next.js App Router
+│   ├── app/
+│   │   ├── [locale]/          # i18n routes
+│   │   ├── api/               # API routes
 │   │   ├── dashboard/
 │   │   ├── destinations/
 │   │   └── ...
-│   ├── components/          # Shared components
-│   ├── lib/                 # Core libraries
+│   ├── components/
+│   ├── lib/
 │   │   ├── api/
 │   │   ├── i18n/
 │   │   ├── payment/
 │   │   ├── travel/
 │   │   └── user/
-│   └── messages/            # i18n translations
+│   └── messages/              # i18n translations (pt, en, es, fr)
+├── tools/                     # Workspace tools (npm workspaces)
+│   ├── data-pipeline/         # ETL scripts + pipeline package.json
+│   └── geocoding/             # Geocoding scripts
 ├── docker-compose.yml
 ├── next.config.js
 ├── turbo.json
@@ -196,6 +203,7 @@ npm run start
 |---|---|
 | `docs/AUDIT-AKMLEVA.md` | Technical audit: architecture, DB, services, roadmap |
 | `docs/Auditoria-2.md` | Second audit: security, stack, improvements plan |
+| `docs/DATA_COMPLIANCE.md` | Data source compliance, attribution, and licensing |
 | `docs/CULTURAL_DATA_ARCHITECTURE.md` | Cultural data ingestion (museums, UNESCO, OSM) |
 | `docs/DESTINATION-CARD-MELHORIAS.md` | Destination card/media improvements |
 | `docs/ENHANCED_TRAVEL_PREFERENCES_REFACTORING.md` | Refactor plan for 2k-line form component |
@@ -218,7 +226,15 @@ npm run start
 
 ## Scripts Reference
 
-### Development
+Scripts are organized into npm workspace packages for maintainability:
+
+| Workspace | Location | Purpose |
+|---|---|---|
+| Root | `./package.json` | Web app dev, build, test, DB |
+| Data Pipeline | `tools/data-pipeline/package.json` | Travel data ETL pipeline |
+| Scrapers | `tools/scrapers/package.json` | Google Maps & Google Hotels scraping |
+
+### Development (Root)
 
 ```bash
 npm run dev                   # Start Next.js dev server
@@ -228,7 +244,7 @@ npm run lint                  # ESLint (zero warnings)
 npm run type-check            # TypeScript validation
 ```
 
-### Database (Prisma)
+### Database (Root)
 
 ```bash
 npm run db:migrate            # Deploy migrations to database
@@ -239,118 +255,7 @@ npm run db:studio             # Open Prisma Studio
 npm run db:resolve            # Resolve failed migrations
 ```
 
-### Wikivoyage Extraction
-
-```bash
-npm run wikivoyage:extract         # Parse both PT + EN dumps
-npm run wikivoyage:extract:pt      # Parse Portuguese dump only
-npm run wikivoyage:extract:en      # Parse English dump only
-```
-
-### Travel Bundle Pipeline
-
-Build and enrich the destination catalog from Wikivoyage + external sources:
-
-```bash
-npm run travel:demo:build           # Build bundle from parsed Wikivoyage
-npm run travel:demo:cards           # Enrich destination cards
-npm run travel:demo:enrich-external # Enrich with external data
-npm run travel:demo:enrich-budget   # Enrich cost-of-living data
-npm run travel:demo:enrich-transport # Enrich transport data
-npm run travel:demo:rebuild-flights # Rebuild flight routes
-npm run travel:demo:enrich-weather  # Enrich weather data
-npm run travel:demo:enrich-hotels   # Enrich hotels from data files
-npm run travel:demo:enrich-hotels-from-db # Enrich hotels from database
-npm run travel:demo:enrich-cultural-pois  # Enrich cultural POIs
-npm run travel:demo:enrich-hospitals-police # Enrich hospitals & police
-npm run travel:demo:enrich-rental-cars     # Enrich rental car data
-npm run travel:demo:enrich-overture        # Enrich Overture Maps POIs
-npm run travel:demo:enrich-wikidata-pois   # Enrich Wikidata POIs
-npm run travel:demo:enrich-unsplash        # Enrich Unsplash images
-npm run travel:demo:enrich-pipeline        # Run full enrichment pipeline
-npm run travel:demo:patch-countries        # Patch country data
-```
-
-### Catalog & Database Import
-
-```bash
-npm run travel:catalog:import          # Import bundle to database
-npm run travel:catalog:sync-images     # Sync images to DB
-npm run travel:catalog:tag-categorias  # Tag destination categories
-npm run travel:catalog:classify-hotels # Classify hotel types
-npm run travel:catalog:verify-hotels-geo    # Verify hotel geocoding
-npm run travel:catalog:validate-hotels-coords # Validate coordinates
-```
-
-### Geocoding
-
-```bash
-npm run travel:catalog:geocode-hotels:parallel  # Parallel geocoding (Node)
-npm run travel:catalog:geocode-hotels:gmaps     # Via Google Maps API
-npm run travel:catalog:geocode-hotels:combined  # Combined (multi-provider)
-npm run travel:catalog:geocode-from-geonames    # Via GeoNames
-npm run travel:catalog:geocode-dest-geonames    # Destinations via GeoNames
-npm run travel:catalog:geocode-dest-centroid    # Via hotel centroid
-```
-
-### External Data Fetching
-
-```bash
-npm run travel:fetch:wikidata-cultural      # UNESCO / cultural data
-npm run travel:fetch:overpass-destinations  # OpenStreetMap POIs
-npm run travel:fetch:wikipedia-airports     # Airport data
-npm run travel:fetch:wikipedia-hotels       # Hotel data
-npm run travel:fetch:wikipedia-hotel-chains # Hotel chains
-npm run travel:import:pop-france            # France population data
-npm run travel:import:cultural-all          # All cultural data
-```
-
-### Wiki Pipeline (destinations without hotel wiki)
-
-```bash
-npm run travel:wiki:pipeline   # Full pipeline: search → apply → sync DB
-npm run travel:wiki:status     # Check pipeline status
-```
-
-### Google Hotels Scraper
-
-```bash
-npm run travel:google-hotels:pipeline   # Run full scraper
-npm run travel:google-hotels:listings   # Scrape listings
-npm run travel:google-hotels:details    # Scrape details
-```
-
-### Google Maps Scraper
-
-```bash
-npm run travel:gmaps-scraper:start   # Start API server
-npm run travel:gmaps-scraper:docker  # Start Docker container
-```
-
-### ML Service
-
-```bash
-npm run travel:ml:export  # Export features from bundle
-npm run travel:ml:train   # Train destination embeddings
-npm run travel:ml:build   # Export + train (full pipeline)
-```
-
-### Images
-
-```bash
-npm run travel:images:enrich          # Enrich Unsplash images
-npm run travel:images:dedupe          # Deduplicate images
-npm run travel:images:status          # Check enrichment status
-```
-
-### Routing Engines
-
-```bash
-npm run valhalla:up   # Start Valhalla (OSM routing)
-npm run otp:up        # Start OpenTripPlanner (transit routing)
-```
-
-### Testing
+### Testing (Root)
 
 ```bash
 npm test                  # Run all unit/integration tests
@@ -358,6 +263,71 @@ npm run test:changed      # Run tests on changed files only
 npm run test:watch        # Watch mode
 npm run e2e               # Playwright E2E tests
 npm run e2e:ui            # Playwright interactive UI
+```
+
+### Data Pipeline (`tools/data-pipeline/`)
+
+Run from the workspace directory or use `npm run -w`:
+
+```bash
+cd tools/data-pipeline
+
+# Wikivoyage Extraction
+npm run wikivoyage:extract         # Parse both PT + EN dumps
+npm run wikivoyage:extract:pt      # Parse Portuguese dump only
+npm run wikivoyage:extract:en      # Parse English dump only
+
+# Travel Bundle Pipeline
+npm run travel:demo:build           # Build bundle from parsed Wikivoyage
+npm run travel:demo:cards           # Enrich destination cards
+npm run travel:demo:enrich-external # Enrich with external data
+npm run travel:demo:enrich-transport
+npm run travel:demo:enrich-budget
+npm run travel:demo:rebuild-flights
+npm run travel:demo:enrich-weather
+npm run travel:demo:enrich-hotels
+npm run travel:demo:enrich-hotels-from-db
+npm run travel:demo:enrich-cultural-pois
+npm run travel:demo:enrich-hospitals-police
+npm run travel:demo:enrich-rental-cars
+npm run travel:demo:enrich-overture
+npm run travel:demo:enrich-pipeline  # Full enrichment pipeline
+npm run travel:demo:patch-countries
+
+# Catalog & Database Import
+npm run travel:catalog:import
+npm run travel:catalog:sync-images
+npm run travel:catalog:tag-categorias
+npm run travel:catalog:classify-hotels
+npm run travel:catalog:verify-hotels-geo
+
+# Geocoding
+npm run travel:catalog:geocode-hotels:parallel
+npm run travel:catalog:geocode-hotels:combined
+npm run travel:catalog:geocode-from-geonames
+npm run travel:catalog:geocode-dest-geonames
+
+# External Data Fetching
+npm run travel:fetch:wikidata-cultural
+npm run travel:fetch:wikipedia-airports
+npm run travel:fetch:wikipedia-hotels
+npm run travel:fetch:wikipedia-hotel-chains
+
+# Wiki Pipeline
+npm run travel:wiki:pipeline
+npm run travel:wiki:status
+
+# Images
+npm run travel:images:enrich
+npm run travel:images:dedupe
+npm run travel:images:status
+
+# ML Feature Export
+npm run travel:ml:export
+
+# Routing Engines
+npm run valhalla:up
+npm run otp:up
 ```
 
 ---
@@ -481,8 +451,8 @@ Key variables (see `.env.example` for full list):
 | `DATABASE_URL` | PostgreSQL connection string (Neon) |
 | `DATABASE_URL_UNPOOLED` | Direct connection (bypasses Pg Bouncer) |
 | `REDIS_URL` | Upstash Redis URL |
-| `NEXTAUTH_SECRET` | Auth.js encryption secret |
-| `NEXTAUTH_URL` | App URL for auth callbacks |
+| `NEXTAUTH_SECRET` | Auth.js encryption secret (use `AUTH_SECRET` in code) |
+| `NEXTAUTH_URL` | App URL for auth callbacks (use `AUTH_URL` in code) |
 | `SENTRY_DSN` | Sentry error tracking |
 | `RESEND_API_KEY` | Email sending |
 | `UNSPLASH_ACCESS_KEY` | Destination images |

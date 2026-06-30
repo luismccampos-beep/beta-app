@@ -1,4 +1,0 @@
-# Google Hotels scrapers (Crawlbase + BeautifulSoup)
-# py -3 -m pip install -r scripts/requirements-google-hotels.txt
-crawlbase>=1.0.0
-beautifulsoup4>=4.12.0

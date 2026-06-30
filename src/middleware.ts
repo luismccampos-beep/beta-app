@@ -78,9 +78,8 @@ async function fetchRedirects(): Promise<Map<string, UrlRedirect>> {
     const baseUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 
       (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : 'http://localhost:3000');
     
-    const response = await fetchWithTimeout(`${baseUrl}/api/admin/url-redirects?activeOnly=true&limit=500`, {
+    const response = await fetchWithTimeout(`${baseUrl}/api/internal/url-redirects?activeOnly=true&limit=500`, {
       headers: {
-        // Add internal API key for server-side requests
         'x-api-key': process.env.INTERNAL_API_KEY || '',
       }
     });
@@ -164,7 +163,7 @@ async function flushLogs() {
     const baseUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 
       (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : 'http://localhost:3000');
     
-    await fetchWithTimeout(`${baseUrl}/api/admin/404-log`, {
+    await fetchWithTimeout(`${baseUrl}/api/internal/404-log`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -220,10 +219,14 @@ export async function middleware(request: NextRequest) {
   }
 
   if (isAdminRoute && session?.user?.role !== 'admin') {
-    return NextResponse.json(
-      { ok: false, error: 'Forbidden', code: 'FORBIDDEN' },
-      { status: 403 }
-    );
+    // Allow internal server-to-server calls via x-api-key
+    const isInternalCall = request.headers.get('x-api-key') === process.env.INTERNAL_API_KEY;
+    if (!isInternalCall) {
+      return NextResponse.json(
+        { ok: false, error: 'Forbidden', code: 'FORBIDDEN' },
+        { status: 403 }
+      );
+    }
   }
   
   // Skip static files and _next internal paths
@@ -306,7 +309,7 @@ export async function middleware(request: NextRequest) {
   
   if (redirect) {
     // Update visit count asynchronously (fire and forget)
-    fetch(`/api/admin/url-redirects/${redirect.id}/visit`, {
+    fetch(`/api/internal/url-redirects/${redirect.id}/visit`, {
       method: 'POST',
       headers: { 'x-api-key': process.env.INTERNAL_API_KEY || '' },
     }).catch(() => {}); // Ignore errors
