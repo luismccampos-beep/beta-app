@@ -18,6 +18,9 @@ jobs:
     name: npm audit
     runs-on: ubuntu-latest
     timeout-minutes: 10
+    env:
+      DATABASE_URL: ${{ secrets.DATABASE_URL || 'postgresql://placeholder:placeholder@localhost:5432/placeholder' }}
+      DATABASE_URL_UNPOOLED: ${{ secrets.DATABASE_URL_UNPOOLED || secrets.DATABASE_URL || 'postgresql://placeholder:placeholder@localhost:5432/placeholder' }}
     steps:
       - uses: actions/checkout@v5
 
@@ -43,10 +46,14 @@ jobs:
     steps:
       - uses: actions/checkout@v5
 
-      - name: Run OSV Scanner
-        uses: google/osv-scanner-action/osv-scanner-action@v1
+      - uses: actions/setup-node@v5
         with:
-          scan-args: --lockfile package-lock.json --format json > osv-report.json || true
+          node-version: 20
+          cache: 'npm'
+
+      - name: Run OSV Scanner
+        run: |
+          npx osv-scanner --lockfile package-lock.json --format json > osv-report.json || true
         continue-on-error: true
 
       - name: Upload OSV report
