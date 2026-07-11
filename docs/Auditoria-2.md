@@ -112,9 +112,9 @@ A integração de `@upstash/ratelimit` indica consciência de segurança a níve
 
 Os ficheiros `.env.prod` e `.env.prod2` estão **comitados no repositório público**. Embora os valores das variáveis estejam maioritariamente vazios nesta versão, o ficheiro `.env.prod` contém:
 
-- **Um token OIDC Vercel válido** (`VERCEL_OIDC_TOKEN`) — um JWT assinado com informação real do projeto
-- O `project_id` Vercel (`prj_CQ51fgkHkh6n1rv732BQ6zhr2sKS`)
-- O `owner_id` e `team_id` da conta Vercel
+- **Um token OIDC válido** (`VERCEL_OIDC_TOKEN`) — um JWT assinado com informação real do projeto
+- O `project_id` (`prj_CQ51fgkHkh6n1rv732BQ6zhr2sKS`)
+- O `owner_id` e `team_id` da conta
 - A estrutura completa de todas as variáveis de ambiente de produção (nomes de variáveis de base de dados, chaves de API, etc.)
 - Metadados do ambiente de deployment (URLs, branches, SHAs de commits)
 
@@ -124,7 +124,7 @@ Mesmo que os valores estejam vazios, expor a estrutura de variáveis facilita at
 
 **Passo 1 — Revogar o token exposto imediatamente**
 
-Aceder ao dashboard Vercel → Settings → Tokens e revogar qualquer token associado ao projeto `beta-app`.
+Aceder ao dashboard de deployment → Settings → Tokens e revogar qualquer token associado ao projeto `beta-app`.
 
 **Passo 2 — Remover os ficheiros do repositório**
 
@@ -349,7 +349,7 @@ O `docker-compose.yml` existe — verificar se cobre o setup completo para um no
 
 ### 🔴 Imediato (hoje)
 
-1. Revogar o token OIDC Vercel exposto no dashboard Vercel
+1. Revogar o token OIDC exposto no dashboard de deployment
 2. Remover `.env.prod` e `.env.prod2` do repositório com `git rm --cached`
 3. Limpar o histórico com BFG Repo-Cleaner
 4. Atualizar o `.gitignore` para cobrir todos os ficheiros `.env.*`

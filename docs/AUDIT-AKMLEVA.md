@@ -2,7 +2,7 @@
 **Arquiteto de Software Sénior / Tech Lead**  
 **Data:** 2026-06-24  
 **Repositório:** https://github.com/luismccampos-beep/beta-app  
-**Stack:** Next.js 15 + TypeScript + Prisma + PostgreSQL/Neon + Tailwind v4 + shadcn/ui
+**Stack:** Next.js 15 + TypeScript + Prisma + PostgreSQL + Tailwind v4 + shadcn/ui
 
 ---
 
@@ -152,7 +152,7 @@ export type SearchDestinationsInput = z.infer<typeof SearchSchema>;
 
 **Local:** `src/lib/prisma.ts`
 
-O stub que retorna `[]` no build evita P1001 na Vercel – bom. Mas mascara queries que deviam ser `dynamic = 'force-dynamic'`.
+O stub que retorna `[]` no build evita erros de conexão – bom. Mas mascara queries que deviam ser `dynamic = 'force-dynamic'`.
 
 ```ts
 const throwOnMutation = (prop: string | symbol) => () => { ... }
@@ -309,7 +309,7 @@ CREATE INDEX reviews_destination_rating
 - [ ] Criar índice geo para `wv_hotels`
 - [ ] Adicionar índices compostos em `Booking` no `schema.prisma` → `prisma migrate`
 - [ ] Rodar `EXPLAIN ANALYZE` em `searchDestinationsDb` antes/depois – documentar ganho
-- [ ] Configurar `pg_stat_statements` no Neon para monitorar slow queries
+- [ ] Configurar `pg_stat_statements` na base de dados para monitorar slow queries
 - [ ] Avaliar Meilisearch / Typesense para full-text a sério (>50k destinos)
 
 ---
@@ -338,7 +338,7 @@ LIMIT 50;
 50x mais rápido, usa índice GiST.
 
 **Tarefas:**
-- [ ] Ativar PostGIS no Neon
+- [ ] Ativar PostGIS na base de dados
 - [ ] Adicionar coluna `geom` em `wv_hotels` e `wv_destinations`
 - [ ] Criar trigger para auto-popular `geom` a partir de lat/lon
 - [ ] Reescrever `getHotelsNearbyFromDb` com `ST_DWithin`

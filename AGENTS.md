@@ -30,7 +30,7 @@
 - **Middleware** (`src/middleware.ts`): i18n + auth guard + rate limiting (Upstash Redis) + CORS + URL redirects + 404 logging. Single monolithic file.
 - **API proxy**: `/api/v1/:path*` rewrites to `api.akmleva.pt` in production.
 - **Prisma**:
-  - PostgreSQL via Neon, `relationMode = "foreignKeys"`
+  - PostgreSQL, `relationMode = "foreignKeys"`
   - Build-time stub: during `NEXT_PHASE` ending in `-build` or when `DISABLE_SSR_FETCH=true`, a Proxy stub prevents DB connections. Mutations throw; reads resolve to `[]`.
   - Soft delete via `$extends` on ~15 models (Booking, User, Trip, etc.) — auto-filters `deletedAt: null` on read queries.
   - Schema: snake_case `@map` annotations, all new fields must follow.
@@ -47,16 +47,13 @@
 - Internal API tests: `src/app/api/internal/__tests__/routes.test.ts` (url-redirects, 404-log)
 - API handler tests: `src/lib/api/__tests__/handler.test.ts` (cache headers, validation)
 - Rate limit tests: `src/lib/__tests__/rate-limit.test.ts` (tier detection, IP extraction)
-- Cron route tests: `src/app/api/cron/__tests__/prisma-migrate.test.ts` (disabled route)
 - CI workflows: `ci.yml` (lint, type-check, test, build, e2e), `security-audit.yml` (npm audit, osv-scanner)
-
-## Key Conventions
+- Cron route tests: `src/app/api/cron/__tests__/prisma-migrate.test.ts` (disabled route)
 
 - ESLint: **zero warnings** — `--max-warnings 0`. jsx-a11y rules are extensive and enforced.
-- `legacy-peer-deps=true` (`.npmrc`). The Vercel `installCommand` also uses `--legacy-peer-deps`.
+- `legacy-peer-deps=true` (`.npmrc`).
 - Postgres on port **5433** (not 5432) via Docker Compose.
 - `.env.example` is a binary/git-crypted file. Copy to `.env` and fill in.
-- Multiple env files exist: `.env.prod`, `.env.prod2`, `.env.vercel`, `.env.vercel.production`.
 
 ## Data Pipeline (Scripts)
 
@@ -78,7 +75,7 @@ Postgres (5433), Redis (6379), Valhalla (8002), OTP (8080).
 
 ## CI/CD
 
-- GitHub Actions: `deploy-migrations.yml` — on push to `main`: CI checks (tsc, lint, tests) → `prisma migrate deploy` → `vercel --prod --yes`.
-- Uses `DATABASE_URL_UNPOOLED` for migrations (Neon direct URL, not pooler). Validated in CI.
+- GitHub Actions: `deploy-migrations.yml` — on push to `main`: CI checks (tsc, lint, tests) → `prisma migrate deploy`.
+- Uses `DATABASE_URL_UNPOOLED` for migrations (direct URL, not pooler). Validated in CI.
 - `chromatic.yml`: Storybook visual regression on pushes/PRs touching `src/`.
 - `accessibility.yml`: axe-core Playwright audit on PRs.

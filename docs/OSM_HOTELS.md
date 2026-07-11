@@ -16,7 +16,7 @@ Integração gratuita: **BizData** (Overpass), **Photon** (geocodificação), **
 ## Variáveis (opcionais)
 
 ```env
-# BIZDATA_API_BASE_URL="https://bizdata-web.vercel.app"
+# BIZDATA_API_BASE_URL=""
 # PHOTON_API_BASE_URL="https://photon.komoot.io"
 # PHOTON_USER_AGENT="beta-app-travel/1.0 (contact@example.com)"
 ```

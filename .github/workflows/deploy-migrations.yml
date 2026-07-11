@@ -32,6 +32,7 @@ jobs:
       # Provide fallback values for PRs from forks where secrets are unavailable
       DATABASE_URL: ${{ secrets.DATABASE_URL || 'postgresql://placeholder:placeholder@localhost:5432/placeholder' }}
       DATABASE_URL_UNPOOLED: ${{ secrets.DATABASE_URL_UNPOOLED || secrets.DATABASE_URL || 'postgresql://placeholder:placeholder@localhost:5432/placeholder' }}
+      NEXTAUTH_URL: ${{ secrets.NEXTAUTH_URL || 'http://localhost:3000' }}
     steps:
       - uses: actions/checkout@v5
         with:
@@ -72,20 +73,23 @@ jobs:
           node-version: 20
           cache: 'npm'
 
-      - name: Validate database env vars
+      - name: Validate auth and database env vars
         # MUST run BEFORE `npm ci`: postinstall triggers `prisma generate`,
         # which validates the schema and would die with P1012 before a later guard.
         run: |
           if [ -z "${DATABASE_URL:-}" ]; then
-            echo "::error::DATABASE_URL is empty. Configure at least DATABASE_URL in repo Settings → Secrets and variables → Actions (and ideally DATABASE_URL_UNPOOLED for Neon)."
+            echo "::error::DATABASE_URL is empty. Configure at least DATABASE_URL in repo Settings → Secrets and variables → Actions (and ideally DATABASE_URL_UNPOOLED for direct connection)."
             exit 1
           fi
           echo "DATABASE_URL length: ${#DATABASE_URL}"
           if [ -z "${DATABASE_URL_UNPOOLED:-}" ]; then
-            echo "::warning::DATABASE_URL_UNPOOLED empty — 'migrate status' and 'migrate deploy' will use the pooled URL, which fails on advisory locks. Add DATABASE_URL_UNPOOLED to GitHub secrets using the Neon direct (non-pooler) URL."
+            echo "::warning::DATABASE_URL_UNPOOLED empty — 'migrate status' and 'migrate deploy' will use the pooled URL, which fails on advisory locks. Add DATABASE_URL_UNPOOLED to GitHub secrets using the direct (non-pooler) URL."
           elif echo "$DATABASE_URL_UNPOOLED" | grep -q "\-pooler\."; then
-            echo "::error::DATABASE_URL_UNPOOLED contains '-pooler.' in the hostname. It must be the DIRECT Neon URL (without -pooler). Update the secret in GitHub Settings → Secrets and variables → Actions."
+            echo "::error::DATABASE_URL_UNPOOLED contains '-pooler.' in the hostname. It must be the DIRECT URL (without -pooler). Update the secret in GitHub Settings → Secrets and variables → Actions."
             exit 1
+          fi
+          if [ -z "${NEXTAUTH_URL:-}" ]; then
+            echo "::warning::NEXTAUTH_URL is not set. Auth callbacks may fail in production. Add NEXTAUTH_URL to GitHub Secrets."
           fi
 
       - run: npm ci
@@ -158,23 +162,3 @@ jobs:
               }]
             }'
 
-  deploy:
-    name: Deploy to Vercel
-    if: github.event_name == 'push'
-    needs: migrate
-    runs-on: ubuntu-latest
-    timeout-minutes: 10
-    steps:
-      - uses: actions/checkout@v5
-        with:
-          fetch-depth: 0
-
-      - name: Install Vercel CLI
-        run: npm install --global vercel
-
-      - name: Deploy to Vercel
-        run: vercel --prod --yes
-        env:
-          VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
-          VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
-          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}

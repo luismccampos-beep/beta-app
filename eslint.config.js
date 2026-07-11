@@ -116,6 +116,7 @@ export default [
       '.next/**',
       'dist/**',
       'build/**',
+      'storybook-static/**',
       'test-results/**',
       'playwright-report/**',
       'packages/**',

@@ -62,7 +62,7 @@
       }
     },
     "globalDependencies": ["package.json", "tsconfig.json", ".env", ".env.local"],
-    "globalEnv": ["NODE_ENV", "CI", "VERCEL", "VERCEL_ENV"],
+    "globalEnv": ["NODE_ENV", "CI"],
     "globalPassThroughEnv": ["NODE_ENV", "TERM", "SHELL", "PATH"]
   }
   

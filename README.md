@@ -192,7 +192,6 @@ npm run start
 ├── sentry.client.config.ts
 ├── sentry.server.config.ts
 ├── sentry.edge.config.ts
-└── vercel.json
 ```
 
 ---
@@ -210,7 +209,6 @@ npm run start
 | `docs/ENRICHMENT-SUMMARY.md` | Travel bundle enrichment results |
 | `docs/FORMULARIO-MELHORIAS.md` | UX/conversion audit for preferences form |
 | `docs/GEOCODING-SUMMARY.md` | Geocoding final state (95.3% hotels geocoded) |
-| `docs/NEON_BRANCHING_VERCEL.md` | Neon DB branching with Vercel + Prisma |
 | `docs/OSM_HOTELS.md` | OpenStreetMap hotel integration |
 | `docs/SCHEMA_MIGRATION_PLAN.md` | Planned DB migrations |
 | `docs/SCHEMA_REFACTORING_PHASE2.md` | Phase 2 schema refactoring |

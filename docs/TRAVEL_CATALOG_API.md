@@ -1,13 +1,13 @@
 # API interna — catálogo Wikivoyage
 
-Substitui o JSON monolítico (`bundle-wikivoyage.json`) por **Postgres (Vercel Neon)** quando `TRAVEL_CATALOG_SOURCE=db`.
+Substitui o JSON monolítico (`bundle-wikivoyage.json`) por **Postgres** quando `TRAVEL_CATALOG_SOURCE=db`.
 
 ## Porquê Postgres e não só JSON?
 
 | | Bundle JSON | Postgres |
 |--|-------------|----------|
 | Tamanho | ~100+ MB | Indexado, queries |
-| Deploy Vercel | Limite de bundle | Só ligação DB |
+| Deploy | Limite de bundle | Só ligação DB |
 | Filtros | Carregar tudo | `?q=&pais=` |
 | Atualização | Rebuild manual | `npm run travel:catalog:import` |
 
@@ -72,24 +72,11 @@ Rota legada: `/api/travel/destinations/[slug]` → delega para v1.
 - `col_cities` — custo de vida por cidade
 - `col_country_indices` — índice por país
 
-## Atualizar dados (cron Vercel)
+## Atualizar dados
 
 1. Rebuild bundle local: `npm run travel:demo:build` + enriquecimentos
 2. `npm run travel:catalog:import -- --fresh`
-3. Cron semanal (exemplo `vercel.json`):
-
-```json
-{
-  "crons": [
-    {
-      "path": "/api/cron/travel-catalog-import",
-      "schedule": "0 4 * * 0"
-    }
-  ]
-}
-```
-
-O endpoint cron deve validar `CRON_SECRET` e chamar o script de import (ou webhook CI).
+3. Agendar cron semanal via CI/CD ou webhook.
 
 ## Frontend
 
@@ -100,48 +87,46 @@ const dest = await res.json();
 
 Com `TRAVEL_CATALOG_SOURCE` não definido, as rotas v1 usam o **bundle JSON** (comportamento actual).
 
-## Vercel (produção) — corrigir países/hotéis
+## Produção — corrigir países/hotéis
 
-Os scripts `backfill-dest-geo` / `verify-hotels-geo` **só alteram a base onde correres** (local `localhost:5433` ou Neon).  
-A app em [beta-app-tau.vercel.app](https://beta-app-tau.vercel.app) **não herda** automaticamente o que corriste no PC.
+Os scripts `backfill-dest-geo` / `verify-hotels-geo` **só alteram a base onde correres** (local `localhost:5433` ou produção).
+A app em produção **não herda** automaticamente o que corriste no PC.
 
 ### 1) Confirmar o modo actual
 
 Abre (com prefs na URL ou após preencher o formulário):
 
-`https://beta-app-tau.vercel.app/api/travel/v1/recommend?nights=5&travelers=1&origin=LIS&budgetFilter=1&prefs=...`
+`/api/travel/v1/recommend?nights=5&travelers=1&origin=LIS&budgetFilter=1&prefs=...`
 
 No JSON, vê o campo **`source`**:
 
 | `source` | Significado |
 |----------|-------------|
 | `"bundle"` | JSON em `src/data/travel-mock/` (dados antigos / demo) — **sem** backfill Photon |
-| `"db"` | Postgres (Neon) — precisa de import + backfills na **mesma** `DATABASE_URL` da Vercel |
+| `"db"` | Postgres — precisa de import + backfills na **mesma** `DATABASE_URL` de produção |
 
 ### 2) Ativar catálogo na DB (recomendado)
 
-No projeto Vercel → **Settings → Environment Variables** (Production):
+No ambiente de produção, definir:
 
 ```env
 TRAVEL_CATALOG_SOURCE=db
-DATABASE_URL=postgresql://...   # Neon pooled
-DATABASE_URL_UNPOOLED=postgresql://...   # Neon direct (Prisma migrate)
+DATABASE_URL=postgresql://...   # pooled
+DATABASE_URL_UNPOOLED=postgresql://...   # direct (Prisma migrate)
 ```
 
 Redeploy depois de guardar.
 
-### 3) Popular a Neon (uma vez, a partir do PC)
+### 3) Popular a base de produção (uma vez, a partir do PC)
 
-Com a connection string da **produção** (Vercel → **Storage** → `neon-beta-app` → **Connect**):
+Com a connection string da **produção**:
 
-> `vercel env pull` e `vercel env run` **não expõem** `DATABASE_URL` da integração Neon (ficam vazios no PC). Copia manualmente do dashboard. O `.env` local com `localhost:5433` sobrepõe a Neon se não o renomeares.
+> Copia manualmente do dashboard. O `.env` local com `localhost:5433` sobrepõe a produção se não o renomeares.
 
 ```powershell
-# PowerShell — URLs da Neon de PRODUÇÃO (não localhost:5433)
+# PowerShell — URLs de PRODUÇÃO (não localhost:5433)
 $env:DATABASE_URL = "postgresql://USER:PASS@HOST/DB?sslmode=require"
 $env:DATABASE_URL_UNPOOLED = "postgresql://USER:PASS@HOST/DB?sslmode=require"  # direct / unpooled
-
-.\scripts\neon-production-import.ps1 -Fresh -Backfill
 ```
 
 Ou manualmente (com `.env` renomeado para não usar Docker local):
@@ -151,7 +136,7 @@ npx prisma migrate deploy
 npm run travel:catalog:import -- --fresh --backfill-hotel-geo --backfill-dest-geo --verify-hotels-geo
 ```
 
-Depois: **Redeploy** em produção (ou `vercel redeploy <url-prod> --target production`) para aplicar `TRAVEL_CATALOG_SOURCE=db`.
+Depois: **Redeploy** em produção para aplicar `TRAVEL_CATALOG_SOURCE=db`.
 
 Isto importa o bundle Wikivoyage, corrige países (Photon), preenche coords de hotéis e marca hotéis incoerentes como `rejected_geo`.
 
@@ -163,4 +148,4 @@ Isto importa o bundle Wikivoyage, corrige países (Photon), preenche coords de h
 
 ### Nota sobre Docker local
 
-`docker compose up -d postgres` só serve para **desenvolvimento local**. A Vercel usa **Neon** (ou outra URL em `DATABASE_URL`), não o Postgres do teu PC.
+`docker compose up -d postgres` só serve para **desenvolvimento local**. Em produção, usa a URL em `DATABASE_URL`.

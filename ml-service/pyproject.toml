@@ -59,6 +59,9 @@ cache = [
 monitoring = [
     "prometheus-client~=0.17.1",
 ]
+tracing = [
+    "sentry-sdk[fastapi]~=2.0",
+]
 all = [
     "scgraph~=3.1.0",
     "pytest~=7.4.0",
@@ -71,6 +74,7 @@ all = [
     "sqlalchemy~=2.0.20",
     "redis~=4.6.0",
     "prometheus-client~=0.17.1",
+    "sentry-sdk[fastapi]~=2.0",
 ]
 
 [project.urls]

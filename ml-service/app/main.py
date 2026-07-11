@@ -9,6 +9,7 @@ from fastapi.responses import JSONResponse
 
 from app.core.config import settings
 from app.core.logger import setup_logging
+from app.core.sentry import init_sentry
 from app.api.routes import router as api_router
 
 try:
@@ -19,6 +20,7 @@ except ModuleNotFoundError:
             pass
 
 setup_logging()
+init_sentry()
 logger = logging.getLogger(__name__)
 
 app = FastAPI(

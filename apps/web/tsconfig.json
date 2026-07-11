@@ -1,0 +1,82 @@
+{
+    "compilerOptions": {
+      "target": "ES2020",
+      "lib": [
+        "dom",
+        "dom.iterable",
+        "esnext"
+      ],
+      "allowJs": true,
+      "skipLibCheck": true,
+      "strict": true,
+      "noEmit": true,
+      "esModuleInterop": true,
+      "module": "esnext",
+      "moduleResolution": "bundler",
+      "resolveJsonModule": true,
+      "isolatedModules": true,
+      "jsx": "preserve",
+      "incremental": true,
+      "types": [
+        "@testing-library/jest-dom"
+      ],
+      "plugins": [
+        {
+          "name": "next"
+        }
+      ],
+      "paths": {
+        "@akmleva/db": [
+          "../../packages/db/src/index"
+        ],
+        "@akmleva/db/*": [
+          "../../packages/db/src/*"
+        ],
+        "@akmleva/shared": [
+          "../../packages/shared/src/index"
+        ],
+        "@akmleva/shared/*": [
+          "../../packages/shared/src/*"
+        ],
+        "@akmleva/ui": [
+          "../../packages/ui/src/index"
+        ],
+        "@akmleva/ui/*": [
+          "../../packages/ui/src/*"
+        ],
+        "@/*": [
+          "./src/*"
+        ],
+        "@akmleva/frontend": [
+          "./src/index"
+        ]
+      }
+    },
+    "include": [
+      "./content/**/*.ts",
+      "./e2e/**/*.ts",
+      "./src/**/*.js",
+      "./src/**/*.jsx",
+      "./src/**/*.mts",
+      "./src/**/*.ts",
+      "./src/**/*.tsx",
+      "./src/components/ai-preferences/components/personalization/BudgetRangeInput/**/*.ts",
+      "next.config.js",
+      "next.config.*.js",
+      "middleware-ratelimit.ts",
+      "middleware.ts",
+      "next-env.d.ts",
+      "public/service-worker.js",
+      ".next/types/**/*.ts",
+      "tailwind.config.js",
+      "tailwind.config.ts"
+    ],
+    "exclude": [
+      ".next",
+      ".next/**",
+      "node_modules",
+      "src/index.ts",
+      "src/types.ts"
+    ]
+  }
+  

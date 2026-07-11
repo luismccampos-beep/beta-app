@@ -1,0 +1,9 @@
+(.features[0].properties | keys_unsorted) as $keys
+| ($keys + ["lat","lon"]) as $header
+| $header,
+  ( .features[]
+    | [ .properties[$keys[]] ,
+        (.geometry.coordinates[1] // null),
+        (.geometry.coordinates[0] // null) ]
+  )
+| @csv
