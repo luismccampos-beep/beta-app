@@ -17,13 +17,8 @@ out/
 .env.production
 .env.staging
 .env.development
-.env.vercel
-.env.vercel.*
 .env.localdev.bak
 !.env.example
-
-# Vercel
-.vercel
 
 # Debug / logs
 npm-debug.log*
@@ -50,6 +45,7 @@ __pycache__/
 *.py[cod]
 
 # Large data directories (versioned datasets should move to object storage)
+Database/
 data/
 src/data/
 
@@ -78,9 +74,8 @@ COMMIT_MSG.md
 data/*.xml.bz2
 data/wikivoyage/out/
 data/hotels/hotel-index.json
-data/google-hotels/*.json
 src/data/travel-mock/bundle-wikivoyage.json
-# unsplash-cache.json is committed (~2.6MB) so Vercel can resolve hero images in production
+# unsplash-cache.json is committed (~2.6MB)
 public/travel-images/*
 !public/travel-images/.gitkeep
 !public/travel-images/placeholder.svg
@@ -91,7 +86,6 @@ data/hotels/tbo-hotels.csv
 
 # Orphaned submodules (local only)
 Zoo-Code/
-google-maps-scraper/
 
 # Storybook
 storybook-static/
