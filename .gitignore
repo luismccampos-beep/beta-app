@@ -76,9 +76,9 @@ data/wikivoyage/out/
 data/hotels/hotel-index.json
 src/data/travel-mock/bundle-wikivoyage.json
 # unsplash-cache.json is committed (~2.6MB)
-public/travel-images/*
-!public/travel-images/.gitkeep
-!public/travel-images/placeholder.svg
+apps/web/public/travel-images/*
+!apps/web/public/travel-images/.gitkeep
+!apps/web/public/travel-images/placeholder.svg
 data/hotels/tbo-hotels.csv
 
 # Internal work notes (may contain secrets)
@@ -89,6 +89,10 @@ Zoo-Code/
 
 # Storybook
 storybook-static/
+
+# Turborepo cache (generated; do not commit)
+.turbo/cache/
+apps/web/.turbo/cache/
 
 # MCP configs (local tooling, not part of the app)
 .mcp/
