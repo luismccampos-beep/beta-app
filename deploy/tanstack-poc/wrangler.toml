@@ -1,0 +1,28 @@
+name = "tanstack-poc"
+main = "./src/ssr.tsx"
+compatibility_date = "2025-01-15"
+compatibility_flags = ["nodejs_compat"]
+
+[build]
+command = "npm run build"
+
+[site]
+bucket = "./dist"
+
+# Environment variables (use wrangler secret put for sensitive values)
+[vars]
+NODE_ENV = "production"
+
+# Bindings (configure as needed)
+# [[kv_namespaces]]
+# binding = "KV"
+# id = "your-kv-namespace-id"
+
+# [[r2_buckets]]
+# binding = "R2_BUCKET"
+# bucket_name = "your-bucket-name"
+
+# [[d1_databases]]
+# binding = "DB"
+# database_name = "your-database-name"
+# database_id = "your-database-id"

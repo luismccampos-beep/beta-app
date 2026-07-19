@@ -76,7 +76,9 @@
 |---|---|
 | Turborepo | Monorepo orchestration |
 | Docker | Postgres, Redis, Valhalla, OTP |
-| Vercel | Production deployment |
+| Vercel | Production deployment (Next.js) |
+| Cloudflare Workers | TanStack Start POC deployment |
+| Wrangler | Cloudflare CLI for deploy |
 | GitHub Actions | CI/CD |
 | Sentry | Error monitoring (client + server + edge) |
 | Playwright | E2E tests |
@@ -437,6 +439,57 @@ docker compose up postgres redis -d     # Start only DB + cache
 | Component | Storybook | `npx storybook dev` |
 
 Coverage target: >80%. Run `npm run test:changed:coverage` to check.
+
+---
+
+## TanStack Start POC (Cloudflare Workers)
+
+O POC de migração para TanStack Start está localizado em `deploy/tanstack-poc/` e é configurado para deploy no Cloudflare Workers usando Wrangler.
+
+### Pré-requisitos
+
+```bash
+# Instalar Wrangler globalmente (se necessário)
+npm install -g wrangler
+
+# Autenticar no Cloudflare
+wrangler login
+```
+
+### Desenvolvimento
+
+```bash
+cd deploy/tanstack-poc
+npm install
+npm run dev
+```
+
+### Build e Deploy
+
+```bash
+cd deploy/tanstack-poc
+
+# Build do projeto
+npm run build
+
+# Deploy para Cloudflare Workers
+npm run deploy
+
+# Ou usar o comando direto do Wrangler
+wrangler deploy
+```
+
+### Configuração
+
+- **`wrangler.toml`** — Configuração do Cloudflare Workers (compatibility flags, bindings, etc.)
+- **`vite.config.ts`** — Vite com plugins do TanStack Start e Cloudflare
+- **`package.json`** — Dependências do POC (TanStack Router, React, Wrangler)
+
+### Notas
+
+- Este é um **POC (Proof of Concept)** em estágio inicial
+- A aplicação principal ainda roda em Next.js (`apps/web`)
+- O deploy é independente do monorepo principal
 
 ---
 

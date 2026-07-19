@@ -100,7 +100,6 @@ apps/web/.turbo/cache/
 # Build outputs (do not commit)
 apps/tanstack-poc/dist/
 apps/web/dist/
-deploy/
 
 # Dependencies
 apps/tanstack-poc/node_modules/
