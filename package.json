@@ -41,6 +41,10 @@
     "chromatic": "npm run chromatic -w @akmleva/web",
     "test:branch": "npm run test:branch -w @akmleva/web",
     "test:staged": "npm run test:staged -w @akmleva/web",
+    "dev:tanstack": "npm run dev -w @akmleva/web-tanstack",
+    "build:tanstack": "npm run build -w @akmleva/web-tanstack",
+    "start:tanstack": "npm run start -w @akmleva/web-tanstack",
+    "type-check:tanstack": "npm run type-check -w @akmleva/web-tanstack",
     "data-pipeline": "npm run -w tools/data-pipeline"
   },
   "dependencies": {
