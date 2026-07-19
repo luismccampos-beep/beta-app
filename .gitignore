@@ -96,3 +96,8 @@ apps/web/.turbo/cache/
 
 # MCP configs (local tooling, not part of the app)
 .mcp/
+
+# Build outputs (do not commit)
+apps/tanstack-poc/dist/
+apps/web/dist/
+deploy/
