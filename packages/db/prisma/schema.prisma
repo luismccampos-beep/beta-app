@@ -4522,5 +4522,27 @@ model DestinationTranslation {
 }
 
 // ============================================
+// URL REDIRECTS
+// ============================================
+
+model UrlRedirect {
+  id              String     @id @default(cuid())
+  source_path     String     @db.VarChar(512)
+  target_path     String     @db.VarChar(512)
+  target_id       String?    @db.VarChar(128)
+  target_type     String?    @db.VarChar(64)
+  http_status     Int        @default(301)
+  visit_count     Int        @default(0)
+  last_visited_at DateTime?
+  expires_at      DateTime?
+  is_active       Boolean    @default(true)
+  created_at      DateTime   @default(now())
+
+  @@index([source_path])
+  @@index([is_active])
+  @@map("url_redirects")
+}
+
+// ============================================
 // END OF SCHEMA
 // ============================================

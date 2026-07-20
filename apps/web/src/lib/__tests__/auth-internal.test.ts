@@ -1,9 +1,10 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
+import { NextRequest } from 'next/server';
 import { NextResponse } from 'next/server';
 import { requireInternalApiKey } from '../auth-internal';
 
-function makeRequest(headers: Record<string, string> = {}): Request {
-  return new Request('http://localhost:3000/api/internal/test', { headers });
+function makeRequest(headers: Record<string, string> = {}): NextRequest {
+  return new NextRequest('http://localhost:3000/api/internal/test', { headers });
 }
 
 describe('requireInternalApiKey', () => {

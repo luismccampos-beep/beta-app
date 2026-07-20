@@ -1,4 +1,5 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
+import { NextRequest } from 'next/server';
 import { GET } from '../url-redirects/route';
 import { POST } from '../404-log/route';
 
@@ -12,8 +13,8 @@ vi.mock('@/lib/prisma', () => ({
 
 import { prisma } from '@/lib/prisma';
 
-function makeRequest(url: string, headers: Record<string, string> = {}): Request {
-  return new Request(url, { headers });
+function makeRequest(url: string, headers: Record<string, string> = {}): NextRequest {
+  return new NextRequest(url, { headers });
 }
 
 describe('/api/internal/url-redirects', () => {
@@ -76,7 +77,7 @@ describe('/api/internal/404-log', () => {
   });
 
   it('returns 200 with valid x-api-key', async () => {
-    const req = new Request('http://localhost:3000/api/internal/404-log', {
+    const req = new NextRequest('http://localhost:3000/api/internal/404-log', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -92,7 +93,7 @@ describe('/api/internal/404-log', () => {
   });
 
   it('handles batch entries', async () => {
-    const req = new Request('http://localhost:3000/api/internal/404-log', {
+    const req = new NextRequest('http://localhost:3000/api/internal/404-log', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

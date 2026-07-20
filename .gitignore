@@ -47,6 +47,7 @@ __pycache__/
 # Large data directories (versioned datasets should move to object storage)
 Database/
 data/
+!apps/web/src/app/components/data/
 src/data/
 
 # Data exports (artefactos temporários — manter em data/ ou storage externo)

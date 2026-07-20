@@ -49,13 +49,13 @@ jobs:
         run: npx prisma generate --schema=packages/db/prisma/schema.prisma
 
       - name: TypeScript check
-        run: npx tsc --noEmit
+        run: npm run type-check -w @akmleva/web
 
       - name: Lint
-        run: npx next lint
+        run: npm run lint -w @akmleva/web
 
       - name: Run tests
-        run: npx vitest run --passWithNoTests
+        run: npm run test -w @akmleva/web -- --passWithNoTests
 
   migrate:
     name: Apply Prisma Migrations

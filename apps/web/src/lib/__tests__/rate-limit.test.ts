@@ -30,10 +30,13 @@ describe('checkRateLimit', () => {
 
   it('returns failure when limiter is null and failClosed in production', async () => {
     const original = process.env.NODE_ENV;
-    process.env.NODE_ENV = 'production';
-    const result = await checkRateLimit(makeRequest(), null, true);
-    expect(result.success).toBe(false);
-    process.env.NODE_ENV = original;
+    (process.env as Record<string, string>).NODE_ENV = 'production';
+    try {
+      const result = await checkRateLimit(makeRequest(), null, true);
+      expect(result.success).toBe(false);
+    } finally {
+      (process.env as Record<string, string>).NODE_ENV = original ?? '';
+    }
   });
 
   it('extracts IP from x-forwarded-for', async () => {
