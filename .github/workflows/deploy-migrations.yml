@@ -106,7 +106,7 @@ jobs:
         # _prisma_migrations for failed entries via psql, checks if the SQL
         # objects exist in the database, and runs
         # `prisma migrate resolve --applied|--rolled-back` accordingly.
-        run: node scripts/resolve-failed-migrations.mjs
+        run: node packages/db/scripts/resolve-failed-migrations.mjs
         env:
           DATABASE_URL: ${{ secrets.DATABASE_URL }}
           DATABASE_URL_UNPOOLED: ${{ secrets.DATABASE_URL_UNPOOLED || secrets.DATABASE_URL }}
