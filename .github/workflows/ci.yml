@@ -122,7 +122,7 @@ jobs:
         run: npx prisma generate --schema=packages/db/prisma/schema.prisma
 
       - name: Build
-        run: npm run build
+        run: npx turbo build --filter=@akmleva/web
         env:
           DISABLE_SSR_FETCH: 'true'
 
