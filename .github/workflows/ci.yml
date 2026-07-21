@@ -131,15 +131,14 @@ jobs:
         with:
           name: build-output
           path: |
-            .next/
-            !.next/cache/
+            apps/web/.next/
+            !apps/web/.next/cache/
           retention-days: 3
 
   e2e:
     name: E2E Tests
     runs-on: ubuntu-latest
     timeout-minutes: 30
-    if: always() && needs.build.result == 'success'
     needs: [build]
     env:
       DATABASE_URL: ${{ secrets.DATABASE_URL || 'postgresql://placeholder:placeholder@localhost:5432/placeholder' }}
@@ -164,7 +163,7 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: build-output
-          path: .next/
+          path: apps/web/.next/
 
       - name: Run E2E tests
         run: npm run e2e
