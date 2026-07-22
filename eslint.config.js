@@ -114,7 +114,8 @@ export default [
   {
     ignores: [
       '.next/**',
-      'dist/**',
+      '**/dist/**',
+      '**/.wrangler/**',
       'build/**',
       'storybook-static/**',
       'test-results/**',
