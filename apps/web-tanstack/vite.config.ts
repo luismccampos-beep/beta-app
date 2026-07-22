@@ -9,6 +9,6 @@ export default defineConfig({
     tsConfigPaths({
       projects: ['./tsconfig.json'],
     }) as unknown,
-    tailwindcss() as any,
+    tailwindcss() as ReturnType<typeof tailwindcss>,
   ],
 })

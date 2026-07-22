@@ -3,7 +3,7 @@ import { customSession, twoFactor } from 'better-auth/plugins'
 import { customPrismaAdapter } from './adapter'
 
 export const auth = betterAuth({
-  database: customPrismaAdapter() as any,
+  database: customPrismaAdapter() as Parameters<typeof betterAuth>[0]['database'],
   session: {
     expiresIn: 60 * 60 * 24 * 30, // 30 days
     updateAge: 60 * 60 * 24,       // 24 hours
@@ -63,7 +63,7 @@ export const auth = betterAuth({
       return {
         user: {
           ...user,
-          role: (user as any).role ?? 'USER',
+          role: (user as Record<string, unknown>).role ?? 'USER',
         },
         session,
       }

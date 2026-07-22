@@ -7,7 +7,7 @@ import frMessages from '@/messages/fr.json'
 
 const messages = { pt: ptMessages, en: enMessages, es: esMessages, fr: frMessages } as const
 
-type Messages = Record<string, any>
+type Messages = Record<string, unknown>
 
 interface I18nContextValue {
   locale: Locale

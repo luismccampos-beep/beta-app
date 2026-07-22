@@ -24,12 +24,12 @@ function ResetPasswordPage() {
           <h1 className="text-2xl font-bold text-gray-900 dark:text-white mb-6 text-center">Repor Password</h1>
           <form className="space-y-4" onSubmit={(e) => e.preventDefault()}>
             <div>
-              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Nova Password</label>
-              <input type="password" className="w-full px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-white" />
+              <label htmlFor="reset-password" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Nova Password</label>
+              <input id="reset-password" type="password" className="w-full px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-white" />
             </div>
             <div>
-              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Confirmar Password</label>
-              <input type="password" className="w-full px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-white" />
+              <label htmlFor="reset-password-confirm" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Confirmar Password</label>
+              <input id="reset-password-confirm" type="password" className="w-full px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-white" />
             </div>
             <button type="submit" className="w-full px-6 py-3 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition-colors">
               Repor password
