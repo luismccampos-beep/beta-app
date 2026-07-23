@@ -58,6 +58,12 @@ if (existsSync(envPath)) {
 // Hard fail early when BOTH URLs are empty — better than forwarding "" to
 // Prisma which would surface a generic P1012 the user then has to decode.
 if (!env.DATABASE_URL_UNPOOLED && !env.DATABASE_URL) {
+  if (env.CI) {
+    console.warn(
+      '[prisma] DATABASE_URL e DATABASE_URL_UNPOOLED estão vazias — pulando generate no CI.'
+    );
+    process.exit(0);
+  }
   console.error(
     '[prisma] Erro: DATABASE_URL e DATABASE_URL_UNPOOLED estão vazias.\n' +
       '        Configure ambas em .env (use a URL direta do Neon, sem PgBouncer, em DATABASE_URL_UNPOOLED)\n' +
