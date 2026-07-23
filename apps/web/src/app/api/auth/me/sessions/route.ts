@@ -39,8 +39,10 @@ export async function GET() {
   // doesn't expose session tokens on the auth() object.
   const mostRecentId = sessions.length > 0 ? sessions[0].id : null;
 
+  type SessionRow = (typeof sessions)[number];
+
   return NextResponse.json({
-    sessions: sessions.map((s) => ({
+    sessions: sessions.map((s: SessionRow) => ({
       id: s.id,
       device: s.deviceInfo ?? {},
       ipAddress: s.ipAddress,
