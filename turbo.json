@@ -16,7 +16,6 @@
           "NODE_ENV",
           "NEXT_PUBLIC_*",
           "DATABASE_URL",
-          "NEXTAUTH_URL",
           "AUTH_SECRET",
           "AUTH_URL"
         ]

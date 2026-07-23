@@ -32,7 +32,6 @@ jobs:
       # Provide fallback values for PRs from forks where secrets are unavailable
       DATABASE_URL: ${{ secrets.DATABASE_URL || 'postgresql://placeholder:placeholder@localhost:5432/placeholder' }}
       DATABASE_URL_UNPOOLED: ${{ secrets.DATABASE_URL_UNPOOLED || secrets.DATABASE_URL || 'postgresql://placeholder:placeholder@localhost:5432/placeholder' }}
-      NEXTAUTH_URL: ${{ secrets.NEXTAUTH_URL || 'http://localhost:3000' }}
     steps:
       - uses: actions/checkout@v5
         with:
@@ -87,9 +86,6 @@ jobs:
           elif echo "$DATABASE_URL_UNPOOLED" | grep -q "\-pooler\."; then
             echo "::error::DATABASE_URL_UNPOOLED contains '-pooler.' in the hostname. It must be the DIRECT URL (without -pooler). Update the secret in GitHub Settings → Secrets and variables → Actions."
             exit 1
-          fi
-          if [ -z "${NEXTAUTH_URL:-}" ]; then
-            echo "::warning::NEXTAUTH_URL is not set. Auth callbacks may fail in production. Add NEXTAUTH_URL to GitHub Secrets."
           fi
 
       - run: npm ci
