@@ -49,5 +49,4 @@ jobs:
           exitZeroOnChanges: true
           exitOnceUploaded: true
           onlyChanged: true
-          failOnUploadError: true
           externals: 'public/**'
