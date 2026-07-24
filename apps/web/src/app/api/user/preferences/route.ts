@@ -3,7 +3,7 @@ import { z } from 'zod';
 import { Prisma } from '@prisma/client';
 
 import { prisma } from '../../../../lib/prisma';
-import { auth } from '@/auth';
+import { getSession } from '@/lib/auth-helpers';
 import { apiHandler } from '@/lib/api/handler';
 
 const UpdatePreferencesSchema = z.object({
@@ -19,7 +19,7 @@ const UpdatePreferencesSchema = z.object({
 });
 
 async function getAuthenticatedUserId(): Promise<string | null> {
-  const session = await auth();
+  const session = await getSession();
   return session?.user?.id ?? null;
 }
 
