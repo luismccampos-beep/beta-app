@@ -1,8 +1,10 @@
 import { NextResponse } from 'next/server';
-import { signOut } from '@/auth';
+import { auth } from '@/lib/auth/auth';
+import { headers } from 'next/headers';
 
 export async function POST() {
-  await signOut({ redirect: false });
+  await auth.api.signOut({
+    headers: await headers(),
+  });
   return NextResponse.json({ success: true });
 }
-

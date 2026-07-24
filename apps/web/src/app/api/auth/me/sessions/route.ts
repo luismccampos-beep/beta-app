@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
 import { z } from 'zod';
-import { auth } from '@/auth';
+import { getSession } from '@/lib/auth-helpers';
 import { prisma } from '../../../../../lib/prisma';
 import { apiHandler } from '@/lib/api/handler';
 
@@ -10,7 +10,7 @@ const RevokeSessionSchema = z.object({
 
 // GET /api/auth/me/sessions — list all active sessions for the current user
 export async function GET() {
-  const session = await auth();
+  const session = await getSession();
   const userId = session?.user?.id;
 
   if (!userId) {
@@ -58,7 +58,7 @@ export async function GET() {
 // DELETE /api/auth/me/sessions — revoke sessions
 // Body: { sessionId?: string } — if provided, revoke that session; otherwise revoke ALL except current
 export const DELETE = apiHandler(async (req: Request) => {
-  const session = await auth();
+  const session = await getSession();
 
   if (!session?.user?.id) {
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });

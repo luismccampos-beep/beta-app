@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import { auth } from '@/auth';
+import { getSession } from '@/lib/auth-helpers';
 import { prisma } from '../../../../../lib/prisma';
 import sharp from 'sharp';
 
@@ -8,7 +8,7 @@ const ALLOWED_TYPES = ['image/jpeg', 'image/png', 'image/webp', 'image/gif'];
 const THUMBNAIL_SIZE = 128;
 
 export async function POST(request: Request) {
-  const session = await auth();
+  const session = await getSession();
 
   if (!session?.user?.id) {
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
@@ -79,7 +79,7 @@ export async function POST(request: Request) {
 }
 
 export async function DELETE() {
-  const session = await auth();
+  const session = await getSession();
 
   if (!session?.user?.id) {
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });

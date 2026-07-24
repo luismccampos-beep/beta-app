@@ -1,12 +1,12 @@
 import { NextResponse } from 'next/server';
-import { auth } from '@/auth';
+import { getSession } from '@/lib/auth-helpers';
 import { prisma } from '../../../../../lib/prisma';
 import { sendVerificationEmail } from '../../../../../lib/email';
 import crypto from 'crypto';
 
 // POST /api/auth/me/verify-email — send a verification email to the current user
 export async function POST() {
-  const session = await auth();
+  const session = await getSession();
   const userId = session?.user?.id;
 
   if (!userId) {
@@ -48,7 +48,7 @@ export async function POST() {
     },
   });
 
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL ?? process.env.NEXTAUTH_URL ?? 'http://localhost:3000';
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL ?? process.env.AUTH_URL ?? 'http://localhost:3000';
 
   // Send verification email via Resend
   const result = await sendVerificationEmail({

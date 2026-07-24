@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
 import { z } from 'zod';
-import { auth } from '@/auth';
+import { getSession } from '@/lib/auth-helpers';
 import { prisma } from '../../../../lib/prisma';
 import { apiHandler } from '@/lib/api/handler';
 
@@ -17,7 +17,7 @@ const UpdateProfileSchema = z.object({
 });
 
 export async function GET() {
-  const session = await auth();
+  const session = await getSession();
   
   if (!session?.user?.id) {
     return NextResponse.json({ authenticated: false }, { status: 200 });
@@ -51,12 +51,12 @@ export async function GET() {
       ...user,
       emailVerifiedAt: user.emailVerifiedAt?.toISOString() ?? null,
     },
-    expiresAt: session.expires 
+    expiresAt: session.session.expiresAt 
   });
 }
 
 export const PUT = apiHandler(async (req: Request) => {
-  const session = await auth();
+  const session = await getSession();
   
   if (!session?.user?.id) {
     return NextResponse.json({ authenticated: false }, { status: 401 });

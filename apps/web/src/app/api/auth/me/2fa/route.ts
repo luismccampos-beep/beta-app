@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
 import { z } from 'zod';
-import { auth } from '@/auth';
+import { getSession } from '@/lib/auth-helpers';
 import { prisma } from '../../../../../lib/prisma';
 import { apiHandler } from '@/lib/api/handler';
 import * as OTPAuth from 'otpauth';
@@ -17,7 +17,7 @@ const APP_NAME = 'AKMLEVA';
 
 // GET /api/auth/me/2fa — returns current 2FA status and setup info
 export async function GET() {
-  const session = await auth();
+  const session = await getSession();
 
   if (!session?.user?.id) {
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
@@ -72,7 +72,7 @@ export async function GET() {
 
 // POST /api/auth/me/2fa — enable 2FA after verifying a TOTP code
 export const POST = apiHandler(async (req: Request) => {
-  const session = await auth();
+  const session = await getSession();
 
   if (!session?.user?.id) {
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
@@ -145,7 +145,7 @@ export const POST = apiHandler(async (req: Request) => {
 
 // DELETE /api/auth/me/2fa — disable 2FA (requires password verification)
 export const DELETE = apiHandler(async (req: Request) => {
-  const session = await auth();
+  const session = await getSession();
 
   if (!session?.user?.id) {
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });

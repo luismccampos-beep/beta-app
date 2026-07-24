@@ -3,7 +3,7 @@
 import { useMemo } from 'react';
 import { usePathname, useRouter } from 'next/navigation';
 import Link from 'next/link';
-import { useSession } from 'next-auth/react';
+import { useSession } from '@/lib/auth/client';
 import { useTranslations } from 'next-intl';
 import { Sun, Moon, LogOut, ArrowLeft, LayoutDashboard, Plane } from 'lucide-react';
 import { Button } from './ui/button';

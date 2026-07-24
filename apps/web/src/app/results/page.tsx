@@ -2,13 +2,13 @@
 
 import { Suspense, useCallback } from 'react';
 import { useRouter } from 'next/navigation';
-import { signOut } from 'next-auth/react';
+import { signOut } from '@/lib/auth/client';
 
 import { ResultsPage } from '../components/pages/ResultsPage';
 
 export default function Page() {
   const router = useRouter();
-  const onLogout = useCallback(() => signOut({ callbackUrl: '/' }), []);
+  const onLogout = useCallback(() => { signOut(); router.push('/'); }, [router]);
   const onNavigateToDashboard = useCallback(() => router.push('/dashboard'), [router]);
 
   return (

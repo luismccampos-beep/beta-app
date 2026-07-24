@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
 import createIntlMiddleware from 'next-intl/middleware';
-import { auth } from '@/auth-edge';
+import { auth } from '@/lib/auth/auth';
 import { checkRateLimit, detectTier } from '@/lib/rate-limit';
 
 const ALLOWED_ORIGINS = [
@@ -203,7 +203,7 @@ export async function middleware(request: NextRequest) {
   const tenant = resolveTenant(request);
 
   // Auth Protection
-  const session = await auth();
+  const session = await auth.api.getSession({ headers: request.headers });
   const isAuthPage = pathname === '/auth';
   const isProtectedRoute = pathname.startsWith('/dashboard') || pathname.startsWith('/preferences');
   const isAdminRoute = pathname.startsWith('/api/admin');

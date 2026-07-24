@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
 import { z } from 'zod';
-import { auth } from '@/auth';
+import { getSession } from '@/lib/auth-helpers';
 import { prisma } from '../../../../../lib/prisma';
 import { sendPasswordChangeNotification } from '../../../../../lib/email';
 import bcrypt from 'bcryptjs';
@@ -12,7 +12,7 @@ const ChangePasswordSchema = z.object({
 });
 
 export const PUT = apiHandler(async (req: Request) => {
-  const session = await auth();
+  const session = await getSession();
 
   if (!session?.user?.id) {
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
@@ -58,7 +58,7 @@ export const PUT = apiHandler(async (req: Request) => {
     },
   });
 
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL ?? process.env.NEXTAUTH_URL ?? 'http://localhost:3000';
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL ?? process.env.AUTH_URL ?? 'http://localhost:3000';
   void sendPasswordChangeNotification({ to: user.email, baseUrl });
 
   return NextResponse.json({ success: true });

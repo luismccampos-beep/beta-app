@@ -1,8 +1,18 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { NextRequest } from 'next/server';
 
-vi.mock('@/auth', () => ({
-  signIn: vi.fn(),
+vi.mock('@/lib/auth/auth', () => ({
+  auth: {
+    api: {
+      signInEmail: vi.fn(),
+      signUpEmail: vi.fn(),
+      signOut: vi.fn(),
+    },
+  },
+}));
+
+vi.mock('next/headers', () => ({
+  headers: vi.fn().mockResolvedValue(new Headers()),
 }));
 
 vi.mock('@/lib/prisma', () => ({
@@ -28,7 +38,7 @@ import { POST as loginPOST } from '../login/route';
 import { POST as registerPOST } from '../register/route';
 import { POST as forgotPasswordPOST } from '../forgot-password/route';
 import { POST as resetPasswordPOST } from '../reset-password/route';
-import { signIn } from '@/auth';
+import { auth } from '@/lib/auth/auth';
 import { prisma } from '@/lib/prisma';
 
 // Prisma's generic types are too deep for vi.mocked() — cast to any to avoid TS2589
@@ -60,7 +70,7 @@ describe('POST /api/auth/login', () => {
   });
 
   it('returns 200 on successful login', async () => {
-    asMock(signIn).mockResolvedValue(undefined as never);
+    asMock(auth.api.signInEmail).mockResolvedValue({ error: null } as never);
     const req = makeRequest({ email: 'test@example.com', password: 'password123' });
     const res = await loginPOST(req, { params: Promise.resolve({}) });
     expect(res.status).toBe(200);
@@ -69,7 +79,7 @@ describe('POST /api/auth/login', () => {
   });
 
   it('returns 401 on invalid credentials', async () => {
-    asMock(signIn).mockRejectedValue(new Error('CredentialsSignin'));
+    asMock(auth.api.signInEmail).mockRejectedValue(new Error('CredentialsSignin'));
     const req = makeRequest({ email: 'test@example.com', password: 'wrong' });
     const res = await loginPOST(req, { params: Promise.resolve({}) });
     expect(res.status).toBe(401);
@@ -112,8 +122,9 @@ describe('POST /api/auth/register', () => {
 
   it('creates user and returns 200 on success', async () => {
     asMock(prisma.user.findUnique).mockResolvedValue(null);
-    asMock(prisma.user.create).mockResolvedValue({ id: 'new-id', email: 'new@example.com', name: null } as never);
-    asMock(signIn).mockResolvedValue(undefined as never);
+    asMock(auth.api.signUpEmail).mockResolvedValue({ error: null } as never);
+    asMock(prisma.user.update).mockResolvedValue({} as never);
+    asMock(prisma.user.findUnique).mockResolvedValueOnce(null).mockResolvedValueOnce({ id: 'new-id', email: 'new@example.com', name: null });
     asMock(prisma.emailVerificationToken.create).mockResolvedValue({} as never);
 
     const req = makeRequest({ email: 'new@example.com', password: '12345678', agreeToTerms: true });

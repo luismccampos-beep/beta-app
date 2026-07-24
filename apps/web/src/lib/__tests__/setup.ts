@@ -23,10 +23,12 @@ vi.mock('next/navigation', () => ({
   useSegments: () => [],
 }));
 
-vi.mock('next-auth/react', () => ({
+vi.mock('@/lib/auth/client', () => ({
   useSession: () => ({ data: null, status: 'unauthenticated' }),
-  getSession: () => Promise.resolve(null),
-  signIn: vi.fn(),
+  signIn: {
+    email: vi.fn(),
+    social: vi.fn(),
+  },
   signOut: vi.fn(),
 }));
 

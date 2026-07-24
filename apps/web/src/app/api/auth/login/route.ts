@@ -1,7 +1,8 @@
 import { NextResponse } from 'next/server';
-import { signIn } from '@/auth';
+import { auth } from '@/lib/auth/auth';
 import { apiHandler } from '@/lib/api/handler';
 import { z } from 'zod';
+import { headers } from 'next/headers';
 
 const LoginSchema = z.object({
   email: z.string().email(),
@@ -12,11 +13,14 @@ export const POST = apiHandler(async (req: Request) => {
   const body = LoginSchema.parse(await req.json());
 
   try {
-    await signIn('credentials', {
-      email: body.email,
-      password: body.password,
-      redirect: false,
+    await auth.api.signInEmail({
+      body: {
+        email: body.email,
+        password: body.password,
+      },
+      headers: await headers(),
     });
+
     return NextResponse.json({ ok: true });
   } catch {
     return NextResponse.json(
@@ -25,4 +29,3 @@ export const POST = apiHandler(async (req: Request) => {
     );
   }
 });
-
