@@ -92,8 +92,9 @@ Zoo-Code/
 storybook-static/
 
 # Turborepo cache (generated; do not commit)
-.turbo/cache/
-apps/web/.turbo/cache/
+.turbo/
+apps/web/.turbo/
+apps/web-tanstack/.turbo/
 
 # MCP configs (local tooling, not part of the app)
 .mcp/
@@ -101,7 +102,15 @@ apps/web/.turbo/cache/
 # Build outputs (do not commit)
 apps/tanstack-poc/dist/
 apps/web/dist/
+apps/web-tanstack/dist/
+deploy/tanstack-poc/dist/
+
+# Wrangler (do not commit)
+.wrangler/
+apps/web-tanstack/.wrangler/
+deploy/tanstack-poc/.wrangler/
 
 # Dependencies
 apps/tanstack-poc/node_modules/
 apps/web/node_modules/
+apps/web-tanstack/node_modules/
