@@ -107,6 +107,7 @@ jobs:
     env:
       DATABASE_URL: ${{ secrets.DATABASE_URL || 'postgresql://placeholder:placeholder@localhost:5432/placeholder' }}
       DATABASE_URL_UNPOOLED: ${{ secrets.DATABASE_URL_UNPOOLED || secrets.DATABASE_URL || 'postgresql://placeholder:placeholder@localhost:5432/placeholder' }}
+      AUTH_SECRET: ${{ secrets.AUTH_SECRET || 'test-secret-for-ci-only' }}
     steps:
       - uses: actions/checkout@v5
 
