@@ -39,7 +39,7 @@ jobs:
 
       - uses: actions/setup-node@v5
         with:
-          node-version: 24
+          node-version: 22
           cache: 'npm'
 
       - run: npm ci
@@ -62,7 +62,7 @@ jobs:
 
       - uses: actions/setup-node@v5
         with:
-          node-version: 24
+          node-version: 22
           cache: 'npm'
 
       - run: npm ci
@@ -85,7 +85,7 @@ jobs:
 
       - uses: actions/setup-node@v5
         with:
-          node-version: 24
+          node-version: 22
           cache: 'npm'
 
       - run: npm ci
@@ -113,7 +113,7 @@ jobs:
 
       - uses: actions/setup-node@v5
         with:
-          node-version: 24
+          node-version: 22
           cache: 'npm'
 
       - run: npm ci
@@ -131,6 +131,7 @@ jobs:
         with:
           name: build-output
           path: apps/web/.next/
+          include-hidden-files: true
           if-no-files-found: error
           retention-days: 3
 
@@ -147,7 +148,7 @@ jobs:
 
       - uses: actions/setup-node@v5
         with:
-          node-version: 24
+          node-version: 22
           cache: 'npm'
 
       - run: npm ci

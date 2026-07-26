@@ -39,7 +39,7 @@ jobs:
 
       - uses: actions/setup-node@v5
         with:
-          node-version: 24
+          node-version: 22
           cache: 'npm'
 
       - run: npm ci
@@ -69,7 +69,7 @@ jobs:
 
       - uses: actions/setup-node@v5
         with:
-          node-version: 24
+          node-version: 22
           cache: 'npm'
 
       - name: Validate auth and database env vars
