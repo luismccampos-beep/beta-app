@@ -1,41 +1,52 @@
-import { existsSync, readFileSync } from 'node:fs';
-import { resolve } from 'node:path';
-
 import type { MockDestination } from './mock-travel/types';
 import { buildDestinationImageQuery, isGenericDestinationImage } from './unsplash';
 
 export const TRAVEL_PLACEHOLDER_IMAGE = '/travel-images/placeholder.svg';
 
-const UNSPLASH_CACHE_PATH = resolve(process.cwd(), 'src/data/travel-mock/unsplash-cache.json');
-
-let imageCache: Record<string, string> | undefined;
-
-function loadImageCache(): Record<string, string> {
-  if (imageCache !== undefined) return imageCache;
-  imageCache = {};
-  if (!existsSync(UNSPLASH_CACHE_PATH)) return imageCache;
-  try {
-    imageCache = JSON.parse(readFileSync(UNSPLASH_CACHE_PATH, 'utf8')) as Record<string, string>;
-  } catch {
-    imageCache = {};
-  }
-  return imageCache;
-}
-
-function destCacheKey(dest: { lang?: string; id: number }): string {
-  return `d:${dest.lang ?? 'pt'}:${dest.id}`;
+function isCloudflare(): boolean {
+  return typeof globalThis !== 'undefined' && 'caches' in globalThis;
 }
 
 function localTravelImageExists(publicPath: string): boolean {
+  if (isCloudflare()) return false;
   if (!publicPath.startsWith('/travel-images/')) return false;
-  const relative = publicPath.replace(/^\//, '').replace(/\//g, '\\');
-  return existsSync(resolve(process.cwd(), 'public', relative));
+  try {
+    const { existsSync } = require('node:fs');
+    const { resolve } = require('node:path');
+    const relative = publicPath.replace(/^\//, '').replace(/\//g, '\\');
+    return existsSync(resolve(process.cwd(), 'public', relative));
+  } catch {
+    return false;
+  }
 }
 
 function normalizeCacheValue(v: unknown): string | undefined {
   if (typeof v === 'string') return v;
   if (v && typeof v === 'object' && 'url' in v) return String((v as Record<string, unknown>).url);
   return undefined;
+}
+
+let imageCache: Record<string, string> | undefined;
+
+function loadImageCache(): Record<string, string> {
+  if (imageCache !== undefined) return imageCache;
+  imageCache = {};
+  if (isCloudflare()) return imageCache;
+  try {
+    const { existsSync, readFileSync } = require('node:fs');
+    const { resolve } = require('node:path');
+    const cachePath = resolve(process.cwd(), 'src/data/travel-mock/unsplash-cache.json');
+    if (existsSync(cachePath)) {
+      imageCache = JSON.parse(readFileSync(cachePath, 'utf8')) as Record<string, string>;
+    }
+  } catch {
+    imageCache = {};
+  }
+  return imageCache ?? {};
+}
+
+function destCacheKey(dest: { lang?: string; id: number }): string {
+  return `d:${dest.lang ?? 'pt'}:${dest.id}`;
 }
 
 function lookupCachedUrl(dest: MockDestination): string | undefined {

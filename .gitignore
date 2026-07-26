@@ -104,6 +104,7 @@ apps/tanstack-poc/dist/
 apps/web/dist/
 apps/web-tanstack/dist/
 deploy/tanstack-poc/dist/
+apps/web/.open-next/
 
 # Wrangler (do not commit)
 .wrangler/

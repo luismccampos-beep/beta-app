@@ -39,6 +39,7 @@ const baseImageConfig = {
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  output: 'standalone',
   transpilePackages: [],
   experimental: {
     optimizePackageImports: [
