@@ -1,8 +1,16 @@
 import createNextIntlPlugin from 'next-intl/plugin';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import { initOpenNextCloudflareForDev } from '@opennextjs/cloudflare';
+
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
+
+// Initialize OpenNext Cloudflare for local development so that Cloudflare
+// bindings defined in .dev.vars are available during `next dev`.
+if (process.env.NODE_ENV === 'development') {
+  await initOpenNextCloudflareForDev();
+}
 
 console.log('Using next.config.js');
 
