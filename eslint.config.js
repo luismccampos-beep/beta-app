@@ -69,6 +69,26 @@ const a11yRules = {
 
 export default [
   {
+    ignores: [
+      '**/.next/**',
+      '**/.open-next/**',
+      '**/dist/**',
+      '**/.wrangler/**',
+      '**/build/**',
+      '**/storybook-static/**',
+      '**/test-results/**',
+      '**/playwright-report/**',
+      '**/node_modules/**',
+      'packages/**',
+      'Zoo-Code/**',
+      'webpack.optimization.js',
+      'src/config/seo.js',
+      'src/lib/data/packages-data-1.ts',
+      'src/lib/data/packages-data-2.ts',
+      'tsconfig.cpanel.json',
+    ],
+  },
+  {
     plugins: {
       '@next/next': nextPlugin,
       '@typescript-eslint': tsPlugin,
@@ -110,23 +130,5 @@ export default [
       'no-console': 'off',
       'no-process-exit': 'off',
     },
-  },
-  {
-    ignores: [
-      '.next/**',
-      '**/dist/**',
-      '**/.wrangler/**',
-      'build/**',
-      'storybook-static/**',
-      'test-results/**',
-      'playwright-report/**',
-      'packages/**',
-      'Zoo-Code/**',
-      'webpack.optimization.js',
-      'src/config/seo.js',
-      'src/lib/data/packages-data-1.ts',
-      'src/lib/data/packages-data-2.ts',
-      'tsconfig.cpanel.json',
-    ],
   },
 ];

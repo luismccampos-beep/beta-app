@@ -29,7 +29,8 @@ import Link from 'next/link';
 
 const DestinationGallery = nextDynamic(() => import('./components/DestinationGallery').then((mod) => mod.DestinationGallery));
 
-export const revalidate = 3600;
+export const revalidate = 86400; // Cache at CDN Edge for 24 hours
+export const dynamicParams = true; // On-demand Edge rendering for all 23,000+ destinations
 
 type Props = {
   params: Promise<{ slug: string }>;
@@ -94,20 +95,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
+// Do not pre-render pages at build time to prevent hitting Cloudflare file limits.
+// All 23,000+ pages are rendered on-demand at the Edge and cached for 24 hours.
 export async function generateStaticParams() {
-  try {
-    const top = await prisma.wvDestination.findMany({
-      take: 200,
-      orderBy: { hotelCount: 'desc' },
-      select: { id: true, lang: true },
-    });
-    return top.map((d: { id: number; lang: string }) => ({
-      locale: d.lang,
-      slug: `${d.lang}-${d.id}`,
-    }));
-  } catch {
-    return [];
-  }
+  return [];
 }
 
 type DetailData = {

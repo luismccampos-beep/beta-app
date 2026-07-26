@@ -75,7 +75,8 @@ async function fetchRedirects(): Promise<Map<string, UrlRedirect>> {
   }
   
   try {
-    const baseUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'http://localhost:3000';
+    const port = process.env.PORT || '3001';
+    const baseUrl = process.env.NEXT_PUBLIC_SITE_URL ?? `http://localhost:${port}`;
     
     const response = await fetchWithTimeout(`${baseUrl}/api/internal/url-redirects?activeOnly=true&limit=500`, {
       headers: {
@@ -111,7 +112,7 @@ function resolveTenant(request: NextRequest): TenantResolution {
   const hostHeader = forwardedHost ?? request.headers.get('host') ?? '';
   const host = hostHeader.split(',')[0]?.trim().toLowerCase();
 
-  const crmBaseHost = 'admin.oteusite.com';
+  const crmBaseHost = process.env.CRM_BASE_HOST ?? 'admin.akmleva.pt';
   if (host === crmBaseHost) {
     return { kind: 'crm' };
   }
