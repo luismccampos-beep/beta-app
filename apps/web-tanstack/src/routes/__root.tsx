@@ -111,7 +111,7 @@ function Footer() {
           <span className="text-gray-700">·</span>
           <a href="/legal/privacy" className="text-gray-400 hover:text-blue-300 transition-colors">Privacidade</a>
         </div>
-        <div className="text-center text-gray-500 text-sm mt-12">
+        <div className="text-center text-gray-400 text-sm mt-12">
           © {new Date().getFullYear()} AKMLEVA. Todos os direitos reservados.
         </div>
       </div>
