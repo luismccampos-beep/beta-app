@@ -4,7 +4,27 @@ import { customPrismaAdapter } from './adapter'
 
 const isBuild = process.env.NEXT_PHASE === 'build'
 
+function hasEnv(value: string | undefined): value is string {
+  return typeof value === 'string' && value.length > 0
+}
+
+const socialProviders: NonNullable<Parameters<typeof betterAuth>[0]['socialProviders']> = {}
+if (hasEnv(process.env.AUTH_GOOGLE_ID) && hasEnv(process.env.AUTH_GOOGLE_SECRET)) {
+  socialProviders.google = {
+    clientId: process.env.AUTH_GOOGLE_ID,
+    clientSecret: process.env.AUTH_GOOGLE_SECRET,
+  }
+}
+if (hasEnv(process.env.AUTH_FACEBOOK_ID) && hasEnv(process.env.AUTH_FACEBOOK_SECRET)) {
+  socialProviders.facebook = {
+    clientId: process.env.AUTH_FACEBOOK_ID,
+    clientSecret: process.env.AUTH_FACEBOOK_SECRET,
+  }
+}
+
 export const auth = betterAuth({
+  secret: process.env.BETTER_AUTH_SECRET || process.env.AUTH_SECRET || 'local-dev-secret-not-for-production',
+  baseURL: process.env.BETTER_AUTH_URL || process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3001',
   ...(isBuild ? {} : { database: customPrismaAdapter() as Parameters<typeof betterAuth>[0]['database'] }),
   session: {
     expiresIn: 60 * 60 * 24 * 30, // 30 days
@@ -31,16 +51,7 @@ export const auth = betterAuth({
       },
     },
   },
-  socialProviders: {
-    google: {
-      clientId: process.env.AUTH_GOOGLE_ID!,
-      clientSecret: process.env.AUTH_GOOGLE_SECRET!,
-    },
-    facebook: {
-      clientId: process.env.AUTH_FACEBOOK_ID!,
-      clientSecret: process.env.AUTH_FACEBOOK_SECRET!,
-    },
-  },
+  socialProviders,
   user: {
     additionalFields: {
       role: {

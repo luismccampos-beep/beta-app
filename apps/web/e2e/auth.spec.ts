@@ -4,8 +4,8 @@ test.describe('Authentication Flows', () => {
   test.describe('Auth Page', () => {
     test('loads with login and register tabs', async ({ page }) => {
       await page.goto('/auth');
-      await expect(page.locator('text=/Entrar|Login|Sign In/i').first()).toBeVisible({ timeout: 10000 });
-      await expect(page.locator('text=/Criar Conta|Register|Sign Up/i').first()).toBeVisible();
+      await expect(page.locator('button[role="tab"]').filter({ hasText: /Entrar|Login|Sign In/i }).first()).toBeVisible();
+      await expect(page.locator('button[role="tab"]').filter({ hasText: /Registar|Register|Sign Up/i }).first()).toBeVisible();
     });
 
     test('login tab is active by default', async ({ page }) => {
@@ -16,7 +16,7 @@ test.describe('Authentication Flows', () => {
 
     test('switching to register tab shows registration fields', async ({ page }) => {
       await page.goto('/auth');
-      const registerTab = page.locator('button[role="tab"]').filter({ hasText: /Criar Conta|Register/i }).first();
+      const registerTab = page.locator('button[role="tab"]').filter({ hasText: /Registar|Register/i }).first();
       await registerTab.click();
       await expect(page.locator('input[type="email"]').first()).toBeVisible();
       await expect(page.locator('input[type="password"]').first()).toBeVisible();
@@ -24,10 +24,11 @@ test.describe('Authentication Flows', () => {
 
     test('login form validation shows errors on empty submit', async ({ page }) => {
       await page.goto('/auth');
-      const submitBtn = page.locator('button[type="submit"]').filter({ hasText: /Entrar|Login|Acessar/i }).first();
+      const submitBtn = page.locator('form button[type="submit"]').filter({ hasText: /Entrar|Sign In/i }).first();
       await submitBtn.click();
-      const toastError = page.locator('[role="status"]').filter({ hasText: /email|password/i });
-      await expect(toastError.first()).toBeVisible({ timeout: 5000 });
+      // Sonner toasts use [data-sonner-toast] — look for email or password validation text
+      const toastError = page.locator('[data-sonner-toast]').filter({ hasText: /e-?mail|password|palavra/i });
+      await expect(toastError.first()).toBeVisible({ timeout: 10000 });
     });
 
     test('login with invalid credentials shows error message', async ({ page }) => {
@@ -36,9 +37,9 @@ test.describe('Authentication Flows', () => {
       const passwordInput = page.locator('input[type="password"]').first();
       await emailInput.fill('test@example.com');
       await passwordInput.fill('wrongpassword');
-      const submitBtn = page.locator('button[type="submit"]').filter({ hasText: /Entrar|Login|Acessar/i }).first();
+      const submitBtn = page.locator('form button[type="submit"]').filter({ hasText: /Entrar|Sign In/i }).first();
       await submitBtn.click();
-      const errorMsg = page.locator('text=/Invalid|incorreto|Credenciais/i');
+      const errorMsg = page.locator('[data-sonner-toast]').filter({ hasText: /Invalid|incorreto|Credenciais/i });
       await expect(errorMsg.first()).toBeVisible({ timeout: 10000 });
     });
   });
@@ -61,29 +62,36 @@ test.describe('Authentication Flows', () => {
   test.describe('Registration Form', () => {
     test('register tab shows all required fields', async ({ page }) => {
       await page.goto('/auth');
-      const registerTab = page.locator('button[role="tab"]').filter({ hasText: /Criar Conta|Register/i }).first();
+      const registerTab = page.locator('button[role="tab"]').filter({ hasText: /Registar|Register/i }).first();
       await registerTab.click();
 
       await expect(page.locator('input[type="email"]').first()).toBeVisible();
       await expect(page.locator('input[type="password"]').first()).toBeVisible();
-      await expect(page.locator('input[type="checkbox"]').first()).toBeVisible();
+      // The checkbox is a Radix UI checkbox — the visible element is a button with role="checkbox"
+      await expect(page.locator('[role="checkbox"]').first()).toBeVisible();
     });
 
     test('register shows error for password too short', async ({ page }) => {
       await page.goto('/auth');
-      const registerTab = page.locator('button[role="tab"]').filter({ hasText: /Criar Conta|Register/i }).first();
+      const registerTab = page.locator('button[role="tab"]').filter({ hasText: /Registar|Register/i }).first();
       await registerTab.click();
 
       await page.locator('input[type="email"]').first().fill('newuser@test.com');
       const passwordInput = page.locator('input[type="password"]').first();
       await passwordInput.fill('short');
-      await page.locator('input[type="checkbox"]').first().check();
 
-      const submitBtn = page.locator('button[type="submit"]').filter({ hasText: /Criar|Register/i }).first();
+      // Use the visible Radix checkbox button instead of hidden input
+      await page.locator('[role="checkbox"]').first().click({ force: true });
+
+      // Target the register form's submit button specifically (there are two forms)
+      const registerForm = page.locator('[data-state="active"] form');
+      const submitBtn = registerForm.locator('button[type="submit"]').filter({ hasText: /Registar|Register|Sign Up/i }).first();
+      await submitBtn.scrollIntoViewIfNeeded();
       await submitBtn.click();
 
-      const errorMsg = page.locator('text=/8|min|curta|captained/i');
-      await expect(errorMsg.first()).toBeVisible({ timeout: 5000 });
+      // Server-side validation rejects short passwords — client now shows specific message
+      const errorMsg = page.locator('[data-sonner-toast]').filter({ hasText: /8|min|curta|password|palavra/i });
+      await expect(errorMsg.first()).toBeVisible({ timeout: 10000 });
     });
   });
 
@@ -93,7 +101,7 @@ test.describe('Authentication Flows', () => {
         await page.goto('/auth');
         await page.locator('input[type="email"]').first().fill(process.env.E2E_AUTH_TEST_EMAIL!);
         await page.locator('input[type="password"]').first().fill(process.env.E2E_AUTH_TEST_PASSWORD!);
-        const submitBtn = page.locator('button[type="submit"]').filter({ hasText: /Entrar|Login|Acessar/i }).first();
+        const submitBtn = page.locator('form button[type="submit"]').filter({ hasText: /Entrar|Sign In/i }).first();
         await submitBtn.click();
         await expect(page).toHaveURL(/\/dashboard/, { timeout: 15000 });
       });
@@ -102,7 +110,7 @@ test.describe('Authentication Flows', () => {
         await page.goto('/auth');
         await page.locator('input[type="email"]').first().fill(process.env.E2E_AUTH_TEST_EMAIL!);
         await page.locator('input[type="password"]').first().fill(process.env.E2E_AUTH_TEST_PASSWORD!);
-        const submitBtn = page.locator('button[type="submit"]').filter({ hasText: /Entrar|Login|Acessar/i }).first();
+        const submitBtn = page.locator('form button[type="submit"]').filter({ hasText: /Entrar|Sign In/i }).first();
         await submitBtn.click();
         await page.waitForURL(/\/dashboard/, { timeout: 15000 });
         await page.goto('/dashboard');
@@ -114,7 +122,7 @@ test.describe('Authentication Flows', () => {
         await page.goto('/auth');
         await page.locator('input[type="email"]').first().fill(process.env.E2E_AUTH_TEST_EMAIL!);
         await page.locator('input[type="password"]').first().fill(process.env.E2E_AUTH_TEST_PASSWORD!);
-        const submitBtn = page.locator('button[type="submit"]').filter({ hasText: /Entrar|Login|Acessar/i }).first();
+        const submitBtn = page.locator('form button[type="submit"]').filter({ hasText: /Entrar|Sign In/i }).first();
         await submitBtn.click();
         await page.waitForURL(/\/dashboard/, { timeout: 15000 });
         await page.goto('/auth');

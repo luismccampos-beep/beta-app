@@ -112,6 +112,10 @@ export function AuthPage({ onLoginSuccess, onBackToHome, onNavigateToLegal }: Au
       toast.error(t('passwordRequired'));
       return;
     }
+    if (registerPassword.length < 8) {
+      toast.error(t('passwordMinChars'));
+      return;
+    }
     if (registerPassword !== registerConfirmPassword) {
       toast.error(t('passwordsMatch'));
       return;

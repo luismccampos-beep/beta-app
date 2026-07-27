@@ -4,7 +4,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev -p 3001",
     "postinstall": "node ../../packages/db/scripts/prisma-with-fallback.mjs generate --schema=../../packages/db/prisma/schema.prisma",
     "build": "node ../../packages/db/scripts/prisma-with-fallback.mjs generate --schema=../../packages/db/prisma/schema.prisma && cross-env NODE_ENV=production DISABLE_SSR_FETCH=true next build",
     "preview": "opennextjs-cloudflare build && opennextjs-cloudflare preview",

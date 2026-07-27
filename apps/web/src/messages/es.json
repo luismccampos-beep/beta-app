@@ -1294,6 +1294,7 @@
     "passwordRequired": "Por favor, ingresa tu contraseña",
     "passwordsMatch": "Las contraseñas no coinciden",
     "termsRequired": "Debes aceptar los términos y condiciones",
+    "passwordMinChars": "La contraseña debe tener al menos 8 caracteres",
     "secureLogin": "Inicio de Sesión Seguro",
     "encryptedConnection": "Conexión cifrada de 256 bits",
     "enterpriseSecurity": "Seguridad de nivel empresarial",

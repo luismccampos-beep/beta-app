@@ -65,9 +65,9 @@ export default async function RootLayout({ children }: { children: ReactNode }) 
         </a>
         <Providers>
           <NextIntlClientProvider messages={messages}>
-            <div id="main-content" className="pb-16 sm:pb-0">
+            <main id="main-content" className="pb-16 sm:pb-0">
               {children}
-            </div>
+            </main>
             <AppFooter
               footerBadges={{
                 soc2Certified: t('footerBadges.soc2Certified'),

@@ -52,7 +52,7 @@ export function AppFooter({ footerBadges, footerLinks, footerCopyright }: AppFoo
                     <badge.icon className={badge.size || 'w-7 h-7'} />
                   )}
                 </div>
-                <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-gray-500">{badge.label}</span>
+                <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-gray-400">{badge.label}</span>
               </div>
             ))}
           </div>

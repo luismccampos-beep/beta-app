@@ -1386,6 +1386,7 @@
     "passwordRequired": "Please enter your password",
     "passwordsMatch": "Passwords do not match",
     "termsRequired": "You must accept the terms and conditions",
+    "passwordMinChars": "Password must be at least 8 characters",
     "secureLogin": "Secure Login",
     "encryptedConnection": "256-bit encrypted connection",
     "enterpriseSecurity": "Enterprise-grade security",

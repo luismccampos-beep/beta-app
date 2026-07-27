@@ -6,6 +6,15 @@ function createSafeRatelimit(opts: {
   max: number;
   prefix: string;
 }) {
+  // Skip Redis entirely when Upstash is not configured (e.g. local/E2E runs).
+  // This avoids network round-trips and noisy errors during tests.
+  if (!process.env.UPSTASH_REDIS_REST_URL || !process.env.UPSTASH_REDIS_REST_TOKEN) {
+    if (process.env.NODE_ENV === 'production') {
+      console.error(`[rate-limit] Redis/Upstash not configured — rate limiting disabled for "${opts.prefix}". Set UPSTASH_REDIS_REST_URL and UPSTASH_REDIS_REST_TOKEN.`);
+    }
+    return null;
+  }
+
   try {
     const redis = Redis.fromEnv();
     return new Ratelimit({

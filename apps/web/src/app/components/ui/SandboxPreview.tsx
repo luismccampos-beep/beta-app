@@ -296,7 +296,7 @@ export function SandboxPreview({ onRegister, locale = 'pt', texts }: SandboxPrev
               {t('generateLabel') || '✨ Gerar Pré-visualização'}
             </RippleButton>
 
-            <p className="text-center text-sm text-gray-400 mt-4 font-medium">
+            <p className="text-center text-sm text-gray-500 mt-4 font-medium">
               {t('noAccountNote') || 'Sem necessidade de registo • Dados reais • Resultados em segundos'}
             </p>
           </CardContent>
