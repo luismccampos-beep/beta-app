@@ -20,6 +20,10 @@ out/
 .env.localdev.bak
 !.env.example
 
+# Cloudflare Workers secrets (local dev — never commit)
+**/.dev.vars
+!**/.dev.vars.example
+
 # Debug / logs
 npm-debug.log*
 yarn-debug.log*
