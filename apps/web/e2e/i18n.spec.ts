@@ -47,19 +47,24 @@ test.describe('Internationalization (i18n)', () => {
       await page.goto('/');
       await page.waitForLoadState('networkidle');
 
-      // Look for language switcher
-      const langSwitcher = page.locator('select[name*="lang"], [data-testid*="lang"], button:has-text("PT"), button:has-text("EN")').first();
-      
-      if (await langSwitcher.isVisible({ timeout: 2000 }).catch(() => false)) {
-        await langSwitcher.click();
-        await page.waitForTimeout(500);
+      // The LanguageSwitcher renders buttons with flag emojis and aria-label attributes
+      // e.g. <button aria-label="English" title="English">🇺🇸</button>
+      const langButton = page.locator('button[aria-label="English"]').first();
 
-        // Select different language
-        const englishOption = page.locator('text=/English|EN/i').first();
-        if (await englishOption.isVisible({ timeout: 2000 }).catch(() => false)) {
-          await englishOption.click();
-          await page.waitForTimeout(1000);
-        }
+      if (await langButton.isVisible({ timeout: 3000 }).catch(() => false)) {
+        await langButton.click();
+        // LanguageSwitcher calls window.location.reload() — wait for full reload
+        await page.waitForLoadState('networkidle', { timeout: 15000 });
+
+        // Verify the page now shows English content (look for English-specific text)
+        const hasEnglishContent = await page.locator('text=/Sign In|Log In|Home|About/i').first().isVisible({ timeout: 5000 }).catch(() => false);
+        const url = page.url();
+        // Either English text is visible or the URL/locale changed
+        expect(hasEnglishContent || url.includes('en')).toBe(true);
+      } else {
+        // Language switcher not visible (e.g. minimal layout), just verify page loads
+        const hasContent = await page.locator('h1, h2, h3').first().isVisible({ timeout: 3000 }).catch(() => false);
+        expect(hasContent).toBe(true);
       }
     });
   });

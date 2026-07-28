@@ -462,8 +462,8 @@ test.describe('Accessibility — dark/light mode contrast', () => {
 
     // Dark mode
     await page.emulateMedia({ colorScheme: 'dark' });
-    await page.reload();
-    await page.waitForLoadState('networkidle');
+    await page.reload({ timeout: 30000 });
+    await page.waitForLoadState('networkidle', { timeout: 30000 });
 
     results = await new AxeBuilder({ page })
       .withTags(['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa'])
@@ -476,13 +476,16 @@ test.describe('Accessibility — dark/light mode contrast', () => {
   });
 
   test('form pages pass contrast in both modes', async ({ page }) => {
+    // This test iterates 2 pages × 2 color modes — needs extra time for axe analysis
+    test.setTimeout(60000);
+
     const formPages = ['/auth', '/forgot-password'];
 
     for (const route of formPages) {
       // Light
       await page.emulateMedia({ colorScheme: 'light' });
-      await page.goto(route);
-      await page.waitForLoadState('networkidle');
+      await page.goto(route, { timeout: 30000 });
+      await page.waitForLoadState('domcontentloaded');
 
       const lightResults = await new AxeBuilder({ page })
         .withTags(['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa'])
@@ -497,10 +500,9 @@ test.describe('Accessibility — dark/light mode contrast', () => {
       }
       expect(lightCritical.length).toBe(0);
 
-      // Dark
+      // Dark — use 'load' instead of 'networkidle' for faster reload
       await page.emulateMedia({ colorScheme: 'dark' });
-      await page.reload();
-      await page.waitForLoadState('networkidle');
+      await page.reload({ waitUntil: 'load', timeout: 30000 });
 
       const darkResults = await new AxeBuilder({ page })
         .withTags(['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa'])
