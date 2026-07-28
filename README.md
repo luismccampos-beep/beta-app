@@ -453,6 +453,13 @@ docker compose up postgres redis -d     # Start only DB + cache
 3. Add as GitHub secret: `CHROMATIC_TOKEN`
 4. Ensure `chromatic.json` has the correct `projectCode`
 
+**Troubleshooting**:
+- If you get `No app with code 'X' found`, verify that:
+  - The `CHROMATIC_TOKEN` secret is correctly set in GitHub repository settings
+  - The token is valid and not expired
+  - The project code in `chromatic.json` matches your Chromatic project
+- Ensure the Chromatic action version is up to date (`chromaui/action@latest`)
+
 **Local testing**:
 ```bash
 npm run chromatic

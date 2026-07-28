@@ -39,10 +39,7 @@ jobs:
         run: npm ci
 
       - name: Publish to Chromatic
-        if: ${{ env.CHROMATIC_TOKEN != '' }}
-        uses: chromaui/action@v1
-        env:
-          CHROMATIC_TOKEN: ${{ secrets.CHROMATIC_TOKEN }}
+        uses: chromaui/action@latest
         with:
           projectToken: ${{ secrets.CHROMATIC_TOKEN }}
           buildScriptName: 'storybook:build'

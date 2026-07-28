@@ -110,7 +110,7 @@ export default [
     },
   },
   {
-    files: ['apps/web/e2e/**/*.{ts,tsx}'],
+    files: ['apps/web/e2e/**/*.{ts,tsx}', 'apps/web/src/**/*.{ts,tsx}', 'scripts/**/*.{ts,tsx}'],
     rules: {
       '@typescript-eslint/no-explicit-any': 'error',
     },
