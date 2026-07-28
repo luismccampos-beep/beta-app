@@ -26,37 +26,45 @@ jobs:
           node-version: 22
           cache: 'npm'
 
-      - run: npm install --legacy-peer-deps
+      - run: npm ci
+
+      - name: Generate Prisma Client
+        run: npx prisma generate --schema=packages/db/prisma/schema.prisma
 
       - name: Install Playwright browsers
         run: npx playwright install chromium --with-deps
 
       - name: Build Next.js app
-        run: npm run build
+        run: npm run build -w @akmleva/web
         env:
           DISABLE_SSR_FETCH: 'true'
           AUTH_SECRET: ${{ secrets.AUTH_SECRET || 'placeholder-secret-for-build' }}
 
-      - name: Start dev server
+      - name: Start production server
+        # `next start` defaults to port 3000; pass -p 3001 to match playwright.config.ts
         run: |
-          npm run start &
-          npx wait-on http://localhost:3001 --timeout 30000
+          npm run start -w @akmleva/web -- -p 3001 &
+          npx wait-on http://localhost:3001 --timeout 60000
         env:
           AUTH_SECRET: ${{ secrets.AUTH_SECRET || 'placeholder-secret-for-build' }}
-          PORT: '3001'
+          UPSTASH_REDIS_REST_URL: ${{ secrets.UPSTASH_REDIS_REST_URL || '' }}
+          UPSTASH_REDIS_REST_TOKEN: ${{ secrets.UPSTASH_REDIS_REST_TOKEN || '' }}
+          INTERNAL_API_KEY: ${{ secrets.INTERNAL_API_KEY || 'test-internal-api-key' }}
 
       - name: Run axe-core accessibility audit
-        run: npx playwright test e2e/accessibility.spec.ts --project=chromium --reporter=github
+        # Run via workspace so Playwright resolves config from apps/web/
+        run: npm run e2e:a11y -w @akmleva/web
         timeout-minutes: 5
         env:
+          BASE_URL: 'http://localhost:3001'
           AUTH_SECRET: ${{ secrets.AUTH_SECRET || 'placeholder-secret-for-build' }}
-          UPSTASH_REDIS_REST_URL: ${{ secrets.UPSTASH_REDIS_REST_URL || 'https://placeholder.upstash.io' }}
-          UPSTASH_REDIS_REST_TOKEN: ${{ secrets.UPSTASH_REDIS_REST_TOKEN || 'placeholder-token' }}
+          UPSTASH_REDIS_REST_URL: ${{ secrets.UPSTASH_REDIS_REST_URL || '' }}
+          UPSTASH_REDIS_REST_TOKEN: ${{ secrets.UPSTASH_REDIS_REST_TOKEN || '' }}
 
       - name: Upload Playwright report on failure
         if: failure()
         uses: actions/upload-artifact@v5
         with:
           name: playwright-report-a11y
-          path: playwright-report/
+          path: apps/web/playwright-report/
           retention-days: 7

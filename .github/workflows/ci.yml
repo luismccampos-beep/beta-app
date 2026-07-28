@@ -143,6 +143,7 @@ jobs:
     env:
       DATABASE_URL: ${{ secrets.DATABASE_URL || 'postgresql://placeholder:placeholder@localhost:5432/placeholder' }}
       DATABASE_URL_UNPOOLED: ${{ secrets.DATABASE_URL_UNPOOLED || secrets.DATABASE_URL || 'postgresql://placeholder:placeholder@localhost:5432/placeholder' }}
+      AUTH_SECRET: ${{ secrets.AUTH_SECRET || 'test-secret-for-ci-only' }}
     steps:
       - uses: actions/checkout@v5
 
@@ -159,22 +160,21 @@ jobs:
       - name: Install Playwright browsers
         run: npx playwright install --with-deps chromium
 
-      - name: Download build artifacts
-        uses: actions/download-artifact@v5
-        with:
-          name: build-output
-          path: apps/web/.next/
-
       - name: Run E2E tests
-        run: npm run e2e
+        # BASE_URL is intentionally NOT set so playwright.config.ts webServer
+        # block starts `next dev` on port 3001 automatically.
+        run: npm run e2e -w @akmleva/web
         env:
           CI: 'true'
-          BASE_URL: 'http://localhost:3001'
+          AUTH_SECRET: ${{ secrets.AUTH_SECRET || 'test-secret-for-ci-only' }}
+          INTERNAL_API_KEY: ${{ secrets.INTERNAL_API_KEY || 'test-internal-api-key' }}
+          UPSTASH_REDIS_REST_URL: ${{ secrets.UPSTASH_REDIS_REST_URL || '' }}
+          UPSTASH_REDIS_REST_TOKEN: ${{ secrets.UPSTASH_REDIS_REST_TOKEN || '' }}
 
       - name: Upload test results
         if: always()
         uses: actions/upload-artifact@v5
         with:
           name: playwright-report
-          path: playwright-report/
+          path: apps/web/playwright-report/
           retention-days: 7
