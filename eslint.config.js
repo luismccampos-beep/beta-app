@@ -79,7 +79,6 @@ export default [
       '**/test-results/**',
       '**/playwright-report/**',
       '**/node_modules/**',
-      'packages/**',
       'Zoo-Code/**',
       'webpack.optimization.js',
       'src/config/seo.js',
@@ -110,7 +109,7 @@ export default [
     },
   },
   {
-    files: ['apps/web/e2e/**/*.{ts,tsx}', 'apps/web/src/**/*.{ts,tsx}', 'scripts/**/*.{ts,tsx}'],
+    files: ['apps/web/e2e/**/*.{ts,tsx}', 'apps/web/src/**/*.{ts,tsx}', 'packages/**/*.{ts,tsx}', 'scripts/**/*.{ts,tsx}'],
     rules: {
       '@typescript-eslint/no-explicit-any': 'error',
     },
