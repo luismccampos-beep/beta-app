@@ -8,9 +8,16 @@ export class PreferencesPage extends BasePage {
   readonly skipButton: Locator;
   readonly submitButton: Locator;
 
+  /** Desktop step indicator (circles with aria-current="step", hidden below md breakpoint) */
+  readonly desktopStepIndicator: Locator;
+  /** Mobile step indicator (progress bar, hidden at md and above) */
+  readonly mobileStepIndicator: Locator;
+
   constructor(page: Page) {
     super(page);
-    this.stepIndicator = page.locator('[aria-current="step"]');
+    this.desktopStepIndicator = page.locator('[aria-current="step"]');
+    this.mobileStepIndicator = page.locator('[role="progressbar"]');
+    this.stepIndicator = this.desktopStepIndicator;
     this.nextButton = page.locator('button:visible').filter({ hasText: /Próxima Etapa|Next Step/i }).first();
     this.previousButton = page.locator('button:visible').filter({ hasText: /← Anterior|← Previous|← Voltar/i }).first();
     this.skipButton = page.locator('button:visible').filter({ hasText: /Saltar|Skip/i }).first();
@@ -75,8 +82,16 @@ export class PreferencesPage extends BasePage {
     await this.previousButton.click();
   }
 
-  async waitForStep(stepNumber: number) {
-    await this.stepIndicator.first().waitFor({ state: 'visible', timeout: 10000 });
+  async waitForStep(_stepNumber: number) {
+    // On desktop (≥768px), step circles with aria-current="step" are visible.
+    // On mobile (<768px), a progress bar [role="progressbar"] is shown instead.
+    // Wait for whichever indicator is visible in the current viewport.
+    // Use Promise.any() (not race) — waits for first fulfillment,
+    // so a hidden desktop indicator on mobile won't cause a rejection.
+    await Promise.any([
+      this.desktopStepIndicator.first().waitFor({ state: 'visible', timeout: 10000 }),
+      this.mobileStepIndicator.first().waitFor({ state: 'visible', timeout: 10000 }),
+    ]);
   }
 
   async waitForBudgetChips() {

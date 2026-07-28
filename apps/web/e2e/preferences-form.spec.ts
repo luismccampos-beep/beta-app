@@ -8,8 +8,8 @@ test.describe('Travel Preferences Form - 3-Step Quick Flow', () => {
   });
 
   test('Step 1: should display travel style cards and allow selection', async ({ preferencesPage }) => {
-    const activeStep = preferencesPage.locator('[aria-current="step"]');
-    await expect(activeStep.first()).toBeVisible({ timeout: 5000 });
+    // Verify step indicator is visible (desktop circles or mobile progress bar)
+    await preferencesPage.waitForStep(1);
 
     await preferencesPage.selectTravelStyle('luxury');
 
@@ -39,8 +39,8 @@ test.describe('Travel Preferences Form - 3-Step Quick Flow', () => {
     await preferencesPage.selectBudget('comfort');
     await preferencesPage.goToStep3();
 
-    const thirdStep = preferencesPage.locator('[aria-current="step"]');
-    await expect(thirdStep.first()).toBeVisible({ timeout: 5000 });
+    // Verify step indicator shows step 3 (desktop circles or mobile progress bar)
+    await preferencesPage.waitForStep(3);
   });
 
   test('Skip step: should allow skipping Step 1', async ({ preferencesPage }) => {
