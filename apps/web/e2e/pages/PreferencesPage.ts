@@ -18,6 +18,8 @@ export class PreferencesPage extends BasePage {
   }
 
   async goto() {
+    // Bypass auth redirect for protected /preferences route (middleware checks this header)
+    await this.page.setExtraHTTPHeaders({ 'x-e2e-auth': 'true' });
     await super.goto('/preferences/edit');
   }
 
@@ -28,9 +30,9 @@ export class PreferencesPage extends BasePage {
   }
 
   async goToStep3() {
-    await this.goToStep2();
-    const budgetChip = this.page.locator('button:visible').filter({ hasText: /Conforto|Comfort/i }).first();
-    await budgetChip.click();
+    // Assumes caller already navigated to step 1 (budget) and selected a budget.
+    // Advances from step 1 to step 2 (review). Do NOT re-call goToStep2() here
+    // because callers (e.g. preferences-form.spec.ts) already call goToStep2() first.
     await this.nextButton.scrollIntoViewIfNeeded();
     await this.nextButton.click();
     await this.waitForStep(3);
