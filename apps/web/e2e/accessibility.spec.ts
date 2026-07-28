@@ -442,6 +442,9 @@ test.describe('Accessibility — dark/light mode contrast', () => {
   });
 
   test('destinations page passes contrast in both modes', async ({ page }) => {
+    // This test iterates 2 color modes with axe analysis — needs extra time
+    test.setTimeout(60000);
+
     // Light mode
     await page.emulateMedia({ colorScheme: 'light' });
     const response = await page.goto('/destinations', { timeout: 30000 }).catch(() => null);
