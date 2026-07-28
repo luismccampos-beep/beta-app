@@ -1,4 +1,4 @@
-import { test as base } from '@playwright/test';
+import { test as base, type Page, type Response, type ConsoleMessage } from '@playwright/test';
 import { AuthPage } from '../pages/AuthPage';
 import { HomePage } from '../pages/HomePage';
 import { PreferencesPage } from '../pages/PreferencesPage';
@@ -70,12 +70,12 @@ export const shouldRunAuthTests = () => {
 
 // Helper to wait for API response
 export async function waitForAPIResponse(
-  page: any,
+  page: Page,
   urlPattern: string | RegExp,
   timeout = 10000
 ) {
   return page.waitForResponse(
-    (response: any) => {
+    (response: Response) => {
       const url = response.url();
       if (typeof urlPattern === 'string') {
         return url.includes(urlPattern);
@@ -87,9 +87,9 @@ export async function waitForAPIResponse(
 }
 
 // Helper to check for console errors
-export function setupConsoleErrorTracking(page: any) {
+export function setupConsoleErrorTracking(page: Page) {
   const errors: string[] = [];
-  page.on('console', (msg: any) => {
+  page.on('console', (msg: ConsoleMessage) => {
     if (msg.type() === 'error') {
       errors.push(msg.text());
     }
@@ -98,9 +98,9 @@ export function setupConsoleErrorTracking(page: any) {
 }
 
 // Helper to check for failed network requests
-export function setupNetworkFailureTracking(page: any) {
+export function setupNetworkFailureTracking(page: Page) {
   const failedRequests: string[] = [];
-  page.on('response', (response: any) => {
+  page.on('response', (response: Response) => {
     if (response.status() >= 400 && response.url().includes('/_next/')) {
       failedRequests.push(`${response.status()} ${response.url()}`);
     }

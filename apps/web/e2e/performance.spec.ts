@@ -1,5 +1,10 @@
 import { test, expect } from './fixtures/test-helpers';
 
+/** Typed accessor for custom properties injected on `window` during tests. */
+interface TestWindow extends Window {
+  __longTasks?: PerformanceEntry[];
+}
+
 test.describe('Performance & Metrics', () => {
   test.describe('Core Web Vitals', () => {
     test('homepage meets performance budget', async ({ page }) => {
@@ -148,10 +153,10 @@ test.describe('Performance & Metrics', () => {
     test('no long tasks blocking main thread', async ({ page }) => {
       await page.evaluate(() => {
         // Monitor long tasks
-        (window as any).__longTasks = [];
+        (window as unknown as TestWindow).__longTasks = [];
         const observer = new PerformanceObserver((list) => {
           for (const entry of list.getEntries()) {
-            (window as any).__longTasks.push(entry);
+            (window as unknown as TestWindow).__longTasks!.push(entry);
           }
         });
         observer.observe({ entryTypes: ['longtask'] });
@@ -162,7 +167,7 @@ test.describe('Performance & Metrics', () => {
       await page.waitForTimeout(2000);
 
       const taskCount = await page.evaluate(() => {
-        return (window as any).__longTasks?.length || 0;
+        return (window as unknown as TestWindow).__longTasks?.length || 0;
       });
 
       // Should have minimal long tasks (>50ms)
@@ -217,7 +222,7 @@ test.describe('Performance & Metrics', () => {
     });
 
     test('compresses responses', async ({ page }) => {
-      const responses: { url: string; headers: any }[] = [];
+      const responses: { url: string; headers: Record<string, string> }[] = [];
 
       await page.route('**/*', (route) => {
         const response = route.fetch().then(res => {
@@ -287,7 +292,7 @@ test.describe('Performance & Metrics', () => {
         
         return {
           // First Contentful Paint (approximate)
-          fcp: (performance.getEntriesByName('first-contentful-paint')[0] as any)?.startTime || 0,
+          fcp: (performance.getEntriesByName('first-contentful-paint')[0] as PerformanceEntry | undefined)?.startTime || 0,
           // DOM load time
           domLoad: navigation.loadEventEnd - navigation.startTime,
         };

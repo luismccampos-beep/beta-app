@@ -110,6 +110,12 @@ export default [
     },
   },
   {
+    files: ['apps/web/e2e/**/*.{ts,tsx}'],
+    rules: {
+      '@typescript-eslint/no-explicit-any': 'error',
+    },
+  },
+  {
     files: ['next.config.cpanel.js', 'scripts/*.js'],
     rules: {
       'security/detect-non-literal-fs-operation': 'off',
