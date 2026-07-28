@@ -416,6 +416,8 @@ docker compose up postgres redis -d     # Start only DB + cache
 
 ## CI/CD
 
+### Deploy Migrations
+
 **Workflow**: `.github/workflows/deploy-migrations.yml`
 
 - **Trigger**: Push to `main` (excluding docs) + manual dispatch
@@ -426,6 +428,35 @@ docker compose up postgres redis -d     # Start only DB + cache
   3. Resolve failed migrations automatically
   4. `prisma migrate deploy`
   5. Optional: `prisma db seed`
+
+### Visual Regression Tests (Chromatic)
+
+**Workflow**: `.github/workflows/chromatic.yml`
+
+- **Trigger**: Push/PR to `main` touching `src/`, `.storybook/`, or config files + manual dispatch
+- **Environment**: Ubuntu latest, Node 22
+- **Steps**:
+  1. Checkout with full history
+  2. Install dependencies
+  3. Build Storybook
+  4. Publish to Chromatic for visual regression testing
+
+**Configuration**:
+- **Project code**: `akmleva` (configured in `chromatic.json`)
+- **Token**: `CHROMATIC_TOKEN` secret in GitHub repository settings
+- **Storybook build**: `npm run storybook:build`
+- **Options**: Only changed stories, exit zero on changes, public assets as externals
+
+**Setup**:
+1. Create a project at [chromatic.com](https://www.chromatic.com)
+2. Copy the project token
+3. Add as GitHub secret: `CHROMATIC_TOKEN`
+4. Ensure `chromatic.json` has the correct `projectCode`
+
+**Local testing**:
+```bash
+npm run chromatic
+```
 
 ---
 

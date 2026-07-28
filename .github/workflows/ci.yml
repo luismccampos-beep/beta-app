@@ -158,7 +158,7 @@ jobs:
         run: npx prisma generate --schema=packages/db/prisma/schema.prisma
 
       - name: Install Playwright browsers
-        run: npx playwright install --with-deps chromium
+        run: npx playwright install --with-deps chromium webkit
 
       - name: Run E2E tests
         # BASE_URL is intentionally NOT set so playwright.config.ts webServer

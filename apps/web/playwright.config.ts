@@ -10,9 +10,13 @@ export default defineConfig({
   fullyParallel: true,
   forbidOnly: !!process.env.CI,
   retries: process.env.CI ? 2 : 0,
-  workers: process.env.CI ? 1 : 2,
-  reporter: 'html',
-  timeout: 60000,
+  workers: isRemote ? 4 : undefined, // Auto-detect in local, fixed in CI
+  reporter: [
+    ['html', { outputFolder: 'playwright-report', open: 'never' }],
+    ['json', { outputFile: 'test-results/results.json' }],
+    ['junit', { outputFile: 'test-results/junit.xml' }],
+  ],
+  timeout: 30000, // Reduced from 60s to catch performance issues
   expect: {
     timeout: 10000,
   },
@@ -20,7 +24,9 @@ export default defineConfig({
     baseURL: process.env.BASE_URL || 'http://localhost:3001',
     trace: 'on-first-retry',
     screenshot: 'only-on-failure',
-    navigationTimeout: 60000,
+    video: 'retain-on-failure',
+    navigationTimeout: 30000, // Reduced from 60s
+    actionTimeout: 10000,
   },
   projects: [
     {
