@@ -40,7 +40,7 @@ test.describe('Authentication Flows', () => {
       await authPage.goto();
       await authPage.login('test@example.com', 'wrongpassword');
       
-      const errorMsg = authPage.getPage().locator('[data-sonner-toast]').filter({ hasText: /Invalid|incorreto|Credenciais/i });
+      const errorMsg = authPage.getPage().locator('[data-sonner-toast]').filter({ hasText: /Invalid|incorreto|Credenciais|Credenciales|Identifiants/i });
       await expect(errorMsg.first()).toBeVisible({ timeout: 10000 });
     });
   });

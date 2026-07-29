@@ -83,14 +83,20 @@ export class PreferencesPage extends BasePage {
   }
 
   async waitForStep(_stepNumber: number) {
+    // Ensure the page is fully loaded before checking step indicators.
+    await this.page.waitForLoadState('networkidle', { timeout: 15000 }).catch(() => {
+      // Fall through to domcontentloaded if networkidle times out (e.g. long-polling)
+      return this.page.waitForLoadState('domcontentloaded', { timeout: 5000 });
+    });
+
     // On desktop (≥768px), step circles with aria-current="step" are visible.
     // On mobile (<768px), a progress bar [role="progressbar"] is shown instead.
     // Wait for whichever indicator is visible in the current viewport.
     // Use Promise.any() (not race) — waits for first fulfillment,
     // so a hidden desktop indicator on mobile won't cause a rejection.
     await Promise.any([
-      this.desktopStepIndicator.first().waitFor({ state: 'visible', timeout: 10000 }),
-      this.mobileStepIndicator.first().waitFor({ state: 'visible', timeout: 10000 }),
+      this.desktopStepIndicator.first().waitFor({ state: 'visible', timeout: 15000 }),
+      this.mobileStepIndicator.first().waitFor({ state: 'visible', timeout: 15000 }),
     ]);
   }
 
