@@ -8,6 +8,10 @@
     "directory": ".open-next/assets",
     "binding": "ASSETS"
   },
+  "routes": [
+    { "pattern": "akmleva.pt/*", "zone_name": "akmleva.pt" },
+    { "pattern": "www.akmleva.pt/*", "zone_name": "akmleva.pt" }
+  ],
   "observability": {
     "enabled": true
   }

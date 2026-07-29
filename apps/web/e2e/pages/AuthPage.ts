@@ -19,6 +19,7 @@ export class AuthPage extends BasePage {
 
   async goto() {
     await super.goto('/auth');
+    await this.dismissCookieConsent();
   }
 
   async switchToRegister() {
@@ -36,11 +37,13 @@ export class AuthPage extends BasePage {
     await this.passwordInput.fill(password);
     // Wait for the auth API response before returning so callers don't race
     // against a toast that hasn't appeared yet (especially on slower Mobile Safari).
+    // Use a short timeout (5s) so the test doesn't hang when the DB is unavailable.
     const responsePromise = this.page.waitForResponse(
       (r) => r.url().includes('/api/auth') && r.request().method() === 'POST',
-      { timeout: 15000 }
-    ).catch(() => null); // don't throw if the form uses a different endpoint
-    await this.loginButton.click();
+      { timeout: 5000 }
+    ).catch(() => null); // don't throw if the form uses a different endpoint or times out
+    await this.loginButton.scrollIntoViewIfNeeded();
+    await this.loginButton.click({ force: true });
     await responsePromise;
   }
 

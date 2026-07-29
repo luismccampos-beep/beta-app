@@ -83,10 +83,8 @@ export class PreferencesPage extends BasePage {
   }
 
   async waitForStep(_stepNumber: number) {
-    // Ensure the page is fully loaded before checking step indicators.
-    await this.page.waitForLoadState('networkidle', { timeout: 15000 }).catch(() => {
-      // Fall through to domcontentloaded if networkidle times out (e.g. long-polling)
-      return this.page.waitForLoadState('domcontentloaded', { timeout: 5000 });
+    await this.page.waitForLoadState('domcontentloaded', {
+      timeout: 15000,
     });
 
     // On desktop (≥768px), step circles with aria-current="step" are visible.

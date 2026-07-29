@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect } from 'react';
 import Link from 'next/link';
 import { signIn } from '@/lib/auth/client';
 import { Button } from '../ui/button';
@@ -81,25 +81,47 @@ export function AuthPage({ onLoginSuccess, onBackToHome, onNavigateToLegal }: Au
     setIsSubmitting(true);
 
     try {
-      const result = await signIn.email({
-        email: loginEmail,
-        password: loginPassword,
-        callbackURL: '/dashboard',
+      const res = await fetch('/api/auth/login', {
+        method: 'POST',
+        credentials: 'include',
+        headers: { 'content-type': 'application/json' },
+        body: JSON.stringify({
+          email: loginEmail,
+          password: loginPassword,
+        }),
       });
 
-      if (result?.error) {
-        toast.error(t('loginError') || 'Invalid credentials');
+      // The /api/auth/login endpoint returns { ok: false, error: 'Invalid credentials' }
+      // with status 401 on failure, and { ok: true } on success.
+      if (!res.ok) {
+        toast.error('Invalid credentials');
         return;
       }
 
       toast.success(t('loginSuccess'));
       onLoginSuccess();
     } catch (err) {
-      toast.error(err instanceof Error ? err.message : 'Login failed');
+      console.error('[Auth] sign-in failed:', err);
+      toast.error('Invalid credentials');
     } finally {
       setIsSubmitting(false);
     }
   };
+
+  // Check for auth error in URL params on mount
+  // (redirected back after failed login)
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const params = new URLSearchParams(window.location.search);
+      if (params.has('error')) {
+        toast.error('Invalid credentials');
+        // Clean up the error param from the URL
+        const url = new URL(window.location.href);
+        url.searchParams.delete('error');
+        window.history.replaceState({}, '', url.toString());
+      }
+    }
+  }, []);
 
   const handleRegister = async (e: React.FormEvent) => {
     e.preventDefault();

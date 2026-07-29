@@ -135,6 +135,22 @@ jobs:
           if-no-files-found: error
           retention-days: 3
 
+  check-database:
+    name: Check Database Configuration
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Check database configuration
+        run: |
+          if [ -z "$DATABASE_URL" ]; then
+            echo "::error::DATABASE_URL is empty"
+            exit 1
+          fi
+          echo "DATABASE_URL is configured"
+          echo "DATABASE_URL length: ${#DATABASE_URL}"
+        env:
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
+
   e2e:
     name: E2E Tests
     runs-on: ubuntu-latest
@@ -157,21 +173,52 @@ jobs:
       - name: Generate Prisma Client
         run: npx prisma generate --schema=packages/db/prisma/schema.prisma
 
+      - name: Download Next.js build
+        uses: actions/download-artifact@v5
+        with:
+          name: build-output
+          path: apps/web/.next
+
       - name: Install Playwright browsers
         run: npx playwright install --with-deps chromium webkit
 
-      - name: Generate Better Auth test secret
+      - name: Generate Better Auth secret
         shell: bash
         run: echo "BETTER_AUTH_SECRET=$(openssl rand -hex 32)" >> "$GITHUB_ENV"
 
+      - name: Start production server
+        shell: bash
+        run: |
+          npm run start -w @akmleva/web -- -p 3001 > /tmp/akmleva-web.log 2>&1 &
+
+          for i in $(seq 1 60); do
+            if curl -fsS http://localhost:3001/ > /dev/null; then
+              echo "Web server is ready"
+              break
+            fi
+            sleep 1
+          done
+
+          if ! curl -fsS http://localhost:3001/ > /dev/null; then
+            echo "Web server failed to start"
+            cat /tmp/akmleva-web.log
+            exit 1
+          fi
+        env:
+          NODE_ENV: production
+          BETTER_AUTH_URL: http://localhost:3001
+          INTERNAL_API_KEY: ${{ secrets.INTERNAL_API_KEY || 'test-internal-api-key' }}
+          AUTH_SECRET: ${{ secrets.AUTH_SECRET || 'test-secret-for-ci-only' }}
+          BETTER_AUTH_SECRET: ${{ env.BETTER_AUTH_SECRET }}
+
       - name: Run E2E tests
-        # BASE_URL is intentionally NOT set so playwright.config.ts webServer
-        # block starts `next dev` on port 3001 automatically.
         run: npm run e2e -w @akmleva/web
         env:
           CI: 'true'
+          BASE_URL: 'http://localhost:3001'
           AUTH_SECRET: ${{ secrets.AUTH_SECRET || 'test-secret-for-ci-only' }}
           BETTER_AUTH_SECRET: ${{ env.BETTER_AUTH_SECRET }}
+          BETTER_AUTH_URL: 'http://localhost:3001'
           INTERNAL_API_KEY: ${{ secrets.INTERNAL_API_KEY || 'test-internal-api-key' }}
           UPSTASH_REDIS_REST_URL: ${{ secrets.UPSTASH_REDIS_REST_URL || '' }}
           UPSTASH_REDIS_REST_TOKEN: ${{ secrets.UPSTASH_REDIS_REST_TOKEN || '' }}

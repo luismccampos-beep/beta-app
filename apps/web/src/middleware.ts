@@ -209,17 +209,28 @@ export async function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
   const tenant = resolveTenant(request);
 
-  // Auth Protection
-  const session = await auth.api.getSession({ headers: request.headers });
   const isAuthPage = pathname === '/auth';
   const isProtectedRoute = pathname.startsWith('/dashboard') || pathname.startsWith('/preferences');
   const isAdminRoute = pathname.startsWith('/api/admin');
 
-  if (isProtectedRoute && !session) {
-    const isE2EBypass = request.headers.get('x-e2e-auth') === 'true' || process.env.E2E_BYPASS_AUTH === 'true';
-    if (!isE2EBypass) {
-      return NextResponse.redirect(new URL('/auth', request.url));
-    }
+  // O bypass só pode funcionar fora de produção.
+  // Nunca permitas x-e2e-auth num Worker de produção.
+  const isE2EBypass =
+    process.env.NODE_ENV !== 'production' &&
+    request.headers.get('x-e2e-auth') === 'true';
+
+  const requiresSession =
+    isAuthPage ||
+    isProtectedRoute ||
+    isAdminRoute;
+
+  const session =
+    requiresSession && !isE2EBypass
+      ? await auth.api.getSession({ headers: request.headers })
+      : null;
+
+  if (isProtectedRoute && !session && !isE2EBypass) {
+    return NextResponse.redirect(new URL('/auth', request.url));
   }
 
   if (isAuthPage && session) {
