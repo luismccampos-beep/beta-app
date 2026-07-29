@@ -121,7 +121,7 @@ export function AuthPage({ onLoginSuccess, onBackToHome, onNavigateToLegal }: Au
         window.history.replaceState({}, '', url.toString());
       }
     }
-  }, []);
+  }, [t]);
 
   const handleRegister = async (e: React.FormEvent) => {
     e.preventDefault();
