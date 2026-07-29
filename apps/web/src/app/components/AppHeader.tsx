@@ -72,10 +72,11 @@ export function AppHeader({
           {/* Left side: Logo or Back button */}
           <div className="flex items-center gap-2">
             {showBack ? (
-              <Button type="button"
+                  <Button type="button"
                 variant="ghost"
                 size="sm"
                 onClick={handleBack}
+                aria-label={t('back')}
                 className="gap-1.5 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800"
               >
                 <ArrowLeft className="h-4 w-4" />

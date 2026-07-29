@@ -160,6 +160,10 @@ jobs:
       - name: Install Playwright browsers
         run: npx playwright install --with-deps chromium webkit
 
+      - name: Generate Better Auth test secret
+        shell: bash
+        run: echo "BETTER_AUTH_SECRET=$(openssl rand -hex 32)" >> "$GITHUB_ENV"
+
       - name: Run E2E tests
         # BASE_URL is intentionally NOT set so playwright.config.ts webServer
         # block starts `next dev` on port 3001 automatically.
@@ -167,6 +171,7 @@ jobs:
         env:
           CI: 'true'
           AUTH_SECRET: ${{ secrets.AUTH_SECRET || 'test-secret-for-ci-only' }}
+          BETTER_AUTH_SECRET: ${{ env.BETTER_AUTH_SECRET }}
           INTERNAL_API_KEY: ${{ secrets.INTERNAL_API_KEY || 'test-internal-api-key' }}
           UPSTASH_REDIS_REST_URL: ${{ secrets.UPSTASH_REDIS_REST_URL || '' }}
           UPSTASH_REDIS_REST_TOKEN: ${{ secrets.UPSTASH_REDIS_REST_TOKEN || '' }}

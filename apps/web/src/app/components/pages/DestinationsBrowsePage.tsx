@@ -304,6 +304,11 @@ export function DestinationsBrowsePage({ onBack }: DestinationsBrowsePageProps) 
                 <Popover open={countryOpen} onOpenChange={setCountryOpen}>
                   <PopoverTrigger asChild>
                     <button type="button"
+                      aria-label={
+                        countryFilter
+                          ? `${t('countryPlaceholder')}: ${countryFilter}`
+                          : t('countryPlaceholder')
+                      }
                       className={cn(
                         'flex items-center gap-1.5 px-3 py-2 sm:py-2.5 rounded-xl text-sm font-medium transition-colors shrink-0',
                         countryFilter

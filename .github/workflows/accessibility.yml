@@ -34,6 +34,10 @@ jobs:
       - name: Install Playwright browsers
         run: npx playwright install --with-deps chromium webkit
 
+      - name: Generate Better Auth test secret
+        shell: bash
+        run: echo "BETTER_AUTH_SECRET=$(openssl rand -hex 32)" >> "$GITHUB_ENV"
+
       - name: Build Next.js app
         run: npm run build -w @akmleva/web
         env:
@@ -47,6 +51,7 @@ jobs:
           npx wait-on http://localhost:3001 --timeout 60000
         env:
           AUTH_SECRET: ${{ secrets.AUTH_SECRET || 'placeholder-secret-for-build' }}
+          BETTER_AUTH_SECRET: ${{ env.BETTER_AUTH_SECRET }}
           UPSTASH_REDIS_REST_URL: ${{ secrets.UPSTASH_REDIS_REST_URL || '' }}
           UPSTASH_REDIS_REST_TOKEN: ${{ secrets.UPSTASH_REDIS_REST_TOKEN || '' }}
           INTERNAL_API_KEY: ${{ secrets.INTERNAL_API_KEY || 'test-internal-api-key' }}
@@ -58,6 +63,7 @@ jobs:
         env:
           BASE_URL: 'http://localhost:3001'
           AUTH_SECRET: ${{ secrets.AUTH_SECRET || 'placeholder-secret-for-build' }}
+          BETTER_AUTH_SECRET: ${{ env.BETTER_AUTH_SECRET }}
           UPSTASH_REDIS_REST_URL: ${{ secrets.UPSTASH_REDIS_REST_URL || '' }}
           UPSTASH_REDIS_REST_TOKEN: ${{ secrets.UPSTASH_REDIS_REST_TOKEN || '' }}
 

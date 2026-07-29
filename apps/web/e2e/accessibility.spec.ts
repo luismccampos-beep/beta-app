@@ -31,8 +31,8 @@ test.describe('Accessibility — axe-core automated audits', () => {
       );
     }
 
-    // Filter out known false positives: form labels on decorative/demo date inputs
-    const actionable = criticalSerious.filter((v) => v.id !== 'label' && v.id !== 'color-contrast');
+    // Filter out known false positives: color-contrast (design may be iterating)
+    const actionable = criticalSerious.filter((v) => v.id !== 'color-contrast');
     expect(actionable).toEqual([]);
   });
 
@@ -339,9 +339,8 @@ test.describe('Accessibility — axe-core automated audits', () => {
       );
     }
 
-    // Filter out known false positives: form labels on decorative/demo date inputs
-    // Also filter color-contrast: search input placeholder text is intentionally lighter
-    const actionable = criticalSerious.filter((v) => v.id !== 'label' && v.id !== 'color-contrast');
+    // Filter out color-contrast: search input placeholder text is intentionally lighter
+    const actionable = criticalSerious.filter((v) => v.id !== 'color-contrast');
     expect(actionable).toEqual([]);
   });
 
@@ -659,8 +658,8 @@ test.describe('Accessibility — keyboard-only navigation', () => {
     const criticalSerious = results.violations.filter(
       (v) => v.impact === 'critical' || v.impact === 'serious'
     );
-    // Filter out known false positives: form labels on decorative/demo date inputs
-    const actionable = criticalSerious.filter((v) => v.id !== 'label' && v.id !== 'color-contrast');
+    // Filter out color-contrast: search input placeholder text is intentionally lighter
+    const actionable = criticalSerious.filter((v) => v.id !== 'color-contrast');
     expect(actionable).toEqual([]);
   });
 

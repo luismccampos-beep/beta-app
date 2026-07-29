@@ -35,12 +35,12 @@ type PrismaModel = {
   count: (args: { where: Record<string, unknown> }) => Promise<number>
 }
 
-function getPrismaModel(model: string): PrismaModel {
+function getPrismaModel(db: typeof prisma, model: string): PrismaModel {
   switch (model) {
-    case 'user': return prisma.user as unknown as PrismaModel
-    case 'session': return prisma.session as unknown as PrismaModel
-    case 'account': return prisma.account as unknown as PrismaModel
-    case 'verification': return prisma.emailVerificationToken as unknown as PrismaModel
+    case 'user': return db.user as unknown as PrismaModel
+    case 'session': return db.session as unknown as PrismaModel
+    case 'account': return db.account as unknown as PrismaModel
+    case 'verification': return db.emailVerificationToken as unknown as PrismaModel
     default: throw new Error(`Unknown model: ${model}`)
   }
 }
@@ -79,37 +79,37 @@ function buildWhereClause(where?: WhereClause[]): Record<string, unknown> {
   return whereClause
 }
 
-export const customPrismaAdapter = () => {
-  return (_opts: Record<string, unknown>) => ({
+function createAdapter(db: typeof prisma) {
+  return {
     create: async ({ data, model }: AdapterMethodArgs) => {
       const mapped = mapFieldsToDb(data ?? {})
-      const created = await getPrismaModel(model).create({ data: mapped })
+      const created = await getPrismaModel(db, model).create({ data: mapped })
       return mapOutput(created)
     },
     update: async ({ model, where, update }: AdapterMethodArgs) => {
       const mapped = mapFieldsToDb(update ?? {})
       const whereClause = buildWhereClause(where)
-      const updated = await getPrismaModel(model).update({ where: whereClause, data: mapped })
+      const updated = await getPrismaModel(db, model).update({ where: whereClause, data: mapped })
       return mapOutput(updated)
     },
     updateMany: async ({ model, where, update }: AdapterMethodArgs) => {
       const mapped = mapFieldsToDb(update ?? {})
       const whereClause = buildWhereClause(where)
-      const result = await getPrismaModel(model).updateMany({ where: whereClause, data: mapped })
+      const result = await getPrismaModel(db, model).updateMany({ where: whereClause, data: mapped })
       return result.count
     },
     delete: async ({ model, where }: AdapterMethodArgs) => {
       const whereClause = buildWhereClause(where)
-      await getPrismaModel(model).delete({ where: whereClause })
+      await getPrismaModel(db, model).delete({ where: whereClause })
     },
     deleteMany: async ({ model, where }: AdapterMethodArgs) => {
       const whereClause = buildWhereClause(where)
-      const result = await getPrismaModel(model).deleteMany({ where: whereClause })
+      const result = await getPrismaModel(db, model).deleteMany({ where: whereClause })
       return result.count
     },
     findOne: async ({ model, where }: AdapterMethodArgs) => {
       const whereClause = buildWhereClause(where)
-      const result = await getPrismaModel(model).findFirst({ where: whereClause })
+      const result = await getPrismaModel(db, model).findFirst({ where: whereClause })
       return mapOutput(result)
     },
     findMany: async ({ model, where, limit, offset, sortBy }: AdapterMethodArgs) => {
@@ -117,7 +117,7 @@ export const customPrismaAdapter = () => {
       const orderBy = sortBy
         ? { [mapField(sortBy.field)]: sortBy.direction }
         : undefined
-      const results = await getPrismaModel(model).findMany({
+      const results = await getPrismaModel(db, model).findMany({
         where: whereClause,
         take: limit,
         skip: offset,
@@ -127,7 +127,27 @@ export const customPrismaAdapter = () => {
     },
     count: async ({ model, where }: AdapterMethodArgs) => {
       const whereClause = buildWhereClause(where)
-      return getPrismaModel(model).count({ where: whereClause })
+      return getPrismaModel(db, model).count({ where: whereClause })
     },
-  })
+  }
+}
+
+export const customPrismaAdapter = () => {
+  return (_opts: Record<string, unknown>) => {
+    const adapter = createAdapter(prisma)
+
+    return {
+      ...adapter,
+
+      transaction: async <R>(
+        callback: (transactionAdapter: ReturnType<typeof createAdapter>) => Promise<R>,
+      ) => {
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        return (prisma.$transaction as <T>(fn: (tx: any) => Promise<T>) => Promise<T>)(async (tx: any) => {
+          const transactionAdapter = createAdapter(tx as typeof prisma)
+          return callback(transactionAdapter)
+        })
+      },
+    }
+  }
 }

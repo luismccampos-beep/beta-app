@@ -213,12 +213,13 @@ export function SandboxPreview({ onRegister, locale = 'pt', texts }: SandboxPrev
             <div className="grid sm:grid-cols-2 gap-6 mb-8">
               {/* Destination */}
               <div className="sm:col-span-2">
-                <Label className="text-sm font-bold text-gray-700 dark:text-gray-300 mb-2 block">
+                <Label htmlFor="sandbox-destination" className="text-sm font-bold text-gray-700 dark:text-gray-300 mb-2 block">
                   {t('destinationLabel') || 'Para onde vamos?'}
                 </Label>
                 <div className="relative">
                   <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
                   <Input
+                    id="sandbox-destination"
                     value={destination}
                     onChange={(e) => setDestination(e.target.value)}
                     placeholder={t('destinationPlaceholder') || 'Ex: Lisboa, Paris, Tóquio...'}
@@ -230,12 +231,13 @@ export function SandboxPreview({ onRegister, locale = 'pt', texts }: SandboxPrev
 
               {/* Check-in */}
               <div>
-                <Label className="text-sm font-bold text-gray-700 dark:text-gray-300 mb-2 block">
+                <Label htmlFor="sandbox-check-in" className="text-sm font-bold text-gray-700 dark:text-gray-300 mb-2 block">
                   {t('checkInLabel') || 'Check-in'}
                 </Label>
                 <div className="relative">
                   <Calendar className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
                   <Input
+                    id="sandbox-check-in"
                     type="date"
                     value={checkIn}
                     onChange={(e) => setCheckIn(e.target.value)}
@@ -246,12 +248,13 @@ export function SandboxPreview({ onRegister, locale = 'pt', texts }: SandboxPrev
 
               {/* Check-out */}
               <div>
-                <Label className="text-sm font-bold text-gray-700 dark:text-gray-300 mb-2 block">
+                <Label htmlFor="sandbox-check-out" className="text-sm font-bold text-gray-700 dark:text-gray-300 mb-2 block">
                   {t('checkOutLabel') || 'Check-out'}
                 </Label>
                 <div className="relative">
                   <Calendar className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
                   <Input
+                    id="sandbox-check-out"
                     type="date"
                     value={checkOut}
                     onChange={(e) => setCheckOut(e.target.value)}
