@@ -1,5 +1,6 @@
 import { test, expect } from '@playwright/test';
 import AxeBuilder from '@axe-core/playwright';
+import type { Result } from 'axe-core';
 
 test.describe('Accessibility — axe-core automated audits', () => {
   test('homepage has no critical or serious violations', async ({ page }) => {
@@ -12,7 +13,7 @@ test.describe('Accessibility — axe-core automated audits', () => {
 
     // Log violations for the report
     const criticalSerious = results.violations.filter(
-      (v) => v.impact === 'critical' || v.impact === 'serious'
+      (v: Result) => v.impact === 'critical' || v.impact === 'serious'
     );
 
     // Only log violation IDs and counts — never node details (avoids secret leakage in CI logs)
@@ -20,7 +21,7 @@ test.describe('Accessibility — axe-core automated audits', () => {
       console.log(
         'Homepage a11y issues:',
         JSON.stringify(
-          criticalSerious.map((v) => ({
+          criticalSerious.map((v: Result) => ({
             id: v.id,
             impact: v.impact,
             count: v.nodes.length,
@@ -32,7 +33,7 @@ test.describe('Accessibility — axe-core automated audits', () => {
     }
 
     // Filter out known false positives: color-contrast (design may be iterating)
-    const actionable = criticalSerious.filter((v) => v.id !== 'color-contrast');
+    const actionable = criticalSerious.filter((v: Result) => v.id !== 'color-contrast');
     expect(actionable).toEqual([]);
   });
 
@@ -50,14 +51,14 @@ test.describe('Accessibility — axe-core automated audits', () => {
       .analyze();
 
     const criticalSerious = results.violations.filter(
-      (v) => v.impact === 'critical' || v.impact === 'serious'
+      (v: Result) => v.impact === 'critical' || v.impact === 'serious'
     );
 
     if (criticalSerious.length > 0) {
       console.log(
         'Destinations browse a11y issues:',
         JSON.stringify(
-          criticalSerious.map((v) => ({
+          criticalSerious.map((v: Result) => ({
             id: v.id,
             impact: v.impact,
             count: v.nodes.length,
@@ -81,14 +82,14 @@ test.describe('Accessibility — axe-core automated audits', () => {
       .analyze();
 
     const criticalSerious = results.violations.filter(
-      (v) => v.impact === 'critical' || v.impact === 'serious'
+      (v: Result) => v.impact === 'critical' || v.impact === 'serious'
     );
 
     if (criticalSerious.length > 0) {
       console.log(
         'Auth page a11y issues:',
         JSON.stringify(
-          criticalSerious.map((v) => ({
+          criticalSerious.map((v: Result) => ({
             id: v.id,
             impact: v.impact,
             count: v.nodes.length,
@@ -111,14 +112,14 @@ test.describe('Accessibility — axe-core automated audits', () => {
       .analyze();
 
     const criticalSerious = results.violations.filter(
-      (v) => v.impact === 'critical' || v.impact === 'serious'
+      (v: Result) => v.impact === 'critical' || v.impact === 'serious'
     );
 
     if (criticalSerious.length > 0) {
       console.log(
         'About page a11y issues:',
         JSON.stringify(
-          criticalSerious.map((v) => ({
+          criticalSerious.map((v: Result) => ({
             id: v.id,
             impact: v.impact,
             count: v.nodes.length,
@@ -141,14 +142,14 @@ test.describe('Accessibility — axe-core automated audits', () => {
       .analyze();
 
     const criticalSerious = results.violations.filter(
-      (v) => v.impact === 'critical' || v.impact === 'serious'
+      (v: Result) => v.impact === 'critical' || v.impact === 'serious'
     );
 
     if (criticalSerious.length > 0) {
       console.log(
         'Contact page a11y issues:',
         JSON.stringify(
-          criticalSerious.map((v) => ({
+          criticalSerious.map((v: Result) => ({
             id: v.id,
             impact: v.impact,
             count: v.nodes.length,
@@ -230,14 +231,14 @@ test.describe('Accessibility — axe-core automated audits', () => {
       .analyze();
 
     const criticalSerious = results.violations.filter(
-      (v) => v.impact === 'critical' || v.impact === 'serious'
+      (v: Result) => v.impact === 'critical' || v.impact === 'serious'
     );
 
     if (criticalSerious.length > 0) {
       console.log(
         'Legal page a11y issues:',
         JSON.stringify(
-          criticalSerious.map((v) => ({
+          criticalSerious.map((v: Result) => ({
             id: v.id,
             impact: v.impact,
             count: v.nodes.length,
@@ -260,14 +261,14 @@ test.describe('Accessibility — axe-core automated audits', () => {
       .analyze();
 
     const criticalSerious = results.violations.filter(
-      (v) => v.impact === 'critical' || v.impact === 'serious'
+      (v: Result) => v.impact === 'critical' || v.impact === 'serious'
     );
 
     if (criticalSerious.length > 0) {
       console.log(
         'FAQ page a11y issues:',
         JSON.stringify(
-          criticalSerious.map((v) => ({
+          criticalSerious.map((v: Result) => ({
             id: v.id,
             impact: v.impact,
             count: v.nodes.length,
@@ -290,14 +291,14 @@ test.describe('Accessibility — axe-core automated audits', () => {
       .analyze();
 
     const criticalSerious = results.violations.filter(
-      (v) => v.impact === 'critical' || v.impact === 'serious'
+      (v: Result) => v.impact === 'critical' || v.impact === 'serious'
     );
 
     if (criticalSerious.length > 0) {
       console.log(
         'Forgot-password page a11y issues:',
         JSON.stringify(
-          criticalSerious.map((v) => ({
+          criticalSerious.map((v: Result) => ({
             id: v.id,
             impact: v.impact,
             count: v.nodes.length,
@@ -321,14 +322,14 @@ test.describe('Accessibility — axe-core automated audits', () => {
       .analyze();
 
     const criticalSerious = results.violations.filter(
-      (v) => v.impact === 'critical' || v.impact === 'serious'
+      (v: Result) => v.impact === 'critical' || v.impact === 'serious'
     );
 
     if (criticalSerious.length > 0) {
       console.log(
         'Homepage with reduced-motion a11y issues:',
         JSON.stringify(
-          criticalSerious.map((v) => ({
+          criticalSerious.map((v: Result) => ({
             id: v.id,
             impact: v.impact,
             count: v.nodes.length,
@@ -340,7 +341,7 @@ test.describe('Accessibility — axe-core automated audits', () => {
     }
 
     // Filter out color-contrast: search input placeholder text is intentionally lighter
-    const actionable = criticalSerious.filter((v) => v.id !== 'color-contrast');
+    const actionable = criticalSerious.filter((v: Result) => v.id !== 'color-contrast');
     expect(actionable).toEqual([]);
   });
 
@@ -353,14 +354,14 @@ test.describe('Accessibility — axe-core automated audits', () => {
       .analyze();
 
     const criticalSerious = results.violations.filter(
-      (v) => v.impact === 'critical' || v.impact === 'serious'
+      (v: Result) => v.impact === 'critical' || v.impact === 'serious'
     );
 
     if (criticalSerious.length > 0) {
       console.log(
         'Not-found page a11y issues:',
         JSON.stringify(
-          criticalSerious.map((v) => ({
+          criticalSerious.map((v: Result) => ({
             id: v.id,
             impact: v.impact,
             count: v.nodes.length,
@@ -387,14 +388,14 @@ test.describe('Accessibility — dark/light mode contrast', () => {
       .analyze();
 
     const contrastViolations = results.violations.filter(
-      (v) => v.id === 'color-contrast'
+      (v: Result) => v.id === 'color-contrast'
     );
 
     if (contrastViolations.length > 0) {
       console.log(
         'Light mode contrast issues:',
         JSON.stringify(
-          contrastViolations.map((v) => ({
+          contrastViolations.map((v: Result) => ({
             id: v.id,
             impact: v.impact,
             count: v.nodes.length,
@@ -406,7 +407,7 @@ test.describe('Accessibility — dark/light mode contrast', () => {
     }
 
     // Report contrast issues but don't hard-fail (design may be iterating)
-    expect(contrastViolations.filter((v) => v.impact === 'critical').length).toBe(0);
+    expect(contrastViolations.filter((v: Result) => v.impact === 'critical').length).toBe(0);
   });
 
   test('homepage passes contrast checks in dark mode', async ({ page }) => {
@@ -419,14 +420,14 @@ test.describe('Accessibility — dark/light mode contrast', () => {
       .analyze();
 
     const contrastViolations = results.violations.filter(
-      (v) => v.id === 'color-contrast'
+      (v: Result) => v.id === 'color-contrast'
     );
 
     if (contrastViolations.length > 0) {
       console.log(
         'Dark mode contrast issues:',
         JSON.stringify(
-          contrastViolations.map((v) => ({
+          contrastViolations.map((v: Result) => ({
             id: v.id,
             impact: v.impact,
             count: v.nodes.length,
@@ -437,7 +438,7 @@ test.describe('Accessibility — dark/light mode contrast', () => {
       );
     }
 
-    expect(contrastViolations.filter((v) => v.impact === 'critical').length).toBe(0);
+    expect(contrastViolations.filter((v: Result) => v.impact === 'critical').length).toBe(0);
   });
 
   test('destinations page passes contrast in both modes', async ({ page }) => {
@@ -458,7 +459,7 @@ test.describe('Accessibility — dark/light mode contrast', () => {
       .analyze();
 
     let criticalContrast = results.violations.filter(
-      (v) => v.id === 'color-contrast' && v.impact === 'critical'
+      (v: Result) => v.id === 'color-contrast' && v.impact === 'critical'
     );
     expect(criticalContrast.length).toBe(0);
 
@@ -472,7 +473,7 @@ test.describe('Accessibility — dark/light mode contrast', () => {
       .analyze();
 
     criticalContrast = results.violations.filter(
-      (v) => v.id === 'color-contrast' && v.impact === 'critical'
+      (v: Result) => v.id === 'color-contrast' && v.impact === 'critical'
     );
     expect(criticalContrast.length).toBe(0);
   });
@@ -494,7 +495,7 @@ test.describe('Accessibility — dark/light mode contrast', () => {
         .analyze();
 
       const lightCritical = lightResults.violations.filter(
-        (v) => v.id === 'color-contrast' && v.impact === 'critical'
+        (v: Result) => v.id === 'color-contrast' && v.impact === 'critical'
       );
 
       if (lightCritical.length > 0) {
@@ -511,7 +512,7 @@ test.describe('Accessibility — dark/light mode contrast', () => {
         .analyze();
 
       const darkCritical = darkResults.violations.filter(
-        (v) => v.id === 'color-contrast' && v.impact === 'critical'
+        (v: Result) => v.id === 'color-contrast' && v.impact === 'critical'
       );
 
       if (darkCritical.length > 0) {
@@ -656,10 +657,10 @@ test.describe('Accessibility — keyboard-only navigation', () => {
     }
 
     const criticalSerious = results.violations.filter(
-      (v) => v.impact === 'critical' || v.impact === 'serious'
+      (v: Result) => v.impact === 'critical' || v.impact === 'serious'
     );
     // Filter out color-contrast: search input placeholder text is intentionally lighter
-    const actionable = criticalSerious.filter((v) => v.id !== 'color-contrast');
+    const actionable = criticalSerious.filter((v: Result) => v.id !== 'color-contrast');
     expect(actionable).toEqual([]);
   });
 
