@@ -10,7 +10,7 @@ export default defineConfig({
   fullyParallel: true,
   forbidOnly: !!process.env.CI,
   retries: process.env.CI ? 2 : 0,
-  workers: isRemote ? 4 : undefined, // Auto-detect in local, fixed in CI
+  workers: process.env.CI ? 1 : isRemote ? 4 : undefined, // 1 worker in CI to avoid concurrency issues
   reporter: [
     ['html', { outputFolder: 'playwright-report', open: 'never' }],
     ['json', { outputFile: 'test-results/results.json' }],

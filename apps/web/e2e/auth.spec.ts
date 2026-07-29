@@ -47,14 +47,14 @@ test.describe('Authentication Flows', () => {
 
   test.describe('Protected Routes', () => {
     test('redirects unauthenticated users from /dashboard to /auth', async ({ page }) => {
-      const response = await page.goto('/dashboard', { waitUntil: 'networkidle' });
+      const response = await page.goto('/dashboard', { waitUntil: 'domcontentloaded' });
       const finalUrl = page.url();
       expect(finalUrl).toContain('/auth');
       expect(response?.status()).toBeLessThan(400);
     });
 
     test('redirects unauthenticated users from /preferences to /auth', async ({ page }) => {
-      await page.goto('/preferences', { waitUntil: 'networkidle' });
+      await page.goto('/preferences', { waitUntil: 'domcontentloaded' });
       const finalUrl = page.url();
       expect(finalUrl).toContain('/auth');
     });

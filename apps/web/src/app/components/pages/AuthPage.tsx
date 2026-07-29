@@ -94,7 +94,7 @@ export function AuthPage({ onLoginSuccess, onBackToHome, onNavigateToLegal }: Au
       // The /api/auth/login endpoint returns { ok: false, error: 'Invalid credentials' }
       // with status 401 on failure, and { ok: true } on success.
       if (!res.ok) {
-        toast.error('Invalid credentials');
+        toast.error(t('loginError') || 'Invalid credentials');
         return;
       }
 
@@ -102,7 +102,7 @@ export function AuthPage({ onLoginSuccess, onBackToHome, onNavigateToLegal }: Au
       onLoginSuccess();
     } catch (err) {
       console.error('[Auth] sign-in failed:', err);
-      toast.error('Invalid credentials');
+      toast.error(t('loginError') || 'Invalid credentials');
     } finally {
       setIsSubmitting(false);
     }
@@ -114,7 +114,7 @@ export function AuthPage({ onLoginSuccess, onBackToHome, onNavigateToLegal }: Au
     if (typeof window !== 'undefined') {
       const params = new URLSearchParams(window.location.search);
       if (params.has('error')) {
-        toast.error('Invalid credentials');
+        toast.error(t('loginError') || 'Invalid credentials');
         // Clean up the error param from the URL
         const url = new URL(window.location.href);
         url.searchParams.delete('error');

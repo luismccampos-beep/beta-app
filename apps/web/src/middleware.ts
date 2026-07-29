@@ -213,10 +213,11 @@ export async function middleware(request: NextRequest) {
   const isProtectedRoute = pathname.startsWith('/dashboard') || pathname.startsWith('/preferences');
   const isAdminRoute = pathname.startsWith('/api/admin');
 
-  // O bypass só pode funcionar fora de produção.
-  // Nunca permitas x-e2e-auth num Worker de produção.
+  // E2E bypass only works in CI with E2E_BYPASS_AUTH=true.
+  // Never allow x-e2e-auth in a production Worker.
   const isE2EBypass =
-    process.env.NODE_ENV !== 'production' &&
+    process.env.CI === 'true' &&
+    process.env.E2E_BYPASS_AUTH === 'true' &&
     request.headers.get('x-e2e-auth') === 'true';
 
   const requiresSession =
