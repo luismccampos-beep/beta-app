@@ -62,6 +62,28 @@ const nextConfig = {
     serverMinification: true,
     // optimizeCss: true, // Habilitar se causar problemas de CSS
   },
+  // Externalize large packages so they are NOT bundled into the Worker
+  // script. OpenNext for Cloudflare imports them via esm.sh at runtime,
+  // keeping the Worker under the 3 MiB free-tier limit.
+  // Note: framer-motion and recharts are excluded because they are listed
+  // in experimental.optimizePackageImports (conflict otherwise).
+  serverExternalPackages: [
+    'duckdb',
+    'bcryptjs',
+    'jose',
+    'leaflet',
+    'react-leaflet',
+    'react-day-picker',
+    'react-hook-form',
+    'zod',
+    'html2canvas',
+    'jspdf',
+    'qrcode',
+    'otpauth',
+    '@tinymce/tinymce-react',
+    'ioredis',
+    'socket.io-client',
+  ],
   
   // Security Headers
   async headers() {

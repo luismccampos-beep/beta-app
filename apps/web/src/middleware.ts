@@ -220,13 +220,17 @@ export async function middleware(request: NextRequest) {
     process.env.E2E_BYPASS_AUTH === 'true' &&
     request.headers.get('x-e2e-auth') === 'true';
 
+  const databaseDisabled =
+    process.env.DATABASE_DISABLED === 'true' ||
+    process.env.DISABLE_SSR_FETCH === 'true';
+
   const requiresSession =
     isAuthPage ||
     isProtectedRoute ||
     isAdminRoute;
 
   const session =
-    requiresSession && !isE2EBypass
+    !databaseDisabled && requiresSession && !isE2EBypass
       ? await auth.api.getSession({ headers: request.headers })
       : null;
 

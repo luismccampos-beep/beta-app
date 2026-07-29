@@ -2,7 +2,10 @@ import { betterAuth } from 'better-auth'
 import { customSession, twoFactor } from 'better-auth/plugins'
 import { customPrismaAdapter } from './adapter'
 
-const isBuild = process.env.NEXT_PHASE === 'build'
+const databaseEnabled =
+  process.env.NEXT_PHASE !== 'phase-production-build' &&
+  process.env.DATABASE_DISABLED !== 'true' &&
+  process.env.DISABLE_SSR_FETCH !== 'true';
 
 function hasEnv(value: string | undefined): value is string {
   return typeof value === 'string' && value.length > 0
@@ -25,7 +28,7 @@ if (hasEnv(process.env.AUTH_FACEBOOK_ID) && hasEnv(process.env.AUTH_FACEBOOK_SEC
 export const auth = betterAuth({
   secret: process.env.BETTER_AUTH_SECRET || process.env.AUTH_SECRET || 'local-dev-secret-not-for-production',
   baseURL: process.env.BETTER_AUTH_URL || process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3001',
-  ...(isBuild ? {} : { database: customPrismaAdapter() as Parameters<typeof betterAuth>[0]['database'] }),
+  ...(databaseEnabled ? { database: customPrismaAdapter() as Parameters<typeof betterAuth>[0]['database'] } : {}),
   session: {
     expiresIn: 60 * 60 * 24 * 30, // 30 days
     updateAge: 60 * 60 * 24,       // 24 hours
