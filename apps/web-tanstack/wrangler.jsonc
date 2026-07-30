@@ -3,8 +3,31 @@
   "name": "akmleva-web",
   "compatibility_date": "2026-07-22",
   "compatibility_flags": ["nodejs_compat"],
-  "main": "@tanstack/react-start/server-entry",
+  "main": "src/server.ts",
   "observability": {
     "enabled": true
-  }
+  },
+  "vars": {
+    "DATABASE_DISABLED": "false",
+    "PUBLIC_ONLY_MODE": "false",
+    "VITE_BASE_URL": "https://beta.akmleva.pt"
+  },
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "akmleva-db",
+      "database_id": "a012f558-bdcd-4173-8e55-cabddd97c56a"
+    }
+  ],
+  "assets": {
+    "binding": "ASSETS",
+    "directory": "./dist/client"
+  },
+  "routes": [
+    {
+      "pattern": "beta.akmleva.pt",
+      "custom_domain": true
+    }
+  ],
+  "workers_dev": true
 }

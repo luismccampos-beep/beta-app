@@ -1,0 +1,24 @@
+<svg width="800" height="600" viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
+  <rect width="800" height="600" fill="white"/>
+  
+  <!-- Startup Portugal Logo -->
+  <g transform="translate(400, 300)">
+    <!-- Main circle background -->
+    <circle cx="0" cy="0" r="150" fill="#E30613"/>
+    
+    <!-- Portugal shield shape -->
+    <path d="M -60 -80 L 60 -80 L 60 20 C 60 60 30 80 0 80 C -30 80 -60 60 -60 20 Z" fill="white"/>
+    
+    <!-- Cross inside shield -->
+    <rect x="-20" y="-60" width="40" height="100" fill="#E30613"/>
+    <rect x="-40" y="-40" width="80" height="40" fill="#E30613"/>
+    
+    <!-- Text below -->
+    <text x="0" y="120" text-anchor="middle" font-family="Arial, sans-serif" font-size="24" font-weight="bold" fill="#333">
+      STARTUP
+    </text>
+    <text x="0" y="145" text-anchor="middle" font-family="Arial, sans-serif" font-size="24" font-weight="bold" fill="#333">
+      PORTUGAL
+    </text>
+  </g>
+</svg>

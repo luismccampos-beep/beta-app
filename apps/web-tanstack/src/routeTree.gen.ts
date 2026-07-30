@@ -30,33 +30,52 @@ import { Route as LegalPageTypeRouteImport } from './routes/legal.$pageType'
 import { Route as PreferencesEditRouteImport } from './routes/preferences.edit'
 import { Route as PreferencesQuickRouteImport } from './routes/preferences.quick'
 import { Route as RoteirosSlugRouteImport } from './routes/roteiros.$slug'
+import { Route as ApiAdmin404LogRouteImport } from './routes/api/admin/404-log'
 import { Route as ApiAiPreferencesInsightsRouteImport } from './routes/api/ai/preferences-insights'
 import { Route as ApiAuthSplatRouteImport } from './routes/api/auth/$'
 import { Route as ApiAuthForgotPasswordRouteImport } from './routes/api/auth/forgot-password'
+import { Route as ApiAuthLoginRouteImport } from './routes/api/auth/login'
+import { Route as ApiAuthLogoutRouteImport } from './routes/api/auth/logout'
 import { Route as ApiAuthResetPasswordRouteImport } from './routes/api/auth/reset-password'
 import { Route as ApiAuthSignupRouteImport } from './routes/api/auth/signup'
 import { Route as ApiHealthIndexRouteImport } from './routes/api/health/index'
 import { Route as ApiHealthMlStatusRouteImport } from './routes/api/health/ml-status'
 import { Route as ApiInternal404LogRouteImport } from './routes/api/internal/404-log'
-import { Route as ApiUserPreferencesRouteImport } from './routes/api/user/preferences'
 import { Route as ApiV1SplatRouteImport } from './routes/api/v1/$'
 import { Route as ApiAdminUrlRedirectsIndexRouteImport } from './routes/api/admin/url-redirects/index'
 import { Route as ApiAuthMeIndexRouteImport } from './routes/api/auth/me/index'
 import { Route as ApiAuthMeAvatarRouteImport } from './routes/api/auth/me/avatar'
 import { Route as ApiAuthMePasswordRouteImport } from './routes/api/auth/me/password'
 import { Route as ApiAuthMeSessionsRouteImport } from './routes/api/auth/me/sessions'
+import { Route as ApiAuthVerifyEmailTokenRouteImport } from './routes/api/auth/verify-email.$token'
 import { Route as ApiInternalUrlRedirectsIndexRouteImport } from './routes/api/internal/url-redirects/index'
-import { Route as ApiTravelV1DestinationsRouteImport } from './routes/api/travel/v1/destinations'
-import { Route as ApiTravelV1FlightsRouteImport } from './routes/api/travel/v1/flights'
-import { Route as ApiTravelV1HotelsRouteImport } from './routes/api/travel/v1/hotels'
+import { Route as ApiTravelV1AisstreamRouteImport } from './routes/api/travel/v1/aisstream'
+import { Route as ApiTravelV1CostOfLivingRouteImport } from './routes/api/travel/v1/cost-of-living'
+import { Route as ApiTravelV1ListingsRouteImport } from './routes/api/travel/v1/listings'
+import { Route as ApiTravelV1NavitiaRouteImport } from './routes/api/travel/v1/navitia'
 import { Route as ApiTravelV1RecommendRouteImport } from './routes/api/travel/v1/recommend'
+import { Route as ApiTravelV1SandboxRouteImport } from './routes/api/travel/v1/sandbox'
+import { Route as ApiTravelV1TransitlandRouteImport } from './routes/api/travel/v1/transitland'
+import { Route as ApiTravelV1TransitousRouteImport } from './routes/api/travel/v1/transitous'
 import { Route as ApiUserPreferencesIndexRouteImport } from './routes/api/user/preferences/index'
+import { Route as ApiUserPreferencesAnalyticsRouteImport } from './routes/api/user/preferences/analytics'
+import { Route as ApiUserPreferencesDraftRouteImport } from './routes/api/user/preferences/draft'
+import { Route as ApiAdminUrlRedirectsIdVisitRouteImport } from './routes/api/admin/url-redirects/$id/visit'
+import { Route as ApiInternalUrlRedirectsIdVisitRouteImport } from './routes/api/internal/url-redirects/$id/visit'
+import { Route as ApiTravelV1AccommodationsSearchRouteImport } from './routes/api/travel/v1/accommodations/search'
 import { Route as ApiTravelV1DestinationsIndexRouteImport } from './routes/api/travel/v1/destinations/index'
 import { Route as ApiTravelV1DestinationsSlugRouteImport } from './routes/api/travel/v1/destinations.$slug'
 import { Route as ApiTravelV1DestinationsCountriesRouteImport } from './routes/api/travel/v1/destinations/countries'
 import { Route as ApiTravelV1FlightsIndexRouteImport } from './routes/api/travel/v1/flights/index'
+import { Route as ApiTravelV1FlightsEstimateRouteImport } from './routes/api/travel/v1/flights/estimate'
 import { Route as ApiTravelV1HotelsIndexRouteImport } from './routes/api/travel/v1/hotels/index'
 import { Route as ApiTravelV1HotelsIdRouteImport } from './routes/api/travel/v1/hotels/$id'
+import { Route as ApiTravelV1HotelsGeocodeRouteImport } from './routes/api/travel/v1/hotels/geocode'
+import { Route as ApiTravelV1HotelsNearbyRouteImport } from './routes/api/travel/v1/hotels/nearby'
+import { Route as ApiTravelV1HotelsOsmRouteImport } from './routes/api/travel/v1/hotels/osm'
+import { Route as ApiTravelV1DestinationsSlugVideosRouteImport } from './routes/api/travel/v1/destinations/$slug/videos'
+import { Route as ApiTravelV1HotelsIdImageRouteImport } from './routes/api/travel/v1/hotels/$id/image'
+import { Route as ApiTravelV1HotelsIdReviewsRouteImport } from './routes/api/travel/v1/hotels/$id/reviews'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -163,6 +182,11 @@ const RoteirosSlugRoute = RoteirosSlugRouteImport.update({
   path: '/roteiros/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ApiAdmin404LogRoute = ApiAdmin404LogRouteImport.update({
+  id: '/api/admin/404-log',
+  path: '/api/admin/404-log',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ApiAiPreferencesInsightsRoute =
   ApiAiPreferencesInsightsRouteImport.update({
     id: '/api/ai/preferences-insights',
@@ -177,6 +201,16 @@ const ApiAuthSplatRoute = ApiAuthSplatRouteImport.update({
 const ApiAuthForgotPasswordRoute = ApiAuthForgotPasswordRouteImport.update({
   id: '/api/auth/forgot-password',
   path: '/api/auth/forgot-password',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiAuthLoginRoute = ApiAuthLoginRouteImport.update({
+  id: '/api/auth/login',
+  path: '/api/auth/login',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiAuthLogoutRoute = ApiAuthLogoutRouteImport.update({
+  id: '/api/auth/logout',
+  path: '/api/auth/logout',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ApiAuthResetPasswordRoute = ApiAuthResetPasswordRouteImport.update({
@@ -202,11 +236,6 @@ const ApiHealthMlStatusRoute = ApiHealthMlStatusRouteImport.update({
 const ApiInternal404LogRoute = ApiInternal404LogRouteImport.update({
   id: '/api/internal/404-log',
   path: '/api/internal/404-log',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ApiUserPreferencesRoute = ApiUserPreferencesRouteImport.update({
-  id: '/api/user/preferences',
-  path: '/api/user/preferences',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ApiV1SplatRoute = ApiV1SplatRouteImport.update({
@@ -240,25 +269,35 @@ const ApiAuthMeSessionsRoute = ApiAuthMeSessionsRouteImport.update({
   path: '/api/auth/me/sessions',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ApiAuthVerifyEmailTokenRoute = ApiAuthVerifyEmailTokenRouteImport.update({
+  id: '/api/auth/verify-email/$token',
+  path: '/api/auth/verify-email/$token',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ApiInternalUrlRedirectsIndexRoute =
   ApiInternalUrlRedirectsIndexRouteImport.update({
     id: '/api/internal/url-redirects/',
     path: '/api/internal/url-redirects/',
     getParentRoute: () => rootRouteImport,
   } as any)
-const ApiTravelV1DestinationsRoute = ApiTravelV1DestinationsRouteImport.update({
-  id: '/api/travel/v1/destinations',
-  path: '/api/travel/v1/destinations',
+const ApiTravelV1AisstreamRoute = ApiTravelV1AisstreamRouteImport.update({
+  id: '/api/travel/v1/aisstream',
+  path: '/api/travel/v1/aisstream',
   getParentRoute: () => rootRouteImport,
 } as any)
-const ApiTravelV1FlightsRoute = ApiTravelV1FlightsRouteImport.update({
-  id: '/api/travel/v1/flights',
-  path: '/api/travel/v1/flights',
+const ApiTravelV1CostOfLivingRoute = ApiTravelV1CostOfLivingRouteImport.update({
+  id: '/api/travel/v1/cost-of-living',
+  path: '/api/travel/v1/cost-of-living',
   getParentRoute: () => rootRouteImport,
 } as any)
-const ApiTravelV1HotelsRoute = ApiTravelV1HotelsRouteImport.update({
-  id: '/api/travel/v1/hotels',
-  path: '/api/travel/v1/hotels',
+const ApiTravelV1ListingsRoute = ApiTravelV1ListingsRouteImport.update({
+  id: '/api/travel/v1/listings',
+  path: '/api/travel/v1/listings',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiTravelV1NavitiaRoute = ApiTravelV1NavitiaRouteImport.update({
+  id: '/api/travel/v1/navitia',
+  path: '/api/travel/v1/navitia',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ApiTravelV1RecommendRoute = ApiTravelV1RecommendRouteImport.update({
@@ -266,44 +305,128 @@ const ApiTravelV1RecommendRoute = ApiTravelV1RecommendRouteImport.update({
   path: '/api/travel/v1/recommend',
   getParentRoute: () => rootRouteImport,
 } as any)
-const ApiUserPreferencesIndexRoute = ApiUserPreferencesIndexRouteImport.update({
-  id: '/',
-  path: '/',
-  getParentRoute: () => ApiUserPreferencesRoute,
+const ApiTravelV1SandboxRoute = ApiTravelV1SandboxRouteImport.update({
+  id: '/api/travel/v1/sandbox',
+  path: '/api/travel/v1/sandbox',
+  getParentRoute: () => rootRouteImport,
 } as any)
+const ApiTravelV1TransitlandRoute = ApiTravelV1TransitlandRouteImport.update({
+  id: '/api/travel/v1/transitland',
+  path: '/api/travel/v1/transitland',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiTravelV1TransitousRoute = ApiTravelV1TransitousRouteImport.update({
+  id: '/api/travel/v1/transitous',
+  path: '/api/travel/v1/transitous',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiUserPreferencesIndexRoute = ApiUserPreferencesIndexRouteImport.update({
+  id: '/api/user/preferences/',
+  path: '/api/user/preferences/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiUserPreferencesAnalyticsRoute =
+  ApiUserPreferencesAnalyticsRouteImport.update({
+    id: '/api/user/preferences/analytics',
+    path: '/api/user/preferences/analytics',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const ApiUserPreferencesDraftRoute = ApiUserPreferencesDraftRouteImport.update({
+  id: '/api/user/preferences/draft',
+  path: '/api/user/preferences/draft',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiAdminUrlRedirectsIdVisitRoute =
+  ApiAdminUrlRedirectsIdVisitRouteImport.update({
+    id: '/api/admin/url-redirects/$id/visit',
+    path: '/api/admin/url-redirects/$id/visit',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const ApiInternalUrlRedirectsIdVisitRoute =
+  ApiInternalUrlRedirectsIdVisitRouteImport.update({
+    id: '/api/internal/url-redirects/$id/visit',
+    path: '/api/internal/url-redirects/$id/visit',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const ApiTravelV1AccommodationsSearchRoute =
+  ApiTravelV1AccommodationsSearchRouteImport.update({
+    id: '/api/travel/v1/accommodations/search',
+    path: '/api/travel/v1/accommodations/search',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const ApiTravelV1DestinationsIndexRoute =
   ApiTravelV1DestinationsIndexRouteImport.update({
-    id: '/',
-    path: '/',
-    getParentRoute: () => ApiTravelV1DestinationsRoute,
+    id: '/api/travel/v1/destinations/',
+    path: '/api/travel/v1/destinations/',
+    getParentRoute: () => rootRouteImport,
   } as any)
 const ApiTravelV1DestinationsSlugRoute =
   ApiTravelV1DestinationsSlugRouteImport.update({
-    id: '/$slug',
-    path: '/$slug',
-    getParentRoute: () => ApiTravelV1DestinationsRoute,
+    id: '/api/travel/v1/destinations/$slug',
+    path: '/api/travel/v1/destinations/$slug',
+    getParentRoute: () => rootRouteImport,
   } as any)
 const ApiTravelV1DestinationsCountriesRoute =
   ApiTravelV1DestinationsCountriesRouteImport.update({
-    id: '/countries',
-    path: '/countries',
-    getParentRoute: () => ApiTravelV1DestinationsRoute,
+    id: '/api/travel/v1/destinations/countries',
+    path: '/api/travel/v1/destinations/countries',
+    getParentRoute: () => rootRouteImport,
   } as any)
 const ApiTravelV1FlightsIndexRoute = ApiTravelV1FlightsIndexRouteImport.update({
-  id: '/',
-  path: '/',
-  getParentRoute: () => ApiTravelV1FlightsRoute,
+  id: '/api/travel/v1/flights/',
+  path: '/api/travel/v1/flights/',
+  getParentRoute: () => rootRouteImport,
 } as any)
+const ApiTravelV1FlightsEstimateRoute =
+  ApiTravelV1FlightsEstimateRouteImport.update({
+    id: '/api/travel/v1/flights/estimate',
+    path: '/api/travel/v1/flights/estimate',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const ApiTravelV1HotelsIndexRoute = ApiTravelV1HotelsIndexRouteImport.update({
-  id: '/',
-  path: '/',
-  getParentRoute: () => ApiTravelV1HotelsRoute,
+  id: '/api/travel/v1/hotels/',
+  path: '/api/travel/v1/hotels/',
+  getParentRoute: () => rootRouteImport,
 } as any)
 const ApiTravelV1HotelsIdRoute = ApiTravelV1HotelsIdRouteImport.update({
-  id: '/$id',
-  path: '/$id',
-  getParentRoute: () => ApiTravelV1HotelsRoute,
+  id: '/api/travel/v1/hotels/$id',
+  path: '/api/travel/v1/hotels/$id',
+  getParentRoute: () => rootRouteImport,
 } as any)
+const ApiTravelV1HotelsGeocodeRoute =
+  ApiTravelV1HotelsGeocodeRouteImport.update({
+    id: '/api/travel/v1/hotels/geocode',
+    path: '/api/travel/v1/hotels/geocode',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const ApiTravelV1HotelsNearbyRoute = ApiTravelV1HotelsNearbyRouteImport.update({
+  id: '/api/travel/v1/hotels/nearby',
+  path: '/api/travel/v1/hotels/nearby',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiTravelV1HotelsOsmRoute = ApiTravelV1HotelsOsmRouteImport.update({
+  id: '/api/travel/v1/hotels/osm',
+  path: '/api/travel/v1/hotels/osm',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiTravelV1DestinationsSlugVideosRoute =
+  ApiTravelV1DestinationsSlugVideosRouteImport.update({
+    id: '/videos',
+    path: '/videos',
+    getParentRoute: () => ApiTravelV1DestinationsSlugRoute,
+  } as any)
+const ApiTravelV1HotelsIdImageRoute =
+  ApiTravelV1HotelsIdImageRouteImport.update({
+    id: '/image',
+    path: '/image',
+    getParentRoute: () => ApiTravelV1HotelsIdRoute,
+  } as any)
+const ApiTravelV1HotelsIdReviewsRoute =
+  ApiTravelV1HotelsIdReviewsRouteImport.update({
+    id: '/reviews',
+    path: '/reviews',
+    getParentRoute: () => ApiTravelV1HotelsIdRoute,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -327,33 +450,52 @@ export interface FileRoutesByFullPath {
   '/preferences/edit': typeof PreferencesEditRoute
   '/preferences/quick': typeof PreferencesQuickRoute
   '/roteiros/$slug': typeof RoteirosSlugRoute
+  '/api/admin/404-log': typeof ApiAdmin404LogRoute
   '/api/ai/preferences-insights': typeof ApiAiPreferencesInsightsRoute
   '/api/auth/$': typeof ApiAuthSplatRoute
   '/api/auth/forgot-password': typeof ApiAuthForgotPasswordRoute
+  '/api/auth/login': typeof ApiAuthLoginRoute
+  '/api/auth/logout': typeof ApiAuthLogoutRoute
   '/api/auth/reset-password': typeof ApiAuthResetPasswordRoute
   '/api/auth/signup': typeof ApiAuthSignupRoute
   '/api/health/ml-status': typeof ApiHealthMlStatusRoute
   '/api/internal/404-log': typeof ApiInternal404LogRoute
-  '/api/user/preferences': typeof ApiUserPreferencesRouteWithChildren
   '/api/v1/$': typeof ApiV1SplatRoute
   '/api/health/': typeof ApiHealthIndexRoute
   '/api/auth/me/avatar': typeof ApiAuthMeAvatarRoute
   '/api/auth/me/password': typeof ApiAuthMePasswordRoute
   '/api/auth/me/sessions': typeof ApiAuthMeSessionsRoute
-  '/api/travel/v1/destinations': typeof ApiTravelV1DestinationsRouteWithChildren
-  '/api/travel/v1/flights': typeof ApiTravelV1FlightsRouteWithChildren
-  '/api/travel/v1/hotels': typeof ApiTravelV1HotelsRouteWithChildren
+  '/api/auth/verify-email/$token': typeof ApiAuthVerifyEmailTokenRoute
+  '/api/travel/v1/aisstream': typeof ApiTravelV1AisstreamRoute
+  '/api/travel/v1/cost-of-living': typeof ApiTravelV1CostOfLivingRoute
+  '/api/travel/v1/listings': typeof ApiTravelV1ListingsRoute
+  '/api/travel/v1/navitia': typeof ApiTravelV1NavitiaRoute
   '/api/travel/v1/recommend': typeof ApiTravelV1RecommendRoute
+  '/api/travel/v1/sandbox': typeof ApiTravelV1SandboxRoute
+  '/api/travel/v1/transitland': typeof ApiTravelV1TransitlandRoute
+  '/api/travel/v1/transitous': typeof ApiTravelV1TransitousRoute
+  '/api/user/preferences/analytics': typeof ApiUserPreferencesAnalyticsRoute
+  '/api/user/preferences/draft': typeof ApiUserPreferencesDraftRoute
   '/api/admin/url-redirects/': typeof ApiAdminUrlRedirectsIndexRoute
   '/api/auth/me/': typeof ApiAuthMeIndexRoute
   '/api/internal/url-redirects/': typeof ApiInternalUrlRedirectsIndexRoute
   '/api/user/preferences/': typeof ApiUserPreferencesIndexRoute
-  '/api/travel/v1/destinations/$slug': typeof ApiTravelV1DestinationsSlugRoute
+  '/api/admin/url-redirects/$id/visit': typeof ApiAdminUrlRedirectsIdVisitRoute
+  '/api/internal/url-redirects/$id/visit': typeof ApiInternalUrlRedirectsIdVisitRoute
+  '/api/travel/v1/accommodations/search': typeof ApiTravelV1AccommodationsSearchRoute
+  '/api/travel/v1/destinations/$slug': typeof ApiTravelV1DestinationsSlugRouteWithChildren
   '/api/travel/v1/destinations/countries': typeof ApiTravelV1DestinationsCountriesRoute
-  '/api/travel/v1/hotels/$id': typeof ApiTravelV1HotelsIdRoute
+  '/api/travel/v1/flights/estimate': typeof ApiTravelV1FlightsEstimateRoute
+  '/api/travel/v1/hotels/$id': typeof ApiTravelV1HotelsIdRouteWithChildren
+  '/api/travel/v1/hotels/geocode': typeof ApiTravelV1HotelsGeocodeRoute
+  '/api/travel/v1/hotels/nearby': typeof ApiTravelV1HotelsNearbyRoute
+  '/api/travel/v1/hotels/osm': typeof ApiTravelV1HotelsOsmRoute
   '/api/travel/v1/destinations/': typeof ApiTravelV1DestinationsIndexRoute
   '/api/travel/v1/flights/': typeof ApiTravelV1FlightsIndexRoute
   '/api/travel/v1/hotels/': typeof ApiTravelV1HotelsIndexRoute
+  '/api/travel/v1/destinations/$slug/videos': typeof ApiTravelV1DestinationsSlugVideosRoute
+  '/api/travel/v1/hotels/$id/image': typeof ApiTravelV1HotelsIdImageRoute
+  '/api/travel/v1/hotels/$id/reviews': typeof ApiTravelV1HotelsIdReviewsRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -376,9 +518,12 @@ export interface FileRoutesByTo {
   '/preferences/edit': typeof PreferencesEditRoute
   '/preferences/quick': typeof PreferencesQuickRoute
   '/roteiros/$slug': typeof RoteirosSlugRoute
+  '/api/admin/404-log': typeof ApiAdmin404LogRoute
   '/api/ai/preferences-insights': typeof ApiAiPreferencesInsightsRoute
   '/api/auth/$': typeof ApiAuthSplatRoute
   '/api/auth/forgot-password': typeof ApiAuthForgotPasswordRoute
+  '/api/auth/login': typeof ApiAuthLoginRoute
+  '/api/auth/logout': typeof ApiAuthLogoutRoute
   '/api/auth/reset-password': typeof ApiAuthResetPasswordRoute
   '/api/auth/signup': typeof ApiAuthSignupRoute
   '/api/health/ml-status': typeof ApiHealthMlStatusRoute
@@ -388,17 +533,37 @@ export interface FileRoutesByTo {
   '/api/auth/me/avatar': typeof ApiAuthMeAvatarRoute
   '/api/auth/me/password': typeof ApiAuthMePasswordRoute
   '/api/auth/me/sessions': typeof ApiAuthMeSessionsRoute
+  '/api/auth/verify-email/$token': typeof ApiAuthVerifyEmailTokenRoute
+  '/api/travel/v1/aisstream': typeof ApiTravelV1AisstreamRoute
+  '/api/travel/v1/cost-of-living': typeof ApiTravelV1CostOfLivingRoute
+  '/api/travel/v1/listings': typeof ApiTravelV1ListingsRoute
+  '/api/travel/v1/navitia': typeof ApiTravelV1NavitiaRoute
   '/api/travel/v1/recommend': typeof ApiTravelV1RecommendRoute
+  '/api/travel/v1/sandbox': typeof ApiTravelV1SandboxRoute
+  '/api/travel/v1/transitland': typeof ApiTravelV1TransitlandRoute
+  '/api/travel/v1/transitous': typeof ApiTravelV1TransitousRoute
+  '/api/user/preferences/analytics': typeof ApiUserPreferencesAnalyticsRoute
+  '/api/user/preferences/draft': typeof ApiUserPreferencesDraftRoute
   '/api/admin/url-redirects': typeof ApiAdminUrlRedirectsIndexRoute
   '/api/auth/me': typeof ApiAuthMeIndexRoute
   '/api/internal/url-redirects': typeof ApiInternalUrlRedirectsIndexRoute
   '/api/user/preferences': typeof ApiUserPreferencesIndexRoute
-  '/api/travel/v1/destinations/$slug': typeof ApiTravelV1DestinationsSlugRoute
+  '/api/admin/url-redirects/$id/visit': typeof ApiAdminUrlRedirectsIdVisitRoute
+  '/api/internal/url-redirects/$id/visit': typeof ApiInternalUrlRedirectsIdVisitRoute
+  '/api/travel/v1/accommodations/search': typeof ApiTravelV1AccommodationsSearchRoute
+  '/api/travel/v1/destinations/$slug': typeof ApiTravelV1DestinationsSlugRouteWithChildren
   '/api/travel/v1/destinations/countries': typeof ApiTravelV1DestinationsCountriesRoute
-  '/api/travel/v1/hotels/$id': typeof ApiTravelV1HotelsIdRoute
+  '/api/travel/v1/flights/estimate': typeof ApiTravelV1FlightsEstimateRoute
+  '/api/travel/v1/hotels/$id': typeof ApiTravelV1HotelsIdRouteWithChildren
+  '/api/travel/v1/hotels/geocode': typeof ApiTravelV1HotelsGeocodeRoute
+  '/api/travel/v1/hotels/nearby': typeof ApiTravelV1HotelsNearbyRoute
+  '/api/travel/v1/hotels/osm': typeof ApiTravelV1HotelsOsmRoute
   '/api/travel/v1/destinations': typeof ApiTravelV1DestinationsIndexRoute
   '/api/travel/v1/flights': typeof ApiTravelV1FlightsIndexRoute
   '/api/travel/v1/hotels': typeof ApiTravelV1HotelsIndexRoute
+  '/api/travel/v1/destinations/$slug/videos': typeof ApiTravelV1DestinationsSlugVideosRoute
+  '/api/travel/v1/hotels/$id/image': typeof ApiTravelV1HotelsIdImageRoute
+  '/api/travel/v1/hotels/$id/reviews': typeof ApiTravelV1HotelsIdReviewsRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -423,33 +588,52 @@ export interface FileRoutesById {
   '/preferences/edit': typeof PreferencesEditRoute
   '/preferences/quick': typeof PreferencesQuickRoute
   '/roteiros/$slug': typeof RoteirosSlugRoute
+  '/api/admin/404-log': typeof ApiAdmin404LogRoute
   '/api/ai/preferences-insights': typeof ApiAiPreferencesInsightsRoute
   '/api/auth/$': typeof ApiAuthSplatRoute
   '/api/auth/forgot-password': typeof ApiAuthForgotPasswordRoute
+  '/api/auth/login': typeof ApiAuthLoginRoute
+  '/api/auth/logout': typeof ApiAuthLogoutRoute
   '/api/auth/reset-password': typeof ApiAuthResetPasswordRoute
   '/api/auth/signup': typeof ApiAuthSignupRoute
   '/api/health/ml-status': typeof ApiHealthMlStatusRoute
   '/api/internal/404-log': typeof ApiInternal404LogRoute
-  '/api/user/preferences': typeof ApiUserPreferencesRouteWithChildren
   '/api/v1/$': typeof ApiV1SplatRoute
   '/api/health/': typeof ApiHealthIndexRoute
   '/api/auth/me/avatar': typeof ApiAuthMeAvatarRoute
   '/api/auth/me/password': typeof ApiAuthMePasswordRoute
   '/api/auth/me/sessions': typeof ApiAuthMeSessionsRoute
-  '/api/travel/v1/destinations': typeof ApiTravelV1DestinationsRouteWithChildren
-  '/api/travel/v1/flights': typeof ApiTravelV1FlightsRouteWithChildren
-  '/api/travel/v1/hotels': typeof ApiTravelV1HotelsRouteWithChildren
+  '/api/auth/verify-email/$token': typeof ApiAuthVerifyEmailTokenRoute
+  '/api/travel/v1/aisstream': typeof ApiTravelV1AisstreamRoute
+  '/api/travel/v1/cost-of-living': typeof ApiTravelV1CostOfLivingRoute
+  '/api/travel/v1/listings': typeof ApiTravelV1ListingsRoute
+  '/api/travel/v1/navitia': typeof ApiTravelV1NavitiaRoute
   '/api/travel/v1/recommend': typeof ApiTravelV1RecommendRoute
+  '/api/travel/v1/sandbox': typeof ApiTravelV1SandboxRoute
+  '/api/travel/v1/transitland': typeof ApiTravelV1TransitlandRoute
+  '/api/travel/v1/transitous': typeof ApiTravelV1TransitousRoute
+  '/api/user/preferences/analytics': typeof ApiUserPreferencesAnalyticsRoute
+  '/api/user/preferences/draft': typeof ApiUserPreferencesDraftRoute
   '/api/admin/url-redirects/': typeof ApiAdminUrlRedirectsIndexRoute
   '/api/auth/me/': typeof ApiAuthMeIndexRoute
   '/api/internal/url-redirects/': typeof ApiInternalUrlRedirectsIndexRoute
   '/api/user/preferences/': typeof ApiUserPreferencesIndexRoute
-  '/api/travel/v1/destinations/$slug': typeof ApiTravelV1DestinationsSlugRoute
+  '/api/admin/url-redirects/$id/visit': typeof ApiAdminUrlRedirectsIdVisitRoute
+  '/api/internal/url-redirects/$id/visit': typeof ApiInternalUrlRedirectsIdVisitRoute
+  '/api/travel/v1/accommodations/search': typeof ApiTravelV1AccommodationsSearchRoute
+  '/api/travel/v1/destinations/$slug': typeof ApiTravelV1DestinationsSlugRouteWithChildren
   '/api/travel/v1/destinations/countries': typeof ApiTravelV1DestinationsCountriesRoute
-  '/api/travel/v1/hotels/$id': typeof ApiTravelV1HotelsIdRoute
+  '/api/travel/v1/flights/estimate': typeof ApiTravelV1FlightsEstimateRoute
+  '/api/travel/v1/hotels/$id': typeof ApiTravelV1HotelsIdRouteWithChildren
+  '/api/travel/v1/hotels/geocode': typeof ApiTravelV1HotelsGeocodeRoute
+  '/api/travel/v1/hotels/nearby': typeof ApiTravelV1HotelsNearbyRoute
+  '/api/travel/v1/hotels/osm': typeof ApiTravelV1HotelsOsmRoute
   '/api/travel/v1/destinations/': typeof ApiTravelV1DestinationsIndexRoute
   '/api/travel/v1/flights/': typeof ApiTravelV1FlightsIndexRoute
   '/api/travel/v1/hotels/': typeof ApiTravelV1HotelsIndexRoute
+  '/api/travel/v1/destinations/$slug/videos': typeof ApiTravelV1DestinationsSlugVideosRoute
+  '/api/travel/v1/hotels/$id/image': typeof ApiTravelV1HotelsIdImageRoute
+  '/api/travel/v1/hotels/$id/reviews': typeof ApiTravelV1HotelsIdReviewsRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -475,33 +659,52 @@ export interface FileRouteTypes {
     | '/preferences/edit'
     | '/preferences/quick'
     | '/roteiros/$slug'
+    | '/api/admin/404-log'
     | '/api/ai/preferences-insights'
     | '/api/auth/$'
     | '/api/auth/forgot-password'
+    | '/api/auth/login'
+    | '/api/auth/logout'
     | '/api/auth/reset-password'
     | '/api/auth/signup'
     | '/api/health/ml-status'
     | '/api/internal/404-log'
-    | '/api/user/preferences'
     | '/api/v1/$'
     | '/api/health/'
     | '/api/auth/me/avatar'
     | '/api/auth/me/password'
     | '/api/auth/me/sessions'
-    | '/api/travel/v1/destinations'
-    | '/api/travel/v1/flights'
-    | '/api/travel/v1/hotels'
+    | '/api/auth/verify-email/$token'
+    | '/api/travel/v1/aisstream'
+    | '/api/travel/v1/cost-of-living'
+    | '/api/travel/v1/listings'
+    | '/api/travel/v1/navitia'
     | '/api/travel/v1/recommend'
+    | '/api/travel/v1/sandbox'
+    | '/api/travel/v1/transitland'
+    | '/api/travel/v1/transitous'
+    | '/api/user/preferences/analytics'
+    | '/api/user/preferences/draft'
     | '/api/admin/url-redirects/'
     | '/api/auth/me/'
     | '/api/internal/url-redirects/'
     | '/api/user/preferences/'
+    | '/api/admin/url-redirects/$id/visit'
+    | '/api/internal/url-redirects/$id/visit'
+    | '/api/travel/v1/accommodations/search'
     | '/api/travel/v1/destinations/$slug'
     | '/api/travel/v1/destinations/countries'
+    | '/api/travel/v1/flights/estimate'
     | '/api/travel/v1/hotels/$id'
+    | '/api/travel/v1/hotels/geocode'
+    | '/api/travel/v1/hotels/nearby'
+    | '/api/travel/v1/hotels/osm'
     | '/api/travel/v1/destinations/'
     | '/api/travel/v1/flights/'
     | '/api/travel/v1/hotels/'
+    | '/api/travel/v1/destinations/$slug/videos'
+    | '/api/travel/v1/hotels/$id/image'
+    | '/api/travel/v1/hotels/$id/reviews'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -524,9 +727,12 @@ export interface FileRouteTypes {
     | '/preferences/edit'
     | '/preferences/quick'
     | '/roteiros/$slug'
+    | '/api/admin/404-log'
     | '/api/ai/preferences-insights'
     | '/api/auth/$'
     | '/api/auth/forgot-password'
+    | '/api/auth/login'
+    | '/api/auth/logout'
     | '/api/auth/reset-password'
     | '/api/auth/signup'
     | '/api/health/ml-status'
@@ -536,17 +742,37 @@ export interface FileRouteTypes {
     | '/api/auth/me/avatar'
     | '/api/auth/me/password'
     | '/api/auth/me/sessions'
+    | '/api/auth/verify-email/$token'
+    | '/api/travel/v1/aisstream'
+    | '/api/travel/v1/cost-of-living'
+    | '/api/travel/v1/listings'
+    | '/api/travel/v1/navitia'
     | '/api/travel/v1/recommend'
+    | '/api/travel/v1/sandbox'
+    | '/api/travel/v1/transitland'
+    | '/api/travel/v1/transitous'
+    | '/api/user/preferences/analytics'
+    | '/api/user/preferences/draft'
     | '/api/admin/url-redirects'
     | '/api/auth/me'
     | '/api/internal/url-redirects'
     | '/api/user/preferences'
+    | '/api/admin/url-redirects/$id/visit'
+    | '/api/internal/url-redirects/$id/visit'
+    | '/api/travel/v1/accommodations/search'
     | '/api/travel/v1/destinations/$slug'
     | '/api/travel/v1/destinations/countries'
+    | '/api/travel/v1/flights/estimate'
     | '/api/travel/v1/hotels/$id'
+    | '/api/travel/v1/hotels/geocode'
+    | '/api/travel/v1/hotels/nearby'
+    | '/api/travel/v1/hotels/osm'
     | '/api/travel/v1/destinations'
     | '/api/travel/v1/flights'
     | '/api/travel/v1/hotels'
+    | '/api/travel/v1/destinations/$slug/videos'
+    | '/api/travel/v1/hotels/$id/image'
+    | '/api/travel/v1/hotels/$id/reviews'
   id:
     | '__root__'
     | '/'
@@ -570,33 +796,52 @@ export interface FileRouteTypes {
     | '/preferences/edit'
     | '/preferences/quick'
     | '/roteiros/$slug'
+    | '/api/admin/404-log'
     | '/api/ai/preferences-insights'
     | '/api/auth/$'
     | '/api/auth/forgot-password'
+    | '/api/auth/login'
+    | '/api/auth/logout'
     | '/api/auth/reset-password'
     | '/api/auth/signup'
     | '/api/health/ml-status'
     | '/api/internal/404-log'
-    | '/api/user/preferences'
     | '/api/v1/$'
     | '/api/health/'
     | '/api/auth/me/avatar'
     | '/api/auth/me/password'
     | '/api/auth/me/sessions'
-    | '/api/travel/v1/destinations'
-    | '/api/travel/v1/flights'
-    | '/api/travel/v1/hotels'
+    | '/api/auth/verify-email/$token'
+    | '/api/travel/v1/aisstream'
+    | '/api/travel/v1/cost-of-living'
+    | '/api/travel/v1/listings'
+    | '/api/travel/v1/navitia'
     | '/api/travel/v1/recommend'
+    | '/api/travel/v1/sandbox'
+    | '/api/travel/v1/transitland'
+    | '/api/travel/v1/transitous'
+    | '/api/user/preferences/analytics'
+    | '/api/user/preferences/draft'
     | '/api/admin/url-redirects/'
     | '/api/auth/me/'
     | '/api/internal/url-redirects/'
     | '/api/user/preferences/'
+    | '/api/admin/url-redirects/$id/visit'
+    | '/api/internal/url-redirects/$id/visit'
+    | '/api/travel/v1/accommodations/search'
     | '/api/travel/v1/destinations/$slug'
     | '/api/travel/v1/destinations/countries'
+    | '/api/travel/v1/flights/estimate'
     | '/api/travel/v1/hotels/$id'
+    | '/api/travel/v1/hotels/geocode'
+    | '/api/travel/v1/hotels/nearby'
+    | '/api/travel/v1/hotels/osm'
     | '/api/travel/v1/destinations/'
     | '/api/travel/v1/flights/'
     | '/api/travel/v1/hotels/'
+    | '/api/travel/v1/destinations/$slug/videos'
+    | '/api/travel/v1/hotels/$id/image'
+    | '/api/travel/v1/hotels/$id/reviews'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -616,24 +861,47 @@ export interface RootRouteChildren {
   ApiSitemapRoute: typeof ApiSitemapRoute
   LegalPageTypeRoute: typeof LegalPageTypeRoute
   RoteirosSlugRoute: typeof RoteirosSlugRoute
+  ApiAdmin404LogRoute: typeof ApiAdmin404LogRoute
   ApiAiPreferencesInsightsRoute: typeof ApiAiPreferencesInsightsRoute
   ApiAuthSplatRoute: typeof ApiAuthSplatRoute
   ApiAuthForgotPasswordRoute: typeof ApiAuthForgotPasswordRoute
+  ApiAuthLoginRoute: typeof ApiAuthLoginRoute
+  ApiAuthLogoutRoute: typeof ApiAuthLogoutRoute
   ApiAuthResetPasswordRoute: typeof ApiAuthResetPasswordRoute
   ApiAuthSignupRoute: typeof ApiAuthSignupRoute
   ApiInternal404LogRoute: typeof ApiInternal404LogRoute
-  ApiUserPreferencesRoute: typeof ApiUserPreferencesRouteWithChildren
   ApiV1SplatRoute: typeof ApiV1SplatRoute
   ApiAuthMeAvatarRoute: typeof ApiAuthMeAvatarRoute
   ApiAuthMePasswordRoute: typeof ApiAuthMePasswordRoute
   ApiAuthMeSessionsRoute: typeof ApiAuthMeSessionsRoute
-  ApiTravelV1DestinationsRoute: typeof ApiTravelV1DestinationsRouteWithChildren
-  ApiTravelV1FlightsRoute: typeof ApiTravelV1FlightsRouteWithChildren
-  ApiTravelV1HotelsRoute: typeof ApiTravelV1HotelsRouteWithChildren
+  ApiAuthVerifyEmailTokenRoute: typeof ApiAuthVerifyEmailTokenRoute
+  ApiTravelV1AisstreamRoute: typeof ApiTravelV1AisstreamRoute
+  ApiTravelV1CostOfLivingRoute: typeof ApiTravelV1CostOfLivingRoute
+  ApiTravelV1ListingsRoute: typeof ApiTravelV1ListingsRoute
+  ApiTravelV1NavitiaRoute: typeof ApiTravelV1NavitiaRoute
   ApiTravelV1RecommendRoute: typeof ApiTravelV1RecommendRoute
+  ApiTravelV1SandboxRoute: typeof ApiTravelV1SandboxRoute
+  ApiTravelV1TransitlandRoute: typeof ApiTravelV1TransitlandRoute
+  ApiTravelV1TransitousRoute: typeof ApiTravelV1TransitousRoute
+  ApiUserPreferencesAnalyticsRoute: typeof ApiUserPreferencesAnalyticsRoute
+  ApiUserPreferencesDraftRoute: typeof ApiUserPreferencesDraftRoute
   ApiAdminUrlRedirectsIndexRoute: typeof ApiAdminUrlRedirectsIndexRoute
   ApiAuthMeIndexRoute: typeof ApiAuthMeIndexRoute
   ApiInternalUrlRedirectsIndexRoute: typeof ApiInternalUrlRedirectsIndexRoute
+  ApiUserPreferencesIndexRoute: typeof ApiUserPreferencesIndexRoute
+  ApiAdminUrlRedirectsIdVisitRoute: typeof ApiAdminUrlRedirectsIdVisitRoute
+  ApiInternalUrlRedirectsIdVisitRoute: typeof ApiInternalUrlRedirectsIdVisitRoute
+  ApiTravelV1AccommodationsSearchRoute: typeof ApiTravelV1AccommodationsSearchRoute
+  ApiTravelV1DestinationsSlugRoute: typeof ApiTravelV1DestinationsSlugRouteWithChildren
+  ApiTravelV1DestinationsCountriesRoute: typeof ApiTravelV1DestinationsCountriesRoute
+  ApiTravelV1FlightsEstimateRoute: typeof ApiTravelV1FlightsEstimateRoute
+  ApiTravelV1HotelsIdRoute: typeof ApiTravelV1HotelsIdRouteWithChildren
+  ApiTravelV1HotelsGeocodeRoute: typeof ApiTravelV1HotelsGeocodeRoute
+  ApiTravelV1HotelsNearbyRoute: typeof ApiTravelV1HotelsNearbyRoute
+  ApiTravelV1HotelsOsmRoute: typeof ApiTravelV1HotelsOsmRoute
+  ApiTravelV1DestinationsIndexRoute: typeof ApiTravelV1DestinationsIndexRoute
+  ApiTravelV1FlightsIndexRoute: typeof ApiTravelV1FlightsIndexRoute
+  ApiTravelV1HotelsIndexRoute: typeof ApiTravelV1HotelsIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -785,6 +1053,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof RoteirosSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/api/admin/404-log': {
+      id: '/api/admin/404-log'
+      path: '/api/admin/404-log'
+      fullPath: '/api/admin/404-log'
+      preLoaderRoute: typeof ApiAdmin404LogRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/api/ai/preferences-insights': {
       id: '/api/ai/preferences-insights'
       path: '/api/ai/preferences-insights'
@@ -804,6 +1079,20 @@ declare module '@tanstack/react-router' {
       path: '/api/auth/forgot-password'
       fullPath: '/api/auth/forgot-password'
       preLoaderRoute: typeof ApiAuthForgotPasswordRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/auth/login': {
+      id: '/api/auth/login'
+      path: '/api/auth/login'
+      fullPath: '/api/auth/login'
+      preLoaderRoute: typeof ApiAuthLoginRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/auth/logout': {
+      id: '/api/auth/logout'
+      path: '/api/auth/logout'
+      fullPath: '/api/auth/logout'
+      preLoaderRoute: typeof ApiAuthLogoutRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/api/auth/reset-password': {
@@ -839,13 +1128,6 @@ declare module '@tanstack/react-router' {
       path: '/api/internal/404-log'
       fullPath: '/api/internal/404-log'
       preLoaderRoute: typeof ApiInternal404LogRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/api/user/preferences': {
-      id: '/api/user/preferences'
-      path: '/api/user/preferences'
-      fullPath: '/api/user/preferences'
-      preLoaderRoute: typeof ApiUserPreferencesRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/api/v1/$': {
@@ -890,6 +1172,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ApiAuthMeSessionsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/api/auth/verify-email/$token': {
+      id: '/api/auth/verify-email/$token'
+      path: '/api/auth/verify-email/$token'
+      fullPath: '/api/auth/verify-email/$token'
+      preLoaderRoute: typeof ApiAuthVerifyEmailTokenRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/api/internal/url-redirects/': {
       id: '/api/internal/url-redirects/'
       path: '/api/internal/url-redirects'
@@ -897,25 +1186,32 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ApiInternalUrlRedirectsIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/api/travel/v1/destinations': {
-      id: '/api/travel/v1/destinations'
-      path: '/api/travel/v1/destinations'
-      fullPath: '/api/travel/v1/destinations'
-      preLoaderRoute: typeof ApiTravelV1DestinationsRouteImport
+    '/api/travel/v1/aisstream': {
+      id: '/api/travel/v1/aisstream'
+      path: '/api/travel/v1/aisstream'
+      fullPath: '/api/travel/v1/aisstream'
+      preLoaderRoute: typeof ApiTravelV1AisstreamRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/api/travel/v1/flights': {
-      id: '/api/travel/v1/flights'
-      path: '/api/travel/v1/flights'
-      fullPath: '/api/travel/v1/flights'
-      preLoaderRoute: typeof ApiTravelV1FlightsRouteImport
+    '/api/travel/v1/cost-of-living': {
+      id: '/api/travel/v1/cost-of-living'
+      path: '/api/travel/v1/cost-of-living'
+      fullPath: '/api/travel/v1/cost-of-living'
+      preLoaderRoute: typeof ApiTravelV1CostOfLivingRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/api/travel/v1/hotels': {
-      id: '/api/travel/v1/hotels'
-      path: '/api/travel/v1/hotels'
-      fullPath: '/api/travel/v1/hotels'
-      preLoaderRoute: typeof ApiTravelV1HotelsRouteImport
+    '/api/travel/v1/listings': {
+      id: '/api/travel/v1/listings'
+      path: '/api/travel/v1/listings'
+      fullPath: '/api/travel/v1/listings'
+      preLoaderRoute: typeof ApiTravelV1ListingsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/travel/v1/navitia': {
+      id: '/api/travel/v1/navitia'
+      path: '/api/travel/v1/navitia'
+      fullPath: '/api/travel/v1/navitia'
+      preLoaderRoute: typeof ApiTravelV1NavitiaRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/api/travel/v1/recommend': {
@@ -925,54 +1221,159 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ApiTravelV1RecommendRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/api/travel/v1/sandbox': {
+      id: '/api/travel/v1/sandbox'
+      path: '/api/travel/v1/sandbox'
+      fullPath: '/api/travel/v1/sandbox'
+      preLoaderRoute: typeof ApiTravelV1SandboxRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/travel/v1/transitland': {
+      id: '/api/travel/v1/transitland'
+      path: '/api/travel/v1/transitland'
+      fullPath: '/api/travel/v1/transitland'
+      preLoaderRoute: typeof ApiTravelV1TransitlandRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/travel/v1/transitous': {
+      id: '/api/travel/v1/transitous'
+      path: '/api/travel/v1/transitous'
+      fullPath: '/api/travel/v1/transitous'
+      preLoaderRoute: typeof ApiTravelV1TransitousRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/api/user/preferences/': {
       id: '/api/user/preferences/'
-      path: '/'
+      path: '/api/user/preferences'
       fullPath: '/api/user/preferences/'
       preLoaderRoute: typeof ApiUserPreferencesIndexRouteImport
-      parentRoute: typeof ApiUserPreferencesRoute
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/user/preferences/analytics': {
+      id: '/api/user/preferences/analytics'
+      path: '/api/user/preferences/analytics'
+      fullPath: '/api/user/preferences/analytics'
+      preLoaderRoute: typeof ApiUserPreferencesAnalyticsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/user/preferences/draft': {
+      id: '/api/user/preferences/draft'
+      path: '/api/user/preferences/draft'
+      fullPath: '/api/user/preferences/draft'
+      preLoaderRoute: typeof ApiUserPreferencesDraftRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/admin/url-redirects/$id/visit': {
+      id: '/api/admin/url-redirects/$id/visit'
+      path: '/api/admin/url-redirects/$id/visit'
+      fullPath: '/api/admin/url-redirects/$id/visit'
+      preLoaderRoute: typeof ApiAdminUrlRedirectsIdVisitRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/internal/url-redirects/$id/visit': {
+      id: '/api/internal/url-redirects/$id/visit'
+      path: '/api/internal/url-redirects/$id/visit'
+      fullPath: '/api/internal/url-redirects/$id/visit'
+      preLoaderRoute: typeof ApiInternalUrlRedirectsIdVisitRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/travel/v1/accommodations/search': {
+      id: '/api/travel/v1/accommodations/search'
+      path: '/api/travel/v1/accommodations/search'
+      fullPath: '/api/travel/v1/accommodations/search'
+      preLoaderRoute: typeof ApiTravelV1AccommodationsSearchRouteImport
+      parentRoute: typeof rootRouteImport
     }
     '/api/travel/v1/destinations/': {
       id: '/api/travel/v1/destinations/'
-      path: '/'
+      path: '/api/travel/v1/destinations'
       fullPath: '/api/travel/v1/destinations/'
       preLoaderRoute: typeof ApiTravelV1DestinationsIndexRouteImport
-      parentRoute: typeof ApiTravelV1DestinationsRoute
+      parentRoute: typeof rootRouteImport
     }
     '/api/travel/v1/destinations/$slug': {
       id: '/api/travel/v1/destinations/$slug'
-      path: '/$slug'
+      path: '/api/travel/v1/destinations/$slug'
       fullPath: '/api/travel/v1/destinations/$slug'
       preLoaderRoute: typeof ApiTravelV1DestinationsSlugRouteImport
-      parentRoute: typeof ApiTravelV1DestinationsRoute
+      parentRoute: typeof rootRouteImport
     }
     '/api/travel/v1/destinations/countries': {
       id: '/api/travel/v1/destinations/countries'
-      path: '/countries'
+      path: '/api/travel/v1/destinations/countries'
       fullPath: '/api/travel/v1/destinations/countries'
       preLoaderRoute: typeof ApiTravelV1DestinationsCountriesRouteImport
-      parentRoute: typeof ApiTravelV1DestinationsRoute
+      parentRoute: typeof rootRouteImport
     }
     '/api/travel/v1/flights/': {
       id: '/api/travel/v1/flights/'
-      path: '/'
+      path: '/api/travel/v1/flights'
       fullPath: '/api/travel/v1/flights/'
       preLoaderRoute: typeof ApiTravelV1FlightsIndexRouteImport
-      parentRoute: typeof ApiTravelV1FlightsRoute
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/travel/v1/flights/estimate': {
+      id: '/api/travel/v1/flights/estimate'
+      path: '/api/travel/v1/flights/estimate'
+      fullPath: '/api/travel/v1/flights/estimate'
+      preLoaderRoute: typeof ApiTravelV1FlightsEstimateRouteImport
+      parentRoute: typeof rootRouteImport
     }
     '/api/travel/v1/hotels/': {
       id: '/api/travel/v1/hotels/'
-      path: '/'
+      path: '/api/travel/v1/hotels'
       fullPath: '/api/travel/v1/hotels/'
       preLoaderRoute: typeof ApiTravelV1HotelsIndexRouteImport
-      parentRoute: typeof ApiTravelV1HotelsRoute
+      parentRoute: typeof rootRouteImport
     }
     '/api/travel/v1/hotels/$id': {
       id: '/api/travel/v1/hotels/$id'
-      path: '/$id'
+      path: '/api/travel/v1/hotels/$id'
       fullPath: '/api/travel/v1/hotels/$id'
       preLoaderRoute: typeof ApiTravelV1HotelsIdRouteImport
-      parentRoute: typeof ApiTravelV1HotelsRoute
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/travel/v1/hotels/geocode': {
+      id: '/api/travel/v1/hotels/geocode'
+      path: '/api/travel/v1/hotels/geocode'
+      fullPath: '/api/travel/v1/hotels/geocode'
+      preLoaderRoute: typeof ApiTravelV1HotelsGeocodeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/travel/v1/hotels/nearby': {
+      id: '/api/travel/v1/hotels/nearby'
+      path: '/api/travel/v1/hotels/nearby'
+      fullPath: '/api/travel/v1/hotels/nearby'
+      preLoaderRoute: typeof ApiTravelV1HotelsNearbyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/travel/v1/hotels/osm': {
+      id: '/api/travel/v1/hotels/osm'
+      path: '/api/travel/v1/hotels/osm'
+      fullPath: '/api/travel/v1/hotels/osm'
+      preLoaderRoute: typeof ApiTravelV1HotelsOsmRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/travel/v1/destinations/$slug/videos': {
+      id: '/api/travel/v1/destinations/$slug/videos'
+      path: '/videos'
+      fullPath: '/api/travel/v1/destinations/$slug/videos'
+      preLoaderRoute: typeof ApiTravelV1DestinationsSlugVideosRouteImport
+      parentRoute: typeof ApiTravelV1DestinationsSlugRoute
+    }
+    '/api/travel/v1/hotels/$id/image': {
+      id: '/api/travel/v1/hotels/$id/image'
+      path: '/image'
+      fullPath: '/api/travel/v1/hotels/$id/image'
+      preLoaderRoute: typeof ApiTravelV1HotelsIdImageRouteImport
+      parentRoute: typeof ApiTravelV1HotelsIdRoute
+    }
+    '/api/travel/v1/hotels/$id/reviews': {
+      id: '/api/travel/v1/hotels/$id/reviews'
+      path: '/reviews'
+      fullPath: '/api/travel/v1/hotels/$id/reviews'
+      preLoaderRoute: typeof ApiTravelV1HotelsIdReviewsRouteImport
+      parentRoute: typeof ApiTravelV1HotelsIdRoute
     }
   }
 }
@@ -1029,59 +1430,33 @@ const ApiHealthRouteWithChildren = ApiHealthRoute._addFileChildren(
   ApiHealthRouteChildren,
 )
 
-interface ApiUserPreferencesRouteChildren {
-  ApiUserPreferencesIndexRoute: typeof ApiUserPreferencesIndexRoute
+interface ApiTravelV1DestinationsSlugRouteChildren {
+  ApiTravelV1DestinationsSlugVideosRoute: typeof ApiTravelV1DestinationsSlugVideosRoute
 }
 
-const ApiUserPreferencesRouteChildren: ApiUserPreferencesRouteChildren = {
-  ApiUserPreferencesIndexRoute: ApiUserPreferencesIndexRoute,
-}
-
-const ApiUserPreferencesRouteWithChildren =
-  ApiUserPreferencesRoute._addFileChildren(ApiUserPreferencesRouteChildren)
-
-interface ApiTravelV1DestinationsRouteChildren {
-  ApiTravelV1DestinationsSlugRoute: typeof ApiTravelV1DestinationsSlugRoute
-  ApiTravelV1DestinationsCountriesRoute: typeof ApiTravelV1DestinationsCountriesRoute
-  ApiTravelV1DestinationsIndexRoute: typeof ApiTravelV1DestinationsIndexRoute
-}
-
-const ApiTravelV1DestinationsRouteChildren: ApiTravelV1DestinationsRouteChildren =
+const ApiTravelV1DestinationsSlugRouteChildren: ApiTravelV1DestinationsSlugRouteChildren =
   {
-    ApiTravelV1DestinationsSlugRoute: ApiTravelV1DestinationsSlugRoute,
-    ApiTravelV1DestinationsCountriesRoute:
-      ApiTravelV1DestinationsCountriesRoute,
-    ApiTravelV1DestinationsIndexRoute: ApiTravelV1DestinationsIndexRoute,
+    ApiTravelV1DestinationsSlugVideosRoute:
+      ApiTravelV1DestinationsSlugVideosRoute,
   }
 
-const ApiTravelV1DestinationsRouteWithChildren =
-  ApiTravelV1DestinationsRoute._addFileChildren(
-    ApiTravelV1DestinationsRouteChildren,
+const ApiTravelV1DestinationsSlugRouteWithChildren =
+  ApiTravelV1DestinationsSlugRoute._addFileChildren(
+    ApiTravelV1DestinationsSlugRouteChildren,
   )
 
-interface ApiTravelV1FlightsRouteChildren {
-  ApiTravelV1FlightsIndexRoute: typeof ApiTravelV1FlightsIndexRoute
+interface ApiTravelV1HotelsIdRouteChildren {
+  ApiTravelV1HotelsIdImageRoute: typeof ApiTravelV1HotelsIdImageRoute
+  ApiTravelV1HotelsIdReviewsRoute: typeof ApiTravelV1HotelsIdReviewsRoute
 }
 
-const ApiTravelV1FlightsRouteChildren: ApiTravelV1FlightsRouteChildren = {
-  ApiTravelV1FlightsIndexRoute: ApiTravelV1FlightsIndexRoute,
+const ApiTravelV1HotelsIdRouteChildren: ApiTravelV1HotelsIdRouteChildren = {
+  ApiTravelV1HotelsIdImageRoute: ApiTravelV1HotelsIdImageRoute,
+  ApiTravelV1HotelsIdReviewsRoute: ApiTravelV1HotelsIdReviewsRoute,
 }
 
-const ApiTravelV1FlightsRouteWithChildren =
-  ApiTravelV1FlightsRoute._addFileChildren(ApiTravelV1FlightsRouteChildren)
-
-interface ApiTravelV1HotelsRouteChildren {
-  ApiTravelV1HotelsIdRoute: typeof ApiTravelV1HotelsIdRoute
-  ApiTravelV1HotelsIndexRoute: typeof ApiTravelV1HotelsIndexRoute
-}
-
-const ApiTravelV1HotelsRouteChildren: ApiTravelV1HotelsRouteChildren = {
-  ApiTravelV1HotelsIdRoute: ApiTravelV1HotelsIdRoute,
-  ApiTravelV1HotelsIndexRoute: ApiTravelV1HotelsIndexRoute,
-}
-
-const ApiTravelV1HotelsRouteWithChildren =
-  ApiTravelV1HotelsRoute._addFileChildren(ApiTravelV1HotelsRouteChildren)
+const ApiTravelV1HotelsIdRouteWithChildren =
+  ApiTravelV1HotelsIdRoute._addFileChildren(ApiTravelV1HotelsIdRouteChildren)
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
@@ -1100,34 +1475,59 @@ const rootRouteChildren: RootRouteChildren = {
   ApiSitemapRoute: ApiSitemapRoute,
   LegalPageTypeRoute: LegalPageTypeRoute,
   RoteirosSlugRoute: RoteirosSlugRoute,
+  ApiAdmin404LogRoute: ApiAdmin404LogRoute,
   ApiAiPreferencesInsightsRoute: ApiAiPreferencesInsightsRoute,
   ApiAuthSplatRoute: ApiAuthSplatRoute,
   ApiAuthForgotPasswordRoute: ApiAuthForgotPasswordRoute,
+  ApiAuthLoginRoute: ApiAuthLoginRoute,
+  ApiAuthLogoutRoute: ApiAuthLogoutRoute,
   ApiAuthResetPasswordRoute: ApiAuthResetPasswordRoute,
   ApiAuthSignupRoute: ApiAuthSignupRoute,
   ApiInternal404LogRoute: ApiInternal404LogRoute,
-  ApiUserPreferencesRoute: ApiUserPreferencesRouteWithChildren,
   ApiV1SplatRoute: ApiV1SplatRoute,
   ApiAuthMeAvatarRoute: ApiAuthMeAvatarRoute,
   ApiAuthMePasswordRoute: ApiAuthMePasswordRoute,
   ApiAuthMeSessionsRoute: ApiAuthMeSessionsRoute,
-  ApiTravelV1DestinationsRoute: ApiTravelV1DestinationsRouteWithChildren,
-  ApiTravelV1FlightsRoute: ApiTravelV1FlightsRouteWithChildren,
-  ApiTravelV1HotelsRoute: ApiTravelV1HotelsRouteWithChildren,
+  ApiAuthVerifyEmailTokenRoute: ApiAuthVerifyEmailTokenRoute,
+  ApiTravelV1AisstreamRoute: ApiTravelV1AisstreamRoute,
+  ApiTravelV1CostOfLivingRoute: ApiTravelV1CostOfLivingRoute,
+  ApiTravelV1ListingsRoute: ApiTravelV1ListingsRoute,
+  ApiTravelV1NavitiaRoute: ApiTravelV1NavitiaRoute,
   ApiTravelV1RecommendRoute: ApiTravelV1RecommendRoute,
+  ApiTravelV1SandboxRoute: ApiTravelV1SandboxRoute,
+  ApiTravelV1TransitlandRoute: ApiTravelV1TransitlandRoute,
+  ApiTravelV1TransitousRoute: ApiTravelV1TransitousRoute,
+  ApiUserPreferencesAnalyticsRoute: ApiUserPreferencesAnalyticsRoute,
+  ApiUserPreferencesDraftRoute: ApiUserPreferencesDraftRoute,
   ApiAdminUrlRedirectsIndexRoute: ApiAdminUrlRedirectsIndexRoute,
   ApiAuthMeIndexRoute: ApiAuthMeIndexRoute,
   ApiInternalUrlRedirectsIndexRoute: ApiInternalUrlRedirectsIndexRoute,
+  ApiUserPreferencesIndexRoute: ApiUserPreferencesIndexRoute,
+  ApiAdminUrlRedirectsIdVisitRoute: ApiAdminUrlRedirectsIdVisitRoute,
+  ApiInternalUrlRedirectsIdVisitRoute: ApiInternalUrlRedirectsIdVisitRoute,
+  ApiTravelV1AccommodationsSearchRoute: ApiTravelV1AccommodationsSearchRoute,
+  ApiTravelV1DestinationsSlugRoute:
+    ApiTravelV1DestinationsSlugRouteWithChildren,
+  ApiTravelV1DestinationsCountriesRoute: ApiTravelV1DestinationsCountriesRoute,
+  ApiTravelV1FlightsEstimateRoute: ApiTravelV1FlightsEstimateRoute,
+  ApiTravelV1HotelsIdRoute: ApiTravelV1HotelsIdRouteWithChildren,
+  ApiTravelV1HotelsGeocodeRoute: ApiTravelV1HotelsGeocodeRoute,
+  ApiTravelV1HotelsNearbyRoute: ApiTravelV1HotelsNearbyRoute,
+  ApiTravelV1HotelsOsmRoute: ApiTravelV1HotelsOsmRoute,
+  ApiTravelV1DestinationsIndexRoute: ApiTravelV1DestinationsIndexRoute,
+  ApiTravelV1FlightsIndexRoute: ApiTravelV1FlightsIndexRoute,
+  ApiTravelV1HotelsIndexRoute: ApiTravelV1HotelsIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
 
 import type { getRouter } from './router.tsx'
-import type { createStart } from '@tanstack/react-start'
+import type { startInstance } from './start.ts'
 declare module '@tanstack/react-start' {
   interface Register {
     ssr: true
     router: Awaited<ReturnType<typeof getRouter>>
+    config: Awaited<ReturnType<typeof startInstance.getOptions>>
   }
 }

@@ -1,0 +1,8 @@
+// ── AKMLEVA Main SCSS ────────────────────────────────────────────────────────
+// Entry point: imports all SCSS partials + the existing CSS.
+
+// Partials (available for component-level @use/@import)
+@use 'variables';
+@use 'mixins';
+@use 'animations';
+@use 'components';

@@ -34,8 +34,14 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
   const [mounted, setMounted] = useState(false)
 
   useEffect(() => {
-    const current = document.documentElement.classList.contains('dark') ? 'dark' : 'light'
-    setThemeState(current)
+    const resolved = resolveInitialTheme()
+    const root = document.documentElement
+    if (resolved === 'dark') {
+      root.classList.add('dark')
+    } else {
+      root.classList.remove('dark')
+    }
+    setThemeState(resolved)
     setMounted(true)
   }, [])
 

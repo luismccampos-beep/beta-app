@@ -1,6 +1,6 @@
 import { locales, defaultLocale, type Locale } from '@/i18n.config'
 
-const SITE_URL = process.env.VITE_BASE_URL || 'https://www.akmleva.pt'
+const SITE_URL = import.meta.env.VITE_BASE_URL || 'https://www.akmleva.pt'
 
 interface HeadOptions {
   title?: string
@@ -25,7 +25,7 @@ export function generatePageHead(opts: HeadOptions) {
   const path = opts.path || ''
   const title = opts.title ? `${opts.title} | AKMLEVA` : 'AKMLEVA'
   const description = opts.description || 'Viaje mais e planeie melhor com inteligência artificial'
-  const image = opts.image || `${SITE_URL}/og-default.png`
+  const image = opts.image || `${SITE_URL}/images/og-placeholder.svg`
 
   const meta = [
     { title },

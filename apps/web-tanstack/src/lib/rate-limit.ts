@@ -18,7 +18,7 @@ function createSafeRatelimit(opts: { window: number; max: number; prefix: string
   }
 }
 
-export const publicRatelimit = createSafeRatelimit({ window: 60, max: 30, prefix: 'ratelimit:public' })
+export const publicRatelimit = createSafeRatelimit({ window: 60, max: 100, prefix: 'ratelimit:public' })
 export const authRatelimit = createSafeRatelimit({ window: 60, max: 120, prefix: 'ratelimit:auth' })
 export const adminRatelimit = createSafeRatelimit({ window: 60, max: 1000, prefix: 'ratelimit:admin' })
 

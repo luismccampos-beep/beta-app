@@ -5,10 +5,10 @@ export const Route = createFileRoute('/api/admin/url-redirects/')({
   server: {
     handlers: {
       GET: async ({ request }) => {
-        const authError = requireAdmin(request)
-        if (authError) return authError
+        const forbidden = requireAdmin(request)
+        if (forbidden) return forbidden
 
-        return Response.json({ ok: true, redirects: [] })
+        return Response.json({ success: true, data: [] })
       },
     },
   },

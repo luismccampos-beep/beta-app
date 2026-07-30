@@ -39,7 +39,7 @@ export const Route = createFileRoute('/api/auth/me/sessions')({
             return Response.json({ error: 'Unauthorized' }, { status: 401 })
           }
 
-          const body = await request.json().catch(() => null)
+          const body = (await request.json().catch(() => null)) as { sessionId?: string } | null
           if (body?.sessionId) {
             // Revoke specific session
             await prisma.session.deleteMany({

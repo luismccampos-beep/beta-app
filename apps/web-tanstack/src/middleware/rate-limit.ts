@@ -1,7 +1,15 @@
 import { createMiddleware } from '@tanstack/react-start'
-import { checkRateLimit, publicRatelimit, authRatelimit, adminRatelimit } from '@/lib/rate-limit'
+import {
+  checkRateLimit,
+  publicRatelimit,
+  authRatelimit,
+  adminRatelimit,
+} from '@/lib/rate-limit'
 
-function detectTier(request: Request): { limiter: typeof publicRatelimit; tier: string } {
+function detectTier(request: Request): {
+  limiter: typeof publicRatelimit
+  tier: string
+} {
   const apiKey = request.headers.get('x-api-key')
   if (apiKey && apiKey === process.env.INTERNAL_API_KEY) {
     return { limiter: adminRatelimit, tier: 'admin' }
@@ -13,20 +21,43 @@ function detectTier(request: Request): { limiter: typeof publicRatelimit; tier: 
   return { limiter: publicRatelimit, tier: 'public' }
 }
 
-export const rateLimitMiddleware = createMiddleware().server(async ({ next, request }) => {
-  const url = new URL(request.url)
-  if (!url.pathname.startsWith('/api')) return next()
+export const rateLimitMiddleware = createMiddleware({ type: 'request' }).server(
+  async ({ next, request }) => {
+    const url = new URL(request.url)
+    if (!url.pathname.startsWith('/api')) return next()
 
-  const { limiter, tier } = detectTier(request)
-  const result = await checkRateLimit(request, limiter)
+    // Skip rate limiting in development
+    if (process.env.NODE_ENV === 'development') {
+      return next()
+    }
 
-  if (!result.success) {
-    return new Response(
-      JSON.stringify({ ok: false, error: 'Rate limit exceeded', tier }),
-      { status: 429, headers: { 'Content-Type': 'application/json' } },
-    )
-  }
+    const { limiter, tier } = detectTier(request)
+    const result = await checkRateLimit(request, limiter)
 
-  const nextResult = await next()
-  return nextResult
-})
+    if (!result.success) {
+      return new Response(
+        JSON.stringify({
+          ok: false,
+          error: 'Rate limit exceeded',
+          tier,
+        }),
+        {
+          status: 429,
+          headers: {
+            'Content-Type': 'application/json',
+            'Retry-After': '60',
+          },
+        },
+      )
+    }
+
+    const nextResult = await next()
+    const headers = new Headers(nextResult.response.headers)
+    headers.set('X-RateLimit-Tier', tier)
+    return new Response(nextResult.response.body, {
+      status: nextResult.response.status,
+      statusText: nextResult.response.statusText,
+      headers,
+    })
+  },
+)

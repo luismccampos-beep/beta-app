@@ -1,35 +1,62 @@
 import { createMiddleware } from '@tanstack/react-start'
 
-const notFoundBatch: Array<{ path: string; userAgent?: string; referer?: string; timestamp: number }> = []
+const notFoundBatch: Array<{
+  path: string
+  userAgent?: string
+  referer?: string
+  timestamp: number
+}> = []
 const BATCH_INTERVAL = 30_000
+let flushScheduled = false
 
-setInterval(async () => {
-  if (notFoundBatch.length === 0) return
+function scheduleFlush() {
+  if (flushScheduled) return
+  flushScheduled = true
 
-  const batch = notFoundBatch.splice(0)
-  const internalApiKey = process.env.INTERNAL_API_KEY
-  const baseUrl = process.env.VITE_BASE_URL || 'http://localhost:3002'
+  setTimeout(async () => {
+    flushScheduled = false
+    if (notFoundBatch.length === 0) return
 
-  if (!internalApiKey) return
+    const batch = notFoundBatch.splice(0)
+    const internalApiKey = process.env.INTERNAL_API_KEY
+    const baseUrl = process.env.VITE_BASE_URL || 'http://localhost:3002'
 
-  try {
-    await fetch(`${baseUrl}/api/internal/404-log`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'x-api-key': internalApiKey,
-      },
-      body: JSON.stringify({ entries: batch }),
-    })
-  } catch {
-    // Silently fail
-  }
-}, BATCH_INTERVAL)
+    if (!internalApiKey) return
 
-export const notFoundLoggingMiddleware = createMiddleware().server(async ({ next, request }) => {
+    try {
+      await fetch(`${baseUrl}/api/internal/404-log`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'x-api-key': internalApiKey,
+        },
+        body: JSON.stringify({ entries: batch }),
+      })
+    } catch {
+      // Silently fail
+    }
+  }, BATCH_INTERVAL)
+}
+
+export function logNotFound(path: string, userAgent?: string, referer?: string) {
+  notFoundBatch.push({ path, userAgent, referer, timestamp: Date.now() })
+  scheduleFlush()
+}
+
+export const notFoundLoggingMiddleware = createMiddleware({
+  type: 'request',
+}).server(async ({ next, request }) => {
   const result = await next()
+  const url = new URL(request.url)
 
-  // The middleware runs before the handler, so we can't intercept 404s here.
-  // This is a placeholder for future implementation.
+  // Log 404s from the response
+  if (result.response.status === 404 && !url.pathname.startsWith('/api')) {
+    logNotFound(
+      url.pathname,
+      request.headers.get('user-agent') ?? undefined,
+      request.headers.get('referer') ?? undefined,
+    )
+  }
+
   return result
 })

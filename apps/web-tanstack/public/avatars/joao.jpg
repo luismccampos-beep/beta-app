@@ -1,0 +1,6 @@
+<svg width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <rect width="200" height="200" fill="#E2E8F0"/>
+  <circle cx="100" cy="80" r="40" fill="#94A3B8"/>
+  <path d="M40 160C40 126.863 66.8629 100 100 100C133.137 100 160 126.863 160 160V180H40V160Z" fill="#94A3B8"/>
+  <text x="50%" y="95%" dominant-baseline="middle" text-anchor="middle" font-family="sans-serif" font-size="24" fill="#64748B">Joao</text>
+</svg>

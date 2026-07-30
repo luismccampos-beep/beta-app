@@ -1,0 +1,108 @@
+<svg width="800" height="600" viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
+  <rect width="800" height="600" fill="white"/>
+
+  <defs>
+    <!-- Clip para o círculo principal -->
+    <clipPath id="mainCircle">
+      <circle cx="0" cy="0" r="183"/>
+    </clipPath>
+
+    <!-- Clip para a cúpula semicircular de letras -->
+    <clipPath id="domeClip">
+      <ellipse cx="0" cy="-30" rx="118" ry="118"/>
+    </clipPath>
+
+    <g id="logoGEA">
+      <!-- Círculo Azul Principal -->
+      <circle cx="0" cy="0" r="183" fill="#1e3a8a"/>
+
+      <!-- Cúpula de letras tipográficas (semicírculo superior) -->
+      <g clip-path="url(#domeClip)">
+        <!-- Fundo branco da cúpula -->
+        <ellipse cx="0" cy="-30" rx="118" ry="118" fill="white"/>
+        <!-- Letras variadas em azul, imitando o original -->
+        <g fill="#1e3a8a" font-family="'Georgia', 'Times New Roman', serif">
+          <!-- Linha superior -->
+          <text x="-85" y="-100" font-size="28" font-style="italic" transform="rotate(-20,-85,-100)">&amp;</text>
+          <text x="-55" y="-118" font-size="36" font-weight="bold">S</text>
+          <text x="-20" y="-128" font-size="30" font-style="italic">S</text>
+          <text x="12" y="-122" font-size="34">A</text>
+          <text x="48" y="-110" font-size="28" transform="rotate(15,48,-110)">y</text>
+          <text x="78" y="-95" font-size="26" font-style="italic" transform="rotate(20,78,-95)">V</text>
+
+          <!-- Linha média -->
+          <text x="-100" y="-75" font-size="32" font-style="italic">p</text>
+          <text x="-68" y="-72" font-size="40" font-weight="bold" transform="rotate(-10,-68,-72)">b</text>
+          <text x="-30" y="-80" font-size="34">e</text>
+          <text x="5" y="-78" font-size="38" font-weight="bold" font-style="italic">g</text>
+          <text x="45" y="-70" font-size="30" transform="rotate(10,45,-70)">Q</text>
+          <text x="82" y="-62" font-size="24" transform="rotate(18,82,-62)">x</text>
+
+          <!-- Linha inferior da cúpula -->
+          <text x="-108" y="-45" font-size="28" font-style="italic" transform="rotate(-8,-108,-45)">y</text>
+          <text x="-72" y="-42" font-size="46" font-weight="bold" font-style="italic" transform="rotate(-5,-72,-42)">m</text>
+          <text x="-18" y="-38" font-size="36" font-style="italic">u</text>
+          <text x="22" y="-40" font-size="32">g</text>
+          <text x="60" y="-38" font-size="28" font-style="italic" transform="rotate(12,60,-38)">x</text>
+          <text x="95" y="-32" font-size="22" transform="rotate(20,95,-32)">k</text>
+        </g>
+
+        <!-- Linha base da cúpula (linha divisória) -->
+        <rect x="-118" y="-30" width="236" height="4" fill="#1e3a8a"/>
+      </g>
+
+      <!-- Moldura retangular branca -->
+      <rect x="-118" y="-30" width="236" height="148" fill="#1e3a8a"/>
+      <rect x="-118" y="-30" width="236" height="148" fill="none" stroke="white" stroke-width="9"/>
+
+      <!-- Texto GEA -->
+      <text x="0" y="88" fill="white"
+            font-family="'Georgia', 'Times New Roman', serif"
+            font-size="100"
+            text-anchor="middle"
+            font-weight="bold"
+            letter-spacing="4">GEA</text>
+    </g>
+  </defs>
+
+  <!-- ══════════════════════════════════════════════ -->
+  <!-- Logo grande à esquerda -->
+  <!-- ══════════════════════════════════════════════ -->
+  <g transform="translate(210, 300)">
+    <use href="#logoGEA"/>
+  </g>
+
+  <!-- Linha divisória vertical -->
+  <line x1="420" y1="80" x2="420" y2="520" stroke="#cccccc" stroke-width="1.5"/>
+
+  <!-- ══════════════════════════════════════════════ -->
+  <!-- Variação 1: Logo pequeno + texto PT -->
+  <!-- ══════════════════════════════════════════════ -->
+  <g transform="translate(450, 185)">
+    <!-- Logo pequeno -->
+    <g transform="scale(0.27)">
+      <use href="#logoGEA"/>
+    </g>
+    <!-- Textos à direita do logo -->
+    <g transform="translate(62, -18)" font-family="'Georgia', serif" fill="#1e3a8a">
+      <text y="10" font-size="15" font-weight="bold" letter-spacing="2.5">AGÊNCIAS DE VIAGENS</text>
+      <text y="30" font-size="15" font-weight="bold" letter-spacing="2.5">INDEPENDENTES</text>
+    </g>
+  </g>
+
+  <!-- Linha divisória horizontal -->
+  <line x1="435" y1="310" x2="775" y2="310" stroke="#cccccc" stroke-width="1"/>
+
+  <!-- ══════════════════════════════════════════════ -->
+  <!-- Variação 2: Logo pequeno + texto PT alternativo -->
+  <!-- ══════════════════════════════════════════════ -->
+  <g transform="translate(450, 390)">
+    <g transform="scale(0.27)">
+      <use href="#logoGEA"/>
+    </g>
+    <g transform="translate(62, -18)" font-family="'Georgia', serif" fill="#1e3a8a">
+      <text y="10" font-size="14" font-weight="bold" letter-spacing="1.5">GRUPO DE AGÊNCIAS</text>
+      <text y="30" font-size="14" font-weight="bold" letter-spacing="1.5">DE VIAGENS INDEPENDENTES</text>
+    </g>
+  </g>
+</svg>

@@ -1,17 +1,59 @@
 import { createFileRoute } from '@tanstack/react-router'
+import { z } from 'zod'
+import { apiHandler } from '@/lib/api/handler'
+import { unifiedQuery } from '@/lib/ml-service/client'
+
+const PreferencesInsightsSchema = z.object({
+  preferences: z.record(z.string(), z.unknown()).default({}),
+  locale: z.string().optional().default('pt'),
+})
 
 export const Route = createFileRoute('/api/ai/preferences-insights')({
   server: {
     handlers: {
-      POST: async ({ request }) => {
-        try {
-          const body = await request.json()
-          // TODO: Call ML service unifiedQuery
-          return Response.json({ insights: [] })
-        } catch {
-          return Response.json({ error: 'Invalid request' }, { status: 400 })
+      POST: apiHandler(async ({ request }) => {
+        const { preferences, locale } = PreferencesInsightsSchema.parse(await request.json())
+
+        const query = `Generate short travel insights and recommended next steps based on these preferences:\n\n${JSON.stringify(
+          preferences,
+          null,
+          2,
+        )}`
+
+        const data = await unifiedQuery({
+          query,
+          context: { source: 'web-preferences', locale },
+          user_preferences: preferences,
+          include_explanation: false,
+          include_alternatives: false,
+          max_sources: 5,
+          language: locale,
+        })
+
+        if (!data) {
+          return Response.json({
+            ok: true,
+            answer: null,
+            confidence: null,
+          })
         }
-      },
+
+        if (!data.success) {
+          return Response.json(
+            {
+              ok: false,
+              message: data.detail || data.error || 'ML service request failed',
+            },
+            { status: 502 },
+          )
+        }
+
+        return Response.json({
+          ok: true,
+          answer: data.data?.answer ?? '',
+          confidence: data.data?.confidence ?? null,
+        })
+      }),
     },
   },
 })
