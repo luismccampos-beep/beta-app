@@ -12,13 +12,14 @@
     "schema": "./prisma/schema.prisma"
   },
   "scripts": {
-    "generate": "prisma generate",
-    "migrate:dev": "prisma migrate dev",
-    "migrate:deploy": "prisma migrate deploy",
-    "push": "prisma db push",
+    "generate": "node ./scripts/prisma-with-fallback.mjs generate",
+    "migrate:dev": "node ./scripts/prisma-with-fallback.mjs migrate dev",
+    "migrate:deploy": "node ./scripts/prisma-with-fallback.mjs migrate deploy",
+    "push": "node ./scripts/prisma-with-fallback.mjs db push",
     "seed": "npx tsx prisma/seed.ts",
-    "reset": "prisma migrate reset --force",
-    "studio": "prisma studio"
+    "reset": "node ./scripts/prisma-with-fallback.mjs migrate reset --force",
+    "studio": "prisma studio",
+    "resolve": "node ./scripts/resolve-failed-migrations.mjs"
   },
   "dependencies": {
     "@prisma/client": "6.17.1"

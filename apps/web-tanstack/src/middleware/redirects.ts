@@ -23,11 +23,13 @@ async function fetchRedirects(): Promise<Map<string, UrlRedirect>> {
   const apiKey = process.env.INTERNAL_API_KEY
   if (!apiKey) return redirectsCache
 
+  // Avoid self-fetching in development to prevent deadlocks
+  if (process.env.NODE_ENV !== 'production') {
+    return redirectsCache
+  }
+
   try {
-    const baseUrl =
-      process.env.NODE_ENV === 'production'
-        ? 'https://www.akmleva.pt'
-        : 'http://localhost:3000'
+    const baseUrl = 'https://www.akmleva.pt'
 
     const controller = new AbortController()
     const timeout = setTimeout(() => controller.abort(), 3000)
@@ -81,17 +83,15 @@ export const redirectsMiddleware = createMiddleware({
   const redirect = redirects.get(pathname)
 
   if (redirect) {
-    // Fire-and-forget visit tracking
+    // Fire-and-forget visit tracking (only in production to avoid self-fetch deadlocks)
     try {
       const apiKey = process.env.INTERNAL_API_KEY
-      const baseUrl =
-        process.env.NODE_ENV === 'production'
-          ? 'https://www.akmleva.pt'
-          : 'http://localhost:3000'
-      fetch(`${baseUrl}/api/internal/url-redirects/${redirect.id}/visit`, {
-        method: 'POST',
-        headers: { 'x-api-key': apiKey ?? '' },
-      }).catch(() => {})
+      if (process.env.NODE_ENV === 'production' && apiKey) {
+        fetch(`https://www.akmleva.pt/api/internal/url-redirects/${redirect.id}/visit`, {
+          method: 'POST',
+          headers: { 'x-api-key': apiKey },
+        }).catch(() => {})
+      }
     } catch {}
 
     // Check if redirect is expired

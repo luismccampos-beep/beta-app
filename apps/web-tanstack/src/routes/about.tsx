@@ -67,7 +67,7 @@ function AboutPage() {
             <span className="text-sm font-bold text-blue-800 dark:text-blue-200 uppercase tracking-[0.2em]">{t('pageTitle')}</span>
           </div>
           <h1 className="text-5xl sm:text-7xl font-black text-gray-950 dark:text-white leading-[1.1] tracking-tighter uppercase mb-8">
-            Nossa Missão é <span className="bg-gradient-to-r from-blue-600 via-purple-500 to-orange-500 bg-clip-text text-transparent">Inspirar</span>
+            {t('heroTitle')} <span className="bg-gradient-to-r from-blue-600 via-purple-500 to-orange-500 bg-clip-text text-transparent">{t('heroHighlight')}</span>
           </h1>
           <div className="h-1.5 w-32 bg-gradient-to-r from-blue-600 via-purple-500 to-orange-500 mx-auto rounded-full" />
         </motion.div>

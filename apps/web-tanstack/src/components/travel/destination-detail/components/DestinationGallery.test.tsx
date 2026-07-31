@@ -1,14 +1,6 @@
-import { describe, expect, it, vi } from 'vitest';
-import { render, screen, fireEvent } from '@testing-library/react';
+import { describe, expect, it } from 'vitest';
+import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import { DestinationGallery } from './DestinationGallery';
-
-// Mock next/image as a plain <img> element, preserving onError to test error handling
-vi.mock('next/image', () => ({
-  default: (props: Record<string, unknown>) => {
-    const { fill, sizes, unoptimized, ...rest } = props;
-    return <img {...rest} alt={(rest.alt as string) ?? ''} />;
-  },
-}));
 
 const sampleImages = [
   'https://example.com/photo1.jpg',
@@ -69,7 +61,7 @@ describe('DestinationGallery', () => {
     expect(screen.getByText('2 / 3')).toBeInTheDocument();
   });
 
-  it('closes lightbox when close button is clicked', () => {
+  it('closes lightbox when close button is clicked', async () => {
     render(
       <DestinationGallery images={sampleImages} title="Galeria" />,
     );
@@ -78,7 +70,9 @@ describe('DestinationGallery', () => {
 
     const closeBtn = screen.getByLabelText('Close gallery');
     fireEvent.click(closeBtn);
-    expect(screen.queryByText('1 / 3')).not.toBeInTheDocument();
+    await waitFor(() => {
+      expect(screen.queryByText('1 / 3')).not.toBeInTheDocument();
+    });
   });
 
   it('handles image error by tracking failed image (no crash)', () => {

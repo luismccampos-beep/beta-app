@@ -17,17 +17,17 @@ test.describe('Authentication', () => {
     await page.goto('/auth');
     const forgotLink = page.locator('a[href="/forgot-password"]');
     await expect(forgotLink).toBeVisible();
-    await expect(forgotLink).toHaveText(/Esqueceu a password/i);
+    await expect(forgotLink).toHaveText(/Esqueceu-se da palavra-passe/i);
   });
 
   test('login page has register prompt', async ({ page }) => {
     await page.goto('/auth');
-    await expect(page.locator('text=/Não tem conta/i')).toBeVisible();
+    await expect(page.locator('text=/Criar Conta/i')).toBeVisible();
   });
 
   test('forgot-password page renders correctly', async ({ page }) => {
     await page.goto('/forgot-password');
-    await expect(page.locator('h1')).toHaveText('Recuperar Password');
+    await expect(page.locator('h1')).toHaveText('Esqueceu-se da palavra-passe?');
     await expect(page.locator('#forgot-email')).toBeVisible();
     await expect(page.locator('button[type="submit"]').filter({ hasText: /Enviar/i })).toBeVisible();
   });
@@ -36,13 +36,13 @@ test.describe('Authentication', () => {
     await page.goto('/forgot-password');
     const backLink = page.locator('a[href="/auth"]');
     await expect(backLink).toBeVisible();
-    await expect(backLink).toHaveText(/Voltar ao login/i);
+    await expect(backLink).toHaveText(/Voltar ao início de sessão/i);
   });
 
   test('login form has proper labels', async ({ page }) => {
     await page.goto('/auth');
-    await expect(page.locator('label[for="auth-email"]')).toHaveText('Email');
-    await expect(page.locator('label[for="auth-password"]')).toHaveText('Password');
+    await expect(page.locator('label[for="auth-email"]')).toHaveText('E-mail');
+    await expect(page.locator('label[for="auth-password"]')).toHaveText('Palavra-passe');
   });
 });
 

@@ -16,7 +16,8 @@
     "search": "Buscar",
     "settings": "Configuración",
     "menu": "Menú",
-    "home": "Inicio"
+    "home": "Inicio",
+    "skipToMainContent": "Ir al contenido principal"
   },
   "landing": {
     "header": {
@@ -267,6 +268,14 @@
     "closed": "Cerrado",
     "socialTitle": "Síguenos",
     "responseTitle": "Tiempo de Respuesta",
+    "heroTitle": "Estamos",
+    "heroHighlight": "Cerca",
+    "heroTitleEnd": "de Ti",
+    "successTitle": "¡Mensaje Enviado!",
+    "successMessage": "Recibimos tu mensaje y te responderemos pronto.",
+    "sendAnother": "Enviar otro",
+    "sendError": "Error al enviar",
+    "errorMessage": "Ocurrió un error. Por favor, inténtalo de nuevo o envíanos un email a geral@akmleva.pt.",
     "responseTime": "Respuesta en 24 horas",
     "responseNote": "Nos comprometemos a responder a todos los mensajes en un plazo máximo de 24 horas hábiles.",
     "mapTitle": "Encuéntranos",
@@ -1655,5 +1664,10 @@
       "culturalHint": "UNESCO, Wikivoyage y (futuro) APIs nacionales / OSM.",
       "culturalSourcesHint": "Próximas fuentes para {sources}: datos curados nacionales."
     }
+  },
+  "preferences": {
+    "title": "Preferencias de Viaje",
+    "description": "Configura tus preferencias para recibir recomendaciones personalizadas.",
+    "editPreferences": "Editar preferencias"
   }
 }

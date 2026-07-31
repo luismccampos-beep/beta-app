@@ -13,7 +13,7 @@ env:
 
 jobs:
   axe-core:
-    name: axe-core E2E Audit
+    name: axe-core E2E Audit (Next.js)
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:
@@ -73,4 +73,48 @@ jobs:
         with:
           name: playwright-report-a11y
           path: apps/web/playwright-report/
+          retention-days: 7
+
+  axe-core-tanstack:
+    name: axe-core E2E Audit (TanStack)
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 22
+          cache: 'npm'
+
+      - run: npm ci
+
+      - name: Generate Prisma Client
+        run: npx prisma generate --schema=packages/db/prisma/schema.prisma
+
+      - name: Install Playwright browsers
+        run: npx playwright install --with-deps chromium
+
+      - name: Build TanStack app
+        run: npm run build -w @akmleva/web-tanstack
+
+      - name: Start preview server
+        run: |
+          npm run preview -w @akmleva/web-tanstack -- --port 3002 &
+          npx wait-on http://localhost:3002 --timeout 60000
+
+      - name: Run axe-core accessibility audit
+        run: npm run e2e:a11y -w @akmleva/web-tanstack
+        timeout-minutes: 5
+        env:
+          BASE_URL: 'http://localhost:3002'
+
+      - name: Upload Playwright report on failure
+        if: failure()
+        uses: actions/upload-artifact@v5
+        with:
+          name: playwright-report-a11y-tanstack
+          path: apps/web-tanstack/playwright-report/
           retention-days: 7

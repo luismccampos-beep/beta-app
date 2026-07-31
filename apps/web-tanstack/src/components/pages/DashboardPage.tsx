@@ -17,6 +17,7 @@ type TabType = 'bookings' | 'history' | 'profile' | 'preferences';
 interface DashboardPageProps {
   onBack: () => void;
   onNewBooking?: () => void;
+  onViewBooking: (bookingId: string) => void;
   initialTab?: TabType;
   onLogout?: () => void;
 }
@@ -39,12 +40,15 @@ type TravelHistory = {
   type: string;
 };
 
-export function DashboardPage({ onBack, onNewBooking, initialTab, onLogout }: DashboardPageProps) {
+export function DashboardPage({ onBack, onNewBooking, onViewBooking, initialTab, onLogout }: DashboardPageProps) {
   const t = useDashboardTranslations();
   const [activeTab, setActiveTab] = useState<TabType>(initialTab ?? 'bookings');
-
-  const mockBookings: Booking[] = [];
+  const [bookings, setBookings] = useState<Booking[]>([]);
   const mockHistory: TravelHistory[] = [];
+
+  const handleCancelBooking = (bookingId: string) => {
+    setBookings((currentBookings) => currentBookings.filter((booking) => booking.id !== bookingId));
+  };
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 via-primary-50 to-accent-50 dark:from-gray-950 dark:via-gray-900 dark:to-gray-950 transition-colors relative overflow-hidden">
@@ -134,7 +138,15 @@ export function DashboardPage({ onBack, onNewBooking, initialTab, onLogout }: Da
             transition={{ duration: 0.25, ease: 'easeInOut' }}
             className="space-y-6"
           >
-            {activeTab === 'bookings' && <BookingsTab bookings={mockBookings} onNewBooking={onNewBooking} t={t} />}
+            {activeTab === 'bookings' && (
+              <BookingsTab
+                bookings={bookings}
+                onNewBooking={onNewBooking}
+                onViewBooking={onViewBooking}
+                onCancelBooking={handleCancelBooking}
+                t={t}
+              />
+            )}
             {activeTab === 'history' && <HistoryTab history={mockHistory} t={t} />}
             {activeTab === 'profile' && <ProfileTab />}
             {activeTab === 'preferences' && <PreferencesTab />}

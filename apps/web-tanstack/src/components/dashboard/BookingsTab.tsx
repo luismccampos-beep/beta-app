@@ -19,6 +19,8 @@ type Booking = {
 type BookingsTabProps = {
   bookings: Booking[];
   onNewBooking?: () => void;
+  onViewBooking: (bookingId: string) => void;
+  onCancelBooking: (bookingId: string) => void;
   t: (key: string) => string;
 };
 
@@ -40,7 +42,7 @@ function getStatusIcon(status: string) {
   }
 }
 
-export function BookingsTab({ bookings, onNewBooking, t }: BookingsTabProps) {
+export function BookingsTab({ bookings, onNewBooking, onViewBooking, onCancelBooking, t }: BookingsTabProps) {
   if (bookings.length === 0) {
     return (
       <div>
@@ -49,7 +51,7 @@ export function BookingsTab({ bookings, onNewBooking, t }: BookingsTabProps) {
           <CardContent className="p-12 text-center">
             <Plane className="w-16 h-16 text-gray-300 dark:text-gray-600 mx-auto mb-4" />
             <p className="text-lg text-gray-600 dark:text-gray-400 mb-6">{t('noBookings')}</p>
-            <Button onClick={onNewBooking} className="bg-gray-900 dark:bg-white dark:text-gray-900 hover:bg-gray-800 dark:hover:bg-gray-100 text-white">
+            <Button type="button" onClick={onNewBooking} className="bg-gray-900 dark:bg-white dark:text-gray-900 hover:bg-gray-800 dark:hover:bg-gray-100 text-white">
               {t('bookNow')}
             </Button>
           </CardContent>
@@ -86,11 +88,23 @@ export function BookingsTab({ bookings, onNewBooking, t }: BookingsTabProps) {
                 <span className="font-bold text-lg text-gray-900 dark:text-white">{booking.price}</span>
               </div>
               <div className="flex gap-2 mt-3">
-                <Button variant="outline" size="sm" className="flex-1 border-gray-200 dark:border-gray-600 hover:bg-gray-50 dark:hover:bg-gray-700 text-gray-700 dark:text-gray-300">
+                <Button
+                  type="button"
+                  variant="outline"
+                  size="sm"
+                  onClick={() => onViewBooking(booking.id)}
+                  className="flex-1 border-gray-200 dark:border-gray-600 hover:bg-gray-50 dark:hover:bg-gray-700 text-gray-700 dark:text-gray-300"
+                >
                   {t('viewDetails')}
                 </Button>
                 {booking.status !== 'cancelled' && (
-                  <Button variant="outline" size="sm" className="border-red-200 dark:border-red-800 text-red-600 dark:text-red-400 hover:bg-red-50 dark:hover:bg-red-950/30">
+                  <Button
+                    type="button"
+                    variant="outline"
+                    size="sm"
+                    onClick={() => onCancelBooking(booking.id)}
+                    className="border-red-200 dark:border-red-800 text-red-600 dark:text-red-400 hover:bg-red-50 dark:hover:bg-red-950/30"
+                  >
                     {t('cancelBooking')}
                   </Button>
                 )}

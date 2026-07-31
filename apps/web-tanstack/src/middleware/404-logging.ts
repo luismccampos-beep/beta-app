@@ -1,4 +1,5 @@
 import { createMiddleware } from '@tanstack/react-start'
+import { unwrapResponse } from '@/lib/middleware'
 
 const notFoundBatch: Array<{
   path: string
@@ -21,6 +22,8 @@ function scheduleFlush() {
     const internalApiKey = process.env.INTERNAL_API_KEY
     const baseUrl = process.env.VITE_BASE_URL || 'http://localhost:3002'
 
+    // Avoid self-fetching in development to prevent deadlocks
+    if (process.env.NODE_ENV !== 'production') return
     if (!internalApiKey) return
 
     try {
@@ -50,7 +53,8 @@ export const notFoundLoggingMiddleware = createMiddleware({
   const url = new URL(request.url)
 
   // Log 404s from the response
-  if (result.response.status === 404 && !url.pathname.startsWith('/api')) {
+  const response = unwrapResponse(result)
+  if (response && response.status === 404 && !url.pathname.startsWith('/api')) {
     logNotFound(
       url.pathname,
       request.headers.get('user-agent') ?? undefined,

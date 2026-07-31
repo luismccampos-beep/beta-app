@@ -1,7 +1,6 @@
 'use client';
 
 import { Link } from '@tanstack/react-router';
-import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { ArrowRight, Hotel, MapPin, Plane, Star } from 'lucide-react';
 
@@ -81,12 +80,10 @@ export function DestinationBrowseCard({ item, href, labels }: DestinationBrowseC
     <Card className="group relative overflow-hidden border-0 bg-white dark:bg-gray-800 shadow-md hover:shadow-xl ring-1 ring-gray-200/60 dark:ring-gray-700/60 transition-all duration-300 h-full flex flex-col">
       {/* Hero image */}
       <Link to={href} className="block relative aspect-video overflow-hidden shrink-0">
-        <Image
+        <img
           src={item.imageUrl || DESTINATION_PLACEHOLDER}
           alt={item.nome}
-          fill
-          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-          className="object-cover transition-transform duration-700 ease-out group-hover:scale-110"
+          className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110"
           onError={onDestinationImageError}
           loading="lazy"
         />

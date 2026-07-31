@@ -1,4 +1,3 @@
-import nextPlugin from '@next/eslint-plugin-next';
 import tsParser from '@typescript-eslint/parser';
 import tsPlugin from '@typescript-eslint/eslint-plugin';
 import reactHooksPlugin from 'eslint-plugin-react-hooks';
@@ -80,22 +79,16 @@ export default [
       '**/playwright-report/**',
       '**/node_modules/**',
       'Zoo-Code/**',
-      'webpack.optimization.js',
-      'src/config/seo.js',
-      'src/lib/data/packages-data-1.ts',
-      'src/lib/data/packages-data-2.ts',
       'tsconfig.cpanel.json',
     ],
   },
   {
     plugins: {
-      '@next/next': nextPlugin,
       '@typescript-eslint': tsPlugin,
       'react-hooks': reactHooksPlugin,
       'jsx-a11y': jsxA11yPlugin,
     },
     rules: {
-      ...nextPlugin.configs['core-web-vitals'].rules,
       'react-hooks/rules-of-hooks': 'error',
       'react-hooks/exhaustive-deps': 'warn',
       '@typescript-eslint/no-explicit-any': 'warn',
@@ -109,13 +102,13 @@ export default [
     },
   },
   {
-    files: ['apps/web/e2e/**/*.{ts,tsx}', 'apps/web/src/**/*.{ts,tsx}', 'packages/**/*.{ts,tsx}', 'scripts/**/*.{ts,tsx}'],
+    files: ['apps/web-tanstack/e2e/**/*.{ts,tsx}', 'apps/web-tanstack/src/**/*.{ts,tsx}', 'packages/**/*.{ts,tsx}', 'scripts/**/*.{ts,tsx}'],
     rules: {
       '@typescript-eslint/no-explicit-any': 'error',
     },
   },
   {
-    files: ['next.config.cpanel.js', 'scripts/*.js'],
+    files: ['scripts/*.js'],
     rules: {
       'security/detect-non-literal-fs-operation': 'off',
       'security/detect-non-literal-require': 'off',

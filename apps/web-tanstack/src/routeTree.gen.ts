@@ -44,6 +44,7 @@ import { Route as ApiInternal404LogRouteImport } from './routes/api/internal/404
 import { Route as ApiV1SplatRouteImport } from './routes/api/v1/$'
 import { Route as ApiAdminUrlRedirectsIndexRouteImport } from './routes/api/admin/url-redirects/index'
 import { Route as ApiAuthMeIndexRouteImport } from './routes/api/auth/me/index'
+import { Route as ApiAuthMe2faRouteImport } from './routes/api/auth/me/2fa'
 import { Route as ApiAuthMeAvatarRouteImport } from './routes/api/auth/me/avatar'
 import { Route as ApiAuthMePasswordRouteImport } from './routes/api/auth/me/password'
 import { Route as ApiAuthMeSessionsRouteImport } from './routes/api/auth/me/sessions'
@@ -254,6 +255,11 @@ const ApiAuthMeIndexRoute = ApiAuthMeIndexRouteImport.update({
   path: '/api/auth/me/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ApiAuthMe2faRoute = ApiAuthMe2faRouteImport.update({
+  id: '/api/auth/me/2fa',
+  path: '/api/auth/me/2fa',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ApiAuthMeAvatarRoute = ApiAuthMeAvatarRouteImport.update({
   id: '/api/auth/me/avatar',
   path: '/api/auth/me/avatar',
@@ -462,6 +468,7 @@ export interface FileRoutesByFullPath {
   '/api/internal/404-log': typeof ApiInternal404LogRoute
   '/api/v1/$': typeof ApiV1SplatRoute
   '/api/health/': typeof ApiHealthIndexRoute
+  '/api/auth/me/2fa': typeof ApiAuthMe2faRoute
   '/api/auth/me/avatar': typeof ApiAuthMeAvatarRoute
   '/api/auth/me/password': typeof ApiAuthMePasswordRoute
   '/api/auth/me/sessions': typeof ApiAuthMeSessionsRoute
@@ -530,6 +537,7 @@ export interface FileRoutesByTo {
   '/api/internal/404-log': typeof ApiInternal404LogRoute
   '/api/v1/$': typeof ApiV1SplatRoute
   '/api/health': typeof ApiHealthIndexRoute
+  '/api/auth/me/2fa': typeof ApiAuthMe2faRoute
   '/api/auth/me/avatar': typeof ApiAuthMeAvatarRoute
   '/api/auth/me/password': typeof ApiAuthMePasswordRoute
   '/api/auth/me/sessions': typeof ApiAuthMeSessionsRoute
@@ -600,6 +608,7 @@ export interface FileRoutesById {
   '/api/internal/404-log': typeof ApiInternal404LogRoute
   '/api/v1/$': typeof ApiV1SplatRoute
   '/api/health/': typeof ApiHealthIndexRoute
+  '/api/auth/me/2fa': typeof ApiAuthMe2faRoute
   '/api/auth/me/avatar': typeof ApiAuthMeAvatarRoute
   '/api/auth/me/password': typeof ApiAuthMePasswordRoute
   '/api/auth/me/sessions': typeof ApiAuthMeSessionsRoute
@@ -671,6 +680,7 @@ export interface FileRouteTypes {
     | '/api/internal/404-log'
     | '/api/v1/$'
     | '/api/health/'
+    | '/api/auth/me/2fa'
     | '/api/auth/me/avatar'
     | '/api/auth/me/password'
     | '/api/auth/me/sessions'
@@ -739,6 +749,7 @@ export interface FileRouteTypes {
     | '/api/internal/404-log'
     | '/api/v1/$'
     | '/api/health'
+    | '/api/auth/me/2fa'
     | '/api/auth/me/avatar'
     | '/api/auth/me/password'
     | '/api/auth/me/sessions'
@@ -808,6 +819,7 @@ export interface FileRouteTypes {
     | '/api/internal/404-log'
     | '/api/v1/$'
     | '/api/health/'
+    | '/api/auth/me/2fa'
     | '/api/auth/me/avatar'
     | '/api/auth/me/password'
     | '/api/auth/me/sessions'
@@ -871,6 +883,7 @@ export interface RootRouteChildren {
   ApiAuthSignupRoute: typeof ApiAuthSignupRoute
   ApiInternal404LogRoute: typeof ApiInternal404LogRoute
   ApiV1SplatRoute: typeof ApiV1SplatRoute
+  ApiAuthMe2faRoute: typeof ApiAuthMe2faRoute
   ApiAuthMeAvatarRoute: typeof ApiAuthMeAvatarRoute
   ApiAuthMePasswordRoute: typeof ApiAuthMePasswordRoute
   ApiAuthMeSessionsRoute: typeof ApiAuthMeSessionsRoute
@@ -1149,6 +1162,13 @@ declare module '@tanstack/react-router' {
       path: '/api/auth/me'
       fullPath: '/api/auth/me/'
       preLoaderRoute: typeof ApiAuthMeIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/auth/me/2fa': {
+      id: '/api/auth/me/2fa'
+      path: '/api/auth/me/2fa'
+      fullPath: '/api/auth/me/2fa'
+      preLoaderRoute: typeof ApiAuthMe2faRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/api/auth/me/avatar': {
@@ -1485,6 +1505,7 @@ const rootRouteChildren: RootRouteChildren = {
   ApiAuthSignupRoute: ApiAuthSignupRoute,
   ApiInternal404LogRoute: ApiInternal404LogRoute,
   ApiV1SplatRoute: ApiV1SplatRoute,
+  ApiAuthMe2faRoute: ApiAuthMe2faRoute,
   ApiAuthMeAvatarRoute: ApiAuthMeAvatarRoute,
   ApiAuthMePasswordRoute: ApiAuthMePasswordRoute,
   ApiAuthMeSessionsRoute: ApiAuthMeSessionsRoute,

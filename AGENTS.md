@@ -4,52 +4,40 @@
 
 | Command | Notes |
 |---|---|
-| `npm run dev` | Dev server on **port 3001** |
+| `npm run dev` | Dev server on **port 3002** (Vite) |
 | `npm run lint` | ESLint flat config, **zero warnings** enforced |
 | `npm run type-check` | `tsc --noEmit`, strict mode |
-| `npm test` | Vitest (jsdom). Skips `scripts/__tests__/*.integration.test.*` |
-| `npm run test:integration` | Run integration tests only |
+| `npm test` | Vitest (jsdom). Unit tests only |
 | `npm run test:changed` | Vitest on changed files (`--changed`) |
 | `npm run test:changed:coverage` | Coverage check (target: 80% lines) |
 | `npm run e2e` | Playwright. Starts local dev server unless `BASE_URL` is set |
 | `npm run e2e:a11y` | Playwright + axe-core a11y audit |
-| `npm run build` | `prisma generate` + `next build` with `DISABLE_SSR_FETCH=true` |
-| `npm run start` | `node .next/standalone/server.js` |
-| `npm run db:migrate` | `prisma migrate deploy` via wrapper script |
+| `npm run build` | Vite build for Cloudflare Workers |
+| `npm run db:migrate` | `prisma migrate deploy` via `@akmleva/db` workspace |
 | `npm run db:push` | `prisma db push` (dev only) |
 | `npm run storybook:build` | Build Storybook (used by Chromatic CI) |
 
 ## Architecture
 
-- **Next.js 15.5 App Router** with `output: 'standalone'`. Monorepo with npm workspaces (`tools/*`).
-- **i18n**: `next-intl`, locales `pt|en|es|fr`, `localePrefix: 'never'` (no path prefix). Config at `src/i18n.ts`.
-- **Auth**: `next-auth` v5 beta (`5.0.0-beta.31` — version pinned, not ranged). Two auth entrypoints:
-  - `src/auth.ts` — full instance with PrismaAdapter (server components, API routes only)
-  - `src/auth-edge.ts` — Edge Runtime compatible (middleware only). Warns instead of crashing when `AUTH_SECRET` missing.
-  - **Monitoring**: Track [next-auth releases](https://github.com/nextauthjs/next-auth/releases) for stable v5. E2E auth tests at `e2e/auth.spec.ts`. Authenticated E2E requires `E2E_AUTH_TEST_EMAIL` and `E2E_AUTH_TEST_PASSWORD` env vars.
-- **Middleware** (`src/middleware.ts`): i18n + auth guard + rate limiting (Upstash Redis) + CORS + URL redirects + 404 logging. Single monolithic file.
+- **TanStack Start** (Vite) with Cloudflare Workers deployment. Monorepo with npm workspaces (`apps/*`, `packages/*`, `tools/*`).
+- **i18n**: `createTranslationsHook` from `src/lib/i18n.ts`, locales `pt|en|es|fr`. Translation files in `src/translations/`.
+- **Auth**: `better-auth` v1.6+ with Prisma adapter. Server functions via `createServerFn`, session via `getSession()`.
+- **Middleware** (`src/middleware/index.ts`): i18n + auth guard (`PROTECTED_PATHS` + `getSession()`) + rate limiting (Upstash Redis) + CORS + URL redirects + 404 logging.
 - **API proxy**: `/api/v1/:path*` rewrites to `api.akmleva.pt` in production.
-- **Prisma**:
+- **Prisma** (via `@akmleva/db`):
   - PostgreSQL, `relationMode = "foreignKeys"`
   - Build-time stub: during `NEXT_PHASE` ending in `-build` or when `DISABLE_SSR_FETCH=true`, a Proxy stub prevents DB connections. Mutations throw; reads resolve to `[]`.
-  - Soft delete via `$extends` on ~15 models (Booking, User, Trip, etc.) — auto-filters `deletedAt: null` on read queries.
+  - Soft delete via `$extends` on ~15 models — auto-filters `deletedAt: null` on read queries.
   - Schema: snake_case `@map` annotations, all new fields must follow.
-- **Workspaces**: npm workspaces at `tools/data-pipeline/` (ETL scripts) and `tools/scrapers/` (web scraping). Web app lives at root with `src/`, `prisma/`, `e2e/`.
-- **Packages** (`@akmleva/*`): referenced in `tsconfig.json` paths under `../../packages/` but only `packages/db/` and `packages/shared/` exist as placeholders — not workspace-linked yet.
-- **Sentry**: configured at client (`sentry.client.config.ts`), server, and edge.
+  - DB scripts live in `packages/db` — root delegates via `npm run db:* -w @akmleva/db`.
+- **Workspaces**: npm workspaces at `tools/data-pipeline/` (ETL scripts) and `tools/scrapers/` (web scraping). Web app lives at `apps/web-tanstack/`.
+- **Packages** (`@akmleva/*`): `packages/db/` (Prisma client), `packages/shared/`, `packages/ui/` (placeholders — not workspace-linked yet).
+- **Deployment**: Cloudflare Workers via `wrangler deploy`. Custom domain: `beta.akmleva.pt`. Worker name: `akmleva-web`.
 
 ## Testing Quirks
 
-- Playwright config expects dev server on port **3000** but `npm run dev` serves on **3001**. Test against remote with `BASE_URL=https://...`, or manually adjust.
-- Integration tests are excluded from `npm test` — run with `npm run test:integration`.
-- Test files: `src/**/*.{test,spec}.{ts,tsx}` and `scripts/**/*.{test,spec}.{js,mjs}`.
-- Auth API tests: `src/app/api/auth/__tests__/routes.test.ts` (login, register, forgot-password, reset-password)
-- Internal API tests: `src/app/api/internal/__tests__/routes.test.ts` (url-redirects, 404-log)
-- API handler tests: `src/lib/api/__tests__/handler.test.ts` (cache headers, validation)
-- Rate limit tests: `src/lib/__tests__/rate-limit.test.ts` (tier detection, IP extraction)
-- CI workflows: `ci.yml` (lint, type-check, test, build, e2e), `security-audit.yml` (npm audit, osv-scanner)
-- Cron route tests: `src/app/api/cron/__tests__/prisma-migrate.test.ts` (disabled route)
-
+- Playwright config targets port **3002** (Vite preview). Test against remote with `BASE_URL=https://...`.
+- Test files: `apps/web-tanstack/src/**/*.{test,spec}.{ts,tsx}` and `apps/web-tanstack/e2e/**/*.spec.ts`.
 - ESLint: **zero warnings** — `--max-warnings 0`. jsx-a11y rules are extensive and enforced.
 - `legacy-peer-deps=true` (`.npmrc`).
 - Postgres on port **5433** (not 5432) via Docker Compose.
@@ -75,7 +63,8 @@ Postgres (5433), Redis (6379), Valhalla (8002), OTP (8080).
 
 ## CI/CD
 
-- GitHub Actions: `deploy-migrations.yml` — on push to `main`: CI checks (tsc, lint, tests) → `prisma migrate deploy`.
+- GitHub Actions: `deploy-migrations.yml` — on push to `main`: CI checks (tsc, lint, tests via turbo) → `prisma migrate deploy`.
 - Uses `DATABASE_URL_UNPOOLED` for migrations (direct URL, not pooler). Validated in CI.
 - `chromatic.yml`: Storybook visual regression on pushes/PRs touching `src/`.
-- `accessibility.yml`: axe-core Playwright audit on PRs.
+- `accessibility.yml`: axe-core Playwright audit on PRs (both Next.js and TanStack apps).
+- `ci.yml`: Lint → Type Check → Test → Build (both apps) → E2E (both apps).

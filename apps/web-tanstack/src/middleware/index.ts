@@ -36,8 +36,7 @@ export const rootMiddleware: any = createMiddleware({ type: 'request' })
           headers: { Location: '/auth' },
         })
       }
-      const result: any = await next({ context: { session } })
-      return result
+      return next({ context: { session } })
     }
 
     return next()

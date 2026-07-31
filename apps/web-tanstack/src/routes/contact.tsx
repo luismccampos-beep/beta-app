@@ -37,10 +37,10 @@ function ContactPage() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData),
       })
-      if (!res.ok) throw new Error('Erro ao enviar')
+      if (!res.ok) throw new Error(t('sendError'))
       setIsSubmitted(true)
     } catch {
-      setError('Ocorreu um erro. Tente novamente ou envie email para geral@akmleva.pt.')
+      setError(t('errorMessage'))
     } finally {
       setIsSubmitting(false)
     }
@@ -69,7 +69,7 @@ function ContactPage() {
             <span className="text-sm font-bold text-blue-800 dark:text-blue-200 uppercase tracking-[0.2em]">{t('pageTitle')}</span>
           </div>
           <h1 className="text-5xl sm:text-7xl font-black text-gray-950 dark:text-white leading-[1.1] tracking-tighter uppercase mb-4">
-            Estamos <span className="bg-gradient-to-r from-blue-600 via-purple-500 to-orange-500 bg-clip-text text-transparent">Próximos</span> de Ti
+            {t('heroTitle')} <span className="bg-gradient-to-r from-blue-600 via-purple-500 to-orange-500 bg-clip-text text-transparent">{t('heroHighlight')}</span> {t('heroTitleEnd')}
           </h1>
           <p className="text-lg sm:text-xl text-gray-500 dark:text-gray-400 max-w-2xl mx-auto">{t('pageSubtitle')}</p>
         </motion.div>
@@ -112,10 +112,10 @@ function ContactPage() {
                     <div className="w-20 h-20 rounded-full bg-green-100 dark:bg-green-900/30 flex items-center justify-center mx-auto mb-6">
                       <CheckCircle2 className="w-10 h-10 text-green-600 dark:text-green-400" />
                     </div>
-                    <h3 className="text-2xl font-black text-gray-900 dark:text-white mb-3">Mensagem Enviada!</h3>
-                    <p className="text-gray-500 dark:text-gray-400 mb-8">Recebemos a tua mensagem e responderemos em breve.</p>
+                    <h3 className="text-2xl font-black text-gray-900 dark:text-white mb-3">{t('successTitle')}</h3>
+                    <p className="text-gray-500 dark:text-gray-400 mb-8">{t('successMessage')}</p>
                     <button onClick={() => { setIsSubmitted(false); setFormData({ name: '', email: '', phone: '', subject: '', message: '' }) }} className="px-6 py-3 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl font-bold hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors">
-                      Enviar outra
+                      {t('sendAnother')}
                     </button>
                   </div>
                 ) : (

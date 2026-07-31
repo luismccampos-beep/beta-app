@@ -155,7 +155,7 @@
   &:focus {
     outline: none;
     border-color: $primary;
-    box-shadow: 0 0 0 3px rgba($primary, 0.1);
+    box-shadow: 0 0 0 3px color-mix(in oklch, #{$primary} 10%, transparent);
   }
 
   &:disabled {
@@ -168,7 +168,7 @@
 
     &:focus {
       border-color: $primary-300;
-      box-shadow: 0 0 0 3px rgba($primary-300, 0.2);
+      box-shadow: 0 0 0 3px color-mix(in oklch, #{$primary-300} 20%, transparent);
     }
   }
 
@@ -176,7 +176,7 @@
     border-color: $destructive;
 
     &:focus {
-      box-shadow: 0 0 0 3px rgba($destructive, 0.1);
+      box-shadow: 0 0 0 3px color-mix(in srgb, #{$destructive} 10%, transparent);
     }
   }
 }
@@ -205,8 +205,8 @@
   }
 
   &--success {
-    background-color: rgba($green, 0.1);
-    color: darken($green, 15%);
+    background-color: color-mix(in oklch, #{$green} 10%, transparent);
+    color: color-mix(in oklch, #{$green} 85%, black);
   }
 }
 

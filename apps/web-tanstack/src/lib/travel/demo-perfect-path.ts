@@ -11,7 +11,7 @@
  * Para controlo máximo durante a demo, usar ?perfect=1 na query string.
  */
 
-import type { TravelResult } from '@/app/components/data/mockResults';
+import type { TravelResult } from '@/components/data/mockResults';
 import type { MockDestination, MockHotel, MockFlight } from './mock-travel/types';
 import type { DestinationDetailData } from '@/app/components/travel/destination-detail';
 import type { DestinationMapMarker } from './destination-map';

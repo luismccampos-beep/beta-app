@@ -4,6 +4,8 @@ on:
     branches: [main]
     paths:
       - 'src/**'
+      - 'apps/web/src/**'
+      - 'apps/web-tanstack/src/**/*.stories.*'
       - '.storybook/**'
       - 'package.json'
       - 'package-lock.json'
@@ -13,6 +15,8 @@ on:
     branches: [main]
     paths:
       - 'src/**'
+      - 'apps/web/src/**'
+      - 'apps/web-tanstack/src/**/*.stories.*'
       - '.storybook/**'
       - 'package.json'
       - 'package-lock.json'

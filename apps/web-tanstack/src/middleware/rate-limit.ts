@@ -5,6 +5,7 @@ import {
   authRatelimit,
   adminRatelimit,
 } from '@/lib/rate-limit'
+import { unwrapResponse } from '@/lib/middleware'
 
 function detectTier(request: Request): {
   limiter: typeof publicRatelimit
@@ -52,11 +53,14 @@ export const rateLimitMiddleware = createMiddleware({ type: 'request' }).server(
     }
 
     const nextResult = await next()
-    const headers = new Headers(nextResult.response.headers)
+    const response = unwrapResponse(nextResult)
+    if (!response) return nextResult
+
+    const headers = new Headers(response.headers)
     headers.set('X-RateLimit-Tier', tier)
-    return new Response(nextResult.response.body, {
-      status: nextResult.response.status,
-      statusText: nextResult.response.statusText,
+    return new Response(response.body, {
+      status: response.status,
+      statusText: response.statusText,
       headers,
     })
   },

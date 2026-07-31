@@ -16,7 +16,8 @@
     "search": "Search",
     "settings": "Settings",
     "menu": "Menu",
-    "home": "Home"
+    "home": "Home",
+    "skipToMainContent": "Skip to main content"
   },
   "landing": {
     "header": {
@@ -276,6 +277,14 @@
     "closed": "Closed",
     "socialTitle": "Follow Us",
     "responseTitle": "Response Time",
+    "heroTitle": "We Are",
+    "heroHighlight": "Close",
+    "heroTitleEnd": "To You",
+    "successTitle": "Message Sent!",
+    "successMessage": "We received your message and will respond soon.",
+    "sendAnother": "Send another",
+    "sendError": "Error sending",
+    "errorMessage": "An error occurred. Please try again or email us at geral@akmleva.pt.",
     "responseTime": "Response within 24 hours",
     "responseNote": "We are committed to responding to all messages within 24 business hours.",
     "mapTitle": "Find Us",
@@ -1773,5 +1782,10 @@
       "culturalHint": "UNESCO, Wikivoyage and (future) national museum APIs / OSM.",
       "culturalSourcesHint": "Next sources for {sources}: curated national datasets."
     }
+  },
+  "preferences": {
+    "title": "Travel Preferences",
+    "description": "Configure your preferences to receive personalized recommendations.",
+    "editPreferences": "Edit preferences"
   }
 }

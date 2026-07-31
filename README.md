@@ -32,32 +32,30 @@
 | Technology | Version | Purpose |
 |---|---|---|
 | React | ^19.0.0 | UI Framework |
-| Next.js | ^15.5.2 | SSR & App Router |
+| TanStack Start | ^1.168.27 | SSR & Routing (Vite) |
 | TypeScript | ^5.6.0 | Type Safety |
-| Tailwind CSS | ^4.1.8 | Styling |
+| Tailwind CSS | ^4.0.0 | Styling |
 | shadcn/ui | via Radix UI | Component Library |
 | Framer Motion | ^11.18.2 | Animations |
-| next-intl | ^4.1.0 | i18n (pt, en, es, fr) |
+| better-auth | ^1.6.23 | Authentication |
 | React Query | ^5.90.12 | Server State |
-| React Hook Form | ^7.79.0 | Forms |
+| React Hook Form | ^7.83.0 | Forms |
 | Zod | ^4.1.12 | Validation |
-| Recharts | ^2.10.3 | Charts |
+| Recharts | ^2.15.4 | Charts |
 | Leaflet | ^1.9.4 | Maps |
 | Sonner | ^2.0.7 | Toast Notifications |
-| React-Toastify | ^11.0.5 | Toast Notifications |
 
 ### Backend / Database
 
 | Technology | Version | Purpose |
 |---|---|---|
 | Node.js | >=20 | Runtime |
-| Next.js API Routes | 15.5.2 | API endpoints |
-| Prisma ORM | 6.17.1 | Database ORM |
+| TanStack Server Functions | ^1.168.27 | API endpoints |
+| Prisma ORM | 6.17.1 | Database ORM (via `@akmleva/db`) |
 | PostgreSQL (Neon) | 16 | Database principal |
-| Redis (Upstash) | ^1.35.6 | Cache / Rate Limiting |
-| next-auth | 5.0.0-beta.31 | Authentication |
-| Stripe | — | Payment processing |
-| Resend | ^6.14.0 | Email sending |
+| Redis (Upstash) | ^1.38.1 | Cache / Rate Limiting |
+| better-auth | ^1.6.23 | Authentication |
+| Resend | ^6.17.2 | Email sending |
 
 ### ML Service
 
@@ -76,11 +74,9 @@
 |---|---|
 | Turborepo | Monorepo orchestration |
 | Docker | Postgres, Redis, Valhalla, OTP |
-| Vercel | Production deployment (Next.js) |
-| Cloudflare Workers | TanStack Start POC deployment |
+| Cloudflare Workers | Production deployment (TanStack Start) |
 | Wrangler | Cloudflare CLI for deploy |
 | GitHub Actions | CI/CD |
-| Sentry | Error monitoring (client + server + edge) |
 | Playwright | E2E tests |
 | Vitest | Unit / integration tests |
 | Storybook | Component isolation |
@@ -110,7 +106,7 @@ cp .env.example .env
 ### Development
 
 ```bash
-npm run dev            # Next.js web app (http://localhost:3001)
+npm run dev            # TanStack Start dev server (http://localhost:3002)
 npm run db:migrate     # Run Prisma migrations
 npm run db:seed        # Seed test data
 npm run db:studio      # Open Prisma Studio
@@ -119,8 +115,8 @@ npm run db:studio      # Open Prisma Studio
 ### Production Build
 
 ```bash
-npm run build
-npm run start
+npm run build          # Vite build for Cloudflare Workers
+npm run deploy         # Build + wrangler deploy
 ```
 
 ---
@@ -130,12 +126,12 @@ npm run start
 ```
 ├── .github/workflows/         # CI/CD
 │   ├── ci.yml                 # Lint, type-check, test, build, e2e
-│   ├── deploy-migrations.yml  # Migrations + Vercel deploy
+│   ├── deploy-migrations.yml  # Migrations + deploy
 │   ├── security-audit.yml     # npm audit, osv-scanner, dependency review
 │   ├── chromatic.yml          # Storybook visual regression
 │   └── accessibility.yml      # axe-core a11y audit
 ├── apps/                      # Application packages (npm workspaces)
-│   └── web/                   # (placeholder for future monorepo split)
+│   └── web-tanstack/          # TanStack Start app (Vite, Cloudflare Workers)
 ├── configs/                   # TypeScript shared configs
 ├── data/                      # Raw data: dumps, caches, exports
 │   ├── cost-of-living/
@@ -148,7 +144,6 @@ npm run start
 │   └── wikivoyage/
 ├── docs/                      # Technical documentation
 │   └── lighthouse/
-├── e2e/                       # Playwright E2E tests
 ├── ml-service/                # Python FastAPI ML microservice
 │   ├── app/
 │   │   ├── api/routes/
@@ -161,39 +156,16 @@ npm run start
 │   ├── db/                    # @akmleva/db — Prisma client
 │   ├── shared/                # @akmleva/shared — shared utilities
 │   └── ui/                    # @akmleva/ui — shared UI components
-├── prisma/                    # Prisma schema & migrations
-│   ├── migrations/
-│   └── schema.prisma          # 200+ models
-├── public/                    # Static assets
-├── scripts/                   # 150+ automation scripts (legacy location)
+├── scripts/                   # 150+ automation scripts
 │   ├── lib/                   # 23 shared utility modules
 │   └── __tests__/
-├── src/                       # Next.js App Router
-│   ├── app/
-│   │   ├── [locale]/          # i18n routes
-│   │   ├── api/               # API routes
-│   │   ├── dashboard/
-│   │   ├── destinations/
-│   │   └── ...
-│   ├── components/
-│   ├── lib/
-│   │   ├── api/
-│   │   ├── i18n/
-│   │   ├── payment/
-│   │   ├── travel/
-│   │   └── user/
-│   └── messages/              # i18n translations (pt, en, es, fr)
 ├── tools/                     # Workspace tools (npm workspaces)
 │   ├── data-pipeline/         # ETL scripts + pipeline package.json
+│   ├── scrapers/              # Web scraping tools
 │   └── geocoding/             # Geocoding scripts
 ├── docker-compose.yml
-├── next.config.js
 ├── turbo.json
-├── vitest.config.ts
-├── playwright.config.ts
-├── sentry.client.config.ts
-├── sentry.server.config.ts
-├── sentry.edge.config.ts
+├── wrangler.jsonc             # Cloudflare Workers config (apps/web-tanstack)
 ```
 
 ---
@@ -237,9 +209,9 @@ Scripts are organized into npm workspace packages for maintainability:
 ### Development (Root)
 
 ```bash
-npm run dev                   # Start Next.js dev server
-npm run build                 # Build for production
-npm run start                 # Start production server
+npm run dev                   # Start TanStack Start dev server (port 3002)
+npm run build                 # Vite build for Cloudflare Workers
+npm run deploy                # Build + wrangler deploy
 npm run lint                  # ESLint (zero warnings)
 npm run type-check            # TypeScript validation
 ```
@@ -421,10 +393,10 @@ docker compose up postgres redis -d     # Start only DB + cache
 **Workflow**: `.github/workflows/deploy-migrations.yml`
 
 - **Trigger**: Push to `main` (excluding docs) + manual dispatch
-- **Environment**: Ubuntu latest, Node 20, PostgreSQL
+- **Environment**: Ubuntu latest, Node 22, PostgreSQL
 - **Steps**:
   1. Validate database env vars
-  2. `npm ci` (triggers Prisma generation)
+  2. `npm ci` (triggers Prisma generation via `@akmleva/db`)
   3. Resolve failed migrations automatically
   4. `prisma migrate deploy`
   5. Optional: `prisma db seed`
@@ -471,63 +443,45 @@ npm run chromatic
 
 | Layer | Tool | Command |
 |---|---|---|
-| Unit / Integration | Vitest | `npm test` |
-| Changed-only | Vitest | `npm run test:changed` |
-| E2E | Playwright | `npm run e2e` |
+| Unit / Integration | Vitest | `npm run test:tanstack` |
+| Changed-only | Vitest | `npm run test:changed:tanstack` |
+| E2E | Playwright | `npm run e2e:tanstack` |
 | Component | Storybook | `npx storybook dev` |
 
-Coverage target: >80%. Run `npm run test:changed:coverage` to check.
+Coverage target: >80%. Run `npm run test:changed:coverage:tanstack` to check.
 
 ---
 
-## TanStack Start POC (Cloudflare Workers)
+## Deployment
 
-O POC de migração para TanStack Start está localizado em `deploy/tanstack-poc/` e é configurado para deploy no Cloudflare Workers usando Wrangler.
+The app deploys to **Cloudflare Workers** via `wrangler deploy`.
 
-### Pré-requisitos
-
-```bash
-# Instalar Wrangler globalmente (se necessário)
-npm install -g wrangler
-
-# Autenticar no Cloudflare
-wrangler login
-```
-
-### Desenvolvimento
+### Development
 
 ```bash
-cd deploy/tanstack-poc
-npm install
-npm run dev
+npm run dev                    # Vite dev server (port 3002)
 ```
 
-### Build e Deploy
+### Build & Deploy
 
 ```bash
-cd deploy/tanstack-poc
-
-# Build do projeto
-npm run build
-
-# Deploy para Cloudflare Workers
-npm run deploy
-
-# Ou usar o comando direto do Wrangler
-wrangler deploy
+npm run build                  # Vite build
+npm run deploy                 # wrangler deploy
+# Or use the tanstack-specific script:
+npm run build:tanstack && npm run -w apps/web-tanstack deploy
 ```
 
-### Configuração
+### Configuration
 
-- **`wrangler.toml`** — Configuração do Cloudflare Workers (compatibility flags, bindings, etc.)
-- **`vite.config.ts`** — Vite com plugins do TanStack Start e Cloudflare
-- **`package.json`** — Dependências do POC (TanStack Router, React, Wrangler)
+- **`apps/web-tanstack/wrangler.jsonc`** — Cloudflare Workers config (compatibility flags, D1 binding, custom domain)
+- **`apps/web-tanstack/vite.config.ts`** — Vite with TanStack Start and Cloudflare plugins
+- **`apps/web-tanstack/package.json`** — Dependencies
 
-### Notas
+### Notes
 
-- Este é um **POC (Proof of Concept)** em estágio inicial
-- A aplicação principal ainda roda em Next.js (`apps/web`)
-- O deploy é independente do monorepo principal
+- Custom domain: `beta.akmleva.pt`
+- Worker name: `akmleva-web`
+- Database: Cloudflare D1 (SQLite) via Drizzle ORM (transitioning from Prisma/PostgreSQL)
 
 ---
 
@@ -540,13 +494,12 @@ Key variables (see `.env.example` for full list):
 | `DATABASE_URL` | PostgreSQL connection string (Neon) |
 | `DATABASE_URL_UNPOOLED` | Direct connection (bypasses Pg Bouncer) |
 | `REDIS_URL` | Upstash Redis URL |
-| `NEXTAUTH_SECRET` | Auth.js encryption secret (use `AUTH_SECRET` in code) |
-| `NEXTAUTH_URL` | App URL for auth callbacks (use `AUTH_URL` in code) |
+| `AUTH_SECRET` | better-auth encryption secret |
+| `BETTER_AUTH_URL` | App URL for auth callbacks |
 | `SENTRY_DSN` | Sentry error tracking |
 | `RESEND_API_KEY` | Email sending |
 | `UNSPLASH_ACCESS_KEY` | Destination images |
 | `GOOGLE_MAPS_API_KEY` | Geocoding / Maps |
-| `STRIPE_SECRET_KEY` | Payment processing |
 
 ---
 

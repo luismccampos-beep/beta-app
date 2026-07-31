@@ -1,4 +1,4 @@
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute, useRouter } from '@tanstack/react-router'
 import { useRef, useState } from 'react'
 import { motion } from 'framer-motion'
 import { useParallax } from '@/hooks/useParallax'
@@ -33,11 +33,12 @@ export const Route = createFileRoute('/')({
 })
 
 /* ── Animated Title (letter-by-letter reveal) ── */
-function AnimatedTitle({ text }: { text: string }) {
+function AnimatedTitle({ text, as: tag = 'h2' }: { text: string; as?: 'h1' | 'h2' }) {
   const words = text.split(' ')
   let charCounter = 0
+  const MotionTag = tag === 'h1' ? motion.h1 : motion.h2
   return (
-    <motion.h2
+    <MotionTag
       className="text-5xl md:text-7xl lg:text-8xl font-black text-gray-900 dark:text-white leading-[1.1] tracking-tighter text-balance"
       aria-label={text}
     >
@@ -64,7 +65,7 @@ function AnimatedTitle({ text }: { text: string }) {
           {wi < words.length - 1 && '\u00A0'}
         </span>
       ))}
-    </motion.h2>
+    </MotionTag>
   )
 }
 
@@ -208,6 +209,7 @@ function RippleButton({
 
 /* ── Page Content ── */
 function HomePage() {
+  const router = useRouter()
   const sectionRef = useRef<HTMLElement>(null)
   const heroParallax = useParallax({ speed: 0.3, containerRef: sectionRef })
   const orbCyanParallax = useParallax({ speed: -0.4, containerRef: sectionRef })
@@ -220,9 +222,12 @@ function HomePage() {
   async function handleGenerateDraft() {
     if (!destination.trim()) return
     setIsGenerating(true)
-    await new Promise(resolve => setTimeout(resolve, 2000))
-    setIsGenerating(false)
-    setDestination('')
+    try {
+      await new Promise(resolve => setTimeout(resolve, 2000))
+      await router.navigate({ to: '/preferences/quick' })
+    } finally {
+      setIsGenerating(false)
+    }
   }
 
   const t = useT()
@@ -284,7 +289,7 @@ function HomePage() {
 
             {/* Title with letter-by-letter reveal */}
             <motion.div variants={fadeInUp}>
-              <AnimatedTitle text={t('hero')} />
+              <AnimatedTitle text={t('hero')} as="h1" />
             </motion.div>
 
             {/* Description */}
@@ -335,6 +340,7 @@ function HomePage() {
             <motion.div variants={fadeInUp}>
               <RippleButton
                 variant="outline"
+                onClick={() => void router.navigate({ to: '/preferences/quick' })}
                 className="gap-2 text-lg px-8 py-3.5"
               >
                 {t('getStarted')}
@@ -503,12 +509,15 @@ function HomePage() {
           variants={fadeInUp}
           className="max-w-3xl mx-auto text-center space-y-8 relative z-10"
         >
-          <AnimatedTitle text={t('cta')} />
+          <AnimatedTitle text={t('cta')} as="h2" />
           <p className="text-xl md:text-2xl text-gray-500 dark:text-gray-400 max-w-2xl mx-auto font-medium">
             {t('ctaDesc')}
           </p>
           <div className="flex flex-col items-center gap-6">
-            <RippleButton className="gap-3 text-xl px-12 py-4 font-black rounded-2xl">
+            <RippleButton
+              onClick={() => void router.navigate({ to: '/preferences/quick' })}
+              className="gap-3 text-xl px-12 py-4 font-black rounded-2xl"
+            >
               <Sparkles className="w-6 h-6" />
               {t('ctaButton')}
               <ArrowRight className="w-6 h-6" />

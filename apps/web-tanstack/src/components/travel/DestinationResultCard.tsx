@@ -2,7 +2,6 @@
 
 import { useState } from 'react';
 import { Link } from '@tanstack/react-router';
-import Image from 'next/image';
 import { motion } from 'framer-motion';
 import {
   ArrowRight,
@@ -82,12 +81,10 @@ export function DestinationResultCard({ result, href, labels, tipPreviews = [] }
     <Card className="card-premium dark:bg-gray-900 group">
       {/* ── Hero Image ── */}
       <Link to={href} className="block relative aspect-video overflow-hidden">
-        <Image
+        <img
           src={result.imageUrl || DESTINATION_PLACEHOLDER}
           alt={result.destination}
-          fill
-          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-          className="object-cover transition-transform duration-700 ease-out group-hover:scale-110"
+          className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110"
           onError={onDestinationImageError}
           loading="lazy"
         />

@@ -1,5 +1,4 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
-import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Camera, X, ChevronLeft, ChevronRight } from 'lucide-react';
 import { DESTINATION_PLACEHOLDER } from '../../destination-image-fallback';
@@ -77,13 +76,10 @@ export function DestinationGallery({
               aria-label={`${title} ${i + 1} of ${images.length}`}
               className="relative shrink-0 w-64 aspect-[16/10] rounded-2xl overflow-hidden snap-start cursor-pointer border border-gray-100 dark:border-gray-800 shadow-lg hover:shadow-2xl transition-all duration-500"
             >
-              <Image
+              <img
                 src={safeSrc(url)}
                 alt={`${title} ${i + 1}`}
-                fill
-                sizes="160px"
-                className="object-cover"
-                unoptimized
+                className="absolute inset-0 w-full h-full object-cover"
                 onError={() => handleImageError(url)}
               />
               <div className="absolute inset-0 bg-black/0 hover:bg-black/10 transition-colors duration-200" />

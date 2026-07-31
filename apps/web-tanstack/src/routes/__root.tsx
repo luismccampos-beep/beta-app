@@ -8,13 +8,15 @@ import {
 } from '@tanstack/react-router'
 import { ThemeProvider } from '../components/ThemeProvider'
 import { CookieBanner } from '../components/CookieBanner'
-import { I18nProvider } from '@/lib/i18n-provider'
+import { I18nProvider, createTranslationsHook } from '@/lib/i18n-provider'
 import { AppFooter } from '../components/AppFooter'
 import { AppBottomNav } from '../components/AppBottomNav'
 import { AppHeader } from '../components/AppHeader'
 import { Toaster } from '../components/Toaster'
 import { locales, defaultLocale, isValidLocale, type Locale } from '@/i18n.config'
 import '../globals.css'
+// SCSS must come after globals.css so component styles can override Tailwind defaults
+import '../styles/main.scss'
 
 const SITE_URL = import.meta.env.VITE_BASE_URL || 'https://www.akmleva.pt'
 
@@ -62,11 +64,14 @@ export const Route = createRootRoute({
   component: RootComponent,
 })
 
+const useT = createTranslationsHook('common')
+
 function RootComponent() {
   const routerState = useRouterState()
   const currentPath = routerState.location.pathname
   const { locale: contextLocale } = Route.useRouteContext()
   const locale: Locale = contextLocale && isValidLocale(contextLocale) ? contextLocale : defaultLocale
+  const t = useT()
 
   return (
     <html lang={locale} suppressHydrationWarning>
@@ -81,7 +86,7 @@ function RootComponent() {
               href="#main-content"
               className="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-[100] focus:px-4 focus:py-2 focus:bg-blue-600 focus:text-white focus:rounded-lg focus:shadow-lg focus:outline-none"
             >
-              Skip to main content
+              {t('skipToMainContent')}
             </a>
             <AppHeader currentPath={currentPath} />
             <main id="main-content" className="pb-16 sm:pb-0">
