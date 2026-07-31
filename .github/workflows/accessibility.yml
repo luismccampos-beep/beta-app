@@ -13,70 +13,7 @@ env:
 
 jobs:
   axe-core:
-    name: axe-core E2E Audit (Next.js)
-    runs-on: ubuntu-latest
-    timeout-minutes: 15
-    steps:
-      - uses: actions/checkout@v5
-        with:
-          fetch-depth: 0
-
-      - uses: actions/setup-node@v5
-        with:
-          node-version: 22
-          cache: 'npm'
-
-      - run: npm ci
-
-      - name: Generate Prisma Client
-        run: npx prisma generate --schema=packages/db/prisma/schema.prisma
-
-      - name: Install Playwright browsers
-        run: npx playwright install --with-deps chromium webkit
-
-      - name: Generate Better Auth test secret
-        shell: bash
-        run: echo "BETTER_AUTH_SECRET=$(openssl rand -hex 32)" >> "$GITHUB_ENV"
-
-      - name: Build Next.js app
-        run: npm run build -w @akmleva/web
-        env:
-          DISABLE_SSR_FETCH: 'true'
-          AUTH_SECRET: ${{ secrets.AUTH_SECRET || 'placeholder-secret-for-build' }}
-
-      - name: Start production server
-        # `next start` defaults to port 3000; pass -p 3001 to match playwright.config.ts
-        run: |
-          npm run start -w @akmleva/web -- -p 3001 &
-          npx wait-on http://localhost:3001 --timeout 60000
-        env:
-          AUTH_SECRET: ${{ secrets.AUTH_SECRET || 'placeholder-secret-for-build' }}
-          BETTER_AUTH_SECRET: ${{ env.BETTER_AUTH_SECRET }}
-          UPSTASH_REDIS_REST_URL: ${{ secrets.UPSTASH_REDIS_REST_URL || '' }}
-          UPSTASH_REDIS_REST_TOKEN: ${{ secrets.UPSTASH_REDIS_REST_TOKEN || '' }}
-          INTERNAL_API_KEY: ${{ secrets.INTERNAL_API_KEY || 'test-internal-api-key' }}
-
-      - name: Run axe-core accessibility audit
-        # Run via workspace so Playwright resolves config from apps/web/
-        run: npm run e2e:a11y -w @akmleva/web
-        timeout-minutes: 5
-        env:
-          BASE_URL: 'http://localhost:3001'
-          AUTH_SECRET: ${{ secrets.AUTH_SECRET || 'placeholder-secret-for-build' }}
-          BETTER_AUTH_SECRET: ${{ env.BETTER_AUTH_SECRET }}
-          UPSTASH_REDIS_REST_URL: ${{ secrets.UPSTASH_REDIS_REST_URL || '' }}
-          UPSTASH_REDIS_REST_TOKEN: ${{ secrets.UPSTASH_REDIS_REST_TOKEN || '' }}
-
-      - name: Upload Playwright report on failure
-        if: failure()
-        uses: actions/upload-artifact@v5
-        with:
-          name: playwright-report-a11y
-          path: apps/web/playwright-report/
-          retention-days: 7
-
-  axe-core-tanstack:
-    name: axe-core E2E Audit (TanStack)
+    name: axe-core E2E Audit
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:
@@ -115,6 +52,6 @@ jobs:
         if: failure()
         uses: actions/upload-artifact@v5
         with:
-          name: playwright-report-a11y-tanstack
+          name: playwright-report-a11y
           path: apps/web-tanstack/playwright-report/
           retention-days: 7

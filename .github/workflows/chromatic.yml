@@ -3,25 +3,19 @@ on:
   push:
     branches: [main]
     paths:
-      - 'src/**'
-      - 'apps/web/src/**'
       - 'apps/web-tanstack/src/**/*.stories.*'
       - '.storybook/**'
       - 'package.json'
       - 'package-lock.json'
       - 'tsconfig*.json'
-      - 'next.config.*'
   pull_request:
     branches: [main]
     paths:
-      - 'src/**'
-      - 'apps/web/src/**'
       - 'apps/web-tanstack/src/**/*.stories.*'
       - '.storybook/**'
       - 'package.json'
       - 'package-lock.json'
       - 'tsconfig*.json'
-      - 'next.config.*'
   workflow_dispatch:
 
 jobs:
