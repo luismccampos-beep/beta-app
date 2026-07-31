@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite dev --port 3002",
-    "build": "vite build && node -e \"const fs=require('fs');const p=require('path');const d=p.join('dist','client','Assets');if(fs.existsSync(d)){fs.renameSync(d,p.join('dist','client','assets'))}\"",
+    "build": "vite build && node -e \"const fs=require('fs');const p=require('path');const assets=p.join('dist','client','assets');const Assets=p.join('dist','client','Assets');if(fs.existsSync(Assets)){if(fs.existsSync(assets)){fs.rmSync(Assets,{recursive:true,force:true})}else{fs.renameSync(Assets,assets)}}\"",
     "preview": "vite preview",
     "deploy": "npm run build && wrangler deploy",
     "cf-typegen": "wrangler types",
