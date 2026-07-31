@@ -20,6 +20,20 @@ import {
   LogOut, AlertTriangle, QrCode, Copy, BadgeCheck, BadgeAlert, Send,
 } from 'lucide-react';
 import QRCode from 'qrcode';
+import {
+  useProfile,
+  useSessions,
+  use2FAStatus,
+  useUpdateProfile,
+  useUploadAvatar,
+  useDeleteAvatar,
+  useChangePassword,
+  useEnable2FA,
+  useDisable2FA,
+  useRevokeSession,
+  useRevokeAllSessions,
+  useResendVerification,
+} from '../../../lib/travel/query-hooks';
 
 const PROFILE_FIELDS = [
   { key: 'name', label: 'Full name', weight: 2 },
@@ -100,10 +114,6 @@ export function ProfileTab() {
   const [disable2faPassword, setDisable2faPassword] = useState('');
   const [showDisable2fa, setShowDisable2fa] = useState(false);
 
-  const [sessions, setSessions] = useState<Array<{ id: string; device: Record<string, unknown>; ipAddress: string | null; createdAt: string; lastUsedAt: string; isCurrent: boolean }>>([]);
-  const [isLoadingSessions, setIsLoadingSessions] = useState(true);
-  const [isRevokingSession, setIsRevokingSession] = useState<string | null>(null);
-
   const [emailVerified, setEmailVerified] = useState(false);
   const [isSendingVerification, setIsSendingVerification] = useState(false);
 
@@ -111,6 +121,22 @@ export function ProfileTab() {
     name: '', email: '', phone: '', dateOfBirth: '', nationality: '',
     passportNumber: '', nationalIdNumber: '', taxIdNumber: '', address: '',
   });
+
+  // ── Query hooks ──────────────────────────────────────────────
+  const { data: meData, isLoading: isLoadingMe } = useProfile();
+  const { data: sessionsData, isLoading: isLoadingSessions } = useSessions();
+  const sessions = sessionsData?.sessions ?? [];
+  const { data: twoFaData } = use2FAStatus();
+
+  const updateProfile = useUpdateProfile();
+  const uploadAvatar = useUploadAvatar();
+  const deleteAvatar = useDeleteAvatar();
+  const changePasswordMutation = useChangePassword();
+  const enable2faMutation = useEnable2FA();
+  const disable2faMutation = useDisable2FA();
+  const revokeSessionMutation = useRevokeSession();
+  const revokeAllSessionsMutation = useRevokeAllSessions();
+  const resendVerificationMutation = useResendVerification();
 
   const completeness = useMemo(() => calcCompleteness(profileData), [profileData]);
 
@@ -130,29 +156,27 @@ export function ProfileTab() {
     return () => clearTimeout(timer);
   }, []);
 
+  // ── Initialize profile data from query ─────────────────────────
   useEffect(() => {
-    let cancelled = false;
-    setIsLoadingProfile(true);
-    fetch('/api/auth/me', { credentials: 'include' })
-      .then((r) => r.json())
-      .then((me) => {
-        if (cancelled) return;
-        const user = me && typeof me === 'object' && (me as { authenticated?: boolean }).authenticated === true && (me as { user?: unknown }).user && typeof (me as { user: unknown }).user === 'object' ? ((me as { user: MeUserProfile }).user) : null;
-        const account = profileFieldsFromMeUser(user);
-        const merged = mergeDashboardProfileFromSources(account, {});
-        setProfileData(merged);
-        if (user && 'profileImage' in user && (user as Record<string, unknown>).profileImage) setAvatarUrl(String((user as Record<string, unknown>).profileImage));
-        if (user && 'emailVerified' in user) setEmailVerified(Boolean((user as Record<string, unknown>).emailVerified));
-      })
-      .catch(() => {})
-      .finally(() => { if (!cancelled) setIsLoadingProfile(false); });
-    return () => { cancelled = true; };
-  }, []);
+    if (isLoadingMe) return;
+    const me = meData;
+    const user = me && typeof me === 'object' && (me as { authenticated?: boolean }).authenticated === true && (me as { user?: unknown }).user && typeof (me as { user: unknown }).user === 'object' ? ((me as { user: MeUserProfile }).user) : null;
+    const account = profileFieldsFromMeUser(user);
+    const merged = mergeDashboardProfileFromSources(account, {});
+    setProfileData(merged);
+    if (user && 'profileImage' in user && (user as Record<string, unknown>).profileImage) setAvatarUrl(String((user as Record<string, unknown>).profileImage));
+    if (user && 'emailVerified' in user) setEmailVerified(Boolean((user as Record<string, unknown>).emailVerified));
+    setIsLoadingProfile(false);
+  }, [meData, isLoadingMe]);
 
+  // ── Initialize 2FA status from query ──────────────────────────
   useEffect(() => {
-    fetch2faStatus();
-    fetchSessions();
-  }, []);
+    if (!twoFaData) return;
+    setTwoFaEnabled(twoFaData.enabled);
+    if (!twoFaData.enabled && twoFaData.secret && twoFaData.uri) {
+      setTwoFaSetupData({ secret: twoFaData.secret, uri: twoFaData.uri });
+    }
+  }, [twoFaData]);
 
   useEffect(() => {
     if (!twoFaSetupData?.uri) { setQrDataUrl(null); return; }
@@ -171,11 +195,7 @@ export function ProfileTab() {
     if (file.size > 5 * 1024 * 1024) { toast.error(t('avatarUploadFailed')); return; }
     setIsUploadingAvatar(true);
     try {
-      const fd = new FormData();
-      fd.append('avatar', file);
-      const res = await fetch('/api/auth/me/avatar', { method: 'POST', credentials: 'include', body: fd });
-      if (!res.ok) throw new Error('Upload failed');
-      const data = await res.json() as { avatarUrl?: string };
+      const data = await uploadAvatar.mutateAsync(file);
       if (data.avatarUrl) setAvatarUrl(data.avatarUrl);
       toast.success(t('avatarUpdated'));
     } catch { toast.error(t('avatarUploadFailed')); }
@@ -184,30 +204,17 @@ export function ProfileTab() {
 
   const handleAvatarDelete = async () => {
     try {
-      const res = await fetch('/api/auth/me/avatar', { method: 'DELETE', credentials: 'include' });
-      if (!res.ok) throw new Error('Delete failed');
+      await deleteAvatar.mutateAsync();
       setAvatarUrl(null);
       toast.success(t('avatarUpdated'));
     } catch { toast.error(t('avatarUploadFailed')); }
-  };
-
-  const fetch2faStatus = async () => {
-    try {
-      const res = await fetch('/api/auth/me/2fa', { credentials: 'include' });
-      if (!res.ok) return;
-      const data = await res.json() as { enabled: boolean; secret?: string; uri?: string; hasBackupCodes?: boolean };
-      setTwoFaEnabled(data.enabled);
-      if (!data.enabled && data.secret && data.uri) setTwoFaSetupData({ secret: data.secret, uri: data.uri });
-    } catch { /* ignore */ }
   };
 
   const handleEnable2fa = async () => {
     if (!twoFaCode || twoFaCode.length !== 6) { toast.error(t('twoFaInvalidCode')); return; }
     setIsVerifying2fa(true);
     try {
-      const res = await fetch('/api/auth/me/2fa', { method: 'POST', credentials: 'include', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ code: twoFaCode }) });
-      const data = await res.json() as { success?: boolean; backupCodes?: string[]; error?: string };
-      if (!res.ok) throw new Error(data.error || 'Failed to verify');
+      const data = await enable2faMutation.mutateAsync({ code: twoFaCode });
       setTwoFaEnabled(true);
       setTwoFaBackupCodes(data.backupCodes ?? []);
       setTwoFaCode('');
@@ -221,9 +228,7 @@ export function ProfileTab() {
     if (!disable2faPassword) { toast.error(t('passwordRequired')); return; }
     setIsDisabling2fa(true);
     try {
-      const res = await fetch('/api/auth/me/2fa', { method: 'DELETE', credentials: 'include', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ password: disable2faPassword }) });
-      const data = await res.json() as { success?: boolean; error?: string };
-      if (!res.ok) throw new Error(data.error || 'Failed to disable');
+      await disable2faMutation.mutateAsync({ password: disable2faPassword });
       setTwoFaEnabled(false); setTwoFaBackupCodes([]); setDisable2faPassword(''); setShowDisable2fa(false);
       toast.success(t('twoFaDisabled'));
     } catch (err) { toast.error(err instanceof Error ? err.message : t('twoFaFailed')); }
@@ -232,38 +237,20 @@ export function ProfileTab() {
 
   const handleStart2faSetup = async () => {
     setIsSettingUp2fa(true);
-    try { await fetch2faStatus(); }
+    try { /* 2FA status will be re-fetched by the query */ }
     finally { setIsSettingUp2fa(false); }
   };
 
-  const fetchSessions = async () => {
-    setIsLoadingSessions(true);
-    try {
-      const res = await fetch('/api/auth/me/sessions', { credentials: 'include' });
-      if (!res.ok) return;
-      const data = await res.json() as { sessions?: Array<{ id: string; device: Record<string, unknown>; ipAddress: string | null; createdAt: string; lastUsedAt: string; isCurrent: boolean }> };
-      setSessions(data.sessions ?? []);
-    } catch { /* ignore */ }
-    setIsLoadingSessions(false);
-  };
-
   const handleRevokeSession = async (sessionId: string) => {
-    setIsRevokingSession(sessionId);
     try {
-      const res = await fetch('/api/auth/me/sessions', { method: 'DELETE', credentials: 'include', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ sessionId }) });
-      if (!res.ok) throw new Error('Failed to revoke');
-      setSessions((prev) => prev.filter((s) => s.id !== sessionId));
+      await revokeSessionMutation.mutateAsync(sessionId);
       toast.success(t('sessionRevoked'));
     } catch { toast.error(t('sessionRevokeFailed')); }
-    finally { setIsRevokingSession(null); }
   };
 
   const handleRevokeAllSessions = async () => {
     try {
-      const res = await fetch('/api/auth/me/sessions', { method: 'DELETE', credentials: 'include', headers: { 'content-type': 'application/json' }, body: JSON.stringify({}) });
-      const data = await res.json() as { success?: boolean; revokedCount?: number };
-      if (!res.ok) throw new Error('Failed to revoke');
-      setSessions((prev) => prev.filter((s) => s.isCurrent));
+      await revokeAllSessionsMutation.mutateAsync();
       toast.success(t('allSessionsRevoked'));
     } catch { toast.error(t('sessionRevokeFailed')); }
   };
@@ -271,8 +258,7 @@ export function ProfileTab() {
   const handleResendVerification = async () => {
     setIsSendingVerification(true);
     try {
-      const res = await fetch('/api/auth/me/verify-email', { method: 'POST', credentials: 'include' });
-      if (!res.ok) { const data = await res.json() as { error?: string }; throw new Error(data.error || 'Failed to send verification'); }
+      await resendVerificationMutation.mutateAsync();
       toast.success(t('verificationEmailSent'));
     } catch (err) { toast.error(err instanceof Error ? err.message : t('verificationSendFailed')); }
     finally { setIsSendingVerification(false); }
@@ -284,8 +270,7 @@ export function ProfileTab() {
     if (passwordData.newPass.length < 8) { toast.error(t('passwordTooShort')); return; }
     setIsChangingPassword(true);
     try {
-      const res = await fetch('/api/auth/me/password', { method: 'PUT', credentials: 'include', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ currentPassword: passwordData.current, newPassword: passwordData.newPass }) });
-      if (!res.ok) throw new Error('Password change failed');
+      await changePasswordMutation.mutateAsync({ currentPassword: passwordData.current, newPassword: passwordData.newPass });
       toast.success(t('passwordChanged'));
       setPasswordData({ current: '', newPass: '', confirm: '' });
     } catch { toast.error(t('passwordChangeFailed')); }
@@ -326,8 +311,7 @@ export function ProfileTab() {
                 <Button variant="brand" size="sm" onClick={async () => {
                   setIsSavingProfile(true);
                   try {
-                    const res = await fetch('/api/auth/me', { method: 'PUT', credentials: 'include', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ user: profileData }) });
-                    if (!res.ok) throw new Error(t('profileSaveError') || 'Failed to save');
+                    await updateProfile.mutateAsync({ user: profileData });
                     toast.success(t('profileSaved') || 'Profile saved');
                     setIsEditingProfile(false);
                   } catch (err) { toast.error(err instanceof Error ? err.message : 'Failed to save'); }
@@ -589,8 +573,8 @@ export function ProfileTab() {
                             </div>
                           </div>
                           {!s.isCurrent && (
-                            <Button variant="ghost" size="sm" onClick={() => handleRevokeSession(s.id)} disabled={isRevokingSession === s.id} className="gap-1 text-xs text-red-600 dark:text-red-400 hover:bg-red-50 dark:hover:bg-red-950/30 flex-shrink-0">
-                              {isRevokingSession === s.id ? <svg className="animate-spin h-3 w-3" viewBox="0 0 24 24"><circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none" /><path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" /></svg> : <LogOut className="w-3 h-3" />}{t('revoke')}
+                            <Button variant="ghost" size="sm" onClick={() => handleRevokeSession(s.id)} disabled={revokeSessionMutation.isPending} className="gap-1 text-xs text-red-600 dark:text-red-400 hover:bg-red-50 dark:hover:bg-red-950/30 flex-shrink-0">
+                              {revokeSessionMutation.isPending ? <svg className="animate-spin h-3 w-3" viewBox="0 0 24 24"><circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none" /><path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" /></svg> : <LogOut className="w-3 h-3" />}{t('revoke')}
                             </Button>
                           )}
                         </div>

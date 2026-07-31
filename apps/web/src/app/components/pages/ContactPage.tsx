@@ -20,6 +20,7 @@ import {
   staggerContainer,
 } from '@/app/components/travel/destination-detail/constants/animations';
 import { AppHeader } from '../AppHeader';
+import { useSubmitContact } from '../../../lib/travel/query-hooks';
 
 interface ContactPageProps {
   onBack?: () => void;
@@ -34,29 +35,19 @@ export function ContactPage({ onBack }: ContactPageProps) {
     subject: '',
     message: ''
   });
-  const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [submitError, setSubmitError] = useState('');
+  const submitContact = useSubmitContact();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setIsSubmitting(true);
+    setSubmitError('');
 
     try {
-      const res = await fetch('/api/contact', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData),
-      });
-
-      if (!res.ok) throw new Error('Erro ao enviar mensagem');
-
+      await submitContact.mutateAsync(formData);
       setIsSubmitted(true);
-      setSubmitError('');
     } catch {
       setSubmitError('Ocorreu um erro ao enviar a mensagem. Tenta novamente ou envia email para geral@akmleva.pt.');
-    } finally {
-      setIsSubmitting(false);
     }
   };
 
@@ -265,12 +256,12 @@ export function ContactPage({ onBack }: ContactPageProps) {
 
                     <Button
                       type="submit"
-                      disabled={isSubmitting}
+                      disabled={submitContact.isPending}
                       variant="brand"
                       size="lg"
                       className="w-full h-16 text-xl shadow-glow-primary hover:scale-105"
                     >
-                      {isSubmitting ? (
+                      {submitContact.isPending ? (
                         <span className="flex items-center justify-center gap-3 font-black uppercase tracking-widest">
                           <svg className="animate-spin h-6 w-6" viewBox="0 0 24 24">
                             <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none" />

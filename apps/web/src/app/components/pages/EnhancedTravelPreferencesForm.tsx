@@ -60,6 +60,16 @@ import {
   getSmartDefaults,
   inferFromTravelStyles,
 } from '../../../lib/travel/smart-defaults';
+import {
+  useTravelCatalog,
+  useTravelCountries,
+  useSavePreferences,
+  useSaveDraft,
+  useFetchDraft,
+  useUserPreferences,
+} from '../../../lib/travel/query-hooks';
+import { useQuery, useMutation } from '@tanstack/react-query';
+import { api, travelApi } from '../../../lib/api-client';
 
 // ── Constants ────────────────────────────────────────────────────────
 const TOTAL_STEPS = 3;
@@ -163,81 +173,51 @@ export function EnhancedTravelPreferencesForm({
   }, [preferences.travelStyles]);
 
   // ── Load saved preferences ──────────────────────────────────────
-  useEffect(() => {
-    let cancelled = false;
-    Promise.all([
-      fetch('/api/auth/me', { credentials: 'include' }).then((r) => r.json()),
-      fetch('/api/user/preferences', { credentials: 'include' }).then(async (res) => {
-        const data = (await res.json().catch(() => ({}))) as {
-          authenticated?: boolean;
-          preference?: { aiSettings?: unknown };
-        };
-        if (!res.ok || data.authenticated === false) return null;
-        return data.preference?.aiSettings ?? null;
-      }),
-    ])
-      .then(([me, aiSettings]) => {
-        if (cancelled) return;
-        const user =
-          me && typeof me === 'object' &&
-          (me as { authenticated?: boolean }).authenticated === true &&
-          (me as { user?: unknown }).user &&
-          typeof (me as { user: unknown }).user === 'object'
-            ? ((me as { user: MeUserProfile }).user)
-            : null;
-        const merged = mergeSavedTravelPreferences(DEFAULT_TRAVEL_PREFERENCES, aiSettings);
-        reset(normalizePreferenceOptionIds(applyAccountToTravelPreferences(merged, user)));
-      })
-      .catch(() => {});
+  const { data: meData } = useQuery({
+    queryKey: ['user', 'me'] as const,
+    queryFn: () => api.get<{ authenticated?: boolean; user?: unknown }>('/api/auth/me'),
+    staleTime: 5 * 60_000,
+  });
+  const { data: prefsData } = useUserPreferences();
 
-    return () => { cancelled = true; };
-  }, [reset]);
+  useEffect(() => {
+    const me = meData;
+    const aiSettings = prefsData?.preference?.aiSettings;
+    const user =
+      me && typeof me === 'object' &&
+      (me as { authenticated?: boolean }).authenticated === true &&
+      (me as { user?: unknown }).user &&
+      typeof (me as { user: unknown }).user === 'object'
+        ? ((me as { user: MeUserProfile }).user)
+        : null;
+    const merged = mergeSavedTravelPreferences(DEFAULT_TRAVEL_PREFERENCES, aiSettings);
+    reset(normalizePreferenceOptionIds(applyAccountToTravelPreferences(merged, user)));
+  }, [meData, prefsData, reset]);
 
   // ── Load draft from server + localStorage (fallback chain) ─────
+  const { data: serverDraft } = useFetchDraft();
+  const saveDraft = useSaveDraft();
+
   useEffect(() => {
-    let cancelled = false;
-    // 1. Try server draft first
-    fetch('/api/user/preferences/draft', { credentials: 'include' })
-      .then(async (res) => {
-        if (!res.ok || cancelled) return null;
-        const data = await res.json().catch(() => null);
-        return data?.draft as TravelPreferences | null;
-      })
-      .then((serverDraft) => {
-        if (cancelled) return;
-        if (serverDraft && typeof serverDraft === 'object') {
-          reset(serverDraft as TravelPreferences);
-          lastSavedDraftRef.current = JSON.stringify(serverDraft);
-          return;
-        }
-        // 2. Fallback to localStorage
-        const saved = localStorage.getItem('travel_prefs_draft');
-        if (saved) {
-          try {
-            const parsed = JSON.parse(saved);
-            if (parsed && typeof parsed === 'object') {
-              reset(parsed as TravelPreferences);
-              lastSavedDraftRef.current = saved;
-            }
-          } catch { /* corrupt */ }
-        }
-      })
-      .catch(() => {
-        // 3. Last resort: localStorage
-        if (cancelled) return;
-        const saved = localStorage.getItem('travel_prefs_draft');
-        if (saved) {
-          try {
-            const parsed = JSON.parse(saved);
-            if (parsed && typeof parsed === 'object') {
-              reset(parsed as TravelPreferences);
-              lastSavedDraftRef.current = saved;
-            }
-          } catch { /* corrupt */ }
-        }
-      });
-    return () => { cancelled = true; };
-  }, [reset]);
+    if (serverDraft && typeof serverDraft === 'object') {
+      reset(serverDraft as TravelPreferences);
+      lastSavedDraftRef.current = JSON.stringify(serverDraft);
+      return;
+    }
+    if (serverDraft === null) {
+      // Fallback to localStorage
+      const saved = localStorage.getItem('travel_prefs_draft');
+      if (saved) {
+        try {
+          const parsed = JSON.parse(saved);
+          if (parsed && typeof parsed === 'object') {
+            reset(parsed as TravelPreferences);
+            lastSavedDraftRef.current = saved;
+          }
+        } catch { /* corrupt */ }
+      }
+    }
+  }, [serverDraft, reset]);
 
   // ── Server draft auto-save ──────────────────────────────────────
   const saveDraftServerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
@@ -252,121 +232,44 @@ export function EnhancedTravelPreferencesForm({
     // Server (debounced 2s)
     if (saveDraftServerRef.current) clearTimeout(saveDraftServerRef.current);
     saveDraftServerRef.current = setTimeout(() => {
-      fetch('/api/user/preferences/draft', {
-        method: 'PUT',
-        headers: { 'content-type': 'application/json' },
-        body: JSON.stringify({ preferences: getValues(), step: currentStep }),
-      }).catch(() => {});
+      saveDraft.mutate({ preferences: getValues(), step: currentStep });
     }, 2000);
 
     return () => {
       if (saveDraftServerRef.current) clearTimeout(saveDraftServerRef.current);
     };
-  }, [preferences, getValues, currentStep]);
+  }, [preferences, getValues, currentStep, saveDraft]);
 
   // ── Catalog data ────────────────────────────────────────────────
-  const [travelCatalog, setTravelCatalog] = useState<TravelCatalogResponse | null>(null);
-  const [travelCatalogLoading, setTravelCatalogLoading] = useState(true);
-  const [travelCatalogError, setTravelCatalogError] = useState<string | null>(null);
+  const { data: travelCatalog, isLoading: travelCatalogLoading, error: catalogQueryError } = useTravelCatalog(locale);
+  const travelCatalogError = useMemo(() => {
+    if (catalogQueryError) return catalogQueryError instanceof Error ? catalogQueryError.message : 'Failed to load catalogue';
+    if (travelCatalog?.errors?.length) return travelCatalog.errors.map((e) => `${e.source}: ${e.message}`).join(' · ');
+    return null;
+  }, [catalogQueryError, travelCatalog]);
 
-  const [filterCountries, setFilterCountries] = useState<FilterOption[]>([]);
-  const [filterContinents, setFilterContinents] = useState<FilterOption[]>([]);
-
-  useEffect(() => {
-    let cancelled = false;
-    setTravelCatalogLoading(true);
-    setTravelCatalogError(null);
-    fetch(`/api/travel/catalog?locale=${encodeURIComponent(locale)}`)
-      .then(async (res) => {
-        const raw: unknown = await res.json().catch(() => null);
-        if (!res.ok) {
-          const msg = raw && typeof raw === 'object' && 'message' in raw &&
-            typeof (raw as { message: unknown }).message === 'string'
-            ? (raw as { message: string }).message : `HTTP ${res.status}`;
-          throw new Error(msg);
-        }
-        if (!raw || typeof raw !== 'object') throw new Error('Failed to load catalogue');
-        return raw as TravelCatalogResponse;
-      })
-      .then((data) => {
-        if (!cancelled) {
-          setTravelCatalog(data);
-          if (data.errors?.length) {
-            setTravelCatalogError(
-              data.errors.map((e) => `${e.source}: ${e.message}`).join(' · ')
-            );
-          }
-        }
-      })
-      .catch((e: unknown) => {
-        if (!cancelled) {
-          setTravelCatalog(null);
-          setTravelCatalogError(
-            e instanceof Error ? e.message : 'Failed to load catalogue'
-          );
-        }
-      })
-      .finally(() => {
-        if (!cancelled) setTravelCatalogLoading(false);
-      });
-    return () => { cancelled = true; };
-  }, [locale]);
-
-  useEffect(() => {
-    let cancelled = false;
-    fetch('/api/travel/v1/destinations/countries')
-      .then((r) => r.json())
-      .then((data: { countries?: FilterOption[]; continents?: FilterOption[] }) => {
-        if (cancelled) return;
-        if (data.countries?.length) setFilterCountries(data.countries);
-        if (data.continents?.length) setFilterContinents(data.continents);
-      })
-      .catch(() => {});
-    return () => { cancelled = true; };
-  }, []);
+  const { data: countriesData } = useTravelCountries();
+  const filterCountries = useMemo(() => countriesData?.countries ?? [], [countriesData]);
+  const filterContinents = useMemo(() => countriesData?.continents ?? [], [countriesData]);
 
   // ── AI Insights (on-demand) ─────────────────────────────────────
-  const [aiInsightsLoading, setAiInsightsLoading] = useState(false);
-  const [aiInsightsError, setAiInsightsError] = useState<string | null>(null);
   const [aiInsightsText, setAiInsightsText] = useState<string | null>(null);
   const [aiInsightsGenerated, setAiInsightsGenerated] = useState(false);
-  const aiInsightsLoadingRef = useRef(false);
-
-  // Keep ref in sync with state
-  useEffect(() => {
-    aiInsightsLoadingRef.current = aiInsightsLoading;
-  }, [aiInsightsLoading]);
-
-  const generateInsights = useCallback(async () => {
-    if (aiInsightsLoadingRef.current) return;
-    aiInsightsLoadingRef.current = true;
-    setAiInsightsLoading(true);
-    setAiInsightsError(null);
-    try {
-      const res = await fetch('/api/ai/preferences-insights', {
-        method: 'POST',
-        headers: { 'content-type': 'application/json' },
-        body: JSON.stringify({ preferences, locale }),
-      });
-      const data = (await res.json().catch(() => ({}))) as {
-        ok?: boolean; answer?: string; message?: string;
-      };
-      if (!res.ok || data.ok === false) {
-        throw new Error(data.message || 'Failed to generate AI insights');
-      }
+  const aiInsightsMutation = useMutation({
+    mutationFn: () => travelApi.fetchAiInsights(preferences, locale),
+    onSuccess: (data) => {
       setAiInsightsText(data.answer ?? null);
       setAiInsightsGenerated(true);
-    } catch (e: unknown) {
-      setAiInsightsError(
-        e instanceof Error ? e.message : 'Failed to generate AI insights'
-      );
-    } finally {
-      aiInsightsLoadingRef.current = false;
-      setAiInsightsLoading(false);
-    }
-  }, [preferences, locale]);
+    },
+  });
+
+  const generateInsights = useCallback(() => {
+    aiInsightsMutation.mutate();
+  }, [aiInsightsMutation]);
 
   // ── Submit ──────────────────────────────────────────────────────
+  const savePreferences = useSavePreferences();
+
   const onSubmit = async (formData: TravelPreferences) => {
     setIsProcessing(true);
     try {
@@ -392,17 +295,7 @@ export function EnhancedTravelPreferencesForm({
         return;
       }
 
-      const res = await fetch('/api/user/preferences', {
-        method: 'PUT',
-        headers: { 'content-type': 'application/json' },
-        body: JSON.stringify({ preferences: formData }),
-      });
-      const result = (await res.json().catch(() => ({}))) as {
-        success?: boolean; message?: string;
-      };
-      if (!res.ok || result.success === false) {
-        throw new Error(result.message || 'Failed to save preferences');
-      }
+      await savePreferences.mutateAsync({ preferences: formData });
 
       // Clear draft on success
       localStorage.removeItem('travel_prefs_draft');
@@ -728,12 +621,12 @@ export function EnhancedTravelPreferencesForm({
                     <p className="font-semibold text-primary-900 dark:text-primary-200 mb-2">
                       {t('aiInsightsTitle')}
                     </p>
-                    {aiInsightsLoading ? (
+                    {aiInsightsMutation.isPending ? (
                       <p className="text-sm text-primary dark:text-primary-200 animate-pulse">
                         {t('generatingInsights')}…
                       </p>
-                    ) : aiInsightsError ? (
-                      <p className="text-sm text-red-600">{aiInsightsError}</p>
+                    ) : aiInsightsMutation.isError ? (
+                      <p className="text-sm text-red-600">{aiInsightsMutation.error?.message ?? 'Failed'}</p>
                     ) : aiInsightsText ? (
                       <p className="text-sm text-primary-700 dark:text-primary-200 whitespace-pre-line">
                         {aiInsightsText}
@@ -743,7 +636,7 @@ export function EnhancedTravelPreferencesForm({
                         {t('aiInsightsHint')}
                       </p>
                     )}
-                    {!aiInsightsGenerated && !aiInsightsLoading && (
+                    {!aiInsightsGenerated && !aiInsightsMutation.isPending && (
                       <Button
                         type="button"
                         variant="outline"

@@ -1,6 +1,6 @@
 'use client';
 
-import { useCallback, useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useLocale, useTranslations } from 'next-intl';
 import { Bus, Car, Footprints, Loader2, MapPin, Timer, TrainFront } from 'lucide-react';
 
@@ -8,6 +8,7 @@ import type { LocalRoutingMode } from '../../../lib/travel/local-routing';
 import type { TripGoTripPlan } from '../../../lib/travel/tripgo';
 import { Badge } from '../ui/badge';
 import { Button } from '../ui/button';
+import { useLocalRoutes } from '../../../lib/travel/query-hooks';
 
 type LocalRoutePanelProps = {
   from: { lat: number; lon: number; label?: string };
@@ -53,57 +54,21 @@ export function LocalRoutePanel({
 }: LocalRoutePanelProps) {
   const t = useTranslations('destination.tripgo');
   const locale = useLocale();
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState<string | null>(null);
-  const [plans, setPlans] = useState<TripGoTripPlan[]>([]);
-  const [configured, setConfigured] = useState(true);
-  const [provider, setProvider] = useState<RoutingProvider>(null);
   const [routingMode, setRoutingMode] = useState<LocalRoutingMode>('transit');
 
-  const fetchRoutes = useCallback(async () => {
-    setLoading(true);
-    setError(null);
-    const qs = new URLSearchParams({
-      from: `${from.lat},${from.lon}`,
-      to: `${to.lat},${to.lon}`,
-      mode: routingMode,
-      modes,
-      locale: locale.startsWith('pt') ? 'pt' : locale.startsWith('es') ? 'es' : locale.startsWith('fr') ? 'fr' : 'en',
-    });
-    if (departAfter) qs.set('departAfter', String(departAfter));
-    if (process.env.NEXT_PUBLIC_TRAVEL_ROUTING_LOCAL_ONLY === 'true') {
-      qs.set('localOnly', '1');
-    }
+  const { data, isLoading: loading, error: queryError, refetch } = useLocalRoutes({
+    from,
+    to,
+    departAfter,
+    modes,
+    locale,
+    routingMode,
+  });
 
-    try {
-      const res = await fetch(`/api/travel/routing/local?${qs.toString()}`);
-      const data = (await res.json()) as {
-        ok?: boolean;
-        configured?: boolean;
-        provider?: RoutingProvider;
-        message?: string;
-        plans?: TripGoTripPlan[];
-      };
-      setConfigured(data.configured !== false);
-      setProvider(data.provider ?? null);
-      if (!res.ok || !data.ok) {
-        setPlans([]);
-        setError(data.message ?? t('errorGeneric'));
-        return;
-      }
-      setPlans(data.plans ?? []);
-      if (!data.plans?.length) setError(t('noTrips'));
-    } catch {
-      setError(t('errorGeneric'));
-      setPlans([]);
-    } finally {
-      setLoading(false);
-    }
-  }, [from, to, departAfter, modes, locale, routingMode, t]);
-
-  useEffect(() => {
-    void fetchRoutes();
-  }, [fetchRoutes]);
+  const configured = data?.configured !== false;
+  const provider = (data?.provider ?? null) as RoutingProvider;
+  const plans = data?.plans ?? [];
+  const error = queryError ? t('errorGeneric') : (!configured ? null : (!data?.plans?.length && plans.length === 0 && !loading ? t('noTrips') : data?.message ? data.message : null));
 
   if (!configured) {
     return (
@@ -153,7 +118,7 @@ export function LocalRoutePanel({
         <span className="line-clamp-1">{from.label ?? `${from.lat.toFixed(3)}, ${from.lon.toFixed(3)}`}</span>
         <span>→</span>
         <span className="line-clamp-1">{to.label ?? `${to.lat.toFixed(3)}, ${to.lon.toFixed(3)}`}</span>
-        <Button type="button" variant="ghost" size="sm" className="h-7 text-xs ml-auto" onClick={() => void fetchRoutes()}>
+        <Button type="button" variant="ghost" size="sm" className="h-7 text-xs ml-auto" onClick={() => refetch()}>
           {t('refresh')}
         </Button>
       </div>

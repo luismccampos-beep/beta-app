@@ -1,13 +1,13 @@
 'use client';
 
-import { useCallback, useEffect, useMemo, useState } from 'react';
+import { useCallback, useMemo } from 'react';
 import { Sparkles } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 
 import type { CompactTravelPreferences } from '../../../lib/travel/preference-match';
-import type { RecommendApiResponse } from '../../../lib/travel/recommend-api-types';
 import { encodeTravelPreferencesCompact } from '../../../lib/travel/travel-preferences-query';
 import { RecommendedDestinationCard } from './RecommendedDestinationCard';
+import { useRecommendations } from '../../../lib/travel/query-hooks';
 
 export type RecommendationsSectionProps = {
   preferences: CompactTravelPreferences | null;
@@ -31,9 +31,6 @@ export function RecommendationsSection({
   enabled = true,
 }: RecommendationsSectionProps) {
   const t = useTranslations('results.recommend');
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
-  const [data, setData] = useState<RecommendApiResponse | null>(null);
 
   const prefsKey = useMemo(
     () => (preferences ? encodeTravelPreferencesCompact(preferences) : ''),
@@ -47,6 +44,17 @@ export function RecommendationsSection({
     }
     return p.toString();
   }, [resultsQuery, preferences, prefsKey]);
+
+  const { data, isLoading: loading, error: queryError } = useRecommendations({
+    prefsKey,
+    nights,
+    travelers,
+    origin: originIata,
+    locale,
+    enabled: enabled && !!preferences,
+  });
+
+  const error = queryError ? (queryError instanceof Error ? queryError.message : t('loadError')) : null;
 
   const cardLabels = useMemo(
     () => ({
@@ -68,51 +76,6 @@ export function RecommendationsSection({
     }),
     [t],
   );
-
-  useEffect(() => {
-    if (!enabled || !preferences) {
-      setLoading(false);
-      setData(null);
-      return;
-    }
-
-    let cancelled = false;
-    setLoading(true);
-    setError(null);
-
-    const params = new URLSearchParams({
-      nights: String(nights),
-      travelers: String(travelers),
-      origin: originIata,
-      budgetFilter: '1',
-      limit: '12',
-      lang: locale.startsWith('pt') ? 'pt' : locale.startsWith('es') ? 'es' : locale.startsWith('fr') ? 'fr' : 'pt',
-    });
-    if (prefsKey) params.set('prefs', prefsKey);
-
-    fetch(`/api/travel/v1/recommend?${params}`)
-      .then(async (res) => {
-        const json = (await res.json()) as RecommendApiResponse;
-        if (!res.ok) throw new Error(json.message ?? `HTTP ${res.status}`);
-        return json;
-      })
-      .then((json) => {
-        if (!cancelled) setData(json);
-      })
-      .catch((e: unknown) => {
-        if (!cancelled) {
-          setError(e instanceof Error ? e.message : t('loadError'));
-          setData(null);
-        }
-      })
-      .finally(() => {
-        if (!cancelled) setLoading(false);
-      });
-
-    return () => {
-      cancelled = true;
-    };
-  }, [enabled, preferences, nights, travelers, originIata, prefsKey, locale, t]);
 
   const handleSearchLive = useCallback(
     (iata: string) => {

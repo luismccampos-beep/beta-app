@@ -41,6 +41,7 @@ import {
   encodeTravelPreferencesCompact,
   readStoredTravelPreferences,
 } from '../../../lib/travel/travel-preferences-query';
+import { useTravelResults } from '../../../lib/travel/query-hooks';
 
 interface ResultsPageProps {
   onLogout: () => void;
@@ -97,10 +98,6 @@ export function ResultsPage({ onLogout, onNavigateToDashboard }: ResultsPageProp
   const defaultReturn = addDaysIso(departureParam, nightsParam);
   const returnParam = searchParams.get('return')?.trim() || defaultReturn;
 
-  const [results, setResults] = useState<TravelResult[]>([]);
-  const [filteredResults, setFilteredResults] = useState<TravelResult[]>([]);
-  const [resultsLoading, setResultsLoading] = useState(true);
-  const [resultsError, setResultsError] = useState<string | null>(null);
   const [sortBy, setSortBy] = useState('ai');
   const [selectedContinent, setSelectedContinent] = useState('All');
   const [priceRange, setPriceRange] = useState([0, 5000]);
@@ -108,64 +105,33 @@ export function ResultsPage({ onLogout, onNavigateToDashboard }: ResultsPageProp
   const [sustainableOnly, setSustainableOnly] = useState(false);
   const [showFilters, setShowFilters] = useState(false);
 
-  useEffect(() => {
-    let cancelled = false;
-    setResultsLoading(true);
-    setResultsError(null);
-    const modeQ = new URLSearchParams(resultsQuery).get('mode') ?? 'both';
-    const isCruise = modeQ === 'cruises' || modeQ === 'cruise';
-    const base = isCruise ? '/api/travel/cruises' : '/api/travel/results';
+  // Build enhanced query string with prefs encoding
+  const enhancedQuery = useMemo(() => {
     const qs = new URLSearchParams(resultsQuery);
     if (!qs.get('prefs')) {
       const fromUrl = decodeTravelPreferencesCompact(searchParams.get('prefs'));
       const stored = readStoredTravelPreferences();
       const compact = fromUrl ?? stored;
-      if (compact && !isCruise) {
+      if (compact && !isCruiseMode) {
         const enc = encodeTravelPreferencesCompact(compact);
         if (enc.length <= 1800) qs.set('prefs', enc);
       }
     }
-    const query = qs.toString();
-    const url = query ? `${base}?${query}` : base;
-    fetch(url)
-      .then(async (res) => {
-        const data = (await res.json().catch(() => ({}))) as {
-          ok?: boolean;
-          message?: string;
-          results?: TravelResult[];
-        };
-        if (!res.ok) {
-          throw new Error(data.message || `Search failed (${res.status})`);
-        }
-        return data.results ?? [];
-      })
-      .then((rows) => {
-        if (cancelled) return;
-        setResults(rows);
-        if (rows.length === 0) {
-          const m = new URLSearchParams(resultsQuery).get('mode') ?? 'both';
-          setResultsError(
-            m === 'cruises' || m === 'cruise'
-              ? t('noCruiseResults')
-              : m === 'hotels'
-                ? t('noHotelResults')
-                : t('noLiveResults'),
-          );
-        }
-      })
-      .catch((e: unknown) => {
-        if (!cancelled) {
-          setResults([]);
-          setResultsError(e instanceof Error ? e.message : 'Failed to load results');
-        }
-      })
-      .finally(() => {
-        if (!cancelled) setResultsLoading(false);
-      });
-    return () => {
-      cancelled = true;
-    };
-  }, [resultsQuery, searchParams, t]);
+    return qs.toString();
+  }, [resultsQuery, searchParams, isCruiseMode]);
+
+  const { data: resultsData, isLoading: resultsLoading, error: resultsQueryError } = useTravelResults(enhancedQuery, isCruiseMode);
+  const results = useMemo(() => resultsData?.results ?? [], [resultsData]);
+
+  const resultsError = useMemo(() => {
+    if (resultsQueryError) {
+      return resultsQueryError instanceof Error ? resultsQueryError.message : 'Failed to load results';
+    }
+    if (!resultsLoading && results.length === 0 && enhancedQuery) {
+      return isCruiseMode ? t('noCruiseResults') : mode === 'hotels' ? t('noHotelResults') : t('noLiveResults');
+    }
+    return null;
+  }, [resultsQueryError, resultsLoading, results.length, enhancedQuery, isCruiseMode, mode, t]);
 
   useEffect(() => {
     if (results.length === 0) return;
@@ -175,7 +141,7 @@ export function ResultsPage({ onLogout, onNavigateToDashboard }: ResultsPageProp
   }, [results]);
 
   // Apply filters
-  useEffect(() => {
+  const filteredResults = useMemo(() => {
     let filtered = [...results];
 
     if (selectedContinent !== 'All') {
@@ -198,7 +164,7 @@ export function ResultsPage({ onLogout, onNavigateToDashboard }: ResultsPageProp
       case 'duration': filtered.sort((a, b) => a.duration - b.duration); break;
       default: filtered.sort((a, b) => b.aiMatchScore - a.aiMatchScore); break;
     }
-    setFilteredResults(filtered);
+    return filtered;
   }, [results, selectedContinent, priceRange, selectedDuration, sustainableOnly, sortBy]);
 
   const clearFilters = () => {

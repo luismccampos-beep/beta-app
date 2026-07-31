@@ -30,8 +30,8 @@ import { createFormTracker } from '../../../lib/travel/analytics-tracker';
 
 import { TravelStyleSection } from '../travel/preferences-sections/TravelStyleSection';
 import { BudgetSection } from '../travel/preferences-sections/BudgetSection';
-type FilterOption = { name: string; count: number };
 import type { TravelCatalogResponse } from '../../../lib/api-client';
+import { useTravelCatalog, useTravelCountries, useSavePreferences } from '../../../lib/travel/query-hooks';
 
 // ── Constants ──────────────────────────────────────────────────────
 const TOTAL_STEPS = 3;
@@ -127,30 +127,11 @@ export function QuickPreferencesForm() {
   }, [preferences]);
 
   // ── Catalog data (for destinations) ────────────────────────────
-  const [travelCatalog, setTravelCatalog] = useState<TravelCatalogResponse | null>(null);
-  const [travelCatalogLoading, setTravelCatalogLoading] = useState(true);
-  const [filterCountries, setFilterCountries] = useState<FilterOption[]>([]);
-  const [filterContinents, setFilterContinents] = useState<FilterOption[]>([]);
-
-  useEffect(() => {
-    let cancelled = false;
-    fetch(`/api/travel/catalog?locale=${encodeURIComponent(locale)}`)
-      .then((r) => r.json())
-      .then((data) => { if (!cancelled) setTravelCatalog(data); })
-      .catch(() => {})
-      .finally(() => { if (!cancelled) setTravelCatalogLoading(false); });
-    return () => { cancelled = true; };
-  }, [locale]);
-
-  useEffect(() => {
-    fetch('/api/travel/v1/destinations/countries')
-      .then((r) => r.json())
-      .then((data: { countries?: FilterOption[]; continents?: FilterOption[] }) => {
-        if (data.countries?.length) setFilterCountries(data.countries);
-        if (data.continents?.length) setFilterContinents(data.continents);
-      })
-      .catch(() => {});
-  }, []);
+  const { data: travelCatalog, isLoading: travelCatalogLoading } = useTravelCatalog(locale);
+  const { data: countriesData } = useTravelCountries();
+  const filterCountries = useMemo(() => countriesData?.countries ?? [], [countriesData]);
+  const filterContinents = useMemo(() => countriesData?.continents ?? [], [countriesData]);
+  const savePreferences = useSavePreferences();
 
   // ── Navigation ──────────────────────────────────────────────────
   const goNext = useCallback(() => {
@@ -188,23 +169,13 @@ export function QuickPreferencesForm() {
         return;
       }
 
-      // Send quick-start fields to the API
       const fullPrefs = {
         travelStyles: data.travelStyles,
         budgetRange: data.budgetRange,
         preferredDestinations: data.preferredDestinations,
       };
 
-      const res = await fetch('/api/user/preferences', {
-        method: 'PUT',
-        headers: { 'content-type': 'application/json' },
-        body: JSON.stringify({ preferences: fullPrefs }),
-      });
-
-      const result2 = await res.json().catch(() => ({}));
-      if (!res.ok || result2.success === false) {
-        throw new Error(result2.message || 'Failed to save');
-      }
+      await savePreferences.mutateAsync({ preferences: fullPrefs });
 
       trackerRef.current.trackSubmission(
         data.travelStyles,
@@ -260,7 +231,7 @@ export function QuickPreferencesForm() {
       errors: errors as any,
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       t: t as any,
-      travelCatalog,
+      travelCatalog: travelCatalog ?? null,
       travelCatalogLoading,
       filterCountries,
       filterContinents,

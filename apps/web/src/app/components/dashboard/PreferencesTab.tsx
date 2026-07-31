@@ -1,12 +1,13 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useMemo } from 'react';
 import { motion } from 'framer-motion';
 import { Badge } from '../ui/badge';
 import { Button } from '../ui/button';
 import { Card, CardContent } from '../ui/card';
 import { useLocale, useTranslations } from 'next-intl';
 import { Briefcase, MapPin, TreePalm, Hotel, Heart, Edit } from 'lucide-react';
+import { useTravelCatalog, useUserPreferences } from '../../../lib/travel/query-hooks';
 
 type SavedPreferences = {
   budgetRange?: number[];
@@ -21,42 +22,22 @@ type SavedPreferences = {
 export function PreferencesTab() {
   const locale = useLocale();
   const t = useTranslations('dashboard');
-  const [savedPreferences, setSavedPreferences] = useState<SavedPreferences | null>(null);
-  const [isLoadingPreferences, setIsLoadingPreferences] = useState(true);
-  const [hbAccommodationLabels, setHbAccommodationLabels] = useState<Record<string, string>>({});
 
-  useEffect(() => {
-    fetch('/api/travel/catalog?locale=' + encodeURIComponent(locale))
-      .then(async (res) => {
-        const data = (await res.json().catch(() => ({}))) as { accommodations?: { code: string; label: string }[] };
-        if (!res.ok) return;
-        const map: Record<string, string> = {};
-        for (const row of data.accommodations ?? []) {
-          if (row.code && row.label) map[row.code] = row.label;
-        }
-        setHbAccommodationLabels(map);
-      })
-      .catch(() => setHbAccommodationLabels({}));
-  }, [locale]);
+  const { data: catalog } = useTravelCatalog(locale);
+  const { data: prefsData, isLoading: isLoadingPreferences } = useUserPreferences();
 
-  useEffect(() => {
-    let cancelled = false;
-    setIsLoadingPreferences(true);
-    fetch('/api/user/preferences', { credentials: 'include' })
-      .then(async (res) => {
-        const data = (await res.json().catch(() => ({}))) as { authenticated?: boolean; preference?: { aiSettings?: unknown } };
-        if (!res.ok || data.authenticated === false) return null;
-        return data.preference?.aiSettings ?? null;
-      })
-      .then((aiSettings) => {
-        if (!cancelled) {
-          setSavedPreferences(aiSettings && typeof aiSettings === 'object' ? (aiSettings as SavedPreferences) : null);
-        }
-      })
-      .catch(() => { if (!cancelled) setSavedPreferences(null); })
-      .finally(() => { if (!cancelled) setIsLoadingPreferences(false); });
-    return () => { cancelled = true; };
-  }, []);
+  const savedPreferences = useMemo(() => {
+    const aiSettings = prefsData?.preference?.aiSettings;
+    return aiSettings && typeof aiSettings === 'object' ? (aiSettings as SavedPreferences) : null;
+  }, [prefsData]);
+
+  const hbAccommodationLabels = useMemo(() => {
+    const map: Record<string, string> = {};
+    for (const row of catalog?.accommodations ?? []) {
+      if (row.code && row.label) map[row.code] = row.label;
+    }
+    return map;
+  }, [catalog]);
 
   const cards = [
     {

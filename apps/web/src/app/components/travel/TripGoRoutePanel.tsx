@@ -1,12 +1,12 @@
 'use client';
 
-import { useCallback, useEffect, useState } from 'react';
 import { useLocale, useTranslations } from 'next-intl';
 import { Bus, Footprints, Loader2, MapPin, Timer } from 'lucide-react';
 
 import type { TripGoTripPlan } from '../../../lib/travel/tripgo';
 import { Badge } from '../ui/badge';
 import { Button } from '../ui/button';
+import { useTripGoRoutes } from '../../../lib/travel/query-hooks';
 
 type TripGoRoutePanelProps = {
   from: { lat: number; lon: number; label?: string };
@@ -24,49 +24,18 @@ function modeIcon(mode: string) {
 export function TripGoRoutePanel({ from, to, departAfter, modes = 'pt_pub_wa_wal' }: TripGoRoutePanelProps) {
   const t = useTranslations('destination.tripgo');
   const locale = useLocale();
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState<string | null>(null);
-  const [plans, setPlans] = useState<TripGoTripPlan[]>([]);
-  const [configured, setConfigured] = useState(true);
 
-  const fetchRoutes = useCallback(async () => {
-    setLoading(true);
-    setError(null);
-    const qs = new URLSearchParams({
-      from: `${from.lat},${from.lon}`,
-      to: `${to.lat},${to.lon}`,
-      modes,
-      locale: locale.startsWith('pt') ? 'pt' : locale.startsWith('es') ? 'es' : locale.startsWith('fr') ? 'fr' : 'en',
-    });
-    if (departAfter) qs.set('departAfter', String(departAfter));
+  const { data, isLoading: loading, error: queryError, refetch } = useTripGoRoutes({
+    from,
+    to,
+    departAfter,
+    modes,
+    locale,
+  });
 
-    try {
-      const res = await fetch(`/api/travel/tripgo/routing?${qs.toString()}`);
-      const data = (await res.json()) as {
-        ok?: boolean;
-        configured?: boolean;
-        message?: string;
-        plans?: TripGoTripPlan[];
-      };
-      setConfigured(data.configured !== false);
-      if (!res.ok || !data.ok) {
-        setPlans([]);
-        setError(data.message ?? t('errorGeneric'));
-        return;
-      }
-      setPlans(data.plans ?? []);
-      if (!data.plans?.length) setError(t('noTrips'));
-    } catch {
-      setError(t('errorGeneric'));
-      setPlans([]);
-    } finally {
-      setLoading(false);
-    }
-  }, [from, to, departAfter, modes, locale, t]);
-
-  useEffect(() => {
-    void fetchRoutes();
-  }, [fetchRoutes]);
+  const configured = data?.configured !== false;
+  const plans = data?.plans ?? [];
+  const error = queryError ? t('errorGeneric') : (!configured ? null : (!data?.plans?.length && plans.length === 0 && !loading ? t('noTrips') : data?.message ? data.message : null));
 
   if (!configured) {
     return (
@@ -83,7 +52,7 @@ export function TripGoRoutePanel({ from, to, departAfter, modes = 'pt_pub_wa_wal
         <span className="line-clamp-1">{from.label ?? `${from.lat.toFixed(3)}, ${from.lon.toFixed(3)}`}</span>
         <span>→</span>
         <span className="line-clamp-1">{to.label ?? `${to.lat.toFixed(3)}, ${to.lon.toFixed(3)}`}</span>
-        <Button type="button" variant="ghost" size="sm" className="h-7 text-xs ml-auto" onClick={() => void fetchRoutes()}>
+        <Button type="button" variant="ghost" size="sm" className="h-7 text-xs ml-auto" onClick={() => refetch()}>
           {t('refresh')}
         </Button>
       </div>
