@@ -3,7 +3,7 @@
   "name": "akmleva-web",
   "compatibility_date": "2026-07-22",
   "compatibility_flags": ["nodejs_compat"],
-  "main": "src/server.ts",
+  "main": "@tanstack/react-start/server-entry",
   "observability": {
     "enabled": true
   },
