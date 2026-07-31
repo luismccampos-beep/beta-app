@@ -3,7 +3,6 @@ import { unwrapResponse } from '@/lib/middleware'
 
 const ALLOWED_ORIGINS = [
   'https://www.akmleva.pt',
-  'https://beta.akmleva.pt',
   'https://akmleva.pt',
   'http://localhost:3000',
   'http://localhost:3001',

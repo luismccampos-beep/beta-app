@@ -32,7 +32,7 @@
   - DB scripts live in `packages/db` — root delegates via `npm run db:* -w @akmleva/db`.
 - **Workspaces**: npm workspaces at `tools/data-pipeline/` (ETL scripts) and `tools/scrapers/` (web scraping). Web app lives at `apps/web-tanstack/`.
 - **Packages** (`@akmleva/*`): `packages/db/` (Prisma client), `packages/shared/`, `packages/ui/` (placeholders — not workspace-linked yet).
-- **Deployment**: Cloudflare Workers via `wrangler deploy`. Custom domain: `beta.akmleva.pt`. Worker name: `akmleva-web`.
+- **Deployment**: Cloudflare Workers via `wrangler deploy`. Custom domain: `akmleva.pt`. Worker name: `akmleva-web`.
 
 ## Testing Quirks
 

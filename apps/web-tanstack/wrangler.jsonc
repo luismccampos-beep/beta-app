@@ -10,7 +10,7 @@
   "vars": {
     "DATABASE_DISABLED": "false",
     "PUBLIC_ONLY_MODE": "false",
-    "VITE_BASE_URL": "https://beta.akmleva.pt"
+    "VITE_BASE_URL": "https://akmleva.pt"
   },
   "d1_databases": [
     {
@@ -25,7 +25,7 @@
   },
   "routes": [
     {
-      "pattern": "beta.akmleva.pt",
+      "pattern": "akmleva.pt",
       "custom_domain": true
     }
   ],

@@ -479,7 +479,7 @@ npm run build:tanstack && npm run -w apps/web-tanstack deploy
 
 ### Notes
 
-- Custom domain: `beta.akmleva.pt`
+- Custom domain: `akmleva.pt`
 - Worker name: `akmleva-web`
 - Database: Cloudflare D1 (SQLite) via Drizzle ORM (transitioning from Prisma/PostgreSQL)
 

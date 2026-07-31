@@ -30,7 +30,7 @@ export const auth = betterAuth({
 
   baseURL:
     process.env.BETTER_AUTH_URL ||
-    'https://beta.akmleva.pt',
+    'https://akmleva.pt',
 
   ...(databaseEnabled
     ? {
