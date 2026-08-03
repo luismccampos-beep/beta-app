@@ -7,6 +7,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { Spinner } from '@/components/ui/spinner';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Checkbox } from '@/components/ui/checkbox';
 import { useLocale as useI18nLocale } from '@/lib/i18n-provider';
@@ -26,6 +27,7 @@ import {
   ArrowRight
 } from 'lucide-react';
 import { toast } from 'sonner';
+import { H1 } from '@/components/ui/typography';
 
 type Language = 'en' | 'pt' | 'es' | 'fr';
 
@@ -192,9 +194,9 @@ export function AuthPage({ onLoginSuccess, onBackToHome, onNavigateToLegal }: Au
               <span className="text-sm font-medium text-primary-900 dark:text-primary-200">AI-Powered Travel</span>
             </div>
 
-            <h1 className="text-5xl font-bold text-gray-900 dark:text-white leading-tight">
+            <H1 className="leading-tight">
               {t('hero')}
-            </h1>
+            </H1>
 
             <p className="text-xl text-gray-600 dark:text-gray-300 leading-relaxed">
               {t('heroDesc')}
@@ -332,7 +334,7 @@ export function AuthPage({ onLoginSuccess, onBackToHome, onNavigateToLegal }: Au
                 >
                   {isSubmitting ? (
                     <span className="flex items-center gap-2">
-                      <span className="animate-spin h-4 w-4 border-2 border-white border-t-transparent rounded-full" />
+                      <Spinner size="sm" className="text-white" />
                       {t('signingIn')}
                     </span>
                   ) : (
@@ -547,7 +549,7 @@ export function AuthPage({ onLoginSuccess, onBackToHome, onNavigateToLegal }: Au
                 >
                   {isSubmitting ? (
                     <span className="flex items-center gap-2">
-                      <span className="animate-spin h-4 w-4 border-2 border-white border-t-transparent rounded-full" />
+                      <Spinner size="sm" className="text-white" />
                       {t('creatingAccount')}
                     </span>
                   ) : (

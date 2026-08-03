@@ -7,6 +7,7 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { useLocale as useI18nLocale } from '@/lib/i18n-provider';
 import { useDashboardTranslations as useTranslations } from '@/lib/i18n-namespaces';
+import { H2, H6 } from '@/components/ui/typography';
 import { Briefcase, MapPin, TreePalm, Hotel, Heart, Edit } from 'lucide-react';
 
 type SavedPreferences = {
@@ -132,7 +133,7 @@ export function PreferencesTab() {
       animate={{ opacity: 1, y: 0 }}
     >
       <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-8">
-        <h2 className="text-4xl font-black text-gray-950 dark:text-white tracking-tighter uppercase">{t('travelPreferences')}</h2>
+        <H2 headingColor="default" className="uppercase">{t('travelPreferences')}</H2>
         <Button
           onClick={() => (window.location.href = '/preferences/edit')}
           variant="brand"
@@ -158,7 +159,7 @@ export function PreferencesTab() {
                   <div className="p-2 rounded-lg bg-primary/10 text-primary dark:text-primary-300 group-hover:scale-110 transition-transform">
                     <Icon className="w-5 h-5" />
                   </div>
-                  <h3 className="text-base font-black text-gray-950 dark:text-white uppercase tracking-tighter">{title}</h3>
+                  <H6 headingColor="default" className="uppercase">{title}</H6>
                 </div>
                 <div className="pl-12">
                   {content}

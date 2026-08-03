@@ -84,7 +84,7 @@ export function TermsContent() {
               <CheckCircle2 className="w-3 h-3 mr-1" />
               {(termsData?.badgeBinding as string) ?? ''}
             </Badge>
-            <Badge className="bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 border-0">
+            <Badge className="bg-primary-100 dark:bg-primary-900 text-primary-800 dark:text-primary-200 border-0">
               <Scale className="w-3 h-3 mr-1" />
               {(termsData?.badgeJurisdiction as string) ?? ''}
             </Badge>

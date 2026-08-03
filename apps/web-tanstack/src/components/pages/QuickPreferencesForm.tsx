@@ -31,6 +31,7 @@ import { createFormTracker } from '@/lib/travel/analytics-tracker';
 
 import { TravelStyleSection } from '@/components/travel/preferences-sections/TravelStyleSection';
 import { BudgetSection } from '@/components/travel/preferences-sections/BudgetSection';
+import { Spinner } from '@/components/ui/spinner';
 type FilterOption = { name: string; count: number };
 import type { TravelCatalogResponse } from '@/lib/api-client';
 
@@ -459,17 +460,17 @@ export function QuickPreferencesForm() {
                 >
                   {isProcessing ? (
                     <>
-                      <svg className="animate-spin h-4 w-4" viewBox="0 0 24 24" fill="none"><circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" /><path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" /></svg>
-                      {t('preparingYourTrips')}
-                    </>
-                  ) : (
-                    <>
-                      {t('seeMyTrips')}
-                      <ArrowRight className="w-5 h-5" />
-                    </>
-                  )}
-                </Button>
-                <p className="text-xs text-gray-500 mt-2">{t('preferenceSavedDesc')}</p>
+                    <Spinner size="sm" />
+                    {t('preparingYourTrips')}
+                  </>
+                ) : (
+                  <>
+                    {t('seeMyTrips')}
+                    <ArrowRight className="w-5 h-5" />
+                  </>
+                )}
+              </Button>
+              <p className="text-xs text-gray-500 mt-2">{t('preferenceSavedDesc')}</p>
               </div>
             </div>
           )}
@@ -500,7 +501,7 @@ export function QuickPreferencesForm() {
           >
             {isProcessing ? (
               <>
-                <svg className="animate-spin h-4 w-4" viewBox="0 0 24 24" fill="none"><circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" /><path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" /></svg>
+                <Spinner size="sm" />
                 {t('preparingYourTrips')}
               </>
             ) : (
@@ -533,7 +534,7 @@ export function QuickPreferencesForm() {
             >
               {isProcessing ? (
                 <>
-                  <svg className="animate-spin h-4 w-4" viewBox="0 0 24 24" fill="none"><circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" /><path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" /></svg>
+                  <Spinner size="sm" />
                   {t('preparingYourTrips')}
                 </>
               ) : (

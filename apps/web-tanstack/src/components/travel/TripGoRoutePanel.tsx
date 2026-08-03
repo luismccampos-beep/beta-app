@@ -3,11 +3,12 @@
 import { useCallback, useEffect, useState } from 'react';
 import { useDestinationTranslations } from '@/lib/i18n-namespaces';
 import { useLocale as useI18nLocale } from '@/lib/i18n-provider';
-import { Bus, Footprints, Loader2, MapPin, Timer } from 'lucide-react';
+import { Bus, Footprints, MapPin, Timer } from 'lucide-react';
 
 import type { TripGoTripPlan } from '@/lib/travel/tripgo';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
+import { Spinner } from '@/components/ui/spinner';
 
 type TripGoRoutePanelProps = {
   from: { lat: number; lon: number; label?: string };
@@ -90,7 +91,7 @@ export function TripGoRoutePanel({ from, to, departAfter, modes = 'pt_pub_wa_wal
 
       {loading && (
         <div className="flex items-center gap-2 text-sm text-gray-500">
-          <Loader2 className="h-4 w-4 animate-spin" />
+          <Spinner size="sm" />
           {t('loading')}
         </div>
       )}

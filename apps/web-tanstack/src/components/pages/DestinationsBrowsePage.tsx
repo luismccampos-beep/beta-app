@@ -12,7 +12,6 @@ import {
   Compass,
   Globe,
   Hotel,
-  Loader2,
   MapPin,
   Search,
   Sparkles,
@@ -29,9 +28,10 @@ import { motion } from 'framer-motion';
 import { Badge } from '@/components/ui/badge';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
+import { Spinner } from '@/components/ui/spinner';
 
 
-import { fadeInUp, staggerContainer } from '@/lib/travel/animations';
+import { fadeInUp, staggerContainer } from '@/lib/animations';
 
 import { RippleButton } from '@/components/ui/ripple-button';
 import { EmptyState } from '@/components/ui/EmptyState';
@@ -81,7 +81,7 @@ const FAMOUS_DESTINATIONS = [
 
 /** Continent / region chips with emoji and gradient colours. */
 const CONTINENT_CHIPS: { value: string; emoji: string; gradient: string }[] = [
-  { value: 'Europa', emoji: '🏰', gradient: 'from-blue-500 to-indigo-600' },
+  { value: 'Europa', emoji: '🏰', gradient: 'from-primary to-primary-700' },
   { value: 'Ásia', emoji: '⛩️', gradient: 'from-red-500 to-accent-500' },
   { value: 'América', emoji: '🗽', gradient: 'from-emerald-500 to-primary' },
   { value: 'África', emoji: '🌍', gradient: 'from-amber-500 to-yellow-600' },
@@ -642,7 +642,7 @@ export function DestinationsBrowsePage({ onBack }: DestinationsBrowsePageProps) 
           <p aria-live="polite" className="text-sm text-gray-500 dark:text-gray-400">
             {loading ? (
               <span className="flex items-center gap-2">
-                <Loader2 className="w-4 h-4 animate-spin" />
+                <Spinner size="sm" />
                 {t('loading')}
               </span>
             ) : (

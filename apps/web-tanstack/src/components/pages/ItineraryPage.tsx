@@ -249,9 +249,9 @@ export function ItineraryPage({ slug }: ItineraryPageProps) {
 
   const TotalBudgetSection = useMemo(() => {
     const breakdown = [
-      { label: t('budgetAccommodation'), value: 480, color: 'bg-blue-500' },
+      { label: t('budgetAccommodation'), value: 480, color: 'bg-primary' },
       { label: t('budgetMeals'), value: 280, color: 'bg-green-500' },
-      { label: t('budgetActivities'), value: 320, color: 'bg-purple-500' },
+      { label: t('budgetActivities'), value: 320, color: 'bg-accent' },
       { label: t('budgetTransport'), value: 80, color: 'bg-orange-400' },
       { label: t('budgetOther'), value: 40, color: 'bg-gray-400' },
     ];
@@ -289,7 +289,7 @@ export function ItineraryPage({ slug }: ItineraryPageProps) {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-primary-50 via-cyan-50 to-accent-50 dark:from-gray-950 dark:via-gray-900 dark:to-gray-950 transition-colors">
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
         {/* Back Button */}
         <Button
           variant="ghost"

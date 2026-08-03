@@ -3,13 +3,14 @@
 import { useCallback, useEffect, useState } from 'react';
 import { useDestinationTranslations } from '@/lib/i18n-namespaces';
 import { useLocale as useI18nLocale } from '@/lib/i18n-provider';
-import { Bus, Car, Footprints, Loader2, MapPin, Timer, TrainFront } from 'lucide-react';
+import { Bus, Car, Footprints, MapPin, Timer, TrainFront } from 'lucide-react';
 
 import type { TripGoTripPlan } from '@/lib/travel/tripgo';
 
 type LocalRoutingMode = 'transit' | 'auto' | 'pedestrian' | 'bicycle' | 'bus' | 'motorcycle';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
+import { Spinner } from '@/components/ui/spinner';
 
 type LocalRoutePanelProps = {
   from: { lat: number; lon: number; label?: string };
@@ -162,7 +163,7 @@ export function LocalRoutePanel({
 
       {loading && (
         <div className="flex items-center gap-2 text-sm text-gray-500">
-          <Loader2 className="h-4 w-4 animate-spin" />
+          <Spinner size="sm" />
           {t('loading')}
         </div>
       )}

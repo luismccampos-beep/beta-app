@@ -6,7 +6,9 @@ import { Card, CardContent } from '@/components/ui/card'
 import { Input } from '@/components/ui/input'
 import { Button } from '@/components/ui/button'
 import { Label } from '@/components/ui/label'
-import { Mail, Lock, ArrowRight, CheckCircle2, Loader2 } from 'lucide-react'
+import { Mail, Lock, ArrowRight, CheckCircle2 } from 'lucide-react'
+import { Spinner } from '@/components/ui/spinner'
+import { H4 } from '@/components/ui/typography'
 import { toast } from 'sonner'
 
 const useT = createTranslationsHook('auth')
@@ -63,9 +65,9 @@ function ForgotPasswordPage() {
             <div className="w-16 h-16 mx-auto rounded-full bg-green-100 dark:bg-green-900/30 flex items-center justify-center">
               <CheckCircle2 className="w-8 h-8 text-green-600 dark:text-green-400" />
             </div>
-            <h2 className="text-2xl font-bold text-gray-900 dark:text-white">
+            <H4>
               {t('emailSent') || 'Email sent!'}
-            </h2>
+            </H4>
             <p className="text-gray-500 dark:text-gray-400">
               {t('resetEmailSentDesc') || 'Check your inbox for a password reset link.'}
             </p>
@@ -90,9 +92,9 @@ function ForgotPasswordPage() {
             <div className="w-16 h-16 mx-auto rounded-full bg-primary-100 dark:bg-primary-900/30 flex items-center justify-center mb-4">
               <Lock className="w-8 h-8 text-primary dark:text-primary-300" />
             </div>
-            <h2 className="text-2xl font-bold text-gray-900 dark:text-white">
+            <H4>
               {t('forgotPassword') || 'Forgot Password?'}
-            </h2>
+            </H4>
             <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">
               {t('forgotPasswordDesc') || "Enter your email and we'll send you a reset link."}
             </p>
@@ -122,7 +124,7 @@ function ForgotPasswordPage() {
             >
               {isSubmitting ? (
                 <span className="flex items-center gap-2">
-                  <Loader2 className="w-5 h-5 animate-spin" />
+                  <Spinner />
                   {t('sending') || 'Sending...'}
                 </span>
               ) : (

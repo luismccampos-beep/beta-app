@@ -17,8 +17,8 @@ export const ACCOMMODATION_ICONS: Record<string, typeof Hotel> = {
 export const ACCOMMODATION_COLORS: Record<string, string> = {
   resort: 'bg-amber-100 text-amber-800 dark:bg-amber-900/30 dark:text-amber-300',
   camping: 'bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-300',
-  apartamento: 'bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-300',
-  guest_house: 'bg-purple-100 text-purple-800 dark:bg-purple-900/30 dark:text-purple-300',
+  apartamento: 'bg-primary-100 text-primary-800 dark:bg-primary-900/30 dark:text-primary-300',
+  guest_house: 'bg-accent-100 text-accent-800 dark:bg-accent-900/30 dark:text-accent-300',
   hostel: 'bg-pink-100 text-pink-800 dark:bg-pink-900/30 dark:text-pink-300',
   motel: 'bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-gray-300',
   pousada: 'bg-accent-100 text-accent-700 dark:bg-accent-700/30 dark:text-accent-200',

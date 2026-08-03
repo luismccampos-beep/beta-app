@@ -7,7 +7,7 @@ const QUICK_FACTS = (
   data: DestinationDetailData,
   t: (key: string) => string,
 ) => [
-  { icon: Globe, label: t('continent') ?? 'Continente', value: data.continente, accent: 'text-blue-600 dark:text-blue-400', bg: 'bg-blue-50/50 dark:bg-blue-950/20', border: 'border-blue-100 dark:border-blue-900/40' },
+  { icon: Globe, label: t('continent') ?? 'Continente', value: data.continente, accent: 'text-primary dark:text-primary-300', bg: 'bg-primary-50/50 dark:bg-primary-950/20', border: 'border-primary-100 dark:border-primary-900/40' },
   { icon: Thermometer, label: t('climate') ?? 'Clima', value: data.clima, accent: 'text-orange dark:text-orange-400', bg: 'bg-orange/5 dark:bg-orange/10', border: 'border-orange/10 dark:border-orange/20' },
   { icon: Languages, label: t('type') ?? 'Tipo', value: data.tipo, accent: 'text-violet-600 dark:text-violet-400', bg: 'bg-violet-50/50 dark:bg-violet-950/20', border: 'border-violet-100 dark:border-violet-900/40' },
   {

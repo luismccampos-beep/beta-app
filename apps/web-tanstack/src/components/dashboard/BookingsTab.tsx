@@ -1,5 +1,6 @@
 'use client';
 
+import { H3 } from '@/components/ui/typography';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
@@ -46,7 +47,7 @@ export function BookingsTab({ bookings, onNewBooking, onViewBooking, onCancelBoo
   if (bookings.length === 0) {
     return (
       <div>
-        <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">{t('activeBookings')}</h2>
+        <H3 headingColor="default" className="mb-6">{t('activeBookings')}</H3>
         <Card className="group overflow-hidden border-0 bg-white dark:bg-gray-800 shadow-md hover:shadow-lg ring-1 ring-gray-200/60 dark:ring-gray-700/60 transition-all duration-300">
           <CardContent className="p-12 text-center">
             <Plane className="w-16 h-16 text-gray-300 dark:text-gray-600 mx-auto mb-4" />
@@ -62,7 +63,7 @@ export function BookingsTab({ bookings, onNewBooking, onViewBooking, onCancelBoo
 
   return (
     <div>
-      <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">{t('activeBookings')}</h2>
+      <H3 headingColor="default" className="mb-6">{t('activeBookings')}</H3>
       <div className="grid gap-4">
         {bookings.map((booking) => (
           <Card key={booking.id} className="group overflow-hidden border-0 bg-white dark:bg-gray-800 shadow-md hover:shadow-lg ring-1 ring-gray-200/60 dark:ring-gray-700/60 transition-all duration-300">

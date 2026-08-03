@@ -19,7 +19,7 @@ import {
 import {
   fadeInUp,
   staggerContainer,
-} from '@/lib/travel/animations';
+} from '@/lib/animations';
 import { AppHeader } from '@/components/AppHeader';
 
 interface FAQPageProps {
@@ -87,10 +87,10 @@ export function FAQPage({ onBack }: FAQPageProps) {
   const categoryMeta = useMemo(() => {
     return {
       booking: { icon: Plane, bgClass: 'from-primary-600 to-primary-700' },
-      payment: { icon: CreditCard, bgClass: 'from-blue-600 to-blue-800' },
+      payment: { icon: CreditCard, bgClass: 'from-primary to-primary-700' },
       cancellation: { icon: XCircle, bgClass: 'from-accent-600 to-accent-700' },
       safety: { icon: Shield, bgClass: 'from-green-600 to-green-500' },
-      travel: { icon: Globe, bgClass: 'from-purple-600 to-purple-500' },
+      travel: { icon: Globe, bgClass: 'from-accent to-accent-500' },
       general: { icon: FileText, bgClass: 'from-gray-700 to-gray-600' }
     } as const;
   }, []);
@@ -137,7 +137,7 @@ export function FAQPage({ onBack }: FAQPageProps) {
         >
           <div className="absolute inset-0 bg-gradient-to-r from-primary/10 to-accent-500/10 dark:from-primary/5 dark:to-accent-500/5 rounded-2xl sm:rounded-3xl"></div>
           <div className="relative p-6 sm:p-8 md:p-12 text-center">
-            <h1 className="text-3xl sm:text-5xl md:text-6xl font-bold text-gray-900 dark:text-white mb-3 sm:mb-4">
+            <h1 className="text-3xl sm:text-5xl md:text-6xl font-black text-gray-900 dark:text-white mb-3 sm:mb-4">
               {t('pageTitle')}
             </h1>
             <p className="text-sm sm:text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">

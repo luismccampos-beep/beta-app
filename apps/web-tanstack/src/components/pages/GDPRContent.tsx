@@ -38,7 +38,7 @@ export function GDPRContent() {
             <CheckCircle2 className="w-3 h-3 mr-1" />
             {t('gdpr.badgeTransparency')}
           </Badge>
-          <Badge className="bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 border-0">
+          <Badge className="bg-primary-100 dark:bg-primary-900 text-primary-800 dark:text-primary-200 border-0">
             <Shield className="w-3 h-3 mr-1" />
             {t('gdpr.badgeGdpr')}
           </Badge>
@@ -65,7 +65,7 @@ export function GDPRContent() {
 
       {/* Section 2: Categories */}
       <motion.div variants={fadeInUp} className="flex items-center gap-3 mb-4 mt-8">
-        <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-blue-600 to-blue-800 flex items-center justify-center shadow-md flex-shrink-0">
+        <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-primary to-primary-700 flex items-center justify-center shadow-md flex-shrink-0">
           <Database className="w-4 h-4 text-white" />
         </div>
         <h2 className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white">{t('gdpr.section2Title')}</h2>
@@ -119,7 +119,7 @@ export function GDPRContent() {
           <p className="text-sm mt-1">{t('gdpr.purpose1Desc')}</p>
             <p className="text-xs mt-2 text-gray-700 dark:text-gray-400"><strong>{t('gdpr.labelLegalBasis')}:</strong> {t('gdpr.purpose1Basis')}</p>
         </motion.div>
-        <motion.div variants={fadeInUp} whileHover={{ x: 4 }} className="p-4 border-l-4 border-blue-500 bg-blue-50 dark:bg-blue-900/20 rounded-r">
+        <motion.div variants={fadeInUp} whileHover={{ x: 4 }} className="p-4 border-l-4 border-primary bg-primary-50 dark:bg-primary-900/20 rounded-r">
           <p className="font-semibold text-lg">{t('gdpr.purpose2Title')}</p>
           <p className="text-sm mt-1">{t('gdpr.purpose2Desc')}</p>
           <p className="text-xs mt-2 text-gray-700 dark:text-gray-400"><strong>{t('gdpr.labelLegalBasis')}:</strong> {t('gdpr.purpose2Basis')}</p>
@@ -165,7 +165,7 @@ export function GDPRContent() {
 
       {/* Section 5: Data Security */}
       <motion.div variants={fadeInUp} className="flex items-center gap-3 mb-4 mt-8">
-        <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-purple-600 to-purple-800 flex items-center justify-center shadow-md flex-shrink-0">
+        <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-accent to-accent-700 flex items-center justify-center shadow-md flex-shrink-0">
           <Lock className="w-4 h-4 text-white" />
         </div>
         <h2 className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white">{t('gdpr.section5Title')}</h2>
@@ -189,7 +189,7 @@ export function GDPRContent() {
 
       {/* Section 6: Contact */}
       <motion.div variants={fadeInUp} className="flex items-center gap-3 mb-4 mt-8">
-        <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-blue-600 to-blue-800 flex items-center justify-center shadow-md flex-shrink-0">
+        <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-primary to-primary-700 flex items-center justify-center shadow-md flex-shrink-0">
           <Mail className="w-4 h-4 text-white" />
         </div>
         <h2 className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white">{t('gdpr.section6Title')}</h2>
@@ -207,11 +207,11 @@ export function GDPRContent() {
       {/* Footer */}
       <motion.div
         variants={fadeInUp}
-        className="mt-8 p-6 bg-blue-50 dark:bg-blue-900/20 border-2 border-blue-300 dark:border-blue-700 rounded-lg"
+        className="mt-8 p-6 bg-primary-50 dark:bg-primary-900/20 border-2 border-primary-300 dark:border-primary-700 rounded-lg"
       >
-        <p className="font-semibold text-blue-900 dark:text-blue-300"><strong>{t('gdpr.footerDate')}</strong></p>
-        <p className="text-sm mt-2 text-blue-800 dark:text-blue-400">{t('gdpr.footerCompliant')}</p>
-        <p className="text-sm mt-2 text-blue-800 dark:text-blue-400 italic">{t('gdpr.footerItalic')}</p>
+        <p className="font-semibold text-primary-900 dark:text-primary-300"><strong>{t('gdpr.footerDate')}</strong></p>
+        <p className="text-sm mt-2 text-primary-800 dark:text-primary-400">{t('gdpr.footerCompliant')}</p>
+        <p className="text-sm mt-2 text-primary-800 dark:text-primary-400 italic">{t('gdpr.footerItalic')}</p>
       </motion.div>
     </motion.div>
   );

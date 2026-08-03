@@ -24,7 +24,7 @@ import {
 import {
   fadeInUp,
   staggerContainer,
-} from '@/lib/travel/animations';
+} from '@/lib/animations';
 import { useTilt } from '@/hooks/useTilt';
 import { useParallax } from '@/hooks/useParallax';
 import { RippleButton } from '@/components/ui/ripple-button';

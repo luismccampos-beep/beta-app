@@ -10,14 +10,6 @@ import { fileURLToPath } from 'node:url'
 const rootDir = path.dirname(fileURLToPath(import.meta.url))
 
 export default defineConfig({
-  css: {
-    preprocessorOptions: {
-      scss: {
-        api: 'modern-compiler',
-        additionalData: `@use "sass:math" as *;\n`,
-      },
-    },
-  },
   resolve: {
     alias:
       process.env.PUBLIC_ONLY_MODE === 'true'

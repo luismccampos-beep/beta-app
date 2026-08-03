@@ -27,7 +27,7 @@ const SECTION_META: Record<
 > = {
   seguranca: { icon: Shield, accent: 'text-amber-700 dark:text-amber-400' },
   respeite: { icon: Users, accent: 'text-violet-700 dark:text-violet-400' },
-  comunique: { icon: Languages, accent: 'text-blue-700 dark:text-blue-400' },
+  comunique: { icon: Languages, accent: 'text-primary dark:text-primary-300' },
   beba: { icon: Droplets, accent: 'text-cyan-700 dark:text-cyan-400' },
   dinheiro: { icon: Banknote, accent: 'text-emerald-700 dark:text-emerald-400' },
   saude: { icon: HeartPulse, accent: 'text-rose-700 dark:text-rose-400' },

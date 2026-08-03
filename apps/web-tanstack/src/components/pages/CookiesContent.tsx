@@ -28,16 +28,16 @@ export function CookiesContent() {
       viewport={{ once: true, margin: '-40px' }}
     >
       {/* Intro */}
-      <motion.div variants={fadeInUp} className="mb-8 p-6 bg-blue-50 dark:bg-blue-900/20 border-l-4 border-blue-600 rounded-lg">
+      <motion.div variants={fadeInUp} className="mb-8 p-6 bg-primary-50 dark:bg-primary-900/20 border-l-4 border-primary rounded-lg">
         <div className="flex items-start gap-3">
-          <Info className="w-5 h-5 text-blue-600 dark:text-blue-400 mt-0.5 flex-shrink-0" />
+          <Info className="w-5 h-5 text-primary dark:text-primary-300 mt-0.5 flex-shrink-0" />
           <p className="text-gray-800 dark:text-gray-200 leading-relaxed">{t('cookies.intro')}</p>
         </div>
       </motion.div>
 
       {/* Section 1: What Are Cookies */}
       <motion.div variants={fadeInUp} className="flex items-center gap-3 mb-4">
-        <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-blue-600 to-blue-800 flex items-center justify-center shadow-md flex-shrink-0">
+        <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-primary to-primary-700 flex items-center justify-center shadow-md flex-shrink-0">
           <Cookie className="w-4 h-4 text-white" />
         </div>
         <h2 className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white">{t('cookies.section1Title')}</h2>
@@ -73,7 +73,7 @@ export function CookiesContent() {
 
       {/* Section 3: Types of Cookies */}
       <motion.div variants={fadeInUp} className="flex items-center gap-3 mb-4 mt-8">
-        <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-purple-600 to-purple-800 flex items-center justify-center shadow-md flex-shrink-0">
+        <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-accent to-accent-700 flex items-center justify-center shadow-md flex-shrink-0">
           <Settings className="w-4 h-4 text-white" />
         </div>
         <h2 className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white">{t('cookies.section3Title')}</h2>
@@ -118,8 +118,8 @@ export function CookiesContent() {
         </motion.div>
 
         {/* Functional Cookies */}
-        <motion.div variants={fadeInUp} whileHover={{ y: -2 }} className="p-5 bg-blue-50 dark:bg-blue-900/20 border-l-4 border-blue-600 rounded-lg">
-          <h3 className="text-lg font-semibold text-blue-900 dark:text-blue-300 mb-3 flex items-center gap-2">
+        <motion.div variants={fadeInUp} whileHover={{ y: -2 }} className="p-5 bg-primary-50 dark:bg-primary-900/20 border-l-4 border-primary rounded-lg">
+          <h3 className="text-lg font-semibold text-primary-900 dark:text-primary-300 mb-3 flex items-center gap-2">
             <Info className="w-5 h-5" />
             {t('cookies.catFunctionalTitle')}
           </h3>
@@ -127,19 +127,19 @@ export function CookiesContent() {
           <div className="overflow-x-auto">
             <table className="w-full text-sm border-collapse">
               <thead>
-                <tr className="border-b-2 border-blue-600 dark:border-blue-400">
-                  <th className="text-left py-2 pr-4 font-semibold text-blue-900 dark:text-blue-200">{t('cookies.tableCookieName')}</th>
-                  <th className="text-left py-2 pr-4 font-semibold text-blue-900 dark:text-blue-200">{t('cookies.tablePurpose')}</th>
-                  <th className="text-left py-2 font-semibold text-blue-900 dark:text-blue-200">{t('cookies.tableDuration')}</th>
+                <tr className="border-b-2 border-primary dark:border-primary-400">
+                  <th className="text-left py-2 pr-4 font-semibold text-primary-900 dark:text-primary-200">{t('cookies.tableCookieName')}</th>
+                  <th className="text-left py-2 pr-4 font-semibold text-primary-900 dark:text-primary-200">{t('cookies.tablePurpose')}</th>
+                  <th className="text-left py-2 font-semibold text-primary-900 dark:text-primary-200">{t('cookies.tableDuration')}</th>
                 </tr>
               </thead>
               <tbody className="text-gray-700 dark:text-gray-300">
-                <tr className="border-b border-blue-200 dark:border-blue-800">
+                <tr className="border-b border-primary-200 dark:border-primary-800">
                   <td className="py-2 pr-4 font-medium">{t('cookies.cookieLangName')}</td>
                   <td className="py-2 pr-4">{t('cookies.cookieLangPurp')}</td>
                   <td className="py-2">{t('cookies.cookieLangDur')}</td>
                 </tr>
-                <tr className="border-b border-blue-200 dark:border-blue-800">
+                <tr className="border-b border-primary-200 dark:border-primary-800">
                   <td className="py-2 pr-4 font-medium">{t('cookies.cookieThemeName')}</td>
                   <td className="py-2 pr-4">{t('cookies.cookieThemePurp')}</td>
                   <td className="py-2">{t('cookies.cookieThemeDur')}</td>

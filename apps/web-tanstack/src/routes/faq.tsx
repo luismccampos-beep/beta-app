@@ -1,6 +1,6 @@
 import { createFileRoute } from '@tanstack/react-router'
 import { useMemo, useState, useRef } from 'react'
-import { motion } from 'framer-motion'
+import { motion, AnimatePresence } from 'framer-motion'
 import { generatePageHead } from '@/lib/seo'
 import { createTranslationsHook } from '@/lib/i18n-provider'
 import { fadeInUp, staggerContainer } from '@/lib/animations'
@@ -8,6 +8,7 @@ import {
   HelpCircle, Search, Plane, CreditCard, XCircle,
   Shield, Globe, FileText, ChevronDown
 } from 'lucide-react'
+import { H1, H2, H3 } from '@/components/ui/typography'
 
 const useT = createTranslationsHook('faq')
 
@@ -23,12 +24,12 @@ interface FAQCategory {
 }
 
 const categoryMeta: Record<string, { icon: React.ComponentType<React.SVGProps<SVGSVGElement>>; gradient: string }> = {
-  booking: { icon: Plane, gradient: 'from-blue-600 to-blue-800' },
-  payment: { icon: CreditCard, gradient: 'from-purple-600 to-purple-800' },
-  cancellation: { icon: XCircle, gradient: 'from-orange-500 to-orange-700' },
-  safety: { icon: Shield, gradient: 'from-green-600 to-green-800' },
-  travel: { icon: Globe, gradient: 'from-cyan-600 to-cyan-800' },
-  general: { icon: FileText, gradient: 'from-gray-600 to-gray-800' },
+  booking: { icon: Plane, gradient: 'from-primary to-primary-700' },
+  payment: { icon: CreditCard, gradient: 'from-accent to-accent-700' },
+  cancellation: { icon: XCircle, gradient: 'from-orange to-orange-700' },
+  safety: { icon: Shield, gradient: 'from-green to-green-700' },
+  travel: { icon: Globe, gradient: 'from-primary-300 to-primary-500' },
+  general: { icon: FileText, gradient: 'from-gray-500 to-gray-700' },
 }
 
 export const Route = createFileRoute('/faq')({
@@ -114,7 +115,7 @@ function FAQPage() {
   }, [categories, searchQuery, activeCategory, searchTerms])
 
   const allCategories = useMemo(() => [
-    { id: 'all', title: t('allCategories'), icon: HelpCircle, gradient: 'from-blue-600 to-purple-600' },
+    { id: 'all', title: t('allCategories'), icon: HelpCircle, gradient: 'from-primary to-accent' },
     ...categories.map(cat => ({
       id: cat.id,
       title: cat.title,
@@ -124,11 +125,11 @@ function FAQPage() {
   ], [categories, t])
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 via-blue-50 to-purple-50 dark:from-gray-950 dark:via-gray-900 dark:to-gray-950 transition-colors">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 py-12 sm:py-20">
+    <div className="min-h-screen bg-gradient-to-br from-gray-50 via-primary-50 to-accent-50 dark:from-gray-950 dark:via-gray-900 dark:to-gray-950 transition-colors">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 py-12 sm:py-20">
         {/* Hero */}
         <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} className="text-center mb-10 sm:mb-14">
-          <h1 className="text-4xl sm:text-5xl font-black text-gray-950 dark:text-white mb-3">{t('pageTitle')}</h1>
+          <H1 className="mb-3" headingColor="default">{t('pageTitle')}</H1>
           <p className="text-lg text-gray-500 dark:text-gray-400 max-w-xl mx-auto">{t('pageSubtitle')}</p>
         </motion.div>
 
@@ -140,7 +141,7 @@ function FAQPage() {
             value={searchQuery}
             onChange={e => setSearchQuery(e.target.value)}
             placeholder={t('searchPlaceholder')}
-            className="w-full pl-12 pr-4 py-3.5 rounded-xl border-2 border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all shadow-lg"
+            className="w-full pl-12 pr-4 py-3.5 rounded-xl border-2 border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus-visible:ring-2 focus-visible:ring-primary focus-visible:border-transparent focus-visible:outline-none transition-all shadow-lg"
           />
         </motion.div>
 
@@ -156,7 +157,7 @@ function FAQPage() {
                 className={`flex items-center gap-1.5 px-3 sm:px-4 py-2 rounded-full text-xs sm:text-sm font-bold transition-all ${
                   isActive
                     ? `bg-gradient-to-r ${cat.gradient} text-white shadow-lg scale-105`
-                    : 'bg-white dark:bg-gray-800 text-gray-600 dark:text-gray-300 border border-gray-200 dark:border-gray-700 hover:border-blue-500 dark:hover:border-blue-500'
+                    : 'bg-white dark:bg-gray-800 text-gray-600 dark:text-gray-300 border border-gray-200 dark:border-gray-700 hover:border-primary dark:hover:border-primary'
                 }`}
               >
                 <Icon className="w-3.5 h-3.5" />{cat.title}
@@ -169,7 +170,7 @@ function FAQPage() {
         {filteredCategories.length > 0 ? (
           <motion.div variants={staggerContainer} initial="hidden" animate="visible" className="space-y-10">
             {filteredCategories.map(category => {
-              const meta = categoryMeta[category.id] ?? { icon: HelpCircle, gradient: 'from-gray-600 to-gray-800' }
+              const meta = categoryMeta[category.id] ?? { icon: HelpCircle, gradient: 'from-gray-500 to-gray-700' }
               const CatIcon = meta.icon
               return (
                 <motion.section key={category.id} variants={fadeInUp}>
@@ -177,14 +178,14 @@ function FAQPage() {
                     <div className={`w-9 h-9 rounded-lg bg-gradient-to-br ${meta.gradient} flex items-center justify-center`}>
                       <CatIcon className="w-4.5 h-4.5 text-white" />
                     </div>
-                    <h2 className="text-xl sm:text-2xl font-black text-gray-900 dark:text-white">{category.title}</h2>
+                    <H2 headingColor="default">{category.title}</H2>
                   </div>
                   <div className="space-y-3">
                     {category.faqs.map((faq, idx) => {
                       const faqId = `${category.id}-${idx}`
                       const isOpen = openFAQs.has(faqId)
                       return (
-                        <div key={faqId} className="border border-gray-200 dark:border-gray-700 rounded-xl overflow-hidden bg-white dark:bg-gray-900">
+                        <div key={faqId} className="border border-gray-200 dark:border-gray-700 rounded-2xl overflow-hidden bg-white dark:bg-gray-900 shadow-lg">
                           <button
                             ref={el => { if (el) faqRefs.current.set(faqId, el) }}
                             onClick={() => toggleFAQ(faqId)}
@@ -206,11 +207,21 @@ function FAQPage() {
                             <span className="pr-4">{faq.question}</span>
                             <ChevronDown className={`w-4 h-4 flex-shrink-0 text-gray-400 transition-transform ${isOpen ? 'rotate-180' : ''}`} />
                           </button>
-                          {isOpen && (
-                            <div className="px-5 pb-4 text-gray-600 dark:text-gray-400 leading-relaxed">
-                              {faq.answer}
-                            </div>
-                          )}
+                          <AnimatePresence initial={false}>
+                            {isOpen && (
+                              <motion.div
+                                initial={{ height: 0, opacity: 0 }}
+                                animate={{ height: 'auto', opacity: 1 }}
+                                exit={{ height: 0, opacity: 0 }}
+                                transition={{ duration: 0.2, ease: 'easeInOut' }}
+                                className="overflow-hidden"
+                              >
+                                <div className="px-5 pb-4 text-gray-600 dark:text-gray-400 leading-relaxed">
+                                  {faq.answer}
+                                </div>
+                              </motion.div>
+                            )}
+                          </AnimatePresence>
                         </div>
                       )
                     })}
@@ -228,9 +239,9 @@ function FAQPage() {
 
         {/* Still have questions CTA */}
         <div className="text-center mt-16 pt-12 border-t border-gray-200 dark:border-gray-800">
-          <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">{t('stillHaveQuestions')}</h3>
+          <H3 className="mb-2" headingColor="default">{t('stillHaveQuestions')}</H3>
           <p className="text-gray-500 dark:text-gray-400 mb-6">{t('ctaBody')}</p>
-          <a href="/contact" className="inline-block px-8 py-3 bg-blue-600 text-white font-bold rounded-xl hover:bg-blue-700 transition-colors shadow-lg shadow-blue-600/25">
+          <a href="/contact" className="inline-block px-8 py-3 bg-gradient-to-r from-brand-gray via-orange to-green text-white font-bold rounded-xl hover:opacity-90 transition-all shadow-lg shadow-orange-500/25">
             {t('contactUs')}
           </a>
         </div>

@@ -7,6 +7,8 @@ import { useMagnetic } from '@/hooks/useMagnetic'
 import { useRipple } from '@/hooks/useRipple'
 import { fadeInUp, staggerContainer } from '@/lib/animations'
 import { createTranslationsHook } from '@/lib/i18n-provider'
+import { H3 } from '@/components/ui/typography'
+import { Spinner } from '@/components/ui/spinner'
 import {
   Sparkles,
   Globe,
@@ -141,9 +143,9 @@ function FeatureCard({
                 <Icon className="w-8 h-8 text-primary dark:text-primary-300" />
               </div>
             </motion.div>
-            <h3 className="text-xl font-black text-gray-900 dark:text-white group-hover:text-primary dark:group-hover:text-primary-300 transition-colors" style={{ transform: 'translateZ(15px)' }}>
+            <H3 headingColor="default" className="text-xl group-hover:text-primary dark:group-hover:text-primary-300 transition-colors" style={{ transform: 'translateZ(15px)' }}>
               {title}
-            </h3>
+            </H3>
             <p className="text-gray-600 dark:text-gray-400 leading-relaxed" style={{ transform: 'translateZ(10px)' }}>
               {description}
             </p>
@@ -321,9 +323,7 @@ function HomePage() {
                 >
                   {isGenerating ? (
                     <>
-                      <motion.span animate={{ rotate: 360 }} transition={{ duration: 1, repeat: Infinity, ease: 'linear' }}>
-                        <Sparkles className="w-5 h-5" />
-                      </motion.span>
+                      <Spinner size="sm" />
                       {t('generatingDraft')}
                     </>
                   ) : (
@@ -394,9 +394,9 @@ function HomePage() {
             transition={{ duration: 0.8 }}
             className="text-center mb-16"
           >
-            <h3 className="text-4xl sm:text-5xl font-black text-gray-900 dark:text-white mb-6 tracking-tighter uppercase">
+            <H3 headingColor="default" className="text-4xl sm:text-5xl mb-6 uppercase">
               {t('features')}
-            </h3>
+            </H3>
             <p className="text-xl text-gray-500 dark:text-gray-400 max-w-2xl mx-auto font-medium">
               {t('featuresDesc')}
             </p>
@@ -421,9 +421,9 @@ function HomePage() {
         <div className="absolute inset-0 opacity-[0.07] pointer-events-none" style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, white 1px, transparent 0)', backgroundSize: '40px 40px' }} />
         <div className="max-w-5xl mx-auto relative z-10">
           <div className="text-center mb-16">
-            <h3 className="text-4xl sm:text-5xl font-black text-white mb-6 tracking-tighter uppercase">
+            <H3 headingColor="white" className="text-4xl sm:text-5xl mb-6 uppercase">
               {t('stats')}
-            </h3>
+            </H3>
           </div>
           <motion.div
             variants={staggerContainer}
@@ -454,9 +454,9 @@ function HomePage() {
             transition={{ duration: 0.8 }}
             className="text-center mb-16"
           >
-            <h3 className="text-4xl sm:text-5xl font-black text-gray-900 dark:text-white mb-6 tracking-tighter uppercase">
+            <H3 headingColor="default" className="text-4xl sm:text-5xl mb-6 uppercase">
               {t('testimonials')}
-            </h3>
+            </H3>
           </motion.div>
           <motion.div
             variants={staggerContainer}

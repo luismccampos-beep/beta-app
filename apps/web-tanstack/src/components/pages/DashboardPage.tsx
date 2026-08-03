@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { RippleButton } from '@/components/ui/ripple-button';
 import { useDashboardTranslations } from '@/lib/i18n-namespaces';
 import { cn } from '@/components/ui/utils';
+import { H1 } from '@/components/ui/typography';
 import { BookingsTab } from '@/components/dashboard/BookingsTab';
 import { HistoryTab } from '@/components/dashboard/HistoryTab';
 import { ProfileTab } from '@/components/dashboard/ProfileTab';
@@ -53,7 +54,7 @@ export function DashboardPage({ onBack, onNewBooking, onViewBooking, initialTab,
     <div className="min-h-screen bg-gradient-to-br from-gray-50 via-primary-50 to-accent-50 dark:from-gray-950 dark:via-gray-900 dark:to-gray-950 transition-colors relative overflow-hidden">
       {/* Background decorative elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute -top-[10%] -right-[10%] w-[40%] h-[40%] rounded-full bg-cyan-200/20 dark:bg-cyan-500/5 blur-[100px]" />
+        <div className="absolute -top-[10%] -right-[10%] w-[40%] h-[40%] rounded-full bg-accent-200/20 dark:bg-accent-500/5 blur-[100px]" />
         <div className="absolute -bottom-[10%] -left-[10%] w-[40%] h-[40%] rounded-full bg-primary-200/20 dark:bg-primary-500/5 blur-[100px]" />
       </div>
 
@@ -72,9 +73,9 @@ export function DashboardPage({ onBack, onNewBooking, onViewBooking, initialTab,
                 <Sparkles size={12} className="animate-pulse" />
                 {t('title')}
               </div>
-              <h1 className="text-5xl md:text-7xl font-black text-gray-950 dark:text-white tracking-tighter">
+              <H1 className="text-5xl md:text-7xl">
                 Olá, <span className="bg-gradient-to-r from-brand-gray via-orange to-green bg-clip-text text-transparent italic">Viajante</span>
-              </h1>
+              </H1>
               <p className="text-lg md:text-xl text-gray-600 dark:text-gray-400 font-medium">{t('subtitle')}</p>
             </div>
             {onNewBooking && (

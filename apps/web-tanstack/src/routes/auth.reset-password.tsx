@@ -7,7 +7,9 @@ import { Input } from '@/components/ui/input'
 import { Button } from '@/components/ui/button'
 import { Label } from '@/components/ui/label'
 import { Lock, Eye, EyeOff, CheckCircle2, AlertTriangle, Loader2 } from 'lucide-react'
+import { Spinner } from '@/components/ui/spinner'
 import { toast } from 'sonner'
+import { H4 } from '@/components/ui/typography'
 
 const useT = createTranslationsHook('auth')
 
@@ -80,9 +82,9 @@ function ResetPasswordPage() {
             <div className="w-16 h-16 mx-auto rounded-full bg-red-100 dark:bg-red-900/30 flex items-center justify-center">
               <AlertTriangle className="w-8 h-8 text-red-500" />
             </div>
-            <h2 className="text-2xl font-bold text-gray-900 dark:text-white">
+            <H4>
               {t('invalidResetLink') || 'Invalid Reset Link'}
-            </h2>
+            </H4>
             <p className="text-gray-500 dark:text-gray-400">
               {t('resetLinkExpired') || 'This reset link is invalid or has expired.'}
             </p>
@@ -106,9 +108,9 @@ function ResetPasswordPage() {
             <div className="w-16 h-16 mx-auto rounded-full bg-green-100 dark:bg-green-900/30 flex items-center justify-center">
               <CheckCircle2 className="w-8 h-8 text-green-600 dark:text-green-400" />
             </div>
-            <h2 className="text-2xl font-bold text-gray-900 dark:text-white">
+            <H4>
               {t('passwordResetSuccess') || 'Password Reset!'}
-            </h2>
+            </H4>
             <p className="text-gray-500 dark:text-gray-400">
               {t('passwordResetSuccessDesc') || 'Your password has been reset successfully.'}
             </p>
@@ -133,9 +135,9 @@ function ResetPasswordPage() {
             <div className="w-16 h-16 mx-auto rounded-full bg-primary-100 dark:bg-primary-900/30 flex items-center justify-center mb-4">
               <Lock className="w-8 h-8 text-primary dark:text-primary-300" />
             </div>
-            <h2 className="text-2xl font-bold text-gray-900 dark:text-white">
+            <H4>
               {t('resetPassword') || 'Reset Password'}
-            </h2>
+            </H4>
             <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">
               {t('chooseNewPassword') || 'Choose a new password for your account.'}
             </p>
@@ -193,7 +195,7 @@ function ResetPasswordPage() {
             >
               {isSubmitting ? (
                 <span className="flex items-center gap-2">
-                  <Loader2 className="w-5 h-5 animate-spin" />
+                  <Spinner />
                   {t('resetting') || 'Resetting...'}
                 </span>
               ) : (

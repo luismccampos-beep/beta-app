@@ -101,18 +101,18 @@ export function CancellationsContent() {
 
       {/* Section 3: Flights */}
       <motion.div variants={fadeInUp} className="flex items-center gap-3 mb-4 mt-8">
-        <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-blue-600 to-blue-800 flex items-center justify-center shadow-md flex-shrink-0">
+        <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-primary to-primary-700 flex items-center justify-center shadow-md flex-shrink-0">
           <Plane className="w-4 h-4 text-white" />
         </div>
         <h2 className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white">{t('cancellations.section3Title')}</h2>
       </motion.div>
       <motion.p variants={fadeInUp}>{t('cancellations.section3')}</motion.p>
-      <motion.div variants={fadeInUp} whileHover={{ x: 4 }} className="my-4 p-4 bg-blue-50 dark:bg-blue-900/20 border-l-4 border-blue-500 rounded-r">
-        <p className="font-semibold text-blue-900 dark:text-blue-300 flex items-center gap-2">
+      <motion.div variants={fadeInUp} whileHover={{ x: 4 }} className="my-4 p-4 bg-primary-50 dark:bg-primary-900/20 border-l-4 border-primary rounded-r">
+        <p className="font-semibold text-primary-900 dark:text-primary-300 flex items-center gap-2">
           <AlertCircle className="w-5 h-5" />
           {t('cancellations.forceMajeureTitle')}
         </p>
-        <p className="text-sm mt-2 text-blue-800 dark:text-blue-400">{t('cancellations.forceMajeureText')}</p>
+        <p className="text-sm mt-2 text-primary-800 dark:text-primary-400">{t('cancellations.forceMajeureText')}</p>
       </motion.div>
 
       {/* Section 4: How to Request */}
@@ -149,7 +149,7 @@ export function CancellationsContent() {
 
       {/* Section 5: FAQ */}
       <motion.div variants={fadeInUp} className="flex items-center gap-3 mb-4 mt-8">
-        <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-purple-600 to-purple-800 flex items-center justify-center shadow-md flex-shrink-0">
+        <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-accent to-accent-700 flex items-center justify-center shadow-md flex-shrink-0">
           <HelpCircle className="w-4 h-4 text-white" />
         </div>
         <h2 className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white">{t('cancellations.section5Title')}</h2>

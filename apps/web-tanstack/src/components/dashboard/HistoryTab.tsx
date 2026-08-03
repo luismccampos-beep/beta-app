@@ -1,5 +1,6 @@
 'use client';
 
+import { H3 } from '@/components/ui/typography';
 import { Badge } from '@/components/ui/badge';
 import { Card, CardContent } from '@/components/ui/card';
 import { Clock, MapPin } from 'lucide-react';
@@ -27,7 +28,7 @@ export function HistoryTab({ history, t }: HistoryTabProps) {
   if (history.length === 0) {
     return (
       <div>
-        <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">{t('pastTrips')}</h2>
+        <H3 headingColor="default" className="mb-6">{t('pastTrips')}</H3>
         <Card className="group overflow-hidden border-0 bg-white dark:bg-gray-800 shadow-md hover:shadow-lg ring-1 ring-gray-200/60 dark:ring-gray-700/60 transition-all duration-300">
           <CardContent className="p-12 text-center">
             <Clock className="w-16 h-16 text-gray-300 dark:text-gray-600 mx-auto mb-4" />
@@ -40,7 +41,7 @@ export function HistoryTab({ history, t }: HistoryTabProps) {
 
   return (
     <div>
-      <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">{t('pastTrips')}</h2>
+      <H3 headingColor="default" className="mb-6">{t('pastTrips')}</H3>
       <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
         {history.map((trip) => (
           <Card key={trip.id} className="group overflow-hidden border-0 bg-white dark:bg-gray-800 shadow-md hover:shadow-lg ring-1 ring-gray-200/60 dark:ring-gray-700/60 transition-all duration-300">

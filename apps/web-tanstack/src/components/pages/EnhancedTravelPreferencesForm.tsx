@@ -37,6 +37,7 @@ import {
   normalizePreferenceOptionIds,
 } from '@/lib/i18n/preferences-form-options';
 import { LanguageSwitcher } from '@/components/LanguageSwitcher';
+import { Spinner } from '@/components/ui/spinner';
 type FilterOption = { name: string; count: number };
 
 import type { TravelCatalogResponse } from '@/lib/api-client';
@@ -902,7 +903,7 @@ export function EnhancedTravelPreferencesForm({
           >
             {isProcessing ? (
               <>
-                <svg className="animate-spin h-4 w-4" viewBox="0 0 24 24" fill="none"><circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" /><path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" /></svg>
+                <Spinner size="sm" />
                 {t('preparingYourTrips')}
               </>
             ) : (
@@ -940,7 +941,7 @@ export function EnhancedTravelPreferencesForm({
             >
               {isProcessing ? (
                 <>
-                  <svg className="animate-spin h-4 w-4" viewBox="0 0 24 24" fill="none"><circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" /><path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" /></svg>
+                  <Spinner size="sm" />
                   {t('preparingYourTrips')}
                 </>
               ) : (

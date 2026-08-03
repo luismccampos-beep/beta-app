@@ -6,6 +6,7 @@ import {
   createRootRoute,
   useRouterState,
 } from '@tanstack/react-router'
+import { AnimatePresence, motion } from 'framer-motion'
 import { ThemeProvider } from '../components/ThemeProvider'
 import { CookieBanner } from '../components/CookieBanner'
 import { I18nProvider, createTranslationsHook } from '@/lib/i18n-provider'
@@ -15,8 +16,6 @@ import { AppHeader } from '../components/AppHeader'
 import { Toaster } from '../components/Toaster'
 import { locales, defaultLocale, isValidLocale, type Locale } from '@/i18n.config'
 import '../globals.css'
-// SCSS must come after globals.css so component styles can override Tailwind defaults
-import '../styles/main.scss'
 
 const SITE_URL = import.meta.env.VITE_BASE_URL || 'https://www.akmleva.pt'
 
@@ -84,13 +83,23 @@ function RootComponent() {
           <I18nProvider locale={locale}>
             <a
               href="#main-content"
-              className="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-[100] focus:px-4 focus:py-2 focus:bg-blue-600 focus:text-white focus:rounded-lg focus:shadow-lg focus:outline-none"
+              className="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-[100] focus:px-4 focus:py-2 focus:bg-primary focus:text-white focus:rounded-lg focus:shadow-lg focus:outline-none"
             >
               {t('skipToMainContent')}
             </a>
             <AppHeader currentPath={currentPath} />
             <main id="main-content" className="pb-16 sm:pb-0">
-              <Outlet />
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={currentPath}
+                  initial={{ opacity: 0, y: 8 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -8 }}
+                  transition={{ duration: 0.2, ease: 'easeInOut' }}
+                >
+                  <Outlet />
+                </motion.div>
+              </AnimatePresence>
             </main>
             <AppFooter />
             <AppBottomNav currentPath={currentPath} />

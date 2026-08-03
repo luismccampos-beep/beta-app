@@ -31,7 +31,7 @@ import { Badge } from '@/components/ui/badge';
 import {
   fadeInUp,
   staggerContainer,
-} from '@/lib/travel/animations';
+} from '@/lib/animations';
 import { AnimatedSection } from '@/components/ui/AnimatedSection';
 
 type PageType = 'terms' | 'privacy' | 'gdpr' | 'cancellations' | 'cookies';
@@ -47,9 +47,9 @@ const SECTION_ICONS: React.ComponentType<{ className?: string }>[] = [
 
 const SECTIONS_META = [
   { key: 'section1', color: 'from-primary to-primary-700' },
-  { key: 'section2', color: 'from-blue-600 to-blue-800' },
+  { key: 'section2', color: 'from-primary to-primary-700' },
   { key: 'section3', color: 'from-accent-600 to-accent-800' },
-  { key: 'section4', color: 'from-purple-600 to-purple-800' },
+  { key: 'section4', color: 'from-accent to-accent-700' },
   { key: 'section5', color: 'from-green-600 to-green-800' },
 ];
 
@@ -74,7 +74,7 @@ function TermsContent() {
               <CheckCircle2 className="w-3 h-3 mr-1" />
               {t('terms.legallyBinding') || 'Legally Binding'}
             </Badge>
-            <Badge className="bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 border-0">
+            <Badge className="bg-primary-100 dark:bg-primary-900 text-primary-800 dark:text-primary-200 border-0">
               <Scale className="w-3 h-3 mr-1" />
               {t('terms.jurisdiction') || 'Portuguese Law'}
             </Badge>
@@ -144,16 +144,16 @@ function PrivacyContent() {
   return (
     <div className="space-y-6 sm:space-y-8">
       {/* ── Intro Banner ─────────────────────────────────── */}
-      <div className="rounded-2xl border-2 border-blue-200 dark:border-blue-700 bg-white dark:bg-gray-800 shadow-xl overflow-hidden">
-        <div className="bg-gradient-to-r from-blue-600 to-accent h-1.5" />
+      <div className="rounded-2xl border-2 border-primary-200 dark:border-primary-700 bg-white dark:bg-gray-800 shadow-xl overflow-hidden">
+        <div className="bg-gradient-to-r from-primary to-accent h-1.5" />
         <div className="p-5 sm:p-8">
           <div className="flex items-center gap-2 mb-4">
-            <Shield className="w-5 h-5 sm:w-6 sm:h-6 text-blue-700 dark:text-blue-400" />
+            <Shield className="w-5 h-5 sm:w-6 sm:h-6 text-primary-700 dark:text-primary-400" />
             <h2 className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white">{t('privacy.title')}</h2>
           </div>
           <div className="flex flex-wrap items-center gap-3 mb-5">
             <span className="inline-flex items-center gap-1.5 text-sm text-gray-600 dark:text-gray-400">
-              <Calendar className="w-4 h-4 text-blue-700 dark:text-blue-400" />
+              <Calendar className="w-4 h-4 text-primary-700 dark:text-primary-400" />
               <span className="font-medium">{t('privacy.lastUpdated')}</span>
             </span>
             <Badge className="bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200 border-0">
@@ -161,7 +161,7 @@ function PrivacyContent() {
               {t('privacy.compliant') || 'GDPR Compliant'}
             </Badge>
           </div>
-          <div className="p-4 sm:p-5 bg-blue-50 dark:bg-blue-900/20 border-l-4 border-blue-600 rounded-lg">
+          <div className="p-4 sm:p-5 bg-primary-50 dark:bg-primary-900/20 border-l-4 border-primary rounded-lg">
             <p className="text-sm sm:text-base text-gray-900 dark:text-gray-200 leading-relaxed">{t('privacy.intro')}</p>
           </div>
         </div>
@@ -187,7 +187,7 @@ function PrivacyContent() {
                     <Icon className="w-4 h-4 sm:w-5 sm:h-5" />
                   </motion.span>
                   <span className="pt-1">
-                    <span className="text-blue-700 dark:text-blue-400 mr-1.5">{index + 1}.</span>
+                    <span className="text-primary-700 dark:text-primary-400 mr-1.5">{index + 1}.</span>
                     {t(`privacy.${meta.key}Title`)}
                   </span>
                 </h3>
@@ -202,7 +202,7 @@ function PrivacyContent() {
 
       {/* ── Commitment Strip ─────────────────────────────── */}
       <AnimatedSection>
-        <div className="rounded-2xl bg-gradient-to-r from-blue-600 to-accent text-white shadow-xl p-5 sm:p-7">
+        <div className="rounded-2xl bg-gradient-to-r from-primary to-accent text-white shadow-xl p-5 sm:p-7">
           <div className="flex items-start gap-3">
             <motion.div
               animate={{ rotate: [0, -5, 5, 0] }}
@@ -273,7 +273,7 @@ export function LegalPage({ pageType, onBack }: LegalPageProps) {
       case 'cookies':
         return (
           <div className={wrapperClass}>
-            <div className="bg-gradient-to-r from-blue-600 to-accent h-1.5" />
+        <div className="bg-gradient-to-r from-primary to-accent h-1.5" />
             <div className="p-5 sm:p-8">
               <CookiesContentComponent />
             </div>
@@ -357,7 +357,7 @@ export function LegalPage({ pageType, onBack }: LegalPageProps) {
             >
               <PageIcon className="w-7 h-7 sm:w-10 sm:h-10 text-gray-900" />
             </motion.div>
-            <h1 className="text-3xl sm:text-5xl md:text-6xl font-bold text-gray-900 dark:text-white mb-3 sm:mb-4">
+            <h1 className="text-3xl sm:text-5xl md:text-6xl font-black text-gray-900 dark:text-white mb-3 sm:mb-4">
               {getPageTitle()}
             </h1>
             <motion.div

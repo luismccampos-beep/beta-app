@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useEffect, useCallback, useMemo } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
 import { useI18n } from '@/lib/i18n-provider'
 import { Shield, Settings2, BarChart3, Megaphone, Cookie } from 'lucide-react'
 
@@ -156,12 +157,17 @@ export function CookieBanner() {
   return (
     <>
       {/* Banner */}
-      {visible && (
-        <div
-          className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 w-[calc(100%-2rem)] max-w-4xl bg-white/95 dark:bg-gray-900/95 backdrop-blur-md rounded-2xl shadow-2xl border border-gray-200 dark:border-gray-700"
-          role="dialog"
-          aria-label={tr.banner.title}
-        >
+      <AnimatePresence>
+        {visible && (
+          <motion.div
+            initial={{ opacity: 0, y: 20, scale: 0.95 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: 20, scale: 0.95 }}
+            transition={{ duration: 0.3, ease: 'easeOut' }}
+            className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 w-[calc(100%-2rem)] max-w-4xl bg-white/95 dark:bg-gray-900/95 backdrop-blur-md rounded-2xl shadow-2xl border border-gray-200 dark:border-gray-700"
+            role="dialog"
+            aria-label={tr.banner.title}
+          >
           <div className="flex flex-col items-start gap-3 sm:gap-4 px-4 sm:px-6 py-4 sm:py-5 sm:flex-row sm:items-center sm:gap-8 sm:py-4">
             <div className="flex shrink-0 items-center gap-4">
               <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-primary to-accent text-white shadow-lg" aria-hidden="true">
@@ -192,20 +198,34 @@ export function CookieBanner() {
                 {tr.banner.acceptAll}
               </button>
             </div>
-          </div>
-        </div>
-      )}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       {/* Customize Dialog */}
-      {dialogOpen && (
-        <div className="fixed inset-0 z-[60] flex items-center justify-center p-4">
+      <AnimatePresence>
+        {dialogOpen && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.2 }}
+            className="fixed inset-0 z-[60] flex items-center justify-center p-4"
+          >
           <button
             type="button"
             className="absolute inset-0 bg-black/40 backdrop-blur-sm"
             aria-label={tr.modal.cancel}
             onClick={() => setDialogOpen(false)}
           />
-          <div className="relative w-full max-w-md bg-white dark:bg-gray-900 rounded-2xl shadow-2xl border border-gray-200 dark:border-gray-700">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.95 }}
+            transition={{ duration: 0.2, ease: 'easeOut' }}
+            className="relative w-full max-w-md bg-white dark:bg-gray-900 rounded-2xl shadow-2xl border border-gray-200 dark:border-gray-700"
+          >
             <div className="p-6 border-b border-gray-200 dark:border-gray-700">
               <h2 className="text-lg font-bold text-gray-900 dark:text-white">{tr.modal.title}</h2>
               <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">{tr.modal.description}</p>
@@ -286,9 +306,10 @@ export function CookieBanner() {
                 </button>
               </div>
             </div>
-          </div>
-        </div>
-      )}
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </>
   )
 }

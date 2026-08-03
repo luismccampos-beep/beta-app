@@ -8,12 +8,13 @@ import {
   CheckCircle2,
   XCircle,
   Clock,
-  Loader2,
   ArrowRight,
   Mail,
   LogIn,
 } from 'lucide-react'
+import { Spinner } from '@/components/ui/spinner'
 import { toast } from 'sonner'
+import { H4 } from '@/components/ui/typography'
 
 const useT = createTranslationsHook('auth')
 
@@ -79,11 +80,11 @@ function VerifyEmailPage() {
         return (
           <div className="text-center space-y-4">
             <div className="w-16 h-16 mx-auto rounded-full bg-primary-100 dark:bg-primary-900/30 flex items-center justify-center">
-              <Loader2 className="w-8 h-8 text-primary dark:text-primary-300 animate-spin" />
+              <Spinner size="lg" className="text-primary dark:text-primary-300" />
             </div>
-            <h2 className="text-2xl font-bold text-gray-900 dark:text-white">
+            <H4>
               {t('verifyingEmail') || 'Verifying your email...'}
-            </h2>
+            </H4>
             <p className="text-gray-500 dark:text-gray-400">
               Please wait while we verify your email address.
             </p>
@@ -96,9 +97,9 @@ function VerifyEmailPage() {
             <div className="w-16 h-16 mx-auto rounded-full bg-green-100 dark:bg-green-900/30 flex items-center justify-center">
               <CheckCircle2 className="w-8 h-8 text-green-600 dark:text-green-400" />
             </div>
-            <h2 className="text-2xl font-bold text-gray-900 dark:text-white">
+            <H4>
               {t('emailVerified') || 'Email verified!'}
-            </h2>
+            </H4>
             <p className="text-gray-500 dark:text-gray-400">
               Your email has been successfully verified. You now have full access.
             </p>
@@ -118,9 +119,9 @@ function VerifyEmailPage() {
             <div className="w-16 h-16 mx-auto rounded-full bg-amber-100 dark:bg-amber-900/30 flex items-center justify-center">
               <Clock className="w-8 h-8 text-amber-600 dark:text-amber-400" />
             </div>
-            <h2 className="text-2xl font-bold text-gray-900 dark:text-white">
+            <H4>
               {t('linkExpired') || 'Link expired'}
-            </h2>
+            </H4>
             <p className="text-gray-500 dark:text-gray-400">
               This verification link has expired (valid for 24 hours). Please log in and request a new one.
             </p>
@@ -143,9 +144,9 @@ function VerifyEmailPage() {
             <div className="w-16 h-16 mx-auto rounded-full bg-green-100 dark:bg-green-900/30 flex items-center justify-center">
               <Mail className="w-8 h-8 text-green-600 dark:text-green-400" />
             </div>
-            <h2 className="text-2xl font-bold text-gray-900 dark:text-white">
+            <H4>
               {t('emailSent') || 'Email sent!'}
-            </h2>
+            </H4>
             <p className="text-gray-500 dark:text-gray-400">
               We&apos;ve sent a new verification email. Please check your inbox.
             </p>
@@ -167,11 +168,11 @@ function VerifyEmailPage() {
             <div className="w-16 h-16 mx-auto rounded-full bg-red-100 dark:bg-red-900/30 flex items-center justify-center">
               <XCircle className="w-8 h-8 text-red-600 dark:text-red-400" />
             </div>
-            <h2 className="text-2xl font-bold text-gray-900 dark:text-white">
+            <H4>
               {status === 'invalid'
                 ? (t('invalidLink') || 'Invalid link')
                 : (t('verificationFailed') || 'Verification failed')}
-            </h2>
+            </H4>
             <p className="text-gray-500 dark:text-gray-400">
               {status === 'invalid'
                 ? (t('invalidLinkDesc') || 'This verification link is invalid or missing.')

@@ -17,7 +17,7 @@ const getTravelStylesData = (t: (key: string) => string) => [
   { id: 'adventure', label: t('adventure'), emoji: '\u{1F392}', color: 'from-green-500 to-emerald-600' },
   { id: 'cultural', label: t('cultural'), emoji: '\u{1F3DB}\uFE0F', color: 'from-primary to-cyan-600' },
   { id: 'relaxation', label: t('relaxation'), emoji: '\u{1F334}', color: 'from-accent to-red-600' },
-  { id: 'business', label: t('business'), emoji: '\u{1F4BC}', color: 'from-primary to-blue-600' },
+  { id: 'business', label: t('business'), emoji: '\u{1F4BC}', color: 'from-primary to-primary-700' },
   { id: 'family', label: t('family'), emoji: '\u{1F468}\u200D\u{1F469}\u200D\u{1F467}', color: 'from-pink-500 to-rose-600' },
   { id: 'ecotourism', label: t('ecoTourism'), emoji: '\u{1F33F}', color: 'from-lime-500 to-green-600' },
   { id: 'foodie', label: t('foodie'), emoji: '\u{1F37D}\uFE0F', color: 'from-accent to-amber-600' },

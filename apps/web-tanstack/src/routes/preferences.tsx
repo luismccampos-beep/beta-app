@@ -2,6 +2,7 @@ import { createFileRoute, redirect } from '@tanstack/react-router'
 import { getSession } from '@/lib/auth/session'
 import { generatePageHead } from '@/lib/seo'
 import { createTranslationsHook } from '@/lib/i18n-provider'
+import { H1 } from '@/components/ui/typography'
 
 const useT = createTranslationsHook('preferences')
 
@@ -25,15 +26,15 @@ function PreferencesPage() {
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-gray-950">
       <main className="max-w-3xl mx-auto px-6 py-12">
-        <a href="/dashboard" className="text-sm text-blue-600 hover:text-blue-700 mb-4 inline-block">
+        <a href="/dashboard" className="text-sm text-primary dark:text-primary-300 hover:text-primary-700 dark:hover:text-primary-200 mb-4 inline-block">
           ← Dashboard
         </a>
-        <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-8">{t('title')}</h1>
+        <H1 className="mb-8">{t('title')}</H1>
         <p className="text-gray-600 dark:text-gray-400 mb-8">
           {t('description')}
         </p>
         <div className="mt-8">
-          <a href="/preferences/edit" className="px-6 py-3 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition-colors">
+          <a href="/preferences/edit" className="px-6 py-3 bg-gradient-to-r from-brand-gray via-orange to-green text-white font-semibold rounded-lg hover:opacity-90 transition-all">
             {t('editPreferences')}
           </a>
         </div>

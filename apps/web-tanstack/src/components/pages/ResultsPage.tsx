@@ -28,7 +28,7 @@ import {
 } from 'lucide-react';
 import { motion } from 'framer-motion';
 
-import { fadeInUp, staggerContainer } from '@/lib/travel/animations';
+import { fadeInUp, staggerContainer } from '@/lib/animations';
 import { EmptyState } from '@/components/ui/EmptyState';
 import { SkeletonCard } from '@/components/ui/SkeletonCard';
 import { filterOptions, TravelResult } from '@/components/data/mockResults';

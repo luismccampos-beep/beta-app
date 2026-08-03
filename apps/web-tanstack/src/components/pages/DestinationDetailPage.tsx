@@ -5,12 +5,13 @@ import { Link } from '@tanstack/react-router'
 import { motion, useScroll, useTransform } from 'framer-motion'
 import {
   MapPin, Globe, Star, Clock, ArrowLeft, Compass,
-  Hotel, Loader2, Sparkles, ArrowRight,
+  Hotel, Sparkles, ArrowRight,
   Languages, FileText, TrendingUp,
 } from 'lucide-react'
 import { fadeInUp, staggerContainer } from '@/lib/animations'
 import { useReducedMotion } from '@/lib/use-reduced-motion'
 import { Button } from '@/components/ui/button'
+import { Spinner } from '@/components/ui/spinner'
 import { Card, CardContent } from '@/components/ui/card'
 
 interface DestinationDetailPageProps {
@@ -107,7 +108,7 @@ export function DestinationDetailPage({ slug, locale, onBack }: DestinationDetai
         <div className="flex flex-col items-center gap-4">
           <div className="relative">
             <div className="absolute inset-0 rounded-full bg-primary/20 blur-xl animate-pulse" />
-            <Loader2 className="w-10 h-10 animate-spin text-primary relative z-10" />
+            <Spinner />
           </div>
           <p className="text-sm text-gray-500 dark:text-gray-400 font-medium animate-pulse">A carregar destino…</p>
         </div>
@@ -199,7 +200,7 @@ export function DestinationDetailPage({ slug, locale, onBack }: DestinationDetai
           <div className="absolute top-4 right-4 sm:top-6 sm:right-6">
             <button
               onClick={() => setShowVideo(v => !v)}
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-black/50 hover:bg-black/70 backdrop-blur-md border border-white/20 text-white text-sm font-medium transition-all"
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-black/50 hover:bg-black/70 backdrop-blur-md border border-white/20 text-white text-sm font-medium transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/50"
             >
               {showVideo ? (
                 <>
@@ -229,7 +230,7 @@ export function DestinationDetailPage({ slug, locale, onBack }: DestinationDetai
           <div className="max-w-5xl mx-auto">
             <button
               onClick={onBack}
-              className="inline-flex items-center gap-1.5 text-white/80 hover:text-white text-sm mb-4 font-medium transition-colors backdrop-blur-sm bg-white/10 px-3 py-1.5 rounded-lg border border-white/20"
+              className="inline-flex items-center gap-1.5 text-white/80 hover:text-white text-sm mb-4 font-medium transition-colors backdrop-blur-sm bg-white/10 px-3 py-1.5 rounded-lg border border-white/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/50"
             >
               <ArrowLeft className="w-4 h-4" />
               Todos os destinos

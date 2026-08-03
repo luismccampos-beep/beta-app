@@ -9,6 +9,8 @@ import { Input } from '@/components/ui/input';
 import { useDashboardTranslations as useTranslations } from '@/lib/i18n-namespaces';
 import { toast } from 'sonner';
 import { cn } from '@/components/ui/utils';
+import { H2 } from '@/components/ui/typography';
+import { Spinner } from '@/components/ui/spinner';
 import {
   mergeDashboardProfileFromSources,
   profileFieldsFromMeUser,
@@ -316,7 +318,7 @@ export function ProfileTab() {
       {/* Completeness indicator */}
       <div>
         <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-4">
-          <h2 className="text-4xl font-black text-gray-950 dark:text-white tracking-tighter uppercase">{t('personalInfo')}</h2>
+          <H2 headingColor="default" className="uppercase">{t('personalInfo')}</H2>
           <div className="flex gap-3">
             {isEditingProfile ? (
               <>
@@ -333,7 +335,7 @@ export function ProfileTab() {
                   } catch (err) { toast.error(err instanceof Error ? err.message : 'Failed to save'); }
                   finally { setIsSavingProfile(false); }
                 }} disabled={isSavingProfile || isLoadingProfile} className="gap-2 font-bold px-6 shadow-glow-primary">
-                  {isSavingProfile ? <><svg className="animate-spin h-4 w-4" viewBox="0 0 24 24"><circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none" /><path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" /></svg>{t('saving')}</> : <><Save className="w-4 h-4" />{t('saveProfile')}</>}
+                  {isSavingProfile ? <><Spinner size="sm" />{t('saving')}</> : <><Save className="w-4 h-4" />{t('saveProfile')}</>}
                 </Button>
               </>
             ) : (
@@ -413,7 +415,7 @@ export function ProfileTab() {
                 {fieldErrors.email && <p className="text-xs text-red-500 dark:text-red-400" role="alert">{fieldErrors.email}</p>}
                 {!emailVerified && !isEditingProfile && (
                   <Button variant="ghost" size="sm" onClick={handleResendVerification} disabled={isSendingVerification} className="gap-1.5 text-xs text-primary dark:text-primary-300 hover:bg-primary-50 dark:hover:bg-primary-900/30 p-0 h-auto -mt-0.5">
-                    {isSendingVerification ? <svg className="animate-spin h-3 w-3" viewBox="0 0 24 24"><circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none" /><path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" /></svg> : <Send className="w-3 h-3" />}{t('resendVerification')}
+                    {isSendingVerification ? <Spinner size="sm" /> : <Send className="w-3 h-3" />}{t('resendVerification')}
                   </Button>
                 )}
               </div>
@@ -473,7 +475,7 @@ export function ProfileTab() {
                 </div>
                 <div className="flex justify-end mt-3">
                   <Button size="sm" onClick={handlePasswordChange} disabled={isChangingPassword || !passwordData.current || !passwordData.newPass} className="gap-1.5 bg-gray-900 dark:bg-white dark:text-gray-900 hover:bg-gray-800 dark:hover:bg-gray-100 text-white">
-                    {isChangingPassword ? <><svg className="animate-spin h-3.5 w-3.5" viewBox="0 0 24 24"><circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none" /><path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" /></svg>{t('updating')}</> : <><Lock className="w-3.5 h-3.5" />{t('changePassword')}</>}
+                    {isChangingPassword ? <><Spinner size="sm" />{t('updating')}</> : <><Lock className="w-3.5 h-3.5" />{t('changePassword')}</>}
                   </Button>
                 </div>
               </div>
@@ -496,7 +498,7 @@ export function ProfileTab() {
                     </Button>
                   ) : (
                     <Button variant="outline" size="sm" onClick={handleStart2faSetup} disabled={isSettingUp2fa} className="gap-1.5 border-emerald-200 dark:border-emerald-800 text-emerald-600 dark:text-emerald-400 hover:bg-emerald-50 dark:hover:bg-emerald-950/30">
-                      {isSettingUp2fa ? <><svg className="animate-spin h-3.5 w-3.5" viewBox="0 0 24 24"><circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none" /><path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" /></svg>{t('loading')}</> : <><Check className="w-3.5 h-3.5" />{t('enable')}</>}
+                      {isSettingUp2fa ? <><Spinner size="sm" />{t('loading')}</> : <><Check className="w-3.5 h-3.5" />{t('enable')}</>}
                     </Button>
                   )}
                 </div>
@@ -520,7 +522,7 @@ export function ProfileTab() {
                     <div className="flex gap-2">
                       <Input value={twoFaCode} onChange={(e) => setTwoFaCode(e.target.value.replace(/\D/g, '').slice(0, 6))} placeholder={t('twoFaEnterCode')} className="text-sm h-9 max-w-[180px] font-mono tracking-widest" maxLength={6} />
                       <Button size="sm" onClick={handleEnable2fa} disabled={isVerifying2fa || twoFaCode.length !== 6} className="gap-1.5 bg-emerald-600 hover:bg-emerald-700 text-white">
-                        {isVerifying2fa ? <svg className="animate-spin h-3.5 w-3.5" viewBox="0 0 24 24"><circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none" /><path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" /></svg> : <Check className="w-3.5 h-3.5" />}{t('verify')}
+                        {isVerifying2fa ? <Spinner size="sm" /> : <Check className="w-3.5 h-3.5" />}{t('verify')}
                       </Button>
                     </div>
                   </div>
@@ -547,7 +549,7 @@ export function ProfileTab() {
                     <div className="flex gap-2">
                       <Input type="password" value={disable2faPassword} onChange={(e) => setDisable2faPassword(e.target.value)} placeholder={t('currentPassword')} className="text-sm h-9 max-w-[240px]" />
                       <Button size="sm" onClick={handleDisable2fa} disabled={isDisabling2fa || !disable2faPassword} className="gap-1.5 bg-red-600 hover:bg-red-700 text-white">
-                        {isDisabling2fa ? <svg className="animate-spin h-3.5 w-3.5" viewBox="0 0 24 24"><circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none" /><path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" /></svg> : <X className="w-3.5 h-3.5" />}{t('disable')}
+                        {isDisabling2fa ? <Spinner size="sm" /> : <X className="w-3.5 h-3.5" />}{t('disable')}
                       </Button>
                     </div>
                   </div>
@@ -590,7 +592,7 @@ export function ProfileTab() {
                           </div>
                           {!s.isCurrent && (
                             <Button variant="ghost" size="sm" onClick={() => handleRevokeSession(s.id)} disabled={isRevokingSession === s.id} className="gap-1 text-xs text-red-600 dark:text-red-400 hover:bg-red-50 dark:hover:bg-red-950/30 flex-shrink-0">
-                              {isRevokingSession === s.id ? <svg className="animate-spin h-3 w-3" viewBox="0 0 24 24"><circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none" /><path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" /></svg> : <LogOut className="w-3 h-3" />}{t('revoke')}
+                              {isRevokingSession === s.id ? <Spinner size="sm" /> : <LogOut className="w-3 h-3" />}{t('revoke')}
                             </Button>
                           )}
                         </div>

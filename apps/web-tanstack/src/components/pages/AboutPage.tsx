@@ -11,7 +11,7 @@ import { NatureIllustration, SecurityIllustration } from '@/components/ui/Featur
 import {
   fadeInUp,
   staggerContainer,
-} from '@/lib/travel/animations';
+} from '@/lib/animations';
 import { AppHeader } from '@/components/AppHeader';
 
 interface AboutPageProps {
@@ -286,8 +286,8 @@ export function AboutPage({ onBack }: AboutPageProps) {
             className="grid md:grid-cols-3 gap-8"
           >
             {[
-              { title: t('cert1Title'), name: t('cert1Name'), desc: t('cert1Desc'), color: 'from-blue-600 to-blue-800', href: null as string | null },
-              { title: t('cert2Title'), name: t('cert2Name'), desc: t('cert2Desc'), color: 'from-purple-600 to-purple-800', href: null as string | null },
+              { title: t('cert1Title'), name: t('cert1Name'), desc: t('cert1Desc'), color: 'from-primary to-primary-700', href: null as string | null },
+              { title: t('cert2Title'), name: t('cert2Name'), desc: t('cert2Desc'), color: 'from-accent to-accent-700', href: null as string | null },
               { title: t('cert3Title'), name: t('cert3Name'), desc: t('cert3Desc'), color: 'from-orange to-red-700', href: 'https://www.livroreclamacoes.pt/inicio/' }
             ].map((c, i) => (
               <motion.div key={i} variants={fadeInUp} whileHover={{ y: -4, boxShadow: '0 16px 32px rgba(0,0,0,0.1)' }}>
@@ -436,8 +436,8 @@ export function AboutPage({ onBack }: AboutPageProps) {
             <div className="p-6 sm:p-12 space-y-8">
               {[
                 { icon: GraduationCap, title: t('ceoBioSection1Title'), text: t('ceoBioSection1'), color: 'from-primary to-primary-700' },
-                { icon: Briefcase, title: t('ceoBioSection2Title'), text: t('ceoBioSection2'), color: 'from-blue-600 to-blue-800' },
-                { icon: Lightbulb, title: t('ceoBioSection3Title'), text: t('ceoBioSection3'), color: 'from-purple-600 to-purple-800' },
+                { icon: Briefcase, title: t('ceoBioSection2Title'), text: t('ceoBioSection2'), color: 'from-primary to-primary-700' },
+                { icon: Lightbulb, title: t('ceoBioSection3Title'), text: t('ceoBioSection3'), color: 'from-accent to-accent-700' },
                 { icon: Rocket, title: t('ceoBioSection4Title'), text: t('ceoBioSection4'), color: 'from-accent to-accent-700' }
               ].map((section, i) => (
                 <div key={i} className="space-y-4">
