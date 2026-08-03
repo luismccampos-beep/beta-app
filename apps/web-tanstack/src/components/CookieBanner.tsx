@@ -164,7 +164,7 @@ export function CookieBanner() {
         >
           <div className="flex flex-col items-start gap-3 sm:gap-4 px-4 sm:px-6 py-4 sm:py-5 sm:flex-row sm:items-center sm:gap-8 sm:py-4">
             <div className="flex shrink-0 items-center gap-4">
-              <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-blue-600 to-purple-600 text-white shadow-lg" aria-hidden="true">
+              <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-primary to-accent text-white shadow-lg" aria-hidden="true">
                 <Cookie className="h-6 w-6" />
               </div>
               <div>
@@ -187,7 +187,7 @@ export function CookieBanner() {
               </button>
               <button
                 onClick={handleAcceptAll}
-                className="px-4 sm:px-6 py-1.5 sm:py-2 text-xs sm:text-sm font-bold text-white bg-blue-600 rounded-lg hover:bg-blue-700 transition-colors shadow-lg shadow-blue-600/25"
+                className="px-4 sm:px-6 py-1.5 sm:py-2 text-xs sm:text-sm font-bold text-white bg-primary rounded-lg hover:bg-primary-700 transition-colors shadow-lg shadow-primary/25"
               >
                 {tr.banner.acceptAll}
               </button>
@@ -217,14 +217,14 @@ export function CookieBanner() {
                   key={key}
                   className={`flex items-center justify-between rounded-lg border p-3 transition-colors ${
                     prefs[key]
-                      ? 'border-blue-200 dark:border-blue-800 bg-blue-50 dark:bg-blue-900/20'
+                      ? 'border-primary-200 dark:border-primary-800 bg-primary-50 dark:bg-primary-900/20'
                       : 'border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800/50'
                   }`}
                 >
                   <div className="flex items-center gap-3">
                     <span className={`flex h-8 w-8 items-center justify-center rounded-full ${
                       prefs[key]
-                        ? 'bg-blue-100 dark:bg-blue-900/50 text-blue-600 dark:text-blue-400'
+                        ? 'bg-primary-100 dark:bg-primary-900/50 text-primary dark:text-primary-300'
                         : 'bg-gray-200 dark:bg-gray-700 text-gray-500 dark:text-gray-400'
                     }`}>
                       <Icon className="h-4 w-4" />
@@ -248,9 +248,9 @@ export function CookieBanner() {
                     onClick={() => togglePref(key)}
                     disabled={alwaysOn}
                     aria-label={tr.categories[key].name}
-                    className={`relative w-9 h-5 rounded-full transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 ${
+                    className={`relative w-9 h-5 rounded-full transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-primary ${
                       prefs[key]
-                        ? 'bg-blue-600'
+                        ? 'bg-primary'
                         : 'bg-gray-200 dark:bg-gray-700'
                     } ${alwaysOn ? 'opacity-50 cursor-not-allowed' : ''}`}
                   >
@@ -280,7 +280,7 @@ export function CookieBanner() {
                 </button>
                 <button
                   onClick={handleSave}
-                  className="px-4 py-2 text-sm font-medium text-white bg-blue-600 rounded-lg hover:bg-blue-700 transition-colors"
+                  className="px-4 py-2 text-sm font-medium text-white bg-primary rounded-lg hover:bg-primary-700 transition-colors"
                 >
                   {tr.modal.save}
                 </button>

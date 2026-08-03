@@ -45,9 +45,9 @@ function AboutPage() {
   ]
 
   const certs = [
-    { title: t('cert1Title'), name: t('cert1Name'), desc: t('cert1Desc'), gradient: 'from-blue-600 to-blue-800', href: null as string | null },
-    { title: t('cert2Title'), name: t('cert2Name'), desc: t('cert2Desc'), gradient: 'from-purple-600 to-purple-800', href: null as string | null },
-    { title: t('cert3Title'), name: t('cert3Name'), desc: t('cert3Desc'), gradient: 'from-orange-500 to-red-700', href: 'https://www.livroreclamacoes.pt/inicio/' },
+    { title: t('cert1Title'), name: t('cert1Name'), desc: t('cert1Desc'), gradient: 'from-blue-600 to-blue-800', href: null as string | null, logo: '/about/partners/turismodeportugal.png' },
+    { title: t('cert2Title'), name: t('cert2Name'), desc: t('cert2Desc'), gradient: 'from-purple-600 to-purple-800', href: null as string | null, logo: '/about/partners/sanjotec.png' },
+    { title: t('cert3Title'), name: t('cert3Name'), desc: t('cert3Desc'), gradient: 'from-orange-500 to-red-700', href: 'https://www.livroreclamacoes.pt/inicio/', logo: null as string | null },
   ]
 
   return (
@@ -150,9 +150,26 @@ function AboutPage() {
               <p className="text-lg text-gray-500 dark:text-gray-400">{t('leadershipSubtitle')}</p>
               <div className="bg-white dark:bg-gray-900 rounded-2xl border border-gray-200 dark:border-gray-700 p-8 shadow-lg">
                 <div className="flex flex-col sm:flex-row items-start gap-6">
-                  <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-2xl bg-gradient-to-br from-blue-600 to-purple-600 flex items-center justify-center text-white font-black text-3xl shadow-lg flex-shrink-0">
-                    LC
-                  </div>
+                  <img
+                    src="/about/luiscampos.webp"
+                    alt={t('ceoName')}
+                    className="w-20 h-20 sm:w-24 sm:h-24 rounded-2xl object-cover shadow-lg flex-shrink-0"
+                    onError={(e) => {
+                      const img = e.currentTarget
+                      if (!img.src.endsWith('/about/luiscampos.svg.png')) {
+                        img.src = '/about/luiscampos.svg.png'
+                      } else {
+                        img.style.display = 'none'
+                        const parent = img.parentElement
+                        if (parent) {
+                          const div = document.createElement('div')
+                          div.className = 'w-20 h-20 sm:w-24 sm:h-24 rounded-2xl bg-gradient-to-br from-blue-600 to-purple-600 flex items-center justify-center text-white font-black text-3xl shadow-lg flex-shrink-0'
+                          div.textContent = 'LC'
+                          parent.replaceChild(div, img)
+                        }
+                      }
+                    }}
+                  />
                   <div className="space-y-3 flex-1">
                     <div>
                       <h3 className="text-xl sm:text-2xl font-black text-gray-900 dark:text-white">{t('ceoName')}</h3>
@@ -199,6 +216,14 @@ function AboutPage() {
                     <div className={`inline-block px-4 py-1.5 rounded-full bg-gradient-to-r ${c.gradient} text-white text-[10px] font-black uppercase tracking-wider mb-4 shadow-md`}>
                       {c.title}
                     </div>
+                    {c.logo && (
+                      <img
+                        src={c.logo}
+                        alt={c.name}
+                        className="h-10 w-auto object-contain mb-4"
+                        onError={(e) => { (e.currentTarget as HTMLImageElement).style.display = 'none' }}
+                      />
+                    )}
                     <h3 className="text-lg font-black text-gray-900 dark:text-white mb-2">{c.name}</h3>
                     <p className="text-sm text-gray-500 dark:text-gray-400 mb-6 leading-relaxed">{c.desc}</p>
                     <div className="flex items-center gap-2 pt-4 border-t border-gray-100 dark:border-gray-800">
@@ -258,7 +283,26 @@ function AboutPage() {
           <div className="relative w-full max-w-2xl max-h-[90vh] overflow-y-auto bg-white dark:bg-gray-900 rounded-2xl shadow-2xl border border-gray-200 dark:border-gray-700">
             <div className="sticky top-0 bg-gradient-to-r from-blue-600 via-purple-500 to-orange-500 p-6 flex items-center justify-between z-10">
               <div className="flex items-center gap-4">
-                <div className="w-14 h-14 rounded-xl bg-white/20 flex items-center justify-center text-white font-black text-2xl">LC</div>
+                <img
+                  src="/about/luiscampos.webp"
+                  alt={t('ceoName')}
+                  className="w-14 h-14 rounded-xl object-cover"
+                  onError={(e) => {
+                    const img = e.currentTarget
+                    if (!img.src.endsWith('/about/luiscampos.svg.png')) {
+                      img.src = '/about/luiscampos.svg.png'
+                    } else {
+                      img.style.display = 'none'
+                      const parent = img.parentElement
+                      if (parent) {
+                        const div = document.createElement('div')
+                        div.className = 'w-14 h-14 rounded-xl bg-white/20 flex items-center justify-center text-white font-black text-2xl'
+                        div.textContent = 'LC'
+                        parent.replaceChild(div, img)
+                      }
+                    }
+                  }}
+                />
                 <div>
                   <h2 className="text-xl font-black text-white">{t('ceoBioTitle')}</h2>
                   <p className="text-white/80 text-sm font-bold">{t('ceoName')} · {t('ceoTitle')}</p>

@@ -11,7 +11,6 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Checkbox } from '@/components/ui/checkbox';
 import { useLocale as useI18nLocale } from '@/lib/i18n-provider';
 import { useAuthTranslations } from '@/lib/i18n-namespaces';
-import { AppHeader } from '@/components/AppHeader';
 type CheckedState = boolean | 'indeterminate';
 import {
   Mail,
@@ -181,7 +180,7 @@ export function AuthPage({ onLoginSuccess, onBackToHome, onNavigateToLegal }: Au
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-primary-50 via-cyan-50 to-accent-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 transition-colors flex flex-col">
-      <AppHeader showBack={false} onBack={onBackToHome} />
+      {/* AppHeader is rendered globally by __root.tsx */}
 
       {/* Main Content */}
       <div className="flex-1 w-full max-w-6xl mx-auto px-4 py-6 grid md:grid-cols-2 gap-8 items-center">

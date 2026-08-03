@@ -1,5 +1,6 @@
 import { createFileRoute, useRouter } from '@tanstack/react-router'
 import { ResultsPage } from '@/components/pages/ResultsPage'
+import { generatePageHead } from '@/lib/seo'
 
 function ResultsRoute() {
   const router = useRouter()
@@ -21,11 +22,10 @@ function ResultsRoute() {
 }
 
 export const Route = createFileRoute('/results')({
-  head: () => ({
-    meta: [
-      { title: 'Resultados — AKMLEVA' },
-      { name: 'description', content: 'Resultados de pesquisa de viagens.' },
-    ],
+  head: () => generatePageHead({
+    title: 'Resultados',
+    description: 'Resultados de pesquisa de viagens personalizadas.',
+    path: '/results',
   }),
   component: ResultsRoute,
 })

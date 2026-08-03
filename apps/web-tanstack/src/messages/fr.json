@@ -129,7 +129,16 @@
       "cancellations": "Politique d'annulation",
       "cookies": "Politique des Cookies"
     },
-    "footerCopyright": "© 2026 AKMLEVA. Tous droits réservés."
+    "footerCopyright": "© 2026 AKMLEVA. Tous droits réservés.",
+    "heroInteractive": "Où voulez-vous aller ?",
+    "heroInteractivePlaceholder": "Ex: Tokyo, Paris, New York...",
+    "generateDraft": "Générer un Brouillon",
+    "generatingDraft": "Génération en cours...",
+    "bookingIntegration": "Réservation Intégrée",
+    "bookingIntegrationDesc": "Partenariat avec GEA (Accès à tous les opérateurs de voyage au Portugal) pour garantir les meilleurs tarifs.",
+    "visualPreview": "Voir Comment Ê Marche",
+    "visualPreviewDesc": "Voir un exemple d’itéraire généré par notre IA",
+    "sampleItinerary": "Exemple : 3 Jours à Tokyo"
   },
   "about": {
     "header": {
@@ -138,6 +147,8 @@
       "back": "Retour"
     },
     "pageTitle": "À Propos",
+    "heroTitle": "Notre Mission Est",
+    "heroHighlight": "Inspirer",
     "metaTitle": "À Propos | AKMLEVA",
     "metaDescription": "Découvrez l'histoire d'AKMLEVA, notre équipe, nos valeurs, certifications et partenaires. Une agence de voyage portugaise avec intelligence artificielle.",
     "ourStoryTitle": "Notre Histoire",
@@ -1266,7 +1277,80 @@
             "days": "10+ nuits"
           }
         }
+      },
+      "travelStyles": {
+        "luxury": "Luxe",
+        "adventure": "Aventure",
+        "cultural": "Culturel",
+        "relaxation": "Détente",
+        "business": "Affaires",
+        "family": "Famille",
+        "ecoTourism": "Écotourisme",
+        "foodie": "Gastronomie"
       }
+    },
+    "selectNationality": "Sélectionner la nationalité…",
+    "preferredCountries": "Pays Préférés",
+    "preferredContinents": "Continents Préférés",
+    "searchCountries": "Rechercher des pays…",
+    "searchContinents": "Rechercher des continents…",
+    "noCountriesFound": "Aucun pays trouvé.",
+    "noContinentsFound": "Aucun continent trouvé.",
+    "destinationsCount": "destinations",
+    "selectCountries": "Sélectionner des pays…",
+    "selectContinents": "Sélectionner des continents…",
+    "searchDestinations": "Rechercher des destinations…",
+    "selected": "sélectionné",
+    "travelerType": {
+      "label": "Type de Voyageur",
+      "default": "Voyageur polyvalent",
+      "luxury": "Chercheur de luxe",
+      "business": "Voyageur d’affaires",
+      "adventure": "Explorateur aventureux",
+      "family": "Voyageur en famille"
+    },
+    "budgetCategory": {
+      "label": "Catégorie de budget",
+      "standard": "Standard",
+      "premium": "Premium",
+      "luxury": "Luxe",
+      "ultraLuxury": "Ultra luxe"
+    },
+    "range": "fourchette",
+    "destination": "Destination",
+    "review": "Aperçu",
+    "whereDoYouWantToGo": "Où voulez-vous aller ?",
+    "chooseStyleAndDestinations": "Choisissez votre style de voyage et vos destinations préférées",
+    "whatsYourBudget": "Quel est votre budget ?",
+    "chooseBudgetProfile": "Choisissez votre profil de budget et fourchette",
+    "readyToSeeResults": "Prêt à voir vos résultats !",
+    "reviewYourChoices": "Vérifiez vos choix avant de soumettre",
+    "seeMyTrips": "Voir mes voyages",
+    "preparingYourTrips": "Préparation de vos voyages…",
+    "skipThisStep": "Passer cette étape",
+    "fieldsFilled": "champs remplis",
+    "generateInsights": "Générer des aperçus",
+    "aiInsightsTitle": "Aperçus IA",
+    "aiInsightsHint": "Cliquez pour générer des recommandations personnalisées",
+    "generatingInsights": "Génération des aperçus…",
+    "refinePreferences": "+ Filtres · Affiner les préférences",
+    "hideAdvanced": "Masquer les filtres avancés",
+    "typeAnyCityOrAirport": "Tapez une ville ou un aéroport…",
+    "noAirportsFound": "Aucun aéroport trouvé.",
+    "continents": "Continents",
+    "countries": "Pays",
+    "selectAtLeastOneStyle": "Choisissez au moins 1 style de voyage",
+    "selectBudget": "Choisissez un budget",
+    "selectAtLeastOneDestination": "Choisissez au moins 1 destination",
+    "notSet": "Non défini",
+    "destinations": "Destinations",
+    "stepNavigation": "Navigation par étapes",
+    "validationError": "Erreur de validation",
+    "budgetChips": {
+      "economico": "Budget",
+      "conforto": "Confort",
+      "premium": "Premium",
+      "luxo": "Luxe"
     }
   },
   "auth": {
@@ -1662,7 +1746,43 @@
       "unescoIchHint": "Patrimoine culturel immatériel (ICH).",
       "culturalTitle": "Culture et activités",
       "culturalHint": "UNESCO, Wikivoyage et (futur) APIs musées nationaux / OSM.",
-      "culturalSourcesHint": "Prochaines sources pour {sources} : jeux de données nationaux."
+      "culturalSourcesHint": "Prochaines sources pour {sources} : jeux de données nationaux.",
+      "budgetFromLiveApi": "Prix locaux (API du Coût de la Vie)."
+    },
+    "itinerary": {
+      "back": "Retour",
+      "title": "Itinéraire : {destination}",
+      "metaTitle": "Itinéraire : {destination} | AKMLEVA",
+      "metaDescription": "Itinéraire de voyage personnalisé pour {destination}.",
+      "subtitle": "Itinéraire personnalisé généré par IA",
+      "duration": "Durée",
+      "budget": "Budget Estimé",
+      "destination": "Destination",
+      "bestTime": "Meilleure Période",
+      "duration_days": "{count} {count, plural, one{jour} other{jours}}",
+      "budget_value": "{value, number, ::currency/EUR}",
+      "day": "Jour {day}: {title}",
+      "activities": "{count} {count, plural, one{activité prévue} other{activités prévues}}",
+      "activityDuration": "{minutes}min",
+      "activityCost": "{value, number, ::currency/EUR}",
+      "ctaTitle": "Vous aimé cet itinéraire ?",
+      "ctaDesc": "Personnalisez cet itinéraire selon vos préférences.",
+      "ctaButton": "Personnaliser et Réserver",
+      "errorTitle": "Itinéraire Introuvable",
+      "errorDesc": "L’itinéraire que vous recherchez n’existe pas ou a été supprimé.",
+      "errorButton": "Explorer les Destinations",
+      "loadingTitle": "Génération de votre itinéraire…",
+      "loadingDesc": "L’IA crée l’itinéraire parfait pour vous.",
+      "budgetBreakdown": "Détail du Budget",
+      "budgetAccommodation": "Hébergement",
+      "budgetMeals": "Repas",
+      "budgetActivities": "Activités",
+      "budgetTransport": "Transport",
+      "budgetOther": "Autres",
+      "shareTitle": "Partager l’Itinéraire",
+      "shareCopied": "Lien copié !",
+      "save": "Enregistrer",
+      "print": "Imprimer"
     }
   },
   "preferences": {

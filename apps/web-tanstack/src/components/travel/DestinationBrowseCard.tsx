@@ -154,7 +154,8 @@ export function DestinationBrowseCard({ item, href, labels }: DestinationBrowseC
         </div>
         <Button
           asChild
-          className="w-full gap-1.5 min-h-10 bg-gray-900 dark:bg-white dark:text-gray-900 hover:bg-gray-800 dark:hover:bg-gray-100 text-white text-sm font-medium shadow-sm transition-all hover:shadow-md"
+          variant="brand"
+          className="w-full gap-1.5 min-h-10 text-sm font-medium shadow-sm transition-all hover:shadow-md"
         >
             <Link to={href}>
             {labels.viewDestination}

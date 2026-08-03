@@ -28,7 +28,6 @@ import {
   Scale
 } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
-import { AppHeader } from '@/components/AppHeader';
 import {
   fadeInUp,
   staggerContainer,
@@ -330,10 +329,10 @@ export function LegalPage({ pageType, onBack }: LegalPageProps) {
         <div className="absolute inset-0 opacity-[0.05] dark:opacity-[0.03]" style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, currentColor 1px, transparent 0)', backgroundSize: '40px 40px' }} />
       </div>
 
-      <AppHeader showBack onBack={onBack} />
+      {/* AppHeader is rendered globally by __root.tsx */}
 
       {/* Scroll Progress Bar */}
-      <div className="sticky top-0 left-0 w-full h-1 bg-gray-200 dark:bg-gray-700 z-50">
+      <div className="sticky top-0 left-0 w-full h-1 bg-gray-200 dark:bg-gray-700 z-40">
         <div
           className="h-full bg-gradient-to-r from-primary to-accent transition-all duration-150"
           style={{ width: `${scrollProgress}%` }}

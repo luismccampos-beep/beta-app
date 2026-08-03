@@ -4,7 +4,6 @@ import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { RippleButton } from '@/components/ui/ripple-button';
 import { useDashboardTranslations } from '@/lib/i18n-namespaces';
-import { AppHeader } from '@/components/AppHeader';
 import { cn } from '@/components/ui/utils';
 import { BookingsTab } from '@/components/dashboard/BookingsTab';
 import { HistoryTab } from '@/components/dashboard/HistoryTab';
@@ -58,7 +57,7 @@ export function DashboardPage({ onBack, onNewBooking, onViewBooking, initialTab,
         <div className="absolute -bottom-[10%] -left-[10%] w-[40%] h-[40%] rounded-full bg-primary-200/20 dark:bg-primary-500/5 blur-[100px]" />
       </div>
 
-      <AppHeader showBack onBack={onBack} showLogout={!!onLogout} onLogout={onLogout} />
+      {/* AppHeader is rendered globally by __root.tsx */}
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-16 pb-24 sm:pb-16 relative z-10">
         {/* Hero */}

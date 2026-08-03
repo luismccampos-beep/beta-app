@@ -2,6 +2,7 @@ import { createFileRoute } from '@tanstack/react-router'
 import { z } from 'zod'
 import { prisma } from '@akmleva/db'
 import { checkRateLimit, publicRatelimit } from '@/lib/rate-limit'
+import { MOCK_DESTINATIONS, MOCK_COUNTRIES } from '@/lib/travel/mock-destinations'
 
 const searchSchema = z.object({
   page: z.coerce.number().default(1),
@@ -46,38 +47,68 @@ export const Route = createFileRoute('/api/travel/v1/destinations/')({
           ? { custoDeVida: 'asc' as const }
           : { nome: 'asc' as const }
 
-        const [destinations, total] = await Promise.all([
-          prisma.wvDestination.findMany({
-            where,
-            orderBy,
-            skip,
-            take: limit,
-            select: {
-              id: true,
-              slug: true,
-              nome: true,
-              pais: true,
-              paisCode: true,
-              continente: true,
-              imagemUrl: true,
-              resumo: true,
-              custoDeVida: true,
-              hotelCount: true,
-            },
-          }),
-          prisma.wvDestination.count({ where }),
-        ])
+        try {
+          const [destinations, total] = await Promise.all([
+            prisma.wvDestination.findMany({
+              where,
+              orderBy,
+              skip,
+              take: limit,
+              select: {
+                id: true,
+                slug: true,
+                nome: true,
+                pais: true,
+                paisCode: true,
+                continente: true,
+                imagemUrl: true,
+                resumo: true,
+                custoDeVida: true,
+                hotelCount: true,
+              },
+            }),
+            prisma.wvDestination.count({ where }),
+          ])
 
-        return Response.json({
-          ok: true,
-          destinations,
-          pagination: {
-            page,
-            limit,
+          return Response.json({
+            ok: true,
+            items: destinations,
             total,
-            totalPages: Math.ceil(total / limit),
-          },
-        })
+            pagination: { page, limit, total, totalPages: Math.ceil(total / limit) },
+          })
+        } catch {
+          let items = MOCK_DESTINATIONS.map((d) => ({
+            id: d.id,
+            slug: d.slug,
+            nome: d.nome,
+            pais: d.pais,
+            paisCode: d.paisCode,
+            continente: d.continente,
+            imagemUrl: d.imagemUrl,
+            resumo: d.resumo,
+            custoDeVida: d.custoDeVida,
+            hotelCount: d.hotelCount,
+          }))
+
+          if (q) {
+            const lower = q.toLowerCase()
+            items = items.filter((d) => d.nome.toLowerCase().includes(lower) || d.slug.toLowerCase().includes(lower))
+          }
+          if (country) items = items.filter((d) => d.pais === country)
+          if (continent) items = items.filter((d) => d.continente === continent)
+          if (sort === 'cost') items.sort((a, b) => (a.custoDeVida ?? 0) - (b.custoDeVida ?? 0))
+          else items.sort((a, b) => a.nome.localeCompare(b.nome))
+
+          const total = items.length
+          const paged = items.slice(skip, skip + limit)
+
+          return Response.json({
+            ok: true,
+            items: paged,
+            total,
+            pagination: { page, limit, total, totalPages: Math.ceil(total / limit) },
+          })
+        }
       },
     },
   },

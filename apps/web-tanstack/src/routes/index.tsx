@@ -39,7 +39,7 @@ function AnimatedTitle({ text, as: tag = 'h2' }: { text: string; as?: 'h1' | 'h2
   const MotionTag = tag === 'h1' ? motion.h1 : motion.h2
   return (
     <MotionTag
-      className="text-5xl md:text-7xl lg:text-8xl font-black text-gray-900 dark:text-white leading-[1.1] tracking-tighter text-balance"
+      className="text-5xl md:text-7xl lg:text-8xl font-black text-gray-950 dark:text-white leading-[1.1] tracking-tighter text-balance"
       aria-label={text}
     >
       {words.map((word, wi) => (
@@ -99,7 +99,7 @@ function StatCard({
             opacity: glareOpacity,
           }}
         />
-        <div className="text-center group p-8 bg-gradient-to-br from-blue-600/40 to-purple-600/40 dark:from-blue-500/30 dark:to-purple-500/30 border border-white/10 dark:border-white/5 rounded-3xl hover:from-blue-600/50 hover:to-purple-600/50 dark:hover:from-blue-500/40 dark:hover:to-purple-500/40 transition-all duration-500">
+        <div className="text-center group p-8 bg-gradient-to-br from-primary/80 via-primary-600/60 to-accent/60 dark:from-primary/40 dark:to-accent/30 border border-white/10 dark:border-white/5 rounded-3xl hover:from-primary/90 hover:to-accent/80 dark:hover:from-primary/50 dark:hover:to-accent/40 transition-all duration-500">
           <Icon className="w-14 h-14 mx-auto mb-6 text-white group-hover:scale-110 transition-all duration-500" />
           <div className="text-6xl font-black text-white mb-3 tracking-tighter">
             {value}{suffix}
@@ -137,11 +137,11 @@ function FeatureCard({
           />
           <div className="relative z-[5] text-center space-y-4">
             <motion.div style={{ transform: 'translateZ(30px)' }}>
-              <div className="w-16 h-16 mx-auto rounded-2xl bg-gradient-to-br from-blue-100 to-purple-100 dark:from-blue-900/30 dark:to-purple-900/30 flex items-center justify-center">
-                <Icon className="w-8 h-8 text-blue-600 dark:text-blue-400" />
+              <div className="w-16 h-16 mx-auto rounded-2xl bg-gradient-to-br from-primary-50 to-accent-50 dark:from-primary-900/30 dark:to-accent-900/30 flex items-center justify-center">
+                <Icon className="w-8 h-8 text-primary dark:text-primary-300" />
               </div>
             </motion.div>
-            <h3 className="text-xl font-black text-gray-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors" style={{ transform: 'translateZ(15px)' }}>
+            <h3 className="text-xl font-black text-gray-900 dark:text-white group-hover:text-primary dark:group-hover:text-primary-300 transition-colors" style={{ transform: 'translateZ(15px)' }}>
               {title}
             </h3>
             <p className="text-gray-600 dark:text-gray-400 leading-relaxed" style={{ transform: 'translateZ(10px)' }}>
@@ -181,7 +181,7 @@ function RippleButton({
   }
 
   const baseStyles = variant === 'primary'
-    ? 'bg-blue-600 text-white hover:bg-blue-700 shadow-lg shadow-blue-600/25'
+    ? 'bg-primary text-white hover:bg-primary-700 shadow-lg shadow-primary/25'
     : 'text-gray-700 dark:text-gray-300 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 hover:bg-gray-50 dark:hover:bg-gray-700'
 
   const content = (
@@ -239,25 +239,25 @@ function HomePage() {
   ]
 
   return (
-    <div className="selection:bg-blue-600/20">
+    <div className="selection:bg-primary/20">
       {/* ═══════════ Hero Section ═══════════ */}
       <section
         ref={sectionRef}
-        className="relative pt-24 pb-20 sm:pt-32 sm:pb-28 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-blue-50 via-cyan-50 to-purple-50 dark:from-gray-950 dark:via-gray-900 dark:to-gray-950 transition-colors overflow-hidden"
+        className="relative pt-24 pb-20 sm:pt-32 sm:pb-28 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-primary-50 via-accent-50 to-gray-50 dark:from-gray-950 dark:via-gray-900 dark:to-gray-950 transition-colors overflow-hidden"
       >
         {/* Background orbs with parallax */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <motion.div style={{ y: orbCyanParallax.y }} className="absolute -top-[10%] -right-[10%] w-[60%] h-[60%]">
-            <div className="w-full h-full rounded-full bg-cyan-200/30 dark:bg-cyan-500/8 blur-[120px]" />
+            <div className="w-full h-full rounded-full bg-primary-200/30 dark:bg-primary-500/8 blur-[120px]" />
           </motion.div>
           <motion.div style={{ y: orbPrimaryParallax.y }} className="absolute -bottom-[10%] -left-[10%] w-[60%] h-[60%]">
-            <div className="w-full h-full rounded-full bg-blue-200/30 dark:bg-blue-500/8 blur-[120px]" />
+            <div className="w-full h-full rounded-full bg-primary-200/30 dark:bg-primary-500/8 blur-[120px]" />
           </motion.div>
           <motion.div style={{ y: orbAccentParallax.y }} className="absolute top-[40%] left-[5%] w-[30%] h-[30%]">
             <motion.div
               animate={{ y: [0, -40, 0], x: [0, 30, 0] }}
               transition={{ duration: 10, repeat: Infinity, ease: 'easeInOut' }}
-              className="w-full h-full rounded-full bg-purple-200/25 dark:bg-purple-500/6 blur-[80px]"
+              className="w-full h-full rounded-full bg-accent-200/25 dark:bg-accent-500/6 blur-[80px]"
             />
           </motion.div>
 
@@ -279,10 +279,10 @@ function HomePage() {
             {/* Badge */}
             <motion.div
               variants={fadeInUp}
-              className="inline-flex items-center gap-2 bg-white/80 dark:bg-gray-800/50 border border-blue-200 dark:border-gray-700 rounded-full px-5 py-2.5 shadow-lg backdrop-blur-sm"
+              className="inline-flex items-center gap-2 bg-white/80 dark:bg-gray-800/50 border border-primary-200 dark:border-gray-700 rounded-full px-5 py-2.5 shadow-lg backdrop-blur-sm"
             >
-              <Sparkles className="w-4 h-4 text-purple-500 animate-pulse" />
-              <span className="text-sm font-bold text-blue-800 dark:text-blue-200 uppercase tracking-[0.2em]">
+              <Sparkles className="w-4 h-4 text-accent animate-pulse" />
+              <span className="text-sm font-bold text-primary-900 dark:text-primary-200 uppercase tracking-[0.2em]">
                 {t('heroBadge')}
               </span>
             </motion.div>
@@ -311,7 +311,7 @@ function HomePage() {
                     onChange={(e) => setDestination(e.target.value)}
                     onKeyDown={(e) => e.key === 'Enter' && handleGenerateDraft()}
                     placeholder={t('heroInteractivePlaceholder')}
-                    className="w-full pl-12 pr-5 py-3.5 text-lg rounded-xl border-2 border-blue-200 dark:border-gray-700 bg-white dark:bg-gray-900 text-gray-900 dark:text-white placeholder:text-gray-400 focus:outline-none focus:ring-4 focus:ring-blue-500/20 focus:border-blue-500 transition-all shadow-lg"
+                    className="w-full pl-12 pr-5 py-3.5 text-lg rounded-xl border-2 border-primary-200 dark:border-gray-700 bg-white dark:bg-gray-900 text-gray-900 dark:text-white placeholder:text-gray-400 focus:outline-none focus:ring-4 focus:ring-primary/20 focus:border-primary transition-all shadow-lg"
                   />
                 </div>
                 <RippleButton
@@ -352,7 +352,7 @@ function HomePage() {
             <motion.div variants={fadeInUp} className="flex items-center justify-center gap-4 text-sm text-gray-500 dark:text-gray-400 flex-wrap">
               <div className="flex -space-x-2">
                 {[1, 2, 3, 4, 5].map((i) => (
-                  <div key={i} className="w-8 h-8 rounded-full bg-gradient-to-br from-blue-400 to-purple-400 border-2 border-white dark:border-gray-900" />
+                  <div key={i} className="w-8 h-8 rounded-full bg-gradient-to-br from-primary to-accent border-2 border-white dark:border-gray-900" />
                 ))}
               </div>
               <span className="font-semibold">{t('trustedBy')}</span>
@@ -375,7 +375,7 @@ function HomePage() {
                   key={i}
                   className="flex items-center gap-2.5 py-2.5 px-5 bg-white/80 dark:bg-gray-800/50 border border-gray-200 dark:border-gray-700 rounded-full shadow-sm text-sm font-bold text-gray-700 dark:text-gray-300 backdrop-blur-sm"
                 >
-                  <badge.icon className="w-5 h-5 text-blue-600 dark:text-blue-400" />
+                  <badge.icon className="w-5 h-5 text-primary dark:text-primary-300" />
                   {badge.label}
                 </div>
               ))}
@@ -417,7 +417,7 @@ function HomePage() {
       </section>
 
       {/* ═══════════ Stats Section ═══════════ */}
-      <section className="py-24 sm:py-32 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-blue-800 to-purple-800 dark:from-gray-950 dark:via-gray-900 dark:to-gray-950 relative overflow-hidden">
+      <section className="py-24 sm:py-32 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-primary-900 via-gray-950 to-accent-700/80 dark:from-black dark:via-gray-950 dark:to-black relative overflow-hidden">
         <div className="absolute inset-0 opacity-[0.07] pointer-events-none" style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, white 1px, transparent 0)', backgroundSize: '40px 40px' }} />
         <div className="max-w-5xl mx-auto relative z-10">
           <div className="text-center mb-16">
@@ -466,9 +466,9 @@ function HomePage() {
             className="grid md:grid-cols-3 gap-8"
           >
             {[
-              { text: t('testimonial1'), author: t('testimonial1Author'), role: t('testimonial1Role'), gradient: 'from-blue-400 to-purple-400' },
-              { text: t('testimonial2'), author: t('testimonial2Author'), role: t('testimonial2Role'), gradient: 'from-purple-400 to-blue-400' },
-              { text: t('testimonial3'), author: t('testimonial3Author'), role: t('testimonial3Role'), gradient: 'from-blue-500 to-purple-500' },
+              { text: t('testimonial1'), author: t('testimonial1Author'), role: t('testimonial1Role'), gradient: 'from-primary to-accent' },
+              { text: t('testimonial2'), author: t('testimonial2Author'), role: t('testimonial2Role'), gradient: 'from-accent to-primary' },
+              { text: t('testimonial3'), author: t('testimonial3Author'), role: t('testimonial3Role'), gradient: 'from-brand-gray via-orange to-green' },
             ].map((testimonial, i) => (
               <motion.div key={i} variants={fadeInUp}>
                 <div className="h-full bg-white dark:bg-gray-900 rounded-2xl border border-gray-200 dark:border-gray-700 p-8 hover:shadow-xl transition-shadow duration-500">
@@ -497,9 +497,9 @@ function HomePage() {
       </section>
 
       {/* ═══════════ Final CTA ═══════════ */}
-      <section className="relative py-24 sm:py-32 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-blue-50 via-cyan-50 to-purple-50 dark:from-gray-950 dark:via-gray-900 dark:to-gray-950 transition-colors overflow-hidden">
+      <section className="relative py-24 sm:py-32 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-primary-50 via-accent-50 to-gray-50 dark:from-gray-950 dark:via-gray-900 dark:to-gray-950 transition-colors overflow-hidden">
         <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full bg-gradient-to-r from-cyan-200/20 to-blue-200/20 dark:from-cyan-500/5 dark:to-blue-500/5 blur-[160px]" />
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full bg-gradient-to-r from-primary-200/20 to-accent-200/20 dark:from-primary-500/5 dark:to-accent-500/5 blur-[160px]" />
         </div>
 
         <motion.div

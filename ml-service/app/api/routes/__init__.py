@@ -33,6 +33,12 @@ except ImportError as e:
     print(f"Travel distance routes not available: {e}")
     travel_distance_router = None
 
+try:
+    from .validate_image import router as validate_image_router
+except ImportError as e:
+    print(f"Validate image routes not available: {e}")
+    validate_image_router = None
+
 # Import router de predictions (sempre deve existir)
 try:
     from .predictions import router as predictions_router
@@ -67,6 +73,8 @@ if ADVANCED_ROUTES_AVAILABLE:
         api_router.include_router(travel_ranking_router)
     if travel_distance_router:
         api_router.include_router(travel_distance_router)
+    if validate_image_router:
+        api_router.include_router(validate_image_router)
 
 # Export para compatibilidade
 __all__ = [
@@ -78,5 +86,6 @@ __all__ = [
     "personalization_router",
     "rag_router", 
     "xai_router", 
-    "unified_router"
+    "unified_router",
+    "validate_image_router"
 ]

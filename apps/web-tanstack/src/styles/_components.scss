@@ -1,6 +1,7 @@
 // ── AKMLEVA Component Styles (SCSS) ──────────────────────────────────────────
 // Reusable component-level SCSS patterns.
 
+@use 'sass:color';
 @use 'variables' as *;
 @use 'mixins' as *;
 
@@ -115,7 +116,7 @@
     color: white;
 
     &:hover:not(:disabled) {
-      background-color: darken($destructive, 10%);
+      background-color: color.adjust($destructive, $lightness: -10%);
     }
   }
 

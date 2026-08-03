@@ -35,6 +35,7 @@ import { fadeInUp, staggerContainer } from '@/lib/travel/animations';
 
 import { RippleButton } from '@/components/ui/ripple-button';
 import { EmptyState } from '@/components/ui/EmptyState';
+import { SkeletonCard } from '@/components/ui/SkeletonCard';
 import { useDestinations, useCountries } from '@/lib/api/use-api';
 import { useQuery } from '@tanstack/react-query';
 import {
@@ -132,7 +133,7 @@ export function DestinationsBrowsePage({ onBack }: DestinationsBrowsePageProps) 
   // ---- data fetching via React Query ----------------------------------------
 
   const queryParams = useMemo(() => {
-    const p: Record<string, string> = { page: String(page), pageSize: String(ITEMS_PER_PAGE), locale };
+    const p: Record<string, string> = { page: String(page), limit: String(ITEMS_PER_PAGE), locale };
     if (query) p.q = query;
     if (continentFilter) p.continent = continentFilter;
     if (countryFilter) p.country = countryFilter;
@@ -270,18 +271,54 @@ export function DestinationsBrowsePage({ onBack }: DestinationsBrowsePageProps) 
       {/* Main content */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-12">
         {/* ─── Hero Section with Search ─── */}
-        <div className="relative mb-8 sm:mb-12 overflow-hidden rounded-2xl sm:rounded-3xl">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, ease: [0.21, 0.47, 0.32, 0.98] }}
+          className="relative mb-8 sm:mb-12 overflow-hidden rounded-2xl sm:rounded-3xl"
+        >
           <div className="absolute inset-0 bg-gradient-to-br from-primary via-cyan-600 to-accent-500 opacity-90 dark:opacity-80" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
+          {/* Decorative orbs */}
+          <div className="absolute inset-0 overflow-hidden pointer-events-none">
+            <motion.div
+              animate={{ y: [0, -20, 0], x: [0, 15, 0] }}
+              transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut' }}
+              className="absolute -top-1/4 -right-1/4 w-1/2 h-1/2 rounded-full bg-white/10 blur-[80px]"
+            />
+            <motion.div
+              animate={{ y: [0, 15, 0], x: [0, -10, 0] }}
+              transition={{ duration: 10, repeat: Infinity, ease: 'easeInOut' }}
+              className="absolute -bottom-1/4 -left-1/4 w-1/2 h-1/2 rounded-full bg-accent/20 blur-[80px]"
+            />
+          </div>
           <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiNmZmYiIGZpbGwtb3BhY2l0eT0iMC4wNSI+PHBhdGggZD0iTTM2IDE0YzEuNjU3IDAgMy0xLjM0MyAzLTNzLTEuMzQzLTMtMy0zLTMgMS4zNDMtMyAzIDEuMzQzIDMgMyAzeiIvPjwvZz48L2c+PC9zdmc+')] opacity-30" />
           <div className="relative p-8 sm:p-12 md:p-16 text-center">
-            <div className="inline-flex items-center gap-2 bg-white/15 backdrop-blur-sm rounded-full px-4 py-1.5 mb-4 sm:mb-6">
-              <Sparkles className="w-4 h-4 text-yellow-300" />
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 0.1, duration: 0.5 }}
+              className="inline-flex items-center gap-2 bg-white/15 backdrop-blur-md rounded-full px-4 py-1.5 mb-4 sm:mb-6 border border-white/20"
+            >
+              <Sparkles className="w-4 h-4 text-yellow-300 animate-pulse" />
               <span className="text-xs sm:text-sm font-medium text-white/90">{t('title')}</span>
-            </div>
-            <h1 className="text-3xl sm:text-5xl md:text-6xl font-bold text-white mb-3 sm:mb-4 tracking-tight">
+            </motion.div>
+            <motion.h1
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.15, duration: 0.6, ease: [0.21, 0.47, 0.32, 0.98] }}
+              className="text-3xl sm:text-5xl md:text-6xl font-black text-white mb-3 sm:mb-4 tracking-tighter drop-shadow-lg"
+            >
               {t('title')}
-            </h1>
-            <p className="text-sm sm:text-lg text-white/80 max-w-2xl mx-auto mb-8">{t('subtitle')}</p>
+            </motion.h1>
+            <motion.p
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.25, duration: 0.5 }}
+              className="text-sm sm:text-lg text-white/80 max-w-2xl mx-auto mb-8 font-medium"
+            >
+              {t('subtitle')}
+            </motion.p>
 
             {/* Main Search Bar */}
             <div className="max-w-2xl mx-auto relative">
@@ -378,7 +415,7 @@ export function DestinationsBrowsePage({ onBack }: DestinationsBrowsePageProps) 
               </div>
             </div>
           </div>
-        </div>
+        </motion.div>
 
         {/* ─── Continent / Region Chips ─── */}
         <div className="mb-8">
@@ -602,7 +639,7 @@ export function DestinationsBrowsePage({ onBack }: DestinationsBrowsePageProps) 
         {/* ─── Results info ─── */}
         <Separator className="mb-6" />
         <div className="flex items-center justify-between mb-4">
-          <p className="text-sm text-gray-500 dark:text-gray-400">aria-live="polite" 
+          <p aria-live="polite" className="text-sm text-gray-500 dark:text-gray-400">
             {loading ? (
               <span className="flex items-center gap-2">
                 <Loader2 className="w-4 h-4 animate-spin" />
@@ -653,14 +690,7 @@ export function DestinationsBrowsePage({ onBack }: DestinationsBrowsePageProps) 
         {loading && !error && (
           <motion.div variants={staggerContainer} initial="hidden" animate="visible" className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6">
             {Array.from({ length: 8 }).map((_, i) => (
-              <motion.div key={i} variants={fadeInUp} className="rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 overflow-hidden animate-pulse">
-                <div className="h-40 bg-gray-200 dark:bg-gray-700" />
-                <div className="p-4 space-y-3">
-                  <div className="h-4 w-3/4 bg-gray-200 dark:bg-gray-700 rounded" />
-                  <div className="h-3 w-1/2 bg-gray-200 dark:bg-gray-700 rounded" />
-                  <div className="h-3 w-1/3 bg-gray-200 dark:bg-gray-700 rounded" />
-                </div>
-              </motion.div>
+              <SkeletonCard key={i} lines={3} badges={1} />
             ))}
           </motion.div>
         )}

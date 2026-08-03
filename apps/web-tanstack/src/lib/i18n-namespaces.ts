@@ -26,4 +26,13 @@ export const useAuthTranslations = createNamespaceHook('auth')
 export const useResultsTranslations = createNamespaceHook('results')
 export const useDestinationsBrowseTranslations = createNamespaceHook('destinationsBrowse')
 export const useDestinationTranslations = createNamespaceHook('destination')
-export const useItineraryTranslations = createNamespaceHook('itinerary')
+
+export function useItineraryTranslations(): TranslationFunction {
+  const { t: messages } = useContext(I18nContext)
+  const destinationMessages = messages['destination'] as Record<string, unknown> | undefined
+  const itineraryMessages = destinationMessages?.['itinerary'] as Record<string, unknown> | undefined
+  return (key: string) => {
+    if (!itineraryMessages) return key
+    return getNestedValue(itineraryMessages, key)
+  }
+}

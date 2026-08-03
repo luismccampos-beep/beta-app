@@ -27,10 +27,10 @@ import {
   SlidersHorizontal,
 } from 'lucide-react';
 import { motion } from 'framer-motion';
-import { AppHeader } from '@/components/AppHeader';
 
 import { fadeInUp, staggerContainer } from '@/lib/travel/animations';
 import { EmptyState } from '@/components/ui/EmptyState';
+import { SkeletonCard } from '@/components/ui/SkeletonCard';
 import { filterOptions, TravelResult } from '@/components/data/mockResults';
 import { DestinationResultCard } from '@/components/travel/DestinationResultCard';
 import { DestinationAirportBadge } from '@/components/travel/DestinationAirportBadge';
@@ -212,7 +212,7 @@ export function ResultsPage({ onLogout, onNavigateToDashboard }: ResultsPageProp
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 via-primary-50 to-accent-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 transition-colors">
-      <AppHeader showLogout onLogout={onLogout} showDashboard={!!onNavigateToDashboard} onDashboard={onNavigateToDashboard} />
+      {/* AppHeader is rendered globally by __root.tsx */}
 
       <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-6 sm:py-12 overflow-x-hidden">
         {/* Hero Section */}
@@ -397,27 +397,7 @@ export function ResultsPage({ onLogout, onNavigateToDashboard }: ResultsPageProp
             {resultsLoading && (
               <motion.div variants={staggerContainer} initial="hidden" animate="visible" className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8" aria-label="Loading results">
                 {Array.from({ length: 6 }).map((_, i) => (
-                  <motion.div key={i} variants={fadeInUp} className="rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 overflow-hidden relative">
-                    <div className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/20 dark:via-white/5 to-transparent animate-[shimmer_1.5s_infinite] pointer-events-none z-10" />
-                    <div className="aspect-[4/3] bg-gray-200 dark:bg-gray-700" />
-                    <div className="p-4 space-y-3">
-                      <div className="h-5 bg-gray-200 dark:bg-gray-700 rounded w-3/4" />
-                      <div className="flex items-center gap-2">
-                        <div className="h-3 bg-gray-200 dark:bg-gray-700 rounded w-12" />
-                        <div className="h-3 bg-gray-200 dark:bg-gray-700 rounded w-16" />
-                      </div>
-                      <div className="flex gap-2">
-                        <div className="h-6 bg-gray-200 dark:bg-gray-700 rounded-full w-16" />
-                        <div className="h-6 bg-gray-200 dark:bg-gray-700 rounded-full w-20" />
-                      </div>
-                      <div className="h-3 bg-gray-200 dark:bg-gray-700 rounded w-full" />
-                      <div className="h-3 bg-gray-200 dark:bg-gray-700 rounded w-2/3" />
-                      <div className="flex items-center justify-between pt-1">
-                        <div className="h-4 bg-gray-200 dark:bg-gray-700 rounded w-20" />
-                        <div className="h-8 bg-gray-200 dark:bg-gray-700 rounded-lg w-24" />
-                      </div>
-                    </div>
-                  </motion.div>
+                  <SkeletonCard key={i} />
                 ))}
               </motion.div>
             )}
