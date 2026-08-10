@@ -1,15 +1,92 @@
-item_id,type,tags
-svc-hotel-1,accommodation,luxury|central
-svc-hotel-2,accommodation,beach|family
-svc-hotel-3,accommodation,boutique|historic
-svc-activity-1,activity,food|culture
-svc-activity-2,activity,adventure|outdoor
-svc-activity-3,activity,art|museum
-svc-package-1,package,citybreak|couple
-svc-package-2,package,family|summer
-svc-package-3,package,wellness|retreat
-svc-transfer-1,transportation,premium|airport
-svc-transfer-2,transportation,standard|city
-svc-cruise-1,cruise,sea|luxury|family
-svc-cruise-2,cruise,river|culture|romantic
-svc-cruise-3,cruise,expedition|adventure
+item_id,type,subtype,tags,nome,pais,continente,clima
+dest-0001,destination,cidade,cidade|continental|América|MX|pt|cidade|continental|América,Tecomán,México,América,continental
+dest-0002,destination,montanha,montanha|continental|América|BR|pt|montanha|continental|América,Água Branca,Brasil,América,continental
+dest-0003,destination,praia,praia|mediterrânico|América|US|en|praia|mediterrânico|América,Milwaukee,Estados Unidos,América,mediterrânico
+dest-0004,destination,montanha,montanha|continental|América|US|en|montanha|continental|América,Jackson (Wyoming),Estados Unidos,América,continental
+dest-0005,destination,montanha,montanha|tropical|América|CA|en|montanha|tropical|América,Gatineau,Canadá,América,tropical
+dest-0006,destination,montanha,montanha|continental|América|BR|pt|montanha|continental|América,Núcleo Casa de Pedra,Brasil,América,continental
+dest-0007,destination,praia,praia|polar|América|BR|pt|praia|polar|América,São Gonçalo,Brasil,América,polar
+dest-0008,destination,praia,praia|continental|América|BR|pt|praia|continental|América,Pirambu,Brasil,América,continental
+dest-0009,destination,cidade,cidade|continental|América|US|en|cidade|continental|América,Coloma (California),Estados Unidos,América,continental
+dest-0010,destination,praia,praia|continental|América|BR|pt|praia|continental|América,Assis,Brasil,América,continental
+dest-0011,destination,montanha,montanha|continental|América|BR|pt|montanha|continental|América,Arara,Brasil,América,continental
+dest-0012,destination,praia,praia|continental|América|BR|pt|praia|continental|América,Rio de Janeiro/Zona Norte,Brasil,América,continental
+dest-0013,destination,praia,praia|tropical|Europa|XX|en|praia|tropical|Europa,Kotagiri,Internacional,Europa,tropical
+dest-0014,destination,cidade,cidade|tropical|Europa|XX|en|cidade|tropical|Europa,Lira,Internacional,Europa,tropical
+dest-0015,destination,cidade,cidade|continental|Europa|CZ|en|cidade|continental|Europa,Říp,República Checa,Europa,continental
+dest-0016,destination,cidade,cidade|continental|Europa|XX|en|cidade|continental|Europa,Yusufari,Internacional,Europa,continental
+dest-0017,destination,praia,praia|mediterrânico|Europa|XX|en|praia|mediterrânico|Europa,Sorrento,Internacional,Europa,mediterrânico
+dest-0018,destination,cidade,cidade|continental|Europa|XX|en|cidade|continental|Europa,Igboho,Internacional,Europa,continental
+dest-0019,destination,cidade,cidade|árido|Europa|XX|en|cidade|árido|Europa,Isalo National Park,Internacional,Europa,árido
+dest-0020,destination,cidade,cidade|continental|Europa|XX|en|cidade|continental|Europa,Sylacauga,Internacional,Europa,continental
+dest-0021,destination,praia,praia|continental|Europa|XX|en|praia|continental|Europa,Eastsound,Internacional,Europa,continental
+dest-0022,destination,cidade,cidade|árido|Europa|XX|en|cidade|árido|Europa,Kumbhalgarh,Internacional,Europa,árido
+dest-0023,destination,montanha,montanha|continental|Europa|SE|en|montanha|continental|Europa,Padjelantaleden,Suécia,Europa,continental
+dest-0024,destination,montanha,montanha|mediterrânico|Europa|XX|en|montanha|mediterrânico|Europa,Blida,Internacional,Europa,mediterrânico
+dest-0025,destination,cidade,cidade|continental|Oceânia|AU|en|cidade|continental|Oceânia,Normanton,Austrália,Oceânia,continental
+dest-0026,destination,praia,praia|tropical|Oceânia|NZ|pt|praia|tropical|Oceânia,Fiji,Nova Zelândia,Oceânia,tropical
+dest-0027,destination,cidade,cidade|continental|Oceânia|AU|en|cidade|continental|Oceânia,Glenbrook (New South Wales),Austrália,Oceânia,continental
+dest-0028,destination,cidade,cidade|árido|Oceânia|AU|en|cidade|árido|Oceânia,Kyogle,Austrália,Oceânia,árido
+dest-0029,destination,praia,praia|tropical|Oceânia|AU|en|praia|tropical|Oceânia,Western Australia,Austrália,Oceânia,tropical
+dest-0030,destination,ilha,ilha|continental|Oceânia|NZ|en|ilha|continental|Oceânia,Shannon (New Zealand),Nova Zelândia,Oceânia,continental
+dest-0031,destination,praia,praia|tropical|Oceânia|AU|en|praia|tropical|Oceânia,French Polynesia,Austrália,Oceânia,tropical
+dest-0032,destination,praia,praia|continental|Oceânia|NZ|en|praia|continental|Oceânia,Koutu,Nova Zelândia,Oceânia,continental
+dest-0033,destination,praia,praia|árido|Oceânia|AU|en|praia|árido|Oceânia,Russell (New Zealand),Austrália,Oceânia,árido
+dest-0034,destination,cidade,cidade|continental|Oceânia|AU|en|cidade|continental|Oceânia,Chiltern,Austrália,Oceânia,continental
+dest-0035,destination,praia,praia|continental|Oceânia|NZ|en|praia|continental|Oceânia,Cape Reinga / Te Rerenga Wairua,Nova Zelândia,Oceânia,continental
+dest-0036,destination,praia,praia|continental|Oceânia|AU|en|praia|continental|Oceânia,The Coorong,Austrália,Oceânia,continental
+dest-0037,destination,praia,praia|continental|África|EG|pt|praia|continental|África,Cairo/Cairo Islâmico,Egito,África,continental
+dest-0038,destination,cidade,cidade|continental|África|ZA|en|cidade|continental|África,Ladysmith,África do Sul,África,continental
+dest-0039,destination,cidade,cidade|continental|África|ZA|en|cidade|continental|África,King William's Town,África do Sul,África,continental
+dest-0040,destination,praia,praia|mediterrânico|África|EG|en|praia|mediterrânico|África,Ancient Egypt,Egito,África,mediterrânico
+dest-0041,destination,cidade,cidade|continental|África|EG|en|cidade|continental|África,Fairport (New York),Egito,África,continental
+dest-0042,destination,praia,praia|mediterrânico|África|EG|en|praia|mediterrânico|África,Dahab,Egito,África,mediterrânico
+dest-0043,destination,cidade,cidade|continental|África|ZA|en|cidade|continental|África,Malmesbury (South Africa),África do Sul,África,continental
+dest-0044,destination,praia,praia|árido|África|EG|en|praia|árido|África,Port Ghalib,Egito,África,árido
+dest-0045,destination,praia,praia|mediterrânico|África|MA|en|praia|mediterrânico|África,Tétouan,Marrocos,África,mediterrânico
+dest-0046,destination,praia,praia|continental|África|EG|pt|praia|continental|África,Port Suez,Egito,África,continental
+dest-0047,destination,praia,praia|árido|África|MA|en|praia|árido|África,M'Hamid,Marrocos,África,árido
+dest-0048,destination,praia,praia|tropical|África|ZA|en|praia|tropical|África,South Africa,África do Sul,África,tropical
+dest-0049,destination,praia,praia|tropical|Ásia|CN|en|praia|tropical|Ásia,Jingmen,China,Ásia,tropical
+dest-0050,destination,praia,praia|tropical|Ásia|TH|en|praia|tropical|Ásia,Loei,Tailândia,Ásia,tropical
+dest-0051,destination,cidade,cidade|continental|Ásia|MY|en|cidade|continental|Ásia,Senai,Malásia,Ásia,continental
+dest-0052,destination,cidade,cidade|continental|Ásia|KR|en|cidade|continental|Ásia,Kaechon,Coreia do Sul,Ásia,continental
+dest-0053,destination,cidade,cidade|continental|Ásia|TR|en|cidade|continental|Ásia,Ouidah,Turquia,Ásia,continental
+dest-0054,destination,ilha,ilha|continental|Ásia|VN|en|ilha|continental|Ásia,Bai Tu Long Bay,Vietname,Ásia,continental
+dest-0055,destination,praia,praia|continental|Ásia|JP|en|praia|continental|Ásia,Hagi,Japão,Ásia,continental
+dest-0056,destination,cidade,cidade|continental|Ásia|IN|en|cidade|continental|Ásia,Mundra,Índia,Ásia,continental
+dest-0057,destination,montanha,montanha|continental|Ásia|TH|en|montanha|continental|Ásia,Anlong Veng,Tailândia,Ásia,continental
+dest-0058,destination,praia,praia|continental|Ásia|CN|pt|praia|continental|Ásia,Rota da Seda,China,Ásia,continental
+dest-0059,destination,cidade,cidade|continental|Ásia|MY|en|cidade|continental|Ásia,Labis,Malásia,Ásia,continental
+dest-0060,destination,praia,praia|continental|Ásia|CN|en|praia|continental|Ásia,Jinzhong,China,Ásia,continental
+svc-hotel-01,accommodation,hotel,luxury|5star|central|spa|pool,,,,
+svc-hotel-02,accommodation,hotel,budget|economy|clean|transport,,,,
+svc-hotel-03,accommodation,resort,beach|all-inclusive|family|pool|kids,,,,
+svc-hotel-04,accommodation,boutique,boutique|historic|charming|design|central,,,,
+svc-hotel-05,accommodation,hostel,hostel|budget|social|backpacker|young,,,,
+svc-hotel-06,accommodation,villa,villa|private|pool|luxury|family,,,,
+svc-hotel-07,accommodation,apartment,apartment|kitchen|long-stay|central|modern,,,,
+svc-hotel-08,accommodation,eco-lodge,eco|sustainable|nature|remote|peaceful,,,,
+svc-act-01,activity,tour,city|walking|culture|historic|guide,,,,
+svc-act-02,activity,adventure,adventure|outdoor|hiking|nature|extreme,,,,
+svc-act-03,activity,food,food|gastronomy|cooking|wine|local,,,,
+svc-act-04,activity,water,water|diving|snorkel|surf|beach,,,,
+svc-act-05,activity,cultural,museum|art|gallery|history|architecture,,,,
+svc-act-06,activity,wildlife,safari|wildlife|nature|photography|animal,,,,
+svc-act-07,activity,nightlife,nightlife|bar|club|music|party,,,,
+svc-act-08,activity,wellness,spa|wellness|yoga|relax|health,,,,
+svc-act-09,activity,shopping,shopping|market|craft|souvenir|local,,,,
+svc-act-10,activity,sport,sport|golf|tennis|cycling|fitness,,,,
+svc-cruise-01,cruise,sea,cruise|sea|luxury|caribbean|island,,,,
+svc-cruise-02,cruise,river,cruise|river|culture|europe|danube,,,,
+svc-cruise-03,cruise,expedition,cruise|expedition|adventure|antarctic|arctic,,,,
+svc-cruise-04,cruise,mediterranean,cruise|mediterranean|italy|greece|spain,,,,
+svc-xfer-01,transportation,airport,transfer|airport|private|premium,,,,
+svc-xfer-02,transportation,shared,transfer|shared|shuttle|budget,,,,
+svc-xfer-03,transportation,rental-car,rental|car|drive|freedom|road,,,,
+svc-pkg-01,package,city-break,package|city|weekend|couple|romantic,,,,
+svc-pkg-02,package,family,package|family|kids|all-inclusive|fun,,,,
+svc-pkg-03,package,honeymoon,package|honeymoon|romantic|luxury|beach,,,,
+svc-pkg-04,package,adventure,package|adventure|trek|outdoor|extreme,,,,
+svc-pkg-05,package,wellness,package|wellness|spa|detox|retreat,,,,
+svc-pkg-06,package,cultural,package|cultural|museum|art|history,,,,

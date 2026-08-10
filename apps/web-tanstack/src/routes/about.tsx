@@ -94,7 +94,7 @@ function AboutPage() {
             <span className="text-sm font-bold text-primary-800 dark:text-primary-200 uppercase tracking-[0.2em]">{t('pageTitle')}</span>
           </div>
           <H1 className="uppercase mb-8">
-            {t('heroTitle')} <span className="bg-gradient-to-r from-primary via-accent to-orange bg-clip-text text-transparent">{t('heroHighlight')}</span>
+            {t('heroTitle')} <span className="bg-gradient-to-r from-gray-400 via-gray-500 to-gray-600 bg-clip-text text-transparent">{t('heroHighlight')}</span>
           </H1>
           <div className="h-1.5 w-32 bg-gradient-to-r from-primary via-accent to-orange mx-auto rounded-full" />
         </motion.div>
