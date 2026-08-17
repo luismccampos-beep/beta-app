@@ -328,7 +328,11 @@ export function ProfileTab() {
                 <Button variant="brand" size="sm" onClick={async () => {
                   setIsSavingProfile(true);
                   try {
-                    const res = await fetch('/api/auth/me', { method: 'PUT', credentials: 'include', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ user: profileData }) });
+                    const payload: Record<string, string | null> = {};
+                    if (profileData.name) payload.name = profileData.name;
+                    if (profileData.phone) payload.phone = profileData.phone;
+                    if (profileData.dateOfBirth) payload.birthDate = profileData.dateOfBirth;
+                    const res = await fetch('/api/auth/me', { method: 'PUT', credentials: 'include', headers: { 'content-type': 'application/json' }, body: JSON.stringify(payload) });
                     if (!res.ok) throw new Error(t('profileSaveError') || 'Failed to save');
                     toast.success(t('profileSaved') || 'Profile saved');
                     setIsEditingProfile(false);

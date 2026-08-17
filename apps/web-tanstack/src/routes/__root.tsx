@@ -14,6 +14,7 @@ import { AppFooter } from '../components/AppFooter'
 import { AppBottomNav } from '../components/AppBottomNav'
 import { AppHeader } from '../components/AppHeader'
 import { Toaster } from '../components/Toaster'
+import { TanstackQueryProvider } from '@/lib/query-client'
 import { locales, defaultLocale, isValidLocale, type Locale } from '@/i18n.config'
 import '../globals.css'
 
@@ -79,8 +80,9 @@ function RootComponent() {
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
       </head>
       <body className="min-h-screen bg-white dark:bg-gray-950 font-sans antialiased">
-        <ThemeProvider>
-          <I18nProvider locale={locale}>
+        <TanstackQueryProvider>
+          <ThemeProvider>
+            <I18nProvider locale={locale}>
             <a
               href="#main-content"
               className="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-[100] focus:px-4 focus:py-2 focus:bg-primary focus:text-white focus:rounded-lg focus:shadow-lg focus:outline-none"
@@ -106,6 +108,7 @@ function RootComponent() {
             <CookieBanner />
           </I18nProvider>
         </ThemeProvider>
+        </TanstackQueryProvider>
         <Toaster />
         <ScrollRestoration />
         <Scripts />

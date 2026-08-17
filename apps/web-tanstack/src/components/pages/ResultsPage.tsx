@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect, useMemo, useCallback } from 'react';
+import { useState, useEffect, useMemo, useCallback, useRef } from 'react';
 import { useNavigate, useSearch } from '@tanstack/react-router';
 import { useLocale as useI18nLocale } from '@/lib/i18n-provider';
 import { useResultsTranslations, useDestinationTranslations } from '@/lib/i18n-namespaces';
@@ -63,6 +63,9 @@ export function ResultsPage({ onLogout, onNavigateToDashboard }: ResultsPageProp
     [searchParams],
   );
 
+  const tRef = useRef(t)
+  tRef.current = t
+
   const patchSearchParams = useCallback(
     (updates: Record<string, string | null | undefined>) => {
       const p = new URLSearchParams(searchParams.toString());
@@ -91,7 +94,7 @@ export function ResultsPage({ onLogout, onNavigateToDashboard }: ResultsPageProp
   const adultsParam = Math.min(9, Math.max(1, parseInt(searchParams.get('adults') ?? '1', 10) || 1));
   const originParam =
     searchParams.get('origin')?.trim().toUpperCase() ||
-    process.env.NEXT_PUBLIC_DEFAULT_ORIGIN_IATA?.trim().toUpperCase() ||
+    import.meta.env.VITE_DEFAULT_ORIGIN_IATA?.trim().toUpperCase() ||
     'LIS';
   const departureParam = searchParams.get('departure')?.trim() || defaultDepartureIso(21);
   const isCruiseMode = mode === 'cruises' || mode === 'cruise';
@@ -147,10 +150,10 @@ export function ResultsPage({ onLogout, onNavigateToDashboard }: ResultsPageProp
           const m = new URLSearchParams(resultsQuery).get('mode') ?? 'both';
           setResultsError(
             m === 'cruises' || m === 'cruise'
-              ? t('noCruiseResults')
+              ? tRef.current('noCruiseResults')
               : m === 'hotels'
-                ? t('noHotelResults')
-                : t('noLiveResults'),
+                ? tRef.current('noHotelResults')
+                : tRef.current('noLiveResults'),
           );
         }
       })
@@ -166,7 +169,7 @@ export function ResultsPage({ onLogout, onNavigateToDashboard }: ResultsPageProp
     return () => {
       cancelled = true;
     };
-  }, [resultsQuery, searchParams, t]);
+  }, [resultsQuery, searchParams]);
 
   useEffect(() => {
     if (results.length === 0) return;

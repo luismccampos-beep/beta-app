@@ -1,6 +1,6 @@
 'use client';
 
-import { useCallback, useEffect, useMemo, useState } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { Sparkles } from 'lucide-react';
 import { useResultsTranslations } from '@/lib/i18n-namespaces';
 
@@ -36,6 +36,9 @@ export function RecommendationsSection({
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [data, setData] = useState<RecommendApiResponse | null>(null);
+
+  const tRef = useRef(t);
+  tRef.current = t;
 
   const prefsKey = useMemo(
     () => (preferences ? encodeTravelPreferencesCompact(preferences) : ''),
@@ -103,7 +106,7 @@ export function RecommendationsSection({
       })
       .catch((e: unknown) => {
         if (!cancelled) {
-          setError(e instanceof Error ? e.message : t('loadError'));
+          setError(e instanceof Error ? e.message : tRef.current('loadError'));
           setData(null);
         }
       })
@@ -114,7 +117,7 @@ export function RecommendationsSection({
     return () => {
       cancelled = true;
     };
-  }, [enabled, preferences, nights, travelers, originIata, prefsKey, locale, t]);
+  }, [enabled, preferences, nights, travelers, originIata, prefsKey, locale]);
 
   const handleSearchLive = useCallback(
     (iata: string) => {

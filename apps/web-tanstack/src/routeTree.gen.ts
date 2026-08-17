@@ -41,6 +41,9 @@ import { Route as ApiAuthSignupRouteImport } from './routes/api/auth/signup'
 import { Route as ApiHealthIndexRouteImport } from './routes/api/health/index'
 import { Route as ApiHealthMlStatusRouteImport } from './routes/api/health/ml-status'
 import { Route as ApiInternal404LogRouteImport } from './routes/api/internal/404-log'
+import { Route as ApiTravelCatalogRouteImport } from './routes/api/travel/catalog'
+import { Route as ApiTravelCruisesRouteImport } from './routes/api/travel/cruises'
+import { Route as ApiTravelResultsRouteImport } from './routes/api/travel/results'
 import { Route as ApiV1SplatRouteImport } from './routes/api/v1/$'
 import { Route as ApiAdminUrlRedirectsIndexRouteImport } from './routes/api/admin/url-redirects/index'
 import { Route as ApiAuthMeIndexRouteImport } from './routes/api/auth/me/index'
@@ -55,7 +58,6 @@ import { Route as ApiTravelV1CostOfLivingRouteImport } from './routes/api/travel
 import { Route as ApiTravelV1ListingsRouteImport } from './routes/api/travel/v1/listings'
 import { Route as ApiTravelV1NavitiaRouteImport } from './routes/api/travel/v1/navitia'
 import { Route as ApiTravelV1RecommendRouteImport } from './routes/api/travel/v1/recommend'
-import { Route as ApiTravelV1SandboxRouteImport } from './routes/api/travel/v1/sandbox'
 import { Route as ApiTravelV1TransitlandRouteImport } from './routes/api/travel/v1/transitland'
 import { Route as ApiTravelV1TransitousRouteImport } from './routes/api/travel/v1/transitous'
 import { Route as ApiUserPreferencesIndexRouteImport } from './routes/api/user/preferences/index'
@@ -239,6 +241,21 @@ const ApiInternal404LogRoute = ApiInternal404LogRouteImport.update({
   path: '/api/internal/404-log',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ApiTravelCatalogRoute = ApiTravelCatalogRouteImport.update({
+  id: '/api/travel/catalog',
+  path: '/api/travel/catalog',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiTravelCruisesRoute = ApiTravelCruisesRouteImport.update({
+  id: '/api/travel/cruises',
+  path: '/api/travel/cruises',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiTravelResultsRoute = ApiTravelResultsRouteImport.update({
+  id: '/api/travel/results',
+  path: '/api/travel/results',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ApiV1SplatRoute = ApiV1SplatRouteImport.update({
   id: '/api/v1/$',
   path: '/api/v1/$',
@@ -309,11 +326,6 @@ const ApiTravelV1NavitiaRoute = ApiTravelV1NavitiaRouteImport.update({
 const ApiTravelV1RecommendRoute = ApiTravelV1RecommendRouteImport.update({
   id: '/api/travel/v1/recommend',
   path: '/api/travel/v1/recommend',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ApiTravelV1SandboxRoute = ApiTravelV1SandboxRouteImport.update({
-  id: '/api/travel/v1/sandbox',
-  path: '/api/travel/v1/sandbox',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ApiTravelV1TransitlandRoute = ApiTravelV1TransitlandRouteImport.update({
@@ -466,6 +478,9 @@ export interface FileRoutesByFullPath {
   '/api/auth/signup': typeof ApiAuthSignupRoute
   '/api/health/ml-status': typeof ApiHealthMlStatusRoute
   '/api/internal/404-log': typeof ApiInternal404LogRoute
+  '/api/travel/catalog': typeof ApiTravelCatalogRoute
+  '/api/travel/cruises': typeof ApiTravelCruisesRoute
+  '/api/travel/results': typeof ApiTravelResultsRoute
   '/api/v1/$': typeof ApiV1SplatRoute
   '/api/health/': typeof ApiHealthIndexRoute
   '/api/auth/me/2fa': typeof ApiAuthMe2faRoute
@@ -478,7 +493,6 @@ export interface FileRoutesByFullPath {
   '/api/travel/v1/listings': typeof ApiTravelV1ListingsRoute
   '/api/travel/v1/navitia': typeof ApiTravelV1NavitiaRoute
   '/api/travel/v1/recommend': typeof ApiTravelV1RecommendRoute
-  '/api/travel/v1/sandbox': typeof ApiTravelV1SandboxRoute
   '/api/travel/v1/transitland': typeof ApiTravelV1TransitlandRoute
   '/api/travel/v1/transitous': typeof ApiTravelV1TransitousRoute
   '/api/user/preferences/analytics': typeof ApiUserPreferencesAnalyticsRoute
@@ -535,6 +549,9 @@ export interface FileRoutesByTo {
   '/api/auth/signup': typeof ApiAuthSignupRoute
   '/api/health/ml-status': typeof ApiHealthMlStatusRoute
   '/api/internal/404-log': typeof ApiInternal404LogRoute
+  '/api/travel/catalog': typeof ApiTravelCatalogRoute
+  '/api/travel/cruises': typeof ApiTravelCruisesRoute
+  '/api/travel/results': typeof ApiTravelResultsRoute
   '/api/v1/$': typeof ApiV1SplatRoute
   '/api/health': typeof ApiHealthIndexRoute
   '/api/auth/me/2fa': typeof ApiAuthMe2faRoute
@@ -547,7 +564,6 @@ export interface FileRoutesByTo {
   '/api/travel/v1/listings': typeof ApiTravelV1ListingsRoute
   '/api/travel/v1/navitia': typeof ApiTravelV1NavitiaRoute
   '/api/travel/v1/recommend': typeof ApiTravelV1RecommendRoute
-  '/api/travel/v1/sandbox': typeof ApiTravelV1SandboxRoute
   '/api/travel/v1/transitland': typeof ApiTravelV1TransitlandRoute
   '/api/travel/v1/transitous': typeof ApiTravelV1TransitousRoute
   '/api/user/preferences/analytics': typeof ApiUserPreferencesAnalyticsRoute
@@ -606,6 +622,9 @@ export interface FileRoutesById {
   '/api/auth/signup': typeof ApiAuthSignupRoute
   '/api/health/ml-status': typeof ApiHealthMlStatusRoute
   '/api/internal/404-log': typeof ApiInternal404LogRoute
+  '/api/travel/catalog': typeof ApiTravelCatalogRoute
+  '/api/travel/cruises': typeof ApiTravelCruisesRoute
+  '/api/travel/results': typeof ApiTravelResultsRoute
   '/api/v1/$': typeof ApiV1SplatRoute
   '/api/health/': typeof ApiHealthIndexRoute
   '/api/auth/me/2fa': typeof ApiAuthMe2faRoute
@@ -618,7 +637,6 @@ export interface FileRoutesById {
   '/api/travel/v1/listings': typeof ApiTravelV1ListingsRoute
   '/api/travel/v1/navitia': typeof ApiTravelV1NavitiaRoute
   '/api/travel/v1/recommend': typeof ApiTravelV1RecommendRoute
-  '/api/travel/v1/sandbox': typeof ApiTravelV1SandboxRoute
   '/api/travel/v1/transitland': typeof ApiTravelV1TransitlandRoute
   '/api/travel/v1/transitous': typeof ApiTravelV1TransitousRoute
   '/api/user/preferences/analytics': typeof ApiUserPreferencesAnalyticsRoute
@@ -678,6 +696,9 @@ export interface FileRouteTypes {
     | '/api/auth/signup'
     | '/api/health/ml-status'
     | '/api/internal/404-log'
+    | '/api/travel/catalog'
+    | '/api/travel/cruises'
+    | '/api/travel/results'
     | '/api/v1/$'
     | '/api/health/'
     | '/api/auth/me/2fa'
@@ -690,7 +711,6 @@ export interface FileRouteTypes {
     | '/api/travel/v1/listings'
     | '/api/travel/v1/navitia'
     | '/api/travel/v1/recommend'
-    | '/api/travel/v1/sandbox'
     | '/api/travel/v1/transitland'
     | '/api/travel/v1/transitous'
     | '/api/user/preferences/analytics'
@@ -747,6 +767,9 @@ export interface FileRouteTypes {
     | '/api/auth/signup'
     | '/api/health/ml-status'
     | '/api/internal/404-log'
+    | '/api/travel/catalog'
+    | '/api/travel/cruises'
+    | '/api/travel/results'
     | '/api/v1/$'
     | '/api/health'
     | '/api/auth/me/2fa'
@@ -759,7 +782,6 @@ export interface FileRouteTypes {
     | '/api/travel/v1/listings'
     | '/api/travel/v1/navitia'
     | '/api/travel/v1/recommend'
-    | '/api/travel/v1/sandbox'
     | '/api/travel/v1/transitland'
     | '/api/travel/v1/transitous'
     | '/api/user/preferences/analytics'
@@ -817,6 +839,9 @@ export interface FileRouteTypes {
     | '/api/auth/signup'
     | '/api/health/ml-status'
     | '/api/internal/404-log'
+    | '/api/travel/catalog'
+    | '/api/travel/cruises'
+    | '/api/travel/results'
     | '/api/v1/$'
     | '/api/health/'
     | '/api/auth/me/2fa'
@@ -829,7 +854,6 @@ export interface FileRouteTypes {
     | '/api/travel/v1/listings'
     | '/api/travel/v1/navitia'
     | '/api/travel/v1/recommend'
-    | '/api/travel/v1/sandbox'
     | '/api/travel/v1/transitland'
     | '/api/travel/v1/transitous'
     | '/api/user/preferences/analytics'
@@ -882,6 +906,9 @@ export interface RootRouteChildren {
   ApiAuthResetPasswordRoute: typeof ApiAuthResetPasswordRoute
   ApiAuthSignupRoute: typeof ApiAuthSignupRoute
   ApiInternal404LogRoute: typeof ApiInternal404LogRoute
+  ApiTravelCatalogRoute: typeof ApiTravelCatalogRoute
+  ApiTravelCruisesRoute: typeof ApiTravelCruisesRoute
+  ApiTravelResultsRoute: typeof ApiTravelResultsRoute
   ApiV1SplatRoute: typeof ApiV1SplatRoute
   ApiAuthMe2faRoute: typeof ApiAuthMe2faRoute
   ApiAuthMeAvatarRoute: typeof ApiAuthMeAvatarRoute
@@ -893,7 +920,6 @@ export interface RootRouteChildren {
   ApiTravelV1ListingsRoute: typeof ApiTravelV1ListingsRoute
   ApiTravelV1NavitiaRoute: typeof ApiTravelV1NavitiaRoute
   ApiTravelV1RecommendRoute: typeof ApiTravelV1RecommendRoute
-  ApiTravelV1SandboxRoute: typeof ApiTravelV1SandboxRoute
   ApiTravelV1TransitlandRoute: typeof ApiTravelV1TransitlandRoute
   ApiTravelV1TransitousRoute: typeof ApiTravelV1TransitousRoute
   ApiUserPreferencesAnalyticsRoute: typeof ApiUserPreferencesAnalyticsRoute
@@ -1143,6 +1169,27 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ApiInternal404LogRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/api/travel/catalog': {
+      id: '/api/travel/catalog'
+      path: '/api/travel/catalog'
+      fullPath: '/api/travel/catalog'
+      preLoaderRoute: typeof ApiTravelCatalogRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/travel/cruises': {
+      id: '/api/travel/cruises'
+      path: '/api/travel/cruises'
+      fullPath: '/api/travel/cruises'
+      preLoaderRoute: typeof ApiTravelCruisesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/travel/results': {
+      id: '/api/travel/results'
+      path: '/api/travel/results'
+      fullPath: '/api/travel/results'
+      preLoaderRoute: typeof ApiTravelResultsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/api/v1/$': {
       id: '/api/v1/$'
       path: '/api/v1/$'
@@ -1239,13 +1286,6 @@ declare module '@tanstack/react-router' {
       path: '/api/travel/v1/recommend'
       fullPath: '/api/travel/v1/recommend'
       preLoaderRoute: typeof ApiTravelV1RecommendRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/api/travel/v1/sandbox': {
-      id: '/api/travel/v1/sandbox'
-      path: '/api/travel/v1/sandbox'
-      fullPath: '/api/travel/v1/sandbox'
-      preLoaderRoute: typeof ApiTravelV1SandboxRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/api/travel/v1/transitland': {
@@ -1504,6 +1544,9 @@ const rootRouteChildren: RootRouteChildren = {
   ApiAuthResetPasswordRoute: ApiAuthResetPasswordRoute,
   ApiAuthSignupRoute: ApiAuthSignupRoute,
   ApiInternal404LogRoute: ApiInternal404LogRoute,
+  ApiTravelCatalogRoute: ApiTravelCatalogRoute,
+  ApiTravelCruisesRoute: ApiTravelCruisesRoute,
+  ApiTravelResultsRoute: ApiTravelResultsRoute,
   ApiV1SplatRoute: ApiV1SplatRoute,
   ApiAuthMe2faRoute: ApiAuthMe2faRoute,
   ApiAuthMeAvatarRoute: ApiAuthMeAvatarRoute,
@@ -1515,7 +1558,6 @@ const rootRouteChildren: RootRouteChildren = {
   ApiTravelV1ListingsRoute: ApiTravelV1ListingsRoute,
   ApiTravelV1NavitiaRoute: ApiTravelV1NavitiaRoute,
   ApiTravelV1RecommendRoute: ApiTravelV1RecommendRoute,
-  ApiTravelV1SandboxRoute: ApiTravelV1SandboxRoute,
   ApiTravelV1TransitlandRoute: ApiTravelV1TransitlandRoute,
   ApiTravelV1TransitousRoute: ApiTravelV1TransitousRoute,
   ApiUserPreferencesAnalyticsRoute: ApiUserPreferencesAnalyticsRoute,

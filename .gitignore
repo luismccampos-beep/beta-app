@@ -52,7 +52,6 @@ __pycache__/
 Database/
 data/
 travel-images-data/
-!apps/web/src/app/components/data/
 !apps/web-tanstack/src/components/data/
 src/data/
 
@@ -86,9 +85,6 @@ data/wikivoyage/out/
 data/hotels/hotel-index.json
 src/data/travel-mock/bundle-wikivoyage.json
 # unsplash-cache.json is committed (~2.6MB)
-apps/web/public/travel-images/*
-!apps/web/public/travel-images/.gitkeep
-!apps/web/public/travel-images/placeholder.svg
 data/hotels/tbo-hotels.csv
 
 # Internal work notes (may contain secrets)
@@ -102,15 +98,12 @@ storybook-static/
 
 # Turborepo cache (generated; do not commit)
 .turbo/
-apps/web/.turbo/
 apps/web-tanstack/.turbo/
 
 # MCP configs (local tooling, not part of the app)
 .mcp/
 
 # Build outputs (do not commit)
-apps/tanstack-poc/dist/
-apps/web/dist/
 apps/web-tanstack/dist/
 deploy/tanstack-poc/dist/
 apps/web/.open-next/
@@ -121,6 +114,4 @@ apps/web-tanstack/.wrangler/
 deploy/tanstack-poc/.wrangler/
 
 # Dependencies
-apps/tanstack-poc/node_modules/
-apps/web/node_modules/
 apps/web-tanstack/node_modules/

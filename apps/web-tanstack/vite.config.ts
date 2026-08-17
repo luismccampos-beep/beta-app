@@ -4,24 +4,8 @@ import { cloudflare } from '@cloudflare/vite-plugin'
 import react from '@vitejs/plugin-react'
 import tailwindcss from '@tailwindcss/vite'
 import tsConfigPaths from 'vite-tsconfig-paths'
-import path from 'node:path'
-import { fileURLToPath } from 'node:url'
-
-const rootDir = path.dirname(fileURLToPath(import.meta.url))
 
 export default defineConfig({
-  resolve: {
-    alias:
-      process.env.PUBLIC_ONLY_MODE === 'true'
-        ? {
-            '@akmleva/db': path.resolve(
-              rootDir,
-              'src/lib/db/public-stub.ts',
-            ),
-          }
-        : {},
-  },
-
   plugins: [
     cloudflare({ viteEnvironment: { name: 'ssr' } }),
     tanstackStart(),

@@ -1,6 +1,8 @@
 import { createFileRoute } from '@tanstack/react-router'
 import { z } from 'zod'
 import { apiHandler } from '@/lib/api/handler'
+import { auth } from '@/lib/auth/auth'
+import { checkRateLimit, publicRatelimit } from '@/lib/rate-limit'
 import { unifiedQuery } from '@/lib/ml-service/client'
 
 const PreferencesInsightsSchema = z.object({
@@ -12,6 +14,16 @@ export const Route = createFileRoute('/api/ai/preferences-insights')({
   server: {
     handlers: {
       POST: apiHandler(async ({ request }) => {
+        const rateLimitResult = await checkRateLimit(request, publicRatelimit)
+        if (!rateLimitResult.success) {
+          return Response.json({ ok: false, message: 'Rate limit exceeded' }, { status: 429 })
+        }
+
+        const session = await auth.api.getSession({ headers: request.headers })
+        if (!session?.user) {
+          return Response.json({ ok: false, message: 'Authentication required' }, { status: 401 })
+        }
+
         const { preferences, locale } = PreferencesInsightsSchema.parse(await request.json())
 
         const query = `Generate short travel insights and recommended next steps based on these preferences:\n\n${JSON.stringify(

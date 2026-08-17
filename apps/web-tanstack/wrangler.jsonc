@@ -12,13 +12,6 @@
     "PUBLIC_ONLY_MODE": "false",
     "VITE_BASE_URL": "https://akmleva.pt"
   },
-  "d1_databases": [
-    {
-      "binding": "DB",
-      "database_name": "akmleva-db",
-      "database_id": "a012f558-bdcd-4173-8e55-cabddd97c56a"
-    }
-  ],
   "assets": {
     "binding": "ASSETS",
     "directory": "./dist/client"

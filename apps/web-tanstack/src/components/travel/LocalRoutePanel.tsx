@@ -74,7 +74,7 @@ export function LocalRoutePanel({
       locale: locale.startsWith('pt') ? 'pt' : locale.startsWith('es') ? 'es' : locale.startsWith('fr') ? 'fr' : 'en',
     });
     if (departAfter) qs.set('departAfter', String(departAfter));
-    if (process.env.NEXT_PUBLIC_TRAVEL_ROUTING_LOCAL_ONLY === 'true') {
+    if (import.meta.env.VITE_TRAVEL_ROUTING_LOCAL_ONLY === 'true') {
       qs.set('localOnly', '1');
     }
 

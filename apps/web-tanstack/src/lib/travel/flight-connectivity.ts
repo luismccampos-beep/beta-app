@@ -23,7 +23,7 @@ export function resolveOriginIata(
   const fromPrefs = extractIataCodesFromDestinationLabels(prefs?.preferredDestinations ?? []);
   if (fromPrefs[0]) return fromPrefs[0];
 
-  const env = process.env.NEXT_PUBLIC_DEFAULT_ORIGIN_IATA?.trim().toUpperCase();
+  const env = import.meta.env.VITE_DEFAULT_ORIGIN_IATA?.trim().toUpperCase();
   if (env && /^[A-Z0-9]{3}$/.test(env)) return env;
 
   return 'LIS';

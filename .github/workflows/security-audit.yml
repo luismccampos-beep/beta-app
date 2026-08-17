@@ -37,7 +37,6 @@ jobs:
 
       - name: Run npm audit (strict)
         run: npm audit --audit-level=high
-        continue-on-error: true
 
   osv-scanner:
     name: OSV Scanner
@@ -51,10 +50,16 @@ jobs:
           node-version: 22
           cache: 'npm'
 
+      - name: Install OSV Scanner
+        run: |
+          VERSION="2.5.1"
+          curl -sSfL "https://github.com/google/osv-scanner/releases/download/v${VERSION}/osv-scanner_linux_amd64" -o osv-scanner
+          chmod +x osv-scanner
+          ./osv-scanner --version
+
       - name: Run OSV Scanner
         run: |
-          npx osv-scanner --lockfile package-lock.json --format json > osv-report.json || true
-        continue-on-error: true
+          ./osv-scanner --lockfile package-lock.json --format json > osv-report.json || true
 
       - name: Upload OSV report
         uses: actions/upload-artifact@v5
@@ -62,6 +67,7 @@ jobs:
         with:
           name: osv-report
           path: osv-report.json
+          if-no-files-found: warn
           retention-days: 30
 
   dependency-review:

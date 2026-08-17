@@ -854,6 +854,7 @@
   "enhancedTravelPreferencesForm": {
     "appTitle": "AKMLEVA",
     "appSubtitle": "Ecossistema de Viagens Empresarial com IA",
+    "range": "intervalo",
     "appFeatures": "Soluções Inteligentes de Viagem • Escala Global • Processamento Multi-Moeda • Integração CRM",
     "aiEnhanced": "Aprimorado por IA",
     "multiCurrency": "Multi-Moeda",
@@ -1426,6 +1427,7 @@
     "noResults": "Nenhum resultado encontrado",
     "noResultsDesc": "Tente ajustar os filtros para ver mais opções",
     "clearFilters": "Limpar Tudo",
+    "clearAll": "Limpar Tudo",
     "title": "As Suas Recomendações de Viagem Personalizadas",
     "subtitle": "Destinos selecionados por IA com base nas suas preferências",
     "resultsFound": "resultados encontrados",

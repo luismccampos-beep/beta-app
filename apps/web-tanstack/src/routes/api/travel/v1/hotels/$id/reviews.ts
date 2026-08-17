@@ -1,6 +1,8 @@
 import { createFileRoute } from '@tanstack/react-router'
 import { z } from 'zod'
 import { prisma } from '@akmleva/db'
+import { auth } from '@/lib/auth/auth'
+import { checkRateLimit, publicRatelimit } from '@/lib/rate-limit'
 
 const CreateReviewSchema = z.object({
   rating: z.number().int().min(1).max(5),
@@ -17,7 +19,12 @@ function parseHotelId(id: string): number {
 export const Route = createFileRoute('/api/travel/v1/hotels/$id/reviews')({
   server: {
     handlers: {
-      GET: async ({ params }) => {
+      GET: async ({ request, params }) => {
+        const rateLimitResult = await checkRateLimit(request, publicRatelimit)
+        if (!rateLimitResult.success) {
+          return Response.json({ ok: false, message: 'Rate limit exceeded' }, { status: 429 })
+        }
+
         const id = parseHotelId(params.id)
         const reviews = await prisma.wvHotelReview.findMany({
           where: { hotelId: id },
@@ -42,6 +49,16 @@ export const Route = createFileRoute('/api/travel/v1/hotels/$id/reviews')({
       },
 
       POST: async ({ request, params }) => {
+        const rateLimitResult = await checkRateLimit(request, publicRatelimit)
+        if (!rateLimitResult.success) {
+          return Response.json({ ok: false, message: 'Rate limit exceeded' }, { status: 429 })
+        }
+
+        const session = await auth.api.getSession({ headers: request.headers })
+        if (!session?.user) {
+          return Response.json({ ok: false, message: 'Authentication required' }, { status: 401 })
+        }
+
         const id = parseHotelId(params.id)
         const hotel = await prisma.wvHotel.findUnique({ where: { id }, select: { id: true } })
         if (!hotel) {

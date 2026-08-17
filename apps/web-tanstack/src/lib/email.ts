@@ -10,7 +10,7 @@ const resend = resendApiKey ? new Resend(resendApiKey) : null
 
 export const EMAIL_FROM = process.env.EMAIL_FROM || 'AKMLEVA <no-reply@akmleva.pt>'
 
-const BASE_URL = process.env.VITE_BASE_URL || process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3002'
+const BASE_URL = process.env.VITE_BASE_URL || process.env.VITE_SITE_URL || 'http://localhost:3002'
 
 function emailTemplate(opts: { title: string; subtitle: string; body: string; button?: { text: string; url: string } }) {
   return `

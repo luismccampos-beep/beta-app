@@ -208,11 +208,11 @@ export const travelApi = {
     pageSize: number;
     locale: string;
   }) {
-    return api.get<TravelDestinationsResponse>('/api/travel/destinations', params);
+    return api.get<TravelDestinationsResponse>('/api/travel/v1/destinations', params);
   },
 
   fetchCatalog(locale: string) {
-    return api.get<TravelCatalogResponse>('/api/travel/catalog', { locale });
+    return api.get<TravelCatalogResponse>('/api/travel/catalog', { lang: locale });
   },
 
   fetchCountries() {

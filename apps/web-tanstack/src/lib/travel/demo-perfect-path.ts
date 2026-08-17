@@ -13,7 +13,7 @@
 
 import type { TravelResult } from '@/components/data/mockResults';
 import type { MockDestination, MockHotel, MockFlight } from './mock-travel/types';
-import type { DestinationDetailData } from '@/app/components/travel/destination-detail';
+import type { DestinationDetailData } from '@/lib/travel/destination-detail-types';
 import type { DestinationMapMarker } from './destination-map';
 import { summarizeCostOfLiving } from './cost-tier';
 import { summarizeAirport } from './transport-summary';

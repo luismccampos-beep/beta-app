@@ -14,11 +14,9 @@
     "lib": ["DOM", "DOM.Iterable", "ES2022"],
     "paths": {
       "@akmleva/db": ["../../packages/db/src/index"],
-      "@akmleva/shared": ["../../packages/shared/src/index"],
-      "@akmleva/ui": ["../../packages/ui/src/index"],
       "@/*": ["./src/*"]
     }
   },
-  "include": ["src/**/*"],
+  "include": ["src/**/*", "e2e/**/*"],
   "exclude": ["node_modules", "dist", ".output", "src/**/*.test.ts", "src/**/*.test.tsx"]
 }
