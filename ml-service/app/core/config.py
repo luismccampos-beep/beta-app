@@ -48,6 +48,10 @@ class Settings(BaseSettings): # pyright: ignore[reportGeneralTypeIssues]
     MODEL_NAME: str = "recommender"
     BATCH_SIZE: int = 32
     NUM_WORKERS: int = 4
+    DATA_DIR: str = "app/data"
+    CACHE_DIR: str = "cache"
+    LOG_DIR: str = "logs"
+    CONFIG_DIR: str = "config"
 
     # TinyAya (local LLM) settings
     TINY_AYA_API_URL: str = "http://localhost:8080/v1"
@@ -59,13 +63,23 @@ class Settings(BaseSettings): # pyright: ignore[reportGeneralTypeIssues]
     GEMINI_BASE_URL: str = "https://generativelanguage.googleapis.com/v1beta"
     
     # Security settings
-    SECRET_KEY: str = "supersecretkey"
+    # Shared API key for the whole ML service. Clients must send it in the
+    # `x-api-key` header. When unset, requests are rejected in production
+    # (fail closed) and allowed only in non-production environments.
+    API_KEY: str | None = None
+    SECRET_KEY: str = "changeme-in-production"  # Only used for local JWT signing; never for auth
     ALGORITHM: str = "HS256"
     ACCESS_TOKEN_EXPIRE_MINUTES: int = 60
     
     # CORS settings
-    ALLOWED_ORIGINS: list[str] = ["*"]
-    ALLOWED_METHODS: list[str] = ["*"]
+    # Explicit origins only — "*" must never be combined with credentials.
+    ALLOWED_ORIGINS: list[str] = [
+        "http://localhost:3000",
+        "http://localhost:3001",
+        "http://localhost:3002",
+        "http://localhost:5173",
+    ]
+    ALLOWED_METHODS: list[str] = ["GET", "POST", "PUT", "DELETE", "OPTIONS"]
     ALLOWED_HEADERS: list[str] = ["*"]
 
     # Compatibility aliases (used by app/main.py)
@@ -86,6 +100,7 @@ class Settings(BaseSettings): # pyright: ignore[reportGeneralTypeIssues]
         return self.BACKEND_URL
     
     # Monitoring settings
+    MONITORING_ENABLED: bool = False
     PROMETHEUS_PORT: int = 9090
     GRAFANA_ENABLED: bool = False
     

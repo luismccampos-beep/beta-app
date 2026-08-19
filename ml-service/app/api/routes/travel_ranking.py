@@ -86,6 +86,8 @@ def _load_model():
             return _model
 
         try:
+            # SECURITY: joblib.load can execute arbitrary code — only load
+            # model artifacts you control from the trusted model path.
             _model = joblib.load(str(path))
             _model_mtime = mtime
             logger.info("Loaded destination embedding model from %s", str(path))

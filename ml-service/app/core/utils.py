@@ -53,6 +53,8 @@ def load_object(path: str) -> Any:
                 return None
             return np.load(path)
         elif path.endswith(".pkl") or path.endswith(".pickle"):
+            # SECURITY: pickle.load executes arbitrary code. Only load files
+            # you control (model artifacts), never attacker-supplied paths.
             with open(path, "rb") as f:
                 return pickle.load(f)
         else:

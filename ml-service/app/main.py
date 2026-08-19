@@ -1,6 +1,6 @@
 import logging
 
-from datetime import datetime
+from datetime import datetime, timezone
 
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
@@ -11,13 +11,6 @@ from app.core.config import settings
 from app.core.logger import setup_logging
 from app.core.sentry import init_sentry
 from app.api.routes import router as api_router
-
-try:
-    from app.ml.ranking_engine import TravelRankingEngine
-except ModuleNotFoundError:
-    class TravelRankingEngine:
-        def __init__(self):
-            pass
 
 setup_logging()
 init_sentry()
@@ -49,12 +42,22 @@ async def health() -> JSONResponse:
         status_code=200,
         content={
             "status": "ok",
-            "time": datetime.utcnow().isoformat(),
+            "time": datetime.now(timezone.utc).isoformat(),
             "version": settings.APP_VERSION,
         },
     )
 
-ranking_engine = TravelRankingEngine()
+
+def main() -> None:
+    """Entry point for the ``akmleva-ml`` console script."""
+    import uvicorn
+
+    uvicorn.run(
+        "app.main:app",
+        host=settings.HOST,
+        port=settings.PORT,
+        reload=settings.DEBUG,
+    )
 
 def custom_openapi():
     if app.openapi_schema:

@@ -1,10 +1,11 @@
 from __future__ import annotations
 
+import csv
 import logging
-from datetime import datetime
+from datetime import datetime, timezone
 from typing import Any, Dict
 
-from fastapi import APIRouter, HTTPException, status
+from fastapi import APIRouter, HTTPException, Query, status
 from pydantic import BaseModel
 
 from app.core.config import settings
@@ -39,17 +40,17 @@ class PredictionResponse(BaseModel):
 @router.post("/", response_model=PredictionResponse)
 async def predict(request: PredictionRequest) -> PredictionResponse:
     try:
-        start_time = datetime.utcnow()
+        start_time = datetime.now(timezone.utc)
 
         predictor = Predictor()
         result = predictor.predict(model_name=settings.MODEL_NAME, input_data=request.input_data)
 
-        processing_time = (datetime.utcnow() - start_time).total_seconds()
+        processing_time = (datetime.now(timezone.utc) - start_time).total_seconds()
         logger.info("Successfully completed prediction. Processing time: %.2fs", processing_time)
 
         return PredictionResponse(
             prediction=result,
-            timestamp=datetime.utcnow().isoformat(),
+            timestamp=datetime.now(timezone.utc).isoformat(),
             processing_time=processing_time,
         )
     except Exception as e:
@@ -61,17 +62,20 @@ async def predict(request: PredictionRequest) -> PredictionResponse:
 
 
 @router.get("/recommendations/{user_id}")
-async def get_recommendations(user_id: int, limit: int = 10) -> Dict[str, Any]:
+async def get_recommendations(
+    user_id: int,
+    limit: int = Query(default=10, ge=1, le=50),
+) -> Dict[str, Any]:
     try:
-        start_time = datetime.utcnow()
+        start_time = datetime.now(timezone.utc)
         predictor = Predictor()
         result = predictor.predict(model_name="recommender", input_data={"user_id": user_id, "limit": limit})
-        processing_time = (datetime.utcnow() - start_time).total_seconds()
+        processing_time = (datetime.now(timezone.utc) - start_time).total_seconds()
         recommendations = result if isinstance(result, list) else result.get("items", [])
         return {
             "user_id": user_id,
             "recommendations": recommendations[:limit],
-            "timestamp": datetime.utcnow().isoformat(),
+            "timestamp": datetime.now(timezone.utc).isoformat(),
             "processing_time": processing_time,
         }
     except Exception as e:
@@ -130,12 +134,27 @@ class Interaction(BaseModel):
     score: float = 1.0
 
 
+_CSV_FORMULA_PREFIXES = ("=", "+", "-", "@", "\t", "\r", "\u00ef")
+
+
+def _sanitize_csv_cell(value: str) -> str:
+    """Neutralize spreadsheet formula injection in CSV cells."""
+    if value.startswith(_CSV_FORMULA_PREFIXES):
+        return "'" + value
+    return value
+
+
 @router.post("/interactions")
 async def add_interaction(interaction: Interaction) -> Dict[str, Any]:
     try:
         path = "app/data/interactions.csv"
-        with open(path, "a", encoding="utf-8") as f:
-            f.write(f"\n{interaction.user_id},{interaction.item_id},{interaction.score}")
+        with open(path, "a", encoding="utf-8", newline="") as f:
+            writer = csv.writer(f)
+            writer.writerow([
+                interaction.user_id,
+                _sanitize_csv_cell(interaction.item_id),
+                interaction.score,
+            ])
         return {"success": True}
     except Exception as e:
         logger.error("Error appending interaction: %s", str(e))

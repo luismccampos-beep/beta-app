@@ -6,8 +6,14 @@ Validação de imagens usando CLIP zero-shot e heurísticas
 from fastapi import APIRouter, HTTPException
 from pydantic import BaseModel, Field
 from typing import List, Optional
+import asyncio
+import ipaddress
 import logging
+import socket
 import time
+from io import BytesIO
+from urllib.parse import urlparse
+import requests
 from cachetools import TTLCache
 
 from app.core.logger import logger
@@ -18,6 +24,71 @@ router = APIRouter(prefix="/validate-image", tags=["validate-image"])
 
 # Cache de 1 hora para resultados de validação
 _validation_cache = TTLCache(maxsize=1000, ttl=3600)
+
+# ─────────────────────── download safety ─────────────────────
+
+MAX_IMAGE_BYTES = 20 * 1024 * 1024  # 20 MB
+IMAGE_DOWNLOAD_TIMEOUT = 10
+
+# Hosts that can never be fetched (local/loopback/link-local/etc.)
+_PRIVATE_HOSTNAMES = {"localhost", "localhost.localdomain"}
+
+
+def _is_private_host(host: str) -> bool:
+    """Return True if ``host`` resolves (or points) to a private address."""
+    if host in _PRIVATE_HOSTNAMES or host.endswith(".local"):
+        return True
+    try:
+        infos = socket.getaddrinfo(host, None)
+    except socket.gaierror:
+        # Unresolvable hosts are rejected (fail closed) to avoid rebinding attacks.
+        return True
+    for info in infos:
+        try:
+            ip = ipaddress.ip_address(info[4][0])
+        except ValueError:
+            return True
+        if (
+            ip.is_private
+            or ip.is_loopback
+            or ip.is_link_local
+            or ip.is_multicast
+            or ip.is_reserved
+            or ip.is_unspecified
+        ):
+            return True
+    return False
+
+
+def _is_safe_image_url(url: str) -> bool:
+    """Block SSRF: only http(s) URLs resolving to public addresses are allowed."""
+    try:
+        parsed = urlparse(url)
+    except ValueError:
+        return False
+    if parsed.scheme not in ("http", "https") or not parsed.hostname:
+        return False
+    return not _is_private_host(parsed.hostname)
+
+
+def _download_image(url: str) -> bytes:
+    """Stream-download an image with a hard size cap (blocks the caller thread)."""
+    response = requests.get(url, timeout=IMAGE_DOWNLOAD_TIMEOUT, stream=True)
+    response.raise_for_status()
+    content_length = response.headers.get("Content-Length")
+    if content_length and int(content_length) > MAX_IMAGE_BYTES:
+        response.close()
+        raise ValueError(f"image exceeds {MAX_IMAGE_BYTES // (1024 * 1024)} MB limit")
+    chunks = []
+    total = 0
+    for chunk in response.iter_content(chunk_size=64 * 1024):
+        total += len(chunk)
+        if total > MAX_IMAGE_BYTES:
+            response.close()
+            raise ValueError(f"image exceeds {MAX_IMAGE_BYTES // (1024 * 1024)} MB limit")
+        chunks.append(chunk)
+    response.close()
+    return b"".join(chunks)
 
 
 # ─────────────────────────── models ──────────────────────────
@@ -44,7 +115,7 @@ class ValidateImageResponse(BaseModel):
 
 # ─────────────────────────── CLIP validation ─────────────────
 
-def _validate_with_clip(image_url: str, candidate_labels: List[str]) -> Optional[dict]:
+def _validate_with_clip(image_bytes: bytes, candidate_labels: List[str]) -> Optional[dict]:
     """
     Valida imagem usando CLIP zero-shot.
     Retorna None se o modelo não estiver disponível.
@@ -53,8 +124,6 @@ def _validate_with_clip(image_url: str, candidate_labels: List[str]) -> Optional
         import torch
         from transformers import CLIPProcessor, CLIPModel
         from PIL import Image
-        import requests
-        from io import BytesIO
 
         # Carregar modelo (cacheado em memória após primeira carga)
         if not hasattr(_validate_with_clip, 'model'):
@@ -66,10 +135,7 @@ def _validate_with_clip(image_url: str, candidate_labels: List[str]) -> Optional
         model = _validate_with_clip.model
         processor = _validate_with_clip.processor
 
-        # Download da imagem
-        response = requests.get(image_url, timeout=10)
-        response.raise_for_status()
-        image = Image.open(BytesIO(response.content)).convert("RGB")
+        image = Image.open(BytesIO(image_bytes)).convert("RGB")
 
         # Processar
         inputs = processor(
@@ -111,6 +177,13 @@ async def validate_image(request: ValidateImageRequest):
     """
     start_time = time.time()
 
+    # SSRF guard: reject private/internal URLs before any processing or cache hit.
+    if not _is_safe_image_url(request.image_url):
+        raise HTTPException(
+            status_code=400,
+            detail="image_url must be a public http(s) URL",
+        )
+
     # Verificar cache
     cache_key = f"{request.image_url}:{':'.join(request.candidate_labels)}"
     if cache_key in _validation_cache:
@@ -124,8 +197,16 @@ async def validate_image(request: ValidateImageRequest):
             cached=True
         )
 
-    # Executar validação CLIP
-    result = _validate_with_clip(request.image_url, request.candidate_labels)
+    # Download da imagem (off-thread, com limite de tamanho e SSRF guard)
+    try:
+        image_bytes = await asyncio.to_thread(_download_image, request.image_url)
+    except ValueError as e:
+        raise HTTPException(status_code=400, detail=str(e))
+    except requests.RequestException as e:
+        raise HTTPException(status_code=400, detail=f"Falha ao baixar imagem: {e}")
+
+    # Executar validação CLIP (off-thread: inference is CPU/GPU-bound)
+    result = await asyncio.to_thread(_validate_with_clip, image_bytes, request.candidate_labels)
 
     if result is None:
         # CLIP não disponível ou erro

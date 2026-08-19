@@ -1,3 +1,4 @@
+-r requirements.txt
 -r requirements-dev.txt
 -r requirements-db.txt
 -r requirements-cache.txt

@@ -427,8 +427,8 @@ Quais são as limitações ou potenciais problemas desta recomendação?"""
     async def health_check(self) -> Dict[str, Any]:
         """Verifica saúde do serviço XAI"""
         try:
-            # Testar TinyAya
-            tiny_aya_health = self.tiny_aya.health_check()
+            # Testar TinyAya (blocking call — run off the event loop)
+            tiny_aya_health = await asyncio.to_thread(self.tiny_aya.health_check)
             
             # Testar conexão com backend
             async with httpx.AsyncClient(timeout=5.0) as client:

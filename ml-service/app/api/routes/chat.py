@@ -252,10 +252,13 @@ async def send_message(request: ChatRequest):
     response_model=ChatHistoryResponse,
     summary="Histórico da sessão",
 )
-async def get_session_history(session_id: str):
-    """Retorna o histórico completo de mensagens de uma sessão."""
+async def get_session_history(
+    session_id: str,
+    user_id: int = Query(..., description="ID do usuário dono da sessão"),
+):
+    """Retorna o histórico completo de mensagens de uma sessão do próprio usuário."""
     session = await chat_service.get_session(session_id)
-    if not session:
+    if not session or session.user_id != user_id:
         raise HTTPException(status_code=404, detail="Sessão não encontrada")
 
     return ChatHistoryResponse(
@@ -315,8 +318,15 @@ async def get_user_sessions(
     response_model=DeleteSessionResponse,
     summary="Deletar sessão",
 )
-async def delete_session(session_id: str):
-    """Remove permanentemente uma sessão de chat."""
+async def delete_session(
+    session_id: str,
+    user_id: int = Query(..., description="ID do usuário dono da sessão"),
+):
+    """Remove permanentemente uma sessão de chat do próprio usuário."""
+    session = await chat_service.get_session(session_id)
+    if not session or session.user_id != user_id:
+        raise HTTPException(status_code=404, detail="Sessão não encontrada")
+
     success = await chat_service.delete_session(session_id)
     if not success:
         raise HTTPException(status_code=404, detail="Sessão não encontrada")

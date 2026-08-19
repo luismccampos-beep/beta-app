@@ -9,6 +9,7 @@ import logging
 from typing import Any, Dict, List, Optional
 from datetime import datetime
 
+import asyncio
 import httpx
 import numpy as np
 from pydantic import BaseModel
@@ -316,7 +317,7 @@ class RAGIntegrationService:
         except Exception:
             self.logger.warning("Backend health check failed")
 
-        tiny_aya_health: Dict[str, Any] = self.tiny_aya.health_check()
+        tiny_aya_health: Dict[str, Any] = await asyncio.to_thread(self.tiny_aya.health_check)
         overall = backend_healthy and tiny_aya_health.get("status") == "healthy"
 
         return {

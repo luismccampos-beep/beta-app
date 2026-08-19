@@ -1,3 +1,5 @@
+import logging
+
 try:
     from prometheus_client import Counter, Gauge, start_http_server  # type: ignore
 except ImportError:
@@ -14,6 +16,8 @@ except ImportError:
         def labels(self, *args, **kwargs): return self
     def start_http_server(*args, **kwargs): pass
 from app.core.config import settings
+
+logger = logging.getLogger(__name__)
 
 # Create metrics
 PREDICTION_LATENCY = Counter(
@@ -46,6 +50,9 @@ def init_monitoring():
     """Initialize monitoring and metrics"""
     if settings.MONITORING_ENABLED:
         start_http_server(settings.PROMETHEUS_PORT)
-        print(f"Monitoring initialized. Prometheus endpoint at http://localhost:{settings.PROMETHEUS_PORT}/metrics")
+        logger.info(
+            "Monitoring initialized. Prometheus endpoint at http://localhost:%s/metrics",
+            settings.PROMETHEUS_PORT,
+        )
     else:
-        warnings.warn("Monitoring is disabled")
+        logger.info("Monitoring is disabled")

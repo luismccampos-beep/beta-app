@@ -8,6 +8,7 @@ import json
 import logging
 from typing import Dict, List, Any, Optional, Union
 from pydantic import BaseModel
+import asyncio
 import requests
 import numpy as np
 
@@ -89,11 +90,14 @@ class TinyAyaConnector:
             
             self.logger.info(f"Sending request to TinyAya: {self.config.api_url}/chat/completions")
             
-            response = requests.post(
+            # Run the blocking requests call in a thread pool to avoid
+            # blocking the event loop.
+            response = await asyncio.to_thread(
+                requests.post,
                 f"{self.config.api_url}/chat/completions",
                 json=payload,
                 headers=headers,
-                timeout=30
+                timeout=30,
             )
             
             if response.status_code != 200:

@@ -145,6 +145,8 @@ models/trained/*.joblib
 app/models/trained/*.joblib
 app/data/wikivoyage_destinations.csv
 app/data/wikivoyage_destinations.jsonl
+app/data/interactions.csv
+app/data/items.csv
 data/raw/
 data/processed/
 logs/

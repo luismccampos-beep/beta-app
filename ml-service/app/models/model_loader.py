@@ -51,6 +51,8 @@ class ModelLoader:
             return None
 
         try:
+            # SECURITY: pickle.load executes arbitrary code — only load model
+            # artifacts you control from the trusted model dir.
             with open(model_path, "rb") as f:
                 model = pickle.load(f)
             if model is None:
@@ -87,6 +89,8 @@ class ModelLoader:
     def load_sklearn_model(self, model_path: str) -> Any:
         """Load scikit-learn model"""
         try:
+            # SECURITY: pickle.load executes arbitrary code — only load model
+            # artifacts you control from the trusted model dir.
             with open(model_path, "rb") as f:
                 return pickle.load(f)
         except Exception as e:

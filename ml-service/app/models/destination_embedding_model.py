@@ -50,7 +50,7 @@ class DestinationEmbeddingModel:
     def __init__(
         self,
         vectorizer: TfidfVectorizer,
-        svd: TruncatedSVD,
+        svd: Optional[TruncatedSVD],
         item_embeddings: np.ndarray,
         item_ids: List[str],
         item_meta: Dict[str, Dict[str, Any]],
@@ -84,8 +84,11 @@ class DestinationEmbeddingModel:
     ) -> List[Dict[str, Any]]:
         pref_doc = build_preference_document(preferences)
         q_tfidf = self.vectorizer.transform([pref_doc])
-        q_vec = self.svd.transform(q_tfidf)
-        q_norm = normalize(q_vec)
+        if self.svd is None:
+            q_norm = normalize(q_tfidf)
+        else:
+            q_vec = self.svd.transform(q_tfidf)
+            q_norm = normalize(q_vec)
 
         if candidates:
             indices: List[int] = []

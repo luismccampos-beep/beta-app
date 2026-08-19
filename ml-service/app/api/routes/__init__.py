@@ -3,8 +3,13 @@ API Routes
 Router principal com todas as rotas da API ML Service
 """
 
-from fastapi import APIRouter
+from fastapi import APIRouter, Depends
 from typing import List
+import logging
+
+from app.api.deps import require_api_key
+
+logger = logging.getLogger(__name__)
 
 # Import routers específicos
 try:
@@ -17,7 +22,7 @@ try:
     from .travel_ranking import router as travel_ranking_router
     ADVANCED_ROUTES_AVAILABLE = True
 except ImportError as e:
-    print(f"Advanced routes not available: {e}")
+    logger.warning("Advanced routes not available: %s", e)
     rag_router = None
     personalization_router = None
     xai_router = None
@@ -30,24 +35,24 @@ except ImportError as e:
 try:
     from .travel_distance import router as travel_distance_router
 except ImportError as e:
-    print(f"Travel distance routes not available: {e}")
+    logger.warning("Travel distance routes not available: %s", e)
     travel_distance_router = None
 
 try:
     from .validate_image import router as validate_image_router
 except ImportError as e:
-    print(f"Validate image routes not available: {e}")
+    logger.warning("Validate image routes not available: %s", e)
     validate_image_router = None
 
 # Import router de predictions (sempre deve existir)
 try:
     from .predictions import router as predictions_router
 except ImportError as e:
-    print(f"Predictions routes not available: {e}")
+    logger.warning("Predictions routes not available: %s", e)
     predictions_router = APIRouter()
 
-# Criar router principal
-api_router = APIRouter()
+# Criar router principal — every route mounted below requires the API key.
+api_router = APIRouter(dependencies=[Depends(require_api_key)])
 
 # Backward-compat export: some modules import `router` from this package
 router = api_router

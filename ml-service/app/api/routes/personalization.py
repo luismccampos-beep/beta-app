@@ -67,11 +67,17 @@ class RankRequest(BaseModel):
     candidates: List[SearchResult]
     queryId: Optional[str] = None
 
+    _MAX_CANDIDATES = 1000
+
     @field_validator("candidates")
     @classmethod
     def candidates_not_empty(cls, v: List[SearchResult]) -> List[SearchResult]:
         if not v:
             raise ValueError("candidates must not be empty")
+        if len(v) > cls._MAX_CANDIDATES:
+            raise ValueError(
+                f"candidates must not exceed {cls._MAX_CANDIDATES} items"
+            )
         return v
 
 

@@ -49,10 +49,19 @@ def train(config: Dict[str, Any] | None = None) -> str:
     )
     tfidf = vectorizer.fit_transform(docs)
 
-    n_components = min(k, max(2, tfidf.shape[1] - 1, tfidf.shape[0] - 1))
-    svd = TruncatedSVD(n_components=n_components, random_state=42)
-    embeddings = svd.fit_transform(tfidf)
-    embeddings = normalize(embeddings)
+    n_samples, n_features = tfidf.shape
+
+    if min(n_samples, n_features) < 2:
+        # Degenerate corpus (e.g. tiny test data): TruncatedSVD requires at
+        # least 2 samples and 2 features. Fall back to raw normalized TF-IDF.
+        svd = None
+        embeddings = normalize(tfidf).toarray()
+        n_components = n_features
+    else:
+        n_components = min(k, max(2, n_features - 1, n_samples - 1))
+        svd = TruncatedSVD(n_components=n_components, random_state=42)
+        embeddings = svd.fit_transform(tfidf)
+        embeddings = normalize(embeddings)
 
     item_meta: Dict[str, Dict[str, Any]] = {}
     id_by_destino: Dict[str, str] = {}
@@ -101,10 +110,13 @@ def train(config: Dict[str, Any] | None = None) -> str:
     meta_out = {
         "items": len(item_ids),
         "dimensions": n_components,
-        "explained_variance_ratio": float(svd.explained_variance_ratio_.sum()),
         "csv": str(csv_path),
         "model": str(out_path),
     }
+    if svd is not None:
+        meta_out["explained_variance_ratio"] = float(
+            svd.explained_variance_ratio_.sum()
+        )
     meta_path = DATA_DIR / "wikivoyage_model_meta.json"
     meta_path.write_text(json.dumps(meta_out, indent=2), encoding="utf-8")
 
