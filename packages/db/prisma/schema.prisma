@@ -18,8 +18,11 @@ datasource db {
 }
 
 generator client {
-  provider      = "prisma-client-js"
-  binaryTargets = ["native", "debian-openssl-3.0.x"]
+  provider        = "prisma-client-js"
+  binaryTargets   = ["native", "debian-openssl-3.0.x"]
+  // Allows the client to run on Cloudflare Workers via a driver adapter
+  // (@prisma/adapter-pg-worker), where the native query engine cannot load.
+  driverAdapters  = true
 }
 
 // ============================================
@@ -809,6 +812,7 @@ model Destination {
   locationLatLon Json?    @map("location_latlon") @db.JsonB
   latitude       Decimal? @db.Decimal(10, 8)
   longitude      Decimal? @db.Decimal(11, 8)
+  location       Unsupported("geography(Point, 4326)")? // added by 20260625100000_enable_postgis
   timezone       String?  @db.VarChar(50)
   altitudeMeters Int?     @map("altitude_meters") 
 
@@ -1283,6 +1287,7 @@ model CruiseFleet {
   updatedAt  DateTime @updatedAt
 
   @@map("cruise_fleet")
+  @@ignore
 }
 
 // Cruise providers
@@ -1299,6 +1304,7 @@ model CruiseProvider {
   ships CruiseShip[]
 
   @@map("cruise_providers")
+  @@ignore
 }
 
 // Cruise ships
@@ -1318,6 +1324,7 @@ model CruiseShip {
   provider CruiseProvider @relation(fields: [providerId], references: [id], onDelete: Cascade)
 
   @@map("cruise_ships")
+  @@ignore
 }
 
 // ============================================
@@ -1340,6 +1347,7 @@ model Accommodation {
   amenities           Json?    @db.JsonB
   latitude            Decimal? @db.Decimal(10, 6)
   longitude           Decimal? @db.Decimal(10, 6)
+  location            Unsupported("geography(Point, 4326)")? // added by 20260625100000_enable_postgis
   sustainabilityScore Decimal? @map("sustainability_score") @db.Decimal(4, 1)
   bookingUrl          String?  @map("booking_url") @db.Text
   published           Boolean  @default(true)
@@ -1435,6 +1443,7 @@ model HotelStep {
   updatedAt DateTime @updatedAt
 
   @@map("hotel_steps")
+  @@ignore
 }
 
 // Hotel fleet (room types)
@@ -1451,6 +1460,7 @@ model HotelFleet {
   updatedAt    DateTime @updatedAt
 
   @@map("hotel_fleet")
+  @@ignore
 }
 
 // Hotel providers
@@ -1465,6 +1475,7 @@ model HotelProvider {
   updatedAt DateTime @updatedAt
 
   @@map("hotel_providers")
+  @@ignore
 }
 
 /// Hotel rooms
@@ -1604,6 +1615,7 @@ model ActivityStep {
   updatedAt DateTime @updatedAt
 
   @@map("activity_steps")
+  @@ignore
 }
 
 // Activity fleet (equipment/types)
@@ -1620,6 +1632,7 @@ model ActivityFleet {
   updatedAt    DateTime @updatedAt
 
   @@map("activity_fleet")
+  @@ignore
 }
 
 // Activity providers
@@ -1634,6 +1647,7 @@ model ActivityProvider {
   updatedAt DateTime @updatedAt
 
   @@map("activity_providers")
+  @@ignore
 }
 
 // Gastronomy service steps (how it works)
@@ -1649,6 +1663,7 @@ model GastronomyStep {
   updatedAt DateTime @updatedAt
 
   @@map("gastronomy_steps")
+  @@ignore
 }
 
 // Gastronomy fleet (restaurant types)
@@ -1665,6 +1680,7 @@ model GastronomyFleet {
   updatedAt DateTime @updatedAt
 
   @@map("gastronomy_fleet")
+  @@ignore
 }
 
 // Gastronomy providers
@@ -1681,6 +1697,7 @@ model GastronomyProvider {
   restaurants GastronomyRestaurant[]
 
   @@map("gastronomy_providers")
+  @@ignore
 }
 
 // Gastronomy restaurants
@@ -1701,6 +1718,7 @@ model GastronomyRestaurant {
   provider GastronomyProvider @relation(fields: [providerId], references: [id], onDelete: Cascade)
 
   @@map("gastronomy_restaurants")
+  @@ignore
 }
 
 // Event service steps (how it works)
@@ -1716,6 +1734,7 @@ model EventStep {
   updatedAt DateTime @updatedAt
 
   @@map("event_steps")
+  @@ignore
 }
 
 // Event fleet (event types)
@@ -1732,6 +1751,7 @@ model EventFleet {
   updatedAt DateTime @updatedAt
 
   @@map("event_fleet")
+  @@ignore
 }
 
 // Event providers
@@ -1748,6 +1768,7 @@ model EventProvider {
   events EventOffering[]
 
   @@map("event_providers")
+  @@ignore
 }
 
 // Event offerings
@@ -1768,6 +1789,7 @@ model EventOffering {
   provider EventProvider @relation(fields: [providerId], references: [id], onDelete: Cascade)
 
   @@map("event_offerings")
+  @@ignore
 }
 
 // Guide service steps (how it works)
@@ -1783,6 +1805,7 @@ model GuideStep {
   updatedAt DateTime @updatedAt
 
   @@map("guide_steps")
+  @@ignore
 }
 
 // Guide fleet (guide types)
@@ -1799,6 +1822,7 @@ model GuideFleet {
   updatedAt   DateTime @updatedAt
 
   @@map("guide_fleet")
+  @@ignore
 }
 
 // Guide providers
@@ -1815,6 +1839,7 @@ model GuideProvider {
   guides GuideOffering[]
 
   @@map("guide_providers")
+  @@ignore
 }
 
 // Guide offerings
@@ -1835,6 +1860,7 @@ model GuideOffering {
   provider GuideProvider @relation(fields: [providerId], references: [id], onDelete: Cascade)
 
   @@map("guide_offerings")
+  @@ignore
 }
 
 /// Service images
@@ -1893,6 +1919,7 @@ model TransferStep {
   updatedAt DateTime @updatedAt
 
   @@map("transfer_steps")
+  @@ignore
 }
 
 // Transfer vehicle fleet
@@ -1925,6 +1952,7 @@ model TransferProvider {
   vehicles TransferVehicle[]
 
   @@map("transfer_providers")
+  @@ignore
 }
 
 // Transfer vehicles
@@ -1946,6 +1974,7 @@ model TransferVehicle {
   provider TransferProvider @relation(fields: [providerId], references: [id], onDelete: Cascade)
 
   @@map("transfer_vehicles")
+  @@ignore
 }
 
 // ============================================
@@ -4243,6 +4272,7 @@ model WvDestination {
   transporte        Json?    @db.JsonB
   latitude          Float?   @db.Real
   longitude         Float?   @db.Real
+  location          Unsupported("geography(Point, 4326)")? // added by 20260625100000_enable_postgis
   imagemUrl         String?  @map("imagem_url") @db.VarChar(500)
   imagemQuery       String?  @map("imagem_query") @db.VarChar(255)
 
@@ -4305,6 +4335,7 @@ model WvHotel {
   fonte         String?  @db.VarChar(40)
   latitude      Float?   @db.Real
   longitude     Float?   @db.Real
+  location      Unsupported("geography(Point, 4326)")? // added by 20260625100000_enable_postgis
   description   String?  @db.Text
   imageUrl      String?  @map("image_url") @db.Text
   googlePlaceId String?  @map("google_place_id") @db.VarChar(128)
@@ -4519,6 +4550,39 @@ model DestinationTranslation {
 
   @@id([destinoId, lang])
   @@map("wv_destination_translations")
+}
+
+// ============================================
+// MATERIALIZED VIEW — mv_destination_search
+// ============================================
+// Read-only mirror of the materialized view created by migration
+// 20260625110000_destination_search_mv. Modeled so Prisma Migrate does not
+// treat the view as drift and generate a DROP. Do NOT write to this model.
+model MvDestinationSearch {
+  id               Int      @id
+  slug             String   @db.VarChar(32)
+  nome             String   @db.VarChar(255)
+  pais             String   @db.VarChar(120)
+  paisCode         String   @map("pais_code") @db.VarChar(8)
+  continente       String?  @db.VarChar(80)
+  tipo             String?  @db.VarChar(40)
+  clima            String?  @db.VarChar(40)
+  lang             String   @db.VarChar(8)
+  latitude         Float?   @db.Real
+  longitude        Float?   @db.Real
+  descricao        String?  @db.Text
+  resumo           String?  @db.Text
+  imagemUrl        String?  @map("imagem_url") @db.VarChar(500)
+  wikipediaResumo  String?  @map("wikipedia_resumo") @db.Text
+  custoDeVida      Json?    @map("custo_de_vida") @db.JsonB
+  tags             Json?    @db.JsonB
+  transporte       Json?    @db.JsonB
+  wikivoyageUrl    String?  @map("wikivoyage_url") @db.VarChar(500)
+  hotelCount       BigInt   @map("hotel_count")
+  avgHotelStars    Decimal? @map("avg_hotel_stars")
+  minHotelPrice    Int?     @map("min_hotel_price")
+
+  @@map("mv_destination_search")
 }
 
 // ============================================

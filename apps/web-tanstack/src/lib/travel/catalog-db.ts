@@ -633,6 +633,9 @@ export async function getPreferredDestinationAirportsFromDb(opts?: {
 }): Promise<CatalogAirportOption[]> {
   const lang = opts?.lang?.trim() || 'pt';
   const limit = Math.min(opts?.limit ?? 800, 2000);
+  // Hard cap: up to ~1200 rows even when `limit` is large; rows are
+  // de-duplicated by IATA code afterwards, so extra rows add little value.
+  const take = Math.min(limit * 3, 1200);
 
   const rows = await prisma.wvDestination.findMany({
     where: {
@@ -649,7 +652,7 @@ export async function getPreferredDestinationAirportsFromDb(opts?: {
       hotelCount: true,
     },
     orderBy: [{ hotelCount: 'desc' }, { nome: 'asc' }],
-    take: limit * 3,
+    take,
   });
 
   const airportMap = new Map<string, CatalogAirportOption>();

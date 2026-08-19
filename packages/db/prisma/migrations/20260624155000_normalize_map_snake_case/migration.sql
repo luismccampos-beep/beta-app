@@ -4,6 +4,13 @@
 -- VoucherUsage usedat -> used_at
 -- Remove duplicate/unused models
 
+-- ⚠ DESTRUCTIVE — IRREVERSIBLE. This migration DROPs the following tables WITH
+-- CASCADE (all dependent data is permanently lost): payments, hotel_properties,
+-- activity_offerings, activities, crm_customers, crm_bookings. The DROP TABLE
+-- statements are at lines ~124-129. Do NOT run `migrate reset` expecting to
+-- recover this data; back up the affected tables before deploying this to a
+-- fresh environment.
+
 -- accommodations
 ALTER TABLE IF EXISTS "accommodations" RENAME COLUMN "createdat" TO "created_at";
 ALTER TABLE IF EXISTS "accommodations" RENAME COLUMN "updatedat" TO "updated_at";

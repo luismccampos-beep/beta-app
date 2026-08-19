@@ -41,9 +41,9 @@ export const Route = createFileRoute('/api/auth/me/password')({
             data: { password: hashed, passwordChangedAt: new Date() },
           })
 
-          // Invalidate all sessions except current
+          // Invalidate all sessions except the current one
           await prisma.session.deleteMany({
-            where: { userId: user.id },
+            where: { userId: user.id, token: { not: session.session.token } },
           })
 
           return Response.json({ success: true })

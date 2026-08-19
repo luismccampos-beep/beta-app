@@ -16,11 +16,12 @@ export const Route = createFileRoute('/api/auth/me/sessions')({
             where: { userId: session.user.id },
             select: {
               id: true,
-              token: true,
               expiresAt: true,
-              ip: true,
-              userAgent: true,
+              ipAddress: true,
+              deviceInfo: true,
+              lastUsedAt: true,
               createdAt: true,
+              isRevoked: true,
             },
             orderBy: { createdAt: 'desc' },
           })

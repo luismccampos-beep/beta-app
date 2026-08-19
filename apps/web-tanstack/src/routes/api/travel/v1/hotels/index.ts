@@ -4,8 +4,8 @@ import { prisma } from '@akmleva/db'
 import { checkRateLimit, publicRatelimit } from '@/lib/rate-limit'
 
 const searchSchema = z.object({
-  page: z.coerce.number().default(1),
-  limit: z.coerce.number().default(20),
+  page: z.coerce.number().int().min(1).default(1),
+  limit: z.coerce.number().int().min(1).max(50).default(20),
   destination: z.string().optional(),
 })
 
@@ -29,24 +29,51 @@ export const Route = createFileRoute('/api/travel/v1/hotels/')({
         const { page, limit, destination } = parsed.data
         const skip = (page - 1) * limit
 
-        const where: Record<string, unknown> = {}
-        if (destination) where.destinoId = destination
+        try {
+          const where: Record<string, unknown> = {}
+          where.NOT = { fonte: 'rejected_geo' }
 
-        const [hotels, total] = await Promise.all([
-          prisma.wvHotel.findMany({
-            where,
-            orderBy: { createdAt: 'desc' },
-            skip,
-            take: limit,
-          }),
-          prisma.wvHotel.count({ where }),
-        ])
+          if (destination) {
+            const numericId = Number(destination)
+            const dest = await prisma.wvDestination.findFirst({
+              where: {
+                OR: [
+                  { slug: destination },
+                  ...(Number.isInteger(numericId) ? [{ id: numericId }] : []),
+                ],
+              },
+              select: { id: true },
+            })
 
-        return Response.json({
-          ok: true,
-          hotels,
-          pagination: { page, limit, total, totalPages: Math.ceil(total / limit) },
-        })
+            if (!dest) {
+              return Response.json({
+                ok: true,
+                hotels: [],
+                pagination: { page, limit, total: 0, totalPages: 0 },
+              })
+            }
+            where.destinoId = dest.id
+          }
+
+          const [hotels, total] = await Promise.all([
+            prisma.wvHotel.findMany({
+              where,
+              orderBy: { createdAt: 'desc' },
+              skip,
+              take: limit,
+            }),
+            prisma.wvHotel.count({ where }),
+          ])
+
+          return Response.json({
+            ok: true,
+            hotels,
+            pagination: { page, limit, total, totalPages: Math.ceil(total / limit) },
+          })
+        } catch (error) {
+          console.error('[hotels]', error)
+          return Response.json({ ok: false, error: 'Internal server error' }, { status: 500 })
+        }
       },
     },
   },

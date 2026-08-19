@@ -5,8 +5,8 @@ import { checkRateLimit, publicRatelimit } from '@/lib/rate-limit'
 import { MOCK_DESTINATIONS, MOCK_COUNTRIES } from '@/lib/travel/mock-destinations'
 
 const searchSchema = z.object({
-  page: z.coerce.number().default(1),
-  limit: z.coerce.number().default(20),
+  page: z.coerce.number().int().min(1).default(1),
+  limit: z.coerce.number().int().min(1).max(50).default(20),
   q: z.string().optional(),
   country: z.string().optional(),
   continent: z.string().optional(),
@@ -72,6 +72,7 @@ export const Route = createFileRoute('/api/travel/v1/destinations/')({
 
           return Response.json({
             ok: true,
+            source: 'db',
             items: destinations,
             total,
             pagination: { page, limit, total, totalPages: Math.ceil(total / limit) },
@@ -104,6 +105,7 @@ export const Route = createFileRoute('/api/travel/v1/destinations/')({
 
           return Response.json({
             ok: true,
+            source: 'mock',
             items: paged,
             total,
             pagination: { page, limit, total, totalPages: Math.ceil(total / limit) },

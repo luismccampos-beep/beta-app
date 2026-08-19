@@ -14,14 +14,15 @@ export const Route = createFileRoute('/api/travel/v1/destinations/countries')({
 
         try {
           const countries = await prisma.$queryRawUnsafe<Array<{ pais: string; paisCode: string; count: bigint }>>(
-            `SELECT DISTINCT "pais", "paisCode", COUNT(*)::int as count
+            `SELECT DISTINCT "pais", "pais_code" AS "paisCode", COUNT(*)::int as count
              FROM "wv_destinations"
-             GROUP BY "pais", "paisCode"
+             GROUP BY "pais", "pais_code"
              ORDER BY count DESC`,
           )
 
           return Response.json({
             ok: true,
+            source: 'db',
             countries: countries.map((c) => ({
               name: c.pais,
               code: c.paisCode,
@@ -31,6 +32,7 @@ export const Route = createFileRoute('/api/travel/v1/destinations/countries')({
         } catch {
           return Response.json({
             ok: true,
+            source: 'mock',
             countries: MOCK_COUNTRIES,
           })
         }

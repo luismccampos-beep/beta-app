@@ -103,7 +103,7 @@
     "adm-zip": "^0.5.17"
   },
   "devDependencies": {
-    "prisma": "^6.17.1",
+    "prisma": "6.17.1",
     "cross-env": "^7.0.3"
   }
 }

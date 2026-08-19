@@ -45,35 +45,122 @@ function getPrismaModel(model: string): PrismaModel {
   }
 }
 
-function mapField(field: string): string {
-  const map: Record<string, string> = {
+/**
+ * better-auth field name -> Prisma model field name, per model.
+ * better-auth uses camelCase fields (providerId, accessToken, …) that differ
+ * from the Prisma schema (provider, access_token, …). Mapping here keeps the
+ * Prisma `create`/`update`/`findOne` calls from failing with unknown args.
+ */
+const MODEL_FIELD_MAPS: Record<string, Record<string, string>> = {
+  user: {
     image: 'avatar',
-  }
-  return map[field] ?? field
+  },
+  session: {},
+  account: {
+    accountId: 'providerAccountId',
+    providerId: 'provider',
+    accessToken: 'access_token',
+    refreshToken: 'refresh_token',
+    accessTokenExpiresAt: 'expires_at',
+    refreshTokenExpiresAt: 'expires_at',
+    idToken: 'id_token',
+  },
+  verification: {
+    id: 'tokenId',
+  },
 }
 
-function mapFieldsToDb(data: Record<string, unknown>): Record<string, unknown> {
+/**
+ * Only these fields are valid on the Prisma model. better-auth sends fields
+ * that don't exist as columns (updatedAt, userAgent, …); we drop them so the
+ * write never fails with an unknown-arg error.
+ */
+const MODEL_ALLOWED_FIELDS: Record<string, Set<string>> = {
+  user: new Set([
+    'id', 'email', 'password', 'name', 'username', 'agencyId',
+    'avatar', 'avatarThumbnail', 'avatarUrl', 'bio', 'location', 'phone',
+    'birthDate', 'gender', 'taxId', 'address', 'city', 'state', 'country',
+    'postalCode', 'status', 'role', 'joinDate', 'lastActive', 'lastLogin',
+    'isVerified', 'emailVerified', 'phoneVerified', 'emailVerifiedAt',
+    'emailVerificationToken', 'passwordResetToken', 'passwordResetExpires',
+    'passwordChangedAt', 'twoFactorSecret', 'twoFactorEnabled',
+    'twoFactorBackupCode', 'forgotPasswordToken', 'forgotPasswordTokenExpiry',
+    'preferredCurrency', 'preferredLanguage', 'travelFrequency', 'timezone',
+    'theme', 'termsAccepted', 'privacyAccepted', 'acceptedTermsDate',
+    'acceptedPrivacyDate', 'marketingOptIn', 'dataProcessingOptIn',
+    'dataRetentionConsent', 'gdprConsent', 'profileCompletion',
+    'experiencePoints', 'streakCount', 'deletedAt', 'deactivatedAt',
+    'blockedAt', 'blockedReason', 'isActive', 'permissions',
+  ]),
+  session: new Set([
+    'id', 'userId', 'token', 'refreshToken', 'deviceInfo',
+    'deviceFingerprint', 'ipAddress', 'ipHash', 'refreshTokenFamily',
+    'tokenSequence', 'expiresAt', 'createdAt', 'lastUsedAt', 'lastActivityAt',
+    'revokedAt', 'isRevoked', 'securityFlags',
+  ]),
+  account: new Set([
+    'id', 'userId', 'type', 'provider', 'providerAccountId',
+    'refresh_token', 'access_token', 'expires_at', 'token_type', 'scope',
+    'id_token', 'session_state', 'createdAt', 'updatedAt',
+  ]),
+  verification: new Set([
+    'tokenId', 'userId', 'token', 'email', 'expiresAt', 'createdAt', 'updatedAt',
+  ]),
+}
+
+function mapField(model: string, field: string): string {
+  return MODEL_FIELD_MAPS[model]?.[field] ?? field
+}
+
+function mapFieldsToDb(model: string, data: Record<string, unknown>): Record<string, unknown> {
+  const allowed = MODEL_ALLOWED_FIELDS[model]
   const result: Record<string, unknown> = {}
   for (const [key, value] of Object.entries(data)) {
-    result[mapField(key)] = value
+    if (allowed && !allowed.has(key)) continue
+    const mapped = mapField(model, key)
+    if (mapped === 'expires_at' && 'expires_at' in result) continue
+    result[mapped] = value
+  }
+  if (model === 'session') {
+    const sessionData = data as Record<string, unknown>
+    if (sessionData.userAgent !== undefined && result.deviceInfo === undefined) {
+      result.deviceInfo = { userAgent: sessionData.userAgent }
+    }
   }
   return result
 }
 
-function mapOutput(data: AdapterResult | null): AdapterResult | null {
+const OUTPUT_FIELD_MAPS: Record<string, Record<string, string>> = {
+  user: { avatar: 'image' },
+  account: {
+    providerAccountId: 'accountId',
+    provider: 'providerId',
+    access_token: 'accessToken',
+    refresh_token: 'refreshToken',
+    expires_at: 'accessTokenExpiresAt',
+    id_token: 'idToken',
+  },
+}
+
+function mapOutput(model: string, data: AdapterResult | null): AdapterResult | null {
   if (!data) return null
   const result = { ...data }
-  if ('avatar' in result) {
-    result.image = result.avatar
+  const map = OUTPUT_FIELD_MAPS[model]
+  if (map) {
+    for (const [dbKey, outKey] of Object.entries(map)) {
+      if (dbKey in result && !(outKey in result)) {
+        result[outKey] = result[dbKey]
+      }
+    }
   }
   return result
 }
 
-function buildWhereClause(where?: WhereClause[]): Record<string, unknown> {
+function buildWhereClause(model: string, where?: WhereClause[]): Record<string, unknown> {
   const whereClause: Record<string, unknown> = {}
   if (where?.length) {
     for (const w of where) {
-      whereClause[mapField(w.field)] = w.value
+      whereClause[mapField(model, w.field)] = w.value
     }
   }
   return whereClause
@@ -82,40 +169,40 @@ function buildWhereClause(where?: WhereClause[]): Record<string, unknown> {
 export const customPrismaAdapter = () => {
   return (_opts: Record<string, unknown>) => ({
     create: async ({ data, model }: AdapterMethodArgs) => {
-      const mapped = mapFieldsToDb(data ?? {})
+      const mapped = mapFieldsToDb(model, data ?? {})
       const created = await getPrismaModel(model).create({ data: mapped })
-      return mapOutput(created)
+      return mapOutput(model, created)
     },
     update: async ({ model, where, update }: AdapterMethodArgs) => {
-      const mapped = mapFieldsToDb(update ?? {})
-      const whereClause = buildWhereClause(where)
+      const mapped = mapFieldsToDb(model, update ?? {})
+      const whereClause = buildWhereClause(model, where)
       const updated = await getPrismaModel(model).update({ where: whereClause, data: mapped })
-      return mapOutput(updated)
+      return mapOutput(model, updated)
     },
     updateMany: async ({ model, where, update }: AdapterMethodArgs) => {
-      const mapped = mapFieldsToDb(update ?? {})
-      const whereClause = buildWhereClause(where)
+      const mapped = mapFieldsToDb(model, update ?? {})
+      const whereClause = buildWhereClause(model, where)
       const result = await getPrismaModel(model).updateMany({ where: whereClause, data: mapped })
       return result.count
     },
     delete: async ({ model, where }: AdapterMethodArgs) => {
-      const whereClause = buildWhereClause(where)
+      const whereClause = buildWhereClause(model, where)
       await getPrismaModel(model).delete({ where: whereClause })
     },
     deleteMany: async ({ model, where }: AdapterMethodArgs) => {
-      const whereClause = buildWhereClause(where)
+      const whereClause = buildWhereClause(model, where)
       const result = await getPrismaModel(model).deleteMany({ where: whereClause })
       return result.count
     },
     findOne: async ({ model, where }: AdapterMethodArgs) => {
-      const whereClause = buildWhereClause(where)
+      const whereClause = buildWhereClause(model, where)
       const result = await getPrismaModel(model).findFirst({ where: whereClause })
-      return mapOutput(result)
+      return mapOutput(model, result)
     },
     findMany: async ({ model, where, limit, offset, sortBy }: AdapterMethodArgs) => {
-      const whereClause = buildWhereClause(where)
+      const whereClause = buildWhereClause(model, where)
       const orderBy = sortBy
-        ? { [mapField(sortBy.field)]: sortBy.direction }
+        ? { [mapField(model, sortBy.field)]: sortBy.direction }
         : undefined
       const results = await getPrismaModel(model).findMany({
         where: whereClause,
@@ -123,10 +210,10 @@ export const customPrismaAdapter = () => {
         skip: offset,
         orderBy,
       })
-      return results.map(mapOutput)
+      return results.map((r) => mapOutput(model, r))
     },
     count: async ({ model, where }: AdapterMethodArgs) => {
-      const whereClause = buildWhereClause(where)
+      const whereClause = buildWhereClause(model, where)
       return getPrismaModel(model).count({ where: whereClause })
     },
   })

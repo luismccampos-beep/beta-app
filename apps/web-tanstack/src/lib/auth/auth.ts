@@ -22,11 +22,17 @@ if (process.env.AUTH_FACEBOOK_ID && process.env.AUTH_FACEBOOK_SECRET) {
   }
 }
 
+const isProduction = process.env.NODE_ENV === 'production'
+
 export const auth = betterAuth({
-  secret:
-    process.env.BETTER_AUTH_SECRET ||
-    process.env.AUTH_SECRET ||
-    'development-only-secret',
+  secret: (() => {
+    const configured = process.env.BETTER_AUTH_SECRET || process.env.AUTH_SECRET
+    if (configured) return configured
+    if (isProduction) {
+      throw new Error('AUTH_SECRET (or BETTER_AUTH_SECRET) must be set in production')
+    }
+    return 'development-only-secret'
+  })(),
 
   baseURL:
     process.env.BETTER_AUTH_URL ||

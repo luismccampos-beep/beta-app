@@ -79,6 +79,7 @@ async function recommendFromDb(input: RecommendDestinationsInput): Promise<Recom
         NOT: { fonte: 'rejected_geo' },
       },
       orderBy: { precoPorNoite: 'asc' },
+      take: Math.min(destIds.length * 6, 600),
       select: {
         id: true,
         destinoId: true,
@@ -93,6 +94,7 @@ async function recommendFromDb(input: RecommendDestinationsInput): Promise<Recom
           where: { origem: origin, destinoId: { in: destIds } },
           orderBy: { preco: 'asc' },
           distinct: ['destinoId'],
+          take: destIds.length,
           select: { destinoId: true, preco: true, destinoIata: true },
         })
       : Promise.resolve([]),

@@ -7,6 +7,10 @@
   - You are about to drop the column `favorite_destinations` on the `users` table. All the data in the column will be lost.
   - You are about to drop the column `friends` on the `users` table. All the data in the column will be lost.
 
+  ⚠ DESTRUCTIVE — the DROP COLUMN statements below permanently destroy the
+  data in these columns. Confirm no downstream consumer still relies on them
+  (search the codebase for `images`, `metadata`, `blocked_users`,
+  `favorite_destinations`, `friends`) before applying to a shared database.
 */
 -- AlterTable
 ALTER TABLE "accommodations" DROP COLUMN "images";

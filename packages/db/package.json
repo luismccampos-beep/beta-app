@@ -22,10 +22,12 @@
     "resolve": "node ./scripts/resolve-failed-migrations.mjs"
   },
   "dependencies": {
-    "@prisma/client": "6.17.1"
+    "@prisma/adapter-pg-worker": "^6.9.0",
+    "@prisma/client": "6.17.1",
+    "@prisma/pg-worker": "^6.9.0"
   },
   "devDependencies": {
-    "prisma": "^6.17.1",
+    "prisma": "6.17.1",
     "tsx": "^4.0.0",
     "typescript": "^5.6.0"
   }

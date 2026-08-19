@@ -1,19 +1,32 @@
-import { PrismaClient } from '@prisma/client';
+import { Prisma, PrismaClient } from '@prisma/client';
+import { PrismaPg } from '@prisma/adapter-pg-worker';
+import { PrismaClientKnownRequestError } from '@prisma/client/runtime/library';
 
 const globalForPrisma = globalThis as unknown as { prisma?: PrismaClient };
 
-const isBuildPhase =
-  process.env.NEXT_PHASE?.startsWith('phase-') &&
-  process.env.NEXT_PHASE?.endsWith('-build');
-const isStubMode =
-  isBuildPhase || process.env.DISABLE_SSR_FETCH === 'true';
+// The pg-worker adapter is built against an older @prisma/driver-adapter-utils
+// than the pinned @prisma/client, so its types are structurally incompatible
+// with PrismaClientOptions['adapter'] even though the runtime protocol matches.
+type PrismaClientOptions = NonNullable<ConstructorParameters<typeof PrismaClient>[0]>;
+
+// TanStack Start has no NEXT_PHASE build marker, so DISABLE_SSR_FETCH=true is
+// the only gate for the build-time stub (used when prerendering pages that
+// would otherwise hit the database during the Vite build).
+const isStubMode = process.env.DISABLE_SSR_FETCH === 'true';
+
+// Same runtime detection @prisma/pg-worker uses internally: under workerd the
+// adapter connects through Cloudflare's sockets instead of node:net, so the
+// driver adapter is only used there and Node keeps the native query engine.
+const isWorkersRuntime =
+  typeof navigator !== 'undefined' &&
+  (navigator as { userAgent?: string })?.userAgent === 'Cloudflare-Workers';
 
 const MUTATION_PATTERN =
   /^(create|createMany|update|updateMany|upsert|delete|deleteMany|executeRaw|executeRawUnsafe|\$executeRaw|\$executeRawUnsafe|\$transaction)$/;
 
 const throwOnMutation = (prop: string | symbol) => () => {
   throw new Error(
-    `[prisma stub] ${String(prop)}() called during build; the Prisma client is stubbed. Move the call out of page-level SSG or guard it behind dynamic = 'force-dynamic'.`
+    `[prisma stub] ${String(prop)}() called during build; the Prisma client is stubbed (DISABLE_SSR_FETCH=true). Move the call out of build-time/SSG code or disable the stub.`
   );
 };
 
@@ -64,9 +77,16 @@ const SOFT_DELETE_MODELS = new Set([
 ]);
 
 function createPrismaClient() {
-  const client = new PrismaClient({
-    log: process.env.NODE_ENV === 'development' ? ['warn', 'error'] : ['error'],
-  });
+  const client = isWorkersRuntime
+    ? new PrismaClient({
+        adapter: new PrismaPg({
+          connectionString: process.env.DATABASE_URL,
+        }) as unknown as PrismaClientOptions['adapter'],
+        log: process.env.NODE_ENV === 'development' ? ['warn', 'error'] : ['error'],
+      })
+    : new PrismaClient({
+        log: process.env.NODE_ENV === 'development' ? ['warn', 'error'] : ['error'],
+      });
 
   const extended = client.$extends({
     query: {
@@ -99,7 +119,29 @@ function createPrismaClient() {
             });
           }
 
+          if (operation === 'findUniqueOrThrow' || operation === 'findFirstOrThrow') {
+            const found = await (client as unknown as Record<string, { findFirst: (args: Record<string, unknown>) => Promise<unknown> }>)[lower].findFirst({
+              ...args,
+              where: { ...(args.where ?? {}) as Record<string, unknown>, deletedAt: null },
+            });
+            if (found === null) {
+              throw new PrismaClientKnownRequestError(
+                'No record found while filtering soft-deleted rows',
+                { code: 'P2025', clientVersion: Prisma.prismaVersion?.client ?? 'unknown' }
+              );
+            }
+            return found;
+          }
+
           if (operation === 'findFirst' || operation === 'findMany' || operation === 'count') {
+            const where = (args.where ?? {}) as Record<string, unknown>;
+            if (where.deletedAt === undefined) {
+              (args as Record<string, unknown>).where = { ...where, deletedAt: null };
+            }
+            return query(args);
+          }
+
+          if (operation === 'aggregate' || operation === 'groupBy') {
             const where = (args.where ?? {}) as Record<string, unknown>;
             if (where.deletedAt === undefined) {
               (args as Record<string, unknown>).where = { ...where, deletedAt: null };

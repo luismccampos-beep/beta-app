@@ -1,15 +1,25 @@
 import { createFileRoute } from '@tanstack/react-router'
 import { prisma } from '@akmleva/db'
+import { checkRateLimit, publicRatelimit } from '@/lib/rate-limit'
 
 const SITE_URL = process.env.VITE_BASE_URL || 'https://www.akmleva.pt'
+
+function escapeXml(value: string): string {
+  return value
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&apos;')
+}
 
 function generateSitemapXml(urls: { loc: string; lastmod?: string; changefreq?: string; priority?: number }[]) {
   const urlElements = urls
     .map(
       (url) => `  <url>
-    <loc>${url.loc}</loc>
-    ${url.lastmod ? `<lastmod>${url.lastmod}</lastmod>` : ''}
-    ${url.changefreq ? `<changefreq>${url.changefreq}</changefreq>` : ''}
+    <loc>${escapeXml(url.loc)}</loc>
+    ${url.lastmod ? `<lastmod>${escapeXml(url.lastmod)}</lastmod>` : ''}
+    ${url.changefreq ? `<changefreq>${escapeXml(url.changefreq)}</changefreq>` : ''}
     ${url.priority !== undefined ? `<priority>${url.priority}</priority>` : ''}
   </url>`,
     )
@@ -24,7 +34,12 @@ ${urlElements}
 export const Route = createFileRoute('/api/sitemap')({
   server: {
     handlers: {
-      GET: async () => {
+      GET: async ({ request }) => {
+        const rateLimitResult = await checkRateLimit(request, publicRatelimit)
+        if (!rateLimitResult.success) {
+          return Response.json({ ok: false, error: 'Rate limit exceeded' }, { status: 429 })
+        }
+
         const urls: { loc: string; lastmod?: string; changefreq?: string; priority?: number }[] = []
 
         const staticPages = [
@@ -49,7 +64,7 @@ export const Route = createFileRoute('/api/sitemap')({
           const destinations = await prisma.wvDestination.findMany({
             select: { slug: true, updatedAt: true },
             orderBy: { updatedAt: 'desc' },
-            take: 10000,
+            take: 5000,
           })
 
           for (const dest of destinations) {
@@ -69,7 +84,7 @@ export const Route = createFileRoute('/api/sitemap')({
             where: { deletedAt: null },
             select: { slug: true, updatedAt: true },
             orderBy: { updatedAt: 'desc' },
-            take: 10000,
+            take: 5000,
           })
 
           for (const trip of trips) {

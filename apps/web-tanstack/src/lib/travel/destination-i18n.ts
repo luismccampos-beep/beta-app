@@ -1,5 +1,17 @@
 import { prisma } from '@akmleva/db';
 
+const FETCH_TIMEOUT_MS = 8000;
+
+async function fetchWithTimeout(url: string): Promise<Response> {
+  const controller = new AbortController();
+  const timer = setTimeout(() => controller.abort(), FETCH_TIMEOUT_MS);
+  try {
+    return await fetch(url, { signal: controller.signal });
+  } finally {
+    clearTimeout(timer);
+  }
+}
+
 export async function getDestinationLocalized(
   destinoId: number,
   locale: string
@@ -30,7 +42,7 @@ export async function getDestinationLocalized(
       const match = base.wikipediaUrl.match(/\/\/(\w+)\.wikipedia\.org\/wiki\/(.+)/);
       if (match && base.wikidataId) {
         const [, lang] = match;
-        const wd = await fetch(
+        const wd = await fetchWithTimeout(
           `https://www.wikidata.org/wiki/Special:EntityData/${base.wikidataId}.json`,
         ).then(r => r.json()).catch(() => null);
 
@@ -39,7 +51,7 @@ export async function getDestinationLocalized(
           const siteLinks = entities?.[base.wikidataId as string]?.sitelinks;
           const target = siteLinks?.[`${locale}wiki`]?.title;
           if (target) {
-            const sum = (await fetch(
+            const sum = (await fetchWithTimeout(
               `https://${locale}.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(target)}`,
             ).then(r => r.json()).catch(() => null)) as { extract?: string; title?: string } | null;
 
