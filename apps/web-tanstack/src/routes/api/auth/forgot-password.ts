@@ -2,6 +2,7 @@ import { createFileRoute } from '@tanstack/react-router'
 import { z } from 'zod'
 import { prisma } from '@akmleva/db'
 import { sendPasswordResetEmail } from '@/lib/email'
+import { hashToken } from '@/lib/auth/tokens'
 import crypto from 'crypto'
 
 const ForgotPasswordSchema = z.object({ email: z.string().email() })
@@ -13,7 +14,7 @@ export const Route = createFileRoute('/api/auth/forgot-password')({
         try {
           const { email } = ForgotPasswordSchema.parse(await request.json())
 
-          const user = await prisma.user.findUnique({
+          const user = await prisma.user.findFirst({
             where: { email },
             select: { id: true, email: true },
           })
@@ -23,7 +24,7 @@ export const Route = createFileRoute('/api/auth/forgot-password')({
             await prisma.user.update({
               where: { id: user.id },
               data: {
-                passwordResetToken: token,
+                passwordResetToken: hashToken(token),
                 passwordResetExpires: new Date(Date.now() + 3600000),
               },
             })

@@ -1,5 +1,6 @@
 import { createFileRoute } from '@tanstack/react-router'
 import { prisma } from '@akmleva/db'
+import { hashToken } from '@/lib/auth/tokens'
 
 export const Route = createFileRoute('/api/auth/verify-email/$token')({
   server: {
@@ -15,7 +16,7 @@ export const Route = createFileRoute('/api/auth/verify-email/$token')({
         }
 
         const verificationToken = await prisma.emailVerificationToken.findUnique({
-          where: { token },
+          where: { token: hashToken(token) },
           select: {
             tokenId: true,
             userId: true,

@@ -3,6 +3,7 @@ import { z } from 'zod'
 import { auth } from '@/lib/auth/auth'
 import { prisma } from '@akmleva/db'
 import { sendVerificationEmail } from '@/lib/email'
+import { hashToken } from '@/lib/auth/tokens'
 import crypto from 'crypto'
 
 const RegisterSchema = z.object({
@@ -23,7 +24,7 @@ export const Route = createFileRoute('/api/auth/signup')({
           const parsed = RegisterSchema.parse(body)
           const email = parsed.email.trim().toLowerCase()
 
-          const existing = await prisma.user.findUnique({
+          const existing = await prisma.user.findFirst({
             where: { email },
             select: { id: true },
           })
@@ -62,7 +63,7 @@ export const Route = createFileRoute('/api/auth/signup')({
             await prisma.emailVerificationToken.create({
               data: {
                 userId: user.id,
-                token,
+                token: hashToken(token),
                 email: user.email,
                 expiresAt: new Date(Date.now() + 24 * 60 * 60 * 1000),
               },

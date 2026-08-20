@@ -1,6 +1,7 @@
 import { createFileRoute } from '@tanstack/react-router'
 import { z } from 'zod'
 import { prisma } from '@akmleva/db'
+import { hashToken } from '@/lib/auth/tokens'
 import bcrypt from 'bcryptjs'
 
 const ResetPasswordSchema = z.object({
@@ -17,7 +18,7 @@ export const Route = createFileRoute('/api/auth/reset-password')({
 
           const user = await prisma.user.findFirst({
             where: {
-              passwordResetToken: token,
+              passwordResetToken: hashToken(token),
               passwordResetExpires: { gte: new Date() },
             },
             select: { id: true },
