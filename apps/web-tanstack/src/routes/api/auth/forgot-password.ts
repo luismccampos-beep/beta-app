@@ -21,11 +21,16 @@ export const Route = createFileRoute('/api/auth/forgot-password')({
 
           if (user) {
             const token = crypto.randomBytes(32).toString('hex')
-            await prisma.user.update({
-              where: { id: user.id },
+            // Invalidate any existing reset tokens for this user
+            await prisma.passwordResetToken.updateMany({
+              where: { userId: user.id, usedAt: null },
+              data: { usedAt: new Date() },
+            })
+            await prisma.passwordResetToken.create({
               data: {
-                passwordResetToken: hashToken(token),
-                passwordResetExpires: new Date(Date.now() + 3600000),
+                userId: user.id,
+                token: hashToken(token),
+                expiresAt: new Date(Date.now() + 3600000),
               },
             })
             void sendPasswordResetEmail({ to: user.email, token }).catch((err) =>
