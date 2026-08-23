@@ -77,6 +77,8 @@ const SOFT_DELETE_MODELS = new Set([
   'CommunityComment',
   'RoomMessage',
   'LoyaltyProgram',
+  'UserProfile',
+  'UserGamification',
 ]);
 
 function createPrismaClient() {

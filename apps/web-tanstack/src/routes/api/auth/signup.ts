@@ -49,12 +49,19 @@ export const Route = createFileRoute('/api/auth/signup')({
               email,
               password: passwordHash,
               name: parsed.name?.trim() ?? null,
+            },
+            select: { id: true, email: true, name: true },
+          })
+
+          // Create profile with signup data
+          await prisma.userProfile.create({
+            data: {
+              userId: user.id,
               phone: parsed.phone?.trim() ?? null,
-              birthDate,
+              birthDate: birthDate ?? null,
               termsAccepted: true,
               acceptedTermsDate: new Date(),
             },
-            select: { id: true, email: true, name: true },
           })
 
           // Persist the verification token before responding; email can go out async.

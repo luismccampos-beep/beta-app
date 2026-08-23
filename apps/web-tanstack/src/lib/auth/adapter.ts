@@ -78,17 +78,11 @@ const MODEL_FIELD_MAPS: Record<string, Record<string, string>> = {
 const MODEL_ALLOWED_FIELDS: Record<string, Set<string>> = {
   user: new Set([
     'id', 'email', 'password', 'name', 'username', 'agencyId',
-    'avatar', 'avatarThumbnail', 'avatarUrl', 'bio', 'location', 'phone',
-    'birthDate', 'gender', 'taxId', 'address', 'city', 'state', 'country',
-    'postalCode', 'status', 'role', 'joinDate', 'lastActive', 'lastLogin',
+    'status', 'role', 'joinDate', 'lastActive', 'lastLogin',
     'isVerified', 'emailVerified', 'phoneVerified', 'emailVerifiedAt',
     'emailVerificationToken', 'passwordChangedAt', 'twoFactorSecret', 'twoFactorEnabled',
     'twoFactorBackupCode',
-    'preferredCurrency', 'preferredLanguage', 'travelFrequency', 'timezone',
-    'theme', 'termsAccepted', 'privacyAccepted', 'acceptedTermsDate',
-    'acceptedPrivacyDate', 'marketingOptIn', 'dataProcessingOptIn',
-    'dataRetentionConsent', 'gdprConsent', 'profileCompletion',
-    'experiencePoints', 'streakCount', 'deletedAt', 'deactivatedAt',
+    'deletedAt', 'deactivatedAt',
     'blockedAt', 'blockedReason', 'isActive', 'permissions',
   ]),
   session: new Set([

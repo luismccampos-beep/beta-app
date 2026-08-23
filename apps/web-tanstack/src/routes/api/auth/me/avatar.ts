@@ -12,9 +12,10 @@ export const Route = createFileRoute('/api/auth/me/avatar')({
             return Response.json({ error: 'Unauthorized' }, { status: 401 })
           }
 
-          await prisma.user.update({
-            where: { id: session.user.id },
-            data: { avatar: null },
+          await prisma.userProfile.upsert({
+            where: { userId: session.user.id },
+            create: { userId: session.user.id, avatar: null },
+            update: { avatar: null },
           })
 
           return Response.json({ success: true })

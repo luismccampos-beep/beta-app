@@ -115,24 +115,6 @@ model User {
   // Multi-tenancy
   agencyId String? @map("agency_id")
 
-  // Profile
-  avatar          String?   @db.Text
-  avatarThumbnail String?   @map("avatar_thumbnail") @db.Text
-  avatarUrl       String?   @map("avatar_url") @db.Text
-  bio             String?   @db.Text
-  location        String?   @db.VarChar(255)
-  phone           String?   @db.VarChar(20)
-  birthDate       DateTime? @map("birth_date") @db.Date
-  gender          String?   @db.VarChar(20) // "M", "F", "Other"
-  taxId           String?   @map("tax_id") @db.VarChar(50) // NIF / VAT / Tax ID for invoicing
-
-  // Address
-  address    String? @db.VarChar(255)
-  city       String? @db.VarChar(100)
-  state      String? @db.VarChar(100)
-  country    String? @db.VarChar(100)
-  postalCode String? @map("postal_code") @db.VarChar(20)
-
   // Account Status
   status                 UserStatus @default(ACTIVE)
   role                   UserRole   @default(USER)
@@ -151,28 +133,6 @@ model User {
   twoFactorEnabled    Boolean @default(false) @map("two_factor_enabled")
   twoFactorBackupCode Json    @default("[]") @map("two_factor_backup_code")
 
-  // User Preferences
-  preferredCurrency Currency?       @default(BRL) @map("preferred_currency")
-  preferredLanguage String?         @default("pt-PT") @map("preferred_language") @db.VarChar(10)
-  travelFrequency   TravelFrequency @default(OCCASIONAL) @map("travel_frequency")
-  timezone          String?         @db.VarChar(50)
-  theme             String?         @db.VarChar(20) // "light", "dark", "system"
-
-  // Legal Compliance (LGPD/GDPR)
-  termsAccepted        Boolean   @default(false) @map("terms_accepted")
-  privacyAccepted      Boolean   @default(false) @map("privacy_accepted")
-  acceptedTermsDate    DateTime? @map("accepted_terms_date") @db.Timestamp(3)
-  acceptedPrivacyDate  DateTime? @map("accepted_privacy_date") @db.Timestamp(3)
-  marketingOptIn       Boolean   @default(false) @map("marketing_opt_in")
-  dataProcessingOptIn  Boolean   @default(false) @map("data_processing_opt_in")
-  dataRetentionConsent Boolean   @default(false) @map("data_retention_consent")
-  gdprConsent          Boolean   @default(false) @map("gdpr_consent")
-
-  // Profile Completion
-  profileCompletion Int @default(0) @map("profile_completion") @db.SmallInt // 0-100
-  experiencePoints  Int @default(0) @map("experience_points")
-  streakCount       Int @default(0) @map("streak_count")
-
   // Account Status
   deletedAt     DateTime? @map("deleted_at") @db.Timestamp(3)
   deactivatedAt DateTime? @map("deactivated_at") @db.Timestamp(3)
@@ -184,6 +144,8 @@ model User {
   permissions Json    @default("[]")
 
   // Relationships
+  profile                 UserProfile?
+  gamification            UserGamification?
   sessions                Session[]
   accounts                Account[] // OAuth accounts
   emailVerificationTokens EmailVerificationToken[]
@@ -237,13 +199,92 @@ model User {
   // Multi-tenancy relationship
   agency Agency? @relation(fields: [agencyId], references: [id], onDelete: Cascade)
 
-  @@index([phone])
-  @@index([taxId])
   @@index([email])
   @@index([username])
   @@index([agencyId])
   @@index([deletedAt])
   @@map("users")
+}
+
+// ============================================
+// USER PROFILE (1:1 with User)
+// ============================================
+
+model UserProfile {
+  id     String @id @default(uuid())
+  userId String @unique @map("user_id")
+
+  // Avatar
+  avatar          String? @db.Text
+  avatarThumbnail String? @map("avatar_thumbnail") @db.Text
+  avatarUrl       String? @map("avatar_url") @db.Text
+
+  // Personal Info
+  bio       String?   @db.Text
+  location  String?   @db.VarChar(255)
+  phone     String?   @db.VarChar(20)
+  birthDate DateTime? @map("birth_date") @db.Date
+  gender    String?   @db.VarChar(20) // "M", "F", "Other"
+  taxId     String?   @map("tax_id") @db.VarChar(50) // NIF / VAT / Tax ID for invoicing
+
+  // Address
+  address    String? @db.VarChar(255)
+  city       String? @db.VarChar(100)
+  state      String? @db.VarChar(100)
+  country    String? @db.VarChar(100)
+  postalCode String? @map("postal_code") @db.VarChar(20)
+
+  // Preferences
+  preferredCurrency Currency?       @default(BRL) @map("preferred_currency")
+  preferredLanguage String?         @default("pt-PT") @map("preferred_language") @db.VarChar(10)
+  travelFrequency   TravelFrequency @default(OCCASIONAL) @map("travel_frequency")
+  timezone          String?         @db.VarChar(50)
+  theme             String?         @db.VarChar(20) // "light", "dark", "system"
+
+  // Legal Compliance (LGPD/GDPR)
+  termsAccepted        Boolean   @default(false) @map("terms_accepted")
+  privacyAccepted      Boolean   @default(false) @map("privacy_accepted")
+  acceptedTermsDate    DateTime? @map("accepted_terms_date") @db.Timestamp(3)
+  acceptedPrivacyDate  DateTime? @map("accepted_privacy_date") @db.Timestamp(3)
+  marketingOptIn       Boolean   @default(false) @map("marketing_opt_in")
+  dataProcessingOptIn  Boolean   @default(false) @map("data_processing_opt_in")
+  dataRetentionConsent Boolean   @default(false) @map("data_retention_consent")
+  gdprConsent          Boolean   @default(false) @map("gdpr_consent")
+
+  createdAt DateTime  @default(now()) @map("created_at") @db.Timestamp(0)
+  updatedAt DateTime  @updatedAt @map("updated_at") @db.Timestamp(0)
+  deletedAt DateTime? @map("deleted_at") @db.Timestamp(3)
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([deletedAt])
+  @@index([phone])
+  @@index([taxId])
+  @@map("user_profiles")
+}
+
+// ============================================
+// USER GAMIFICATION (1:1 with User)
+// ============================================
+
+model UserGamification {
+  id     String @id @default(uuid())
+  userId String @unique @map("user_id")
+
+  profileCompletion Int @default(0) @map("profile_completion") @db.SmallInt // 0-100
+  experiencePoints  Int @default(0) @map("experience_points")
+  streakCount       Int @default(0) @map("streak_count")
+
+  createdAt DateTime  @default(now()) @map("created_at") @db.Timestamp(0)
+  updatedAt DateTime  @updatedAt @map("updated_at") @db.Timestamp(0)
+  deletedAt DateTime? @map("deleted_at") @db.Timestamp(3)
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([deletedAt])
+  @@map("user_gamification")
 }
 
 // ============================================

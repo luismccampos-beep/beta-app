@@ -33,28 +33,34 @@ export const Route = createFileRoute('/api/auth/me/')({
               email: true,
               name: true,
               username: true,
-              phone: true,
-              birthDate: true,
               role: true,
               status: true,
-              bio: true,
-              avatar: true,
-              avatarUrl: true,
-              location: true,
-              city: true,
-              state: true,
-              country: true,
-              postalCode: true,
-              preferredLanguage: true,
-              preferredCurrency: true,
-              termsAccepted: true,
-              acceptedTermsDate: true,
               lastLogin: true,
               joinDate: true,
+              profile: {
+                select: {
+                  phone: true,
+                  birthDate: true,
+                  bio: true,
+                  avatar: true,
+                  avatarUrl: true,
+                  location: true,
+                  city: true,
+                  state: true,
+                  country: true,
+                  postalCode: true,
+                  preferredLanguage: true,
+                  preferredCurrency: true,
+                  termsAccepted: true,
+                  acceptedTermsDate: true,
+                },
+              },
             },
           })
 
-          return Response.json({ user })
+          // Flatten profile fields for backward-compatible API response
+          const { profile, ...userFields } = user ?? {}
+          return Response.json({ user: { ...userFields, ...(profile ?? {}) } })
         } catch (error) {
           console.error('[me]', error)
           return Response.json({ error: 'Internal server error' }, { status: 500 })
@@ -69,27 +75,52 @@ export const Route = createFileRoute('/api/auth/me/')({
           }
 
           const body = UpdateProfileSchema.parse(await request.json())
-          const data: Record<string, unknown> = {}
+
+          // Fields that stay on the User model
+          const USER_FIELDS = new Set(['name', 'username'])
+          // Fields that moved to UserProfile
+          const PROFILE_FIELDS = new Set([
+            'phone', 'birthDate', 'bio', 'location', 'city', 'state',
+            'country', 'preferredLanguage',
+          ])
+
+          const userData: Record<string, unknown> = {}
+          const profileData: Record<string, unknown> = {}
 
           for (const [key, value] of Object.entries(body)) {
-            if (value !== undefined) {
+            if (value === undefined) continue
+            if (USER_FIELDS.has(key)) {
+              userData[key] = value
+            } else if (PROFILE_FIELDS.has(key)) {
               if (key === 'birthDate' && value) {
                 const [y, m, d] = (value as string).split('-').map(Number)
-                data.birthDate = new Date(Date.UTC(y!, m! - 1, d!))
+                profileData.birthDate = new Date(Date.UTC(y!, m! - 1, d!))
               } else {
-                data[key] = value
+                profileData[key] = value
               }
             }
           }
 
-          if (Object.keys(data).length === 0) {
+          if (Object.keys(userData).length === 0 && Object.keys(profileData).length === 0) {
             return Response.json({ error: 'No changes provided' }, { status: 400 })
           }
 
-          await prisma.user.update({
-            where: { id: session.user.id },
-            data,
-          })
+          // Update user fields
+          if (Object.keys(userData).length > 0) {
+            await prisma.user.update({
+              where: { id: session.user.id },
+              data: userData,
+            })
+          }
+
+          // Upsert profile fields
+          if (Object.keys(profileData).length > 0) {
+            await prisma.userProfile.upsert({
+              where: { userId: session.user.id },
+              create: { userId: session.user.id, ...profileData },
+              update: profileData,
+            })
+          }
 
           return Response.json({ success: true })
         } catch (error) {
