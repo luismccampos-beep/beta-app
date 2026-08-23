@@ -40,7 +40,8 @@ class Predictor:
     def fallback_predict(self, model_name: str, input_data: Any) -> Any:
         """Lightweight fallback when a model file is unavailable"""
         if model_name == "recommender":
-            user_id = int(input_data) if not isinstance(input_data, dict) else int(input_data.get("user_id", 0))
+            # User ids are opaque strings (app uses UUIDs).
+            user_id = str(input_data) if not isinstance(input_data, dict) else str(input_data.get("user_id", ""))
             # Simple heuristic: recommend top items by popularity buckets
             popular_items = [
                 {"id": "svc-hotel-1", "type": "accommodation"},

@@ -16,6 +16,7 @@ from urllib.parse import urlparse
 import requests
 from cachetools import TTLCache
 
+from app.core.errors import sanitized_error
 from app.core.logger import logger
 
 router = APIRouter(prefix="/validate-image", tags=["validate-image"])
@@ -200,10 +201,12 @@ async def validate_image(request: ValidateImageRequest):
     # Download da imagem (off-thread, com limite de tamanho e SSRF guard)
     try:
         image_bytes = await asyncio.to_thread(_download_image, request.image_url)
-    except ValueError as e:
-        raise HTTPException(status_code=400, detail=str(e))
-    except requests.RequestException as e:
-        raise HTTPException(status_code=400, detail=f"Falha ao baixar imagem: {e}")
+    except ValueError:
+        logger.exception("Image download validation failed")
+        raise HTTPException(status_code=400, detail="Invalid image URL or download failed")
+    except requests.RequestException:
+        logger.exception("Image download request failed")
+        raise HTTPException(status_code=400, detail="Falha ao baixar imagem")
 
     # Executar validação CLIP (off-thread: inference is CPU/GPU-bound)
     result = await asyncio.to_thread(_validate_with_clip, image_bytes, request.candidate_labels)

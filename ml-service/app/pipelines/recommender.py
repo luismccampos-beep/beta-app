@@ -14,17 +14,18 @@ def load_interactions(path: str) -> pd.DataFrame:
 def load_items(path: str) -> pd.DataFrame:
     return pd.read_csv(path)
 
-def build_mappings(users: pd.Series, items: pd.Series) -> Tuple[Dict[int, int], Dict[str, int]]:
-    uid_map = {int(u): i for i, u in enumerate(sorted(set(users)))}
-    iid_map = {str(it): i for i, it in enumerate(sorted(set(items)))}
+def build_mappings(users: pd.Series, items: pd.Series) -> Tuple[Dict[str, int], Dict[str, int]]:
+    # User ids are opaque strings (app uses UUIDs, not ints) — never coerce.
+    uid_map = {str(u): i for i, u in enumerate(sorted(set(users), key=str))}
+    iid_map = {str(it): i for i, it in enumerate(sorted(set(items), key=str))}
     return uid_map, iid_map
 
-def build_matrix(df: pd.DataFrame, uid_map: Dict[int, int], iid_map: Dict[str, int], items_df: pd.DataFrame, score_max: float = 5.0, type_weights: Dict[str, float] | None = None) -> np.ndarray:
+def build_matrix(df: pd.DataFrame, uid_map: Dict[str, int], iid_map: Dict[str, int], items_df: pd.DataFrame, score_max: float = 5.0, type_weights: Dict[str, float] | None = None) -> np.ndarray:
     m = np.zeros((len(uid_map), len(iid_map)), dtype=np.float32)
     type_map = { str(row["item_id"]): str(row.get("type", "item")) for _, row in items_df.iterrows() }
     tw = type_weights or { "accommodation": 1.0, "activity": 1.0, "package": 1.0, "transportation": 0.7 }
     for _, row in df.iterrows():
-        u = uid_map.get(int(row["user_id"]))
+        u = uid_map.get(str(row["user_id"]))
         iid = str(row["item_id"])
         i = iid_map.get(iid)
         if u is not None and i is not None:

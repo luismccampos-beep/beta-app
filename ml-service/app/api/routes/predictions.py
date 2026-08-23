@@ -5,10 +5,11 @@ import logging
 from datetime import datetime, timezone
 from typing import Any, Dict
 
-from fastapi import APIRouter, HTTPException, Query, status
+from fastapi import APIRouter, Query, status
 from pydantic import BaseModel
 
 from app.core.config import settings
+from app.core.errors import sanitized_error
 from app.models.predictor import Predictor
 from app.pipelines.analytics import (
     cross_suggestions,
@@ -53,17 +54,14 @@ async def predict(request: PredictionRequest) -> PredictionResponse:
             timestamp=datetime.now(timezone.utc).isoformat(),
             processing_time=processing_time,
         )
-    except Exception as e:
-        logger.error("Error processing prediction: %s", str(e))
-        raise HTTPException(
-            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
-            detail={"error": "Internal server error", "details": str(e)},
-        )
+    except Exception:
+        logger.exception("Error processing prediction")
+        sanitized_error(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, public_message="Prediction failed")
 
 
 @router.get("/recommendations/{user_id}")
 async def get_recommendations(
-    user_id: int,
+    user_id: str,
     limit: int = Query(default=10, ge=1, le=50),
 ) -> Dict[str, Any]:
     try:
@@ -78,12 +76,9 @@ async def get_recommendations(
             "timestamp": datetime.now(timezone.utc).isoformat(),
             "processing_time": processing_time,
         }
-    except Exception as e:
-        logger.error("Error in get_recommendations: %s", str(e))
-        raise HTTPException(
-            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
-            detail={"error": "Internal server error", "details": str(e)},
-        )
+    except Exception:
+        logger.exception("Error in get_recommendations")
+        sanitized_error(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, public_message="Recommendations lookup failed")
 
 
 @router.get("/analytics")
@@ -94,25 +89,19 @@ async def get_analytics() -> Dict[str, Any]:
             "panorama": panorama(inter, items),
             "priorities": priorities(inter, items),
         }
-    except Exception as e:
-        logger.error("Error in get_analytics: %s", str(e))
-        raise HTTPException(
-            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
-            detail={"error": "Internal server error", "details": str(e)},
-        )
+    except Exception:
+        logger.exception("Error in get_analytics")
+        sanitized_error(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, public_message="Analytics lookup failed")
 
 
 @router.get("/profile/{user_id}")
-async def get_profile(user_id: int) -> Dict[str, Any]:
+async def get_profile(user_id: str) -> Dict[str, Any]:
     try:
         inter, items = load_analytics("app/data/interactions.csv", "app/data/items.csv")
         return user_affinity(inter, items, user_id)
-    except Exception as e:
-        logger.error("Error in get_profile: %s", str(e))
-        raise HTTPException(
-            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
-            detail={"error": "Internal server error", "details": str(e)},
-        )
+    except Exception:
+        logger.exception("Error in get_profile")
+        sanitized_error(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, public_message="Profile lookup failed")
 
 
 @router.get("/also-liked/{item_id}")
@@ -120,16 +109,13 @@ async def get_also_liked(item_id: str) -> Dict[str, Any]:
     try:
         inter, items = load_analytics("app/data/interactions.csv", "app/data/items.csv")
         return {"item_id": item_id, "also_liked": cross_suggestions(inter, items, item_id)}
-    except Exception as e:
-        logger.error("Error in get_also_liked: %s", str(e))
-        raise HTTPException(
-            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
-            detail={"error": "Internal server error", "details": str(e)},
-        )
+    except Exception:
+        logger.exception("Error in get_also_liked")
+        sanitized_error(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, public_message="Cross-suggestions lookup failed")
 
 
 class Interaction(BaseModel):
-    user_id: int
+    user_id: str
     item_id: str
     score: float = 1.0
 
@@ -156,9 +142,6 @@ async def add_interaction(interaction: Interaction) -> Dict[str, Any]:
                 interaction.score,
             ])
         return {"success": True}
-    except Exception as e:
-        logger.error("Error appending interaction: %s", str(e))
-        raise HTTPException(
-            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
-            detail={"error": "Internal server error", "details": str(e)},
-        )
+    except Exception:
+        logger.exception("Error appending interaction")
+        sanitized_error(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, public_message="Failed to record interaction")

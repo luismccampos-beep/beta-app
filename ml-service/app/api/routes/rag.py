@@ -3,7 +3,7 @@ RAG API Routes
 Rotas da API para integração RAG com TinyAya
 """
 
-from fastapi import APIRouter, HTTPException, Query
+from fastapi import APIRouter, Query
 from pydantic import BaseModel, Field
 from typing import Dict, List, Any, Optional
 from datetime import datetime, timezone
@@ -14,6 +14,7 @@ from app.ml.rag_integration import (
     RAGQueryRequest,
     RAGResponse,
 )
+from app.core.errors import sanitized_error
 from app.core.logger import logger
 
 router = APIRouter(prefix="/rag", tags=["RAG"])
@@ -140,12 +141,9 @@ async def query_rag(request: RAGQueryRequest):
             data=response,
             processing_time=response.processing_time,
         )
-    except Exception as e:
+    except Exception:
         logger.exception("RAG query failed")
-        raise HTTPException(
-            status_code=500,
-            detail=f"Erro ao processar consulta RAG: {e}",
-        )
+        sanitized_error(status_code=500, public_message="Erro ao processar consulta RAG")
 
 
 @router.post(
@@ -167,12 +165,9 @@ async def search_documents(request: RAGQueryRequest):
             documents=[doc.dict() for doc in documents],
             total_results=len(documents),
         )
-    except Exception as e:
+    except Exception:
         logger.exception("Document search failed")
-        raise HTTPException(
-            status_code=500,
-            detail=f"Erro ao buscar documentos: {e}",
-        )
+        sanitized_error(status_code=500, public_message="Erro ao buscar documentos")
 
 
 @router.post(
@@ -195,12 +190,9 @@ async def explain_answer(body: ExplainRequest):
         )
 
         return ExplainResponse(success=True, explanation=explanation)
-    except Exception as e:
+    except Exception:
         logger.exception("Explanation generation failed")
-        raise HTTPException(
-            status_code=500,
-            detail=f"Erro ao gerar explicação: {e}",
-        )
+        sanitized_error(status_code=500, public_message="Erro ao gerar explicação")
 
 
 @router.post(
@@ -220,12 +212,9 @@ async def factual_check(body: FactCheckRequest):
         result = await connector.generate_factual_check(body.claim, body.context)
 
         return FactCheckResponse(success=True, result=result)
-    except Exception as e:
+    except Exception:
         logger.exception("Factual check failed")
-        raise HTTPException(
-            status_code=500,
-            detail=f"Erro na verificação factual: {e}",
-        )
+        sanitized_error(status_code=500, public_message="Erro na verificação factual")
 
 
 @router.get(
@@ -275,12 +264,9 @@ async def get_rag_stats():
             most_searched_categories=[],
             success_rate=0.0,
         )
-    except Exception as e:
+    except Exception:
         logger.exception("Failed to fetch RAG stats")
-        raise HTTPException(
-            status_code=500,
-            detail=f"Erro ao obter estatísticas: {e}",
-        )
+        sanitized_error(status_code=500, public_message="Erro ao obter estatísticas")
 
 
 @router.post(
@@ -312,9 +298,6 @@ async def submit_rag_feedback(body: RAGFeedbackRequest):
             feedback_id=f"rag_fb_{body.query_id}",
             timestamp=_utcnow_iso(),
         )
-    except Exception as e:
+    except Exception:
         logger.exception("RAG feedback submission failed")
-        raise HTTPException(
-            status_code=500,
-            detail=f"Erro ao submeter feedback: {e}",
-        )
+        sanitized_error(status_code=500, public_message="Erro ao submeter feedback")

@@ -106,7 +106,7 @@ class Settings(BaseSettings): # pyright: ignore[reportGeneralTypeIssues]
     
     # Logging settings
     LOG_LEVEL: str = "INFO"
-    LOG_FORMAT: str = "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+    LOG_FORMAT: str = "%(asctime)s [%(request_id)s] %(name)s %(levelname)s %(message)s"
 
 # Create settings instance
 settings = Settings()

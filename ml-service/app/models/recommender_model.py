@@ -2,7 +2,7 @@ from typing import Any, Dict, List
 import numpy as np
 
 class RecommenderModel:
-    def __init__(self, user_index: Dict[int, int], item_index: Dict[str, int], user_factors: np.ndarray, item_factors: np.ndarray, item_meta: Dict[str, Dict[str, Any]], popular: List[Dict[str, Any]]):
+    def __init__(self, user_index: Dict[str, int], item_index: Dict[str, int], user_factors: np.ndarray, item_factors: np.ndarray, item_meta: Dict[str, Dict[str, Any]], popular: List[Dict[str, Any]]):
         self.user_index = user_index
         self.item_index = item_index
         self.user_factors = user_factors
@@ -11,7 +11,9 @@ class RecommenderModel:
         self.popular = popular
 
     def predict(self, input_data: Any) -> List[Dict[str, Any]]:
-        user_id = int(input_data["user_id"]) if isinstance(input_data, dict) else int(input_data)
+        # User ids are opaque strings (app uses UUIDs). Accept dict {"user_id": "...", "limit": N}
+        # or bare user_id string for backward compat.
+        user_id = str(input_data["user_id"]) if isinstance(input_data, dict) else str(input_data)
         limit = int(input_data.get("limit", 10)) if isinstance(input_data, dict) else 10
         idx = self.user_index.get(user_id)
         if idx is None:

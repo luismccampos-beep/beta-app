@@ -25,7 +25,7 @@ def priorities(inter: pd.DataFrame, items: pd.DataFrame) -> Dict[str, Any]:
     needs_attention = top[top["type"] == "transportation"].sort_values("avg_score").head(10).to_dict(orient="records")
     return {"highlights": highlights, "needs_attention": needs_attention}
 
-def user_affinity(inter: pd.DataFrame, items: pd.DataFrame, user_id: int) -> Dict[str, Any]:
+def user_affinity(inter: pd.DataFrame, items: pd.DataFrame, user_id: str) -> Dict[str, Any]:
     merged = inter.merge(items, on="item_id", how="left")
     u = merged[merged["user_id"] == user_id]
     by_type = u.groupby("type")["score"].mean().sort_values(ascending=False)

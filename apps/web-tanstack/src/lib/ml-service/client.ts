@@ -123,6 +123,23 @@ function authHeaders(): Record<string, string> {
   return apiKey ? { 'x-api-key': apiKey } : {};
 }
 
+/** Try to read the current request's correlation ID for trace propagation. */
+function correlationHeader(): Record<string, string> {
+  try {
+    // TanStack Start stores the context in AsyncLocalStorage under the
+    // symbol returned by getCtx(). We can access it via the global getter
+    // if available, but the simplest cross-runtime approach is to check
+    // the globalThis.__TANSTACK_SSR_CONTEXT__ (set by start.ts).
+    // Fallback: check process.domain (Node) or just skip propagation.
+    const g = globalThis as Record<string, unknown>;
+    const ctx = (g.__TANSTACK_SSR_CONTEXT__ as Record<string, unknown> | undefined);
+    const requestId = ctx?.requestId as string | undefined;
+    return requestId ? { 'x-request-id': requestId } : {};
+  } catch {
+    return {};
+  }
+}
+
 function makeUrl(path: string): string {
   const base = getConfig().baseUrl;
   return `${base}${path}`;
@@ -211,6 +228,7 @@ async function mlFetch<T>(
       headers: {
         'content-type': 'application/json',
         ...authHeaders(),
+        ...correlationHeader(),
         ...(init.headers as Record<string, string> | undefined),
       },
       cache: 'no-store',

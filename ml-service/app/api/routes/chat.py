@@ -16,6 +16,7 @@ from app.ml.chat_service import (
     ChatResponse,
     ChatSession,
 )
+from app.core.errors import sanitized_error
 from app.core.logger import logger
 
 router = APIRouter(prefix="/chat", tags=["chat"])
@@ -242,9 +243,9 @@ async def send_message(request: ChatRequest):
             extra={"user_id": request.user_id, "preview": request.message[:80]},
         )
         return await chat_service.process_message(request)
-    except Exception as e:
+    except Exception:
         logger.exception("Failed to process chat message")
-        raise HTTPException(status_code=500, detail=f"Erro ao processar mensagem: {e}")
+        sanitized_error(status_code=500, public_message="Erro ao processar mensagem")
 
 
 @router.get(
@@ -308,9 +309,9 @@ async def get_user_sessions(
             sessions=[_build_session_summary(s) for s in page],
             total_sessions=len(sessions),
         )
-    except Exception as e:
+    except Exception:
         logger.exception("Failed to fetch user sessions")
-        raise HTTPException(status_code=500, detail=f"Erro ao obter sessões: {e}")
+        sanitized_error(status_code=500, public_message="Erro ao obter sessões")
 
 
 @router.delete(
@@ -353,9 +354,9 @@ async def cleanup_old_sessions(body: CleanupRequest):
             max_age_hours=body.max_age_hours,
             message=f"Limpeza concluída: {deleted_count} sessões removidas",
         )
-    except Exception as e:
+    except Exception:
         logger.exception("Cleanup failed")
-        raise HTTPException(status_code=500, detail=f"Erro na limpeza: {e}")
+        sanitized_error(status_code=500, public_message="Erro na limpeza")
 
 
 @router.get("/stats", response_model=ChatStatsResponse, summary="Estatísticas")
@@ -364,9 +365,9 @@ async def get_chat_stats():
     try:
         stats = await chat_service.get_chat_stats()
         return ChatStatsResponse(success=True, stats=stats)
-    except Exception as e:
+    except Exception:
         logger.exception("Failed to fetch chat stats")
-        raise HTTPException(status_code=500, detail=f"Erro ao obter estatísticas: {e}")
+        sanitized_error(status_code=500, public_message="Erro ao obter estatísticas")
 
 
 @router.get("/health", response_model=HealthResponse, summary="Health check")
@@ -425,9 +426,9 @@ async def analyze_message(body: AnalyzeMessageRequest):
                 estimated_complexity=complexity,
             ),
         )
-    except Exception as e:
+    except Exception:
         logger.exception("Message analysis failed")
-        raise HTTPException(status_code=500, detail=f"Erro ao analisar mensagem: {e}")
+        sanitized_error(status_code=500, public_message="Erro ao analisar mensagem")
 
 
 @router.get(
@@ -453,9 +454,9 @@ async def get_context_suggestions(
             total_suggestions=len(suggestions),
             recent_sessions=len(user_sessions),
         )
-    except Exception as e:
+    except Exception:
         logger.exception("Failed to generate suggestions")
-        raise HTTPException(status_code=500, detail=f"Erro ao gerar sugestões: {e}")
+        sanitized_error(status_code=500, public_message="Erro ao gerar sugestões")
 
 
 @router.post(
@@ -488,6 +489,6 @@ async def submit_chat_feedback(body: FeedbackRequest):
             feedback_id=f"fb_{body.session_id}_{body.message_id}",
             timestamp=_utcnow_iso(),
         )
-    except Exception as e:
+    except Exception:
         logger.exception("Failed to submit feedback")
-        raise HTTPException(status_code=500, detail=f"Erro ao submeter feedback: {e}")
+        sanitized_error(status_code=500, public_message="Erro ao submeter feedback")

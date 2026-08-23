@@ -14,6 +14,7 @@ from app.ml.xai_integration import (
     UserFeedback,
     ExplanationFactor,
 )
+from app.core.errors import sanitized_error
 from app.core.logger import logger
 
 router = APIRouter(prefix="/xai", tags=["XAI"])
@@ -210,12 +211,9 @@ async def generate_explanation(body: ExplanationRequest):
             data=explanation,
             processing_time=explanation.processing_time,
         )
-    except Exception as e:
+    except Exception:
         logger.exception("XAI explanation generation failed")
-        raise HTTPException(
-            status_code=500,
-            detail=f"Erro ao gerar explicação: {e}",
-        )
+        sanitized_error(status_code=500, public_message="Erro ao gerar explicação")
 
 
 @router.post(
@@ -240,12 +238,9 @@ async def analyze_factors(body: FactorsRequest):
             factors=[f.dict() for f in factors],
             total_factors=len(factors),
         )
-    except Exception as e:
+    except Exception:
         logger.exception("Factor analysis failed")
-        raise HTTPException(
-            status_code=500,
-            detail=f"Erro ao analisar fatores: {e}",
-        )
+        sanitized_error(status_code=500, public_message="Erro ao analisar fatores")
 
 
 @router.post(
@@ -270,17 +265,14 @@ async def generate_alternatives(body: AlternativesRequest):
             alternatives=[alt.dict() for alt in alternatives],
             total_alternatives=len(alternatives),
         )
-    except (TypeError, ValueError) as e:
+    except (TypeError, ValueError):
         raise HTTPException(
             status_code=422,
-            detail=f"Formato de fatores inválido: {e}",
+            detail="Formato de fatores inválido",
         )
-    except Exception as e:
+    except Exception:
         logger.exception("Alternatives generation failed")
-        raise HTTPException(
-            status_code=500,
-            detail=f"Erro ao gerar alternativas: {e}",
-        )
+        sanitized_error(status_code=500, public_message="Erro ao gerar alternativas")
 
 
 @router.post(
@@ -303,12 +295,9 @@ async def identify_limitations(body: LimitationsRequest):
             limitations=limitations,
             total_limitations=len(limitations),
         )
-    except Exception as e:
+    except Exception:
         logger.exception("Limitations identification failed")
-        raise HTTPException(
-            status_code=500,
-            detail=f"Erro ao identificar limitações: {e}",
-        )
+        sanitized_error(status_code=500, public_message="Erro ao identificar limitações")
 
 
 @router.post(
@@ -364,12 +353,9 @@ async def compare_recommendations(body: CompareRequest):
             total_compared=len(comparisons),
             best_match=comparisons[0] if comparisons else None,
         )
-    except Exception as e:
+    except Exception:
         logger.exception("Recommendation comparison failed")
-        raise HTTPException(
-            status_code=500,
-            detail=f"Erro ao comparar recomendações: {e}",
-        )
+        sanitized_error(status_code=500, public_message="Erro ao comparar recomendações")
 
 
 @router.post(
@@ -407,12 +393,9 @@ async def submit_feedback(body: FeedbackRequest):
         )
     except HTTPException:
         raise
-    except Exception as e:
+    except Exception:
         logger.exception("Feedback submission failed")
-        raise HTTPException(
-            status_code=500,
-            detail=f"Erro ao submeter feedback: {e}",
-        )
+        sanitized_error(status_code=500, public_message="Erro ao submeter feedback")
 
 
 @router.get(
@@ -438,12 +421,9 @@ async def get_feedback_stats(
             stats=stats,
             recommendation_id=recommendation_id,
         )
-    except Exception as e:
+    except Exception:
         logger.exception("Failed to fetch feedback stats")
-        raise HTTPException(
-            status_code=500,
-            detail=f"Erro ao obter estatísticas: {e}",
-        )
+        sanitized_error(status_code=500, public_message="Erro ao obter estatísticas")
 
 
 @router.get(
@@ -462,11 +442,11 @@ async def health_check():
             capabilities=health.get("capabilities", []),
             timestamp=_utcnow_iso(),
         )
-    except Exception as e:
+    except Exception:
         logger.exception("XAI health check failed")
         return XAIHealthResponse(
             status="unhealthy",
-            error=str(e),
+            error="Health check failed — check server logs for details",
             timestamp=_utcnow_iso(),
         )
 
@@ -498,12 +478,8 @@ async def get_explanation(recommendation_id: str):
             success=True,
             recommendation_id=recommendation_id,
             explanation=explanation.dict(),
-        )
-    except HTTPException:
+        )    except HTTPException:
         raise
-    except Exception as e:
+    except Exception:
         logger.exception("Failed to retrieve stored explanation")
-        raise HTTPException(
-            status_code=500,
-            detail=f"Erro ao obter explicação: {e}",
-        )
+        sanitized_error(status_code=500, public_message="Erro ao obter explicação")

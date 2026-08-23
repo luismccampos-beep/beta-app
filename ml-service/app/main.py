@@ -10,6 +10,7 @@ from fastapi.responses import JSONResponse
 from app.core.config import settings
 from app.core.logger import setup_logging
 from app.core.sentry import init_sentry
+from app.core.correlation import add_correlation_middleware
 from app.api.routes import router as api_router
 
 setup_logging()
@@ -32,6 +33,9 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+# Correlation ID middleware — must run after CORS so the header is visible.
+add_correlation_middleware(app)
 
 app.include_router(api_router, prefix=f"/{settings.api_version}")
 

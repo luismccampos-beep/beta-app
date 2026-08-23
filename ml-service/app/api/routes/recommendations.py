@@ -3,7 +3,7 @@ Enhanced Recommendations API Routes
 Rotas de recomendações integradas com TinyAya, RAG e XAI
 """
 
-from fastapi import APIRouter, HTTPException, Query
+from fastapi import APIRouter, Query
 from pydantic import BaseModel, Field
 from typing import Any, Dict, List, Optional
 from datetime import datetime, timezone
@@ -19,6 +19,7 @@ from app.pipelines.analytics import (
     cross_suggestions,
 )
 from app.core.config import settings
+from app.core.errors import sanitized_error
 from app.ml.unified_ai_service import unified_ai_service, UnifiedAIRequest
 from app.models.tiny_aya_connector import TinyAyaConnector, TinyAyaMessage
 from app.core.logger import logger
@@ -105,7 +106,7 @@ class SourceItem(BaseModel):
 class RecommendationResponse(BaseModel):
     """Resposta para recomendação."""
     success: bool
-    user_id: int
+    user_id: str
     recommendations: List[Dict[str, Any]]
     explanation: Optional[str] = None
     sources: Optional[List[Dict[str, Any]]] = None
@@ -125,7 +126,7 @@ class ChatRecommendationItem(BaseModel):
 class ChatRecommendationResponse(BaseModel):
     """Resposta para recomendação via chat."""
     success: bool
-    user_id: int
+    user_id: str
     message: str
     recommendations: List[ChatRecommendationItem]
     explanation: Optional[str] = None
@@ -139,7 +140,7 @@ class ChatRecommendationResponse(BaseModel):
 class TraditionalRecommendationsResponse(BaseModel):
     """Resposta para recomendações tradicionais (legado)."""
     success: bool
-    user_id: int
+    user_id: str
     recommendations: List[Dict[str, Any]]
     timestamp: str
     method: str = "traditional"
@@ -208,7 +209,7 @@ def _is_travel_query(text: str) -> bool:
 
 
 async def _get_traditional_recommendations(
-    user_id: int, limit: int
+    user_id: str, limit: int
 ) -> list[dict[str, Any]]:
     """Obtém recomendações usando o motor tradicional."""
     try:
@@ -237,7 +238,7 @@ async def _get_traditional_recommendations(
         return []
 
 
-async def _get_user_profile(user_id: int) -> dict[str, Any]:
+async def _get_user_profile(user_id: str) -> dict[str, Any]:
     """Carrega o perfil de afinidades do usuário."""
     try:
         inter, items = load_analytics(
@@ -273,7 +274,7 @@ def _build_travel_query(request: TravelRecommendationRequest) -> str:
 
 async def _enhance_with_ai(
     recommendations: list[dict[str, Any]],
-    user_id: int,
+    user_id: str,
     preferences: dict[str, Any],
     context: dict[str, Any],
     include_explanation: bool,
@@ -394,7 +395,7 @@ def _extract_recommendations_from_text(text: str) -> list[ChatRecommendationItem
     summary="Recomendações personalizadas",
 )
 async def get_enhanced_recommendations(
-    user_id: int,
+    user_id: str,
     request: RecommendationRequest,
 ):
     """
@@ -437,12 +438,9 @@ async def get_enhanced_recommendations(
             timestamp=_utcnow_iso(),
             method=RecommendationMethod.TRADITIONAL,
         )
-    except Exception as e:
+    except Exception:
         logger.exception("Enhanced recommendations failed")
-        raise HTTPException(
-            status_code=500,
-            detail=f"Erro ao gerar recomendações: {e}",
-        )
+        sanitized_error(status_code=500, public_message="Erro ao gerar recomendações")
 
 
 @router.post(
@@ -451,7 +449,7 @@ async def get_enhanced_recommendations(
     summary="Recomendações de viagem",
 )
 async def get_travel_recommendations(
-    user_id: int,
+    user_id: str,
     request: TravelRecommendationRequest,
 ):
     """
@@ -499,12 +497,9 @@ async def get_travel_recommendations(
             timestamp=_utcnow_iso(),
             method=RecommendationMethod.AI_TRAVEL,
         )
-    except Exception as e:
+    except Exception:
         logger.exception("Travel recommendations failed")
-        raise HTTPException(
-            status_code=500,
-            detail=f"Erro ao gerar recomendações de viagem: {e}",
-        )
+        sanitized_error(status_code=500, public_message="Erro ao gerar recomendações de viagem")
 
 
 @router.post(
@@ -513,7 +508,7 @@ async def get_travel_recommendations(
     summary="Chat de recomendações",
 )
 async def chat_recommendations(
-    user_id: int,
+    user_id: str,
     request: ChatRecommendationRequest,
 ):
     """
@@ -546,9 +541,9 @@ async def chat_recommendations(
         return await _handle_general_chat(
             user_id, request, user_profile, start
         )
-    except Exception as e:
+    except Exception:
         logger.exception("Chat recommendations failed")
-        raise HTTPException(status_code=500, detail=f"Erro no chat: {e}")
+        sanitized_error(status_code=500, public_message="Erro no chat")
 
 
 @router.get(
@@ -558,7 +553,7 @@ async def chat_recommendations(
     deprecated=True,
 )
 async def get_traditional_recommendations_legacy(
-    user_id: int,
+    user_id: str,
     limit: int = Query(default=10, ge=1, le=50),
 ):
     """
@@ -575,18 +570,15 @@ async def get_traditional_recommendations_legacy(
             recommendations=recommendations,
             timestamp=_utcnow_iso(),
         )
-    except Exception as e:
+    except Exception:
         logger.exception("Legacy recommendations failed")
-        raise HTTPException(
-            status_code=500,
-            detail=f"Erro ao obter recomendações: {e}",
-        )
+        sanitized_error(status_code=500, public_message="Erro ao obter recomendações")
 
 
 # ─────────────────────── chat sub-handlers ───────────────────
 
 async def _handle_travel_chat(
-    user_id: int,
+    user_id: str,
     request: ChatRecommendationRequest,
     context: dict[str, Any],
     start: datetime,
@@ -621,7 +613,7 @@ async def _handle_travel_chat(
 
 
 async def _handle_general_chat(
-    user_id: int,
+    user_id: str,
     request: ChatRecommendationRequest,
     user_profile: dict[str, Any],
     start: datetime,

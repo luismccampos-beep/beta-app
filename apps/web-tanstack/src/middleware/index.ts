@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { createMiddleware } from '@tanstack/react-start'
 import { getSession } from '@/lib/auth/session'
+import { correlationMiddleware } from './correlation'
 import { localeMiddleware } from './locale'
 import { corsMiddleware } from './cors'
 import { rateLimitMiddleware } from './rate-limit'
@@ -18,6 +19,7 @@ function isProtectedPath(pathname: string): boolean {
 
 export const rootMiddleware: any = createMiddleware({ type: 'request' })
   .middleware([
+    correlationMiddleware,
     localeMiddleware,
     corsMiddleware,
     rateLimitMiddleware,

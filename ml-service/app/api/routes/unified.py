@@ -3,7 +3,7 @@ Unified AI API Routes
 Rotas da API para o serviço unificado de IA (RAG + XAI + TinyAya)
 """
 
-from fastapi import APIRouter, HTTPException, Query
+from fastapi import APIRouter, Query
 from pydantic import BaseModel, Field
 from typing import Dict, List, Any, Optional
 from datetime import datetime, timezone
@@ -14,6 +14,7 @@ from app.ml.unified_ai_service import (
     UnifiedAIRequest,
     UnifiedAIResponse,
 )
+from app.core.errors import sanitized_error
 from app.core.logger import logger
 
 router = APIRouter(prefix="/unified", tags=["Unified AI"])
@@ -316,12 +317,9 @@ async def unified_query(request: UnifiedAIRequest):
             data=response,
             processing_time=response.processing_time,
         )
-    except Exception as e:
+    except Exception:
         logger.exception("Unified query failed")
-        raise HTTPException(
-            status_code=500,
-            detail=f"Erro ao processar consulta unificada: {e}",
-        )
+        sanitized_error(status_code=500, public_message="Erro ao processar consulta unificada")
 
 
 @router.post(
@@ -353,12 +351,9 @@ async def travel_recommendation(body: TravelRecommendationRequest):
             destination=body.destination,
             processing_time=response.processing_time,
         )
-    except Exception as e:
+    except Exception:
         logger.exception("Travel recommendation failed")
-        raise HTTPException(
-            status_code=500,
-            detail=f"Erro ao gerar recomendação de viagem: {e}",
-        )
+        sanitized_error(status_code=500, public_message="Erro ao gerar recomendação de viagem")
 
 
 @router.post(
@@ -388,12 +383,9 @@ async def compare_destinations(body: DestinationComparisonRequest):
             comparison=comparison,
             destinations_compared=len(body.destinations),
         )
-    except Exception as e:
+    except Exception:
         logger.exception("Destination comparison failed")
-        raise HTTPException(
-            status_code=500,
-            detail=f"Erro ao comparar destinos: {e}",
-        )
+        sanitized_error(status_code=500, public_message="Erro ao comparar destinos")
 
 
 @router.post(
@@ -437,9 +429,9 @@ async def chat_with_ai(body: ChatRequest):
             request_id=response.request_id,
             processing_time=response.processing_time,
         )
-    except Exception as e:
+    except Exception:
         logger.exception("Unified chat failed")
-        raise HTTPException(status_code=500, detail=f"Erro no chat: {e}")
+        sanitized_error(status_code=500, public_message="Erro no chat")
 
 
 @router.get(
@@ -459,11 +451,11 @@ async def health_check():
             integration_status=health.get("integration_status", {}),
             timestamp=_utcnow_iso(),
         )
-    except Exception as e:
+    except Exception:
         logger.exception("Unified health check failed")
         return HealthResponse(
             status="unhealthy",
-            error=str(e),
+            error="Health check failed — check server logs for details",
             timestamp=_utcnow_iso(),
         )
 
@@ -505,9 +497,6 @@ async def analyze_query(body: AnalyzeQueryRequest):
             success=True,
             analysis=analysis,
         )
-    except Exception as e:
+    except Exception:
         logger.exception("Query analysis failed")
-        raise HTTPException(
-            status_code=500,
-            detail=f"Erro ao analisar query: {e}",
-        )
+        sanitized_error(status_code=500, public_message="Erro ao analisar query")

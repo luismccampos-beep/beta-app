@@ -2,6 +2,7 @@ import logging
 from logging.handlers import RotatingFileHandler
 from pathlib import Path
 from app.core.config import settings
+from app.core.correlation import CorrelationFilter
 from datetime import datetime
 
 # Create logs directory if it doesn't exist
@@ -36,6 +37,13 @@ def setup_logging():
 
     # Set root logger level to WARNING
     logging.getLogger().setLevel(logging.WARNING)
+
+    # Inject x-request-id into every log record for distributed traceability.
+    correlation_filter = CorrelationFilter()
+    for handler in logging.getLogger().handlers:
+        handler.addFilter(correlation_filter)
+    console_handler.addFilter(correlation_filter)
+    file_handler.addFilter(correlation_filter)
 
     return logger
 

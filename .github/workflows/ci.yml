@@ -75,11 +75,34 @@ jobs:
       - name: Run tests
         run: npm run test
 
+  python-tests:
+    name: ML Service Tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    defaults:
+      run:
+        working-directory: ml-service
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -e ".[all]"
+      - name: Run pytest
+        run: python -m pytest -v --tb=short
+        env:
+          ML_SERVICE_API_KEY: test-api-key
+          ENVIRONMENT: test
+
   build:
     name: Build
     runs-on: ubuntu-latest
     timeout-minutes: 20
-    needs: [lint, type-check, test]
+    needs: [lint, type-check, test, python-tests]
     steps:
       - uses: actions/checkout@v5
       - uses: actions/setup-node@v5
