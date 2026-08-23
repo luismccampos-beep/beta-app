@@ -29,7 +29,7 @@ jobs:
       - run: npm ci
 
       - name: Generate Prisma Client
-        run: npx prisma generate --schema=packages/db/prisma/schema.prisma
+        run: npx prisma generate --schema=packages/db/prisma/schema
 
       - name: Install Playwright browsers
         run: npx playwright install --with-deps chromium

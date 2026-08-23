@@ -57,6 +57,8 @@ const createStub = (): any => {
 };
 
 const SOFT_DELETE_MODELS = new Set([
+  'AiConversation',
+  'AiMessage',
   'Booking',
   'PaymentTransaction',
   'User',
@@ -74,6 +76,7 @@ const SOFT_DELETE_MODELS = new Set([
   'CommunityPost',
   'CommunityComment',
   'RoomMessage',
+  'LoyaltyProgram',
 ]);
 
 function createPrismaClient() {

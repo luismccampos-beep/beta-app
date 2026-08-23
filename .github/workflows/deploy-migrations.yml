@@ -45,7 +45,7 @@ jobs:
       - run: npm ci
 
       - name: Generate Prisma Client
-        run: npx prisma generate --schema=packages/db/prisma/schema.prisma
+        run: npx prisma generate --schema=packages/db/prisma/schema
 
       - name: TypeScript check
         run: npm run type-check
@@ -108,13 +108,13 @@ jobs:
           DATABASE_URL_UNPOOLED: ${{ secrets.DATABASE_URL_UNPOOLED || secrets.DATABASE_URL }}
 
       - name: Apply migrations
-        run: npx prisma migrate deploy --schema=packages/db/prisma/schema.prisma
+        run: npx prisma migrate deploy --schema=packages/db/prisma/schema
         env:
           DATABASE_URL: ${{ secrets.DATABASE_URL }}
           DATABASE_URL_UNPOOLED: ${{ secrets.DATABASE_URL_UNPOOLED || secrets.DATABASE_URL }}
 
       - name: Generate Prisma Client
-        run: npx prisma generate --schema=packages/db/prisma/schema.prisma
+        run: npx prisma generate --schema=packages/db/prisma/schema
 
       - name: Notify Discord - Success
         if: success()
@@ -177,7 +177,7 @@ jobs:
       - run: npm ci
 
       - name: Generate Prisma Client
-        run: npx prisma generate --schema=packages/db/prisma/schema.prisma
+        run: npx prisma generate --schema=packages/db/prisma/schema
 
       - name: Deploy to Cloudflare Workers
         run: npm run deploy -w @akmleva/web-tanstack

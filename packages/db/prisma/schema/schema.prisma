@@ -29,6 +29,7 @@ generator client {
   // Allows the client to run on Cloudflare Workers via a driver adapter
   // (@prisma/adapter-pg-worker), where the native query engine cannot load.
   driverAdapters  = true
+  previewFeatures = ["prismaSchemaFolder"]
 }
 
 // ============================================
@@ -193,6 +194,7 @@ model User {
   passwordResetTokens     PasswordResetToken[]
   twoFactorDevices        TwoFactorDevice[]
   notificationTokens      NotificationToken[]
+  emailNotifications      EmailNotification[]
 
   userPreferences      UserPreference?
   notificationSettings NotificationSetting?

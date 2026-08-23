@@ -39,7 +39,7 @@ jobs:
           cache: 'npm'
       - run: npm ci
       - name: Generate Prisma Client
-        run: npx prisma generate --schema=packages/db/prisma/schema.prisma
+        run: npx prisma generate --schema=packages/db/prisma/schema
       - name: ESLint
         run: npm run lint
 
@@ -55,7 +55,7 @@ jobs:
           cache: 'npm'
       - run: npm ci
       - name: Generate Prisma Client
-        run: npx prisma generate --schema=packages/db/prisma/schema.prisma
+        run: npx prisma generate --schema=packages/db/prisma/schema
       - name: TypeScript
         run: npm run type-check
 
@@ -71,7 +71,7 @@ jobs:
           cache: 'npm'
       - run: npm ci
       - name: Generate Prisma Client
-        run: npx prisma generate --schema=packages/db/prisma/schema.prisma
+        run: npx prisma generate --schema=packages/db/prisma/schema
       - name: Run tests
         run: npm run test
 
@@ -111,7 +111,7 @@ jobs:
           cache: 'npm'
       - run: npm ci
       - name: Generate Prisma Client
-        run: npx prisma generate --schema=packages/db/prisma/schema.prisma
+        run: npx prisma generate --schema=packages/db/prisma/schema
       - name: Build
         run: npm run build -w @akmleva/web-tanstack
       - name: Upload build artifacts
@@ -160,9 +160,9 @@ jobs:
           cache: 'npm'
       - run: npm ci
       - name: Generate Prisma Client
-        run: npx prisma generate --schema=packages/db/prisma/schema.prisma
+        run: npx prisma generate --schema=packages/db/prisma/schema
       - name: Apply database migrations
-        run: npx prisma migrate deploy --schema=packages/db/prisma/schema.prisma
+        run: npx prisma migrate deploy --schema=packages/db/prisma/schema
       - name: Download build
         uses: actions/download-artifact@v5
         with:
