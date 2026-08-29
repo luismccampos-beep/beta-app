@@ -382,11 +382,17 @@ export async function rankDestinations(
   preferences: Record<string, unknown>,
   candidates: TravelRankCandidate[],
   limit = 20,
+  userId?: string,
 ): Promise<TravelRankResponse | null> {
   if (!isConfigured() || !checkCircuit()) return null;
   return mlFetch<TravelRankResponse>('/v1/travel/rank', {
     method: 'POST',
-    body: JSON.stringify({ preferences, candidates, limit }),
+    body: JSON.stringify({
+      preferences,
+      candidates,
+      limit,
+      ...(userId ? { user_id: userId } : {}),
+    }),
   });
 }
 

@@ -42,7 +42,7 @@ def test_add_interaction():
     with TestClient(app) as client:
         r = client.post(
             "/v1/predictions/interactions",
-            json={"user_id": 99, "item_id": "svc-activity-2", "score": 4},
+            json={"user_id": "99", "item_id": "svc-activity-2", "score": 4},
             headers=AUTH,
         )
         assert r.status_code == 200

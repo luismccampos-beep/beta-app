@@ -49,9 +49,9 @@ def test_invalid_api_key_rejected():
 
 
 def test_api_router_is_gated():
+    # Hardened in dc33f9c: require_api_key moved from per-route dependencies to
+    # a single router-level dependency covering every mounted route.
     assert any(
-        getattr(route, "dependant", None)
-        and any(getattr(dep, "call", None).__name__ == "require_api_key"
-                for dep in route.dependant.dependencies)
-        for route in api_router.routes
+        getattr(getattr(dep, "dependency", None), "__name__", "") == "require_api_key"
+        for dep in api_router.dependencies
     )

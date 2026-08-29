@@ -27,11 +27,23 @@ const themeScript = `
 (function(){try{var m=localStorage.getItem('theme-mode');if(m==='dark'||(!m&&matchMedia('(prefers-color-scheme:dark)').matches))document.documentElement.classList.add('dark')}catch(e){}})()`
 
 export const Route = createRootRoute({
-  beforeLoad: ({ context }: { context: { locale?: string } }) => {
-    // Locale comes from the localeMiddleware in start.ts
-    const locale = context.locale && isValidLocale(context.locale)
-      ? context.locale
-      : defaultLocale
+  beforeLoad: ({ context, serverContext }) => {
+    // The localeMiddleware in src/middleware/locale.ts resolves the locale from the
+    // `locale` cookie (set by LanguageSwitcher) and exposes it on the request
+    // context. TanStack Start passes that middleware context to route loaders as
+    // the top-level `serverContext` argument — NOT merged into `context`.
+    // On the client (SPA navigation) serverContext is absent, so fall back to the
+    // same cookie so the locale survives client-side route changes.
+    const serverLocale = (serverContext as { locale?: string } | undefined)?.locale
+    const cookieLocale =
+      typeof document !== 'undefined'
+        ? document.cookie.match(/locale=([^;]+)/)?.[1]
+        : undefined
+    const locale =
+      (serverLocale && isValidLocale(serverLocale) ? serverLocale : undefined) ??
+      (cookieLocale && isValidLocale(cookieLocale) ? cookieLocale : undefined) ??
+      (context as { locale?: string }).locale ??
+      defaultLocale
     return { locale }
   },
   head: ({ loaderData }: { loaderData?: { locale?: string } }) => {

@@ -66,7 +66,7 @@ export const Route = createFileRoute('/api/auth/signup')({
 
           // Persist the verification token before responding; email can go out async.
           try {
-            const token = crypto.randomBytes(32).toString('hex')
+            const token = Buffer.from(crypto.randomBytes(32)).toString('hex')
             await prisma.emailVerificationToken.create({
               data: {
                 userId: user.id,

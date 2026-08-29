@@ -3899,12 +3899,39 @@ model ResponsePrediction {
   predictedResponse Json     @map("predicted_response")
   confidenceScore   Decimal  @map("confidence_score") @db.Decimal(3, 2)
   modelVersion      String   @map("model_version")
-  createdAt         DateTime @default(now()) @map("created_at") @db.Timestamp(0)
+  createdAt         DateTime @default(now()) @map("created_at")
   expiresAt         DateTime @map("expires_at") @db.Timestamp(3)
 
   user User? @relation(fields: [userId], references: [id])
 
   @@map("response_predictions")
+}
+
+/// Impression/click/dismiss logging for AI recommendations.
+/// Append-only feedback loop: exported to ml-service training data by
+/// `tools/data-pipeline/scripts/export-db-signals.mjs` and used to measure
+/// recommendation CTR. Intentionally has no soft delete (telemetry).
+model RecommendationEvent {
+  id        String  @id @default(uuid())
+  userId    String? @map("user_id")
+  sessionId String? @map("session_id") @db.VarChar(64)
+  surface   String  @db.VarChar(50) // "home_carousel", "search", "chat", ...
+  eventType String  @map("event_type") @db.VarChar(20) // "impression" | "click" | "dismiss" | "dwell" | "save"
+  itemId    String  @map("item_id") @db.VarChar(64) // ML item id, e.g. "wv-pt-123"
+  position  Int     @default(0) @db.SmallInt // rank shown to the user (1-based)
+  model     String? @db.VarChar(50) // ranking method, e.g. "hybrid" | "embedding"
+  score     Float? // model score at serve time
+  dwellSeconds Int?  @map("dwell_seconds") @db.SmallInt // seconds spent on the item (dwell events)
+  dismissReason String? @map("dismiss_reason") @db.VarChar(50) // machine-readable dismiss reason
+  metadata  Json?   @db.JsonB
+
+  createdAt DateTime @default(now()) @map("created_at")
+
+  @@index([userId, createdAt])
+  @@index([itemId, eventType])
+  @@index([surface, eventType, createdAt])
+  @@index([createdAt])
+  @@map("recommendation_events")
 }
 
 // ============================================
@@ -3955,23 +3982,47 @@ model WvDestination {
   imagemAltura     Int?    @map("imagem_altura")
 
   hotelCount Int      @default(0) @map("hotel_count")
+  // Best-of quality priors, e.g. ["blue_flag_beach", "unesco", "michelin"], and global notability.
+  qualityLabels    Json? @map("quality_labels") @db.JsonB
+  wikidataSitelinks Int?  @map("wikidata_sitelinks")
   createdAt  DateTime @default(now()) @map("created_at")
   updatedAt  DateTime @updatedAt @map("updated_at")
 
   hotels       WvHotel[]
   flights      WvFlight[]
   listings     WvListing[]
+  venues       DestinationVenue[]
   images       WvDestinationImage[]
   videos       WvDestinationVideo[]
   translations DestinationTranslation[]
   reviews      WvDestinationReview[]
+  monthScores  DestinationMonthScore[]
 
   @@index([pais, nome])
   @@index([slug])
   @@index([lang, nome])
   @@index([iata])
   @@index([iata, lang, hotelCount])
+  @@index([lang, hotelCount])
   @@map("wv_destinations")
+}
+
+/// Сезонность: оценка пригодности направления по месяцам (0-100)
+model DestinationMonthScore {
+  id            Int      @id @default(autoincrement())
+  destinationId Int      @map("destination_id")
+  month         Int      @db.SmallInt // 1 (янв) – 12 (дек)
+  score         Int      @db.SmallInt // 0-100, общая пригодность
+  crowdIndex    Float?   @map("crowd_index") @db.Real // наплыв туристов
+  priceIndex    Float?   @map("price_index") @db.Real // ценовой индекс
+  seaTempC      Float?   @map("sea_temp_c") @db.Real // температура моря
+
+  destination WvDestination @relation(fields: [destinationId], references: [id], onDelete: Cascade)
+
+  @@unique([destinationId, month])
+  @@index([destinationId])
+  @@index([month, score])
+  @@map("destination_month_scores")
 }
 
 /// Review / comentário de destino Wikivoyage
@@ -4091,6 +4142,40 @@ model WvListing {
   @@index([destinoId, type])
   @@index([article, type])
   @@map("wv_listings")
+}
+
+/// Restaurantes / venues associados a um destino (Yelp, Zomato, TripAdvisor, Michelin)
+model DestinationVenue {
+  id          String   @id @default(uuid())
+  destinoId   Int      @map("destino_id")
+  venueId     String   @map("venue_id") @db.VarChar(32)
+  cityId      String?  @map("city_id") @db.VarChar(36)
+  source      String   @db.VarChar(20)
+  name        String   @db.VarChar(255)
+  address     String?  @db.Text
+  cityName    String   @map("city") @db.VarChar(200)
+  country     String   @db.VarChar(120)
+  latitude    Float    @db.Real
+  longitude   Float    @db.Real
+  cuisine     String?  @db.VarChar(500)
+  priceRange  Int?     @map("price_range") @db.SmallInt
+  rating      Float    @db.Real
+  reviewCount Int      @default(0) @map("review_count")
+  award       String?  @db.VarChar(50)
+  phone       String?  @db.VarChar(50)
+  website     String?  @db.VarChar(500)
+  url         String?  @db.VarChar(500)
+  createdAt   DateTime @default(now()) @map("created_at") @db.Timestamp(0)
+
+  destino WvDestination @relation(fields: [destinoId], references: [id], onDelete: Cascade)
+  cityRel City?         @relation(fields: [cityId], references: [id], onDelete: SetNull)
+
+  @@unique([destinoId, venueId])
+  @@index([destinoId])
+  @@index([venueId])
+  @@index([source])
+  @@index([cityId])
+  @@map("destination_venues")
 }
 
 /// Custo de vida por cidade (CSV Numbeo/Kaggle)
@@ -4273,6 +4358,240 @@ model UrlRedirect {
   @@index([source_path])
   @@index([is_active])
   @@map("url_redirects")
+}
+
+// ============================================
+// TRAVEL INTELLIGENCE
+// ============================================
+
+/// País (camada superior: identidade + regras de vistos)
+model Country {
+  id              String   @id @default(uuid())
+  iso2            String   @unique @db.VarChar(2)
+  iso3            String?  @unique @db.VarChar(3)
+  name            String   @db.VarChar(120)
+  nameEn          String?  @map("name_en") @db.VarChar(120)
+  wikidataId      String?  @map("wikidata_id") @db.VarChar(16)
+  geonamesId      Int?     @map("geonames_id")
+  continent       String?  @db.VarChar(20)
+  continentCode   String?  @map("continent_code") @db.VarChar(4) // "NA", "EU", "AS", "AF", "OC", "SA", "AN"
+  latitude        Float?   @db.Real
+  longitude       Float?   @db.Real
+  area            Float?   @db.Real
+  population      BigInt?  @db.BigInt
+  capitalCity     String?  @map("capital_city") @db.VarChar(120)
+  currency        String?  @db.VarChar(8)
+  currencySymbol  String?  @map("currency_symbol") @db.VarChar(4)
+  languages       Json?    @db.JsonB
+  plugTypes       Json?    @map("plug_types") @db.JsonB
+  drivingSide     String?  @map("driving_side") @db.VarChar(10)
+  callingCode     String?  @map("calling_code") @db.VarChar(8)
+  visaRequired    Json?    @map("visa_required") @db.JsonB
+  emergencyNumber String?  @map("emergency_number") @db.VarChar(20)
+  isSovereign     Boolean  @default(true) @map("is_sovereign")
+  createdAt       DateTime @default(now()) @map("created_at")
+  updatedAt       DateTime @updatedAt @map("updated_at")
+
+  cities City[]
+
+  @@index([continent])
+  @@index([continentCode])
+  @@map("countries")
+}
+
+/// Cidade/região (entidade primária de recomendação)
+model City {
+  id         String  @id @default(uuid())
+  countryId  String  @map("country_id")
+  slug       String  @unique @db.VarChar(64)
+  wikidataId String? @map("wikidata_id") @db.VarChar(16)
+  geonamesId Int?    @map("geonames_id")
+  osmId      String? @map("osm_id") @db.VarChar(32)
+
+  name      String  @db.VarChar(200)
+  asciiName String? @map("ascii_name") @db.VarChar(200)
+  nameEn    String? @map("name_en") @db.VarChar(200)
+  region    String? @db.VarChar(120)
+  timezone  String? @db.VarChar(40)
+  elevation Float?  @db.Real
+  latitude  Float   @db.Real
+  longitude Float   @db.Real
+
+  population BigInt? @db.BigInt
+  area       Float?  @db.Real
+  density    Float?  @db.Real
+
+  englishLevel Float? @map("english_level") @db.Real
+
+  // Denormalised country code for fast lookups
+  countryCode String @map("country_code") @db.VarChar(2)
+
+  // Admin hierarchy (from GeoNames)
+  admin1Code String? @map("admin1_code") @db.VarChar(20) // State/province/region code
+  admin1Name String? @map("admin1_name") @db.VarChar(120) // Human-readable admin1 name
+  admin2Code String? @map("admin2_code") @db.VarChar(20) // County/district code
+  admin2Name String? @map("admin2_name") @db.VarChar(120) // Human-readable admin2 name
+
+  // GeoNames classification
+  featureClass String? @map("feature_class") @db.VarChar(2) // e.g. "P" (Populated place), "A" (Administrative)
+  featureCode  String? @map("feature_code") @db.VarChar(10) // e.g. "PPLC" (capital), "PPLA" (admin capital), "PPL"
+
+  // Legacy flags
+  isCoastal Boolean @default(false) @map("is_coastal")
+  isIsland  Boolean @default(false) @map("is_island")
+  isCapital Boolean @default(false) @map("is_capital")
+
+  // Primary destination flag (capital, major city, or travel-relevant)
+  isPrimary Boolean @default(false) @map("is_primary")
+
+  airportIata String? @map("airport_iata") @db.VarChar(8)
+  airportName String? @map("airport_name") @db.VarChar(200)
+
+  metadata Json? @db.JsonB
+
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  country        Country             @relation(fields: [countryId], references: [id], onDelete: Cascade)
+  metrics        CityMetric[]
+  monthlyMetrics CityMonthlyMetric[]
+  embeddings     CityEmbedding[]
+  venues         DestinationVenue[]
+
+  @@index([countryId])
+  @@index([countryCode])
+  @@index([latitude, longitude])
+  @@index([nameEn])
+  @@index([population(sort: Desc)])
+  @@index([isCoastal, isIsland])
+  @@index([isPrimary, population(sort: Desc)])
+  @@index([featureCode])
+  @@index([admin1Code])
+  @@map("cities")
+}
+
+/// Scores compostos por domínio (snapshot pontual, colunas por domínio)
+model CityMetric {
+  id     String @id @default(uuid())
+  cityId String @unique @map("city_id")
+
+  // Phase 2 scores (Normalized 0-100)
+  costOfLivingScore     Int? @map("cost_of_living_score") @db.SmallInt
+  safetyScore           Int? @map("safety_score") @db.SmallInt
+  healthcareScore       Int? @map("healthcare_score") @db.SmallInt
+  natureScore           Int? @map("nature_score") @db.SmallInt
+  cultureScore          Int? @map("culture_score") @db.SmallInt
+  walkabilityScore      Int? @map("walkability_score") @db.SmallInt
+  transitScore          Int? @map("transit_score") @db.SmallInt
+  lgbtqSafetyScore      Int? @map("lgbtq_safety_score") @db.SmallInt
+  soloFemaleSafetyScore Int? @map("solo_female_safety_score") @db.SmallInt
+
+  // Raw data
+  internetSpeedMbps    Float? @map("internet_speed_mbps") @db.Real
+  averageRentStudioUsd Float? @map("average_rent_studio_usd") @db.Real
+
+  // Data provenance
+  dataSource    String?   @map("data_source") @db.VarChar(50) // e.g. "numbeo", "openstreetmap", "ourairports"
+  lastFetchedAt DateTime? @map("last_fetched_at") @db.Timestamp(3)
+
+  // Raw JSON with extra detail (see types/city-metric.ts for schema)
+  raw        Json?    @db.JsonB
+  computedAt DateTime @default(now()) @map("computed_at")
+
+  city City @relation(fields: [cityId], references: [id], onDelete: Cascade)
+
+  @@map("city_metrics")
+}
+
+/// Métricas mensais (12 meses por cidade — climate + seasonality)
+model CityMonthlyMetric {
+  id     String @id @default(uuid())
+  cityId String @map("city_id")
+  month  Int    @db.SmallInt // 1 (Jan) – 12 (Dec)
+
+  // Climate (Open-Meteo)
+  avgTempMaxC     Float? @map("avg_temp_max_c") @db.Real
+  avgTempMinC     Float? @map("avg_temp_min_c") @db.Real
+  precipitationMm Float? @map("precipitation_mm") @db.Real
+  sunshineHours   Float? @map("sunshine_hours") @db.Real
+  uvIndexMax      Float? @map("uv_index_max") @db.Real
+  windSpeedMaxKmh Float? @map("wind_speed_max_kmh") @db.Real
+  snowfallMm      Float? @map("snowfall_mm") @db.Real
+
+  // Seasonality (derived or sourced)
+  rainyDays       Int?    @map("rainy_days") @db.SmallInt
+  priceMultiplier Float?  @map("price_multiplier") @db.Real // Relative to annual avg (0.85 = shoulder, 1.25 = peak)
+  crowdScore      Int?    @map("crowd_score") @db.SmallInt // 0–100 (0 = quiet, 100 = peak crowds)
+  idealFor        String? @map("ideal_for") @db.VarChar(200) // Comma-separated: "hiking","beaches","skiing","city"
+
+  // Legacy domain/metric structure (kept for backward compatibility)
+  domain     String?  @db.VarChar(30)
+  metric     String?  @db.VarChar(60)
+  value      Float?   @db.Real
+  normalized Float?   @db.Real
+  source     String?  @db.VarChar(50)
+  computedAt DateTime @default(now()) @map("computed_at")
+
+  city City @relation(fields: [cityId], references: [id], onDelete: Cascade)
+
+  @@unique([cityId, month])
+  @@index([cityId])
+  @@index([cityId, month])
+  @@map("city_monthly_metrics")
+}
+
+/// Vetores de embedding pré-computados para similaridade (pgvector)
+model CityEmbedding {
+  id        String                      @id @default(uuid())
+  cityId    String                      @unique @map("city_id")
+  vector    Unsupported("vector(1536)")
+  tags      Json?                       @db.JsonB
+  model     String                      @default("text-embedding-3-small") @db.VarChar(50)
+  updatedAt DateTime                    @updatedAt @map("updated_at")
+
+  city City @relation(fields: [cityId], references: [id], onDelete: Cascade)
+
+  @@map("city_embeddings")
+}
+
+/// Perfil de viagem do usuário (filtros duros + pesos de atividade)
+model UserTravelProfile {
+  id     String @id @default(uuid())
+  userId String @unique @map("user_id")
+
+  // Core constraints
+  budgetTier          String? @map("budget_tier") @db.VarChar(20) // "BACKPACKER" | "MIDRANGE" | "LUXURY"
+  maxDailyBudgetUsd   Int?    @map("max_daily_budget_usd") // Hard cap (more precise than tier)
+  minSafetyScore      Int?    @map("min_safety_score") @db.SmallInt // 0–100
+  minWalkabilityScore Int?    @map("min_walkability_score") @db.SmallInt // 0–100
+
+  // Preferences
+  preferredClimates String[] @map("preferred_climates") // e.g. ["TEMPERATE", "MEDITERRANEAN"]
+  avoidClimates     String[] @default([]) @map("avoid_climates")
+  natureVsCulture   Float?   @map("nature_vs_culture") @db.Real // 0.0 = Nature, 1.0 = Culture
+  pacePreference    String?  @map("pace_preference") @db.VarChar(20) // "SLOW" | "BALANCED" | "FAST"
+  crowdTolerance    String?  @map("crowd_tolerance") @db.VarChar(20) // "LOW" | "MEDIUM" | "HIGH"
+
+  // Logistics
+  homeCityId   String?  @map("home_city_id") @db.VarChar(36) // Internal City.id
+  passports    String[] @db.VarChar(2) // ISO2 codes e.g. ["US", "CA", "GB"]
+  travelMonths Int[]    @map("travel_months") // 1–12 (preferred months to travel)
+
+  // Lifestyle
+  dietaryPreferences String[] @default([]) @map("dietary_preferences") // "VEGAN","HALAL", etc.
+  interests          String[] @default([]) // "HIKING","BEACHES","MUSEUMS", etc.
+  accessibilityNeeds String[] @default([]) @map("accessibility_needs") // "WHEELCHAIR", etc.
+
+  // Legacy fields (kept for backward compatibility)
+  safetyRequirement Int?  @map("safety_requirement") @db.SmallInt
+  activityWeights   Json? @map("activity_weights") @db.JsonB
+  vibeWeights       Json? @map("vibe_weights") @db.JsonB
+  preferenceVector  Json? @map("preference_vector") @db.JsonB
+
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  @@map("user_travel_profiles")
 }
 
 // ============================================

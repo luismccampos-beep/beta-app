@@ -44,60 +44,60 @@
     "python": ">=3.10"
   },
   "dependencies": {
-    "fastapi": "0.104.1",
-    "uvicorn": "0.24.0",
-    "pydantic": "2.5.0",
-    "numpy": "2.4.0",
-    "scikit-learn": "1.8.0",
-    "scipy": "1.17.0",
-    "pandas": "3.0.0",
-    "python-dotenv": "1.0.0",
-    "requests": "2.31.0"
+    "fastapi": "0.141.1",
+    "uvicorn": "0.52.4",
+    "pydantic": "2.13.5",
+    "numpy": "2.5.2",
+    "scikit-learn": "1.9.0",
+    "scipy": "1.18.1",
+    "pandas": "3.0.5",
+    "python-dotenv": "1.2.3",
+    "requests": "2.34.2"
   },
   "devDependencies": {
-    "pytest": "7.4.0",
-    "pytest-asyncio": "0.21.1",
-    "black": "23.7.0",
-    "flake8": "6.0.0",
-    "mypy": "1.5.1",
-    "pre-commit": "3.3.0"
+    "pytest": "9.1.1",
+    "pytest-asyncio": "1.4.0",
+    "black": "26.3.1",
+    "flake8": "7.3.0",
+    "mypy": "1.16.0",
+    "pre-commit": "4.2.0"
   },
   "optionalDependencies": {
-    "psycopg2-binary": "2.9.7",
-    "sqlalchemy": "2.0.20",
-    "redis": "4.6.0",
-    "prometheus-client": "0.17.1"
+    "psycopg2-binary": "2.9.10",
+    "sqlalchemy": "2.0.52",
+    "redis": "5.3.0",
+    "prometheus-client": "0.22.1"
   },
   "python": {
     "dependencies": [
-      "fastapi>=0.104.1",
-      "uvicorn[standard]>=0.24.0",
-      "pydantic>=2.5.0",
-      "numpy>=2.4.0",
-      "scikit-learn>=1.8.0",
-      "scipy>=1.17.0",
+      "fastapi>=0.141.0",
+      "uvicorn[standard]>=0.52.0",
+      "pydantic>=2.13.0",
+      "numpy>=2.5.0",
+      "scikit-learn>=1.9.0",
+      "scipy>=1.18.0",
       "pandas>=3.0.0",
-      "python-dotenv>=1.0.0",
-      "requests>=2.31.0"
+      "python-dotenv>=1.2.0",
+      "requests>=2.34.0"
     ],
     "devDependencies": [
-      "pytest>=7.4.0",
-      "pytest-asyncio>=0.21.1",
-      "black>=23.7.0",
-      "flake8>=6.0.0",
-      "mypy>=1.5.1",
-      "pre-commit>=3.3.0"
+      "pytest>=9.1.0",
+      "pytest-asyncio>=0.25.0",
+      "black>=25.0.0",
+      "flake8>=7.3.0",
+      "mypy>=1.16.0",
+      "pre-commit>=4.2.0"
     ],
     "optionalDependencies": {
       "db": [
-        "psycopg2-binary>=2.9.7",
-        "sqlalchemy>=2.0.20"
+        "psycopg2-binary>=2.9.10",
+        "sqlalchemy>=2.0.50"
       ],
       "cache": [
-        "redis>=4.6.0"
+        "redis>=5.3.0"
       ],
       "monitoring": [
-        "prometheus-client>=0.17.1"
+        "prometheus-client>=0.22.0"
       ]
     }
   }

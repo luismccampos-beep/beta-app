@@ -8,6 +8,101 @@ import { fileURLToPath } from 'node:url';
 const __dirname = dirname(fileURLToPath(import.meta.url));
 export const COL_DIR = resolve(__dirname, '../../data/cost-of-living');
 
+/** Year the budgets should reflect (overridable for tests). */
+export const COL_TARGET_YEAR = Number(
+  process.env.TRAVEL_COL_TARGET_YEAR ?? new Date().getFullYear(),
+);
+
+/** Collection year of each baseline source — used as the start of inflation adjustment. */
+export const SOURCE_BASELINE_YEARS = {
+  'cost-of-living_v2.csv': 2022,
+  'cost-of-living.csv': 2022,
+  'Cost_of_Living_Index_by_Country_2024.csv': 2024,
+  'wikipedia_cost_of_living_indices3.csv': 2024,
+  'global_cost_of_living_crisis_2026.csv': 2026,
+};
+
+let inflationCache; // undefined = not loaded yet, null = missing/invalid
+
+/**
+ * Loads the cached inflation dataset produced by scripts/fetch-inflation.mjs.
+ * @returns {{ fetchedAt: string; targetYear: number; byIso3: Record<string, { name: string; cpi: Record<string, number>; imfYears?: string[] }> } | null}
+ */
+export function loadInflationData() {
+  if (inflationCache !== undefined) return inflationCache;
+  try {
+    const raw = JSON.parse(readFileSync(resolve(COL_DIR, 'inflation.json'), 'utf8'));
+    inflationCache = raw?.byIso3 ? raw : null;
+  } catch {
+    inflationCache = null;
+  }
+  return inflationCache;
+}
+
+/** Country-name quirks between World Bank/IMF naming and the app's English names. */
+const INFLATION_NAME_ALIASES = {
+  czechia: 'czech republic',
+  turkiye: 'turkey',
+  egypt: 'egypt',
+  'egypt, arab rep.': 'egypt',
+  'russian federation': 'russia',
+  'korea, rep.': 'south korea',
+  'korea rep': 'south korea',
+  'hong kong sar, china': 'hong kong (china)',
+  'hong kong sar': 'hong kong (china)',
+  'united states': 'united states',
+  'viet nam': 'vietnam',
+};
+
+/**
+ * Finds the inflation series matching an app country name (PT or EN accepted).
+ * @param {ReturnType<typeof loadInflationData>} inflation
+ * @param {string | undefined} countryEn
+ * @returns {{ iso3: string; cpi: Record<string, number> } | null}
+ */
+export function findInflationSeries(inflation, countryEn) {
+  if (!inflation?.byIso3 || !countryEn) return null;
+  let want = fold(countryToEnglish(countryEn));
+  want = INFLATION_NAME_ALIASES[want] ?? want;
+  if (!want) return null;
+
+  let exact = null;
+  let partial = null;
+  for (const [iso3, entry] of Object.entries(inflation.byIso3)) {
+    const have = fold(INFLATION_NAME_ALIASES[fold(entry.name)] ?? fold(entry.name));
+    if (!have) continue;
+    if (have === want) {
+      exact = { iso3, cpi: entry.cpi };
+      break;
+    }
+    if (!partial && (have.includes(want) || want.includes(have))) {
+      partial = { iso3, cpi: entry.cpi };
+    }
+  }
+  return exact ?? partial;
+}
+
+/**
+ * Cumulative CPI multiplier from `fromYear` to `toYear`, i.e.
+ * Π (1 + cpi[y]/100) for y in (fromYear, toYear]. Missing years are skipped
+ * so a gap degrades gracefully instead of zeroing the factor.
+ *
+ * @param {Record<string, number>} cpi year → annual %
+ * @returns {number | null} null when no usable data points exist
+ */
+export function cumulativeInflationFactor(cpi, fromYear, toYear) {
+  if (!cpi || !(toYear > fromYear)) return null;
+  let factor = 1;
+  let used = 0;
+  for (let y = fromYear + 1; y <= toYear; y++) {
+    const v = Number(cpi[String(y)]);
+    if (!Number.isFinite(v)) continue;
+    factor *= 1 + v / 100;
+    used += 1;
+  }
+  return used > 0 && Number.isFinite(factor) ? factor : null;
+}
+
 /** @param {string} s */
 export function fold(s) {
   return String(s ?? '')
@@ -462,7 +557,15 @@ export function loadCostOfLivingIndexes() {
     if (!countries.has(k)) countries.set(k, row);
   }
 
-  return { cities, countries, crisis, cityCountryAvg, sources };
+  return {
+    cities,
+    countries,
+    crisis,
+    cityCountryAvg,
+    sources,
+    inflation: loadInflationData(),
+    targetYear: COL_TARGET_YEAR,
+  };
 }
 
 /** @param {number} n */

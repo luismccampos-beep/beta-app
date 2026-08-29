@@ -52,7 +52,7 @@ def preprocess_image(image_data: bytes) -> Dict[str, Any]:
         
         return {"image": processed.tolist()}
     except ImportError:
-        raise ImportError("opencv-python is required for image preprocessing. Please install it with: pip install opencv-python")
+        raise ImportError("opencv-python-headless is required for image preprocessing. Please install it with: pip install opencv-python-headless")
     except Exception as e:
         logger.error(f"Error during image preprocessing: {str(e)}")
         raise

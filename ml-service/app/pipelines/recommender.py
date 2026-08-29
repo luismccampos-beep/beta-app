@@ -36,6 +36,9 @@ def build_matrix(df: pd.DataFrame, uid_map: Dict[str, int], iid_map: Dict[str, i
     return m
 
 def train_embeddings(M: np.ndarray, k: int = 32) -> Tuple[np.ndarray, np.ndarray]:
+    # TruncatedSVD requires n_components <= min(n_samples, n_features); clamp for tiny datasets.
+    max_k = max(1, min(M.shape[0], M.shape[1]) - 1)
+    k = max(1, min(k, max_k))
     svd = TruncatedSVD(n_components=k, random_state=42)
     U = svd.fit_transform(M)
     V = svd.components_.T

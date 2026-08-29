@@ -478,7 +478,8 @@ async def get_explanation(recommendation_id: str):
             success=True,
             recommendation_id=recommendation_id,
             explanation=explanation.dict(),
-        )    except HTTPException:
+        )
+    except HTTPException:
         raise
     except Exception:
         logger.exception("Failed to retrieve stored explanation")

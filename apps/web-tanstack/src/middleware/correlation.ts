@@ -22,7 +22,6 @@ export const correlationMiddleware = createMiddleware({ type: 'request' }).serve
     const result = await next({ context: { requestId } })
 
     // Stamp outgoing responses so the client / CDN can match requests.
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const resp = result as Response | { response?: Response; headers?: Headers }
     if (resp instanceof Response) {
       resp.headers.set('x-request-id', requestId)

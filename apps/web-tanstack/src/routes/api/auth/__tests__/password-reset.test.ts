@@ -30,8 +30,8 @@ vi.mock('@/lib/email', () => ({
 // Mock TanStack Router so importing the route modules is lightweight
 vi.mock('@tanstack/react-router', () => ({
   createFileRoute: (path: string) => (config: Record<string, unknown>) => ({
-    ...config,
     __path: path,
+    options: config,
   }),
 }))
 

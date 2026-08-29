@@ -34,6 +34,9 @@
     "heroSubDesc": "Notre IA avancée analyse vos préférences, budget et intérêts pour créer l'itinéraire de voyage parfait, fait sur mesure pour vous.",
     "getStarted": "Commencer Maintenant",
     "learnMore": "En Savoir Plus",
+    "recommendedTitle": "Sélection pour vous",
+    "recommendedSubtitle": "Des idées de destinations personnalisées, affinées selon vos goûts.",
+    "recommendedDismiss": "Pas intéressé par",
     "trustedBy": "Approuvé par des milliers de voyageurs dans le monde",
     "trustBadges": {
       "aiEnhanced": "Amélioré par IA",

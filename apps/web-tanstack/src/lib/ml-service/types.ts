@@ -30,6 +30,8 @@ export type TravelRankRequest = {
   preferences: Record<string, unknown>;
   candidates: TravelRankCandidate[];
   limit: number;
+  /** Authenticated user id — enables hybrid CF+embedding ranking. Omit for cold-start. */
+  user_id?: string;
 };
 
 /** Matches ml-service: TravelRankItem */

@@ -3,16 +3,60 @@
  */
 import {
   countryToEnglish,
+  cumulativeInflationFactor,
+  findInflationSeries,
   fold,
   leafCityName,
   lookupCityRow,
   lookupCityGlobal,
   lookupCountryRow,
+  SOURCE_BASELINE_YEARS,
 } from './cost-of-living-data.mjs';
 import { existsSync, readFileSync } from 'node:fs';
 import { resolve, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { continentIndices, inferLocalityTier } from './destination-locality.mjs';
+
+/**
+ * Inflation adjustment multiplier for a baseline row: brings its collection-year
+ * prices up to `indexes.targetYear` using World Bank/IMF CPI data (when available).
+ *
+ * @param {ReturnType<typeof import('./cost-of-living-data.mjs').loadCostOfLivingIndexes>} indexes
+ * @param {string | undefined} sourceFile row.source — identifies the baseline year
+ * @param {string | undefined} countryEn
+ * @returns {{ factor: number; fromYear?: number; toYear?: number } | null} null = no adjustment
+ */
+export function inflationAdjustmentFor(indexes, sourceFile, countryEn) {
+  const fromYear = sourceFile ? SOURCE_BASELINE_YEARS[sourceFile] : undefined;
+  if (!fromYear) return null;
+  const toYear = indexes?.targetYear;
+  if (!toYear || toYear <= fromYear) return null;
+  const series = findInflationSeries(indexes?.inflation, countryEn);
+  if (!series) return null;
+  const factor = cumulativeInflationFactor(series.cpi, fromYear, toYear);
+  if (factor == null || Math.abs(factor - 1) < 0.001) return null;
+  return { factor, fromYear, toYear };
+}
+
+/** @param {number | null | undefined} v @param {number} f */
+function scaleNum(v, f) {
+  if (v == null || !Number.isFinite(Number(v))) return v ?? null;
+  return round(Number(v) * f);
+}
+
+/**
+ * @param {Record<string, number | null> | undefined} prices
+ * @param {number} f
+ */
+function scalePrices(prices, f) {
+  if (!prices || f === 1) return prices;
+  /** @type {Record<string, number | null>} */
+  const out = {};
+  for (const [k, v] of Object.entries(prices)) out[k] = scaleNum(v, f);
+  return out;
+}
+
+const INFLACAO_SUFFIX = (adj) => ` · inflação ${adj.fromYear}→${adj.toYear} (BM/FMI)`;
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const TOURISM_INDEX = resolve(__dirname, '../../data/tourism cost/tourism-expenditure-index.json');
@@ -192,8 +236,10 @@ export function resolveBudgetForDestination(indexes, dest) {
   }
 
   if (cityRow?.prices) {
+    const adj = inflationAdjustmentFor(indexes, cityRow.source, countryEn);
+    const f = adj?.factor ?? 1;
     const orcamentos = budgetsFromCityPrices(
-      /** @type {Record<string, number | null>} */ (cityRow.prices),
+      /** @type {Record<string, number | null>} */ (scalePrices(cityRow.prices, f)),
     );
     if (orcamentos) {
       return {
@@ -201,12 +247,12 @@ export function resolveBudgetForDestination(indexes, dest) {
         estimado: false,
         confianca: match?.match === 'fuzzy' ? 'media' : 'alta',
         moeda: 'USD',
-        fonte: `Kaggle (${cityRow.source}) — ${matchedCity}${match?.match === 'fuzzy' ? ' (nome aprox.)' : ''}`,
+        fonte: `Kaggle (${cityRow.source}) — ${matchedCity}${match?.match === 'fuzzy' ? ' (nome aprox.)' : ''}${adj ? INFLACAO_SUFFIX(adj) : ''}`,
         fator_localidade: tier.factor,
         indices: crisisRow
           ? {
-              cost_of_living: crisisRow.costIndex,
-              restaurant: crisisRow.restaurantIndex,
+              cost_of_living: scaleNum(crisisRow.costIndex, adj?.factor ?? 1),
+              restaurant: scaleNum(crisisRow.restaurantIndex, adj?.factor ?? 1),
             }
           : undefined,
         orcamentos,
@@ -215,13 +261,23 @@ export function resolveBudgetForDestination(indexes, dest) {
   }
 
   if (crisisRow && !cityRow?.prices) {
-    const { indices, orcamentos } = enrichFromCrisisRow(crisisRow, tier.factor);
+    const adj = inflationAdjustmentFor(indexes, crisisRow.source, countryEn);
+    const f = adj?.factor ?? 1;
+    const { indices, orcamentos } = enrichFromCrisisRow(
+      {
+        ...crisisRow,
+        costIndex: scaleNum(crisisRow.costIndex, f),
+        rentIndex: scaleNum(crisisRow.rentIndex, f),
+        restaurantIndex: scaleNum(crisisRow.restaurantIndex, f),
+      },
+      tier.factor,
+    );
     return {
       nivel: 'cidade',
       estimado: true,
       confianca: 'media',
       moeda: 'USD',
-      fonte: `Kaggle (${crisisRow.source}) — ${matchedCity}`,
+      fonte: `Kaggle (${crisisRow.source}) — ${matchedCity}${adj ? INFLACAO_SUFFIX(adj) : ''}`,
       fator_localidade: tier.factor,
       indices,
       orcamentos,
@@ -235,25 +291,27 @@ export function resolveBudgetForDestination(indexes, dest) {
   }
 
   if (countryRow) {
+    const adj = inflationAdjustmentFor(indexes, countryRow.source, countryEn);
+    const f = adj?.factor ?? 1;
     return {
       nivel: 'pais',
       estimado: true,
       confianca: 'media',
       moeda: 'USD',
-      fonte: `Índice ${countryEn} (${countryRow.source}) · ${tier.label} ×${tier.factor}`,
+      fonte: `Índice ${countryEn} (${countryRow.source}) · ${tier.label} ×${tier.factor}${adj ? INFLACAO_SUFFIX(adj) : ''}`,
       fator_localidade: tier.factor,
       indices: {
         cost_of_living: round(
-          (/** @type {number} */ (countryRow.costIndex) ?? 50) * tier.factor,
+          (scaleNum(countryRow.costIndex, f) ?? 50) * tier.factor,
         ),
-        rent: countryRow.rentIndex,
-        restaurant: countryRow.restaurantIndex,
+        rent: scaleNum(countryRow.rentIndex, f),
+        restaurant: scaleNum(countryRow.restaurantIndex, f),
       },
       orcamentos: budgetsFromIndices(
         {
-          costIndex: /** @type {number | null} */ (countryRow.costIndex),
-          restaurantIndex: /** @type {number | null} */ (countryRow.restaurantIndex),
-          groceriesIndex: /** @type {number | null} */ (countryRow.groceriesIndex),
+          costIndex: scaleNum(countryRow.costIndex, f),
+          restaurantIndex: scaleNum(countryRow.restaurantIndex, f),
+          groceriesIndex: scaleNum(countryRow.groceriesIndex, f),
         },
         tier.factor,
       ),

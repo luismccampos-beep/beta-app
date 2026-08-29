@@ -1,13 +1,6 @@
 {
-  "items": 28474,
-  "dimensions": 128,
-  "explained_variance_ratio": 0.2431446611881256,
-  "max_features": 30000,
-  "ngram_range": [
-    1,
-    3
-  ],
-  "source": "C:\\Users\\luism\\Documents\\beta-app\\ml-service\\app\\data\\wikivoyage_destinations.csv",
-  "model": "C:\\Users\\luism\\Documents\\beta-app\\ml-service\\app\\models\\trained\\destination_embeddings.pkl",
-  "trained_at": "2026-08-05T17:41:30Z"
+  "items": 3,
+  "dimensions": 1,
+  "csv": "C:\\Users\\luism\\AppData\\Local\\Temp\\pytest-of-luism\\pytest-18\\test_train_and_rank0\\wikivoyage_destinations.csv",
+  "model": "C:\\Users\\luism\\AppData\\Local\\Temp\\pytest-of-luism\\pytest-18\\test_train_and_rank0\\model.pkl"
 }

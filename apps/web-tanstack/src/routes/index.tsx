@@ -9,6 +9,7 @@ import { fadeInUp, staggerContainer } from '@/lib/animations'
 import { createTranslationsHook } from '@/lib/i18n-provider'
 import { H3 } from '@/components/ui/typography'
 import { Spinner } from '@/components/ui/spinner'
+import { HomeRecommendations } from '@/components/travel/HomeRecommendations'
 import {
   Sparkles,
   Globe,
@@ -383,6 +384,9 @@ function HomePage() {
           </div>
         </motion.div>
       </section>
+
+      {/* ═══════════ Personalized Recommendations ═══════════ */}
+      <HomeRecommendations limit={8} />
 
       {/* ═══════════ Features Section ═══════════ */}
       <section id="features" className="py-24 sm:py-32 px-4 sm:px-6 lg:px-8 bg-white dark:bg-gray-950 transition-colors scroll-mt-20">
