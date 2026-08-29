@@ -1,5 +1,8 @@
+import { createHash, timingSafeEqual } from 'node:crypto'
 import { Ratelimit } from '@upstash/ratelimit'
 import { Redis } from '@upstash/redis'
+
+const isProd = process.env.NODE_ENV === 'production'
 
 function createSafeRatelimit(opts: { window: number; max: number; prefix: string }) {
   try {
@@ -11,8 +14,8 @@ function createSafeRatelimit(opts: { window: number; max: number; prefix: string
       prefix: opts.prefix,
     })
   } catch {
-    if (process.env.NODE_ENV === 'production') {
-      console.error(`[rate-limit] Redis not configured — rate limiting disabled for "${opts.prefix}"`)
+    if (isProd) {
+      console.error(`[rate-limit] Redis not configured — rate limiting DISABLED for "${opts.prefix}"`)
     }
     return null
   }
@@ -22,9 +25,9 @@ export const publicRatelimit = createSafeRatelimit({ window: 60, max: 100, prefi
 export const authRatelimit = createSafeRatelimit({ window: 60, max: 120, prefix: 'ratelimit:auth' })
 export const adminRatelimit = createSafeRatelimit({ window: 60, max: 1000, prefix: 'ratelimit:admin' })
 
-export async function checkRateLimit(req: Request, limiter: Ratelimit | null, failClosed = false) {
+export async function checkRateLimit(req: Request, limiter: Ratelimit | null, failClosed = isProd) {
   if (!limiter) {
-    if (failClosed && process.env.NODE_ENV === 'production') {
+    if (failClosed) {
       return { success: false as const, limit: 0, remaining: 0, reset: Date.now() + 60000 }
     }
     return { success: true as const, limit: 999, remaining: 999, reset: 0 }
@@ -37,16 +40,24 @@ export async function checkRateLimit(req: Request, limiter: Ratelimit | null, fa
   try {
     return await limiter.limit(ip)
   } catch {
-    if (failClosed && process.env.NODE_ENV === 'production') {
+    if (failClosed) {
       return { success: false as const, limit: 0, remaining: 0, reset: Date.now() + 60000 }
     }
     return { success: true as const, limit: 999, remaining: 999, reset: 0 }
   }
 }
 
+/** Constant-time key comparison via SHA-256 digest. */
+function safeKeyEqual(a: string, b: string): boolean {
+  const ha = createHash('sha256').update(a, 'utf8').digest()
+  const hb = createHash('sha256').update(b, 'utf8').digest()
+  return timingSafeEqual(ha, hb)
+}
+
 export function detectTier(req: Request) {
   const apiKey = req.headers.get('x-api-key')
-  if (apiKey && apiKey === process.env.INTERNAL_API_KEY) {
+  const expected = process.env.INTERNAL_API_KEY?.trim()
+  if (apiKey && expected && safeKeyEqual(apiKey, expected)) {
     return { limiter: adminRatelimit, tier: 'admin' as const }
   }
   const authHeader = req.headers.get('authorization')

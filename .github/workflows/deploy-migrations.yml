@@ -56,6 +56,9 @@ jobs:
       - name: Run tests
         run: npm run test
 
+      - name: Build
+        run: npm run build -w @akmleva/web-tanstack
+
   migrate:
     name: Apply Prisma Migrations
     if: github.event_name == 'push'

@@ -12,7 +12,8 @@ function detectTier(request: Request): {
   tier: string
 } {
   const apiKey = request.headers.get('x-api-key')
-  if (apiKey && apiKey === process.env.INTERNAL_API_KEY) {
+  const expected = process.env.INTERNAL_API_KEY?.trim()
+  if (apiKey && expected && apiKey === expected) {
     return { limiter: adminRatelimit, tier: 'admin' }
   }
   const authHeader = request.headers.get('authorization')
