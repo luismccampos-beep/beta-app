@@ -100,6 +100,9 @@ storybook-static/
 .turbo/
 apps/web-tanstack/.turbo/
 
+# TanStack Router cache (generated; do not commit)
+.tanstack/
+
 # MCP configs (local tooling, not part of the app)
 .mcp/
 

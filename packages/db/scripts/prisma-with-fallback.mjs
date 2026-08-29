@@ -57,11 +57,18 @@ if (existsSync(envPath)) {
 
 // Hard fail early when BOTH URLs are empty — better than forwarding "" to
 // Prisma which would surface a generic P1012 the user then has to decode.
+// Exception: `prisma generate` doesn't need a database connection at all, so
+// let it through even without credentials (this fixes npm ci on fresh clones).
+const prismaCommand = process.argv[2];
+const isGenerate = prismaCommand === 'generate';
+
 if (!env.DATABASE_URL_UNPOOLED && !env.DATABASE_URL) {
-  if (env.CI) {
-    console.warn(
-      '[prisma] DATABASE_URL e DATABASE_URL_UNPOOLED estão vazias — pulando generate no CI.'
-    );
+  if (env.CI || isGenerate) {
+    if (!isGenerate) {
+      console.warn(
+        '[prisma] DATABASE_URL e DATABASE_URL_UNPOOLED estão vazias — pulando generate no CI.'
+      );
+    }
     process.exit(0);
   }
   console.error(
