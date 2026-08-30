@@ -1,4 +1,5 @@
 import { createHash, timingSafeEqual } from 'node:crypto'
+import { auth } from '@/lib/auth/auth'
 
 // ── Startup validation (runs once on module load) ──────────────────────────
 const _key = process.env.INTERNAL_API_KEY?.trim()
@@ -54,6 +55,27 @@ export function requireInternalApiKey(request: Request): Response | null {
   return null
 }
 
-export function requireAdmin(request: Request): Response | null {
-  return requireInternalApiKey(request)
+/**
+ * Admin guard: accepts either a valid INTERNAL_API_KEY (for machine-to-machine)
+ * or a better-auth session with role === 'ADMIN' (for browser access).
+ * Returns null on success, or a Response to return to the caller.
+ */
+export async function requireAdmin(request: Request): Promise<Response | null> {
+  // 1. Try API key first (fast path, no DB hit)
+  const apiKeyResult = requireInternalApiKey(request)
+  if (apiKeyResult === null) return null
+
+  // 2. Try session-based auth
+  try {
+    const session = await auth.api.getSession({ headers: request.headers })
+    const role = (session?.user as Record<string, unknown> | undefined)?.role
+    if (role === 'ADMIN') return null
+  } catch {
+    // session lookup failed — fall through to 403
+  }
+
+  return Response.json(
+    { ok: false, error: 'Forbidden', code: 'FORBIDDEN' },
+    { status: 403 },
+  )
 }

@@ -5,7 +5,7 @@ export const Route = createFileRoute('/api/admin/404-log')({
   server: {
     handlers: {
       POST: async ({ request }) => {
-        const forbidden = requireAdmin(request)
+        const forbidden = await requireAdmin(request)
         if (forbidden) return forbidden
 
         try {

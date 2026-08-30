@@ -5,7 +5,7 @@ export const Route = createFileRoute('/api/admin/url-redirects/$id/visit')({
   server: {
     handlers: {
       POST: async ({ request }) => {
-        const forbidden = requireAdmin(request)
+        const forbidden = await requireAdmin(request)
         if (forbidden) return forbidden
 
         return Response.json({ success: true })

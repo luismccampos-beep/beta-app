@@ -10,11 +10,22 @@ const globalForPrisma = globalThis as unknown as { prisma?: PrismaClient };
 const isStubMode = process.env.DISABLE_SSR_FETCH === 'true';
 
 // @prisma/adapter-pg uses the standard postgres driver and works with both
-// Node.js and Cloudflare Workers (via Hyperdrive). No special detection needed —
-// the adapter handles both runtimes transparently.
+// Node.js and Cloudflare Workers (via Hyperdrive).
+//
+// In Workers, set a HYPERDRIVE binding in wrangler.jsonc and pass the
+// connection string as a Worker var/secret named HYPERDRIVE_CONNECTION_STRING.
+// Locally, DATABASE_URL is used as-is.
 const isWorkersRuntime =
   typeof navigator !== 'undefined' &&
   (navigator as { userAgent?: string })?.userAgent === 'Cloudflare-Workers';
+
+function getConnectionString(): string {
+  return (
+    process.env.HYPERDRIVE_CONNECTION_STRING ||
+    process.env.DATABASE_URL ||
+    ''
+  );
+}
 
 const MUTATION_PATTERN =
   /^(create|createMany|update|updateMany|upsert|delete|deleteMany|executeRaw|executeRawUnsafe|\$executeRaw|\$executeRawUnsafe|\$transaction)$/;
@@ -80,7 +91,7 @@ function createPrismaClient() {
   const client = isWorkersRuntime
     ? new PrismaClient({
         adapter: new PrismaPg({
-          connectionString: process.env.DATABASE_URL,
+          connectionString: getConnectionString(),
         }),
         log: process.env.NODE_ENV === 'development' ? ['warn', 'error'] : ['error'],
       })

@@ -45,6 +45,7 @@ import { Route as ApiHealthMlStatusRouteImport } from './routes/api/health/ml-st
 import { Route as ApiInternal404LogRouteImport } from './routes/api/internal/404-log'
 import { Route as ApiTravelCatalogRouteImport } from './routes/api/travel/catalog'
 import { Route as ApiTravelCruisesRouteImport } from './routes/api/travel/cruises'
+import { Route as ApiCspReportRouteImport } from './routes/api/csp-report'
 import { Route as ApiTravelResultsRouteImport } from './routes/api/travel/results'
 import { Route as ApiV1SplatRouteImport } from './routes/api/v1/$'
 import { Route as ApiAdminUrlRedirectsIndexRouteImport } from './routes/api/admin/url-redirects/index'
@@ -190,6 +191,11 @@ const RoteirosSlugRoute = RoteirosSlugRouteImport.update({
 const ApiAdmin404LogRoute = ApiAdmin404LogRouteImport.update({
   id: '/api/admin/404-log',
   path: '/api/admin/404-log',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiCspReportRoute = ApiCspReportRouteImport.update({
+  id: '/api/csp-report',
+  path: '/api/csp-report',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ApiAiPreferencesInsightsRoute =
@@ -483,6 +489,7 @@ export interface FileRoutesByFullPath {
   '/preferences/quick': typeof PreferencesQuickRoute
   '/roteiros/$slug': typeof RoteirosSlugRoute
   '/api/admin/404-log': typeof ApiAdmin404LogRoute
+  '/api/csp-report': typeof ApiCspReportRoute
   '/api/ai/preferences-insights': typeof ApiAiPreferencesInsightsRoute
   '/api/ai/recommendation-events': typeof ApiAiRecommendationEventsRoute
   '/api/ai/recommended-destinations': typeof ApiAiRecommendedDestinationsRoute
@@ -556,6 +563,7 @@ export interface FileRoutesByTo {
   '/preferences/quick': typeof PreferencesQuickRoute
   '/roteiros/$slug': typeof RoteirosSlugRoute
   '/api/admin/404-log': typeof ApiAdmin404LogRoute
+  '/api/csp-report': typeof ApiCspReportRoute
   '/api/ai/preferences-insights': typeof ApiAiPreferencesInsightsRoute
   '/api/ai/recommendation-events': typeof ApiAiRecommendationEventsRoute
   '/api/ai/recommended-destinations': typeof ApiAiRecommendedDestinationsRoute
@@ -707,6 +715,7 @@ export interface FileRouteTypes {
     | '/preferences/quick'
     | '/roteiros/$slug'
     | '/api/admin/404-log'
+    | '/api/csp-report'
     | '/api/ai/preferences-insights'
     | '/api/ai/recommendation-events'
     | '/api/ai/recommended-destinations'
@@ -780,6 +789,7 @@ export interface FileRouteTypes {
     | '/preferences/quick'
     | '/roteiros/$slug'
     | '/api/admin/404-log'
+    | '/api/csp-report'
     | '/api/ai/preferences-insights'
     | '/api/ai/recommendation-events'
     | '/api/ai/recommended-destinations'
@@ -854,6 +864,7 @@ export interface FileRouteTypes {
     | '/preferences/quick'
     | '/roteiros/$slug'
     | '/api/admin/404-log'
+    | '/api/csp-report'
     | '/api/ai/preferences-insights'
     | '/api/ai/recommendation-events'
     | '/api/ai/recommended-destinations'
@@ -924,6 +935,7 @@ export interface RootRouteChildren {
   LegalPageTypeRoute: typeof LegalPageTypeRoute
   RoteirosSlugRoute: typeof RoteirosSlugRoute
   ApiAdmin404LogRoute: typeof ApiAdmin404LogRoute
+  ApiCspReportRoute: typeof ApiCspReportRoute
   ApiAiPreferencesInsightsRoute: typeof ApiAiPreferencesInsightsRoute
   ApiAiRecommendationEventsRoute: typeof ApiAiRecommendationEventsRoute
   ApiAiRecommendedDestinationsRoute: typeof ApiAiRecommendedDestinationsRoute
@@ -1125,6 +1137,13 @@ declare module '@tanstack/react-router' {
       path: '/api/admin/404-log'
       fullPath: '/api/admin/404-log'
       preLoaderRoute: typeof ApiAdmin404LogRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/csp-report': {
+      id: '/api/csp-report'
+      path: '/api/csp-report'
+      fullPath: '/api/csp-report'
+      preLoaderRoute: typeof ApiCspReportRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/api/ai/preferences-insights': {
@@ -1578,6 +1597,7 @@ const rootRouteChildren: RootRouteChildren = {
   LegalPageTypeRoute: LegalPageTypeRoute,
   RoteirosSlugRoute: RoteirosSlugRoute,
   ApiAdmin404LogRoute: ApiAdmin404LogRoute,
+  ApiCspReportRoute: ApiCspReportRoute,
   ApiAiPreferencesInsightsRoute: ApiAiPreferencesInsightsRoute,
   ApiAiRecommendationEventsRoute: ApiAiRecommendationEventsRoute,
   ApiAiRecommendedDestinationsRoute: ApiAiRecommendedDestinationsRoute,

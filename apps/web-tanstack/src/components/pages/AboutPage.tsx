@@ -146,7 +146,7 @@ export function AboutPage({ onBack }: AboutPageProps) {
                 {/* Castle Image */}
                 <div className="lg:w-1/2 relative min-h-[300px] overflow-hidden">
                   <img
-                    src="/assets/realcastelo.png"
+                    src="/assets/realcastelo.webp"
                     alt={t('whereWereFromTitle')}
                     className="w-full h-full object-cover absolute inset-0 group-hover:scale-110 transition-transform duration-1000"
                     loading="lazy"

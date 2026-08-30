@@ -8,11 +8,13 @@ const HEADERS: Record<string, string> = {
   'Permissions-Policy': 'camera=(), microphone=(), geolocation=()',
   'Strict-Transport-Security':
     'max-age=63072000; includeSubDomains; preload',
+  // CSP report-only: violations are sent to the endpoint below.
+  // Once the policy stabilises, promote to Content-Security-Policy and
+  // drop the Report-Only wrapper. Adjust img-src / font-src for CDNs.
+  'Reporting-Endpoints': 'csp-endpoint="/api/csp-report"',
 }
 
-// Baseline CSP in report-only mode. Once violations settle, promote to
-// Content-Security-Policy and remove report-only. Adjust img-src and
-// font-src as you add CDNs.
+// Baseline CSP in report-only mode with a working report-to endpoint.
 const CSP_REPORT_ONLY = [
   "default-src 'self'",
   "script-src 'self'",
@@ -23,6 +25,7 @@ const CSP_REPORT_ONLY = [
   "frame-ancestors 'none'",
   "base-uri 'self'",
   "form-action 'self'",
+  "report-to csp-endpoint",
 ].join('; ')
 
 export const securityHeadersMiddleware = createMiddleware({
