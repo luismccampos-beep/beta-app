@@ -1,22 +1,17 @@
 import { Prisma, PrismaClient } from '@prisma/client';
-import { PrismaPg } from '@prisma/adapter-pg-worker';
+import { PrismaPg } from '@prisma/adapter-pg';
 import { PrismaClientKnownRequestError } from '@prisma/client/runtime/library';
 
 const globalForPrisma = globalThis as unknown as { prisma?: PrismaClient };
-
-// The pg-worker adapter is built against an older @prisma/driver-adapter-utils
-// than the pinned @prisma/client, so its types are structurally incompatible
-// with PrismaClientOptions['adapter'] even though the runtime protocol matches.
-type PrismaClientOptions = NonNullable<ConstructorParameters<typeof PrismaClient>[0]>;
 
 // TanStack Start has no NEXT_PHASE build marker, so DISABLE_SSR_FETCH=true is
 // the only gate for the build-time stub (used when prerendering pages that
 // would otherwise hit the database during the Vite build).
 const isStubMode = process.env.DISABLE_SSR_FETCH === 'true';
 
-// Same runtime detection @prisma/pg-worker uses internally: under workerd the
-// adapter connects through Cloudflare's sockets instead of node:net, so the
-// driver adapter is only used there and Node keeps the native query engine.
+// @prisma/adapter-pg uses the standard postgres driver and works with both
+// Node.js and Cloudflare Workers (via Hyperdrive). No special detection needed —
+// the adapter handles both runtimes transparently.
 const isWorkersRuntime =
   typeof navigator !== 'undefined' &&
   (navigator as { userAgent?: string })?.userAgent === 'Cloudflare-Workers';
@@ -86,7 +81,7 @@ function createPrismaClient() {
     ? new PrismaClient({
         adapter: new PrismaPg({
           connectionString: process.env.DATABASE_URL,
-        }) as unknown as PrismaClientOptions['adapter'],
+        }),
         log: process.env.NODE_ENV === 'development' ? ['warn', 'error'] : ['error'],
       })
     : new PrismaClient({

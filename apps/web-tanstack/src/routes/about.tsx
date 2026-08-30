@@ -183,8 +183,8 @@ function AboutPage() {
                     className="w-20 h-20 sm:w-24 sm:h-24 rounded-2xl object-cover shadow-lg flex-shrink-0"
                     onError={(e) => {
                       const img = e.currentTarget
-                      if (!img.src.endsWith('/about/luiscampos.svg.png')) {
-                        img.src = '/about/luiscampos.svg.png'
+                      if (!img.src.endsWith('/about/luiscampos.webp')) {
+                        img.src = '/about/luiscampos.webp'
                       } else {
                         img.style.display = 'none'
                         const parent = img.parentElement
@@ -333,8 +333,8 @@ function AboutPage() {
                     className="w-14 h-14 rounded-xl object-cover"
                     onError={(e) => {
                       const img = e.currentTarget
-                      if (!img.src.endsWith('/about/luiscampos.svg.png')) {
-                        img.src = '/about/luiscampos.svg.png'
+                      if (!img.src.endsWith('/about/luiscampos.webp')) {
+                        img.src = '/about/luiscampos.webp'
                       } else {
                         img.style.display = 'none'
                         const parent = img.parentElement

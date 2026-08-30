@@ -16,9 +16,7 @@ datasource db {
   //
   // CONNECTION POOLING: for production, use Prisma Accelerate (recommended for Cloudflare Workers) or
   // PgBouncer in TRANSACTION pooling mode. DO NOT use statement-level pooling — it breaks prepared
-  // statements. Keep @prisma/adapter-pg-worker + @prisma/pg-worker pinned to the SAME minor version
-  // as the Prisma client (currently client 6.17.x, adapter 6.9.x — no 6.17.x adapter exists on npm yet;
-  // bump both together when a matching adapter is released).
+  // statements. On Cloudflare Workers, use @prisma/adapter-pg with Hyperdrive for connection pooling.
   url          = env("DATABASE_URL")
   relationMode = "foreignKeys"
 }
@@ -26,8 +24,8 @@ datasource db {
 generator client {
   provider        = "prisma-client-js"
   binaryTargets   = ["native", "debian-openssl-3.0.x"]
-  // Allows the client to run on Cloudflare Workers via a driver adapter
-  // (@prisma/adapter-pg-worker), where the native query engine cannot load.
+  // Driver adapter for Cloudflare Workers — uses @prisma/adapter-pg
+  // (standard postgres driver) instead of the deprecated @prisma/pg-worker.
   driverAdapters  = true
   previewFeatures = ["prismaSchemaFolder"]
 }
