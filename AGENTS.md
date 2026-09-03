@@ -29,7 +29,7 @@
   - Soft delete via `$extends` on ~15 models — auto-filters `deletedAt: null` on read queries.
   - Schema: snake_case `@map` annotations, all new fields must follow.
   - DB scripts live in `packages/db` — root delegates via `npm run db:* -w @akmleva/db`.
-- **Workspaces**: npm workspace at `tools/data-pipeline/` (ETL scripts). Web app lives at `apps/web-tanstack/`.
+- **Workspaces**: npm workspaces at `packages/db/` and `tools/data-pipeline/`. Web app lives at `apps/web-tanstack/`.
 - **Packages** (`@akmleva/*`): `packages/db/` (Prisma client), `packages/shared/`, `packages/ui/` (placeholders — not workspace-linked yet).
 - **Database schema**: single `packages/db/prisma/schema/schema.prisma` with 130+ models (auth/users, agencies/CRM, destinations, flights, hotels, bookings, payments, trips/itineraries, AI/chat, loyalty, wikivoyage `Wv*` catalog tables, cost-of-living `Col*`, community/content).
 - **ML service**: Python FastAPI at `ml-service/` (not an npm workspace). Routes under `app/api/routes/`: recommendations, travel_ranking, travel_distance, personalization, chat, rag, predictions, xai, unified, validate_image. Dev port 3002 (conflicts with web app — run one at a time or override the port).

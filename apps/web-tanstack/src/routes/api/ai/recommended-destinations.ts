@@ -163,10 +163,27 @@ export const Route = createFileRoute('/api/ai/recommended-destinations')({
               imagemUrl: true,
             },
           })
-        } catch {
-          // DB unavailable (e.g. local dev without Postgres, transient outage) —
-          // degrade gracefully instead of 500 so the landing page UI never breaks.
-          console.warn('[recommended-destinations] DB unavailable, returning empty items')
+        } catch (error) {
+          // Only degrade gracefully for expected DB availability errors
+          // (local dev without Postgres, transient outage). Schema/query
+          // regressions must surface as real 500s so monitoring catches them.
+          const code =
+            typeof error === 'object' && error !== null && 'code' in error
+              ? String((error as { code: unknown }).code)
+              : ''
+          const isAvailabilityError = ['P1001', 'P1002', 'P2021'].includes(code)
+          if (!isAvailabilityError) {
+            console.error('[recommended-destinations] Unexpected DB error', {
+              code: code || undefined,
+              name: error instanceof Error ? error.name : undefined,
+              message: error instanceof Error ? error.message : String(error),
+            })
+            throw error
+          }
+          console.warn('[recommended-destinations] DB unavailable, returning empty items', {
+            code,
+            message: error instanceof Error ? error.message : String(error),
+          })
           return Response.json({ ok: true, method: 'empty', items: [] })
         }
         const rows = destinationRows

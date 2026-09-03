@@ -1,7 +1,9 @@
 # Geocoding Summary
 
 > **Nota (fev 2026):** este documento reflete o estado do geocoding de destinos e hotéis Wikivoyage.
-> Ficheiros de cache relacionados: `Database/geonames-cache/` (ver README dessa pasta).
+> Cache GeoNames em dois locais: `data/geonames-cache/` — ficheiro plano `cities5000-cities.json`
+> (69k cidades, usado pelos scripts de geocoding) — e `Database/geonames-cache/` — shards por país
+> (fonte dos dados; ver README dessa pasta).
 
 ## Final State
 

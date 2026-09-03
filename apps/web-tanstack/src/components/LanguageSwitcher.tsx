@@ -27,6 +27,13 @@ export function LanguageSwitcher({ currentLocale, variant = 'default', onLocaleC
   const [isSwitching, setIsSwitching] = useState(false)
   const router = useRouter()
   const ref = useRef<HTMLDivElement>(null)
+  // The trigger's actions need JS (router.invalidate, cookie). Keep it disabled
+  // until hydration so keyboard users can't activate a no-op button.
+  const [hydrated, setHydrated] = useState(false)
+
+  useEffect(() => {
+    setHydrated(true)
+  }, [])
 
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
@@ -65,7 +72,8 @@ export function LanguageSwitcher({ currentLocale, variant = 'default', onLocaleC
     <div ref={ref} className="relative inline-block" data-wait-for-js>
       <button
         onClick={() => setIsOpen(!isOpen)}
-        disabled={isSwitching}
+        disabled={!hydrated || isSwitching}
+        aria-disabled={!hydrated || isSwitching}
         aria-busy={isSwitching}
         className={`flex items-center gap-2 px-3 py-2 rounded-lg text-sm font-medium transition-colors ${
           isOverlay
