@@ -3,7 +3,9 @@
 ## Data: 2026-06-18
 
 ## Problema
+
 O ficheiro `EnhancedTravelPreferencesForm.tsx` tem **2152 linhas**, tornando difícil:
+
 - Manutenção
 - Reutilização de componentes
 - Testes unitários
@@ -12,6 +14,7 @@ O ficheiro `EnhancedTravelPreferencesForm.tsx` tem **2152 linhas**, tornando dif
 ## Estrutura Atual (6 Steps)
 
 ### Step 0 - Travel Style
+
 - Travel styles (multi-select)
 - Travel frequency
 - Preferred destinations
@@ -20,12 +23,14 @@ O ficheiro `EnhancedTravelPreferencesForm.tsx` tem **2152 linhas**, tornando dif
 - Preferred countries/continents
 
 ### Step 1 - Budget
+
 - Budget range slider
 - Currency selector
 - Budget priority
 - Daily budget profile selector
 
 ### Step 2 - Flight & Accommodation
+
 - Accommodation type
 - Cabin class
 - Seat preference
@@ -37,12 +42,14 @@ O ficheiro `EnhancedTravelPreferencesForm.tsx` tem **2152 linhas**, tornando dif
 - Cruise options (condicional)
 
 ### Step 3 - Activities
+
 - Activity types
 - Pace preference
 - Experience types
 - Languages
 
 ### Step 4 - Special Requirements
+
 - Sustainability level
 - Eco preferences
 - Carbon offset
@@ -51,6 +58,7 @@ O ficheiro `EnhancedTravelPreferencesForm.tsx` tem **2152 linhas**, tornando dif
 - Medical conditions
 
 ### Step 5 - Advanced Settings
+
 - AI recommendations
 - Data sharing
 - Notifications
@@ -112,3 +120,12 @@ O ficheiro `EnhancedTravelPreferencesForm.tsx` tem **2152 linhas**, tornando dif
 - Manter o componente `EnhancedTravelPreferencesForm` como wrapper principal
 - Usar composition pattern para juntar as seções
 - Manter todos os tipos e schemas Zod no ficheiro principal ou em `lib/travel/preferences.ts`
+
+---
+
+## See Also
+
+- [FORMULARIO-MELHORIAS.md](./FORMULARIO-MELHORIAS.md) — UX/conversion audit of the same form
+- [TRIP_RECOMMENDATION.md](./TRIP_RECOMMENDATION.md) — recommendation engine that consumes preferences from this form
+- [TANSTACK-START-MIGRATION.md](./TANSTACK-START-MIGRATION.md) — migration context affecting component architecture
+- [Documentation Index](./README.md)

@@ -1,4 +1,5 @@
 # Auditoria Técnica AKMLEVA – beta-app
+
 **Arquiteto de Software Sénior / Tech Lead**  
 **Data:** 2026-06-24  
 **Repositório:** https://github.com/luismccampos-beep/beta-app  
@@ -29,6 +30,7 @@
 **Correção:**
 
 Criar estrutura em camadas:
+
 ```
 src/lib/travel/
   catalog-db.ts              # atual – passa a repository
@@ -44,6 +46,7 @@ src/lib/travel/
 ```
 
 Exemplo:
+
 ```ts
 // src/lib/travel/services/destination.service.ts
 import { SearchSchema } from '../schemas/destination.schema';
@@ -67,6 +70,7 @@ export async function GET(req: Request) {
 ```
 
 **Tarefas:**
+
 - [ ] Criar `src/lib/travel/services/` e `src/lib/travel/repositories/`
 - [ ] Extrair `searchDestinationsDb` → `destination.repository.ts`
 - [ ] Criar `destination.dto.ts` com `toDestinationDTO()`
@@ -88,11 +92,13 @@ Isto é o pior dos dois mundos: pagas o custo de monorepo sem o benefício.
 **Correção – escolher 1 estratégia:**
 
 **Opção A – App Router puro (recomendado para projeto solo):**
+
 - [ ] Mover código útil de `packages/*` para `src/lib/`
 - [ ] Apagar pasta `/packages`
 - [ ] Remover `"workspaces": ["packages/*"]` do `package.json`
 
 **Opção B – Monorepo real:**
+
 - [ ] Mover app para `apps/web/`
 - [ ] `apps/web` consome `@akmleva/auth`, `@akmleva/ui`, `@akmleva/shared`
 - [ ] Configurar Turborepo corretamente com `turbo.json` na root
@@ -107,6 +113,7 @@ Isto é o pior dos dois mundos: pagas o custo de monorepo sem o benefício.
 **Problema:** NextAuth v5 com PrismaAdapter, mas também tens `Session`, `ApiKey`, `TwoFactorDevice`, JWT próprio, e rota custom `/api/auth/login`. Vai dar race conditions de sessão.
 
 **Correção:**
+
 - [ ] Escolher **1** sistema: NextAuth v5 **OU** custom JWT – não ambos
 - [ ] Se ficar com NextAuth (recomendado):
   - [ ] Remover `src/app/api/auth/login/route.ts` custom – usar `signIn()` do NextAuth
@@ -142,6 +149,7 @@ export type SearchDestinationsInput = z.infer<typeof SearchSchema>;
 ```
 
 **Tarefas:**
+
 - [ ] Instalar/configurar Zod (já está no package.json)
 - [ ] Criar schemas para `destinations`, `hotels`, `flights`, `listings`
 - [ ] Aplicar em todas as API routes – middleware `withValidation(schema, handler)`
@@ -164,6 +172,7 @@ if (process.env.NODE_ENV === 'development') {
 ```
 
 **Tarefas:**
+
 - [ ] Adicionar log no `createStub()` quando acedido em dev
 - [ ] Auditar páginas que disparam o stub – adicionar `export const dynamic = 'force-dynamic'`
 - [ ] Documentar no README quando usar o stub
@@ -190,6 +199,7 @@ export default async function Page() {
 ```
 
 **Tarefas:**
+
 - [ ] Converter `src/app/page.tsx` em Server Component
 - [ ] Mover `onGetStarted` para Server Action / middleware redirect
 - [ ] Medir redução de JS bundle (target: -15 KB)
@@ -207,6 +217,7 @@ export default async function Page() {
 Comentário na linha 1-4 do schema: `some models use @map("created_at") and others @map("createdat")`.
 
 Encontrado:
+
 - `User` → `@@map("users")`, campos `@map("created_at")`
 - `Package` → `@@map("packages")`, campos `@map("createdat")`
 - `Hotel` → `createdAt @map("createdat")`
@@ -217,6 +228,7 @@ Parte queries raw, tooling, e onboarding.
 Escolher `snake_case` e migrar tudo.
 
 **Tarefas:**
+
 - [ ] Fazer inventário completo: `grep -n '@map' prisma/schema.prisma | sort`
 - [ ] Escolher convenção: **snake_case** (`created_at`) – é a do Postgres
 - [ ] Criar migração de consolidação – 1 tabela de cada vez, começando pelas menos usadas
@@ -238,6 +250,7 @@ Escolher `snake_case` e migrar tudo.
 | CRM | `CrmCustomer` / `CrmBooking` vs `User` / `Booking` + `Agency`/`Client` | Escolher 1: SaaS multi-tenant (`Agency → Client`) **OU** B2C (`User → Booking`). Não ambos |
 
 **Tarefas:**
+
 - [ ] **Pagamentos:** criar script de migração `Payment → PaymentTransaction`
   - [ ] Verificar FK constraints
   - [ ] Dry-run em staging
@@ -260,9 +273,11 @@ Escolher `snake_case` e migrar tudo.
 #### [CRIT-DB-3] Índices em falta para queries hot
 
 `searchDestinationsDb` faz:
+
 ```sql
 WHERE nome ILIKE '%lisboa%'
 ```
+
 Full seq scan, sem índice. Com 10k destinos já dói.
 
 **Correção – PostgreSQL trigram + índices compostos:**
@@ -304,6 +319,7 @@ CREATE INDEX reviews_destination_rating
 ```
 
 **Tarefas:**
+
 - [ ] Adicionar `pg_trgm` extension na migração inicial
 - [ ] Criar índices GIN para `wv_destinations.nome`
 - [ ] Criar índice geo para `wv_hotels`
@@ -321,6 +337,7 @@ CREATE INDEX reviews_destination_rating
 Hoje: `latitude/longitude Decimal`, bounding box em JS + `haversineKm`.
 
 Com PostGIS:
+
 ```sql
 CREATE EXTENSION IF NOT EXISTS postgis;
 ALTER TABLE wv_hotels ADD COLUMN geom geography(POINT, 4326);
@@ -335,9 +352,11 @@ WHERE ST_DWithin(geom, ST_MakePoint(lon,lat)::geography, 10000)
 ORDER BY geom <-> ST_MakePoint(lon,lat)::geography
 LIMIT 50;
 ```
+
 50x mais rápido, usa índice GiST.
 
 **Tarefas:**
+
 - [ ] Ativar PostGIS na base de dados
 - [ ] Adicionar coluna `geom` em `wv_hotels` e `wv_destinations`
 - [ ] Criar trigger para auto-popular `geom` a partir de lat/lon
@@ -351,10 +370,12 @@ LIMIT 50;
 `User.deletedAt`, `Trip.deletedAt`, `Article.deletedAt`, mas `Booking` não tem.
 
 **Tarefas:**
+
 - [ ] Definir política global: soft delete **ou** hard delete – documentar
 - [ ] Se soft delete:
   - [ ] Adicionar `deletedAt` em `Booking`, `Payment`, `Review`
   - [ ] Criar Prisma middleware para filtrar `deletedAt IS NULL` automaticamente:
+
     ```ts
     prisma.$use(async (params, next) => {
       if (params.action === 'findMany' && params.model) {
@@ -363,6 +384,7 @@ LIMIT 50;
       return next(params);
     });
     ```
+
 - [ ] Se hard delete: remover `deletedAt` dos models existentes, usar audit log
 
 ---
@@ -372,7 +394,9 @@ LIMIT 50;
 Faz 1 query para destinos + 2 `groupBy` para hotel stats. OK para 24 rows, mas dói a 100.
 
 **Tarefas:**
+
 - [ ] Criar view materializada:
+
   ```sql
   CREATE MATERIALIZED VIEW destination_hotel_stats AS
   SELECT 
@@ -384,6 +408,7 @@ Faz 1 query para destinos + 2 `groupBy` para hotel stats. OK para 24 rows, mas d
   GROUP BY destino_id;
   CREATE UNIQUE INDEX ON destination_hotel_stats(destino_id);
   ```
+
 - [ ] Refresh automático via cron: `REFRESH MATERIALIZED VIEW CONCURRENTLY destination_hotel_stats`
 - [ ] Mapear view no Prisma
 - [ ] Comparar latência antes/depois
@@ -395,6 +420,7 @@ Faz 1 query para destinos + 2 `groupBy` para hotel stats. OK para 24 rows, mas d
 `PaymentStatus` tem: `PAID`, `SUCCEEDED`, `COMPLETED`, `CANCELED` / `CANCELLED`.
 
 **Tarefas:**
+
 - [ ] Padronizar para Stripe: `requires_payment`, `processing`, `succeeded`, `canceled`
 - [ ] Ou padronizar para interno simples: `PENDING`, `PAID`, `FAILED`, `REFUNDED`, `CANCELLED`
 - [ ] Criar migração de dados para mapear valores antigos
@@ -447,6 +473,7 @@ export async function GET(req: Request) {
 ```
 
 **Tarefas:**
+
 - [ ] Configurar Upstash Redis – adicionar `UPSTASH_REDIS_REST_URL` / `TOKEN` ao `.env`
 - [ ] Criar `src/lib/rate-limit.ts` com 3 tiers:
   - `publicRatelimit`: 30 req/min (endpoints públicos travel)
@@ -504,6 +531,7 @@ export const GET = apiHandler(async (req) => {
 ```
 
 **Tarefas:**
+
 - [ ] Criar `src/lib/api/handler.ts` com wrapper
 - [ ] Integrar ZodError handling
 - [ ] Integrar Sentry capture
@@ -517,9 +545,11 @@ export const GET = apiHandler(async (req) => {
 Tens `/api/travel/destinations` **E** `/api/travel/v1/destinations` – formatos diferentes.
 
 **Tarefas:**
+
 - [ ] Auditar: `find src/app/api -name "route.ts" | sort`
 - [ ] Listar endpoints duplicados sem `/v1`
 - [ ] Adicionar redirect 301 das rotas antigas → `/v1/`:
+
   ```ts
   // src/app/api/travel/destinations/route.ts
   export async function GET(req: Request) {
@@ -528,6 +558,7 @@ Tens `/api/travel/destinations` **E** `/api/travel/v1/destinations` – formatos
     return NextResponse.redirect(url, 301);
   }
   ```
+
 - [ ] Marcar rotas antigas como deprecated no README
 - [ ] Após 30 dias, remover rotas sem `/v1`
 - [ ] Documentar versionamento em `docs/TRAVEL_CATALOG_API.md`
@@ -541,8 +572,10 @@ Tens `/api/travel/destinations` **E** `/api/travel/v1/destinations` – formatos
 Tens `EmbeddingCache` e `LlmCache` no schema – ótimo. Mas `/destinations`, `/hotels` não têm cache. São dados quase estáticos.
 
 **Tarefas:**
+
 - [ ] Adicionar `export const revalidate = 3600` nas routes de catálogo read-only
 - [ ] Ou usar Redis cache:
+
   ```ts
   const cacheKey = `dest:${slug}`;
   const cached = await redis.get(cacheKey);
@@ -550,6 +583,7 @@ Tens `EmbeddingCache` e `LlmCache` no schema – ótimo. Mas `/destinations`, `/
   // ... fetch
   await redis.set(cacheKey, result, { ex: 3600 });
   ```
+
 - [ ] Cache headers: `Cache-Control: public, s-maxage=3600, stale-while-revalidate=86400`
 - [ ] Invalidar cache quando `wv_destination.updated_at` muda
 
@@ -560,6 +594,7 @@ Tens `EmbeddingCache` e `LlmCache` no schema – ótimo. Mas `/destinations`, `/
 Com 40+ endpoints de travel, gera schema OpenAPI a partir do Zod.
 
 **Tarefas:**
+
 - [ ] Instalar `@asteasolutions/zod-to-openapi`
 - [ ] Gerar `openapi.json` a partir dos Zod schemas
 - [ ] Servir Swagger UI em `/api/docs`
@@ -572,7 +607,9 @@ Com 40+ endpoints de travel, gera schema OpenAPI a partir do Zod.
 Tens um model `ApiKey` muito bem desenhado (scopes, IP whitelist, rate limit), mas não vejo middleware a usá-lo.
 
 **Tarefas:**
+
 - [ ] Criar `src/lib/api/auth-api-key.ts`:
+
   ```ts
   export async function validateApiKey(req: Request) {
     const key = req.headers.get('x-api-key');
@@ -582,6 +619,7 @@ Tens um model `ApiKey` muito bem desenhado (scopes, IP whitelist, rate limit), m
     return apiKey;
   }
   ```
+
 - [ ] Middleware que valida API key em `/api/travel/v1/*`
 - [ ] Permitir auth via: `Authorization: Bearer <key>` OU `x-api-key: <key>`
 - [ ] Dashboard para gerir API keys (já tens model, falta UI)
@@ -594,6 +632,7 @@ Tens um model `ApiKey` muito bem desenhado (scopes, IP whitelist, rate limit), m
 Tens `@sentry/nextjs` instalado – bom.
 
 **Tarefas:**
+
 - [ ] Adicionar Sentry tracing em `searchDestinationsDb` / `getHotelsNearbyFromDb`
 - [ ] Adicionar `console.time` / OpenTelemetry spans nas queries Prisma lentas
 - [ ] Configurar Sentry Performance – sample rate 10% em prod
@@ -607,6 +646,7 @@ Tens `@sentry/nextjs` instalado – bom.
 FastAPI em `/ml-service`, separado do Next.js – bom.
 
 **Tarefas:**
+
 - [ ] Criar `docker-compose.yml` na root que sobe: `web` + `ml-service` + `postgres` + `redis`
 - [ ] Documentar fluxo: `travel:ml:export` → `travel:ml:train` → servir embeddings
 - [ ] API route `/api/travel/v1/recommend` deve chamar `ml-service` via API key interna
@@ -685,10 +725,12 @@ export default {
 Depois usar sempre `<Button variant="default">` sem override.
 
 **Tarefas:**
+
 - [ ] Criar `tailwind.config.ts` com palete AKMLEVA (teal + orange)
 - [ ] Atualizar CSS variables em `theme.css` para usar cores da marca
 - [ ] Fazer find/replace: `from-teal-600 to-orange-500` → usar `bg-primary` + variante gradient no `buttonVariants`
 - [ ] Adicionar variantes ao `button.tsx`:
+
   ```ts
   variant: {
     default: "bg-primary ...",
@@ -696,6 +738,7 @@ Depois usar sempre `<Button variant="default">` sem override.
     // ...
   }
   ```
+
 - [ ] Remover todos os `text-teal-700`, `bg-teal-50`, `border-teal-300` hardcoded – usar `text-primary`, `bg-secondary`, etc.
 - [ ] Testar dark mode completo após mudança – verificar contraste
 - [ ] Gerar screenshot antes/depois de: Landing, Destination Detail, Dashboard
@@ -758,6 +801,7 @@ export const revalidate = 3600;
 ```
 
 **Tarefas:**
+
 - [ ] Quebrar `DestinationDetailPage.tsx` em componentes menores (< 200 linhas cada)
 - [ ] Converter página para Server Component – fetch Prisma direto, sem `useEffect`
 - [ ] `DestinationMap` / `DestinationGallery` / `TripGo` → Client Components isolados com `dynamic(..., { ssr: false })`
@@ -773,6 +817,7 @@ export const revalidate = 3600;
 Não existe `tailwind.config.ts`. Estás no Tailwind v4 com apenas `@import "tailwindcss"` – perdeste todo o design token da marca. Cores teal/orange hardcoded em ~40 ficheiros.
 
 **Tarefas:**
+
 - [ ] Criar `tailwind.config.ts` (ver [CRIT-UI-1])
 - [ ] Definir spacing scale, border radius, shadows da marca
 - [ ] Migrar todas as cores hardcoded para tokens
@@ -783,22 +828,27 @@ Não existe `tailwind.config.ts`. Estás no Tailwind v4 com apenas `@import "tai
 #### [CRIT-UI-4] Tipografia quebrada
 
 `theme.css` define:
+
 ```css
 h1 { font-size: var(--text-2xl); }
 h2 { font-size: var(--text-xl); }
 ```
+
 Mas `--text-2xl` etc. não existem (eram do Tailwind v3). H1/H2 globais ficam pequenos. Na landing usas `text-5xl md:text-7xl` inline.
 
 **Tarefas:**
+
 - [ ] Remover bloco `h1, h2, h3, button { font-size: ... }` do `theme.css`
 - [ ] Deixar Tailwind gerir tipografia via classes utilitárias
 - [ ] OU definir corretamente com `@theme`:
+
   ```css
   @theme {
     --text-display: 4.5rem;
     --text-display--line-height: 1.1;
   }
   ```
+
 - [ ] Criar componentes tipográficos reutilizáveis: `<H1>`, `<H2>`, `<Lead>` em `src/components/ui/typography.tsx`
 
 ---
@@ -808,6 +858,7 @@ Mas `--text-2xl` etc. não existem (eram do Tailwind v3). H1/H2 globais ficam pe
 Usas `<img src={data.imageUrl}>` cru em todo o lado. Perdes responsive srcset, lazy loading automático, blur placeholder. Para um site de viagens com muitas fotos, isto é crítico.
 
 **Correção:**
+
 ```tsx
 import Image from 'next/image';
 
@@ -824,6 +875,7 @@ import Image from 'next/image';
 ```
 
 **Tarefas:**
+
 - [ ] Trocar `<img>` → `<Image>` em:
   - [ ] `DestinationDetailPage` – hero image (`priority={true}`)
   - [ ] `DestinationGallery`
@@ -843,6 +895,7 @@ import Image from 'next/image';
 Já tens `buttonVariants` com cva – ótimo.
 
 **Tarefas:**
+
 - [ ] Estender cva para `Card`, `Badge`
 - [ ] Badges de tags hoje usam `bg-teal-100/90 text-teal-900` hardcoded → usar `variant="secondary"`
 - [ ] Criar variantes consistentes: `default`, `secondary`, `outline`, `brand`
@@ -856,10 +909,13 @@ Já tens `buttonVariants` com cva – ótimo.
 Base boa (aria-label, focus rings), mas falta audit completo.
 
 **Tarefas:**
+
 - [ ] Rodar `axe-core` / Lighthouse Accessibility audit
+
   ```bash
   npx @axe-core/cli http://localhost:3000
   ```
+
 - [ ] Corrigir contraste: `text-teal-300` no dark mode não passa AA
 - [ ] Testar navegação só com teclado – tab order na Destination page
 - [ ] Adicionar `skip to content` link
@@ -872,10 +928,12 @@ Base boa (aria-label, focus rings), mas falta audit completo.
 #### [UI-8] Mobile / touch
 
 **Tarefas:**
+
 - [ ] `AppHeader`: 5 elementos à direita colapsam < 375px
   - [ ] Criar menu hamburger / Sheet do shadcn abaixo de `md`
   - [ ] Agrupar: avatar + logout + preferences num dropdown
 - [ ] Galeria lightbox: adicionar swipe touch (hoje só ← → teclado)
+
   ```ts
   // usar framer-motion drag
   <motion.img drag="x" onDragEnd={(_, info) => {
@@ -883,11 +941,14 @@ Base boa (aria-label, focus rings), mas falta audit completo.
     if (info.offset.x > 50) prev();
   }}/>
   ```
+
 - [ ] Parallax hero: desativa em mobile / `prefers-reduced-motion`
+
   ```ts
   const prefersReducedMotion = useReducedMotion();
   const heroY = prefersReducedMotion ? 0 : useTransform(scrollY, [0,600], [0,180]);
   ```
+
 - [ ] Testar em iPhone SE (375px), iPad, Android – usar Chrome DevTools
 - [ ] Touch targets mínimos 44×44px – auditar botões pequenos
 
@@ -900,6 +961,7 @@ Tens `/app/page.tsx` **E** `/app/[locale]/page.tsx`, `/app/destinations/[slug]/p
 2 URLs para o mesmo conteúdo.
 
 **Tarefas:**
+
 - [ ] Escolher 1 estratégia i18n:
   - Opção A: next-intl App Router na root (sem `[locale]` folder)
   - Opção B: pasta `[locale]` – recomendado, já está mais completo
@@ -916,6 +978,7 @@ Tens `/app/page.tsx` **E** `/app/[locale]/page.tsx`, `/app/destinations/[slug]/p
 #### [UI-10] Performance – micro-otimizações
 
 **Tarefas:**
+
 - [ ] Framer Motion parallax: já bem usado, mas adicionar `will-change-transform` (já está – bom!)
 - [ ] Code splitting: `DestinationMap` (Leaflet) pesa ~150 KB – carregar com `dynamic(..., { ssr: false })`
 - [ ] Analisar bundle: `npm run build` + `npx @next/bundle-analyzer`
@@ -928,6 +991,7 @@ Tens `/app/page.tsx` **E** `/app/[locale]/page.tsx`, `/app/destinations/[slug]/p
 #### [UI-11] Empty states / erros
 
 **Tarefas:**
+
 - [ ] Página de erro do destino está clean – bom, manter padrão
 - [ ] Adicionar empty states para:
   - [ ] Lista de destinos sem resultados (com sugestões)
@@ -1014,3 +1078,13 @@ Com os Sprints 1 + 2 completos, o projeto fica pronto para produção.
 ---
 
 *Gerado em 2026-06-24 – Auditoria AKMLEVA beta-app*
+
+---
+
+## See Also
+
+- [Auditoria-2.md](./Auditoria-2.md) — second audit pass (June 2026)
+- [SCHEMA_MIGRATION_PLAN.md](./SCHEMA_MIGRATION_PLAN.md) — migration plan addressing issues found in this audit
+- [SCHEMA_REFACTORING_PHASE2.md](./SCHEMA_REFACTORING_PHASE2.md) — phase 2 refactoring follow-up
+- [TANSTACK-START-MIGRATION.md](./TANSTACK-START-MIGRATION.md) — Next.js → TanStack Start migration referenced in audit
+- [Documentation Index](./README.md)

@@ -3,6 +3,7 @@
 ## 1. Architecture Overview
 
 ### Design Principles
+
 - **Two-layer destinations**: Country (aggregate) → City/Region (primary recommendation target)
 - **12-month vectors**: Every metric stored as `[Jan..Dec]` — enables "best time to visit" and "best value month"
 - **Raw + normalized**: Keep source data as-is, compute 0–100 normalized scores alongside
@@ -11,6 +12,7 @@
 - **Incremental enrichment**: Data pipelines run independently per domain; a destination is usable as soon as any domain is populated
 
 ### Entity Hierarchy
+
 ```
 Country (1) ──→ City/Region (N) ──→ DestinationVenue (N)
                                  ──→ DestinationMetric (12 per metric per dest)
@@ -18,6 +20,7 @@ Country (1) ──→ City/Region (N) ──→ DestinationVenue (N)
 ```
 
 ### Existing Models to Extend (NOT replace)
+
 | Existing Model | Action |
 |---|---|
 | `wv_destinations` | Keep as travel catalog. Add `countryId` FK to new `Country` model |
@@ -32,6 +35,7 @@ Country (1) ──→ City/Region (N) ──→ DestinationVenue (N)
 ## 2. New Prisma Models
 
 ### 2.1 Country
+
 ```prisma
 model Country {
   id              String  @id @default(uuid())
@@ -66,6 +70,7 @@ model Country {
 ```
 
 ### 2.2 City (the primary recommendation entity)
+
 ```prisma
 model City {
   id              String   @id @default(uuid())
@@ -121,6 +126,7 @@ model City {
 ```
 
 ### 2.3 CityMetric — domain-level composite scores (point-in-time snapshots)
+
 ```prisma
 model CityMetric {
   id        String   @id @default(uuid())
@@ -140,6 +146,7 @@ model CityMetric {
 ```
 
 ### 2.4 CityMonthlyMetric — 12-month resolution for every metric
+
 ```prisma
 model CityMonthlyMetric {
   id        String   @id @default(uuid())
@@ -161,6 +168,7 @@ model CityMonthlyMetric {
 ```
 
 ### 2.5 CityEmbedding — precomputed preference vectors
+
 ```prisma
 model CityEmbedding {
   id        String   @id @default(uuid())
@@ -179,6 +187,7 @@ model CityEmbedding {
 ```
 
 ### 2.6 UserTravelProfile — extends existing UserPreference
+
 ```prisma
 model UserTravelProfile {
   id              String   @id @default(uuid())
@@ -211,6 +220,7 @@ model UserTravelProfile {
 ## 3. Data Sourcing Plan
 
 ### 3.1 Identity Domain
+
 | Attribute | Source | Format | Coverage | Update |
 |---|---|---|---|---|
 | City IDs, coords, population, elevation, timezone | **GeoNames** dump | TSV (11MB) | 120K cities | Monthly |
@@ -222,6 +232,7 @@ model UserTravelProfile {
 **Pipeline**: `fetch-identity.mjs` — GeoNames dump → CSV → DuckDB → upsert `cities` table. Wikidata SPARQL queries for enrichment.
 
 ### 3.2 Cost Domain
+
 | Attribute | Source | Format | Coverage | Update |
 |---|---|---|---|---|
 | Cost-of-living index | **Numbeo** (scrape, free tier) | CSV | 5K cities | Monthly |
@@ -235,6 +246,7 @@ model UserTravelProfile {
 **Pipeline**: `fetch-costs.mjs` — Numbeo scrape → DuckDB → `CityMonthlyMetric` rows for months 1-12.
 
 ### 3.3 Climate Domain
+
 | Attribute | Source | Format | Coverage | Update |
 |---|---|---|---|---|
 | 12-month temp, rain, humidity, wind | **Open-Meteo Historical API** (free, no key) | JSON | Global | Monthly |
@@ -248,6 +260,7 @@ model UserTravelProfile {
 **Pipeline**: `fetch-climate.mjs` — Open-Meteo batch requests per city coordinates → 12-month arrays → `CityMonthlyMetric`.
 
 ### 3.4 Nature Domain
+
 | Attribute | Source | Format | Coverage | Update |
 |---|---|---|---|---|
 | Protected areas | **WDPA** (UNEP-WCMC) | CSV/Shapefile | 280K sites | Annual |
@@ -264,6 +277,7 @@ model UserTravelProfile {
 **Pipeline**: `fetch-nature.mjs` — Overpass + WDPA + OpenDiveMap → per-city enrichment.
 
 ### 3.5 Culture Domain
+
 | Attribute | Source | Format | Coverage | Update |
 |---|---|---|---|---|
 | UNESCO WH sites | **UNESCO** (free API) | JSON | 1,200 sites | Annual |
@@ -278,6 +292,7 @@ model UserTravelProfile {
 **Pipeline**: `fetch-culture.mjs` — UNESCO API + Overpass + OpenHolidays → per-city.
 
 ### 3.6 Stays & Food Domain
+
 | Attribute | Source | Format | Coverage | Update |
 |---|---|---|---|---|
 | Hotel density + price bands | **OSM** (`tourism=hotel/hostel`) + **Wikidata** | JSON | Global | Quarterly |
@@ -288,6 +303,7 @@ model UserTravelProfile {
 **Pipeline**: `fetch-stays-food.mjs` — Overpass density counts + existing venue data.
 
 ### 3.7 Mobility Domain
+
 | Attribute | Source | Format | Coverage | Update |
 |---|---|---|---|---|
 | Direct-flight connectivity | **OpenFlights** routes + **OurAirports** | CSV | 60K routes | Quarterly |
@@ -299,6 +315,7 @@ model UserTravelProfile {
 **Pipeline**: `fetch-mobility.mjs` — OpenFlights + OurAirports + Transitland.
 
 ### 3.8 Cruise Domain
+
 | Attribute | Source | Format | Coverage | Update |
 |---|---|---|---|---|
 | Port presence (river/ocean) | **OpenStreetMap** (`waterway=river_port`, `leisure=marina`) + **Wikidata** | JSON | Global | Annual |
@@ -310,6 +327,7 @@ model UserTravelProfile {
 **Pipeline**: `fetch-cruises.mjs` — Overpass port queries + Wikidata.
 
 ### 3.9 Safety & Health Domain
+
 | Attribute | Source | Format | Coverage | Update |
 |---|---|---|---|---|
 | Gov travel advisories | **US State Dept** + **UK FCDO** + **Canada** (free feeds) | JSON | Global | Weekly |
@@ -331,6 +349,7 @@ model UserTravelProfile {
 ## 4. Normalization & Composite Scoring
 
 ### 4.1 Normalization (per metric, per month)
+
 ```typescript
 // Min-max within the metric's global distribution
 function normalize(value: number, metricMin: number, metricMax: number): number {
@@ -347,6 +366,7 @@ const INVERT_METRICS = new Set([
 ```
 
 ### 4.2 Composite Domains
+
 Each composite is a weighted sum of its constituent normalized metrics:
 
 | Domain | Components | Default Weights |
@@ -362,6 +382,7 @@ Each composite is a weighted sum of its constituent normalized metrics:
 Weights are configurable per user via `UserTravelProfile.activityWeights`.
 
 ### 4.3 "Best Time to Visit" Computation
+
 ```
 For each month m (1-12):
   composite(m) = Σ domain_weight × domain_composite(m)
@@ -377,6 +398,7 @@ avoidMonth = argmin composite(m)
 ## 5. Matching Algorithm
 
 ### 5.1 Hard Filters (eliminate before scoring)
+
 ```typescript
 interface HardFilters {
   passport: string;           // ISO2 — check visa requirements
@@ -417,6 +439,7 @@ function passesHardFilters(city: City, filters: HardFilters): boolean {
 ```
 
 ### 5.2 Weighted Similarity (soft scoring)
+
 ```typescript
 function computeScore(city: City, profile: UserTravelProfile): number {
   const weights = profile.activityWeights ?? DEFAULT_WEIGHTS;
@@ -444,6 +467,7 @@ function computeScore(city: City, profile: UserTravelProfile): number {
 ```
 
 ### 5.3 Per-User Recomputation
+
 - Scores are NEVER stored as a single number on the city
 - `CityMetric` stores domain composites (reusable)
 - `CityMonthlyMetric` stores monthly values (reusable)
@@ -456,6 +480,7 @@ function computeScore(city: City, profile: UserTravelProfile): number {
 ## 6. Data Pipeline Architecture
 
 ### Pipeline Scripts (in `tools/data-pipeline/scripts/`)
+
 ```
 fetch-identity.mjs          → cities table (GeoNames + Wikidata)
 fetch-costs.mjs             → CityMonthlyMetric (Numbeo + OECD)
@@ -473,6 +498,7 @@ compute-normalization.mjs   → normalizes all CityMonthlyMetric rows
 ```
 
 ### npm Scripts
+
 ```json
 "intel:fetch:all": "npm run intel:fetch:identity && npm run intel:fetch:costs && npm run intel:fetch:climate && npm run intel:fetch:nature && npm run intel:fetch:culture && npm run intel:fetch:stays-food && npm run intel:fetch:mobility && npm run intel:fetch:cruises && npm run intel:fetch:safety-health",
 "intel:compute": "npm run intel:compute:normalize && npm run intel:compute:composites && npm run intel:compute:embeddings",
@@ -480,6 +506,7 @@ compute-normalization.mjs   → normalizes all CityMonthlyMetric rows
 ```
 
 ### Schedule
+
 | Pipeline | Frequency | Duration (est.) |
 |---|---|---|
 | `fetch-identity` | Monthly | ~5 min (GeoNames dump is 11MB) |
@@ -513,6 +540,7 @@ compute-normalization.mjs   → normalizes all CityMonthlyMetric rows
 ## 8. Query Patterns
 
 ### "Recommend destinations for me"
+
 ```sql
 -- 1. Hard filter
 WITH filtered AS (
@@ -547,6 +575,7 @@ LIMIT 20;
 ```
 
 ### "Best time to visit Lisbon"
+
 ```sql
 SELECT month, normalized AS score
 FROM city_monthly_metrics
@@ -556,6 +585,7 @@ ORDER BY month;
 ```
 
 ### "Cheapest month for beach destination in Europe"
+
 ```sql
 SELECT c.nameEn, m.month, m.value AS cost
 FROM cities c
@@ -573,34 +603,51 @@ LIMIT 10;
 ## 9. Implementation Roadmap
 
 ### Phase 1: Foundation (Week 1-2)
+
 - [ ] Create Prisma migration for new models
 - [ ] Build `fetch-identity.mjs` (GeoNames + Wikidata)
 - [ ] Seed 5K+ cities with basic identity data
 - [ ] Update `destination_venues` FK to link via `City.slug`
 
 ### Phase 2: Core Metrics (Week 3-4)
+
 - [ ] Build `fetch-climate.mjs` (Open-Meteo — fastest ROI)
 - [ ] Build `fetch-costs.mjs` (Numbeo — existing COL data migration)
 - [ ] Build `compute-normalization.mjs` + `compute-composites.mjs`
 - [ ] Verify 12-month vectors for 1K top cities
 
 ### Phase 3: Rich Domains (Week 5-6)
+
 - [ ] Build `fetch-nature.mjs` (Overpass + WDPA)
 - [ ] Build `fetch-culture.mjs` (UNESCO + Overpass + OpenHolidays)
 - [ ] Build `fetch-safety-health.mjs` (multi-source)
 - [ ] Build `fetch-stays-food.mjs` (Overpass density)
 
 ### Phase 4: Mobility & Cruises (Week 7)
+
 - [ ] Build `fetch-mobility.mjs` (OpenFlights + Transitland)
 - [ ] Build `fetch-cruises.mjs` (OSM ports)
 
 ### Phase 5: Matching Engine (Week 8)
+
 - [ ] Extend `UserTravelProfile` with hard-filter fields
 - [ ] Build preference vector computation
 - [ ] Implement cosine similarity matching
 - [ ] Wire into existing ML service `/v1/travel/rank` endpoint
 
 ### Phase 6: UI Integration (Week 9-10)
+
 - [ ] Preferences page: passport, budget, dates, activities, climate
 - [ ] Results page: ranked destinations with domain scores + "best month"
 - [ ] Destination detail: 12-month charts, safety breakdown, cost comparison
+
+---
+
+## See Also
+
+- [SCHEMA_MIGRATION_PLAN.md](./SCHEMA_MIGRATION_PLAN.md) — migration plan to reach this target schema
+- [SCHEMA_REFACTORING_PHASE2.md](./SCHEMA_REFACTORING_PHASE2.md) — phase 2 refactoring aligned with this design
+- [TRAVEL_CATALOG_API.md](./TRAVEL_CATALOG_API.md) — API layer built on this schema
+- [CULTURAL_DATA_ARCHITECTURE.md](./CULTURAL_DATA_ARCHITECTURE.md) — cultural data models feeding into this schema
+- [DATA_COMPLIANCE.md](./DATA_COMPLIANCE.md) — data source licenses for all sources in this schema
+- [Documentation Index](./README.md)

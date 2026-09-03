@@ -20,6 +20,7 @@
 - XX (international) destinations marked enriched without querying
 
 ### How to re-run
+
 ```bash
 npm run travel:demo:enrich-wikidata-pois
 ```
@@ -29,16 +30,19 @@ npm run travel:demo:enrich-wikidata-pois
 ## Hospitals & Police (Services)
 
 ### Country-scoped batch (attempted)
+
 **Script:** `scripts/enrich-bundle-overpass-country.mjs`
 **npm script:** `travel:demo:enrich-overpass-country`
 
 Uses tile-based Overpass queries per country. Limited by Overpass API rate limits on dense areas. Includes:
+
 - 10° tile size with configurable max-tile cap (default 30)
 - 60s delay between queries
 - Sane coordinate sanity checks
 - Falls back gracefully — marks countries with excessive tiles as enriched (skipped)
 
 ### Per-destination (working)
+
 **Script:** `scripts/enrich-bundle-hospitals-police.mjs`
 **npm script:** `travel:demo:enrich-hospitals-police`
 
@@ -49,6 +53,7 @@ Uses tile-based Overpass queries per country. Limited by Overpass API rate limit
 - Saves checkpoint after each batch
 
 ### How to continue
+
 ```bash
 npm run travel:demo:enrich-hospitals-police -- --resume --limit=15
 ```
@@ -130,3 +135,15 @@ All enrichment scripts registered in `package.json`:
 | `scripts/enrich-bundle-rental-cars.mjs` | Rental car generation |
 | `scripts/lib/logger.mjs` | Shared logger utility |
 | `src/data/travel-mock/wikidata-country-cache.json` | Wikidata SPARQL cache (23 MB) |
+
+---
+
+## See Also
+
+- [TRAVEL_CATALOG_API.md](./TRAVEL_CATALOG_API.md) — API that serves the enriched catalog data
+- [GEOCODING-SUMMARY.md](./GEOCODING-SUMMARY.md) — geocoding results for enriched destinations and hotels
+- [CULTURAL_DATA_ARCHITECTURE.md](./CULTURAL_DATA_ARCHITECTURE.md) — cultural data ingestion feeding the enrichment pipeline
+- [OSM_HOTELS.md](./OSM_HOTELS.md) — hotel enrichment from OSM
+- [DATA_COMPLIANCE.md](./DATA_COMPLIANCE.md) — source licenses for enrichment data
+- [wikivoyage_links.md](./wikivoyage_links.md) — Wikivoyage multilingual link matrix used during enrichment
+- [Documentation Index](./README.md)

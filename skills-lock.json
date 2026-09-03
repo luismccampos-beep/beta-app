@@ -1,0 +1,68 @@
+{
+  "version": 1,
+  "skills": {
+    "agent-advisor": {
+      "source": "awslabs/startups",
+      "ref": "main",
+      "sourceType": "github",
+      "skillPath": "advisor/plugins/aws-startup-advisor/skills/agent-advisor/SKILL.md",
+      "computedHash": "fdd8a593ed48be0d0882d379cd64dfef04d1ec042b061d307b427119f6b6cef1"
+    },
+    "architect-for-startups": {
+      "source": "awslabs/startups",
+      "ref": "main",
+      "sourceType": "github",
+      "skillPath": "advisor/plugins/aws-startup-advisor/skills/architect-for-startups/SKILL.md",
+      "computedHash": "91536257a9012447fa4706e94e6995eb749008d6a88ea597417dbf838b780f00"
+    },
+    "gcp-to-aws": {
+      "source": "awslabs/startups",
+      "ref": "main",
+      "sourceType": "github",
+      "skillPath": "advisor/plugins/aws-startup-advisor/skills/gcp-to-aws/SKILL.md",
+      "computedHash": "696c9ed294a14dd70c1c12b26fb287dae69d208830d33032081dbc3d766a4a19"
+    },
+    "heroku-to-aws": {
+      "source": "awslabs/startups",
+      "ref": "main",
+      "sourceType": "github",
+      "skillPath": "advisor/plugins/aws-startup-advisor/skills/heroku-to-aws/SKILL.md",
+      "computedHash": "5e2dfc5f51b3d988ebbd3fd7c2de579e664ee0b68eb9ff3115a89691879d310f"
+    },
+    "knowledge-base-for-startups": {
+      "source": "awslabs/startups",
+      "ref": "main",
+      "sourceType": "github",
+      "skillPath": "advisor/plugins/aws-startup-advisor/skills/knowledge-base-for-startups/SKILL.md",
+      "computedHash": "f249e320575b13bb5bacbe42c7c63f4debc7fd6e0eabb09d8f2097cf67ec99b1"
+    },
+    "llm-to-bedrock": {
+      "source": "awslabs/startups",
+      "ref": "main",
+      "sourceType": "github",
+      "skillPath": "advisor/plugins/aws-startup-advisor/skills/llm-to-bedrock/SKILL.md",
+      "computedHash": "9e2f6e3364617871f7b81494018b57b3de0f449c9b88e474a9d8a126810745c8"
+    },
+    "prompt-library-for-startups": {
+      "source": "awslabs/startups",
+      "ref": "main",
+      "sourceType": "github",
+      "skillPath": "advisor/plugins/aws-startup-advisor/skills/prompt-library-for-startups/SKILL.md",
+      "computedHash": "6aa0c478ff0d0936807a38943c01f4fd18c656615ba05f1af1f2d82a46c98e2c"
+    },
+    "start-building-for-startups": {
+      "source": "awslabs/startups",
+      "ref": "main",
+      "sourceType": "github",
+      "skillPath": "advisor/plugins/aws-startup-advisor/skills/start-building-for-startups/SKILL.md",
+      "computedHash": "9411c7d814d01ce7c14c662ac5f2618c7ac624c0c9e4f0075f246665c00f9776"
+    },
+    "tf-best-practices": {
+      "source": "awslabs/startups",
+      "ref": "main",
+      "sourceType": "github",
+      "skillPath": "advisor/plugins/aws-startup-advisor/skills/tf-best-practices/SKILL.md",
+      "computedHash": "f2a7774c012a97b24dddb5af783822981dce4b1bb33ec8b1c9ae089a22e34b61"
+    }
+  }
+}

@@ -149,3 +149,14 @@ Isto importa o bundle Wikivoyage, corrige países (Photon), preenche coords de h
 ### Nota sobre Docker local
 
 `docker compose up -d postgres` só serve para **desenvolvimento local**. Em produção, usa a URL em `DATABASE_URL`.
+
+---
+
+## See Also
+
+- [TRAVEL-INTELLIGENCE-SCHEMA.md](./TRAVEL-INTELLIGENCE-SCHEMA.md) — schema design for the catalog tables this API queries
+- [ENRICHMENT-SUMMARY.md](./ENRICHMENT-SUMMARY.md) — pipeline that populates the catalog data served here
+- [GEOCODING-SUMMARY.md](./GEOCODING-SUMMARY.md) — geocoding data exposed via this API
+- [OSM_HOTELS.md](./OSM_HOTELS.md) — hotel data integrated into the catalog
+- [TRIP_RECOMMENDATION.md](./TRIP_RECOMMENDATION.md) — recommendation engine built on top of this catalog API
+- [Documentation Index](./README.md)

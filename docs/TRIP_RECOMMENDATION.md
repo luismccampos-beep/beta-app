@@ -45,3 +45,13 @@ Resposta por destino:
 
 - `prefs` na query é opt-in do utilizador; evitar persistir orçamento sem consentimento
 - Documentar na política de privacidade: orçamento e interesses para recomendação
+
+---
+
+## See Also
+
+- [TRAVEL_CATALOG_API.md](./TRAVEL_CATALOG_API.md) — catalog API that supplies destination data to the recommendation engine
+- [ENHANCED_TRAVEL_PREFERENCES_REFACTORING.md](./ENHANCED_TRAVEL_PREFERENCES_REFACTORING.md) — preferences form whose output feeds this engine
+- [FORMULARIO-MELHORIAS.md](./FORMULARIO-MELHORIAS.md) — UX audit for the preferences form
+- [DESTINATION-CARD-MELHORIAS.md](./DESTINATION-CARD-MELHORIAS.md) — destination cards where recommendations are surfaced
+- [Documentation Index](./README.md)

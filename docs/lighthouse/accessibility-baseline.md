@@ -71,6 +71,7 @@ All **7 tests pass** against `https://www.akmleva.pt`. Zero critical or serious 
 | Skip-to-content link | ✅ Pass | Present and functional |
 
 **All previously reported violations resolved:**
+
 - `document-title` — root layout metadata template ✅
 - `color-contrast` (step numbers, footer, primary button) — CSS fixes ✅
 - `aria-valid-attr-value` (auth tabs) — single `<Tabs>` restructure ✅

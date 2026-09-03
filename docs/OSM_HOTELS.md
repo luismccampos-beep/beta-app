@@ -42,3 +42,14 @@ npm run travel:catalog:backfill-geo
 curl "http://localhost:3000/api/travel/v1/hotels/osm?location=Lisboa,%20Portugal&limit=5"
 curl "http://localhost:3000/api/travel/v1/hotels/geocode?q=Hotel%20Tivoli%20Lisboa&hotelsOnly=1"
 ```
+
+---
+
+## See Also
+
+- [GEOCODING-SUMMARY.md](./GEOCODING-SUMMARY.md) — Photon geocoding used for OSM hotel coordinates
+- [ENRICHMENT-SUMMARY.md](./ENRICHMENT-SUMMARY.md) — overall enrichment pipeline that includes OSM hotel data
+- [CULTURAL_DATA_ARCHITECTURE.md](./CULTURAL_DATA_ARCHITECTURE.md) — broader OSM ingestion strategy for POIs and cultural data
+- [TRAVEL_CATALOG_API.md](./TRAVEL_CATALOG_API.md) — catalog API that exposes hotel data
+- [DATA_COMPLIANCE.md](./DATA_COMPLIANCE.md) — OSM ODbL and Wikidata CC0 attribution requirements
+- [Documentation Index](./README.md)

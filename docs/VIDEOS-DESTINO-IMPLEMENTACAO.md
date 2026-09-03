@@ -6,6 +6,7 @@
 **Stack:** Next.js 15 / Prisma / PostgreSQL Neon / Tailwind v4
 
 > Documento complementar a:
+>
 > - `AUDIT-AKMLEVA.md` – auditoria técnica geral
 > - `FORMULARIO-MELHORIAS.md` – UX do formulário
 > - `DESTINATION-CARD-MELHORIAS.md` – imagens, traduções, vídeos (visão)
@@ -44,7 +45,9 @@ Este documento é **o plano de execução, por tarefas**, só para vídeos.
 Sem QID não consegues ligar vídeos/imagens/traduções entre línguas.
 
 **Tarefas:**
+
 - [ ] Editar `prisma/schema.prisma`, model `WvDestination`, adicionar:
+
   ```prisma
   model WvDestination {
     id                Int      @id
@@ -73,19 +76,24 @@ Sem QID não consegues ligar vídeos/imagens/traduções entre línguas.
     @@map("wv_destinations")
   }
   ```
+
 - [ ] Atualizar `scripts/parse-wikivoyage-dump.py` – extrair QID:
+
   ```python
   import re
   def extract_wikidata_qid(wikitext: str) -> str | None:
       m = re.search(r'\[\[d:(Q\d+)\]\]|{{wikidata\|(Q\d+)}}', wikitext)
       return (m.group(1) or m.group(2)) if m else None
   ```
+
 - [ ] Correr backfill para destinos já na DB – ver `docs/video-implementation/SCHEMA_PATCH.prisma`
 
 ### V-DB-2 — Criar model `WvDestinationVideo`
 
 **Tarefas:**
+
 - [ ] Adicionar ao `prisma/schema.prisma`:
+
   ```prisma
   model WvDestinationVideo {
     id          String  @id @default(cuid())
@@ -117,11 +125,14 @@ Sem QID não consegues ligar vídeos/imagens/traduções entre línguas.
     @@map("wv_destination_videos")
   }
   ```
+
 - [ ] Correr migração:
+
   ```bash
   npx prisma migrate dev --name destination_videos
   npx prisma generate
   ```
+
 - [ ] Ficheiro de referência completo: `docs/video-implementation/SCHEMA_PATCH.prisma`
 
 ---
@@ -137,6 +148,7 @@ Busca vídeos no Wikimedia Commons via Wikidata QID → Commons Category (P373) 
 Copiar para: `scripts/enrich-destination-videos.mjs`
 
 **Funcionalidades:**
+
 - `--lang=pt` – língua do catálogo a enriquecer
 - `--limit=100` – nº de destinos
 - `--country=PT` – filtrar por país
@@ -145,11 +157,13 @@ Copiar para: `scripts/enrich-destination-videos.mjs`
 - `--concurrency=3` – pedidos paralelos
 
 **Filtros de qualidade aplicados:**
+
 - Duração: 3s – 120s (rejeita clips < 3s e filmes longos)
 - Só landscape (`width >= height`)
 - Fonte = Wikimedia Commons → `isVerified = true` automático
 
 **Comandos:**
+
 ```bash
 # teste dry-run, 10 destinos
 node scripts/enrich-destination-videos.mjs --dry-run --limit=10
@@ -165,22 +179,26 @@ node scripts/enrich-destination-videos.mjs --force --limit=50
 ```
 
 **Cobertura esperada:**
+
 - Top 200 destinos: ~50–70 com pelo menos 1 vídeo verificado
 - Destinos PT: ~15–25 vídeos
 - Taxa global Wikimedia: ~25–35% dos destinos
 
 **Tarefas:**
+
 - [ ] Copiar `docs/video-implementation/enrich-destination-videos.mjs` → `scripts/enrich-destination-videos.mjs`
 - [ ] `chmod +x scripts/enrich-destination-videos.mjs`
 - [ ] Testar dry-run: `node scripts/enrich-destination-videos.mjs --dry-run --limit=10`
 - [ ] Correr produção: `node scripts/enrich-destination-videos.mjs --limit=200`
 - [ ] Verificar na DB:
+
   ```sql
   SELECT COUNT(DISTINCT destino_id) FROM wv_destination_videos WHERE is_verified = true;
   SELECT pais_code, COUNT(*) FROM wv_destinations d
   JOIN wv_destination_videos v ON v.destino_id = d.id
   GROUP BY pais_code ORDER BY COUNT(*) DESC;
   ```
+
 - [ ] Cron semanal (opcional): `0 3 * * 0 node scripts/enrich-destination-videos.mjs --only-missing --limit=100`
 
 ### V-ENRICH-2 — Fontes extra (opcional)
@@ -194,6 +212,7 @@ Só depois de esgotar Wikimedia (~30% cobertura).
 | Coverr / Pexels | só com CLIP validation, score ≥ 0.7 | ⚠️ condicional |
 
 **Tarefas (opcional):**
+
 - [ ] Archive.org adapter – `https://archive.org/advancedsearch.php?q={city} AND mediatype:movies&output=json`
 - [ ] PeerTube – `https://sepiasearch.org/api/v1/search/videos?search={city}`
 - [ ] Guardar sempre com `isVerified=false`
@@ -209,6 +228,7 @@ Só depois de esgotar Wikimedia (~30% cobertura).
 **Copiar para:** `src/app/api/travel/v1/destinations/[slug]/videos/route.ts`
 
 Resposta:
+
 ```json
 {
   "ok": true,
@@ -227,12 +247,15 @@ Resposta:
 ```
 
 **Tarefas:**
+
 - [ ] Copiar `docs/video-implementation/route.videos.ts` → `src/app/api/travel/v1/destinations/[slug]/videos/route.ts`
 - [ ] Verificar import do `parseDestinationSlug` – ajustar path se a tua versão for diferente
 - [ ] Testar:
+
   ```bash
   curl http://localhost:3000/api/travel/v1/destinations/pt-42/videos
   ```
+
 - [ ] `export const revalidate = 86400` – cache 24h, vídeos quase nunca mudam
 
 ### V-API-2 — Incluir vídeo no endpoint de detalhe do destino
@@ -240,8 +263,10 @@ Resposta:
 Hoje `GET /api/travel/destinations/[slug]` devolve `DestinationDetailData` sem vídeos.
 
 **Tarefas:**
+
 - [ ] Editar `src/app/api/travel/destinations/[slug]/route.ts` (ou equivalente)
 - [ ] Adicionar ao `select / include` do Prisma:
+
   ```ts
   const dest = await prisma.wvDestination.findFirst({
     where: { /* ... */ },
@@ -254,7 +279,9 @@ Hoje `GET /api/travel/destinations/[slug]` devolve `DestinationDetailData` sem v
     }
   });
   ```
+
 - [ ] Mapear para `DestinationDetailData`:
+
   ```ts
   videos: dest.videos.map(v => ({
     url: v.url,
@@ -267,7 +294,9 @@ Hoje `GET /api/travel/destinations/[slug]` devolve `DestinationDetailData` sem v
     isVerified: v.isVerified,
   }))
   ```
+
 - [ ] Atualizar tipo `DestinationDetailData` em `DestinationDetailPage.tsx`:
+
   ```ts
   export type DestinationDetailData = {
     // ...
@@ -296,6 +325,7 @@ Substitui o hero atual da `DestinationDetailPage.tsx` (que tem parallax + toggle
 **Copiar para:** `src/app/components/travel/DestinationVideoHero.tsx`
 
 **Funcionalidades:**
+
 - Se **não há vídeo verificado** → mostra só imagem, sem botão nenhum. Zero confusão.
 - Se **há vídeo verificado** → hero com toggle Foto / Vídeo
 - Controlos: Play/Pause, Mudo/Som
@@ -306,6 +336,7 @@ Substitui o hero atual da `DestinationDetailPage.tsx` (que tem parallax + toggle
 - Fallback automático para imagem se o vídeo falhar
 
 **Tarefas:**
+
 - [ ] Copiar `docs/video-implementation/DestinationVideoHero.tsx` → `src/app/components/travel/DestinationVideoHero.tsx`
 - [ ] Verificar imports:
   - `lucide-react` → já tens
@@ -318,12 +349,16 @@ Substitui o hero atual da `DestinationDetailPage.tsx` (que tem parallax + toggle
 **Local:** `src/app/components/pages/DestinationDetailPage.tsx`
 
 **Tarefas:**
+
 - [ ] No topo do ficheiro, importar:
+
   ```ts
   import { DestinationVideoHero } from '../travel/DestinationVideoHero';
   ```
+
 - [ ] Localizar o bloco hero atual (linhas ~270–380, `<div ref={heroRef} className="relative h-[50vh]…">`)
 - [ ] Substituir o bloco hero inteiro por:
+
   ```tsx
   <DestinationVideoHero
     imageUrl={data.imageUrl}
@@ -332,17 +367,20 @@ Substitui o hero atual da `DestinationDetailPage.tsx` (que tem parallax + toggle
     attribution={data.imageAttribution}
   />
   ```
+
 - [ ] Remover do `DestinationDetailPage` o state que passa a ser interno do componente:
   - Remover `const [showVideo, setShowVideo] = useState(false);`
   - Remover `heroRef`, `useScroll`, `heroY`, `heroOpacity` se só eram usados no hero (se o parallax for importante, o `DestinationVideoHero` pode receber uma prop `enableParallax`)
   - Remover o botão toggle Video/Foto duplicado
   - Remover a lógica de attribution duplicada
 - [ ] Atualizar o fetch de dados (linha ~170):
+
   ```ts
   // antes
   fetch(`/api/travel/destinations/${encodeURIComponent(slug)}`)
   // garantir que a API já inclui videos – ver V-API-2
   ```
+
 - [ ] Testar 3 cenários:
   1. Destino **com vídeo verificado** → aparece botão "Vídeo", funciona play/pause/mute
   2. Destino **sem vídeo** → só imagem, nenhum botão de vídeo aparece
@@ -351,7 +389,9 @@ Substitui o hero atual da `DestinationDetailPage.tsx` (que tem parallax + toggle
 ### V-UI-3 — `next.config.js` – `images.remotePatterns`
 
 **Tarefas:**
+
 - [ ] Editar `next.config.js`, adicionar:
+
   ```js
   const nextConfig = {
     images: {
@@ -366,18 +406,22 @@ Substitui o hero atual da `DestinationDetailPage.tsx` (que tem parallax + toggle
   }
   export default nextConfig;
   ```
+
 - [ ] Isto é preciso para o `<Image>` do `DestinationVideoHero` carregar thumbs do Commons
 
 ### V-UI-4 — Acessibilidade e performance do vídeo
 
 **Tarefas:**
+
 - [ ] `prefers-reduced-motion` – esconder botão "Vídeo":
+
   ```ts
   const prefersReducedMotion = 
     typeof window !== 'undefined' && 
     window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   // if (prefersReducedMotion) return <ImageOnlyHero ... />
   ```
+
 - [ ] ARIA labels em todos os botões – já incluído no componente fornecido, verificar
 - [ ] Keyboard: Space = play/pause, M = mute – opcional, nice-to-have
 - [ ] `preload="metadata"` – NÃO `preload="auto"`, senão baixa o vídeo todo antes do clique
@@ -396,6 +440,7 @@ Só necessário se fores buscar vídeos ao Coverr/Pexels/PeerTube.
 Já documentado em `DESTINATION-CARD-MELHORIAS.md` § VAL-1 – o mesmo endpoint serve para imagens e vídeos (frame do poster).
 
 **Tarefas (opcional):**
+
 - [ ] ml-service: `POST /validate-image` com CLIP – já documentado
   - Adaptar para vídeo: extrair 1 frame do poster/thumbnail e classificar
 - [ ] Só aceitar vídeos não-Wikimedia com `clip_score >= 0.7`
@@ -409,6 +454,7 @@ Já documentado em `DESTINATION-CARD-MELHORIAS.md` § VAL-1 – o mesmo endpoint
 ## 6. QA / Checklist final
 
 ### Teste funcional
+
 - [ ] **Com vídeo verificado:** abre `/pt/destinations/pt/lisboa-q597` → aparece botão "Vídeo" → clica → vídeo toca muted, loop → botão Pause funciona → botão Som funciona → attribution "Vídeo: … / CC BY-SA" visível
 - [ ] **Sem vídeo:** abre destino sem vídeo → só imagem, **nenhum** botão de vídeo aparece, nenhum layout shift
 - [ ] **Vídeo falha a carregar:** simula 404 no .webm → volta automaticamente para imagem, sem erro visível ao utilizador
@@ -417,6 +463,7 @@ Já documentado em `DESTINATION-CARD-MELHORIAS.md` § VAL-1 – o mesmo endpoint
 - [ ] **Teclado only:** Tab até ao botão Vídeo → Enter → Space = play/pause
 
 ### Performance
+
 - [ ] Lighthouse – LCP < 2.5s na página de destino
   - Vídeo NÃO deve contar para LCP – só a imagem poster conta
   - Confirmar: `preload="metadata"`, não `auto`
@@ -425,9 +472,11 @@ Já documentado em `DESTINATION-CARD-MELHORIAS.md` § VAL-1 – o mesmo endpoint
 - [ ] Bundle: `DestinationVideoHero` < 5 KB gzipped (sem dependências externas)
 
 ### SEO / Legal
+
 - [ ] Attribution sempre visível – autor + licença + link fonte (CC compliance)
 - [ ] `<video>` tem `poster` attribute
 - [ ] Schema.org `VideoObject` no JSON-LD da página (opcional, bom para SEO):
+
   ```json
   {
     "@type": "VideoObject",
@@ -438,9 +487,11 @@ Já documentado em `DESTINATION-CARD-MELHORIAS.md` § VAL-1 – o mesmo endpoint
     "acquireLicensePage": "https://commons.wikimedia.org/wiki/File:Lisbon.webm"
   }
   ```
+
 - [ ] Sitemap inclui páginas de destino com vídeo – Google descobre via `<video:video>`
 
 ### Dados
+
 - [ ] `SELECT COUNT(DISTINCT destino_id) FROM wv_destination_videos WHERE is_verified = true;` → target ≥ 50 nos top 200 destinos
 - [ ] Zero vídeos com `is_verified = true AND source NOT IN ('wikimedia')` – a menos que tenhas corrido CLIP validation
 - [ ] Todos os vídeos têm `author`, `license`, `sourceUrl` preenchidos
@@ -450,6 +501,7 @@ Já documentado em `DESTINATION-CARD-MELHORIAS.md` § VAL-1 – o mesmo endpoint
 ## 7. Roadmap
 
 ### Sprint V1 – Schema + Enriquecimento (1 dia)
+
 | ID | Tarefa |
 |---|---|
 | V-DB-1 | Adicionar `wikidataId` em `WvDestination` + `@@unique([wikidataId, lang])` |
@@ -460,6 +512,7 @@ Já documentado em `DESTINATION-CARD-MELHORIAS.md` § VAL-1 – o mesmo endpoint
 **Entregável:** DB com vídeos CC verificados em ~50-70 destinos, prontos a consumir.
 
 ### Sprint V2 – API + Frontend (1 dia)
+
 | ID | Tarefa |
 |---|---|
 | V-API-1 | `GET /api/travel/v1/destinations/[slug]/videos` |
@@ -471,6 +524,7 @@ Já documentado em `DESTINATION-CARD-MELHORIAS.md` § VAL-1 – o mesmo endpoint
 **Entregável:** Página de destino com toggle Foto/Vídeo funcional, só para vídeos verificados.
 
 ### Sprint V3 – QA + Polish (0.5 dia)
+
 | ID | Tarefa |
 |---|---|
 | QA | Testes funcionais – 3 cenários (com vídeo / sem vídeo / vídeo falha) |
@@ -481,6 +535,7 @@ Já documentado em `DESTINATION-CARD-MELHORIAS.md` § VAL-1 – o mesmo endpoint
 **Entregável:** feature pronta para produção.
 
 ### Backlog
+
 - [ ] V-ENRICH-2 – Archive.org / PeerTube adapter
 - [ ] V-ML-1 – CLIP validation para fontes não-Wikimedia
 - [ ] Galeria de vídeos (múltiplos) em vez de só 1 hero
@@ -553,3 +608,12 @@ npm run dev
 *- `AUDIT-AKMLEVA.md` – auditoria técnica geral*  
 *- `FORMULARIO-MELHORIAS.md` – UX do formulário*  
 *- `DESTINATION-CARD-MELHORIAS.md` – imagens, traduções, vídeos (visão completa)*
+
+---
+
+## See Also
+
+- [DESTINATION-CARD-MELHORIAS.md](./DESTINATION-CARD-MELHORIAS.md) — broader destination card improvements this video plan is part of
+- [ENRICHMENT-SUMMARY.md](./ENRICHMENT-SUMMARY.md) — enrichment pipeline that could supply video metadata
+- [DATA_COMPLIANCE.md](./DATA_COMPLIANCE.md) — licensing requirements for external video sources
+- [Documentation Index](./README.md)

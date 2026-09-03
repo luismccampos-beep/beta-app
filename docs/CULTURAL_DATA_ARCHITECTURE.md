@@ -4,6 +4,8 @@ Estratégia de ingestão para museus, monumentos, atividades ao ar livre e event
 
 > **Dados brutos:** os datasets culturais offline estão em `Database/Cultura/` e `Database/Unesco/`
 > (cada um com o seu README descrevendo cobertura, medidas e lacunas — ver índice em `Database/README.md`).
+> Estes diretórios contêm os dados de origem (parquets/JSON); os índices usados pela aplicação são
+> gerados a partir deles via scripts da secção «Scripts npm».
 
 ## Estado actual no beta-app
 
@@ -12,7 +14,7 @@ Estratégia de ingestão para museus, monumentos, atividades ao ar livre e event
 | Geometria / POIs base | OSM (Photon, BizData), mapa Leaflet | `src/lib/travel/osm/`, `docs/OSM_HOTELS.md` |
 | Enriquecimento semântico | Wikidata (imagens Commons) | `src/lib/travel/osm/wikidata.ts` |
 | Guias locais | Wikivoyage (listings `see`/`do`/`sleep`) | bundle + DB `wv_listings` |
-| Património UNESCO | WHC + ICH offline | `data/unesco/`, `unesco-heritage-index.ts` |
+| Património UNESCO | WHC + ICH offline | `Database/Unesco/` (bruto) + índice gerado por `travel:build:unesco-index` |
 | Natureza / clima | Open-Meteo, GeoNames | `destination-enrichment.ts` |
 | Resolver unificado | **Novo** | `src/lib/travel/cultural/resolve-cultural-pois.ts` |
 
@@ -173,3 +175,14 @@ GET /api/travel/v1/destinations/{slug}/enrich?dateFrom=2026-06-01&dateTo=2026-06
 - [Europeana API](https://pro.europeana.eu/page/get-api)
 - [Protected Planet API](https://api.protectedplanet.net/)
 - [OpenAgenda API](https://developers.openagenda.com/)
+
+---
+
+## See Also
+
+- [TRAVEL-INTELLIGENCE-SCHEMA.md](./TRAVEL-INTELLIGENCE-SCHEMA.md) — overall schema design including cultural data models
+- [TRAVEL_CATALOG_API.md](./TRAVEL_CATALOG_API.md) — internal API serving catalog data including cultural POIs
+- [OSM_HOTELS.md](./OSM_HOTELS.md) — OSM integration patterns reused for cultural data ingestion
+- [DATA_COMPLIANCE.md](./DATA_COMPLIANCE.md) — licenses and attribution for Wikidata, UNESCO, and OSM sources
+- [ENRICHMENT-SUMMARY.md](./ENRICHMENT-SUMMARY.md) — enrichment pipeline results including cultural data
+- [Documentation Index](./README.md)

@@ -35,6 +35,7 @@ O catálogo Wikivoyage / Wikidata que já tens é excelente – é a base que qu
 ## Diagnóstico por área
 
 ### IMG-1 — Imagem principal: trocar Unsplash por Wikimedia / Wikidata
+
 **Severidade:** 🔴 P0 – Imagem errada mata confiança
 
 **Atual:** `resolveDestinationImageUrl(d)` → provavelmente Unsplash search por `nome`.
@@ -253,6 +254,7 @@ node scripts/enrich-destination-images-wikimedia.mjs \
 O script percorre `wv_destinations`, resolve via Wikidata → Wikipedia → Openverse, guarda com attribution completa, marca `imagemVerificada`.
 
 **Tarefas:**
+
 - [ ] Criar `src/lib/travel/images/resolve-destination-image.ts` com a cadeia Wikidata → Wikipedia → Openverse → Unsplash
 - [ ] Adicionar campos `imagemFonte`, `imagemAutor`, `imagemLicenca`, `imagemSourceUrl`, `imagemVerificada`, `imagemLargura`, `imagemAltura` ao `schema.prisma` → `prisma migrate`
 - [ ] Criar `scripts/enrich-destination-images-wikimedia.mjs` com flags `--source`, `--only-missing`, `--dry-run`, `--concurrency`
@@ -266,6 +268,7 @@ O script percorre `wv_destinations`, resolve via Wikidata → Wikipedia → Open
 ---
 
 ### IMG-2 — Galeria: 1 imagem → 4–8 imagens por destino
+
 **Severidade:** 🟠 P1 – Card pobre
 
 **Atual:** `DestinationGallery` mostra `galleryImages ?? [imageUrl]` – normalmente 1 imagem.
@@ -397,6 +400,7 @@ export function DestinationGallery({ images }: { images: ResolvedImage[] }) {
 ```
 
 **Tarefas:**
+
 - [ ] Criar model `WvDestinationImage` no `schema.prisma` → migrate
 - [ ] Criar `src/lib/travel/images/commons-gallery.ts` – `getCommonsGallery(wikidataId)`
 - [ ] Script `scripts/enrich-destination-gallery.mjs` – popula `wv_destination_images` via Commons P373
@@ -410,6 +414,7 @@ export function DestinationGallery({ images }: { images: ResolvedImage[] }) {
 ---
 
 ### TRAD-1 — Traduções: parar de traduzir, usar o que já existe
+
 **Severidade:** 🟠 P1
 
 **Atual:** `WvDestination.lang = 'pt'`. Quando um utilizador EN/ES/FR abre Lisboa, provavelmente vê texto PT ou tradução automática inconsistente.
@@ -417,12 +422,14 @@ export function DestinationGallery({ images }: { images: ResolvedImage[] }) {
 **O que existe de borla e certo:**
 
 1. **Wikivoyage multi-língua** – o teu parser já faz `--lang both`, guarda `lang` na DB. Expande para EN/ES/FR. Mesmo destino, texto nativo.
+
    ```sql
    -- mesmo lugar, 4 línguas
    pt-lisboa-42, en-lisbon-42, es-lisboa-42, fr-lisbonne-42
    ```
 
 2. **Wikipedia interlanguage** – resumo em 300 línguas via REST:
+
    ```
    https://pt.wikipedia.org/api/rest_v1/page/summary/Lisboa
    https://en.wikipedia.org/api/rest_v1/page/summary/Lisbon
@@ -431,6 +438,7 @@ export function DestinationGallery({ images }: { images: ResolvedImage[] }) {
    ```
 
 3. **Wikidata labels/descriptions** – nome do lugar em 400 línguas:
+
    ```ts
    const labels = entity.labels;
    // labels.pt.value = "Lisboa"
@@ -517,6 +525,7 @@ export async function getDestinationLocalized(
 ```
 
 **Tarefas:**
+
 - [ ] Criar model `DestinationTranslation` no schema → migrate
 - [ ] Expandir parser Wikivoyage para EN/ES/FR além de PT
   - [ ] `npm run wikivoyage:extract:en`
@@ -536,6 +545,7 @@ export async function getDestinationLocalized(
 ---
 
 ### VID-1 — Vídeos: só se for verificado
+
 **Severidade:** 🟡 P2
 
 Hoje `videoUrl?: string` existe em `DestinationDetailData` mas provavelmente vazio.
@@ -607,6 +617,7 @@ model WvDestinationVideo {
 ```
 
 **Tarefas:**
+
 - [ ] Criar model `WvDestinationVideo` → migrate
 - [ ] Script `scripts/enrich-destination-videos.mjs` – busca Commons category, filtra video
 - [ ] `DestinationDetailPage`: só mostra toggle Video/Foto se `video.isVerified === true`
@@ -618,6 +629,7 @@ model WvDestinationVideo {
 ---
 
 ### VAL-1 — Validação de imagem: "é mesmo deste lugar?"
+
 **Severidade:** 🟡 P2 – essencial se usares Unsplash/Openverse
 
 É aqui que Unsplash falha sempre. Como garantir?
@@ -717,6 +729,7 @@ def validate_image(image_url: str, candidate_labels: list[str]):
 Requirements: `transformers`, `torch`, `pillow` – adiciona em `ml-service/pyproject.toml`.
 
 **Tarefas:**
+
 - [ ] Criar `src/lib/travel/images/validate-image.ts` com heurísticas (tags, filename, trusted_source)
 - [ ] ml-service: adicionar endpoint `POST /validate-image` com CLIP zero-shot
   - [ ] Adicionar `transformers`, `torch`, `pillow` ao `ml-service/pyproject.toml`
@@ -733,6 +746,7 @@ Requirements: `transformers`, `torch`, `pillow` – adiciona em `ml-service/pypr
 ---
 
 ### IMG-3 — Performance de imagens: next/image + blur
+
 **Severidade:** 🟡 P2 – LCP killer
 
 Já coberto em `AUDIT-AKMLEVA.md` § UI-5, mas reforço aqui porque é crítico para cards de destino.
@@ -798,9 +812,11 @@ export default {
 **Blur placeholder:**
 
 Opção A – gerar no build:
+
 ```bash
 npm install plaiceholder sharp
 ```
+
 ```ts
 import { getPlaiceholder } from 'plaiceholder';
 const { base64 } = await getPlaiceholder(imageUrl);
@@ -810,6 +826,7 @@ const { base64 } = await getPlaiceholder(imageUrl);
 Opção B – usar thumb 20px do Commons como blur (já tens `thumbUrl`).
 
 **Tarefas:**
+
 - [ ] Trocar `<img>` → `<Image>` em:
   - [ ] `DestinationDetailPage` – hero (`priority={true}`)
   - [ ] `DestinationGallery` + lightbox
@@ -976,6 +993,7 @@ model DestinationTranslation {
 ```
 
 Após editar o schema:
+
 ```bash
 npx prisma migrate dev --name destination_media_enrichment
 npx prisma generate
@@ -1026,3 +1044,13 @@ ml-service/app/api/
 *Ver também:*  
 *- `AUDIT-AKMLEVA.md` – auditoria técnica completa (backend, DB, APIs, UI)*  
 *- `FORMULARIO-MELHORIAS.md` – auditoria UX do formulário de preferências*
+
+---
+
+## See Also
+
+- [VIDEOS-DESTINO-IMPLEMENTACAO.md](./VIDEOS-DESTINO-IMPLEMENTACAO.md) — video integration plan for destination cards
+- [TRIP_RECOMMENDATION.md](./TRIP_RECOMMENDATION.md) — recommendation engine that feeds destination cards
+- [TRAVEL_CATALOG_API.md](./TRAVEL_CATALOG_API.md) — catalog API providing destination data rendered in cards
+- [ENRICHMENT-SUMMARY.md](./ENRICHMENT-SUMMARY.md) — enrichment pipeline that populates images and metadata
+- [Documentation Index](./README.md)

@@ -40,6 +40,7 @@
 | Sentry | `@sentry/nextjs` | `@sentry/node` + `@sentry/react` |
 
 **Escopo actual:**
+
 - ~40 rotas de API
 - ~40 páginas (16 componentes de página)
 - Auth com 3 providers (Credentials, Google, Facebook)
@@ -190,6 +191,7 @@ apps/web-tanstack/
 ### 1.4 Arquivos de configuração
 
 **`vite.config.ts`:**
+
 ```ts
 import { defineConfig } from 'vite'
 import { tanstackStart } from '@tanstack/react-start/plugin/vite'
@@ -206,6 +208,7 @@ export default defineConfig({
 ```
 
 **`tsconfig.json`:**
+
 ```json
 {
   "compilerOptions": {
@@ -230,7 +233,7 @@ export default defineConfig({
 
 - [ ] Todas as rotas listadas aparecem no `routeTree.gen.ts`
 - [ ] Navegação entre páginas funciona (client-side)
-- [ ] Layout nesting funciona (_auth, _protected)
+- [ ] Layout nesting funciona (_auth,_protected)
 - [ ] Tailwind CSS aplica estilos corretamente
 
 ---
@@ -243,6 +246,7 @@ export default defineConfig({
 ### 2.1 Substituir next-auth por Better Auth
 
 **Porquê Better Auth:**
+
 - Nativo para TanStack Start / React
 - Prisma adapter official
 - Server functions nativas (sem catch-all route)
@@ -384,6 +388,7 @@ export const internalGuard = createMiddleware().server(async ({ next, request })
 ### 3.1 Estratégia: Paraglide
 
 **Porquê Paraglide:**
+
 - Plugin Vite nativo — compile-time translations
 - Funções tipadas (zero runtime overhead)
 - SSR middleware official para TanStack Start
@@ -499,6 +504,7 @@ function MyComponent() {
 ### 4.1 Substituir `generateMetadata` por `head()`
 
 **Padrão Next.js:**
+
 ```tsx
 export async function generateMetadata({ params }) {
   return {
@@ -510,6 +516,7 @@ export async function generateMetadata({ params }) {
 ```
 
 **Padrão TanStack:**
+
 ```tsx
 export const Route = createFileRoute('/destinations/$slug')({
   loader: async ({ params }) => ({
@@ -846,6 +853,7 @@ export default createStart({
 ### 6.3 Detalhes por middleware
 
 #### Tenant Resolution
+
 ```tsx
 // src/middleware/tenant.ts
 export const tenantMiddleware = createMiddleware().server(async ({ next, request }) => {
@@ -862,6 +870,7 @@ export const tenantMiddleware = createMiddleware().server(async ({ next, request
 ```
 
 #### Rate Limiting
+
 ```tsx
 // src/middleware/rate-limit.ts — manter Upstash Redis
 // 3 tiers: public (30/min), auth (120/min), admin (1000/min)
@@ -870,6 +879,7 @@ export const tenantMiddleware = createMiddleware().server(async ({ next, request
 ```
 
 #### CORS
+
 ```tsx
 // src/middleware/cors.ts
 const ALLOWED_ORIGINS = [
@@ -897,6 +907,7 @@ export const corsMiddleware = createMiddleware().server(async ({ next, request }
 ```
 
 #### Security Headers
+
 ```tsx
 // src/middleware/security-headers.ts
 export const securityHeadersMiddleware = createMiddleware().server(async ({ next }) => {
@@ -1143,16 +1154,19 @@ function Destinations() {
 ### 9.1 Deploy — Node.js Server (recomendado)
 
 **Build:**
+
 ```bash
 npm run build  # vite build → .output/
 ```
 
 **Start:**
+
 ```bash
 node .output/server/index.mjs
 ```
 
 **Output structure:**
+
 ```
 .output/
 ├── server/
@@ -1292,9 +1306,11 @@ jobs:
 ### 10.1 Sentry
 
 **Substituir:**
+
 - `@sentry/nextjs` → `@sentry/node` (server) + `@sentry/react` (client)
 
 **Config server:**
+
 ```ts
 // src/lib/sentry/server.ts
 import * as Sentry from '@sentry/node'
@@ -1307,6 +1323,7 @@ Sentry.init({
 ```
 
 **Config client:**
+
 ```tsx
 // src/lib/sentry/client.ts
 import * as Sentry from '@sentry/react'
@@ -1320,6 +1337,7 @@ Sentry.init({
 ```
 
 **Source maps:**
+
 ```ts
 // vite.config.ts
 import { sentryVitePlugin } from '@sentry/vite-plugin'
@@ -1388,6 +1406,7 @@ export default defineConfig({
 ```
 
 **Mudanças:**
+
 - Atualizar path aliases
 - Substituir imports `next/*` por mocks ou equivalentes
 - Testes de API routes → testar server functions diretamente
@@ -1412,6 +1431,7 @@ export default defineConfig({
 ```
 
 **Mudanças:**
+
 - Trocar server start command
 - URLs podem mudar (verificar se routes são idênticas)
 - Manter testes de auth, preferences, accessibility
@@ -1517,18 +1537,21 @@ export default defineConfig({
 ## Checklist de Validação
 
 ### Fase 0 — Preparação
+
 - [ ] POC compila e roda com `npm run dev`
 - [ ] `@akmleva/db` importa e `prisma` funciona no server
 - [ ] TypeScript compila sem erros com paths do monorepo
 - [ ] Turbo detecta o novo workspace
 
 ### Fase 1 — Router + Layout
+
 - [ ] Todas as rotas listadas no `routeTree.gen.ts`
 - [ ] Navegação client-side funciona
-- [ ] Layout nesting funciona (_auth, _protected)
+- [ ] Layout nesting funciona (_auth,_protected)
 - [ ] Tailwind CSS aplica estilos
 
 ### Fase 2 — Autenticação
+
 - [ ] Login com Credentials funciona
 - [ ] Login com Google OAuth funciona
 - [ ] Login com Facebook OAuth funciona
@@ -1539,12 +1562,14 @@ export default defineConfig({
 - [ ] 2FA TOTP funciona
 
 ### Fase 3 — i18n
+
 - [ ] Idioma default é `pt`
 - [ ] Troca de idioma funciona
 - [ ] Cookie `locale` persiste
 - [ ] `Accept-Language` é respeitado
 
 ### Fase 4 — SEO
+
 - [ ] Title tags formatados corretamente
 - [ ] OpenGraph tags presentes
 - [ ] Canonical URLs corretas
@@ -1553,12 +1578,14 @@ export default defineConfig({
 - [ ] robots.txt e sitemap.xml funcionam
 
 ### Fase 5 — API Routes
+
 - [ ] Todas as 40+ APIs respondem
 - [ ] Validação Zod funciona
 - [ ] Cache headers aplicados
 - [ ] Error responses consistentes
 
 ### Fase 6 — Middleware
+
 - [ ] Tenant resolution funciona
 - [ ] CORS headers aplicados
 - [ ] Security headers presentes
@@ -1567,37 +1594,52 @@ export default defineConfig({
 - [ ] 404 logging funciona
 
 ### Fase 7 — UI Components
+
 - [ ] shadcn/ui funciona
 - [ ] Page components renderizam
 - [ ] Travel components funcionam
 - [ ] Zero erros de import `next/*`
 
 ### Fase 8 — Data Fetching
+
 - [ ] Loaders carregam dados
 - [ ] Search params tipados
 - [ ] Mutations funcionam
 - [ ] React Query funciona
 
 ### Fase 9 — Deploy + CI/CD
+
 - [ ] Build produz `.output/`
 - [ ] Server inicia corretamente
 - [ ] Docker build funciona
 - [ ] CI pipeline verde
 
 ### Fase 10 — Monitoramento
+
 - [ ] Sentry captura erros
 - [ ] Source maps funcionam
 - [ ] Web vitais reportados
 
 ### Fase 11 — Testes
+
 - [ ] Unit tests passam
 - [ ] E2E tests passam
 - [ ] A11y audit passa
 - [ ] Coverage ≥ 80%
 
 ### Fase 12 — Cutover
+
 - [ ] Staging validado por 1-2 semanas
 - [ ] DNS switch feito
 - [ ] Zero erros pós-cutover
 - [ ] Performance validada
 - [ ] AGENTS.md atualizado
+
+---
+
+## See Also
+
+- [AUDIT-AKMLEVA.md](./AUDIT-AKMLEVA.md) — audit that recommended the migration
+- [ENHANCED_TRAVEL_PREFERENCES_REFACTORING.md](./ENHANCED_TRAVEL_PREFERENCES_REFACTORING.md) — component refactoring in the context of this migration
+- [FORMULARIO-MELHORIAS.md](./FORMULARIO-MELHORIAS.md) — form UX improvements planned alongside the migration
+- [Documentation Index](./README.md)

@@ -83,3 +83,13 @@
 | `scripts/geocode-hotels-combined.mjs` | Pipeline: local index → dest copy → Photon |
 | `scripts/geocode-wv-hotels-parallel.mjs` | Parallel Photon/Nominatim geocoder |
 | `scripts/_copy-dest-coords-to-hotels.mjs` | Copy dest coords to hotels (0 API calls) |
+
+---
+
+## See Also
+
+- [ENRICHMENT-SUMMARY.md](./ENRICHMENT-SUMMARY.md) — enrichment pipeline that depends on geocoded coordinates
+- [OSM_HOTELS.md](./OSM_HOTELS.md) — Photon geocoding used for hotel coordinates
+- [TRAVEL_CATALOG_API.md](./TRAVEL_CATALOG_API.md) — catalog API serving destinations with geocoded data
+- [DATA_COMPLIANCE.md](./DATA_COMPLIANCE.md) — GeoNames license and caching policy
+- [Documentation Index](./README.md)

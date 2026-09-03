@@ -84,6 +84,7 @@ O Sentry está configurado em três camadas — `sentry.client.config.ts`, `sent
 ### Pipeline de dados geográficos
 
 O sistema de enriquecimento de destinos é genuinamente sofisticado:
+
 - Extração de Wikivoyage (PT + EN) com dump parser em Python
 - Geocodificação paralela com retoma automática em caso de interrupção
 - Enriquecimento com múltiplas fontes: Geonames, Wikidata, Overpass, UNESCO, Google Maps
@@ -223,6 +224,7 @@ lighthouse-home.json
 ```
 
 **Solução:**
+
 - Summaries de processos → mover para `/docs/` ou remover
 - Relatórios Lighthouse → mover para `/docs/lighthouse/` ou ignorar pelo git
 - `COMMIT_MSG.md` → remover (os commits devem ser auto-explicativos)
@@ -257,6 +259,7 @@ lighthouse-home.json
 **Problema:** O `package.json` contém mais de 100 scripts npm. Isto torna a manutenção difícil e a descoberta quase impossível para novos colaboradores.
 
 **Solução:**
+
 - Agrupar os scripts operacionais de dados num `Makefile` ou ficheiro de tarefas separado
 - Documentar os scripts mais usados no README com descrição
 - Considerar usar `turbo.json` para orquestrar tarefas em vez de encadear npm scripts
@@ -270,6 +273,7 @@ lighthouse-home.json
 **Situação atual:** 92 commits todos diretamente em `main`, sem branches de feature visíveis nem Pull Requests.
 
 **Recomendação:**
+
 - Proteger o branch `main` no GitHub (Settings → Branches → Branch protection rules)
 - Requerer: revisão de pelo menos 1 pessoa + status checks (CI) antes de merge
 - Trabalhar em branches `feature/`, `fix/`, `chore/` e fazer merge via PR
@@ -304,6 +308,7 @@ lighthouse-home.json
 **Consideração:** À medida que o ML service cresce, a mistura de tooling Python/Node num mesmo repositório aumenta a complexidade de CI e onboarding.
 
 **Opções:**
+
 - Manter no monorepo mas com documentação clara das dependências Python (`requirements.txt` próprio, virtualenv documentado)
 - Extrair para repositório separado com CI independente (recomendado a médio prazo)
 
@@ -320,6 +325,7 @@ E adicionar ao CI um threshold mínimo para evitar regressão.
 ### 6.6 Documentação de API interna
 
 Com uma base de código desta escala, considerar:
+
 - **Swagger/OpenAPI** para as API routes do Next.js
 - **TSDoc** nos packages partilhados (`@akmleva/shared`, `@akmleva/ui`, `@akmleva/auth`)
 
@@ -356,20 +362,29 @@ O `docker-compose.yml` existe — verificar se cobre o setup completo para um no
 
 ### 🟡 Curto prazo (próximas 2 semanas)
 
-5. Mover CSVs e JSONs de dados da raiz para `/data/` ou ignorar pelo git
-6. Mover summaries e relatórios Lighthouse para `/docs/`
-7. Fixar `next-auth` sem o operador `^`
-8. Corrigir inconsistência `engines` (yarn vs npm)
-9. Ativar proteção do branch `main` no GitHub
+1. Mover CSVs e JSONs de dados da raiz para `/data/` ou ignorar pelo git
+2. Mover summaries e relatórios Lighthouse para `/docs/`
+3. Fixar `next-auth` sem o operador `^`
+4. Corrigir inconsistência `engines` (yarn vs npm)
+5. Ativar proteção do branch `main` no GitHub
 
 ### 🟢 Médio prazo (próximo mês)
 
-10. Implementar CI/CD completo com lint + type-check + tests em cada PR
-11. Adotar Conventional Commits e criar primeiro Release
-12. Reduzir e documentar os scripts npm mais usados
-13. Verificar e documentar o setup Docker para desenvolvimento local
-14. Avaliar extração do ML service para repositório separado
+ 1. Implementar CI/CD completo com lint + type-check + tests em cada PR
+ 2. Adotar Conventional Commits e criar primeiro Release
+ 3. Reduzir e documentar os scripts npm mais usados
+ 4. Verificar e documentar o setup Docker para desenvolvimento local
+ 5. Avaliar extração do ML service para repositório separado
 
 ---
 
 *Auditoria realizada com base na análise do repositório público, estrutura de ficheiros, `package.json`, `.env.prod`, e documentação README. Para uma auditoria mais profunda do código fonte (lógica de negócio, segurança de API routes, qualidade de testes), seria necessário acesso ao código fonte completo.*
+
+---
+
+## See Also
+
+- [AUDIT-AKMLEVA.md](./AUDIT-AKMLEVA.md) — first technical audit pass
+- [SCHEMA_MIGRATION_PLAN.md](./SCHEMA_MIGRATION_PLAN.md) — migration plan addressing issues found across audits
+- [SCHEMA_REFACTORING_PHASE2.md](./SCHEMA_REFACTORING_PHASE2.md) — phase 2 refactoring follow-up
+- [Documentation Index](./README.md)

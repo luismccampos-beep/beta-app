@@ -257,3 +257,13 @@ For a travel platform, attribution should be displayed per data type:
 - User personal data (auth) is handled separately via Prisma + PostgreSQL — ensure proper retention policies are in place
 - If hotel guest data is ever imported from third parties, a DPA (Data Processing Agreement) is required
 - Cookie consent and analytics tracking are outside the scope of this document — handled via the web app's cookie consent mechanism
+
+---
+
+## See Also
+
+- [CULTURAL_DATA_ARCHITECTURE.md](./CULTURAL_DATA_ARCHITECTURE.md) — ingestion strategy for sources covered here (OSM, Wikidata, UNESCO)
+- [ENRICHMENT-SUMMARY.md](./ENRICHMENT-SUMMARY.md) — pipeline that consumes the sources tracked in this document
+- [GEOCODING-SUMMARY.md](./GEOCODING-SUMMARY.md) — GeoNames usage and caching policy
+- [OSM_HOTELS.md](./OSM_HOTELS.md) — OSM/Wikidata hotel integration and its attribution requirements
+- [Documentation Index](./README.md)

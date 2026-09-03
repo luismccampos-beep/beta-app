@@ -30,6 +30,7 @@
 ## Diagnóstico por área
 
 ### F1 — Zod schema com 35+ campos obrigatórios logo no step 1
+
 **Severidade:** 🔴 P0 – Bloqueador de conversão
 
 **Local:** `EnhancedTravelPreferencesForm.tsx` linhas 27–70
@@ -125,6 +126,7 @@ export type QuickStartPreferences = z.infer<typeof quickStartSchema>;
 ```
 
 **Tarefas:**
+
 - [ ] Criar `src/lib/travel/schemas/preferences.schema.ts` com `quickStartSchema` + `travelPreferencesSchema`
 - [ ] Mover schema do componente para o ficheiro partilhado
 - [ ] Atualizar `DEFAULT_TRAVEL_PREFERENCES` com defaults sensatos em TODOS os campos
@@ -135,9 +137,11 @@ export type QuickStartPreferences = z.infer<typeof quickStartSchema>;
 ---
 
 ### F2 — 6 steps é demasiado. Ordem errada.
+
 **Severidade:** 🔴 P0
 
 **Atual:**
+
 ```
 0. Style          → nationality, travelStyles, países, continentes, destinos, purpose
 1. Budget         → moeda, budget range, budget profile, CABIN CLASS (!)
@@ -181,6 +185,7 @@ O utilizador quer **ver destinos**, não configurar `privacyLevel` e `dataSharin
 ```
 
 **Tarefas:**
+
 - [ ] Redesenhar wizard para 3 steps: `Destino → Budget → Resultados`
 - [ ] Mover os outros 32 campos para um painel "Refinar preferências" na página `/results`
 - [ ] Ou: criar 2 modos
@@ -193,6 +198,7 @@ O utilizador quer **ver destinos**, não configurar `privacyLevel` e `dataSharin
 ---
 
 ### F3 — TravelStyleSection: 4 pickers aninhados em Popover
+
 **Severidade:** 🟠 P1
 
 **Local:** `TravelStyleSection.tsx` linhas 120–270
@@ -271,6 +277,7 @@ useEffect(() => {
 ```
 
 **Tarefas:**
+
 - [ ] Fundir `preferredCountries` + `preferredContinents` num único picker com grupos
 - [ ] Derivar continentes automaticamente a partir dos países escolhidos
 - [ ] Destinos: trocar Popover+Command por Combobox com `freeSolo=true`
@@ -282,11 +289,13 @@ useEffect(() => {
 ---
 
 ### F4 — BudgetSection mistura Budget + Cabin Class
+
 **Severidade:** 🟠 P1
 
 **Local:** `BudgetSection.tsx`
 
 Tens no mesmo step:
+
 - Moeda
 - Perfil diário (mochileiro/conforto/luxo) ← ótimo
 - Budget range slider €1.000–€50.000
@@ -336,6 +345,7 @@ const BUDGET_CHIPS = [
 ```
 
 **Tarefas:**
+
 - [ ] Substituir budget slider por 4 chips rápidos (Económico / Conforto / Premium / Luxo)
 - [ ] Manter slider como "afinação" opcional dentro de `<details>`
 - [ ] Mover `cabinClass` do `BudgetSection` → `FlightAccommodationSection`
@@ -346,6 +356,7 @@ const BUDGET_CHIPS = [
 ---
 
 ### F5 — Validação bloqueia navegação
+
 **Severidade:** 🟠 P1
 
 **Local:** `EnhancedTravelPreferencesForm.tsx` linhas 150–210, 660–690
@@ -407,6 +418,7 @@ const validateStep = async (step: number) => {
 ```
 
 **Tarefas:**
+
 - [ ] Opção recomendada: remover validação bloqueante entre steps – validar só no submit
 - [ ] OU: manter validação mas adicionar auto-scroll + focus + shake no campo com erro
 - [ ] Substituir toast genérico "validationError" por mensagem específica do campo
@@ -417,6 +429,7 @@ const validateStep = async (step: number) => {
 ---
 
 ### F6 — AI Insights dispara a cada keystroke
+
 **Severidade:** 🟡 P2
 
 **Local:** `EnhancedTravelPreferencesForm.tsx` linhas 245–290
@@ -460,6 +473,7 @@ useEffect(() => { generateInsights(); }, [prefsHash]);
 ```
 
 **Tarefas:**
+
 - [ ] Trocar AI insights automático → botão "Gerar insights ✨" on-demand
 - [ ] OU: disparar só quando muda de step, não a cada campo
 - [ ] Se manter automático: aumentar debounce para 3000ms + fazer hash só dos 3 campos chave
@@ -470,6 +484,7 @@ useEffect(() => { generateInsights(); }, [prefsHash]);
 ---
 
 ### F7 — Sem "saltar" / progresso só em localStorage
+
 **Severidade:** 🟢 P3
 
 Draft fica em localStorage. Troca de dispositivo = perde tudo. Não há "Guardar e continuar depois".
@@ -491,6 +506,7 @@ useEffect(() => {
 ```
 
 UI:
+
 ```tsx
 <div className="flex justify-between items-center text-sm text-gray-500 mb-4">
   <span>Passo {currentStep + 1} de {totalSteps} · Falta ~{remainingMinutes} min</span>
@@ -501,6 +517,7 @@ UI:
 ```
 
 **Tarefas:**
+
 - [ ] Criar endpoint `PUT /api/user/preferences/draft` – guarda JSON parcial
 - [ ] Auto-save no servidor (debounced 2s) além do localStorage
 - [ ] Ao abrir o form: tentar carregar draft do servidor primeiro, fallback localStorage
@@ -512,6 +529,7 @@ UI:
 ---
 
 ### F8 — Step indicators cortados em mobile
+
 **Severidade:** 🟡 P2
 
 **Local:** `EnhancedTravelPreferencesForm.tsx` linhas 430–490
@@ -545,6 +563,7 @@ Em iPhone SE (375px) os 6 círculos não cabem, scroll horizontal escondido.
 ```
 
 **Tarefas:**
+
 - [ ] Mobile (< md): esconder círculos, mostrar só "Passo 2 de 3: Orçamento" + progress bar
 - [ ] Desktop (≥ md): manter círculos clicáveis
 - [ ] Testar em: iPhone SE 375px, iPhone 14 390px, Pixel 412px
@@ -554,6 +573,7 @@ Em iPhone SE (375px) os 6 círculos não cabem, scroll horizontal escondido.
 ---
 
 ### F9 — Sem atalhos / smart defaults
+
 **Severidade:** 🟡 P2
 
 Cada campo vazio = 1 clique a mais. Com 35 campos = muito atrito.
@@ -608,6 +628,7 @@ useEffect(() => {
 ```
 
 **Tarefas:**
+
 - [ ] Criar `src/lib/travel/smart-defaults.ts`
 - [ ] Nacionalidade: detetar via `navigator.language` + GeoIP fallback
 - [ ] Moeda: mapear país → moeda automaticamente
@@ -623,9 +644,11 @@ useEffect(() => {
 ---
 
 ### F10 — CTA final assustador
+
 **Severidade:** 🟢 P3
 
 **Atual:**
+
 ```tsx
 <Button>
   {isProcessing ? (
@@ -670,12 +693,14 @@ useEffect(() => {
 ```
 
 Princípios:
+
 - CTA orientado a **resultado**, não a tarefa ("Ver as minhas viagens" > "Complete Profile")
 - Sem "AI" / "Processing" assustador – utilizador quer viagens, não IA
 - Seta → indica avanço, não fim
 - Microcopy de reassurance: "É rápido"
 
 **Tarefas:**
+
 - [ ] Trocar texto do botão: `"Complete Profile"` → `"Ver as minhas viagens →"`
 - [ ] Loading state: `"Processing with AI…"` → `"A preparar as tuas viagens…"`
 - [ ] Remover `setTimeout(600)` artificial – se o PUT for rápido, avança logo
@@ -707,18 +732,21 @@ Princípios:
 ### Roadmap do formulário
 
 **Sprint Form 1 – Conversão imediata (2–3 dias)**
+
 - [x] F1 – Schema com 3 campos obrigatórios + defaults
 - [x] F5 – Validação não bloqueia (ou com scroll+focus exemplar)
 - [x] F10 – CTA orientado a resultado
 - [x] F4 – Budget chips em vez de slider
 
 **Sprint Form 2 – Fluidez (3–5 dias)**
+
 - [x] F2 – Reduzir para 3 steps, resto em "Refinar"
 - [x] F3 – Picker unificado Países/Continentes + autocomplete livre
 - [x] F8 – Step indicator mobile simplificado
 - [x] F9 – Smart defaults (país, moeda, línguas)
 
 **Sprint Form 3 – Polimento (2–3 dias)**
+
 - [x] F6 – AI insights on-demand
 - [x] F7 – Draft no servidor + "saltar passo"
 - [x] Testes E2E do fluxo completo com Playwright
@@ -801,12 +829,14 @@ O `EnhancedTravelPreferencesForm` passa a ser `/preferences/advanced` – "Refin
 ## Checklist de implementação completa
 
 ### Schema & Validação
+
 - [ ] Criar `src/lib/travel/schemas/preferences.schema.ts`
 - [ ] `quickStartSchema` com 3 campos obrigatórios
 - [ ] `travelPreferencesSchema` com defaults em tudo
 - [ ] Testes Zod: quick schema aceita mínimo, full schema preenche defaults
 
 ### UX / Flow
+
 - [ ] Reduzir wizard para 3 steps
 - [ ] Mover 32 campos avançados para painel "Refinar" em `/results`
 - [ ] Validação não bloqueia navegação (ou scroll+focus exemplar)
@@ -815,6 +845,7 @@ O `EnhancedTravelPreferencesForm` passa a ser `/preferences/advanced` – "Refin
 - [ ] Step indicator mobile: só "Passo N de 3" + barra
 
 ### Componentes de input
+
 - [ ] Países + Continentes → picker unificado com grupos
 - [ ] Destinos → Combobox com `freeSolo=true`
 - [ ] Budget range → 4 chips + slider opcional em `<details>`
@@ -822,6 +853,7 @@ O `EnhancedTravelPreferencesForm` passa a ser `/preferences/advanced` – "Refin
 - [ ] Cabin class → mover de BudgetSection para FlightAccommodationSection
 
 ### Smart defaults
+
 - [ ] `nationality` ← `navigator.language` + GeoIP
 - [ ] `currency` ← mapear país → moeda
 - [ ] `languages` ← `navigator.languages`
@@ -830,12 +862,14 @@ O `EnhancedTravelPreferencesForm` passa a ser `/preferences/advanced` – "Refin
 - [ ] Aeroporto de origem via geolocalização
 
 ### Performance
+
 - [ ] AI insights on-demand (botão) em vez de automático
 - [ ] Debounce 3000ms + hash só dos campos chave (se manter auto)
 - [ ] Cache de insights no servidor via `LlmCache`
 - [ ] Draft auto-save no servidor (debounced 2s)
 
 ### CTA & Conversão
+
 - [ ] Botão: `"Complete Profile"` → `"Ver as minhas viagens →"`
 - [ ] Loading: `"Processing with AI…"` → `"A preparar as tuas viagens…"`
 - [ ] Remover `setTimeout` artificial de 600ms + 900ms
@@ -843,6 +877,7 @@ O `EnhancedTravelPreferencesForm` passa a ser `/preferences/advanced` – "Refin
 - [ ] Microcopy: "É rápido – menos de 2 segundos"
 
 ### Acessibilidade & Mobile
+
 - [ ] Step indicator simplificado em mobile
 - [ ] Touch targets ≥ 44×44px
 - [ ] `aria-invalid`, `aria-describedby` nos campos com erro
@@ -850,6 +885,7 @@ O `EnhancedTravelPreferencesForm` passa a ser `/preferences/advanced` – "Refin
 - [ ] Testar em iPhone SE, Pixel, iPad
 
 ### Analytics
+
 - [ ] `PreferenceEvent` para cada `step_completed`
 - [ ] Track: drop-off por step, tempo por step, campos saltados
 - [ ] Dashboard: taxa conversão quick vs enhanced
@@ -859,3 +895,11 @@ O `EnhancedTravelPreferencesForm` passa a ser `/preferences/advanced` – "Refin
 
 *Documento gerado em 2026-06-24 – Auditoria UX Formulário AKMLEVA*  
 *Ver também: `AUDIT-AKMLEVA.md` – auditoria técnica completa (backend, DB, APIs, UI)*
+
+---
+
+## See Also
+
+- [ENHANCED_TRAVEL_PREFERENCES_REFACTORING.md](./ENHANCED_TRAVEL_PREFERENCES_REFACTORING.md) — refactoring plan for the same form component
+- [TRIP_RECOMMENDATION.md](./TRIP_RECOMMENDATION.md) — recommendation engine driven by the preferences collected here
+- [Documentation Index](./README.md)
