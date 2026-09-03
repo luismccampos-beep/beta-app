@@ -1,0 +1,7 @@
+item_id,type,subtype,tags,nome,pais,continente,clima
+svc-hotel-1,accommodation,hotel,luxury|citybreak,Hotel Teste,Portugal,Europa,mediterrânico
+svc-act-09,activity,tour,adventure,Tour Teste,Portugal,Europa,mediterrânico
+svc-xfer-02,transportation,transfer,,Transfer Teste,Portugal,Europa,
+dest-0001,destination,cidade,cidade|continental|América,Tecomán,México,América,continental
+dest-0053,destination,praia,praia|family,Praia Teste,Brasil,América,tropical
+svc-pkg-01,package,bundle,family|wellness,Pacote Teste,Portugal,Europa,mediterrânico

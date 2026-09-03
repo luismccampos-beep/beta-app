@@ -1,0 +1,10 @@
+user_id,item_id,score
+1,svc-hotel-1,5
+1,svc-act-09,4
+1,dest-0053,3
+2,svc-hotel-1,4
+2,svc-pkg-01,5
+2,svc-xfer-02,2
+3,dest-0001,4
+3,svc-act-09,3
+3,svc-pkg-01,4
