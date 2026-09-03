@@ -6,6 +6,7 @@ import {
   createRootRoute,
   useRouterState,
 } from '@tanstack/react-router'
+import { useEffect } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 import { ThemeProvider } from '../components/ThemeProvider'
 import { CookieBanner } from '../components/CookieBanner'
@@ -37,7 +38,7 @@ export const Route = createRootRoute({
     const serverLocale = (serverContext as { locale?: string } | undefined)?.locale
     const cookieLocale =
       typeof document !== 'undefined'
-        ? document.cookie.match(/locale=([^;]+)/)?.[1]
+        ? document.cookie.match(/(?:^|;\s*)locale=([^;]+)/)?.[1]
         : undefined
     const locale =
       (serverLocale && isValidLocale(serverLocale) ? serverLocale : undefined) ??
@@ -84,6 +85,12 @@ function RootComponent() {
   const { locale: contextLocale } = Route.useRouteContext()
   const locale: Locale = contextLocale && isValidLocale(contextLocale) ? contextLocale : defaultLocale
   const t = useT()
+
+  // Pre-hydration feedback: mark <html> once React has hydrated so
+  // data-wait-for-js elements (e.g. LanguageSwitcher) become interactive.
+  useEffect(() => {
+    document.documentElement.setAttribute('data-hydrated', 'true')
+  }, [])
 
   return (
     <html lang={locale} suppressHydrationWarning>

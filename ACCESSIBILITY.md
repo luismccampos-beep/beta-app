@@ -1,7 +1,7 @@
 # Accessibility Statement — AKMLEVA
 
-> **Last updated:** June 27, 2026,  
-> **Applies to:** [www.akmleva.com](https://www.akmleva.com) and related subdomains  
+> **Last updated:** August 31, 2026,
+> **Applies to:** [www.akmleva.com](https://www.akmleva.com) and related subdomains
 > **Owner:** AKMLEVA Viagens Lda.
 
 AKMLEVA is committed to making our AI-powered travel platform accessible to the widest possible audience, regardless of ability or the technology used to access it. We believe travel discovery is a universal right and that the tools we build should reflect that.
@@ -23,7 +23,7 @@ We aim to meet the **Web Content Accessibility Guidelines (WCAG) 2.1 Level AA** 
 ## Measurable Goals
 
 | Goal | Target | Status |
-|---|---|---|
+| --- | --- | --- |
 | WCAG 2.1 Level AA conformance | Full AA | ![In progress](https://img.shields.io/badge/Status-In%20Progress-yellow) |
 | Lighthouse Accessibility score | ≥ 95 | ![Current: ~80](https://img.shields.io/badge/Current-%7E80-orange) |
 | axe-core audit (automated) | Zero critical/serious violations | ![In progress](https://img.shields.io/badge/Status-In%20Progress-yellow) |
@@ -85,8 +85,8 @@ Progress is tracked in our internal audit (see [`docs/AUDIT-AKMLEVA.md`](docs/AU
 ## Known Limitations & Workarounds
 
 | Limitation | Impact | Workaround | Tracking |
-|---|---|---|---|
-| Accessibility audit is ongoing — some older pages may not meet AA standards | Users may encounter focus-order issues or missing ARIA labels on legacy pages | Use the browser’s zoom (up to 200 %) and custom stylesheets as a temporary workaround | [#UI-7 audit](docs/AUDIT-AKMLEVA.md) |
+| --- | --- | --- | --- |
+| Accessibility audit is ongoing — some older pages may not meet AA standards | Users may encounter focus-order issues or missing ARIA labels on legacy pages | Use the browser's zoom (up to 200 %) and custom stylesheets as a temporary workaround | [#UI-7 audit](docs/AUDIT-AKMLEVA.md) |
 | Interactive maps (Leaflet) have limited keyboard-driven pan & zoom | Users relying on keyboard may find maps difficult to navigate | Hotel and destination information is available in list/card format as an alternative | Tracking in audit |
 | AI chat recommendations may not be fully accessible in every turn | Screen reader users may miss dynamically inserted recommendation cards | Use the "Share as text" button to receive a plain-text summary of recommendations | Tracking in audit |
 | Some third-party embedded content (videos, booking widgets) may not fully conform | Users may experience inconsistent accessibility across embedded content | We work with vendors to improve — report specific issues via the template below | Report via issue template |
@@ -105,7 +105,7 @@ All UI changes **must** be tested with an accessibility testing tool before bein
 
 ```bash
 # Run axe-core on localhost (manual)
-npx @axe-core/cli http://localhost:3001/<path>
+npx @axe-core/cli http://localhost:3002/<path>
 
 # Run Storybook a11y tests (component-level)
 npx storybook dev   # Opens Storybook — check the "Accessibility" tab
@@ -123,7 +123,7 @@ When adding new components, follow these documentation guidelines:
 
 - **SVGs / Icons:** Provide `aria-label` or `title` elements. Use `aria-hidden="true"` for purely decorative icons.
 - **Images:** Always include `alt` text. If the image conveys information, describe it. If it is decorative, use `alt=""`.
-- **Interactive elements:** Document keyboard interactions, focus management, and any `aria-*` attributes in the component’s Storybook story.
+- **Interactive elements:** Document keyboard interactions, focus management, and any `aria-*` attributes in the component's Storybook story.
 - **Color:** Do not rely on color alone to convey meaning. Pair color cues with text labels or icons.
 
 ### CI/CD
@@ -141,12 +141,12 @@ Pull requests will **fail** if they introduce accessibility violations detected 
 ## Supported Environments
 
 | Platform | Support Level | Notes |
-|---|---|---|
+| --- | --- | --- |
 | **Web (desktop)** | ✅ Full | Windows, macOS, Linux — latest 2 major versions of Chrome, Firefox, Safari, Edge |
 | **Web (mobile)** | ✅ Full | iOS Safari, Android Chrome — responsive layout down to 320 px width |
 | **Terminal / CLI** | ❌ Not applicable | Data scripts are not user-facing |
-| **iOS app** | ⏳ Planned |
-| **Android app** | ⏳ Planned |
+| **iOS app** | ⏳ Planned | |
+| **Android app** | ⏳ Planned | |
 
 ---
 
@@ -217,8 +217,8 @@ Our documentation is often the first interface users and contributors touch. We 
 
 If you have questions, feedback, or need assistance using AKMLEVA with assistive technology, reach out:
 
-- **Email:** [support@akmleva.pt](mailto:support@akmleva.pt)  
-- **GitHub:** [open an issue](https://github.com/luismccampos-beep/beta-app/issues/new)  
+- **Email:** [support@akmleva.pt](mailto:support@akmleva.pt)
+- **GitHub:** [open an issue](https://github.com/luismccampos-beep/beta-app/issues/new)
 
 We aim to respond to accessibility inquiries within **3 business days**.
 

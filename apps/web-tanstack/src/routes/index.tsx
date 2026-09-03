@@ -438,7 +438,7 @@ function HomePage() {
           >
             {[
               { icon: Globe, value: 28, suffix: 'K+', label: t('destinations'), sub: 'Wikivoyage + Wikidata' },
-              { icon: Map, value: 190, suffix: '+', label: t('happyTravelers'), sub: 'Cobertura global' },
+              { icon: Map, value: 190, suffix: '+', label: t('statsCountries'), sub: 'Cobertura global' },
               { icon: Shield, value: 99, suffix: '%', label: t('aiAccuracy'), sub: 'AES-256 · GDPR' },
               { icon: Users, value: 50, suffix: 'K+', label: t('happyTravelers'), sub: 'Comunidade global' },
             ].map((stat) => (

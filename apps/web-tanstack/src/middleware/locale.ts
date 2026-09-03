@@ -5,7 +5,7 @@ export const localeMiddleware = createMiddleware({ type: 'request' }).server(
   async ({ next, request }) => {
     const cookieLocale = request.headers
       .get('cookie')
-      ?.match(/locale=([^;]+)/)?.[1] as Locale | undefined
+      ?.match(/(?:^|;\s*)locale=([^;]+)/)?.[1] as Locale | undefined
 
     const acceptLang = request.headers
       .get('accept-language')

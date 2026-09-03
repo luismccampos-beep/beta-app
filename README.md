@@ -18,7 +18,7 @@
 - [Documentation Index](#documentation-index)
 - [Scripts Reference](#scripts-reference)
 - [Data Pipeline](#data-pipeline)
-- [ML Service](#ml-service)
+- [ML Service (Python)](#ml-service-python)
 - [Docker Services](#docker-services)
 - [CI/CD](#cicd)
 - [Testing](#testing)
@@ -30,7 +30,7 @@
 ### Frontend
 
 | Technology | Version | Purpose |
-|---|---|---|
+| --- | --- | --- |
 | React | ^19.0.0 | UI Framework |
 | TanStack Start | ^1.168.27 | SSR & Routing (Vite) |
 | TypeScript | ^5.6.0 | Type Safety |
@@ -48,7 +48,7 @@
 ### Backend / Database
 
 | Technology | Version | Purpose |
-|---|---|---|
+| --- | --- | --- |
 | Node.js | >=20 | Runtime |
 | TanStack Server Functions | ^1.168.27 | API endpoints |
 | Prisma ORM | 6.17.1 | Database ORM (via `@akmleva/db`) |
@@ -60,7 +60,7 @@
 ### ML Service
 
 | Technology | Version | Purpose |
-|---|---|---|
+| --- | --- | --- |
 | Python | 3.10+ | ML Runtime |
 | FastAPI | — | API Server |
 | scikit-learn | — | ML Models |
@@ -71,7 +71,7 @@
 ### DevOps / Infra
 
 | Technology | Proposition |
-|---|---|
+| --- | --- |
 | Turborepo | Monorepo orchestration |
 | Docker | Postgres, Redis, Valhalla, OTP |
 | Cloudflare Workers | Production deployment (TanStack Start) |
@@ -79,7 +79,6 @@
 | GitHub Actions | CI/CD |
 | Playwright | E2E tests |
 | Vitest | Unit / integration tests |
-| Storybook | Component isolation |
 
 ---
 
@@ -123,12 +122,12 @@ npm run deploy         # Build + wrangler deploy
 
 ## Project Structure
 
-```
+```text
 ├── .github/workflows/         # CI/CD
 │   ├── ci.yml                 # Lint, type-check, test, build, e2e
-│   ├── deploy-migrations.yml  # Migrations + deploy
+│   ├── deploy-migrations.yml  # CI checks + Prisma migrate deploy (push to main)
 │   ├── security-audit.yml     # npm audit, osv-scanner, dependency review
-│   ├── chromatic.yml          # Storybook visual regression
+│   ├── db-telemetry-prune.yml # Scheduled pruning of DB telemetry/log tables
 │   └── accessibility.yml      # axe-core a11y audit
 ├── apps/                      # Application packages (npm workspaces)
 │   └── web-tanstack/          # TanStack Start app (Vite, Cloudflare Workers)
@@ -161,11 +160,10 @@ npm run deploy         # Build + wrangler deploy
 │   └── __tests__/
 ├── tools/                     # Workspace tools (npm workspaces)
 │   ├── data-pipeline/         # ETL scripts + pipeline package.json
-│   ├── scrapers/              # Web scraping tools
-│   └── geocoding/             # Geocoding scripts
+│   └── Database/              # Auxiliary datasets (restaurants, etc.)
 ├── docker-compose.yml
 ├── turbo.json
-├── wrangler.jsonc             # Cloudflare Workers config (apps/web-tanstack)
+└── apps/web-tanstack/wrangler.jsonc  # Cloudflare Workers config
 ```
 
 ---
@@ -173,7 +171,7 @@ npm run deploy         # Build + wrangler deploy
 ## Documentation Index
 
 | Document | Description |
-|---|---|
+| --- | --- |
 | `docs/AUDIT-AKMLEVA.md` | Technical audit: architecture, DB, services, roadmap |
 | `docs/Auditoria-2.md` | Second audit: security, stack, improvements plan |
 | `docs/DATA_COMPLIANCE.md` | Data source compliance, attribution, and licensing |
@@ -201,10 +199,10 @@ npm run deploy         # Build + wrangler deploy
 Scripts are organized into npm workspace packages for maintainability:
 
 | Workspace | Location | Purpose |
-|---|---|---|
+| --- | --- | --- |
 | Root | `./package.json` | Web app dev, build, test, DB |
 | Data Pipeline | `tools/data-pipeline/package.json` | Travel data ETL pipeline |
-| Scrapers | `tools/scrapers/package.json` | Google Maps & Google Hotels scraping |
+| ML Service | `ml-service/package.json` | Python FastAPI ML microservice scripts |
 
 ### Development (Root)
 
@@ -308,7 +306,7 @@ npm run otp:up
 
 The destination catalog is built through a multi-stage data pipeline:
 
-```
+```text
 Wikivoyage XML Dumps (PT + EN)
     │
     ▼
@@ -342,7 +340,7 @@ Wikivoyage XML Dumps (PT + EN)
 
 ---
 
-## ML Service
+## ML Service (Python)
 
 The Python microservice (`ml-service/`) provides:
 
@@ -358,9 +356,11 @@ Start the service:
 
 ```bash
 cd ml-service
-pip install -r requirements/requirements.txt
-uvicorn app.main:app --port 8000
+pip install -e ".[all]"     # or: npm run install:all
+npm run dev                 # uvicorn app.main:app --port 3002 --reload
 ```
+
+> **Note:** the ML service dev server also uses port **3002** — if running the web app locally at the same time, start one of them on a different port (e.g. `uvicorn app.main:app --port 8000`).
 
 Or via Docker:
 
@@ -373,7 +373,7 @@ docker compose up ml-service -d
 ## Docker Services
 
 | Service | Image | Port | Purpose |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | `postgres` | postgres:16-alpine | 5433 | Main database |
 | `redis` | redis:7-alpine | 6379 | Caching / sessions |
 | `valhalla` | gis-ops/docker-valhalla | 8002 | OSM routing engine |
@@ -388,7 +388,7 @@ docker compose up postgres redis -d     # Start only DB + cache
 
 ## CI/CD
 
-### Deploy Migrations
+### Deploy Migrations Workflow
 
 **Workflow**: `.github/workflows/deploy-migrations.yml`
 
@@ -401,52 +401,23 @@ docker compose up postgres redis -d     # Start only DB + cache
   4. `prisma migrate deploy`
   5. Optional: `prisma db seed`
 
-### Visual Regression Tests (Chromatic)
+### Other CI Workflows
 
-**Workflow**: `.github/workflows/chromatic.yml`
-
-- **Trigger**: Push/PR to `main` touching `src/`, `.storybook/`, or config files + manual dispatch
-- **Environment**: Ubuntu latest, Node 22
-- **Steps**:
-  1. Checkout with full history
-  2. Install dependencies
-  3. Build Storybook
-  4. Publish to Chromatic for visual regression testing
-
-**Configuration**:
-- **Project code**: `akmleva` (configured in `chromatic.json`)
-- **Token**: `CHROMATIC_TOKEN` secret in GitHub repository settings
-- **Storybook build**: `npm run storybook:build`
-- **Options**: Only changed stories, exit zero on changes, public assets as externals
-
-**Setup**:
-1. Create a project at [chromatic.com](https://www.chromatic.com)
-2. Copy the project token
-3. Add as GitHub secret: `CHROMATIC_TOKEN`
-4. Ensure `chromatic.json` has the correct `projectCode`
-
-**Troubleshooting**:
-- If you get `No app with code 'X' found`, verify that:
-  - The `CHROMATIC_TOKEN` secret is correctly set in GitHub repository settings
-  - The token is valid and not expired
-  - The project code in `chromatic.json` matches your Chromatic project
-- Ensure the Chromatic action version is up to date (`chromaui/action@latest`)
-
-**Local testing**:
-```bash
-npm run chromatic
-```
+- **`ci.yml`** — Lint → Type Check → Test → Build → E2E
+- **`security-audit.yml`** — `npm audit`, osv-scanner, dependency review
+- **`db-telemetry-prune.yml`** — Scheduled pruning of DB telemetry/log tables
+- **`accessibility.yml`** — axe-core Playwright audit on PRs
 
 ---
 
 ## Testing
 
 | Layer | Tool | Command |
-|---|---|---|
+| --- | --- | --- |
 | Unit / Integration | Vitest | `npm run test:tanstack` |
 | Changed-only | Vitest | `npm run test:changed:tanstack` |
 | E2E | Playwright | `npm run e2e:tanstack` |
-| Component | Storybook | `npx storybook dev` |
+| A11y audit | Playwright + axe-core | `npm run e2e:a11y:tanstack` |
 
 Coverage target: >80%. Run `npm run test:changed:coverage:tanstack` to check.
 
@@ -456,7 +427,7 @@ Coverage target: >80%. Run `npm run test:changed:coverage:tanstack` to check.
 
 The app deploys to **Cloudflare Workers** via `wrangler deploy`.
 
-### Development
+### Development Server
 
 ```bash
 npm run dev                    # Vite dev server (port 3002)
@@ -471,9 +442,9 @@ npm run deploy                 # wrangler deploy
 npm run build:tanstack && npm run -w apps/web-tanstack deploy
 ```
 
-### Configuration
+### Deployment Configuration
 
-- **`apps/web-tanstack/wrangler.jsonc`** — Cloudflare Workers config (compatibility flags, D1 binding, custom domain)
+- **`apps/web-tanstack/wrangler.jsonc`** — Cloudflare Workers config (compatibility flags, custom domain)
 - **`apps/web-tanstack/vite.config.ts`** — Vite with TanStack Start and Cloudflare plugins
 - **`apps/web-tanstack/package.json`** — Dependencies
 
@@ -481,7 +452,7 @@ npm run build:tanstack && npm run -w apps/web-tanstack deploy
 
 - Custom domain: `akmleva.pt`
 - Worker name: `akmleva-web`
-- Database: Cloudflare D1 (SQLite) via Drizzle ORM (transitioning from Prisma/PostgreSQL)
+- Database: PostgreSQL (Neon) via Prisma (`@akmleva/db`) with driver adapters (`@prisma/adapter-pg` + Hyperdrive) on Workers
 
 ---
 
@@ -490,7 +461,7 @@ npm run build:tanstack && npm run -w apps/web-tanstack deploy
 Key variables (see `.env.example` for full list):
 
 | Variable | Description |
-|---|---|
+| --- | --- |
 | `DATABASE_URL` | PostgreSQL connection string (Neon) |
 | `DATABASE_URL_UNPOOLED` | Direct connection (bypasses Pg Bouncer) |
 | `REDIS_URL` | Upstash Redis URL |

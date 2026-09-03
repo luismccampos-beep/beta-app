@@ -15,7 +15,8 @@
   "hyperdrive": [
     {
       "binding": "HYPERDRIVE",
-      "id": "<HYPERDRIVE_ID>"
+      "id": "<HYPERDRIVE_ID>",
+      "localConnectionString": "postgresql://postgres:postgres@localhost:5433/akmleva"
     }
   ],
   "assets": {

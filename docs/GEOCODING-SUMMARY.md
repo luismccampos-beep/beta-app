@@ -1,8 +1,12 @@
 # Geocoding Summary
 
+> **Nota (fev 2026):** este documento reflete o estado do geocoding de destinos e hotéis Wikivoyage.
+> Ficheiros de cache relacionados: `Database/geonames-cache/` (ver README dessa pasta).
+
 ## Final State
+
 | Metric | Value |
-|--------|-------|
+| -------- | ------- |
 | Total destinations | 28,475 |
 | Non-XX destinations with coords | 23,553 (82.7%) |
 | Non-XX destinations without coords | ~~1,186~~ → ~164 real towns left |
@@ -17,6 +21,7 @@
 ## What Was Done
 
 ### Phase 1 — Destination Geocoding
+
 - **GeoNames cache** (69k cities ≥5k pop): matched city names to coordinates
 - **Manual web search**: geocoded hard-to-find places (Tioman, Tirana, Nanortalik, Yaxchilan, etc.)
 - **LocationIQ batch**: hit daily rate limit (5k/day) — 0 successful
@@ -24,6 +29,7 @@
 - **Total**: ~1,000+ destinations geocoded
 
 ### Phase 2 — paisCode Audit
+
 - Scanned all 24,270 non-XX dests using 1° spatial grid + GeoNames
 - 2,426 mismatches found
 - 2,284 auto-fixed (<50km from nearest city in different country)
@@ -38,11 +44,13 @@
 - 6 manual corrections
 
 ### Phase 3 — Destination Classification
+
 - Built keyword filter: 411 topics, 127 regions/areas, 649 real towns
 - Exported `data/export_towns_for_geocode.csv` (649 town candidates)
 - Of those, **251 found in GeoNames** and batch-geocoded
 
 ### Phase 4 — Hotel Geocoding
+
 - **Fase A** (hotel-index.json match): negligible matches (~12)
 - **Fase A.5** (dest→hotel copy): +359 hotels
 - **Geocode via Photon**: unreachable (komoot.io timeout)
@@ -50,12 +58,14 @@
 - **Geocode via LocationIQ**: rate-limited (429, daily quota)
 
 ## Blockers
+
 - **Photon** (komoot.io): server not responding from this network
 - **Nominatim**: rate-limited (1 req/s, 429)
 - **LocationIQ**: daily quota exhausted (5k/day)
 - No external geocoding API is currently accessible
 
 ## Remaining Work
+
 - ~164 real towns (from original 649) still need coords
 - ~355 topic/activity dests should stay NULL (no coords needed)
 - ~580 hotels in those towns = ~95 hotels per town avg → low impact per town
@@ -63,8 +73,9 @@
 - Manual web search is the only viable fallback for small towns not in GeoNames
 
 ## Key Files
+
 | File | Description |
-|------|-------------|
+| ------ | ------------- |
 | `data/export_towns_for_geocode.csv` | 649 town candidates |
 | `data/export_dests_sem_coords.csv` | All 1,186 non-XX dests without coords |
 | `data/export_paiscode_mismatches.csv` | 2,426 paisCode mismatches |

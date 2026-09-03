@@ -4,6 +4,16 @@
 
 @custom-variant dark (&:is(.dark *));
 
+/* Pre-hydration feedback: elements that need JS (marked with data-wait-for-js)
+   are visually dimmed and non-interactive until React hydrates, so users get
+   feedback instead of silent no-op clicks. */
+html:not([data-hydrated='true']) [data-wait-for-js] {
+  opacity: 0.55;
+  pointer-events: none;
+  cursor: progress;
+}
+
+
 :root {
   --font-size: 16px;
   --background: #ffffff;

@@ -20,6 +20,7 @@ import { Route as ForgotPasswordRouteImport } from './routes/forgot-password'
 import { Route as PreferencesRouteImport } from './routes/preferences'
 import { Route as ResultsRouteImport } from './routes/results'
 import { Route as ApiContactRouteImport } from './routes/api/contact'
+import { Route as ApiCspReportRouteImport } from './routes/api/csp-report'
 import { Route as ApiHealthRouteImport } from './routes/api/health'
 import { Route as ApiRobotsRouteImport } from './routes/api/robots'
 import { Route as ApiSitemapRouteImport } from './routes/api/sitemap'
@@ -45,9 +46,7 @@ import { Route as ApiHealthMlStatusRouteImport } from './routes/api/health/ml-st
 import { Route as ApiInternal404LogRouteImport } from './routes/api/internal/404-log'
 import { Route as ApiTravelCatalogRouteImport } from './routes/api/travel/catalog'
 import { Route as ApiTravelCruisesRouteImport } from './routes/api/travel/cruises'
-import { Route as ApiCspReportRouteImport } from './routes/api/csp-report'
 import { Route as ApiTravelResultsRouteImport } from './routes/api/travel/results'
-import { Route as ApiV1SplatRouteImport } from './routes/api/v1/$'
 import { Route as ApiAdminUrlRedirectsIndexRouteImport } from './routes/api/admin/url-redirects/index'
 import { Route as ApiAuthMeIndexRouteImport } from './routes/api/auth/me/index'
 import { Route as ApiAuthMe2faRouteImport } from './routes/api/auth/me/2fa'
@@ -138,6 +137,11 @@ const ApiContactRoute = ApiContactRouteImport.update({
   path: '/api/contact',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ApiCspReportRoute = ApiCspReportRouteImport.update({
+  id: '/api/csp-report',
+  path: '/api/csp-report',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ApiHealthRoute = ApiHealthRouteImport.update({
   id: '/api/health',
   path: '/api/health',
@@ -191,11 +195,6 @@ const RoteirosSlugRoute = RoteirosSlugRouteImport.update({
 const ApiAdmin404LogRoute = ApiAdmin404LogRouteImport.update({
   id: '/api/admin/404-log',
   path: '/api/admin/404-log',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ApiCspReportRoute = ApiCspReportRouteImport.update({
-  id: '/api/csp-report',
-  path: '/api/csp-report',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ApiAiPreferencesInsightsRoute =
@@ -274,11 +273,6 @@ const ApiTravelCruisesRoute = ApiTravelCruisesRouteImport.update({
 const ApiTravelResultsRoute = ApiTravelResultsRouteImport.update({
   id: '/api/travel/results',
   path: '/api/travel/results',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ApiV1SplatRoute = ApiV1SplatRouteImport.update({
-  id: '/api/v1/$',
-  path: '/api/v1/$',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ApiAdminUrlRedirectsIndexRoute =
@@ -478,6 +472,7 @@ export interface FileRoutesByFullPath {
   '/preferences': typeof PreferencesRouteWithChildren
   '/results': typeof ResultsRoute
   '/api/contact': typeof ApiContactRoute
+  '/api/csp-report': typeof ApiCspReportRoute
   '/api/health': typeof ApiHealthRouteWithChildren
   '/api/robots': typeof ApiRobotsRoute
   '/api/sitemap': typeof ApiSitemapRoute
@@ -489,7 +484,6 @@ export interface FileRoutesByFullPath {
   '/preferences/quick': typeof PreferencesQuickRoute
   '/roteiros/$slug': typeof RoteirosSlugRoute
   '/api/admin/404-log': typeof ApiAdmin404LogRoute
-  '/api/csp-report': typeof ApiCspReportRoute
   '/api/ai/preferences-insights': typeof ApiAiPreferencesInsightsRoute
   '/api/ai/recommendation-events': typeof ApiAiRecommendationEventsRoute
   '/api/ai/recommended-destinations': typeof ApiAiRecommendedDestinationsRoute
@@ -504,7 +498,6 @@ export interface FileRoutesByFullPath {
   '/api/travel/catalog': typeof ApiTravelCatalogRoute
   '/api/travel/cruises': typeof ApiTravelCruisesRoute
   '/api/travel/results': typeof ApiTravelResultsRoute
-  '/api/v1/$': typeof ApiV1SplatRoute
   '/api/health/': typeof ApiHealthIndexRoute
   '/api/auth/me/2fa': typeof ApiAuthMe2faRoute
   '/api/auth/me/avatar': typeof ApiAuthMeAvatarRoute
@@ -553,6 +546,7 @@ export interface FileRoutesByTo {
   '/preferences': typeof PreferencesRouteWithChildren
   '/results': typeof ResultsRoute
   '/api/contact': typeof ApiContactRoute
+  '/api/csp-report': typeof ApiCspReportRoute
   '/api/robots': typeof ApiRobotsRoute
   '/api/sitemap': typeof ApiSitemapRoute
   '/auth/reset-password': typeof AuthResetPasswordRoute
@@ -563,7 +557,6 @@ export interface FileRoutesByTo {
   '/preferences/quick': typeof PreferencesQuickRoute
   '/roteiros/$slug': typeof RoteirosSlugRoute
   '/api/admin/404-log': typeof ApiAdmin404LogRoute
-  '/api/csp-report': typeof ApiCspReportRoute
   '/api/ai/preferences-insights': typeof ApiAiPreferencesInsightsRoute
   '/api/ai/recommendation-events': typeof ApiAiRecommendationEventsRoute
   '/api/ai/recommended-destinations': typeof ApiAiRecommendedDestinationsRoute
@@ -578,7 +571,6 @@ export interface FileRoutesByTo {
   '/api/travel/catalog': typeof ApiTravelCatalogRoute
   '/api/travel/cruises': typeof ApiTravelCruisesRoute
   '/api/travel/results': typeof ApiTravelResultsRoute
-  '/api/v1/$': typeof ApiV1SplatRoute
   '/api/health': typeof ApiHealthIndexRoute
   '/api/auth/me/2fa': typeof ApiAuthMe2faRoute
   '/api/auth/me/avatar': typeof ApiAuthMeAvatarRoute
@@ -628,6 +620,7 @@ export interface FileRoutesById {
   '/preferences': typeof PreferencesRouteWithChildren
   '/results': typeof ResultsRoute
   '/api/contact': typeof ApiContactRoute
+  '/api/csp-report': typeof ApiCspReportRoute
   '/api/health': typeof ApiHealthRouteWithChildren
   '/api/robots': typeof ApiRobotsRoute
   '/api/sitemap': typeof ApiSitemapRoute
@@ -653,7 +646,6 @@ export interface FileRoutesById {
   '/api/travel/catalog': typeof ApiTravelCatalogRoute
   '/api/travel/cruises': typeof ApiTravelCruisesRoute
   '/api/travel/results': typeof ApiTravelResultsRoute
-  '/api/v1/$': typeof ApiV1SplatRoute
   '/api/health/': typeof ApiHealthIndexRoute
   '/api/auth/me/2fa': typeof ApiAuthMe2faRoute
   '/api/auth/me/avatar': typeof ApiAuthMeAvatarRoute
@@ -704,6 +696,7 @@ export interface FileRouteTypes {
     | '/preferences'
     | '/results'
     | '/api/contact'
+    | '/api/csp-report'
     | '/api/health'
     | '/api/robots'
     | '/api/sitemap'
@@ -715,7 +708,6 @@ export interface FileRouteTypes {
     | '/preferences/quick'
     | '/roteiros/$slug'
     | '/api/admin/404-log'
-    | '/api/csp-report'
     | '/api/ai/preferences-insights'
     | '/api/ai/recommendation-events'
     | '/api/ai/recommended-destinations'
@@ -730,7 +722,6 @@ export interface FileRouteTypes {
     | '/api/travel/catalog'
     | '/api/travel/cruises'
     | '/api/travel/results'
-    | '/api/v1/$'
     | '/api/health/'
     | '/api/auth/me/2fa'
     | '/api/auth/me/avatar'
@@ -779,6 +770,7 @@ export interface FileRouteTypes {
     | '/preferences'
     | '/results'
     | '/api/contact'
+    | '/api/csp-report'
     | '/api/robots'
     | '/api/sitemap'
     | '/auth/reset-password'
@@ -789,7 +781,6 @@ export interface FileRouteTypes {
     | '/preferences/quick'
     | '/roteiros/$slug'
     | '/api/admin/404-log'
-    | '/api/csp-report'
     | '/api/ai/preferences-insights'
     | '/api/ai/recommendation-events'
     | '/api/ai/recommended-destinations'
@@ -804,7 +795,6 @@ export interface FileRouteTypes {
     | '/api/travel/catalog'
     | '/api/travel/cruises'
     | '/api/travel/results'
-    | '/api/v1/$'
     | '/api/health'
     | '/api/auth/me/2fa'
     | '/api/auth/me/avatar'
@@ -853,6 +843,7 @@ export interface FileRouteTypes {
     | '/preferences'
     | '/results'
     | '/api/contact'
+    | '/api/csp-report'
     | '/api/health'
     | '/api/robots'
     | '/api/sitemap'
@@ -864,7 +855,6 @@ export interface FileRouteTypes {
     | '/preferences/quick'
     | '/roteiros/$slug'
     | '/api/admin/404-log'
-    | '/api/csp-report'
     | '/api/ai/preferences-insights'
     | '/api/ai/recommendation-events'
     | '/api/ai/recommended-destinations'
@@ -879,7 +869,6 @@ export interface FileRouteTypes {
     | '/api/travel/catalog'
     | '/api/travel/cruises'
     | '/api/travel/results'
-    | '/api/v1/$'
     | '/api/health/'
     | '/api/auth/me/2fa'
     | '/api/auth/me/avatar'
@@ -929,13 +918,13 @@ export interface RootRouteChildren {
   PreferencesRoute: typeof PreferencesRouteWithChildren
   ResultsRoute: typeof ResultsRoute
   ApiContactRoute: typeof ApiContactRoute
+  ApiCspReportRoute: typeof ApiCspReportRoute
   ApiHealthRoute: typeof ApiHealthRouteWithChildren
   ApiRobotsRoute: typeof ApiRobotsRoute
   ApiSitemapRoute: typeof ApiSitemapRoute
   LegalPageTypeRoute: typeof LegalPageTypeRoute
   RoteirosSlugRoute: typeof RoteirosSlugRoute
   ApiAdmin404LogRoute: typeof ApiAdmin404LogRoute
-  ApiCspReportRoute: typeof ApiCspReportRoute
   ApiAiPreferencesInsightsRoute: typeof ApiAiPreferencesInsightsRoute
   ApiAiRecommendationEventsRoute: typeof ApiAiRecommendationEventsRoute
   ApiAiRecommendedDestinationsRoute: typeof ApiAiRecommendedDestinationsRoute
@@ -949,7 +938,6 @@ export interface RootRouteChildren {
   ApiTravelCatalogRoute: typeof ApiTravelCatalogRoute
   ApiTravelCruisesRoute: typeof ApiTravelCruisesRoute
   ApiTravelResultsRoute: typeof ApiTravelResultsRoute
-  ApiV1SplatRoute: typeof ApiV1SplatRoute
   ApiAuthMe2faRoute: typeof ApiAuthMe2faRoute
   ApiAuthMeAvatarRoute: typeof ApiAuthMeAvatarRoute
   ApiAuthMePasswordRoute: typeof ApiAuthMePasswordRoute
@@ -1062,6 +1050,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ApiContactRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/api/csp-report': {
+      id: '/api/csp-report'
+      path: '/api/csp-report'
+      fullPath: '/api/csp-report'
+      preLoaderRoute: typeof ApiCspReportRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/api/health': {
       id: '/api/health'
       path: '/api/health'
@@ -1137,13 +1132,6 @@ declare module '@tanstack/react-router' {
       path: '/api/admin/404-log'
       fullPath: '/api/admin/404-log'
       preLoaderRoute: typeof ApiAdmin404LogRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/api/csp-report': {
-      id: '/api/csp-report'
-      path: '/api/csp-report'
-      fullPath: '/api/csp-report'
-      preLoaderRoute: typeof ApiCspReportRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/api/ai/preferences-insights': {
@@ -1249,13 +1237,6 @@ declare module '@tanstack/react-router' {
       path: '/api/travel/results'
       fullPath: '/api/travel/results'
       preLoaderRoute: typeof ApiTravelResultsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/api/v1/$': {
-      id: '/api/v1/$'
-      path: '/api/v1/$'
-      fullPath: '/api/v1/$'
-      preLoaderRoute: typeof ApiV1SplatRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/api/admin/url-redirects/': {
@@ -1591,13 +1572,13 @@ const rootRouteChildren: RootRouteChildren = {
   PreferencesRoute: PreferencesRouteWithChildren,
   ResultsRoute: ResultsRoute,
   ApiContactRoute: ApiContactRoute,
+  ApiCspReportRoute: ApiCspReportRoute,
   ApiHealthRoute: ApiHealthRouteWithChildren,
   ApiRobotsRoute: ApiRobotsRoute,
   ApiSitemapRoute: ApiSitemapRoute,
   LegalPageTypeRoute: LegalPageTypeRoute,
   RoteirosSlugRoute: RoteirosSlugRoute,
   ApiAdmin404LogRoute: ApiAdmin404LogRoute,
-  ApiCspReportRoute: ApiCspReportRoute,
   ApiAiPreferencesInsightsRoute: ApiAiPreferencesInsightsRoute,
   ApiAiRecommendationEventsRoute: ApiAiRecommendationEventsRoute,
   ApiAiRecommendedDestinationsRoute: ApiAiRecommendedDestinationsRoute,
@@ -1611,7 +1592,6 @@ const rootRouteChildren: RootRouteChildren = {
   ApiTravelCatalogRoute: ApiTravelCatalogRoute,
   ApiTravelCruisesRoute: ApiTravelCruisesRoute,
   ApiTravelResultsRoute: ApiTravelResultsRoute,
-  ApiV1SplatRoute: ApiV1SplatRoute,
   ApiAuthMe2faRoute: ApiAuthMe2faRoute,
   ApiAuthMeAvatarRoute: ApiAuthMeAvatarRoute,
   ApiAuthMePasswordRoute: ApiAuthMePasswordRoute,

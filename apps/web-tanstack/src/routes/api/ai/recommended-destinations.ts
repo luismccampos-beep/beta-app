@@ -145,22 +145,31 @@ export const Route = createFileRoute('/api/ai/recommended-destinations')({
           return Response.json({ ...cached, cached: true })
         }
 
-        const rows = await prisma.wvDestination.findMany({
-          where: { lang: params.lang, hotelCount: { gt: 0 } },
-          orderBy: { hotelCount: 'desc' },
-          take: CANDIDATE_POOL,
-          select: {
-            id: true,
-            slug: true,
-            nome: true,
-            pais: true,
-            continente: true,
-            iata: true,
-            tipo: true,
-            clima: true,
-            imagemUrl: true,
-          },
-        })
+        let destinationRows
+        try {
+          destinationRows = await prisma.wvDestination.findMany({
+            where: { lang: params.lang, hotelCount: { gt: 0 } },
+            orderBy: { hotelCount: 'desc' },
+            take: CANDIDATE_POOL,
+            select: {
+              id: true,
+              slug: true,
+              nome: true,
+              pais: true,
+              continente: true,
+              iata: true,
+              tipo: true,
+              clima: true,
+              imagemUrl: true,
+            },
+          })
+        } catch {
+          // DB unavailable (e.g. local dev without Postgres, transient outage) —
+          // degrade gracefully instead of 500 so the landing page UI never breaks.
+          console.warn('[recommended-destinations] DB unavailable, returning empty items')
+          return Response.json({ ok: true, method: 'empty', items: [] })
+        }
+        const rows = destinationRows
 
         const buildItem = (
           row: (typeof rows)[number],

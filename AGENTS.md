@@ -3,7 +3,7 @@
 ## Commands
 
 | Command | Notes |
-|---|---|
+| --- | --- |
 | `npm run dev` | Dev server on **port 3002** (Vite) |
 | `npm run lint` | ESLint flat config, **zero warnings** enforced |
 | `npm run type-check` | `tsc --noEmit`, strict mode |
@@ -15,7 +15,6 @@
 | `npm run build` | Vite build for Cloudflare Workers |
 | `npm run db:migrate` | `prisma migrate deploy` via `@akmleva/db` workspace |
 | `npm run db:push` | `prisma db push` (dev only) |
-| `npm run storybook:build` | Build Storybook (used by Chromatic CI) |
 
 ## Architecture
 
@@ -30,8 +29,10 @@
   - Soft delete via `$extends` on ~15 models — auto-filters `deletedAt: null` on read queries.
   - Schema: snake_case `@map` annotations, all new fields must follow.
   - DB scripts live in `packages/db` — root delegates via `npm run db:* -w @akmleva/db`.
-- **Workspaces**: npm workspaces at `tools/data-pipeline/` (ETL scripts) and `tools/scrapers/` (web scraping). Web app lives at `apps/web-tanstack/`.
+- **Workspaces**: npm workspace at `tools/data-pipeline/` (ETL scripts). Web app lives at `apps/web-tanstack/`.
 - **Packages** (`@akmleva/*`): `packages/db/` (Prisma client), `packages/shared/`, `packages/ui/` (placeholders — not workspace-linked yet).
+- **Database schema**: single `packages/db/prisma/schema/schema.prisma` with 130+ models (auth/users, agencies/CRM, destinations, flights, hotels, bookings, payments, trips/itineraries, AI/chat, loyalty, wikivoyage `Wv*` catalog tables, cost-of-living `Col*`, community/content).
+- **ML service**: Python FastAPI at `ml-service/` (not an npm workspace). Routes under `app/api/routes/`: recommendations, travel_ranking, travel_distance, personalization, chat, rag, predictions, xai, unified, validate_image. Dev port 3002 (conflicts with web app — run one at a time or override the port).
 - **Deployment**: Cloudflare Workers via `wrangler deploy`. Custom domain: `akmleva.pt`. Worker name: `akmleva-web`.
 
 ## Testing Quirks
@@ -47,7 +48,7 @@
 
 ~150+ Node.js/Python scripts in `scripts/` for Wikivoyage extraction → bundle building → enrichment → DB import → geocoding. Key order:
 
-```
+```text
 wikivoyage:extract  →  travel:demo:build  →  travel:demo:enrich-pipeline  →  travel:catalog:import
 ```
 
@@ -63,8 +64,11 @@ Postgres (5433), Redis (6379), Valhalla (8002), OTP (8080).
 
 ## CI/CD
 
-- GitHub Actions: `deploy-migrations.yml` — on push to `main`: CI checks (tsc, lint, tests via turbo) → `prisma migrate deploy`.
-- Uses `DATABASE_URL_UNPOOLED` for migrations (direct URL, not pooler). Validated in CI.
-- `chromatic.yml`: Storybook visual regression on pushes/PRs touching `src/`.
-- `accessibility.yml`: axe-core Playwright audit on PRs (both Next.js and TanStack apps).
-- `ci.yml`: Lint → Type Check → Test → Build (both apps) → E2E (both apps).
+GitHub Actions workflows (`.github/workflows/`):
+
+- `ci.yml` — Lint → Type Check → Test → Build → E2E
+- `deploy-migrations.yml` — on push to `main` (docs excluded): CI checks (tsc, lint, tests via turbo) → `prisma migrate deploy`.
+  - Uses `DATABASE_URL_UNPOOLED` for migrations (direct URL, not pooler). Validated in CI; falls back to `DATABASE_URL` if unset.
+- `security-audit.yml` — `npm audit`, osv-scanner, dependency review.
+- `db-telemetry-prune.yml` — scheduled pruning of DB telemetry/log tables.
+- `accessibility.yml` — axe-core Playwright audit on PRs.

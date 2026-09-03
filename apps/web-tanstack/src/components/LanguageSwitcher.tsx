@@ -1,5 +1,6 @@
 import { locales, type Locale } from '@/i18n.config'
 import { useState, useRef, useEffect } from 'react'
+import { useRouter } from '@tanstack/react-router'
 
 const LOCALE_LABELS: Record<Locale, string> = {
   pt: 'Português',
@@ -23,6 +24,8 @@ interface LanguageSwitcherProps {
 
 export function LanguageSwitcher({ currentLocale, variant = 'default', onLocaleChange }: LanguageSwitcherProps) {
   const [isOpen, setIsOpen] = useState(false)
+  const [isSwitching, setIsSwitching] = useState(false)
+  const router = useRouter()
   const ref = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
@@ -35,18 +38,35 @@ export function LanguageSwitcher({ currentLocale, variant = 'default', onLocaleC
     return () => document.removeEventListener('mousedown', handleClickOutside)
   }, [])
 
-  function handleLocaleChange(locale: Locale) {
-    document.cookie = `locale=${locale};path=/;max-age=31536000`
-    onLocaleChange?.(locale)
-    window.location.reload()
+  async function handleLocaleChange(locale: Locale) {
+    if (locale === currentLocale) {
+      setIsOpen(false)
+      return
+    }
+    setIsOpen(false)
+    setIsSwitching(true)
+    try {
+      // Persist the choice; server middleware reads this cookie on every request.
+      document.cookie = `locale=${locale};path=/;max-age=31536000;samesite=lax`
+      // Keep <html lang> in sync immediately (SSR re-render is not happening).
+      document.documentElement.lang = locale
+      onLocaleChange?.(locale)
+      // Re-run route loaders/beforeLoad so I18nProvider picks up the new locale
+      // without a full page reload.
+      await router.invalidate()
+    } finally {
+      setIsSwitching(false)
+    }
   }
 
   const isOverlay = variant === 'overlay'
 
   return (
-    <div ref={ref} className="relative inline-block">
+    <div ref={ref} className="relative inline-block" data-wait-for-js>
       <button
         onClick={() => setIsOpen(!isOpen)}
+        disabled={isSwitching}
+        aria-busy={isSwitching}
         className={`flex items-center gap-2 px-3 py-2 rounded-lg text-sm font-medium transition-colors ${
           isOverlay
             ? 'bg-white/10 text-white hover:bg-white/20'

@@ -2,10 +2,13 @@
 
 Estratégia de ingestão para museus, monumentos, atividades ao ar livre e eventos — além de OSM/Wikidata generalistas.
 
+> **Dados brutos:** os datasets culturais offline estão em `Database/Cultura/` e `Database/Unesco/`
+> (cada um com o seu README descrevendo cobertura, medidas e lacunas — ver índice em `Database/README.md`).
+
 ## Estado actual no beta-app
 
 | Camada | Já existe | Ficheiros |
-|--------|-----------|-----------|
+| -------- | ----------- | ----------- |
 | Geometria / POIs base | OSM (Photon, BizData), mapa Leaflet | `src/lib/travel/osm/`, `docs/OSM_HOTELS.md` |
 | Enriquecimento semântico | Wikidata (imagens Commons) | `src/lib/travel/osm/wikidata.ts` |
 | Guias locais | Wikivoyage (listings `see`/`do`/`sleep`) | bundle + DB `wv_listings` |
@@ -54,7 +57,7 @@ flowchart TB
 Homogéneo globalmente. Tags prioritárias para Overpass:
 
 | Tag | Uso |
-|-----|-----|
+| ----- | ----- |
 | `tourism=museum`, `gallery`, `aquarium`, `zoo`, `theme_park`, `viewpoint`, `artwork` | Cultura fixa |
 | `leisure=*` | `fitness_centre`, `sports_centre`, `water_park`, `escape_game`, `horse_riding` |
 | `shop=rental` + `rental=bicycle` / `ski` | Equipamento |
@@ -80,7 +83,7 @@ Script futuro: `scripts/fetch-wikidata-cultural.mjs` (mesmo padrão que `fetch-w
 ### 3. Agregadores nacionais (sobrescrever / validar OSM+WD)
 
 | País | Fonte | Escala | API / dados | Prioridade PT+IB |
-|------|-------|--------|-------------|------------------|
+| ------ | ------- | -------- | ------------- | ------------------ |
 | 🇫🇷 França | [POP](https://pop.culture.gouv.fr/) | ~3,2M registos | REST `museums-of-france`, CC0 | Alta (turismo FR) |
 | 🇪🇸 Espanha | [CER.es](https://cer.es/) | Museus estatais + CCAA | Linked data datos.gob.es | Alta |
 | 🇩🇪 Alemanha | [DDB](https://www.deutsche-digitale-bibliothek.de/) | Entidades Kultur | API Kultur erbt | Média |
@@ -98,7 +101,7 @@ POP endpoint exemplo: `https://api.pop.culture.gouv.fr/museums-of-france/` (sem 
 
 Fonte canónica UNEP-WCMC para parques nacionais, reservas, áreas marinhas.
 
-- API: https://api.protectedplanet.net/ (token gratuito)
+- API: <https://api.protectedplanet.net/> (token gratuito)
 - Env: `PROTECTED_PLANET_TOKEN`
 - Uso: polígonos + centroides → actividades natureza, filtros «parque nacional perto de X»
 
@@ -106,7 +109,7 @@ Fonte canónica UNEP-WCMC para parques nacionais, reservas, áreas marinhas.
 
 Agendas municipais FR/EU — workshops, visitas guiadas, concertos.
 
-- API: https://openagenda.com/
+- API: <https://openagenda.com/>
 - Env: `OPENAGENDA_API_KEY`
 - Uso: `?geo=lat,lon&radius=` + intervalo de datas no enrich do destino
 
@@ -129,7 +132,7 @@ Resolver: `resolveCulturalPoisForDestination()` — já agrega UNESCO + Wikivoya
 ## Roadmap de implementação
 
 | Fase | Entrega | Esforço |
-|------|---------|---------|
+| ------ | --------- | --------- |
 | **A** ✅ | UNESCO no card + enrich + índice | Feito |
 | **B** ✅ | `CulturalPoi` + resolver + doc | Feito |
 | **C** ✅ | Overpass actividades (`tourism`/`leisure`) por destino | `overpass-activities.ts` + async resolver |
@@ -151,14 +154,14 @@ npm run travel:import:cultural-all        # meta-script offline D–F
 
 Enrich com eventos:
 
-```
+```text
 GET /api/travel/v1/destinations/{slug}/enrich?dateFrom=2026-06-01&dateTo=2026-06-14&live=false
 ```
 
 ## Integração UI
 
 | Superfície | Campo |
-|------------|-------|
+| ------------ | ------- |
 | Card resultados | `result.unesco` + futuro `result.culturalHighlights` |
 | Detalhe destino | `DestinationEnrichmentPanel` → `culturalPois` |
 | Mapa | marcadores `kind: unesco` → expandir `museum`, `nature` |

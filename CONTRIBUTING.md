@@ -1,6 +1,6 @@
 # Contributing to AKMLEVA
 
-> **Last updated:** June 27, 2026
+> **Last updated:** August 31, 2026
 
 Welcome! We're thrilled you're interested in contributing to AKMLEVA — an enterprise AI-powered travel platform. This guide covers everything from setting up your development environment to submitting a pull request that meets our quality bar.
 
@@ -32,10 +32,10 @@ If you witness or experience misconduct, please contact [support@akmleva.pt](mai
 ### Prerequisites
 
 | Tool | Version | Purpose |
-|---|---|---|
-| Node.js | >= 18 | Runtime |
+| --- | --- | --- |
+| Node.js | >= 20 | Runtime |
 | npm | >= 10 | Package manager |
-| Docker | (optional) | Local Postgres, Redis, Valhalla |
+| Docker | (optional) | Local Postgres, Redis, Valhalla, OTP |
 
 ### Setup
 
@@ -55,7 +55,7 @@ cp .env.example .env
 npm run dev
 ```
 
-The app runs at [http://localhost:3001](http://localhost:3001).
+The app runs at [http://localhost:3002](http://localhost:3002).
 
 ---
 
@@ -82,7 +82,7 @@ The app runs at [http://localhost:3001](http://localhost:3001).
 
 5. **Commit with a clear message**:
 
-   ```
+   ```text
    feat: add X feature
    fix: resolve Y bug
    refactor: improve Z structure
@@ -100,10 +100,10 @@ The app runs at [http://localhost:3001](http://localhost:3001).
 We use ESLint with flat config (`eslint.config.js`) and enforce **zero warnings**.
 
 Key plugins:
+
 - `@typescript-eslint` — TypeScript rules
 - `eslint-plugin-react-hooks` — React Hooks rules
 - `eslint-plugin-jsx-a11y` — Accessibility rules (see below)
-- `@next/eslint-plugin-next` — Next.js best practices
 
 ```bash
 npm run lint
@@ -202,7 +202,7 @@ Accessibility is a **first-class requirement** for all UI contributions. See our
 All new UI contributions must meet these requirements:
 
 | Requirement | How to check |
-|---|---|
+| --- | --- |
 | **WCAG 2.1 AA** conformance target | Design and code with AA criteria in mind |
 | **Keyboard operable** | Every interactive element must be reachable and operable via keyboard alone |
 | **Screen reader compatible** | Use semantic HTML and ARIA attributes where HTML semantics are insufficient |
