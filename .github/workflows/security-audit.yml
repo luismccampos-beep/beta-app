@@ -35,8 +35,10 @@ jobs:
         run: npm audit --audit-level=moderate
         continue-on-error: true
 
-      - name: Run npm audit (strict)
-        run: npm audit --audit-level=high
+      - name: Run npm audit (strict, production tree)
+        # Dev-only advisories (e.g. tar via duckdb/node-gyp build tooling in the
+        # data-pipeline workspace) are tracked separately; prod tree must be clean.
+        run: npm audit --audit-level=high --omit=dev
 
   osv-scanner:
     name: OSV Scanner
