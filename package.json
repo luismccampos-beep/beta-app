@@ -13,6 +13,7 @@
   "scripts": {
     "dev": "turbo dev",
     "build": "turbo build",
+    "deploy": "wrangler deploy -c apps/web-tanstack/dist/server/wrangler.json",
     "lint": "turbo lint",
     "type-check": "turbo type-check",
     "postinstall": "npm run generate -w @akmleva/db",

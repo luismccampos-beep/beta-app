@@ -31,6 +31,12 @@ jobs:
 
       - run: npm ci
 
+      - name: Upgrade npm
+        # npm 10 (bundled with Node 22) uses the retired quick-audit endpoint,
+        # which 400s with "Invalid package tree" on workspace lockfiles.
+        # Newer npm uses the bulk advisory endpoint.
+        run: npm install -g npm@latest
+
       - name: Run npm audit
         run: npm audit --audit-level=moderate
         continue-on-error: true

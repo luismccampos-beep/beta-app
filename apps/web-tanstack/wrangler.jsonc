@@ -12,13 +12,8 @@
     "PUBLIC_ONLY_MODE": "false",
     "VITE_BASE_URL": "https://akmleva.pt"
   },
-  "hyperdrive": [
-    {
-      "binding": "HYPERDRIVE",
-      "id": "<HYPERDRIVE_ID>",
-      "localConnectionString": "postgresql://postgres:postgres@localhost:5433/akmleva"
-    }
-  ],
+  // Hyperdrive deve ser configurado via dashboard do Cloudflare ou adicionado aqui
+  // com um ID real de recurso antes do deploy manual a partir deste arquivo.
   "assets": {
     "binding": "ASSETS",
     "directory": "./dist/client"

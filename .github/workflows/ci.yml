@@ -118,7 +118,9 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: build-output
-          path: apps/web-tanstack/dist/
+          path: |
+            apps/web-tanstack/dist/
+            apps/web-tanstack/.wrangler/deploy/config.json
           include-hidden-files: true
           if-no-files-found: error
           retention-days: 3
